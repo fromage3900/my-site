@@ -1,0 +1,12 @@
+{
+  "theme": "dark",
+  "contentTheme": "abstract",
+  "kicker": "3D Environment & Technical Art",
+  "title": "Project Name",
+  "sub": "beyond imagination",
+  "starCount": 70,
+  "gstarCount": 7,
+  "enableParallax": true,
+  "parallaxStrength": 0.05,
+  "performance": "highQuality"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "cosmic",
+  "config": {
+    "enableGalaxy": true,
+    "nebulaCount": 4,
+    "shootingStarCount": 3,
+    "dustCount": 50
+  }
+}

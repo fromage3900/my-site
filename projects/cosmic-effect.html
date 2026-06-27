@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--
+  MELODIA — Cosmic Effect Example
+  Deep space effect with galaxy, nebulae, and shooting stars
+-->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../components/melodia-animations.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  .container{position:relative;width:100%;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#05080c}
+  .content{position:relative;z-index:10;text-align:center;color:#ECEAF4;font-family:'Fraunces',serif}
+  .cosmic-container{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+  h1{font-size:56px;margin-bottom:16px;text-shadow:0 0 40px rgba(156,148,198,0.8)}
+  p{font-family:'IBM Plex Mono',monospace;font-size:14px;opacity:0.8}
+  .info{position:absolute;bottom:20px;left:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:0.5;color:#9F94C6}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="cosmic-container" id="cosmic"></div>
+  <div class="content">
+    <h1>Cosmic Void</h1>
+    <p>Deep space with rotating galaxy and nebulae</p>
+  </div>
+  <div class="info">
+    Galaxy: <span id="galaxy-info">Active</span> | 
+    Nebulae: <span id="nebula-info">3</span> | 
+    Shooting Stars: <span id="star-info">2</span>
+  </div>
+</div>
+
+<!-- Load utilities and components -->
+<script src="../components/melodia-utils.js"></script>
+<script src="../components/melodia-cosmic.js"></script>
+
+<script>
+// Initialize cosmic effect
+const cosmic = new MelodiaCosmic('#cosmic', {
+  enableGalaxy: true,
+  galaxySize: 700,
+  galaxyRotationSpeed: 45,
+  galaxyArmCount: 5,
+  nebulaCount: 4,
+  shootingStarCount: 3,
+  dustCount: 50,
+  nebulaColors: [
+    'rgba(110,90,166,0.4)',
+    'rgba(60,92,158,0.3)',
+    'rgba(156,148,198,0.3)',
+    'rgba(169,154,198,0.2)'
+  ]
+});
+
+cosmic.init();
+
+// Update info display
+function updateInfo() {
+  document.getElementById('nebula-info').textContent = cosmic.nebulae.length;
+  document.getElementById('star-info').textContent = cosmic.shootingStars.length;
+}
+
+updateInfo();
+
+// Add interactivity
+document.querySelector('.container').addEventListener('click', (e) => {
+  const rect = e.target.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+  
+  // Add nebula at click position
+  cosmic.addNebula(
+    `rgba(${Math.random()*100+100},${Math.random()*100+100},${Math.random()*100+150},0.3)`,
+    Math.random() * 30 + 20,
+    { x, y }
+  );
+  
+  updateInfo();
+});
+
+// Double click to add shooting star
+document.querySelector('.container').addEventListener('dblclick', () => {
+  const newCount = cosmic.shootingStars.length + 1;
+  cosmic.setShootingStarCount(newCount);
+  updateInfo();
+});
+</script>
+</body>
+</html>

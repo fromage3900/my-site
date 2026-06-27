@@ -1,0 +1,87 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-06-27T18:55:31.245672+00:00",
+  "project": {
+    "name": "Project",
+    "theme": "abstract",
+    "performance": "highQuality"
+  },
+  "assets": {
+    "hero": {
+      "url": "https://fromage3900.github.io/my-site/generated/project-hero.html",
+      "theme": "dark",
+      "contentTheme": "abstract",
+      "dimensions": {
+        "width": "100%",
+        "height": "520px"
+      },
+      "config": {
+        "theme": "dark",
+        "contentTheme": "abstract",
+        "kicker": "3D Environment & Technical Art",
+        "title": "Project Name",
+        "sub": "beyond imagination",
+        "starCount": 70,
+        "gstarCount": 7,
+        "enableParallax": true,
+        "parallaxStrength": 0.05,
+        "performance": "highQuality"
+      }
+    },
+    "passport": {
+      "url": "https://fromage3900.github.io/my-site/generated/project-passport.html",
+      "theme": "dark",
+      "highlight": "abstract",
+      "dimensions": {
+        "width": "360px",
+        "height": "560px"
+      },
+      "config": {
+        "theme": "dark",
+        "highlight": "abstract",
+        "project": "Project Name",
+        "category": "Environment",
+        "version": "v1.0",
+        "animations": true,
+        "hoverEffects": true,
+        "decorativeStars": true,
+        "rows": [
+          [
+            "Triangles",
+            "0"
+          ],
+          [
+            "Textures",
+            "4K"
+          ],
+          [
+            "Materials",
+            "0"
+          ],
+          [
+            "Engine",
+            "Unreal Engine 5.8"
+          ],
+          [
+            "Date",
+            "2026-06"
+          ]
+        ]
+      }
+    },
+    "effect": {
+      "type": "cosmic",
+      "url": "https://fromage3900.github.io/my-site/effects/project-effect.html",
+      "config": {
+        "enableGalaxy": true,
+        "nebulaCount": 4,
+        "shootingStarCount": 3,
+        "dustCount": 50
+      }
+    }
+  },
+  "fallback_urls": {
+    "static_hero": "https://fromage3900.github.io/my-site/projects/hero-static.html",
+    "static_passport": "https://fromage3900.github.io/my-site/projects/passport-static.html"
+  }
+}

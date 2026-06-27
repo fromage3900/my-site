@@ -1,0 +1,32 @@
+{
+  "theme": "dark",
+  "highlight": "abstract",
+  "project": "Project Name",
+  "category": "Environment",
+  "version": "v1.0",
+  "animations": true,
+  "hoverEffects": true,
+  "decorativeStars": true,
+  "rows": [
+    [
+      "Triangles",
+      "0"
+    ],
+    [
+      "Textures",
+      "4K"
+    ],
+    [
+      "Materials",
+      "0"
+    ],
+    [
+      "Engine",
+      "Unreal Engine 5.8"
+    ],
+    [
+      "Date",
+      "2026-06"
+    ]
+  ]
+}
