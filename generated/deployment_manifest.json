@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-27T18:55:31.245672+00:00",
+  "generated_at": "2026-06-27T18:57:23.638266+00:00",
   "project": {
     "name": "Project",
     "theme": "abstract",
@@ -8,7 +8,7 @@
   },
   "assets": {
     "hero": {
-      "url": "https://fromage3900.github.io/my-site/generated/project-hero.html",
+      "url": "https://fromage3900.github.io/my-site/generated/project-name-hero.html",
       "theme": "dark",
       "contentTheme": "abstract",
       "dimensions": {
@@ -29,7 +29,7 @@
       }
     },
     "passport": {
-      "url": "https://fromage3900.github.io/my-site/generated/project-passport.html",
+      "url": "https://fromage3900.github.io/my-site/generated/project-name-passport.html",
       "theme": "dark",
       "highlight": "abstract",
       "dimensions": {
@@ -71,7 +71,7 @@
     },
     "effect": {
       "type": "cosmic",
-      "url": "https://fromage3900.github.io/my-site/effects/project-effect.html",
+      "url": "https://fromage3900.github.io/my-site/effects/project-name-effect.html",
       "config": {
         "enableGalaxy": true,
         "nebulaCount": 4,
