@@ -1,14 +1,14 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-27T18:57:23.638266+00:00",
+  "generated_at": "2026-06-27T19:04:52.160011+00:00",
   "project": {
-    "name": "Project",
+    "name": "L_SakuraPath",
     "theme": "abstract",
     "performance": "highQuality"
   },
   "assets": {
     "hero": {
-      "url": "https://fromage3900.github.io/my-site/generated/project-name-hero.html",
+      "url": "https://fromage3900.github.io/my-site/generated/l-sakurapath-hero.html",
       "theme": "dark",
       "contentTheme": "abstract",
       "dimensions": {
@@ -19,8 +19,8 @@
         "theme": "dark",
         "contentTheme": "abstract",
         "kicker": "3D Environment & Technical Art",
-        "title": "Project Name",
-        "sub": "beyond imagination",
+        "title": "L_SakuraPath",
+        "sub": "experimental expressions",
         "starCount": 70,
         "gstarCount": 7,
         "enableParallax": true,
@@ -29,7 +29,7 @@
       }
     },
     "passport": {
-      "url": "https://fromage3900.github.io/my-site/generated/project-name-passport.html",
+      "url": "https://fromage3900.github.io/my-site/generated/l-sakurapath-passport.html",
       "theme": "dark",
       "highlight": "abstract",
       "dimensions": {
@@ -39,7 +39,7 @@
       "config": {
         "theme": "dark",
         "highlight": "abstract",
-        "project": "Project Name",
+        "project": "L_SakuraPath",
         "category": "Environment",
         "version": "v1.0",
         "animations": true,
@@ -48,15 +48,15 @@
         "rows": [
           [
             "Triangles",
-            "0"
+            "51,347"
           ],
           [
             "Textures",
-            "4K"
+            "8K"
           ],
           [
             "Materials",
-            "0"
+            "209"
           ],
           [
             "Engine",
@@ -71,7 +71,7 @@
     },
     "effect": {
       "type": "cosmic",
-      "url": "https://fromage3900.github.io/my-site/effects/project-name-effect.html",
+      "url": "https://fromage3900.github.io/my-site/effects/l-sakurapath-effect.html",
       "config": {
         "enableGalaxy": true,
         "nebulaCount": 4,

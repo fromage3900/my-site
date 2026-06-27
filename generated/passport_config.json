@@ -1,7 +1,7 @@
 {
   "theme": "dark",
   "highlight": "abstract",
-  "project": "Project Name",
+  "project": "L_SakuraPath",
   "category": "Environment",
   "version": "v1.0",
   "animations": true,
@@ -10,15 +10,15 @@
   "rows": [
     [
       "Triangles",
-      "0"
+      "51,347"
     ],
     [
       "Textures",
-      "4K"
+      "8K"
     ],
     [
       "Materials",
-      "0"
+      "209"
     ],
     [
       "Engine",
