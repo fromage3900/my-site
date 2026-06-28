@@ -20,6 +20,10 @@ class MelodiaParallax {
     this.elements = [];
     this.isInitialized = false;
     this.animationFrame = null;
+    this.mouseEnterHandler = null;
+    this.mouseLeaveHandler = null;
+    this.touchStartHandler = null;
+    this.touchEndHandler = null;
   }
   
   mergeDefaults(config) {
@@ -127,9 +131,11 @@ class MelodiaParallax {
         this.handleMouseMove.bind(this), 
         this.config.throttleMs
       );
+      this.mouseEnterHandler = this.handleMouseEnter.bind(this);
+      this.mouseLeaveHandler = this.handleMouseLeave.bind(this);
       this.container.addEventListener('mousemove', this.mouseHandler);
-      this.container.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
-      this.container.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
+      this.container.addEventListener('mouseenter', this.mouseEnterHandler);
+      this.container.addEventListener('mouseleave', this.mouseLeaveHandler);
     }
     
     if (this.config.enableTouch) {
@@ -137,9 +143,11 @@ class MelodiaParallax {
         this.handleTouchMove.bind(this), 
         this.config.throttleMs
       );
+      this.touchStartHandler = this.handleTouchStart.bind(this);
+      this.touchEndHandler = this.handleTouchEnd.bind(this);
       this.container.addEventListener('touchmove', this.touchHandler, { passive: true });
-      this.container.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: true });
-      this.container.addEventListener('touchend', this.handleTouchEnd.bind(this));
+      this.container.addEventListener('touchstart', this.touchStartHandler, { passive: true });
+      this.container.addEventListener('touchend', this.touchEndHandler);
     }
     
     if (this.config.enableScroll) {
@@ -295,14 +303,14 @@ class MelodiaParallax {
     // Remove event listeners
     if (this.mouseHandler) {
       this.container.removeEventListener('mousemove', this.mouseHandler);
-      this.container.removeEventListener('mouseenter', this.handleMouseEnter.bind(this));
-      this.container.removeEventListener('mouseleave', this.handleMouseLeave.bind(this));
+      this.container.removeEventListener('mouseenter', this.mouseEnterHandler);
+      this.container.removeEventListener('mouseleave', this.mouseLeaveHandler);
     }
     
     if (this.touchHandler) {
       this.container.removeEventListener('touchmove', this.touchHandler);
-      this.container.removeEventListener('touchstart', this.handleTouchStart.bind(this));
-      this.container.removeEventListener('touchend', this.handleTouchEnd.bind(this));
+      this.container.removeEventListener('touchstart', this.touchStartHandler);
+      this.container.removeEventListener('touchend', this.touchEndHandler);
     }
     
     if (this.scrollHandler) {
