@@ -20,6 +20,15 @@ https://fromage3900.github.io/my-site/generated/technical/universal-master.html
 https://fromage3900.github.io/my-site/generated/technical/universal-material-graph-sheet.html
 ```
 
+## Additional Design Sheets
+
+```text
+https://fromage3900.github.io/my-site/generated/technical/water-material-design-sheet.html
+https://fromage3900.github.io/my-site/generated/technical/niagara-particles-design-sheet.html
+https://fromage3900.github.io/my-site/generated/technical/pcg-scatter-design-sheet.html
+https://fromage3900.github.io/my-site/generated/technical/trimsheet-workflow-design-sheet.html
+```
+
 Use this first page to collect screenshots and notes for:
 
 - Unreal Shaders and master materials

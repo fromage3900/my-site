@@ -134,6 +134,42 @@
           "width": "100%",
           "height": "2100px"
         }
+      },
+      "water_material_design_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/water-material-design-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/water-material-design-sheet.json",
+        "discipline": "Unreal Shaders",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "niagara_particles_design_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/niagara-particles-design-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/niagara-particles-design-sheet.json",
+        "discipline": "Niagara VFX",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "pcg_scatter_design_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/pcg-scatter-design-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/pcg-scatter-design-sheet.json",
+        "discipline": "PCG",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "trimsheet_workflow_design_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/trimsheet-workflow-design-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/trimsheet-workflow-design-sheet.json",
+        "discipline": "Materials",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
       }
     }
   }

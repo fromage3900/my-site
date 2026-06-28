@@ -1,0 +1,8 @@
+{
+  "slug": "pcg-scatter-design-sheet",
+  "title": "PCG Scatter Toolkit",
+  "assetRoot": "/Game/EnvSandbox/PCG/",
+  "status": "partial",
+  "focus": ["ambient scatter", "slope and height masks", "sparse landmark layer", "style presets", "PCGEx consolidation", "mesh/material collections"],
+  "captureTargets": ["graph overview", "density controls", "slope mask branch", "landmark placement mode", "style folder tree", "generate/count validation"]
+}
