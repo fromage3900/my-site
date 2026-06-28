@@ -27,6 +27,12 @@ Open the catalog:
 https://fromage3900.github.io/my-site/generated/design-system/index.html
 ```
 
+Technical breakdown starter:
+
+```text
+https://fromage3900.github.io/my-site/generated/technical/universal-master.html
+```
+
 Review notes:
 
 - Hero includes layered parallax, drifting constellation/star layers, twinkle animation, and reduced-motion support.
@@ -35,3 +41,4 @@ Review notes:
 - Dynamic text is escaped before rendering.
 - Files are self-contained so Wix can load each embed as a standalone iframe.
 - Brennan-specific hero, passport, project card, LinkedIn banner, and email signature embeds are also hosted in this folder.
+- Universal Master is set up as the first technical breakdown page for Unreal shaders, Geometry Nodes, PCG, and trimsheets.

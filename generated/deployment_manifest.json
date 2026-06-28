@@ -78,6 +78,18 @@
         "shootingStarCount": 3,
         "dustCount": 50
       }
+    },
+    "technical_breakdowns": {
+      "universal_master": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/universal-master.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/universal-master-config.json",
+        "discipline": "Unreal Shaders",
+        "status": "partial",
+        "dimensions": {
+          "width": "100%",
+          "height": "1800px"
+        }
+      }
     }
   },
   "fallback_urls": {
