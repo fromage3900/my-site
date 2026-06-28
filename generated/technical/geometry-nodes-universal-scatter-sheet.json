@@ -1,0 +1,8 @@
+{
+  "slug": "geometry-nodes-universal-scatter-sheet",
+  "title": "Geometry Nodes Universal Scatter System",
+  "assetRoot": "/Blender/GeometryNodes/GN_UniversalScatter",
+  "status": "planned",
+  "focus": ["surface sampling", "density masks", "instance variation", "attribute controls", "viewport proof", "Unreal handoff"],
+  "captureTargets": ["full node graph", "exposed parameter panel", "mask input proof", "before/after viewport", "export settings", "Unreal import result"]
+}

@@ -1,0 +1,8 @@
+{
+  "slug": "blender-asset-pipeline-sheet",
+  "title": "Blender Asset Handoff Pipeline",
+  "assetRoot": "/Blender/Pipeline/",
+  "status": "planned",
+  "focus": ["scale and transforms", "origin placement", "material slots", "UV and trimsheet handoff", "export settings", "Unreal import validation"],
+  "captureTargets": ["Blender outliner", "transform panel", "material slot list", "UV/trim assignment", "export settings", "Unreal imported asset proof"]
+}

@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-06-27T23:00:00-04:00",
+  "generated_at": "2026-06-28T09:45:00-04:00",
   "base_url": "https://fromage3900.github.io/my-site/generated/design-system/",
   "technical_base_url": "https://fromage3900.github.io/my-site/generated/technical/",
   "assets": {
@@ -166,6 +166,42 @@
         "url": "https://fromage3900.github.io/my-site/generated/technical/trimsheet-workflow-design-sheet.html",
         "config": "https://fromage3900.github.io/my-site/generated/technical/trimsheet-workflow-design-sheet.json",
         "discipline": "Materials",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "blender_geometry_nodes_breakdown_plan": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/blender-geometry-nodes-breakdown-plan.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/blender-geometry-nodes-breakdown-plan.json",
+        "discipline": "Blender / Geometry Nodes",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "geometry_nodes_universal_scatter_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/geometry-nodes-universal-scatter-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/geometry-nodes-universal-scatter-sheet.json",
+        "discipline": "Geometry Nodes",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "blender_asset_pipeline_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/blender-asset-pipeline-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/blender-asset-pipeline-sheet.json",
+        "discipline": "Blender Pipeline",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "procedural_rock_geometry_nodes_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/procedural-rock-geometry-nodes-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/procedural-rock-geometry-nodes-sheet.json",
+        "discipline": "Geometry Nodes",
         "dimensions": {
           "width": "100%",
           "height": "1700px"
