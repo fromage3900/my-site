@@ -125,6 +125,15 @@
           "width": "100%",
           "height": "1800px"
         }
+      },
+      "universal_material_graph_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/universal-material-graph-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/universal-material-graph-sheet.json",
+        "discipline": "Unreal Shaders",
+        "dimensions": {
+          "width": "100%",
+          "height": "2100px"
+        }
       }
     }
   }
