@@ -1,0 +1,22 @@
+{
+    "generated_at":  "2026-07-02T16:30:22.0232095Z",
+    "applications":  [
+                         {
+                             "studio":  "Infold Games",
+                             "role":  "Environment Artist / Technical Artist target",
+                             "status":  "Portfolio package building",
+                             "send_link":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
+                             "next_action":  "Publish Pages, then apply or send recruiter message",
+                             "follow_up_date":  null,
+                             "notes":  "Use Sakura case study, shader breakdowns, art-test readiness, and asset scouting as the primary proof path."
+                         }
+                     ],
+    "weekly_pipeline":  [
+                            "Publish live site",
+                            "Choose top six images",
+                            "Add resume PDF/page",
+                            "Send first recruiter message",
+                            "Apply to matching roles",
+                            "Follow up after 7 days"
+                        ]
+}

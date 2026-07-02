@@ -1,17 +1,15 @@
 {
     "generated_at":  "2026-07-02T16:19:35.6030913Z",
-    "root":  "G:\\EnvironmentPortfolio",
+    "root":  "Local workspace asset scan (paths redacted for public portfolio)",
     "total_image_files":  2214,
     "portfolio_ready":  {
                             "website_hero_plates":  [
-                                                        "BS_GodFile\\my-site-clean\\generated\\assets\\l-sakurapath-hero.png",
-                                                        "BS_GodFile\\my-site-clean\\generated\\assets\\latest-hero.png",
-                                                        "BS_GodFile\\my-site-clean\\generated\\assets\\project-name-hero.png"
+                                                        "generated/assets/l-sakurapath-hero.png",
+                                                        "generated/assets/latest-hero.png",
+                                                        "generated/assets/project-name-hero.png"
                                                     ],
                             "duplicate_deploy_plates":  [
-                                                            "BS_GodFile\\_github_deploy\\generated\\assets\\l-sakurapath-hero.png",
-                                                            "BS_GodFile\\_github_deploy\\generated\\assets\\latest-hero.png",
-                                                            "BS_GodFile\\_github_deploy\\generated\\assets\\project-name-hero.png"
+
                                                         ]
                         },
     "material_support":  {
@@ -81,31 +79,31 @@
                                                   "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_16_height.tif"
                                               ],
                              "celestial_refs":  [
-                                                    "BS_GodFile\\Tools\\MaterialMaker\\NASA_Refs\\blue_marble_4k.jpg",
-                                                    "BS_GodFile\\Tools\\MaterialMaker\\NASA_Refs\\hubble_carina_4k.jpg",
-                                                    "BS_GodFile\\Tools\\MaterialMaker\\NASA_Refs\\mars_mola_2k.png",
-                                                    "BS_GodFile\\Tools\\MaterialMaker\\NASA_Refs\\moon_lro_elevation_2k.png",
-                                                    "BS_GodFile\\Tools\\MaterialMaker\\NASA_Refs\\star_mask.png"
+                                                    "blue_marble_4k.jpg",
+                                                    "hubble_carina_4k.jpg",
+                                                    "mars_mola_2k.png",
+                                                    "moon_lro_elevation_2k.png",
+                                                    "star_mask.png"
                                                 ]
                          },
     "top_level_counts":  [
                              {
-                                 "folder":  "BS_GodFile",
+                                 "folder":  "Website/generated portfolio assets",
                                  "count":  1358
                              },
                              {
-                                 "folder":  "_AssetLibrary",
+                                 "folder":  "Local asset library",
                                  "count":  855
                              },
                              {
-                                 "folder":  "BS_GodFile_revert",
+                                 "folder":  "Archived duplicate",
                                  "count":  1
                              }
                          ],
     "portfolio_recommendations":  [
                                       {
                                           "use":  "Hero render support",
-                                          "source":  "BS_GodFile\\my-site-clean\\generated\\assets",
+                                          "source":  "generated/assets",
                                           "next_step":  "Keep these as front-page plates until stronger Drive renders are selected"
                                       },
                                       {
@@ -125,7 +123,7 @@
                                       },
                                       {
                                           "use":  "Celestial fantasy direction",
-                                          "source":  "BS_GodFile\\Tools\\MaterialMaker\\NASA_Refs",
+                                          "source":  "celestial reference set",
                                           "next_step":  "Use for nebula material studies and magical sky/surface reference"
                                       }
                                   ]

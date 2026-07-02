@@ -1,79 +1,79 @@
 {
-  "count": 8,
-  "generated_at": "2026-07-02T02:53:03.351244+00:00",
-  "generated_by": "package_to_website_handoff.py",
-  "renders": [
-    {
-      "aspect_ratio": "16:9",
-      "filename": "hero_level_20260625_055343_1920x1080.png",
-      "group": "hero",
-      "height": 1080,
-      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_20260625_055343_1920x1080.png",
-      "plate_role": "hero_showcase",
-      "width": 1920
-    },
-    {
-      "aspect_ratio": "16:9",
-      "filename": "hero_level_20260625_083145_1920x1080.png",
-      "group": "hero",
-      "height": 1080,
-      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_20260625_083145_1920x1080.png",
-      "plate_role": "hero_showcase",
-      "width": 1920
-    },
-    {
-      "aspect_ratio": "16:9",
-      "filename": "hero_level_20260627_190109_1920x1080.png",
-      "group": "hero",
-      "height": 1080,
-      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_20260627_190109_1920x1080.png",
-      "plate_role": "hero_showcase",
-      "width": 1920
-    },
-    {
-      "aspect_ratio": "16:9",
-      "filename": "hero_level_20260627_190353_1920x1080.png",
-      "group": "hero",
-      "height": 1080,
-      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_20260627_190353_1920x1080.png",
-      "plate_role": "hero_showcase",
-      "width": 1920
-    },
-    {
-      "aspect_ratio": null,
-      "filename": "grid_families_review.png",
-      "group": "materials",
-      "height": null,
-      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Materials/grid_families_review.png",
-      "plate_role": "material_swatch",
-      "width": null
-    },
-    {
-      "aspect_ratio": "1:1",
-      "filename": "grid_showcase_20260627_190121_2048x2048.png",
-      "group": "materials",
-      "height": 2048,
-      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Materials/grid_showcase_20260627_190121_2048x2048.png",
-      "plate_role": "material_swatch",
-      "width": 2048
-    },
-    {
-      "aspect_ratio": "1:1",
-      "filename": "grid_showcase_20260627_190400_2048x2048.png",
-      "group": "materials",
-      "height": 2048,
-      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Materials/grid_showcase_20260627_190400_2048x2048.png",
-      "plate_role": "material_swatch",
-      "width": 2048
-    },
-    {
-      "aspect_ratio": "1:1",
-      "filename": "grid_showcase_20260627_190853_2048x2048.png",
-      "group": "materials",
-      "height": 2048,
-      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Materials/grid_showcase_20260627_190853_2048x2048.png",
-      "plate_role": "material_swatch",
-      "width": 2048
-    }
-  ]
+    "count":  8,
+    "generated_at":  "2026-07-02T02:53:03.351244+00:00",
+    "generated_by":  "package_to_website_handoff.py",
+    "renders":  [
+                    {
+                        "aspect_ratio":  "16:9",
+                        "filename":  "hero_level_20260625_055343_1920x1080.png",
+                        "group":  "hero",
+                        "height":  1080,
+                        "path":  "generated/assets/hero_level_20260625_055343_1920x1080.png",
+                        "plate_role":  "hero_showcase",
+                        "width":  1920
+                    },
+                    {
+                        "aspect_ratio":  "16:9",
+                        "filename":  "hero_level_20260625_083145_1920x1080.png",
+                        "group":  "hero",
+                        "height":  1080,
+                        "path":  "generated/assets/hero_level_20260625_083145_1920x1080.png",
+                        "plate_role":  "hero_showcase",
+                        "width":  1920
+                    },
+                    {
+                        "aspect_ratio":  "16:9",
+                        "filename":  "hero_level_20260627_190109_1920x1080.png",
+                        "group":  "hero",
+                        "height":  1080,
+                        "path":  "generated/assets/hero_level_20260627_190109_1920x1080.png",
+                        "plate_role":  "hero_showcase",
+                        "width":  1920
+                    },
+                    {
+                        "aspect_ratio":  "16:9",
+                        "filename":  "hero_level_20260627_190353_1920x1080.png",
+                        "group":  "hero",
+                        "height":  1080,
+                        "path":  "generated/assets/hero_level_20260627_190353_1920x1080.png",
+                        "plate_role":  "hero_showcase",
+                        "width":  1920
+                    },
+                    {
+                        "aspect_ratio":  null,
+                        "filename":  "grid_families_review.png",
+                        "group":  "materials",
+                        "height":  null,
+                        "path":  "generated/assets/grid_families_review.png",
+                        "plate_role":  "material_swatch",
+                        "width":  null
+                    },
+                    {
+                        "aspect_ratio":  "1:1",
+                        "filename":  "grid_showcase_20260627_190121_2048x2048.png",
+                        "group":  "materials",
+                        "height":  2048,
+                        "path":  "generated/assets/grid_showcase_20260627_190121_2048x2048.png",
+                        "plate_role":  "material_swatch",
+                        "width":  2048
+                    },
+                    {
+                        "aspect_ratio":  "1:1",
+                        "filename":  "grid_showcase_20260627_190400_2048x2048.png",
+                        "group":  "materials",
+                        "height":  2048,
+                        "path":  "generated/assets/grid_showcase_20260627_190400_2048x2048.png",
+                        "plate_role":  "material_swatch",
+                        "width":  2048
+                    },
+                    {
+                        "aspect_ratio":  "1:1",
+                        "filename":  "grid_showcase_20260627_190853_2048x2048.png",
+                        "group":  "materials",
+                        "height":  2048,
+                        "path":  "generated/assets/grid_showcase_20260627_190853_2048x2048.png",
+                        "plate_role":  "material_swatch",
+                        "width":  2048
+                    }
+                ]
 }

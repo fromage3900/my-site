@@ -13,7 +13,7 @@
                           "static_hero":  "https://fromage3900.github.io/my-site/generated/l-sakurapath-hero.html",
                           "static_passport":  "https://fromage3900.github.io/my-site/generated/l-sakurapath-passport.html"
                       },
-    "generated_at":  "2026-07-02T16:19:58.3468600Z",
+    "generated_at":  "2026-07-02T17:07:59.4594327Z",
     "package_handoff":  {
                             "configs":  {
                                             "hero_config.json":  "https://fromage3900.github.io/my-site/generated/hero_config.json",
@@ -23,7 +23,9 @@
                                             "renders_config.json":  "https://fromage3900.github.io/my-site/generated/renders_config.json",
                                             "stats_config.json":  "https://fromage3900.github.io/my-site/generated/stats_config.json",
                                             "infold_asset_scouting_manifest.json":  "https://fromage3900.github.io/my-site/generated/infold_asset_scouting_manifest.json",
-                                            "local_asset_inventory.json":  "https://fromage3900.github.io/my-site/generated/local_asset_inventory.json"
+                                            "local_asset_inventory.json":  "https://fromage3900.github.io/my-site/generated/local_asset_inventory.json",
+                                            "infold_application_campaign.json":  "https://fromage3900.github.io/my-site/generated/infold_application_campaign.json",
+                                            "application_tracker.json":  "https://fromage3900.github.io/my-site/generated/application_tracker.json"
                                         },
                             "generated_at":  "2026-07-02T02:53:03.455975+00:00",
                             "scene":  {
@@ -31,7 +33,7 @@
                                           "level_path":  "/Game/ZenForestTest",
                                           "name":  "ZenForestTest"
                                       },
-                            "source_package":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\portfolio_package.json",
+                            "source_package":  "portfolio_package.json",
                             "stats":  {
                                           "draw_calls":  35,
                                           "materials":  30,
@@ -60,6 +62,7 @@
                                                      "looks",
                                                      "features",
                                                      "guides",
+                                                     "application-hub",
                                                      "hiring-dossier",
                                                      "sakura-case-study",
                                                      "art-test-readiness",
@@ -76,6 +79,8 @@
                                     "url":  "https://fromage3900.github.io/my-site/wix/index.html"
                                 },
                       "pages":  {
+                                    "application_hub":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
+                                    "recruiter_one_sheet":  "https://fromage3900.github.io/my-site/wix/recruiter-one-sheet.html",
                                     "hiring_dossier":  "https://fromage3900.github.io/my-site/wix/hiring-dossier.html",
                                     "art_test_readiness":  "https://fromage3900.github.io/my-site/wix/art-test-readiness.html",
                                     "asset_scouting":  "https://fromage3900.github.io/my-site/wix/asset-scouting.html",
