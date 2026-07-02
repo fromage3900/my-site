@@ -1,12 +1,12 @@
 {
-  "theme": "dark",
-  "contentTheme": "abstract",
-  "kicker": "3D Environment & Technical Art",
-  "title": "L_SakuraPath",
-  "sub": "experimental expressions",
-  "starCount": 70,
-  "gstarCount": 7,
+  "contentTheme": "environment",
   "enableParallax": true,
+  "gstarCount": 7,
+  "kicker": "3D Environment & Technical Art",
   "parallaxStrength": 0.05,
-  "performance": "highQuality"
+  "performance": "highQuality",
+  "starCount": 70,
+  "sub": "Unreal Engine 5.8.0 look-dev package with 30 materials and 4 PCG graphs",
+  "theme": "dark",
+  "title": "ZenForestTest"
 }

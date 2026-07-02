@@ -1,32 +1,40 @@
 {
-  "theme": "dark",
-  "highlight": "abstract",
-  "project": "L_SakuraPath",
-  "category": "Environment",
-  "version": "v1.0",
   "animations": true,
-  "hoverEffects": true,
+  "category": "stylized environment",
   "decorativeStars": true,
+  "highlight": "environment",
+  "hoverEffects": true,
+  "project": "ZenForestTest",
   "rows": [
     [
       "Triangles",
-      "51,347"
+      "72,924"
     ],
     [
-      "Textures",
-      "8K"
+      "Draw Calls",
+      "35"
     ],
     [
       "Materials",
-      "209"
+      "30"
+    ],
+    [
+      "Assets",
+      "4"
+    ],
+    [
+      "PCG Graphs",
+      "4"
     ],
     [
       "Engine",
-      "Unreal Engine 5.8"
+      "Unreal Engine 5.8.0"
     ],
     [
       "Date",
       "2026-06"
     ]
-  ]
+  ],
+  "theme": "dark",
+  "version": "v1.0"
 }

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Brennan Frommer portfolio for stylized environment art, Unreal Engine shader systems, PCG, and whimsical open-world worldbuilding." />
+<title>Brennan Frommer | Stylized Environment & Technical Art</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #101525;
+  --ink-2: #1c2440;
+  --paper: #f8f1e7;
+  --paper-2: #efe3d0;
+  --rose: #d7879b;
+  --petal: #f2b8c8;
+  --blue: #5f86c7;
+  --mint: #a9d6bb;
+  --gold: #c9a465;
+  --plum: #6f5a8f;
+  --text: #f8f1e7;
+  --muted: rgba(248, 241, 231, .72);
+  --dark-text: #23202b;
+  --dark-muted: #665d6d;
+  --line: rgba(248, 241, 231, .18);
+  --paper-line: rgba(35, 32, 43, .15);
+  --max: 1220px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+  letter-spacing: 0;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.topbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px clamp(18px, 4vw, 46px);
+  background: rgba(16, 21, 37, .74);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(18px);
+}
+.brand {
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+.nav {
+  display: flex;
+  gap: clamp(12px, 2vw, 26px);
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.nav a:hover { color: var(--petal); }
+
+.hero {
+  min-height: 100vh;
+  display: grid;
+  align-items: end;
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+.hero-media {
+  position: absolute;
+  inset: 0;
+}
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.08) contrast(1.04);
+}
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(16,21,37,.92), rgba(16,21,37,.44) 50%, rgba(16,21,37,.16)), linear-gradient(0deg, rgba(16,21,37,.92), rgba(16,21,37,.06) 58%);
+}
+.hero-inner {
+  width: min(100%, var(--max));
+  margin: 0 auto;
+  padding: 104px clamp(20px, 5vw, 56px) 58px;
+  position: relative;
+  z-index: 1;
+}
+.kicker {
+  margin: 0 0 18px;
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+h1, h2, h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  letter-spacing: 0;
+}
+h1 {
+  max-width: 880px;
+  font-size: clamp(54px, 11vw, 132px);
+  line-height: .86;
+  font-weight: 700;
+}
+.hero-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 690px) minmax(240px, 360px);
+  gap: clamp(28px, 5vw, 70px);
+  align-items: end;
+  margin-top: clamp(26px, 6vw, 58px);
+}
+.lede {
+  margin: 0;
+  font-size: clamp(20px, 2.8vw, 33px);
+  line-height: 1.28;
+  color: rgba(248,241,231,.9);
+}
+.intent {
+  border-left: 1px solid rgba(201,164,101,.55);
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 1px solid rgba(248,241,231,.24);
+  border-radius: 4px;
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  background: rgba(248,241,231,.08);
+}
+.button.primary { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.button:hover { border-color: var(--petal); }
+.hero-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border-top: 1px solid var(--line);
+  position: relative;
+  z-index: 1;
+}
+.metric {
+  padding: 18px clamp(16px, 3vw, 34px);
+  background: rgba(16,21,37,.78);
+}
+.metric span {
+  display: block;
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.metric strong {
+  display: block;
+  margin-top: 6px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: 1;
+  color: var(--paper);
+}
+
+.band { padding: clamp(68px, 9vw, 120px) clamp(20px, 5vw, 56px); }
+.band.dark { background: var(--ink); color: var(--text); }
+.band.paper { background: var(--paper); color: var(--dark-text); }
+.band.ink2 { background: var(--ink-2); color: var(--text); }
+.inner { width: min(100%, var(--max)); margin: 0 auto; }
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 430px);
+  gap: clamp(26px, 5vw, 70px);
+  align-items: end;
+  margin-bottom: 42px;
+}
+.section-head p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.paper .section-head p { color: var(--dark-muted); }
+.eyebrow {
+  display: block;
+  margin-bottom: 12px;
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+h2 { font-size: clamp(38px, 6vw, 76px); line-height: .94; }
+h3 { font-size: clamp(28px, 4vw, 44px); line-height: 1; }
+
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.16fr) minmax(300px, .84fr);
+  gap: clamp(28px, 5vw, 58px);
+  align-items: stretch;
+}
+.figure {
+  position: relative;
+  min-height: 440px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #0b0f1c;
+}
+.figure img { width: 100%; height: 100%; object-fit: cover; }
+.caption {
+  position: absolute;
+  inset: auto 18px 18px 18px;
+  padding: 12px 14px;
+  border: 1px solid rgba(248,241,231,.22);
+  border-radius: 4px;
+  background: rgba(16,21,37,.68);
+  backdrop-filter: blur(10px);
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+.feature-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 28px 0;
+}
+.feature-copy p { margin: 18px 0 0; line-height: 1.78; color: var(--muted); }
+.tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  border: 1px solid rgba(248,241,231,.22);
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.story-card {
+  min-height: 330px;
+  padding: 24px;
+  border: 1px solid var(--paper-line);
+  border-radius: 6px;
+  background: rgba(255,255,255,.38);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.story-card p { margin: 18px 0 0; color: var(--dark-muted); line-height: 1.68; }
+.story-card .num {
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  color: var(--plum);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.materials {
+  display: grid;
+  grid-template-columns: minmax(280px, .72fr) minmax(0, 1.28fr);
+  gap: clamp(28px, 5vw, 60px);
+}
+.family-list {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+.family-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.material-table {
+  display: grid;
+  gap: 10px;
+}
+.material-row {
+  display: grid;
+  grid-template-columns: minmax(160px, .65fr) minmax(0, 1.35fr);
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.material-row strong { color: var(--paper); }
+.material-row p { margin: 0; color: var(--muted); line-height: 1.6; }
+
+.breakdown-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.breakdown-link {
+  min-height: 190px;
+  border: 1px solid var(--paper-line);
+  border-radius: 6px;
+  padding: 20px;
+  background: #fffaf2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.breakdown-link span {
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--plum);
+}
+.breakdown-link p { margin: 16px 0 0; color: var(--dark-muted); line-height: 1.55; }
+
+.fit {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(320px, 1.05fr);
+  gap: clamp(30px, 6vw, 76px);
+  align-items: start;
+}
+.fit-list {
+  display: grid;
+  gap: 20px;
+}
+.fit-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.fit-item span {
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+.fit-item p { margin: 0; color: var(--muted); line-height: 1.7; }
+.quote {
+  border-left: 1px solid var(--gold);
+  padding-left: 26px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(30px, 4.4vw, 56px);
+  line-height: 1.05;
+}
+
+.footer {
+  padding: 38px clamp(20px, 5vw, 56px);
+  border-top: 1px solid var(--line);
+  background: #0d1220;
+}
+.footer .inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 920px) {
+  .nav { display: none; }
+  .hero-copy, .section-head, .feature, .materials, .fit { grid-template-columns: 1fr; }
+  .hero-strip, .editorial-grid, .breakdown-links { grid-template-columns: repeat(2, 1fr); }
+  .figure { min-height: 340px; }
+}
+@media (max-width: 620px) {
+  .hero-strip, .editorial-grid, .breakdown-links, .material-row, .fit-item { grid-template-columns: 1fr; }
+  .hero-inner { padding-bottom: 34px; }
+  .band { padding-left: 18px; padding-right: 18px; }
+  .story-card, .breakdown-link { min-height: auto; }
+}
+</style>
+</head>
+<body>
+<header class="topbar" aria-label="Portfolio navigation">
+  <a class="brand" href="#top">Brennan Frommer</a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#work">Work</a>
+    <a href="#craft">Craft</a>
+    <a href="#systems">Systems</a>
+    <a href="#fit">Infold Fit</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-media" aria-hidden="true">
+      <img src="../generated/assets/l-sakurapath-hero.png" alt="Stylized Unreal Engine sakura environment render" />
+    </div>
+    <div class="hero-inner">
+      <p class="kicker">Stylized environment art + technical worldbuilding for expressive open-world fantasy</p>
+      <h1 id="hero-title">Brennan Frommer</h1>
+      <div class="hero-copy">
+        <div>
+          <p class="lede">I build painterly spaces, procedural tools, and shader systems that make fantasy worlds feel collectible, emotional, and production-ready.</p>
+          <div class="actions">
+            <a class="button primary" href="#work">View selected work</a>
+            <a class="button" href="../generated/l-sakurapath-hero.html">Open hero embed</a>
+          </div>
+        </div>
+        <p class="intent">Portfolio direction: tuned for Infold Games by pairing Nikki-like whimsy, softness, and outfit-driven material storytelling with the technical clarity expected from Unreal environment production.</p>
+      </div>
+    </div>
+    <div class="hero-strip" aria-label="Portfolio package stats">
+      <div class="metric"><span>Engine</span><strong>UE 5.8</strong></div>
+      <div class="metric"><span>Materials</span><strong>30</strong></div>
+      <div class="metric"><span>PCG Graphs</span><strong>4</strong></div>
+      <div class="metric"><span>Triangles</span><strong>73K</strong></div>
+    </div>
+  </section>
+
+  <section class="band paper" id="work">
+    <div class="inner">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">01 / Selected environment</span>
+          <h2>Fantasy spaces with a fashion-world sense of surface.</h2>
+        </div>
+        <p>Infold's worlds reward texture, mood, and transformation. This page leads with environment polish, then makes the technical systems visible enough for art directors and technical leads to trust the work.</p>
+      </div>
+      <div class="feature">
+        <figure class="figure">
+          <img src="../generated/assets/latest-hero.png" alt="Portfolio hero environment capture" />
+          <figcaption class="caption">Sakura Path / stylized atmosphere / portfolio render plate</figcaption>
+        </figure>
+        <div class="feature-copy">
+          <div>
+            <span class="eyebrow">Hero Case Study</span>
+            <h3>Sakura Path Lookdev</h3>
+            <p>A soft fantasy environment pass built around blossom drift, moonlit surfaces, warm lantern accents, and readable shape language. The goal is emotional clarity first, with production metadata close behind.</p>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Stylized foliage</span>
+            <span class="tag">Material storytelling</span>
+            <span class="tag">PCG scatter</span>
+            <span class="tag">Unreal pipeline</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band dark" id="craft">
+    <div class="inner">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">02 / Art direction</span>
+          <h2>What this portfolio is trying to prove.</h2>
+        </div>
+        <p>A hiring page should not only show pretty frames. It should explain taste, range, and how the artist can survive production constraints while protecting the charm of the world.</p>
+      </div>
+      <div class="editorial-grid">
+        <article class="story-card">
+          <span class="num">World Feel</span>
+          <div><h3>Soft magic, readable spaces.</h3><p>Scenes are staged around calm silhouettes, romantic atmosphere, and clear player-facing composition.</p></div>
+        </article>
+        <article class="story-card">
+          <span class="num">Surface Language</span>
+          <div><h3>Materials as costume design.</h3><p>Fabric sheen, gilding, petal shadow, sparkle, rim glow, and ink-wash motion are treated as storytelling tools.</p></div>
+        </article>
+        <article class="story-card">
+          <span class="num">Production Mindset</span>
+          <div><h3>Beauty with receipts.</h3><p>Every visual beat is backed by manifests, render plates, material families, and repeatable export tooling.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ink2" id="systems">
+    <div class="inner materials">
+      <div>
+        <span class="eyebrow">03 / Technical art spine</span>
+        <h2>Shader families built for whimsical environment variation.</h2>
+        <p class="intent" style="margin-top:28px">The material library is organized as reusable families rather than one-off hero tricks: Showcase, Zen, and Baroque looks all route through the same production-minded Unreal material spine.</p>
+      </div>
+      <div>
+        <div class="family-list" aria-label="Material family counts">
+          <div class="family-row"><span>Showcase</span><strong>11</strong></div>
+          <div class="family-row"><span>Zen</span><strong>15</strong></div>
+          <div class="family-row"><span>Baroque</span><strong>4</strong></div>
+        </div>
+        <div class="material-table" style="margin-top:34px">
+          <div class="material-row"><strong>MI_Show_CelestialNebula</strong><p>Constellation ramp, parallax nebula, galaxy emission, and soft sparkle for magical sky-adjacent props.</p></div>
+          <div class="material-row"><strong>MI_Show_CherryBlossom</strong><p>Projected petal shadows and soft pink sparkle tuned for garden surfaces and romantic set dressing.</p></div>
+          <div class="material-row"><strong>MI_Show_NikkiHero</strong><p>Full rim, glow, sparkle, iridescence, and pastel grading stack for hero fantasy surfaces.</p></div>
+          <div class="material-row"><strong>MI_Baroque_GildedFiligree</strong><p>Gilded ornament, metallic response, height detail, and editorial luxury texture language.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band paper">
+    <div class="inner">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">04 / Breakdowns</span>
+          <h2>Designed for both art review and technical review.</h2>
+        </div>
+        <p>These modules are ready to be expanded as new captures arrive. The structure already gives recruiters a fast route through environment art, shaders, PCG, and deployment craft.</p>
+      </div>
+      <div class="breakdown-links">
+        <a class="breakdown-link" href="../generated/portfolio_package_config.json"><span>Package</span><div><h3>Portfolio Data</h3><p>Scene stats, render counts, material families, and validation state.</p></div></a>
+        <a class="breakdown-link" href="../generated/materials_config.json"><span>Materials</span><div><h3>Shader Library</h3><p>Featured material instances and output maps for look-dev review.</p></div></a>
+        <a class="breakdown-link" href="../generated/renders_config.json"><span>Renders</span><div><h3>Render Plates</h3><p>Hero and material render metadata from the Unreal export stack.</p></div></a>
+        <a class="breakdown-link" href="../generated/passport_config.json"><span>Passport</span><div><h3>Asset Summary</h3><p>Compact Wix-ready project stats for embeds and recruiter scans.</p></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band dark" id="fit">
+    <div class="inner fit">
+      <div>
+        <span class="eyebrow">05 / Why Infold</span>
+        <p class="quote">I want to help build worlds where technical craft disappears into wonder.</p>
+      </div>
+      <div class="fit-list">
+        <div class="fit-item"><span>Creativity First</span><p>Worldbuilding choices prioritize feeling: blossom drift, soft silhouettes, magical material response, and an inviting sense of discovery.</p></div>
+        <div class="fit-item"><span>Tech-Driven</span><p>The portfolio is generated from an Unreal package pipeline that produces web configs, render manifests, material manifests, and deployable pages.</p></div>
+        <div class="fit-item"><span>Scientific Rigor</span><p>The work is structured for repeatability: counts, validation warnings, source packages, and material families are visible instead of hidden.</p></div>
+        <div class="fit-item"><span>Open Worlds</span><p>The visual direction is aligned with whimsical exploration, outfit-like surfaces, collectible detail, and player-readable spaces.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="inner">
+    <span>Brennan Frommer / Environment & Technical Artist</span>
+    <span>Built for GitHub Pages + Wix iframe deployment</span>
+  </div>
+</footer>
+<script>
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduce) {
+  const topbar = document.querySelector('.topbar');
+  window.addEventListener('scroll', () => {
+    topbar.style.background = window.scrollY > 40 ? 'rgba(16,21,37,.9)' : 'rgba(16,21,37,.74)';
+  }, { passive: true });
+}
+</script>
+</body>
+</html>

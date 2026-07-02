@@ -1,99 +1,100 @@
 {
-  "version": "1.0",
-  "generated_at": "2026-06-27T19:04:52.160011+00:00",
-  "project": {
-    "name": "L_SakuraPath",
-    "theme": "abstract",
-    "performance": "highQuality"
-  },
-  "assets": {
-    "hero": {
-      "url": "https://fromage3900.github.io/my-site/generated/l-sakurapath-hero.html",
-      "theme": "dark",
-      "contentTheme": "abstract",
-      "dimensions": {
-        "width": "100%",
-        "height": "520px"
-      },
-      "config": {
-        "theme": "dark",
-        "contentTheme": "abstract",
-        "kicker": "3D Environment & Technical Art",
-        "title": "L_SakuraPath",
-        "sub": "experimental expressions",
-        "starCount": 70,
-        "gstarCount": 7,
-        "enableParallax": true,
-        "parallaxStrength": 0.05,
-        "performance": "highQuality"
-      }
-    },
-    "passport": {
-      "url": "https://fromage3900.github.io/my-site/generated/l-sakurapath-passport.html",
-      "theme": "dark",
-      "highlight": "abstract",
-      "dimensions": {
-        "width": "360px",
-        "height": "560px"
-      },
-      "config": {
-        "theme": "dark",
-        "highlight": "abstract",
-        "project": "L_SakuraPath",
-        "category": "Environment",
-        "version": "v1.0",
-        "animations": true,
-        "hoverEffects": true,
-        "decorativeStars": true,
-        "rows": [
-          [
-            "Triangles",
-            "51,347"
-          ],
-          [
-            "Textures",
-            "8K"
-          ],
-          [
-            "Materials",
-            "209"
-          ],
-          [
-            "Engine",
-            "Unreal Engine 5.8"
-          ],
-          [
-            "Date",
-            "2026-06"
-          ]
-        ]
-      }
-    },
-    "effect": {
-      "type": "cosmic",
-      "url": "https://fromage3900.github.io/my-site/effects/l-sakurapath-effect.html",
-      "config": {
-        "enableGalaxy": true,
-        "nebulaCount": 4,
-        "shootingStarCount": 3,
-        "dustCount": 50
-      }
-    },
-    "technical_breakdowns": {
-      "universal_master": {
-        "url": "https://fromage3900.github.io/my-site/generated/technical/universal-master.html",
-        "config": "https://fromage3900.github.io/my-site/generated/technical/universal-master-config.json",
-        "discipline": "Unreal Shaders",
-        "status": "partial",
-        "dimensions": {
-          "width": "100%",
-          "height": "1800px"
-        }
-      }
-    }
+  "components": {
+    "melodiaBreakdownCard": "https://fromage3900.github.io/my-site/wix/melodia-breakdown-card.html",
+    "melodiaGalleryGrid": "https://fromage3900.github.io/my-site/wix/melodia-gallery-grid.html",
+    "melodiaHeroEmbed": "https://fromage3900.github.io/my-site/wix/melodia-hero-embed.html",
+    "melodiaNavigation": "https://fromage3900.github.io/my-site/wix/melodia-navigation-constellation.html",
+    "melodiaPassportEmbed": "https://fromage3900.github.io/my-site/wix/melodia-passport-embed.html",
+    "melodiaProjectCard": "https://fromage3900.github.io/my-site/wix/melodia-project-card.html",
+    "melodiaSectionHeader": "https://fromage3900.github.io/my-site/wix/melodia-section-header.html",
+    "melodiaSmoothScroll": "https://fromage3900.github.io/my-site/wix/melodia-smooth-scroll.html"
   },
   "fallback_urls": {
-    "static_hero": "https://fromage3900.github.io/my-site/projects/hero-static.html",
-    "static_passport": "https://fromage3900.github.io/my-site/projects/passport-static.html"
-  }
+    "static_hero": "https://fromage3900.github.io/my-site/generated/l-sakurapath-hero.html",
+    "static_passport": "https://fromage3900.github.io/my-site/generated/l-sakurapath-passport.html"
+  },
+  "generated_at": "2026-07-02T02:59:01.9770190Z",
+  "package_handoff": {
+    "configs": {
+      "hero_config.json": "https://fromage3900.github.io/my-site/generated/hero_config.json",
+      "materials_config.json": "https://fromage3900.github.io/my-site/generated/materials_config.json",
+      "passport_config.json": "https://fromage3900.github.io/my-site/generated/passport_config.json",
+      "portfolio_package_config.json": "https://fromage3900.github.io/my-site/generated/portfolio_package_config.json",
+      "renders_config.json": "https://fromage3900.github.io/my-site/generated/renders_config.json",
+      "stats_config.json": "https://fromage3900.github.io/my-site/generated/stats_config.json"
+    },
+    "generated_at": "2026-07-02T02:53:03.455975+00:00",
+    "scene": {
+      "engine": "Unreal Engine 5.8.0",
+      "level_path": "/Game/ZenForestTest",
+      "name": "ZenForestTest"
+    },
+    "source_package": "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\portfolio_package.json",
+    "stats": {
+      "draw_calls": 35,
+      "materials": 30,
+      "triangles": 72924
+    }
+  },
+  "portfolio": {
+    "hero": {
+      "config": {
+        "enableParallax": true,
+        "kicker": "3D Environment & Technical Art",
+        "starCount": 100,
+        "subtitle": "3D Environment Artist & Technical Designer",
+        "title": "Brennan Frommer"
+      },
+      "theme": "dark",
+      "url": "https://fromage3900.github.io/my-site/wix/melodia-hero-cosmic.html"
+    },
+    "index": {
+      "iframe_strategy": "GitHub Pages root or /wix/index.html",
+      "root_url": "https://fromage3900.github.io/my-site/",
+      "sections": [
+        "hero",
+        "work",
+        "craft",
+        "systems",
+        "fit"
+      ],
+      "theme": "infold-editorial",
+      "url": "https://fromage3900.github.io/my-site/wix/index.html"
+    }
+  },
+  "project": {
+    "name": "Brennan Frommer Portfolio",
+    "performance": "highQuality",
+    "theme": "infold-editorial"
+  },
+  "projects": [
+    {
+      "category": "Environment",
+      "engine": "Unreal Engine 5.8",
+      "hero": "https://fromage3900.github.io/my-site/generated/l-sakurapath-hero.html",
+      "materials": 209,
+      "name": "L_SakuraPath",
+      "passport": "https://fromage3900.github.io/my-site/generated/l-sakurapath-passport.html",
+      "triangles": "51K"
+    },
+    {
+      "category": "Environment",
+      "engine": "Unreal Engine 5.8",
+      "hero": null,
+      "materials": 156,
+      "name": "Zen Forest",
+      "passport": null,
+      "triangles": "87K"
+    },
+    {
+      "category": "Procedural",
+      "engine": "Blender 5.1",
+      "hero": null,
+      "materials": 64,
+      "name": "Surreal Architecture",
+      "passport": null,
+      "triangles": "124K"
+    }
+  ],
+  "version": "2.0"
 }
