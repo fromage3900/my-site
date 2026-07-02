@@ -1,4 +1,4 @@
-param(
+﻿param(
   [string]$Root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 )
 
@@ -9,7 +9,9 @@ $jsonFiles = @(
   'generated/infold_asset_scouting_manifest.json',
   'generated/local_asset_inventory.json',
   'generated/infold_application_campaign.json',
-  'generated/application_tracker.json'
+  'generated/application_tracker.json',
+  'generated/infold_research_alignment.json',
+  'generated/wix_embed_manifest.json'
 )
 
 foreach ($file in $jsonFiles) {
@@ -44,3 +46,4 @@ if ($missing.Count -gt 0) {
 }
 
 Write-Host "OK portfolio validation passed for $($pages.Count) pages"
+

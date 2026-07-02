@@ -1,0 +1,45 @@
+﻿{
+    "generated_at":  "2026-07-02T22:03:15.6644179Z",
+    "public_domain":  "https://www.fromageart.xyz/",
+    "primary_iframe_source":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
+    "fallback_iframe_source":  "https://fromage3900.github.io/my-site/wix/index.html",
+    "github_pages_root":  "https://fromage3900.github.io/my-site/",
+    "deploy_flow":  [
+                        "Edit website repo",
+                        "Run tools/validate_portfolio.ps1",
+                        "Commit to main",
+                        "Push main",
+                        "Push same commit to gh-pages",
+                        "Wix iframe displays GitHub Pages source"
+                    ],
+    "embed_settings":  {
+                           "mode":  "Embed a site",
+                           "width":  "100% / stretch full width",
+                           "height":  "At least 1600px, increase for long-page presentation",
+                           "scrolling":  "Allow page scroll inside iframe or use a tall embed container",
+                           "cache_note":  "After gh-pages deploy, refresh/publish Wix if iframe cache lags."
+                       },
+    "recruiter_routes":  {
+                             "application_hub":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
+                             "recruiter_one_sheet":  "https://fromage3900.github.io/my-site/wix/recruiter-one-sheet.html",
+                             "hero_renders":  "https://fromage3900.github.io/my-site/wix/hero-renders.html",
+                             "shader_breakdowns":  "https://fromage3900.github.io/my-site/wix/shader-breakdowns.html",
+                             "geometry_nodes":  "https://fromage3900.github.io/my-site/wix/geometry-nodes.html",
+                             "art_test_readiness":  "https://fromage3900.github.io/my-site/wix/art-test-readiness.html"
+                         },
+    "unreal_package_contract":  {
+                                    "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\portfolio_package.json",
+                                    "expected_keys":  [
+                                                          "assets",
+                                                          "materials",
+                                                          "renders",
+                                                          "pcg",
+                                                          "pcg_heatmap",
+                                                          "scene",
+                                                          "stats",
+                                                          "metadata"
+                                                      ],
+                                    "website_destination":  "generated/assets/unreal/",
+                                    "card_component":  "wix/melodia-breakdown-card.html"
+                                }
+}

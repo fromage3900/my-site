@@ -1,4 +1,4 @@
-{
+﻿{
     "components":  {
                        "melodiaBreakdownCard":  "https://fromage3900.github.io/my-site/wix/melodia-breakdown-card.html",
                        "melodiaGalleryGrid":  "https://fromage3900.github.io/my-site/wix/melodia-gallery-grid.html",
@@ -13,7 +13,7 @@
                           "static_hero":  "https://fromage3900.github.io/my-site/generated/l-sakurapath-hero.html",
                           "static_passport":  "https://fromage3900.github.io/my-site/generated/l-sakurapath-passport.html"
                       },
-    "generated_at":  "2026-07-02T17:07:59.4594327Z",
+    "generated_at":  "2026-07-02T22:03:15.7597376Z",
     "package_handoff":  {
                             "configs":  {
                                             "hero_config.json":  "https://fromage3900.github.io/my-site/generated/hero_config.json",
@@ -25,7 +25,9 @@
                                             "infold_asset_scouting_manifest.json":  "https://fromage3900.github.io/my-site/generated/infold_asset_scouting_manifest.json",
                                             "local_asset_inventory.json":  "https://fromage3900.github.io/my-site/generated/local_asset_inventory.json",
                                             "infold_application_campaign.json":  "https://fromage3900.github.io/my-site/generated/infold_application_campaign.json",
-                                            "application_tracker.json":  "https://fromage3900.github.io/my-site/generated/application_tracker.json"
+                                            "application_tracker.json":  "https://fromage3900.github.io/my-site/generated/application_tracker.json",
+                                            "infold_research_alignment.json":  "https://fromage3900.github.io/my-site/generated/infold_research_alignment.json",
+                                            "wix_embed_manifest.json":  "https://fromage3900.github.io/my-site/generated/wix_embed_manifest.json"
                                         },
                             "generated_at":  "2026-07-02T02:53:03.455975+00:00",
                             "scene":  {
@@ -90,7 +92,9 @@
                                     "hero_renders":  "https://fromage3900.github.io/my-site/wix/hero-renders.html",
                                     "infold_application":  "https://fromage3900.github.io/my-site/wix/infold-application.html",
                                     "sakura_case_study":  "https://fromage3900.github.io/my-site/wix/sakura-case-study.html",
-                                    "shader_breakdowns":  "https://fromage3900.github.io/my-site/wix/shader-breakdowns.html"
+                                    "shader_breakdowns":  "https://fromage3900.github.io/my-site/wix/shader-breakdowns.html",
+                                    "infold_research_note":  "https://fromage3900.github.io/my-site/application/infold-research-alignment.md",
+                                    "wix_embed_manifest":  "https://fromage3900.github.io/my-site/generated/wix_embed_manifest.json"
                                 }
                   },
     "project":  {
