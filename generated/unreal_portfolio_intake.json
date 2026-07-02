@@ -1,0 +1,240 @@
+﻿{
+    "generated_at":  "2026-07-02T22:19:47.5924902Z",
+    "source_package":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\portfolio_package.json",
+    "scene":  {
+                  "camera_count":  0,
+                  "engine":  "5.8.0-55116800+++UE5+Release-5.8",
+                  "environment_type":  "stylized environment",
+                  "level_path":  "/Game/ZenForestTest",
+                  "scene_name":  "ZenForestTest",
+                  "timestamp":  "2026-06-27T22:57:50.877188+00:00"
+              },
+    "stats":  {
+                  "draw_calls":  35,
+                  "static_mesh_components":  17,
+                  "timestamp":  "2026-06-27T22:57:51.470796+00:00",
+                  "triangle_count":  72924,
+                  "triangles_estimated":  true,
+                  "unique_materials":  12,
+                  "unique_meshes":  14,
+                  "unknown_triangle_meshes":  [
+
+                                              ]
+              },
+    "counts":  {
+                   "renders_total":  8,
+                   "renders_web_ready":  8,
+                   "hero":  4,
+                   "materials":  4,
+                   "breakdown":  0,
+                   "pcg":  0,
+                   "material_instances":  30,
+                   "shader_families":  3,
+                   "assets":  4
+               },
+    "readiness":  {
+                      "label":  "render_ready_needs_breakdowns",
+                      "score":  82,
+                      "next_needs":  [
+                                         "Capture shader and Niagara breakdown plates into renders.breakdown.",
+                                         "Capture PCG or procedural dressing proof into renders.pcg.",
+                                         "Promote strongest shader families into dedicated material breakdown cards."
+                                     ]
+                  },
+    "render_cards":  [
+                         {
+                             "id":  "materials-grid-showcase-20260627-190121-2048x2048",
+                             "group":  "materials",
+                             "filename":  "grid_showcase_20260627_190121_2048x2048.png",
+                             "source_path":  "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Materials/grid_showcase_20260627_190121_2048x2048.png",
+                             "source_exists":  true,
+                             "copied":  true,
+                             "web_path":  "../generated/assets/unreal/materials-grid-showcase-20260627-190121-2048x2048.png",
+                             "local_relative_path":  "generated/assets/unreal/materials-grid-showcase-20260627-190121-2048x2048.png",
+                             "width":  2048,
+                             "height":  2048,
+                             "aspect_ratio":  "1:1",
+                             "plate_role":  "material_swatch",
+                             "priority":  70,
+                             "status":  "web_ready",
+                             "caption":  "Material showcase plate for shader family review, surface language, and look-development proof."
+                         },
+                         {
+                             "id":  "materials-grid-families-review",
+                             "group":  "materials",
+                             "filename":  "grid_families_review.png",
+                             "source_path":  "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Materials/grid_families_review.png",
+                             "source_exists":  true,
+                             "copied":  true,
+                             "web_path":  "../generated/assets/unreal/materials-grid-families-review.png",
+                             "local_relative_path":  "generated/assets/unreal/materials-grid-families-review.png",
+                             "width":  null,
+                             "height":  null,
+                             "aspect_ratio":  null,
+                             "plate_role":  "material_swatch",
+                             "priority":  71,
+                             "status":  "web_ready",
+                             "caption":  "Material showcase plate for shader family review, surface language, and look-development proof."
+                         },
+                         {
+                             "id":  "materials-grid-showcase-20260627-190853-2048x2048",
+                             "group":  "materials",
+                             "filename":  "grid_showcase_20260627_190853_2048x2048.png",
+                             "source_path":  "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Materials/grid_showcase_20260627_190853_2048x2048.png",
+                             "source_exists":  true,
+                             "copied":  true,
+                             "web_path":  "../generated/assets/unreal/materials-grid-showcase-20260627-190853-2048x2048.png",
+                             "local_relative_path":  "generated/assets/unreal/materials-grid-showcase-20260627-190853-2048x2048.png",
+                             "width":  2048,
+                             "height":  2048,
+                             "aspect_ratio":  "1:1",
+                             "plate_role":  "material_swatch",
+                             "priority":  68,
+                             "status":  "web_ready",
+                             "caption":  "Material showcase plate for shader family review, surface language, and look-development proof."
+                         },
+                         {
+                             "id":  "materials-grid-showcase-20260627-190400-2048x2048",
+                             "group":  "materials",
+                             "filename":  "grid_showcase_20260627_190400_2048x2048.png",
+                             "source_path":  "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Materials/grid_showcase_20260627_190400_2048x2048.png",
+                             "source_exists":  true,
+                             "copied":  true,
+                             "web_path":  "../generated/assets/unreal/materials-grid-showcase-20260627-190400-2048x2048.png",
+                             "local_relative_path":  "generated/assets/unreal/materials-grid-showcase-20260627-190400-2048x2048.png",
+                             "width":  2048,
+                             "height":  2048,
+                             "aspect_ratio":  "1:1",
+                             "plate_role":  "material_swatch",
+                             "priority":  69,
+                             "status":  "web_ready",
+                             "caption":  "Material showcase plate for shader family review, surface language, and look-development proof."
+                         },
+                         {
+                             "id":  "hero-hero-level-20260625-083145-1920x1080",
+                             "group":  "hero",
+                             "filename":  "hero_level_20260625_083145_1920x1080.png",
+                             "source_path":  "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_20260625_083145_1920x1080.png",
+                             "source_exists":  true,
+                             "copied":  true,
+                             "web_path":  "../generated/assets/unreal/hero-hero-level-20260625-083145-1920x1080.png",
+                             "local_relative_path":  "generated/assets/unreal/hero-hero-level-20260625-083145-1920x1080.png",
+                             "width":  1920,
+                             "height":  1080,
+                             "aspect_ratio":  "16:9",
+                             "plate_role":  "hero_showcase",
+                             "priority":  88,
+                             "status":  "web_ready",
+                             "caption":  "Environment hero render for mood, composition, traversal read, and recruiter first impression."
+                         },
+                         {
+                             "id":  "hero-hero-level-20260625-055343-1920x1080",
+                             "group":  "hero",
+                             "filename":  "hero_level_20260625_055343_1920x1080.png",
+                             "source_path":  "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_20260625_055343_1920x1080.png",
+                             "source_exists":  true,
+                             "copied":  true,
+                             "web_path":  "../generated/assets/unreal/hero-hero-level-20260625-055343-1920x1080.png",
+                             "local_relative_path":  "generated/assets/unreal/hero-hero-level-20260625-055343-1920x1080.png",
+                             "width":  1920,
+                             "height":  1080,
+                             "aspect_ratio":  "16:9",
+                             "plate_role":  "hero_showcase",
+                             "priority":  89,
+                             "status":  "web_ready",
+                             "caption":  "Environment hero render for mood, composition, traversal read, and recruiter first impression."
+                         },
+                         {
+                             "id":  "hero-hero-level-20260627-190353-1920x1080",
+                             "group":  "hero",
+                             "filename":  "hero_level_20260627_190353_1920x1080.png",
+                             "source_path":  "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_20260627_190353_1920x1080.png",
+                             "source_exists":  true,
+                             "copied":  true,
+                             "web_path":  "../generated/assets/unreal/hero-hero-level-20260627-190353-1920x1080.png",
+                             "local_relative_path":  "generated/assets/unreal/hero-hero-level-20260627-190353-1920x1080.png",
+                             "width":  1920,
+                             "height":  1080,
+                             "aspect_ratio":  "16:9",
+                             "plate_role":  "hero_showcase",
+                             "priority":  86,
+                             "status":  "web_ready",
+                             "caption":  "Environment hero render for mood, composition, traversal read, and recruiter first impression."
+                         },
+                         {
+                             "id":  "hero-hero-level-20260627-190109-1920x1080",
+                             "group":  "hero",
+                             "filename":  "hero_level_20260627_190109_1920x1080.png",
+                             "source_path":  "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_20260627_190109_1920x1080.png",
+                             "source_exists":  true,
+                             "copied":  true,
+                             "web_path":  "../generated/assets/unreal/hero-hero-level-20260627-190109-1920x1080.png",
+                             "local_relative_path":  "generated/assets/unreal/hero-hero-level-20260627-190109-1920x1080.png",
+                             "width":  1920,
+                             "height":  1080,
+                             "aspect_ratio":  "16:9",
+                             "plate_role":  "hero_showcase",
+                             "priority":  87,
+                             "status":  "web_ready",
+                             "caption":  "Environment hero render for mood, composition, traversal read, and recruiter first impression."
+                         }
+                     ],
+    "shader_families":  [
+                            {
+                                "family":  "Zen",
+                                "count":  15,
+                                "sample_materials":  [
+                                                         "MI_Zen_BambooMist",
+                                                         "MI_Zen_InkWash",
+                                                         "MI_Zen_Karesansui",
+                                                         "MI_Zen_LanternWarm"
+                                                     ],
+                                "output_maps":  [
+                                                    "base_color",
+                                                    "emissive",
+                                                    "metallic",
+                                                    "roughness"
+                                                ]
+                            },
+                            {
+                                "family":  "Showcase",
+                                "count":  11,
+                                "sample_materials":  [
+                                                         "MI_Show_CelestialNebula",
+                                                         "MI_Show_CherryBlossom",
+                                                         "MI_Show_ContactRimHero",
+                                                         "MI_Show_Default"
+                                                     ],
+                                "output_maps":  [
+                                                    "base_color",
+                                                    "emissive",
+                                                    "height",
+                                                    "metallic",
+                                                    "normal",
+                                                    "roughness"
+                                                ]
+                            },
+                            {
+                                "family":  "Baroque",
+                                "count":  4,
+                                "sample_materials":  [
+                                                         "MI_Baroque_CathedralSurreal",
+                                                         "MI_Baroque_EscherOrnament",
+                                                         "MI_Baroque_FiligreeDream",
+                                                         "MI_Baroque_GildedFiligree"
+                                                     ],
+                                "output_maps":  [
+                                                    "base_color",
+                                                    "emissive",
+                                                    "height",
+                                                    "metallic",
+                                                    "roughness"
+                                                ]
+                            }
+                        ],
+    "web_outputs":  {
+                        "intake_json":  "generated/unreal_portfolio_intake.json",
+                        "dashboard":  "wix/render-constellation.html",
+                        "asset_dir":  "generated/assets/unreal/"
+                    }
+}

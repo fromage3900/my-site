@@ -11,7 +11,8 @@ $jsonFiles = @(
   'generated/infold_application_campaign.json',
   'generated/application_tracker.json',
   'generated/infold_research_alignment.json',
-  'generated/wix_embed_manifest.json'
+  'generated/wix_embed_manifest.json',
+  'generated/unreal_portfolio_intake.json'
 )
 
 foreach ($file in $jsonFiles) {
@@ -46,4 +47,5 @@ if ($missing.Count -gt 0) {
 }
 
 Write-Host "OK portfolio validation passed for $($pages.Count) pages"
+
 

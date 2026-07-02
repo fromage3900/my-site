@@ -1,5 +1,5 @@
 ﻿{
-    "generated_at":  "2026-07-02T22:03:15.6644179Z",
+    "generated_at":  "2026-07-02T22:17:08.9448013Z",
     "public_domain":  "https://www.fromageart.xyz/",
     "primary_iframe_source":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
     "fallback_iframe_source":  "https://fromage3900.github.io/my-site/wix/index.html",
@@ -25,7 +25,8 @@
                              "hero_renders":  "https://fromage3900.github.io/my-site/wix/hero-renders.html",
                              "shader_breakdowns":  "https://fromage3900.github.io/my-site/wix/shader-breakdowns.html",
                              "geometry_nodes":  "https://fromage3900.github.io/my-site/wix/geometry-nodes.html",
-                             "art_test_readiness":  "https://fromage3900.github.io/my-site/wix/art-test-readiness.html"
+                             "art_test_readiness":  "https://fromage3900.github.io/my-site/wix/art-test-readiness.html",
+                             "render_constellation":  "https://fromage3900.github.io/my-site/wix/render-constellation.html"
                          },
     "unreal_package_contract":  {
                                     "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\portfolio_package.json",
@@ -40,6 +41,8 @@
                                                           "metadata"
                                                       ],
                                     "website_destination":  "generated/assets/unreal/",
-                                    "card_component":  "wix/melodia-breakdown-card.html"
+                                    "card_component":  "wix/melodia-breakdown-card.html",
+                                    "intake_dashboard":  "https://fromage3900.github.io/my-site/wix/render-constellation.html",
+                                    "intake_json":  "https://fromage3900.github.io/my-site/generated/unreal_portfolio_intake.json"
                                 }
 }
