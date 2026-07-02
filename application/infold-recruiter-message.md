@@ -1,11 +1,11 @@
-# Infold Recruiter Message
+﻿# Infold Recruiter Message
 
-Hi [Name], I am Brennan Frommer, a stylized environment and technical artist building an Infold-focused portfolio around emotional fantasy spaces, Unreal material systems, and procedural world dressing.
+Hi [Name], I am Brennan Shepherd, a final-year Humber 3D Animation student and stylized environment designer focused on Unreal integration, shader lookdev, retopology, and readable fantasy worldbuilding.
 
-I put together a short reviewer path here:
+I put together a short Melodia-style reviewer path here:
 https://fromage3900.github.io/my-site/wix/application-hub.html
 
-The strongest pieces to review first are the Sakura environment case study, the Unreal shader breakdowns, and the art-test readiness page. My goal is to contribute to teams building wonder-forward worlds where visual charm and scalable production systems both matter.
+The quickest read is: Application Hub, Sakura Case Study, Shader Breakdowns, then Art Test Readiness. I am especially interested in teams building wonder-forward worlds where visual charm, production systems, and global art direction all have to work together.
 
 Thanks for taking a look,
-Brennan Frommer
+Brennan Shepherd
