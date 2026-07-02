@@ -12,7 +12,8 @@
                                                          "generated/assets/latest-hero.png",
                                                          "generated/assets/project-name-hero.png"
                                                      ],
-                          "google_drive_status":  "Waiting for a specific shared folder link or local Google Drive sync path"
+                          "google_drive_status":  "Waiting for a specific shared folder link or local Google Drive sync path",
+                          "local_workspace_inventory":  "generated/local_asset_inventory.json"
                       },
     "categories":  [
                        {

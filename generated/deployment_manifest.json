@@ -13,7 +13,7 @@
                           "static_hero":  "https://fromage3900.github.io/my-site/generated/l-sakurapath-hero.html",
                           "static_passport":  "https://fromage3900.github.io/my-site/generated/l-sakurapath-passport.html"
                       },
-    "generated_at":  "2026-07-02T16:16:36.4377589Z",
+    "generated_at":  "2026-07-02T16:19:58.3468600Z",
     "package_handoff":  {
                             "configs":  {
                                             "hero_config.json":  "https://fromage3900.github.io/my-site/generated/hero_config.json",
@@ -22,7 +22,8 @@
                                             "portfolio_package_config.json":  "https://fromage3900.github.io/my-site/generated/portfolio_package_config.json",
                                             "renders_config.json":  "https://fromage3900.github.io/my-site/generated/renders_config.json",
                                             "stats_config.json":  "https://fromage3900.github.io/my-site/generated/stats_config.json",
-                                            "infold_asset_scouting_manifest.json":  "https://fromage3900.github.io/my-site/generated/infold_asset_scouting_manifest.json"
+                                            "infold_asset_scouting_manifest.json":  "https://fromage3900.github.io/my-site/generated/infold_asset_scouting_manifest.json",
+                                            "local_asset_inventory.json":  "https://fromage3900.github.io/my-site/generated/local_asset_inventory.json"
                                         },
                             "generated_at":  "2026-07-02T02:53:03.455975+00:00",
                             "scene":  {

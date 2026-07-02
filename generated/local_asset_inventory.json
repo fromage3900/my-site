@@ -1,0 +1,132 @@
+{
+    "generated_at":  "2026-07-02T16:19:35.6030913Z",
+    "root":  "G:\\EnvironmentPortfolio",
+    "total_image_files":  2214,
+    "portfolio_ready":  {
+                            "website_hero_plates":  [
+                                                        "BS_GodFile\\my-site-clean\\generated\\assets\\l-sakurapath-hero.png",
+                                                        "BS_GodFile\\my-site-clean\\generated\\assets\\latest-hero.png",
+                                                        "BS_GodFile\\my-site-clean\\generated\\assets\\project-name-hero.png"
+                                                    ],
+                            "duplicate_deploy_plates":  [
+                                                            "BS_GodFile\\_github_deploy\\generated\\assets\\l-sakurapath-hero.png",
+                                                            "BS_GodFile\\_github_deploy\\generated\\assets\\latest-hero.png",
+                                                            "BS_GodFile\\_github_deploy\\generated\\assets\\project-name-hero.png"
+                                                        ]
+                        },
+    "material_support":  {
+                             "sakura":  [
+                                            "_AssetLibrary\\Sakura\\T_Sakura_Blossom.png",
+                                            "_AssetLibrary\\Sakura\\T_Sakura_Petal.png"
+                                        ],
+                             "stylization_ramps":  [
+                                                       "_AssetLibrary\\Stylization\\T_Dither_Bayer.png",
+                                                       "_AssetLibrary\\Stylization\\T_Flow_Brushed.png",
+                                                       "_AssetLibrary\\Stylization\\T_Flow_Radial.png",
+                                                       "_AssetLibrary\\Stylization\\T_Flow_Swirl.png",
+                                                       "_AssetLibrary\\Stylization\\T_Hatch_Cross.png",
+                                                       "_AssetLibrary\\Stylization\\T_Hatch_Diagonal.png",
+                                                       "_AssetLibrary\\Stylization\\T_Noise_White.png",
+                                                       "_AssetLibrary\\Stylization\\T_Ramp_2Band.png",
+                                                       "_AssetLibrary\\Stylization\\T_Ramp_3Band.png",
+                                                       "_AssetLibrary\\Stylization\\T_Ramp_4Band.png",
+                                                       "_AssetLibrary\\Stylization\\T_Ramp_Smooth.png"
+                                                   ],
+                             "magical_alphas":  [
+                                                    "_AssetLibrary\\Magical\\T_Magic_Bow.png",
+                                                    "_AssetLibrary\\Magical\\T_Magic_Heart.png",
+                                                    "_AssetLibrary\\Magical\\T_Magic_Star.png"
+                                                ],
+                             "sparkle_alphas":  [
+                                                    "_AssetLibrary\\Alphas_Sparkles\\T_Spark_Bokeh.png",
+                                                    "_AssetLibrary\\Alphas_Sparkles\\T_Spark_Dot.png",
+                                                    "_AssetLibrary\\Alphas_Sparkles\\T_Spark_Glow.png",
+                                                    "_AssetLibrary\\Alphas_Sparkles\\T_Spark_Sparkle4.png",
+                                                    "_AssetLibrary\\Alphas_Sparkles\\T_Spark_Twinkle8.png"
+                                                ],
+                             "cc0_surfaces":  [
+                                                  "_AssetLibrary\\Surfaces_CC0\\Bricks051\\Bricks051.png",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Bricks051\\Bricks051_2K-JPG_Color.jpg",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Bricks051\\Bricks051_2K-JPG_Displacement.jpg",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Bricks051\\Bricks051_2K-JPG_NormalDX.jpg",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Bricks051\\Bricks051_2K-JPG_NormalGL.jpg",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Bricks051\\Bricks051_2K-JPG_Roughness.jpg",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Bricks066\\Bricks066.png",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Bricks066\\Bricks066_2K-JPG_AmbientOcclusion.jpg",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Bricks066\\Bricks066_2K-JPG_Color.jpg",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Bricks066\\Bricks066_2K-JPG_Displacement.jpg",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Bricks066\\Bricks066_2K-JPG_NormalDX.jpg",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Bricks066\\Bricks066_2K-JPG_NormalGL.jpg",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Bricks066\\Bricks066_2K-JPG_Roughness.jpg",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Carpet013\\Carpet013.png",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Carpet013\\Carpet013_2K-JPG_AmbientOcclusion.jpg",
+                                                  "_AssetLibrary\\Surfaces_CC0\\Carpet013\\Carpet013_2K-JPG_Color.jpg"
+                                              ],
+                             "brush_alphas":  [
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_01_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_02_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_03_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_04_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_05_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_06_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_07_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_08_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_09_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_10_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_11_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_12_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_13_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_14_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_15_height.tif",
+                                                  "_AssetLibrary\\_Incoming\\Brushes_AlphasStylized\\Textures\\bolt_screw_16_height.tif"
+                                              ],
+                             "celestial_refs":  [
+                                                    "BS_GodFile\\Tools\\MaterialMaker\\NASA_Refs\\blue_marble_4k.jpg",
+                                                    "BS_GodFile\\Tools\\MaterialMaker\\NASA_Refs\\hubble_carina_4k.jpg",
+                                                    "BS_GodFile\\Tools\\MaterialMaker\\NASA_Refs\\mars_mola_2k.png",
+                                                    "BS_GodFile\\Tools\\MaterialMaker\\NASA_Refs\\moon_lro_elevation_2k.png",
+                                                    "BS_GodFile\\Tools\\MaterialMaker\\NASA_Refs\\star_mask.png"
+                                                ]
+                         },
+    "top_level_counts":  [
+                             {
+                                 "folder":  "BS_GodFile",
+                                 "count":  1358
+                             },
+                             {
+                                 "folder":  "_AssetLibrary",
+                                 "count":  855
+                             },
+                             {
+                                 "folder":  "BS_GodFile_revert",
+                                 "count":  1
+                             }
+                         ],
+    "portfolio_recommendations":  [
+                                      {
+                                          "use":  "Hero render support",
+                                          "source":  "BS_GodFile\\my-site-clean\\generated\\assets",
+                                          "next_step":  "Keep these as front-page plates until stronger Drive renders are selected"
+                                      },
+                                      {
+                                          "use":  "Infold-style surface language",
+                                          "source":  "_AssetLibrary\\Sakura, _AssetLibrary\\Magical, _AssetLibrary\\Alphas_Sparkles",
+                                          "next_step":  "Use in shader cards and material close-up renders"
+                                      },
+                                      {
+                                          "use":  "Technical art proof",
+                                          "source":  "_AssetLibrary\\Stylization and brush alpha packs",
+                                          "next_step":  "Show how ramps, hatching, alphas, and masks drive stylized materials"
+                                      },
+                                      {
+                                          "use":  "Environment material grounding",
+                                          "source":  "_AssetLibrary\\Surfaces_CC0",
+                                          "next_step":  "Use as base scans for stylized reinterpretation, not as final unedited portfolio art"
+                                      },
+                                      {
+                                          "use":  "Celestial fantasy direction",
+                                          "source":  "BS_GodFile\\Tools\\MaterialMaker\\NASA_Refs",
+                                          "next_step":  "Use for nebula material studies and magical sky/surface reference"
+                                      }
+                                  ]
+}
