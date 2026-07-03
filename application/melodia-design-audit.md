@@ -8,6 +8,8 @@ The constellation and orrery direction should stay inside the original Melodia l
 
 ## Active Guardrails
 
+- Raw JSON, Markdown drafts, and component demos belong in technical appendices, not the primary recruiter path.
+
 - Body/UI copy uses Inter.
 - Display and section drama use Fraunces.
 - Cinzel is reserved for the wordmark, hero caps, and decorative celestial labels.

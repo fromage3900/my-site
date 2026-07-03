@@ -1,5 +1,5 @@
 ﻿{
-    "generated_at":  "2026-07-02T22:17:08.9448013Z",
+    "generated_at":  "2026-07-03T03:56:59.4743003Z",
     "public_domain":  "https://www.fromageart.xyz/",
     "primary_iframe_source":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
     "fallback_iframe_source":  "https://fromage3900.github.io/my-site/wix/index.html",
@@ -44,5 +44,12 @@
                                     "card_component":  "wix/melodia-breakdown-card.html",
                                     "intake_dashboard":  "https://fromage3900.github.io/my-site/wix/render-constellation.html",
                                     "intake_json":  "https://fromage3900.github.io/my-site/generated/unreal_portfolio_intake.json"
-                                }
+                                },
+    "custom_domain_seo":  {
+                              "recommended_title":  "Brennan Shepherd | Environment Design \u0026 Stylized Technical Art",
+                              "recommended_description":  "Portfolio for Brennan Shepherd, an environment designer focused on stylized shaders, Unreal integration, retopology, look development, and editorial fantasy worlds.",
+                              "wix_home_embed":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
+                              "fallback_home_embed":  "https://fromage3900.github.io/my-site/wix/index.html",
+                              "note":  "Wix page settings must expose this title and description on fromageart.xyz; GitHub Pages supplies the iframe content but cannot rewrite the Wix shell metadata."
+                          }
 }
