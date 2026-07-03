@@ -26,7 +26,8 @@
                              "shader_breakdowns":  "https://fromage3900.github.io/my-site/wix/shader-breakdowns.html",
                              "geometry_nodes":  "https://fromage3900.github.io/my-site/wix/geometry-nodes.html",
                              "art_test_readiness":  "https://fromage3900.github.io/my-site/wix/art-test-readiness.html",
-                             "render_constellation":  "https://fromage3900.github.io/my-site/wix/render-constellation.html"
+                             "render_constellation":  "https://fromage3900.github.io/my-site/wix/render-constellation.html",
+                             "capture_brief":  "https://fromage3900.github.io/my-site/wix/capture-brief.html"
                          },
     "unreal_package_contract":  {
                                     "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\portfolio_package.json",
@@ -45,7 +46,8 @@
                                     "intake_dashboard":  "https://fromage3900.github.io/my-site/wix/render-constellation.html",
                                     "intake_json":  "https://fromage3900.github.io/my-site/generated/unreal_portfolio_intake.json",
                                     "capture_brief_json":  "https://fromage3900.github.io/my-site/generated/unreal_capture_brief.json",
-                                    "capture_brief_markdown":  "https://fromage3900.github.io/my-site/application/unreal-capture-brief.md"
+                                    "capture_brief_markdown":  "https://fromage3900.github.io/my-site/application/unreal-capture-brief.md",
+                                    "capture_brief_page":  "https://fromage3900.github.io/my-site/wix/capture-brief.html"
                                 },
     "custom_domain_seo":  {
                               "recommended_title":  "Brennan Shepherd | Environment Design \u0026 Stylized Technical Art",
