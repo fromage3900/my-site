@@ -1,5 +1,5 @@
 ﻿{
-    "generated_at":  "2026-07-02T22:19:47.5924902Z",
+    "generated_at":  "2026-07-03T12:58:20.0668214Z",
     "source_package":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\portfolio_package.json",
     "scene":  {
                   "camera_count":  0,
@@ -41,6 +41,78 @@
                                          "Promote strongest shader families into dedicated material breakdown cards."
                                      ]
                   },
+    "genome":  {
+                   "axis_steps":  [
+                                      {
+                                          "color":  "#C4A882",
+                                          "description":  "",
+                                          "id":  "GB_ZEN_TORII",
+                                          "label":  "Torii",
+                                          "snap_count":  0,
+                                          "type":  "gate"
+                                      },
+                                      {
+                                          "color":  "#8BAE8A",
+                                          "description":  "",
+                                          "id":  "GB_ZEN_SANDO",
+                                          "label":  "Sando",
+                                          "snap_count":  0,
+                                          "type":  "path"
+                                      },
+                                      {
+                                          "color":  "#7A9BBF",
+                                          "description":  "",
+                                          "id":  "GB_ZEN_KAIRO",
+                                          "label":  "Kairo",
+                                          "snap_count":  0,
+                                          "type":  "corridor"
+                                      },
+                                      {
+                                          "color":  "#B5846A",
+                                          "description":  "",
+                                          "id":  "GB_ZEN_HAIDEN",
+                                          "label":  "Haiden",
+                                          "snap_count":  0,
+                                          "type":  "platform"
+                                      }
+                                  ],
+                   "genome":  "ZEN_SHRINE_AXIS",
+                   "step_count":  4
+               },
+    "pcg_heatmap":  {
+                        "source_path":  "Saved/Portfolio/Renders/pcg_heatmap.png",
+                        "source_exists":  true,
+                        "copied":  true,
+                        "web_path":  "../generated/assets/unreal/pcg-heatmap.png",
+                        "local_relative_path":  "generated/assets/unreal/pcg-heatmap.png"
+                    },
+    "latest_unreal_signals":  [
+                                  {
+                                      "title":  "MeshBlend master pass",
+                                      "label":  "Universal master",
+                                      "note":  "Additive MeshBlend support on M_Master_Toon_Universal gives the shader breakdown a stronger story around layered environment surfaces."
+                                  },
+                                  {
+                                      "title":  "NASA starmap shader",
+                                      "label":  "Space Cathedral",
+                                      "note":  "MI_Show_CelestialNebula now carries real celestial source work for constellation ramp, parallax nebula, and galaxy mood."
+                                  },
+                                  {
+                                      "title":  "Melusina trim texture pass",
+                                      "label":  "Sakura Dream",
+                                      "note":  "ZenTrim work connects real texture assets to the Sakura shrine material language instead of placeholder surface reads."
+                                  },
+                                  {
+                                      "title":  "Nikki surface polish",
+                                      "label":  "Fashion fantasy",
+                                      "note":  "Iridescence, sheen, sparkle, and soft pastel response expanded across Sakura material instances for a stronger Infold-adjacent finish."
+                                  },
+                                  {
+                                      "title":  "PCG alignment fix",
+                                      "label":  "Procedural route",
+                                      "note":  "Sakura showcase route logic now has a documented mesh-alignment fix and heatmap proof for exclusion zones."
+                                  }
+                              ],
     "render_cards":  [
                          {
                              "id":  "materials-grid-showcase-20260627-190121-2048x2048",
