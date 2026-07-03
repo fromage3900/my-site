@@ -43,7 +43,9 @@
                                     "website_destination":  "generated/assets/unreal/",
                                     "card_component":  "wix/melodia-breakdown-card.html",
                                     "intake_dashboard":  "https://fromage3900.github.io/my-site/wix/render-constellation.html",
-                                    "intake_json":  "https://fromage3900.github.io/my-site/generated/unreal_portfolio_intake.json"
+                                    "intake_json":  "https://fromage3900.github.io/my-site/generated/unreal_portfolio_intake.json",
+                                    "capture_brief_json":  "https://fromage3900.github.io/my-site/generated/unreal_capture_brief.json",
+                                    "capture_brief_markdown":  "https://fromage3900.github.io/my-site/application/unreal-capture-brief.md"
                                 },
     "custom_domain_seo":  {
                               "recommended_title":  "Brennan Shepherd | Environment Design \u0026 Stylized Technical Art",

@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$Root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 )
 
@@ -12,7 +12,8 @@ $jsonFiles = @(
   'generated/application_tracker.json',
   'generated/infold_research_alignment.json',
   'generated/wix_embed_manifest.json',
-  'generated/unreal_portfolio_intake.json'
+  'generated/unreal_portfolio_intake.json',
+  'generated/unreal_capture_brief.json'
 )
 
 foreach ($file in $jsonFiles) {
