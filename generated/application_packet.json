@@ -1,0 +1,50 @@
+﻿{
+    "generated_at":  "2026-07-03T16:31:13.1709433Z",
+    "candidate":  {
+                      "name":  "Brennan Shepherd",
+                      "target_roles":  [
+                                           "Stylized Environment Artist",
+                                           "Technical Artist",
+                                           "Look Development / Shader Artist"
+                                       ],
+                      "education":  "Final-year Humber 3D Animation student",
+                      "focus":  "Environment design with stylized shaders, Unreal integration, retopology, and look development",
+                      "public_site":  "https://www.fromageart.xyz/",
+                      "github_pages_hub":  "https://fromage3900.github.io/my-site/wix/application-hub.html"
+                  },
+    "strengths":  [
+                      "Stylized fantasy environment direction",
+                      "Unreal material systems and render intake workflow",
+                      "Blender/Maya/3ds Max/ZBrush/3DCoat asset pipeline",
+                      "Adobe Creative Cloud, Substance Painter, Photoshop, After Effects",
+                      "Visual communications, photography, social media, and documentation experience"
+                  ],
+    "proof_links":  [
+                        {
+                            "label":  "Application Hub",
+                            "url":  "https://fromage3900.github.io/my-site/wix/application-hub.html"
+                        },
+                        {
+                            "label":  "Resume",
+                            "url":  "https://fromage3900.github.io/my-site/wix/resume.html"
+                        },
+                        {
+                            "label":  "World Bible",
+                            "url":  "https://fromage3900.github.io/my-site/wix/world-bible.html"
+                        },
+                        {
+                            "label":  "Shader Breakdowns",
+                            "url":  "https://fromage3900.github.io/my-site/wix/shader-breakdowns.html"
+                        },
+                        {
+                            "label":  "Production Roadmap",
+                            "url":  "https://fromage3900.github.io/my-site/wix/production-roadmap.html"
+                        }
+                    ],
+    "next_actions":  [
+                         "Add downloadable PDF resume when final wording is approved",
+                         "Attach top six images to outreach packet",
+                         "Send recruiter message with Application Hub and Resume links",
+                         "Follow up after 7 days"
+                     ]
+}

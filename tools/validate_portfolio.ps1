@@ -14,7 +14,8 @@ $jsonFiles = @(
   'generated/wix_embed_manifest.json',
   'generated/unreal_portfolio_intake.json',
   'generated/unreal_capture_brief.json',
-  'generated/portfolio_roadmap.json'
+  'generated/portfolio_roadmap.json',
+  'generated/application_packet.json'
 )
 
 foreach ($file in $jsonFiles) {

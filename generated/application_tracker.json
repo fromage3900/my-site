@@ -1,5 +1,5 @@
 ﻿{
-    "generated_at":  "2026-07-03T16:28:20.4745338Z",
+    "generated_at":  "2026-07-03T16:32:12.5707434Z",
     "applications":  [
                          {
                              "studio":  "Infold Games",
@@ -8,14 +8,14 @@
                              "send_link":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
                              "next_action":  "Use production roadmap and capture brief to add the next UE shader/Niagara breakdowns, then send recruiter package.",
                              "follow_up_date":  null,
-                             "notes":  "Primary path now includes Application Hub, World Bible, Capture Brief, Render Constellation, Shader Breakdowns, and Production Roadmap."
+                             "notes":  "Primary path now includes Application Hub, Resume, World Bible, Capture Brief, Render Constellation, Shader Breakdowns, and Production Roadmap."
                          }
                      ],
     "weekly_pipeline":  [
                             "Ingest next Unreal capture drop",
                             "Promote MeshBlend, CelestialNebula, Niagara, and PCG proof",
                             "Select top six images",
-                            "Add resume PDF or resume page",
+                            "Use resume.html as recruiter summary",
                             "Refresh recruiter one-sheet",
                             "Send first recruiter message",
                             "Follow up after 7 days"

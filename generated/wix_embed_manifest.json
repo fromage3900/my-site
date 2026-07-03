@@ -29,7 +29,9 @@
                              "render_constellation":  "https://fromage3900.github.io/my-site/wix/render-constellation.html",
                              "capture_brief":  "https://fromage3900.github.io/my-site/wix/capture-brief.html",
                              "world_bible":  "https://fromage3900.github.io/my-site/wix/world-bible.html",
-                             "production_roadmap":  "https://fromage3900.github.io/my-site/wix/production-roadmap.html"
+                             "production_roadmap":  "https://fromage3900.github.io/my-site/wix/production-roadmap.html",
+                             "resume":  "https://fromage3900.github.io/my-site/wix/resume.html",
+                             "application_packet_json":  "https://fromage3900.github.io/my-site/generated/application_packet.json"
                          },
     "unreal_package_contract":  {
                                     "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\portfolio_package.json",

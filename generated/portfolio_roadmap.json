@@ -28,6 +28,11 @@
                              "label":  "Shader Breakdowns",
                              "url":  "https://fromage3900.github.io/my-site/wix/shader-breakdowns.html",
                              "role":  "Material systems and latest UE shader signals"
+                         },
+                         {
+                             "label":  "Resume",
+                             "url":  "https://fromage3900.github.io/my-site/wix/resume.html",
+                             "role":  "Recruiter-ready candidate summary and proof links"
                          }
                      ],
     "sprint_lanes":  [
@@ -56,8 +61,8 @@
                              "outcome":  "Turn the site from a strong prototype into a job-ready package",
                              "tasks":  [
                                            "Select top six images for hero-renders.html",
-                                           "Add resume PDF or resume page",
-                                           "Update recruiter one-sheet with world bible and capture brief links",
+                                           "Use resume.html as the recruiter summary route",
+                                           "Refresh recruiter one-sheet with resume and world bible links",
                                            "Prepare first recruiter message and application packet"
                                        ]
                          },
