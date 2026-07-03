@@ -1,4 +1,4 @@
-﻿# Melodia Design Audit
+# Melodia Design Audit
 
 Source of truth: `C:/Users/froma/Downloads/melodia-design-system/DESIGN-SYSTEM.md` and `PORTFOLIO_LAYOUT_CONCEPTS.md`.
 
@@ -12,13 +12,15 @@ The constellation and orrery direction should stay inside the original Melodia l
 - Display and section drama use Fraunces.
 - Cinzel is reserved for the wordmark, hero caps, and decorative celestial labels.
 - IBM Plex Mono is reserved for metadata, labels, specs, and technical tags.
-- Constellations are faint backplates, page-corner accents, or navigation cues.
+- Constellations and orrery forms are faint backplates, page-corner accents, hero navigation cues, or technical colophon details.
 - Motif budget stays tight: about three decorative motifs on working documentation pages, up to six only on cover/hero views.
 - Ornate frames belong on hero plates, covers, and major artbook moments, not every card.
 - Sakura is a rare tertiary accent, not a dominant background.
 - Separation should come from gold hairlines, grid, and spacing before shadows or glow.
 
 ## Current Website Notes
+
+- Prepared motion component pages are live in wix/: melodia-hero-cosmic.html, melodia-hero-embed.html, melodia-navigation-constellation.html, melodia-section-header.html, and melodia-smooth-scroll.html.
 
 - `wix/application-hub.html` is the primary Wix iframe source and should remain the polished recruiter entry.
 - `wix/render-constellation.html` is a reusable Unreal intake surface, but it should feel like a technical spread in the same artbook, not a sci-fi dashboard.
@@ -27,7 +29,7 @@ The constellation and orrery direction should stay inside the original Melodia l
 
 ## Next Design Pass
 
-1. Build a lighter Constellation Navigator accent using thin gold/plum lines and low opacity star-chart details.
+1. Keep refining the lightweight Constellation Navigator accent using thin gold/plum lines, slow parallax, reduced-motion support, and low opacity star-chart details.
 2. Add chapter-opener rhythm for renders, shader breakdowns, geometry/procedural work, commissions, and 2D/process art.
 3. Keep new Unreal render imports flowing through `portfolio_package.json` into the Render Constellation page.
 4. As new renders arrive, create one hero artbook spread per environment before adding more decorative systems.
