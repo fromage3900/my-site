@@ -13,7 +13,8 @@ $jsonFiles = @(
   'generated/infold_research_alignment.json',
   'generated/wix_embed_manifest.json',
   'generated/unreal_portfolio_intake.json',
-  'generated/unreal_capture_brief.json'
+  'generated/unreal_capture_brief.json',
+  'generated/portfolio_roadmap.json'
 )
 
 foreach ($file in $jsonFiles) {

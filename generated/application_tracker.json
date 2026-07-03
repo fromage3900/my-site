@@ -1,22 +1,23 @@
-{
-    "generated_at":  "2026-07-02T16:30:22.0232095Z",
+﻿{
+    "generated_at":  "2026-07-03T16:28:20.4745338Z",
     "applications":  [
                          {
                              "studio":  "Infold Games",
                              "role":  "Environment Artist / Technical Artist target",
-                             "status":  "Portfolio package building",
+                             "status":  "Live portfolio expanding",
                              "send_link":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
-                             "next_action":  "Publish Pages, then apply or send recruiter message",
+                             "next_action":  "Use production roadmap and capture brief to add the next UE shader/Niagara breakdowns, then send recruiter package.",
                              "follow_up_date":  null,
-                             "notes":  "Use Sakura case study, shader breakdowns, art-test readiness, and asset scouting as the primary proof path."
+                             "notes":  "Primary path now includes Application Hub, World Bible, Capture Brief, Render Constellation, Shader Breakdowns, and Production Roadmap."
                          }
                      ],
     "weekly_pipeline":  [
-                            "Publish live site",
-                            "Choose top six images",
-                            "Add resume PDF/page",
+                            "Ingest next Unreal capture drop",
+                            "Promote MeshBlend, CelestialNebula, Niagara, and PCG proof",
+                            "Select top six images",
+                            "Add resume PDF or resume page",
+                            "Refresh recruiter one-sheet",
                             "Send first recruiter message",
-                            "Apply to matching roles",
                             "Follow up after 7 days"
                         ]
 }
