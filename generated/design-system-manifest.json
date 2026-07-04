@@ -1,0 +1,212 @@
+{
+  "version": "1.1",
+  "generated_at": "2026-06-28T09:45:00-04:00",
+  "base_url": "https://fromage3900.github.io/my-site/generated/design-system/",
+  "technical_base_url": "https://fromage3900.github.io/my-site/generated/technical/",
+  "assets": {
+    "catalog": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/index.html",
+      "dimensions": {
+        "width": "100%",
+        "height": "900px"
+      }
+    },
+    "hero": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/melodia-hero-embed.html",
+      "params": ["theme", "kicker", "title", "sub"],
+      "dimensions": {
+        "width": "100%",
+        "height": "520px"
+      }
+    },
+    "hero_animated": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/melodia-hero-embed-animated.html",
+      "params": ["theme", "contentTheme", "kicker", "title", "sub", "starCount", "gstarCount", "parallaxEnabled", "parallaxStrength"],
+      "dimensions": {
+        "width": "100%",
+        "height": "520px"
+      }
+    },
+    "hero_aurora": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/melodia-hero-embed-aurora.html",
+      "params": ["kicker", "title", "sub", "auroraIntensity", "particleCount", "starCount", "gstarCount", "parallaxEnabled", "parallaxStrength"],
+      "dimensions": {
+        "width": "100%",
+        "height": "520px"
+      }
+    },
+    "hero_cosmic": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/melodia-hero-embed-cosmic.html",
+      "params": ["kicker", "title", "sub", "galaxyRotationSpeed", "galaxyArmCount", "nebulaCount", "shootingStarCount", "dustCount", "starCount", "gstarCount", "parallaxEnabled", "parallaxStrength"],
+      "dimensions": {
+        "width": "100%",
+        "height": "520px"
+      }
+    },
+    "passport": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/melodia-passport-embed.html",
+      "params": ["theme", "project", "category", "version", "triangles", "textures", "materials", "software", "engine", "date", "drawcalls", "lod"],
+      "dimensions": {
+        "width": "360px",
+        "height": "560px"
+      }
+    },
+    "passport_animated": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/melodia-passport-embed-animated.html",
+      "params": ["theme", "highlight", "project", "category", "version", "animations", "hoverEffects", "decorativeStars", "triangles", "textures", "materials", "software", "engine", "date", "drawcalls", "lod"],
+      "dimensions": {
+        "width": "360px",
+        "height": "560px"
+      }
+    },
+    "status_badge": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/badge-data-status.html",
+      "params": ["status", "label"]
+    },
+    "placeholder": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/placeholder-data-missing.html",
+      "params": ["dataType", "message"]
+    },
+    "graph_metadata": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/info-graph-metadata.html",
+      "params": ["title", "role", "path", "voxel", "phase", "density_filter", "surface_sampler", "passthrough", "pcgex_exclusion", "pcgex_candidate"]
+    },
+    "process_flow": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/layout-process-flow.html",
+      "params": ["steps"]
+    },
+    "bar_chart": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/chart-bar.html",
+      "params": ["label", "value", "max", "unit"]
+    },
+    "performance_card": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/card-performance.html",
+      "params": ["triangleCount", "drawCalls", "materialCount", "textureCount", "textureResolution"]
+    },
+    "pcg_feature_tag": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/tag-pcg-feature.html",
+      "params": ["feature", "active"]
+    },
+    "brennan_hero": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/brennan-hero-embed.html",
+      "dimensions": {
+        "width": "100%",
+        "height": "520px"
+      }
+    },
+    "brennan_passport": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/brennan-passport-embed.html",
+      "dimensions": {
+        "width": "360px",
+        "height": "560px"
+      }
+    },
+    "brennan_project_card": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/brennan-project-card.html"
+    },
+    "brennan_linkedin_banner": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/brennan-linkedin-banner.html"
+    },
+    "brennan_email_signature": {
+      "url": "https://fromage3900.github.io/my-site/generated/design-system/brennan-email-signature.html"
+    },
+    "examples": {
+      "minimal_stars": "https://fromage3900.github.io/my-site/generated/design-system/examples/minimal-stars.html",
+      "aurora_effect": "https://fromage3900.github.io/my-site/generated/design-system/examples/aurora-effect.html",
+      "cosmic_effect": "https://fromage3900.github.io/my-site/generated/design-system/examples/cosmic-effect.html",
+      "combined_effects": "https://fromage3900.github.io/my-site/generated/design-system/examples/combined-effects.html"
+    },
+    "technical_breakdowns": {
+      "universal_master": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/universal-master.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/universal-master-config.json",
+        "discipline": "Unreal Shaders",
+        "dimensions": {
+          "width": "100%",
+          "height": "1800px"
+        }
+      },
+      "universal_material_graph_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/universal-material-graph-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/universal-material-graph-sheet.json",
+        "discipline": "Unreal Shaders",
+        "dimensions": {
+          "width": "100%",
+          "height": "2100px"
+        }
+      },
+      "water_material_design_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/water-material-design-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/water-material-design-sheet.json",
+        "discipline": "Unreal Shaders",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "niagara_particles_design_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/niagara-particles-design-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/niagara-particles-design-sheet.json",
+        "discipline": "Niagara VFX",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "pcg_scatter_design_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/pcg-scatter-design-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/pcg-scatter-design-sheet.json",
+        "discipline": "PCG",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "trimsheet_workflow_design_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/trimsheet-workflow-design-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/trimsheet-workflow-design-sheet.json",
+        "discipline": "Materials",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "blender_geometry_nodes_breakdown_plan": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/blender-geometry-nodes-breakdown-plan.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/blender-geometry-nodes-breakdown-plan.json",
+        "discipline": "Blender / Geometry Nodes",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "geometry_nodes_universal_scatter_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/geometry-nodes-universal-scatter-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/geometry-nodes-universal-scatter-sheet.json",
+        "discipline": "Geometry Nodes",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "blender_asset_pipeline_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/blender-asset-pipeline-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/blender-asset-pipeline-sheet.json",
+        "discipline": "Blender Pipeline",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      },
+      "procedural_rock_geometry_nodes_sheet": {
+        "url": "https://fromage3900.github.io/my-site/generated/technical/procedural-rock-geometry-nodes-sheet.html",
+        "config": "https://fromage3900.github.io/my-site/generated/technical/procedural-rock-geometry-nodes-sheet.json",
+        "discipline": "Geometry Nodes",
+        "dimensions": {
+          "width": "100%",
+          "height": "1700px"
+        }
+      }
+    }
+  }
+}

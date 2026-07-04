@@ -1,0 +1,193 @@
+{
+  "count": 30,
+  "families": {
+    "Baroque": 4,
+    "Showcase": 11,
+    "Zen": 15
+  },
+  "featured": [
+    {
+      "family": "Baroque",
+      "name": "MI_Baroque_CathedralSurreal",
+      "output_maps": [
+        "base_color",
+        "emissive",
+        "height",
+        "roughness"
+      ],
+      "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+      "path": "/Game/EnvSandbox/Materials/Instances/Environment/Baroque/MI_Baroque_CathedralSurreal.MI_Baroque_CathedralSurreal",
+      "purpose": "Surreal baroque — cathedral rosette with inner glow and parallax",
+      "status": "metadata_only",
+      "type": "surface"
+    },
+    {
+      "family": "Baroque",
+      "name": "MI_Baroque_EscherOrnament",
+      "output_maps": [
+        "base_color",
+        "emissive",
+        "roughness"
+      ],
+      "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+      "path": "/Game/EnvSandbox/Materials/Instances/Environment/Baroque/MI_Baroque_EscherOrnament.MI_Baroque_EscherOrnament",
+      "purpose": "Surreal baroque — impossible lattice ornament + ink temporal wash",
+      "status": "metadata_only",
+      "type": "surface"
+    },
+    {
+      "family": "Baroque",
+      "name": "MI_Baroque_FiligreeDream",
+      "output_maps": [
+        "base_color",
+        "emissive",
+        "roughness"
+      ],
+      "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+      "path": "/Game/EnvSandbox/Materials/Instances/Environment/Baroque/MI_Baroque_FiligreeDream.MI_Baroque_FiligreeDream",
+      "purpose": "Surreal baroque — dreamy filigree with fairy dust and sparkle",
+      "status": "metadata_only",
+      "type": "surface"
+    },
+    {
+      "family": "Baroque",
+      "name": "MI_Baroque_GildedFiligree",
+      "output_maps": [
+        "base_color",
+        "emissive",
+        "height",
+        "metallic",
+        "roughness"
+      ],
+      "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+      "path": "/Game/EnvSandbox/Materials/Instances/Environment/Baroque/MI_Baroque_GildedFiligree.MI_Baroque_GildedFiligree",
+      "purpose": "Surreal baroque — gilded filigree motif on warm stone",
+      "status": "metadata_only",
+      "type": "surface"
+    },
+    {
+      "family": "Showcase",
+      "name": "MI_Show_CelestialNebula",
+      "output_maps": [
+        "base_color",
+        "emissive",
+        "normal",
+        "roughness"
+      ],
+      "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+      "path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_CelestialNebula.MI_Show_CelestialNebula",
+      "purpose": "Nebula shading — MF_SpaceParallax constellation ramp + parallax nebula + galaxy",
+      "status": "metadata_only",
+      "type": "surface"
+    },
+    {
+      "family": "Showcase",
+      "name": "MI_Show_CherryBlossom",
+      "output_maps": [
+        "base_color",
+        "emissive",
+        "normal",
+        "roughness"
+      ],
+      "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+      "path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_CherryBlossom.MI_Show_CherryBlossom",
+      "purpose": "Flower shadow garden — projected petal shadows + sparkle on soft pink",
+      "status": "metadata_only",
+      "type": "surface"
+    },
+    {
+      "family": "Showcase",
+      "name": "MI_Show_ContactRimHero",
+      "output_maps": [
+        "base_color",
+        "emissive",
+        "normal",
+        "roughness"
+      ],
+      "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+      "path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_ContactRimHero.MI_Show_ContactRimHero",
+      "purpose": "Cinematic — contact rim + atmospheric distance fade",
+      "status": "metadata_only",
+      "type": "surface"
+    },
+    {
+      "family": "Showcase",
+      "name": "MI_Show_Default",
+      "output_maps": [
+        "base_color",
+        "emissive",
+        "metallic",
+        "normal",
+        "roughness"
+      ],
+      "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+      "path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_Default.MI_Show_Default",
+      "purpose": "Default showcase — neutral tint, full texture weight, zero stylization",
+      "status": "metadata_only",
+      "type": "surface"
+    },
+    {
+      "family": "Showcase",
+      "name": "MI_Show_ElementHydro",
+      "output_maps": [
+        "base_color",
+        "emissive",
+        "metallic",
+        "normal",
+        "roughness"
+      ],
+      "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+      "path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_ElementHydro.MI_Show_ElementHydro",
+      "purpose": "Elemental hydro — wet iridescent glass with emissive boost",
+      "status": "metadata_only",
+      "type": "surface"
+    },
+    {
+      "family": "Showcase",
+      "name": "MI_Show_FairyHearts",
+      "output_maps": [
+        "base_color",
+        "emissive",
+        "normal",
+        "roughness"
+      ],
+      "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+      "path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_FairyHearts.MI_Show_FairyHearts",
+      "purpose": "Magic / fairy — heart motif, fairy dust, partial henshin wipe",
+      "status": "metadata_only",
+      "type": "surface"
+    },
+    {
+      "family": "Showcase",
+      "name": "MI_Show_ForestFoliage",
+      "output_maps": [
+        "base_color",
+        "emissive",
+        "normal",
+        "roughness"
+      ],
+      "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+      "path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_ForestFoliage.MI_Show_ForestFoliage",
+      "purpose": "Foliage / forest floor — mossy green with dreamy shadow tint",
+      "status": "metadata_only",
+      "type": "surface"
+    },
+    {
+      "family": "Showcase",
+      "name": "MI_Show_InkWash",
+      "output_maps": [
+        "base_color",
+        "emissive",
+        "normal",
+        "roughness"
+      ],
+      "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+      "path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_InkWash.MI_Show_InkWash",
+      "purpose": "Stylized ink wash — temporal boil + smear + wind",
+      "status": "metadata_only",
+      "type": "surface"
+    }
+  ],
+  "generated_at": "2026-07-02T02:53:03.351206+00:00",
+  "generated_by": "package_to_website_handoff.py"
+}

@@ -1,0 +1,8 @@
+{
+  "slug": "procedural-rock-geometry-nodes-sheet",
+  "title": "Procedural Rock Geometry Nodes Generator",
+  "assetRoot": "/Blender/GeometryNodes/GN_RockGenerator",
+  "status": "planned",
+  "focus": ["silhouette variants", "noise displacement", "edge chip controls", "strata masks", "material handoff", "decimation and LOD proof"],
+  "captureTargets": ["node graph", "control panel", "variant lineup", "close-up surface proof", "mask/material preview", "Unreal imported kit proof"]
+}

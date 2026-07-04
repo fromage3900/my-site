@@ -1,0 +1,113 @@
+﻿{
+    "generated_at":  "2026-07-03T13:05:31.8635483Z",
+    "source_intake":  "generated/unreal_portfolio_intake.json",
+    "scene":  "ZenForestTest",
+    "genome":  "ZEN_SHRINE_AXIS",
+    "route_axis":  [
+                       "Torii",
+                       "Sando",
+                       "Kairo",
+                       "Haiden"
+                   ],
+    "current_readiness":  {
+                              "label":  "render_ready_needs_breakdowns",
+                              "score":  82,
+                              "next_needs":  [
+                                                 "Capture shader and Niagara breakdown plates into renders.breakdown.",
+                                                 "Capture PCG or procedural dressing proof into renders.pcg.",
+                                                 "Promote strongest shader families into dedicated material breakdown cards."
+                                             ]
+                          },
+    "current_counts":  {
+                           "renders_total":  8,
+                           "renders_web_ready":  8,
+                           "hero":  4,
+                           "materials":  4,
+                           "breakdown":  0,
+                           "pcg":  0,
+                           "material_instances":  30,
+                           "shader_families":  3,
+                           "assets":  4
+                       },
+    "incoming_drop_contract":  {
+                                   "unreal_package":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\portfolio_package.json",
+                                   "website_intake_script":  "tools/ingest_unreal_portfolio.ps1",
+                                   "website_asset_destination":  "generated/assets/unreal/",
+                                   "expected_render_groups":  [
+                                                                  "renders.breakdown",
+                                                                  "renders.pcg",
+                                                                  "renders.materials",
+                                                                  "renders.hero"
+                                                              ]
+                               },
+    "capture_slots":  [
+                          {
+                              "id":  "shader-graph-meshblend-master",
+                              "priority":  1,
+                              "destination_group":  "renders.breakdown",
+                              "target_page":  "wix/shader-breakdowns.html",
+                              "title":  "Universal Master MeshBlend graph plate",
+                              "capture":  "Annotated Material Editor screenshot or beauty-plus-graph pair for M_Master_Toon_Universal with MeshBlend controls visible.",
+                              "proves":  "Layered stylized environment materials can be explained as a production system, not just a beauty render.",
+                              "preferred_filename":  "breakdown_shader_meshblend_master_1920x1080.png"
+                          },
+                          {
+                              "id":  "space-cathedral-celestial-nebula",
+                              "priority":  2,
+                              "destination_group":  "renders.breakdown",
+                              "target_page":  "wix/shader-breakdowns.html",
+                              "title":  "Space Cathedral celestial shader plate",
+                              "capture":  "MI_Show_CelestialNebula material instance, starmap texture source, parallax nebula response, and one beauty crop.",
+                              "proves":  "NASA starmap source work supports the Space Cathedral pillar with readable cosmic material language.",
+                              "preferred_filename":  "breakdown_space_cathedral_celestial_nebula_1920x1080.png"
+                          },
+                          {
+                              "id":  "niagara-sakura-ambience",
+                              "priority":  3,
+                              "destination_group":  "renders.breakdown",
+                              "target_page":  "wix/shader-breakdowns.html",
+                              "title":  "Sakura Niagara ambience plate",
+                              "capture":  "Niagara system viewport with particle settings, petal drift read, and final in-scene ambience crop.",
+                              "proves":  "The Sakura Dream world has motion language and atmospheric VFX support beyond static composition.",
+                              "preferred_filename":  "breakdown_niagara_sakura_ambience_1920x1080.png"
+                          },
+                          {
+                              "id":  "pcg-shrine-axis-proof",
+                              "priority":  4,
+                              "destination_group":  "renders.pcg",
+                              "target_page":  "wix/render-constellation.html",
+                              "title":  "ZEN_SHRINE_AXIS PCG route proof",
+                              "capture":  "PCG graph or debug overlay paired with the heatmap and a final route beauty shot.",
+                              "proves":  "Torii, Sando, Kairo, and Haiden route logic can control procedural dressing without harming traversal clarity.",
+                              "preferred_filename":  "pcg_zen_shrine_axis_route_proof_1920x1080.png"
+                          },
+                          {
+                              "id":  "baroque-escher-ornament",
+                              "priority":  5,
+                              "destination_group":  "renders.breakdown",
+                              "target_page":  "wix/shader-breakdowns.html",
+                              "title":  "Baroque Escher ornament material plate",
+                              "capture":  "MI_Baroque_EscherOrnament and gilded filigree variants as swatches, close-up trims, and one world-context crop.",
+                              "proves":  "The Escher/math concept is tied to actual material families and modular environment ornamentation.",
+                              "preferred_filename":  "breakdown_baroque_escher_ornament_1920x1080.png"
+                          },
+                          {
+                              "id":  "nikki-surface-polish",
+                              "priority":  6,
+                              "destination_group":  "renders.materials",
+                              "target_page":  "wix/shader-breakdowns.html",
+                              "title":  "Nikki-style surface polish plate",
+                              "capture":  "Iridescence, sheen, sparkle, and soft pastel grading comparison across Sakura material instances.",
+                              "proves":  "The surface direction is intentionally fashion-fantasy and Infold-adjacent while remaining original.",
+                              "preferred_filename":  "materials_nikki_surface_polish_2048x2048.png"
+                          }
+                      ],
+    "acceptance_checks":  [
+                              "Every capture should include one beauty read and one production-proof read when possible.",
+                              "Use filenames from preferred_filename or keep the id as the filename slug.",
+                              "Update portfolio_package.json so renders.breakdown, renders.pcg, or renders.materials consumes the new assets.",
+                              "Rerun tools/ingest_unreal_portfolio.ps1 after new captures land.",
+                              "Rerun tools/build_unreal_capture_brief.ps1 if the intake metadata changes.",
+                              "Rerun tools/validate_portfolio.ps1 before committing."
+                          ]
+}

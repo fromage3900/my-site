@@ -1,0 +1,87 @@
+﻿{
+    "generated_at":  "2026-07-03T16:27:44.7865298Z",
+    "status":  "live_site_expanding",
+    "public_entry":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
+    "focus":  "Infold-facing stylized environment art portfolio with Unreal proof and editorial Melodia presentation",
+    "active_pages":  [
+                         {
+                             "label":  "Application Hub",
+                             "url":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
+                             "role":  "Primary Wix iframe source and reviewer path"
+                         },
+                         {
+                             "label":  "World Bible",
+                             "url":  "https://fromage3900.github.io/my-site/wix/world-bible.html",
+                             "role":  "Four environment pillars and render shot lists"
+                         },
+                         {
+                             "label":  "Capture Brief",
+                             "url":  "https://fromage3900.github.io/my-site/wix/capture-brief.html",
+                             "role":  "Incoming Unreal shader, Niagara, PCG, and material capture targets"
+                         },
+                         {
+                             "label":  "Render Constellation",
+                             "url":  "https://fromage3900.github.io/my-site/wix/render-constellation.html",
+                             "role":  "Unreal package intake and web-ready asset status"
+                         },
+                         {
+                             "label":  "Shader Breakdowns",
+                             "url":  "https://fromage3900.github.io/my-site/wix/shader-breakdowns.html",
+                             "role":  "Material systems and latest UE shader signals"
+                         },
+                         {
+                             "label":  "Resume",
+                             "url":  "https://fromage3900.github.io/my-site/wix/resume.html",
+                             "role":  "Recruiter-ready candidate summary and proof links"
+                         }
+                     ],
+    "sprint_lanes":  [
+                         {
+                             "lane":  "Today",
+                             "outcome":  "Make the portfolio ready to absorb new UE renders without breaking the design system",
+                             "tasks":  [
+                                           "Keep Wix iframe on application-hub.html",
+                                           "Use capture-brief.html for incoming shader and Niagara plates",
+                                           "Rerun ingest and validation after every portfolio_package.json update",
+                                           "Publish main and gh-pages after validated edits"
+                                       ]
+                         },
+                         {
+                             "lane":  "Next render drop",
+                             "outcome":  "Convert Claude/UE captures into polished breakdown proof",
+                             "tasks":  [
+                                           "Add MeshBlend graph plate to renders.breakdown",
+                                           "Add CelestialNebula starmap plate for Space Cathedral",
+                                           "Add Sakura Niagara ambience proof",
+                                           "Add PCG route proof against ZEN_SHRINE_AXIS"
+                                       ]
+                         },
+                         {
+                             "lane":  "This week",
+                             "outcome":  "Turn the site from a strong prototype into a job-ready package",
+                             "tasks":  [
+                                           "Select top six images for hero-renders.html",
+                                           "Use resume.html as the recruiter summary route",
+                                           "Refresh recruiter one-sheet with resume and world bible links",
+                                           "Prepare first recruiter message and application packet"
+                                       ]
+                         },
+                         {
+                             "lane":  "Stretch",
+                             "outcome":  "Make the portfolio memorable and reusable",
+                             "tasks":  [
+                                           "Add per-world case-study pages as renders arrive",
+                                           "Promote Baroque Escher ornament into a dedicated shader story",
+                                           "Add Bioluminescent Grotto material targets",
+                                           "Create a downloadable art-test package checklist"
+                                       ]
+                         }
+                     ],
+    "gates":  [
+                  "tools/validate_portfolio.ps1 passes",
+                  "GitHub Pages URLs return 200",
+                  "Application hub reviewer path links the newest high-value pages",
+                  "New captures are referenced through portfolio_package.json rather than hand-dropped only",
+                  "Best work remains visible in first two clicks"
+              ]
+}

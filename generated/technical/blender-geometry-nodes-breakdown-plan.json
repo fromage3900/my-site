@@ -1,0 +1,8 @@
+{
+  "slug": "blender-geometry-nodes-breakdown-plan",
+  "title": "Blender and Geometry Nodes Portfolio Plan",
+  "assetRoot": "/Blender/",
+  "status": "partial",
+  "focus": ["Geometry Nodes breakdowns", "Blender production pipeline", "Unreal handoff", "Wix embed readiness", "proof capture planning"],
+  "captureTargets": ["Blender hub screenshot", "Geometry Nodes graph proof", "viewport result proof", "Unreal import proof", "portfolio page placement"]
+}

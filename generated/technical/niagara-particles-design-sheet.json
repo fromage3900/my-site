@@ -1,0 +1,8 @@
+{
+  "slug": "niagara-particles-design-sheet",
+  "title": "Niagara Particle Systems",
+  "assetRoot": "/Game/EnvSandbox/VFX/",
+  "status": "partial",
+  "focus": ["Sakura ambient chain", "wind-driven reactivity", "water ripple material", "constellation and sparkle systems", "style bundle grouping"],
+  "captureTargets": ["system stack overview", "emitter list", "WindStrength binding", "Sakura chain sequence", "ripple preview", "compile results per system"]
+}

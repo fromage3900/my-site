@@ -1,0 +1,40 @@
+{
+  "animations": true,
+  "category": "stylized environment",
+  "decorativeStars": true,
+  "highlight": "environment",
+  "hoverEffects": true,
+  "project": "ZenForestTest",
+  "rows": [
+    [
+      "Triangles",
+      "72,924"
+    ],
+    [
+      "Draw Calls",
+      "35"
+    ],
+    [
+      "Materials",
+      "30"
+    ],
+    [
+      "Assets",
+      "4"
+    ],
+    [
+      "PCG Graphs",
+      "4"
+    ],
+    [
+      "Engine",
+      "Unreal Engine 5.8.0"
+    ],
+    [
+      "Date",
+      "2026-06"
+    ]
+  ],
+  "theme": "dark",
+  "version": "v1.0"
+}

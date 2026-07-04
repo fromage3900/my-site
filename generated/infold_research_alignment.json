@@ -1,0 +1,48 @@
+﻿{
+    "generated_at":  "2026-07-02T22:03:15.5217890Z",
+    "sources":  [
+                    {
+                        "label":  "Infold Games official website",
+                        "url":  "https://www.infoldgames.com/en/home",
+                        "notes":  "Mission, values, game portfolio, and career categories."
+                    },
+                    {
+                        "label":  "Infinity Nikki official website",
+                        "url":  "https://infinitynikki.infoldgames.com/en/home",
+                        "notes":  "Official game navigation and current content pillars: worlds, outfits, features, guides, news/events."
+                    }
+                ],
+    "studio_signals":  [
+                           {
+                               "signal":  "Empower the world with creativity",
+                               "portfolio_response":  "Lead with authored worlds, strong visual taste, and personal art direction rather than only tool lists."
+                           },
+                           {
+                               "signal":  "Enrich a universe of wonder",
+                               "portfolio_response":  "Frame environments as destinations with mood, traversal, materials, and charm hooks."
+                           },
+                           {
+                               "signal":  "Creativity First",
+                               "portfolio_response":  "Show Sakura Dream, Space Cathedral, Baroque Castle, and Bioluminescent Grotto as distinct fantasy concepts."
+                           },
+                           {
+                               "signal":  "Tech-Driven and Scientific Rigor",
+                               "portfolio_response":  "Make shaders, Niagara, PCG, Geometry Nodes, retopology, stats, and validation visible as production proof."
+                           },
+                           {
+                               "signal":  "Autonomy and Openness",
+                               "portfolio_response":  "Keep the portfolio git-driven, source-readable, and ready for frequent Unreal render/package drops."
+                           }
+                       ],
+    "infinity_nikki_design_takeaways":  [
+                                            "Open-world styling fantasy means environments should support wonder, collection, gentle traversal, and photo-friendly composition.",
+                                            "Official site content buckets such as worlds, outfits, features, guides, news, and events suggest a portfolio structure with worlds first and technical proof as guided supporting pages.",
+                                            "The portfolio should avoid using official game assets; the correct move is inspired alignment through Brennan-owned renders, shader proofs, and editorial presentation."
+                                        ],
+    "next_website_actions":  [
+                                 "Use portfolio_package.json as the Unreal-to-web ingestion point.",
+                                 "Promote hero renders and shader/Niagara breakdowns into generated/assets/unreal.",
+                                 "Generate Melodia breakdown cards from package metadata and render captions.",
+                                 "Keep application-hub.html as the primary Wix iframe route."
+                             ]
+}

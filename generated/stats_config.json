@@ -1,0 +1,43 @@
+{
+  "engine": "Unreal Engine 5.8.0",
+  "generated_at": "2026-07-02T02:53:03.351246+00:00",
+  "generated_by": "package_to_website_handoff.py",
+  "passport_rows": [
+    [
+      "Triangles",
+      "72,924"
+    ],
+    [
+      "Draw Calls",
+      "35"
+    ],
+    [
+      "Materials",
+      "30"
+    ],
+    [
+      "Assets",
+      "4"
+    ],
+    [
+      "PCG Graphs",
+      "4"
+    ],
+    [
+      "Engine",
+      "Unreal Engine 5.8.0"
+    ],
+    [
+      "Date",
+      "2026-06"
+    ]
+  ],
+  "scene": "ZenForestTest",
+  "stats": {
+    "draw_calls": 35,
+    "triangles": 72924,
+    "triangles_label": "73K",
+    "unique_materials": 12,
+    "unique_meshes": 14
+  }
+}
