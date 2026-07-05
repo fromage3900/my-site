@@ -9,8 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,650;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="portfolio-pages.css">
+<link rel="stylesheet" href="enhanced-cosmic-hero.css">
 <style>
-.hero { min-height: 92svh; }
+.hero { min-height: 100vh; }
 .hero-orrery { position:absolute; inset: 14% max(26px,6vw) auto auto; width: min(34vw, 480px); aspect-ratio: 1; opacity: .24; pointer-events:none; z-index:1; }
 .hero-orrery svg { width:100%; height:100%; overflow:visible; }
 .hero-orrery .orbit { fill:none; stroke:rgba(228,201,144,.5); stroke-width:.75; }
@@ -21,19 +22,24 @@
 @keyframes orbit { to { transform: rotate(360deg); } }
 .editorial-note { max-width: 780px; color: var(--muted); line-height: 1.72; }
 .world-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.world-card { position:relative; min-height: 350px; overflow:hidden; border:1px solid var(--line); border-radius:3px; background:var(--paper); padding:22px; display:flex; flex-direction:column; justify-content:space-between; }
-.world-card::before { content: attr(data-kana); position:absolute; top:18px; right:14px; writing-mode:vertical-rl; color:rgba(201,168,106,.2); font-family:Cinzel,Georgia,serif; font-size:2.5rem; line-height:1; }
+.world-card { position:relative; min-height: 350px; overflow:hidden; border:1px solid var(--line); border-radius:3px; background:var(--paper); padding:22px; display:flex; flex-direction:column; justify-content:space-between; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 12px rgba(0,0,0,0.08); cursor: pointer; }
+.world-card::before { content: attr(data-kana); position:absolute; top:18px; right:14px; writing-mode:vertical-rl; color:rgba(201,168,106,.2); font-family:Cinzel,Georgia,serif; font-size:2.5rem; line-height:1; transition: color 0.3s ease; }
+.world-card::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(201,168,106,0.08), transparent 70%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
+.world-card:hover::after { opacity: 1; }
 .world-card span { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); }
 .world-card h3 { margin-top: 74px; }
 .world-card p { position:relative; z-index:1; margin:14px 0 0; color:var(--muted); line-height:1.62; }
 .jp-title { display:block; margin-top:16px; color:var(--iris); font-family:Fraunces,Georgia,serif; font-size:1.05rem; }
 .path-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
-.path-card { min-height: 310px; border:1px solid rgba(201,168,106,.3); border-radius:3px; padding:24px; background:rgba(255,255,255,.055); display:flex; flex-direction:column; justify-content:space-between; }
+.path-card { min-height: 310px; border:1px solid rgba(201,168,106,.3); border-radius:3px; padding:24px; background:rgba(255,255,255,.055); display:flex; flex-direction:column; justify-content:space-between; transition: all 0.3s ease; }
 .path-card span { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-soft); }
 .path-card p { color:rgba(232,228,242,.72); line-height:1.65; }
+.world-card:hover { transform: translateY(-8px); box-shadow: 0 16px 32px rgba(201,168,106,0.15); border-color: rgba(201,168,106,0.5); }
+.world-card:hover::before { color: rgba(201,168,106,.4); }
+.path-card:hover { transform: translateY(-4px); border-color: rgba(201,168,106,0.5); background: rgba(255,255,255,.08); }
 @media (max-width:1080px){ .world-grid,.path-grid{grid-template-columns:1fr 1fr} .hero-orrery{opacity:.18;right:-40px;width:420px} }
 @media (max-width:680px){ .world-grid,.path-grid{grid-template-columns:1fr} .hero-orrery{opacity:.12;right:-110px;top:18%;width:340px} }
-@media (prefers-reduced-motion:reduce){ .hero-orrery .ring{animation:none!important} }
+@media (prefers-reduced-motion:reduce){ .hero-orrery .ring{animation:none!important} .world-card:hover, .path-card:hover{transform:none} }
 </style>
 </head>
 <body>
@@ -51,7 +57,25 @@
 <main>
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-media" aria-hidden="true"><img src="../generated/assets/l-sakurapath-hero.png" alt="Stylized Unreal Engine sakura environment render" /></div>
-    <div class="hero-orrery" aria-hidden="true"><svg viewBox="0 0 480 480"><g class="ring"><circle class="orbit" cx="240" cy="240" r="206"/><circle class="node" cx="446" cy="240" r="4"/></g><g class="ring"><circle class="orbit" cx="240" cy="240" r="136"/><path class="axis" d="M104 240h272"/><circle class="node" cx="240" cy="104" r="3.5"/></g><circle class="orbit" cx="240" cy="240" r="34"/><path class="axis" d="M240 50v70M240 360v70M50 240h70M360 240h70"/></svg></div>
+    <div class="constellation-layer" aria-hidden="true">
+      <div class="constellation-line" style="top: 20%; left: 10%; width: 200px; transform: rotate(15deg);"></div>
+      <div class="constellation-line" style="top: 40%; left: 60%; width: 180px; transform: rotate(-25deg);"></div>
+      <div class="constellation-line" style="top: 70%; left: 20%; width: 160px; transform: rotate(35deg);"></div>
+      <div class="constellation-line" style="top: 30%; left: 80%; width: 140px; transform: rotate(-45deg);"></div>
+    </div>
+    <div class="shooting-star" aria-hidden="true"></div>
+    <div class="shooting-star" aria-hidden="true"></div>
+    <div class="shooting-star" aria-hidden="true"></div>
+    <div class="hero-orrery" aria-hidden="true">
+      <svg viewBox="0 0 480 480">
+        <g class="ring"><circle class="orbit" cx="240" cy="240" r="206"/><circle class="node" cx="446" cy="240" r="4"/></g>
+        <g class="ring"><circle class="orbit" cx="240" cy="240" r="136"/><path class="axis" d="M104 240h272"/><circle class="node" cx="240" cy="104" r="3.5"/></g>
+        <g class="ring"><circle class="orbit" cx="240" cy="240" r="176"/><circle class="node" cx="416" cy="240" r="3"/></g>
+        <g class="ring"><circle class="orbit" cx="240" cy="240" r="96"/><circle class="node" cx="336" cy="240" r="2.5"/></g>
+        <circle class="orbit" cx="240" cy="240" r="34"/>
+        <path class="axis" d="M240 50v70M240 360v70M50 240h70M360 240h70"/>
+      </svg>
+    </div>
     <div class="hero-inner">
       <p class="kicker">Environment design / stylized shaders / Unreal integration</p>
       <h1 id="hero-title">Fantasy worlds with technical roots.</h1>
@@ -107,6 +131,54 @@
     </div>
   </section>
 </main>
+
+<script>
+// Enhanced Mouse Parallax Effect
+document.addEventListener('DOMContentLoaded', () => {
+  const hero = document.querySelector('.hero');
+  const heroMedia = document.querySelector('.hero-media');
+  const heroOrrery = document.querySelector('.hero-orrery');
+  const heroInner = document.querySelector('.hero-inner');
+  
+  if (!hero || !heroMedia || !heroOrrery || !heroInner) return;
+  
+  let mouseX = 0;
+  let mouseY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    mouseX = (e.clientX - rect.left) / rect.width - 0.5;
+    mouseY = (e.clientY - rect.top) / rect.height - 0.5;
+  });
+  
+  hero.addEventListener('mouseleave', () => {
+    mouseX = 0;
+    mouseY = 0;
+  });
+  
+  function animate() {
+    // Smooth interpolation
+    currentX += (mouseX - currentX) * 0.05;
+    currentY += (mouseY - currentY) * 0.05;
+    
+    // Apply parallax transforms
+    const parallaxStrength = 20;
+    
+    heroMedia.style.transform = `translate(${currentX * parallaxStrength}px, ${currentY * parallaxStrength}px) scale(1.02)`;
+    heroOrrery.style.transform = `translate(${currentX * parallaxStrength * 2}px, ${currentY * parallaxStrength * 2}px) rotate(${currentX * 5}deg)`;
+    heroInner.style.transform = `translate(${currentX * parallaxStrength * 0.5}px, ${currentY * parallaxStrength * 0.5}px)`;
+    
+    requestAnimationFrame(animate);
+  }
+  
+  // Check for reduced motion preference
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    animate();
+  }
+});
+</script>
 
 <footer class="footer">
   <div class="inner">
