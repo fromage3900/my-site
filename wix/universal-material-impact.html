@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Universal Material Impact | Brennan Shepherd</title>
+  <meta name="description" content="In-scene proof that the universal master material affects the environment read: hero plates, capture slots, and shader family context." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,650;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portfolio-pages.css">
+  <style>
+    .impact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .impact-card{border:1px solid rgba(201,168,106,.35);background:rgba(255,255,255,.72);overflow:hidden}
+    .impact-card .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,rgba(18,24,45,.14),rgba(200,164,94,.10));display:grid;place-items:center;color:rgba(34,26,42,.6);font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+    .impact-card img{width:100%;height:100%;object-fit:cover;display:block}
+    .impact-card .body{padding:16px 18px}
+    .impact-card .body p{color:rgba(34,26,42,.72);line-height:1.6}
+    .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+    .pillrow span{display:inline-flex;align-items:center;padding:7px 9px;border:1px solid rgba(201,168,106,.35);font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#62539c;background:rgba(255,255,255,.55)}
+    @media(max-width:980px){.impact-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="shell-nav" aria-label="Portfolio navigation">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="hero-renders.html">Renders</a>
+      <a href="shader-breakdowns.html">Shaders</a>
+      <a href="geometry-nodes.html">Geometry</a>
+      <a href="render-constellation.html">Intake</a>
+    </nav>
+    <a class="nav-cta" href="commissions.html">Request Work</a>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-media" aria-hidden="true">
+        <img id="leadImg" src="../generated/assets/unreal/hero-hero-level-20260625-055343-1920x1080.png" alt="Universal material impact hero plate" />
+      </div>
+      <div class="hero-inner">
+        <p class="kicker">Universal material / in-scene proof</p>
+        <h1 id="page-title">Show the shader changing the world.</h1>
+        <p class="lede">This page pairs hero plates with capture slots so a reviewer can see the universal master material’s effect on the environment — not just a graph screenshot.</p>
+        <div class="button-row">
+          <a class="button primary" href="../generated/technical/universal-master.html">Universal master page</a>
+          <a class="button" href="../generated/materials_config.json">Materials config</a>
+          <a class="button" href="capture-brief.html">Capture brief</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="band paper">
+      <div class="inner">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Impact Plates</p>
+            <h2>Beauty first, proof beside it.</h2>
+          </div>
+          <p>These cards read from the Unreal intake JSON. When you ingest new breakdown plates (shader graph + meshblend), they will automatically appear here.</p>
+        </div>
+        <div class="impact-grid" id="impactGrid"></div>
+      </div>
+    </section>
+
+    <section class="band deep">
+      <div class="inner">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">What to capture next</p>
+            <h2>Minimum proof for “universal shader” credibility.</h2>
+          </div>
+          <p>These slots correspond to the filenames already listed in the capture brief. Drop them into the render pipeline and rerun ingest.</p>
+        </div>
+        <div class="card-grid two">
+          <article class="card">
+            <span>renders.breakdown</span>
+            <div>
+              <h3>MeshBlend master plate</h3>
+              <p><strong>Filename:</strong> <code>breakdown_shader_meshblend_master_1920x1080.png</code></p>
+              <p><strong>Shows:</strong> the universal master controls + one in-scene crop that clearly reads the blend/layer result.</p>
+            </div>
+          </article>
+          <article class="card">
+            <span>renders.materials</span>
+            <div>
+              <h3>Material family swatch grid</h3>
+              <p><strong>Shows:</strong> consistent response across Zen / Showcase / Baroque families and where the universal master is driving variation.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="inner"><span>Brennan Shepherd / Environment & Technical Artist</span><span>Universal material impact page</span></div></footer>
+
+  <script>
+    const INTAKE_URL = '../generated/unreal_portfolio_intake.json';
+    function esc(value){return String(value == null ? '' : value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
+    function byPriorityDesc(a,b){return (b.priority||0)-(a.priority||0);}
+
+    function renderCard(card, label){
+      const title = esc(card.filename || label || 'Plate');
+      const caption = esc(card.caption || '');
+      const web = esc(card.web_path || '');
+      const media = web ? `<img src="${web}" alt="${title}" />` : `<div class="thumb">Missing plate</div>`;
+      return `
+        <article class="impact-card">
+          <div class="thumb">${media}</div>
+          <div class="body">
+            <div class="pillrow">
+              <span>${esc(card.group || 'plate')}</span>
+              <span>${esc(card.status || 'pending')}</span>
+            </div>
+            <h3>${title}</h3>
+            <p>${caption || 'In-scene proof slot.'}</p>
+          </div>
+        </article>
+      `;
+    }
+
+    async function main(){
+      const res = await fetch(INTAKE_URL, { cache: 'no-store' });
+      const intake = await res.json();
+      const cards = Array.isArray(intake.render_cards) ? intake.render_cards : [];
+      const heroes = cards.filter(c=>c.group==='hero' && c.web_path).sort(byPriorityDesc);
+      if (heroes[0] && heroes[0].web_path){
+        const img = document.getElementById('leadImg');
+        img.src = heroes[0].web_path;
+        img.alt = heroes[0].filename || 'Hero plate';
+      }
+
+      const materials = cards.filter(c=>c.group==='materials' && c.web_path).sort(byPriorityDesc);
+      const breakdowns = cards.filter(c=>c.group==='breakdown' && c.web_path).sort(byPriorityDesc);
+
+      const grid = document.getElementById('impactGrid');
+      const entries = [];
+      if (heroes[0]) entries.push(renderCard(heroes[0], 'Hero plate'));
+      if (materials[0]) entries.push(renderCard(materials[0], 'Materials grid'));
+      if (breakdowns[0]) entries.push(renderCard(breakdowns[0], 'Breakdown plate'));
+      if (breakdowns[1]) entries.push(renderCard(breakdowns[1], 'Breakdown plate'));
+
+      if (!entries.length){
+        grid.innerHTML = '<p>No plates found yet. Run the Unreal ingest pipeline so <code>generated/unreal_portfolio_intake.json</code> includes web paths.</p>';
+        return;
+      }
+      grid.innerHTML = entries.join('');
+    }
+    main().catch((err)=>{
+      const grid = document.getElementById('impactGrid');
+      if (grid) grid.innerHTML = '<p>Failed to load intake JSON. Ensure <code>generated/unreal_portfolio_intake.json</code> exists.</p>';
+      console.error(err);
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,97 @@
+{
+  "global": {
+    "brand": "Brennan Shepherd",
+    "footer": {
+      "left": "Brennan Shepherd / Environment & Technical Artist",
+      "right": "Melodia editorial portfolio"
+    },
+    "nav": {
+      "home": "Home",
+      "renders": "Renders",
+      "shaders": "Shaders",
+      "geometry": "Geometry",
+      "hub": "Application Hub",
+      "commissions": "Commissions"
+    }
+  },
+  "pages": {
+    "sakura-case-study": {
+      "title": "Sakura Case Study | Brennan Shepherd",
+      "meta_description": "A focused Melodia case study for Sakura Dream: shrine-axis composition, stylized materials, PCG route proof, and Unreal portfolio renders.",
+      "hero": {
+        "kicker": "World 01 / Sakura Dream / 桜の夢",
+        "headline": "A calm route through petal light.",
+        "headline_em": "Readable magic.",
+        "lede": "Sakura Path is the mood pillar of the portfolio: a shrine approach you can read in one scroll, with warm lacquer, soft bloom, and material families that prove the world is designed—not decorated.",
+        "cta_primary": "Hero render gallery",
+        "cta_secondary": "Shader breakdowns"
+      },
+      "passport": [
+        { "label": "World", "value": "Sakura Dream" },
+        { "label": "Scene", "value": "ZenForestTest" },
+        { "label": "Route spine", "value": "Torii → Sando → Kairo → Haiden" },
+        { "label": "Review time", "value": "3 min" }
+      ],
+      "intent": {
+        "eyebrow": "Design Intent",
+        "headline": "Composition first, systems in support.",
+        "lede": "The case study stays focused on what recruiters feel in the first ten seconds: atmosphere, route clarity, and surface language. Technical proof links out—nothing buried in a manifest drawer.",
+        "feature_caption": "The hero read is a playable mood: negative space, warm landmarks, and a destination you want to reach.",
+        "beats": [
+          {
+            "tag": "Atmosphere",
+            "title": "Soft bloom, petal drift, dusk warmth",
+            "body": "Lighting and post favor readable fantasy over noise—enough bloom to feel magical, not enough to lose the path."
+          },
+          {
+            "tag": "Traversal",
+            "title": "Shrine axis you can explain in one sentence",
+            "body": "Torii gate, sando walk, covered corridor, and platform read as a sequence—not random kitbash."
+          },
+          {
+            "tag": "Surfaces",
+            "title": "Universal material families with Nikki polish",
+            "body": "Moss, lacquer, lantern warmth, ink-wash stone, and petal sheen share one master graph so the world feels authored."
+          }
+        ]
+      },
+      "axis": {
+        "eyebrow": "Shrine Axis",
+        "headline": "ZEN_SHRINE_AXIS as composition logic.",
+        "lede": "The route is the story. PCG and scatter respect exclusion zones around the path, pond, and gate so dressing supports traversal instead of fighting it.",
+        "steps": [
+          { "label": "01 / Torii", "title": "GB_ZEN_TORII", "body": "Gate silhouette and vermillion read anchor the approach." },
+          { "label": "02 / Sando", "title": "GB_ZEN_SANDO", "body": "Stepping stones and path width keep the walk legible." },
+          { "label": "03 / Kairo", "title": "GB_ZEN_KAIRO", "body": "Corridor rhythm frames midground depth and pause." },
+          { "label": "04 / Haiden", "title": "GB_ZEN_HAIDEN", "body": "Platform destination closes the composition loop." }
+        ]
+      },
+      "proof": {
+        "eyebrow": "Live Plates",
+        "headline": "Manifest-backed renders.",
+        "lede": "Hero and material plates update when Unreal ingest runs. Breakdown and PCG slots show what to capture next."
+      },
+      "craft": {
+        "eyebrow": "Production Support",
+        "headline": "What holds the mood up.",
+        "lede": "Three systems recruiters can click through after the mood lands.",
+        "cards": [
+          { "tag": "Shaders", "title": "M_Master_Toon_Universal", "body": "Layered stylized surfaces, MeshBlend, trim response, and instance families grouped for breakdown cards." },
+          { "tag": "PCG", "title": "Route-safe scatter", "body": "Heatmap exclusion around path, pond, and torii keeps procedural dressing readable in beauty shots." },
+          { "tag": "Pipeline", "title": "Unreal → web intake", "body": "Render exporter, ingest script, and Melodia pages so new captures land without rebuilding HTML." }
+        ]
+      },
+      "next": {
+        "eyebrow": "Continue the read",
+        "headline": "Proof links in order.",
+        "lede": "Mood here, then shaders, then intake status.",
+        "links": [
+          { "step": "01 / Hub", "title": "Application Hub", "body": "Full dossier for Infold and recruiter review.", "href": "application-hub.html" },
+          { "step": "02 / Plates", "title": "Hero Renders", "body": "Current beauty frames from Unreal intake.", "href": "hero-renders.html" },
+          { "step": "03 / Shader", "title": "Universal Material Impact", "body": "How the master graph reads in scene.", "href": "universal-material-impact.html" },
+          { "step": "04 / PCG", "title": "PCG System Impact", "body": "Route proof and heatmap story.", "href": "pcg-system-impact.html" }
+        ]
+      }
+    }
+  }
+}
