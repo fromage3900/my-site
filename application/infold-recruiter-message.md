@@ -1,11 +1,15 @@
 ﻿# Infold Recruiter Message
 
-Hi [Name], I am Brennan Shepherd, a final-year Humber 3D Animation student and stylized environment designer focused on Unreal integration, shader lookdev, retopology, and readable fantasy worldbuilding.
+Hi [Name] — I’m Brennan Shepherd. I’m a technical environment artist focused on UE5 Substrate materials + PCG, with a stylized / wonder-forward art direction bias.
 
-I put together a short Melodia-style reviewer path here:
-https://fromage3900.github.io/my-site/wix/application-hub.html
+Here’s the short portfolio path (4 links max):
 
-The quickest read is: Application Hub, Sakura Case Study, Shader Breakdowns, then Art Test Readiness. I am especially interested in teams building wonder-forward worlds where visual charm, production systems, and global art direction all have to work together.
+- Home (hero + portals): `https://fromage3900.github.io/my-site/wix/index.html`
+- Sakura case study (environment story): `https://fromage3900.github.io/my-site/wix/sakura-case-study.html`
+- Shader breakdowns (Substrate / systems proof): `https://fromage3900.github.io/my-site/wix/shader-breakdowns.html`
+- One-sheet (at a glance): `https://fromage3900.github.io/my-site/wix/recruiter-one-sheet.html`
+
+I’m applying to Infold because Infinity Nikki is exactly the kind of “pretty, readable, engineered” world I want to help ship. If it’s useful, I can walk through the universal toon master and the procedural dressing rules in 10 minutes.
 
 Thanks for taking a look,
 Brennan Shepherd
