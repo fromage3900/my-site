@@ -53,7 +53,8 @@
                                            "Add MeshBlend graph plate to renders.breakdown",
                                            "Add CelestialNebula starmap plate for Space Cathedral",
                                            "Add Sakura Niagara ambience proof",
-                                           "Add PCG route proof against ZEN_SHRINE_AXIS"
+                                           "Capture hero + PCG proof for each L_WP_* pillar (SakuraDream, SpaceCathedral, BaroqueGrotto, CosmicOrrery)",
+                                           "Add PCG route proof against ZEN_SHRINE_AXIS (legacy ZenForest reference only)"
                                        ]
                          },
                          {

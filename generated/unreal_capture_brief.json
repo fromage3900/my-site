@@ -100,6 +100,94 @@
                               "capture":  "Iridescence, sheen, sparkle, and soft pastel grading comparison across Sakura material instances.",
                               "proves":  "The surface direction is intentionally fashion-fantasy and Infold-adjacent while remaining original.",
                               "preferred_filename":  "materials_nikki_surface_polish_2048x2048.png"
+                          },
+                          {
+                              "id":  "wp-sakuradream-hero",
+                              "priority":  7,
+                              "destination_group":  "renders.hero",
+                              "target_page":  "wix/render-constellation.html",
+                              "level":  "/Game/EnvSandbox/Environments/WP/L_WP_SakuraDream",
+                              "title":  "SakuraDream WP pillar hero",
+                              "capture":  "Cam_Hero_Establishing beauty plate after meadow PCG + MeshTerrain block-in.",
+                              "proves":  "Owned Sakura pillar reads as warm stylized environment, not ZenForest derivative.",
+                              "preferred_filename":  "hero_l_wp_sakuradream_1920x1080.png"
+                          },
+                          {
+                              "id":  "wp-sakuradream-pcg",
+                              "priority":  8,
+                              "destination_group":  "renders.pcg",
+                              "target_page":  "wix/render-constellation.html",
+                              "level":  "/Game/EnvSandbox/Environments/WP/L_WP_SakuraDream",
+                              "title":  "SakuraDream meadow PCG proof",
+                              "capture":  "PCG_MeadowBloom volume with ISM count overlay or debug view + hero crop.",
+                              "proves":  "Meadow falloff dressing works on WP pillar terrain.",
+                              "preferred_filename":  "pcg_l_wp_sakuradream_1920x1080.png"
+                          },
+                          {
+                              "id":  "wp-spacecathedral-hero",
+                              "priority":  9,
+                              "destination_group":  "renders.hero",
+                              "target_page":  "wix/render-constellation.html",
+                              "level":  "/Game/EnvSandbox/Environments/WP/L_WP_SpaceCathedral",
+                              "title":  "SpaceCathedral WP pillar hero",
+                              "capture":  "Cam_Hero_Establishing with cool volumetric shafts and Escher architectural rhythm.",
+                              "proves":  "Space Cathedral pillar has distinct cosmic-architectural identity.",
+                              "preferred_filename":  "hero_l_wp_spacecathedral_1920x1080.png"
+                          },
+                          {
+                              "id":  "wp-spacecathedral-pcg",
+                              "priority":  10,
+                              "destination_group":  "renders.pcg",
+                              "target_page":  "wix/render-constellation.html",
+                              "level":  "/Game/EnvSandbox/Environments/WP/L_WP_SpaceCathedral",
+                              "title":  "SpaceCathedral Escher PCG proof",
+                              "capture":  "PCG_EscherRelativityRoom scatter with graph or overlay + beauty crop.",
+                              "proves":  "Escher graph dresses cathedral-scale space without breaking readability.",
+                              "preferred_filename":  "pcg_l_wp_spacecathedral_1920x1080.png"
+                          },
+                          {
+                              "id":  "wp-baroquegrotto-hero",
+                              "priority":  11,
+                              "destination_group":  "renders.hero",
+                              "target_page":  "wix/render-constellation.html",
+                              "level":  "/Game/EnvSandbox/Environments/WP/L_WP_BaroqueGrotto",
+                              "title":  "BaroqueGrotto WP pillar hero",
+                              "capture":  "Enclosed wet-rock mood with mist and localized emissive accents.",
+                              "proves":  "Grotto pillar reads enclosed and biolume-friendly.",
+                              "preferred_filename":  "hero_l_wp_baroquegrotto_1920x1080.png"
+                          },
+                          {
+                              "id":  "wp-baroquegrotto-pcg",
+                              "priority":  12,
+                              "destination_group":  "renders.pcg",
+                              "target_page":  "wix/render-constellation.html",
+                              "level":  "/Game/EnvSandbox/Environments/WP/L_WP_BaroqueGrotto",
+                              "title":  "BaroqueGrotto strata PCG proof",
+                              "capture":  "RockScatter + WallMoss volumes with ISM proof and hero crop.",
+                              "proves":  "Cave/strata dressing baseline on grotto terrain.",
+                              "preferred_filename":  "pcg_l_wp_baroquegrotto_1920x1080.png"
+                          },
+                          {
+                              "id":  "wp-cosmicorrery-hero",
+                              "priority":  13,
+                              "destination_group":  "renders.hero",
+                              "target_page":  "wix/render-constellation.html",
+                              "level":  "/Game/EnvSandbox/Environments/WP/L_WP_CosmicOrrery",
+                              "title":  "CosmicOrrery WP pillar hero",
+                              "capture":  "Night cosmic palette with MI_Show_CelestialNebula terrain and controlled sparkle.",
+                              "proves":  "Cosmic pillar uses owned starmap/nebula language.",
+                              "preferred_filename":  "hero_l_wp_cosmicorrery_1920x1080.png"
+                          },
+                          {
+                              "id":  "wp-cosmicorrery-pcg",
+                              "priority":  14,
+                              "destination_group":  "renders.pcg",
+                              "target_page":  "wix/render-constellation.html",
+                              "level":  "/Game/EnvSandbox/Environments/WP/L_WP_CosmicOrrery",
+                              "title":  "CosmicOrrery orbit scatter proof",
+                              "capture":  "PCG_Cosmic_OrbitScatter radial distribution + emissive point read.",
+                              "proves":  "Orbital scatter supports constellation/orrery staging.",
+                              "preferred_filename":  "pcg_l_wp_cosmicorrery_1920x1080.png"
                           }
                       ],
     "acceptance_checks":  [
