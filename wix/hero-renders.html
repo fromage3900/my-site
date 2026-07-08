@@ -1,60 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="hero-renders">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Hero Renders | Brennan Shepherd</title>
+<meta name="description" content="Beauty frames from Brennan Shepherd's Unreal environments." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,650;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="portfolio-pages.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-fashion-editorial.css">
 </head>
 <body>
-<header class="shell-nav" aria-label="Portfolio navigation"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a><nav class="nav-links" aria-label="Sections"><a href="index.html">Home</a><a href="hero-renders.html">Renders</a><a href="shader-breakdowns.html">Shaders</a><a href="geometry-nodes.html">Geometry</a><a href="commissions.html">Commissions</a></nav><a class="nav-cta" href="commissions.html">Request Work</a></header>
+<div class="melodia-shell fashion-mode">
+<header class="shell-nav" aria-label="Portfolio navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span data-copy="global.brand">Brennan Shepherd</span></a>
+  <nav class="nav-links" aria-label="Sections"><a href="index.html">Home</a><a href="shader-breakdowns.html">Shaders</a><a href="commissions.html">Commissions</a></nav>
+  <a class="nav-cta" href="commissions.html">Request Work</a>
+</header>
 <main>
-<section class="hero" aria-labelledby="page-title"><div class="hero-media" aria-hidden="true"><img id="heroLeadImage" src="../generated/assets/unreal/hero-hero-level-20260625-055343-1920x1080.png" alt="Stylized Unreal Engine hero render" /></div><div class="hero-inner"><p class="kicker">Hero render gallery</p><h1 id="page-title">Portfolio renders staged for first impression.</h1><p class="lede">This page reads the latest Unreal intake and always points at the current hero plates copied into the web bundle.</p><div class="button-row"><a class="button primary" href="render-constellation.html">Open Render Constellation</a><a class="button" href="../generated/unreal_portfolio_intake.json">Intake JSON</a><a class="button" href="../generated/renders_config.json">Renders config</a></div></div></section>
-<section class="band paper"><div class="inner"><div class="section-head"><div><p class="eyebrow">Hero Renders</p><h2>Atmosphere first, technical proof close behind.</h2></div><p>These frames are manifest-backed. When you ingest new Unreal captures, this grid updates automatically (no HTML edits).</p></div><div class="image-grid" id="heroGrid"></div></div></section>
-<section class="band deep"><div class="inner"><div class="section-head"><div><p class="eyebrow">Render Uses</p><h2>Where the frames go.</h2></div><p>Each render is meant to work as a first-scroll website signal, a Wix iframe background, a social cover, or a case-study opener.</p></div><div class="card-grid"><article class="card"><span>Website</span><div><h3>Full-bleed hero</h3><p>GitHub Pages root and Wix iframe entry point.</p></div></article><article class="card"><span>Recruiting</span><div><h3>Application frame</h3><p>A fast proof of taste before technical breakdowns.</p></div></article><article class="card"><span>Pipeline</span><div><h3>Manifest-backed</h3><p>Renders stay tracked through JSON metadata for repeatable updates.</p></div></article></div></div></section>
+<section class="hero" aria-labelledby="page-title">
+  <div class="hero-media" aria-hidden="true"><img id="heroLeadImage" src="../generated/assets/unreal/hero-hero-level-20260625-055343-1920x1080.png" alt="Hero render" /></div>
+  <div class="star-layer" aria-hidden="true"></div>
+  <div class="texture-layer" aria-hidden="true"></div>
+  <div class="melodia-orrery" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="kicker magazine-kicker" data-copy="pages.hero-renders.hero.kicker">Render gallery</p>
+    <h1 id="page-title" data-copy="pages.hero-renders.hero.headline">Beauty shots I'm using right now.</h1>
+    <p class="lede" data-copy="pages.hero-renders.hero.lede">These pull from my latest Unreal exports. When I capture new angles, ingest refreshes this grid.</p>
+    <div class="hero-actions"><a class="button primary" href="render-constellation.html">Render intake</a><a class="button" href="sakura-case-study.html">Sakura case study</a></div>
+  </div>
+</section>
+<section class="band paper fashion-band">
+  <div class="section-orrery atelier-slot" data-orrery="atelier" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="editorial-rule"><span class="diamond" aria-hidden="true"></span><span data-copy="pages.hero-renders.gallery.eyebrow">Plates</span><span class="diamond" aria-hidden="true"></span></div>
+    <div class="section-head"><div><h2 data-copy="pages.hero-renders.gallery.headline">Current heroes.</h2></div><p class="human-lede" data-copy="pages.hero-renders.gallery.lede">Click for full size. Newest stuff tends to float to the top.</p></div>
+    <div class="image-grid lookbook-grid" id="heroGrid"></div>
+  </div>
+</section>
+<section class="band astral fashion-band">
+  <div class="inner">
+    <div class="section-head"><div><p class="eyebrow" data-copy="pages.hero-renders.uses.eyebrow">Where they go</p><h2 data-copy="pages.hero-renders.uses.headline">Not just portfolio filler.</h2></div><p class="human-lede" data-copy="pages.hero-renders.uses.lede">Same frames end up on the homepage, Wix embeds, case studies — shoot once, use everywhere.</p></div>
+    <div class="alignment-grid" id="useCards"></div>
+  </div>
+</section>
 </main>
-<footer class="footer"><div class="inner"><span>Brennan Shepherd / Environment & Technical Artist</span><span>GitHub Pages + Wix iframe portfolio</span></div></footer>
-<script>
-const INTAKE_URL = '../generated/unreal_portfolio_intake.json';
-function esc(value){return String(value == null ? '' : value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
-function pickLead(heroCards){
-  const sorted = [...heroCards].sort((a,b)=>(b.priority||0)-(a.priority||0));
-  return sorted[0] || null;
-}
-async function main(){
-  const res = await fetch(INTAKE_URL, { cache: 'no-store' });
-  const intake = await res.json();
-  const cards = Array.isArray(intake.render_cards) ? intake.render_cards : [];
-  const heroes = cards.filter(c=>c.group === 'hero' && c.web_path);
-  const lead = pickLead(heroes);
-  if (lead && lead.web_path){
-    const img = document.getElementById('heroLeadImage');
-    img.src = lead.web_path;
-    img.alt = lead.filename || 'Hero render';
-  }
-  const grid = document.getElementById('heroGrid');
-  if (!heroes.length){
-    grid.innerHTML = '<p>No hero plates found yet. Run the Unreal ingest pipeline to populate <code>generated/assets/unreal/</code>.</p>';
-    return;
-  }
-  grid.innerHTML = heroes
-    .sort((a,b)=>(b.priority||0)-(a.priority||0))
-    .map(card=>{
-      const href = esc(card.web_path);
-      const title = esc(card.filename || 'Hero plate');
-      const caption = esc(card.caption || 'Environment hero render plate.');
-      return `<a class="image-card" href="${href}"><img src="${href}" alt="${title}" /><div><h3>${title}</h3><p>${caption}</p></div></a>`;
-    })
-    .join('');
-}
-main().catch((err)=>{
-  const grid = document.getElementById('heroGrid');
-  if (grid) grid.innerHTML = '<p>Failed to load intake JSON. Check that <code>generated/unreal_portfolio_intake.json</code> exists.</p>';
-  console.error(err);
-});
-</script>
+<footer class="footer"><div class="inner"><span data-copy="global.footer.left">Brennan Shepherd / Environment & Technical Artist</span><span>Hero renders</span></div></footer>
+</div>
+<script src="melodia-orrery-system.js"></script>
+<script src="melodia-editorial.js"></script>
+<script>MelodiaEditorial.init({ page: 'hero-renders', intake: true, heroGrid: true });</script>
 </body>
 </html>

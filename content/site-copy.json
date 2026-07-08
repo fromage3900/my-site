@@ -1,6 +1,8 @@
 {
   "global": {
     "brand": "Brennan Shepherd",
+    "home_title": "Brennan Shepherd | Environment & Stylized Art",
+    "home_description": "Brennan Shepherd — stylized environment work, Unreal shaders, and fantasy worlds built like a fashion lookbook.",
     "footer": {
       "left": "Brennan Shepherd / Environment & Technical Artist",
       "right": "Melodia editorial portfolio"
@@ -15,81 +17,231 @@
     }
   },
   "pages": {
+    "recruiter-one-sheet": {
+      "title": "Recruiter One-Sheet | Brennan Shepherd",
+      "meta_description": "Quick read on Brennan Shepherd — stylized environment art, Unreal, and where to click next.",
+      "hero": {
+        "kicker": "One-sheet",
+        "headline": "Pretty worlds. Real pipeline underneath.",
+        "lede": "I'm Brennan — final year at Humber, mostly building dreamy fantasy environments in Unreal and Blender. I care a lot about how a place feels when you first walk in, and almost as much about whether the shaders and layout still make sense a week later."
+      },
+      "at_a_glance": {
+        "eyebrow": "At a glance",
+        "headline": "Where I fit.",
+        "lede": "Short on purpose. If you've only got a couple minutes, this is the gist.",
+        "cards": [
+          {
+            "tag": "Primary",
+            "title": "Stylized environment artist",
+            "body": "Mood, composition, routes you want to walk, materials that read from far away and still hold up in a close-up."
+          },
+          {
+            "tag": "Also",
+            "title": "Technical art curious",
+            "body": "Shader graphs, PCG, Geometry Nodes — I'm not pretending to be a senior TA, but I like building systems that save future-me from repainting the same rock."
+          },
+          {
+            "tag": "The vibe",
+            "title": "Fashion-fantasy editorial",
+            "body": "Think lookbook meets game world: gold trim energy, soft bloom, a little impossible geometry — but still readable."
+          }
+        ]
+      },
+      "best_proof": {
+        "eyebrow": "Start here",
+        "headline": "Links I'd actually send.",
+        "lede": "If you're deciding whether to keep scrolling, these are the pages I'm proudest of right now.",
+        "links": [
+          { "step": "01", "title": "Resume", "body": "Tools, school, past work, the boring useful stuff.", "href": "resume.html" },
+          { "step": "02", "title": "World Bible", "body": "Four world directions and what I'm trying to prove in each.", "href": "world-bible.html" },
+          { "step": "03", "title": "Sakura Case Study", "body": "The most finished mood piece — shrine path, materials, the whole feeling.", "href": "sakura-case-study.html" },
+          { "step": "04", "title": "Shader Breakdowns", "body": "Where the stylized material work lives.", "href": "shader-breakdowns.html" },
+          { "step": "05", "title": "Production Roadmap", "body": "What I'm building next and what's still rough.", "href": "production-roadmap.html" },
+          { "step": "06", "title": "Art Test Readiness", "body": "How I'd tackle a timed stylized slice.", "href": "art-test-readiness.html" }
+        ]
+      },
+      "renders": {
+        "eyebrow": "Hero renders",
+        "headline": "A few beauty frames.",
+        "lede": "Pulled from whatever I last exported out of Unreal — updates when I run the ingest script."
+      },
+      "portals": {
+        "eyebrow": "Go deeper",
+        "headline": "Pick a door.",
+        "lede": "Freelance work, the Sakura write-up, or the full Infold application hub.",
+        "links": [
+          {
+            "step": "✦ Work",
+            "title": "Commissions",
+            "body": "Kitbash help, polish passes, stylized UE scenes — the freelance side.",
+            "href": "commissions.html",
+            "accent": "gold"
+          },
+          {
+            "step": "✦ Mood",
+            "title": "Sakura Case Study",
+            "body": "~3 minutes on the shrine path, the look, and why the route matters.",
+            "href": "sakura-case-study.html",
+            "accent": "sakura"
+          },
+          {
+            "step": "✦ Apply",
+            "title": "Infold Portfolio",
+            "body": "The longer application read — worlds, craft notes, review order.",
+            "href": "application-hub.html",
+            "accent": "iris"
+          }
+        ]
+      }
+    },
     "sakura-case-study": {
       "title": "Sakura Case Study | Brennan Shepherd",
-      "meta_description": "A focused Melodia case study for Sakura Dream: shrine-axis composition, stylized materials, PCG route proof, and Unreal portfolio renders.",
+      "meta_description": "Sakura Dream — shrine path mood, materials, and the axis I used to lay the scene out.",
       "hero": {
         "kicker": "World 01 / Sakura Dream / 桜の夢",
-        "headline": "A calm route through petal light.",
-        "headline_em": "Readable magic.",
-        "lede": "Sakura Path is the mood pillar of the portfolio: a shrine approach you can read in one scroll, with warm lacquer, soft bloom, and material families that prove the world is designed—not decorated.",
-        "cta_primary": "Hero render gallery",
-        "cta_secondary": "Shader breakdowns"
+        "headline": "A walk I want to take.",
+        "headline_em": "Not just a screenshot.",
+        "lede": "This is the mood pillar of the portfolio: torii, stone path, soft light through petals. I built it to feel calm first — the technical notes are linked below when you want them.",
+        "cta_primary": "Hero renders",
+        "cta_secondary": "Shader notes"
       },
       "passport": [
         { "label": "World", "value": "Sakura Dream" },
         { "label": "Scene", "value": "ZenForestTest" },
-        { "label": "Route spine", "value": "Torii → Sando → Kairo → Haiden" },
-        { "label": "Review time", "value": "3 min" }
+        { "label": "Spine", "value": "Torii → Sando → Kairo → Haiden" },
+        { "label": "Read", "value": "~3 min" }
       ],
       "intent": {
-        "eyebrow": "Design Intent",
-        "headline": "Composition first, systems in support.",
-        "lede": "The case study stays focused on what recruiters feel in the first ten seconds: atmosphere, route clarity, and surface language. Technical proof links out—nothing buried in a manifest drawer.",
-        "feature_caption": "The hero read is a playable mood: negative space, warm landmarks, and a destination you want to reach.",
+        "eyebrow": "Why this scene",
+        "headline": "Mood before metrics.",
+        "lede": "I tried to make the first ten seconds feel like arriving somewhere — not like opening a tech demo.",
+        "feature_caption": "Wide enough to breathe, tight enough that your eye finds the gate.",
         "beats": [
           {
-            "tag": "Atmosphere",
-            "title": "Soft bloom, petal drift, dusk warmth",
-            "body": "Lighting and post favor readable fantasy over noise—enough bloom to feel magical, not enough to lose the path."
+            "tag": "Light",
+            "title": "Dusk, bloom, a little petal drift",
+            "body": "Enough glow to feel magical. Not so much that you lose the path."
           },
           {
-            "tag": "Traversal",
-            "title": "Shrine axis you can explain in one sentence",
-            "body": "Torii gate, sando walk, covered corridor, and platform read as a sequence—not random kitbash."
+            "tag": "Walk",
+            "title": "You can explain the route out loud",
+            "body": "Gate → path → corridor → platform. Not random props scattered for noise."
           },
           {
             "tag": "Surfaces",
-            "title": "Universal material families with Nikki polish",
-            "body": "Moss, lacquer, lantern warmth, ink-wash stone, and petal sheen share one master graph so the world feels authored."
+            "title": "One material family, lots of instances",
+            "body": "Lacquer, moss, stone, lantern warmth — same master graph, different MI tweaks."
           }
         ]
       },
       "axis": {
-        "eyebrow": "Shrine Axis",
-        "headline": "ZEN_SHRINE_AXIS as composition logic.",
-        "lede": "The route is the story. PCG and scatter respect exclusion zones around the path, pond, and gate so dressing supports traversal instead of fighting it.",
+        "eyebrow": "Shrine axis",
+        "headline": "The walk is the layout.",
+        "lede": "I use ZEN_SHRINE_AXIS as a spine so PCG and dressing know where not to clutter.",
         "steps": [
-          { "label": "01 / Torii", "title": "GB_ZEN_TORII", "body": "Gate silhouette and vermillion read anchor the approach." },
-          { "label": "02 / Sando", "title": "GB_ZEN_SANDO", "body": "Stepping stones and path width keep the walk legible." },
-          { "label": "03 / Kairo", "title": "GB_ZEN_KAIRO", "body": "Corridor rhythm frames midground depth and pause." },
-          { "label": "04 / Haiden", "title": "GB_ZEN_HAIDEN", "body": "Platform destination closes the composition loop." }
+          { "label": "01 / Torii", "title": "GB_ZEN_TORII", "body": "The gate has to read from far away — that's the whole composition anchor." },
+          { "label": "02 / Sando", "title": "GB_ZEN_SANDO", "body": "Stepping stones and width — this is where traversal clarity lives." },
+          { "label": "03 / Kairo", "title": "GB_ZEN_KAIRO", "body": "Corridor rhythm, a pause before the last beat." },
+          { "label": "04 / Haiden", "title": "GB_ZEN_HAIDEN", "body": "The platform you were walking toward the whole time." }
         ]
       },
       "proof": {
-        "eyebrow": "Live Plates",
-        "headline": "Manifest-backed renders.",
-        "lede": "Hero and material plates update when Unreal ingest runs. Breakdown and PCG slots show what to capture next."
+        "eyebrow": "Plates",
+        "headline": "What's on the site right now.",
+        "lede": "Updates when I export from Unreal and run ingest — no hand-editing the grid."
       },
       "craft": {
-        "eyebrow": "Production Support",
-        "headline": "What holds the mood up.",
-        "lede": "Three systems recruiters can click through after the mood lands.",
+        "eyebrow": "Under the hood",
+        "headline": "What holds it up.",
+        "lede": "Click through if you care about shaders, PCG, or how this gets to the website.",
         "cards": [
-          { "tag": "Shaders", "title": "M_Master_Toon_Universal", "body": "Layered stylized surfaces, MeshBlend, trim response, and instance families grouped for breakdown cards." },
-          { "tag": "PCG", "title": "Route-safe scatter", "body": "Heatmap exclusion around path, pond, and torii keeps procedural dressing readable in beauty shots." },
-          { "tag": "Pipeline", "title": "Unreal → web intake", "body": "Render exporter, ingest script, and Melodia pages so new captures land without rebuilding HTML." }
+          { "tag": "Shaders", "title": "M_Master_Toon_Universal", "body": "My main stylized surface — instances for moss, lacquer, petals, trim." },
+          { "tag": "PCG", "title": "Scatter with rules", "body": "Heatmap keeps foliage off the path and pond so shots stay readable." },
+          { "tag": "Web", "title": "Unreal → here", "body": "Render script, ingest, these pages — so I'm not rebuilding HTML every capture." }
         ]
       },
       "next": {
-        "eyebrow": "Continue the read",
-        "headline": "Proof links in order.",
-        "lede": "Mood here, then shaders, then intake status.",
+        "eyebrow": "Next",
+        "headline": "Keep going.",
+        "lede": "Hub for the full application read, or the shader / PCG impact pages.",
         "links": [
-          { "step": "01 / Hub", "title": "Application Hub", "body": "Full dossier for Infold and recruiter review.", "href": "application-hub.html" },
-          { "step": "02 / Plates", "title": "Hero Renders", "body": "Current beauty frames from Unreal intake.", "href": "hero-renders.html" },
-          { "step": "03 / Shader", "title": "Universal Material Impact", "body": "How the master graph reads in scene.", "href": "universal-material-impact.html" },
-          { "step": "04 / PCG", "title": "PCG System Impact", "body": "Route proof and heatmap story.", "href": "pcg-system-impact.html" }
+          { "step": "01 / Hub", "title": "Application Hub", "body": "Infold-facing portfolio — longer, more context.", "href": "application-hub.html" },
+          { "step": "02 / Plates", "title": "Hero Renders", "body": "All the beauty frames in one grid.", "href": "hero-renders.html" },
+          { "step": "03 / Shader", "title": "Universal Material Impact", "body": "Does the master graph actually show up in scene?", "href": "universal-material-impact.html" },
+          { "step": "04 / PCG", "title": "PCG System Impact", "body": "Route proof and heatmap.", "href": "pcg-system-impact.html" }
+        ]
+      }
+    },
+    "hero-renders": {
+      "title": "Hero Renders | Brennan Shepherd",
+      "meta_description": "Beauty frames from Brennan Shepherd's Unreal environments.",
+      "hero": {
+        "kicker": "Render gallery",
+        "headline": "Beauty shots I'm using right now.",
+        "lede": "These pull from my latest Unreal exports. When I capture new angles, ingest refreshes this grid — I don't touch the HTML."
+      },
+      "gallery": {
+        "eyebrow": "Plates",
+        "headline": "Current heroes.",
+        "lede": "Click for full size. Newest stuff tends to float to the top."
+      },
+      "uses": {
+        "eyebrow": "Where they go",
+        "headline": "Not just portfolio filler.",
+        "lede": "Same frames end up on the homepage, Wix embeds, case studies, sometimes ArtStation — I try to shoot once, use everywhere.",
+        "cards": [
+          { "tag": "Site", "title": "First scroll", "body": "Homepage and hero sections — the 'do I like this person's eye' moment." },
+          { "tag": "Apply", "title": "Recruiter skim", "body": "One strong frame before someone clicks into shaders or the case study." },
+          { "tag": "Pipeline", "title": "Tracked in JSON", "body": "So I know which file is live and don't accidentally ship an old PNG." }
+        ]
+      }
+    },
+    "shader-breakdowns": {
+      "title": "Shader Breakdowns | Brennan Shepherd",
+      "meta_description": "Stylized Unreal materials — universal master, water, trims, PCG surfaces.",
+      "hero": {
+        "kicker": "Unreal shaders",
+        "headline": "Materials I actually use in the worlds.",
+        "lede": "Not every graph is finished — but the families here are the ones I'd put in front of an art director. New impact pages tie shaders back to in-scene proof."
+      },
+      "signals": {
+        "eyebrow": "Right now",
+        "headline": "What I'm pushing in captures.",
+        "lede": "The list I'd give myself before a render night."
+      },
+      "pages": {
+        "eyebrow": "Breakdown index",
+        "headline": "Drill into one system.",
+        "lede": "Each link is a different slice — master graph, water, trims, particles, PCG handoff."
+      }
+    },
+    "commissions": {
+      "title": "Commissions | Brennan Shepherd",
+      "meta_description": "Freelance stylized environment work — kitbash, polish, renders, breakdown pages.",
+      "hero": {
+        "kicker": "Commissions",
+        "headline": "I take on select freelance work.",
+        "lede": "Environment kitbash, lookdev passes, hero renders, and the occasional breakdown page if you want something that looks like this site. Rates are flexible while I'm building the book — message me with scope."
+      },
+      "packages": {
+        "eyebrow": "Menu",
+        "headline": "Clear-ish offers.",
+        "lede": "Pricing is custom for now. These are the buckets I usually quote.",
+        "cards": [
+          { "tag": "Hero", "title": "Portfolio key art", "body": "One polished environment frame + crops for web, ArtStation, social." },
+          { "tag": "Lookdev", "title": "Stylized material pass", "body": "Direction, swatches, instance notes — fantasy surfaces, not PBR mud." },
+          { "tag": "Page", "title": "Breakdown / case study", "body": "Editorial web page for a tool, shader, or scene — same Melodia shell as my portfolio." }
+        ]
+      },
+      "process": {
+        "eyebrow": "Process",
+        "headline": "How I work with you.",
+        "lede": "Simple loop so nobody's guessing.",
+        "steps": [
+          { "step": "01", "title": "Brief", "body": "References, mood, deadline, what file formats you need." },
+          { "step": "02", "title": "Build", "body": "Scene, shader, or page — WIP check-ins if the job's bigger than a few days." },
+          { "step": "03", "title": "Polish", "body": "Composition, copy, responsive pass if it's web." },
+          { "step": "04", "title": "Ship", "body": "PNGs, UE assets, HTML — whatever we agreed on." }
         ]
       }
     }

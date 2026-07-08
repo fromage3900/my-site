@@ -471,10 +471,132 @@ em { color: var(--gold); font-style: italic; }
 
 .footer .inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 18px; }
 
+.hero-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.hero-strip .image-card img { aspect-ratio: 16 / 10; }
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.portal-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  padding: 26px 24px 24px;
+  border: 1px solid rgba(200, 164, 94, 0.42);
+  background:
+    linear-gradient(145deg, rgba(255, 250, 242, 0.96), rgba(247, 242, 234, 0.88)),
+    url("../generated/assets/editorial/tileableheartsalpha.png");
+  background-size: auto, 160px 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.portal-card::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(200, 164, 94, 0.28);
+  pointer-events: none;
+}
+
+.portal-card::after {
+  content: "✦";
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  color: var(--gold);
+  font-size: 1.1rem;
+  opacity: 0.72;
+  filter: drop-shadow(0 0 8px rgba(200, 164, 94, 0.45));
+}
+
+.portal-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(200, 164, 94, 0.72);
+  box-shadow: 0 22px 60px rgba(34, 26, 42, 0.14);
+}
+
+.portal-card .portal-step {
+  position: relative;
+  z-index: 1;
+  color: var(--gold);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.portal-card h3 {
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+  font-size: 1.75rem;
+}
+
+.portal-card p {
+  position: relative;
+  z-index: 1;
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.62;
+}
+
+.portal-card .portal-open {
+  position: relative;
+  z-index: 1;
+  margin-top: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 1px solid rgba(200, 164, 94, 0.5);
+  background: var(--astral);
+  color: var(--lavender);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  width: max-content;
+}
+
+.portal-card.accent-sakura { border-top: 4px solid var(--sakura); }
+.portal-card.accent-iris { border-top: 4px solid var(--iris); }
+.portal-card.accent-gold { border-top: 4px solid var(--gold); }
+
+.astral .portal-card {
+  background: linear-gradient(145deg, rgba(18, 24, 45, 0.92), rgba(45, 32, 60, 0.88));
+  color: var(--lavender);
+}
+
+.astral .portal-card p { color: rgba(233, 229, 242, 0.72); }
+.astral .portal-card .portal-open { background: rgba(255, 255, 255, 0.06); }
+
+.one-sheet-tagline {
+  margin: 18px 0 0;
+  color: rgba(233, 229, 242, 0.62);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
 @media (max-width: 1080px) {
   .shell-nav { grid-template-columns: 1fr auto; }
   .nav-links { display: none; }
-  .passport-grid, .section-head, .proof-layout, .alignment-grid, .axis-grid, .image-grid, .stack-grid { grid-template-columns: 1fr; }
+  .passport-grid, .section-head, .proof-layout, .alignment-grid, .axis-grid, .image-grid, .stack-grid, .hero-strip, .portal-grid { grid-template-columns: 1fr; }
   .feature-frame { min-height: 400px; }
 }
 

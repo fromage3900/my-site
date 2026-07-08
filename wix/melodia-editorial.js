@@ -67,19 +67,51 @@
     });
 
     const page = getByPath(copy, `pages.${pageKey}`);
-    if (page && page.title) {
+    const fixedTitle = document.documentElement.hasAttribute('data-fixed-title');
+    if (!fixedTitle && page && page.title) {
       document.title = page.title;
     }
-    const meta = page && page.meta_description;
-    if (meta) {
+    if (document.documentElement.getAttribute('data-page') === 'index') {
+      const homeTitle = getByPath(copy, 'global.home_title');
+      const homeDesc = getByPath(copy, 'global.home_description');
+      if (homeTitle) document.title = homeTitle;
+      if (homeDesc) {
+        let tag = document.querySelector('meta[name="description"]');
+        if (tag) tag.setAttribute('content', homeDesc);
+      }
+    } else if (page && page.meta_description) {
       let tag = document.querySelector('meta[name="description"]');
       if (!tag) {
         tag = document.createElement('meta');
         tag.setAttribute('name', 'description');
         document.head.appendChild(tag);
       }
-      tag.setAttribute('content', meta);
+      tag.setAttribute('content', page.meta_description);
     }
+  }
+
+  function renderAtAGlance(copy, pageKey) {
+    const mount = document.getElementById('atAGlanceCards');
+    const cards = getByPath(copy, `pages.${pageKey}.at_a_glance.cards`);
+    if (!mount || !Array.isArray(cards)) return;
+    mount.innerHTML = cards
+      .map(
+        (card) =>
+          `<article class="alignment-card"><span>${esc(card.tag)}</span><div><h3>${esc(card.title)}</h3><p>${esc(card.body)}</p></div></article>`
+      )
+      .join('');
+  }
+
+  function renderBestProof(copy, pageKey) {
+    const mount = document.getElementById('bestProofLinks');
+    const links = getByPath(copy, `pages.${pageKey}.best_proof.links`);
+    if (!mount || !Array.isArray(links)) return;
+    mount.innerHTML = links
+      .map(
+        (link) =>
+          `<a class="path-row" href="${esc(link.href)}"><span>${esc(link.step)}</span><div><h3>${esc(link.title)}</h3><p>${esc(link.body)}</p></div><b>Open</b></a>`
+      )
+      .join('');
   }
 
   function renderPassport(copy, pageKey) {
@@ -161,6 +193,90 @@
     }
   }
 
+  function renderPortalLinks(copy, pageKey) {
+    const mount = document.getElementById('portalGrid');
+    const links = getByPath(copy, `pages.${pageKey}.portals.links`);
+    if (!mount || !Array.isArray(links)) return;
+    mount.innerHTML = links
+      .map((link) => {
+        const accent = esc(link.accent || 'gold');
+        return `<a class="portal-card accent-${accent}" href="${esc(link.href)}"><span class="portal-step">${esc(link.step)}</span><div><h3>${esc(link.title)}</h3><p>${esc(link.body)}</p></div><span class="portal-open">Open →</span></a>`;
+      })
+      .join('');
+  }
+
+  async function hydrateHeroPlates(mountId, maxCount) {
+    const mount = document.getElementById(mountId);
+    if (!mount) return;
+    const fashion = mount.classList.contains('lookbook-grid');
+    try {
+      const res = await fetch(INTAKE_URL, { cache: 'no-store' });
+      const intake = await res.json();
+      const cards = Array.isArray(intake.render_cards) ? intake.render_cards : [];
+      let heroes = cards
+        .filter((c) => c.group === 'hero' && c.web_path)
+        .sort((a, b) => (b.priority || 0) - (a.priority || 0));
+      if (maxCount) heroes = heroes.slice(0, maxCount);
+      if (!heroes.length) {
+        mount.innerHTML =
+          '<a class="image-card fashion-frame" href="../generated/assets/l-sakurapath-hero.png"><img src="../generated/assets/l-sakurapath-hero.png" alt="Sakura path hero" loading="lazy" /><div><h3>Sakura Path</h3></div></a>';
+        return;
+      }
+      mount.innerHTML = heroes
+        .map((card) => {
+          const href = esc(card.web_path);
+          const title = esc(card.filename || 'Hero plate');
+          const frame = fashion ? ' fashion-frame' : '';
+          const caption = fashion && card.caption ? `<p>${esc(card.caption)}</p>` : '';
+          return `<a class="image-card${frame}" href="${href}"><img src="${href}" alt="${title}" loading="lazy" /><div><h3>${title}</h3>${caption}</div></a>`;
+        })
+        .join('');
+    } catch (_err) {
+      mount.innerHTML =
+        '<a class="image-card" href="../generated/assets/l-sakurapath-hero.png"><img src="../generated/assets/l-sakurapath-hero.png" alt="Sakura path hero" /><div><h3>Sakura Path</h3></div></a>';
+    }
+  }
+
+  async function hydrateHeroStrip(maxCount) {
+    await hydrateHeroPlates('heroStrip', maxCount || 3);
+  }
+
+  function renderProcessSteps(copy, pageKey) {
+    const mount = document.getElementById('processSteps');
+    const steps = getByPath(copy, `pages.${pageKey}.process.steps`);
+    if (!mount || !Array.isArray(steps)) return;
+    mount.innerHTML = steps
+      .map(
+        (step) =>
+          `<div class="path-row"><span>${esc(step.step)}</span><div><h3>${esc(step.title)}</h3><p>${esc(step.body)}</p></div><b>—</b></div>`
+      )
+      .join('');
+  }
+
+  function renderPackageCards(copy, pageKey) {
+    const mount = document.getElementById('packageCards');
+    const cards = getByPath(copy, `pages.${pageKey}.packages.cards`);
+    if (!mount || !Array.isArray(cards)) return;
+    mount.innerHTML = cards
+      .map(
+        (card) =>
+          `<article class="alignment-card"><span>${esc(card.tag)}</span><div><h3>${esc(card.title)}</h3><p>${esc(card.body)}</p></div><strong class="foil-caption">Custom quote</strong></article>`
+      )
+      .join('');
+  }
+
+  function renderUseCards(copy, pageKey) {
+    const mount = document.getElementById('useCards');
+    const cards = getByPath(copy, `pages.${pageKey}.uses.cards`);
+    if (!mount || !Array.isArray(cards)) return;
+    mount.innerHTML = cards
+      .map(
+        (card) =>
+          `<article class="alignment-card"><span>${esc(card.tag)}</span><div><h3>${esc(card.title)}</h3><p>${esc(card.body)}</p></div></article>`
+      )
+      .join('');
+  }
+
   async function hydrateProofGrid() {
     const mount = document.getElementById('proofGrid');
     if (!mount) return;
@@ -201,6 +317,12 @@
       renderAxis(copy, pageKey);
       renderCraft(copy, pageKey);
       renderNextLinks(copy, pageKey);
+      renderPortalLinks(copy, pageKey);
+      renderAtAGlance(copy, pageKey);
+      renderBestProof(copy, pageKey);
+      renderPackageCards(copy, pageKey);
+      renderProcessSteps(copy, pageKey);
+      renderUseCards(copy, pageKey);
     } catch (_err) {
       /* static HTML fallbacks remain */
     }
@@ -208,6 +330,17 @@
     if (options && options.intake) {
       await hydrateIntakeHero();
       await hydrateProofGrid();
+    }
+    if (options && options.heroStrip) {
+      await hydrateHeroStrip(options.heroStrip);
+    }
+    if (options && options.heroGrid) {
+      await hydrateHeroPlates('heroGrid', typeof options.heroGrid === 'number' ? options.heroGrid : null);
+    }
+
+    if (global.MelodiaOrrery) {
+      global.MelodiaOrrery.upgradeHeroOrreries();
+      global.MelodiaOrrery.mountAll();
     }
   }
 
