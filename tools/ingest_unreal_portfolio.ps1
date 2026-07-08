@@ -249,6 +249,15 @@ document.getElementById('needs').innerHTML = (READINESS.next_needs || []).map(fu
 $htmlPath = Join-Path $Root 'wix\render-constellation.html'
 $html | Set-Content -LiteralPath $htmlPath -Encoding UTF8
 
+try {
+  $embedScript = Join-Path $PSScriptRoot 'build_melodia_embed_urls.ps1'
+  if (Test-Path -LiteralPath $embedScript) {
+    & $embedScript -Root $Root | Out-Null
+  }
+} catch {
+  Write-Host "WARN could not generate Melodia embed URLs: $($_.Exception.Message)"
+}
+
 Write-Host "OK wrote $intakePath"
 Write-Host "OK wrote $htmlPath"
 Write-Host "OK copied $webReady render assets into $assetDir"
