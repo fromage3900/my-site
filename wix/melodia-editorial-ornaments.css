@@ -1,0 +1,142 @@
+/* Modular monogram + frame utilities — chic math / celestial editorial accents */
+
+:root {
+  --frame-inset: clamp(14px, 4.5%, 52px);
+  --frame-opacity: 0.11;
+  --ornament-gold: rgba(201, 168, 106, 0.55);
+  --ornament-pearl: rgba(233, 229, 242, 0.42);
+}
+
+/* Unified portfolio frame overlay — fixes misaligned inset across pages */
+.editorial-frame-overlay,
+.ornate-frame {
+  position: absolute;
+  inset: var(--frame-inset);
+  pointer-events: none;
+  opacity: var(--frame-opacity);
+  background: url("../generated/assets/editorial/portfolioframe.png") center / 100% 100% no-repeat;
+  filter: invert(1);
+}
+
+.hero.editorial-framed::after,
+.hero.has-editorial-frame::after {
+  content: "";
+  position: absolute;
+  inset: var(--frame-inset);
+  pointer-events: none;
+  opacity: var(--frame-opacity);
+  z-index: 2;
+  background: url("../generated/assets/editorial/portfolioframe.png") center / 100% 100% no-repeat;
+  filter: invert(1);
+}
+
+/* Card corner monogram — replaces misaligned PNG bleed on cards */
+.card-monogram,
+.premium-card::before {
+  /* sparkle star — keep existing clip-path from portfolio-pages when present */
+}
+
+.card-editorial-corner::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 72px;
+  height: 72px;
+  opacity: 0.14;
+  pointer-events: none;
+  background: center / contain no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Ccircle cx='32' cy='32' r='28' stroke='%23c9a86a' stroke-width='0.8' opacity='0.7'/%3E%3Cpath d='M32 8v48M8 32h48M14 14l36 36M50 14L14 50' stroke='%23e8e4f2' stroke-width='0.5' opacity='0.45'/%3E%3Ccircle cx='32' cy='32' r='3' fill='%23c9a86a'/%3E%3C/svg%3E");
+}
+
+/* Section rule with flanking stars */
+.editorial-rule-stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 0 28px;
+  font-family: var(--font-mono, "IBM Plex Mono", monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-soft, #e4c990);
+}
+
+.editorial-rule-stars::before,
+.editorial-rule-stars::after {
+  content: "";
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  background: center / contain no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23c9a86a' d='M12 1l2.2 6.8H21l-5.5 4 2.1 6.8L12 14.6 6.4 18.6l2.1-6.8-5.5-4h6.8z'/%3E%3C/svg%3E");
+  opacity: 0.72;
+}
+
+/* Monogram strip — orbit arcs + golden-ratio tick marks */
+.monogram-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 10px 0 18px;
+  opacity: 0.78;
+}
+
+.monogram-strip span {
+  display: block;
+  width: 36px;
+  height: 36px;
+  background: center / contain no-repeat;
+}
+
+.monogram-strip .glyph-star {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='none' stroke='%23c9a86a' stroke-width='0.9' d='M16 2l3.8 8.6L29 12l-6.5 5.6 2 9.4L16 22.8 7.5 27l2-9.4L3 12l9.2-1.4z'/%3E%3C/svg%3E");
+}
+
+.monogram-strip .glyph-orbit {
+  width: 44px;
+  height: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Cellipse cx='22' cy='22' rx='18' ry='12' fill='none' stroke='%23e8e4f2' stroke-width='0.7' opacity='0.8'/%3E%3Cellipse cx='22' cy='22' rx='12' ry='18' fill='none' stroke='%23c9a86a' stroke-width='0.6' transform='rotate(35 22 22)'/%3E%3Ccircle cx='22' cy='22' r='2' fill='%23c9a86a'/%3E%3C/svg%3E");
+  animation: monogram-orbit-spin 48s linear infinite;
+}
+
+.monogram-strip .glyph-phi {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='4' width='24' height='24' fill='none' stroke='%23c9a86a' stroke-width='0.7'/%3E%3Cpath d='M4 20h24M12 4v24' stroke='%23e8e4f2' stroke-width='0.5' opacity='0.6'/%3E%3Ctext x='18' y='17' fill='%23c9a86a' font-family='Georgia,serif' font-size='9' opacity='0.9'%3Eφ%3C/text%3E%3C/svg%3E");
+}
+
+.monogram-strip .glyph-infinity {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 24'%3E%3Cpath fill='none' stroke='%23c9a86a' stroke-width='1.1' d='M8 12c0-4 3-7 7-7s5 3 5 7-1 7-5 7-7-3-7-7zm14 0c0-4 3-7 7-7s5 3 5 7-1 7-5 7-7-3-7-7z'/%3E%3C/svg%3E");
+  width: 48px;
+}
+
+@keyframes monogram-orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Floating constellation accent for band headers */
+.band-constellation-accent {
+  position: relative;
+}
+
+.band-constellation-accent::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: clamp(12px, 4vw, 48px);
+  width: min(120px, 22vw);
+  height: min(120px, 22vw);
+  opacity: 0.16;
+  pointer-events: none;
+  background: center / contain no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='%23c9a86a' stroke-width='0.6'/%3E%3Ccircle cx='50' cy='50' r='26' fill='none' stroke='%23e8e4f2' stroke-width='0.5'/%3E%3Ccircle cx='88' cy='50' r='2' fill='%23c9a86a'/%3E%3Ccircle cx='50' cy='24' r='1.6' fill='%23e8e4f2'/%3E%3Ccircle cx='18' cy='62' r='1.4' fill='%23c9a86a'/%3E%3C/svg%3E");
+  animation: monogram-orbit-spin 90s linear infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .monogram-strip .glyph-orbit,
+  .band-constellation-accent::before {
+    animation: none;
+  }
+}

@@ -303,9 +303,44 @@
     }
   }
 
+  function initMobileNav() {
+    document.querySelectorAll('.shell-nav').forEach((nav) => {
+      if (nav.querySelector('.nav-toggle')) return;
+      const links = nav.querySelector('.nav-links');
+      if (!links) return;
+
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'nav-toggle';
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-controls', links.id || 'site-nav-links');
+      if (!links.id) links.id = 'site-nav-links';
+
+      const cta = nav.querySelector('.nav-cta');
+      if (cta) nav.insertBefore(toggle, cta);
+      else nav.appendChild(toggle);
+
+      const close = () => {
+        nav.classList.remove('nav-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      };
+
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('nav-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      links.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close();
+      });
+    });
+  }
+
   async function init(options) {
     const pageKey = (options && options.page) || document.documentElement.getAttribute('data-page') || '';
     initParallax();
+    initMobileNav();
 
     let copy = null;
     try {
@@ -344,5 +379,5 @@
     }
   }
 
-  global.MelodiaEditorial = { init, initParallax, applyCopy };
+  global.MelodiaEditorial = { init, initParallax, initMobileNav, applyCopy };
 })(window);

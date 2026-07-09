@@ -1,5 +1,7 @@
 /* Secondary portfolio pages — luxury shell bridge on portfolio-pages.css */
 @import url("melodia-luxury-type.css");
+@import url("melodia-editorial-ornaments.css");
+@import url("melodia-mobile.css");
 
 body {
   font-family: var(--font-body);

@@ -132,7 +132,8 @@
   align-items: center;
 }
 
-.impossible-card {
+.impossible-card,
+.escher-tessellation {
   position: relative;
   min-height: 500px;
   overflow: hidden;
@@ -143,32 +144,75 @@
     radial-gradient(circle at 72% 72%, rgba(40, 123, 125, 0.34), transparent 32%);
 }
 
-.impossible-card::before,
-.impossible-card::after {
+.escher-grid {
+  position: absolute;
+  inset: 6%;
+  width: calc(100% - 12%);
+  height: calc(100% - 12%);
+  opacity: 0.55;
+}
+
+.escher-grid-inner {
+  transform-origin: 120px 120px;
+  animation: escher-grid-spin 100s linear infinite;
+}
+
+@keyframes escher-grid-spin {
+  to { transform: rotate(360deg); }
+}
+
+.escher-tessellation::before,
+.escher-tessellation::after {
   content: "";
   position: absolute;
-  inset: 12%;
-  border: 1px solid rgba(228, 201, 144, 0.48);
-  transform: skewY(-18deg) rotate(8deg);
+  inset: 10%;
+  border: 1px solid rgba(228, 201, 144, 0.38);
+  pointer-events: none;
+  animation: escher-frame-counter 140s linear infinite reverse;
 }
 
-.impossible-card::after {
-  inset: 24% 18% 18% 26%;
-  transform: skewY(18deg) rotate(-11deg);
-  border-color: rgba(233, 229, 242, 0.34);
+.escher-tessellation::after {
+  inset: 18% 14% 14% 20%;
+  border-color: rgba(233, 229, 242, 0.28);
+  animation-direction: normal;
+  animation-duration: 95s;
 }
 
-.impossible-card span {
+@keyframes escher-frame-counter {
+  to { transform: rotate(-360deg); }
+}
+
+.escher-glyphs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.escher-glyphs span {
   position: absolute;
   color: rgba(228, 201, 144, 0.58);
   font-family: Fraunces, Georgia, serif;
   font-size: 5.4rem;
   line-height: 0.9;
+  text-shadow: 0 0 24px rgba(228, 201, 144, 0.35);
+  animation: escher-glyph-glow 4.5s ease-in-out infinite alternate;
 }
 
-.impossible-card span:nth-child(1) { left: 28px; top: 32px; }
-.impossible-card span:nth-child(2) { right: 32px; bottom: 28px; }
-.impossible-card span:nth-child(3) { left: 38%; top: 42%; font-size: 3rem; color: rgba(233, 229, 242, 0.42); }
+.escher-glyphs span:nth-child(1) { left: 28px; top: 32px; animation-delay: 0s; }
+.escher-glyphs span:nth-child(2) { right: 32px; bottom: 28px; animation-delay: 1.2s; }
+.escher-glyphs span:nth-child(3) {
+  left: 38%;
+  top: 42%;
+  font-size: 3rem;
+  color: rgba(233, 229, 242, 0.52);
+  animation-delay: 2.4s;
+}
+
+@keyframes escher-glyph-glow {
+  from { opacity: 0.72; filter: drop-shadow(0 0 8px rgba(228, 201, 144, 0.25)); }
+  to { opacity: 1; filter: drop-shadow(0 0 18px rgba(228, 201, 144, 0.55)); }
+}
 
 .concept-list {
   display: grid;
@@ -515,6 +559,16 @@
 @keyframes hub-card-float {
   from { transform: rotate(-12deg) translate3d(0, 0, 0); }
   to { transform: rotate(-6deg) translate3d(-10px, -14px, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .escher-grid,
+  .escher-grid-inner,
+  .escher-tessellation::before,
+  .escher-tessellation::after,
+  .escher-glyphs span {
+    animation: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,3 +1,6 @@
+@import url("melodia-editorial-ornaments.css");
+@import url("melodia-mobile.css");
+
 :root {
   /* Premium Celestial Colors - Honkai/Genshin/LV Inspired */
   --void: #0D1224;
@@ -262,9 +265,9 @@ img { display: block; max-width: 100%; }
 }
 
 .ornate-frame {
-  inset: 4%;
-  opacity: 0.12;
-  background: url("../generated/assets/editorial/portfolioframe.png") center/contain no-repeat;
+  inset: var(--frame-inset, clamp(14px, 4.5%, 52px));
+  opacity: var(--frame-opacity, 0.12);
+  background: url("../generated/assets/editorial/portfolioframe.png") center / 100% 100% no-repeat;
   filter: invert(1);
 }
 
@@ -281,7 +284,11 @@ img { display: block; max-width: 100%; }
 .melodia-orrery .orbit { fill: none; stroke: rgba(228, 201, 144, 0.48); stroke-width: 0.7; }
 .melodia-orrery .axis { stroke: rgba(233, 229, 242, 0.24); stroke-width: 0.55; }
 .melodia-orrery .node { fill: rgba(228, 201, 144, 0.9); filter: drop-shadow(0 0 7px rgba(228, 201, 144, 0.45)); }
-.melodia-orrery .ring { transform-origin: 50% 50%; animation: melodia-orbit 46s linear infinite; }
+.melodia-orrery .ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: melodia-orbit 46s linear infinite;
+}
 .melodia-orrery .ring.slow { animation-duration: 68s; animation-direction: reverse; }
 .melodia-orrery .ring.fast { animation-duration: 32s; }
 
@@ -670,15 +677,6 @@ em { color: var(--gold); font-style: italic; }
 }
 
 @media (max-width: 680px) {
-  .melodia-orrery { opacity: 0.2; right: -64px; top: 18%; width: 360px; }
-  .shell-nav { inset: 10px; }
-  .nav-cta { display: none; }
   .hero-inner, .band { padding-left: 18px; padding-right: 18px; }
   .path-row { grid-template-columns: 1fr; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .melodia-orrery .ring, .star-layer { animation: none !important; }
-  .hero-media img, .texture-layer, .star-layer, .melodia-orrery, .melodia-shell::before, .melodia-shell::after { transform: none !important; }
 }
