@@ -2,10 +2,10 @@
 @import url("melodia-mobile.css");
 @import url("melodia-dream-shaders.css");
 @import url("melodia-planetarium.css");
-@import url("melodia-night-theme.css");
 @import url("melodia-cosmic-instruments.css");
 @import url("melodia-tiling-patterns.css");
 @import url("melodia-magical-girl.css");
+@import url("melodia-night-theme.css");
 
 :root {
   /* Premium Celestial Colors - Honkai/Genshin/LV Inspired */
@@ -16,11 +16,11 @@
   --sakura: #E8C9B8;
   --gold: #C9A86A;
   --gold-soft: #E8C9B8;
-  --ivory: #F5F2ED;
-  --paper: #FEFAF2;
-  --ink: #221A2A;
-  --muted: #6E6080;
-  --lavender: #E8E4F2;
+  --ivory: #070912;
+  --paper: rgba(16, 23, 54, 0.62);
+  --ink: rgba(236, 234, 244, 0.92);
+  --muted: rgba(236, 234, 244, 0.66);
+  --lavender: rgba(236, 234, 244, 0.92);
   --pearl: #F0DCF0;
   --line: rgba(201, 168, 106, 0.34);
   --soft-line: rgba(34, 26, 42, 0.1);
@@ -67,7 +67,10 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--ivory);
+  background:
+    radial-gradient(circle at 22% 12%, rgba(102, 217, 255, 0.08), transparent 34%),
+    radial-gradient(circle at 82% 18%, rgba(204, 153, 255, 0.08), transparent 36%),
+    linear-gradient(180deg, var(--ivory), #0b0f1f);
   color: var(--ink);
   font-family: var(--font-body, Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
   letter-spacing: var(--tracking-body, 0);
@@ -78,11 +81,13 @@ img { display: block; max-width: 100%; }
 .melodia-shell {
   position: relative;
   min-height: 100svh;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   background:
-    radial-gradient(circle at 12% 16%, rgba(232, 201, 184, 0.14), transparent 28%),
-    radial-gradient(circle at 88% 20%, rgba(155, 143, 196, 0.12), transparent 32%),
-    linear-gradient(180deg, var(--ivory) 0%, #ebe4d8 48%, var(--ivory) 100%);
+    radial-gradient(circle at 12% 16%, rgba(232, 201, 184, 0.08), transparent 28%),
+    radial-gradient(circle at 78% 22%, rgba(155, 143, 196, 0.10), transparent 32%),
+    radial-gradient(circle at 50% 80%, rgba(102, 217, 255, 0.06), transparent 40%),
+    linear-gradient(180deg, var(--ivory) 0%, #101736 50%, #0b0f1f 100%);
 }
 
 .melodia-shell::before {
@@ -107,7 +112,8 @@ img { display: block; max-width: 100%; }
   z-index: 0;
   pointer-events: none;
   opacity: 0.08;
-  background: url("../generated/assets/editorial/portfolioframe.png") center/contain no-repeat;
+  background: url("../generated/assets/editorial/portfolioframe.png") center / 100% 100% no-repeat;
+  filter: invert(1);
   transform: rotate(-8deg) translate3d(calc(var(--mouse-x) * 0.08), calc(var(--scroll-shift) * -0.02), 0);
 }
 
@@ -125,9 +131,9 @@ img { display: block; max-width: 100%; }
   padding: 10px 14px;
   border: 1px solid var(--line);
   border-radius: 3px;
-  background: rgba(247, 242, 234, 0.92);
+  background: rgba(7, 9, 18, 0.78);
   backdrop-filter: blur(18px);
-  box-shadow: 0 20px 60px rgba(34, 26, 42, 0.14);
+  box-shadow: 0 20px 60px rgba(7, 9, 18, 0.42);
 }
 
 .brand {
@@ -158,7 +164,7 @@ img { display: block; max-width: 100%; }
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(34, 26, 42, 0.66);
+  color: rgba(236, 234, 244, 0.82);
 }
 
 .nav-links a:hover { color: var(--iris); }
@@ -270,13 +276,6 @@ img { display: block; max-width: 100%; }
   animation: melodia-drift 18s ease-in-out infinite alternate;
 }
 
-.ornate-frame {
-  inset: var(--frame-inset, clamp(14px, 4.5%, 52px));
-  opacity: var(--frame-opacity, 0.12);
-  background: url("../generated/assets/editorial/portfolioframe.png") center / 100% 100% no-repeat;
-  filter: invert(1);
-}
-
 .melodia-orrery {
   inset: 12% max(28px, 6vw) auto auto;
   width: min(38vw, 520px);
@@ -386,8 +385,17 @@ em { color: var(--gold); font-style: italic; }
 
 .band { padding: 88px 46px; overflow: hidden; }
 .inner { width: min(100%, var(--max)); margin: 0 auto; }
-.paper { background: var(--ivory); color: var(--ink); }
-.cloud { background: linear-gradient(180deg, #f7f2ea, #eee6da); color: var(--ink); }
+.paper {
+  background:
+    linear-gradient(180deg, rgba(16, 23, 54, 0.92), rgba(7, 9, 18, 0.94));
+  color: var(--ink);
+}
+.cloud {
+  background:
+    linear-gradient(180deg, rgba(16, 23, 54, 0.88), rgba(7, 9, 18, 0.92)),
+    radial-gradient(circle at 18% 26%, rgba(102, 217, 255, 0.06), transparent 40%);
+  color: var(--ink);
+}
 .astral { background: linear-gradient(135deg, var(--astral), var(--plum)); color: var(--lavender); }
 
 .section-head {
@@ -433,8 +441,9 @@ em { color: var(--gold); font-style: italic; }
   max-width: 520px;
   padding: 16px 18px;
   border: 1px solid rgba(200, 164, 94, 0.38);
-  background: rgba(255, 250, 242, 0.92);
+  background: rgba(16, 23, 54, 0.88);
   color: var(--ink);
+  backdrop-filter: blur(12px);
 }
 
 .feature-caption p { margin: 6px 0 0; color: var(--muted); line-height: 1.55; }
@@ -449,7 +458,7 @@ em { color: var(--gold); font-style: italic; }
   position: relative;
   min-height: 220px;
   border: 1px solid rgba(200, 164, 94, 0.3);
-  background: rgba(255, 255, 255, 0.66);
+  background: rgba(16, 23, 54, 0.72);
   padding: 22px;
   display: flex;
   flex-direction: column;
@@ -513,7 +522,7 @@ em { color: var(--gold); font-style: italic; }
 
 .stack-card {
   border: 1px solid rgba(200, 164, 94, 0.3);
-  background: rgba(255, 255, 255, 0.62);
+  background: rgba(16, 23, 54, 0.68);
   padding: 22px;
 }
 
@@ -574,7 +583,7 @@ em { color: var(--gold); font-style: italic; }
   padding: 26px 24px 24px;
   border: 1px solid rgba(200, 164, 94, 0.42);
   background:
-    linear-gradient(145deg, rgba(255, 250, 242, 0.96), rgba(247, 242, 234, 0.88)),
+    linear-gradient(145deg, rgba(16, 23, 54, 0.92), rgba(7, 9, 18, 0.88)),
     var(--pattern-hearts-svg);
   background-size: auto, 160px 160px;
   display: flex;
@@ -676,8 +685,7 @@ em { color: var(--gold); font-style: italic; }
 }
 
 @media (max-width: 1080px) {
-  .shell-nav { grid-template-columns: 1fr auto; }
-  .nav-links { display: none; }
+  /* Mobile nav grid owned by melodia-mobile.css (3-col for Menu toggle) */
   .passport-grid, .section-head, .proof-layout, .alignment-grid, .axis-grid, .image-grid, .stack-grid, .hero-strip, .portal-grid { grid-template-columns: 1fr; }
   .feature-frame { min-height: 400px; }
 }

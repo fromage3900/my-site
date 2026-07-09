@@ -125,3 +125,63 @@ body {
   .melodia-shell > .dream-sparkle-layer { opacity: 0.18; }
 }
 
+/* Editorial cards + captions — night glass (beats cascade from bridge pages) */
+.alignment-card,
+.stack-card,
+.axis-card {
+  background: rgba(16, 23, 54, 0.72) !important;
+  border-color: var(--night-line) !important;
+}
+
+.feature-caption {
+  background: rgba(16, 23, 54, 0.88) !important;
+  color: var(--night-lavender) !important;
+  backdrop-filter: blur(12px);
+}
+
+.portal-card {
+  background:
+    linear-gradient(145deg, rgba(16, 23, 54, 0.92), rgba(7, 9, 18, 0.88)),
+    var(--pattern-hearts-svg, none) !important;
+  color: var(--night-lavender);
+}
+
+.portal-card p { color: var(--night-muted); }
+
+.card,
+.feature-card,
+.look-card {
+  background: rgba(16, 23, 54, 0.72) !important;
+}
+
+.impact-card {
+  background: rgba(16, 23, 54, 0.82) !important;
+}
+
+.impact-card .body p {
+  color: var(--night-muted) !important;
+}
+
+.skill-cloud span,
+.check-list li,
+.route-line span {
+  background: rgba(16, 23, 54, 0.55) !important;
+  color: rgba(236, 234, 244, 0.82) !important;
+}
+
+.identity-panel {
+  background:
+    linear-gradient(rgba(16, 23, 54, 0.88), rgba(7, 9, 18, 0.92)),
+    var(--pattern-hearts-svg) !important;
+}
+
+.passport-card.light {
+  background: linear-gradient(180deg, rgba(16, 23, 54, 0.94), rgba(7, 9, 18, 0.92)) !important;
+  color: var(--night-lavender) !important;
+}
+
+.cloud {
+  background:
+    linear-gradient(180deg, rgba(16, 23, 54, 0.88), rgba(7, 9, 18, 0.92)),
+    radial-gradient(circle at 18% 26%, rgba(102, 217, 255, 0.06), transparent 40%) !important;
+}

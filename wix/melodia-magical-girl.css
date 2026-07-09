@@ -132,8 +132,15 @@
 
 @media (max-width: 680px) {
   .mg-ribbon { opacity: 0.12; }
-  .mg-crystal { display: none; } /* avoid clutter + clipping */
   .mg-bow-toggle { top: 78px; right: 10px; }
+
+  .mg-crystal {
+    width: 72px;
+    height: 72px;
+    opacity: 0.28;
+  }
+
+  .mg-crystal.c2 { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

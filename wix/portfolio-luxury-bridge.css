@@ -5,11 +5,10 @@
 @import url("melodia-dream-shaders.css");
 @import url("melodia-night-theme.css");
 @import url("melodia-planetarium.css");
-@import url("melodia-planetarium.css");
 
 body {
   font-family: var(--font-body);
-  background: var(--ivory, #f5f2ed);
+  background: var(--ivory, #070912);
 }
 
 .shell-nav .brand {
@@ -42,7 +41,7 @@ body {
 /* Premium nav chrome when melodia shell classes present */
 .melodia-shell .shell-nav {
   border-bottom: 1px solid var(--border-gold, rgba(201, 168, 106, 0.34));
-  background: rgba(245, 242, 237, 0.92);
+  background: rgba(7, 9, 18, 0.78);
   backdrop-filter: blur(14px);
 }
 

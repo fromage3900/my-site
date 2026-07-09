@@ -282,13 +282,13 @@
   );
 }
 
-/* Fashion ivory bands — pearl wash */
+/* Fashion paper/cloud bands — night glass wash */
 .melodia-shell.fashion-mode .band.paper,
 .melodia-shell.fashion-mode .band.cloud {
   background:
-    linear-gradient(180deg, rgba(255, 250, 242, 0.97), rgba(247, 242, 234, 0.94)),
-    radial-gradient(ellipse 70% 50% at 90% 10%, rgba(102, 217, 255, 0.06), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 8% 90%, rgba(204, 153, 255, 0.05), transparent 50%);
+    linear-gradient(180deg, rgba(16, 23, 54, 0.94), rgba(7, 9, 18, 0.96)),
+    radial-gradient(ellipse 70% 50% at 90% 10%, rgba(102, 217, 255, 0.08), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 8% 90%, rgba(204, 153, 255, 0.06), transparent 50%);
 }
 
 .melodia-shell .editorial-rule .diamond {

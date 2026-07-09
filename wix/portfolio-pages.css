@@ -1,15 +1,15 @@
 :root {
-  --void: #080b13;
-  --astral: #141a30;
-  --plum: #241b2e;
-  --iris: #6e5aa6;
+  --void: #070912;
+  --astral: #101736;
+  --plum: #1c1633;
+  --iris: #9b8fc4;
   --gold: #c9a86a;
   --gold-soft: #e4c990;
-  --ivory: #f7f4ef;
-  --paper: #fffaf2;
-  --ink: #241b2e;
-  --muted: #5a6170;
-  --lavender: #e8e4f2;
+  --ivory: #070912;
+  --paper: rgba(16, 23, 54, 0.62);
+  --ink: rgba(236, 234, 244, 0.92);
+  --muted: rgba(236, 234, 244, 0.66);
+  --lavender: rgba(236, 234, 244, 0.92);
   --sakura: #d6a9b0;
   --pearl: #fbf3ff;
   --mint: #b9dfc8;
@@ -22,7 +22,10 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: radial-gradient(circle at 12% 10%, rgba(214,169,176,.22), transparent 28%), radial-gradient(circle at 88% 12%, rgba(185,223,200,.18), transparent 30%), var(--ivory);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(102, 217, 255, 0.08), transparent 28%),
+    radial-gradient(circle at 88% 12%, rgba(204, 153, 255, 0.08), transparent 30%),
+    var(--ivory);
   color: var(--ink);
   font-family: var(--font-body, Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
   letter-spacing: 0;
@@ -56,7 +59,7 @@ img { display: block; max-width: 100%; }
   padding: 10px 14px;
   border: 1px solid var(--line);
   border-radius: 3px;
-  background: rgba(247, 244, 239, .93);
+  background: rgba(7, 9, 18, 0.78);
   color: var(--ink);
   backdrop-filter: blur(18px);
 }
@@ -96,7 +99,7 @@ img { display: block; max-width: 100%; }
   font-weight: 600;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(36, 27, 46, .66);
+  color: rgba(236, 234, 244, 0.82);
 }
 .nav-links a:hover { color: var(--iris); }
 .nav-cta {
@@ -194,8 +197,16 @@ h3 { font-size: 2rem; line-height: 1.04; }
   pointer-events: none;
 }
 .band:nth-of-type(2n)::before { left: max(22px, 4vw); right: auto; opacity: .22; }
-.paper { background: var(--ivory); color: var(--ink); }
-.cloud { background: linear-gradient(180deg, #f7f4ef, #efeae1); color: var(--ink); }
+.paper {
+  background: linear-gradient(180deg, rgba(16, 23, 54, 0.92), rgba(7, 9, 18, 0.94));
+  color: var(--ink);
+}
+.cloud {
+  background:
+    linear-gradient(180deg, rgba(16, 23, 54, 0.88), rgba(7, 9, 18, 0.92)),
+    radial-gradient(circle at 18% 26%, rgba(102, 217, 255, 0.06), transparent 40%);
+  color: var(--ink);
+}
 .night, .deep { background: linear-gradient(135deg, var(--astral), var(--plum)); color: var(--lavender); }
 .inner { width: min(100%, var(--max)); margin: 0 auto; }
 .section-head {
@@ -216,7 +227,7 @@ h3 { font-size: 2rem; line-height: 1.04; }
   min-height: 270px;
   border: 1px solid var(--line);
   border-radius: 3px;
-  background: rgba(255,255,255,.58);
+  background: rgba(16, 23, 54, 0.72);
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -242,7 +253,7 @@ h3 { font-size: 2rem; line-height: 1.04; }
   width: 22px;
   height: 22px;
   clip-path: polygon(50% 0,60% 36%,100% 50%,60% 64%,50% 100%,40% 64%,0 50%,40% 36%);
-  background: radial-gradient(circle, rgba(255,250,242,.95) 0 20%, rgba(201,168,106,.5) 22% 100%);
+  background: radial-gradient(circle, rgba(255, 230, 102, 0.85) 0 20%, rgba(201, 168, 106, 0.5) 22% 100%);
   opacity: .5;
 }
 .card::after, .feature-card::after, .look-card::after {
@@ -296,7 +307,7 @@ h3 { font-size: 2rem; line-height: 1.04; }
 .world-layout, .guides { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr); gap: 52px; align-items: stretch; }
 .world-image { min-height: 520px; position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 3px; background: #151b31; }
 .world-image img { width: 100%; height: 100%; object-fit: cover; }
-.world-badge { position: absolute; left: 18px; bottom: 18px; max-width: min(430px, calc(100% - 36px)); padding: 14px 16px; border: 1px solid rgba(201,168,106,.38); background: rgba(255,250,242,.9); color: var(--ink); font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .68rem; line-height: 1.6; letter-spacing: .12em; text-transform: uppercase; }
+.world-badge { position: absolute; left: 18px; bottom: 18px; max-width: min(430px, calc(100% - 36px)); padding: 14px 16px; border: 1px solid rgba(201,168,106,.38); background: rgba(16, 23, 54, 0.88); color: var(--lavender); font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .68rem; line-height: 1.6; letter-spacing: .12em; text-transform: uppercase; }
 .world-copy { display: grid; align-content: space-between; gap: 28px; }
 .world-copy p { color: var(--muted); line-height: 1.76; margin: 18px 0 0; }
 .world-points { display: grid; gap: 12px; }
@@ -321,8 +332,7 @@ h3 { font-size: 2rem; line-height: 1.04; }
 .footer { padding: 42px 46px; background: var(--void); color: rgba(232,228,242,.68); }
 .footer .inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 18px; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; }
 @media (max-width: 1080px) {
-  .shell-nav { grid-template-columns: 1fr auto; }
-  .nav-links { display: none; }
+  /* Mobile nav grid owned by melodia-mobile.css */
   h1 { font-size: 4.7rem; }
   h2 { font-size: 3.4rem; }
   .section-head, .world-layout, .guides, .card-grid, .card-grid.two, .image-grid, .look-grid, .feature-grid, .infologic { grid-template-columns: 1fr; }

@@ -9,10 +9,10 @@
   --gold-soft: #E8C9B8;         /* Rose gold */
   --luxury-gold: #C9A86A;
   --celestial-deep: #0D1224;
-  --ivory: #F5F2ED;             /* Premium paper */
-  --paper: #FEFAF2;             /* Luxury cream */
-  --ink: #221A2A;               /* Rich text */
-  --muted: #6E6080;             /* Sophisticated muted */
+  --ivory: #070912;
+  --paper: rgba(16, 23, 54, 0.62);
+  --ink: rgba(236, 234, 244, 0.92);
+  --muted: rgba(236, 234, 244, 0.66);
   --lavender: #E8E4F2;          /* Premium lavender */
   --pearl: #F0DCF0;             /* Premium pearl */
   

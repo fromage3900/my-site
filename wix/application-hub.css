@@ -7,10 +7,10 @@
   align-content: start;
   border: 1px solid var(--border-gold);
   background:
-    linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
+    linear-gradient(rgba(16, 23, 54, 0.88), rgba(7, 9, 18, 0.92)),
     var(--pattern-hearts-svg);
   background-size: auto, 180px 180px;
-  box-shadow: 0 20px 70px rgba(34, 26, 42, 0.1);
+  box-shadow: 0 20px 70px rgba(7, 9, 18, 0.35);
 }
 
 .panel-head {
@@ -269,8 +269,8 @@
 }
 
 .passport-card.light {
-  background: var(--paper);
-  color: var(--ink);
+  background: linear-gradient(180deg, rgba(16, 23, 54, 0.94), rgba(7, 9, 18, 0.92));
+  color: var(--lavender);
 }
 
 .passport-card::before {
