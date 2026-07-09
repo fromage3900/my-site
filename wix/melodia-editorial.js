@@ -390,6 +390,10 @@
     if (global.MelodiaCosmicInstruments) {
       global.MelodiaCosmicInstruments.mount();
     }
+
+    if (global.MelodiaMagicalGirl) {
+      global.MelodiaMagicalGirl.boot();
+    }
   }
 
   global.MelodiaEditorial = { init, initParallax, initMobileNav, applyCopy };
