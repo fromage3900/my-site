@@ -107,17 +107,26 @@
   display: block;
   margin-top: 18px;
   color: var(--iris);
-  font-family: Fraunces, Georgia, serif;
-  font-size: 1.1rem;
+  font-family: var(--font-display, Fraunces, Georgia, serif);
+  font-size: 1.12rem;
+  letter-spacing: 0.01em;
+  text-shadow:
+    0 0 18px rgba(155, 143, 196, 0.25),
+    0 0 34px rgba(201, 168, 106, 0.12);
+}
+
+.jp-title::after {
+  content: " ✦";
+  color: rgba(255, 230, 102, 0.86);
+  font-family: var(--font-mono, "IBM Plex Mono", monospace);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-shadow: 0 0 16px rgba(255, 230, 102, 0.18);
 }
 
 .romaji {
-  display: block;
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  display: none;
 }
 
 .world-card.sakura { border-top: 5px solid #d989a8; }

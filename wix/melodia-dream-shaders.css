@@ -75,6 +75,17 @@
   animation: dream-sparkle-twinkle 6s ease-in-out infinite alternate;
 }
 
+.melodia-shell > .dream-star-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.36;
+}
+
 .melodia-shell > .dream-sparkle-layer::after {
   content: "";
   position: absolute;
