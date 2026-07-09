@@ -4,6 +4,9 @@
 
   const COPY_URL = '../content/site-copy.json';
   const INTAKE_URL = '../generated/unreal_portfolio_intake.json';
+  const NIGHTSHIFT_MANIFEST_URL = '../generated/nightshift_manifest.json';
+  const NIGHTSHIFT_ASSET_BASE = '../generated/assets/nightshift/';
+  const GEOMETRY_PIPELINES_URL = '../generated/geometry_nodes_pipelines.json';
 
   function getByPath(obj, path) {
     if (!obj || !path) return undefined;
@@ -303,6 +306,187 @@
     }
   }
 
+  async function hydrateRenderConstellation() {
+    const statsEl = document.getElementById('intakeStats');
+    if (!statsEl) return;
+
+    try {
+      const res = await fetch(INTAKE_URL, { cache: 'no-store' });
+      const intake = await res.json();
+      const counts = intake.counts || {};
+      const readiness = intake.readiness || {};
+      const scene = intake.scene || {};
+      const budget = intake.stats || {};
+
+      const sceneName = document.getElementById('intakeSceneName');
+      if (sceneName) sceneName.textContent = scene.scene_name || 'ZenForestTest';
+
+      const engine = document.getElementById('intakeEngine');
+      if (engine) engine.textContent = scene.engine || 'Unreal Engine';
+
+      const generated = document.getElementById('intakeGenerated');
+      if (generated && intake.generated_at) {
+        generated.textContent = new Date(intake.generated_at).toLocaleString();
+      }
+
+      const triangles = document.getElementById('intakeTriangles');
+      if (triangles && budget.triangle_count != null) {
+        triangles.textContent = `${budget.triangle_count} triangles`;
+      }
+
+      const budgetLine = document.getElementById('intakeBudget');
+      if (budgetLine) {
+        budgetLine.textContent = `${budget.draw_calls || 0} draw calls, ${budget.static_mesh_components || 0} static mesh components, ${budget.unique_materials || 0} unique materials, and ${budget.unique_meshes || 0} unique meshes.`;
+      }
+
+      const statData = [
+        ['Readiness', `${readiness.score || 0}/100`],
+        ['Web-ready plates', `${counts.renders_web_ready || 0}/${counts.renders_total || 0}`],
+        ['Shader families', counts.shader_families || 0],
+        ['Material instances', counts.material_instances || 0],
+      ];
+      statsEl.innerHTML = statData
+        .map(
+          (pair) =>
+            `<div class="info-cell"><span>${esc(pair[0])}</span><strong>${esc(pair[1])}</strong></div>`
+        )
+        .join('');
+
+      const signalsEl = document.getElementById('intakeSignals');
+      if (signalsEl) {
+        const signals = Array.isArray(intake.latest_unreal_signals) ? intake.latest_unreal_signals : [];
+        signalsEl.innerHTML = signals
+          .map(
+            (signal) =>
+              `<article class="intake-signal premium-card"><span class="intake-pill">${esc(signal.label)}</span><div><h3>${esc(signal.title)}</h3><p>${esc(signal.note)}</p></div></article>`
+          )
+          .join('');
+      }
+
+      const cardsEl = document.getElementById('intakeCards');
+      if (cardsEl) {
+        const cards = Array.isArray(intake.render_cards) ? intake.render_cards : [];
+        const visible = cards
+          .filter((card) => card.status !== 'deprecated' && card.id !== 'materials-grid-families-review')
+          .sort((a, b) => (b.priority || 0) - (a.priority || 0));
+        cardsEl.innerHTML = visible
+          .map((card) => {
+            const thumbClass =
+              card.group === 'materials' ? 'intake-thumb material-thumb' : 'intake-thumb';
+            const media = card.web_path
+              ? `<img src="${esc(card.web_path)}" alt="${esc(card.filename)}" loading="lazy" />`
+              : `<span>${esc(card.status)}</span>`;
+            return `<article class="intake-card premium-card"><div class="${thumbClass}">${media}</div><div class="intake-card-body"><span class="intake-pill">${esc(card.group)}</span><span class="intake-pill">${esc(card.status)}</span><h3>${esc(card.filename)}</h3><p>${esc(card.caption)}</p></div></article>`;
+          })
+          .join('');
+      }
+
+      const familiesEl = document.getElementById('intakeFamilies');
+      if (familiesEl) {
+        const families = Array.isArray(intake.shader_families) ? intake.shader_families : [];
+        familiesEl.innerHTML = families
+          .map((family) => {
+            const samples = (family.sample_materials || []).slice(0, 3).map(esc).join('<br>');
+            return `<article class="intake-family premium-card"><strong>${esc(family.family)}</strong><p>${esc(family.count)} materials</p><p>${samples}</p></article>`;
+          })
+          .join('');
+      }
+
+      const needsEl = document.getElementById('intakeNeeds');
+      if (needsEl) {
+        const needs = (readiness.next_needs || []).filter(Boolean);
+        needsEl.innerHTML =
+          needs.map((need) => `<div class="intake-need">${esc(need)}</div>`).join('') ||
+          '<div class="intake-need">No urgent gaps detected. Keep curating the strongest captures.</div>';
+      }
+    } catch (_err) {
+      statsEl.innerHTML =
+        '<div class="info-cell"><span>Intake</span><strong>Unavailable</strong></div>';
+    }
+  }
+
+  function pipelineStatusClass(status) {
+    const s = String(status || '').toLowerCase();
+    if (s === 'live') return 'is-live';
+    if (s === 'in_progress' || s === 'partial') return 'is-progress';
+    if (s === 'scaffold') return 'is-scaffold';
+    return 'is-planned';
+  }
+
+  async function hydrateGeometryPipelines() {
+    const lanesMount = document.getElementById('geometryPipelineLanes');
+    const mathMount = document.getElementById('geometryMathChips');
+    if (!lanesMount && !mathMount) return;
+
+    try {
+      const res = await fetch(GEOMETRY_PIPELINES_URL, { cache: 'no-store' });
+      const data = await res.json();
+
+      if (lanesMount) {
+        const lanes = Array.isArray(data.lanes) ? data.lanes : [];
+        lanesMount.innerHTML = lanes
+          .map((lane) => {
+            const steps = Array.isArray(lane.steps) ? lane.steps : [];
+            const stepHtml = steps
+              .map(
+                (step) =>
+                  `<li class="pipeline-step" data-order="0${step.order}"><strong>${esc(step.name)}</strong><p>${esc(step.detail)}</p></li>`
+              )
+              .join('');
+            const proof = (lane.proof_targets || []).slice(0, 3).map(esc).join(' · ');
+            const statusClass = pipelineStatusClass(lane.status);
+            const sheet = lane.sheet_href
+              ? `<a href="${esc(lane.sheet_href)}">Open sheet</a>`
+              : '';
+            return `<article class="pipeline-lane premium-card"><div class="pipeline-lane-head"><div><span class="pipeline-lane-tag">${esc(lane.lane)}</span><h3>${esc(lane.title)}</h3></div><span class="pipeline-status ${statusClass}">${esc(lane.status)}</span></div><p style="margin:0 0 14px;color:var(--muted);line-height:1.58">${esc(lane.summary)}</p><ol class="pipeline-steps">${stepHtml}</ol><div class="pipeline-meta"><span>${esc(lane.asset_root)}</span>${sheet}<span>↔ ${esc(lane.unreal_parallel)}</span></div><p style="margin:10px 0 0;font-size:.82rem;color:var(--muted)">Proof: ${proof}</p></article>`;
+          })
+          .join('');
+      }
+
+      if (mathMount) {
+        const structures = Array.isArray(data.math_structures) ? data.math_structures : [];
+        mathMount.innerHTML = structures
+          .map(
+            (item) =>
+              `<span class="math-chip"><b>${esc(item.name)}</b>${esc(item.tier)} · ${esc(item.asset)}</span>`
+          )
+          .join('');
+      }
+    } catch (_err) {
+      if (lanesMount) {
+        lanesMount.innerHTML =
+          '<p class="body-copy">Pipeline manifest unavailable. Check generated/geometry_nodes_pipelines.json.</p>';
+      }
+    }
+  }
+
+  async function hydrateMaterialGallery() {
+    const mount = document.getElementById('miGalleryGroups');
+    if (!mount) return;
+
+    try {
+      const res = await fetch(NIGHTSHIFT_MANIFEST_URL, { cache: 'no-store' });
+      const manifest = await res.json();
+      const groups = Array.isArray(manifest.groups) ? manifest.groups : [];
+      mount.innerHTML = groups
+        .map((group) => {
+          const items = Array.isArray(group.items) ? group.items : [];
+          const tiles = items
+            .map((item) => {
+              const filename = `${item.id}.png`;
+              const src = `${NIGHTSHIFT_ASSET_BASE}${filename}`;
+              return `<figure class="image-card premium-card material-proof-frame mi-tile"><img src="${esc(src)}" alt="${esc(item.id)} preview sphere" loading="lazy" /><div><h3>${esc(item.id)}</h3><p>${esc(item.caption || '')}</p></div></figure>`;
+            })
+            .join('');
+          return `<section class="mi-group"><div class="section-head"><div><p class="eyebrow">${esc(group.label)}</p><h2>${esc(group.label)}</h2></div><p>${esc(group.caption || '')}</p></div><div class="image-grid mi-grid">${tiles}</div></section>`;
+        })
+        .join('');
+    } catch (_err) {
+      mount.innerHTML =
+        '<p class="body-copy">NightShift manifest unavailable. Check generated/nightshift_manifest.json.</p>';
+    }
+  }
+
   function initMobileNav() {
     document.querySelectorAll('.shell-nav').forEach((nav) => {
       if (nav.querySelector('.nav-toggle')) return;
@@ -372,6 +556,15 @@
     if (options && options.heroGrid) {
       await hydrateHeroPlates('heroGrid', typeof options.heroGrid === 'number' ? options.heroGrid : null);
     }
+    if (options && options.constellation) {
+      await hydrateRenderConstellation();
+    }
+    if (options && options.materialGallery) {
+      await hydrateMaterialGallery();
+    }
+    if (options && options.geometryPipelines) {
+      await hydrateGeometryPipelines();
+    }
 
     if (global.MelodiaOrrery) {
       global.MelodiaOrrery.upgradeHeroOrreries();
@@ -396,5 +589,13 @@
     }
   }
 
-  global.MelodiaEditorial = { init, initParallax, initMobileNav, applyCopy };
+  global.MelodiaEditorial = {
+    init,
+    initParallax,
+    initMobileNav,
+    applyCopy,
+    hydrateRenderConstellation,
+    hydrateMaterialGallery,
+    hydrateGeometryPipelines,
+  };
 })(window);

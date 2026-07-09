@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-07-09T16:26:54Z",
+  "source": "Saved/Portfolio/Renders/NightShift/",
+  "groups": [
+    {
+      "id": "nikki-heroes",
+      "label": "Nikki hero SDF",
+      "caption": "Six magical-girl surface heroes — reparented instances on M_Master_Toon_Universal.",
+      "items": [
+        { "id": "MI_SDF_RosyQuartz", "caption": "Soft rose quartz with satin sheen and sparkle mask." },
+        { "id": "MI_SDF_IvoryScrollwork", "caption": "Ivory filigree scrollwork — baroque trim language." },
+        { "id": "MI_SDF_Altar_GoldFiligree", "caption": "Gilded altar filigree with warm metallic response." },
+        { "id": "MI_SDF_CelestialVinyl", "caption": "Celestial vinyl sheen — fashion-fantasy surface polish." },
+        { "id": "MI_SDF_Nebula_Veil", "caption": "Parallax nebula veil — Space Cathedral adjacency." },
+        { "id": "MI_SDF_Starfield_Dust", "caption": "Fine starfield dust with emissive sparkle." }
+      ]
+    },
+    {
+      "id": "cosmic",
+      "label": "Cosmic SDF",
+      "caption": "Nine cosmic instances — nebula ramps, starfields, aurora veil, void deep.",
+      "items": [
+        { "id": "MI_Cosmic_AuroraVeil", "caption": "Aurora veil banding with soft emissive rim." },
+        { "id": "MI_Cosmic_BlueNebulaA", "caption": "Blue nebula variant A — cool parallax depth." },
+        { "id": "MI_Cosmic_BlueNebulaB", "caption": "Blue nebula variant B — denser cloud read." },
+        { "id": "MI_Cosmic_BlueNebulaC", "caption": "Blue nebula variant C — high-contrast swirl." },
+        { "id": "MI_Cosmic_EclipseHalo", "caption": "Eclipse halo rim with dark-core nebula." },
+        { "id": "MI_Cosmic_PurpleNebulaA", "caption": "Purple nebula variant A — cathedral mood." },
+        { "id": "MI_Cosmic_PurpleNebulaB", "caption": "Purple nebula variant B — galaxy banding." },
+        { "id": "MI_Cosmic_PurpleNebulaC", "caption": "Purple nebula variant C — deep void contrast." },
+        { "id": "MI_Cosmic_StarfieldA", "caption": "Starfield density A — NASA-adjacent sparkle." },
+        { "id": "MI_Cosmic_StarfieldB", "caption": "Starfield density B — mid-field constellation." },
+        { "id": "MI_Cosmic_StarfieldC", "caption": "Starfield density C — sparse deep-sky read." },
+        { "id": "MI_Cosmic_VoidDeep", "caption": "Void deep base — low emissive, high parallax." }
+      ]
+    },
+    {
+      "id": "sdf-surfaces",
+      "label": "SDF surface library",
+      "caption": "Supporting SDF instances for trims, ceramics, moss, and ornamental reads.",
+      "items": [
+        { "id": "MI_SDF_Aurora_Band", "caption": "Horizontal aurora band for ceiling trims." },
+        { "id": "MI_SDF_MossyCopper", "caption": "Mossy copper patina — grotto pillar language." },
+        { "id": "MI_SDF_RoseWindow_Radial", "caption": "Radial rose-window SDF for cathedral glass." },
+        { "id": "MI_SDF_TealCeramic", "caption": "Teal ceramic glaze with soft specular." },
+        { "id": "MI_SDF_VoidStarlight", "caption": "Void starlight accent — emissive point scatter." }
+      ]
+    },
+    {
+      "id": "toon",
+      "label": "Toon ornamental",
+      "caption": "Ornamental toon SDF for filigree and scroll trims.",
+      "items": [
+        { "id": "MI_Toon_SDF_Ornamental", "caption": "Toon SDF ornamental scroll — baroque grotto trims." }
+      ]
+    }
+  ]
+}

@@ -1,13 +1,17 @@
-/* Melodia Magical Girl Layer — bows, ribbons, crystals, refraction-like glass */
+/* Melodia Magical Girl Layer — bows, ribbons, crystals, Madoka-adjacent contract aesthetic */
 
 :root {
-  --mg-accent-pink: rgba(232, 160, 176, 0.85);
+  --mg-accent-pink: rgba(255, 110, 180, 0.88);
+  --mg-accent-rose: rgba(232, 80, 140, 0.82);
   --mg-accent-gold: rgba(255, 230, 102, 0.8);
   --mg-accent-cyan: rgba(102, 217, 255, 0.78);
   --mg-accent-violet: rgba(204, 153, 255, 0.72);
+  --mg-void-deep: rgba(10, 6, 18, 0.92);
   --mg-glass: rgba(7, 9, 18, 0.45);
   --mg-glass-hi: rgba(255, 255, 255, 0.06);
   --mg-stamp-opacity: 0.58;
+  --mg-contract-opacity: 0.14;
+  --mg-shard-opacity: 0.22;
 }
 
 /* Mount (fixed, subtle, non-obstructive) */
@@ -20,6 +24,123 @@
 
 .mg-layer.is-hidden {
   opacity: 0.18;
+}
+
+.mg-layer.is-wish {
+  --mg-stamp-opacity: 0.72;
+  --mg-contract-opacity: 0.22;
+  --mg-shard-opacity: 0.34;
+}
+
+/* Contract seal ring (Madoka labyrinth / grief-cube echo) */
+.mg-contract-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(92vmin, 820px);
+  height: min(92vmin, 820px);
+  transform: translate(-50%, -50%);
+  opacity: var(--mg-contract-opacity);
+  animation: mg-contract-spin 120s linear infinite;
+}
+
+.mg-contract-ring svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mg-contract-ring circle {
+  fill: none;
+  stroke: rgba(255, 110, 180, 0.22);
+  stroke-width: 0.8;
+}
+
+.mg-contract-ring .tick {
+  stroke: rgba(255, 230, 102, 0.16);
+  stroke-width: 0.6;
+}
+
+.mg-contract-ring .inner {
+  stroke: rgba(204, 153, 255, 0.14);
+  stroke-dasharray: 4 8;
+}
+
+@keyframes mg-contract-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Soul gems (teardrop wish jewels) */
+.mg-soul-gem {
+  position: absolute;
+  width: 54px;
+  height: 74px;
+  opacity: calc(var(--mg-stamp-opacity) * 0.85);
+  filter: drop-shadow(0 0 18px rgba(255, 110, 180, 0.22));
+  transform: translate3d(calc(var(--mouse-x) * 0.12), calc(var(--mouse-y) * 0.12), 0);
+}
+
+.mg-soul-gem.g1 { top: 18%; left: 12%; animation: mg-gem-float 9s ease-in-out infinite; }
+.mg-soul-gem.g2 { top: 22%; right: 14%; animation: mg-gem-float 11s ease-in-out infinite reverse; }
+.mg-soul-gem.g3 { bottom: 20%; left: 18%; opacity: 0.38; animation: mg-gem-float 13s ease-in-out infinite; }
+
+.mg-soul-gem::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 0%, 88% 38%, 72% 100%, 50% 86%, 28% 100%, 12% 38%);
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.35), transparent 45%),
+    linear-gradient(165deg, rgba(255, 110, 180, 0.55), rgba(204, 153, 255, 0.35) 48%, rgba(102, 217, 255, 0.28));
+  border: 1px solid rgba(255, 230, 102, 0.28);
+}
+
+.mg-soul-gem::after {
+  content: "";
+  position: absolute;
+  inset: 18% 28% 32%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent 70%);
+  opacity: 0.65;
+  mix-blend-mode: screen;
+}
+
+@keyframes mg-gem-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-4deg); }
+  50% { transform: translate3d(0, -10px, 0) rotate(4deg); }
+}
+
+/* Grief shards — stained glass fragments */
+.mg-shards {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.mg-shard {
+  position: absolute;
+  width: 48px;
+  height: 72px;
+  opacity: var(--mg-shard-opacity);
+  background: linear-gradient(135deg, rgba(255, 110, 180, 0.12), rgba(102, 217, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  clip-path: polygon(50% 0%, 100% 38%, 68% 100%, 0% 62%);
+  backdrop-filter: blur(6px);
+}
+
+.mg-shard.s1 { top: 12%; left: 42%; transform: rotate(18deg); }
+.mg-shard.s2 { top: 58%; right: 8%; transform: rotate(-24deg); width: 36px; height: 56px; }
+.mg-shard.s3 { bottom: 14%; left: 6%; transform: rotate(32deg); width: 42px; height: 64px; }
+.mg-shard.s4 { top: 34%; right: 28%; transform: rotate(-12deg); opacity: calc(var(--mg-shard-opacity) * 0.7); }
+
+/* Halftone wish dust */
+.mg-halftone {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image: radial-gradient(circle, rgba(255, 110, 180, 0.9) 0 0.8px, transparent 0.9px);
+  background-size: 14px 14px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 72%);
 }
 
 /* Ribbon arcs (corner decoration) */
@@ -40,11 +161,12 @@
   fill: none;
   stroke-width: 1.2;
   stroke-linecap: round;
-  stroke: rgba(204, 153, 255, 0.24);
+  stroke: rgba(255, 110, 180, 0.28);
 }
 
-.mg-ribbon path.gold { stroke: rgba(255, 230, 102, 0.18); }
-.mg-ribbon path.cyan { stroke: rgba(102, 217, 255, 0.16); }
+.mg-ribbon path.gold { stroke: rgba(255, 230, 102, 0.2); }
+.mg-ribbon path.cyan { stroke: rgba(102, 217, 255, 0.18); }
+.mg-ribbon path.rose { stroke: rgba(232, 80, 140, 0.22); stroke-width: 1.4; }
 
 /* Crystal facets (hover-reactive “refraction”) */
 .mg-crystal {
@@ -113,11 +235,31 @@
   height: 100%;
 }
 
-.mg-bow-toggle path {
-  fill: none;
-  stroke: rgba(255, 230, 102, 0.75);
-  stroke-width: 1.3;
-  filter: drop-shadow(0 0 10px rgba(255, 230, 102, 0.18));
+.mg-bow-toggle path.bow-fill {
+  fill: rgba(255, 110, 180, 0.12);
+  stroke: rgba(255, 230, 102, 0.82);
+  stroke-width: 1.2;
+  filter: drop-shadow(0 0 12px rgba(255, 110, 180, 0.28));
+}
+
+.mg-bow-toggle path.bow-knot {
+  fill: rgba(255, 230, 102, 0.35);
+  stroke: none;
+}
+
+.mg-bow-toggle.is-wish {
+  box-shadow:
+    0 0 0 1px rgba(255, 110, 180, 0.35),
+    0 0 28px rgba(255, 110, 180, 0.22),
+    0 14px 42px rgba(7, 9, 18, 0.42);
+}
+
+/* Soul-gem accent on hero kickers when wish mode on */
+.melodia-shell.mg-wish-mode .magazine-kicker::after,
+.melodia-shell.mg-wish-mode .premium-kicker::after {
+  content: " ✦";
+  color: var(--mg-accent-pink);
+  text-shadow: 0 0 12px rgba(255, 110, 180, 0.45);
 }
 
 /* Ribbon hover state on interactive elements (cute, controlled) */
@@ -126,9 +268,9 @@
 .nav-cta:hover,
 .portal-card:hover {
   box-shadow:
-    0 0 0 1px rgba(204, 153, 255, 0.18),
-    0 0 18px rgba(102, 217, 255, 0.10),
-    0 0 26px rgba(255, 230, 102, 0.08);
+    0 0 0 1px rgba(255, 110, 180, 0.22),
+    0 0 18px rgba(102, 217, 255, 0.12),
+    0 0 26px rgba(255, 230, 102, 0.1);
 }
 
 @media (max-width: 680px) {
@@ -146,5 +288,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .mg-crystal { transform: rotate(0deg); }
+  .mg-contract-ring { animation: none; }
+  .mg-soul-gem { animation: none; }
 }
 

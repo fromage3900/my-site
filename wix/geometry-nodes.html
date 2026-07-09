@@ -4,13 +4,14 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Geometry Nodes | Brennan Shepherd</title>
-<meta name="description" content="Blender Geometry Nodes, Unreal handoff, and procedural scatter workflows for stylized environment art." />
+<meta name="description" content="Blender Geometry Nodes, UE GeometryScript math kit, PCG pillar pipelines, and Unreal handoff for stylized environment art." />
 <link rel="stylesheet" href="melodia-luxury-type.css">
 <link rel="stylesheet" href="melodia-editorial.css">
 <link rel="stylesheet" href="melodia-fashion-editorial.css">
 <link rel="stylesheet" href="melodia-premium-system.css">
 <link rel="stylesheet" href="portfolio-luxury-bridge.css">
 <link rel="stylesheet" href="portfolio-pages.css">
+<link rel="stylesheet" href="geometry-pipelines.css">
 </head>
 <body>
 <div class="melodia-shell fashion-mode">
@@ -18,32 +19,64 @@
   <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
   <nav class="nav-links" aria-label="Sections">
     <a href="index.html">Home</a>
-    <a href="hero-renders.html">Renders</a>
     <a href="shader-breakdowns.html">Shaders</a>
     <a href="pcg-system-impact.html">PCG</a>
+    <a href="sdf-material-gallery.html">MI Gallery</a>
+    <a href="render-constellation.html">Intake</a>
     <a href="commissions.html">Commissions</a>
   </nav>
-  <a class="nav-cta button-premium" href="commissions.html">Request Work</a>
+  <a class="nav-cta button-premium" href="../generated/geometry_nodes_pipelines.json">Pipeline JSON</a>
 </header>
 <main>
-<section class="hero" aria-labelledby="page-title">
-  <div class="hero-media" aria-hidden="true"><img src="../generated/assets/latest-hero.png" alt="Stylized environment render used for procedural portfolio page" /></div>
+<section class="hero has-editorial-frame" aria-labelledby="page-title">
+  <div class="hero-media" aria-hidden="true"><img src="../generated/assets/nightshift/WP_BaroqueGrotto_terrain.png" alt="Baroque grotto terrain — procedural rock and scatter target pillar" /></div>
   <div class="hero-inner">
-    <p class="kicker magazine-kicker">Geometry Nodes and procedural systems</p>
+    <p class="kicker magazine-kicker premium-kicker">Geometry Nodes · GeometryScript · PCG</p>
     <h1 id="page-title">Procedural work that still feels handmade.</h1>
-    <p class="lede">A curated page for Blender Geometry Nodes, Unreal handoff, asset pipeline thinking, and procedural rock or scatter workflows.</p>
+    <p class="lede">Pipeline breakdowns for Blender scatter and rock generators, UE GeometryScript math structures, and the four WP pillar PCG volumes — each with proof targets and Unreal handoff notes.</p>
     <div class="button-row">
-      <a class="button primary button-premium-primary" href="../generated/technical/blender-geometry-nodes-breakdown-plan.html">Open GN pack</a>
-      <a class="button button-premium" href="../generated/technical/geometry-nodes-universal-scatter-sheet.html">Universal scatter</a>
+      <a class="button primary button-premium-primary" href="#pipelines">Pipeline lanes</a>
+      <a class="button button-premium" href="../generated/technical/blender-geometry-nodes-breakdown-plan.html">GN pack</a>
+      <a class="button button-premium" href="pcg-system-impact.html">PCG impact</a>
     </div>
   </div>
 </section>
-<section class="band cloud fashion-band">
+
+<section class="band night" id="pipelines">
   <div class="inner">
-    <div class="editorial-rule"><span class="diamond" aria-hidden="true"></span><span>Geometry Nodes</span><span class="diamond" aria-hidden="true"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Pipeline breakdown</p>
+        <h2>Six lanes from Blender graph to UE proof.</h2>
+      </div>
+      <p>Each lane lists ordered steps, asset roots, parallel Unreal systems, and what still needs a capture plate. This is the start of a full geometry dossier — not just links to technical sheets.</p>
+    </div>
+    <div id="geometryPipelineLanes" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="band astral fashion-band">
+  <div class="section-orrery constellation-slot" data-orrery="constellation" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="editorial-rule"><span class="diamond" aria-hidden="true"></span><span>GeometryScript math kit</span><span class="diamond" aria-hidden="true"></span></div>
+    <div class="section-head">
+      <div><h2>Parametric meshes for Cosmic Orrery and beyond.</h2></div>
+      <p class="human-lede">14-structure catalog — torus knots, epitrochoids, polyhedral mounts, Möbius ribbons, gyroid patches, and Fibonacci scatter anchors. Baked via <code>generate_math_structures.py</code>.</p>
+    </div>
+    <div class="math-chip-grid" id="geometryMathChips" aria-live="polite"></div>
+    <div class="button-row" style="margin-top:22px">
+      <a class="button button-premium" href="../generated/geometry_nodes_pipelines.json">Pipeline manifest</a>
+      <a class="button button-premium" href="sdf-material-gallery.html">Material instance gallery</a>
+    </div>
+  </div>
+</section>
+
+<section class="band paper fashion-band">
+  <div class="inner">
+    <div class="editorial-rule"><span class="diamond" aria-hidden="true"></span><span>Technical sheets</span><span class="diamond" aria-hidden="true"></span></div>
     <div class="section-head">
       <div><h2>Breakdowns for procedural modeling and Unreal handoff.</h2></div>
-      <p class="human-lede">The goal is to show that procedural work is not just clever graphs: it is art-directable, readable, and useful to a production environment team.</p>
+      <p class="human-lede">The goal is to show that procedural work is art-directable, readable, and useful to a production environment team — not just clever graphs.</p>
     </div>
     <div class="card-grid">
       <a class="card premium-card" href="../generated/technical/blender-geometry-nodes-breakdown-plan.html"><span>Pack Plan</span><div><h3>Geometry Nodes Breakdown</h3><p>Overview pack for scatter systems, asset handoff, rock generation, and future sheets.</p></div></a>
@@ -56,12 +89,15 @@
   </div>
 </section>
 </main>
-<footer class="footer"><div class="inner"><span>Brennan Shepherd / Environment & Technical Artist</span><span>GitHub Pages + Wix iframe portfolio</span></div></footer>
+<footer class="footer"><div class="inner"><span>Brennan Shepherd / Environment & Technical Artist</span><span>Geometry pipelines · Melodia portfolio</span></div></footer>
 </div>
+<script src="premium-cosmic-hero.js"></script>
+<script src="melodia-orrery-system.js"></script>
 <script src="melodia-planetarium.js"></script>
 <script src="melodia-cosmic-instruments.js"></script>
 <script src="melodia-magical-girl.js"></script>
 <script src="melodia-dream-shaders.js"></script>
 <script src="melodia-editorial.js"></script>
+<script>MelodiaEditorial.init({ geometryPipelines: true });</script>
 </body>
 </html>

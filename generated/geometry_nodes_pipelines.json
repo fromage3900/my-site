@@ -1,0 +1,128 @@
+{
+  "generated_at": "2026-07-09T17:00:00Z",
+  "lanes": [
+    {
+      "id": "gn-universal-scatter",
+      "lane": "Blender Geometry Nodes",
+      "title": "Universal Scatter System",
+      "status": "planned",
+      "asset_root": "/Blender/GeometryNodes/GN_UniversalScatter",
+      "summary": "Surface sampling, density masks, instance variation, and art-directable scatter before Unreal PCG takes over at scale.",
+      "steps": [
+        { "order": 1, "name": "Mesh input + normals", "detail": "Capture base terrain or trim mesh; align normals for stable instance rotation." },
+        { "order": 2, "name": "Density mask", "detail": "Vertex color, attribute map, or curve falloff drives where instances may spawn." },
+        { "order": 3, "name": "Instance on points", "detail": "Collection instances with scale/rotation randomization and clump controls." },
+        { "order": 4, "name": "Realize + decimate", "detail": "Optional realize for hero clusters; keep instances for export when possible." },
+        { "order": 5, "name": "Export handoff", "detail": "FBX/OBJ with applied scale, origin at base, material slots named for Unreal." }
+      ],
+      "proof_targets": ["full node graph", "parameter panel", "mask proof", "before/after viewport", "Unreal import"],
+      "sheet_href": "../generated/technical/geometry-nodes-universal-scatter-sheet.html",
+      "unreal_parallel": "PCG scatter volumes on L_WP_* pillars"
+    },
+    {
+      "id": "gn-procedural-rock",
+      "lane": "Blender Geometry Nodes",
+      "title": "Procedural Rock Generator",
+      "status": "partial",
+      "asset_root": "/Blender/GeometryNodes/GN_ProceduralRock",
+      "summary": "Silhouette variants, strata masks, noise displacement, and LOD-friendly decimation for grotto and shrine dressing.",
+      "steps": [
+        { "order": 1, "name": "Base primitive", "detail": "Ico-sphere or displaced cube as rock core silhouette." },
+        { "order": 2, "name": "Strata + cracks", "detail": "Layered noise masks carve sediment bands and fracture lines." },
+        { "order": 3, "name": "Displacement stack", "detail": "Vector displacement with clamped amplitude for stylized reads." },
+        { "order": 4, "name": "LOD variants", "detail": "Decimate modifier outputs for near/mid/far export set." },
+        { "order": 5, "name": "Portfolio capture", "detail": "Beauty + wireframe + graph plate for geometry-nodes.html." }
+      ],
+      "proof_targets": ["silhouette grid", "strata close-up", "LOD triangle counts", "Unreal static mesh import"],
+      "sheet_href": "../generated/technical/procedural-rock-geometry-nodes-sheet.html",
+      "unreal_parallel": "PCG_RockScatter on L_WP_BaroqueGrotto"
+    },
+    {
+      "id": "blender-handoff",
+      "lane": "Blender → Unreal",
+      "title": "Asset Pipeline Handoff",
+      "status": "live",
+      "asset_root": "/Blender/Export/",
+      "summary": "Scale, transforms, origins, UVs, material slots, and validation checklist before anything hits ZenForestTest or WP pillars.",
+      "steps": [
+        { "order": 1, "name": "Apply transforms", "detail": "1 BU = 1 cm convention; apply scale/rotation before export." },
+        { "order": 2, "name": "Origin + pivot", "detail": "Ground pivot for props; center pivot for scatter instances." },
+        { "order": 3, "name": "Material slots", "detail": "Slot names match Unreal MI assignment plan." },
+        { "order": 4, "name": "FBX export", "detail": "Smoothing groups, tangents, no animation unless needed." },
+        { "order": 5, "name": "UE validation", "detail": "Import log, collision, Nanite decision, portfolio render slot." }
+      ],
+      "proof_targets": ["export settings screenshot", "UE import log", "in-scene scale check"],
+      "sheet_href": "../generated/technical/blender-asset-pipeline-sheet.html",
+      "unreal_parallel": "portfolio_package.json intake"
+    },
+    {
+      "id": "ue-geometryscript-orrery",
+      "lane": "UE GeometryScript",
+      "title": "Cosmic Orrery Math Kit",
+      "status": "in_progress",
+      "asset_root": "/Game/EnvSandbox/Meshes/Orrery/",
+      "summary": "Parametric torus knots, epitrochoid rings, armillary scaffolding, and Kepler orbits baked to StaticMesh assets for L_WP_CosmicOrrery.",
+      "steps": [
+        { "order": 1, "name": "DynamicMesh primitives", "detail": "GeometryScript_Primitives → tube along sampled curves." },
+        { "order": 2, "name": "Curve sampling", "detail": "Torus knot (2,3), epitrochoid, Kepler ellipse sweeps." },
+        { "order": 3, "name": "Normals + merge", "detail": "recompute_normals → single mesh per structure." },
+        { "order": 4, "name": "Bake to asset", "detail": "create_new_static_mesh_asset_from_mesh + save." },
+        { "order": 5, "name": "PCG anchor", "detail": "Fibonacci sphere anchors feed PCG_Cosmic_OrbitScatter." }
+      ],
+      "proof_targets": ["viewport beauty", "triangle budget", "orrery hero plate"],
+      "sheet_href": "geometry-nodes.html#pipelines",
+      "unreal_parallel": "melodia-orrery-system.js web mirror"
+    },
+    {
+      "id": "ue-geometryscript-structures",
+      "lane": "UE GeometryScript",
+      "title": "Math Structures Library",
+      "status": "in_progress",
+      "asset_root": "/Game/EnvSandbox/Meshes/MathStructures/",
+      "summary": "Polyhedral mounts, Möbius ribbons, Lissajous rails, gyroid patches — portfolio-safe mathematical meshes across pillars.",
+      "steps": [
+        { "order": 1, "name": "Tier pick", "detail": "Polyhedral planet cores, curves/ribbons, minimal surfaces, phyllotaxis anchors." },
+        { "order": 2, "name": "Parametric bake", "detail": "_bake_triangle_mesh or primitive append pipeline." },
+        { "order": 3, "name": "Audit manifest", "detail": "geometryscript_meshes.json tracks path, tris, status." },
+        { "order": 4, "name": "Material instance", "detail": "MI_Show_CelestialNebula or cosmic SDF on preview spheres." },
+        { "order": 5, "name": "NightShift capture", "detail": "Instance preview PNG → nightshift intake." }
+      ],
+      "proof_targets": ["14-structure catalog", "headless runner log", "SM_* asset list"],
+      "sheet_href": "sdf-material-gallery.html",
+      "unreal_parallel": "sdf-material-gallery.html"
+    },
+    {
+      "id": "ue-pcg-pillars",
+      "lane": "Unreal PCG",
+      "title": "WP Pillar PCG Volumes",
+      "status": "scaffold",
+      "asset_root": "/Game/EnvSandbox/PCG/",
+      "summary": "Four owned L_WP levels with PCG volumes respawned — ISM regen still manual in-editor after MeshTerrain block-in.",
+      "steps": [
+        { "order": 1, "name": "Pillar scaffold", "detail": "L_WP_SakuraDream, SpaceCathedral, BaroqueGrotto, CosmicOrrery saved." },
+        { "order": 2, "name": "Volume assign", "detail": "MeadowBloom, EscherRelativityRoom, RockScatter+WallMoss, OrbitScatter." },
+        { "order": 3, "name": "ISM regen", "detail": "Regenerate until ISM count > 0 on hero camera." },
+        { "order": 4, "name": "Route proof", "detail": "ZEN_SHRINE_AXIS heatmap + exclusion zones." },
+        { "order": 5, "name": "Capture", "detail": "pcg_l_wp_* plates into portfolio_package.json." }
+      ],
+      "proof_targets": ["PCG graph overlay", "ISM count proof", "hero crop"],
+      "sheet_href": "../generated/technical/pcg-scatter-design-sheet.html",
+      "unreal_parallel": "pcg-system-impact.html"
+    }
+  ],
+  "math_structures": [
+    { "id": "torus-knot", "name": "Torus knot (2,3)", "tier": "Orrery", "asset": "SM_Math_TorusKnot_2_3" },
+    { "id": "epitrochoid", "name": "Epitrochoid ring", "tier": "Orrery", "asset": "SM_Math_Epitrochoid_Ring" },
+    { "id": "armillary", "name": "Nested armillary", "tier": "Orrery", "asset": "SM_Math_Armillary_Nested" },
+    { "id": "kepler", "name": "Kepler ellipse", "tier": "Orrery", "asset": "SM_Math_Kepler_Orbit_A" },
+    { "id": "icosahedron", "name": "Icosahedron mount", "tier": "Polyhedral", "asset": "SM_Math_Icosahedron" },
+    { "id": "stellated", "name": "Stellated icosahedron", "tier": "Polyhedral", "asset": "SM_Math_StellatedIcosahedron" },
+    { "id": "geodesic", "name": "Geodesic dome", "tier": "Polyhedral", "asset": "SM_Math_GeodesicDome" },
+    { "id": "mobius", "name": "Möbius strip", "tier": "Curves", "asset": "SM_Math_MobiusStrip" },
+    { "id": "lissajous", "name": "Lissajous 3D rail", "tier": "Curves", "asset": "SM_Math_LissajousRail_3_2_1" },
+    { "id": "trefoil", "name": "Trefoil knot", "tier": "Curves", "asset": "SM_Math_TrefoilKnot" },
+    { "id": "gyroid", "name": "Gyroid patch", "tier": "Minimal", "asset": "SM_Math_Gyroid_Patch" },
+    { "id": "enneper", "name": "Enneper petal", "tier": "Minimal", "asset": "SM_Math_EnneperPetal" },
+    { "id": "fibonacci", "name": "Fibonacci sphere anchors", "tier": "Scatter", "asset": "SM_Math_FibonacciSphere_Anchors" }
+  ]
+}
