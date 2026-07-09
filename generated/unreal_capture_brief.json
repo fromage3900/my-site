@@ -1,5 +1,5 @@
 ﻿{
-    "generated_at":  "2026-07-03T13:05:31.8635483Z",
+    "generated_at":  "2026-07-09T05:30:00.0000000Z",
     "source_intake":  "generated/unreal_portfolio_intake.json",
     "scene":  "ZenForestTest",
     "genome":  "ZEN_SHRINE_AXIS",
@@ -10,11 +10,12 @@
                        "Haiden"
                    ],
     "current_readiness":  {
-                              "label":  "render_ready_needs_breakdowns",
-                              "score":  82,
+                              "label":  "wp_scaffold_ready_needs_pcg_capture",
+                              "score":  85,
                               "next_needs":  [
+                                                 "Regenerate PCG on all four L_WP_* pillars (ISM > 0).",
+                                                 "Capture hero_l_wp_* and pcg_l_wp_* plates from Cam_Hero_Establishing.",
                                                  "Capture shader and Niagara breakdown plates into renders.breakdown.",
-                                                 "Capture PCG or procedural dressing proof into renders.pcg.",
                                                  "Promote strongest shader families into dedicated material breakdown cards."
                                              ]
                           },
@@ -27,6 +28,9 @@
                            "pcg":  0,
                            "material_instances":  30,
                            "shader_families":  3,
+                           "wp_pillar_levels":  4,
+                           "wp_pillar_pcg_ism":  0,
+                           "portfolio_mi_missing_parent":  0,
                            "assets":  4
                        },
     "incoming_drop_contract":  {

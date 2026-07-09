@@ -1,6 +1,6 @@
 ﻿{
-    "generated_at":  "2026-07-03T16:27:44.7865298Z",
-    "status":  "live_site_expanding",
+    "generated_at":  "2026-07-09T05:30:00.0000000Z",
+    "status":  "wp_pillars_scaffolded",
     "public_entry":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
     "focus":  "Infold-facing stylized environment art portfolio with Unreal proof and editorial Melodia presentation",
     "active_pages":  [
@@ -53,7 +53,7 @@
                                            "Add MeshBlend graph plate to renders.breakdown",
                                            "Add CelestialNebula starmap plate for Space Cathedral",
                                            "Add Sakura Niagara ambience proof",
-                                           "Capture hero + PCG proof for each L_WP_* pillar (SakuraDream, SpaceCathedral, BaroqueGrotto, CosmicOrrery)",
+                                           "Regenerate PCG on all L_WP_* pillars (ISM > 0) then capture hero + PCG proof",
                                            "Add PCG route proof against ZEN_SHRINE_AXIS (legacy ZenForest reference only)"
                                        ]
                          },
@@ -73,7 +73,7 @@
                              "tasks":  [
                                            "Add per-world case-study pages as renders arrive",
                                            "Promote Baroque Escher ornament into a dedicated shader story",
-                                           "Add Bioluminescent Grotto material targets",
+                                           "Add Cosmic Orrery case-study page as L_WP_CosmicOrrery renders arrive",
                                            "Create a downloadable art-test package checklist"
                                        ]
                          }
