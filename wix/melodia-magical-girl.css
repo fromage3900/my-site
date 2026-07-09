@@ -255,6 +255,46 @@
 }
 
 /* Soul-gem accent on hero kickers when wish mode on */
+.melodia-shell.mg-wish-mode .dream-aurora-layer {
+  opacity: 0.58;
+  filter: hue-rotate(var(--dream-hue-shift, 0deg)) saturate(1.12);
+}
+
+.melodia-shell.mg-wish-mode .dream-sparkle-layer {
+  opacity: 0.55;
+}
+
+.mg-hero-wish .hero-inner::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10% auto;
+  height: 120px;
+  background: linear-gradient(90deg, transparent, rgba(255, 110, 180, 0.12), transparent);
+  pointer-events: none;
+  transform: rotate(-3deg);
+}
+
+.premium-card.mg-ribbon-card {
+  position: relative;
+}
+
+.premium-card.mg-ribbon-card::before {
+  content: "✦";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 0.75rem;
+  color: rgba(255, 110, 180, 0.55);
+  text-shadow: 0 0 10px rgba(255, 110, 180, 0.35);
+  pointer-events: none;
+}
+
+.melodia-shell.mg-wish-mode .premium-card {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 110, 180, 0.08),
+    0 12px 40px rgba(7, 9, 18, 0.35);
+}
+
 .melodia-shell.mg-wish-mode .magazine-kicker::after,
 .melodia-shell.mg-wish-mode .premium-kicker::after {
   content: " ✦";

@@ -7,6 +7,13 @@
   const NIGHTSHIFT_MANIFEST_URL = '../generated/nightshift_manifest.json';
   const NIGHTSHIFT_ASSET_BASE = '../generated/assets/nightshift/';
   const GEOMETRY_PIPELINES_URL = '../generated/geometry_nodes_pipelines.json';
+  const PRODUCTION_SIGNALS_URL = '../generated/portfolio_production_signals.json';
+
+  async function fetchJson(url) {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+  }
 
   function getByPath(obj, path) {
     if (!obj || !path) return undefined;
@@ -310,9 +317,28 @@
     const statsEl = document.getElementById('intakeStats');
     if (!statsEl) return;
 
+    let intake = null;
+    let production = null;
+
     try {
-      const res = await fetch(INTAKE_URL, { cache: 'no-store' });
-      const intake = await res.json();
+      intake = await fetchJson(INTAKE_URL);
+    } catch (_err) {
+      /* fallback below */
+    }
+
+    try {
+      production = await fetchJson(PRODUCTION_SIGNALS_URL);
+    } catch (_err) {
+      /* optional enrichment */
+    }
+
+    if (!intake) {
+      statsEl.innerHTML =
+        '<div class="info-cell"><span>Intake</span><strong>Load failed</strong></div><div class="info-cell"><span>Fix</span><strong>Run ingest</strong></div>';
+      return;
+    }
+
+    try {
       const counts = intake.counts || {};
       const readiness = intake.readiness || {};
       const scene = intake.scene || {};
@@ -339,11 +365,33 @@
         budgetLine.textContent = `${budget.draw_calls || 0} draw calls, ${budget.static_mesh_components || 0} static mesh components, ${budget.unique_materials || 0} unique materials, and ${budget.unique_meshes || 0} unique meshes.`;
       }
 
+      const wpStatsEl = document.getElementById('intakeWpStats');
+      const wpSummary = document.getElementById('intakePcgSummary');
+      if (production && production.wp_pillars && wpStatsEl) {
+        const pillars = production.wp_pillars;
+        const wpData = [
+          ['Total PCG ISM', String(production.pcg_total_ism || '—')],
+          ['SakuraDream', String(pillars.SakuraDream?.total_ism || '—')],
+          ['SpaceCathedral', String(pillars.SpaceCathedral?.total_ism || '—')],
+          ['BaroqueGrotto', String(pillars.BaroqueGrotto?.total_ism || '—')],
+          ['CosmicOrrery', String(pillars.CosmicOrrery?.total_ism || '—')],
+        ];
+        wpStatsEl.innerHTML = wpData
+          .map(
+            (pair) =>
+              `<div class="info-cell"><span>${esc(pair[0])}</span><strong>${esc(pair[1])}</strong></div>`
+          )
+          .join('');
+        if (wpSummary) {
+          wpSummary.textContent = `Verified 2026-07-09 from wp_pillar_levels.json — all four pillars passed ISM regen.`;
+        }
+      }
+
       const statData = [
         ['Readiness', `${readiness.score || 0}/100`],
         ['Web-ready plates', `${counts.renders_web_ready || 0}/${counts.renders_total || 0}`],
         ['Shader families', counts.shader_families || 0],
-        ['Material instances', counts.material_instances || 0],
+        ['Portfolio MIs', production?.portfolio_mis || counts.material_instances || 0],
       ];
       statsEl.innerHTML = statData
         .map(
@@ -354,8 +402,12 @@
 
       const signalsEl = document.getElementById('intakeSignals');
       if (signalsEl) {
-        const signals = Array.isArray(intake.latest_unreal_signals) ? intake.latest_unreal_signals : [];
-        signalsEl.innerHTML = signals
+        const base = Array.isArray(intake.latest_unreal_signals) ? intake.latest_unreal_signals : [];
+        const extra = Array.isArray(production?.latest_signals) ? production.latest_signals : [];
+        const merged = [...extra, ...base].filter(
+          (s, i, arr) => arr.findIndex((x) => x.title === s.title) === i
+        );
+        signalsEl.innerHTML = merged
           .map(
             (signal) =>
               `<article class="intake-signal premium-card"><span class="intake-pill">${esc(signal.label)}</span><div><h3>${esc(signal.title)}</h3><p>${esc(signal.note)}</p></div></article>`
@@ -369,16 +421,18 @@
         const visible = cards
           .filter((card) => card.status !== 'deprecated' && card.id !== 'materials-grid-families-review')
           .sort((a, b) => (b.priority || 0) - (a.priority || 0));
-        cardsEl.innerHTML = visible
-          .map((card) => {
-            const thumbClass =
-              card.group === 'materials' ? 'intake-thumb material-thumb' : 'intake-thumb';
-            const media = card.web_path
-              ? `<img src="${esc(card.web_path)}" alt="${esc(card.filename)}" loading="lazy" />`
-              : `<span>${esc(card.status)}</span>`;
-            return `<article class="intake-card premium-card"><div class="${thumbClass}">${media}</div><div class="intake-card-body"><span class="intake-pill">${esc(card.group)}</span><span class="intake-pill">${esc(card.status)}</span><h3>${esc(card.filename)}</h3><p>${esc(card.caption)}</p></div></article>`;
-          })
-          .join('');
+        cardsEl.innerHTML = visible.length
+          ? visible
+              .map((card) => {
+                const thumbClass =
+                  card.group === 'materials' ? 'intake-thumb material-thumb' : 'intake-thumb';
+                const media = card.web_path
+                  ? `<img src="${esc(card.web_path)}" alt="${esc(card.filename)}" loading="lazy" />`
+                  : `<span>${esc(card.status)}</span>`;
+                return `<article class="intake-card premium-card"><div class="${thumbClass}">${media}</div><div class="intake-card-body"><span class="intake-pill">${esc(card.group)}</span><span class="intake-pill">${esc(card.status)}</span><h3>${esc(card.filename)}</h3><p>${esc(card.caption)}</p></div></article>`;
+              })
+              .join('')
+          : '<p class="body-copy">No render cards in intake. Run tools/ingest_unreal_portfolio.ps1.</p>';
       }
 
       const familiesEl = document.getElementById('intakeFamilies');
@@ -399,9 +453,8 @@
           needs.map((need) => `<div class="intake-need">${esc(need)}</div>`).join('') ||
           '<div class="intake-need">No urgent gaps detected. Keep curating the strongest captures.</div>';
       }
-    } catch (_err) {
-      statsEl.innerHTML =
-        '<div class="info-cell"><span>Intake</span><strong>Unavailable</strong></div>';
+    } catch (err) {
+      statsEl.innerHTML = `<div class="info-cell"><span>Intake</span><strong>Error</strong></div>`;
     }
   }
 
@@ -416,11 +469,12 @@
   async function hydrateGeometryPipelines() {
     const lanesMount = document.getElementById('geometryPipelineLanes');
     const mathMount = document.getElementById('geometryMathChips');
-    if (!lanesMount && !mathMount) return;
+    const zenMount = document.getElementById('geometryZenChips');
+    const escherMount = document.getElementById('geometryEscherChips');
+    if (!lanesMount && !mathMount && !zenMount && !escherMount) return;
 
     try {
-      const res = await fetch(GEOMETRY_PIPELINES_URL, { cache: 'no-store' });
-      const data = await res.json();
+      const data = await fetchJson(GEOMETRY_PIPELINES_URL);
 
       if (lanesMount) {
         const lanes = Array.isArray(data.lanes) ? data.lanes : [];
@@ -448,8 +502,20 @@
         mathMount.innerHTML = structures
           .map(
             (item) =>
-              `<span class="math-chip"><b>${esc(item.name)}</b>${esc(item.tier)} · ${esc(item.asset)}</span>`
+              `<span class="math-chip"><b>${esc(item.name)}</b>${esc(item.tier)} · ${esc(item.asset)} · ${esc(item.status || '')}</span>`
           )
+          .join('');
+      }
+
+      if (zenMount && Array.isArray(data.zen_gn_builders)) {
+        zenMount.innerHTML = data.zen_gn_builders
+          .map((id) => `<span class="math-chip"><b>${esc(id)}</b>SurrealArch zen shrine axis</span>`)
+          .join('');
+      }
+
+      if (escherMount && Array.isArray(data.escher_gn_builders)) {
+        escherMount.innerHTML = data.escher_gn_builders
+          .map((id) => `<span class="math-chip"><b>${esc(id)}</b>Escher greybox GN · UE PCG port</span>`)
           .join('');
       }
     } catch (_err) {

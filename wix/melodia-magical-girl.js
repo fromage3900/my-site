@@ -110,6 +110,10 @@
 
     apply();
 
+    document.querySelectorAll('.premium-card, .intake-card, .intake-signal').forEach((el) => {
+      el.classList.add('mg-ribbon-card');
+    });
+
     if (!prefersReducedMotion()) {
       let mx = 0;
       let my = 0;
