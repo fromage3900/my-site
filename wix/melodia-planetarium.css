@@ -56,6 +56,24 @@
     0 0 0 1px rgba(204, 153, 255, 0.08);
 }
 
+/* NASA texture wash (canvas) reads better on night mode */
+.planetarium-explorer {
+  position: relative;
+}
+
+.planetarium-explorer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.10;
+  background-image:
+    radial-gradient(circle at 30% 20%, rgba(102, 217, 255, 0.18), transparent 52%),
+    radial-gradient(circle at 70% 80%, rgba(204, 153, 255, 0.14), transparent 56%);
+  mix-blend-mode: screen;
+}
+
 .planetarium-canvas {
   position: absolute;
   inset: 0;

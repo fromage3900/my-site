@@ -386,6 +386,10 @@
       global.MelodiaPlanetarium.mountAll();
       global.MelodiaPlanetarium.mountHeroReplacement();
     }
+
+    if (global.MelodiaCosmicInstruments) {
+      global.MelodiaCosmicInstruments.mount();
+    }
   }
 
   global.MelodiaEditorial = { init, initParallax, initMobileNav, applyCopy };

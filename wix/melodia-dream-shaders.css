@@ -26,6 +26,7 @@
   --dream-hue-shift: 0deg;
   --dream-mouse-x: 0.5;
   --dream-mouse-y: 0.5;
+  --dream-sparkle-density: 1;
 }
 
 /* Ambient iridescent wash on every melodia page */
@@ -67,8 +68,25 @@
     radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 1.6px),
     radial-gradient(circle, rgba(255, 230, 102, 0.9) 0 1px, transparent 1.7px),
     radial-gradient(circle, rgba(102, 217, 255, 0.85) 0 1.2px, transparent 1.8px);
-  background-size: 88px 88px, 142px 142px, 196px 196px;
+  background-size:
+    calc(88px / var(--dream-sparkle-density)) calc(88px / var(--dream-sparkle-density)),
+    calc(142px / var(--dream-sparkle-density)) calc(142px / var(--dream-sparkle-density)),
+    calc(196px / var(--dream-sparkle-density)) calc(196px / var(--dream-sparkle-density));
   animation: dream-sparkle-twinkle 6s ease-in-out infinite alternate;
+}
+
+.melodia-shell > .dream-sparkle-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.65;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 0.9px, transparent 1.6px),
+    radial-gradient(circle, rgba(204, 153, 255, 0.9) 0 0.9px, transparent 1.7px);
+  background-size:
+    calc(64px / var(--dream-sparkle-density)) calc(64px / var(--dream-sparkle-density)),
+    calc(118px / var(--dream-sparkle-density)) calc(118px / var(--dream-sparkle-density));
+  animation: dream-sparkle-twinkle 4.5s ease-in-out infinite alternate-reverse;
 }
 
 @keyframes dream-aurora-drift {
@@ -328,6 +346,8 @@
     opacity: 0.14;
     background-size: 64px 64px, 108px 108px, 148px 148px;
   }
+
+  :root { --dream-sparkle-density: 1.2; }
 
   .melodia-shell .hero h1 em {
     /* Keep gradient text readable on small screens */

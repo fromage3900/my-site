@@ -6,21 +6,24 @@
   'use strict';
 
   const ARMS = [
-    { tilt: 0, roll: 0, rx: 248, ry: 248, speed: 0.045, hue: '#66d9ff' },
-    { tilt: 62, roll: 18, rx: 210, ry: 148, speed: -0.032, hue: '#ffe666' },
-    { tilt: -38, roll: -24, rx: 188, ry: 132, speed: 0.028, hue: '#cc99ff' },
-    { tilt: 90, roll: 0, rx: 168, ry: 168, speed: -0.022, hue: '#7dd3c0' },
+    // Expansive armillary: outer bands + inner mechanisms
+    { tilt: 0, roll: 0, rx: 270, ry: 270, speed: 0.052, hue: '#66d9ff' },
+    { tilt: 62, roll: 18, rx: 236, ry: 162, speed: -0.041, hue: '#ffe666' },
+    { tilt: -38, roll: -24, rx: 214, ry: 148, speed: 0.036, hue: '#cc99ff' },
+    { tilt: 90, roll: 0, rx: 196, ry: 196, speed: -0.028, hue: '#7dd3c0' },
+    { tilt: 22, roll: 54, rx: 292, ry: 208, speed: 0.024, hue: '#e8c9b8' },
+    { tilt: -64, roll: 14, rx: 176, ry: 126, speed: 0.061, hue: '#c8b6db' },
   ];
 
   const NODES = [
-    { id: 'sakura', label: 'Sakura Dream', short: 'Sakura', kana: '桜', href: 'sakura-case-study.html', arm: 1, angle: 35, color: '#e8a0b0', r: 5.5 },
-    { id: 'cathedral', label: 'Space Cathedral', short: 'Cathedral', kana: '星', href: 'world-bible.html', arm: 0, angle: 110, color: '#9b8fc4', r: 5.5 },
-    { id: 'grotto', label: 'Baroque Grotto', short: 'Grotto', kana: '洞', href: 'world-bible.html', arm: 2, angle: 200, color: '#5eb8b0', r: 5 },
-    { id: 'orrery', label: 'Cosmic Orrery', short: 'Orrery', kana: '宙', href: 'application-hub.html#worlds', arm: 3, angle: 290, color: '#66d9ff', r: 5.5 },
-    { id: 'shaders', label: 'Shader Breakdowns', short: 'Shaders', kana: '光', href: 'shader-breakdowns.html', arm: 0, angle: 250, color: '#ffe666', r: 4.5 },
-    { id: 'renders', label: 'Hero Renders', short: 'Renders', kana: '景', href: 'hero-renders.html', arm: 1, angle: 155, color: '#e8c9b8', r: 4.5 },
-    { id: 'hub', label: 'Application Hub', short: 'Hub', kana: '門', href: 'application-hub.html', arm: 2, angle: 320, color: '#c9a86a', r: 5 },
-    { id: 'geometry', label: 'Geometry Nodes', short: 'GN', kana: '形', href: 'geometry-nodes.html', arm: 3, angle: 70, color: '#c8b6db', r: 4.5 },
+    { id: 'sakura', label: 'Sakura Dream', short: 'Sakura', kana: '桜', href: 'sakura-case-study.html', arm: 1, angle: 32, color: '#e8a0b0', r: 5.5 },
+    { id: 'cathedral', label: 'Space Cathedral', short: 'Cathedral', kana: '星', href: 'world-bible.html', arm: 0, angle: 114, color: '#9b8fc4', r: 5.5 },
+    { id: 'grotto', label: 'Baroque Grotto', short: 'Grotto', kana: '洞', href: 'world-bible.html', arm: 2, angle: 204, color: '#5eb8b0', r: 5 },
+    { id: 'orrery', label: 'Cosmic Orrery', short: 'Orrery', kana: '宙', href: 'application-hub.html#worlds', arm: 4, angle: 292, color: '#66d9ff', r: 5.5 },
+    { id: 'shaders', label: 'Shader Breakdowns', short: 'Shaders', kana: '光', href: 'shader-breakdowns.html', arm: 0, angle: 252, color: '#ffe666', r: 4.5 },
+    { id: 'renders', label: 'Hero Renders', short: 'Renders', kana: '景', href: 'hero-renders.html', arm: 5, angle: 160, color: '#e8c9b8', r: 4.5 },
+    { id: 'hub', label: 'Application Hub', short: 'Hub', kana: '門', href: 'application-hub.html', arm: 3, angle: 320, color: '#c9a86a', r: 5 },
+    { id: 'geometry', label: 'Geometry Nodes', short: 'GN', kana: '形', href: 'geometry-nodes.html', arm: 5, angle: 74, color: '#c8b6db', r: 4.5 },
   ];
 
   const LINES = [
