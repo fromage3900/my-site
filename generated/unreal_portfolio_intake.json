@@ -1,5 +1,5 @@
 ﻿{
-    "generated_at":  "2026-07-08T19:16:35.1767508Z",
+    "generated_at":  "2026-07-09T16:26:54.6655909Z",
     "source_package":  "g:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\portfolio_package.json",
     "scene":  {
                   "camera_count":  0,
@@ -22,10 +22,10 @@
                                               ]
               },
     "counts":  {
-                   "renders_total":  14,
-                   "renders_web_ready":  14,
-                   "hero":  9,
-                   "materials":  4,
+                   "renders_total":  21,
+                   "renders_web_ready":  20,
+                   "hero":  13,
+                   "materials":  6,
                    "breakdown":  1,
                    "pcg":  0,
                    "material_instances":  30,
@@ -350,6 +350,69 @@
                              "priority":  85,
                              "status":  "web_ready",
                              "caption":  "Environment hero render for mood, composition, traversal read, and recruiter first impression."
+                         },
+                         {
+                             "id":  "nightshift-grid-cosmic",
+                             "status":  "web_ready",
+                             "caption":  "Nine cosmic SDF instance previews — nebula, starfield, aurora veil.",
+                             "priority":  96,
+                             "filename":  "grid_cosmic_all.png",
+                             "web_path":  "../generated/assets/nightshift/grid_cosmic_all.png",
+                             "group":  "materials"
+                         },
+                         {
+                             "id":  "nightshift-grid-nikki",
+                             "status":  "web_ready",
+                             "caption":  "Nine Nikki-hero SDF previews — magical-girl surface language.",
+                             "priority":  95,
+                             "filename":  "grid_nikki_heroes.png",
+                             "web_path":  "../generated/assets/nightshift/grid_nikki_heroes.png",
+                             "group":  "materials"
+                         },
+                         {
+                             "id":  "nightshift-celestial-nasa",
+                             "status":  "web_ready",
+                             "caption":  "CelestialNebula with NASA star map — Space Cathedral shader proof.",
+                             "priority":  97,
+                             "filename":  "celestial_nebula_nasa_sphere.png",
+                             "web_path":  "../generated/assets/nightshift/celestial_nebula_nasa_sphere.png",
+                             "group":  "breakdown"
+                         },
+                         {
+                             "id":  "nightshift-wp-sakura",
+                             "status":  "web_ready",
+                             "caption":  "L_WP_SakuraDream terrain preview — golden-hour meadow pillar.",
+                             "priority":  94,
+                             "filename":  "WP_SakuraDream_terrain.png",
+                             "web_path":  "../generated/assets/nightshift/WP_SakuraDream_terrain.png",
+                             "group":  "hero"
+                         },
+                         {
+                             "id":  "nightshift-wp-cathedral",
+                             "status":  "web_ready",
+                             "caption":  "L_WP_SpaceCathedral terrain preview — celestial sanctuary pillar.",
+                             "priority":  93,
+                             "filename":  "WP_SpaceCathedral_terrain.png",
+                             "web_path":  "../generated/assets/nightshift/WP_SpaceCathedral_terrain.png",
+                             "group":  "hero"
+                         },
+                         {
+                             "id":  "nightshift-wp-grotto",
+                             "status":  "web_ready",
+                             "caption":  "L_WP_BaroqueGrotto terrain preview — bioluminescent grotto pillar.",
+                             "priority":  92,
+                             "filename":  "WP_BaroqueGrotto_terrain.png",
+                             "web_path":  "../generated/assets/nightshift/WP_BaroqueGrotto_terrain.png",
+                             "group":  "hero"
+                         },
+                         {
+                             "id":  "nightshift-wp-orrery",
+                             "status":  "web_ready",
+                             "caption":  "L_WP_CosmicOrrery terrain preview — night orrery pillar.",
+                             "priority":  91,
+                             "filename":  "WP_CosmicOrrery_terrain.png",
+                             "web_path":  "../generated/assets/nightshift/WP_CosmicOrrery_terrain.png",
+                             "group":  "hero"
                          }
                      ],
     "shader_families":  [

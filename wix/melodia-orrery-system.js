@@ -1,23 +1,38 @@
 /**
- * Melodia Orrery System — injectable SVG armillary variants for heroes and section accents.
- * Variants: cosmic (hero), atelier (fashion editorial bands), constellation (compact nav accent).
+ * Melodia Orrery System — 3D CSS armillary + SVG section accents.
+ * Populates empty .orrery-system shells with tilted orbital rings.
  */
 (function (global) {
   'use strict';
 
   const SVGNS = 'http://www.w3.org/2000/svg';
 
+  const RING_CONFIG = [
+    { size: [88, 72], duration: 26, color: 'rgba(102, 217, 255, 0.42)', tiltX: 72, tiltY: -8, z: 8 },
+    { size: [128, 108], duration: 38, color: 'rgba(255, 230, 102, 0.38)', tiltX: 18, tiltY: 24, z: 16, reverse: true },
+    { size: [178, 148], duration: 52, color: 'rgba(204, 153, 255, 0.36)', tiltX: 54, tiltY: -18, z: 24 },
+    { size: [228, 198], duration: 68, color: 'rgba(125, 211, 192, 0.32)', tiltX: 12, tiltY: 36, z: 32, reverse: true },
+    { size: [298, 268], duration: 88, color: 'rgba(232, 201, 184, 0.28)', tiltX: 64, tiltY: 10, z: 40 },
+    { size: [368, 328], duration: 112, color: 'rgba(155, 143, 196, 0.22)', tiltX: 28, tiltY: -42, z: 48, reverse: true },
+    // Meridian bands (vertical feel)
+    { size: [248, 248], duration: 76, color: 'rgba(102, 217, 255, 0.2)', tiltX: 90, tiltY: 0, z: 20, reverse: true },
+    { size: [312, 312], duration: 96, color: 'rgba(255, 230, 102, 0.16)', tiltX: 90, tiltY: 48, z: 36 },
+  ];
+
   const VARIANTS = {
     cosmic: `
       <g class="ring slow"><circle class="orbit" cx="260" cy="260" r="226"/><path class="axis" d="M98 422 422 98"/><circle class="node" cx="420" cy="100" r="4"/></g>
       <g class="ring"><circle class="orbit" cx="260" cy="260" r="166"/><path class="axis" d="M132 260h256"/><circle class="node" cx="389" cy="260" r="3.5"/></g>
       <g class="ring fast"><circle class="orbit" cx="260" cy="260" r="92"/><path class="axis" d="M260 168v184"/><circle class="node" cx="260" cy="168" r="3"/></g>
+      <ellipse class="orbit meridian" cx="260" cy="260" rx="198" ry="72" transform="rotate(24 260 260)"/>
+      <ellipse class="orbit meridian thin" cx="260" cy="260" rx="248" ry="88" transform="rotate(-18 260 260)"/>
       <circle class="orbit" cx="260" cy="260" r="22"/>
     `,
     atelier: `
       <ellipse class="orbit ellipse" cx="200" cy="200" rx="178" ry="132" transform="rotate(-18 200 200)"/>
       <ellipse class="orbit ellipse thin" cx="200" cy="200" rx="128" ry="94" transform="rotate(24 200 200)"/>
       <ellipse class="orbit ellipse" cx="200" cy="200" rx="72" ry="52" transform="rotate(-8 200 200)"/>
+      <ellipse class="orbit meridian" cx="200" cy="200" rx="156" ry="58" transform="rotate(68 200 200)"/>
       <path class="axis" d="M40 200h320"/>
       <path class="axis" d="M200 48v304"/>
       <circle class="node quatrefoil" cx="200" cy="200" r="5"/>
@@ -28,18 +43,86 @@
     constellation: `
       <g class="ring"><circle class="orbit" cx="120" cy="120" r="98"/><circle class="node" cx="210" cy="120" r="2.5"/></g>
       <g class="ring slow"><circle class="orbit" cx="120" cy="120" r="62"/><path class="axis" d="M58 120h124"/></g>
+      <ellipse class="orbit meridian" cx="120" cy="120" rx="88" ry="34" transform="rotate(32 120 120)"/>
       <circle class="orbit" cx="120" cy="120" r="14"/>
       <circle class="node" cx="120" cy="38" r="2"/>
       <circle class="node" cx="178" cy="168" r="1.8"/>
     `,
   };
 
+  function prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  function buildCssRings(system) {
+    if (system.querySelector('.orbital-shell')) return;
+
+    RING_CONFIG.forEach((cfg, index) => {
+      const shell = document.createElement('div');
+      shell.className = 'orbital-shell';
+      shell.style.width = cfg.size[0] + 'px';
+      shell.style.height = cfg.size[1] + 'px';
+      shell.style.setProperty('--duration', cfg.duration + 's');
+      if (cfg.reverse) shell.style.animationDirection = 'reverse';
+
+      const ring = document.createElement('div');
+      ring.className = 'orbital-path orbital-ring-' + ((index % 6) + 1);
+      ring.style.borderColor = cfg.color;
+      ring.style.setProperty('--tilt-x', cfg.tiltX + 'deg');
+      ring.style.setProperty('--tilt-y', cfg.tiltY + 'deg');
+      ring.style.setProperty('--z', cfg.z + 'px');
+
+      shell.appendChild(ring);
+      system.appendChild(shell);
+    });
+
+    if (!system.querySelector('.orrery-core')) {
+      const core = document.createElement('div');
+      core.className = 'orrery-core';
+      system.appendChild(core);
+    }
+  }
+
+  function upgradePremiumOrreries() {
+    document.querySelectorAll('.orrery-system').forEach((system) => {
+      buildCssRings(system);
+    });
+
+    document.querySelectorAll('.parallax-layer-5').forEach((layer) => {
+      layer.classList.add('orrery-perspective-layer');
+      if (!layer.querySelector('.orrery-system')) {
+        const system = document.createElement('div');
+        system.className = 'orrery-system';
+        layer.appendChild(system);
+        buildCssRings(system);
+      }
+    });
+  }
+
+  function bindOrreryTilt() {
+    if (prefersReducedMotion()) return;
+
+    const systems = document.querySelectorAll('.orrery-system');
+    if (!systems.length) return;
+
+    let mx = 0;
+    let my = 0;
+    const onMove = (e) => {
+      mx = (e.clientX / window.innerWidth - 0.5) * 18;
+      my = (e.clientY / window.innerHeight - 0.5) * 14;
+      systems.forEach((sys) => {
+        sys.style.transform = `rotateX(${-my}deg) rotateY(${mx}deg)`;
+      });
+    };
+    window.addEventListener('pointermove', onMove, { passive: true });
+  }
+
   function createOrrery(variant, viewBox) {
     const wrap = document.createElement('div');
     const v = VARIANTS[variant] ? variant : 'atelier';
     const vb = viewBox || (v === 'constellation' ? '0 0 240 240' : '0 0 400 400');
-    wrap.className = `orrery-mount orrery-${v}`;
-    wrap.innerHTML = `<svg viewBox="${vb}" role="img" aria-hidden="true">${VARIANTS[v]}</svg>`;
+    wrap.className = `orrery-mount orrery-${v} orrery-3d-mount`;
+    wrap.innerHTML = `<div class="orrery-3d-tilt"><svg viewBox="${vb}" role="img" aria-hidden="true">${VARIANTS[v]}</svg></div>`;
     return wrap;
   }
 
@@ -59,7 +142,7 @@
 
   function upgradeHeroOrreries() {
     document.querySelectorAll('.melodia-orrery').forEach((el) => {
-      if (el.querySelector('svg')) return;
+      if (el.querySelector('.orrery-3d-mount, .orrery-mount')) return;
       el.setAttribute('data-orrery', 'cosmic');
       el.setAttribute('data-orrery-viewbox', '0 0 520 520');
       el.innerHTML = '';
@@ -69,5 +152,25 @@
     });
   }
 
-  global.MelodiaOrrery = { mountAll, mountElement, createOrrery, upgradeHeroOrreries };
+  function boot() {
+    upgradePremiumOrreries();
+    upgradeHeroOrreries();
+    mountAll();
+    bindOrreryTilt();
+  }
+
+  global.MelodiaOrrery = {
+    mountAll,
+    mountElement,
+    createOrrery,
+    upgradeHeroOrreries,
+    upgradePremiumOrreries,
+    boot,
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
 })(window);

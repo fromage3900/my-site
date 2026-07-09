@@ -152,6 +152,8 @@
   transform: translateZ(40px);
   z-index: 5;
   opacity: .28;
+  perspective: 1100px;
+  transform-style: preserve-3d;
   pointer-events: none;
 }
 
@@ -205,6 +207,7 @@
   inset: 0;
   pointer-events: none;
   transform-style: preserve-3d;
+  transform-origin: 50% 50%;
 }
 
 /* Central Core */

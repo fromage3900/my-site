@@ -119,24 +119,25 @@ class PremiumOrrery {
   }
 
   init() {
-    // Check if orrery already exists
-    if (this.container.querySelector('.orrery-system')) {
-      console.log('Orrery system already exists');
+    const existing = this.container.querySelector('.orrery-system');
+    if (existing && existing.querySelector('.orbital-shell')) {
+      this.orrerySystem = existing;
+      this.initialized = true;
       return;
     }
 
-    // Create orrery system
-    this.createOrrerySystem();
-    
-    // Create orbital rings
+    if (existing) {
+      this.orrerySystem = existing;
+    } else {
+      this.createOrrerySystem();
+    }
+
     this.createRings();
-    
-    // Create nodes on rings
+    if (!this.orrerySystem.querySelector('.orrery-core')) {
+      this.createCore();
+    }
     this.createNodes();
-    
-    // Create constellation lines
     this.createConstellationLines();
-    
     this.initialized = true;
   }
 
@@ -148,34 +149,38 @@ class PremiumOrrery {
   }
 
   createRings() {
+    if (this.orrerySystem.querySelector('.orbital-shell')) return;
+
     const ringConfig = [
-      { size: [70, 60], duration: 30, color: 'rgba(155, 143, 196, 0.35)' },
-      { size: [120, 110], duration: 42, color: 'rgba(201, 168, 106, 0.35)' },
-      { size: [180, 160], duration: 56, color: 'rgba(232, 201, 184, 0.3)' },
-      { size: [240, 220], duration: 72, color: 'rgba(212, 197, 169, 0.25)' },
-      { size: [320, 300], duration: 96, color: 'rgba(155, 143, 196, 0.2)' },
-      { size: [400, 380], duration: 120, color: 'rgba(109, 184, 184, 0.15)' }
+      { size: [88, 72], duration: 26, color: 'rgba(102, 217, 255, 0.42)', tiltX: 72, tiltY: -8, z: 8 },
+      { size: [128, 108], duration: 38, color: 'rgba(255, 230, 102, 0.38)', tiltX: 18, tiltY: 24, z: 16, reverse: true },
+      { size: [178, 148], duration: 52, color: 'rgba(204, 153, 255, 0.36)', tiltX: 54, tiltY: -18, z: 24 },
+      { size: [228, 198], duration: 68, color: 'rgba(125, 211, 192, 0.32)', tiltX: 12, tiltY: 36, z: 32, reverse: true },
+      { size: [298, 268], duration: 88, color: 'rgba(232, 201, 184, 0.28)', tiltX: 64, tiltY: 10, z: 40 },
+      { size: [368, 328], duration: 112, color: 'rgba(155, 143, 196, 0.22)', tiltX: 28, tiltY: -42, z: 48, reverse: true },
+      { size: [248, 248], duration: 76, color: 'rgba(102, 217, 255, 0.2)', tiltX: 90, tiltY: 0, z: 20, reverse: true },
+      { size: [312, 312], duration: 96, color: 'rgba(255, 230, 102, 0.16)', tiltX: 90, tiltY: 48, z: 36 },
     ];
 
     ringConfig.forEach((config, index) => {
-      // 3D: shell rotates; path tilts in 3D space
       const shell = document.createElement('div');
       shell.className = 'orbital-shell';
       shell.style.width = config.size[0] + 'px';
       shell.style.height = config.size[1] + 'px';
       shell.style.setProperty('--duration', config.duration + 's');
+      if (config.reverse) shell.style.animationDirection = 'reverse';
 
       const ring = document.createElement('div');
-      ring.className = 'orbital-path orbital-ring-' + (index + 1);
+      ring.className = 'orbital-path orbital-ring-' + ((index % 6) + 1);
       ring.style.borderColor = config.color;
+      ring.style.setProperty('--tilt-x', config.tiltX + 'deg');
+      ring.style.setProperty('--tilt-y', config.tiltY + 'deg');
+      ring.style.setProperty('--z', config.z + 'px');
 
       shell.appendChild(ring);
       this.orrerySystem.appendChild(shell);
       this.rings.push({ element: ring, shell, config });
     });
-
-    // Create central core
-    this.createCore();
   }
 
   createCore() {

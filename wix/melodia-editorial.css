@@ -282,7 +282,42 @@ img { display: block; max-width: 100%; }
   aspect-ratio: 1;
   opacity: 0.34;
   z-index: 1;
+  perspective: 1200px;
+  transform-style: preserve-3d;
   transform: translate3d(calc(var(--mouse-x) * -0.22), calc(var(--scroll-shift) * -0.055 + var(--mouse-y) * 0.12), 0);
+}
+
+.melodia-orrery .orrery-3d-tilt,
+.orrery-3d-mount .orrery-3d-tilt {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateX(18deg) rotateY(-12deg);
+  transition: transform 0.12s ease-out;
+}
+
+.melodia-orrery .orbit.meridian,
+.orrery-mount .orbit.meridian {
+  fill: none;
+  stroke: rgba(102, 217, 255, 0.22);
+  stroke-width: 0.55;
+  stroke-dasharray: 4 7;
+}
+
+.melodia-orrery .orbit.meridian.thin,
+.orrery-mount .orbit.meridian.thin {
+  stroke: rgba(255, 230, 102, 0.16);
+  stroke-width: 0.45;
+}
+
+.parallax-layer-5.orrery-perspective-layer {
+  perspective: 1100px;
+  transform-style: preserve-3d;
+}
+
+.orrery-system {
+  transform-style: preserve-3d;
+  transition: transform 0.14s ease-out;
 }
 
 .melodia-orrery svg { width: 100%; height: 100%; overflow: visible; }

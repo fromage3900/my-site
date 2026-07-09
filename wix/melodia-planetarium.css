@@ -9,15 +9,17 @@
   user-select: none;
   touch-action: none;
   cursor: grab;
-  perspective: 1100px;
+  perspective: 1400px;
+  perspective-origin: 50% 46%;
 }
 
 .planetarium-3d {
   position: relative;
   z-index: 2;
   transform-style: preserve-3d;
-  transition: transform 0.06s linear;
+  transition: transform 0.08s linear;
   will-change: transform;
+  filter: drop-shadow(0 28px 48px rgba(7, 9, 18, 0.35));
 }
 
 .planetarium.is-dragging {

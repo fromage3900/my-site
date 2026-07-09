@@ -6,13 +6,14 @@
   'use strict';
 
   const ARMS = [
-    // Expansive armillary: outer bands + inner mechanisms
-    { tilt: 0, roll: 0, rx: 270, ry: 270, speed: 0.052, hue: '#66d9ff' },
-    { tilt: 62, roll: 18, rx: 236, ry: 162, speed: -0.041, hue: '#ffe666' },
-    { tilt: -38, roll: -24, rx: 214, ry: 148, speed: 0.036, hue: '#cc99ff' },
-    { tilt: 90, roll: 0, rx: 196, ry: 196, speed: -0.028, hue: '#7dd3c0' },
-    { tilt: 22, roll: 54, rx: 292, ry: 208, speed: 0.024, hue: '#e8c9b8' },
-    { tilt: -64, roll: 14, rx: 176, ry: 126, speed: 0.061, hue: '#c8b6db' },
+    { tilt: 0, roll: 0, rx: 270, ry: 270, z: 0, speed: 0.052, hue: '#66d9ff' },
+    { tilt: 62, roll: 18, rx: 236, ry: 162, z: 28, speed: -0.041, hue: '#ffe666' },
+    { tilt: -38, roll: -24, rx: 214, ry: 148, z: -22, speed: 0.036, hue: '#cc99ff' },
+    { tilt: 90, roll: 0, rx: 196, ry: 196, z: 12, speed: -0.028, hue: '#7dd3c0' },
+    { tilt: 22, roll: 54, rx: 292, ry: 208, z: 36, speed: 0.024, hue: '#e8c9b8' },
+    { tilt: -64, roll: 14, rx: 176, ry: 126, z: -18, speed: 0.061, hue: '#c8b6db' },
+    { tilt: 78, roll: -6, rx: 248, ry: 88, z: 8, speed: -0.033, hue: '#66d9ff' },
+    { tilt: -12, roll: 88, rx: 88, ry: 248, z: -8, speed: 0.029, hue: '#ffe666' },
   ];
 
   const NODES = [
@@ -58,9 +59,9 @@
       this.reduceMotion = prefersReducedMotion();
 
       this.yaw = 0;
-      this.pitch = this.isHero ? 12 : 18;
+      this.pitch = this.isHero ? 16 : 22;
       this.targetYaw = 0;
-      this.targetPitch = this.isHero ? 12 : 18;
+      this.targetPitch = this.isHero ? 16 : 22;
       this.drag = { on: false, x: 0, y: 0, yaw0: 0, pitch0: 0 };
       this.armAngles = ARMS.map(() => 0);
       this.activeId = null;
@@ -315,28 +316,52 @@
       const spin = (this.armAngles[node.arm] + node.angle) * (Math.PI / 180);
       const tilt = arm.tilt * (Math.PI / 180);
       const roll = arm.roll * (Math.PI / 180);
+      const z0 = arm.z || 0;
+
       let x = Math.cos(spin) * arm.rx;
       let y = Math.sin(spin) * arm.ry;
+      let z = z0;
+
       const xr = x * Math.cos(roll) - y * Math.sin(roll);
       const yr = x * Math.sin(roll) + y * Math.cos(roll);
-      const yt = yr * Math.cos(tilt);
+      const zr = z;
+
+      const yt = yr * Math.cos(tilt) - zr * Math.sin(tilt);
+      const zt = yr * Math.sin(tilt) + zr * Math.cos(tilt);
       const xt = xr;
-      return { x: xt, y: yt };
+
+      const yawR = this.yaw * (Math.PI / 180);
+      const pitchR = this.pitch * (Math.PI / 180);
+
+      const x1 = xt * Math.cos(yawR) + zt * Math.sin(yawR);
+      const z1 = -xt * Math.sin(yawR) + zt * Math.cos(yawR);
+      const y1 = yt * Math.cos(pitchR) - z1 * Math.sin(pitchR);
+      const z2 = yt * Math.sin(pitchR) + z1 * Math.cos(pitchR);
+
+      const depth = 1 / (1 + z2 * 0.0018);
+      return { x: x1 * depth, y: y1 * depth, z: z2, scale: 0.55 + depth * 0.5, opacity: 0.45 + depth * 0.55 };
     }
 
     updateTransforms() {
       this.perspectiveWrap.style.transform = `rotateX(${this.pitch}deg) rotateY(${this.yaw}deg)`;
 
       ARMS.forEach((arm, i) => {
+        const zScale = 1 - Math.abs((arm.z || 0)) * 0.0008;
         arm.group.setAttribute(
           'transform',
-          `rotate(${arm.tilt}) rotate(${arm.roll}) rotate(${this.armAngles[i]})`
+          `rotate(${arm.tilt}) rotate(${arm.roll}) rotate(${this.armAngles[i]}) scale(${zScale})`
         );
+        arm.group.style.opacity = String(0.5 + zScale * 0.5);
       });
 
       NODES.forEach((node) => {
         const arm = ARMS[node.arm];
-        node.el.setAttribute('transform', `rotate(${node.angle}) translate(${arm.rx}, 0)`);
+        const pos = this.nodeWorldPos(node);
+        node.el.setAttribute(
+          'transform',
+          `rotate(${node.angle}) translate(${arm.rx}, 0) scale(${pos.scale})`
+        );
+        node.el.style.opacity = String(pos.opacity);
       });
 
       this.lineEls.forEach((line) => {
