@@ -1,0 +1,34 @@
+/* MelodiaStarfield — unified depth-parallax canvas sky */
+
+.melodia-shell > .melodia-starfield-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.48;
+}
+
+.melodia-shell[data-starfield-intensity="cosmic"] > .melodia-starfield-canvas {
+  opacity: 0.54;
+}
+
+.melodia-shell[data-starfield-intensity="subtle"] > .melodia-starfield-canvas {
+  opacity: 0.38;
+}
+
+.melodia-shell.starfield-reduced > .melodia-starfield-canvas {
+  opacity: 0.32;
+}
+
+.melodia-shell.mg-wish-mode > .melodia-starfield-canvas {
+  opacity: 0.56;
+}
+
+@media (max-width: 680px) {
+  .melodia-shell > .melodia-starfield-canvas {
+    opacity: 0.4;
+  }
+}

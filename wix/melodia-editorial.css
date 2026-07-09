@@ -1,3 +1,5 @@
+@import url("melodia-tokens.css");
+@import url("melodia-starfield.css");
 @import url("melodia-editorial-ornaments.css");
 @import url("melodia-mobile.css");
 @import url("melodia-dream-shaders.css");
@@ -129,12 +131,8 @@ img { display: block; max-width: 100%; }
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.095;
-  background-image: var(--pattern-stars);
-  background-size: var(--pattern-stars-size);
-  background-position: var(--pattern-stars-pos);
-  background-repeat: var(--pattern-stars-repeat);
-  transform: translate3d(calc(var(--mouse-x) * -0.05), calc(var(--scroll-shift) * -0.035 + var(--mouse-y) * -0.05), 0);
+  opacity: 0;
+  background: none;
 }
 
 .melodia-shell::after {
@@ -295,24 +293,9 @@ img { display: block; max-width: 100%; }
     linear-gradient(0deg, rgba(8, 11, 19, 0.98), rgba(8, 11, 19, 0.12) 68%);
 }
 
-.texture-layer {
-  opacity: 0.28;
-  mix-blend-mode: screen;
-  background-image: var(--pattern-stars);
-  background-repeat: var(--pattern-stars-repeat);
-  background-size: var(--pattern-stars-size);
-  background-position: var(--pattern-stars-pos);
-  transform: translate3d(calc(var(--mouse-x) * 0.08), calc(var(--scroll-shift) * -0.12 + var(--mouse-y) * 0.08), 0);
-}
-
+.texture-layer,
 .star-layer {
-  opacity: 0.24;
-  background:
-    radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.6px),
-    radial-gradient(circle, rgba(200, 164, 94, 0.9) 0 1px, transparent 1.7px);
-  background-size: 92px 92px, 154px 154px;
-  transform: translate3d(0, calc(var(--scroll-shift) * -0.18), 0);
-  animation: melodia-drift 18s ease-in-out infinite alternate;
+  display: none !important;
 }
 
 .melodia-orrery {
@@ -477,7 +460,20 @@ em { color: var(--gold); font-style: italic; }
   line-height: 1.1;
 }
 
-.band { padding: 88px 46px; overflow: hidden; }
+.band {
+  padding: 84px 40px;
+  overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  .band {
+    padding: 88px 46px;
+  }
+}
+
+.premium-card.alignment-card::before {
+  display: none;
+}
 .inner { width: min(100%, var(--max)); margin: 0 auto; }
 .paper {
   background:

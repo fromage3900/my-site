@@ -1,0 +1,28 @@
+/* Melodia design tokens — shared void, Nikki ramp, z-index scale */
+
+:root {
+  --void: #0d1224;
+  --celestial-deep: #0d1224;
+  --astral: #1a1f3a;
+  --plum: #2a3055;
+  --iri-cyan: #66d9ff;
+  --iri-gold: #ffe666;
+  --iri-purple: #cc99ff;
+  --iri-magenta: #ff6eb4;
+  --iri-pearl: #f0dcf0;
+  --ink: rgba(236, 234, 244, 0.92);
+  --muted: rgba(236, 234, 244, 0.66);
+  --line: rgba(201, 168, 106, 0.34);
+  --max: 1180px;
+  --scroll-shift: 0px;
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+  --dream-mouse-x: 0.5;
+  --dream-mouse-y: 0.5;
+  --dream-fresnel: 0.35;
+  --z-starfield: 0;
+  --z-aurora: 0;
+  --z-content: 1;
+  --z-hero-celestial: 5;
+  --z-nav: 50;
+}

@@ -1,23 +1,21 @@
 /**
  * Melodia Orrery System — 3D CSS armillary + SVG section accents.
- * Populates empty .orrery-system shells with tilted orbital rings.
  */
 (function (global) {
   'use strict';
 
-  const SVGNS = 'http://www.w3.org/2000/svg';
-
   const RING_CONFIG = [
-    { size: [88, 72], duration: 26, color: 'rgba(102, 217, 255, 0.42)', tiltX: 72, tiltY: -8, z: 8 },
-    { size: [128, 108], duration: 38, color: 'rgba(255, 230, 102, 0.38)', tiltX: 18, tiltY: 24, z: 16, reverse: true },
-    { size: [178, 148], duration: 52, color: 'rgba(204, 153, 255, 0.36)', tiltX: 54, tiltY: -18, z: 24 },
-    { size: [228, 198], duration: 68, color: 'rgba(125, 211, 192, 0.32)', tiltX: 12, tiltY: 36, z: 32, reverse: true },
-    { size: [298, 268], duration: 88, color: 'rgba(232, 201, 184, 0.28)', tiltX: 64, tiltY: 10, z: 40 },
-    { size: [368, 328], duration: 112, color: 'rgba(155, 143, 196, 0.22)', tiltX: 28, tiltY: -42, z: 48, reverse: true },
-    // Meridian bands (vertical feel)
-    { size: [248, 248], duration: 76, color: 'rgba(102, 217, 255, 0.2)', tiltX: 90, tiltY: 0, z: 20, reverse: true },
-    { size: [312, 312], duration: 96, color: 'rgba(255, 230, 102, 0.16)', tiltX: 90, tiltY: 48, z: 36 },
+    { size: [88, 72], duration: 26, color: 'rgba(255, 110, 180, 0.38)', tiltX: 72, tiltY: -8, z: 8 },
+    { size: [128, 108], duration: 38, color: 'rgba(255, 230, 102, 0.36)', tiltX: 18, tiltY: 24, z: 16, reverse: true },
+    { size: [178, 148], duration: 52, color: 'rgba(204, 153, 255, 0.34)', tiltX: 54, tiltY: -18, z: 24 },
+    { size: [228, 198], duration: 68, color: 'rgba(125, 211, 192, 0.3)', tiltX: 12, tiltY: 36, z: 32, reverse: true },
+    { size: [298, 268], duration: 88, color: 'rgba(232, 201, 184, 0.26)', tiltX: 64, tiltY: 10, z: 40 },
+    { size: [368, 328], duration: 112, color: 'rgba(155, 143, 196, 0.2)', tiltX: 28, tiltY: -42, z: 48, reverse: true },
+    { size: [248, 248], duration: 76, color: 'rgba(102, 217, 255, 0.18)', tiltX: 90, tiltY: 0, z: 20, reverse: true },
+    { size: [312, 312], duration: 96, color: 'rgba(255, 230, 102, 0.14)', tiltX: 90, tiltY: 48, z: 36 },
   ];
+
+  const SVGNS = 'http://www.w3.org/2000/svg';
 
   const VARIANTS = {
     cosmic: `
@@ -54,6 +52,20 @@
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
+  function addRingNodes(spin, index) {
+    const angles = index < 4 ? [0, 120, 240] : [0, 180];
+    angles.forEach((deg) => {
+      const node = document.createElement('div');
+      node.className = 'orbital-node-marker';
+      node.style.transform = `rotate(${deg}deg)`;
+      node.setAttribute('aria-hidden', 'true');
+      const dot = document.createElement('span');
+      dot.className = 'orbital-node-dot';
+      node.appendChild(dot);
+      spin.appendChild(node);
+    });
+  }
+
   function buildCssRings(system) {
     if (system.querySelector('.orbital-shell')) return;
 
@@ -62,6 +74,7 @@
       shell.className = 'orbital-shell';
       shell.style.width = cfg.size[0] + 'px';
       shell.style.height = cfg.size[1] + 'px';
+      shell.style.setProperty('--ring-depth', String(cfg.z));
 
       const tilt = document.createElement('div');
       tilt.className = 'orbital-tilt';
@@ -77,13 +90,10 @@
       const ring = document.createElement('div');
       ring.className = 'orbital-path orbital-ring-' + ((index % 6) + 1);
       ring.style.borderColor = cfg.color;
-
-      const node = document.createElement('div');
-      node.className = 'orbital-node-marker';
-      node.setAttribute('aria-hidden', 'true');
+      ring.style.opacity = String(0.35 + (cfg.z / 48) * 0.45);
 
       spin.appendChild(ring);
-      spin.appendChild(node);
+      addRingNodes(spin, index);
       tilt.appendChild(spin);
       shell.appendChild(tilt);
       system.appendChild(shell);
@@ -92,6 +102,12 @@
     if (!system.querySelector('.orrery-core')) {
       const core = document.createElement('div');
       core.className = 'orrery-core';
+      core.innerHTML = `
+        <div class="orrery-axis-gimbal" aria-hidden="true">
+          <span class="axis-line equator"></span>
+          <span class="axis-line meridian"></span>
+        </div>
+      `;
       system.appendChild(core);
     }
   }
@@ -118,11 +134,13 @@
     const systems = document.querySelectorAll('.orrery-system');
     if (!systems.length) return;
 
-    let mx = 0;
-    let my = 0;
+    const isMobile = window.matchMedia('(max-width: 680px)').matches;
+    const rangeX = isMobile ? 10 : 22;
+    const rangeY = isMobile ? 8 : 16;
+
     const onMove = (e) => {
-      mx = (e.clientX / window.innerWidth - 0.5) * 18;
-      my = (e.clientY / window.innerHeight - 0.5) * 14;
+      const mx = (e.clientX / window.innerWidth - 0.5) * rangeX;
+      const my = (e.clientY / window.innerHeight - 0.5) * rangeY;
       systems.forEach((sys) => {
         sys.style.transform = `rotateX(${-my}deg) rotateY(${mx}deg)`;
       });
@@ -178,12 +196,7 @@
     createOrrery,
     upgradeHeroOrreries,
     upgradePremiumOrreries,
+    bindOrreryTilt,
     boot,
   };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
-  }
 })(window);

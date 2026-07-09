@@ -154,7 +154,7 @@
 }
 
 .melodia-shell > .dream-sparkle-layer {
-  opacity: 0.22;
+  opacity: 0.03;
   background:
     radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 1.6px),
     radial-gradient(circle, rgba(255, 230, 102, 0.9) 0 1px, transparent 1.7px),
@@ -166,21 +166,6 @@
   animation: dream-sparkle-twinkle 6s ease-in-out infinite alternate;
 }
 
-.melodia-shell > .dream-star-canvas {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  opacity: 0.36;
-}
-
-.melodia-shell[data-dream-intensity="low"] > .dream-star-canvas {
-  opacity: 0.24;
-}
-
 .melodia-shell.dream-reduced > .dream-aurora-layer {
   opacity: 0.28;
 }
@@ -189,7 +174,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.65;
+  opacity: 0.35;
   background:
     radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 0.9px, transparent 1.6px),
     radial-gradient(circle, rgba(204, 153, 255, 0.9) 0 0.9px, transparent 1.7px);
@@ -206,8 +191,8 @@
 }
 
 @keyframes dream-sparkle-twinkle {
-  0%, 100% { opacity: 0.16; transform: translateY(0); }
-  50% { opacity: 0.28; transform: translateY(-6px); }
+  0%, 100% { opacity: 0.02; transform: translateY(0); }
+  50% { opacity: 0.04; transform: translateY(-4px); }
 }
 
 /* Hero — iridescent fresnel rim + pearl bloom */

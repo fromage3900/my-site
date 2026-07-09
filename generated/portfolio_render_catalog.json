@@ -1,13 +1,13 @@
 ﻿{
-    "scanned_at":  "2026-07-09T18:03:19.0248831Z",
+    "scanned_at":  "2026-07-09T18:56:52.0765525Z",
     "source_root":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders",
     "counts":  {
-                   "total":  63,
+                   "total":  77,
                    "web_ready":  49,
                    "nightshift":  32,
                    "shader_proof":  12,
                    "sakura_mood":  4,
-                   "hero":  9
+                   "hero":  23
                },
     "recruiter_picks":  [
                             "nightshift/WP_SakuraDream_terrain.png",
@@ -18,6 +18,90 @@
                             "Iridescence_thinfilm_v3.png"
                         ],
     "new_in_last_24h":  [
+                            {
+                                "id":  "hero-hero-level-cam-hero-route-20260709-185437-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Route_20260709_185437_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:54:39.4977504Z"
+                            },
+                            {
+                                "id":  "hero-hero-level-cam-hero-establishing-20260709-182314-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Establishing_20260709_182314_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:23:14.7032745Z"
+                            },
+                            {
+                                "id":  "hero-hero-level-cam-hero-establishing-20260709-182239-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Establishing_20260709_182239_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:22:41.3302664Z"
+                            },
+                            {
+                                "id":  "hero-hero-level-cam-hero-establishing-20260709-182202-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Establishing_20260709_182202_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:22:02.9506630Z"
+                            },
+                            {
+                                "id":  "hero-hero-level-cam-hero-establishing-20260709-182124-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Establishing_20260709_182124_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:21:26.9191754Z"
+                            },
+                            {
+                                "id":  "hero-hero-level-cam-hero-establishing-20260709-181440-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Establishing_20260709_181440_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:14:41.2880869Z"
+                            },
+                            {
+                                "id":  "hero-hero-level-cam-hero-establishing-20260709-181413-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Establishing_20260709_181413_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:14:14.2904019Z"
+                            },
+                            {
+                                "id":  "hero-hero-level-cam-hero-establishing-20260709-181351-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Establishing_20260709_181351_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:13:51.8301882Z"
+                            },
+                            {
+                                "id":  "hero-hero-level-cam-hero-establishing-20260709-181325-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Establishing_20260709_181325_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:13:26.1071351Z"
+                            },
+                            {
+                                "id":  "hero-hero-level-cam-hero-materials-20260709-181159-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Materials_20260709_181159_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:11:59.8111508Z"
+                            },
+                            {
+                                "id":  "hero-hero-level-cam-hero-materials-20260709-181132-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Materials_20260709_181132_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:11:33.1971944Z"
+                            },
+                            {
+                                "id":  "hero-hero-level-cam-hero-materials-20260709-181118-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Materials_20260709_181118_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:11:18.6985627Z"
+                            },
+                            {
+                                "id":  "hero-hero-level-cam-hero-materials-20260709-181046-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Materials_20260709_181046_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:10:47.1656671Z"
+                            },
+                            {
+                                "id":  "hero-hero-level-cam-hero-materials-20260709-181001-1920x1080",
+                                "filename":  "hero_level_Cam_Hero_Materials_20260709_181001_1920x1080.png",
+                                "group":  "hero",
+                                "mtime":  "2026-07-09T18:10:02.4320789Z"
+                            },
                             {
                                 "id":  "nightshift-grid-nikki-heroes",
                                 "filename":  "grid_nikki_heroes.png",
@@ -1037,6 +1121,202 @@
                       "caption":  "Portfolio render - hero plate from Saved/Portfolio/Renders.",
                       "mtime":  "2026-07-08T19:14:37.2384989Z",
                       "bytes":  2958176
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-materials-20260709-181001-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Materials_20260709_181001_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Materials_20260709_181001_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Materials_20260709_181001_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Portfolio render - hero plate from Saved/Portfolio/Renders.",
+                      "mtime":  "2026-07-09T18:10:02.4320789Z",
+                      "bytes":  482040
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-materials-20260709-181046-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Materials_20260709_181046_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Materials_20260709_181046_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Materials_20260709_181046_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Portfolio render - hero plate from Saved/Portfolio/Renders.",
+                      "mtime":  "2026-07-09T18:10:47.1656671Z",
+                      "bytes":  859149
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-materials-20260709-181118-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Materials_20260709_181118_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Materials_20260709_181118_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Materials_20260709_181118_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Portfolio render - hero plate from Saved/Portfolio/Renders.",
+                      "mtime":  "2026-07-09T18:11:18.6985627Z",
+                      "bytes":  772364
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-materials-20260709-181132-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Materials_20260709_181132_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Materials_20260709_181132_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Materials_20260709_181132_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Portfolio render - hero plate from Saved/Portfolio/Renders.",
+                      "mtime":  "2026-07-09T18:11:33.1971944Z",
+                      "bytes":  815082
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-materials-20260709-181159-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Materials_20260709_181159_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Materials_20260709_181159_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Materials_20260709_181159_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Portfolio render - hero plate from Saved/Portfolio/Renders.",
+                      "mtime":  "2026-07-09T18:11:59.8111508Z",
+                      "bytes":  420976
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-establishing-20260709-181325-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Establishing_20260709_181325_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Establishing_20260709_181325_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Establishing_20260709_181325_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Hero establishing camera - composition and traversal read.",
+                      "mtime":  "2026-07-09T18:13:26.1071351Z",
+                      "bytes":  776590
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-establishing-20260709-181351-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Establishing_20260709_181351_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Establishing_20260709_181351_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Establishing_20260709_181351_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Hero establishing camera - composition and traversal read.",
+                      "mtime":  "2026-07-09T18:13:51.8301882Z",
+                      "bytes":  760211
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-establishing-20260709-181413-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Establishing_20260709_181413_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Establishing_20260709_181413_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Establishing_20260709_181413_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Hero establishing camera - composition and traversal read.",
+                      "mtime":  "2026-07-09T18:14:14.2904019Z",
+                      "bytes":  676044
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-establishing-20260709-181440-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Establishing_20260709_181440_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Establishing_20260709_181440_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Establishing_20260709_181440_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Hero establishing camera - composition and traversal read.",
+                      "mtime":  "2026-07-09T18:14:41.2880869Z",
+                      "bytes":  388033
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-establishing-20260709-182124-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Establishing_20260709_182124_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Establishing_20260709_182124_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Establishing_20260709_182124_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Hero establishing camera - composition and traversal read.",
+                      "mtime":  "2026-07-09T18:21:26.9191754Z",
+                      "bytes":  1051804
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-establishing-20260709-182202-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Establishing_20260709_182202_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Establishing_20260709_182202_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Establishing_20260709_182202_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Hero establishing camera - composition and traversal read.",
+                      "mtime":  "2026-07-09T18:22:02.9506630Z",
+                      "bytes":  903033
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-establishing-20260709-182239-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Establishing_20260709_182239_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Establishing_20260709_182239_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Establishing_20260709_182239_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Hero establishing camera - composition and traversal read.",
+                      "mtime":  "2026-07-09T18:22:41.3302664Z",
+                      "bytes":  872872
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-establishing-20260709-182314-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Establishing_20260709_182314_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Establishing_20260709_182314_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Establishing_20260709_182314_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Hero establishing camera - composition and traversal read.",
+                      "mtime":  "2026-07-09T18:23:14.7032745Z",
+                      "bytes":  1075578
+                  },
+                  {
+                      "id":  "hero-hero-level-cam-hero-route-20260709-185437-1920x1080",
+                      "filename":  "hero_level_Cam_Hero_Route_20260709_185437_1920x1080.png",
+                      "source_path":  "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\Hero\\hero_level_Cam_Hero_Route_20260709_185437_1920x1080.png",
+                      "relative_path":  "Hero\\hero_level_Cam_Hero_Route_20260709_185437_1920x1080.png",
+                      "group":  "hero",
+                      "web_path":  null,
+                      "copied":  false,
+                      "priority":  70,
+                      "status":  "source_only",
+                      "caption":  "Portfolio render - hero plate from Saved/Portfolio/Renders.",
+                      "mtime":  "2026-07-09T18:54:39.4977504Z",
+                      "bytes":  2478458
                   },
                   {
                       "id":  "materials-grid-families-review",

@@ -63,38 +63,15 @@
   z-index: 1;
 }
 
-/* Layer 2: Premium Starfield */
+/* Layer 2: reserved depth slot — global MelodiaStarfield canvas owns the sky */
 .parallax-layer-2 {
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(circle, rgba(255,255,255,.95) 0 1px, transparent 1.7px),
-    radial-gradient(circle, var(--luxury-gold) 0 1px, transparent 1.6px),
-    radial-gradient(circle, var(--iridescent-lavender) 0 1.5px, transparent 1.8px);
-  background-size: 96px 96px, 158px 158px, 220px 220px;
+  background: transparent;
   transform: translateZ(10px);
   z-index: 2;
-  opacity: .12;
-  animation: starfield-premium 240s linear infinite;
-}
-
-@keyframes starfield-premium {
-  0%, 100% { 
-    background-position: center top, 28px 44px, 50px 30px;
-    transform: translateZ(10px) scale(1);
-  }
-  25% { 
-    background-position: center 10%, 32px 60px, 60px 50px;
-    transform: translateZ(10px) scale(1.01);
-  }
-  50% { 
-    background-position: center 20%, 40px 80px, 70px 70px;
-    transform: translateZ(10px) scale(1.02);
-  }
-  75% { 
-    background-position: center 15%, 36px 70px, 55px 60px;
-    transform: translateZ(10px) scale(1.015);
-  }
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Layer 3: Premium Nebula */
@@ -151,7 +128,7 @@
   aspect-ratio: 1;
   transform: translateZ(40px) rotateX(8deg);
   z-index: 5;
-  opacity: .32;
+  opacity: 0.16;
   perspective: 1800px;
   perspective-origin: 50% 42%;
   transform-style: preserve-3d;
@@ -286,14 +263,51 @@
 
 .orbital-node-marker {
   position: absolute;
+  inset: 0;
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+
+.orbital-node-dot {
+  position: absolute;
   top: 0;
   left: 50%;
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 110, 180, 0.75) 42%, rgba(102, 217, 255, 0.5));
-  box-shadow: 0 0 14px rgba(255, 110, 180, 0.45), 0 0 6px rgba(255, 230, 102, 0.35);
+  box-shadow: 0 0 12px rgba(255, 110, 180, 0.4), 0 0 5px rgba(255, 230, 102, 0.3);
+}
+
+.orrery-axis-gimbal {
+  position: absolute;
+  inset: -18px;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.orrery-axis-gimbal .axis-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: linear-gradient(90deg, transparent, rgba(255, 110, 180, 0.35), rgba(102, 217, 255, 0.28), transparent);
+  transform-origin: center;
+}
+
+.orrery-axis-gimbal .axis-line.equator {
+  width: 120%;
+  height: 1px;
+  margin: -0.5px 0 0 -60%;
+  transform: rotateX(72deg);
+}
+
+.orrery-axis-gimbal .axis-line.meridian {
+  width: 1px;
+  height: 120%;
+  margin: -60% 0 0 -0.5px;
+  background: linear-gradient(180deg, transparent, rgba(255, 230, 102, 0.32), transparent);
+  transform: rotateY(68deg);
 }
 
 @keyframes orbit-spin-z {

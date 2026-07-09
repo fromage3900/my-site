@@ -54,10 +54,14 @@
     window.addEventListener(
       'pointermove',
       (event) => {
-        const x = (event.clientX / window.innerWidth - 0.5) * 28;
-        const y = (event.clientY / window.innerHeight - 0.5) * 28;
+        const nx = event.clientX / window.innerWidth;
+        const ny = event.clientY / window.innerHeight;
+        const x = (nx - 0.5) * 28;
+        const y = (ny - 0.5) * 28;
         root.style.setProperty('--mouse-x', `${x}px`);
         root.style.setProperty('--mouse-y', `${y}px`);
+        root.style.setProperty('--dream-mouse-x', String(Math.max(0, Math.min(1, nx))));
+        root.style.setProperty('--dream-mouse-y', String(Math.max(0, Math.min(1, ny))));
       },
       { passive: true }
     );
@@ -732,6 +736,60 @@
     }
   }
 
+  function getEffects(shell) {
+    if (!shell) return ['starfield', 'holo', 'magical'];
+    const raw = shell.getAttribute('data-effects');
+    if (!raw) return ['starfield', 'holo', 'magical'];
+    return raw.split(',').map((s) => s.trim()).filter(Boolean);
+  }
+
+  function hasEffect(shell, name) {
+    return getEffects(shell).includes(name);
+  }
+
+  function bootEffects() {
+    const shell = document.querySelector('.melodia-shell');
+    if (!shell) return;
+
+    const heroType = shell.getAttribute('data-hero') || 'editorial';
+    const starIntensity = heroType === 'cosmic' ? 'cosmic' : 'standard';
+
+    if (hasEffect(shell, 'starfield') && global.MelodiaStarfield) {
+      global.MelodiaStarfield.init({ intensity: starIntensity });
+    }
+
+    if (hasEffect(shell, 'holo') && global.MelodiaDreamShaders) {
+      global.MelodiaDreamShaders.init();
+    }
+
+    if (hasEffect(shell, 'orrery') && global.MelodiaOrrery) {
+      global.MelodiaOrrery.upgradePremiumOrreries();
+      global.MelodiaOrrery.bindOrreryTilt();
+    }
+
+    if (global.MelodiaOrrery) {
+      global.MelodiaOrrery.mountAll();
+      global.MelodiaOrrery.upgradeHeroOrreries();
+    }
+
+    if (hasEffect(shell, 'planetarium') && global.MelodiaPlanetarium) {
+      global.MelodiaPlanetarium.mountAll();
+      global.MelodiaPlanetarium.mountHeroReplacement();
+    }
+
+    if (hasEffect(shell, 'instruments') && global.MelodiaCosmicInstruments) {
+      global.MelodiaCosmicInstruments.mount();
+    }
+
+    if (hasEffect(shell, 'magical') && global.MelodiaMagicalGirl) {
+      global.MelodiaMagicalGirl.boot();
+    }
+
+    if (heroType === 'cosmic' && global.initPremiumHero) {
+      global.initPremiumHero();
+    }
+  }
+
   async function init(options) {
     const pageKey = (options && options.page) || document.documentElement.getAttribute('data-page') || '';
     ensureA11yLandmarks();
@@ -800,33 +858,15 @@
       global.MelodiaDreamShaders.initHoloPlates();
     }
 
-    if (global.MelodiaOrrery) {
-      global.MelodiaOrrery.upgradeHeroOrreries();
-      global.MelodiaOrrery.mountAll();
-    }
-
-    if (global.MelodiaDreamShaders) {
-      global.MelodiaDreamShaders.init();
-    }
-
-    if (global.MelodiaPlanetarium) {
-      global.MelodiaPlanetarium.mountAll();
-      global.MelodiaPlanetarium.mountHeroReplacement();
-    }
-
-    if (global.MelodiaCosmicInstruments) {
-      global.MelodiaCosmicInstruments.mount();
-    }
-
-    if (global.MelodiaMagicalGirl) {
-      global.MelodiaMagicalGirl.boot();
-    }
+    bootEffects();
   }
 
   global.MelodiaEditorial = {
     init,
     initParallax,
     initMobileNav,
+    bootEffects,
+    getEffects,
     applyCopy,
     hydrateRenderConstellation,
     hydrateMaterialGallery,

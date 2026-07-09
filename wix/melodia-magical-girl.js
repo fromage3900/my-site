@@ -82,6 +82,7 @@
         toggle.classList.add('is-wish');
         root.style.setProperty('--dream-sparkle-density', '1.18');
         root.style.setProperty('--dream-hue-shift', '6deg');
+        if (global.MelodiaStarfield) global.MelodiaStarfield.setIntensity('cosmic');
       } else {
         layer.classList.add('is-hidden');
         layer.classList.remove('is-wish');
@@ -89,6 +90,10 @@
         toggle.classList.remove('is-wish');
         root.style.setProperty('--dream-sparkle-density', '0.88');
         root.style.setProperty('--dream-hue-shift', '0deg');
+        if (global.MelodiaStarfield) {
+          const heroType = shell.getAttribute('data-hero');
+          global.MelodiaStarfield.setIntensity(heroType === 'cosmic' ? 'cosmic' : 'standard');
+        }
       }
     };
 
@@ -122,9 +127,4 @@
 
   global.MelodiaMagicalGirl = { boot, mount };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
-  }
 })(window);

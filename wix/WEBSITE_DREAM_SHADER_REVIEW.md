@@ -1,61 +1,69 @@
 # Website Dream Shader Review (2026-07-09)
 
-**Goal:** Make the portfolio site itself feel **iridescent and dreamy** — mirroring the Unreal Nikki material stack in CSS + light JS.
+**Goal:** Make the portfolio site feel **iridescent and dreamy** with one cohesive atmospheric stack.
 
 ---
 
-## Stack (web "shaders")
+## Unified background architecture
+
+| Z-order | Layer | File | Role |
+|---------|-------|------|------|
+| 0 | Void gradient | `melodia-editorial.css` | Base shell background |
+| 0 | **MelodiaStarfield** | `melodia-starfield.js` + `.css` | **Single canvas sky** — depth parallax, watercolor nebula, thin-film bands, magenta-biased IQ palette |
+| 0 | Dream aurora | `melodia-dream-shaders.css` | Soft-light wash (low opacity) |
+| 0 | Dream sparkle | same | Micro-texture only (~3% opacity; not a starfield) |
+| 1+ | Content / heroes | page HTML | Editorial or cosmic hero variants |
+| 5 | Orrery / planetarium | `melodia-orrery-system.js`, `melodia-planetarium.js` | Hero celestial accents (faint orrery + interactive planetarium on index/hub) |
+| UI | Holo / nav / cards | `melodia-dream-shaders.js` | Fresnel vars, holo plates, pillar ramps |
+
+**Boot path:** `melodia-editorial.js` → `bootEffects()` reads `data-effects` on `.melodia-shell`.
+
+**Retired as sky layers:** shell `::before` pattern-stars, hero `star-layer` / `texture-layer`, `parallax-layer-2` CSS dot grid.
+
+---
+
+## Page tiers (`data-hero` / `data-effects`)
+
+| Tier | `data-hero` | Typical `data-effects` | Pages |
+|------|-------------|----------------------|-------|
+| Cosmic showcase | `cosmic` | `starfield,orrery,holo,instruments,magical` | index, recruiter-one-sheet, hero-renders, shader-breakdowns, commissions, sakura-case-study |
+| Hub | `editorial` | `starfield,planetarium,holo,magical` | application-hub |
+| Proof / doc | `editorial` | `starfield,holo,magical` | resume, capture-brief, world-bible, etc. |
+
+Index adds `planetarium` to effects; wish-mode bow boosts starfield to `cosmic` intensity.
+
+---
+
+## Stack detail
 
 | Layer | File | Effect |
 |-------|------|--------|
-| **Dream aurora** | `melodia-dream-shaders.css` | Full-page soft-light wash; cyan → gold → purple; mouse-parallax |
-| **Thin-film bands** | `melodia-dream-shaders.js` | Canvas interference stripes (2nd cos theta) biased to Devin cyan-gold-purple ramp |
-| **Holo plates** | `melodia-dream-shaders.css` | Trading-card sweep on render cards; gacha scroll reveal |
-| **Pillar OKLCH** | same | Per-world iridescence ramps on tagged cards and shell |
-| **Sparkle field** | same | Voronoi-like twinkle dots (CSS radial gradients) |
-| **Hero fresnel** | same + JS | Rim glow follows cursor via `--dream-mouse-x/y`, `--dream-fresnel` |
-| **Dream bloom type** | same | `h1` em/strong = animated iridescent gradient text |
-| **Glass nav** | same | Iridescent border-image + pearl backdrop |
-| **Card ridge sheen** | same | Hover iridescent border (impasto ridge metaphor) |
-| **Band nebula** | same | Astral/night/deep sections pulse aurora |
-| **Jewel buttons** | same | Primary CTA = Nikki ramp cycle |
-| **Cosmic hero boost** | same | Stronger parallax nebula on `index.html` |
+| **Starfield canvas** | `melodia-starfield.js` | far/mid/near strata, scroll+mouse parallax, cluster bias, streak highlights |
+| **Thin-film bands** | same (in starfield module) | Spectral interference + Devin ramp bias |
+| **Dream aurora** | `melodia-dream-shaders.css` | Mouse-parallax magenta/cyan/gold wash |
+| **Holo plates** | `melodia-dream-shaders.js` | Trading-card sweep; gacha scroll reveal |
+| **Pillar OKLCH** | `melodia-dream-shaders.css` | Per-world ramps on tagged cards |
+| **Hero fresnel** | dream-shaders + editorial | `--dream-mouse-x/y`, `--dream-fresnel` |
+| **Orrery** | `melodia-orrery-system.js` only | Tilt+spin rings, axis gimbal, multi-node markers |
+| **Premium parallax** | `premium-cosmic-hero.js` | Mouse depth on `[class*="parallax-layer-"]` (cosmic heroes only) |
 
-**JS:** `melodia-dream-shaders.js` — mounts aurora/sparkle layers, drives fresnel vars.
-
-**Nikki color map:**
-
-```
-cyan   #66d9ff  (0, 0.8, 1)
-gold   #ffe666  (1, 0.9, 0.3)
-purple #cc99ff  (0.8, 0.4, 1)
-```
+**Design tokens:** `melodia-tokens.css` — void depths, Nikki ramp, z-index scale.
 
 ---
 
-## Before → after (review pass)
+## Tuning knobs
 
-| Area | Before | After |
-|------|--------|-------|
-| Global mood | Ivory editorial, gold accents | + ambient aurora + sparkle on all `melodia-shell` pages |
-| Heroes | Dark gradient + stars | + fresnel rim, iridescent media tint, bloom typography |
-| Cards | Static gold border | + animated iridescent edge on hover |
-| Nav | Frosted cream bar | + pearl glass + tri-tone border |
-| Buttons | Gold gradient | + full Nikki ramp cycle + colored glow |
-| Dark bands | Flat astral | + nebula pulse overlays |
-| Mobile | Motion stripped broadly | Aurora/sparkle reduced opacity; fresnel still works |
-| a11y | — | `prefers-reduced-motion` disables animations, keeps static sheen |
+```css
+--dream-fresnel
+--dream-mouse-x / --dream-mouse-y
+--iri-cyan / --iri-gold / --iri-purple / --iri-magenta
+```
 
----
+```html
+<div class="melodia-shell" data-hero="cosmic" data-effects="starfield,orrery,planetarium,holo,instruments,magical">
+```
 
-## Pages covered
-
-All pages using `melodia-editorial.css` or `portfolio-luxury-bridge.css` (imports dream shaders).
-
-**Tier A/B cosmic:** `index`, `application-hub`, `shader-breakdowns`, `hero-renders`, `sakura-case-study`  
-**Tier C/D:** All `melodia-shell fashion-mode` portfolio routes
-
-**Not covered:** `render-constellation.html` (inline legacy CSS — candidate for next pass)
+`MelodiaStarfield.init({ intensity: 'standard' | 'cosmic' | 'subtle' })`
 
 ---
 
@@ -63,28 +71,17 @@ All pages using `melodia-editorial.css` or `portfolio-luxury-bridge.css` (import
 
 | Unreal | Website equivalent |
 |--------|-------------------|
-| Fresnel iridescence ramp | `--dream-iri-ramp`, hero `::before`, card hover border |
-| Sparkle Voronoi | `.dream-sparkle-layer` twinkle |
-| MagicalIntensity ≤ 0.5 | Opacity caps 0.14–0.42 on overlays; thin-film band alpha × 0.5 |
-| Thin-film interference | Canvas `drawThinFilmBands` — spectral sample + Devin ramp bias |
-| Dream Bloom | `h1` text-shadow + gradient `em` |
-| MF_SpaceParallax | Parallax layers on index + aurora mouse drift |
-| ML_Jewel refraction | Glass nav + button inset highlight |
+| Fresnel iridescence ramp | `--dream-iri-ramp`, hero rim, card hover |
+| Sparkle Voronoi | Subtle sparkle layer only (not primary stars) |
+| MagicalIntensity ≤ 0.5 | Overlay opacity caps; thin-film alpha × 0.5 |
+| Thin-film interference | Canvas bands in MelodiaStarfield |
+| MF_SpaceParallax | Starfield scroll parallax + cosmic hero layer parallax |
+| ML_Jewel refraction | Glass nav + button sheen |
 
 ---
 
-## Tuning knobs (CSS vars)
+## Mobile / a11y
 
-```css
---dream-fresnel     /* 0–1, hero rim strength */
---dream-mouse-x/y   /* 0–1, aurora focal point */
---iri-cyan/gold/purple  /* ramp anchors */
-```
-
----
-
-## Next captures (optional)
-
-1. Screen recording of hub hero with cursor fresnel for `shader-breakdowns` "web shader" slot
-2. Migrate `render-constellation.html` to melodia shell + dream stack
-3. `data-dream-intensity="low|high"` on `<html>` for A/B
+- Star count reduced ~40% under 680px; watercolor blur disabled on mobile
+- `prefers-reduced-motion`: static starfield snapshot, no RAF
+- Orrery tilt clamped on mobile

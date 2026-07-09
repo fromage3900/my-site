@@ -136,11 +136,5 @@
   }
 
   global.MelodiaCosmicInstruments = { mount };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => mount());
-  } else {
-    mount();
-  }
 })(window);
 

@@ -519,22 +519,17 @@
     mountElement(slot);
   }
 
-  global.MelodiaPlanetarium = {
-    mountAll,
-    mountElement,
-    mountHeroReplacement,
-    NODES,
-    ARMS,
-  };
-
   function boot() {
     mountAll();
     mountHeroReplacement();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
-  }
+  global.MelodiaPlanetarium = {
+    mountAll,
+    mountElement,
+    mountHeroReplacement,
+    boot,
+    NODES,
+    ARMS,
+  };
 })(window);
