@@ -1,0 +1,84 @@
+/* Luxury maison typography — Bodoni Moda (LV runway) + Marcellus brand + Jost body */
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Marcellus&family=Jost:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+:root {
+  --font-brand: "Marcellus", "Cinzel", Georgia, serif;
+  /* Default: Bodoni Moda — Louis Vuitton runway editorial */
+  --font-display: "Bodoni Moda", "Cormorant Garamond", "Fraunces", Georgia, serif;
+  --font-body: "Jost", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-lede: "Bodoni Moda", "Cormorant Garamond", Georgia, serif;
+  --tracking-brand: 0.22em;
+  --tracking-display: 0.04em;
+  --tracking-body: 0.01em;
+}
+
+/* A/B: add data-display-font="cormorant" on <html> for Gucci-style Cormorant display */
+html[data-display-font="cormorant"] {
+  --font-display: "Cormorant Garamond", "Bodoni Moda", "Fraunces", Georgia, serif;
+  --font-lede: "Cormorant Garamond", "Bodoni Moda", Georgia, serif;
+  --tracking-display: 0.02em;
+}
+
+body,
+.melodia-shell {
+  font-family: var(--font-body);
+  letter-spacing: var(--tracking-body);
+}
+
+.brand,
+.shell-nav .brand,
+.nav .brand {
+  font-family: var(--font-brand);
+  letter-spacing: var(--tracking-brand);
+}
+
+h1, h2, h3,
+.hero h1,
+.section-head h2,
+.price,
+.stat strong,
+.family strong,
+.guide-card strong,
+.info-cell strong {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-display);
+}
+
+.lede,
+.hero .lede,
+.human-lede,
+.world-jp {
+  font-family: var(--font-lede);
+  font-style: italic;
+}
+
+.kicker,
+.eyebrow,
+.meta,
+.pill,
+.magazine-kicker,
+.file-note,
+.route-line span,
+.pillar-status,
+.world-meta,
+.button,
+.nav-cta,
+.shell-nav .nav-links a,
+.footer,
+.table-row span,
+.table-row b {
+  font-family: var(--font-mono);
+}
+
+.hero h1,
+h1 {
+  font-weight: 500;
+  line-height: 0.92;
+}
+
+@media (min-width: 900px) {
+  .hero h1 {
+    letter-spacing: 0.02em;
+  }
+}
