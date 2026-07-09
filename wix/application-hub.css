@@ -560,7 +560,7 @@
 
 .world-card:nth-child(1) {
   background:
-    linear-gradient(rgba(255, 250, 242, 0.88), rgba(255, 250, 242, 0.9)),
+    linear-gradient(rgba(16, 23, 54, 0.88), rgba(7, 9, 18, 0.92)),
     var(--pattern-hearts-svg);
   background-size: auto, 160px 160px;
 }

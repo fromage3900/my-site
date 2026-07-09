@@ -87,8 +87,9 @@
 .mg-bow-toggle {
   pointer-events: auto;
   position: fixed;
-  top: 86px;
-  right: 18px;
+  top: 92px;
+  right: 22px;
+  z-index: 48;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -132,7 +133,7 @@
 
 @media (max-width: 680px) {
   .mg-ribbon { opacity: 0.12; }
-  .mg-bow-toggle { top: 78px; right: 10px; }
+  .mg-bow-toggle { top: 84px; right: 12px; }
 
   .mg-crystal {
     width: 72px;

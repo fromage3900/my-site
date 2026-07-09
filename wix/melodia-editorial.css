@@ -117,6 +117,10 @@ img { display: block; max-width: 100%; }
   transform: rotate(-8deg) translate3d(calc(var(--mouse-x) * 0.08), calc(var(--scroll-shift) * -0.02), 0);
 }
 
+.melodia-shell:has(.hero.has-editorial-frame)::after {
+  opacity: 0;
+}
+
 .shell-nav, .hero, .band, .footer, .hero-passport { position: relative; z-index: 1; }
 
 .shell-nav {
@@ -340,7 +344,7 @@ img { display: block; max-width: 100%; }
 
 .hero-inner {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   width: min(100%, var(--max));
   margin: 0 auto;
   padding: 144px 46px 48px;

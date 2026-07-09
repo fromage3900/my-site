@@ -4,10 +4,8 @@
   position: fixed;
   right: 18px;
   bottom: 18px;
-  z-index: 70;
-  display: grid;
-  gap: 10px;
-  pointer-events: none;
+  z-index: 48;
+  pointer-events: auto;
   opacity: 0.62;
 }
 

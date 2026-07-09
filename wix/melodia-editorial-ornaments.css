@@ -25,7 +25,7 @@
   inset: var(--frame-inset);
   pointer-events: none;
   opacity: var(--frame-opacity);
-  z-index: 2;
+  z-index: 1;
   background: url("../generated/assets/editorial/portfolioframe.png") center / 100% 100% no-repeat;
   filter: invert(1);
 }

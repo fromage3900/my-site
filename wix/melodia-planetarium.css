@@ -26,6 +26,19 @@
   cursor: grabbing;
 }
 
+.hero[data-planetarium-hero] .hero-inner {
+  z-index: 8;
+}
+
+.hero[data-planetarium-hero] .planetarium-hero-slot {
+  pointer-events: none;
+}
+
+.hero[data-planetarium-hero] .planetarium-hero-slot .planetarium {
+  pointer-events: none;
+  opacity: 0.58;
+}
+
 .hero[data-planetarium-hero] .parallax-layer-5 .orrery-system,
 .hero[data-planetarium-hero] .melodia-orrery {
   opacity: 0.12;
