@@ -8,7 +8,7 @@
   border: 1px solid var(--border-gold);
   background:
     linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
-    url("../generated/assets/editorial/tileableheartsalpha.png");
+    var(--pattern-hearts-svg);
   background-size: auto, 180px 180px;
   box-shadow: 0 20px 70px rgba(34, 26, 42, 0.1);
 }
@@ -276,7 +276,8 @@
 
 .passport-card.light::before {
   opacity: 0.18;
-  background-image: url("../generated/assets/editorial/starryalpha1.png");
+  background-image: var(--pattern-stars);
+  background-size: var(--pattern-stars-size);
 }
 
 .passport-head,
@@ -523,7 +524,8 @@
   width: 128px;
   height: 128px;
   opacity: 0.08;
-  background: url("../generated/assets/editorial/starryalpha1.png") center/cover no-repeat;
+  background: var(--pattern-stars);
+  background-size: var(--pattern-stars-size);
   pointer-events: none;
 }
 
@@ -534,21 +536,23 @@
   width: 190px;
   height: 190px;
   opacity: 0.14;
-  background: url("../generated/assets/editorial/starryalpha2.png") center/cover no-repeat;
+  background: var(--pattern-stars);
+  background-size: var(--pattern-stars-size);
   transform: rotate(-12deg);
   animation: hub-card-float 9s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
 .world-card:nth-child(2n)::after {
-  background-image: url("../generated/assets/editorial/starryalpha1.png");
+  background-image: var(--pattern-stars);
+  background-size: var(--pattern-stars-size);
   animation-duration: 12s;
 }
 
 .world-card:nth-child(1) {
   background:
     linear-gradient(rgba(255, 250, 242, 0.88), rgba(255, 250, 242, 0.9)),
-    url("../generated/assets/editorial/tileableheartsalpha.png");
+    var(--pattern-hearts-svg);
   background-size: auto, 160px 160px;
 }
 

@@ -6,17 +6,7 @@
 (function (global) {
   'use strict';
 
-  const NASA_TEXTURES = [
-    // Public NASA imagery (remote); used as subtle texture wash.
-    'https://images-assets.nasa.gov/image/PIA12235/PIA12235~orig.jpg',
-    'https://images-assets.nasa.gov/image/PIA01322/PIA01322~orig.jpg',
-    'https://images-assets.nasa.gov/image/PIA18033/PIA18033~orig.jpg',
-  ];
-
-  function pickTexture(seed) {
-    const i = Math.abs(seed) % NASA_TEXTURES.length;
-    return NASA_TEXTURES[i];
-  }
+  // Editorial-only: no remote imagery dependencies.
 
   function mount(root) {
     const shell = root || document.querySelector('.melodia-shell');
@@ -74,19 +64,17 @@
     wrap.appendChild(compass);
     shell.appendChild(wrap);
 
-    // Apply NASA textures
-    clock.querySelector('.nasa').style.backgroundImage = `url("${pickTexture(1)}")`;
-    compass.querySelector('.nasa').style.backgroundImage = `url("${pickTexture(2)}")`;
-
     const hour = clock.querySelector('.hand.hour');
     const min = clock.querySelector('.hand.min');
     const sec = clock.querySelector('.hand.sec');
     const bearing = compass.querySelector('.bearing');
 
+    // Keep it subtle: clock speed toggle removed; keep 1× time.
     let speed = 1;
     clock.querySelector('.click').addEventListener('click', () => {
-      speed = speed === 1 ? 9 : speed === 9 ? 24 : 1;
-      clock.querySelector('.label').textContent = speed === 1 ? 'Cosmic Clock' : `Cosmic Clock ×${speed}`;
+      // Minimal editorial behavior: click toggles instruments visibility
+      const wrap = clock.closest('.cosmic-instruments');
+      if (wrap) wrap.classList.toggle('is-collapsed');
     });
 
     // Compass: jump between major sections

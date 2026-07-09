@@ -8,39 +8,38 @@
   display: grid;
   gap: 10px;
   pointer-events: none;
+  opacity: 0.62;
+}
+
+.cosmic-instruments.is-collapsed {
+  opacity: 0.22;
+}
+
+.cosmic-instruments.is-collapsed .instrument {
+  pointer-events: none;
 }
 
 .instrument {
   pointer-events: auto;
-  width: 132px;
-  height: 132px;
+  width: 74px;
+  height: 74px;
   border-radius: 50%;
   border: 1px solid rgba(201, 168, 106, 0.28);
   background:
-    radial-gradient(circle at 40% 30%, rgba(255, 255, 255, 0.08), transparent 55%),
-    radial-gradient(circle at 50% 50%, rgba(102, 217, 255, 0.06), transparent 62%),
-    rgba(7, 9, 18, 0.72);
+    radial-gradient(circle at 40% 30%, rgba(255, 255, 255, 0.06), transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(102, 217, 255, 0.05), transparent 62%),
+    rgba(7, 9, 18, 0.58);
   backdrop-filter: blur(14px);
   box-shadow:
-    0 18px 50px rgba(7, 9, 18, 0.55),
-    inset 0 0 0 1px rgba(102, 217, 255, 0.10),
-    0 0 28px rgba(204, 153, 255, 0.08);
+    0 14px 42px rgba(7, 9, 18, 0.42),
+    inset 0 0 0 1px rgba(102, 217, 255, 0.08),
+    0 0 18px rgba(204, 153, 255, 0.06);
   overflow: hidden;
   position: relative;
 }
 
 .instrument .label {
-  position: absolute;
-  left: 50%;
-  bottom: 10px;
-  transform: translateX(-50%);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(236, 234, 244, 0.72);
-  pointer-events: none;
-  white-space: nowrap;
+  display: none;
 }
 
 .instrument svg {
@@ -58,7 +57,7 @@
 }
 
 .instrument .click:focus-visible {
-  outline: 2px solid rgba(102, 217, 255, 0.55);
+  outline: 2px solid rgba(201, 168, 106, 0.55);
   outline-offset: 3px;
 }
 
@@ -112,15 +111,11 @@
 .instrument .nasa {
   position: absolute;
   inset: 0;
-  opacity: 0.10;
-  mix-blend-mode: screen;
-  background-size: cover;
-  background-position: center;
-  filter: saturate(1.2) contrast(1.1);
+  opacity: 0.0;
   pointer-events: none;
 }
 
-.instrument:hover .nasa { opacity: 0.16; }
+.instrument:hover { opacity: 0.92; }
 
 @media (max-width: 680px) {
   .cosmic-instruments {
@@ -129,8 +124,8 @@
     gap: 8px;
   }
   .instrument {
-    width: 104px;
-    height: 104px;
+    width: 60px;
+    height: 60px;
   }
 }
 

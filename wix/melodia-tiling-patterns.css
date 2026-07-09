@@ -1,0 +1,17 @@
+/* Replace raster alpha textures with tiling procedural/SVG patterns */
+
+:root {
+  --pattern-stars: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 1px, transparent 1.7px),
+    radial-gradient(circle, rgba(201, 168, 106, 0.9) 0 1px, transparent 1.8px),
+    radial-gradient(circle, rgba(204, 153, 255, 0.75) 0 1px, transparent 2px);
+  --pattern-stars-size: 96px 96px, 160px 160px, 230px 230px;
+
+  --pattern-hearts-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg opacity='0.22'%3E%3Cpath d='M48 62c-10-8-18-14-18-24 0-6 4-10 10-10 4 0 7 2 8 4 1-2 4-4 8-4 6 0 10 4 10 10 0 10-8 16-18 24z' fill='%23c9a86a'/%3E%3C/g%3E%3Cg opacity='0.12'%3E%3Cpath d='M20 26c-6-4-10-8-10-14 0-4 3-7 7-7 3 0 5 1 6 3 1-2 3-3 6-3 4 0 7 3 7 7 0 6-4 10-16 14z' fill='%23cc99ff'/%3E%3C/g%3E%3Cg opacity='0.14'%3E%3Cpath d='M80 82c-5-4-9-7-9-12 0-3 2-5 5-5 2 0 4 1 4 2 1-1 2-2 4-2 3 0 5 2 5 5 0 5-4 8-9 12z' fill='%2366d9ff'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Generic starfield utility */
+.pattern-stars {
+  background-image: var(--pattern-stars);
+  background-size: var(--pattern-stars-size);
+}
+
