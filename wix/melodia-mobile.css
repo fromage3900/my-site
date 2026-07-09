@@ -17,7 +17,7 @@
     padding: 8px;
     border: 1px solid var(--line, rgba(201, 168, 106, 0.32));
     border-radius: 3px;
-    background: rgba(247, 242, 234, 0.98);
+    background: rgba(7, 9, 18, 0.92);
     backdrop-filter: blur(16px);
     box-shadow: 0 16px 48px rgba(34, 26, 42, 0.14);
     max-height: min(70vh, 420px);
@@ -31,7 +31,7 @@
 
   .shell-nav .nav-links a {
     padding: 12px 14px;
-    border-bottom: 1px solid rgba(34, 26, 42, 0.06);
+    border-bottom: 1px solid rgba(233, 229, 242, 0.08);
   }
 
   .shell-nav .nav-links a:last-child {
@@ -47,8 +47,8 @@
     padding: 0;
     border: 1px solid var(--line, rgba(201, 168, 106, 0.32));
     border-radius: 2px;
-    background: rgba(255, 255, 255, 0.5);
-    color: var(--ink, #221a2a);
+    background: rgba(7, 9, 18, 0.55);
+    color: rgba(236, 234, 244, 0.86);
     cursor: pointer;
     font-family: var(--font-mono, "IBM Plex Mono", monospace);
     font-size: 0.62rem;
@@ -175,6 +175,17 @@
 
   :root {
     --frame-inset: clamp(10px, 3.5%, 28px);
+  }
+
+  /* Prevent planetarium hero slot clipping / offscreen */
+  .hero[data-planetarium-hero] .planetarium-hero-slot {
+    inset: 10% 0 auto auto;
+    width: min(92vw, 420px);
+    max-width: 420px;
+  }
+
+  .hero[data-planetarium-hero] .planetarium-hero-slot .planetarium {
+    max-width: 100%;
   }
 }
 

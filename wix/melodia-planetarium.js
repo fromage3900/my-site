@@ -56,6 +56,8 @@
 
       this.yaw = 0;
       this.pitch = this.isHero ? 12 : 18;
+      this.targetYaw = 0;
+      this.targetPitch = this.isHero ? 12 : 18;
       this.drag = { on: false, x: 0, y: 0, yaw0: 0, pitch0: 0 };
       this.armAngles = ARMS.map(() => 0);
       this.activeId = null;
@@ -365,6 +367,8 @@
         const dy = p.clientY - this.drag.y;
         this.yaw = this.drag.yaw0 + dx * 0.35;
         this.pitch = Math.max(-28, Math.min(42, this.drag.pitch0 - dy * 0.22));
+        this.targetYaw = this.yaw;
+        this.targetPitch = this.pitch;
         this.updateTransforms();
         if (e.cancelable) e.preventDefault();
       };
@@ -380,6 +384,19 @@
       this.root.addEventListener('touchstart', onDown, { passive: true });
       window.addEventListener('touchmove', onMove, { passive: false });
       window.addEventListener('touchend', onUp);
+
+      // Passive parallax: even when not dragging, let pointer \"breathe\" the planetarium
+      const onHoverMove = (e) => {
+        if (this.drag.on || this.reduceMotion) return;
+        const rect = this.root.getBoundingClientRect();
+        const nx = (e.clientX - rect.left) / rect.width - 0.5;
+        const ny = (e.clientY - rect.top) / rect.height - 0.5;
+        const strength = this.isHero ? 22 : 28;
+        this.targetYaw = nx * strength;
+        this.targetPitch = (this.isHero ? 10 : 16) + ny * -strength * 0.55;
+      };
+
+      this.root.addEventListener('pointermove', onHoverMove, { passive: true });
 
       window.addEventListener('resize', () => this.resizeCanvas());
 
@@ -397,6 +414,10 @@
           if (this.isHero) {
             this.yaw += 0.018;
           }
+          // Smooth toward hover targets
+          const s = this.isHero ? 0.06 : 0.08;
+          this.yaw += (this.targetYaw - this.yaw) * s;
+          this.pitch += (this.targetPitch - this.pitch) * s;
           this.updateTransforms();
         }
         this.drawStars(t);
