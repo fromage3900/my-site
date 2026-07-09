@@ -126,9 +126,9 @@
                              "height":  null,
                              "aspect_ratio":  null,
                              "plate_role":  "material_swatch",
-                             "priority":  71,
-                             "status":  "web_ready",
-                             "caption":  "Material showcase plate for shader family review, surface language, and look-development proof."
+                             "priority":  12,
+                             "status":  "deprecated",
+                             "caption":  "Deprecated capture — underexposed checkerboard plate from pre-instance-sync pass. Use showcase grids instead."
                          },
                          {
                              "id":  "hero-hero-level-viewport-20260627-190846-1920x1080",
@@ -211,9 +211,9 @@
                              "height":  2048,
                              "aspect_ratio":  "1:1",
                              "plate_role":  "material_swatch",
-                             "priority":  68,
+                             "priority":  92,
                              "status":  "web_ready",
-                             "caption":  "Material showcase plate for shader family review, surface language, and look-development proof."
+                             "caption":  "Primary material showcase — Zen / Showcase / Baroque families on preview spheres (Jun 27 capture)."
                          },
                          {
                              "id":  "materials-grid-showcase-20260627-190400-2048x2048",

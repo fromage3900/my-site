@@ -198,6 +198,41 @@ img { display: block; max-width: 100%; }
   transform: translate3d(0, calc(var(--scroll-shift) * 0.08), 0) scale(1.05);
 }
 
+/* Swatch / proof heroes — keep material plates readable */
+.hero.hero-proof .hero-media img,
+.hero.hero-proof .parallax-layer-7 img {
+  object-fit: contain;
+  object-position: center;
+  filter: saturate(1.04) contrast(1.04) brightness(1);
+  transform: none;
+}
+
+.hero.hero-proof .hero-media::after {
+  background:
+    linear-gradient(90deg, rgba(8, 11, 19, 0.72), rgba(18, 24, 45, 0.42) 52%, rgba(45, 32, 60, 0.18)),
+    linear-gradient(0deg, rgba(8, 11, 19, 0.82), rgba(8, 11, 19, 0.06) 70%);
+}
+
+.material-proof-frame {
+  border: 1px solid var(--border-gold);
+  background: #12182d;
+  overflow: hidden;
+}
+
+.material-proof-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: none;
+}
+
+.image-card.material-proof-frame img {
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #12182d;
+}
+
 .hero-media::after {
   content: "";
   position: absolute;

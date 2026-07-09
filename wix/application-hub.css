@@ -1,0 +1,529 @@
+/* Application hub — layout extensions on melodia-editorial */
+
+.identity-panel {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  align-content: start;
+  border: 1px solid var(--border-gold);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
+    url("../generated/assets/editorial/tileableheartsalpha.png");
+  background-size: auto, 180px 180px;
+  box-shadow: 0 20px 70px rgba(34, 26, 42, 0.1);
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 24px 14px;
+}
+
+.gold-rule {
+  height: 1px;
+  margin: 0 24px 8px;
+  background: var(--gold);
+}
+
+.panel-title { padding: 0 24px 18px; }
+.panel-title p { margin: 12px 0 0; color: var(--muted); line-height: 1.68; }
+
+.data-row {
+  display: grid;
+  grid-template-columns: 142px 1fr;
+  gap: 16px;
+  padding: 15px 24px;
+  border-top: 1px solid var(--soft-line);
+  font-size: 0.78rem;
+}
+
+.data-row span {
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.data-row strong { color: var(--ink); font-weight: 500; }
+
+.world-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.world-card {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--border-gold);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 22px;
+}
+
+.world-card::before {
+  content: attr(data-kana);
+  position: absolute;
+  top: 18px;
+  right: 14px;
+  writing-mode: vertical-rl;
+  color: rgba(201, 168, 106, 0.2);
+  font-family: Cinzel, Georgia, serif;
+  font-size: 2.65rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.world-number {
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.world-card h3 {
+  max-width: 220px;
+  margin-top: 86px;
+  font-size: 2.25rem;
+}
+
+.world-card p {
+  position: relative;
+  z-index: 2;
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.62;
+}
+
+.jp-title {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin-top: 18px;
+  color: var(--iris);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.1rem;
+}
+
+.romaji {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.world-card.sakura { border-top: 5px solid #d989a8; }
+.world-card.cathedral { border-top: 5px solid var(--iris); }
+.world-card.castle { border-top: 5px solid var(--gold); }
+.world-card.grotto { border-top: 5px solid #287b7d; }
+
+.escher-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 46px;
+  align-items: center;
+}
+
+.impossible-card {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    radial-gradient(circle at 30% 20%, rgba(98, 83, 156, 0.5), transparent 34%),
+    radial-gradient(circle at 72% 72%, rgba(40, 123, 125, 0.34), transparent 32%);
+}
+
+.impossible-card::before,
+.impossible-card::after {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border: 1px solid rgba(228, 201, 144, 0.48);
+  transform: skewY(-18deg) rotate(8deg);
+}
+
+.impossible-card::after {
+  inset: 24% 18% 18% 26%;
+  transform: skewY(18deg) rotate(-11deg);
+  border-color: rgba(233, 229, 242, 0.34);
+}
+
+.impossible-card span {
+  position: absolute;
+  color: rgba(228, 201, 144, 0.58);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 5.4rem;
+  line-height: 0.9;
+}
+
+.impossible-card span:nth-child(1) { left: 28px; top: 32px; }
+.impossible-card span:nth-child(2) { right: 32px; bottom: 28px; }
+.impossible-card span:nth-child(3) { left: 38%; top: 42%; font-size: 3rem; color: rgba(233, 229, 242, 0.42); }
+
+.concept-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.concept {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.concept strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--gold-soft);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.concept p { margin: 0; color: rgba(233, 229, 242, 0.72); line-height: 1.6; }
+
+.breakdown-passports {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.passport-stack { display: grid; gap: 14px; }
+
+.passport-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  background: linear-gradient(180deg, var(--astral), #1b2740);
+  color: var(--lavender);
+  padding: 22px;
+  min-height: 260px;
+}
+
+.passport-card.light {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.passport-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-image:
+    radial-gradient(1.4px 1.4px at 18% 26%, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1.2px 1.2px at 72% 18%, rgba(228, 201, 144, 0.72), transparent);
+}
+
+.passport-card.light::before {
+  opacity: 0.18;
+  background-image: url("../generated/assets/editorial/starryalpha1.png");
+}
+
+.passport-head,
+.passport-foot,
+.passport-row,
+.passport-tags { position: relative; z-index: 1; }
+
+.passport-head,
+.passport-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+}
+
+.passport-title {
+  position: relative;
+  z-index: 1;
+  margin: 16px 0 6px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 2.15rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.passport-rule {
+  position: relative;
+  z-index: 1;
+  height: 1px;
+  margin: 14px 0;
+  background: var(--gold);
+}
+
+.passport-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(201, 168, 106, 0.18);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.passport-row span { color: rgba(233, 229, 242, 0.58); }
+.passport-card.light .passport-row span { color: var(--muted); }
+
+.passport-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.passport-tag {
+  border: 1px solid var(--border-gold);
+  padding: 7px 10px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.passport-showcase {
+  position: relative;
+  min-height: 420px;
+  border: 1px solid var(--border-gold);
+  background: linear-gradient(180deg, #13182b, var(--plum));
+  overflow: hidden;
+  padding: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.passport-showcase::before {
+  content: "";
+  position: absolute;
+  inset: 24px;
+  border: 1px solid var(--border-gold);
+}
+
+.showcase-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin: auto 0;
+}
+
+.showcase-inner h3 { font-size: 3.2rem; }
+.showcase-inner p {
+  margin: 12px auto 0;
+  max-width: 520px;
+  color: rgba(233, 229, 242, 0.74);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.showcase-meta {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: rgba(233, 229, 242, 0.62);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 46px;
+  align-items: end;
+}
+
+.about-copy { max-width: 780px; }
+.about-copy p {
+  color: rgba(233, 229, 242, 0.78);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1.5;
+}
+
+.zunda-card {
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  background: rgba(247, 242, 234, 0.08);
+}
+
+.zunda-card img {
+  width: 100%;
+  height: 285px;
+  object-fit: cover;
+  object-position: 18% center;
+}
+
+.zunda-card p {
+  margin: 0;
+  padding: 16px;
+  color: rgba(233, 229, 242, 0.72);
+  line-height: 1.56;
+}
+
+.technical-appendix {
+  margin-top: 28px;
+  border: 1px solid var(--border-gold);
+  background: rgba(255, 255, 255, 0.045);
+  padding: 18px 20px;
+}
+
+.technical-appendix summary {
+  cursor: pointer;
+  color: var(--gold-soft);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.appendix-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.appendix-links a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  border: 1px solid var(--border-gold);
+  padding: 8px 10px;
+  color: rgba(232, 228, 242, 0.76);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.path-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+
+@media (max-width: 1080px) {
+  .world-grid,
+  .escher-layout,
+  .breakdown-passports,
+  .about-layout,
+  .concept-list { grid-template-columns: 1fr; }
+  .world-card { min-height: 340px; }
+}
+
+.skip-link {
+  position: absolute;
+  left: 18px;
+  top: -80px;
+  z-index: 80;
+  padding: 12px 14px;
+  background: var(--gold);
+  color: var(--void);
+}
+
+.skip-link:focus { top: 18px; }
+
+.spark {
+  width: 18px;
+  height: 18px;
+  clip-path: polygon(50% 0, 60% 36%, 100% 50%, 60% 64%, 50% 100%, 40% 64%, 0 50%, 40% 36%);
+  background: var(--gold);
+  filter: drop-shadow(0 0 10px rgba(201, 168, 106, 0.55));
+  flex: 0 0 auto;
+}
+
+.alignment-card::before,
+.stack-card::before,
+.concept::before,
+.path-row::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 18px;
+  height: 18px;
+  clip-path: polygon(50% 0, 60% 36%, 100% 50%, 60% 64%, 50% 100%, 40% 64%, 0 50%, 40% 36%);
+  background: rgba(201, 168, 106, 0.58);
+  opacity: 0.52;
+}
+
+.path-row::before { top: 24px; right: 0; }
+
+.alignment-card::after,
+.stack-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -34px -38px auto;
+  width: 128px;
+  height: 128px;
+  opacity: 0.08;
+  background: url("../generated/assets/editorial/starryalpha1.png") center/cover no-repeat;
+  pointer-events: none;
+}
+
+.world-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -40px -36px auto;
+  width: 190px;
+  height: 190px;
+  opacity: 0.14;
+  background: url("../generated/assets/editorial/starryalpha2.png") center/cover no-repeat;
+  transform: rotate(-12deg);
+  animation: hub-card-float 9s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.world-card:nth-child(2n)::after {
+  background-image: url("../generated/assets/editorial/starryalpha1.png");
+  animation-duration: 12s;
+}
+
+.world-card:nth-child(1) {
+  background:
+    linear-gradient(rgba(255, 250, 242, 0.88), rgba(255, 250, 242, 0.9)),
+    url("../generated/assets/editorial/tileableheartsalpha.png");
+  background-size: auto, 160px 160px;
+}
+
+.world-card:nth-child(4) {
+  background: radial-gradient(circle at 24% 24%, rgba(40, 123, 125, 0.12), transparent 42%), var(--paper);
+}
+
+@keyframes hub-card-float {
+  from { transform: rotate(-12deg) translate3d(0, 0, 0); }
+  to { transform: rotate(-6deg) translate3d(-10px, -14px, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .world-card::after { animation: none !important; transform: none !important; }
+}
+
+@media (max-width: 680px) {
+  .data-row,
+  .concept-list { grid-template-columns: 1fr; }
+  .passport-showcase { min-height: 340px; padding: 28px; }
+  .showcase-inner h3 { font-size: 2.35rem; }
+}

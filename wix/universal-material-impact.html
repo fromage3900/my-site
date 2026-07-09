@@ -8,12 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,650;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="portfolio-pages.css">
+  <link rel="stylesheet" href="melodia-editorial.css">
+  <link rel="stylesheet" href="melodia-fashion-editorial.css">
+<link rel="stylesheet" href="melodia-premium-system.css">
   <style>
     .impact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
     .impact-card{border:1px solid rgba(201,168,106,.35);background:rgba(255,255,255,.72);overflow:hidden}
     .impact-card .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,rgba(18,24,45,.14),rgba(200,164,94,.10));display:grid;place-items:center;color:rgba(34,26,42,.6);font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
-    .impact-card img{width:100%;height:100%;object-fit:cover;display:block}
+    .impact-card img{width:100%;height:100%;object-fit:contain;display:block;background:#12182d}
     .impact-card .body{padding:16px 18px}
     .impact-card .body p{color:rgba(34,26,42,.72);line-height:1.6}
     .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
@@ -33,7 +35,7 @@
     <a class="nav-cta" href="commissions.html">Request Work</a>
   </header>
   <main>
-    <section class="hero" aria-labelledby="page-title">
+    <section class="hero hero-proof" aria-labelledby="page-title">
       <div class="hero-media" aria-hidden="true">
         <img id="leadImg" src="../generated/assets/unreal/hero-hero-level-20260625-055343-1920x1080.png" alt="Universal material impact hero plate" />
       </div>
@@ -118,26 +120,38 @@
       `;
     }
 
+    function materialScore(card){
+      if (!card || !card.web_path) return -1;
+      if (card.status === 'deprecated') return -1;
+      if ((card.id || '').includes('families-review')) return -1;
+      let score = card.priority || 0;
+      if ((card.id || '').includes('showcase')) score += 40;
+      if (card.width && card.height) score += 10;
+      return score;
+    }
+
     async function main(){
       const res = await fetch(INTAKE_URL, { cache: 'no-store' });
       const intake = await res.json();
       const cards = Array.isArray(intake.render_cards) ? intake.render_cards : [];
-      const heroes = cards.filter(c=>c.group==='hero' && c.web_path).sort(byPriorityDesc);
+      const heroes = cards.filter(c=>c.group==='hero' && c.web_path && c.status !== 'deprecated').sort(byPriorityDesc);
       if (heroes[0] && heroes[0].web_path){
         const img = document.getElementById('leadImg');
         img.src = heroes[0].web_path;
         img.alt = heroes[0].filename || 'Hero plate';
       }
 
-      const materials = cards.filter(c=>c.group==='materials' && c.web_path).sort(byPriorityDesc);
+      const materials = cards
+        .filter(c=>c.group==='materials' && c.web_path && materialScore(c) >= 0)
+        .sort((a,b)=>materialScore(b)-materialScore(a));
       const breakdowns = cards.filter(c=>c.group==='breakdown' && c.web_path).sort(byPriorityDesc);
 
       const grid = document.getElementById('impactGrid');
       const entries = [];
       if (heroes[0]) entries.push(renderCard(heroes[0], 'Hero plate'));
       if (materials[0]) entries.push(renderCard(materials[0], 'Materials grid'));
+      if (materials[1]) entries.push(renderCard(materials[1], 'Materials grid'));
       if (breakdowns[0]) entries.push(renderCard(breakdowns[0], 'Breakdown plate'));
-      if (breakdowns[1]) entries.push(renderCard(breakdowns[1], 'Breakdown plate'));
 
       if (!entries.length){
         grid.innerHTML = '<p>No plates found yet. Run the Unreal ingest pipeline so <code>generated/unreal_portfolio_intake.json</code> includes web paths.</p>';

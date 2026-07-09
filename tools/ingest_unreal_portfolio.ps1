@@ -72,7 +72,11 @@ foreach ($group in $renderGroups) {
     $role = if ($item.presentation -and $item.presentation.plate_role) { $item.presentation.plate_role } else { $group }
     $priority = switch ($group) {
       'hero' { 90 - $index }
-      'materials' { 72 - $index }
+      'materials' {
+        if ($baseName -match 'families_review') { 10 - $index }
+        elseif ($baseName -match 'showcase') { 88 - $index }
+        else { 72 - $index }
+      }
       'breakdown' { 82 - $index }
       'pcg' { 76 - $index }
       default { 50 }
