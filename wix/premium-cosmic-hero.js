@@ -158,15 +158,20 @@ class PremiumOrrery {
     ];
 
     ringConfig.forEach((config, index) => {
+      // 3D: shell rotates; path tilts in 3D space
+      const shell = document.createElement('div');
+      shell.className = 'orbital-shell';
+      shell.style.width = config.size[0] + 'px';
+      shell.style.height = config.size[1] + 'px';
+      shell.style.setProperty('--duration', config.duration + 's');
+
       const ring = document.createElement('div');
       ring.className = 'orbital-path orbital-ring-' + (index + 1);
-      ring.style.width = config.size[0] + 'px';
-      ring.style.height = config.size[1] + 'px';
-      ring.style.setProperty('--duration', config.duration + 's');
       ring.style.borderColor = config.color;
-      
-      this.orrerySystem.appendChild(ring);
-      this.rings.push({ element: ring, config });
+
+      shell.appendChild(ring);
+      this.orrerySystem.appendChild(shell);
+      this.rings.push({ element: ring, shell, config });
     });
 
     // Create central core

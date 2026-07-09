@@ -9,6 +9,14 @@
   --night-muted: rgba(236, 234, 244, 0.66);
   --night-line: rgba(201, 168, 106, 0.28);
   --night-soft-line: rgba(233, 229, 242, 0.10);
+
+  /* Override \"paper\" tokens so any leftover ivory cards go night */
+  --ivory: var(--night-void);
+  --paper: rgba(16, 23, 54, 0.62);
+  --ink: var(--night-lavender);
+  --muted: var(--night-muted);
+  --line: var(--night-line);
+  --soft-line: var(--night-soft-line);
 }
 
 body {
@@ -34,6 +42,13 @@ body {
     radial-gradient(circle at 18% 26%, rgba(102, 217, 255, 0.06), transparent 40%),
     radial-gradient(circle at 82% 72%, rgba(204, 153, 255, 0.06), transparent 40%);
   color: var(--night-lavender);
+}
+
+/* Any legacy “paper” utility classes should be night too */
+.paper {
+  background:
+    linear-gradient(180deg, rgba(16, 23, 54, 0.92), rgba(7, 9, 18, 0.94)) !important;
+  color: var(--night-lavender) !important;
 }
 
 .band.paper p,

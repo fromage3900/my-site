@@ -236,15 +236,23 @@
   }
 }
 
-/* Orbital Paths */
-.orbital-path {
+/* Orbital Paths (3D) */
+.orbital-shell {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation: orbit-rotate var(--duration) linear infinite;
+  transform-style: preserve-3d;
+}
+
+.orbital-path {
+  position: absolute;
+  inset: 0;
   border: 1px solid var(--border-gold);
   border-radius: 50%;
-  animation: orbit-rotate var(--duration) linear infinite;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(var(--z, 0px));
 }
 
 .orbital-path::before {
@@ -261,6 +269,9 @@
   height: 60px;
   --duration: 30s;
   border-color: rgba(155, 143, 196, 0.35);
+  --tilt-x: 38deg;
+  --tilt-y: -10deg;
+  --z: 10px;
 }
 
 /* Ring 2 - Inner Mid */
@@ -270,6 +281,9 @@
   --duration: 42s;
   border-color: rgba(201, 168, 106, 0.35);
   animation-direction: reverse;
+  --tilt-x: 22deg;
+  --tilt-y: 18deg;
+  --z: 18px;
 }
 
 /* Ring 3 - Outer Mid */
@@ -278,6 +292,9 @@
   height: 160px;
   --duration: 56s;
   border-color: rgba(232, 201, 184, 0.3);
+  --tilt-x: 58deg;
+  --tilt-y: -22deg;
+  --z: 26px;
 }
 
 /* Ring 4 - Inner Outer */
@@ -287,6 +304,9 @@
   --duration: 72s;
   border-color: rgba(212, 197, 169, 0.25);
   animation-direction: reverse;
+  --tilt-x: 14deg;
+  --tilt-y: 34deg;
+  --z: 34px;
 }
 
 /* Ring 5 - Outer */
@@ -295,6 +315,9 @@
   height: 300px;
   --duration: 96s;
   border-color: rgba(155, 143, 196, 0.2);
+  --tilt-x: 66deg;
+  --tilt-y: 8deg;
+  --z: 42px;
 }
 
 /* Ring 6 - Outermost */
@@ -304,6 +327,9 @@
   --duration: 120s;
   border-color: rgba(109, 184, 184, 0.15);
   animation-direction: reverse;
+  --tilt-x: 30deg;
+  --tilt-y: -40deg;
+  --z: 52px;
 }
 
 @keyframes orbit-rotate {
@@ -516,6 +542,7 @@ h3 {
   .parallax-layer-2,
   .parallax-layer-3,
   .parallax-layer-4,
+  .orbital-shell,
   .orbital-path,
   .orbital-node,
   .button.primary {
