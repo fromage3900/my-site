@@ -10,6 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,650;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="melodia-editorial.css">
 <link rel="stylesheet" href="melodia-fashion-editorial.css">
+<link rel="stylesheet" href="melodia-premium-system.css">
+<link rel="stylesheet" href="enhanced-cosmic-hero-premium.css">
 </head>
 <body>
 <div class="melodia-shell fashion-mode">
@@ -22,34 +24,33 @@
     <a href="hero-renders.html">Renders</a>
     <a href="commissions.html">Commissions</a>
   </nav>
-  <a class="nav-cta" href="application-hub.html">Application Hub</a>
+  <a class="nav-cta button-premium" href="application-hub.html">Application Hub</a>
 </header>
 
 <main id="main">
 <section class="hero" aria-labelledby="page-title">
-  <div class="hero-media" aria-hidden="true">
+  <div class="parallax-layer-1" aria-hidden="true"></div>
+  <div class="parallax-layer-2" aria-hidden="true"></div>
+  <div class="parallax-layer-3" aria-hidden="true"></div>
+  <div class="parallax-layer-4" aria-hidden="true"></div>
+  <div class="parallax-layer-5" aria-hidden="true">
+    <div class="orrery-system"><div class="orrery-core"></div></div>
+  </div>
+  <div class="parallax-layer-6" aria-hidden="true"></div>
+  <div class="parallax-layer-7" aria-hidden="true">
     <img id="heroLeadImage" src="../generated/assets/latest-hero.png" alt="Stylized environment portfolio render" />
   </div>
-  <div class="star-layer" aria-hidden="true"></div>
-  <div class="texture-layer" aria-hidden="true"></div>
-  <div class="ornate-frame" aria-hidden="true"></div>
-  <div class="melodia-orrery" aria-hidden="true">
-    <svg viewBox="0 0 520 520" role="img" aria-hidden="true">
-      <g class="ring slow"><circle class="orbit" cx="260" cy="260" r="226"/><path class="axis" d="M98 422 422 98"/><circle class="node" cx="420" cy="100" r="4"/></g>
-      <g class="ring"><circle class="orbit" cx="260" cy="260" r="166"/><path class="axis" d="M132 260h256"/><circle class="node" cx="389" cy="260" r="3.5"/></g>
-      <g class="ring fast"><circle class="orbit" cx="260" cy="260" r="92"/><path class="axis" d="M260 168v184"/><circle class="node" cx="260" cy="168" r="3"/></g>
-      <circle class="orbit" cx="260" cy="260" r="22"/>
-    </svg>
-  </div>
+  <div class="parallax-layer-8">
   <div class="hero-inner">
-    <p class="kicker" data-copy="pages.recruiter-one-sheet.hero.kicker">Recruiter one-sheet</p>
+    <p class="kicker magazine-kicker premium-kicker" data-copy="pages.recruiter-one-sheet.hero.kicker">Recruiter one-sheet</p>
     <h1 id="page-title" data-copy="pages.recruiter-one-sheet.hero.headline">Environment art taste, technical art follow-through.</h1>
     <p class="lede" data-copy="pages.recruiter-one-sheet.hero.lede">Brennan Shepherd builds stylized fantasy spaces, Unreal material systems, procedural dressing workflows, and presentation pages that make production proof easy to review.</p>
     <div class="hero-actions">
-      <a class="button primary" href="resume.html">Resume</a>
-      <a class="button" href="application-hub.html">Application hub</a>
-      <a class="button" href="sakura-case-study.html">Sakura case study</a>
+      <a class="button primary button-premium-primary" href="resume.html">Resume</a>
+      <a class="button button-premium" href="application-hub.html">Application hub</a>
+      <a class="button button-premium" href="sakura-case-study.html">Sakura case study</a>
     </div>
+  </div>
   </div>
 </section>
 
@@ -63,9 +64,9 @@
       <p data-copy="pages.recruiter-one-sheet.at_a_glance.lede">This one-sheet is intentionally short. It gives a recruiter the shape of the candidate and sends art reviewers to the right proof.</p>
     </div>
     <div class="alignment-grid" id="atAGlanceCards">
-      <article class="alignment-card"><span>Primary</span><div><h3>Stylized Environment Artist.</h3><p>Fantasy destinations, readable player routes, mood-first lighting, material storytelling, and hero renders.</p></div></article>
-      <article class="alignment-card"><span>Secondary</span><div><h3>Technical Artist.</h3><p>Unreal material systems, procedural generation, PCG/Geometry Nodes handoff, and render automation.</p></div></article>
-      <article class="alignment-card"><span>Portfolio hook</span><div><h3>Wonder with structure.</h3><p>The work is presented like a fantasy game site while keeping breakdowns, stats, and manifests close by.</p></div></article>
+      <article class="alignment-card premium-card"><span>Primary</span><div><h3>Stylized Environment Artist.</h3><p>Fantasy destinations, readable player routes, mood-first lighting, material storytelling, and hero renders.</p></div></article>
+      <article class="alignment-card premium-card"><span>Secondary</span><div><h3>Technical Artist.</h3><p>Unreal material systems, procedural generation, PCG/Geometry Nodes handoff, and render automation.</p></div></article>
+      <article class="alignment-card premium-card"><span>Portfolio hook</span><div><h3>Wonder with structure.</h3><p>The work is presented like a fantasy game site while keeping breakdowns, stats, and manifests close by.</p></div></article>
     </div>
   </div>
 </section>
@@ -99,6 +100,7 @@
 </footer>
 </div>
 
+<script src="premium-cosmic-hero.js"></script>
 <script src="melodia-orrery-system.js"></script>
 <script src="melodia-editorial.js"></script>
 <script>MelodiaEditorial.init({ page: 'recruiter-one-sheet', intake: true });</script>

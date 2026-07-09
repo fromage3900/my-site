@@ -1,23 +1,57 @@
 :root {
-  --void: #080b13;
-  --astral: #12182d;
-  --plum: #2d203c;
-  --iris: #62539c;
-  --sakura: #d989a8;
-  --gold: #c8a45e;
-  --gold-soft: #e4c990;
-  --ivory: #f7f2ea;
-  --paper: #fffaf2;
-  --ink: #221a2a;
-  --muted: #6d6275;
-  --lavender: #e9e5f2;
-  --pearl: #fbf3ff;
-  --line: rgba(200, 164, 94, 0.34);
+  /* Premium Celestial Colors - Honkai/Genshin/LV Inspired */
+  --void: #0D1224;
+  --astral: #1A1F3A;
+  --plum: #2A3055;
+  --iris: #9B8FC4;
+  --sakura: #E8C9B8;
+  --gold: #C9A86A;
+  --gold-soft: #E8C9B8;
+  --ivory: #F5F2ED;
+  --paper: #FEFAF2;
+  --ink: #221A2A;
+  --muted: #6E6080;
+  --lavender: #E8E4F2;
+  --pearl: #F0DCF0;
+  --line: rgba(201, 168, 106, 0.34);
   --soft-line: rgba(34, 26, 42, 0.1);
   --max: 1180px;
   --scroll-shift: 0px;
   --mouse-x: 0px;
   --mouse-y: 0px;
+  
+  /* Premium Material Colors */
+  --luxury-platinum: #D4C5A9;
+  --iridescent-cyan: #7BB8B8;
+  --editorial-cream: #FEFAF2;
+  
+  /* Material Gradients */
+  --gold-iridescent: linear-gradient(135deg, #C9A86A 0%, #E8C9B8 25%, #D4C5A9 50%, #C9A86A 75%, #E8C9B8 100%);
+  --celestial-shift: linear-gradient(135deg, #0D1224 0%, #1A1F3A 50%, #2A3055 100%);
+  --luxury-shimmer: linear-gradient(45deg, #FEFAF2 0%, #F5F2ED 50%, #FEFAF2 100%);
+  
+  /* Premium Glow Colors */
+  --gold-glow: rgba(201, 168, 106, 0.8);
+  --crystal-glow: rgba(123, 184, 184, 0.8);
+  --platinum-glow: rgba(212, 197, 169, 0.6);
+  --iris-glow: rgba(155, 143, 196, 0.7);
+  --rose-glow: rgba(232, 201, 184, 0.7);
+  
+  /* Premium Border Colors */
+  --border-gold: rgba(201, 168, 106, 0.3);
+  --border-premium: rgba(201, 168, 106, 0.2);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  
+  /* Premium Shadow Colors */
+  --shadow-premium: rgba(201, 168, 106, 0.2);
+  --shadow-material: rgba(123, 184, 184, 0.15);
+  --shadow-luxury: rgba(232, 201, 184, 0.15);
+  
+  /* Premium Text Colors */
+  --text-primary: #ECEAF4;
+  --text-secondary: #A9A7C0;
+  --text-accent: #E8C9B8;
+  --text-muted: #6E6080;
 }
 
 * { box-sizing: border-box; }
@@ -36,9 +70,9 @@ img { display: block; max-width: 100%; }
   min-height: 100svh;
   overflow: hidden;
   background:
-    radial-gradient(circle at 12% 16%, rgba(217, 137, 168, 0.22), transparent 28%),
-    radial-gradient(circle at 88% 20%, rgba(98, 83, 156, 0.14), transparent 32%),
-    linear-gradient(180deg, #f7f2ea 0%, #efe8dc 48%, #f7f2ea 100%);
+    radial-gradient(circle at 12% 16%, rgba(232, 201, 184, 0.14), transparent 28%),
+    radial-gradient(circle at 88% 20%, rgba(155, 143, 196, 0.12), transparent 32%),
+    linear-gradient(180deg, var(--ivory) 0%, #ebe4d8 48%, var(--ivory) 100%);
 }
 
 .melodia-shell::before {

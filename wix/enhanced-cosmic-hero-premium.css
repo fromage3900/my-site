@@ -74,8 +74,8 @@
   background-size: 96px 96px, 158px 158px, 220px 220px;
   transform: translateZ(10px);
   z-index: 2;
-  opacity: .18;
-  animation: starfield-premium 180s linear infinite;
+  opacity: .12;
+  animation: starfield-premium 240s linear infinite;
 }
 
 @keyframes starfield-premium {
@@ -151,7 +151,7 @@
   aspect-ratio: 1;
   transform: translateZ(40px);
   z-index: 5;
-  opacity: .35;
+  opacity: .28;
   pointer-events: none;
 }
 
