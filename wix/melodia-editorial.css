@@ -78,6 +78,39 @@ body {
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 
+.skip-link {
+  position: absolute;
+  left: 18px;
+  top: -80px;
+  z-index: 200;
+  padding: 12px 14px;
+  background: var(--gold);
+  color: var(--void);
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 18px;
+  outline: 2px solid var(--iri-cyan, #66d9ff);
+  outline-offset: 2px;
+}
+
+.melodia-shell .shell-nav a:focus-visible,
+.melodia-shell .button:focus-visible,
+.melodia-shell .path-row:focus-visible,
+.melodia-shell .image-card:focus-visible,
+.melodia-shell .portal-card:focus-visible,
+.melodia-shell .nav-cta:focus-visible {
+  outline: 2px solid rgba(102, 217, 255, 0.85);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 .melodia-shell {
   position: relative;
   min-height: 100svh;

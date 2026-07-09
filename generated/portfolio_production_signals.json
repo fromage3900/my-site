@@ -1,76 +1,88 @@
-{
-  "generated_at": "2026-07-09T17:15:00Z",
-  "sources": {
-    "wp_pillars": "BS_GodFile/Saved/Audit/wp_pillar_levels.json",
-    "pcg_universal": "BS_GodFile/Saved/Audit/pcg_universal_build.json",
-    "geometryscript": "BS_GodFile/Saved/Audit/geometryscript_meshes.json",
-    "nap_prep": "BS_GodFile/Saved/Audit/nap_prep.json",
-    "material_instances": "BS_GodFile/Saved/Audit/material_instance_audit.json"
-  },
-  "wp_pillars": {
-    "SakuraDream": { "level": "L_WP_SakuraDream", "total_ism": 2015, "passed": true },
-    "SpaceCathedral": { "level": "L_WP_SpaceCathedral", "total_ism": 642, "passed": true },
-    "BaroqueGrotto": { "level": "L_WP_BaroqueGrotto", "total_ism": 1085, "passed": true },
-    "CosmicOrrery": { "level": "L_WP_CosmicOrrery", "total_ism": 6171, "passed": true }
-  },
-  "pcg_total_ism": 9913,
-  "portfolio_mis": 30,
-  "missing_parent_masters": 0,
-  "geometryscript_baked": 1,
-  "geometryscript_catalog": 13,
-  "latest_signals": [
-    {
-      "title": "WP PCG verified — 9,913 ISM",
-      "label": "Production log",
-      "note": "2026-07-09 verify pass on all four L_WP pillars. SakuraDream 2,015 · SpaceCathedral 642 · BaroqueGrotto 1,085 · CosmicOrrery 6,171."
-    },
-    {
-      "title": "Nap prep instances-only sync",
-      "label": "Materials",
-      "note": "30 portfolio MIs — 0 missing parent masters. NikkiHero terrains reparented to M_Master_Toon_Universal."
-    },
-    {
-      "title": "NightShift MI captures",
-      "label": "Shaders",
-      "note": "32 PNG previews in generated/assets/nightshift/ — cosmic grid, Nikki heroes, NASA nebula sphere, four WP terrains."
-    },
-    {
-      "title": "SurrealArch GN monolith",
-      "label": "Blender GN",
-      "note": "deploy/surreal_architecture_gen.py — zen shrine axis, Escher greybox suite, 100+ runtime GeometryNodeTree builders."
-    },
-    {
-      "title": "Universal PCG graphs rebuilt",
-      "label": "UE PCG",
-      "note": "setup_pcg_universal.py — MeadowBloom, RockScatter, wall moss/lichen/ivy, Escher + Cosmic style graphs."
-    }
-  ],
-  "blender_systems": [
-    {
-      "id": "surreal-arch",
-      "title": "Surreal Architecture Generator",
-      "status": "live",
-      "path": "BS_GodFile/deploy/surreal_architecture_gen.py",
-      "proof": "Zen GB_ZEN_* shrine axis · 6 GB_ESCHER_* rooms · DistributePointsOnFaces scatter"
-    },
-    {
-      "id": "roof-generator",
-      "title": "RoofGeneratorPro",
-      "status": "partial",
-      "path": "RoofGeneratorPro/FromagesRoofGenerator",
-      "proof": "SHED + BUTTERFLY true procedural GN; other roofs pass-through wrapper (validate_gn.py)"
-    },
-    {
-      "id": "higgsas-bridge",
-      "title": "Higgsas GN bridge",
-      "status": "external",
-      "path": "BS_GodFile/deploy/surreal_arch/higgsas_bridge.py",
-      "proof": "External Higgsas Geo Node Groups v13.blend — not in repo"
-    }
-  ],
-  "planned_not_built": [
-    "GN_UniversalScatter (Blender asset folder — portfolio sheet only)",
-    "GN_RockGenerator (Blender — rock scatter is UE PCG build_universal_rock_scatter.py)",
-    "terrain_gn.py (world-loop backlog — file does not exist)"
-  ]
+﻿{
+    "generated_at":  "2026-07-09T18:03:18.9258588Z",
+    "sources":  {
+                    "wp_pillars":  "BS_GodFile/Saved/Audit/wp_pillar_levels.json",
+                    "pcg_universal":  "BS_GodFile/Saved/Audit/pcg_universal_build.json",
+                    "geometryscript":  "BS_GodFile/Saved/Audit/geometryscript_meshes.json",
+                    "material_instances":  "BS_GodFile/Saved/Audit/material_instance_audit.json",
+                    "nap_prep":  "BS_GodFile/Saved/Audit/nap_prep.json"
+                },
+    "wp_pillars":  {
+                       "SakuraDream":  {
+                                           "level":  "/Game/EnvSandbox/Environments/WP/L_WP_SakuraDream",
+                                           "total_ism":  2015,
+                                           "passed":  true
+                                       },
+                       "SpaceCathedral":  {
+                                              "level":  "/Game/EnvSandbox/Environments/WP/L_WP_SpaceCathedral",
+                                              "total_ism":  642,
+                                              "passed":  true
+                                          },
+                       "CosmicOrrery":  {
+                                            "level":  "/Game/EnvSandbox/Environments/WP/L_WP_CosmicOrrery",
+                                            "total_ism":  6171,
+                                            "passed":  true
+                                        },
+                       "BaroqueGrotto":  {
+                                             "level":  "/Game/EnvSandbox/Environments/WP/L_WP_BaroqueGrotto",
+                                             "total_ism":  1085,
+                                             "passed":  true
+                                         }
+                   },
+    "pcg_total_ism":  9913,
+    "portfolio_mis":  30,
+    "missing_parent_masters":  0,
+    "geometryscript_baked":  1,
+    "geometryscript_catalog":  1,
+    "nap_prep_exit":  0,
+    "latest_signals":  [
+                           {
+                               "title":  "WP PCG verified - 9913 ISM",
+                               "label":  "Production log",
+                               "note":  "From wp_pillar_levels.json - four L_WP pillars with ISM regen pass."
+                           },
+                           {
+                               "title":  "Portfolio MIs - zero missing parents",
+                               "label":  "Materials",
+                               "note":  "30 tracked instances after nap prep instances-only sync."
+                           },
+                           {
+                               "title":  "GeometryScript bakes - 1 / 1",
+                               "label":  "UE meshes",
+                               "note":  "From geometryscript_meshes.json audit manifest."
+                           },
+                           {
+                               "title":  "Universal PCG graphs rebuilt",
+                               "label":  "UE PCG",
+                               "note":  "setup_pcg_universal.py - 2026-07-09T17:09:29.905728+00:00"
+                           }
+                       ],
+    "blender_systems":  [
+                            {
+                                "id":  "surreal-arch",
+                                "title":  "Surreal Architecture Generator",
+                                "status":  "live",
+                                "path":  "BS_GodFile/deploy/surreal_architecture_gen.py",
+                                "proof":  "GB_ZEN_* shrine axis, GB_ESCHER_* greybox, runtime GeometryNodeTree"
+                            },
+                            {
+                                "id":  "roof-generator",
+                                "title":  "RoofGeneratorPro",
+                                "status":  "partial",
+                                "path":  "RoofGeneratorPro/FromagesRoofGenerator",
+                                "proof":  "SHED + BUTTERFLY procedural GN (validate_gn.py)"
+                            },
+                            {
+                                "id":  "ue-pcg",
+                                "title":  "WP pillar PCG",
+                                "status":  "live",
+                                "path":  "/Game/EnvSandbox/PCG/",
+                                "proof":  "Total ISM 9913 across four pillars"
+                            }
+                        ],
+    "planned_not_built":  [
+                              "GN_UniversalScatter - no Blender asset in repo (UE PCG + SurrealArch scatter instead)",
+                              "GN_RockGenerator - UE build_universal_rock_scatter.py is the live implementation",
+                              "terrain_gn.py - world-loop backlog, file does not exist"
+                          ]
 }

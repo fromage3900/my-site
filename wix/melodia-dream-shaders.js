@@ -27,6 +27,105 @@
     });
   }
 
+  function detectPillar(card) {
+    const blob = `${card.textContent || ''} ${card.querySelector('img')?.src || ''} ${card.querySelector('img')?.alt || ''}`.toLowerCase();
+    if (/sakura|sakuradream|meadowbloom/.test(blob)) return 'sakura';
+    if (/cathedral|celestial|spacecathedral|hoshi|nebula.*nasa/.test(blob)) return 'cathedral';
+    if (/grotto|baroque|biogrotto|moss|castle/.test(blob)) return 'grotto';
+    if (/orrery|cosmic|cosmicorrery|orbit/.test(blob)) return 'orrery';
+    return null;
+  }
+
+  function applyPillarTag(el, pillar) {
+    if (!pillar || el.dataset.pillar) return;
+    el.dataset.pillar = pillar;
+  }
+
+  let gachaObserver = null;
+  const gachaSeen = new WeakSet();
+
+  function ensureGachaObserver() {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reduceMotion.matches || !('IntersectionObserver' in window)) return;
+    if (gachaObserver) return;
+    gachaObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || entry.intersectionRatio < 0.35) return;
+          const card = entry.target;
+          if (gachaSeen.has(card)) return;
+          gachaSeen.add(card);
+          card.classList.add('is-gacha-in');
+          window.setTimeout(() => card.classList.remove('is-gacha-in'), 1600);
+          gachaObserver.unobserve(card);
+        });
+      },
+      { threshold: [0, 0.35, 0.6], rootMargin: '0px 0px -8% 0px' }
+    );
+  }
+
+  function initHoloPlates() {
+    const shell = document.querySelector('.melodia-shell');
+    if (!shell) return;
+
+    ensureGachaObserver();
+
+    shell.querySelectorAll('.image-card').forEach((card) => {
+      if (!card.querySelector('img') || card.classList.contains('holo-plate')) return;
+      card.classList.add('holo-plate');
+      const pillar = detectPillar(card);
+      applyPillarTag(card, pillar);
+      if (gachaObserver) gachaObserver.observe(card);
+    });
+
+    shell.querySelectorAll('.card.world-card-large').forEach((card) => {
+      const pillar = detectPillar(card);
+      applyPillarTag(card, pillar);
+    });
+  }
+
+  function initWorldCardRims() {
+    document.querySelectorAll('.melodia-shell .world-card').forEach((card) => {
+      if (card.querySelector(':scope > .holo-rim')) return;
+      const rim = document.createElement('span');
+      rim.className = 'holo-rim';
+      rim.setAttribute('aria-hidden', 'true');
+      card.insertBefore(rim, card.firstChild);
+      const pillarMap = { sakura: 'sakura', cathedral: 'cathedral', castle: 'grotto', grotto: 'orrery' };
+      Object.keys(pillarMap).forEach((cls) => {
+        if (card.classList.contains(cls)) applyPillarTag(card, pillarMap[cls]);
+      });
+      card.addEventListener(
+        'pointerenter',
+        () => {
+          const shell = card.closest('.melodia-shell');
+          if (shell && card.dataset.pillar) shell.dataset.pillar = card.dataset.pillar;
+        },
+        { passive: true }
+      );
+    });
+  }
+
+  function initScrollFresnel() {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reduceMotion.matches) return;
+    const root = document.documentElement;
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        const max = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+        const p = (window.scrollY || 0) / max;
+        const fresnel = 0.22 + p * 0.28 + Math.abs(0.5 - (parseFloat(root.style.getPropertyValue('--dream-mouse-x')) || 0.5)) * 0.12;
+        root.style.setProperty('--dream-fresnel', fresnel.toFixed(3));
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
   function initDreamShaders() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     mountDreamLayers();
@@ -79,11 +178,107 @@
       }));
     }
 
+    function devinIridescence(fres) {
+      const f2 = fres * fres;
+      const mix = (a, b, t) => [
+        a[0] + (b[0] - a[0]) * t,
+        a[1] + (b[1] - a[1]) * t,
+        a[2] + (b[2] - a[2]) * t,
+      ];
+      const c1 = [0, 0.8, 1];
+      const c2 = [1, 0.9, 0.3];
+      const c3 = [0.8, 0.4, 1];
+      return mix(mix(c1, c2, fres), c3, f2);
+    }
+
+    function wavelengthToRgb(lambda) {
+      let r = 0;
+      let g = 0;
+      let b = 0;
+      if (lambda >= 380 && lambda < 440) {
+        r = -(lambda - 440) / (440 - 380);
+        b = 1;
+      } else if (lambda < 490) {
+        g = (lambda - 440) / (490 - 440);
+        b = 1;
+      } else if (lambda < 510) {
+        g = 1;
+        b = -(lambda - 510) / (510 - 490);
+      } else if (lambda < 580) {
+        r = (lambda - 510) / (580 - 510);
+        g = 1;
+      } else if (lambda < 645) {
+        r = 1;
+        g = -(lambda - 645) / (645 - 580);
+      } else if (lambda <= 780) {
+        r = -(lambda - 780) / (780 - 645);
+      }
+      const fade = lambda < 420 ? 0.35 + 0.65 * (lambda - 380) / 40 : lambda > 700 ? 0.35 + 0.65 * (780 - lambda) / 80 : 1;
+      return [r * fade, g * fade, b * fade];
+    }
+
+    function thinFilmSample(thicknessNm, cosTheta) {
+      const nFilm = 1.33;
+      let r = 0;
+      let g = 0;
+      let b = 0;
+      const steps = 14;
+      for (let i = 0; i < steps; i++) {
+        const lambda = 390 + (i / (steps - 1)) * 370;
+        const phase = (4 * Math.PI * nFilm * thicknessNm * cosTheta) / lambda;
+        const intensity = 0.5 + 0.5 * Math.cos(phase);
+        const [lr, lg, lb] = wavelengthToRgb(lambda);
+        r += lr * intensity;
+        g += lg * intensity;
+        b += lb * intensity;
+      }
+      const inv = 1 / steps;
+      const fres = Math.max(0, Math.min(1, 0.28 + cosTheta * 0.55));
+      const [dr, dg, db] = devinIridescence(fres);
+      const bias = 0.42;
+      return [
+        (r * inv) * (1 - bias) + dr * bias,
+        (g * inv) * (1 - bias) + dg * bias,
+        (b * inv) * (1 - bias) + db * bias,
+      ];
+    }
+
+    function drawThinFilmBands(t) {
+      if (!ctx || !canvas) return;
+      const time = t * 0.001;
+      const cosTheta = 0.58 + mouseNY * 0.28 + Math.abs(mouseNX - 0.5) * 0.08;
+      const bandCount = reduceMotion.matches ? 2 : 4;
+      const intensityCap = 0.5;
+
+      ctx.save();
+      ctx.globalCompositeOperation = 'screen';
+      for (let band = 0; band < bandCount; band++) {
+        const thickness = 380 + band * 95 + Math.sin(time * 0.35 + band * 1.4) * 45;
+        const [tr, tg, tb] = thinFilmSample(thickness, cosTheta);
+        const alpha = (0.045 + band * 0.012) * intensityCap;
+        const yCenter =
+          h * (0.12 + band * 0.2) +
+          Math.sin(time * 0.22 + band * 2.1) * (reduceMotion.matches ? 8 : 28) +
+          (mouseNY - 0.5) * 40;
+        const grad = ctx.createLinearGradient(0, yCenter - 120, w, yCenter + 120);
+        grad.addColorStop(0, `rgba(${Math.round(tr * 255)},${Math.round(tg * 255)},${Math.round(tb * 255)},0)`);
+        grad.addColorStop(0.42, `rgba(${Math.round(tr * 255)},${Math.round(tg * 255)},${Math.round(tb * 255)},${alpha})`);
+        grad.addColorStop(0.58, `rgba(${Math.round(tr * 255)},${Math.round(tg * 255)},${Math.round(tb * 255)},${alpha * 1.1})`);
+        grad.addColorStop(1, `rgba(${Math.round(tr * 255)},${Math.round(tg * 255)},${Math.round(tb * 255)},0)`);
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, yCenter - 140, w, 280);
+      }
+      ctx.restore();
+    }
+
     function drawStarfield(t) {
       if (!ctx || !canvas) return;
 
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, w, h);
+
+      drawThinFilmBands(t);
+
       ctx.globalCompositeOperation = 'screen';
 
       const mx = mouseNX - 0.5;
@@ -169,6 +364,15 @@
 
     setVars(0.42, 0.38);
     window.addEventListener('pointermove', onMove, { passive: true });
+
+    const shellEl = document.querySelector('.melodia-shell');
+    if (shellEl) {
+      shellEl.dataset.dreamIntensity = reduceMotion.matches ? 'low' : 'standard';
+      if (reduceMotion.matches) {
+        shellEl.classList.add('dream-reduced');
+      }
+    }
+
     startStarfield();
 
     if (!reduceMotion.matches) {
@@ -180,9 +384,46 @@
       };
       window.requestAnimationFrame(driftHue);
     }
+
+    initHoloPlates();
+    initWorldCardRims();
+    initScrollFresnel();
+
+    const shell = document.querySelector('.melodia-shell');
+    if (shell && !shell.dataset.holoBound) {
+      shell.dataset.holoBound = '1';
+      shell.addEventListener(
+        'pointermove',
+        (event) => {
+          const card = event.target.closest('.image-card.holo-plate, .world-card');
+          if (!card) return;
+          const rect = card.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / Math.max(rect.width, 1);
+          const y = (event.clientY - rect.top) / Math.max(rect.height, 1);
+          card.style.setProperty('--holo-x', x.toFixed(4));
+          card.style.setProperty('--holo-y', y.toFixed(4));
+        },
+        { passive: true }
+      );
+    }
+
+    if (typeof MutationObserver !== 'undefined' && shell) {
+      let holoTimer = null;
+      const mo = new MutationObserver(() => {
+        window.clearTimeout(holoTimer);
+        holoTimer = window.setTimeout(() => initHoloPlates(), 150);
+      });
+      mo.observe(shell, { childList: true, subtree: true });
+    }
   }
 
-  global.MelodiaDreamShaders = { init: initDreamShaders, mountDreamLayers };
+  global.MelodiaDreamShaders = {
+    init: initDreamShaders,
+    mountDreamLayers,
+    initHoloPlates,
+    initWorldCardRims,
+    detectPillar,
+  };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initDreamShaders);

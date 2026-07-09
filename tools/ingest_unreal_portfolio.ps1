@@ -229,6 +229,42 @@ if (Test-Path -LiteralPath $nightshiftDir) {
 
 # render-constellation.html is a Melodia shell hydrated by melodia-editorial.js — do not overwrite here.
 
+$syncScript = Join-Path $PSScriptRoot 'sync_portfolio_audit.ps1'
+if (Test-Path -LiteralPath $syncScript) {
+  & $syncScript -Root $Root | Out-Host
+}
+
+$scanScript = Join-Path $PSScriptRoot 'scan_portfolio_renders.ps1'
+if (Test-Path -LiteralPath $scanScript) {
+  & $scanScript -Root $Root | Out-Host
+  $catalogPath = Join-Path $Root 'generated\portfolio_render_catalog.json'
+  if (Test-Path -LiteralPath $catalogPath) {
+    $catalog = Get-Content -LiteralPath $catalogPath -Raw | ConvertFrom-Json
+    foreach ($item in @($catalog.items | Where-Object { $_.status -eq 'web_ready' -and $_.web_path -and $_.filename -match '\.(png|jpe?g)$' })) {
+      $exists = @($renderCards | Where-Object { $_.id -eq $item.id }).Count -gt 0
+      if (-not $exists) {
+        $renderCards.Add([ordered]@{
+          id = $item.id
+          group = $item.group
+          filename = $item.filename
+          source_path = $item.source_path
+          source_exists = $true
+          copied = [bool]$item.copied
+          web_path = $item.web_path
+          local_relative_path = ($item.web_path -replace '^\.\./', '')
+          priority = [int]$item.priority
+          status = 'web_ready'
+          caption = $item.caption
+        }) | Out-Null
+      }
+    }
+    $intake.render_cards = @($renderCards | Sort-Object priority -Descending)
+    $intake.counts.renders_total = @($intake.render_cards).Count
+    $intake.counts.renders_web_ready = @($intake.render_cards | Where-Object { $_.status -eq 'web_ready' }).Count
+    $intake | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath $intakePath -Encoding UTF8
+  }
+}
+
 try {
   $embedScript = Join-Path $PSScriptRoot 'build_melodia_embed_urls.ps1'
   if (Test-Path -LiteralPath $embedScript) {

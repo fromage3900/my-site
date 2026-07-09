@@ -1,0 +1,179 @@
+{
+  "generated_at": "2026-07-09T18:00:00Z",
+  "review_window_hours": 24,
+  "portfolio_state": {
+    "readiness_score": 88,
+    "readiness_label": "portfolio_ready",
+    "renders_web_ready": 70,
+    "renders_total": 70,
+    "drive_catalog_total": 63,
+    "portfolio_scan_copies": 17,
+    "nightshift_plates": 32,
+    "shader_proof_plates": 12,
+    "sakura_mood_plates": 4,
+    "breakdown_plates": 1,
+    "pcg_total_ism": 9913,
+    "portfolio_mis": 30,
+    "geometryscript_baked": "1/1",
+    "uncommitted_integration_pass": true
+  },
+  "completed_last_24h": [
+    {
+      "area": "Night theme + Melodia shell",
+      "items": [
+        "Dark night cascade across all Wix pages",
+        "Magical girl UI layer (soul gems, wish mode, grief shards)",
+        "3D armillary orrery + planetarium navigator",
+        "Dream shader stack (iridescent parallax canvas)"
+      ]
+    },
+    {
+      "area": "Intake + hydration",
+      "items": [
+        "render-constellation.html migrated to Melodia shell (ingest no longer overwrites HTML)",
+        "portfolio_production_signals.json from UE audit logs",
+        "NightShift plates merged into intake cards",
+        "MI SDF material gallery (24 spheres)"
+      ]
+    },
+    {
+      "area": "Pipeline truth",
+      "items": [
+        "geometry_nodes_pipelines.json rewritten for real systems",
+        "SurrealArch GN live, RoofGeneratorPro partial, UE PCG 9913 ISM verified",
+        "GN_UniversalScatter / GN_RockGenerator labeled as planned-not-built"
+      ]
+    },
+    {
+      "area": "Recruiter polish",
+      "items": [
+        "6-step reviewer path (hub + one-sheet)",
+        "resume.html and production-roadmap.html in Melodia shell",
+        "capture-brief aligned to four L_WP pillars and 9913 ISM"
+      ]
+    },
+    {
+      "area": "Drive scan (this session)",
+      "items": [
+        "scan_portfolio_renders.ps1 - recursive Saved/Portfolio/Renders scan",
+        "sync_portfolio_audit.ps1 - live audit JSON sync",
+        "Hero Renders shader proof + Sakura mood grids",
+        "17 priority plates in portfolio-scan/",
+        "July 8 hero + breakdown captures ingested from package"
+      ]
+    }
+  ],
+  "new_on_drive_not_yet_priority": [
+    {
+      "filename": "hero_level_Cam_Hero_Establishing_20260708_191145_1920x1080.png",
+      "status": "web_ready via ingest",
+      "note": "Now preferred hero lead on hero-renders (establishing camera)"
+    },
+    {
+      "filename": "breakdown_level_Cam_Breakdown_Shader_20260708_190112_1920x1080.png",
+      "status": "web_ready via ingest",
+      "note": "Surfaced on shader-breakdowns latest breakdown plate"
+    }
+  ],
+  "gaps": [
+    {
+      "id": "wp-hero-captures",
+      "severity": "high",
+      "title": "Four L_WP pillar establishing heroes missing",
+      "detail": "NightShift terrain previews exist; package still lacks hero_l_wp_* and pcg_l_wp_* slots per capture brief."
+    },
+    {
+      "id": "meshblend-breakdown",
+      "severity": "high",
+      "title": "MeshBlend master graph plate not captured",
+      "detail": "breakdown_shader_meshblend_master_1920x1080.png still a capture target."
+    },
+    {
+      "id": "niagara-sakura",
+      "severity": "medium",
+      "title": "Sakura Niagara ambience breakdown missing",
+      "detail": "No petal drift / VFX proof plate in intake yet."
+    },
+    {
+      "id": "package-scene-stale",
+      "severity": "medium",
+      "title": "portfolio_package.json still references ZenForestTest",
+      "detail": "Intake scene metadata is legacy; WP pillar story is stronger on audit signals than package scene block."
+    },
+    {
+      "id": "uncommitted-push",
+      "severity": "medium",
+      "title": "Scan/sync integration not committed",
+      "detail": "tools/scan_portfolio_renders.ps1, sync_portfolio_audit.ps1, portfolio-scan assets, recruiter_review_path.json are local only."
+    },
+    {
+      "id": "geometry-expansion",
+      "severity": "low",
+      "title": "GeometryScript catalog at 1/1",
+      "detail": "Möbius bake exists; expand math structures for geometry-nodes proof band."
+    }
+  ],
+  "expansion_sprints": [
+    {
+      "lane": "Tonight",
+      "outcome": "Publish integration pass and keep scan loop green",
+      "tasks": [
+        "Commit + push scan/sync/ingest wiring and portfolio-scan assets",
+        "Run scan -> sync -> ingest after any new UE capture session",
+        "Validate render-constellation.html still Melodia shell post-ingest"
+      ]
+    },
+    {
+      "lane": "Next UE render night",
+      "outcome": "Fill highest-value proof gaps",
+      "tasks": [
+        "Capture L_WP_SakuraDream Cam_Hero_Establishing beauty plate",
+        "Capture MeshBlend annotated graph or beauty+graph pair",
+        "Capture MI_Show_CelestialNebula breakdown with NASA starmap visible",
+        "Add files to portfolio_package.json and rerun ingest"
+      ]
+    },
+    {
+      "lane": "This week",
+      "outcome": "Per-pillar recruiter story complete",
+      "tasks": [
+        "One hero + one PCG proof per L_WP pillar on site",
+        "Sakura case study updated with Scene_SakuraDream_v2 mood plate",
+        "Shader breakdowns: MeshBlend + celestial + Nikki surface trilogy",
+        "Production roadmap JSON refresh with expansion_plan cross-link"
+      ]
+    },
+    {
+      "lane": "Pre-Infold send",
+      "outcome": "4-6 minute reviewer path with zero dead ends",
+      "tasks": [
+        "Hub -> Resume -> Hero Renders -> Shaders -> Geometry -> Intake smoke test",
+        "Recruiter one-sheet PDF or static export optional",
+        "Wix iframe still on application-hub.html",
+        "Readiness score target: 92+ after WP hero drop"
+      ]
+    },
+    {
+      "lane": "Magical girl + systems (parallel)",
+      "outcome": "Charm without sacrificing pipeline honesty",
+      "tasks": [
+        "Pillar-specific wish palettes on world cards",
+        "SurrealArch capture band on geometry-nodes page",
+        "CI guard: ingest must not regenerate render-constellation.html"
+      ]
+    }
+  ],
+  "pipeline_commands": [
+    ".\\tools\\scan_portfolio_renders.ps1",
+    ".\\tools\\sync_portfolio_audit.ps1",
+    ".\\tools\\ingest_unreal_portfolio.ps1"
+  ],
+  "reviewer_path": [
+    "resume.html",
+    "world-bible.html",
+    "hero-renders.html",
+    "shader-breakdowns.html",
+    "geometry-nodes.html",
+    "render-constellation.html"
+  ]
+}

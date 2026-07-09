@@ -8,6 +8,8 @@
   const NIGHTSHIFT_ASSET_BASE = '../generated/assets/nightshift/';
   const GEOMETRY_PIPELINES_URL = '../generated/geometry_nodes_pipelines.json';
   const PRODUCTION_SIGNALS_URL = '../generated/portfolio_production_signals.json';
+  const RENDER_CATALOG_URL = '../generated/portfolio_render_catalog.json';
+  const REVIEW_PATH_URL = '../generated/recruiter_review_path.json';
 
   async function fetchJson(url) {
     const res = await fetch(url, { cache: 'no-store' });
@@ -188,18 +190,100 @@
     const img = document.getElementById('heroLeadImage');
     if (!img) return;
     try {
-      const res = await fetch(INTAKE_URL, { cache: 'no-store' });
-      const intake = await res.json();
+      const intake = await fetchJson(INTAKE_URL);
       const cards = Array.isArray(intake.render_cards) ? intake.render_cards : [];
       const heroes = cards.filter((c) => c.group === 'hero' && c.web_path);
-      heroes.sort((a, b) => (b.priority || 0) - (a.priority || 0));
-      const lead = heroes[0];
+      const establishing = heroes.find((c) => /cam_hero_establishing/i.test(c.filename || ''));
+      const packageHeroes = heroes.filter((c) => !(c.web_path || '').includes('/nightshift/'));
+      packageHeroes.sort((a, b) => {
+        const dateA = (a.filename || '').match(/(\d{8})/);
+        const dateB = (b.filename || '').match(/(\d{8})/);
+        if (dateA && dateB && dateA[1] !== dateB[1]) return dateB[1].localeCompare(dateA[1]);
+        return (b.priority || 0) - (a.priority || 0);
+      });
+      const lead = establishing || packageHeroes[0] || heroes.sort((a, b) => (b.priority || 0) - (a.priority || 0))[0];
       if (lead) {
         img.src = lead.web_path;
-        img.alt = lead.filename || 'Sakura hero render';
+        img.alt = lead.filename || 'Hero render';
       }
     } catch (_err) {
       /* keep static fallback src */
+    }
+  }
+
+  async function hydrateCaptureBriefStats() {
+    const mount = document.getElementById('captureBriefStats');
+    if (!mount) return;
+    try {
+      const [intake, production] = await Promise.all([
+        fetchJson(INTAKE_URL),
+        fetchJson(PRODUCTION_SIGNALS_URL).catch(() => null),
+      ]);
+      const counts = intake.counts || {};
+      const readiness = intake.readiness || {};
+      const breakdowns = (intake.render_cards || []).filter((c) => c.group === 'breakdown' && c.web_path).length;
+      const pcgIsm = production?.pcg_total_ism;
+      const mis = production?.portfolio_mis || counts.material_instances || 0;
+      const wpCount = production?.wp_pillars ? Object.keys(production.wp_pillars).length : 4;
+      const stats = [
+        ['Readiness', `${readiness.score || 0}/100`],
+        ['WP Levels', `${wpCount}/4`],
+        ['Portfolio MIs', String(mis)],
+        ['PCG ISM', pcgIsm != null ? pcgIsm.toLocaleString() : '—'],
+        ['Breakdowns', String(breakdowns)],
+        ['Web plates', `${counts.renders_web_ready || 0}/${counts.renders_total || 0}`],
+      ];
+      mount.innerHTML = stats
+        .map(
+          (pair) =>
+            `<div class="info-cell"><span>${esc(pair[0])}</span><strong>${esc(pair[1])}</strong></div>`
+        )
+        .join('');
+    } catch (_err) {
+      /* static fallback remains */
+    }
+  }
+
+  async function hydrateLatestBreakdownPlate() {
+    const mount = document.getElementById('latestBreakdownPlate');
+    if (!mount) return;
+    try {
+      const intake = await fetchJson(INTAKE_URL);
+      const cards = (intake.render_cards || [])
+        .filter((c) => c.group === 'breakdown' && c.web_path)
+        .sort((a, b) => (b.priority || 0) - (a.priority || 0));
+      const lead = cards[0];
+      if (!lead) {
+        mount.innerHTML =
+          '<p class="body-copy">No breakdown plates in intake yet. Capture from Cam_Breakdown_Shader on the next UE pass.</p>';
+        return;
+      }
+      const href = esc(lead.web_path);
+      const title = esc(lead.filename || 'Breakdown plate');
+      mount.innerHTML = `<a class="image-card fashion-frame premium-card holo-plate" href="${href}"><img src="${href}" alt="${title}" loading="lazy" /><div><h3>${title}</h3><p>${esc(lead.caption || 'Latest shader breakdown from Unreal intake.')}</p></div></a>`;
+    } catch (_err) {
+      mount.innerHTML = '<p class="body-copy">Breakdown plate unavailable.</p>';
+    }
+  }
+
+  async function hydrateNewRenderBanner() {
+    const mount = document.getElementById('newRenderBanner');
+    if (!mount) return;
+    try {
+      const catalog = await fetchJson(RENDER_CATALOG_URL);
+      const fresh = Array.isArray(catalog.new_in_last_24h) ? catalog.new_in_last_24h : [];
+      if (!fresh.length) {
+        mount.hidden = true;
+        return;
+      }
+      mount.hidden = false;
+      const names = fresh
+        .slice(0, 4)
+        .map((item) => esc(item.filename))
+        .join(', ');
+      mount.innerHTML = `<p class="body-copy"><strong>${fresh.length} new render${fresh.length === 1 ? '' : 's'} on drive (24h):</strong> ${names}${fresh.length > 4 ? '…' : ''} — surfaced via scan + ingest.</p>`;
+    } catch (_err) {
+      mount.hidden = true;
     }
   }
 
@@ -238,7 +322,7 @@
           const title = esc(card.filename || 'Hero plate');
           const frame = fashion ? ' fashion-frame' : '';
           const caption = fashion && card.caption ? `<p>${esc(card.caption)}</p>` : '';
-          return `<a class="image-card${frame}" href="${href}"><img src="${href}" alt="${title}" loading="lazy" /><div><h3>${title}</h3>${caption}</div></a>`;
+          return `<a class="image-card${frame} holo-plate" href="${href}"><img src="${href}" alt="${title}" loading="lazy" /><div><h3>${title}</h3>${caption}</div></a>`;
         })
         .join('');
     } catch (_err) {
@@ -310,6 +394,53 @@
         .join('');
     } catch (_err) {
       mount.innerHTML = '<p class="body-copy">Intake JSON unavailable offline.</p>';
+    }
+  }
+
+  async function hydrateRenderCatalogSection(mountId, groupFilter, maxCount) {
+    const mount = document.getElementById(mountId);
+    if (!mount) return;
+    try {
+      const catalog = await fetchJson(RENDER_CATALOG_URL);
+      let items = Array.isArray(catalog.items) ? catalog.items : [];
+      items = items.filter((item) => item.web_path && item.status === 'web_ready');
+      if (groupFilter) {
+        const groups = Array.isArray(groupFilter) ? groupFilter : [groupFilter];
+        items = items.filter((item) => groups.includes(item.group));
+      }
+      items.sort((a, b) => (b.priority || 0) - (a.priority || 0));
+      if (maxCount) items = items.slice(0, maxCount);
+      if (!items.length) {
+        mount.innerHTML = '<p class="body-copy">No scanned plates in this category yet. Run tools/scan_portfolio_renders.ps1.</p>';
+        return;
+      }
+      mount.innerHTML = items
+        .map((item) => {
+          const href = esc(item.web_path);
+          const title = esc(item.filename);
+          const caption = esc(item.caption || '');
+          return `<a class="image-card fashion-frame premium-card holo-plate" href="${href}"><img src="${href}" alt="${title}" loading="lazy" /><div><h3>${title}</h3><p>${caption}</p></div></a>`;
+        })
+        .join('');
+    } catch (_err) {
+      mount.innerHTML = '<p class="body-copy">Render catalog unavailable.</p>';
+    }
+  }
+
+  async function hydrateReviewerPath() {
+    const mount = document.getElementById('recruiterReviewPath');
+    if (!mount) return;
+    try {
+      const data = await fetchJson(REVIEW_PATH_URL);
+      const steps = Array.isArray(data.steps) ? data.steps : [];
+      mount.innerHTML = steps
+        .map(
+          (step) =>
+            `<a class="path-row premium-card" href="${esc(step.href)}"><span>${esc(step.step)} / ${esc(step.title)}</span><div><h3>${esc(step.title)}</h3><p>${esc(step.body)}</p></div><b>Open</b></a>`
+        )
+        .join('');
+    } catch (_err) {
+      /* static HTML fallback remains */
     }
   }
 
@@ -587,8 +718,23 @@
     });
   }
 
+  function ensureA11yLandmarks() {
+    const shell = document.querySelector('.melodia-shell');
+    if (!shell) return;
+    const main = shell.querySelector('main');
+    if (main && !main.id) main.id = 'main';
+    if (!shell.querySelector(':scope > .skip-link')) {
+      const skip = document.createElement('a');
+      skip.className = 'skip-link';
+      skip.href = '#main';
+      skip.textContent = 'Skip to main content';
+      shell.insertBefore(skip, shell.firstChild);
+    }
+  }
+
   async function init(options) {
     const pageKey = (options && options.page) || document.documentElement.getAttribute('data-page') || '';
+    ensureA11yLandmarks();
     initParallax();
     initMobileNav();
 
@@ -631,6 +777,28 @@
     if (options && options.geometryPipelines) {
       await hydrateGeometryPipelines();
     }
+    if (options && options.reviewerPath) {
+      await hydrateReviewerPath();
+    }
+    if (options && options.shaderProofGrid) {
+      await hydrateRenderCatalogSection('shaderProofGrid', 'shader_proof', options.shaderProofGrid);
+    }
+    if (options && options.sakuraMoodGrid) {
+      await hydrateRenderCatalogSection('sakuraMoodGrid', 'sakura_mood', options.sakuraMoodGrid);
+    }
+    if (options && options.captureBriefStats) {
+      await hydrateCaptureBriefStats();
+    }
+    if (options && options.latestBreakdownPlate) {
+      await hydrateLatestBreakdownPlate();
+    }
+    if (options && options.newRenderBanner) {
+      await hydrateNewRenderBanner();
+    }
+
+    if (global.MelodiaDreamShaders && global.MelodiaDreamShaders.initHoloPlates) {
+      global.MelodiaDreamShaders.initHoloPlates();
+    }
 
     if (global.MelodiaOrrery) {
       global.MelodiaOrrery.upgradeHeroOrreries();
@@ -663,5 +831,10 @@
     hydrateRenderConstellation,
     hydrateMaterialGallery,
     hydrateGeometryPipelines,
+    hydrateReviewerPath,
+    hydrateRenderCatalogSection,
+    hydrateCaptureBriefStats,
+    hydrateLatestBreakdownPlate,
+    hydrateNewRenderBanner,
   };
 })(window);

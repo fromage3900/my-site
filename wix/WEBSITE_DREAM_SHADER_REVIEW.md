@@ -9,6 +9,9 @@
 | Layer | File | Effect |
 |-------|------|--------|
 | **Dream aurora** | `melodia-dream-shaders.css` | Full-page soft-light wash; cyan → gold → purple; mouse-parallax |
+| **Thin-film bands** | `melodia-dream-shaders.js` | Canvas interference stripes (2nd cos theta) biased to Devin cyan-gold-purple ramp |
+| **Holo plates** | `melodia-dream-shaders.css` | Trading-card sweep on render cards; gacha scroll reveal |
+| **Pillar OKLCH** | same | Per-world iridescence ramps on tagged cards and shell |
 | **Sparkle field** | same | Voronoi-like twinkle dots (CSS radial gradients) |
 | **Hero fresnel** | same + JS | Rim glow follows cursor via `--dream-mouse-x/y`, `--dream-fresnel` |
 | **Dream bloom type** | same | `h1` em/strong = animated iridescent gradient text |
@@ -62,7 +65,8 @@ All pages using `melodia-editorial.css` or `portfolio-luxury-bridge.css` (import
 |--------|-------------------|
 | Fresnel iridescence ramp | `--dream-iri-ramp`, hero `::before`, card hover border |
 | Sparkle Voronoi | `.dream-sparkle-layer` twinkle |
-| MagicalIntensity ≤ 0.5 | Opacity caps 0.14–0.42 on overlays |
+| MagicalIntensity ≤ 0.5 | Opacity caps 0.14–0.42 on overlays; thin-film band alpha × 0.5 |
+| Thin-film interference | Canvas `drawThinFilmBands` — spectral sample + Devin ramp bias |
 | Dream Bloom | `h1` text-shadow + gradient `em` |
 | MF_SpaceParallax | Parallax layers on index + aurora mouse drift |
 | ML_Jewel refraction | Glass nav + button inset highlight |

@@ -33,6 +33,7 @@
     <h1 id="page-title" data-copy="pages.hero-renders.hero.headline">Beauty shots I'm using right now.</h1>
     <p class="lede" data-copy="pages.hero-renders.hero.lede">These pull from my latest Unreal exports. When I capture new angles, ingest refreshes this grid.</p>
     <div class="hero-actions"><a class="button primary" href="render-constellation.html">Render intake</a><a class="button" href="sakura-case-study.html">Sakura case study</a></div>
+    <div id="newRenderBanner" class="human-lede" hidden aria-live="polite"></div>
   </div>
   </div>
 </section>
@@ -46,6 +47,20 @@
       <a class="image-card fashion-frame" href="../generated/assets/nightshift/WP_BaroqueGrotto_terrain.png"><img src="../generated/assets/nightshift/WP_BaroqueGrotto_terrain.png" alt="L_WP_BaroqueGrotto terrain preview" loading="lazy" /><div><h3>Baroque Grotto</h3><p>Bioluminescent grotto · moss and crystal cave</p></div></a>
       <a class="image-card fashion-frame" href="../generated/assets/nightshift/WP_CosmicOrrery_terrain.png"><img src="../generated/assets/nightshift/WP_CosmicOrrery_terrain.png" alt="L_WP_CosmicOrrery terrain preview" loading="lazy" /><div><h3>Cosmic Orrery</h3><p>Dreamy night orrery · orbit scatter staging</p></div></a>
     </div>
+  </div>
+</section>
+<section class="band paper fashion-band">
+  <div class="inner">
+    <div class="editorial-rule"><span class="diamond" aria-hidden="true"></span><span>Shader proof scans</span><span class="diamond" aria-hidden="true"></span></div>
+    <div class="section-head"><div><h2>Nikki surface + stylized response plates.</h2></div><p class="human-lede">Discovered on drive under Saved/Portfolio/Renders — triplanar Nikki grid, iridescence, dream rim, water layers.</p></div>
+    <div class="image-grid lookbook-grid" id="shaderProofGrid" aria-live="polite"></div>
+  </div>
+</section>
+<section class="band cloud fashion-band">
+  <div class="inner">
+    <div class="editorial-rule"><span class="diamond" aria-hidden="true"></span><span>Sakura mood</span><span class="diamond" aria-hidden="true"></span></div>
+    <div class="section-head"><div><h2>Scene compositions from the shrine pillar.</h2></div><p class="human-lede">Scene_SakuraDream plates and surface grids — mood proof before WP hero captures land in package.json.</p></div>
+    <div class="image-grid lookbook-grid" id="sakuraMoodGrid" aria-live="polite"></div>
   </div>
 </section>
 <section class="band paper fashion-band">
@@ -72,6 +87,6 @@
 <script src="melodia-magical-girl.js"></script>
 <script src="melodia-dream-shaders.js"></script>
 <script src="melodia-editorial.js"></script>
-<script>MelodiaEditorial.init({ page: 'hero-renders', intake: true, heroGrid: true });</script>
+<script>MelodiaEditorial.init({ page: 'hero-renders', intake: true, heroGrid: true, shaderProofGrid: 6, sakuraMoodGrid: 4, newRenderBanner: true });</script>
 </body>
 </html>
