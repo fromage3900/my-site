@@ -13,7 +13,7 @@
                      ],
     "weekly_pipeline":  [
                             "Ingest next Unreal capture drop",
-                            "Promote MeshBlend, CelestialNebula, Niagara, and PCG proof",
+                            "Promote Universal Master graph, CelestialNebula, Niagara, and PCG proof",
                             "Select top six images",
                             "Use resume.html as recruiter summary",
                             "Refresh recruiter one-sheet",

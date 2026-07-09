@@ -6,18 +6,18 @@ Generated from generated/unreal_portfolio_intake.json for Brennan Shepherd's Mel
 - Scene: $sceneName
 - Genome: $genomeName
 - Route axis: $axisText
-- Readiness: $(@{generated_at=2026-07-03T13:05:14.4997084Z; source_package=G:\EnvironmentPortfolio\BS_GodFile\Saved\Portfolio\portfolio_package.json; scene=; stats=; counts=; readiness=; genome=; pcg_heatmap=; latest_unreal_signals=System.Object[]; render_cards=System.Object[]; shader_families=System.Object[]; web_outputs=}.readiness.label) / $(@{generated_at=2026-07-03T13:05:14.4997084Z; source_package=G:\EnvironmentPortfolio\BS_GodFile\Saved\Portfolio\portfolio_package.json; scene=; stats=; counts=; readiness=; genome=; pcg_heatmap=; latest_unreal_signals=System.Object[]; render_cards=System.Object[]; shader_families=System.Object[]; web_outputs=}.readiness.score)
-- Current web-ready plates: $(@{generated_at=2026-07-03T13:05:14.4997084Z; source_package=G:\EnvironmentPortfolio\BS_GodFile\Saved\Portfolio\portfolio_package.json; scene=; stats=; counts=; readiness=; genome=; pcg_heatmap=; latest_unreal_signals=System.Object[]; render_cards=System.Object[]; shader_families=System.Object[]; web_outputs=}.counts.renders_web_ready) of $(@{generated_at=2026-07-03T13:05:14.4997084Z; source_package=G:\EnvironmentPortfolio\BS_GodFile\Saved\Portfolio\portfolio_package.json; scene=; stats=; counts=; readiness=; genome=; pcg_heatmap=; latest_unreal_signals=System.Object[]; render_cards=System.Object[]; shader_families=System.Object[]; web_outputs=}.counts.renders_total)
-- Material instances: $(@{generated_at=2026-07-03T13:05:14.4997084Z; source_package=G:\EnvironmentPortfolio\BS_GodFile\Saved\Portfolio\portfolio_package.json; scene=; stats=; counts=; readiness=; genome=; pcg_heatmap=; latest_unreal_signals=System.Object[]; render_cards=System.Object[]; shader_families=System.Object[]; web_outputs=}.counts.material_instances)
+- Readiness: $(@{generated_at=2026-07-09T18:56:51.8971904Z; source_package=G:\EnvironmentPortfolio\BS_GodFile\Saved\Portfolio\portfolio_package.json; scene=; stats=; counts=; readiness=; genome=; pcg_heatmap=; latest_unreal_signals=System.Object[]; render_cards=System.Object[]; shader_families=System.Object[]; web_outputs=}.readiness.label) / $(@{generated_at=2026-07-09T18:56:51.8971904Z; source_package=G:\EnvironmentPortfolio\BS_GodFile\Saved\Portfolio\portfolio_package.json; scene=; stats=; counts=; readiness=; genome=; pcg_heatmap=; latest_unreal_signals=System.Object[]; render_cards=System.Object[]; shader_families=System.Object[]; web_outputs=}.readiness.score)
+- Current web-ready plates: $(@{generated_at=2026-07-09T18:56:51.8971904Z; source_package=G:\EnvironmentPortfolio\BS_GodFile\Saved\Portfolio\portfolio_package.json; scene=; stats=; counts=; readiness=; genome=; pcg_heatmap=; latest_unreal_signals=System.Object[]; render_cards=System.Object[]; shader_families=System.Object[]; web_outputs=}.counts.renders_web_ready) of $(@{generated_at=2026-07-09T18:56:51.8971904Z; source_package=G:\EnvironmentPortfolio\BS_GodFile\Saved\Portfolio\portfolio_package.json; scene=; stats=; counts=; readiness=; genome=; pcg_heatmap=; latest_unreal_signals=System.Object[]; render_cards=System.Object[]; shader_families=System.Object[]; web_outputs=}.counts.renders_total)
+- Material instances: $(@{generated_at=2026-07-09T18:56:51.8971904Z; source_package=G:\EnvironmentPortfolio\BS_GodFile\Saved\Portfolio\portfolio_package.json; scene=; stats=; counts=; readiness=; genome=; pcg_heatmap=; latest_unreal_signals=System.Object[]; render_cards=System.Object[]; shader_families=System.Object[]; web_outputs=}.counts.material_instances)
 
 ## Capture Slots
-## 1. Universal Master MeshBlend graph plate
+## 1. Universal Master Substrate graph plate
 - Slot ID: $(System.Collections.Specialized.OrderedDictionary.id)
 - Destination: $(System.Collections.Specialized.OrderedDictionary.destination_group)
 - Target page: $(System.Collections.Specialized.OrderedDictionary.target_page)
 - Preferred filename: $(System.Collections.Specialized.OrderedDictionary.preferred_filename)
-- Capture: Annotated Material Editor screenshot or beauty-plus-graph pair for M_Master_Toon_Universal with MeshBlend controls visible.
-- Proves: Layered stylized environment materials can be explained as a production system, not just a beauty render.
+- Capture: Annotated Material Editor screenshot for M_Master_Toon_Universal â€” layer stack, Nikki modulators, and Substrate toon BSDF tail visible.
+- Proves: Stylized environment materials are one production system with readable instance scope, not ad-hoc one-offs.
 ## 2. Space Cathedral celestial shader plate
 - Slot ID: $(System.Collections.Specialized.OrderedDictionary.id)
 - Destination: $(System.Collections.Specialized.OrderedDictionary.destination_group)

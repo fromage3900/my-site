@@ -41,7 +41,8 @@
 
 .hero[data-planetarium-hero] .parallax-layer-5 .orrery-system,
 .hero[data-planetarium-hero] .melodia-orrery {
-  opacity: 0.16;
+  opacity: 0.38;
+  mix-blend-mode: screen;
 }
 
 .hero[data-planetarium-hero] .planetarium-hero-slot {

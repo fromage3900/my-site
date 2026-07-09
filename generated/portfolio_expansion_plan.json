@@ -83,10 +83,10 @@
       "detail": "NightShift terrain previews exist; package still lacks hero_l_wp_* and pcg_l_wp_* slots per capture brief."
     },
     {
-      "id": "meshblend-breakdown",
+      "id": "universal-master-breakdown",
       "severity": "high",
-      "title": "MeshBlend master graph plate not captured",
-      "detail": "breakdown_shader_meshblend_master_1920x1080.png still a capture target."
+      "title": "Universal Master Substrate graph plate not captured",
+      "detail": "breakdown_shader_universal_master_substrate_1920x1080.png still a capture target."
     },
     {
       "id": "niagara-sakura",
@@ -128,7 +128,7 @@
       "outcome": "Fill highest-value proof gaps",
       "tasks": [
         "Capture L_WP_SakuraDream Cam_Hero_Establishing beauty plate",
-        "Capture MeshBlend annotated graph or beauty+graph pair",
+        "Capture Universal Master annotated graph (Substrate + layer stack)",
         "Capture MI_Show_CelestialNebula breakdown with NASA starmap visible",
         "Add files to portfolio_package.json and rerun ingest"
       ]
@@ -139,7 +139,7 @@
       "tasks": [
         "One hero + one PCG proof per L_WP pillar on site",
         "Sakura case study updated with Scene_SakuraDream_v2 mood plate",
-        "Shader breakdowns: MeshBlend + celestial + Nikki surface trilogy",
+        "Shader breakdowns: Universal master + celestial + Nikki surface trilogy",
         "Production roadmap JSON refresh with expansion_plan cross-link"
       ]
     },

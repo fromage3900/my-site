@@ -54,6 +54,11 @@
 
     shell.appendChild(layer);
 
+    if (shell.getAttribute('data-hero') === 'cosmic' || shell.classList.contains('fashion-mode')) {
+      shell.classList.add('mg-ambient');
+      layer.classList.remove('is-hidden');
+    }
+
     const toggle = document.createElement('button');
     toggle.className = 'mg-bow-toggle';
     toggle.type = 'button';
@@ -104,7 +109,7 @@
 
     apply();
 
-    document.querySelectorAll('.premium-card, .intake-card, .intake-signal, .portal-card').forEach((el) => {
+    document.querySelectorAll('.premium-card, .intake-card, .intake-signal, .portal-card, .image-card, .alignment-card, .guide-card, .path-row').forEach((el) => {
       el.classList.add('mg-ribbon-card');
     });
 

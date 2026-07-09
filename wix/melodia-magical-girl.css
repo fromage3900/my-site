@@ -51,6 +51,67 @@
   --mg-shard-opacity: 0.16;
 }
 
+/* Ambient magical-girl chrome (cosmic / fashion shells) */
+.melodia-shell.mg-ambient,
+.melodia-shell.fashion-mode {
+  --mg-stamp-opacity: 0.48;
+  --mg-contract-opacity: 0.08;
+  --dream-hue-shift: 3deg;
+}
+
+.melodia-shell.mg-ambient .mg-halftone,
+.melodia-shell.fashion-mode .mg-halftone {
+  opacity: 0.07;
+}
+
+.melodia-shell.mg-ambient .shell-nav,
+.melodia-shell.fashion-mode .shell-nav {
+  border-bottom-color: rgba(255, 110, 180, 0.14);
+}
+
+.melodia-shell.mg-ambient .band.paper,
+.melodia-shell.mg-ambient .band.cloud,
+.melodia-shell.fashion-mode .band.paper,
+.melodia-shell.fashion-mode .band.cloud {
+  box-shadow: inset 0 1px 0 rgba(255, 110, 180, 0.06);
+}
+
+.melodia-shell.mg-ambient .portal-card,
+.melodia-shell.mg-ambient .image-card,
+.melodia-shell.mg-ambient .alignment-card,
+.melodia-shell.fashion-mode .portal-card,
+.melodia-shell.fashion-mode .image-card,
+.melodia-shell.fashion-mode .alignment-card {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 110, 180, 0.06),
+    0 12px 36px rgba(7, 9, 18, 0.32);
+}
+
+.melodia-shell.mg-ambient .magazine-kicker::after,
+.melodia-shell.fashion-mode .magazine-kicker::after {
+  opacity: calc(var(--motif-glyph-opacity, 0.42) + 0.08);
+  color: var(--mg-accent-pink);
+  text-shadow: 0 0 10px rgba(255, 110, 180, 0.28);
+}
+
+.melodia-shell.mg-ambient .mg-bow-toggle,
+.melodia-shell.fashion-mode .mg-bow-toggle {
+  border-color: rgba(255, 110, 180, 0.32);
+  animation: mg-bow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes mg-bow-pulse {
+  0%, 100% { box-shadow: 0 14px 42px rgba(7, 9, 18, 0.42), 0 0 0 0 rgba(255, 110, 180, 0); }
+  50% { box-shadow: 0 14px 42px rgba(7, 9, 18, 0.42), 0 0 18px rgba(255, 110, 180, 0.22); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .melodia-shell.mg-ambient .mg-bow-toggle,
+  .melodia-shell.fashion-mode .mg-bow-toggle {
+    animation: none;
+  }
+}
+
 /* Nav / shell UI chrome (always on, lightweight) */
 .mg-ui-chrome .mg-nav-chrome {
   position: relative;

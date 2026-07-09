@@ -87,9 +87,9 @@
                     },
     "latest_unreal_signals":  [
                                   {
-                                      "title":  "MeshBlend master pass",
+                                      "title":  "Universal Substrate master",
                                       "label":  "Universal master",
-                                      "note":  "Additive MeshBlend support on M_Master_Toon_Universal gives the shader breakdown a stronger story around layered environment surfaces."
+                                      "note":  "M_Master_Toon_Universal is the one stylized surface system — layer stack, Nikki modulators, and instance scope for environment work."
                                   },
                                   {
                                       "title":  "NASA starmap shader",

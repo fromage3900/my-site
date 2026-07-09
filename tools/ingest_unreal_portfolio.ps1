@@ -142,7 +142,7 @@ $axisText = if ($axisSteps.Count -gt 0) { $axisSteps -join ' / ' } else { 'Torii
 $genomeName = if ($package.genome.genome) { $package.genome.genome } else { 'ZEN_SHRINE_AXIS' }
 $pcgHeatmapHtml = if ($pcgHeatmapWebPath) { "<div class=`"thumb heatmap-thumb`"><img src=`"$pcgHeatmapWebPath`" alt=`"PCG heatmap showing procedural exclusion zones and shrine route logic`" /></div>" } else { '<div class="thumb heatmap-thumb"><span>PCG heatmap pending</span></div>' }
 $latestSignals = @(
-  [ordered]@{ title = 'MeshBlend master pass'; label = 'Universal master'; note = 'Additive MeshBlend support on M_Master_Toon_Universal gives the shader breakdown a stronger story around layered environment surfaces.' },
+  [ordered]@{ title = 'Universal Substrate master'; label = 'Universal master'; note = 'M_Master_Toon_Universal is the one stylized surface system — layer stack, Nikki modulators, and instance scope for environment work.' },
   [ordered]@{ title = 'NASA starmap shader'; label = 'Space Cathedral'; note = 'MI_Show_CelestialNebula now carries real celestial source work for constellation ramp, parallax nebula, and galaxy mood.' },
   [ordered]@{ title = 'Melusina trim texture pass'; label = 'Sakura Dream'; note = 'ZenTrim work connects real texture assets to the Sakura shrine material language instead of placeholder surface reads.' },
   [ordered]@{ title = 'Nikki surface polish'; label = 'Fashion fantasy'; note = 'Iridescence, sheen, sparkle, and soft pastel response expanded across Sakura material instances for a stronger Infold-adjacent finish.' },

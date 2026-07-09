@@ -50,7 +50,7 @@
                              "lane":  "Next render drop",
                              "outcome":  "Convert Claude/UE captures into polished breakdown proof",
                              "tasks":  [
-                                           "Add MeshBlend graph plate to renders.breakdown",
+                                           "Add Universal Master graph plate to renders.breakdown",
                                            "Add CelestialNebula starmap plate for Space Cathedral",
                                            "Add Sakura Niagara ambience proof",
                                            "Regenerate PCG on all L_WP_* pillars (ISM > 0) then capture hero + PCG proof",

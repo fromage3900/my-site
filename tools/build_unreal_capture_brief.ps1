@@ -20,14 +20,14 @@ if ($axisLabels.Count -eq 0) { $axisLabels = @('Torii', 'Sando', 'Kairo', 'Haide
 
 $slots = @(
   [ordered]@{
-    id = 'shader-graph-meshblend-master'
+    id = 'universal-master-substrate-graph'
     priority = 1
     destination_group = 'renders.breakdown'
     target_page = 'wix/shader-breakdowns.html'
-    title = 'Universal Master MeshBlend graph plate'
-    capture = 'Annotated Material Editor screenshot or beauty-plus-graph pair for M_Master_Toon_Universal with MeshBlend controls visible.'
-    proves = 'Layered stylized environment materials can be explained as a production system, not just a beauty render.'
-    preferred_filename = 'breakdown_shader_meshblend_master_1920x1080.png'
+    title = 'Universal Master Substrate graph plate'
+    capture = 'Annotated Material Editor screenshot for M_Master_Toon_Universal — layer stack, Nikki modulators, and Substrate toon BSDF tail visible.'
+    proves = 'Stylized environment materials are one production system with readable instance scope, not ad-hoc one-offs.'
+    preferred_filename = 'breakdown_shader_universal_master_substrate_1920x1080.png'
   },
   [ordered]@{
     id = 'space-cathedral-celestial-nebula'
