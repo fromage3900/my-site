@@ -248,7 +248,7 @@
   position: relative;
 }
 
-.premium-card.mg-ribbon-card::before {
+.premium-card.mg-ribbon-card::after {
   content: "✦";
   position: absolute;
   top: 10px;
@@ -258,9 +258,10 @@
   text-shadow: 0 0 8px rgba(255, 110, 180, 0.22);
   pointer-events: none;
   opacity: 0.85;
+  z-index: 2;
 }
 
-.mg-ui-chrome.mg-wish-mode .premium-card.mg-ribbon-card::before {
+.mg-ui-chrome.mg-wish-mode .premium-card.mg-ribbon-card::after {
   color: rgba(255, 110, 180, 0.62);
   text-shadow: 0 0 12px rgba(255, 110, 180, 0.4);
 }

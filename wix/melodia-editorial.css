@@ -471,9 +471,6 @@ em { color: var(--gold); font-style: italic; }
   }
 }
 
-.premium-card.alignment-card::before {
-  display: none;
-}
 .inner { width: min(100%, var(--max)); margin: 0 auto; }
 .paper {
   background:

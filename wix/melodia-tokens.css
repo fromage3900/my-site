@@ -25,4 +25,28 @@
   --z-content: 1;
   --z-hero-celestial: 5;
   --z-nav: 50;
+  --motif-accent: rgba(201, 168, 106, 0.58);
+  --motif-glyph-opacity: 0.42;
+  --motif-clip-opacity: 0.52;
+}
+
+[data-pillar="sakura"],
+.accent-sakura {
+  --motif-accent: rgba(255, 110, 180, 0.55);
+}
+
+[data-pillar="cathedral"],
+[data-pillar="cosmic"],
+.accent-cosmic {
+  --motif-accent: rgba(102, 217, 255, 0.55);
+}
+
+[data-pillar="grotto"],
+.accent-gold {
+  --motif-accent: rgba(201, 168, 106, 0.58);
+}
+
+[data-pillar="orrery"],
+.accent-iris {
+  --motif-accent: rgba(204, 153, 255, 0.55);
 }

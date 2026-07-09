@@ -80,6 +80,45 @@ Index adds `planetarium` to effects; wish-mode bow boosts starfield to `cosmic` 
 
 ---
 
+## Motif layer (editorial ornaments)
+
+**File:** `melodia-editorial-ornaments.css` + `--motif-accent` in `melodia-tokens.css`
+
+| Tier | Shape | Pseudo / class | Where |
+|------|-------|----------------|-------|
+| A | `✦` filled | `::after` on `.magazine-kicker`, `.portal-card` | Portals, kickers, named steps in `site-copy.json` |
+| A2 | `✧` hollow | `::after` / list rhythm | Even-index path rows, guide-card Open labels |
+| B | 8-point clip | `::before` on hub cards, `.spark` | alignment / stack / path rows (`application-hub.css`) |
+| C | gold rule | `.gold-rule`, `.passport-rule` | Passport panels, section breaks |
+| D | frame PNG | `.hero.has-editorial-frame::after` | One per hero |
+| E | quatrefoil SVG | `.node.quatrefoil` | Atelier / fashion bands only |
+| F | `01 /` mono | `<span>` step prefix | Guide cards, roadmap rows |
+
+**Pseudo-element contract**
+
+| Slot | Owner |
+|------|--------|
+| `::before` | Clip-star (tier B) or optional `.meta-label.motif-star-clip` |
+| `::after` | Text glyph ✦ / ✧ (tier A) or portal corner |
+
+**Pillar tints:** `data-pillar` / `.accent-*` → `--motif-accent` (sakura pink, cosmic cyan, grotto gold, orrery purple).
+
+**Hydration:** `melodia-editorial.js` → `motifStepPrefix()` alternates ✦/✧ on `path-row` steps from `site-copy.json` and `recruiter_review_path.json`.
+
+**Do not:** hide `::before` on `.alignment-card`; stack glyph + clip on the same corner; use motif CSS as a full-page sky (canvas starfield owns depth).
+
+**Page tier emphasis**
+
+| Tier | Motif emphasis |
+|------|----------------|
+| Cosmic | Portal ✦, kicker suffix, holo plates above starfield (`z-index: 1` on cards) |
+| Hub | Clip-stars on alignment/stack/path; passport ✦ headers; reviewer path rhythm |
+| Doc | Magazine-kicker ✦, guide-list ✦/✧ on Open, mono step prefixes |
+
+Wish-mode bow brightens glyph opacity (+0.15); does not restore fullscreen soul-gems.
+
+---
+
 ## Mobile / a11y
 
 - Star count reduced ~40% under 680px; watercolor blur disabled on mobile

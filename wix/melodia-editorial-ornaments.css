@@ -140,3 +140,138 @@
     animation: none;
   }
 }
+
+/* ── Melodia motif family (A–F) ─────────────────────────────────────────── */
+
+/* Tier A — filled sparkle glyph (::after) */
+.motif-star-glyph::after,
+.magazine-kicker:not(.motif-no-glyph)::after,
+.premium-kicker:not(.motif-no-glyph)::after {
+  content: " ✦";
+  opacity: var(--motif-glyph-opacity, 0.42);
+  color: var(--motif-accent, var(--gold, #c9a86a));
+}
+
+/* Tier A2 — hollow sparkle (lists, secondary affordances) */
+.motif-star-glyph-open::after {
+  content: " ✧";
+  opacity: calc(var(--motif-glyph-opacity, 0.42) - 0.04);
+  color: var(--motif-accent, var(--gold, #c9a86a));
+}
+
+/* Tier B — 8-point clip star (::before corners) */
+.motif-star-clip::before,
+.spark.motif-star-clip {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 18px;
+  height: 18px;
+  clip-path: polygon(50% 0, 60% 36%, 100% 50%, 60% 64%, 50% 100%, 40% 64%, 0 50%, 40% 36%);
+  background: var(--motif-accent, rgba(201, 168, 106, 0.58));
+  opacity: var(--motif-clip-opacity, 0.52);
+  pointer-events: none;
+}
+
+.meta-label.motif-star-clip::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: auto;
+  left: -14px;
+  width: 8px;
+  height: 8px;
+  transform: translateY(-50%);
+  clip-path: polygon(50% 0, 60% 36%, 100% 50%, 60% 64%, 50% 100%, 40% 64%, 0 50%, 40% 36%);
+  background: var(--motif-accent, rgba(201, 168, 106, 0.58));
+  opacity: 0.38;
+  pointer-events: none;
+}
+
+.meta-label.motif-star-clip {
+  position: relative;
+  padding-left: 10px;
+}
+
+/* Tier C — gold rules (structural) */
+.gold-rule,
+.passport-rule {
+  height: 1px;
+  border: 0;
+  margin: 14px 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--motif-accent, rgba(201, 168, 106, 0.55)) 20%,
+    var(--motif-accent, rgba(201, 168, 106, 0.55)) 80%,
+    transparent
+  );
+  opacity: 0.72;
+}
+
+/* Path / guide list glyph rhythm — odd ✦, even ✧ on Open affordance */
+.path-list .path-row:nth-child(odd) > b::before,
+.guide-list .guide-card:nth-child(odd) > b::before {
+  content: "✦ ";
+  opacity: var(--motif-glyph-opacity, 0.42);
+  color: var(--motif-accent, var(--gold-soft, #e8c9b8));
+}
+
+.path-list .path-row:nth-child(even) > b::before,
+.guide-list .guide-card:nth-child(even) > b::before {
+  content: "✧ ";
+  opacity: calc(var(--motif-glyph-opacity, 0.42) - 0.06);
+  color: var(--motif-accent, var(--gold-soft, #e8c9b8));
+}
+
+.path-row,
+.guide-card,
+.portal-card,
+.premium-card.alignment-card,
+.premium-card.stack-card {
+  position: relative;
+}
+
+/* Portal corner glyph uses tier A — pillar tint via accent-* on card */
+.portal-card::after {
+  color: var(--motif-accent, var(--gold, #c9a86a));
+  opacity: 0.72;
+}
+
+/* Hub band — spaced glyph divider (texture, not sky) */
+.hub-motif-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2em;
+  margin: 0;
+  padding: 6px 0 18px;
+  font-size: 0.55rem;
+  letter-spacing: 1.2em;
+  color: var(--motif-accent, rgba(201, 168, 106, 0.55));
+  opacity: 0.06;
+  user-select: none;
+  pointer-events: none;
+}
+
+.hub-motif-divider::before {
+  content: "✦ ✧ ✦ ✧ ✦";
+}
+
+/* Wish mode — brighten glyphs slightly, no new shapes */
+.melodia-shell.mg-wish-mode .magazine-kicker::after,
+.melodia-shell.mg-wish-mode .premium-kicker::after,
+.mg-ui-chrome.mg-wish-mode .path-list .path-row > b::before,
+.mg-ui-chrome.mg-wish-mode .guide-list .guide-card > b::before {
+  opacity: calc(var(--motif-glyph-opacity, 0.42) + 0.15);
+}
+
+/* Cosmic tier — ensure card motifs sit above canvas starfield */
+.melodia-shell[data-effects*="starfield"] .portal-card,
+.melodia-shell[data-effects*="starfield"] .path-row,
+.melodia-shell[data-effects*="starfield"] .guide-card,
+.melodia-shell[data-effects*="starfield"] .alignment-card,
+.melodia-shell[data-effects*="starfield"] .stack-card {
+  z-index: 1;
+}

@@ -31,6 +31,19 @@
       .replace(/'/g, '&#39;');
   }
 
+  /** Odd index ✦, even ✧ — skip if step already carries a glyph. */
+  function motifStepPrefix(index, step) {
+    const raw = String(step == null ? '' : step).trim();
+    if (/^[✦✧]/.test(raw)) return raw;
+    const glyph = index % 2 === 0 ? '✦' : '✧';
+    return `${glyph} ${raw}`;
+  }
+
+  function pathRowHtml(link, index) {
+    const step = motifStepPrefix(index, link.step);
+    return `<a class="path-row" href="${esc(link.href)}"><span>${esc(step)}</span><div><h3>${esc(link.title)}</h3><p>${esc(link.body)}</p></div><b>Open</b></a>`;
+  }
+
   function initParallax() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (reduceMotion.matches) return;
@@ -122,12 +135,7 @@
     const mount = document.getElementById('bestProofLinks');
     const links = getByPath(copy, `pages.${pageKey}.best_proof.links`);
     if (!mount || !Array.isArray(links)) return;
-    mount.innerHTML = links
-      .map(
-        (link) =>
-          `<a class="path-row" href="${esc(link.href)}"><span>${esc(link.step)}</span><div><h3>${esc(link.title)}</h3><p>${esc(link.body)}</p></div><b>Open</b></a>`
-      )
-      .join('');
+    mount.innerHTML = links.map((link, i) => pathRowHtml(link, i)).join('');
   }
 
   function renderPassport(copy, pageKey) {
@@ -182,12 +190,7 @@
     const mount = document.getElementById('nextLinks');
     const links = getByPath(copy, `pages.${pageKey}.next.links`);
     if (!mount || !Array.isArray(links)) return;
-    mount.innerHTML = links
-      .map(
-        (link) =>
-          `<a class="path-row" href="${esc(link.href)}"><span>${esc(link.step)}</span><div><h3>${esc(link.title)}</h3><p>${esc(link.body)}</p></div><b>Open</b></a>`
-      )
-      .join('');
+    mount.innerHTML = links.map((link, i) => pathRowHtml(link, i)).join('');
   }
 
   async function hydrateIntakeHero() {
@@ -298,7 +301,8 @@
     mount.innerHTML = links
       .map((link) => {
         const accent = esc(link.accent || 'gold');
-        return `<a class="portal-card accent-${accent}" href="${esc(link.href)}"><span class="portal-step">${esc(link.step)}</span><div><h3>${esc(link.title)}</h3><p>${esc(link.body)}</p></div><span class="portal-open">Open →</span></a>`;
+        const pillar = esc(link.accent || 'grotto');
+        return `<a class="portal-card accent-${accent}" data-pillar="${pillar}" href="${esc(link.href)}"><span class="portal-step">${esc(link.step)}</span><div><h3>${esc(link.title)}</h3><p>${esc(link.body)}</p></div><span class="portal-open">Open →</span></a>`;
       })
       .join('');
   }
@@ -438,10 +442,10 @@
       const data = await fetchJson(REVIEW_PATH_URL);
       const steps = Array.isArray(data.steps) ? data.steps : [];
       mount.innerHTML = steps
-        .map(
-          (step) =>
-            `<a class="path-row premium-card" href="${esc(step.href)}"><span>${esc(step.step)} / ${esc(step.title)}</span><div><h3>${esc(step.title)}</h3><p>${esc(step.body)}</p></div><b>Open</b></a>`
-        )
+        .map((step, i) => {
+          const stepLabel = motifStepPrefix(i, `${step.step} / ${step.title}`);
+          return `<a class="path-row premium-card" href="${esc(step.href)}"><span>${esc(stepLabel)}</span><div><h3>${esc(step.title)}</h3><p>${esc(step.body)}</p></div><b>Open</b></a>`;
+        })
         .join('');
     } catch (_err) {
       /* static HTML fallback remains */
