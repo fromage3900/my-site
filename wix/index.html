@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="enhanced-cosmic-hero-premium.css">
 <link rel="stylesheet" href="melodia-editorial-ornaments.css">
 <link rel="stylesheet" href="melodia-mobile.css">
+<link rel="stylesheet" href="melodia-planetarium.css">
 </head>
 <body>
 <div class="melodia-shell fashion-mode">
@@ -26,7 +27,7 @@
 </header>
 
 <main id="main">
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero" aria-labelledby="hero-title" data-planetarium-hero>
   <!-- Layer 1: Background Gradient -->
   <div class="parallax-layer-1" aria-hidden="true"></div>
   
@@ -63,6 +64,20 @@
       <h1 id="hero-title" data-copy="pages.recruiter-one-sheet.hero.headline">Environment art taste, technical art follow-through.</h1>
       <p class="lede" data-copy="pages.recruiter-one-sheet.hero.lede">Brennan Shepherd builds stylized fantasy spaces, Unreal material systems, procedural dressing workflows, and presentation pages that make production proof easy to review.</p>
     </div>
+  </div>
+</section>
+
+<section class="band astral planetarium-band" id="constellation">
+  <div class="inner">
+    <div class="editorial-rule-stars">Portfolio Planetarium</div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow magazine-kicker">Interactive armillary</p>
+        <h2>Navigate the constellation.</h2>
+      </div>
+      <p class="human-lede">Drag the armillary sphere to orbit the portfolio. Each star is a world, shader lane, or proof page ? click to explore, or use the legend below.</p>
+    </div>
+    <div data-planetarium="explorer" data-planetarium-legend></div>
   </div>
 </section>
 
@@ -123,7 +138,9 @@
 
 <script src="premium-cosmic-hero.js"></script>
 <script src="melodia-orrery-system.js"></script>
-<script src="melodia-dream-shaders.js"></script>`r`n<script src="melodia-editorial.js"></script>
+<script src="melodia-planetarium.js"></script>
+<script src="melodia-dream-shaders.js"></script>
+<script src="melodia-editorial.js"></script>
 <script>MelodiaEditorial.init({ page: 'recruiter-one-sheet', intake: true, heroStrip: 3 });</script>
 </body>
 </html>

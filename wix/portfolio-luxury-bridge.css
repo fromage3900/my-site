@@ -3,6 +3,7 @@
 @import url("melodia-editorial-ornaments.css");
 @import url("melodia-mobile.css");
 @import url("melodia-dream-shaders.css");
+@import url("melodia-planetarium.css");
 
 body {
   font-family: var(--font-body);

@@ -381,6 +381,11 @@
     if (global.MelodiaDreamShaders) {
       global.MelodiaDreamShaders.init();
     }
+
+    if (global.MelodiaPlanetarium) {
+      global.MelodiaPlanetarium.mountAll();
+      global.MelodiaPlanetarium.mountHeroReplacement();
+    }
   }
 
   global.MelodiaEditorial = { init, initParallax, initMobileNav, applyCopy };
