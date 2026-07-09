@@ -1,6 +1,6 @@
 /**
- * Melodia Magical Girl Layer — Madoka-adjacent contract aesthetic.
- * Soul gems, grief shards, contract rings; bow toggles wish density.
+ * Melodia Magical Girl Layer — UI chrome accents (nav, cards, kickers).
+ * Full wish overlays are opt-in via the bow toggle.
  */
 (function (global) {
   'use strict';
@@ -31,46 +31,34 @@
   function mount(shell) {
     if (!shell || shell.querySelector(':scope > .mg-layer')) return;
 
+    shell.classList.add('mg-ui-chrome');
+
+    const nav = shell.querySelector('.shell-nav');
+    if (nav) nav.classList.add('mg-nav-chrome');
+
     const layer = document.createElement('div');
-    layer.className = 'mg-layer is-wish';
+    layer.className = 'mg-layer is-hidden';
     layer.setAttribute('aria-hidden', 'true');
 
     layer.innerHTML = `
       <div class="mg-halftone" aria-hidden="true"></div>
-      <div class="mg-contract-ring" aria-hidden="true">${contractRingSvg()}</div>
-      <div class="mg-shards" aria-hidden="true">
-        <div class="mg-shard s1"></div>
-        <div class="mg-shard s2"></div>
-        <div class="mg-shard s3"></div>
-        <div class="mg-shard s4"></div>
+      <div class="mg-wish-stage" aria-hidden="true">
+        <div class="mg-contract-ring" aria-hidden="true">${contractRingSvg()}</div>
+        <div class="mg-shards" aria-hidden="true">
+          <div class="mg-shard s1"></div>
+          <div class="mg-shard s2"></div>
+          <div class="mg-shard s3"></div>
+        </div>
       </div>
-      <div class="mg-ribbon r1" aria-hidden="true">
-        <svg viewBox="0 0 600 600" role="img" aria-hidden="true">
-          <path class="rose" d="M70 220 C 160 110, 280 110, 380 190 C 470 260, 540 360, 520 460" />
-          <path class="gold" d="M40 260 C 160 120, 300 140, 380 220 C 470 300, 540 390, 510 500" />
-          <path class="cyan" d="M90 180 C 190 90, 320 110, 410 210 C 500 310, 560 400, 540 520" />
-        </svg>
-      </div>
-      <div class="mg-ribbon r2" aria-hidden="true">
-        <svg viewBox="0 0 600 600" role="img" aria-hidden="true">
-          <path class="rose" d="M90 120 C 210 80, 340 110, 440 200 C 520 270, 560 360, 540 500" />
-          <path class="gold" d="M60 160 C 220 90, 360 140, 450 240 C 520 320, 570 420, 520 540" />
-          <path class="cyan" d="M120 90 C 250 60, 380 120, 470 220 C 540 300, 580 390, 540 560" />
-        </svg>
-      </div>
-      <div class="mg-soul-gem g1" aria-hidden="true"></div>
-      <div class="mg-soul-gem g2" aria-hidden="true"></div>
-      <div class="mg-soul-gem g3" aria-hidden="true"></div>
-      <div class="mg-crystal c1" aria-hidden="true"></div>
-      <div class="mg-crystal c2" aria-hidden="true"></div>
     `;
 
     shell.appendChild(layer);
 
     const toggle = document.createElement('button');
-    toggle.className = 'mg-bow-toggle is-wish';
+    toggle.className = 'mg-bow-toggle';
     toggle.type = 'button';
-    toggle.setAttribute('aria-label', 'Toggle wish-mode magical overlays');
+    toggle.setAttribute('aria-label', 'Toggle wish-mode UI accents');
+    toggle.setAttribute('aria-pressed', 'false');
     toggle.innerHTML = `
       <svg viewBox="0 0 44 44" aria-hidden="true">
         <path class="bow-fill" d="M8 22 C 8 14, 16 10, 22 14 C 28 10, 36 14, 36 22 C 36 30, 28 34, 22 30 C 16 34, 8 30, 8 22 Z" />
@@ -83,22 +71,23 @@
 
     document.body.appendChild(toggle);
 
-    let on = true;
+    let on = false;
     const root = document.documentElement;
     const apply = () => {
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
       if (on) {
         layer.classList.remove('is-hidden');
         layer.classList.add('is-wish');
         shell.classList.add('mg-wish-mode');
         toggle.classList.add('is-wish');
-        root.style.setProperty('--dream-sparkle-density', '1.25');
-        root.style.setProperty('--dream-hue-shift', '8deg');
+        root.style.setProperty('--dream-sparkle-density', '1.18');
+        root.style.setProperty('--dream-hue-shift', '6deg');
       } else {
         layer.classList.add('is-hidden');
         layer.classList.remove('is-wish');
         shell.classList.remove('mg-wish-mode');
         toggle.classList.remove('is-wish');
-        root.style.setProperty('--dream-sparkle-density', '0.82');
+        root.style.setProperty('--dream-sparkle-density', '0.88');
         root.style.setProperty('--dream-hue-shift', '0deg');
       }
     };
@@ -110,16 +99,14 @@
 
     apply();
 
-    document.querySelectorAll('.premium-card, .intake-card, .intake-signal').forEach((el) => {
+    document.querySelectorAll('.premium-card, .intake-card, .intake-signal, .portal-card').forEach((el) => {
       el.classList.add('mg-ribbon-card');
     });
 
     if (!prefersReducedMotion()) {
-      let mx = 0;
-      let my = 0;
       const onMove = (e) => {
-        mx = (e.clientX / window.innerWidth - 0.5) * 28;
-        my = (e.clientY / window.innerHeight - 0.5) * 28;
+        const mx = (e.clientX / window.innerWidth - 0.5) * 14;
+        const my = (e.clientY / window.innerHeight - 0.5) * 10;
         root.style.setProperty('--mouse-x', `${mx}px`);
         root.style.setProperty('--mouse-y', `${my}px`);
       };

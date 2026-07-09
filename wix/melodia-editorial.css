@@ -132,7 +132,8 @@ img { display: block; max-width: 100%; }
   opacity: 0.095;
   background-image: var(--pattern-stars);
   background-size: var(--pattern-stars-size);
-  background-position: center top, 34px 42px, 50px 30px;
+  background-position: var(--pattern-stars-pos);
+  background-repeat: var(--pattern-stars-repeat);
   transform: translate3d(calc(var(--mouse-x) * -0.05), calc(var(--scroll-shift) * -0.035 + var(--mouse-y) * -0.05), 0);
 }
 
@@ -298,8 +299,9 @@ img { display: block; max-width: 100%; }
   opacity: 0.28;
   mix-blend-mode: screen;
   background-image: var(--pattern-stars);
-  background-repeat: repeat;
+  background-repeat: var(--pattern-stars-repeat);
   background-size: var(--pattern-stars-size);
+  background-position: var(--pattern-stars-pos);
   transform: translate3d(calc(var(--mouse-x) * 0.08), calc(var(--scroll-shift) * -0.12 + var(--mouse-y) * 0.08), 0);
 }
 
@@ -329,8 +331,32 @@ img { display: block; max-width: 100%; }
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transform: rotateX(18deg) rotateY(-12deg);
+  transform: rotateX(52deg) rotateY(-22deg);
   transition: transform 0.12s ease-out;
+}
+
+.melodia-orrery .ring,
+.orrery-mount .ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform-style: preserve-3d;
+}
+
+.melodia-orrery .ring:nth-child(1) { animation: melodia-orbit-tilt-a 46s linear infinite; }
+.melodia-orrery .ring:nth-child(2) { animation: melodia-orbit-tilt-b 68s linear infinite reverse; }
+.melodia-orrery .ring:nth-child(3) { animation: melodia-orbit-tilt-c 32s linear infinite; }
+
+@keyframes melodia-orbit-tilt-a {
+  from { transform: rotateX(72deg) rotateZ(0deg); }
+  to { transform: rotateX(72deg) rotateZ(360deg); }
+}
+@keyframes melodia-orbit-tilt-b {
+  from { transform: rotateX(38deg) rotateY(14deg) rotateZ(0deg); }
+  to { transform: rotateX(38deg) rotateY(14deg) rotateZ(360deg); }
+}
+@keyframes melodia-orbit-tilt-c {
+  from { transform: rotateX(58deg) rotateY(-24deg) rotateZ(0deg); }
+  to { transform: rotateX(58deg) rotateY(-24deg) rotateZ(360deg); }
 }
 
 .melodia-orrery .orbit.meridian,
@@ -348,8 +374,10 @@ img { display: block; max-width: 100%; }
 }
 
 .parallax-layer-5.orrery-perspective-layer {
-  perspective: 1100px;
+  perspective: 1800px;
+  perspective-origin: 50% 42%;
   transform-style: preserve-3d;
+  overflow: visible;
 }
 
 .orrery-system {
@@ -361,15 +389,9 @@ img { display: block; max-width: 100%; }
 .melodia-orrery .orbit { fill: none; stroke: rgba(228, 201, 144, 0.48); stroke-width: 0.7; }
 .melodia-orrery .axis { stroke: rgba(233, 229, 242, 0.24); stroke-width: 0.55; }
 .melodia-orrery .node { fill: rgba(228, 201, 144, 0.9); filter: drop-shadow(0 0 7px rgba(228, 201, 144, 0.45)); }
-.melodia-orrery .ring {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: melodia-orbit 46s linear infinite;
-}
 .melodia-orrery .ring.slow { animation-duration: 68s; animation-direction: reverse; }
 .melodia-orrery .ring.fast { animation-duration: 32s; }
 
-@keyframes melodia-orbit { to { transform: rotate(360deg); } }
 @keyframes melodia-drift {
   from { background-position: 18px 24px, 62px 8px; }
   to { background-position: 42px 2px, 38px 34px; }

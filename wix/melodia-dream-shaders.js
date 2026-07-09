@@ -145,15 +145,17 @@
     let dpr = 1;
 
     function iqPalette(t, cycles) {
-      // IQ cosine palette: 0.5 + 0.5*cos(2π*(t*cycles + phase)).
-      // Phases map to RGB channels.
       const twoPi = 6.28318530718;
       const base = t * cycles;
       const r = 0.5 + 0.5 * Math.cos(twoPi * (base + 0.0));
       const g = 0.5 + 0.5 * Math.cos(twoPi * (base + 0.33));
       const b = 0.5 + 0.5 * Math.cos(twoPi * (base + 0.67));
-      // Bias toward pastel-magical brightness (not full neon).
-      return [r * 0.85 + 0.15, g * 0.85 + 0.15, b * 0.85 + 0.15];
+      const mag = 0.5 + 0.5 * Math.cos(twoPi * (base + 0.12));
+      return [
+        r * 0.68 + mag * 0.26 + 0.12,
+        g * 0.72 + 0.1,
+        b * 0.7 + mag * 0.18 + 0.14,
+      ];
     }
 
     function resizeStars() {
@@ -168,13 +170,14 @@
       ctx = canvas.getContext('2d', { alpha: true });
 
       // Regenerate stars so they match new dimensions.
-      const count = 520;
+      const count = 920;
       stars = new Array(count).fill(0).map(() => ({
         x: Math.random(),
         y: Math.random(),
-        z: Math.random(), // depth 0..1
-        size: Math.random() * 1.4 + 0.35,
+        z: Math.pow(Math.random(), 1.35),
+        size: Math.random() * 1.6 + 0.25,
         tw: Math.random() * Math.PI * 2,
+        layer: Math.random() < 0.28 ? 'far' : Math.random() < 0.55 ? 'mid' : 'near',
       }));
     }
 
@@ -271,12 +274,47 @@
       ctx.restore();
     }
 
+    function drawWatercolorWash(t) {
+      if (!ctx || !canvas || reduceMotion.matches) return;
+      const time = t * 0.001;
+      ctx.save();
+      ctx.globalCompositeOperation = 'soft-light';
+      ctx.filter = 'blur(28px)';
+
+      const washes = [
+        { cx: 0.22, cy: 0.18, r: 0.42, hue: [255, 110, 180], a: 0.09 },
+        { cx: 0.78, cy: 0.28, r: 0.36, hue: [204, 153, 255], a: 0.08 },
+        { cx: 0.52, cy: 0.72, r: 0.48, hue: [102, 217, 255], a: 0.07 },
+        { cx: 0.12, cy: 0.62, r: 0.32, hue: [232, 80, 140], a: 0.065 },
+      ];
+
+      for (let i = 0; i < washes.length; i++) {
+        const wash = washes[i];
+        const driftX = Math.sin(time * 0.14 + i * 1.7) * wash.r * 0.04 * w;
+        const driftY = Math.cos(time * 0.11 + i * 2.2) * h * 0.03;
+        const cx = wash.cx * w + driftX + (mouseNX - 0.5) * 60;
+        const cy = wash.cy * h + driftY + (mouseNY - 0.5) * 40;
+        const rad = wash.r * Math.max(w, h);
+        const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
+        const [hr, hg, hb] = wash.hue;
+        grad.addColorStop(0, `rgba(${hr},${hg},${hb},${wash.a})`);
+        grad.addColorStop(0.55, `rgba(${hr},${hg},${hb},${wash.a * 0.45})`);
+        grad.addColorStop(1, `rgba(${hr},${hg},${hb},0)`);
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+      }
+
+      ctx.filter = 'none';
+      ctx.restore();
+    }
+
     function drawStarfield(t) {
       if (!ctx || !canvas) return;
 
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, w, h);
 
+      drawWatercolorWash(t);
       drawThinFilmBands(t);
 
       ctx.globalCompositeOperation = 'screen';
@@ -289,34 +327,38 @@
       for (let i = 0; i < stars.length; i++) {
         const s = stars[i];
         const depth = s.z;
-        const px = mx * 160 * depth;
-        const py = my * 120 * depth + scroll * 0.02 * depth;
+        const parallax =
+          s.layer === 'far' ? 0.35 : s.layer === 'mid' ? 0.72 : 1.15;
+        const px = mx * 220 * depth * parallax;
+        const py = my * 160 * depth * parallax + scroll * 0.035 * depth * parallax;
 
         const x = s.x * w + px;
         const y = s.y * h + py;
 
-        if (x < -40 || x > w + 40 || y < -40 || y > h + 40) continue;
+        if (x < -50 || x > w + 50 || y < -50 || y > h + 50) continue;
 
-        const alphaWave = 0.55 + 0.45 * Math.sin(time * (0.8 + depth) + s.tw);
-        const alpha = (0.03 + depth * 0.18) * alphaWave * 0.85;
+        const alphaWave = 0.5 + 0.5 * Math.sin(time * (0.7 + depth * 1.2) + s.tw);
+        const layerAlpha = s.layer === 'far' ? 0.55 : s.layer === 'mid' ? 0.78 : 1;
+        const alpha = (0.02 + depth * 0.22) * alphaWave * layerAlpha * 0.9;
 
-        const cycles = 0.55 + depth * 0.95;
-        const [pr, pg, pb] = iqPalette(time, cycles);
+        const cycles = 0.48 + depth * 1.05;
+        const [pr, pg, pb] = iqPalette(time + depth * 0.4, cycles);
         const r = Math.round(255 * pr);
         const g = Math.round(255 * pg);
         const b = Math.round(255 * pb);
 
-        const size = s.size * (0.65 + depth * 1.1);
+        const size = s.size * (0.5 + depth * 1.25) * (s.layer === 'near' ? 1.15 : 1);
         ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
         ctx.beginPath();
         ctx.arc(x, y, size, 0, Math.PI * 2);
         ctx.fill();
 
-        // Secondary glow disk (smaller alpha for dreamy bloom).
-        ctx.fillStyle = `rgba(${r},${g},${b},${alpha * 0.35})`;
-        ctx.beginPath();
-        ctx.arc(x, y, size * 2.1, 0, Math.PI * 2);
-        ctx.fill();
+        if (s.layer !== 'far') {
+          ctx.fillStyle = `rgba(${r},${g},${b},${alpha * 0.32})`;
+          ctx.beginPath();
+          ctx.arc(x, y, size * 2.4, 0, Math.PI * 2);
+          ctx.fill();
+        }
       }
 
       ctx.globalCompositeOperation = 'source-over';

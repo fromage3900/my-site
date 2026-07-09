@@ -287,6 +287,8 @@
   opacity: 0.18;
   background-image: var(--pattern-stars);
   background-size: var(--pattern-stars-size);
+  background-position: var(--pattern-stars-pos);
+  background-repeat: var(--pattern-stars-repeat);
 }
 
 .passport-head,
@@ -533,8 +535,10 @@
   width: 128px;
   height: 128px;
   opacity: 0.08;
-  background: var(--pattern-stars);
+  background-image: var(--pattern-stars);
   background-size: var(--pattern-stars-size);
+  background-position: var(--pattern-stars-pos);
+  background-repeat: var(--pattern-stars-repeat);
   pointer-events: none;
 }
 
@@ -545,8 +549,10 @@
   width: 190px;
   height: 190px;
   opacity: 0.14;
-  background: var(--pattern-stars);
+  background-image: var(--pattern-stars);
   background-size: var(--pattern-stars-size);
+  background-position: var(--pattern-stars-pos);
+  background-repeat: var(--pattern-stars-repeat);
   transform: rotate(-12deg);
   animation: hub-card-float 9s ease-in-out infinite alternate;
   pointer-events: none;
@@ -555,6 +561,8 @@
 .world-card:nth-child(2n)::after {
   background-image: var(--pattern-stars);
   background-size: var(--pattern-stars-size);
+  background-position: var(--pattern-stars-pos);
+  background-repeat: var(--pattern-stars-repeat);
   animation-duration: 12s;
 }
 

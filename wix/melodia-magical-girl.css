@@ -18,27 +18,90 @@
 .mg-layer {
   position: fixed;
   inset: 0;
-  z-index: 45; /* under nav (50), over content (1) */
+  z-index: 45;
   pointer-events: none;
 }
 
 .mg-layer.is-hidden {
-  opacity: 0.18;
+  opacity: 0;
+}
+
+.mg-layer.is-hidden .mg-halftone {
+  opacity: 0.04;
+}
+
+.mg-wish-stage {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.mg-layer.is-wish .mg-wish-stage {
+  opacity: 1;
 }
 
 .mg-layer.is-wish {
-  --mg-stamp-opacity: 0.72;
-  --mg-contract-opacity: 0.22;
-  --mg-shard-opacity: 0.34;
+  opacity: 1;
 }
 
-/* Contract seal ring (Madoka labyrinth / grief-cube echo) */
+.mg-layer.is-wish {
+  --mg-stamp-opacity: 0.52;
+  --mg-contract-opacity: 0.1;
+  --mg-shard-opacity: 0.16;
+}
+
+/* Nav / shell UI chrome (always on, lightweight) */
+.mg-ui-chrome .mg-nav-chrome {
+  position: relative;
+}
+
+.mg-ui-chrome .mg-nav-chrome::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 110, 180, 0.28) 18%,
+    rgba(255, 230, 102, 0.22) 50%,
+    rgba(102, 217, 255, 0.2) 82%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.mg-ui-chrome .mg-nav-chrome::after {
+  content: "✦";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.62rem;
+  color: rgba(255, 110, 180, 0.42);
+  text-shadow: 0 0 8px rgba(255, 110, 180, 0.25);
+  pointer-events: none;
+}
+
+.mg-ui-chrome .shell-nav a:hover {
+  text-shadow: 0 0 10px rgba(255, 110, 180, 0.18);
+}
+
+.mg-ui-chrome.mg-wish-mode .mg-nav-chrome::after {
+  color: rgba(255, 110, 180, 0.72);
+  text-shadow: 0 0 14px rgba(255, 110, 180, 0.45);
+}
+
+/* Contract seal ring — wish mode only, very soft */
 .mg-contract-ring {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(92vmin, 820px);
-  height: min(92vmin, 820px);
+  width: min(78vmin, 640px);
+  height: min(78vmin, 640px);
   transform: translate(-50%, -50%);
   opacity: var(--mg-contract-opacity);
   animation: mg-contract-spin 120s linear infinite;
@@ -70,57 +133,20 @@
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Soul gems (teardrop wish jewels) */
-.mg-soul-gem {
-  position: absolute;
-  width: 54px;
-  height: 74px;
-  opacity: calc(var(--mg-stamp-opacity) * 0.85);
-  filter: drop-shadow(0 0 18px rgba(255, 110, 180, 0.22));
-  transform: translate3d(calc(var(--mouse-x) * 0.12), calc(var(--mouse-y) * 0.12), 0);
-}
+/* Soul gems — removed from viewport; card chrome only */
 
-.mg-soul-gem.g1 { top: 18%; left: 12%; animation: mg-gem-float 9s ease-in-out infinite; }
-.mg-soul-gem.g2 { top: 22%; right: 14%; animation: mg-gem-float 11s ease-in-out infinite reverse; }
-.mg-soul-gem.g3 { bottom: 20%; left: 18%; opacity: 0.38; animation: mg-gem-float 13s ease-in-out infinite; }
-
-.mg-soul-gem::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  clip-path: polygon(50% 0%, 88% 38%, 72% 100%, 50% 86%, 28% 100%, 12% 38%);
-  background:
-    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.35), transparent 45%),
-    linear-gradient(165deg, rgba(255, 110, 180, 0.55), rgba(204, 153, 255, 0.35) 48%, rgba(102, 217, 255, 0.28));
-  border: 1px solid rgba(255, 230, 102, 0.28);
-}
-
-.mg-soul-gem::after {
-  content: "";
-  position: absolute;
-  inset: 18% 28% 32%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent 70%);
-  opacity: 0.65;
-  mix-blend-mode: screen;
-}
-
-@keyframes mg-gem-float {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(-4deg); }
-  50% { transform: translate3d(0, -10px, 0) rotate(4deg); }
-}
-
-/* Grief shards — stained glass fragments */
+/* Grief shards — wish mode edge accents only */
 .mg-shards {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  mask-image: radial-gradient(ellipse 88% 78% at 50% 50%, transparent 62%, black 100%);
 }
 
 .mg-shard {
   position: absolute;
-  width: 48px;
-  height: 72px;
+  width: 36px;
+  height: 54px;
   opacity: var(--mg-shard-opacity);
   background: linear-gradient(135deg, rgba(255, 110, 180, 0.12), rgba(102, 217, 255, 0.08));
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -128,81 +154,25 @@
   backdrop-filter: blur(6px);
 }
 
-.mg-shard.s1 { top: 12%; left: 42%; transform: rotate(18deg); }
-.mg-shard.s2 { top: 58%; right: 8%; transform: rotate(-24deg); width: 36px; height: 56px; }
-.mg-shard.s3 { bottom: 14%; left: 6%; transform: rotate(32deg); width: 42px; height: 64px; }
-.mg-shard.s4 { top: 34%; right: 28%; transform: rotate(-12deg); opacity: calc(var(--mg-shard-opacity) * 0.7); }
+.mg-shard.s1 { top: 8%; left: 46%; transform: rotate(18deg); }
+.mg-shard.s2 { top: 62%; right: 5%; transform: rotate(-24deg); }
+.mg-shard.s3 { bottom: 10%; left: 4%; transform: rotate(32deg); }
 
-/* Halftone wish dust */
+/* Halftone wish dust — edge vignette only */
 .mg-halftone {
   position: absolute;
   inset: 0;
-  opacity: 0.08;
+  opacity: 0.05;
   background-image: radial-gradient(circle, rgba(255, 110, 180, 0.9) 0 0.8px, transparent 0.9px);
   background-size: 14px 14px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 72%);
+  mask-image: radial-gradient(ellipse 78% 68% at 50% 42%, transparent 58%, black 92%);
 }
 
-/* Ribbon arcs (corner decoration) */
-.mg-ribbon {
-  position: absolute;
-  width: min(46vw, 520px);
-  height: min(46vw, 520px);
-  opacity: 0.22;
-  filter: drop-shadow(0 0 22px rgba(204, 153, 255, 0.08));
-}
+/* Ribbon arcs — deprecated fullscreen; card chrome handles accents */
 
-.mg-ribbon.r1 { top: -14%; left: -10%; transform: rotate(-12deg); }
-.mg-ribbon.r2 { bottom: -18%; right: -12%; transform: rotate(18deg); opacity: 0.18; }
-
-.mg-ribbon svg { width: 100%; height: 100%; display: block; }
-
-.mg-ribbon path {
-  fill: none;
-  stroke-width: 1.2;
-  stroke-linecap: round;
-  stroke: rgba(255, 110, 180, 0.28);
-}
-
-.mg-ribbon path.gold { stroke: rgba(255, 230, 102, 0.2); }
-.mg-ribbon path.cyan { stroke: rgba(102, 217, 255, 0.18); }
-.mg-ribbon path.rose { stroke: rgba(232, 80, 140, 0.22); stroke-width: 1.4; }
-
-/* Crystal facets (hover-reactive “refraction”) */
+/* Crystal facets — deprecated fullscreen */
 .mg-crystal {
-  position: absolute;
-  width: 112px;
-  height: 112px;
-  opacity: var(--mg-stamp-opacity);
-  border-radius: 22px;
-  background:
-    linear-gradient(135deg, rgba(102, 217, 255, 0.12), rgba(204, 153, 255, 0.08) 46%, rgba(255, 230, 102, 0.06)),
-    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.10), transparent 58%),
-    var(--mg-glass);
-  border: 1px solid rgba(201, 168, 106, 0.22);
-  backdrop-filter: blur(14px);
-  box-shadow:
-    0 18px 54px rgba(7, 9, 18, 0.45),
-    inset 0 1px 0 var(--mg-glass-hi),
-    0 0 0 1px rgba(102, 217, 255, 0.10);
-  clip-path: polygon(50% 0, 86% 14%, 100% 50%, 86% 86%, 50% 100%, 14% 86%, 0 50%, 14% 14%);
-  transform: translate3d(calc(var(--mouse-x) * 0.25), calc(var(--mouse-y) * 0.25), 0) rotate(6deg);
-}
-
-.mg-crystal.c1 { top: 86px; right: 26px; }
-.mg-crystal.c2 { bottom: 78px; left: 28px; opacity: 0.42; transform: rotate(-10deg); }
-
-.mg-crystal::after {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  border-radius: 18px;
-  background:
-    linear-gradient(155deg, rgba(255, 255, 255, 0.10), transparent 55%),
-    conic-gradient(from 90deg, rgba(102, 217, 255, 0.08), rgba(255, 230, 102, 0.06), rgba(204, 153, 255, 0.08), rgba(102, 217, 255, 0.08));
-  opacity: 0.55;
-  mix-blend-mode: screen;
-  clip-path: polygon(50% 2%, 84% 16%, 98% 50%, 84% 84%, 50% 98%, 16% 84%, 2% 50%, 16% 16%);
+  display: none;
 }
 
 /* Bow toggles (editorial stamps, small, near nav) */
@@ -283,10 +253,16 @@
   position: absolute;
   top: 10px;
   right: 12px;
-  font-size: 0.75rem;
-  color: rgba(255, 110, 180, 0.55);
-  text-shadow: 0 0 10px rgba(255, 110, 180, 0.35);
+  font-size: 0.7rem;
+  color: rgba(255, 110, 180, 0.38);
+  text-shadow: 0 0 8px rgba(255, 110, 180, 0.22);
   pointer-events: none;
+  opacity: 0.85;
+}
+
+.mg-ui-chrome.mg-wish-mode .premium-card.mg-ribbon-card::before {
+  color: rgba(255, 110, 180, 0.62);
+  text-shadow: 0 0 12px rgba(255, 110, 180, 0.4);
 }
 
 .melodia-shell.mg-wish-mode .premium-card {

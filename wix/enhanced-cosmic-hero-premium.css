@@ -149,12 +149,14 @@
   inset: 10% max(20px,4vw) auto auto;
   width: min(40vw, 560px);
   aspect-ratio: 1;
-  transform: translateZ(40px);
+  transform: translateZ(40px) rotateX(8deg);
   z-index: 5;
-  opacity: .28;
-  perspective: 1100px;
+  opacity: .32;
+  perspective: 1800px;
+  perspective-origin: 50% 42%;
   transform-style: preserve-3d;
   pointer-events: none;
+  overflow: visible;
 }
 
 /* Layer 6: Orrery Nodes */
@@ -239,14 +241,27 @@
   }
 }
 
-/* Orbital Paths (3D) */
+/* Orbital Paths (3D) — tilt plane + spin in-plane for armillary depth */
 .orbital-shell {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: orbit-rotate var(--duration) linear infinite;
   transform-style: preserve-3d;
+}
+
+.orbital-tilt {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--tilt-x, 55deg)) rotateY(var(--tilt-y, 0deg)) translateZ(var(--z, 0px));
+}
+
+.orbital-spin {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  animation: orbit-spin-z var(--duration, 48s) linear infinite;
 }
 
 .orbital-path {
@@ -255,7 +270,9 @@
   border: 1px solid var(--border-gold);
   border-radius: 50%;
   transform-style: preserve-3d;
-  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(var(--z, 0px));
+  box-shadow:
+    0 0 12px rgba(102, 217, 255, 0.06),
+    inset 0 0 8px rgba(255, 110, 180, 0.04);
 }
 
 .orbital-path::before {
@@ -264,6 +281,27 @@
   inset: -1px;
   border: 1px solid var(--border-premium);
   border-radius: 50%;
+  opacity: 0.65;
+}
+
+.orbital-node-marker {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 110, 180, 0.75) 42%, rgba(102, 217, 255, 0.5));
+  box-shadow: 0 0 14px rgba(255, 110, 180, 0.45), 0 0 6px rgba(255, 230, 102, 0.35);
+}
+
+@keyframes orbit-spin-z {
+  to { transform: rotateZ(360deg); }
+}
+
+@keyframes orbit-rotate {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 /* Ring 1 - Inner Core */
@@ -333,10 +371,6 @@
   --tilt-x: 30deg;
   --tilt-y: -40deg;
   --z: 52px;
-}
-
-@keyframes orbit-rotate {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 /* Premium Nodes */

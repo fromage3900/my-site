@@ -62,17 +62,30 @@
       shell.className = 'orbital-shell';
       shell.style.width = cfg.size[0] + 'px';
       shell.style.height = cfg.size[1] + 'px';
-      shell.style.setProperty('--duration', cfg.duration + 's');
-      if (cfg.reverse) shell.style.animationDirection = 'reverse';
+
+      const tilt = document.createElement('div');
+      tilt.className = 'orbital-tilt';
+      tilt.style.setProperty('--tilt-x', cfg.tiltX + 'deg');
+      tilt.style.setProperty('--tilt-y', cfg.tiltY + 'deg');
+      tilt.style.setProperty('--z', cfg.z + 'px');
+
+      const spin = document.createElement('div');
+      spin.className = 'orbital-spin';
+      spin.style.setProperty('--duration', cfg.duration + 's');
+      if (cfg.reverse) spin.style.animationDirection = 'reverse';
 
       const ring = document.createElement('div');
       ring.className = 'orbital-path orbital-ring-' + ((index % 6) + 1);
       ring.style.borderColor = cfg.color;
-      ring.style.setProperty('--tilt-x', cfg.tiltX + 'deg');
-      ring.style.setProperty('--tilt-y', cfg.tiltY + 'deg');
-      ring.style.setProperty('--z', cfg.z + 'px');
 
-      shell.appendChild(ring);
+      const node = document.createElement('div');
+      node.className = 'orbital-node-marker';
+      node.setAttribute('aria-hidden', 'true');
+
+      spin.appendChild(ring);
+      spin.appendChild(node);
+      tilt.appendChild(spin);
+      shell.appendChild(tilt);
       system.appendChild(shell);
     });
 
