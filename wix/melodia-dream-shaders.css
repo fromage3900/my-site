@@ -1,0 +1,350 @@
+/* Melodia Dream Shaders — web iridescence + Nikki dreamy glow (CSS "shader" stack) */
+
+:root {
+  /* Canonical Nikki iridescence ramp → CSS */
+  --iri-cyan: #66d9ff;
+  --iri-gold: #ffe666;
+  --iri-purple: #cc99ff;
+  --iri-pearl: #f0dcf0;
+  --iri-seafoam: #7dd3c0;
+  --iri-lavender: #c8b6db;
+  --dream-iri-ramp: linear-gradient(
+    128deg,
+    var(--iri-cyan) 0%,
+    var(--iri-gold) 42%,
+    var(--iri-purple) 78%,
+    var(--iri-cyan) 100%
+  );
+  --dream-aurora: linear-gradient(
+    145deg,
+    rgba(102, 217, 255, 0.14) 0%,
+    rgba(255, 230, 102, 0.1) 38%,
+    rgba(204, 153, 255, 0.12) 72%,
+    rgba(125, 211, 192, 0.08) 100%
+  );
+  --dream-fresnel: 0.35;
+  --dream-hue-shift: 0deg;
+  --dream-mouse-x: 0.5;
+  --dream-mouse-y: 0.5;
+}
+
+/* Ambient iridescent wash on every melodia page */
+.melodia-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.melodia-shell > .dream-aurora-layer,
+.melodia-shell > .dream-sparkle-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.melodia-shell > .dream-aurora-layer {
+  opacity: 0.42;
+  background:
+    radial-gradient(
+      ellipse 80% 55% at calc(var(--dream-mouse-x) * 100%) calc(var(--dream-mouse-y) * 55%),
+      rgba(102, 217, 255, 0.16),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 60% 45% at calc(100% - var(--dream-mouse-x) * 80%) calc(100% - var(--dream-mouse-y) * 40%),
+      rgba(204, 153, 255, 0.12),
+      transparent 52%
+    ),
+    var(--dream-aurora);
+  background-size: 100% 100%, 100% 100%, 240% 240%;
+  mix-blend-mode: soft-light;
+  animation: dream-aurora-drift 28s ease-in-out infinite alternate;
+}
+
+.melodia-shell > .dream-sparkle-layer {
+  opacity: 0.22;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 1.6px),
+    radial-gradient(circle, rgba(255, 230, 102, 0.9) 0 1px, transparent 1.7px),
+    radial-gradient(circle, rgba(102, 217, 255, 0.85) 0 1.2px, transparent 1.8px);
+  background-size: 88px 88px, 142px 142px, 196px 196px;
+  animation: dream-sparkle-twinkle 6s ease-in-out infinite alternate;
+}
+
+@keyframes dream-aurora-drift {
+  0% { background-position: 0% 40%, 100% 60%, 0% 50%; filter: hue-rotate(0deg); }
+  50% { background-position: 20% 50%, 80% 40%, 50% 50%; filter: hue-rotate(18deg); }
+  100% { background-position: 8% 45%, 92% 55%, 100% 50%; filter: hue-rotate(-12deg); }
+}
+
+@keyframes dream-sparkle-twinkle {
+  0%, 100% { opacity: 0.16; transform: translateY(0); }
+  50% { opacity: 0.28; transform: translateY(-6px); }
+}
+
+/* Hero — iridescent fresnel rim + pearl bloom */
+.melodia-shell .hero {
+  position: relative;
+}
+
+.melodia-shell .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 90% 70% at calc(var(--dream-mouse-x) * 100%) calc(var(--dream-mouse-y) * 100%),
+      rgba(255, 230, 102, calc(0.08 + var(--dream-fresnel) * 0.06)),
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 120% 80% at 50% 100%,
+      rgba(102, 217, 255, 0.06),
+      transparent 55%
+    );
+  mix-blend-mode: screen;
+}
+
+.melodia-shell .hero-media img {
+  filter: saturate(1.12) contrast(1.04) brightness(0.82)
+    drop-shadow(0 0 42px rgba(102, 217, 255, 0.08));
+}
+
+.melodia-shell .hero-media::after {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 11, 19, 0.94),
+      rgba(18, 24, 45, 0.72) 44%,
+      rgba(102, 217, 255, 0.06) 72%,
+      rgba(204, 153, 255, 0.1)
+    ),
+    linear-gradient(0deg, rgba(8, 11, 19, 0.96), rgba(8, 11, 19, 0.1) 68%);
+}
+
+/* Dream bloom typography */
+.melodia-shell .hero h1 {
+  text-shadow:
+    0 0 40px rgba(102, 217, 255, 0.18),
+    0 0 80px rgba(204, 153, 255, 0.12),
+    0 2px 24px rgba(8, 11, 19, 0.45);
+}
+
+.melodia-shell .hero h1 em,
+.melodia-shell .hero h1 strong {
+  font-style: italic;
+  background: var(--dream-iri-ramp);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: dream-iri-text 10s ease-in-out infinite;
+}
+
+@keyframes dream-iri-text {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.melodia-shell .hero .lede,
+.melodia-shell .hero .human-lede {
+  text-shadow: 0 0 28px rgba(240, 220, 240, 0.12);
+}
+
+.melodia-shell .kicker,
+.melodia-shell .magazine-kicker {
+  color: var(--iri-gold);
+  text-shadow: 0 0 16px rgba(255, 230, 102, 0.25);
+}
+
+/* Iridescent glass nav */
+.melodia-shell .shell-nav {
+  background:
+    linear-gradient(135deg, rgba(245, 242, 237, 0.9), rgba(240, 220, 245, 0.82));
+  border: 1px solid rgba(201, 168, 106, 0.38);
+  box-shadow:
+    0 20px 60px rgba(34, 26, 42, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 0 0 1px rgba(102, 217, 255, 0.14),
+    0 0 28px rgba(204, 153, 255, 0.08);
+}
+
+/* Cards — ridge iridescence on hover (box-shadow, no pseudo conflict) */
+.melodia-shell .premium-card:hover,
+.melodia-shell .card.premium-card:hover,
+.melodia-shell .alignment-card:hover,
+.melodia-shell .world-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(102, 217, 255, 0.38),
+    0 0 18px rgba(255, 230, 102, 0.14),
+    0 0 36px rgba(204, 153, 255, 0.1),
+    0 12px 32px rgba(201, 168, 106, 0.18);
+  animation: dream-card-glow 5s ease-in-out infinite;
+}
+
+@keyframes dream-card-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(102, 217, 255, 0.38),
+      0 0 18px rgba(255, 230, 102, 0.14),
+      0 0 36px rgba(204, 153, 255, 0.1),
+      0 12px 32px rgba(201, 168, 106, 0.18);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(255, 230, 102, 0.42),
+      0 0 22px rgba(204, 153, 255, 0.16),
+      0 0 40px rgba(102, 217, 255, 0.12),
+      0 12px 32px rgba(201, 168, 106, 0.2);
+  }
+}
+
+.melodia-shell .band.astral,
+.melodia-shell .band.night,
+.melodia-shell .band.deep {
+  position: relative;
+  overflow: hidden;
+}
+
+.melodia-shell .band.astral::before,
+.melodia-shell .band.night::before,
+.melodia-shell .band.deep::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(102, 217, 255, 0.08), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(204, 153, 255, 0.07), transparent 38%),
+    radial-gradient(circle at 50% 50%, rgba(255, 230, 102, 0.04), transparent 50%);
+  animation: dream-band-pulse 14s ease-in-out infinite alternate;
+}
+
+@keyframes dream-band-pulse {
+  from { opacity: 0.65; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.04); }
+}
+
+/* Buttons — jewel refraction shimmer */
+.melodia-shell .button-premium-primary {
+  background: var(--dream-iri-ramp);
+  background-size: 220% 220%;
+  color: var(--void, #0d1224);
+  box-shadow:
+    0 8px 24px rgba(102, 217, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  animation: dream-btn-iri 8s ease-in-out infinite;
+}
+
+@keyframes dream-btn-iri {
+  0%, 100% { background-position: 0% 50%; box-shadow: 0 8px 24px rgba(102, 217, 255, 0.2); }
+  33% { background-position: 50% 50%; box-shadow: 0 8px 28px rgba(255, 230, 102, 0.22); }
+  66% { background-position: 100% 50%; box-shadow: 0 8px 28px rgba(204, 153, 255, 0.2); }
+}
+
+.melodia-shell .button-premium {
+  border-color: rgba(102, 217, 255, 0.22);
+  background: linear-gradient(
+    135deg,
+    rgba(26, 31, 58, 0.92),
+    rgba(42, 48, 85, 0.88)
+  );
+}
+
+/* Fashion ivory bands — pearl wash */
+.melodia-shell.fashion-mode .band.paper,
+.melodia-shell.fashion-mode .band.cloud {
+  background:
+    linear-gradient(180deg, rgba(255, 250, 242, 0.97), rgba(247, 242, 234, 0.94)),
+    radial-gradient(ellipse 70% 50% at 90% 10%, rgba(102, 217, 255, 0.06), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 8% 90%, rgba(204, 153, 255, 0.05), transparent 50%);
+}
+
+.melodia-shell .editorial-rule .diamond {
+  background: var(--dream-iri-ramp);
+  background-size: 200% 200%;
+  animation: dream-iri-text 8s ease-in-out infinite;
+}
+
+/* Orrery nodes — iridescent glow */
+.melodia-shell .melodia-orrery .node,
+.melodia-orrery .node {
+  fill: var(--iri-gold);
+  filter: drop-shadow(0 0 8px rgba(255, 230, 102, 0.55))
+    drop-shadow(0 0 14px rgba(102, 217, 255, 0.35));
+}
+
+.melodia-shell .melodia-orrery .orbit {
+  stroke: rgba(102, 217, 255, 0.42);
+}
+
+/* Passport cards — satin sheen */
+.melodia-shell .passport-card {
+  background:
+    linear-gradient(155deg, rgba(26, 31, 58, 0.98), rgba(42, 48, 85, 0.94)),
+    var(--dream-aurora);
+  background-size: auto, 200% 200%;
+  animation: dream-passport-sheen 16s ease-in-out infinite;
+}
+
+@keyframes dream-passport-sheen {
+  0%, 100% { background-position: 0 0, 0% 50%; }
+  50% { background-position: 0 0, 100% 50%; }
+}
+
+/* Index cosmic hero — boost parallax nebula iridescence */
+.melodia-shell .parallax-layer-3 {
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(102, 217, 255, 0.14) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(204, 153, 255, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 230, 102, 0.08) 0%, transparent 60%);
+  opacity: 0.16;
+}
+
+.melodia-shell .parallax-layer-2 {
+  opacity: 0.16;
+}
+
+/* Light paper heroes — soft iridescent frame */
+.melodia-shell .band.paper .hero,
+.melodia-shell .hero.hero-proof {
+  color: var(--ink, #221a2a);
+}
+
+.melodia-shell .band.paper .hero h1 {
+  text-shadow:
+    0 0 32px rgba(204, 153, 255, 0.12),
+    0 2px 16px rgba(34, 26, 42, 0.08);
+}
+
+@media (max-width: 680px) {
+  .melodia-shell > .dream-aurora-layer {
+    opacity: 0.28;
+  }
+
+  .melodia-shell > .dream-sparkle-layer {
+    opacity: 0.14;
+    background-size: 64px 64px, 108px 108px, 148px 148px;
+  }
+
+  .melodia-shell .hero h1 em {
+    /* Keep gradient text readable on small screens */
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .melodia-shell > .dream-aurora-layer,
+  .melodia-shell > .dream-sparkle-layer,
+  .melodia-shell .button-premium-primary,
+  .melodia-shell .passport-card,
+  .melodia-shell .band.astral::before,
+  .melodia-shell .band.night::before,
+  .melodia-shell .band.deep::before,
+  .melodia-shell .hero h1 em,
+  .melodia-shell .premium-card:hover {
+    animation: none !important;
+  }
+}

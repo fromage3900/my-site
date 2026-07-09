@@ -377,6 +377,10 @@
       global.MelodiaOrrery.upgradeHeroOrreries();
       global.MelodiaOrrery.mountAll();
     }
+
+    if (global.MelodiaDreamShaders) {
+      global.MelodiaDreamShaders.init();
+    }
   }
 
   global.MelodiaEditorial = { init, initParallax, initMobileNav, applyCopy };
