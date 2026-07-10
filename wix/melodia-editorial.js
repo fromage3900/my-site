@@ -4,6 +4,7 @@
 
   const COPY_URL = '../content/site-copy.json';
   const INTAKE_URL = '../generated/unreal_portfolio_intake.json';
+  const BLENDER_INTAKE_URL = '../generated/blender_portfolio_intake.json';
   const NIGHTSHIFT_MANIFEST_URL = '../generated/nightshift_manifest.json';
   const NIGHTSHIFT_ASSET_BASE = '../generated/assets/nightshift/';
   const MATERIAL_LOOPS_MANIFEST_URL = '../generated/material_loops_manifest.json';
@@ -200,6 +201,12 @@
     const img = document.getElementById('heroLeadImage');
     if (!img) return;
     try {
+      const blender = await fetchJson(BLENDER_INTAKE_URL).catch(() => null);
+      if (blender && blender.hero_web_path) {
+        img.src = blender.hero_web_path;
+        img.alt = 'Melusina Vow Cross — EEVEE Komikaze beauty plate';
+        return;
+      }
       const intake = await fetchJson(INTAKE_URL);
       const cards = Array.isArray(intake.render_cards) ? intake.render_cards : [];
       const heroes = cards.filter((c) => c.group === 'hero' && c.web_path);
@@ -219,6 +226,47 @@
     } catch (_err) {
       /* keep static fallback src */
     }
+  }
+
+  function blenderCardHtml(card, fashion) {
+    const href = esc(card.web_path);
+    const title = esc(card.title || card.filename || 'Komikaze plate');
+    const frame = fashion ? ' fashion-frame' : '';
+    const caption = card.caption ? `<p>${esc(card.caption)}</p>` : '';
+    const meta = card.group ? `<span class="meta-label">${esc(card.group)}</span>` : '';
+    return `<a class="image-card${frame} holo-plate" href="${href}"><img src="${href}" alt="${title}" loading="lazy" /><div>${meta}<h3>${title}</h3>${caption}</div></a>`;
+  }
+
+  async function fetchBlenderCards() {
+    const intake = await fetchJson(BLENDER_INTAKE_URL);
+    const cards = Array.isArray(intake.render_cards) ? intake.render_cards : [];
+    return cards.filter((c) => c.web_path);
+  }
+
+  async function hydrateBlenderNprGrid(mountId, groupFilter, maxCount) {
+    const mount = document.getElementById(mountId);
+    if (!mount) return;
+    const fashion = mount.classList.contains('lookbook-grid');
+    try {
+      let cards = await fetchBlenderCards();
+      if (groupFilter) {
+        const groups = Array.isArray(groupFilter) ? groupFilter : [groupFilter];
+        cards = cards.filter((c) => groups.includes(c.group));
+      }
+      cards.sort((a, b) => (b.priority || 0) - (a.priority || 0));
+      if (maxCount) cards = cards.slice(0, maxCount);
+      if (!cards.length) {
+        mount.innerHTML = '<p class="body-copy">No EEVEE / Komikaze plates yet. Run Tools/batch_eevee_komikaze_portfolio.py.</p>';
+        return;
+      }
+      mount.innerHTML = cards.map((c) => blenderCardHtml(c, fashion)).join('');
+    } catch (_err) {
+      mount.innerHTML = '<p class="body-copy">Blender portfolio intake unavailable.</p>';
+    }
+  }
+
+  async function hydrateBlenderShopProof(mountId, maxCount) {
+    await hydrateBlenderNprGrid(mountId, 'ornament', maxCount || 3);
   }
 
   async function hydrateCaptureBriefStats() {
@@ -343,7 +391,38 @@
   }
 
   async function hydrateHeroStrip(maxCount) {
-    await hydrateHeroPlates('heroStrip', maxCount || 3);
+    const mount = document.getElementById('heroStrip');
+    if (!mount) {
+      await hydrateHeroPlates('heroStrip', maxCount || 3);
+      return;
+    }
+    const limit = maxCount || 3;
+    try {
+      const blenderCards = await fetchBlenderCards();
+      const picks = [];
+      const beauty = blenderCards.find((c) => c.id === 'cross_beauty_34');
+      if (beauty) picks.push(beauty);
+      blenderCards
+        .filter((c) => c.hero_candidate && c.asset_id !== 'cross')
+        .sort((a, b) => (b.priority || 0) - (a.priority || 0))
+        .forEach((c) => {
+          if (picks.length < limit && !picks.some((p) => p.id === c.id)) picks.push(c);
+        });
+      if (picks.length < limit) {
+        blenderCards
+          .filter((c) => c.group === 'ornament')
+          .forEach((c) => {
+            if (picks.length < limit && !picks.some((p) => p.id === c.id)) picks.push(c);
+          });
+      }
+      if (picks.length) {
+        mount.innerHTML = picks.map((c) => blenderCardHtml(c, false)).join('');
+        return;
+      }
+    } catch (_err) {
+      /* fall through to Unreal strip */
+    }
+    await hydrateHeroPlates('heroStrip', limit);
   }
 
   function renderProcessSteps(copy, pageKey) {
@@ -911,6 +990,14 @@
     }
     if (options && options.heroGrid) {
       await hydrateHeroPlates('heroGrid', typeof options.heroGrid === 'number' ? options.heroGrid : null);
+    }
+    if (options && options.blenderNprGrid) {
+      const n = typeof options.blenderNprGrid === 'number' ? options.blenderNprGrid : null;
+      await hydrateBlenderNprGrid('blenderNprGrid', null, n);
+    }
+    if (options && options.blenderOrnamentProof) {
+      const n = typeof options.blenderOrnamentProof === 'number' ? options.blenderOrnamentProof : 3;
+      await hydrateBlenderShopProof('blenderOrnamentProof', n);
     }
     if (options && options.constellation) {
       await hydrateRenderConstellation();

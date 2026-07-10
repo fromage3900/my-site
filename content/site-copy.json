@@ -178,12 +178,12 @@
       "hero": {
         "kicker": "Render gallery",
         "headline": "Beauty shots I'm using right now.",
-        "lede": "These pull from my latest Unreal exports. When I capture new angles, ingest refreshes this grid — I don't touch the HTML."
+        "lede": "Unreal world plates plus EEVEE / Komikaze desire-object renders (cross, ornaments, props). Ingest refreshes both grids — I don't hand-edit the HTML."
       },
       "gallery": {
         "eyebrow": "Plates",
         "headline": "Current heroes.",
-        "lede": "Click for full size. Newest stuff tends to float to the top."
+        "lede": "Click for full size. Newest Unreal and Blender NPR plates float to the top."
       },
       "uses": {
         "eyebrow": "Where they go",
