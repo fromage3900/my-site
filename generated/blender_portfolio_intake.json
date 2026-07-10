@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T22:29:09.032735+00:00",
+  "generated_at": "2026-07-10T22:29:50.859496+00:00",
   "engine": "EEVEE",
   "shader_pack": "Komikaze v2",
   "shader_credit": {
@@ -8,8 +8,8 @@
     "url": "https://superhivemarket.com/products/komikaze",
     "creator_url": "https://superhivemarket.com/creators/doublegum"
   },
-  "last_wave": 2,
-  "plate_count": 37,
+  "last_wave": 3,
+  "plate_count": 57,
   "hero_web_path": "../generated/assets/cross/cross_komikaze_beauty_34.png",
   "render_cards": [
     {
@@ -113,6 +113,36 @@
       "shader": "The Wall (Custom Texture)"
     },
     {
+      "id": "gazebo1_beauty_34",
+      "asset_id": "gazebo1",
+      "title": "Melusina Gazebo Variant \u2014 beauty 34",
+      "group": "signature",
+      "filename": "gazebo1_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/signature/gazebo1_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/signature/gazebo1_komikaze_beauty_34.png",
+      "hero_candidate": true,
+      "priority": 100,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
+      "id": "trefoil_beauty_34",
+      "asset_id": "trefoil",
+      "title": "Trefoil Knot \u2014 beauty 34",
+      "group": "signature",
+      "filename": "trefoil_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/signature/trefoil_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/signature/trefoil_komikaze_beauty_34.png",
+      "hero_candidate": true,
+      "priority": 98,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
       "id": "lissajous_macro",
       "asset_id": "lissajous",
       "title": "Lissajous Curve Sculpture \u2014 macro",
@@ -172,6 +202,21 @@
       "shader": "Voronoi Shader (3 Tones)"
     },
     {
+      "id": "gazebo1_three_quarter",
+      "asset_id": "gazebo1",
+      "title": "Melusina Gazebo Variant \u2014 three quarter",
+      "group": "signature",
+      "filename": "gazebo1_komikaze_three_quarter.png",
+      "web_path": "../generated/assets/signature/gazebo1_komikaze_three_quarter.png",
+      "local_relative_path": "generated/assets/signature/gazebo1_komikaze_three_quarter.png",
+      "hero_candidate": true,
+      "priority": 90,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
       "id": "rosette_beauty_34",
       "asset_id": "rosette",
       "title": "Rosette Medallion \u2014 beauty 34",
@@ -184,6 +229,21 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)"
+    },
+    {
+      "id": "trefoil_macro",
+      "asset_id": "trefoil",
+      "title": "Trefoil Knot \u2014 macro",
+      "group": "signature",
+      "filename": "trefoil_komikaze_macro.png",
+      "web_path": "../generated/assets/signature/trefoil_komikaze_macro.png",
+      "local_relative_path": "generated/assets/signature/trefoil_komikaze_macro.png",
+      "hero_candidate": false,
+      "priority": 88,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
     },
     {
       "id": "vault_ribs_beauty_34",
@@ -451,6 +511,21 @@
       "wave": 2
     },
     {
+      "id": "woven_ring_beauty_34",
+      "asset_id": "woven_ring",
+      "title": "Woven Ring \u2014 beauty 34",
+      "group": "ornament",
+      "filename": "woven_ring_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/woven_ring_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/woven_ring_komikaze_beauty_34.png",
+      "hero_candidate": false,
+      "priority": 70,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
       "id": "zenlantern_three_quarter",
       "asset_id": "zenlantern",
       "title": "Zen Lantern \u2014 three quarter",
@@ -463,6 +538,21 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)"
+    },
+    {
+      "id": "torus_knot_beauty_34",
+      "asset_id": "torus_knot",
+      "title": "Torus Knot \u2014 beauty 34",
+      "group": "ornament",
+      "filename": "torus_knot_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/torus_knot_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/torus_knot_komikaze_beauty_34.png",
+      "hero_candidate": false,
+      "priority": 69,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
     },
     {
       "id": "magical_wand_macro",
@@ -479,6 +569,36 @@
       "shader": "Tree Shader *"
     },
     {
+      "id": "quatrefoil_beauty_34",
+      "asset_id": "quatrefoil",
+      "title": "Quatrefoil Arch \u2014 beauty 34",
+      "group": "ornament",
+      "filename": "quatrefoil_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/quatrefoil_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/quatrefoil_komikaze_beauty_34.png",
+      "hero_candidate": false,
+      "priority": 68,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
+      "id": "pendant_finial_beauty_34",
+      "asset_id": "pendant_finial",
+      "title": "Pendant Finial \u2014 beauty 34",
+      "group": "ornament",
+      "filename": "pendant_finial_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/pendant_finial_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/pendant_finial_komikaze_beauty_34.png",
+      "hero_candidate": false,
+      "priority": 67,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
       "id": "sakura_petal_macro",
       "asset_id": "sakura_petal",
       "title": "Sakura Petal \u2014 macro",
@@ -492,6 +612,21 @@
       "engine": "EEVEE",
       "shader": "Tree Shader *",
       "wave": 2
+    },
+    {
+      "id": "door_archway_beauty_34",
+      "asset_id": "door_archway",
+      "title": "Door Archway \u2014 beauty 34",
+      "group": "ornament",
+      "filename": "door_archway_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/door_archway_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/door_archway_komikaze_beauty_34.png",
+      "hero_candidate": false,
+      "priority": 66,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
     },
     {
       "id": "melody_slime_macro",
@@ -524,6 +659,21 @@
       "wave": 2
     },
     {
+      "id": "column_capital_beauty_34",
+      "asset_id": "column_capital",
+      "title": "Column Capital \u2014 beauty 34",
+      "group": "ornament",
+      "filename": "column_capital_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
+      "hero_candidate": false,
+      "priority": 65,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
       "id": "brick1_high_macro",
       "asset_id": "brick1_high",
       "title": "Stylized Brick 01 (high) \u2014 macro",
@@ -539,6 +689,21 @@
       "wave": 2
     },
     {
+      "id": "corbel_beauty_34",
+      "asset_id": "corbel",
+      "title": "Corbel Bracket \u2014 beauty 34",
+      "group": "ornament",
+      "filename": "corbel_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/corbel_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/corbel_komikaze_beauty_34.png",
+      "hero_candidate": false,
+      "priority": 64,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
       "id": "brick2_high_three_quarter",
       "asset_id": "brick2_high",
       "title": "Stylized Brick 02 (high) \u2014 three quarter",
@@ -552,6 +717,141 @@
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 2
+    },
+    {
+      "id": "crown_molding_beauty_34",
+      "asset_id": "crown_molding",
+      "title": "Crown Molding \u2014 beauty 34",
+      "group": "ornament",
+      "filename": "crown_molding_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/crown_molding_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/crown_molding_komikaze_beauty_34.png",
+      "hero_candidate": false,
+      "priority": 63,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
+      "id": "woven_ring_macro",
+      "asset_id": "woven_ring",
+      "title": "Woven Ring \u2014 macro",
+      "group": "ornament",
+      "filename": "woven_ring_komikaze_macro.png",
+      "web_path": "../generated/assets/ornaments/woven_ring_komikaze_macro.png",
+      "local_relative_path": "generated/assets/ornaments/woven_ring_komikaze_macro.png",
+      "hero_candidate": false,
+      "priority": 60,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
+      "id": "torus_knot_three_quarter",
+      "asset_id": "torus_knot",
+      "title": "Torus Knot \u2014 three quarter",
+      "group": "ornament",
+      "filename": "torus_knot_komikaze_three_quarter.png",
+      "web_path": "../generated/assets/ornaments/torus_knot_komikaze_three_quarter.png",
+      "local_relative_path": "generated/assets/ornaments/torus_knot_komikaze_three_quarter.png",
+      "hero_candidate": false,
+      "priority": 59,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
+      "id": "quatrefoil_front",
+      "asset_id": "quatrefoil",
+      "title": "Quatrefoil Arch \u2014 front",
+      "group": "ornament",
+      "filename": "quatrefoil_komikaze_front.png",
+      "web_path": "../generated/assets/ornaments/quatrefoil_komikaze_front.png",
+      "local_relative_path": "generated/assets/ornaments/quatrefoil_komikaze_front.png",
+      "hero_candidate": false,
+      "priority": 58,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
+      "id": "pendant_finial_macro",
+      "asset_id": "pendant_finial",
+      "title": "Pendant Finial \u2014 macro",
+      "group": "ornament",
+      "filename": "pendant_finial_komikaze_macro.png",
+      "web_path": "../generated/assets/ornaments/pendant_finial_komikaze_macro.png",
+      "local_relative_path": "generated/assets/ornaments/pendant_finial_komikaze_macro.png",
+      "hero_candidate": false,
+      "priority": 57,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
+      "id": "door_archway_front",
+      "asset_id": "door_archway",
+      "title": "Door Archway \u2014 front",
+      "group": "ornament",
+      "filename": "door_archway_komikaze_front.png",
+      "web_path": "../generated/assets/ornaments/door_archway_komikaze_front.png",
+      "local_relative_path": "generated/assets/ornaments/door_archway_komikaze_front.png",
+      "hero_candidate": false,
+      "priority": 56,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
+      "id": "column_capital_three_quarter",
+      "asset_id": "column_capital",
+      "title": "Column Capital \u2014 three quarter",
+      "group": "ornament",
+      "filename": "column_capital_komikaze_three_quarter.png",
+      "web_path": "../generated/assets/ornaments/column_capital_komikaze_three_quarter.png",
+      "local_relative_path": "generated/assets/ornaments/column_capital_komikaze_three_quarter.png",
+      "hero_candidate": false,
+      "priority": 55,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
+      "id": "corbel_macro",
+      "asset_id": "corbel",
+      "title": "Corbel Bracket \u2014 macro",
+      "group": "ornament",
+      "filename": "corbel_komikaze_macro.png",
+      "web_path": "../generated/assets/ornaments/corbel_komikaze_macro.png",
+      "local_relative_path": "generated/assets/ornaments/corbel_komikaze_macro.png",
+      "hero_candidate": false,
+      "priority": 54,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
+    },
+    {
+      "id": "crown_molding_front",
+      "asset_id": "crown_molding",
+      "title": "Crown Molding \u2014 front",
+      "group": "ornament",
+      "filename": "crown_molding_komikaze_front.png",
+      "web_path": "../generated/assets/ornaments/crown_molding_komikaze_front.png",
+      "local_relative_path": "generated/assets/ornaments/crown_molding_komikaze_front.png",
+      "hero_candidate": false,
+      "priority": 53,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 3
     }
   ]
 }
