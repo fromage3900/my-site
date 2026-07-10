@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-09T18:00:00Z",
+  "generated_at": "2026-07-10T19:00:00Z",
   "title": "Infold-facing reviewer path",
   "steps": [
     {
@@ -10,33 +10,45 @@
     },
     {
       "step": "02",
-      "href": "world-bible.html",
-      "title": "World Bible",
-      "body": "Four WP pillars, art direction, and capture targets."
+      "href": "sakura-case-study.html",
+      "title": "Sakura case study",
+      "body": "Primary world proof — route, foliage, pearly bloom."
     },
     {
       "step": "03",
+      "href": "recruiter-one-sheet.html",
+      "title": "Recruiter one-sheet",
+      "body": "One-page summary for fast intake."
+    },
+    {
+      "step": "04",
       "href": "hero-renders.html",
       "title": "Hero Renders",
       "body": "NightShift terrain, Nikki grids, Sakura mood plates — beauty first."
     },
     {
-      "step": "04",
+      "step": "05",
       "href": "shader-breakdowns.html",
       "title": "Shader Proof",
       "body": "CelestialNebula + NASA, cosmic/Nikki MI grids, material impact pages."
     },
     {
-      "step": "05",
+      "step": "06",
       "href": "geometry-nodes.html",
       "title": "Geometry & PCG",
-      "body": "Honest pipeline: SurrealArch GN, UE PCG (9,913 ISM), GeometryScript."
+      "body": "Honest pipeline: SurrealArch GN, UE PCG, GeometryScript."
     },
     {
-      "step": "06",
-      "href": "render-constellation.html",
-      "title": "Render Intake",
-      "body": "Live audit signals, intake cards, and next capture needs."
+      "step": "07",
+      "href": "melodia-melusina.html",
+      "title": "Melodia Melusina",
+      "body": "Figma-synced rhythm RPG UI."
+    },
+    {
+      "step": "08",
+      "href": "ornament-kitbash.html",
+      "title": "Ornamental Kitbash",
+      "body": "Optional product — 15 ornaments; Gumroad ZIP coming soon."
     }
   ]
 }
