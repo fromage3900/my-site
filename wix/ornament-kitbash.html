@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-page="ornament-kitbash">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ornamental Architecture Kitbash | Brennan Shepherd</title>
+<meta name="description" content="15 gothic and baroque ornamental meshes for Unreal Engine 5.8 — rose windows, vault ribs, spiral stairs, filigree. FBX + UE pack for environment artists." />
+<link rel="stylesheet" href="melodia-tokens.css">
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-premium-system.css">
+<link rel="stylesheet" href="portfolio-pages.css">
+<link rel="stylesheet" href="melodia-game-ui.css">
+<style>
+.kitbash-hero { padding: 3rem 0; }
+.kitbash-price { font-family: "IBM Plex Mono", monospace; font-size: 1.1rem; color: var(--iri-gold, #ffe666); }
+.kitbash-mesh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1.5rem; }
+.kitbash-mesh-card { padding: 0.75rem; border-radius: 10px; background: rgba(18, 24, 42, 0.92); border: 1px solid rgba(255,255,255,0.12); }
+.kitbash-mesh-card.hero { border-color: rgba(255, 230, 102, 0.35); }
+.kitbash-mesh-card h4 { margin: 0 0 0.35rem; font-family: Fraunces, serif; font-size: 0.95rem; }
+.kitbash-mesh-card .tier { font-family: "IBM Plex Mono", monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--iri-cyan, #66d9ff); }
+.kitbash-mesh-card p { margin: 0; font-size: 0.82rem; line-height: 1.4; color: rgba(240,220,240,0.78); }
+.kitbash-excluded { opacity: 0.75; font-size: 0.85rem; }
+.kitbash-status { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; padding: 0.5rem 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.1); }
+.kitbash-status.pending { color: #ff6eb4; }
+.kitbash-status.ready { color: #66d9ff; }
+</style>
+</head>
+<body>
+<div class="melodia-shell game-mode" data-hero="editorial">
+<header class="shell-nav" aria-label="Portfolio navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="index.html">Home</a>
+    <a href="commissions.html">Commissions</a>
+    <a href="shader-breakdowns.html">Shaders</a>
+    <a href="world-bible.html">Worlds</a>
+  </nav>
+  <a class="nav-cta button-premium" href="#buy">Buy pack</a>
+</header>
+
+<main id="main">
+<section class="band kitbash-hero" aria-labelledby="page-title">
+  <div class="inner">
+    <p class="eyebrow game-eyebrow">Digital product · UE 5.8 + FBX</p>
+    <h1 id="page-title">Ornamental Architecture Kitbash</h1>
+    <p class="lede game-lede">Fifteen procedural gothic and baroque ornaments from the Melodia EnvSandbox library — rose windows, vault ribs, spiral stairs, filigree, and detail trim for stylized fantasy environments.</p>
+    <p class="kitbash-price" id="kitbashPrice">Launch $24 · List $29</p>
+    <p class="kitbash-status pending" id="kitbashExportStatus" aria-live="polite">Export status loading…</p>
+    <div class="button-row" id="buy">
+      <a class="button primary button-premium-primary" id="gumroadBtn" href="#" target="_blank" rel="noopener">Gumroad — coming soon</a>
+      <a class="button button-premium" id="artstationBtn" href="#" target="_blank" rel="noopener">ArtStation — coming soon</a>
+      <a class="button button-premium" href="commissions.html">Custom commissions</a>
+    </div>
+  </div>
+</section>
+
+<section class="band game-surface-band" aria-labelledby="included-title">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow game-eyebrow">Pack contents</p>
+        <h2 id="included-title">15 meshes · 2 material slots · 3 LODs</h2>
+      </div>
+      <p>FBX with collision, Unreal uassets, demo showcase level, commercial license. Pair with stylized toon masters for Infold-adjacent fantasy worlds.</p>
+    </div>
+    <div class="kitbash-mesh-grid" id="kitbashMeshGrid" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="band game-void-band" aria-labelledby="excluded-title">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow game-eyebrow">Scope</p>
+        <h2 id="excluded-title">What this pack is not</h2>
+      </div>
+    </div>
+    <ul class="kitbash-excluded" id="kitbashExcluded"></ul>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="inner">
+    <span>Brennan Shepherd / Environment & Technical Artist</span>
+    <span>Ornamental Kitbash</span>
+  </div>
+</footer>
+</div>
+<script>
+(function () {
+  var catalogUrl = "../generated/ornament_kitbash_catalog.json";
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  }
+  fetch(catalogUrl).then(function (r) { return r.json(); }).then(function (data) {
+    var price = document.getElementById("kitbashPrice");
+    if (price) price.textContent = "Launch $" + data.launch_price_usd + " · List $" + data.list_price_usd;
+    var status = document.getElementById("kitbashExportStatus");
+    if (status && data.export_status) {
+      var ex = data.export_status;
+      status.textContent = "FBX export: " + ex.exported + " / " + ex.total + " (" + ex.status + ")";
+      status.className = "kitbash-status " + (ex.status === "complete" ? "ready" : "pending");
+    }
+    var gum = document.getElementById("gumroadBtn");
+    var art = document.getElementById("artstationBtn");
+    if (gum && data.gumroad_url && data.gumroad_url.indexOf("placeholder") === -1) {
+      gum.href = data.gumroad_url;
+      gum.textContent = "Buy on Gumroad";
+    }
+    if (art && data.artstation_url && data.artstation_url.indexOf("placeholder") === -1) {
+      art.href = data.artstation_url;
+      art.textContent = "Buy on ArtStation";
+    }
+    var grid = document.getElementById("kitbashMeshGrid");
+    if (grid && data.meshes) {
+      data.meshes.forEach(function (m) {
+        var card = el("article", "kitbash-mesh-card " + m.tier);
+        card.appendChild(el("span", "tier", m.tier + " · " + m.pillar));
+        card.appendChild(el("h4", null, m.asset_name.replace("SM_Orn_", "").replace(/_/g, " ")));
+        card.appendChild(el("p", null, m.description));
+        grid.appendChild(card);
+      });
+    }
+    var excl = document.getElementById("kitbashExcluded");
+    if (excl && data.excluded) {
+      data.excluded.forEach(function (item) {
+        var li = el("li");
+        li.innerHTML = "<strong>" + item.name + "</strong> — " + item.reason;
+        excl.appendChild(li);
+      });
+    }
+  }).catch(function () {
+    var status = document.getElementById("kitbashExportStatus");
+    if (status) status.textContent = "Run package_ornament_kitbash.py to generate catalog JSON.";
+  });
+})();
+</script>
+</body>
+</html>

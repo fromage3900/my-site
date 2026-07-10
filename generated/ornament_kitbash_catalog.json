@@ -1,0 +1,284 @@
+{
+  "product_id": "melodia-ornamental-architecture-kitbash-v1",
+  "name": "Melodia Ornamental Architecture Kitbash",
+  "tagline": "15 procedural gothic & baroque ornaments for Unreal Engine 5.8+",
+  "launch_price_usd": 24,
+  "list_price_usd": 29,
+  "mesh_count": 15,
+  "hero_count": 4,
+  "detail_count": 11,
+  "engine": "Unreal Engine 5.8+",
+  "formats": [
+    "FBX",
+    "UAsset"
+  ],
+  "gumroad_url": "https://fromage3900.gumroad.com/l/ornamental-kitbash",
+  "artstation_url": "https://www.artstation.com/marketplace",
+  "meshes": [
+    {
+      "asset_name": "SM_Orn_RoseWindow_8Petal",
+      "key": "RoseWindow_8Petal",
+      "tier": "hero",
+      "pillar": "SpaceCathedral",
+      "description": "Gothic rose window with eight petal lobes and radial tracery ring.",
+      "use_cases": [
+        "cathedral facades",
+        "boss arena backdrops",
+        "celestial shrine oculi"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_RoseWindow_8Petal",
+      "fbx_name": "SM_Orn_RoseWindow_8Petal.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_SpiralStaircase",
+      "key": "Spiral_Staircase",
+      "tier": "hero",
+      "pillar": "SpaceCathedral",
+      "description": "Spiral staircase \u2014 24 steps, two full turns, tower interior hero piece.",
+      "use_cases": [
+        "tower interiors",
+        "vertical route reveals",
+        "cathedral ascent beats"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_SpiralStaircase",
+      "fbx_name": "SM_Orn_SpiralStaircase.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_VaultRibs",
+      "key": "Vault_Ribs",
+      "tier": "hero",
+      "pillar": "SpaceCathedral",
+      "description": "Gothic vaulted ceiling rib cluster with six crossing arches.",
+      "use_cases": [
+        "ceiling kits",
+        "undercroft reveals",
+        "boss room overhead structure"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_VaultRibs",
+      "fbx_name": "SM_Orn_VaultRibs.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_OculusFrame",
+      "key": "Oculus_Frame",
+      "tier": "hero",
+      "pillar": "SpaceCathedral",
+      "description": "Circular oculus frame with sixteen-petal modulation.",
+      "use_cases": [
+        "dome transitions",
+        "sky portals",
+        "celestial observatory walls"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_OculusFrame",
+      "fbx_name": "SM_Orn_OculusFrame.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_QuatrefoilArch",
+      "key": "Quatrefoil_Arch",
+      "tier": "detail",
+      "pillar": "BaroqueGrotto",
+      "description": "Gothic quatrefoil archway with lobed indentations.",
+      "use_cases": [
+        "door surrounds",
+        "shrine thresholds",
+        "underwater grotto entries"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_QuatrefoilArch",
+      "fbx_name": "SM_Orn_QuatrefoilArch.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_GothicTracery",
+      "key": "Gothic_Tracery",
+      "tier": "detail",
+      "pillar": "SpaceCathedral",
+      "description": "Interlaced gothic tracery panel with three vertical divisions.",
+      "use_cases": [
+        "window infill",
+        "screen walls",
+        "balcony rail inserts"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_GothicTracery",
+      "fbx_name": "SM_Orn_GothicTracery.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_DoorArchway",
+      "key": "Door_Archway",
+      "tier": "detail",
+      "pillar": "BaroqueGrotto",
+      "description": "Pointed arch door frame with flanking pillar tubes.",
+      "use_cases": [
+        "gate thresholds",
+        "interior door kits",
+        "modular wall breaks"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_DoorArchway",
+      "fbx_name": "SM_Orn_DoorArchway.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_ColumnCapital",
+      "key": "Column_Capital",
+      "tier": "detail",
+      "pillar": "BaroqueGrotto",
+      "description": "Corinthian-style bell capital with sixteen flared lobes.",
+      "use_cases": [
+        "column stacks",
+        "porch kits",
+        "ruin scatter"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_ColumnCapital",
+      "fbx_name": "SM_Orn_ColumnCapital.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_CrownMolding",
+      "key": "Crown_Molding",
+      "tier": "detail",
+      "pillar": "BaroqueGrotto",
+      "description": "Swept crown molding segment with compound profile curves.",
+      "use_cases": [
+        "cornice runs",
+        "throne dais trim",
+        "interior entablature"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_CrownMolding",
+      "fbx_name": "SM_Orn_CrownMolding.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_CorbelBracket",
+      "key": "Corbel_Bracket",
+      "tier": "detail",
+      "pillar": "BaroqueGrotto",
+      "description": "S-curve corbel bracket for wall-supported ledges.",
+      "use_cases": [
+        "balcony supports",
+        "flying buttress accents",
+        "shelf brackets"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_CorbelBracket",
+      "fbx_name": "SM_Orn_CorbelBracket.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_RosetteMedallion",
+      "key": "Rosette_Medallion",
+      "tier": "detail",
+      "pillar": "SpaceCathedral",
+      "description": "Circular rosette with twelve overlapping petals.",
+      "use_cases": [
+        "ceiling bosses",
+        "floor inlays",
+        "wall medallions"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_RosetteMedallion",
+      "fbx_name": "SM_Orn_RosetteMedallion.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_FiligreeRing",
+      "key": "Filigree_Ring",
+      "tier": "detail",
+      "pillar": "BaroqueGrotto",
+      "description": "Decorative filigree ring with twenty-four wave modulations.",
+      "use_cases": [
+        "chandelier rings",
+        "portal halos",
+        "celestial instrument frames"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_FiligreeRing",
+      "fbx_name": "SM_Orn_FiligreeRing.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_PendantFinial",
+      "key": "Pendant_Finial",
+      "tier": "detail",
+      "pillar": "BaroqueGrotto",
+      "description": "Hanging pendant finial with ridged silhouette taper.",
+      "use_cases": [
+        "lantern drops",
+        "curtain finials",
+        "processional banners"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_PendantFinial",
+      "fbx_name": "SM_Orn_PendantFinial.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_TorusKnot",
+      "key": "TorusKnot_Ornament",
+      "tier": "detail",
+      "pillar": "CosmicOrrery",
+      "description": "Ornamental torus knot (3,2) for cosmic surface decoration.",
+      "use_cases": [
+        "orrery hubs",
+        "magic crests",
+        "jewelry-scale scatter"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_TorusKnot",
+      "fbx_name": "SM_Orn_TorusKnot.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_WovenRing",
+      "key": "Woven_Ring",
+      "tier": "detail",
+      "pillar": "CosmicOrrery",
+      "description": "Three-strand braided ring for orbital decoration.",
+      "use_cases": [
+        "planetarium rings",
+        "gate trim",
+        "celestial machinery"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/Ornament/SM_Orn_WovenRing",
+      "fbx_name": "SM_Orn_WovenRing.fbx"
+    }
+  ],
+  "package_contents": {
+    "fbx": "15 FBX meshes with collision, 2 material slots (Base + Trim), 3 LODs",
+    "unreal": "UE 5.8 project folder: StaticMeshes + optional PCG scatter graphs",
+    "docs": "Installation README, world-scale notes, stylized material pairing guide",
+    "bonus": "Demo level layout L_OrnamentKitbashShowcase (grid showcase)"
+  },
+  "store_tags": [
+    "kitbash",
+    "ornament",
+    "gothic",
+    "baroque",
+    "unreal-engine",
+    "ue5",
+    "environment-art",
+    "modular",
+    "cathedral",
+    "fantasy",
+    "stylized"
+  ],
+  "excluded": [
+    {
+      "name": "Greybox_Kit (SM_Greybox_*, SM_Block_*)",
+      "reason": "Blockout primitives for layout \u2014 not finished ornamental art.",
+      "path": "/Game/EnvSandbox/Greybox_Kit"
+    },
+    {
+      "name": "Surreal Architecture Gen meshes",
+      "reason": "Blender GN output \u2014 separate surreal kitbash product lane.",
+      "path": "deploy/surreal_architecture_gen.py"
+    },
+    {
+      "name": "70_Japanese_Ornament_Alphas",
+      "reason": "Licensed alpha texture pack \u2014 use in your own shaders; not redistributed.",
+      "path": "/Game/EnvSandbox/Textures_Shared/70_Japanese_Ornament_Alphas_vfxMed"
+    },
+    {
+      "name": "Melodia game UI textures",
+      "reason": "2D HUD / rhythm UI lane \u2014 not architectural mesh content.",
+      "path": "/Game/EnvSandbox/Textures/Melodia/GameUI"
+    }
+  ],
+  "ue_paths": {
+    "ornament_dir": "/Game/EnvSandbox/Meshes/Ornament",
+    "demo_level": "/Game/EnvSandbox/Environments/Demo/L_OrnamentKitbashShowcase",
+    "pcg_hero": "/Game/EnvSandbox/PCG/Universal/PCG_OrnamentalArch",
+    "pcg_detail": "/Game/EnvSandbox/PCG/Universal/PCG_OrnamentalDetail"
+  },
+  "generated_at": "2026-07-10T05:44:12.140787+00:00",
+  "export_status": {
+    "status": "pending",
+    "exported": 0,
+    "total": 15
+  },
+  "product_folder": "G:\\EnvironmentPortfolio\\BS_GodFile\\Products\\OrnamentKitbash",
+  "release_zip": "G:\\EnvironmentPortfolio\\BS_GodFile\\Products\\OrnamentKitbash\\releases\\Melodia_Ornamental_Kitbash_v1_20260710.zip"
+}

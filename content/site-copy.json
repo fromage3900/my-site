@@ -230,7 +230,8 @@
         "cards": [
           { "tag": "Hero", "title": "Portfolio key art", "body": "One polished environment frame + crops for web, ArtStation, social." },
           { "tag": "Lookdev", "title": "Stylized material pass", "body": "Direction, swatches, instance notes — fantasy surfaces, not PBR mud." },
-          { "tag": "Page", "title": "Breakdown / case study", "body": "Editorial web page for a tool, shader, or scene — same Melodia shell as my portfolio." }
+          { "tag": "Page", "title": "Breakdown / case study", "body": "Editorial web page for a tool, shader, or scene — same Melodia shell as my portfolio." },
+          { "tag": "Asset", "title": "Ornamental Kitbash", "body": "15 gothic & baroque UE5 ornaments — digital pack ($24 launch) on Gumroad and ArtStation.", "href": "ornament-kitbash.html" }
         ]
       },
       "process": {
@@ -243,6 +244,15 @@
           { "step": "03", "title": "Polish", "body": "Composition, copy, responsive pass if it's web." },
           { "step": "04", "title": "Ship", "body": "PNGs, UE assets, HTML — whatever we agreed on." }
         ]
+      }
+    },
+    "ornament-kitbash": {
+      "title": "Ornamental Architecture Kitbash | Brennan Shepherd",
+      "meta_description": "15 gothic and baroque ornamental meshes for Unreal Engine 5.8 — FBX + UE pack for environment artists.",
+      "hero": {
+        "kicker": "Digital product",
+        "headline": "Ornamental Architecture Kitbash",
+        "lede": "Fifteen procedural ornaments from the Melodia EnvSandbox library — cathedral heroes and baroque detail trim for stylized fantasy worlds."
       }
     }
   }
