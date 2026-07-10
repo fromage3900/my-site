@@ -240,17 +240,17 @@
   box-shadow: 0 8px 24px var(--platinum-glow);
 }
 
-/* Premium Glow Effects */
+/* Premium Glow Effects — hairline accents, not soft glow stacks */
 .premium-glow {
-  box-shadow: 0 0 20px var(--gold-glow);
+  box-shadow: 0 0 0 1px rgba(201, 168, 106, 0.4);
 }
 
 .premium-glow-crystal {
-  box-shadow: 0 0 20px var(--crystal-glow);
+  box-shadow: 0 0 0 1px rgba(102, 217, 255, 0.35);
 }
 
 .premium-glow-platinum {
-  box-shadow: 0 0 20px var(--platinum-glow);
+  box-shadow: 0 0 0 1px rgba(200, 200, 220, 0.35);
 }
 
 /* Premium Borders */

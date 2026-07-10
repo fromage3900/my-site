@@ -139,7 +139,6 @@
 
 .planetarium-core {
   fill: url(#planetarium-core-grad);
-  filter: url(#planetarium-glow);
 }
 
 .planetarium-core-ring {
@@ -155,7 +154,6 @@
 
 .planetarium-node circle.node-body {
   fill: var(--node-color, #ffe666);
-  filter: url(#planetarium-node-glow);
   transition: r 0.25s ease, fill 0.25s ease;
 }
 
@@ -215,7 +213,6 @@
 .planetarium-constellation-line.is-lit {
   stroke: rgba(102, 217, 255, 0.55);
   opacity: 0.85;
-  filter: url(#planetarium-glow);
 }
 
 .planetarium-hud {
