@@ -304,8 +304,44 @@
     });
   }
 
+  function fillAssetGrid(root) {
+    if (!root) return;
+    var assets = [
+      "T_Melodia_FiligreeCorner.png",
+      "T_Melodia_FiligreeDivider.png",
+      "T_Melodia_IriOverlay.png",
+      "T_Melodia_HighwayBG.png",
+      "T_Melodia_EnemyGlow.png",
+      "T_Melodia_ElementWheel.png",
+      "T_Melodia_StaffTile.png",
+      "T_Melodia_Hitline.png",
+      "T_Melodia_SheenSweep.png",
+      "T_Melodia_GradePerfect.png",
+      "T_Melodia_GradeGreat.png",
+      "T_Melodia_GradeGood.png",
+      "T_Melodia_GradeMiss.png",
+      "T_Melodia_NoteHead.png"
+    ];
+    var base = "../generated/assets/melodia-game-ui/";
+    root.innerHTML = "";
+    assets.forEach(function (file) {
+      var tile = document.createElement("figure");
+      tile.className = "game-ui-asset-tile";
+      var img = document.createElement("img");
+      img.src = base + file;
+      img.alt = file.replace(".png", "");
+      img.loading = "lazy";
+      var cap = document.createElement("figcaption");
+      cap.textContent = file;
+      tile.appendChild(img);
+      tile.appendChild(cap);
+      root.appendChild(tile);
+    });
+  }
+
   function init() {
     document.querySelectorAll("[data-codex-grid]").forEach(fillCodexGrid);
+    document.querySelectorAll("[data-game-ui-assets]").forEach(fillAssetGrid);
     document.querySelectorAll(".game-ui-playback-head").forEach(animatePlaybackHead);
     initDecorativeNotes();
     document.querySelectorAll("[data-rhythm-playground]").forEach(function (el) {

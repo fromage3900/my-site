@@ -9,6 +9,7 @@
   --game-magenta: var(--iri-magenta, #ff6eb4);
   --game-surface: rgba(18, 24, 42, 0.92);
   --game-border: rgba(255, 255, 255, 0.12);
+  --game-asset-base: url("../generated/assets/melodia-game-ui/");
 }
 
 .game-ui-showcase {
@@ -76,14 +77,16 @@
   align-items: center;
   gap: 1.5rem;
   padding: 0.35rem 0;
-  font-family: Fraunces, serif;
-  font-size: 0.9rem;
-  color: rgba(232, 197, 106, 0.5);
-  background: linear-gradient(90deg, transparent, rgba(110, 200, 232, 0.08), transparent);
+  min-height: 2.5rem;
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeDivider.png") center / auto 100% no-repeat,
+    linear-gradient(90deg, transparent, rgba(110, 200, 232, 0.08), transparent);
 }
 
 .game-ui-highway-shader {
-  background: linear-gradient(180deg, rgba(4, 6, 12, 1), rgba(8, 10, 20, 1), rgba(4, 6, 12, 1));
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_HighwayBG.png") center / cover no-repeat,
+    linear-gradient(180deg, rgba(4, 6, 12, 1), rgba(8, 10, 20, 1), rgba(4, 6, 12, 1));
 }
 
 .game-ui-playback-head {
@@ -156,7 +159,9 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(216, 110, 200, 0.2), transparent 55%);
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_EnemyGlow.png") 70% 30% / 55% auto no-repeat,
+    radial-gradient(circle at 70% 30%, rgba(216, 110, 200, 0.2), transparent 55%);
   pointer-events: none;
 }
 
@@ -238,9 +243,12 @@
   inset: 0;
   pointer-events: none;
   background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_IriOverlay.png") center / cover no-repeat,
     radial-gradient(ellipse 80% 40% at 50% 0%, rgba(110, 200, 232, 0.18), transparent 60%),
     radial-gradient(ellipse 60% 50% at 100% 100%, rgba(216, 110, 200, 0.12), transparent 55%),
     linear-gradient(135deg, rgba(232, 197, 106, 0.08), transparent 40%, rgba(110, 200, 232, 0.06));
+  mix-blend-mode: screen;
+  opacity: 0.92;
   z-index: 0;
 }
 
@@ -265,9 +273,9 @@
   height: 3.5rem;
   pointer-events: none;
   z-index: 2;
-  border: 2px solid transparent;
-  border-image: linear-gradient(135deg, var(--game-gold), var(--game-cyan), var(--game-magenta)) 1;
-  opacity: 0.55;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCorner.png") center / contain no-repeat;
+  opacity: 0.72;
+  filter: drop-shadow(0 0 8px rgba(102, 217, 255, 0.25));
 }
 
 .game-ui-filigree.tl { top: 0.35rem; left: 0.35rem; border-right: none; border-bottom: none; border-radius: 12px 0 0 0; }
@@ -290,9 +298,10 @@
   left: -60%;
   width: 40%;
   height: 140%;
-  background: linear-gradient(90deg, transparent, rgba(110, 200, 232, 0.22), transparent);
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_SheenSweep.png") center / cover no-repeat;
   transform: skewX(-18deg);
   animation: game-ui-sheen 3.2s ease-in-out infinite;
+  opacity: 0.55;
 }
 
 @keyframes game-ui-sheen {
@@ -403,14 +412,9 @@
 .game-ui-staff::before {
   content: "";
   position: absolute;
-  inset: 1.1rem 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent 1.05rem,
-    rgba(255, 255, 255, 0.12) 1.05rem,
-    rgba(255, 255, 255, 0.12) 1.06rem
-  );
+  inset: 0;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_StaffTile.png") center / 100% auto repeat-y;
+  opacity: 0.85;
 }
 
 .game-ui-staff .clef {
@@ -522,8 +526,8 @@
   left: 1rem;
   right: 1rem;
   bottom: 2.75rem;
-  height: 2px;
-  background: var(--game-gold);
+  height: 8px;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_Hitline.png") center / 100% 100% no-repeat;
   box-shadow: 0 0 12px rgba(232, 197, 106, 0.5);
   pointer-events: none;
 }
@@ -548,10 +552,21 @@
   opacity: 0.75;
 }
 
-.grade-pop.perfect { color: var(--game-gold); }
-.grade-pop.great { color: var(--game-cyan); }
-.grade-pop.good { color: var(--game-pearl); }
-.grade-pop.miss { color: var(--game-magenta); }
+.grade-pop.perfect { color: var(--game-gold); background-image: url("../generated/assets/melodia-game-ui/T_Melodia_GradePerfect.png"); }
+.grade-pop.great { color: var(--game-cyan); background-image: url("../generated/assets/melodia-game-ui/T_Melodia_GradeGreat.png"); }
+.grade-pop.good { color: var(--game-pearl); background-image: url("../generated/assets/melodia-game-ui/T_Melodia_GradeGood.png"); }
+.grade-pop.miss { color: var(--game-magenta); background-image: url("../generated/assets/melodia-game-ui/T_Melodia_GradeMiss.png"); }
+
+.grade-pop.perfect,
+.grade-pop.great,
+.grade-pop.good,
+.grade-pop.miss {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
 
 .game-ui-hud-row {
   display: flex;
@@ -595,13 +610,15 @@
   width: 4.5rem;
   height: 4.5rem;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.3);
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_ElementWheel.png") center / contain no-repeat,
+    rgba(0, 0, 0, 0.3);
   border: 1px solid var(--game-border);
   display: grid;
   place-items: center;
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.55rem;
-  color: var(--game-gold);
+  color: transparent;
 }
 
 .game-ui-dialogue {
@@ -715,4 +732,35 @@
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--game-border);
+}
+
+.game-ui-asset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.game-ui-asset-tile {
+  padding: 0.5rem;
+  border-radius: 10px;
+  background: var(--game-surface);
+  border: 1px solid var(--game-border);
+  text-align: center;
+}
+
+.game-ui-asset-tile img {
+  width: 100%;
+  height: 96px;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 6px;
+}
+
+.game-ui-asset-tile figcaption {
+  margin-top: 0.35rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.04em;
+  color: var(--game-cyan);
+  word-break: break-all;
 }
