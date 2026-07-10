@@ -155,16 +155,26 @@
     }
     var gum = document.getElementById("gumroadBtn");
     var art = document.getElementById("artstationBtn");
-    if (gum && data.gumroad_url && data.gumroad_url.indexOf("placeholder") === -1) {
+    var storeLive = data.store_live === true;
+    var artLive = data.artstation_live === true;
+    if (gum && data.gumroad_url) {
       gum.href = data.gumroad_url;
-      gum.textContent = "Buy on Gumroad — $" + data.launch_price_usd;
-    } else if (gum && data.gumroad_url) {
-      gum.href = data.gumroad_url;
-      gum.textContent = "Gumroad — pre-order link";
+      gum.textContent = storeLive
+        ? ("Buy on Gumroad — $" + data.launch_price_usd)
+        : "Gumroad — coming soon";
+      if (!storeLive) gum.setAttribute("aria-disabled", "true");
+      else gum.removeAttribute("aria-disabled");
     }
-    if (art && data.artstation_url && data.artstation_url.indexOf("placeholder") === -1) {
-      art.href = data.artstation_url;
-      art.textContent = "Buy on ArtStation";
+    if (art && data.artstation_url) {
+      art.href = artLive ? data.artstation_url : "ornament-kitbash.html#buy";
+      art.textContent = artLive ? ("Buy on ArtStation — $" + data.list_price_usd) : "ArtStation — coming soon";
+      if (!artLive) {
+        art.removeAttribute("target");
+        art.setAttribute("aria-disabled", "true");
+      } else {
+        art.setAttribute("target", "_blank");
+        art.removeAttribute("aria-disabled");
+      }
     }
     var grid = document.getElementById("kitbashMeshGrid");
     if (grid && data.meshes) {

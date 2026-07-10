@@ -14,6 +14,8 @@
   ],
   "gumroad_url": "https://fromage3900.gumroad.com/l/ornamental-kitbash",
   "artstation_url": "https://www.artstation.com/marketplace",
+  "store_live": false,
+  "artstation_live": false,
   "meshes": [
     {
       "asset_name": "SM_Orn_RoseWindow_8Petal",
@@ -273,7 +275,7 @@
     "pcg_hero": "/Game/EnvSandbox/PCG/Universal/PCG_OrnamentalArch",
     "pcg_detail": "/Game/EnvSandbox/PCG/Universal/PCG_OrnamentalDetail"
   },
-  "generated_at": "2026-07-10T16:51:07.313148+00:00",
+  "generated_at": "2026-07-10T18:51:45.506270+00:00",
   "export_status": {
     "status": "pending",
     "exported": 0,

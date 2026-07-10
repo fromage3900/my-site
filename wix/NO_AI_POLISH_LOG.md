@@ -33,13 +33,22 @@ Done:
 
 Monetization: still blocked on in-editor FBX (15 uassets present, 0 FBX). See `EXPORT_STATUS.md`.
 
-## Pass 5 — next kill list
+## Pass 5 — 2026-07-10 (effects budget)
 
-1. Chrome pages: drop redundant `magical` from `data-effects` where `data-mg=chrome`
-2. Cap pink glow in `enhanced-cosmic-hero-premium.css` for soft/chrome
-3. Document motion budget in this log after Pass 5
-4. Kitbash Buy flips when Gumroad ZIP live
-5. Figma page 09 pixel re-capture when store screenshots exist
+Done:
+1. Chrome pages: `data-effects="starfield,holo"` (dropped redundant `magical`)
+2. Cap pink glow on soft/chrome — orrery core/paths → gold/cyan hairlines; MG accent muted to gold
+3. Motion budget (intentional only): bow pulse, ribbon shimmer, crystal tick, orrery spin — no extra glow stacks
+4. Kitbash Buy gated on catalog `store_live` (stays “coming soon” until Gumroad ZIP)
+5. Figma page 09 still waits on store screenshots
+
+## Pass 6 — 2026-07-10 (IA / copy light)
+
+Done:
+1. One-sheet nav: Resume → Sakura → Hub → Shop; CTA opens resume
+2. Hub review path: Resume → Sakura → One-sheet first; Shop marked Soon
+3. Commissions secondary — hub CTA, Asset card “Coming soon”
+4. Filler trim on hub lede / passport blurb
 
 ## How to run a pass
 

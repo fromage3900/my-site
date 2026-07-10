@@ -376,3 +376,22 @@
 @media (prefers-reduced-motion: reduce) {
   .mg-contract-ring { animation: none; }
 }
+
+/* Pass 5 — soft/chrome: mute pink accent glow (full tier keeps Magical Girl pink) */
+.melodia-shell[data-mg="soft"],
+.melodia-shell[data-mg="chrome"] {
+  --mg-accent-pink: rgba(201, 168, 106, 0.72);
+}
+
+.melodia-shell[data-mg="soft"] .button:hover,
+.melodia-shell[data-mg="soft"] .button-premium:hover,
+.melodia-shell[data-mg="soft"] .nav-cta:hover,
+.melodia-shell[data-mg="soft"] .portal-card:hover,
+.melodia-shell[data-mg="soft"] .path-row:hover,
+.melodia-shell[data-mg="chrome"] .button:hover,
+.melodia-shell[data-mg="chrome"] .button-premium:hover,
+.melodia-shell[data-mg="chrome"] .nav-cta:hover,
+.melodia-shell[data-mg="chrome"] .portal-card:hover,
+.melodia-shell[data-mg="chrome"] .path-row:hover {
+  box-shadow: 0 0 0 1px rgba(201, 168, 106, 0.32);
+}

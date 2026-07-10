@@ -662,3 +662,30 @@ h3 {
 .melodia-shell[data-mg="soft"] .parallax-layer-4 {
   display: none;
 }
+
+/* Pass 5 — cap pink glow on soft/chrome (gold/cyan hairline instead) */
+.melodia-shell[data-mg="soft"] .orrery-system,
+.melodia-shell[data-mg="chrome"] .orrery-system {
+  filter: drop-shadow(0 0 12px rgba(201, 168, 106, 0.1));
+}
+
+.melodia-shell[data-mg="soft"] .orrery-core,
+.melodia-shell[data-mg="chrome"] .orrery-core {
+  background: radial-gradient(
+    circle at 38% 32%,
+    rgba(255, 255, 255, 0.92),
+    rgba(201, 168, 106, 0.4) 40%,
+    rgba(102, 217, 255, 0.22) 72%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 16px rgba(201, 168, 106, 0.28),
+    0 0 28px rgba(102, 217, 255, 0.12);
+}
+
+.melodia-shell[data-mg="soft"] .orbital-path,
+.melodia-shell[data-mg="chrome"] .orbital-path {
+  box-shadow:
+    0 0 8px rgba(201, 168, 106, 0.1),
+    0 0 6px rgba(102, 217, 255, 0.06);
+}

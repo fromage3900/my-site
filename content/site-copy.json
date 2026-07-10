@@ -217,11 +217,11 @@
     },
     "commissions": {
       "title": "Commissions | Brennan Shepherd",
-      "meta_description": "Freelance stylized environment work — kitbash, polish, renders, breakdown pages.",
+      "meta_description": "Freelance stylized environment work — lookdev, renders, breakdown pages. Asset packs listed when they ship.",
       "hero": {
         "kicker": "Commissions",
         "headline": "I take on select freelance work.",
-        "lede": "Environment kitbash, lookdev passes, hero renders, and the occasional breakdown page if you want something that looks like this site. Rates are flexible while I'm building the book — message me with scope."
+        "lede": "Lookdev, hero frames, and breakdown pages. Digital asset packs are listed separately when they ship — start with scope, not a storefront."
       },
       "packages": {
         "eyebrow": "Menu",
@@ -231,7 +231,7 @@
           { "tag": "Hero", "title": "Portfolio key art", "body": "One polished environment frame + crops for web, ArtStation, social." },
           { "tag": "Lookdev", "title": "Stylized material pass", "body": "Direction, swatches, instance notes — fantasy surfaces, not PBR mud." },
           { "tag": "Page", "title": "Breakdown / case study", "body": "Editorial web page for a tool, shader, or scene — same Melodia shell as my portfolio." },
-          { "tag": "Asset", "title": "Ornamental Kitbash", "body": "15 gothic & baroque UE5 ornaments — digital pack ($24 launch) on Gumroad and ArtStation.", "href": "ornament-kitbash.html" }
+          { "tag": "Asset", "title": "Ornamental Kitbash", "body": "15 gothic & baroque UE5 ornaments — product page live; Gumroad ZIP coming soon ($24 launch).", "href": "ornament-kitbash.html" }
         ]
       },
       "process": {
