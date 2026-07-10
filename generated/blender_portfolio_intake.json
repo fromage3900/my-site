@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T22:29:50.859496+00:00",
+  "generated_at": "2026-07-10T22:35:04.113784+00:00",
   "engine": "EEVEE",
   "shader_pack": "Komikaze v2",
   "shader_credit": {
@@ -8,8 +8,8 @@
     "url": "https://superhivemarket.com/products/komikaze",
     "creator_url": "https://superhivemarket.com/creators/doublegum"
   },
-  "last_wave": 3,
-  "plate_count": 57,
+  "last_wave": 4,
+  "plate_count": 61,
   "hero_web_path": "../generated/assets/cross/cross_komikaze_beauty_34.png",
   "render_cards": [
     {
@@ -143,6 +143,21 @@
       "wave": 3
     },
     {
+      "id": "violin_beauty_34",
+      "asset_id": "violin",
+      "title": "Melodia Violin \u2014 beauty 34",
+      "group": "props",
+      "filename": "violin_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/props/violin_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/props/violin_komikaze_beauty_34.png",
+      "hero_candidate": true,
+      "priority": 96,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "engine": "EEVEE",
+      "shader": "The Wall (Custom Texture)",
+      "wave": 4
+    },
+    {
       "id": "lissajous_macro",
       "asset_id": "lissajous",
       "title": "Lissajous Curve Sculpture \u2014 macro",
@@ -244,6 +259,51 @@
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 3
+    },
+    {
+      "id": "violin_front",
+      "asset_id": "violin",
+      "title": "Melodia Violin \u2014 front",
+      "group": "props",
+      "filename": "violin_komikaze_front.png",
+      "web_path": "../generated/assets/props/violin_komikaze_front.png",
+      "local_relative_path": "generated/assets/props/violin_komikaze_front.png",
+      "hero_candidate": true,
+      "priority": 86,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "engine": "EEVEE",
+      "shader": "The Wall (Custom Texture)",
+      "wave": 4
+    },
+    {
+      "id": "violin_macro",
+      "asset_id": "violin",
+      "title": "Melodia Violin \u2014 macro",
+      "group": "props",
+      "filename": "violin_komikaze_macro.png",
+      "web_path": "../generated/assets/props/violin_komikaze_macro.png",
+      "local_relative_path": "generated/assets/props/violin_komikaze_macro.png",
+      "hero_candidate": false,
+      "priority": 86,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "engine": "EEVEE",
+      "shader": "The Wall (Custom Texture)",
+      "wave": 4
+    },
+    {
+      "id": "violin_three_quarter",
+      "asset_id": "violin",
+      "title": "Melodia Violin \u2014 three quarter",
+      "group": "props",
+      "filename": "violin_komikaze_three_quarter.png",
+      "web_path": "../generated/assets/props/violin_komikaze_three_quarter.png",
+      "local_relative_path": "generated/assets/props/violin_komikaze_three_quarter.png",
+      "hero_candidate": true,
+      "priority": 86,
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "engine": "EEVEE",
+      "shader": "The Wall (Custom Texture)",
+      "wave": 4
     },
     {
       "id": "vault_ribs_beauty_34",
