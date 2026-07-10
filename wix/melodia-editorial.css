@@ -167,8 +167,10 @@ img { display: block; max-width: 100%; }
   padding: 10px 14px;
   border: 1px solid var(--line);
   border-radius: 3px;
-  background: rgba(7, 9, 18, 0.78);
-  backdrop-filter: blur(18px);
+  /* Opaque enough that hero orrery never ghosts through the banner */
+  background: rgba(7, 9, 18, 0.94);
+  isolation: isolate;
+  backdrop-filter: blur(12px) saturate(1.05);
   box-shadow: 0 20px 60px rgba(7, 9, 18, 0.42);
 }
 
@@ -386,7 +388,24 @@ img { display: block; max-width: 100%; }
   z-index: 4;
   width: min(100%, var(--max));
   margin: 0 auto;
-  padding: 144px 46px 48px;
+  /* Figma-aligned: brand/nav clear, hero type sits mid-fold not buried */
+  padding: clamp(120px, 18vh, 168px) clamp(24px, 4vw, 46px) clamp(40px, 6vh, 64px);
+  max-width: 1180px;
+}
+
+.hero .hero-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: min(72vh, 720px);
+}
+
+.hero .hero-inner > * {
+  max-width: 38rem;
+}
+
+.hero .hero-inner h1 {
+  max-width: 16ch;
 }
 
 .kicker, .eyebrow, .meta-label {

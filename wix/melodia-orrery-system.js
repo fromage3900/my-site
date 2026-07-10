@@ -102,12 +102,6 @@
     if (!system.querySelector('.orrery-core')) {
       const core = document.createElement('div');
       core.className = 'orrery-core';
-      core.innerHTML = `
-        <div class="orrery-axis-gimbal" aria-hidden="true">
-          <span class="axis-line equator"></span>
-          <span class="axis-line meridian"></span>
-        </div>
-      `;
       system.appendChild(core);
     }
   }
@@ -134,15 +128,15 @@
     const systems = document.querySelectorAll('.orrery-system');
     if (!systems.length) return;
 
+    /* Soft parallax only — no rotateX/Y (read as warped chrome in the banner/hero) */
     const isMobile = window.matchMedia('(max-width: 680px)').matches;
-    const rangeX = isMobile ? 10 : 22;
-    const rangeY = isMobile ? 8 : 16;
+    const range = isMobile ? 4 : 8;
 
     const onMove = (e) => {
-      const mx = (e.clientX / window.innerWidth - 0.5) * rangeX;
-      const my = (e.clientY / window.innerHeight - 0.5) * rangeY;
+      const mx = (e.clientX / window.innerWidth - 0.5) * range;
+      const my = (e.clientY / window.innerHeight - 0.5) * range * 0.6;
       systems.forEach((sys) => {
-        sys.style.transform = `rotateX(${-my}deg) rotateY(${mx}deg)`;
+        sys.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
       });
     };
     window.addEventListener('pointermove', onMove, { passive: true });

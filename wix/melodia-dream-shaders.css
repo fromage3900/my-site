@@ -135,22 +135,21 @@
 }
 
 .melodia-shell > .dream-aurora-layer {
-  opacity: 0.42;
+  opacity: 0.18;
   background:
     radial-gradient(
-      ellipse 80% 55% at calc(var(--dream-mouse-x) * 100%) calc(var(--dream-mouse-y) * 55%),
-      rgba(102, 217, 255, 0.16),
+      ellipse 70% 40% at 70% 35%,
+      rgba(102, 217, 255, 0.08),
       transparent 58%
     ),
     radial-gradient(
-      ellipse 60% 45% at calc(100% - var(--dream-mouse-x) * 80%) calc(100% - var(--dream-mouse-y) * 40%),
-      rgba(204, 153, 255, 0.12),
+      ellipse 50% 35% at 20% 70%,
+      rgba(204, 153, 255, 0.06),
       transparent 52%
-    ),
-    var(--dream-aurora);
-  background-size: 100% 100%, 100% 100%, 240% 240%;
+    );
+  background-size: 100% 100%, 100% 100%;
   mix-blend-mode: soft-light;
-  animation: dream-aurora-drift 28s ease-in-out infinite alternate;
+  animation: none;
 }
 
 .melodia-shell > .dream-sparkle-layer {
@@ -407,17 +406,13 @@
   50% { background-position: 0 0, 100% 50%; }
 }
 
-/* Index cosmic hero — boost parallax nebula iridescence */
+/* Index cosmic hero — nebula layer disabled (warped smear); keep slot quiet */
 .melodia-shell .parallax-layer-3 {
-  background:
-    radial-gradient(ellipse at 20% 30%, rgba(102, 217, 255, 0.14) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(204, 153, 255, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(255, 230, 102, 0.08) 0%, transparent 60%);
-  opacity: 0.16;
+  display: none;
 }
 
 .melodia-shell .parallax-layer-2 {
-  opacity: 0.16;
+  opacity: 0;
 }
 
 /* Light paper heroes — soft iridescent frame */

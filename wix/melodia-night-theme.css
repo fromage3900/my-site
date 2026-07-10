@@ -106,7 +106,7 @@ body {
 }
 
 /* Make sparkle + aurora read better over night */
-.melodia-shell > .dream-aurora-layer { opacity: 0.52; mix-blend-mode: screen; }
+.melodia-shell > .dream-aurora-layer { opacity: 0.22; mix-blend-mode: soft-light; }
 .melodia-shell > .dream-sparkle-layer { opacity: 0.28; }
 
 /* Keep readable contrast on buttons */

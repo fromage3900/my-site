@@ -50,6 +50,15 @@ Done:
 3. Commissions secondary — hub CTA, Asset card “Coming soon”
 4. Filler trim on hub lede / passport blurb
 
+## Pass 7 — 2026-07-10 (warp / orrery / type alignment)
+
+Done:
+1. Flatten hero orrery — no rotateX layer, gentler ring tilt, hide axis gimbal smear
+2. Nav glass opaque (`0.94`) so orrery no longer ghosts through top banner
+3. Kill warped nebula/constellation layers + mouse-driven aurora smear; parallax translate-only
+4. Hero type block: mid-fold alignment, `16ch` headline measure (Syne / Instrument Serif / Bricolage / Azeret unchanged)
+5. Index effects: dropped `instruments` chrome clutter
+
 ## How to run a pass
 
 1. Open live site + local `wix/` side by side

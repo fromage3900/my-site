@@ -62,11 +62,9 @@ class PremiumParallax {
     this.currentY += (this.mouseY - this.currentY) * this.smoothing;
 
     this.layers.forEach((layer) => {
-      const moveX = this.currentX * layer.depth * 32;
-      const moveY = this.currentY * layer.depth * 28;
-      const rotateX = this.currentY * layer.depth * 2.2;
-      const rotateY = this.currentX * layer.depth * 2.2;
-      layer.element.style.transform = `translate3d(${moveX}px, ${moveY}px, ${layer.depth * 12}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      const moveX = this.currentX * layer.depth * 18;
+      const moveY = this.currentY * layer.depth * 14;
+      layer.element.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
     });
 
     requestAnimationFrame(() => this.animate());
