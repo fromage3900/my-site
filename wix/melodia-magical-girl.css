@@ -170,24 +170,31 @@
   content: none;
 }
 
-.shell-nav .nav-cta,
-.shell-nav .nav-cta.button-premium {
-  align-self: center;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.melodia-shell .shell-nav > a.nav-cta,
+.melodia-shell .shell-nav > a.nav-cta.button-premium {
+  align-self: center !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   gap: 0.4rem;
   box-sizing: border-box;
-  min-height: 40px;
-  height: 40px;
-  padding: 0 14px;
-  line-height: 1;
-  margin: 0;
+  min-height: 40px !important;
+  height: 40px !important;
+  max-height: 40px;
+  padding: 0 14px !important;
+  line-height: 1 !important;
+  margin: 0 !important;
   white-space: nowrap;
+  transform: none;
 }
 
-.shell-nav .nav-cta::before,
-.shell-nav .nav-cta.button-premium::before {
+.melodia-shell .shell-nav > a.nav-cta:hover,
+.melodia-shell .shell-nav > a.nav-cta.button-premium:hover {
+  transform: none; /* avoid vertical jump in the fixed header */
+}
+
+.melodia-shell .shell-nav > a.nav-cta::before,
+.melodia-shell .shell-nav > a.nav-cta.button-premium::before {
   content: "✦";
   font-size: 0.58rem;
   color: rgba(255, 110, 180, 0.62);
