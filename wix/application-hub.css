@@ -15,6 +15,30 @@
   padding: 10px 0;
 }
 
+.planetarium-disclosure {
+  border: 1px solid var(--border-gold, rgba(201, 168, 106, 0.28));
+  padding: 1rem 1.25rem 1.25rem;
+  background: rgba(7, 9, 18, 0.35);
+}
+
+.planetarium-disclosure > summary {
+  cursor: pointer;
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.planetarium-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.planetarium-disclosure[open] > summary {
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.85rem;
+}
+
 .identity-panel {
   position: relative;
   overflow: hidden;
@@ -516,7 +540,7 @@
   height: 18px;
   clip-path: polygon(50% 0, 60% 36%, 100% 50%, 60% 64%, 50% 100%, 40% 64%, 0 50%, 40% 36%);
   background: var(--gold);
-  filter: drop-shadow(0 0 10px rgba(201, 168, 106, 0.55));
+  opacity: 0.95;
   flex: 0 0 auto;
 }
 

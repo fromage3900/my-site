@@ -44,7 +44,7 @@
   height: 7px;
   transform: rotate(45deg);
   background: var(--fashion-foil);
-  box-shadow: 0 0 12px rgba(200, 164, 94, 0.35);
+  box-shadow: 0 0 0 1px rgba(200, 164, 94, 0.4);
 }
 
 .monogram-stamp {
@@ -132,7 +132,7 @@
 
 .orrery-atelier .node.quatrefoil {
   fill: rgba(228, 201, 144, 0.85);
-  filter: drop-shadow(0 0 8px rgba(228, 201, 144, 0.5));
+  opacity: 0.95;
 }
 
 .orrery-atelier .fashion-cross {
