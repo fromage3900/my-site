@@ -1,17 +1,73 @@
 {
-  "generated_at": "2026-07-10T22:35:04.113784+00:00",
+  "generated_at": "2026-07-10T22:39:04.481451+00:00",
   "engine": "EEVEE",
-  "shader_pack": "Komikaze v2",
+  "shader_pack": "scene materials + studio (open blend)",
   "shader_credit": {
     "pack": "Komikaze",
     "author": "DoubleGum (Rahul Parihar)",
     "url": "https://superhivemarket.com/products/komikaze",
-    "creator_url": "https://superhivemarket.com/creators/doublegum"
+    "creator_url": "https://superhivemarket.com/creators/doublegum",
+    "note": "Character/violin plates keep authored materials; NPR props use Komikaze."
   },
-  "last_wave": 4,
-  "plate_count": 61,
+  "plate_count": 65,
   "hero_web_path": "../generated/assets/cross/cross_komikaze_beauty_34.png",
   "render_cards": [
+    {
+      "id": "melusina_beauty_34",
+      "asset_id": "melusina",
+      "title": "Melusina \u2014 beauty 34",
+      "group": "character",
+      "filename": "melusina_eevee_beauty_34.png",
+      "web_path": "../generated/assets/character/melusina_eevee_beauty_34.png",
+      "local_relative_path": "generated/assets/character/melusina_eevee_beauty_34.png",
+      "hero_candidate": true,
+      "priority": 135,
+      "caption": "EEVEE \u00b7 authored materials \u00b7 Melodia studio",
+      "engine": "EEVEE",
+      "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend"
+    },
+    {
+      "id": "melusina_portrait",
+      "asset_id": "melusina",
+      "title": "Melusina \u2014 portrait",
+      "group": "character",
+      "filename": "melusina_eevee_portrait.png",
+      "web_path": "../generated/assets/character/melusina_eevee_portrait.png",
+      "local_relative_path": "generated/assets/character/melusina_eevee_portrait.png",
+      "hero_candidate": true,
+      "priority": 135,
+      "caption": "EEVEE \u00b7 authored materials \u00b7 Melodia studio",
+      "engine": "EEVEE",
+      "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend"
+    },
+    {
+      "id": "melusina_front",
+      "asset_id": "melusina",
+      "title": "Melusina \u2014 front",
+      "group": "character",
+      "filename": "melusina_eevee_front.png",
+      "web_path": "../generated/assets/character/melusina_eevee_front.png",
+      "local_relative_path": "generated/assets/character/melusina_eevee_front.png",
+      "hero_candidate": true,
+      "priority": 125,
+      "caption": "EEVEE \u00b7 authored materials \u00b7 Melodia studio",
+      "engine": "EEVEE",
+      "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend"
+    },
+    {
+      "id": "melusina_three_quarter",
+      "asset_id": "melusina",
+      "title": "Melusina \u2014 three quarter",
+      "group": "character",
+      "filename": "melusina_eevee_three_quarter.png",
+      "web_path": "../generated/assets/character/melusina_eevee_three_quarter.png",
+      "local_relative_path": "generated/assets/character/melusina_eevee_three_quarter.png",
+      "hero_candidate": true,
+      "priority": 125,
+      "caption": "EEVEE \u00b7 authored materials \u00b7 Melodia studio",
+      "engine": "EEVEE",
+      "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend"
+    },
     {
       "id": "cross_beauty_34",
       "asset_id": "cross",
