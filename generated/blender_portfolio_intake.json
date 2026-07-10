@@ -15,7 +15,7 @@
       "local_relative_path": "generated/assets/cross/cross_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 110,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)"
     },
@@ -29,7 +29,7 @@
       "local_relative_path": "generated/assets/cross/cross_komikaze_front.png",
       "hero_candidate": true,
       "priority": 100,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)"
     },
@@ -43,7 +43,7 @@
       "local_relative_path": "generated/assets/cross/cross_komikaze_low_angle.png",
       "hero_candidate": false,
       "priority": 100,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)"
     },
@@ -57,7 +57,7 @@
       "local_relative_path": "generated/assets/cross/cross_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 100,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)"
     },
@@ -71,7 +71,7 @@
       "local_relative_path": "generated/assets/cross/cross_komikaze_silhouette.png",
       "hero_candidate": false,
       "priority": 100,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)"
     },
@@ -85,7 +85,7 @@
       "local_relative_path": "generated/assets/ornaments/filigree_ring_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 90,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)"
     },
@@ -99,7 +99,7 @@
       "local_relative_path": "generated/assets/ornaments/rosette_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 88,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)"
     },
@@ -113,7 +113,7 @@
       "local_relative_path": "generated/assets/ornaments/filigree_ring_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 80,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)"
     },
@@ -127,7 +127,7 @@
       "local_relative_path": "generated/assets/props/zenlantern_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 80,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)"
     },
@@ -141,7 +141,7 @@
       "local_relative_path": "generated/assets/props/magical_wand_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 78,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 Tree Shader *",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Tree Shader *",
       "engine": "EEVEE",
       "shader": "Tree Shader *"
     },
@@ -155,7 +155,7 @@
       "local_relative_path": "generated/assets/ornaments/rosette_komikaze_three_quarter.png",
       "hero_candidate": false,
       "priority": 78,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)"
     },
@@ -169,7 +169,7 @@
       "local_relative_path": "generated/assets/ornaments/rose_window_komikaze_front.png",
       "hero_candidate": false,
       "priority": 76,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)"
     },
@@ -183,7 +183,7 @@
       "local_relative_path": "generated/assets/props/zenlantern_komikaze_three_quarter.png",
       "hero_candidate": true,
       "priority": 70,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)"
     },
@@ -197,9 +197,15 @@
       "local_relative_path": "generated/assets/props/magical_wand_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 68,
-      "caption": "EEVEE \u00b7 Komikaze \u00b7 Tree Shader *",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Tree Shader *",
       "engine": "EEVEE",
       "shader": "Tree Shader *"
     }
-  ]
+  ],
+  "shader_credit": {
+    "pack": "Komikaze",
+    "author": "DoubleGum (Rahul Parihar)",
+    "url": "https://superhivemarket.com/products/komikaze",
+    "creator_url": "https://superhivemarket.com/creators/doublegum"
+  }
 }
