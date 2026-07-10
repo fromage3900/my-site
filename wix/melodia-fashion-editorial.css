@@ -24,7 +24,7 @@
   gap: 14px;
   margin: 0 0 28px;
   color: var(--fashion-champagne);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.28em;
@@ -55,7 +55,7 @@
   border: 1px solid rgba(200, 164, 94, 0.45);
   border-radius: 50%;
   color: var(--fashion-champagne);
-  font-family: Cinzel, Georgia, serif;
+  font-family: var(--font-brand);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -157,7 +157,7 @@
   border: 1px solid rgba(200, 164, 94, 0.4);
   background: linear-gradient(180deg, rgba(16, 23, 54, 0.92), rgba(7, 9, 18, 0.88));
   color: rgba(236, 234, 244, 0.88);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -179,14 +179,14 @@
 .image-card.fashion-frame { position: relative; }
 
 .lookbook-grid .image-card h3 {
-  font-family: Fraunces, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 500;
   letter-spacing: -0.01em;
 }
 
 .human-lede {
-  font-family: Fraunces, Georgia, serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.35rem;
   line-height: 1.48;

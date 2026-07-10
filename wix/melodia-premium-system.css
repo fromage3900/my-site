@@ -140,7 +140,7 @@
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.03);
   color: var(--text-primary);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -177,7 +177,7 @@
 /* Premium Typography */
 .premium-kicker {
   color: var(--text-accent);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   line-height: 1.7;
   font-weight: 600;
@@ -187,7 +187,7 @@
 
 .premium-headline {
   color: var(--text-primary);
-  font-family: Fraunces, Georgia, serif;
+  font-family: var(--font-display);
   font-weight: 500;
   letter-spacing: 0;
   text-shadow: 0 0 30px rgba(201, 168, 106, 0.2);
@@ -195,7 +195,7 @@
 
 .premium-lede {
   color: rgba(236, 234, 242, 0.86);
-  font-family: Fraunces, Georgia, serif;
+  font-family: var(--font-display);
   font-style: italic;
   line-height: 1.36;
 }

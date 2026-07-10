@@ -48,7 +48,7 @@
 }
 
 .game-eyebrow {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -62,7 +62,7 @@
 }
 
 .game-lede code {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.85em;
 }
 
@@ -172,7 +172,7 @@
 }
 
 .game-ui-enemy-card .tag {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.58rem;
   letter-spacing: 0.08em;
   padding: 0.2rem 0.5rem;
@@ -185,13 +185,13 @@
 
 .game-ui-enemy-card h3 {
   margin: 0 0 0.35rem;
-  font-family: Fraunces, serif;
+  font-family: var(--font-display);
   color: var(--game-pearl);
 }
 
 .game-ui-enemy-card .telegraph {
   margin: 0 0 0.75rem;
-  font-family: Fraunces, serif;
+  font-family: var(--font-display);
   font-size: 0.95rem;
   color: rgba(240, 220, 240, 0.85);
 }
@@ -200,7 +200,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.62rem;
   color: var(--game-cyan);
 }
@@ -257,7 +257,7 @@
   position: absolute;
   top: 0.5rem;
   right: 0.75rem;
-  font-family: Fraunces, serif;
+  font-family: var(--font-display);
   font-size: 0.85rem;
   letter-spacing: 0.35em;
   color: rgba(232, 197, 106, 0.35);
@@ -362,14 +362,14 @@
   align-items: center;
   padding: 0.75rem 1.25rem;
   background: var(--game-surface);
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .game-ui-topbar .phase { color: var(--game-cyan); }
-.game-ui-topbar .combo { color: var(--game-gold); font-family: Fraunces, serif; font-size: 1rem; letter-spacing: 0; text-transform: none; }
+.game-ui-topbar .combo { color: var(--game-gold); font-family: var(--font-display); font-size: 1rem; letter-spacing: 0; text-transform: none; }
 
 .game-ui-sheet {
   padding: 0.75rem 1rem;
@@ -386,7 +386,7 @@
 
 .game-ui-sheet-head h3 {
   margin: 0;
-  font-family: Fraunces, serif;
+  font-family: var(--font-display);
   font-size: 1rem;
   color: var(--game-pearl);
 }
@@ -394,7 +394,7 @@
 .game-ui-sheet-meta {
   display: flex;
   gap: 0.75rem;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
 }
 
@@ -469,7 +469,7 @@
 
 .game-ui-play-hint {
   margin: 0;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   color: rgba(240, 220, 240, 0.7);
 }
@@ -509,7 +509,7 @@
   position: absolute;
   left: 0.5rem;
   bottom: 0.35rem;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   opacity: 0.7;
@@ -541,13 +541,13 @@
   border-radius: 999px;
   background: var(--game-surface);
   border: 2px solid var(--game-border);
-  font-family: Fraunces, serif;
+  font-family: var(--font-display);
   font-size: 1.25rem;
   letter-spacing: 0.04em;
 }
 
 .grade-pop small {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.58rem;
   opacity: 0.75;
 }
@@ -582,7 +582,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.65rem;
   letter-spacing: 0.08em;
 }
@@ -616,7 +616,7 @@
   border: 1px solid var(--game-border);
   display: grid;
   place-items: center;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.55rem;
   color: transparent;
 }
@@ -630,7 +630,7 @@
 }
 
 .game-ui-dialogue .speaker {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   color: var(--game-gold);
@@ -639,7 +639,7 @@
 
 .game-ui-dialogue p {
   margin: 0;
-  font-family: Fraunces, serif;
+  font-family: var(--font-display);
   font-size: 0.95rem;
   line-height: 1.4;
   color: var(--game-pearl);
@@ -653,7 +653,7 @@
 }
 
 .game-ui-figma-link {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
 }
 
@@ -681,7 +681,7 @@
 
 .game-ui-codex h4 {
   margin: 0 0 0.75rem;
-  font-family: Fraunces, serif;
+  font-family: var(--font-display);
   font-size: 1rem;
   color: var(--game-pearl);
 }
@@ -696,7 +696,7 @@
   padding: 0.35rem 0.5rem;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.04);
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.58rem;
   letter-spacing: 0.04em;
   color: var(--game-cyan);
@@ -758,7 +758,7 @@
 
 .game-ui-asset-tile figcaption {
   margin-top: 0.35rem;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.52rem;
   letter-spacing: 0.04em;
   color: var(--game-cyan);

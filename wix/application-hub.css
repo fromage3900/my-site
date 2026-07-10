@@ -73,7 +73,7 @@
   right: 14px;
   writing-mode: vertical-rl;
   color: rgba(201, 168, 106, 0.2);
-  font-family: Cinzel, Georgia, serif;
+  font-family: var(--font-brand);
   font-size: 2.65rem;
   line-height: 1;
   pointer-events: none;
@@ -107,7 +107,7 @@
   display: block;
   margin-top: 18px;
   color: var(--iris);
-  font-family: var(--font-display, Fraunces, Georgia, serif);
+  font-family: var(--font-display, var(--font-display));
   font-size: 1.12rem;
   letter-spacing: 0.01em;
   text-shadow:
@@ -118,7 +118,7 @@
 .jp-title::after {
   content: " ✦";
   color: rgba(255, 230, 102, 0.86);
-  font-family: var(--font-mono, "IBM Plex Mono", monospace);
+  font-family: var(--font-mono, var(--font-mono));
   font-size: 0.66rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -201,7 +201,7 @@
 .escher-glyphs span {
   position: absolute;
   color: rgba(228, 201, 144, 0.58);
-  font-family: Fraunces, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 5.4rem;
   line-height: 0.9;
   text-shadow: 0 0 24px rgba(228, 201, 144, 0.35);
@@ -242,7 +242,7 @@
   display: block;
   margin-bottom: 8px;
   color: var(--gold-soft);
-  font-family: Fraunces, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 500;
 }
@@ -302,7 +302,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 14px;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.66rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -313,7 +313,7 @@
   position: relative;
   z-index: 1;
   margin: 16px 0 6px;
-  font-family: Fraunces, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 2.15rem;
   font-weight: 500;
   line-height: 1;
@@ -333,7 +333,7 @@
   gap: 18px;
   padding: 7px 0;
   border-bottom: 1px solid rgba(201, 168, 106, 0.18);
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -352,7 +352,7 @@
 .passport-tag {
   border: 1px solid var(--border-gold);
   padding: 7px 10px;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.66rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -389,7 +389,7 @@
   margin: 12px auto 0;
   max-width: 520px;
   color: rgba(233, 229, 242, 0.74);
-  font-family: Fraunces, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.25rem;
   font-style: italic;
   line-height: 1.45;
@@ -400,7 +400,7 @@
   z-index: 1;
   text-align: center;
   color: rgba(233, 229, 242, 0.62);
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -416,7 +416,7 @@
 .about-copy { max-width: 780px; }
 .about-copy p {
   color: rgba(233, 229, 242, 0.78);
-  font-family: Fraunces, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.35rem;
   line-height: 1.5;
 }
@@ -451,7 +451,7 @@
 .technical-appendix summary {
   cursor: pointer;
   color: var(--gold-soft);
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -472,7 +472,7 @@
   border: 1px solid var(--border-gold);
   padding: 8px 10px;
   color: rgba(232, 228, 242, 0.76);
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.66rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;

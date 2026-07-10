@@ -273,12 +273,11 @@
     "pcg_hero": "/Game/EnvSandbox/PCG/Universal/PCG_OrnamentalArch",
     "pcg_detail": "/Game/EnvSandbox/PCG/Universal/PCG_OrnamentalDetail"
   },
-  "generated_at": "2026-07-10T05:44:12.140787+00:00",
+  "generated_at": "2026-07-10T16:51:07.313148+00:00",
   "export_status": {
     "status": "pending",
     "exported": 0,
     "total": 15
   },
-  "product_folder": "G:\\EnvironmentPortfolio\\BS_GodFile\\Products\\OrnamentKitbash",
-  "release_zip": "G:\\EnvironmentPortfolio\\BS_GodFile\\Products\\OrnamentKitbash\\releases\\Melodia_Ornamental_Kitbash_v1_20260710.zip"
+  "product_folder": "G:\\EnvironmentPortfolio\\BS_GodFile\\Products\\OrnamentKitbash"
 }

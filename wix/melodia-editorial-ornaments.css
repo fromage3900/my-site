@@ -56,7 +56,7 @@
   justify-content: center;
   gap: 14px;
   margin: 0 0 28px;
-  font-family: var(--font-mono, "IBM Plex Mono", monospace);
+  font-family: var(--font-mono, var(--font-mono));
   font-size: 0.68rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;

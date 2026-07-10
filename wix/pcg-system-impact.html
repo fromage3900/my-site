@@ -8,21 +8,23 @@
   <link rel="stylesheet" href="melodia-luxury-type.css">
 <link rel="stylesheet" href="portfolio-luxury-bridge.css">
 <link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-fashion-editorial.css">
 <link rel="stylesheet" href="melodia-premium-system.css">
 <link rel="stylesheet" href="portfolio-pages.css">
   <style>
     .impact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
     .impact-card{border:1px solid rgba(201,168,106,.35);background:rgba(16,23,54,.82);overflow:hidden}
-    .impact-card .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,rgba(18,24,45,.14),rgba(200,164,94,.10));display:grid;place-items:center;color:rgba(236,234,244,.62);font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+    .impact-card .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,rgba(18,24,45,.14),rgba(200,164,94,.10));display:grid;place-items:center;color:rgba(236,234,244,.62);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
     .impact-card img{width:100%;height:100%;object-fit:cover;display:block}
     .impact-card .body{padding:16px 18px}
     .impact-card .body p{color:rgba(236,234,244,.72);line-height:1.6}
     .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
-    .pillrow span{display:inline-flex;align-items:center;padding:7px 9px;border:1px solid rgba(201,168,106,.35);font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#9b8fc4;background:rgba(16,23,54,.55)}
+    .pillrow span{display:inline-flex;align-items:center;padding:7px 9px;border:1px solid rgba(201,168,106,.35);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#9b8fc4;background:rgba(16,23,54,.55)}
     @media(max-width:980px){.impact-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
+<div class="melodia-shell fashion-mode" data-hero="editorial" data-effects="starfield,holo,magical">
   <header class="shell-nav" aria-label="Portfolio navigation">
     <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
     <nav class="nav-links" aria-label="Sections">
@@ -92,7 +94,8 @@
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="inner"><span>Brennan Shepherd / Environment & Technical Artist</span><span>PCG system impact page</span></div></footer>
+  <footer class="footer"><div class="inner"><span data-copy="global.footer.left">Brennan Shepherd / Environment & Technical Artist</span><span data-copy="global.footer.right">Melodia editorial portfolio</span></div></footer>
+</div>
 
   <script>
     const INTAKE_URL = '../generated/unreal_portfolio_intake.json';

@@ -50,7 +50,7 @@
     background: rgba(7, 9, 18, 0.55);
     color: rgba(236, 234, 244, 0.86);
     cursor: pointer;
-    font-family: var(--font-mono, "IBM Plex Mono", monospace);
+    font-family: var(--font-mono, var(--font-mono));
     font-size: 0.62rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;

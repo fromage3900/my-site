@@ -61,7 +61,8 @@
 <section class="band paper fashion-band">
   <div class="inner">
     <div class="editorial-rule"><span class="diamond" aria-hidden="true"></span><span>Material previews</span><span class="diamond" aria-hidden="true"></span></div>
-    <div class="section-head"><div><h2>Swatch plates that actually read.</h2></div><p class="human-lede">The old families-review capture was underexposed (checkerboard spheres). These showcase grids are the current proof set — <a href="sdf-material-gallery.html">open the per-instance MI gallery</a> for all 24 NightShift spheres.</p></div>
+    <div class="section-head"><div><h2>Swatch plates that actually read.</h2></div><p class="human-lede">Studio PP loops replace checkerboard spheres — <a href="material-loop-gallery.html">open the material loop gallery</a> for animated MI proof. Static NightShift grids remain in the <a href="sdf-material-gallery.html">per-instance MI gallery</a>.</p></div>
+    <div id="miLoopHero" class="image-grid" style="margin-bottom:24px" aria-live="polite"></div>
     <div class="image-grid" id="materialPreviewGrid">
       <figure class="image-card premium-card material-proof-frame"><img src="../generated/assets/nightshift/grid_cosmic_all.png" alt="Cosmic SDF material instance preview grid" loading="lazy" /><div><h3>Cosmic family grid</h3><p>Nine cosmic instances — nebula, starfield, aurora veil, void deep.</p></div></figure>
       <figure class="image-card premium-card material-proof-frame"><img src="../generated/assets/nightshift/grid_nikki_heroes.png" alt="Nikki hero SDF material preview grid" loading="lazy" /><div><h3>Nikki hero grid</h3><p>Six magical-girl SDF heroes — Rosy Quartz, Ivory Scrollwork, Nebula Veil, Starfield Dust.</p></div></figure>
@@ -80,6 +81,7 @@
       <a class="portal-card premium-card accent-gold" href="universal-material-impact.html"><span class="portal-step">Proof</span><div><h3>Universal Material Impact</h3><p>In-scene before/after slots.</p></div><span class="portal-open">Open →</span></a>
       <a class="portal-card premium-card accent-sakura" href="pcg-system-impact.html"><span class="portal-step">PCG</span><div><h3>PCG System Impact</h3><p>Route proof and dressing variation.</p></div><span class="portal-open">Open →</span></a>
       <a class="portal-card premium-card accent-iris" href="../generated/technical/pcg-scatter-design-sheet.html"><span class="portal-step">Scatter</span><div><h3>PCG Scatter Materials</h3><p>How generated meshes get instances.</p></div><span class="portal-open">Open →</span></a>
+      <a class="portal-card premium-card accent-gold" href="material-loop-gallery.html"><span class="portal-step">Loop</span><div><h3>Material Loop Gallery</h3><p>Animated MI previews — studio PP, pillar backdrops, profile swatches.</p></div><span class="portal-open">Open →</span></a>
       <a class="portal-card premium-card accent-gold" href="sdf-material-gallery.html"><span class="portal-step">MI</span><div><h3>SDF Material Gallery</h3><p>Per-instance NightShift previews — cosmic and Nikki hero spheres.</p></div><span class="portal-open">Open →</span></a>
     </div>
   </div>
@@ -95,6 +97,6 @@
 <script src="melodia-starfield.js"></script>
 <script src="melodia-dream-shaders.js"></script>
 <script src="melodia-editorial.js"></script>
-<script>MelodiaEditorial.init({ page: 'shader-breakdowns', latestBreakdownPlate: true });</script>
+<script>MelodiaEditorial.init({ page: 'shader-breakdowns', latestBreakdownPlate: true, materialLoopGallery: true });</script>
 </body>
 </html>

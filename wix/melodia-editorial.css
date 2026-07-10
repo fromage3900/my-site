@@ -74,7 +74,7 @@ body {
     radial-gradient(circle at 82% 18%, rgba(204, 153, 255, 0.08), transparent 36%),
     linear-gradient(180deg, var(--ivory), #0b0f1f);
   color: var(--ink);
-  font-family: var(--font-body, Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  font-family: var(--font-body);
   letter-spacing: var(--tracking-body, 0);
 }
 a { color: inherit; text-decoration: none; }
@@ -177,7 +177,7 @@ img { display: block; max-width: 100%; }
   align-items: center;
   gap: 12px;
   padding: 0 8px;
-  font-family: var(--font-brand, Cinzel, Georgia, serif);
+  font-family: var(--font-brand);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -391,7 +391,7 @@ img { display: block; max-width: 100%; }
 .kicker, .eyebrow, .meta-label {
   margin: 0;
   color: var(--gold-soft);
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 600;
   line-height: 1.7;
@@ -401,7 +401,7 @@ img { display: block; max-width: 100%; }
 
 h1, h2, h3 {
   margin: 0;
-  font-family: var(--font-display, Fraunces, Georgia, serif);
+  font-family: var(--font-display, var(--font-display));
   font-weight: 500;
   letter-spacing: 0;
 }
@@ -421,7 +421,7 @@ em { color: var(--gold); font-style: italic; }
   max-width: 720px;
   margin: 28px 0 0;
   color: rgba(233, 229, 242, 0.86);
-  font-family: Fraunces, Georgia, serif;
+  font-family: var(--font-display);
   font-size: clamp(1.25rem, 2.4vw, 1.65rem);
   font-style: italic;
   line-height: 1.36;
@@ -454,7 +454,7 @@ em { color: var(--gold); font-style: italic; }
   display: block;
   margin-top: 8px;
   color: var(--lavender);
-  font-family: Fraunces, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.55rem;
   font-weight: 500;
   line-height: 1.1;
@@ -708,7 +708,7 @@ em { color: var(--gold); font-style: italic; }
   position: relative;
   z-index: 1;
   color: var(--gold);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -742,7 +742,7 @@ em { color: var(--gold); font-style: italic; }
   border: 1px solid rgba(200, 164, 94, 0.5);
   background: var(--astral);
   color: var(--lavender);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 0.66rem;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -765,7 +765,7 @@ em { color: var(--gold); font-style: italic; }
 .one-sheet-tagline {
   margin: 18px 0 0;
   color: rgba(233, 229, 242, 0.62);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;

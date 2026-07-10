@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-page="ornament-kitbash">
+<html lang="en" data-page="ornament-kitbash" data-display-font="syne">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,17 +13,24 @@
 <link rel="stylesheet" href="melodia-game-ui.css">
 <style>
 .kitbash-hero { padding: 3rem 0; }
-.kitbash-price { font-family: "IBM Plex Mono", monospace; font-size: 1.1rem; color: var(--iri-gold, #ffe666); }
+.kitbash-price { font-family: var(--font-mono); font-size: 1.1rem; color: var(--iri-gold, #ffe666); }
 .kitbash-mesh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1.5rem; }
 .kitbash-mesh-card { padding: 0.75rem; border-radius: 10px; background: rgba(18, 24, 42, 0.92); border: 1px solid rgba(255,255,255,0.12); }
 .kitbash-mesh-card.hero { border-color: rgba(255, 230, 102, 0.35); }
-.kitbash-mesh-card h4 { margin: 0 0 0.35rem; font-family: Fraunces, serif; font-size: 0.95rem; }
-.kitbash-mesh-card .tier { font-family: "IBM Plex Mono", monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--iri-cyan, #66d9ff); }
+.kitbash-mesh-card h4 { margin: 0 0 0.35rem; font-family: var(--font-display); font-size: 0.95rem; }
+.kitbash-mesh-card .tier { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--iri-cyan, #66d9ff); }
 .kitbash-mesh-card p { margin: 0; font-size: 0.82rem; line-height: 1.4; color: rgba(240,220,240,0.78); }
 .kitbash-excluded { opacity: 0.75; font-size: 0.85rem; }
-.kitbash-status { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; padding: 0.5rem 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.1); }
+.kitbash-status { font-family: var(--font-mono); font-size: 0.72rem; padding: 0.5rem 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.1); }
 .kitbash-status.pending { color: #ff6eb4; }
 .kitbash-status.ready { color: #66d9ff; }
+.kitbash-includes { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.kitbash-includes li { padding: 0.85rem 0.9rem; border: 1px solid rgba(255,255,255,0.12); background: rgba(18,24,42,0.75); }
+.kitbash-includes strong { display: block; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--iri-gold, #ffe666); margin-bottom: 0.35rem; }
+.kitbash-includes span { font-size: 0.88rem; color: rgba(240,220,240,0.85); line-height: 1.35; }
+@media (max-width: 720px) {
+  .kitbash-hero { padding: 2rem 0 1.5rem; }
+}
 </style>
 </head>
 <body>
@@ -52,6 +59,12 @@
       <a class="button button-premium" id="artstationBtn" href="#" target="_blank" rel="noopener">ArtStation — coming soon</a>
       <a class="button button-premium" href="commissions.html">Custom commissions</a>
     </div>
+    <ul class="kitbash-includes" aria-label="Pack highlights">
+      <li><strong>Meshes</strong><span>15 ornaments · 4 hero · 11 detail</span></li>
+      <li><strong>Formats</strong><span>FBX + Unreal 5.8 uassets</span></li>
+      <li><strong>Lookdev</strong><span>Base + Trim slots · 3 LODs</span></li>
+      <li><strong>License</strong><span>Commercial games / film / client</span></li>
+    </ul>
   </div>
 </section>
 
@@ -65,6 +78,40 @@
       <p>FBX with collision, Unreal uassets, demo showcase level, commercial license. Pair with stylized toon masters for Infold-adjacent fantasy worlds.</p>
     </div>
     <div class="kitbash-mesh-grid" id="kitbashMeshGrid" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="band game-surface-band" aria-labelledby="tech-title">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow game-eyebrow">Technical</p>
+        <h2 id="tech-title">Ready for lookdev</h2>
+      </div>
+      <p>Centimeter scale, architectural hero sizing. Two material slots (Base + Trim). Three LODs. Simple collision. Works with Substrate Toon and stylized universal masters.</p>
+    </div>
+    <ul class="kitbash-excluded">
+      <li><strong>Engine</strong> — Unreal Engine 5.8+ (FBX also for Blender / Maya / Unity)</li>
+      <li><strong>Slots</strong> — Base (body) + Trim (accents / iridescent edges)</li>
+      <li><strong>License</strong> — Commercial use in games, film, and client work</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band game-void-band" aria-labelledby="faq-title">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow game-eyebrow">FAQ</p>
+        <h2 id="faq-title">Before you buy</h2>
+      </div>
+    </div>
+    <ul class="kitbash-excluded" id="kitbashFaq">
+      <li><strong>Textures included?</strong> — No. Meshes are slot-ready for your stylized masters.</li>
+      <li><strong>Greybox / surreal packs?</strong> — Separate products. This SKU is ornaments only.</li>
+      <li><strong>Japanese alpha pack?</strong> — Not redistributed (third-party).</li>
+      <li><strong>Custom work?</strong> — See <a href="commissions.html">commissions</a>.</li>
+    </ul>
   </div>
 </section>
 
@@ -110,7 +157,10 @@
     var art = document.getElementById("artstationBtn");
     if (gum && data.gumroad_url && data.gumroad_url.indexOf("placeholder") === -1) {
       gum.href = data.gumroad_url;
-      gum.textContent = "Buy on Gumroad";
+      gum.textContent = "Buy on Gumroad — $" + data.launch_price_usd;
+    } else if (gum && data.gumroad_url) {
+      gum.href = data.gumroad_url;
+      gum.textContent = "Gumroad — pre-order link";
     }
     if (art && data.artstation_url && data.artstation_url.indexOf("placeholder") === -1) {
       art.href = data.artstation_url;
