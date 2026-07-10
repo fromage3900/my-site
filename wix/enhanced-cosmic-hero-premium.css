@@ -656,3 +656,9 @@ h3 {
     justify-content: center;
   }
 }
+
+/* Soft MG tier — quieter cosmic heroes (fewer parallax layers) */
+.melodia-shell[data-mg="soft"] .parallax-layer-3,
+.melodia-shell[data-mg="soft"] .parallax-layer-4 {
+  display: none;
+}

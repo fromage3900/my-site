@@ -1,5 +1,20 @@
 /* Application hub — layout extensions on melodia-editorial */
 
+.proof-snapshot {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  max-width: none;
+}
+
+.passport-grid-compact {
+  grid-template-columns: repeat(2, minmax(0, 220px));
+  gap: 12px 28px;
+}
+
+.passport-grid-compact .passport-cell {
+  padding: 10px 0;
+}
+
 .identity-panel {
   position: relative;
   overflow: hidden;

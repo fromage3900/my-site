@@ -11,15 +11,23 @@ Done:
 4. Magical-girl `data-mg` tiers (full/soft/chrome/off)
 5. Hover-only ribbon accents; wish-stage only on bow
 
-## Pass 2 — next kill list (pick 5)
+## Pass 2 — 2026-07-10 (shipped after this entry)
 
-1. Hub hero still dense — trim passport grid noise on first viewport
-2. Cosmic hero parallax layers on commissions — consider fewer layers on soft tier
-3. `design-specs.html` / dossier pages still minified one-liners — readability pass
-4. Remaining `drop-shadow` stacks in `melodia-editorial.css` orrery nodes
-5. Live QA: hard-refresh fonts on gh-pages (Syne / Instrument / Bricolage / Azeret)
-6. Kitbash Buy still “coming soon” until Gumroad ZIP live
-7. Figma page 09 still checklist-only — re-capture live frames when shots exist
+Done:
+1. Hub hero — passport moved below fold; compact Target + Pipeline only
+2. Soft tier — hide cosmic parallax layers 3–4 via `enhanced-cosmic-hero-premium.css`
+3. Pretty-print design-specs + dossier HTML; Shop on design-specs nav
+4. Cap editorial orrery / brand-mark / cosmic-instruments drop-shadows
+5. Live QA — fonts Syne/Instrument/Bricolage/Azeret; MG tiers full/soft/off/chrome OK
+
+## Pass 3 — next kill list (pick 5)
+
+1. Hub body still dense below fold (alignment cards / planetarium) — one-job section trim
+2. Cosmic soft pages may still load unused parallax DOM — remove nodes on commissions if CSS hide is not enough
+3. Remaining glow in `melodia-fashion-editorial.css` / passport embeds
+4. Kitbash Buy still “coming soon” until Gumroad ZIP live
+5. Figma page 09 pixel re-capture when store screenshots exist
+6. Minified hub header/nav line — pretty-print for maintainability
 
 ## How to run a pass
 
