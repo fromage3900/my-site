@@ -40,7 +40,7 @@ Done:
 2. Cap pink glow on soft/chrome — orrery core/paths → gold/cyan hairlines; MG accent muted to gold
 3. Motion budget (intentional only): bow pulse, ribbon shimmer, crystal tick, orrery spin — no extra glow stacks
 4. Kitbash Buy gated on catalog `store_live` (stays “coming soon” until Gumroad ZIP)
-5. Figma page 09 still waits on store screenshots
+5. Figma page **02** + **13** synced 2026-07-10; page **09** still waits on store screenshots
 
 ## Pass 6 — 2026-07-10 (IA / copy light)
 

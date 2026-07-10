@@ -9,7 +9,7 @@ Clean, intentional magical-girl chrome across Melodia — not more overlays.
 | `melodia-magical-girl.css` | Live | Pink/rose/gold/cyan tokens; ambient on `fashion-mode` / cosmic |
 | `melodia-magical-girl.js` | Live | Mounts `.mg-layer`, bow wish-toggle; ambient auto-on for fashion/cosmic |
 | `data-effects*=magical` | Most pages | Booted via `melodia-editorial.js` + script include |
-| Type SSOT | New | Syne / Instrument Serif / Bricolage / Azeret — **Figma page 02 still stale** |
+| Type SSOT | Live | Syne / Instrument Serif / Bricolage / Azeret — **Figma page 02 synced 2026-07-10** |
 | Shop CTAs | Wired | Home `#shop`, one-sheet, hub, commissions, kitbash |
 
 **Problem:** MG is ambient + optional wish-mode, but not *assembled* — accents fight starfield/orrery/holo, type in Figma ≠ live CSS, and product pages inherit fashion chrome that should stay quieter.
@@ -25,7 +25,7 @@ Clean, intentional magical-girl chrome across Melodia — not more overlays.
 | Code Connect | `pipeline/figma/code_connect_map.json` | Figma ↔ Wix CSS/HTML |
 | Gaps | `FIGMA_LAYOUT_GAPS.md` | Known layout debt |
 
-**Not integrated yet for MG:** no Figma page for bows/ribbons/wish chrome; page 02 typography still Fraunces/Plex-era; page 09 website frames not re-shot after type + shop pass.
+**Figma MG (2026-07-10):** page **13 Magical Girl Chrome** board built (tiers + accents + motion budget). Page **09** website frames still wait on store screenshots.
 
 ## Assembly goals
 
