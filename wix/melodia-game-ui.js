@@ -9,7 +9,7 @@
     "Serenade", "Waltz", "Hymn", "Fanfare", "Elegy", "Coda"
   ];
 
-  var BPM = 128;
+  var BPM = 120;
   var BEAT_MS = 60000 / BPM;
   var WINDOWS = { perfect: 90, great: 120, good: 160 };
   var LANE_KEYS = { d: 0, f: 1, j: 2, k: 3, a: 0, s: 1 };

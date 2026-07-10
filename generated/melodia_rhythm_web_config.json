@@ -13,7 +13,7 @@
       "good": 1.0,
       "miss": 0.4
     },
-    "default_bpm": 128
+    "default_bpm": 120
   },
   "phases": [
     "command",
