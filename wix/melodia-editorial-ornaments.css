@@ -259,6 +259,82 @@
   content: "✦ ✧ ✦ ✧ ✦";
 }
 
+/* Rhythm / Game UI–inspired editorial dividers (CSS-only; no missing PNG deps) */
+.editorial-rhythm-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin: 0.35rem auto 1.35rem;
+  max-width: 28rem;
+  font-family: var(--font-mono, "Azeret Mono", monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 230, 102, 0.72);
+  user-select: none;
+}
+
+.editorial-rhythm-divider::before,
+.editorial-rhythm-divider::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  max-width: 7.5rem;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 110, 180, 0.45),
+    rgba(255, 230, 102, 0.55),
+    rgba(102, 217, 255, 0.4),
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(255, 110, 180, 0.12);
+}
+
+.editorial-rhythm-divider .glyph {
+  display: inline-flex;
+  gap: 0.55rem;
+  color: rgba(255, 110, 180, 0.78);
+  letter-spacing: 0.35em;
+  text-shadow: 0 0 14px rgba(255, 110, 180, 0.28);
+}
+
+.editorial-rhythm-divider.sheet::before,
+.editorial-rhythm-divider.sheet::after {
+  height: 2px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 6px,
+      rgba(102, 217, 255, 0.22) 6px,
+      rgba(102, 217, 255, 0.22) 7px
+    ),
+    linear-gradient(90deg, transparent, rgba(255, 230, 102, 0.35), transparent);
+}
+
+.melodia-shell[data-mg="full"] .editorial-rhythm-divider .glyph,
+.melodia-shell[data-mg="soft"] .editorial-rhythm-divider .glyph {
+  color: rgba(255, 110, 180, 0.88);
+}
+
+.melodia-shell.mg-wish-mode .editorial-rhythm-divider::before,
+.melodia-shell.mg-wish-mode .editorial-rhythm-divider::after {
+  box-shadow: 0 0 16px rgba(255, 110, 180, 0.28);
+}
+
+/* Soft MG lift on section kickers */
+.melodia-shell[data-mg="full"] .magazine-kicker,
+.melodia-shell[data-mg="soft"] .magazine-kicker {
+  color: rgba(255, 182, 214, 0.92);
+}
+
+.melodia-shell[data-mg="full"] .band.fashion-band .section-head h2,
+.melodia-shell[data-mg="soft"] .band.fashion-band .section-head h2 {
+  text-shadow: 0 0 40px rgba(255, 110, 180, 0.08);
+}
+
 /* Wish mode — brighten glyphs slightly, no new shapes */
 .melodia-shell.mg-wish-mode .magazine-kicker::after,
 .melodia-shell.mg-wish-mode .premium-kicker::after,
