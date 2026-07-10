@@ -1,0 +1,24 @@
+{
+  "source": "Plugins/MelodiaCore/Rules/melodia_rules.json",
+  "exported": "2026-07-10",
+  "rhythm": {
+    "windows_ms": {
+      "perfect": 90,
+      "great": 120,
+      "good": 160
+    },
+    "grade_multipliers": {
+      "perfect": 1.5,
+      "great": 1.25,
+      "good": 1.0,
+      "miss": 0.4
+    },
+    "default_bpm": 128
+  },
+  "phases": [
+    "command",
+    "rhythm",
+    "enemy",
+    "results"
+  ]
+}

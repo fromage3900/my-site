@@ -764,3 +764,151 @@
   color: var(--game-cyan);
   word-break: break-all;
 }
+
+/* Batch M — phase switcher + panels */
+.game-ui-phase-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.game-ui-phase-switch button {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--game-border, rgba(201, 168, 106, 0.34));
+  background: rgba(7, 9, 18, 0.55);
+  color: rgba(236, 234, 244, 0.78);
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.game-ui-phase-switch button[aria-selected="true"] {
+  color: var(--void, #0d1224);
+  background: var(--iri-gold, #ffe666);
+  border-color: var(--iri-gold, #ffe666);
+}
+
+.game-ui-phase-stage {
+  position: relative;
+}
+
+.game-ui-phase-panel {
+  display: none;
+}
+
+.game-ui-phase-panel.is-active {
+  display: block;
+}
+
+.game-ui-turn-rail {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.game-ui-turn-rail span {
+  padding: 0.35rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  opacity: 0.55;
+}
+
+.game-ui-turn-rail span.active {
+  opacity: 1;
+  border-color: var(--iri-gold, #ffe666);
+  color: var(--iri-gold, #ffe666);
+}
+
+.game-ui-skill-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.game-ui-skill-chip {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(201, 168, 106, 0.35);
+  background: rgba(16, 23, 54, 0.85);
+  color: rgba(236, 234, 244, 0.88);
+  cursor: pointer;
+}
+
+.game-ui-skill-chip.is-selected {
+  border-color: var(--iri-cyan, #66d9ff);
+  box-shadow: 0 0 0 1px rgba(102, 217, 255, 0.35);
+}
+
+.game-ui-highway-dim {
+  opacity: 0.4;
+  pointer-events: none;
+  min-height: 88px;
+  margin-top: 0.75rem;
+}
+
+.game-ui-phase-note {
+  font-family: var(--font-lede, var(--font-display));
+  font-style: italic;
+  font-size: 0.95rem;
+  color: rgba(236, 234, 244, 0.65);
+  margin: 0.5rem 0;
+}
+
+.game-ui-results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.game-ui-results-card {
+  padding: 1rem;
+  border: 1px solid rgba(201, 168, 106, 0.28);
+  background: rgba(7, 9, 18, 0.45);
+}
+
+.game-ui-results-card ul {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.game-ui-results-card li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.game-ui-field-hud,
+.game-ui-title-chip {
+  min-height: 200px;
+}
+
+@media (max-width: 720px) {
+  .game-ui-results-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-ui-shimmer,
+  .game-ui-playback-head,
+  .grade-pop {
+    animation: none !important;
+  }
+}
+

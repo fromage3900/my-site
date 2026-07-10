@@ -35,20 +35,42 @@
       <a class="button primary button-premium-primary" href="https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled" target="_blank" rel="noopener">Open Figma file</a>
       <a class="button button-premium" href="design-specs.html#game-ui">Design specs</a>
     </div>
+    <div class="game-ui-phase-switch" role="tablist" aria-label="Battle phase" data-phase-switch>
+      <button type="button" role="tab" aria-selected="false" data-phase="command">Command</button>
+      <button type="button" role="tab" aria-selected="true" data-phase="rhythm">Rhythm</button>
+      <button type="button" role="tab" aria-selected="false" data-phase="enemy">Enemy</button>
+      <button type="button" role="tab" aria-selected="false" data-phase="results">Results</button>
+    </div>
   </div>
 </section>
 
-<section class="band game-void-band" id="battle-refined" aria-labelledby="battle-title">
+<section class="band game-void-band" id="battle-phases" aria-labelledby="phases-title">
   <div class="inner game-ui-showcase">
     <div class="section-head">
       <div>
-        <p class="eyebrow game-eyebrow">BattleRhythmRefined</p>
-        <h2 id="battle-title">Rhythm execution with musical filigree.</h2>
+        <p class="eyebrow game-eyebrow">Phase machine</p>
+        <h2 id="phases-title">Command · perform · resolve · breathe.</h2>
       </div>
-      <p>Matches <code>Game/BattleRhythmRefined</code> — shader sheen, corner filigree, note beams, and glowing hit line.</p>
+      <p>MelodiaCore phases — dominant zone lit, others dimmed. Windows from <code>melodia_rules.json</code>.</p>
     </div>
 
-    <article class="game-ui-frame" aria-label="Refined rhythm battle" data-rhythm-playground>
+    <div class="game-ui-phase-stage" data-battle-stage data-active-phase="rhythm">
+      <article class="game-ui-frame game-ui-phase-panel" data-phase-panel="command" id="phase-command" aria-label="Battle command">
+        <div class="game-ui-topbar"><span class="phase">♪ Command — choose a song skill</span><span class="combo">TURN 3</span></div>
+        <div class="game-ui-turn-rail" aria-hidden="true"><span class="active">Melusina</span><span>Warden</span><span>Ally</span><span>Melusina</span></div>
+        <div class="game-ui-skill-strip" aria-label="Skill chips">
+          <button type="button" class="game-ui-skill-chip">Basic</button>
+          <button type="button" class="game-ui-skill-chip is-selected">Skill · Cherry Storm</button>
+          <button type="button" class="game-ui-skill-chip">Guard</button>
+          <button type="button" class="game-ui-skill-chip">ULT</button>
+        </div>
+        <p class="game-ui-phase-note">Highway dimmed (~40%) until rhythm execution starts.</p>
+        <div class="game-ui-highway game-ui-highway-dim" aria-hidden="true">
+          <div class="game-ui-lane"></div><div class="game-ui-lane"></div><div class="game-ui-lane"></div><div class="game-ui-lane"></div>
+        </div>
+      </article>
+
+      <article class="game-ui-frame game-ui-phase-panel is-active" data-phase-panel="rhythm" id="phase-rhythm" aria-label="Rhythm execution" data-rhythm-playground>
       <span class="game-ui-filigree tl" aria-hidden="true"></span>
       <span class="game-ui-filigree tr" aria-hidden="true"></span>
       <span class="game-ui-filigree bl" aria-hidden="true"></span>
@@ -57,7 +79,7 @@
 
       <div class="game-ui-play-controls">
         <button type="button" class="button button-premium-primary" data-rhythm-start>Play rhythm strip</button>
-        <p class="game-ui-play-hint" data-rhythm-status>Keys <kbd>D</kbd> <kbd>F</kbd> <kbd>J</kbd> <kbd>K</kbd> or tap lanes · ♩=128 · MelodiaCore windows</p>
+        <p class="game-ui-play-hint" data-rhythm-status>Keys <kbd>D</kbd> <kbd>F</kbd> <kbd>J</kbd> <kbd>K</kbd> or tap lanes · MelodiaCore windows</p>
       </div>
 
       <div class="game-ui-topbar game-ui-topbar-iri">
@@ -70,7 +92,7 @@
       <div class="game-ui-sheet">
         <div class="game-ui-sheet-head">
           <h3>Cherry Storm — Movement III</h3>
-          <div class="game-ui-sheet-meta"><span class="time">4/4</span><span class="bpm">♩ = 128</span></div>
+          <div class="game-ui-sheet-meta"><span class="time">4/4</span><span class="bpm" data-rhythm-bpm>♩ = 128</span></div>
         </div>
         <div class="game-ui-staff">
           <span class="clef">𝄞</span>
@@ -100,6 +122,66 @@
         </div>
       </div>
     </article>
+
+      <article class="game-ui-frame game-ui-phase-panel" data-phase-panel="enemy" id="phase-enemy" aria-label="Enemy turn">
+        <div class="game-ui-topbar"><span class="phase">Enemy turn — telegraphs</span><span class="combo">HIGHWAY HIDDEN</span></div>
+        <article class="game-ui-enemy-card">
+          <div class="game-ui-enemy-top"><span class="tag enemy">Enemy turn</span><span class="tag break">Toughness break</span></div>
+          <h3>Shrine Warden</h3>
+          <p class="telegraph">Cherry Storm incoming — prepare guard</p>
+          <div class="game-ui-toughness"><span>TOUGHNESS</span><div class="track"><div class="fill" style="width:40%"></div></div><span>48 / 120</span></div>
+        </article>
+        <p class="game-ui-phase-note">Skills locked · note highway hidden per UX table.</p>
+      </article>
+
+      <article class="game-ui-frame game-ui-phase-panel" data-phase-panel="results" id="phase-results" aria-label="Battle results">
+        <div class="game-ui-topbar"><span class="phase">Victory — Movement clear</span><span class="combo">MAX × 24</span></div>
+        <div class="game-ui-results-grid">
+          <div class="game-ui-results-card">
+            <h3>Performance</h3>
+            <ul>
+              <li>Perfect <strong data-stat-perfect>18</strong></li>
+              <li>Great <strong data-stat-great>6</strong></li>
+              <li>Good <strong data-stat-good>2</strong></li>
+              <li>Miss <strong data-stat-miss>1</strong></li>
+            </ul>
+          </div>
+          <div class="game-ui-results-card game-ui-party-score">
+            <h3>Party Score</h3>
+            <p class="speaker">MELUSINA</p>
+            <p>Rank <strong>S</strong> · Songcraft crescendo +12</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band game-surface-band" id="field-title" aria-labelledby="field-title-h">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow game-eyebrow">Field + Title</p>
+        <h2 id="field-title-h">Exploration chrome &amp; atelier title.</h2>
+      </div>
+      <p><code>Game/FieldHUD</code> and <code>Game/Title</code> — Melusina stays visible; battle UI does not swallow the character fantasy.</p>
+    </div>
+    <div class="game-ui-dual">
+      <article class="game-ui-frame game-ui-field-hud" id="atom-field-hud" aria-label="Field HUD">
+        <div class="game-ui-topbar"><span class="phase">Field · Sakura Path</span><span class="combo">♪ Atelier</span></div>
+        <div class="game-ui-dialogue">
+          <div class="speaker">MELUSINA</div>
+          <p>The path opens when the shrine bell answers.</p>
+        </div>
+        <div class="game-ui-meter sp"><span class="label">SP</span><div class="track"><div class="fill" style="width:55%"></div></div></div>
+      </article>
+      <article class="game-ui-frame game-ui-title-chip" id="atom-title" aria-label="Title atelier">
+        <p class="eyebrow game-eyebrow">Game/Title</p>
+        <h3>Melodia Melusina</h3>
+        <p class="lede game-lede">Celestial sheet music combat</p>
+        <div class="button-row"><span class="button primary button-premium-primary">Begin</span><span class="button button-premium">Codex</span></div>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -114,11 +196,11 @@
     </div>
 
     <div class="game-ui-atlas">
-      <div class="game-ui-grades">
-        <span class="grade-pop perfect">PERFECT<small>±90ms</small></span>
-        <span class="grade-pop great">GREAT<small>±120ms</small></span>
-        <span class="grade-pop good">GOOD<small>±160ms</small></span>
-        <span class="grade-pop miss">MISS<small>&gt;160ms</small></span>
+      <div class="game-ui-grades" id="atom-grade-pop">
+        <span class="grade-pop perfect">PERFECT<small data-window-perfect>±90ms</small></span>
+        <span class="grade-pop great">GREAT<small data-window-great>±120ms</small></span>
+        <span class="grade-pop good">GOOD<small data-window-good>±160ms</small></span>
+        <span class="grade-pop miss">MISS<small data-window-miss>&gt;160ms</small></span>
       </div>
 
       <article class="game-ui-enemy-card">

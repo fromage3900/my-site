@@ -22,6 +22,65 @@
 
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  function applyRhythmConfig(cfg) {
+    if (!cfg || !cfg.rhythm) return;
+    var w = cfg.rhythm.windows_ms || {};
+    if (w.perfect != null) WINDOWS.perfect = Number(w.perfect);
+    if (w.great != null) WINDOWS.great = Number(w.great);
+    if (w.good != null) WINDOWS.good = Number(w.good);
+    if (cfg.rhythm.default_bpm) {
+      BPM = Number(cfg.rhythm.default_bpm);
+      BEAT_MS = 60000 / BPM;
+    }
+    var el;
+    el = document.querySelector("[data-window-perfect]");
+    if (el) el.textContent = "±" + WINDOWS.perfect + "ms";
+    el = document.querySelector("[data-window-great]");
+    if (el) el.textContent = "±" + WINDOWS.great + "ms";
+    el = document.querySelector("[data-window-good]");
+    if (el) el.textContent = "±" + WINDOWS.good + "ms";
+    el = document.querySelector("[data-window-miss]");
+    if (el) el.textContent = ">" + WINDOWS.good + "ms";
+    document.querySelectorAll("[data-rhythm-bpm]").forEach(function (node) {
+      node.textContent = "♩ = " + BPM;
+    });
+  }
+
+  function loadRhythmConfig() {
+    return fetch("../generated/melodia_rhythm_web_config.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (cfg) {
+        applyRhythmConfig(cfg);
+        return cfg;
+      })
+      .catch(function () { return null; });
+  }
+
+  function initPhaseSwitch() {
+    var switcher = document.querySelector("[data-phase-switch]");
+    var stage = document.querySelector("[data-battle-stage]");
+    if (!switcher || !stage) return;
+    var buttons = switcher.querySelectorAll("[data-phase]");
+    function setPhase(phase) {
+      stage.setAttribute("data-active-phase", phase);
+      stage.querySelectorAll("[data-phase-panel]").forEach(function (panel) {
+        var on = panel.getAttribute("data-phase-panel") === phase;
+        panel.classList.toggle("is-active", on);
+        panel.hidden = !on;
+      });
+      buttons.forEach(function (btn) {
+        var on = btn.getAttribute("data-phase") === phase;
+        btn.setAttribute("aria-selected", on ? "true" : "false");
+      });
+    }
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        setPhase(btn.getAttribute("data-phase"));
+      });
+    });
+    setPhase(stage.getAttribute("data-active-phase") || "rhythm");
+  }
+
   function pad(n) {
     return n < 10 ? "0" + n : String(n);
   }
@@ -344,8 +403,11 @@
     document.querySelectorAll("[data-game-ui-assets]").forEach(fillAssetGrid);
     document.querySelectorAll(".game-ui-playback-head").forEach(animatePlaybackHead);
     initDecorativeNotes();
-    document.querySelectorAll("[data-rhythm-playground]").forEach(function (el) {
-      new RhythmStrip(el);
+    initPhaseSwitch();
+    loadRhythmConfig().then(function () {
+      document.querySelectorAll("[data-rhythm-playground]").forEach(function (el) {
+        new RhythmStrip(el);
+      });
     });
   }
 
