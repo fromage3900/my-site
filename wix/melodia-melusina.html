@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-page="melodia-melusina">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Melodia Melusina — Game UI | Brennan Shepherd</title>
+<meta name="description" content="Melodia Melusina rhythm RPG UI — sheet music combat, grade pops, filigree HUD, and Figma-synced battle chrome for a turn-based Unreal project." />
+<link rel="stylesheet" href="melodia-tokens.css">
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-premium-system.css">
+<link rel="stylesheet" href="portfolio-pages.css">
+<link rel="stylesheet" href="melodia-game-ui.css">
+</head>
+<body>
+<div class="melodia-shell game-mode" data-hero="editorial">
+<header class="shell-nav" aria-label="Portfolio navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="index.html">Home</a>
+    <a href="application-hub.html">Hub</a>
+    <a href="design-specs.html">Specs</a>
+    <a href="world-bible.html">Worlds</a>
+  </nav>
+  <a class="nav-cta button-premium" href="application-hub.html">Application Hub</a>
+</header>
+
+<main id="main">
+<section class="band game-hero-band" aria-labelledby="page-title">
+  <div class="inner">
+    <p class="eyebrow game-eyebrow">Melodia Melusina · Figma page 12</p>
+    <h1 id="page-title">Celestial sheet music combat.</h1>
+    <p class="lede game-lede">Turn-based rhythm RPG UI synced from the Grandmaster Figma library — iridescent filigree, shader overlays, note highway, and motion prototypes for Unreal <code>WBP_*</code> widgets.</p>
+    <div class="button-row">
+      <a class="button primary button-premium-primary" href="https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled" target="_blank" rel="noopener">Open Figma file</a>
+      <a class="button button-premium" href="design-specs.html#game-ui">Design specs</a>
+    </div>
+  </div>
+</section>
+
+<section class="band game-void-band" id="battle-refined" aria-labelledby="battle-title">
+  <div class="inner game-ui-showcase">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow game-eyebrow">BattleRhythmRefined</p>
+        <h2 id="battle-title">Rhythm execution with musical filigree.</h2>
+      </div>
+      <p>Matches <code>Game/BattleRhythmRefined</code> — shader sheen, corner filigree, note beams, and glowing hit line.</p>
+    </div>
+
+    <article class="game-ui-frame" aria-label="Refined rhythm battle" data-rhythm-playground>
+      <span class="game-ui-filigree tl" aria-hidden="true"></span>
+      <span class="game-ui-filigree tr" aria-hidden="true"></span>
+      <span class="game-ui-filigree bl" aria-hidden="true"></span>
+      <span class="game-ui-filigree br" aria-hidden="true"></span>
+      <div class="game-ui-shimmer" aria-hidden="true"></div>
+
+      <div class="game-ui-play-controls">
+        <button type="button" class="button button-premium-primary" data-rhythm-start>Play rhythm strip</button>
+        <p class="game-ui-play-hint" data-rhythm-status>Keys <kbd>D</kbd> <kbd>F</kbd> <kbd>J</kbd> <kbd>K</kbd> or tap lanes · ♩=128 · MelodiaCore windows</p>
+      </div>
+
+      <div class="game-ui-topbar game-ui-topbar-iri">
+        <span class="phase">♩ Rhythm — Cherry Storm · Movement III</span>
+        <span class="combo" data-rhythm-combo>COMBO × 0</span>
+      </div>
+
+      <div class="game-ui-filigree-divider" aria-hidden="true"><span>♪</span><span>𝄞</span><span>♪</span></div>
+
+      <div class="game-ui-sheet">
+        <div class="game-ui-sheet-head">
+          <h3>Cherry Storm — Movement III</h3>
+          <div class="game-ui-sheet-meta"><span class="time">4/4</span><span class="bpm">♩ = 128</span></div>
+        </div>
+        <div class="game-ui-staff">
+          <span class="clef">𝄞</span>
+          <span class="note-beam b1"></span>
+          <span class="note-beam b2"></span>
+          <span class="note-beam b3"></span>
+          <span class="game-ui-playback-head" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="game-ui-highway game-ui-highway-shader" data-rhythm-highway>
+        <div class="game-ui-lane" data-lane="A"></div>
+        <div class="game-ui-lane" data-lane="B"></div>
+        <div class="game-ui-lane" data-lane="C"></div>
+        <div class="game-ui-lane" data-lane="D"></div>
+        <span class="grade-pop perfect game-ui-floating-grade" data-rhythm-grade>READY<small>tap D F J K</small></span>
+        <div class="game-ui-hitline" aria-hidden="true"></div>
+      </div>
+
+      <div class="game-ui-hud-row">
+        <div class="game-ui-element-wheel" aria-label="Element wheel">SOUND</div>
+        <div class="game-ui-meter sp"><span class="label">SP</span><div class="track"><div class="fill" style="width:70%"></div></div></div>
+        <div class="game-ui-meter ult"><span class="label">ULT</span><div class="track"><div class="fill" style="width:45%;background:var(--game-gold)"></div></div></div>
+        <div class="game-ui-dialogue">
+          <div class="speaker">MELUSINA</div>
+          <p>The shrine remembers every note we play together.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="band game-surface-band" id="components" aria-labelledby="atoms-title">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow game-eyebrow">Component atlas</p>
+        <h2 id="atoms-title">Figma atoms on the web.</h2>
+      </div>
+      <p>Grade pops, enemy telegraph, and HUD atoms mapped via <code>code_connect_map.json</code>.</p>
+    </div>
+
+    <div class="game-ui-atlas">
+      <div class="game-ui-grades">
+        <span class="grade-pop perfect">PERFECT<small>±90ms</small></span>
+        <span class="grade-pop great">GREAT<small>±120ms</small></span>
+        <span class="grade-pop good">GOOD<small>±160ms</small></span>
+        <span class="grade-pop miss">MISS<small>&gt;160ms</small></span>
+      </div>
+
+      <article class="game-ui-enemy-card">
+        <div class="game-ui-enemy-top"><span class="tag enemy">Enemy turn</span><span class="tag break">Toughness break</span></div>
+        <h3>Shrine Warden</h3>
+        <p class="telegraph">Cherry Storm incoming — prepare guard</p>
+        <div class="game-ui-toughness"><span>TOUGHNESS</span><div class="track"><div class="fill" style="width:40%"></div></div><span>48 / 120</span></div>
+      </article>
+
+      <div class="game-ui-dual">
+        <aside class="game-ui-codex game-ui-codex-full">
+          <h4>30 Song Skills — Full Codex</h4>
+          <div class="game-ui-codex-grid" data-codex-grid></div>
+        </aside>
+        <article class="game-ui-mobile" aria-label="Mobile thumb-zone battle">
+          <div class="game-ui-topbar"><span class="phase">RHYTHM</span><span class="combo">×24</span></div>
+          <div class="game-ui-highway game-ui-highway-shader">
+            <div class="game-ui-lane" data-lane="A"></div>
+            <div class="game-ui-lane" data-lane="B"></div>
+            <div class="game-ui-lane" data-lane="C"></div>
+            <div class="game-ui-lane" data-lane="D"></div>
+            <div class="game-ui-hitline" aria-hidden="true"></div>
+          </div>
+          <div class="game-ui-mobile-skills" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        </article>
+      </div>
+    </div>
+
+    <p class="game-ui-figma-link">Spec: <a href="../../Docs/MELODIA_MELUSINA_GAME_UX.md">MELODIA_MELUSINA_GAME_UX.md</a> · Grandmaster: <a href="../../FIGMA_GRANDMASTER.md">FIGMA_GRANDMASTER.md</a></p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="inner">
+    <span>Brennan Shepherd / Environment & Technical Artist</span>
+    <span>Melodia Melusina game UI</span>
+  </div>
+</footer>
+</div>
+<script src="melodia-game-ui.js"></script>
+</body>
+</html>
