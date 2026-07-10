@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" data-page="zbrush-breakdown">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ZBrush → Editor Breakdown | Brennan Shepherd</title>
+<meta name="description" content="Sculpt-to-production breakdowns: ZBrush high-poly plates beside retopo'd, textured Unreal editor versions." />
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-fashion-editorial.css">
+<link rel="stylesheet" href="melodia-premium-system.css">
+<link rel="stylesheet" href="enhanced-cosmic-hero-premium.css">
+<style>
+/* Sculpt → production pairs — one job per row, no card chrome on media */
+.sculpt-pipeline {
+  display: grid;
+  gap: clamp(40px, 6vw, 72px);
+  margin-top: 28px;
+}
+.sculpt-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2.5vw, 28px);
+  align-items: stretch;
+}
+.sculpt-pair-head {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 8px;
+  max-width: 42rem;
+}
+.sculpt-pair-head h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+.sculpt-pair-head p {
+  margin: 0;
+  color: var(--muted, rgba(233, 229, 242, 0.72));
+  font-family: var(--font-lede);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.45;
+}
+.sculpt-plate {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 10px;
+  min-width: 0;
+}
+.sculpt-plate .stage-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-soft, rgba(228, 201, 144, 0.88));
+}
+.sculpt-plate .frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid rgba(200, 164, 94, 0.28);
+  background:
+    linear-gradient(160deg, rgba(16, 23, 54, 0.92), rgba(7, 9, 18, 0.96)),
+    repeating-linear-gradient(
+      -12deg,
+      transparent,
+      transparent 11px,
+      rgba(255, 255, 255, 0.02) 11px,
+      rgba(255, 255, 255, 0.02) 12px
+    );
+}
+.sculpt-plate .frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.sculpt-plate .frame.is-pending {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+}
+.sculpt-plate .frame.is-pending span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(233, 229, 242, 0.45);
+  line-height: 1.7;
+}
+.sculpt-plate .caption {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: rgba(233, 229, 242, 0.78);
+}
+.sculpt-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 4px;
+}
+.sculpt-meta span {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(233, 229, 242, 0.55);
+}
+@media (max-width: 820px) {
+  .sculpt-pair { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="melodia-shell fashion-mode" data-mg="soft" data-hero="editorial" data-effects="starfield,holo,magical">
+<header class="shell-nav" aria-label="Portfolio navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="index.html">Home</a>
+    <a href="shader-breakdowns.html">Shaders</a>
+    <a href="ornament-kitbash.html">Kitbash</a>
+  </nav>
+  <a class="nav-cta button-premium" href="hero-renders.html">Renders</a>
+</header>
+
+<main id="main">
+<section class="hero has-editorial-frame" aria-labelledby="page-title">
+  <div class="hero-inner">
+    <p class="kicker magazine-kicker premium-kicker">Sculpt → production</p>
+    <h1 id="page-title">ZBrush first. Editor when it earns the seat.</h1>
+    <p class="lede">Each pair shows the high-poly sculpt language, then the retopo'd and textured piece living in Unreal — same asset, two truths.</p>
+  </div>
+</section>
+
+<section class="band paper fashion-band" id="pipeline">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Pipeline</p>
+        <h2>How a piece graduates.</h2>
+      </div>
+      <p class="human-lede">ZBrush for form and silhouette. Retopo + UVs for game budgets. Substance / trim for material read. Unreal for lighting proof.</p>
+    </div>
+    <div class="alignment-grid">
+      <article class="alignment-card premium-card"><span>01</span><div><h3>ZBrush sculpt</h3><p>Primary forms, ornament rhythm, silhouette from three-quarter + profile.</p></div></article>
+      <article class="alignment-card premium-card"><span>02</span><div><h3>Retopo + UVs</h3><p>Clean loops, game-scale density, bake cages when the high-poly carries detail.</p></div></article>
+      <article class="alignment-card premium-card"><span>03</span><div><h3>Texture + editor</h3><p>Painter / trimsheet pass, then UE material instance under Melodia lighting.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="band astral fashion-band" id="pairs">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Breakdown pairs</p>
+        <h2>Sculpt beside the shipped mesh.</h2>
+      </div>
+      <p class="human-lede">Slots fill as ornament and environment sculpts leave ZBrush. Pending plates stay honest — no fake screenshots.</p>
+    </div>
+
+    <div class="sculpt-pipeline" id="sculptPipeline">
+
+      <article class="sculpt-pair" data-sculpt-id="orn-rose-window" data-status="pending">
+        <div class="sculpt-pair-head">
+          <h3>Rose window ornament</h3>
+          <p>Gothic eight-petal rose — kitbash hero candidate. ZBrush form language → UE static mesh + trim.</p>
+          <div class="sculpt-meta">
+            <span>SKU · Ornament Kitbash</span>
+            <span>Target · SM_Orn_RoseWindow_8Petal</span>
+            <span>Status · sculpting</span>
+          </div>
+        </div>
+        <div class="sculpt-plate">
+          <p class="stage-label">ZBrush · high poly</p>
+          <div class="frame is-pending" role="img" aria-label="ZBrush sculpt plate pending"><span>Drop ZBrush beauty plate<br>zbrush_orn_rose_window_1920x1080.png</span></div>
+          <p class="caption">MatCap / clay turntable still — silhouette and petal rhythm first.</p>
+        </div>
+        <div class="sculpt-plate">
+          <p class="stage-label">Unreal · retopo + textured</p>
+          <div class="frame is-pending" role="img" aria-label="Editor plate pending"><span>Drop UE editor plate<br>ue_orn_rose_window_1920x1080.png</span></div>
+          <p class="caption">Retopo mesh in EnvSandbox lighting with material instance applied.</p>
+        </div>
+      </article>
+
+      <article class="sculpt-pair" data-sculpt-id="orn-vault-ribs" data-status="pending">
+        <div class="sculpt-pair-head">
+          <h3>Vault ribs cluster</h3>
+          <p>Crossing gothic ribs for ceiling kits — sculpt density vs game-ready strip topology.</p>
+          <div class="sculpt-meta">
+            <span>SKU · Ornament Kitbash</span>
+            <span>Target · SM_Orn_VaultRibs</span>
+            <span>Status · pending plates</span>
+          </div>
+        </div>
+        <div class="sculpt-plate">
+          <p class="stage-label">ZBrush · high poly</p>
+          <div class="frame is-pending" role="img" aria-label="ZBrush sculpt plate pending"><span>Drop ZBrush beauty plate<br>zbrush_orn_vault_ribs_1920x1080.png</span></div>
+          <p class="caption">Underside + three-quarter — show how ribs read as a cluster.</p>
+        </div>
+        <div class="sculpt-plate">
+          <p class="stage-label">Unreal · retopo + textured</p>
+          <div class="frame is-pending" role="img" aria-label="Editor plate pending"><span>Drop UE editor plate<br>ue_orn_vault_ribs_1920x1080.png</span></div>
+          <p class="caption">In-level ceiling placement or lit studio turntable.</p>
+        </div>
+      </article>
+
+      <article class="sculpt-pair" data-sculpt-id="lancet-arch" data-status="pending">
+        <div class="sculpt-pair-head">
+          <h3>Lancet / classic arch</h3>
+          <p>Owned Greybox_Kit arches — Substance <code>lancets.spp</code> + classic_arch maps meeting the sculpted profile.</p>
+          <div class="sculpt-meta">
+            <span>SKU · Gothic Arch Kit</span>
+            <span>Target · SM_lancet* / SM_arch_*</span>
+            <span>Status · assets exist · plates pending</span>
+          </div>
+        </div>
+        <div class="sculpt-plate">
+          <p class="stage-label">ZBrush · high poly</p>
+          <div class="frame is-pending" role="img" aria-label="ZBrush sculpt plate pending"><span>Drop ZBrush beauty plate<br>zbrush_lancet_arch_1920x1080.png</span></div>
+          <p class="caption">Profile + ornament edge — prove the gothic cut.</p>
+        </div>
+        <div class="sculpt-plate">
+          <p class="stage-label">Unreal · retopo + textured</p>
+          <div class="frame is-pending" role="img" aria-label="Editor plate pending"><span>Drop UE editor plate<br>ue_lancet_arch_1920x1080.png</span></div>
+          <p class="caption">Greybox_Kit mesh with classic_arch material family.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band paper fashion-band" id="capture">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Capture brief</p>
+        <h2>What to export when a sculpt is ready.</h2>
+      </div>
+      <p>Full checklist lives in the repo shot list — keep filenames stable so ingest can wire plates automatically later.</p>
+    </div>
+    <div class="alignment-grid">
+      <article class="alignment-card premium-card"><span>ZBrush</span><div><h3>1920×1080 beauty</h3><p>Three-quarter clay or MatCap. Optional second frame: profile. No UI chrome.</p></div></article>
+      <article class="alignment-card premium-card"><span>Unreal</span><div><h3>Editor lit plate</h3><p>Same camera language as hero captures. Material on. Show topology only if it helps the story.</p></div></article>
+      <article class="alignment-card premium-card"><span>Drop</span><div><h3>generated/assets/sculpt/</h3><p>See <code>Docs/ZBRUSH_BREAKDOWN_SHOTLIST.md</code> for exact names and pair IDs.</p></div></article>
+    </div>
+    <p class="body-copy" style="margin-top:22px;">
+      <a href="ornament-kitbash.html">Ornament kitbash product →</a>
+      · <a href="shader-breakdowns.html">Shader breakdowns →</a>
+      · <a href="application-hub.html">Application hub →</a>
+    </p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="inner">
+    <span>Brennan Shepherd / Environment &amp; Technical Artist</span>
+    <span>ZBrush → editor breakdown</span>
+  </div>
+</footer>
+</div>
+<script src="melodia-magical-girl.js"></script>
+<script src="melodia-starfield.js"></script>
+<script src="melodia-dream-shaders.js"></script>
+<script src="melodia-editorial.js"></script>
+<script>MelodiaEditorial.init({ page: 'zbrush-breakdown' });</script>
+</body>
+</html>

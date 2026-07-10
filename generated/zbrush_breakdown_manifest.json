@@ -1,0 +1,31 @@
+{
+  "page": "zbrush-breakdown",
+  "updated": "2026-07-10",
+  "asset_dir": "generated/assets/sculpt",
+  "pairs": [
+    {
+      "id": "orn_rose_window",
+      "title": "Rose window ornament",
+      "target": "SM_Orn_RoseWindow_8Petal",
+      "status": "sculpting",
+      "zbrush": "zbrush_orn_rose_window_1920x1080.png",
+      "unreal": "ue_orn_rose_window_1920x1080.png"
+    },
+    {
+      "id": "orn_vault_ribs",
+      "title": "Vault ribs cluster",
+      "target": "SM_Orn_VaultRibs",
+      "status": "pending",
+      "zbrush": "zbrush_orn_vault_ribs_1920x1080.png",
+      "unreal": "ue_orn_vault_ribs_1920x1080.png"
+    },
+    {
+      "id": "lancet_arch",
+      "title": "Lancet / classic arch",
+      "target": "SM_lancet* / SM_arch_*",
+      "status": "pending",
+      "zbrush": "zbrush_lancet_arch_1920x1080.png",
+      "unreal": "ue_lancet_arch_1920x1080.png"
+    }
+  ]
+}
