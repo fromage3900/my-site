@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-07-10T22:39:04.481451+00:00",
+  "generated_at": "2026-07-11T00:19:26.781548+00:00",
   "engine": "EEVEE",
-  "shader_pack": "scene materials + studio (open blend)",
+  "shader_pack": "Komikaze v2",
   "shader_credit": {
     "pack": "Komikaze",
     "author": "DoubleGum (Rahul Parihar)",
     "url": "https://superhivemarket.com/products/komikaze",
-    "creator_url": "https://superhivemarket.com/creators/doublegum",
-    "note": "Character/violin plates keep authored materials; NPR props use Komikaze."
+    "creator_url": "https://superhivemarket.com/creators/doublegum"
   },
+  "last_wave": 5,
   "plate_count": 65,
   "hero_web_path": "../generated/assets/cross/cross_komikaze_beauty_34.png",
   "render_cards": [
@@ -270,7 +270,8 @@
       "priority": 90,
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)"
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5
     },
     {
       "id": "gazebo1_three_quarter",
@@ -299,7 +300,8 @@
       "priority": 88,
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)"
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5
     },
     {
       "id": "trefoil_macro",
@@ -374,7 +376,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 2
+      "wave": 5
     },
     {
       "id": "gothic_tracery_beauty_34",
@@ -389,7 +391,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 2
+      "wave": 5
     },
     {
       "id": "oculus_frame_beauty_34",
@@ -404,7 +406,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 2
+      "wave": 5
     },
     {
       "id": "spiral_stair_beauty_34",
@@ -419,7 +421,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 2
+      "wave": 5
     },
     {
       "id": "filigree_ring_macro",
@@ -433,7 +435,8 @@
       "priority": 80,
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)"
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5
     },
     {
       "id": "zenlantern_beauty_34",
@@ -475,7 +478,8 @@
       "priority": 78,
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)"
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5
     },
     {
       "id": "sakura_petal_beauty_34",
@@ -519,7 +523,8 @@
       "priority": 76,
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)"
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5
     },
     {
       "id": "brick1_beauty_34",
@@ -564,7 +569,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 2
+      "wave": 5
     },
     {
       "id": "brick2_high_beauty_34",
@@ -594,7 +599,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 2
+      "wave": 5
     },
     {
       "id": "oculus_frame_front",
@@ -609,7 +614,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 2
+      "wave": 5
     },
     {
       "id": "spiral_stair_low_angle",
@@ -624,7 +629,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 2
+      "wave": 5
     },
     {
       "id": "woven_ring_beauty_34",
@@ -639,7 +644,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "zenlantern_three_quarter",
@@ -668,7 +673,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "magical_wand_macro",
@@ -697,7 +702,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "pendant_finial_beauty_34",
@@ -712,7 +717,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "sakura_petal_macro",
@@ -742,7 +747,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "melody_slime_macro",
@@ -787,7 +792,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "brick1_high_macro",
@@ -817,7 +822,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "brick2_high_three_quarter",
@@ -847,7 +852,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "woven_ring_macro",
@@ -862,7 +867,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "torus_knot_three_quarter",
@@ -877,7 +882,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "quatrefoil_front",
@@ -892,7 +897,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "pendant_finial_macro",
@@ -907,7 +912,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "door_archway_front",
@@ -922,7 +927,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "column_capital_three_quarter",
@@ -937,7 +942,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "corbel_macro",
@@ -952,7 +957,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     },
     {
       "id": "crown_molding_front",
@@ -967,7 +972,7 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
-      "wave": 3
+      "wave": 5
     }
   ]
 }
