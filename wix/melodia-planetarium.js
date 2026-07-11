@@ -6,25 +6,53 @@
   'use strict';
 
   const ARMS = [
-    { tilt: 0, roll: 0, rx: 270, ry: 270, z: 0, speed: 0.052, hue: '#66d9ff' },
+    { tilt: 0, roll: 0, rx: 270, ry: 270, z: 0, speed: 0.052, hue: '#ff6eb4' },
     { tilt: 62, roll: 18, rx: 236, ry: 162, z: 28, speed: -0.041, hue: '#ffe666' },
-    { tilt: -38, roll: -24, rx: 214, ry: 148, z: -22, speed: 0.036, hue: '#cc99ff' },
+    { tilt: -38, roll: -24, rx: 214, ry: 148, z: -22, speed: 0.036, hue: '#ff8ec8' },
     { tilt: 90, roll: 0, rx: 196, ry: 196, z: 12, speed: -0.028, hue: '#7dd3c0' },
-    { tilt: 22, roll: 54, rx: 292, ry: 208, z: 36, speed: 0.024, hue: '#e8c9b8' },
+    { tilt: 22, roll: 54, rx: 292, ry: 208, z: 36, speed: 0.024, hue: '#e8a0b0' },
     { tilt: -64, roll: 14, rx: 176, ry: 126, z: -18, speed: 0.061, hue: '#c8b6db' },
     { tilt: 78, roll: -6, rx: 248, ry: 88, z: 8, speed: -0.033, hue: '#66d9ff' },
     { tilt: -12, roll: 88, rx: 88, ry: 248, z: -8, speed: 0.029, hue: '#ffe666' },
   ];
 
+  /* Mini mode — 4 arms, pink-forward, auto-spin only */
+  const MINI_ARM_INDICES = [0, 1, 2, 4];
+  const MINI_ARMS = MINI_ARM_INDICES.map((i) => {
+    const src = ARMS[i];
+    return {
+      ...src,
+      rx: Math.round(src.rx * 0.62),
+      ry: Math.round(src.ry * 0.62),
+      speed: src.speed * 1.15,
+    };
+  });
+
   const NODES = [
-    { id: 'sakura', label: 'Sakura Dream', short: 'Sakura', kana: '桜', href: 'sakura-case-study.html', arm: 1, angle: 32, color: '#e8a0b0', r: 5.5 },
+    { id: 'sakura', label: 'Sakura Dream', short: 'Sakura', kana: '桜', href: 'sakura-case-study.html', arm: 1, angle: 32, color: '#ff6eb4', r: 5.5 },
     { id: 'cathedral', label: 'Space Cathedral', short: 'Cathedral', kana: '星', href: 'world-bible.html', arm: 0, angle: 114, color: '#9b8fc4', r: 5.5 },
     { id: 'grotto', label: 'Baroque Grotto', short: 'Grotto', kana: '洞', href: 'world-bible.html', arm: 2, angle: 204, color: '#5eb8b0', r: 5 },
-    { id: 'orrery', label: 'Cosmic Orrery', short: 'Orrery', kana: '宙', href: 'application-hub.html#worlds', arm: 4, angle: 292, color: '#66d9ff', r: 5.5 },
+    { id: 'orrery', label: 'Cosmic Orrery', short: 'Orrery', kana: '宙', href: 'application-hub.html#worlds', arm: 4, angle: 292, color: '#ff8ec8', r: 5.5 },
     { id: 'shaders', label: 'Shader Breakdowns', short: 'Shaders', kana: '光', href: 'shader-breakdowns.html', arm: 0, angle: 252, color: '#ffe666', r: 4.5 },
     { id: 'renders', label: 'Hero Renders', short: 'Renders', kana: '景', href: 'hero-renders.html', arm: 5, angle: 160, color: '#e8c9b8', r: 4.5 },
     { id: 'hub', label: 'Application Hub', short: 'Hub', kana: '門', href: 'application-hub.html', arm: 3, angle: 320, color: '#c9a86a', r: 5 },
     { id: 'geometry', label: 'Geometry Nodes', short: 'GN', kana: '形', href: 'geometry-nodes.html', arm: 5, angle: 74, color: '#c8b6db', r: 4.5 },
+  ];
+
+  const MINI_NODES = [
+    { ...NODES[0], arm: 1 },
+    { ...NODES[1], arm: 0 },
+    { ...NODES[2], arm: 2 },
+    { ...NODES[3], arm: 3 },
+    { ...NODES[4], arm: 0 },
+    { ...NODES[6], arm: 3 },
+  ];
+
+  const MINI_LINES = [
+    ['sakura', 'hub'],
+    ['cathedral', 'shaders'],
+    ['grotto', 'orrery'],
+    ['orrery', 'hub'],
   ];
 
   const LINES = [
@@ -56,14 +84,19 @@
       this.mount = mount;
       this.mode = options.mode || mount.getAttribute('data-planetarium') || 'explorer';
       this.isHero = this.mode === 'hero';
+      this.isMini = this.mode === 'mini';
       this.reduceMotion = prefersReducedMotion();
 
+      this.arms = this.isMini ? MINI_ARMS.map((a) => ({ ...a })) : ARMS.map((a) => ({ ...a }));
+      this.nodes = this.isMini ? MINI_NODES.map((n) => ({ ...n })) : NODES.map((n) => ({ ...n }));
+      this.lines = this.isMini ? MINI_LINES.slice() : LINES.slice();
+
       this.yaw = 0;
-      this.pitch = this.isHero ? 16 : 22;
+      this.pitch = this.isHero ? 16 : this.isMini ? 18 : 22;
       this.targetYaw = 0;
-      this.targetPitch = this.isHero ? 16 : 22;
+      this.targetPitch = this.pitch;
       this.drag = { on: false, x: 0, y: 0, yaw0: 0, pitch0: 0 };
-      this.armAngles = ARMS.map(() => 0);
+      this.armAngles = this.arms.map(() => 0);
       this.activeId = null;
       this.focusEl = null;
       this.hintEl = null;
@@ -80,8 +113,11 @@
     build() {
       this.root = document.createElement('div');
       this.root.className = `planetarium planetarium-${this.mode}`;
-      this.root.setAttribute('role', 'application');
-      this.root.setAttribute('aria-label', 'Interactive portfolio planetarium');
+      this.root.setAttribute('role', this.isMini ? 'navigation' : 'application');
+      this.root.setAttribute(
+        'aria-label',
+        this.isMini ? 'Mini constellation navigator' : 'Interactive portfolio planetarium'
+      );
 
       this.canvas = document.createElement('canvas');
       this.canvas.className = 'planetarium-canvas';
@@ -91,25 +127,32 @@
       this.svg.setAttribute('class', 'planetarium-svg');
       this.svg.setAttribute('viewBox', '0 0 600 600');
 
-      this.svg.innerHTML = `
-        <defs>
-          <radialGradient id="planetarium-core-grad" cx="40%" cy="35%">
-            <stop offset="0%" stop-color="#fff" stop-opacity="0.95"/>
+      const coreStops = this.isMini
+        ? `<stop offset="0%" stop-color="#fff" stop-opacity="0.95"/>
+            <stop offset="30%" stop-color="#ff6eb4" stop-opacity="0.85"/>
+            <stop offset="65%" stop-color="#ffe666" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#66d9ff" stop-opacity="0.15"/>`
+        : `<stop offset="0%" stop-color="#fff" stop-opacity="0.95"/>
             <stop offset="35%" stop-color="#ffe666" stop-opacity="0.85"/>
             <stop offset="70%" stop-color="#66d9ff" stop-opacity="0.5"/>
-            <stop offset="100%" stop-color="#cc99ff" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#cc99ff" stop-opacity="0.15"/>`;
+
+      this.svg.innerHTML = `
+        <defs>
+          <radialGradient id="planetarium-core-grad-${this.mode}" cx="40%" cy="35%">
+            ${coreStops}
           </radialGradient>
-          <filter id="planetarium-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <filter id="planetarium-glow-${this.mode}" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="2.5" result="b"/>
             <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
-          <filter id="planetarium-node-glow" x="-100%" y="-100%" width="300%" height="300%">
+          <filter id="planetarium-node-glow-${this.mode}" x="-100%" y="-100%" width="300%" height="300%">
             <feGaussianBlur stdDeviation="3" result="b"/>
             <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
         </defs>
-        <circle class="planetarium-dome" cx="${CX}" cy="${CY}" r="275"/>
-        <circle class="planetarium-dome" cx="${CX}" cy="${CY}" r="235" opacity="0.6"/>
+        <circle class="planetarium-dome" cx="${CX}" cy="${CY}" r="${this.isMini ? 220 : 275}"/>
+        <circle class="planetarium-dome" cx="${CX}" cy="${CY}" r="${this.isMini ? 185 : 235}" opacity="0.6"/>
         <g class="planetarium-world" transform="translate(${CX},${CY})"/>
       `;
 
@@ -128,7 +171,7 @@
       this.world.appendChild(this.armsG);
       this.world.appendChild(this.nodesG);
 
-      ARMS.forEach((arm, i) => {
+      this.arms.forEach((arm, i) => {
         const g = document.createElementNS(SVGNS, 'g');
         g.setAttribute('class', `planetarium-arm-group arm-group-${i}`);
         g.setAttribute('data-arm', String(i));
@@ -139,6 +182,7 @@
         ellipse.setAttribute('cy', '0');
         ellipse.setAttribute('rx', String(arm.rx));
         ellipse.setAttribute('ry', String(arm.ry));
+        if (arm.hue) ellipse.style.stroke = arm.hue;
         g.appendChild(ellipse);
 
         const axis = document.createElementNS(SVGNS, 'line');
@@ -155,21 +199,26 @@
 
       const coreG = document.createElementNS(SVGNS, 'g');
       coreG.innerHTML = `
-        <circle class="planetarium-core-ring" cx="0" cy="0" r="28"/>
-        <circle class="planetarium-core" cx="0" cy="0" r="18"/>
+        <circle class="planetarium-core-ring" cx="0" cy="0" r="${this.isMini ? 22 : 28}"/>
+        <circle class="planetarium-core" cx="0" cy="0" r="${this.isMini ? 14 : 18}" fill="url(#planetarium-core-grad-${this.mode})"/>
       `;
       this.world.appendChild(coreG);
 
-      NODES.forEach((node) => this.createNode(node));
-
-      LINES.forEach(([a, b]) => this.createLine(a, b));
+      this.nodes.forEach((node) => this.createNode(node));
+      this.lines.forEach(([a, b]) => this.createLine(a, b));
 
       const hud = document.createElement('div');
       hud.className = 'planetarium-hud';
-      if (!this.isHero) {
+      if (!this.isHero && !this.isMini) {
         this.hintEl = document.createElement('p');
         this.hintEl.className = 'planetarium-hint';
         this.hintEl.textContent = 'Drag to orbit the armillary · Click a star to explore';
+        hud.appendChild(this.hintEl);
+      }
+      if (this.isMini) {
+        this.hintEl = document.createElement('p');
+        this.hintEl.className = 'planetarium-hint planetarium-hint-mini';
+        this.hintEl.textContent = 'Click a star to explore';
         hud.appendChild(this.hintEl);
       }
       this.focusEl = document.createElement('p');
@@ -212,7 +261,7 @@
       label.setAttribute('x', '0');
       label.setAttribute('y', '-12');
       label.setAttribute('text-anchor', 'middle');
-      label.textContent = this.isHero ? node.kana : `${node.short} · ${node.kana}`;
+      label.textContent = this.isHero || this.isMini ? node.kana : `${node.short} · ${node.kana}`;
 
       g.appendChild(pulse);
       g.appendChild(body);
@@ -224,7 +273,7 @@
         this.setFocus(node);
       });
 
-      const arm = ARMS[node.arm];
+      const arm = this.arms[node.arm];
       arm.group.appendChild(g);
       this.nodeEls[node.id] = { el: g, data: node };
       node.el = g;
@@ -241,7 +290,7 @@
 
     initStars() {
       this.stars = [];
-      const count = this.isHero ? 120 : 220;
+      const count = this.isHero ? 120 : this.isMini ? 90 : 220;
       for (let i = 0; i < count; i++) {
         this.stars.push({
           x: Math.random(),
@@ -312,7 +361,7 @@
     }
 
     nodeWorldPos(node) {
-      const arm = ARMS[node.arm];
+      const arm = this.arms[node.arm];
       const spin = (this.armAngles[node.arm] + node.angle) * (Math.PI / 180);
       const tilt = arm.tilt * (Math.PI / 180);
       const roll = arm.roll * (Math.PI / 180);
@@ -345,8 +394,8 @@
     updateTransforms() {
       this.perspectiveWrap.style.transform = `rotateX(${this.pitch}deg) rotateY(${this.yaw}deg)`;
 
-      ARMS.forEach((arm, i) => {
-        const zScale = 1 - Math.abs((arm.z || 0)) * 0.0008;
+      this.arms.forEach((arm, i) => {
+        const zScale = 1 - Math.abs(arm.z || 0) * 0.0008;
         arm.group.setAttribute(
           'transform',
           `rotate(${arm.tilt}) rotate(${arm.roll}) rotate(${this.armAngles[i]}) scale(${zScale})`
@@ -354,8 +403,8 @@
         arm.group.style.opacity = String(0.5 + zScale * 0.5);
       });
 
-      NODES.forEach((node) => {
-        const arm = ARMS[node.arm];
+      this.nodes.forEach((node) => {
+        const arm = this.arms[node.arm];
         const pos = this.nodeWorldPos(node);
         node.el.setAttribute(
           'transform',
@@ -378,72 +427,71 @@
     }
 
     bind() {
-      const onDown = (e) => {
-        const p = e.touches ? e.touches[0] : e;
-        this.drag.on = true;
-        this.drag.x = p.clientX;
-        this.drag.y = p.clientY;
-        this.drag.yaw0 = this.yaw;
-        this.drag.pitch0 = this.pitch;
-        this.root.classList.add('is-dragging');
-      };
+      if (!this.isMini) {
+        const onDown = (e) => {
+          const p = e.touches ? e.touches[0] : e;
+          this.drag.on = true;
+          this.drag.x = p.clientX;
+          this.drag.y = p.clientY;
+          this.drag.yaw0 = this.yaw;
+          this.drag.pitch0 = this.pitch;
+          this.root.classList.add('is-dragging');
+        };
 
-      const onMove = (e) => {
-        if (!this.drag.on) return;
-        const p = e.touches ? e.touches[0] : e;
-        const dx = p.clientX - this.drag.x;
-        const dy = p.clientY - this.drag.y;
-        this.yaw = this.drag.yaw0 + dx * 0.35;
-        this.pitch = Math.max(-28, Math.min(42, this.drag.pitch0 - dy * 0.22));
-        this.targetYaw = this.yaw;
-        this.targetPitch = this.pitch;
-        this.updateTransforms();
-        if (e.cancelable) e.preventDefault();
-      };
+        const onMove = (e) => {
+          if (!this.drag.on) return;
+          const p = e.touches ? e.touches[0] : e;
+          const dx = p.clientX - this.drag.x;
+          const dy = p.clientY - this.drag.y;
+          this.yaw = this.drag.yaw0 + dx * 0.35;
+          this.pitch = Math.max(-28, Math.min(42, this.drag.pitch0 - dy * 0.22));
+          this.targetYaw = this.yaw;
+          this.targetPitch = this.pitch;
+          this.updateTransforms();
+          if (e.cancelable) e.preventDefault();
+        };
 
-      const onUp = () => {
-        this.drag.on = false;
-        this.root.classList.remove('is-dragging');
-      };
+        const onUp = () => {
+          this.drag.on = false;
+          this.root.classList.remove('is-dragging');
+        };
 
-      this.root.addEventListener('mousedown', onDown);
-      window.addEventListener('mousemove', onMove);
-      window.addEventListener('mouseup', onUp);
-      this.root.addEventListener('touchstart', onDown, { passive: true });
-      window.addEventListener('touchmove', onMove, { passive: false });
-      window.addEventListener('touchend', onUp);
+        this.root.addEventListener('mousedown', onDown);
+        window.addEventListener('mousemove', onMove);
+        window.addEventListener('mouseup', onUp);
+        this.root.addEventListener('touchstart', onDown, { passive: true });
+        window.addEventListener('touchmove', onMove, { passive: false });
+        window.addEventListener('touchend', onUp);
+      }
 
-      // Passive parallax: even when not dragging, let pointer \"breathe\" the planetarium
       const onHoverMove = (e) => {
         if (this.drag.on || this.reduceMotion) return;
         const rect = this.root.getBoundingClientRect();
         const nx = (e.clientX - rect.left) / rect.width - 0.5;
         const ny = (e.clientY - rect.top) / rect.height - 0.5;
-        const strength = this.isHero ? 22 : 28;
+        const strength = this.isHero ? 22 : this.isMini ? 14 : 28;
         this.targetYaw = nx * strength;
-        this.targetPitch = (this.isHero ? 10 : 16) + ny * -strength * 0.55;
+        this.targetPitch = (this.isHero ? 10 : this.isMini ? 14 : 16) + ny * -strength * 0.55;
       };
 
       this.root.addEventListener('pointermove', onHoverMove, { passive: true });
-
       window.addEventListener('resize', () => this.resizeCanvas());
 
       if (!this.isHero) {
-        this.setFocus(NODES[0]);
+        this.setFocus(this.nodes[0]);
       }
     }
 
     loop() {
       const tick = (t) => {
         if (!this.reduceMotion && !this.drag.on) {
-          ARMS.forEach((arm, i) => {
+          this.arms.forEach((arm, i) => {
             this.armAngles[i] += arm.speed;
           });
-          if (this.isHero) {
-            this.yaw += 0.018;
+          if (this.isHero || this.isMini) {
+            this.yaw += this.isMini ? 0.028 : 0.018;
           }
-          // Smooth toward hover targets
-          const s = this.isHero ? 0.06 : 0.08;
+          const s = this.isHero ? 0.06 : this.isMini ? 0.07 : 0.08;
           this.yaw += (this.targetYaw - this.yaw) * s;
           this.pitch += (this.targetPitch - this.pitch) * s;
           this.updateTransforms();

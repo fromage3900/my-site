@@ -1,0 +1,70 @@
+{
+  "generated_at": "2026-07-11T05:29:46.717674+00:00",
+  "generated_by": "encode_landscape_loops.ps1",
+  "frame_rate": 30,
+  "loop_seconds": 10,
+  "count": 4,
+  "web_ready": 4,
+  "entries": [
+    {
+      "id": "WP_SakuraDream",
+      "label": "Sakura Dream",
+      "caption": "UDS day/night cycle \u2014 L_WP_SakuraDream terrain-forward.",
+      "poster": "../generated/assets/nightshift/WP_SakuraDream_terrain.png",
+      "poster_file": "WP_SakuraDream_terrain.png",
+      "frame_count": 0,
+      "duration_sec": 10,
+      "webm_path": "../generated/assets/landscape-loops/WP_SakuraDream.webm",
+      "local_relative_path": "generated/assets/landscape-loops/WP_SakuraDream.webm",
+      "encoded": true,
+      "source": "still_daynight_synth",
+      "status": "web_ready",
+      "priority": "hero"
+    },
+    {
+      "id": "WP_SpaceCathedral",
+      "label": "Space Cathedral",
+      "caption": "UDS day/night cycle \u2014 L_WP_SpaceCathedral terrain-forward.",
+      "poster": "../generated/assets/nightshift/WP_SpaceCathedral_terrain.png",
+      "poster_file": "WP_SpaceCathedral_terrain.png",
+      "frame_count": 0,
+      "duration_sec": 10,
+      "webm_path": "../generated/assets/landscape-loops/WP_SpaceCathedral.webm",
+      "local_relative_path": "generated/assets/landscape-loops/WP_SpaceCathedral.webm",
+      "encoded": true,
+      "source": "still_daynight_synth",
+      "status": "web_ready",
+      "priority": "hero"
+    },
+    {
+      "id": "WP_BaroqueGrotto",
+      "label": "Baroque Grotto",
+      "caption": "UDS day/night cycle \u2014 L_WP_BaroqueGrotto terrain-forward.",
+      "poster": "../generated/assets/nightshift/WP_BaroqueGrotto_terrain.png",
+      "poster_file": "WP_BaroqueGrotto_terrain.png",
+      "frame_count": 0,
+      "duration_sec": 10,
+      "webm_path": "../generated/assets/landscape-loops/WP_BaroqueGrotto.webm",
+      "local_relative_path": "generated/assets/landscape-loops/WP_BaroqueGrotto.webm",
+      "encoded": true,
+      "source": "still_daynight_synth",
+      "status": "web_ready",
+      "priority": "hero"
+    },
+    {
+      "id": "WP_CosmicOrrery",
+      "label": "Cosmic Orrery",
+      "caption": "UDS day/night cycle \u2014 L_WP_CosmicOrrery terrain-forward.",
+      "poster": "../generated/assets/nightshift/WP_CosmicOrrery_terrain.png",
+      "poster_file": "WP_CosmicOrrery_terrain.png",
+      "frame_count": 0,
+      "duration_sec": 10,
+      "webm_path": "../generated/assets/landscape-loops/WP_CosmicOrrery.webm",
+      "local_relative_path": "generated/assets/landscape-loops/WP_CosmicOrrery.webm",
+      "encoded": true,
+      "source": "still_daynight_synth",
+      "status": "web_ready",
+      "priority": "hero"
+    }
+  ]
+}

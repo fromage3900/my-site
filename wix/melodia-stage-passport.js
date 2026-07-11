@@ -6,7 +6,7 @@
   const PASSPORT_HTML = '../generated/passports/melusina_passport.html';
   const COLOR_URL = '../generated/assets/character/melusina_diorama_beauty.png';
   const DEPTH_URL = '../generated/assets/character/melusina_beauty_depth_color.png';
-  const BEAUTY_URL = '../generated/assets/character/melusina_beauty_34.png';
+  const BEAUTY_URL = '../generated/assets/character/melusina_beauty_void_iri.png';
   const INTAKE_URL = '../generated/blender_portfolio_intake.json';
 
   function esc(value) {

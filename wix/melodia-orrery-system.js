@@ -5,14 +5,14 @@
   'use strict';
 
   const RING_CONFIG = [
-    { size: [88, 72], duration: 26, color: 'rgba(255, 110, 180, 0.38)', tiltX: 72, tiltY: -8, z: 8 },
-    { size: [128, 108], duration: 38, color: 'rgba(255, 230, 102, 0.36)', tiltX: 18, tiltY: 24, z: 16, reverse: true },
-    { size: [178, 148], duration: 52, color: 'rgba(204, 153, 255, 0.34)', tiltX: 54, tiltY: -18, z: 24 },
-    { size: [228, 198], duration: 68, color: 'rgba(125, 211, 192, 0.3)', tiltX: 12, tiltY: 36, z: 32, reverse: true },
-    { size: [298, 268], duration: 88, color: 'rgba(232, 201, 184, 0.26)', tiltX: 64, tiltY: 10, z: 40 },
-    { size: [368, 328], duration: 112, color: 'rgba(155, 143, 196, 0.2)', tiltX: 28, tiltY: -42, z: 48, reverse: true },
-    { size: [248, 248], duration: 76, color: 'rgba(102, 217, 255, 0.18)', tiltX: 90, tiltY: 0, z: 20, reverse: true },
-    { size: [312, 312], duration: 96, color: 'rgba(255, 230, 102, 0.14)', tiltX: 90, tiltY: 48, z: 36 },
+    { size: [88, 72], duration: 18, color: 'rgba(255, 110, 180, 0.52)', tiltX: 72, tiltY: -8, z: 8 },
+    { size: [128, 108], duration: 28, color: 'rgba(255, 230, 102, 0.4)', tiltX: 18, tiltY: 24, z: 16, reverse: true },
+    { size: [178, 148], duration: 42, color: 'rgba(255, 142, 200, 0.42)', tiltX: 54, tiltY: -18, z: 24 },
+    { size: [228, 198], duration: 58, color: 'rgba(204, 153, 255, 0.34)', tiltX: 12, tiltY: 36, z: 32, reverse: true },
+    { size: [298, 268], duration: 88, color: 'rgba(255, 110, 180, 0.22)', tiltX: 64, tiltY: 10, z: 40 },
+    { size: [368, 328], duration: 112, color: 'rgba(102, 217, 255, 0.2)', tiltX: 28, tiltY: -42, z: 48, reverse: true },
+    { size: [248, 248], duration: 64, color: 'rgba(255, 230, 102, 0.22)', tiltX: 90, tiltY: 0, z: 20, reverse: true },
+    { size: [312, 312], duration: 96, color: 'rgba(255, 110, 180, 0.16)', tiltX: 90, tiltY: 48, z: 36 },
   ];
 
   const SVGNS = 'http://www.w3.org/2000/svg';
@@ -130,7 +130,7 @@
 
     /* Soft parallax only — no rotateX/Y (read as warped chrome in the banner/hero) */
     const isMobile = window.matchMedia('(max-width: 680px)').matches;
-    const range = isMobile ? 4 : 8;
+    const range = isMobile ? 6 : 14;
 
     const onMove = (e) => {
       const mx = (e.clientX / window.innerWidth - 0.5) * range;

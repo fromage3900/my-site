@@ -340,3 +340,39 @@
   }
   .planetarium-arm { animation: none; }
 }
+
+/* Mini constellation — recruiter path */
+.planetarium-mini {
+  max-width: 420px;
+  cursor: default;
+  touch-action: manipulation;
+}
+
+.planetarium-mini-mount {
+  min-height: 280px;
+}
+
+.planetarium-mini .planetarium-hint-mini {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.planetarium-mini .planetarium-arm {
+  stroke-width: 1.35;
+  opacity: 0.78;
+}
+
+.planetarium-mini .planetarium-core-ring {
+  stroke: rgba(255, 110, 180, 0.45);
+}
+
+@media (max-width: 680px) {
+  .planetarium-mini {
+    max-width: 300px;
+  }
+  .planetarium-mini-mount {
+    min-height: 220px;
+  }
+}

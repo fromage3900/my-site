@@ -1,0 +1,851 @@
+{
+  "generated_at": "2026-07-09T23:35:11.437927+00:00",
+  "generated_by": "mi_preview_manifest.py",
+  "level": "/Game/EnvSandbox/_Template/L_MaterialPreview_Studio",
+  "frame_rate": 30,
+  "loop_frames": 120,
+  "resolution": 1080,
+  "count": 40,
+  "entries": [
+    {
+      "id": "MI_ZenTrim_FlowersLots",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_ZenTrim_FlowersLots.MI_ZenTrim_FlowersLots",
+      "profile": "TP_Foliage",
+      "preview_mesh": "plane_vertical",
+      "backdrop": "Sakura_SoftVoid",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.2,
+        1.2,
+        0.08
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "hero",
+      "source": "trimsheet_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_ZenTrim_FlowersLots",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_ZenTrim_FlowersLots"
+    },
+    {
+      "id": "MI_SDF_Altar_GoldFiligree",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Altar_GoldFiligree.MI_SDF_Altar_GoldFiligree",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Altar_GoldFiligree",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Altar_GoldFiligree"
+    },
+    {
+      "id": "MI_SDF_Aurora_Band",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Aurora_Band.MI_SDF_Aurora_Band",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Cosmic_DeepField",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Aurora_Band",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Aurora_Band"
+    },
+    {
+      "id": "MI_SDF_BaroqueColumn_Spiral",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_BaroqueColumn_Spiral.MI_SDF_BaroqueColumn_Spiral",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_BaroqueColumn_Spiral",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_BaroqueColumn_Spiral"
+    },
+    {
+      "id": "MI_SDF_Buttress_Flying",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Buttress_Flying.MI_SDF_Buttress_Flying",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Buttress_Flying",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Buttress_Flying"
+    },
+    {
+      "id": "MI_SDF_Cloister_Arcade",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Cloister_Arcade.MI_SDF_Cloister_Arcade",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Cloister_Arcade",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Cloister_Arcade"
+    },
+    {
+      "id": "MI_SDF_Cosmic_Portal",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Cosmic_Portal.MI_SDF_Cosmic_Portal",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Cosmic_DeepField",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Cosmic_Portal",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Cosmic_Portal"
+    },
+    {
+      "id": "MI_SDF_Eclipse_Halo",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Eclipse_Halo.MI_SDF_Eclipse_Halo",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Cosmic_DeepField",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Eclipse_Halo",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Eclipse_Halo"
+    },
+    {
+      "id": "MI_SDF_GildedTracery_Arched",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_GildedTracery_Arched.MI_SDF_GildedTracery_Arched",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_GildedTracery_Arched",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_GildedTracery_Arched"
+    },
+    {
+      "id": "MI_SDF_Grass_Weave",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Grass_Weave.MI_SDF_Grass_Weave",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Grass_Weave",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Grass_Weave"
+    },
+    {
+      "id": "MI_SDF_HybridStone_Cello",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_HybridStone_Cello.MI_SDF_HybridStone_Cello",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_HybridStone_Cello",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_HybridStone_Cello"
+    },
+    {
+      "id": "MI_SDF_Moss_Soil",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Moss_Soil.MI_SDF_Moss_Soil",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Moss_Soil",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Moss_Soil"
+    },
+    {
+      "id": "MI_SDF_Nebula_Veil",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Nebula_Veil.MI_SDF_Nebula_Veil",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Cosmic_DeepField",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Nebula_Veil",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Nebula_Veil"
+    },
+    {
+      "id": "MI_SDF_Rock_Stembell",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Rock_Stembell.MI_SDF_Rock_Stembell",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Rock_Stembell",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Rock_Stembell"
+    },
+    {
+      "id": "MI_SDF_RoseWindow_Radial",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_RoseWindow_Radial.MI_SDF_RoseWindow_Radial",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_RoseWindow_Radial",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_RoseWindow_Radial"
+    },
+    {
+      "id": "MI_SDF_Sand_Leafcool",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Sand_Leafcool.MI_SDF_Sand_Leafcool",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Sand_Leafcool",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Sand_Leafcool"
+    },
+    {
+      "id": "MI_SDF_StainedGlass_Kaleidoscope",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_StainedGlass_Kaleidoscope.MI_SDF_StainedGlass_Kaleidoscope",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_StainedGlass_Kaleidoscope",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_StainedGlass_Kaleidoscope"
+    },
+    {
+      "id": "MI_SDF_Starfield_Dust",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Starfield_Dust.MI_SDF_Starfield_Dust",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Cosmic_DeepField",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Starfield_Dust",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Starfield_Dust"
+    },
+    {
+      "id": "MI_SDF_Terrain_Crystal",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Terrain_Crystal.MI_SDF_Terrain_Crystal",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Terrain_Crystal",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Terrain_Crystal"
+    },
+    {
+      "id": "MI_SDF_Vault_Ribbed",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Vault_Ribbed.MI_SDF_Vault_Ribbed",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Vault_Ribbed",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Vault_Ribbed"
+    },
+    {
+      "id": "MI_SDF_Void_DarkMatter",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_Void_DarkMatter.MI_SDF_Void_DarkMatter",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Cosmic_DeepField",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "sdf_batch_parsed",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_Void_DarkMatter",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Void_DarkMatter"
+    },
+    {
+      "id": "MI_Show_CelestialNebula",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_CelestialNebula.MI_Show_CelestialNebula",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Cosmic_DeepField",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "starter_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_CelestialNebula",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_CelestialNebula"
+    },
+    {
+      "id": "MI_Show_CherryBlossom",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_CherryBlossom.MI_Show_CherryBlossom",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Sakura_SoftVoid",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "starter_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_CherryBlossom",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_CherryBlossom"
+    },
+    {
+      "id": "MI_Show_ContactRimHero",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_ContactRimHero.MI_Show_ContactRimHero",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "starter_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_ContactRimHero",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_ContactRimHero"
+    },
+    {
+      "id": "MI_Show_Default",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_Default.MI_Show_Default",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "starter_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_Default",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_Default"
+    },
+    {
+      "id": "MI_Show_ElementHydro",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_ElementHydro.MI_Show_ElementHydro",
+      "profile": "TP_Default",
+      "preview_mesh": "plane_horizontal",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.4,
+        1.4,
+        1.0
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "starter_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_ElementHydro",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_ElementHydro"
+    },
+    {
+      "id": "MI_Show_FairyHearts",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_FairyHearts.MI_Show_FairyHearts",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Cosmic_DeepField",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "starter_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_FairyHearts",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_FairyHearts"
+    },
+    {
+      "id": "MI_Show_ForestFoliage",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_ForestFoliage.MI_Show_ForestFoliage",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "starter_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_ForestFoliage",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_ForestFoliage"
+    },
+    {
+      "id": "MI_Show_InkWash",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_InkWash.MI_Show_InkWash",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Baroque_WarmVault",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "starter_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_InkWash",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_InkWash"
+    },
+    {
+      "id": "MI_Show_NikkiHero",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_NikkiHero.MI_Show_NikkiHero",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "starter_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_NikkiHero",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_NikkiHero"
+    },
+    {
+      "id": "MI_Show_SkinSoft",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_SkinSoft.MI_Show_SkinSoft",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "starter_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_SkinSoft",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_SkinSoft"
+    },
+    {
+      "id": "MI_Show_StoneCliff",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_StoneCliff.MI_Show_StoneCliff",
+      "profile": "TP_Stone",
+      "preview_mesh": "sphere",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "starter_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_StoneCliff",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_StoneCliff"
+    },
+    {
+      "id": "MI_Trimsheet_HeavyWear",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_Trimsheet_HeavyWear.MI_Trimsheet_HeavyWear",
+      "profile": "TP_Stone",
+      "preview_mesh": "sphere",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "trimsheet_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Trimsheet_HeavyWear",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Trimsheet_HeavyWear"
+    },
+    {
+      "id": "MI_Trimsheet_ParallaxPOM",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_Trimsheet_ParallaxPOM.MI_Trimsheet_ParallaxPOM",
+      "profile": "TP_Stone",
+      "preview_mesh": "sphere",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "trimsheet_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Trimsheet_ParallaxPOM",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Trimsheet_ParallaxPOM"
+    },
+    {
+      "id": "MI_Trimsheet_VariationCracks",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_Trimsheet_VariationCracks.MI_Trimsheet_VariationCracks",
+      "profile": "TP_Stone",
+      "preview_mesh": "sphere",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "trimsheet_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Trimsheet_VariationCracks",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Trimsheet_VariationCracks"
+    },
+    {
+      "id": "MI_Universal_TrimsheetBlend",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_Universal_TrimsheetBlend.MI_Universal_TrimsheetBlend",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "trimsheet_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Universal_TrimsheetBlend",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Universal_TrimsheetBlend"
+    },
+    {
+      "id": "MI_ZenTrim_ColourShift",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_ZenTrim_ColourShift.MI_ZenTrim_ColourShift",
+      "profile": "TP_Default",
+      "preview_mesh": "plane_vertical",
+      "backdrop": "Sakura_SoftVoid",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.2,
+        1.2,
+        0.08
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "trimsheet_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_ZenTrim_ColourShift",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_ZenTrim_ColourShift"
+    },
+    {
+      "id": "MI_ZenTrim_FlowersLittle",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_ZenTrim_FlowersLittle.MI_ZenTrim_FlowersLittle",
+      "profile": "TP_Foliage",
+      "preview_mesh": "plane_vertical",
+      "backdrop": "Sakura_SoftVoid",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.2,
+        1.2,
+        0.08
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "trimsheet_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_ZenTrim_FlowersLittle",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_ZenTrim_FlowersLittle"
+    },
+    {
+      "id": "MI_ZenTrim_FlowersMid",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_ZenTrim_FlowersMid.MI_ZenTrim_FlowersMid",
+      "profile": "TP_Foliage",
+      "preview_mesh": "plane_vertical",
+      "backdrop": "Sakura_SoftVoid",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.2,
+        1.2,
+        0.08
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "trimsheet_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_ZenTrim_FlowersMid",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_ZenTrim_FlowersMid"
+    },
+    {
+      "id": "MI_ZenTrim_Wet",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_ZenTrim_Wet.MI_ZenTrim_Wet",
+      "profile": "TP_Stone",
+      "preview_mesh": "plane_vertical",
+      "backdrop": "Sakura_SoftVoid",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.2,
+        1.2,
+        0.08
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "trimsheet_instances",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_ZenTrim_Wet",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_ZenTrim_Wet"
+    }
+  ]
+}

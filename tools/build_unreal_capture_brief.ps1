@@ -25,7 +25,7 @@ $slots = @(
     destination_group = 'renders.breakdown'
     target_page = 'wix/shader-breakdowns.html'
     title = 'Universal Master Substrate graph plate'
-    capture = 'Annotated Material Editor screenshot for M_Master_Toon_Universal — layer stack, Nikki modulators, and Substrate toon BSDF tail visible.'
+    capture = 'Annotated Material Editor screenshot for M_Master_Toon_Universal - layer stack, Nikki modulators, and Substrate toon BSDF tail visible.'
     proves = 'Stylized environment materials are one production system with readable instance scope, not ad-hoc one-offs.'
     preferred_filename = 'breakdown_shader_universal_master_substrate_1920x1080.png'
   },

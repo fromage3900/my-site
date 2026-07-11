@@ -24,7 +24,65 @@
       "priority": 135,
       "caption": "EEVEE \u00b7 authored materials \u00b7 Melodia studio",
       "engine": "EEVEE",
-      "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend"
+      "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend",
+      "passport": {
+        "project": "Melusina",
+        "category": "Character / Water Hair",
+        "version": "v4 stage",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "295,221"
+          ],
+          [
+            "Meshes",
+            "78"
+          ],
+          [
+            "Materials",
+            "37"
+          ],
+          [
+            "Textures",
+            "46"
+          ],
+          [
+            "Shader",
+            "Water (Advance) + authored Melusina"
+          ],
+          [
+            "Software",
+            "Blender 5.1 \u00b7 Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "Cam_Beauty"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ],
+          [
+            "Stage",
+            "Melodia_Portfolio_Stage_v4"
+          ],
+          [
+            "Lane",
+            "NPR beauty + FLIP accent"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/melusina_passport.json",
+          "html": "generated/passports/melusina_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "melusina"
+      }
     },
     {
       "id": "melusina_portrait",
@@ -38,7 +96,65 @@
       "priority": 135,
       "caption": "EEVEE \u00b7 authored materials \u00b7 Melodia studio",
       "engine": "EEVEE",
-      "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend"
+      "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend",
+      "passport": {
+        "project": "Melusina",
+        "category": "Character / Water Hair",
+        "version": "v4 stage",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "295,221"
+          ],
+          [
+            "Meshes",
+            "78"
+          ],
+          [
+            "Materials",
+            "37"
+          ],
+          [
+            "Textures",
+            "46"
+          ],
+          [
+            "Shader",
+            "Water (Advance) + authored Melusina"
+          ],
+          [
+            "Software",
+            "Blender 5.1 \u00b7 Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "Cam_Beauty"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ],
+          [
+            "Stage",
+            "Melodia_Portfolio_Stage_v4"
+          ],
+          [
+            "Lane",
+            "NPR beauty + FLIP accent"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/melusina_passport.json",
+          "html": "generated/passports/melusina_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "melusina"
+      }
     },
     {
       "id": "melusina_front",
@@ -52,7 +168,65 @@
       "priority": 125,
       "caption": "EEVEE \u00b7 authored materials \u00b7 Melodia studio",
       "engine": "EEVEE",
-      "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend"
+      "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend",
+      "passport": {
+        "project": "Melusina",
+        "category": "Character / Water Hair",
+        "version": "v4 stage",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "295,221"
+          ],
+          [
+            "Meshes",
+            "78"
+          ],
+          [
+            "Materials",
+            "37"
+          ],
+          [
+            "Textures",
+            "46"
+          ],
+          [
+            "Shader",
+            "Water (Advance) + authored Melusina"
+          ],
+          [
+            "Software",
+            "Blender 5.1 \u00b7 Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "Cam_Beauty"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ],
+          [
+            "Stage",
+            "Melodia_Portfolio_Stage_v4"
+          ],
+          [
+            "Lane",
+            "NPR beauty + FLIP accent"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/melusina_passport.json",
+          "html": "generated/passports/melusina_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "melusina"
+      }
     },
     {
       "id": "melusina_three_quarter",
@@ -66,7 +240,65 @@
       "priority": 125,
       "caption": "EEVEE \u00b7 authored materials \u00b7 Melodia studio",
       "engine": "EEVEE",
-      "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend"
+      "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend",
+      "passport": {
+        "project": "Melusina",
+        "category": "Character / Water Hair",
+        "version": "v4 stage",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "295,221"
+          ],
+          [
+            "Meshes",
+            "78"
+          ],
+          [
+            "Materials",
+            "37"
+          ],
+          [
+            "Textures",
+            "46"
+          ],
+          [
+            "Shader",
+            "Water (Advance) + authored Melusina"
+          ],
+          [
+            "Software",
+            "Blender 5.1 \u00b7 Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "Cam_Beauty"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ],
+          [
+            "Stage",
+            "Melodia_Portfolio_Stage_v4"
+          ],
+          [
+            "Lane",
+            "NPR beauty + FLIP accent"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/melusina_passport.json",
+          "html": "generated/passports/melusina_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "melusina"
+      }
     },
     {
       "id": "cross_beauty_34",
@@ -974,5 +1206,11 @@
       "shader": "Wood",
       "wave": 5
     }
-  ]
+  ],
+  "passport_schema": "melodia-asset-passport/v1",
+  "latest_passport": {
+    "json": "generated/passports/melusina_passport.json",
+    "html": "generated/passports/melusina_passport.html",
+    "config": "generated/passport_config.json"
+  }
 }

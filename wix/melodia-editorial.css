@@ -268,23 +268,101 @@ img { display: block; max-width: 100%; }
 }
 
 .material-proof-frame {
-  border: 1px solid var(--border-gold);
-  background: #12182d;
+  border: 1px solid rgba(255, 110, 180, 0.22);
+  background: var(--melodia-void-gradient, #0d1224);
   overflow: hidden;
 }
 
-.material-proof-frame img {
+.material-proof-frame img,
+.material-proof-frame video {
   width: 100%;
   height: auto;
   display: block;
   object-fit: contain;
+  object-position: center center;
   filter: none;
 }
 
-.image-card.material-proof-frame img {
+.image-card.material-proof-frame img,
+.image-card.material-proof-frame video {
   aspect-ratio: 1;
   object-fit: contain;
-  background: #12182d;
+  object-position: center center;
+  background: transparent;
+}
+
+.landscape-loop-card video,
+.landscape-hero-media video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.landscape-loop-card img {
+  object-position: center 58%;
+}
+
+.landscape-hero-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.landscape-hero-media .landscape-hero-poster,
+.landscape-hero-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.landscape-hero-media video {
+  z-index: 1;
+}
+
+/* Recruiter iridescence overlay — Figma IriShaderOverlay texture */
+.band.astral.iri-recruiter-surface,
+.planetarium-mini-band,
+.band-constellation-accent {
+  position: relative;
+  isolation: isolate;
+}
+
+.band.astral.iri-recruiter-surface::before,
+.planetarium-mini-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.22;
+  mix-blend-mode: screen;
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_IriOverlay.png") center / cover no-repeat,
+    linear-gradient(128deg, rgba(102, 217, 255, 0.08), rgba(255, 110, 180, 0.1), rgba(255, 230, 102, 0.06));
+  animation: mg-ribbon-shimmer 10s ease-in-out infinite;
+}
+
+.planetarium-mini-band > .inner,
+.band.astral.iri-recruiter-surface > .inner {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landscape-loop-card video,
+  .landscape-hero-media video {
+    display: none;
+  }
+  .band.astral.iri-recruiter-surface::before,
+  .planetarium-mini-band::before {
+    animation: none;
+    opacity: 0.12;
+  }
 }
 
 .hero-media::after {
@@ -507,10 +585,27 @@ em { color: var(--gold); font-style: italic; }
 
 .section-head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 400px);
-  gap: 48px;
-  align-items: end;
+  grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+  gap: 32px 48px;
+  align-items: start;
   margin-bottom: 36px;
+}
+
+.section-head > div {
+  min-width: 0;
+}
+
+.section-head h2 {
+  text-wrap: balance;
+  max-width: 18ch;
+}
+
+.section-head > p {
+  margin: 0;
+  padding-top: 0.35rem;
+  max-width: 36ch;
+  color: var(--muted);
+  line-height: 1.72;
 }
 
 .section-head p, .body-copy {

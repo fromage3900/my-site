@@ -9,6 +9,7 @@
   const NIGHTSHIFT_ASSET_BASE = '../generated/assets/nightshift/';
   const MATERIAL_LOOPS_MANIFEST_URL = '../generated/material_loops_manifest.json';
   const MATERIAL_LOOPS_ASSET_BASE = '../generated/assets/material-loops/';
+  const LANDSCAPE_LOOPS_MANIFEST_URL = '../generated/landscape_loops_manifest.json';
   const MI_PREVIEW_MANIFEST_URL = '../generated/mi_preview_manifest.json';
   const GEOMETRY_PIPELINES_URL = '../generated/geometry_nodes_pipelines.json';
   const PRODUCTION_SIGNALS_URL = '../generated/portfolio_production_signals.json';
@@ -747,6 +748,37 @@
     }
   }
 
+  function prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  function landscapeLoopCard(item) {
+    const poster = esc(item.poster || '');
+    const label = esc(item.label || item.id);
+    const caption = esc(item.caption || 'UDS day/night landscape loop');
+    const webm = esc(item.webm_path || '');
+    if (prefersReducedMotion() || !webm) {
+      return `<a class="image-card fashion-frame landscape-loop-card holo-plate" href="${poster}"><img src="${poster}" alt="${label} terrain" loading="lazy" /><div><span class="meta-label">Day / night</span><h3>${label}</h3><p>${caption}</p></div></a>`;
+    }
+    return `<figure class="image-card fashion-frame landscape-loop-card holo-plate"><video autoplay loop muted playsinline poster="${poster}" src="${webm}"></video><div><span class="meta-label">Day / night loop</span><h3>${label}</h3><p>${caption}</p></div></figure>`;
+  }
+
+  async function hydrateLandscapeLoops(mountId) {
+    const mount = document.getElementById(mountId || 'pillarTerrainGrid');
+    if (!mount) return;
+    try {
+      const manifest = await fetchJson(LANDSCAPE_LOOPS_MANIFEST_URL);
+      const entries = (Array.isArray(manifest.entries) ? manifest.entries : []).filter(
+        (e) => e.status === 'web_ready' || e.webm_path || e.poster
+      );
+      if (!entries.length) return;
+      mount.innerHTML = entries.map(landscapeLoopCard).join('');
+      mount.classList.add('landscape-loop-grid');
+    } catch (_err) {
+      /* keep static HTML posters */
+    }
+  }
+
   async function hydrateMaterialLoopGallery() {
     const mount = document.getElementById('miLoopGallery');
     const heroMount = document.getElementById('miLoopHero');
@@ -770,7 +802,8 @@
 
       if (heroMount) {
         if (hero) {
-          heroMount.innerHTML = `<figure class="image-card premium-card material-proof-frame loop-hero-card" data-pillar="sakura"><video autoplay loop muted playsinline loading="lazy" src="${esc(hero.webm_path)}"></video><div><h3>${esc(hero.id)}</h3><p>${esc(hero.backdrop || '')} · ${esc(hero.preview_mesh || 'sphere')} · ${esc(String(hero.duration_sec || '4'))}s loop</p></div></figure>`;
+          const poster = hero.poster ? ` poster="${esc(hero.poster)}"` : '';
+          heroMount.innerHTML = `<figure class="image-card premium-card material-proof-frame loop-hero-card" data-pillar="sakura"><video autoplay loop muted playsinline${poster} src="${esc(hero.webm_path)}"></video><div><h3>${esc(hero.id)}</h3><p>${esc(hero.backdrop || 'Melodia_VoidGradient')} · ${esc(hero.preview_mesh || 'sphere')} · ${esc(String(hero.duration_sec || '4'))}s loop</p></div></figure>`;
         } else if (heroPending) {
           heroMount.innerHTML = `<figure class="image-card premium-card material-proof-frame loop-hero-card loop-pending" data-pillar="sakura"><div class="loop-pending-swatch" aria-hidden="true"></div><div><h3>${esc(heroPending.id)}</h3><p>Awaiting capture — ${esc(heroPending.preview_mesh || 'swatch')} · ${esc(heroPending.backdrop || 'studio')}</p></div></figure>`;
         }
@@ -787,12 +820,14 @@
 
         const groups = {
           hero: ready.filter((e) => e.priority === 'hero'),
+          cosmic: ready.filter((e) => /^MI_Cosmic_|celestial_nebula/i.test(e.id)),
           trimsheet: ready.filter((e) => /ZenTrim|ClothTrim/i.test(e.id)),
           sdf: ready.filter((e) => /^MI_SDF_/i.test(e.id)),
           showcase: ready.filter((e) => /^MI_Show_/i.test(e.id)),
         };
         const order = [
-          ['Hero loops', groups.hero, 'Validation captures with studio PP and pillar backdrops.'],
+          ['Hero loops', groups.hero, 'Validation captures on Melodia void/iri gradient — no UE headquarters sky.'],
+          ['Cosmic loops', groups.cosmic, 'NightShift cosmic family — void-padded interim until MRQ orbit recapture.'],
           ['Trimsheet loops', groups.trimsheet, 'Vertical swatch staging for layer A/B trimsheet reads.'],
           ['SDF loops', groups.sdf, 'Orbital sphere captures for stylized SDF band materials.'],
           ['Showcase loops', groups.showcase, 'Starter MI_Show_* presets on the universal master.'],
@@ -803,7 +838,8 @@
             const tiles = items
               .map((item) => {
                 const src = item.webm_path;
-                return `<figure class="image-card premium-card material-proof-frame mi-loop-tile"><video autoplay loop muted playsinline loading="lazy" src="${esc(src)}"></video><div><h3>${esc(item.id)}</h3><p>${esc(item.backdrop || '')} · ${esc(item.preview_mesh || '')}</p></div></figure>`;
+                const poster = item.poster ? ` poster="${esc(item.poster)}"` : '';
+                return `<figure class="image-card premium-card material-proof-frame mi-loop-tile"><video autoplay loop muted playsinline${poster} src="${esc(src)}"></video><div><h3>${esc(item.id)}</h3><p>${esc(item.backdrop || 'Melodia_VoidGradient')} · ${esc(item.preview_mesh || '')}</p></div></figure>`;
               })
               .join('');
             return `<section class="mi-group"><div class="section-head"><div><p class="eyebrow">${esc(label)}</p><h2>${esc(label)}</h2></div><p>${esc(caption)}</p></div><div class="image-grid mi-grid">${tiles}</div></section>`;
@@ -937,9 +973,11 @@
       global.MelodiaOrrery.upgradeHeroOrreries();
     }
 
-    if (hasEffect(shell, 'planetarium') && global.MelodiaPlanetarium) {
+    if (global.MelodiaPlanetarium) {
       global.MelodiaPlanetarium.mountAll();
-      global.MelodiaPlanetarium.mountHeroReplacement();
+      if (hasEffect(shell, 'planetarium')) {
+        global.MelodiaPlanetarium.mountHeroReplacement();
+      }
     }
 
     if (hasEffect(shell, 'instruments') && global.MelodiaCosmicInstruments) {
@@ -1005,6 +1043,11 @@
     if (options && options.materialLoopGallery) {
       await hydrateMaterialLoopGallery();
     }
+    if (options && options.landscapeLoops) {
+      await hydrateLandscapeLoops(
+        typeof options.landscapeLoops === 'string' ? options.landscapeLoops : 'pillarTerrainGrid'
+      );
+    }
     if (options && options.materialGallery) {
       await hydrateMaterialGallery();
     }
@@ -1047,6 +1090,7 @@
     hydrateRenderConstellation,
     hydrateMaterialGallery,
     hydrateMaterialLoopGallery,
+    hydrateLandscapeLoops,
     hydrateGeometryPipelines,
     hydrateReviewerPath,
     hydrateRenderCatalogSection,

@@ -1,0 +1,326 @@
+{
+  "template_root": "/Game/_ThirdParty/TurnBasedJRPGTemplate",
+  "third_party_root": "/Game/_ThirdParty",
+  "disk_root": "Content/_ThirdParty/TurnBasedJRPGTemplate",
+  "asset_counts": {
+    "animations": 25,
+    "blueprints": 156,
+    "materials": 31,
+    "meshes": 3,
+    "particles": 3,
+    "sounds": 18,
+    "textures": 94,
+    "total_uassets": 330,
+    "ui_widgets": 58
+  },
+  "battle": [
+    {
+      "name": "BP_BattleController",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Battle/BP_BattleController",
+      "category": "battle",
+      "melodia_role": "Turn queue + AV \u2014 bridge to MelodiaBattleSession"
+    },
+    {
+      "name": "BP_BattleBase",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Battle/BP_BattleBase",
+      "category": "battle",
+      "melodia_role": "Arena parent \u2014 host rhythm phase overlay"
+    },
+    {
+      "name": "BP_BattleUI",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/UI/BP_BattleUI",
+      "category": "ui",
+      "melodia_role": "Shell for WBP_Battle_Rhythm embed"
+    },
+    {
+      "name": "BP_TurnOrderUI",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/UI/BP_TurnOrderUI",
+      "category": "ui",
+      "melodia_role": "HSR turn bar \u2014 keep alongside rhythm HUD"
+    },
+    {
+      "name": "BP_TurnOrderList",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/UI/BP_TurnOrderList",
+      "category": "ui",
+      "melodia_role": "Unit portraits in turn order"
+    },
+    {
+      "name": "BP_ActionsUI",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/UI/BP_ActionsUI",
+      "category": "ui",
+      "melodia_role": "Command menu \u2014 Skill triggers rhythm phase"
+    },
+    {
+      "name": "BP_ActionButton",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/UI/BP_ActionButton",
+      "category": "ui",
+      "melodia_role": "Attack/Skill/Item/Flee buttons"
+    },
+    {
+      "name": "BP_PlayerUnitUI",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/UI/BP_PlayerUnitUI",
+      "category": "ui",
+      "melodia_role": "Party vitals \u2014 map to SP/ULT meters"
+    },
+    {
+      "name": "BP_EnemyUnitUI",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/UI/BP_EnemyUnitUI",
+      "category": "ui",
+      "melodia_role": "Enemy telegraph + toughness bar"
+    },
+    {
+      "name": "BP_HPBar",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/UI/BP_HPBar",
+      "category": "ui",
+      "melodia_role": "Reusable HP widget"
+    },
+    {
+      "name": "BP_MPBar",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/UI/BP_MPBar",
+      "category": "ui",
+      "melodia_role": "MP bar \u2014 parallel to Melodia SP"
+    },
+    {
+      "name": "BP_DamageText",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Battle/BP_DamageText",
+      "category": "battle",
+      "melodia_role": "Floating damage \u2014 grade-colored pops"
+    },
+    {
+      "name": "BP_OneTimeBattle",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Battle/BP_OneTimeBattle",
+      "category": "battle",
+      "melodia_role": "Encounter volume pattern"
+    },
+    {
+      "name": "BP_InteractionBattle",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Battle/BP_InteractionBattle",
+      "category": "battle",
+      "melodia_role": "Interact-to-fight hook"
+    },
+    {
+      "name": "E_BattleResult",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Battle/E_BattleResult",
+      "category": "enum",
+      "melodia_role": "Victory/Defeat/Fled \u2014 maps to MelodiaEncounterResult"
+    }
+  ],
+  "data_model": [
+    {
+      "name": "S_UnitStats",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Structs/S_UnitStats",
+      "category": "struct",
+      "melodia_role": "maxHP, maxMP, minAttack, maxAttack, defense, speed, hit, magical stats, actionTime"
+    },
+    {
+      "name": "S_PlayerUnitData",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Structs/S_PlayerUnitData",
+      "category": "struct",
+      "melodia_role": "Exp, currentHP, currentMP, equipment slots"
+    },
+    {
+      "name": "S_OffLevelBattleData",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Structs/S_OffLevelBattleData",
+      "category": "struct",
+      "melodia_role": "Overworld encounter payload"
+    },
+    {
+      "name": "S_QuestRewards",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Structs/S_QuestRewards",
+      "category": "struct",
+      "melodia_role": "XP/gold/item rewards"
+    },
+    {
+      "name": "E_EquipmentType",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Enums/E_EquipmentType",
+      "category": "enum",
+      "melodia_role": "Weapon/Armor/Shield/Helm/Boots"
+    },
+    {
+      "name": "E_ActionType",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Enums/E_ActionType",
+      "category": "enum",
+      "melodia_role": "Attack/Skill/Item/Flee/None/Interact"
+    },
+    {
+      "name": "E_UnitClass",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Enums/E_UnitClass",
+      "category": "enum",
+      "melodia_role": "Class lanes for Melodist party"
+    },
+    {
+      "name": "E_TurnType",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Enums/E_TurnType",
+      "category": "enum",
+      "melodia_role": "Player/Enemy turn discriminator"
+    },
+    {
+      "name": "E_GameState",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Enums/E_GameState",
+      "category": "enum",
+      "melodia_role": "Explore/Battle/Menu state machine"
+    },
+    {
+      "name": "E_QuestStatus",
+      "ue_path": "/Game/_ThirdParty/TurnBasedJRPGTemplate/Blueprints/Enums/E_QuestStatus",
+      "category": "enum",
+      "melodia_role": "Quest progression"
+    }
+  ],
+  "melodia_cpp": [
+    {
+      "name": "MelodiaGameMode",
+      "ue_path": "/Script/MelodiaCore.MelodiaGameMode",
+      "category": "cpp",
+      "melodia_role": "Loop phases: Exploration/Battle/Victory"
+    },
+    {
+      "name": "MelodiaBattleSession",
+      "ue_path": "/Script/MelodiaCore.MelodiaBattleSession",
+      "category": "cpp",
+      "melodia_role": "Rhythm phase machine"
+    },
+    {
+      "name": "MelodiaRhythmHUDWidget",
+      "ue_path": "/Script/MelodiaCore.MelodiaRhythmHUDWidget",
+      "category": "cpp",
+      "melodia_role": "NativePaint highway"
+    },
+    {
+      "name": "MelodiaRhythmExecutionComponent",
+      "ue_path": "/Script/MelodiaCore.MelodiaRhythmExecutionComponent",
+      "category": "cpp",
+      "melodia_role": "Judgment + combo"
+    },
+    {
+      "name": "MelodiaEncounterTrigger",
+      "ue_path": "/Script/MelodiaCore.MelodiaEncounterTrigger",
+      "category": "cpp",
+      "melodia_role": "Overlap \u2192 battle"
+    }
+  ],
+  "bridge_scaffold": [
+    {
+      "name": "BP_Melodia_JRPG_Bridge",
+      "ue_path": "/Game/Melodia/Bridge/JRPG/BP_Melodia_JRPG_Bridge",
+      "notes": "Parent: BP_BattleController \u2014 rhythm phase delegate"
+    },
+    {
+      "name": "BP_Melodia_RhythmBattle",
+      "ue_path": "/Game/Melodia/Blueprints/Battle/BP_Melodia_RhythmBattle",
+      "notes": "Parent: BP_BattleBase \u2014 MelodiaGameMode ref"
+    },
+    {
+      "name": "BP_Melodia_QuestHook",
+      "ue_path": "/Game/Melodia/Core/BP_QuestManager",
+      "notes": "Quest manager stub \u2014 template quest BP child"
+    },
+    {
+      "name": "WBP_Melodia_BattleShell",
+      "ue_path": "/Game/Melodia/UI/WBP_Melodia_BattleShell",
+      "notes": "Hosts template BP_BattleUI + WBP_Battle_Rhythm"
+    },
+    {
+      "name": "WBP_Melodia_CommandMenu",
+      "ue_path": "/Game/Melodia/UI/WBP_Melodia_CommandMenu",
+      "notes": "P5-style commands \u2192 rhythm execution"
+    },
+    {
+      "name": "DT_MelodiaEnemies",
+      "ue_path": "/Game/Data/Melodia/DT_MelodiaEnemies",
+      "notes": "Enemy stats from gmm/game/data_registry"
+    },
+    {
+      "name": "DT_MelodiaSkills",
+      "ue_path": "/Game/Data/Melodia/DT_MelodiaSkills",
+      "notes": "Song skills with note charts"
+    },
+    {
+      "name": "DT_MelodiaPlayer",
+      "ue_path": "/Game/Data/Melodia/DT_MelodiaPlayer",
+      "notes": "Player unit defaults"
+    },
+    {
+      "name": "L_Melodia_RhythmSlice",
+      "ue_path": "/Game/Melodia/Levels/L_Melodia_RhythmSlice",
+      "notes": "Vertical slice: encounter + rhythm + reward"
+    }
+  ],
+  "excluded": [
+    {
+      "name": "Full template inventory UI (58 widgets)",
+      "reason": "Reskin subset only \u2014 BP_BattleUI shell + turn order"
+    },
+    {
+      "name": "Template save game UI",
+      "reason": "Melodia uses gmm/game/player_state JSON until C++ save wired"
+    },
+    {
+      "name": "Crafting UI",
+      "reason": "Post-MVP \u2014 Songcraft phase 5+"
+    }
+  ],
+  "python_runtime": [
+    "gmm/game/data_registry.py",
+    "gmm/game/player_state.py",
+    "gmm/game/rhythm_clock.py",
+    "gmm/game/battle_manager.py",
+    "gmm/game/jrpg_bridge.py"
+  ],
+  "docs": [
+    "Docs/DEEPSEEK_RHYTHM_GAMEPLAY_HANDOFF.md",
+    "Docs/MELODIA_MELUSINA_GAME_UX.md",
+    "Docs/MELODIA_JRPG_RHYTHM_SCAFFOLD.md",
+    "Docs/WBP_BATTLE_RHYTHM_SETUP.md"
+  ],
+  "generated_at": "2026-07-10T15:21:06.822676+00:00",
+  "disk_exists": true,
+  "disk_counts": {
+    "Animations": 25,
+    "Blueprints": 156,
+    "Materials": 31,
+    "Meshes": 3,
+    "Particles": 3,
+    "Sounds": 18,
+    "Textures": 94,
+    "total": 330
+  },
+  "key_assets": {
+    "found": [
+      {
+        "name": "BP_BattleController",
+        "path": "Content\\_ThirdParty\\TurnBasedJRPGTemplate\\Blueprints\\Battle\\BP_BattleController.uasset"
+      },
+      {
+        "name": "BP_BattleBase",
+        "path": "Content\\_ThirdParty\\TurnBasedJRPGTemplate\\Blueprints\\Battle\\BP_BattleBase.uasset"
+      },
+      {
+        "name": "S_UnitStats",
+        "path": "Content\\_ThirdParty\\TurnBasedJRPGTemplate\\Blueprints\\Structs\\S_UnitStats.uasset"
+      },
+      {
+        "name": "S_PlayerUnitData",
+        "path": "Content\\_ThirdParty\\TurnBasedJRPGTemplate\\Blueprints\\Structs\\S_PlayerUnitData.uasset"
+      },
+      {
+        "name": "E_EquipmentType",
+        "path": "Content\\_ThirdParty\\TurnBasedJRPGTemplate\\Blueprints\\Enums\\E_EquipmentType.uasset"
+      },
+      {
+        "name": "E_ActionType",
+        "path": "Content\\_ThirdParty\\TurnBasedJRPGTemplate\\Blueprints\\Enums\\E_ActionType.uasset"
+      },
+      {
+        "name": "BP_BattleUI",
+        "path": "Content\\_ThirdParty\\TurnBasedJRPGTemplate\\Blueprints\\UI\\BP_BattleUI.uasset"
+      },
+      {
+        "name": "BP_TurnOrderUI",
+        "path": "Content\\_ThirdParty\\TurnBasedJRPGTemplate\\Blueprints\\UI\\BP_TurnOrderUI.uasset"
+      }
+    ],
+    "missing": []
+  },
+  "ready_for_bridge": true
+}

@@ -16,7 +16,7 @@ Generated from generated/unreal_portfolio_intake.json for Brennan Shepherd's Mel
 - Destination: $(System.Collections.Specialized.OrderedDictionary.destination_group)
 - Target page: $(System.Collections.Specialized.OrderedDictionary.target_page)
 - Preferred filename: $(System.Collections.Specialized.OrderedDictionary.preferred_filename)
-- Capture: Annotated Material Editor screenshot for M_Master_Toon_Universal â€” layer stack, Nikki modulators, and Substrate toon BSDF tail visible.
+- Capture: Annotated Material Editor screenshot for M_Master_Toon_Universal - layer stack, Nikki modulators, and Substrate toon BSDF tail visible.
 - Proves: Stylized environment materials are one production system with readable instance scope, not ad-hoc one-offs.
 ## 2. Space Cathedral celestial shader plate
 - Slot ID: $(System.Collections.Specialized.OrderedDictionary.id)

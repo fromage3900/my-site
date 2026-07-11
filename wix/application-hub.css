@@ -6,13 +6,45 @@
   max-width: none;
 }
 
+.proof-snapshot-inline {
+  margin: 0 24px 8px;
+  padding: 4px 0 10px;
+  border-top: 1px solid var(--soft-line);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 20px;
+}
+
 .passport-grid-compact {
-  grid-template-columns: repeat(2, minmax(0, 220px));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px 28px;
 }
 
 .passport-grid-compact .passport-cell {
   padding: 10px 0;
+}
+
+.alignment-grid-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.landscape-loop-grid {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 1.5rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.landscape-loop-grid .landscape-loop-card,
+.landscape-loop-grid .image-card {
+  min-width: 0;
+}
+
+.landscape-loop-grid video,
+.landscape-loop-grid img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center 58%;
 }
 
 .planetarium-disclosure {
@@ -39,6 +71,14 @@
   padding-bottom: 0.85rem;
 }
 
+.band.paper,
+.band.cloud {
+  /* Keep night dossier — no ivory/cream paper bleed */
+  background:
+    linear-gradient(180deg, rgba(16, 23, 54, 0.92), rgba(10, 14, 28, 0.96));
+  color: var(--ink);
+}
+
 .identity-panel {
   position: relative;
   overflow: hidden;
@@ -46,9 +86,8 @@
   align-content: start;
   border: 1px solid var(--border-gold);
   background:
-    linear-gradient(rgba(16, 23, 54, 0.88), rgba(7, 9, 18, 0.92)),
-    var(--pattern-hearts-svg);
-  background-size: auto, 180px 180px;
+    linear-gradient(rgba(16, 23, 54, 0.92), rgba(7, 9, 18, 0.95)),
+    radial-gradient(circle at 88% 12%, rgba(255, 110, 180, 0.08), transparent 40%);
   box-shadow: 0 20px 70px rgba(7, 9, 18, 0.35);
 }
 
@@ -71,20 +110,27 @@
 
 .data-row {
   display: grid;
-  grid-template-columns: 142px 1fr;
-  gap: 16px;
+  grid-template-columns: minmax(110px, 132px) minmax(0, 1fr);
+  gap: 12px 16px;
   padding: 15px 24px;
   border-top: 1px solid var(--soft-line);
   font-size: 0.78rem;
+  align-items: start;
 }
 
 .data-row span {
   color: var(--muted);
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  line-height: 1.45;
 }
 
-.data-row strong { color: var(--ink); font-weight: 500; }
+.data-row strong {
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
 
 .world-grid {
   display: grid;
@@ -175,21 +221,48 @@
 
 .escher-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: 46px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 40px;
   align-items: center;
+  width: min(100%, var(--max, 1180px));
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+.escher-copy {
+  min-width: 0;
+}
+
+.escher-copy h2 {
+  margin: 0.35rem 0 0.75rem;
+  max-width: 22ch;
+  text-wrap: balance;
+}
+
+.escher-copy .body-copy {
+  max-width: 42ch;
 }
 
 .impossible-card,
 .escher-tessellation {
   position: relative;
-  min-height: 500px;
+  min-height: 460px;
   overflow: hidden;
   border: 1px solid var(--border-gold);
   background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
-    radial-gradient(circle at 30% 20%, rgba(98, 83, 156, 0.5), transparent 34%),
-    radial-gradient(circle at 72% 72%, rgba(40, 123, 125, 0.34), transparent 32%);
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(13, 18, 36, 0.92)),
+    radial-gradient(circle at 30% 20%, rgba(255, 110, 180, 0.18), transparent 34%),
+    radial-gradient(circle at 72% 72%, rgba(102, 217, 255, 0.16), transparent 32%);
+  touch-action: none;
+  user-select: none;
+}
+
+.escher-interactive {
+  cursor: grab;
+}
+
+.escher-interactive.is-dragging {
+  cursor: grabbing;
 }
 
 .escher-grid {
@@ -197,12 +270,64 @@
   inset: 6%;
   width: calc(100% - 12%);
   height: calc(100% - 12%);
-  opacity: 0.55;
+  opacity: 0.62;
+  pointer-events: none;
 }
 
 .escher-grid-inner {
   transform-origin: 120px 120px;
+  transform-box: fill-box;
   animation: escher-grid-spin 100s linear infinite;
+  will-change: transform;
+}
+
+.escher-interactive .escher-grid-inner {
+  animation: none;
+}
+
+.escher-sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.5;
+  mix-blend-mode: screen;
+}
+
+.escher-sheen::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -60%;
+  width: 42%;
+  height: 140%;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_SheenSweep.png") center / cover no-repeat;
+  transform: skewX(-18deg);
+  animation: escher-sheen-sweep 4.2s ease-in-out infinite;
+  opacity: 0.55;
+}
+
+@keyframes escher-sheen-sweep {
+  0% { left: -60%; opacity: 0.15; }
+  45% { opacity: 0.65; }
+  100% { left: 120%; opacity: 0.12; }
+}
+
+.escher-hint {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  z-index: 4;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(236, 234, 244, 0.62);
+  pointer-events: none;
 }
 
 @keyframes escher-grid-spin {
@@ -442,9 +567,13 @@
 
 .about-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px;
-  gap: 46px;
-  align-items: end;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  align-items: start;
+}
+
+.about-layout-text .about-copy {
+  max-width: 780px;
 }
 
 .about-copy { max-width: 780px; }
@@ -455,24 +584,16 @@
   line-height: 1.5;
 }
 
-.zunda-card {
-  overflow: hidden;
-  border: 1px solid var(--border-gold);
-  background: rgba(247, 242, 234, 0.08);
+/* Removed stretched black-backed zunda alpha — keep night-safe cameo slot unused */
+.zunda-card { display: none; }
+
+.passport-card.light {
+  background: linear-gradient(180deg, rgba(16, 23, 54, 0.96), rgba(7, 9, 18, 0.94));
+  color: var(--lavender);
 }
 
-.zunda-card img {
-  width: 100%;
-  height: 285px;
-  object-fit: cover;
-  object-position: 18% center;
-}
-
-.zunda-card p {
-  margin: 0;
-  padding: 16px;
-  color: rgba(233, 229, 242, 0.72);
-  line-height: 1.56;
+.passport-card.light::before {
+  opacity: 0.14;
 }
 
 .technical-appendix {
@@ -519,8 +640,11 @@
   .escher-layout,
   .breakdown-passports,
   .about-layout,
-  .concept-list { grid-template-columns: 1fr; }
+  .concept-list,
+  .landscape-loop-grid,
+  .alignment-grid-two { grid-template-columns: 1fr; }
   .world-card { min-height: 340px; }
+  .escher-tessellation { min-height: 360px; }
 }
 
 .skip-link {
@@ -621,7 +745,8 @@
   .escher-grid-inner,
   .escher-tessellation::before,
   .escher-tessellation::after,
-  .escher-glyphs span {
+  .escher-glyphs span,
+  .escher-sheen::before {
     animation: none !important;
   }
 }

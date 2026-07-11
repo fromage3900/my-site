@@ -28,8 +28,9 @@
 
 <main id="main">
 <section class="hero has-editorial-frame" aria-labelledby="page-title" data-planetarium-hero>
-  <div class="hero-media" aria-hidden="true">
-    <img src="../generated/assets/nightshift/WP_SakuraDream_terrain.png" alt="Stylized Unreal Engine sakura environment render" />
+  <div class="hero-media landscape-hero-media" aria-hidden="true">
+    <img class="landscape-hero-poster" src="../generated/assets/nightshift/WP_SakuraDream_terrain.png" alt="" />
+    <video autoplay loop muted playsinline poster="../generated/assets/nightshift/WP_SakuraDream_terrain.png" src="../generated/assets/landscape-loops/WP_SakuraDream.webm"></video>
   </div>
   <div class="hero-inner">
     <p class="kicker magazine-kicker">Melodia portfolio dossier / Infold application</p>
@@ -44,14 +45,6 @@
 </section>
 
 <section class="band paper" id="proof">
-  <div class="inner">
-    <aside class="hero-passport proof-snapshot" aria-label="Application snapshot">
-      <div class="passport-grid passport-grid-compact">
-        <div class="passport-cell"><span class="meta-label">Target Lane</span><strong>Environment Art</strong></div>
-        <div class="passport-cell"><span class="meta-label">Pipeline</span><strong>UE + Blender</strong></div>
-      </div>
-    </aside>
-  </div>
   <div class="inner proof-layout">
     <figure class="feature-frame">
       <img src="../generated/assets/latest-hero.png" alt="Sakura Path editorial render plate" />
@@ -69,6 +62,10 @@
       <div class="panel-title">
         <h3>Brennan Shepherd</h3>
         <p>Environment designer — Unreal materials, retopology, look development. Dreamy spaces with pipeline bones.</p>
+      </div>
+      <div class="passport-grid passport-grid-compact proof-snapshot-inline" aria-label="Application snapshot">
+        <div class="passport-cell"><span class="meta-label">Target Lane</span><strong>Environment Art</strong></div>
+        <div class="passport-cell"><span class="meta-label">Pipeline</span><strong>UE + Blender</strong></div>
       </div>
       <div class="data-row"><span>Education</span><strong>Final-year Humber 3D Animation student</strong></div>
       <div class="data-row"><span>Core Tools</span><strong>Blender, Maya, 3ds Max, ZBrush, 3DCoat, Substance Painter, Photoshop, After Effects</strong></div>
@@ -88,7 +85,7 @@
       </div>
       <p>I chase collectible fantasy mood with production-readable systems underneath — shaders, PCG, and a pipeline that lands new Unreal plates on this site quickly.</p>
     </div>
-    <div class="alignment-grid">
+    <div class="alignment-grid alignment-grid-two">
       <article class="alignment-card premium-card">
         <span>Art &amp; Visual Design</span>
         <div>
@@ -159,28 +156,29 @@
       </div>
       <p>English stays primary for recruiters; Japanese labels sit like artbook type.</p>
     </div>
-    <div class="world-grid">
-      <article class="world-card premium-card sakura" data-kana="さくら">
+    <div class="world-grid" id="hubLandscapeLoops">
+      <article class="world-card premium-card sakura holo-plate" data-kana="さくら">
         <div><span class="world-number">World 01</span><h3>Sakura Dream</h3><span class="jp-title">桜の夢</span></div>
         <p>Petal drift, gentle paths, lacquered wood, soft bloom — storybook garden that stays readable for play.</p>
       </article>
-      <article class="world-card premium-card cathedral" data-kana="ほし">
+      <article class="world-card premium-card cathedral holo-plate" data-kana="ほし">
         <div><span class="world-number">World 02</span><h3>Space Cathedral</h3><span class="jp-title">星の聖堂</span></div>
         <p>Celestial arches, stained light, emissive trims — cosmic surfaces you can walk through.</p>
       </article>
-      <article class="world-card premium-card castle" data-kana="どう">
+      <article class="world-card premium-card castle holo-plate" data-kana="どう">
         <div><span class="world-number">World 03</span><h3>Baroque Grotto</h3><span class="jp-title">バロックの洞窟</span></div>
         <p>Gilded ornament in wet grotto intimacy: moss, mist, rock scatter, precious cave light.</p>
       </article>
-      <article class="world-card premium-card grotto" data-kana="そら">
+      <article class="world-card premium-card grotto holo-plate" data-kana="そら" data-pillar="orrery">
         <div><span class="world-number">World 04</span><h3>Cosmic Orrery</h3><span class="jp-title">宇宙の天球儀</span></div>
         <p>Night cosmic palette, orbital scatter, constellation motifs — owned in L_WP_CosmicOrrery.</p>
       </article>
     </div>
+    <div class="image-grid lookbook-grid landscape-loop-grid" id="pillarTerrainGrid" style="margin-top:1.5rem"></div>
   </div>
 </section>
 
-<section class="band astral planetarium-band" id="planetarium">
+<section class="band astral planetarium-band iri-recruiter-surface" id="planetarium">
   <div class="inner">
     <details class="planetarium-disclosure">
       <summary>
@@ -200,9 +198,9 @@
   </div>
 </section>
 
-<section class="band astral band-constellation-accent" id="logic">
+<section class="band astral band-constellation-accent iri-recruiter-surface" id="logic">
   <div class="inner escher-layout">
-    <div class="impossible-card escher-tessellation" aria-hidden="true">
+    <div class="impossible-card escher-tessellation" data-escher-interact>
       <svg class="escher-grid" viewBox="0 0 240 240" aria-hidden="true">
         <defs>
           <pattern id="escher-diamond-hub" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -215,11 +213,12 @@
           <circle cx="120" cy="120" r="92" fill="none" stroke="rgba(228,201,144,0.28)" stroke-width="0.75"/>
           <circle cx="120" cy="120" r="58" fill="none" stroke="rgba(233,229,242,0.2)" stroke-width="0.55"/>
           <path d="M120 28v184M28 120h184" stroke="rgba(201,168,106,0.18)" stroke-width="0.5"/>
+          <path d="M48 48 192 192M192 48 48 192" stroke="rgba(255,110,180,0.16)" stroke-width="0.45"/>
         </g>
       </svg>
-      <div class="escher-glyphs"><span>∞</span><span>◆</span><span>↺</span></div>
+      <div class="escher-glyphs" aria-hidden="true"><span>∞</span><span>◆</span><span>↺</span></div>
     </div>
-    <div>
+    <div class="escher-copy">
       <div class="monogram-strip" aria-hidden="true">
         <span class="glyph-star"></span><span class="glyph-orbit"></span><span class="glyph-phi"></span><span class="glyph-infinity"></span>
       </div>
@@ -254,7 +253,7 @@
       <article class="stack-card">
         <span class="meta-label">Modeling</span>
         <h3>Topology and sculpt pass</h3>
-        <p>Blender, Maya, 3ds Max, ZBrush, 3DCoat for sculpt, retopo, UVs, game-ready pieces. <a href="zbrush-breakdown.html">See sculpt → editor pairs</a>.</p>
+        <p>Blender for organic and sculptural assets; procedural math + Escher combinations for a lot of the kit; Maya / Max / ZBrush / 3DCoat when the job asks. <a href="zbrush-breakdown.html">See form → editor pairs</a>.</p>
       </article>
       <article class="stack-card">
         <span class="meta-label">Production</span>
@@ -309,16 +308,12 @@
 </section>
 
 <section class="band astral" id="about">
-  <div class="inner about-layout">
+  <div class="inner about-layout about-layout-text">
     <div class="about-copy">
       <p class="eyebrow">Personal Texture</p>
       <h2>Warm, technical, and a little enchanted.</h2>
       <p>Background across 2D design, 3D environments, animation, photography, and communications. Charm with readable structure and enough technical curiosity to keep improving the pipeline.</p>
     </div>
-    <aside class="zunda-card" aria-label="Personal process artwork cameo">
-      <img src="../generated/assets/editorial/zunda-transparent.png" alt="Green character illustration used as a personal process accent" />
-      <p>Zunda stays as a process cameo while the recruiter read stays on environment art and shaders.</p>
-    </aside>
   </div>
 </section>
 
@@ -337,7 +332,7 @@
       <a class="path-row" href="recruiter-one-sheet.html"><span>03 / One-sheet</span><div><h3>Recruiter one-sheet</h3><p>One-page summary for fast intake.</p></div><b>Open</b></a>
       <a class="path-row" href="hero-renders.html"><span>04 / Renders</span><div><h3>Hero Renders</h3><p>NightShift terrain, Nikki grids, Sakura mood plates.</p></div><b>Open</b></a>
       <a class="path-row" href="shader-breakdowns.html"><span>05 / Shader</span><div><h3>Shader Breakdowns</h3><p>Unreal material systems and latest technical proof.</p></div><b>Open</b></a>
-      <a class="path-row" href="zbrush-breakdown.html"><span>05b / Sculpt</span><div><h3>ZBrush → Editor</h3><p>High-poly sculpt plates beside retopo'd, textured Unreal versions.</p></div><b>Open</b></a>
+      <a class="path-row" href="zbrush-breakdown.html"><span>05b / Form</span><div><h3>Sculpt &amp; Procedural → Editor</h3><p>Blender sculpts and math/Escher assets beside retopo'd, textured Unreal versions.</p></div><b>Open</b></a>
       <a class="path-row" href="surreal-architecture.html"><span>06 / Surreal</span><div><h3>Surreal Architecture</h3><p>Blender GN addon — 42 genomes, library bake, Nikki stage graphs.</p></div><b>Open</b></a>
       <a class="path-row" href="geometry-nodes.html"><span>07 / Geometry</span><div><h3>Geometry &amp; PCG</h3><p>SurrealArch GN, UE PCG, GeometryScript pipelines.</p></div><b>Open</b></a>
       <a class="path-row" href="melodia-melusina.html"><span>07 / Game UI</span><div><h3>Melodia Melusina</h3><p>Figma-synced rhythm RPG UI.</p></div><b>Open</b></a>
@@ -377,11 +372,12 @@
 </div>
 <script src="melodia-orrery-system.js"></script>
 <script src="melodia-planetarium.js"></script>
+<script src="melodia-escher-interact.js"></script>
 <script src="melodia-cosmic-instruments.js"></script>
 <script src="melodia-magical-girl.js"></script>
 <script src="melodia-starfield.js"></script>
 <script src="melodia-dream-shaders.js"></script>
 <script src="melodia-editorial.js"></script>
-<script>MelodiaEditorial.init({ page: 'application-hub', reviewerPath: true });</script>
+<script>MelodiaEditorial.init({ page: 'application-hub', reviewerPath: true, landscapeLoops: true });</script>
 </body>
 </html>

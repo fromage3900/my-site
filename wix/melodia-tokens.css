@@ -28,6 +28,18 @@
   --motif-accent: rgba(201, 168, 106, 0.58);
   --motif-glyph-opacity: 0.42;
   --motif-clip-opacity: 0.52;
+  /* Melodia void gradient — matches MI studio backdrop */
+  --melodia-void-gradient:
+    radial-gradient(
+      ellipse 72% 68% at 50% 42%,
+      rgba(240, 220, 240, 0.14) 0%,
+      rgba(13, 18, 36, 0.92) 42%,
+      #0d1224 68%,
+      #0a0e1c 100%
+    ),
+    radial-gradient(ellipse 50% 40% at 78% 28%, rgba(255, 110, 180, 0.16), transparent 60%),
+    radial-gradient(ellipse 45% 38% at 18% 72%, rgba(102, 217, 255, 0.12), transparent 55%),
+    radial-gradient(ellipse 40% 30% at 55% 88%, rgba(255, 230, 102, 0.08), transparent 50%);
 }
 
 [data-pillar="sakura"],
@@ -48,5 +60,5 @@
 
 [data-pillar="orrery"],
 .accent-iris {
-  --motif-accent: rgba(204, 153, 255, 0.55);
+  --motif-accent: rgba(255, 110, 180, 0.58);
 }

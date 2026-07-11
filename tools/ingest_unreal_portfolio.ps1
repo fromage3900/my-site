@@ -48,7 +48,7 @@ if ($pcgHeatmapSource -and -not $NoAssetCopy) {
 }
 
 $renderCards = New-Object System.Collections.Generic.List[object]
-$renderGroups = @('hero', 'materials', 'breakdown', 'pcg')
+$renderGroups = @('hero', 'materials', 'breakdown', 'pcg', 'material-loops')
 foreach ($group in $renderGroups) {
   $items = @($package.renders.$group)
   $index = 0
@@ -79,6 +79,7 @@ foreach ($group in $renderGroups) {
       }
       'breakdown' { 82 - $index }
       'pcg' { 76 - $index }
+      'material-loops' { if ($baseName -match 'FlowersLots') { 98 - $index } else { 84 - $index } }
       default { 50 }
     }
     $status = if ($copied) { 'web_ready' } elseif ($sourcePath) { 'source_found' } else { 'needs_capture' }
@@ -142,7 +143,7 @@ $axisText = if ($axisSteps.Count -gt 0) { $axisSteps -join ' / ' } else { 'Torii
 $genomeName = if ($package.genome.genome) { $package.genome.genome } else { 'ZEN_SHRINE_AXIS' }
 $pcgHeatmapHtml = if ($pcgHeatmapWebPath) { "<div class=`"thumb heatmap-thumb`"><img src=`"$pcgHeatmapWebPath`" alt=`"PCG heatmap showing procedural exclusion zones and shrine route logic`" /></div>" } else { '<div class="thumb heatmap-thumb"><span>PCG heatmap pending</span></div>' }
 $latestSignals = @(
-  [ordered]@{ title = 'Universal Substrate master'; label = 'Universal master'; note = 'M_Master_Toon_Universal is the one stylized surface system — layer stack, Nikki modulators, and instance scope for environment work.' },
+  [ordered]@{ title = 'Universal Substrate master'; label = 'Universal master'; note = 'M_Master_Toon_Universal is the one stylized surface system - layer stack, Nikki modulators, and instance scope for environment work.' },
   [ordered]@{ title = 'NASA starmap shader'; label = 'Space Cathedral'; note = 'MI_Show_CelestialNebula now carries real celestial source work for constellation ramp, parallax nebula, and galaxy mood.' },
   [ordered]@{ title = 'Melusina trim texture pass'; label = 'Sakura Dream'; note = 'ZenTrim work connects real texture assets to the Sakura shrine material language instead of placeholder surface reads.' },
   [ordered]@{ title = 'Nikki surface polish'; label = 'Fashion fantasy'; note = 'Iridescence, sheen, sparkle, and soft pastel response expanded across Sakura material instances for a stronger Infold-adjacent finish.' },
@@ -224,6 +225,78 @@ if (Test-Path -LiteralPath $nightshiftDir) {
   $intake.render_cards = @($renderCards | Sort-Object priority -Descending)
   $intake.counts.renders_total = @($intake.render_cards).Count
   $intake.counts.renders_web_ready = @($intake.render_cards | Where-Object { $_.status -eq 'web_ready' }).Count
+  $intake | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath $intakePath -Encoding UTF8
+}
+
+# Material loop WebMs — from encode_material_loops.ps1 manifest.
+$loopsManifestPath = Join-Path $Root 'generated\material_loops_manifest.json'
+$loopsAssetDir = Join-Path $Root 'generated\assets\material-loops'
+if (Test-Path -LiteralPath $loopsManifestPath) {
+  $loopsManifest = Get-Content -LiteralPath $loopsManifestPath -Raw | ConvertFrom-Json
+  foreach ($loop in @($loopsManifest.entries)) {
+    if (-not $loop.webm_path -or $loop.status -ne 'web_ready') { continue }
+    $fileName = [System.IO.Path]::GetFileName($loop.local_relative_path)
+    if ([string]::IsNullOrWhiteSpace($fileName)) { $fileName = "$($loop.id).webm" }
+    $src = Join-Path $loopsAssetDir $fileName
+    if (-not (Test-Path -LiteralPath $src)) { continue }
+    $slug = New-Slug "material-loop-$($loop.id)"
+    $renderCards.Add([ordered]@{
+      id = $slug
+      group = 'material-loops'
+      filename = $fileName
+      source_path = $src
+      source_exists = $true
+      copied = $true
+      web_path = $loop.webm_path
+      local_relative_path = $loop.local_relative_path
+      priority = if ($loop.priority -eq 'hero') { 98 } else { 85 }
+      status = 'web_ready'
+      caption = "Material loop — $($loop.id) on $($loop.preview_mesh) with $($loop.backdrop) backdrop."
+      media_type = 'video/webm'
+      duration_sec = $loop.duration_sec
+      profile = $loop.profile
+    }) | Out-Null
+  }
+  $intake.render_cards = @($renderCards | Sort-Object priority -Descending)
+  $intake.counts.renders_total = @($intake.render_cards).Count
+  $intake.counts.renders_web_ready = @($intake.render_cards | Where-Object { $_.status -eq 'web_ready' }).Count
+  $intake.counts.material_loops = @($intake.render_cards | Where-Object { $_.group -eq 'material-loops' }).Count
+  $intake | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath $intakePath -Encoding UTF8
+}
+
+# Landscape UDS day/night loops
+$landManifestPath = Join-Path $Root 'generated\landscape_loops_manifest.json'
+$landAssetDir = Join-Path $Root 'generated\assets\landscape-loops'
+if (Test-Path -LiteralPath $landManifestPath) {
+  $landManifest = Get-Content -LiteralPath $landManifestPath -Raw | ConvertFrom-Json
+  foreach ($loop in @($landManifest.entries)) {
+    if (-not $loop.webm_path -or $loop.status -ne 'web_ready') { continue }
+    $fileName = [System.IO.Path]::GetFileName($loop.local_relative_path)
+    if ([string]::IsNullOrWhiteSpace($fileName)) { $fileName = "$($loop.id).webm" }
+    $src = Join-Path $landAssetDir $fileName
+    if (-not (Test-Path -LiteralPath $src)) { continue }
+    $slug = New-Slug "landscape-loop-$($loop.id)"
+    $renderCards.Add([ordered]@{
+      id = $slug
+      group = 'landscape-loops'
+      filename = $fileName
+      source_path = $src
+      source_exists = $true
+      copied = $true
+      web_path = $loop.webm_path
+      local_relative_path = $loop.local_relative_path
+      priority = 99
+      status = 'web_ready'
+      caption = $loop.caption
+      media_type = 'video/webm'
+      duration_sec = $loop.duration_sec
+      poster = $loop.poster
+    }) | Out-Null
+  }
+  $intake.render_cards = @($renderCards | Sort-Object priority -Descending)
+  $intake.counts.renders_total = @($intake.render_cards).Count
+  $intake.counts.renders_web_ready = @($intake.render_cards | Where-Object { $_.status -eq 'web_ready' }).Count
+  $intake.counts.landscape_loops = @($intake.render_cards | Where-Object { $_.group -eq 'landscape-loops' }).Count
   $intake | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath $intakePath -Encoding UTF8
 }
 
