@@ -379,7 +379,11 @@
       "T_Melodia_GradeGreat.png",
       "T_Melodia_GradeGood.png",
       "T_Melodia_GradeMiss.png",
-      "T_Melodia_NoteHead.png"
+      "T_Melodia_NoteHead.png",
+      "T_Melodia_LanePress.png",
+      "T_Melodia_SkillChipBG.png",
+      "T_Melodia_SafeAreaMask.png",
+      "T_Melodia_MobileTopBar.png"
     ];
     var base = "../generated/assets/melodia-game-ui/";
     root.innerHTML = "";
@@ -398,14 +402,78 @@
     });
   }
 
+  function initIosPhaseSwitch(root) {
+    if (!root) return;
+    var switcher = root.querySelector("[data-ios-phase-switch]");
+    if (!switcher) return;
+    var buttons = switcher.querySelectorAll("[data-ios-set-phase]");
+    function setPhase(phase) {
+      root.setAttribute("data-ios-phase", phase);
+      root.querySelectorAll("[data-ios-panel]").forEach(function (panel) {
+        var id = panel.getAttribute("data-ios-panel");
+        var show =
+          (phase === "rhythm" && id === "rhythm") ||
+          (phase === "command" && (id === "command" || id === "rhythm")) ||
+          (phase === "enemy" && id === "enemy") ||
+          (phase === "results" && id === "results");
+        if (id === "rhythm") {
+          panel.hidden = phase === "results" || phase === "enemy";
+          return;
+        }
+        if (id === "command") {
+          panel.hidden = false;
+          return;
+        }
+        panel.hidden = !show;
+      });
+      buttons.forEach(function (btn) {
+        var on = btn.getAttribute("data-ios-set-phase") === phase;
+        if (on) btn.setAttribute("aria-current", "true");
+        else btn.removeAttribute("aria-current");
+      });
+    }
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        setPhase(btn.getAttribute("data-ios-set-phase"));
+      });
+    });
+    setPhase(root.getAttribute("data-ios-phase") || "rhythm");
+
+    root.querySelectorAll("[data-ios-skills] .game-ui-skill-chip").forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        root.querySelectorAll("[data-ios-skills] .game-ui-skill-chip").forEach(function (c) {
+          c.classList.remove("is-selected");
+        });
+        chip.classList.add("is-selected");
+        setPhase("command");
+      });
+    });
+  }
+
+  function applyIosMode() {
+    var params = new URLSearchParams(window.location.search);
+    var ios = params.get("mode") === "ios";
+    if (ios) {
+      document.body.classList.add("ios-mode");
+      var play = document.querySelector("[data-ios-play]");
+      if (play) play.setAttribute("data-show-safe", "1");
+      var target = document.getElementById("ios-battle");
+      if (target && !window.location.hash) {
+        target.scrollIntoView({ block: "start" });
+      }
+    }
+  }
+
   function init() {
+    applyIosMode();
     document.querySelectorAll("[data-codex-grid]").forEach(fillCodexGrid);
     document.querySelectorAll("[data-game-ui-assets]").forEach(fillAssetGrid);
     document.querySelectorAll(".game-ui-playback-head").forEach(animatePlaybackHead);
     initDecorativeNotes();
     initPhaseSwitch();
+    document.querySelectorAll("[data-ios-play]").forEach(initIosPhaseSwitch);
     loadRhythmConfig().then(function () {
-      document.querySelectorAll("[data-rhythm-playground]").forEach(function (el) {
+      document.querySelectorAll("[data-rhythm-playground], [data-ios-rhythm]").forEach(function (el) {
         new RhythmStrip(el);
       });
     });

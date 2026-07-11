@@ -68,6 +68,28 @@
     if (tier === 'full' || tier === 'soft') {
       shell.classList.add('mg-ambient');
       layer.classList.remove('is-hidden');
+
+      // Corner crystals + band ribbon trails (Magical Girl details)
+      ['c1', 'c2', 'c3', 'c4'].forEach(function (cls) {
+        var crystal = document.createElement('span');
+        crystal.className = 'mg-crystal ' + cls;
+        crystal.setAttribute('aria-hidden', 'true');
+        layer.appendChild(crystal);
+      });
+
+      shell.querySelectorAll('.band.astral, .band.stage-character-band, .hero, #portals').forEach(function (band, i) {
+        if (band.querySelector(':scope > .mg-ribbon-trail')) return;
+        band.style.position = band.style.position || 'relative';
+        var t1 = document.createElement('span');
+        t1.className = 'mg-ribbon-trail t1';
+        t1.setAttribute('aria-hidden', 'true');
+        var t2 = document.createElement('span');
+        t2.className = 'mg-ribbon-trail t2';
+        t2.setAttribute('aria-hidden', 'true');
+        if (i % 2 === 1) t2.style.animationDelay = '2.4s';
+        band.appendChild(t1);
+        band.appendChild(t2);
+      });
     }
 
     var allowWish = tier === 'full' || tier === 'soft';
@@ -123,8 +145,8 @@
       apply();
     }
 
-    // Interactive cards only — not every premium-card
-    document.querySelectorAll('.portal-card, .path-row, .guide-card').forEach(function (el) {
+    // Interactive cards + stage plate strip
+    document.querySelectorAll('.portal-card, .path-row, .guide-card, .stage-plate-grid a').forEach(function (el) {
       el.classList.add('mg-ribbon-card');
     });
 

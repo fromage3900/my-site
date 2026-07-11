@@ -636,7 +636,7 @@
     transform: none;
   }
 
-  .melodia-shell[data-dream-intensity="low"] > .dream-star-canvas {
+  .melodia-shell[data-dream-intensity="low"] > .melodia-starfield-canvas {
     opacity: 0.2;
   }
 }

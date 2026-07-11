@@ -165,8 +165,26 @@
   50% { opacity: 1; }
 }
 
-/* Was absolute right:14px — collided with Shop kitbash CTA and looked misaligned */
+/* Soft brand-side sparkle — kept left of CTA so Shop never collides */
 .mg-ui-chrome .mg-nav-chrome::after {
+  content: "✦";
+  position: absolute;
+  left: 18px;
+  bottom: 6px;
+  font-size: 0.55rem;
+  color: rgba(255, 110, 180, 0.42);
+  text-shadow: 0 0 10px rgba(102, 217, 255, 0.35);
+  pointer-events: none;
+  opacity: 0.75;
+  animation: mg-crystal-tick 7s ease-in-out infinite;
+}
+
+.melodia-shell[data-mg="soft"] .mg-nav-chrome::after {
+  color: rgba(255, 110, 180, 0.32);
+  opacity: 0.55;
+}
+
+.melodia-shell[data-mg="chrome"] .mg-nav-chrome::after {
   content: none;
 }
 
@@ -229,7 +247,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .mg-ui-chrome .mg-nav-chrome::before,
-  .mg-ui-chrome.mg-wish-mode .shell-nav .nav-cta::before {
+  .mg-ui-chrome .mg-nav-chrome::after,
+  .mg-ui-chrome.mg-wish-mode .shell-nav .nav-cta::before,
+  .mg-crystal,
+  .mg-ribbon-trail {
     animation: none;
   }
 }
@@ -302,7 +323,65 @@
   mask-image: radial-gradient(ellipse 78% 68% at 50% 42%, transparent 58%, black 92%);
 }
 
+/* Corner crystal ticks — Magical Girl chrome, not fullscreen soul-gems */
 .mg-crystal {
+  position: fixed;
+  z-index: 46;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  background: linear-gradient(135deg, var(--iri-cyan, #66d9ff), var(--iri-purple, #cc99ff));
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0.72;
+  animation: mg-crystal-tick 6.5s ease-in-out infinite;
+  box-shadow: 0 0 18px rgba(102, 217, 255, 0.55), 0 0 6px rgba(255, 110, 180, 0.4);
+}
+
+.mg-crystal.c1 { top: 18%; left: 2.5%; animation-delay: 0s; }
+.mg-crystal.c2 { top: 28%; right: 3%; animation-delay: 1.4s; background: linear-gradient(135deg, var(--iri-gold, #ffe666), var(--iri-cyan, #66d9ff)); }
+.mg-crystal.c3 { bottom: 16%; left: 4%; animation-delay: 2.8s; background: linear-gradient(135deg, rgba(255, 110, 180, 0.9), var(--iri-purple, #cc99ff)); }
+.mg-crystal.c4 { bottom: 24%; right: 3.5%; animation-delay: 4.2s; }
+
+.melodia-shell[data-mg="soft"] .mg-crystal {
+  opacity: 0.28;
+}
+
+.melodia-shell[data-mg="chrome"] .mg-crystal,
+.melodia-shell[data-mg="off"] .mg-crystal {
+  display: none;
+}
+
+/* Floating ribbon trails — soft curls at band edges */
+.mg-ribbon-trail {
+  position: absolute;
+  width: 160px;
+  height: 10px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.85;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 110, 180, 0.85) 18%,
+    rgba(255, 230, 102, 0.7) 48%,
+    rgba(102, 217, 255, 0.75) 78%,
+    transparent
+  );
+  border-radius: 999px;
+  filter: drop-shadow(0 0 8px rgba(255, 110, 180, 0.45));
+  mix-blend-mode: normal;
+  animation: mg-ribbon-shimmer 7s ease-in-out infinite;
+}
+
+.mg-ribbon-trail.t1 { top: 1.5rem; right: 8%; transform: rotate(-12deg); }
+.mg-ribbon-trail.t2 { bottom: 2rem; left: 6%; transform: rotate(8deg); animation-delay: 1.6s; }
+
+.melodia-shell[data-mg="soft"] .mg-ribbon-trail {
+  opacity: 0.35;
+}
+
+.melodia-shell[data-mg="chrome"] .mg-ribbon-trail,
+.melodia-shell[data-mg="off"] .mg-ribbon-trail {
   display: none;
 }
 
@@ -361,11 +440,43 @@
   opacity: 0.55;
 }
 
-/* Interactive ribbon cards — accent only on hover */
+/* Interactive ribbon cards — always a soft sparkle; stronger on hover */
 .portal-card.mg-ribbon-card,
 .path-row.mg-ribbon-card,
 .guide-card.mg-ribbon-card {
   position: relative;
+}
+
+.portal-card.mg-ribbon-card::before,
+.path-row.mg-ribbon-card::before,
+.guide-card.mg-ribbon-card::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 110, 180, 0.45) 20%,
+    rgba(255, 230, 102, 0.35) 50%,
+    rgba(102, 217, 255, 0.4) 80%,
+    transparent
+  );
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.25s ease;
+}
+
+.portal-card.mg-ribbon-card:hover::before,
+.path-row.mg-ribbon-card:hover::before,
+.guide-card.mg-ribbon-card:hover::before,
+.portal-card.mg-ribbon-card:focus-visible::before,
+.path-row.mg-ribbon-card:focus-visible::before {
+  opacity: 0.95;
 }
 
 .portal-card.mg-ribbon-card::after,
@@ -376,10 +487,10 @@
   top: 10px;
   right: 12px;
   font-size: 0.7rem;
-  color: rgba(255, 110, 180, 0.38);
+  color: rgba(255, 110, 180, 0.5);
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  opacity: 0.4;
+  transition: opacity 0.2s ease, text-shadow 0.2s ease;
   z-index: 2;
 }
 
@@ -388,12 +499,18 @@
 .guide-card.mg-ribbon-card:hover::after,
 .portal-card.mg-ribbon-card:focus-visible::after,
 .path-row.mg-ribbon-card:focus-visible::after {
-  opacity: 0.9;
+  opacity: 1;
+  text-shadow: 0 0 12px rgba(102, 217, 255, 0.45);
 }
 
 .mg-ui-chrome.mg-wish-mode .portal-card.mg-ribbon-card::after,
 .mg-ui-chrome.mg-wish-mode .path-row.mg-ribbon-card::after {
-  opacity: 0.55;
+  opacity: 0.75;
+}
+
+.mg-ui-chrome.mg-wish-mode .portal-card.mg-ribbon-card::before,
+.mg-ui-chrome.mg-wish-mode .path-row.mg-ribbon-card::before {
+  opacity: 0.7;
 }
 
 .melodia-shell.mg-wish-mode .magazine-kicker::after,
@@ -419,8 +536,11 @@
   .mg-contract-ring { animation: none; }
 }
 
-/* Pass 5 — soft/chrome: mute pink accent glow (full tier keeps Magical Girl pink) */
-.melodia-shell[data-mg="soft"],
+/* Soft keeps Magical Girl pink (muted); chrome stays gold-safe for dossier pages */
+.melodia-shell[data-mg="soft"] {
+  --mg-accent-pink: rgba(255, 130, 185, 0.72);
+}
+
 .melodia-shell[data-mg="chrome"] {
   --mg-accent-pink: rgba(201, 168, 106, 0.72);
 }
@@ -429,11 +549,67 @@
 .melodia-shell[data-mg="soft"] .button-premium:hover,
 .melodia-shell[data-mg="soft"] .nav-cta:hover,
 .melodia-shell[data-mg="soft"] .portal-card:hover,
-.melodia-shell[data-mg="soft"] .path-row:hover,
+.melodia-shell[data-mg="soft"] .path-row:hover {
+  box-shadow: 0 0 0 1px rgba(255, 110, 180, 0.28);
+}
+
 .melodia-shell[data-mg="chrome"] .button:hover,
 .melodia-shell[data-mg="chrome"] .button-premium:hover,
 .melodia-shell[data-mg="chrome"] .nav-cta:hover,
 .melodia-shell[data-mg="chrome"] .portal-card:hover,
 .melodia-shell[data-mg="chrome"] .path-row:hover {
   box-shadow: 0 0 0 1px rgba(201, 168, 106, 0.32);
+}
+
+.melodia-shell[data-mg="soft"] > .dream-sparkle-layer {
+  opacity: 0.07;
+}
+
+.melodia-shell[data-mg="full"] > .dream-sparkle-layer {
+  opacity: 0.09;
+}
+
+.melodia-shell[data-mg="soft"] > .dream-aurora-layer {
+  opacity: 0.28;
+  background:
+    radial-gradient(
+      ellipse 70% 40% at 70% 35%,
+      rgba(102, 217, 255, 0.12),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 50% 35% at 20% 70%,
+      rgba(204, 153, 255, 0.1),
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 40% 30% at 50% 20%,
+      rgba(125, 211, 192, 0.06),
+      transparent 55%
+    );
+}
+
+.melodia-shell[data-mg="full"] > .dream-aurora-layer {
+  opacity: 0.34;
+  background:
+    radial-gradient(
+      ellipse 70% 40% at 70% 35%,
+      rgba(102, 217, 255, 0.14),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 50% 35% at 20% 70%,
+      rgba(204, 153, 255, 0.12),
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 42% 32% at 48% 18%,
+      rgba(255, 110, 180, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 36% 28% at 80% 75%,
+      rgba(125, 211, 192, 0.07),
+      transparent 50%
+    );
 }

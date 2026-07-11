@@ -74,6 +74,12 @@
       if (gachaObserver) gachaObserver.observe(card);
     });
 
+    // Stage character plates — thin-film sweep on tilt hero + strip
+    shell.querySelectorAll('.stage-depth-tilt, .stage-plate-grid a').forEach((card) => {
+      if (!card.classList.contains('holo-plate')) card.classList.add('holo-plate');
+      if (gachaObserver && card.matches('.stage-plate-grid a')) gachaObserver.observe(card);
+    });
+
     shell.querySelectorAll('.card.world-card-large').forEach((card) => {
       const pillar = detectPillar(card);
       applyPillarTag(card, pillar);
@@ -128,7 +134,7 @@
     shell.addEventListener(
       'pointermove',
       (event) => {
-        const card = event.target.closest('.image-card.holo-plate, .world-card');
+        const card = event.target.closest('.image-card.holo-plate, .world-card, .stage-depth-tilt.holo-plate, .stage-plate-grid a.holo-plate');
         if (!card) return;
         const rect = card.getBoundingClientRect();
         const x = (event.clientX - rect.left) / Math.max(rect.width, 1);

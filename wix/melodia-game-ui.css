@@ -900,6 +900,299 @@
   min-height: 200px;
 }
 
+.game-ui-mobile-cta {
+  margin: 0;
+  padding: 0.35rem 0.75rem 0.65rem;
+  text-align: center;
+  font-size: 0.68rem;
+}
+
+.game-ui-mobile-cta a {
+  color: var(--game-cyan, #66d9ff);
+}
+
+/* ——— iOS portrait playable kit ——— */
+.game-ui-ios-stage {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.game-ui-ios-play {
+  position: relative;
+  width: min(100%, 390px);
+  min-height: 640px;
+  max-height: 844px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 2px solid var(--game-border, rgba(201, 168, 106, 0.35));
+  background:
+    linear-gradient(180deg, rgba(13, 18, 36, 0.96), rgba(7, 9, 18, 0.98)),
+    url("../generated/assets/melodia-game-ui/T_Melodia_HighwayBG.png") center / cover;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  padding-top: max(12px, env(safe-area-inset-top, 0px));
+  padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+  padding-left: max(8px, env(safe-area-inset-left, 0px));
+  padding-right: max(8px, env(safe-area-inset-right, 0px));
+  touch-action: manipulation;
+}
+
+.game-ui-ios-safe-guide {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  opacity: 0;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_SafeAreaMask.png") center / 100% 100% no-repeat;
+  transition: opacity 0.2s ease;
+}
+
+.game-ui-ios-play[data-show-safe="1"] .game-ui-ios-safe-guide,
+body.ios-mode .game-ui-ios-play .game-ui-ios-safe-guide {
+  opacity: 0.35;
+}
+
+.game-ui-ios-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0.9rem;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid rgba(255, 110, 180, 0.2);
+  min-height: 52px;
+}
+
+.game-ui-ios-enemy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.game-ui-ios-enemy .tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--game-magenta, #ff6eb4);
+}
+
+.game-ui-toughness.compact .track {
+  width: 120px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.game-ui-toughness.compact .fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--game-cyan, #66d9ff), var(--game-gold, #ffe666));
+}
+
+.game-ui-ios-topbar .combo {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--game-gold, #ffe666);
+  white-space: nowrap;
+}
+
+.game-ui-ios-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.5rem 0.9rem;
+}
+
+.game-ui-ios-controls .game-ui-floating-grade {
+  margin-left: auto;
+}
+
+.game-ui-ios-thumb {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  margin-top: auto;
+  /* thumb zone ~40% of device */
+  min-height: 42%;
+}
+
+.game-ui-ios-highway {
+  flex: 1;
+  min-height: 220px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(44px, 1fr));
+  gap: 8px;
+  padding: 0.5rem 0.75rem;
+  position: relative;
+  touch-action: manipulation;
+}
+
+.game-ui-ios-highway .game-ui-lane {
+  min-height: 180px;
+  min-width: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 110, 180, 0.22);
+  background-color: rgba(255, 255, 255, 0.03);
+  background-size: cover;
+  background-position: center;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.game-ui-ios-highway .game-ui-lane.lane-pressed {
+  background-image: url("../generated/assets/melodia-game-ui/T_Melodia_LanePress.png") !important;
+  box-shadow: inset 0 0 0 2px rgba(102, 217, 255, 0.55), 0 0 18px rgba(255, 110, 180, 0.35);
+}
+
+.game-ui-ios-skills {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(48px, 1fr));
+  gap: 8px;
+  padding: 0.5rem 0.75rem 0.85rem;
+  background: rgba(7, 9, 18, 0.55);
+  border-top: 1px solid rgba(201, 168, 106, 0.2);
+}
+
+.game-ui-ios-skills .game-ui-skill-chip {
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0.35rem 0.25rem;
+  font-size: 0.62rem;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  background-image: url("../generated/assets/melodia-game-ui/T_Melodia_SkillChipBG.png");
+  touch-action: manipulation;
+}
+
+.game-ui-ios-play[data-ios-phase="rhythm"] .game-ui-ios-skills {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.game-ui-ios-play[data-ios-phase="command"] .game-ui-ios-highway {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.game-ui-ios-play[data-ios-phase="enemy"] .game-ui-ios-highway,
+.game-ui-ios-play[data-ios-phase="enemy"] .game-ui-ios-skills {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.game-ui-ios-play[data-ios-phase="results"] .game-ui-ios-thumb {
+  display: none;
+}
+
+.game-ui-ios-phases {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 0.35rem 0.65rem 0.55rem;
+}
+
+.game-ui-ios-phases button {
+  min-height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(236, 234, 244, 0.75);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.game-ui-ios-phases button[aria-current="true"] {
+  border-color: rgba(255, 110, 180, 0.45);
+  color: var(--game-gold, #ffe666);
+  box-shadow: 0 0 0 1px rgba(102, 217, 255, 0.2);
+}
+
+.game-ui-ios-results {
+  padding: 0.75rem;
+}
+
+.game-ui-results-card.compact,
+.game-ui-enemy-card.compact {
+  padding: 0.75rem;
+}
+
+.game-ui-ios-stage-area {
+  padding: 0.5rem 0.75rem;
+}
+
+/* Full-viewport iOS mode */
+body.ios-mode {
+  background: #070912;
+}
+
+body.ios-mode .shell-nav,
+body.ios-mode .game-hero-band,
+body.ios-mode #battle-phases,
+body.ios-mode #envsandbox-assets,
+body.ios-mode .footer {
+  display: none !important;
+}
+
+body.ios-mode #ios-battle {
+  min-height: 100dvh;
+  padding: 0;
+  margin: 0;
+}
+
+body.ios-mode #ios-battle > .inner {
+  max-width: none;
+  padding: 0;
+}
+
+body.ios-mode #ios-battle .section-head {
+  display: none;
+}
+
+body.ios-mode .game-ui-ios-stage {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+body.ios-mode .game-ui-ios-play {
+  width: 100%;
+  max-width: none;
+  min-height: 100dvh;
+  max-height: none;
+  border-radius: 0;
+  border: 0;
+}
+
+@media (max-width: 480px) {
+  .game-ui-ios-play {
+    width: 100%;
+    border-radius: 0;
+    max-height: none;
+    min-height: 100dvh;
+  }
+
+  .game-ui-ios-stage {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  .game-ui-ios-highway {
+    min-height: 240px;
+  }
+}
+
 @media (max-width: 720px) {
   .game-ui-results-grid { grid-template-columns: 1fr; }
 }
@@ -909,6 +1202,11 @@
   .game-ui-playback-head,
   .grade-pop {
     animation: none !important;
+  }
+
+  .game-ui-ios-play .game-ui-shimmer,
+  body.ios-mode .game-ui-highway-shader::before {
+    display: none;
   }
 }
 

@@ -2,7 +2,7 @@
 <html lang="en" data-page="melodia-melusina">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Melodia Melusina — Game UI | Brennan Shepherd</title>
 <meta name="description" content="Melodia Melusina rhythm RPG UI — sheet music combat, grade pops, filigree HUD, and Figma-synced battle chrome for a turn-based Unreal project." />
 <link rel="stylesheet" href="melodia-tokens.css">
@@ -34,6 +34,7 @@
     <div class="button-row">
       <a class="button primary button-premium-primary" href="https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled" target="_blank" rel="noopener">Open Figma file</a>
       <a class="button button-premium" href="design-specs.html#game-ui">Design specs</a>
+      <a class="button button-premium" href="melodia-melusina.html?mode=ios#ios-battle">iOS battle kit</a>
     </div>
     <div class="game-ui-phase-switch" role="tablist" aria-label="Battle phase" data-phase-switch>
       <button type="button" role="tab" aria-selected="false" data-phase="command">Command</button>
@@ -215,7 +216,7 @@
           <h4>30 Song Skills — Full Codex</h4>
           <div class="game-ui-codex-grid" data-codex-grid></div>
         </aside>
-        <article class="game-ui-mobile" aria-label="Mobile thumb-zone battle">
+        <article class="game-ui-mobile" aria-label="Mobile thumb-zone preview">
           <div class="game-ui-topbar"><span class="phase">RHYTHM</span><span class="combo">×24</span></div>
           <div class="game-ui-highway game-ui-highway-shader">
             <div class="game-ui-lane" data-lane="A"></div>
@@ -225,11 +226,79 @@
             <div class="game-ui-hitline" aria-hidden="true"></div>
           </div>
           <div class="game-ui-mobile-skills" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <p class="game-ui-mobile-cta"><a href="#ios-battle">Open playable iOS kit →</a></p>
         </article>
       </div>
     </div>
 
-    <p class="game-ui-figma-link">Spec: <a href="../../Docs/MELODIA_MELUSINA_GAME_UX.md">MELODIA_MELUSINA_GAME_UX.md</a> · Grandmaster: <a href="../../FIGMA_GRANDMASTER.md">FIGMA_GRANDMASTER.md</a></p>
+    <p class="game-ui-figma-link">Spec: <a href="../../Docs/MELODIA_MELUSINA_GAME_UX.md">MELODIA_MELUSINA_GAME_UX.md</a> · iOS: <a href="../../Docs/MELODIA_IOS_MOBILE_GAME_UI.md">MELODIA_IOS_MOBILE_GAME_UI.md</a> · Grandmaster: <a href="../../FIGMA_GRANDMASTER.md">FIGMA_GRANDMASTER.md</a></p>
+  </div>
+</section>
+
+<section class="band game-void-band" id="ios-battle" aria-labelledby="ios-title">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow game-eyebrow">iOS · portrait primary</p>
+        <h2 id="ios-title">Mobile gameplay kit.</h2>
+      </div>
+      <p>Playable thumb-zone rhythm — safe areas, ≥44pt lanes, vertical highway. Open with <code>?mode=ios</code> for full-viewport play. Spec: <a href="../../Docs/MELODIA_IOS_MOBILE_GAME_UI.md">MELODIA_IOS_MOBILE_GAME_UI.md</a>.</p>
+    </div>
+
+    <div class="game-ui-ios-stage">
+      <div class="game-ui-ios-play" data-ios-play data-ios-phase="rhythm" data-ios-rhythm>
+        <div class="game-ui-ios-safe-guide" aria-hidden="true"></div>
+        <header class="game-ui-ios-topbar" style="background-image:url('../generated/assets/melodia-game-ui/T_Melodia_MobileTopBar.png')">
+          <div class="game-ui-ios-enemy">
+            <span class="tag enemy">Shrine Warden</span>
+            <div class="game-ui-toughness compact"><div class="track"><div class="fill" style="width:40%"></div></div></div>
+          </div>
+          <span class="combo" data-rhythm-combo>COMBO × 0</span>
+        </header>
+
+        <div class="game-ui-ios-stage-area" data-ios-panel="enemy" hidden>
+          <article class="game-ui-enemy-card compact">
+            <p class="telegraph">Cherry Storm incoming — prepare guard</p>
+          </article>
+        </div>
+
+        <div class="game-ui-ios-controls">
+          <button type="button" class="button button-premium-primary" data-rhythm-start>Play</button>
+          <p class="game-ui-play-hint" data-rhythm-status>Tap lanes A–D</p>
+          <span class="grade-pop game-ui-floating-grade" data-rhythm-grade>READY<small>tap lanes</small></span>
+        </div>
+
+        <div class="game-ui-ios-thumb">
+          <div class="game-ui-highway game-ui-highway-shader game-ui-ios-highway" data-ios-panel="rhythm">
+            <div class="game-ui-lane" data-lane="A"></div>
+            <div class="game-ui-lane" data-lane="B"></div>
+            <div class="game-ui-lane" data-lane="C"></div>
+            <div class="game-ui-lane" data-lane="D"></div>
+            <div class="game-ui-hitline" aria-hidden="true"></div>
+          </div>
+          <div class="game-ui-ios-skills" data-ios-panel="command" data-ios-skills aria-label="Skill chips">
+            <button type="button" class="game-ui-skill-chip">Basic</button>
+            <button type="button" class="game-ui-skill-chip is-selected">Skill</button>
+            <button type="button" class="game-ui-skill-chip">Guard</button>
+            <button type="button" class="game-ui-skill-chip">ULT</button>
+          </div>
+        </div>
+
+        <nav class="game-ui-ios-phases" aria-label="iOS battle phase" data-ios-phase-switch>
+          <button type="button" data-ios-set-phase="command">Cmd</button>
+          <button type="button" data-ios-set-phase="rhythm" aria-current="true">Rhythm</button>
+          <button type="button" data-ios-set-phase="enemy">Enemy</button>
+          <button type="button" data-ios-set-phase="results">Results</button>
+        </nav>
+
+        <div class="game-ui-ios-results" data-ios-panel="results" hidden>
+          <div class="game-ui-results-card compact">
+            <h3>Clear</h3>
+            <ul><li>Max combo — live</li><li>Grade mix — MelodiaCore windows</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

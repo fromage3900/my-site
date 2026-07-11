@@ -1,10 +1,9 @@
 {
-  "animations": true,
-  "category": "Character / Water Hair",
-  "decorativeStars": true,
-  "highlight": "environment",
-  "hoverEffects": true,
+  "theme": "dark",
   "project": "Melusina",
+  "category": "Character / Water Hair",
+  "version": "v4 stage",
+  "asset_id": "melusina",
   "rows": [
     [
       "Triangles",
@@ -51,7 +50,6 @@
       "NPR beauty + FLIP accent"
     ]
   ],
-  "theme": "dark",
-  "version": "v4 stage",
-  "asset_id": "melusina"
+  "generated_at": "2026-07-11T03:25:22.669693+00:00",
+  "schema": "melodia-asset-passport/v1"
 }
