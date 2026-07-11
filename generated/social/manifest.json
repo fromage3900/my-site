@@ -1,0 +1,127 @@
+{
+  "generated_at": "2026-07-11T04:04:08.910239+00:00",
+  "store_live": false,
+  "site": "https://fromage3900.github.io/my-site/",
+  "crops": [
+    {
+      "id": "stage_diorama/og_1200x630",
+      "file": "generated/social/stage_diorama__og_1200x630.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "source": "generated/assets/character/melusina_diorama_beauty.png",
+      "bytes": 30502
+    },
+    {
+      "id": "stage_diorama/square_1080",
+      "file": "generated/social/stage_diorama__square_1080.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "source": "generated/assets/character/melusina_diorama_beauty.png",
+      "bytes": 50487
+    },
+    {
+      "id": "stage_diorama/story_1080x1920",
+      "file": "generated/social/stage_diorama__story_1080x1920.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "source": "generated/assets/character/melusina_diorama_beauty.png",
+      "bytes": 80815
+    },
+    {
+      "id": "stage_diorama/twitter_1600x900",
+      "file": "generated/social/stage_diorama__twitter_1600x900.jpg",
+      "size": [
+        1600,
+        900
+      ],
+      "source": "generated/assets/character/melusina_diorama_beauty.png",
+      "bytes": 55869
+    },
+    {
+      "id": "vow_cross/og_1200x630",
+      "file": "generated/social/vow_cross__og_1200x630.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "source": "generated/assets/cross/cross_komikaze_beauty_34.png",
+      "bytes": 30550
+    },
+    {
+      "id": "vow_cross/square_1080",
+      "file": "generated/social/vow_cross__square_1080.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "source": "generated/assets/cross/cross_komikaze_beauty_34.png",
+      "bytes": 38544
+    },
+    {
+      "id": "vow_cross/story_1080x1920",
+      "file": "generated/social/vow_cross__story_1080x1920.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "source": "generated/assets/cross/cross_komikaze_beauty_34.png",
+      "bytes": 60668
+    },
+    {
+      "id": "vow_cross/twitter_1600x900",
+      "file": "generated/social/vow_cross__twitter_1600x900.jpg",
+      "size": [
+        1600,
+        900
+      ],
+      "source": "generated/assets/cross/cross_komikaze_beauty_34.png",
+      "bytes": 49362
+    },
+    {
+      "id": "ornament_plate/og_1200x630",
+      "file": "generated/social/ornament_plate__og_1200x630.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "source": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
+      "bytes": 14441
+    },
+    {
+      "id": "ornament_plate/square_1080",
+      "file": "generated/social/ornament_plate__square_1080.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "source": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
+      "bytes": 22978
+    },
+    {
+      "id": "ornament_plate/story_1080x1920",
+      "file": "generated/social/ornament_plate__story_1080x1920.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "source": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
+      "bytes": 33028
+    },
+    {
+      "id": "ornament_plate/twitter_1600x900",
+      "file": "generated/social/ornament_plate__twitter_1600x900.jpg",
+      "size": [
+        1600,
+        900
+      ],
+      "source": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
+      "bytes": 23148
+    }
+  ]
+}

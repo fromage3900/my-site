@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ornamental Architecture Kitbash | Brennan Shepherd</title>
 <meta name="description" content="15 gothic and baroque ornamental meshes for Unreal Engine 5.8 — rose windows, vault ribs, spiral stairs, filigree. FBX + UE pack for environment artists." />
+<meta property="og:title" content="Ornamental Architecture Kitbash — coming soon" />
+<meta property="og:description" content="15 gothic & baroque meshes for UE 5.8. FBX ready — Buy gated until Gumroad is live." />
+<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/social/ornament_plate__og_1200x630.jpg" />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/ornament-kitbash.html" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="stylesheet" href="melodia-tokens.css">
 <link rel="stylesheet" href="melodia-luxury-type.css">
 <link rel="stylesheet" href="melodia-editorial.css">
@@ -54,6 +59,7 @@
     <p class="lede game-lede">Rose windows, vault ribs, spiral stairs, and filigree I built for Melodia EnvSandbox — fifteen meshes, FBX + UE 5.8, ready for your lookdev.</p>
     <p class="kitbash-price" id="kitbashPrice">Launch $24 · List $29</p>
     <p class="kitbash-status pending" id="kitbashExportStatus" aria-live="polite">Export status loading…</p>
+    <p class="kitbash-status pending" id="kitbashLaunchGates" aria-live="polite" style="margin-top:0.5rem;">Launch gates loading…</p>
     <div class="button-row" id="buy">
       <a class="button primary button-premium-primary" id="gumroadBtn" href="#" target="_blank" rel="noopener">Gumroad — coming soon</a>
       <a class="button button-premium" id="artstationBtn" href="#" target="_blank" rel="noopener">ArtStation — coming soon</a>
@@ -108,6 +114,7 @@
       </div>
     </div>
     <ul class="kitbash-excluded" id="kitbashFaq">
+      <li><strong>When can I buy?</strong> — After six store screenshots and a live Gumroad product. Buy buttons stay “coming soon” until then.</li>
       <li><strong>Textures included?</strong> — No. Meshes are slot-ready for your stylized masters.</li>
       <li><strong>Greybox / surreal packs?</strong> — Separate products. This SKU is ornaments only.</li>
       <li><strong>Japanese alpha pack?</strong> — Not redistributed (third-party).</li>
@@ -151,8 +158,18 @@
     var status = document.getElementById("kitbashExportStatus");
     if (status && data.export_status) {
       var ex = data.export_status;
-      status.textContent = "FBX export: " + ex.exported + " / " + ex.total + " (" + ex.status + ")";
+      status.textContent = "FBX: " + ex.exported + " / " + ex.total + " (" + ex.status + ")" + (ex.note ? " — " + ex.note : "");
       status.className = "kitbash-status " + (ex.status === "complete" ? "ready" : "pending");
+    }
+    var gatesEl = document.getElementById("kitbashLaunchGates");
+    if (gatesEl && data.launch_gates) {
+      var g = data.launch_gates;
+      gatesEl.textContent = "Launch gates — screenshots " + (g.screenshots || "?") +
+        " · Gumroad " + (g.gumroad_product ? "live" : "not created") +
+        " · store_live " + (data.store_live === true ? "on" : "off");
+      gatesEl.className = "kitbash-status " + (data.store_live === true ? "ready" : "pending");
+    } else if (gatesEl) {
+      gatesEl.textContent = "Launch gates — screenshots + Gumroad still required before Buy goes live.";
     }
     var gum = document.getElementById("gumroadBtn");
     var art = document.getElementById("artstationBtn");

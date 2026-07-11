@@ -59,10 +59,19 @@ Done:
 4. Hero type block: mid-fold alignment, `16ch` headline measure (Syne / Instrument Serif / Bricolage / Azeret unchanged)
 5. Index effects: dropped `instruments` chrome clutter
 
+## Pass 8 — 2026-07-11 (social kit + Figma sync + honesty)
+
+Done:
+1. Social upload kit — `generated/social/` crops + `wix/social-kit.html` + captions MD
+2. OG / Twitter meta on home, Stage, kitbash, Melusina
+3. Fix broken `../../Docs/*` links on Melusina + design-specs (validate-safe)
+4. Shop honesty — FBX ready / Buy off; Stage diorama on home strip
+5. Figma Code Connect + upload manifest — Stage, iOS atlas, social OG slots
+
 ## How to run a pass
 
 1. Open live site + local `wix/` side by side
 2. Note AI tells (generic copy, glow, Inter, purple, pill clusters)
 3. Fix ≤5 items in one commit
-4. Push `main` + `gh-pages`
+4. Push `main` (GitHub Actions → Pages); sync `gh-pages` if still used as mirror
 5. Append results here

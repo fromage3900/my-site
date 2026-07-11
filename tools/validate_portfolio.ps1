@@ -34,6 +34,7 @@ foreach ($page in $pages) {
     $ref = if ($match.Groups[1].Value) { $match.Groups[1].Value } else { $match.Groups[2].Value }
     if ($ref -match '^(https?:|mailto:|#)' -or $ref -match '\$\{' -or [string]::IsNullOrWhiteSpace($ref)) { continue }
     $clean = ($ref -split '#')[0]
+    $clean = ($clean -split '\?')[0]
     if ([string]::IsNullOrWhiteSpace($clean)) { continue }
     $full = [System.IO.Path]::GetFullPath((Join-Path $page.DirectoryName $clean))
     if (-not (Test-Path -LiteralPath $full)) {
