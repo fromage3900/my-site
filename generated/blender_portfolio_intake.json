@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-11T00:19:26.781548+00:00",
+  "generated_at": "2026-07-11T00:22:01.251612+00:00",
   "engine": "EEVEE",
   "shader_pack": "Komikaze v2",
   "shader_credit": {
@@ -268,9 +268,9 @@
       "local_relative_path": "generated/assets/ornaments/filigree_ring_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 90,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -298,9 +298,9 @@
       "local_relative_path": "generated/assets/ornaments/rosette_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 88,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -373,9 +373,9 @@
       "local_relative_path": "generated/assets/ornaments/vault_ribs_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 84,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -388,9 +388,9 @@
       "local_relative_path": "generated/assets/ornaments/gothic_tracery_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 83,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -403,9 +403,9 @@
       "local_relative_path": "generated/assets/ornaments/oculus_frame_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 82,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -418,9 +418,9 @@
       "local_relative_path": "generated/assets/ornaments/spiral_stair_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 81,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -433,9 +433,9 @@
       "local_relative_path": "generated/assets/ornaments/filigree_ring_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 80,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -476,9 +476,9 @@
       "local_relative_path": "generated/assets/ornaments/rosette_komikaze_three_quarter.png",
       "hero_candidate": false,
       "priority": 78,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -521,9 +521,9 @@
       "local_relative_path": "generated/assets/ornaments/rose_window_komikaze_front.png",
       "hero_candidate": false,
       "priority": 76,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -566,9 +566,9 @@
       "local_relative_path": "generated/assets/ornaments/vault_ribs_komikaze_front.png",
       "hero_candidate": false,
       "priority": 74,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -596,9 +596,9 @@
       "local_relative_path": "generated/assets/ornaments/gothic_tracery_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 73,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -611,9 +611,9 @@
       "local_relative_path": "generated/assets/ornaments/oculus_frame_komikaze_front.png",
       "hero_candidate": false,
       "priority": 72,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -626,9 +626,9 @@
       "local_relative_path": "generated/assets/ornaments/spiral_stair_komikaze_low_angle.png",
       "hero_candidate": false,
       "priority": 71,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -641,9 +641,9 @@
       "local_relative_path": "generated/assets/ornaments/woven_ring_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 70,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -670,9 +670,9 @@
       "local_relative_path": "generated/assets/ornaments/torus_knot_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 69,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -699,9 +699,9 @@
       "local_relative_path": "generated/assets/ornaments/quatrefoil_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 68,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -714,9 +714,9 @@
       "local_relative_path": "generated/assets/ornaments/pendant_finial_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 67,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -744,9 +744,9 @@
       "local_relative_path": "generated/assets/ornaments/door_archway_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 66,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -789,9 +789,9 @@
       "local_relative_path": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 65,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -819,9 +819,9 @@
       "local_relative_path": "generated/assets/ornaments/corbel_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 64,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -849,9 +849,9 @@
       "local_relative_path": "generated/assets/ornaments/crown_molding_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 63,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -864,9 +864,9 @@
       "local_relative_path": "generated/assets/ornaments/woven_ring_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 60,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -879,9 +879,9 @@
       "local_relative_path": "generated/assets/ornaments/torus_knot_komikaze_three_quarter.png",
       "hero_candidate": false,
       "priority": 59,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -894,9 +894,9 @@
       "local_relative_path": "generated/assets/ornaments/quatrefoil_komikaze_front.png",
       "hero_candidate": false,
       "priority": 58,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -909,9 +909,9 @@
       "local_relative_path": "generated/assets/ornaments/pendant_finial_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 57,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -924,9 +924,9 @@
       "local_relative_path": "generated/assets/ornaments/door_archway_komikaze_front.png",
       "hero_candidate": false,
       "priority": 56,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -939,9 +939,9 @@
       "local_relative_path": "generated/assets/ornaments/column_capital_komikaze_three_quarter.png",
       "hero_candidate": false,
       "priority": 55,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -954,9 +954,9 @@
       "local_relative_path": "generated/assets/ornaments/corbel_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 54,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     },
     {
@@ -969,9 +969,9 @@
       "local_relative_path": "generated/assets/ornaments/crown_molding_komikaze_front.png",
       "hero_candidate": false,
       "priority": 53,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)",
+      "shader": "Wood",
       "wave": 5
     }
   ]
