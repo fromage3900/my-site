@@ -238,10 +238,22 @@
     return `<a class="image-card${frame} holo-plate" href="${href}"><img src="${href}" alt="${title}" loading="lazy" /><div>${meta}<h3>${title}</h3>${caption}</div></a>`;
   }
 
+  const BLENDER_DENY_ASSETS = new Set(['magical_wand', 'sakura_petal']);
+  const BLENDER_DENY_PATH = ['_void_iri_', 'vault_ribs_komikaze', 'rose_window_komikaze_front'];
+
+  function isBlenderCardWebReady(card) {
+    if (!card || !card.web_path) return false;
+    if (card.web_ready === false) return false;
+    if (BLENDER_DENY_ASSETS.has(card.asset_id)) return false;
+    const path = String(card.web_path);
+    if (BLENDER_DENY_PATH.some((frag) => path.includes(frag))) return false;
+    return true;
+  }
+
   async function fetchBlenderCards() {
     const intake = await fetchJson(BLENDER_INTAKE_URL);
     const cards = Array.isArray(intake.render_cards) ? intake.render_cards : [];
-    return cards.filter((c) => c.web_path);
+    return cards.filter(isBlenderCardWebReady);
   }
 
   async function hydrateBlenderNprGrid(mountId, groupFilter, maxCount) {
@@ -257,7 +269,7 @@
       cards.sort((a, b) => (b.priority || 0) - (a.priority || 0));
       if (maxCount) cards = cards.slice(0, maxCount);
       if (!cards.length) {
-        mount.innerHTML = '<p class="body-copy">No EEVEE / Komikaze plates yet. Run Tools/batch_eevee_komikaze_portfolio.py.</p>';
+        mount.innerHTML = '<p class="body-copy">Ornament proof plates loading soon.</p>';
         return;
       }
       mount.innerHTML = cards.map((c) => blenderCardHtml(c, fashion)).join('');
@@ -397,6 +409,8 @@
       await hydrateHeroPlates('heroStrip', maxCount || 3);
       return;
     }
+    // Keep curated HTML (Melusina face + known-good plates) when locked
+    if (mount.getAttribute('data-lock') === 'static') return;
     const limit = maxCount || 3;
     try {
       const blenderCards = await fetchBlenderCards();

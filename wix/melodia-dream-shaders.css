@@ -244,6 +244,20 @@
     0 2px 24px rgba(8, 11, 19, 0.45);
 }
 
+/* Full hero title iridescence — astral/hero only; paper bands stay solid ink */
+.melodia-shell .hero h1,
+.melodia-shell.fashion-mode .hero h1,
+.melodia-shell .band.astral .section-head h2,
+.melodia-shell .band.deep .section-head h2 {
+  background: var(--pillar-iri-ramp, var(--dream-iri-ramp));
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: dream-iri-text 11s ease-in-out infinite;
+  filter: drop-shadow(0 0 18px rgba(204, 153, 255, 0.22));
+}
+
 .melodia-shell .hero h1 em,
 .melodia-shell .hero h1 strong {
   font-style: italic;
@@ -261,14 +275,45 @@
 }
 
 .melodia-shell .hero .lede,
-.melodia-shell .hero .human-lede {
-  text-shadow: 0 0 28px rgba(240, 220, 240, 0.12);
+.melodia-shell .hero .human-lede,
+.melodia-shell .section-head .human-lede {
+  text-shadow:
+    0 0 28px rgba(240, 220, 240, 0.16),
+    0 0 48px rgba(102, 217, 255, 0.08);
+  color: rgba(236, 228, 245, 0.92);
 }
 
 .melodia-shell .kicker,
-.melodia-shell .magazine-kicker {
-  color: var(--iri-gold);
-  text-shadow: 0 0 16px rgba(255, 230, 102, 0.25);
+.melodia-shell .magazine-kicker,
+.melodia-shell .premium-kicker,
+.melodia-shell .eyebrow {
+  background: linear-gradient(
+    100deg,
+    var(--iri-gold) 0%,
+    var(--iri-cyan) 40%,
+    var(--iri-purple) 72%,
+    var(--iri-gold) 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: dream-iri-text 8s ease-in-out infinite;
+  text-shadow: none;
+  filter: drop-shadow(0 0 10px rgba(255, 230, 102, 0.28));
+}
+
+/* Paper bands: solid readable headlines — no transparent clip */
+.melodia-shell .band.paper .section-head h2,
+.melodia-shell .band.paper .section-head h2 em,
+.melodia-shell .band.paper .section-head h2 strong {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  color: var(--ink, rgba(236, 228, 245, 0.96));
+  animation: none;
+  filter: none;
+  text-shadow: 0 0 24px rgba(204, 153, 255, 0.12);
 }
 
 /* Iridescent glass nav */

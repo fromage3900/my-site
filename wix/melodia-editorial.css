@@ -597,7 +597,7 @@ em { color: var(--gold); font-style: italic; }
 
 .section-head h2 {
   text-wrap: balance;
-  max-width: 18ch;
+  max-width: min(28ch, 100%);
 }
 
 .section-head > p {

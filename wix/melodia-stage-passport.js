@@ -6,7 +6,8 @@
   const PASSPORT_HTML = '../generated/passports/melusina_passport.html';
   const COLOR_URL = '../generated/assets/character/melusina_diorama_beauty.png';
   const DEPTH_URL = '../generated/assets/character/melusina_beauty_depth_color.png';
-  const BEAUTY_URL = '../generated/assets/character/melusina_beauty_void_iri.png';
+  const BEAUTY_URL = '../generated/assets/character/melusina_portrait_face.png';
+  const FULL_BEAUTY_URL = '../generated/assets/character/melusina_beauty_void_iri.png';
   const INTAKE_URL = '../generated/blender_portfolio_intake.json';
 
   function esc(value) {
@@ -74,7 +75,7 @@
     if (!root) return;
     const color = root.querySelector('[data-stage-color]');
     const depth = root.querySelector('[data-stage-depth]');
-    if (color) color.src = color.getAttribute('data-src') || COLOR_URL;
+    if (color) color.src = color.getAttribute('data-src') || BEAUTY_URL;
     if (depth) depth.src = depth.getAttribute('data-src') || DEPTH_URL;
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -107,7 +108,8 @@
     const mount = document.getElementById('stagePlateStrip');
     if (!mount) return;
     const fallback = [
-      { web_path: BEAUTY_URL, title: 'Beauty 34' },
+      { web_path: BEAUTY_URL, title: 'Face portrait' },
+      { web_path: FULL_BEAUTY_URL, title: 'Full beauty' },
       { web_path: COLOR_URL, title: 'Diorama postcard' },
       { web_path: DEPTH_URL, title: 'Depth companion' },
     ];

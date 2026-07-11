@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-11T00:22:01.251612+00:00",
+  "generated_at": "2026-07-11T17:20:24.231716+00:00",
   "engine": "EEVEE",
   "shader_pack": "Komikaze v2",
   "shader_credit": {
@@ -8,7 +8,7 @@
     "url": "https://superhivemarket.com/products/komikaze",
     "creator_url": "https://superhivemarket.com/creators/doublegum"
   },
-  "last_wave": 5,
+  "last_wave": 2,
   "plate_count": 65,
   "hero_web_path": "../generated/assets/cross/cross_komikaze_beauty_34.png",
   "render_cards": [
@@ -312,7 +312,59 @@
       "priority": 110,
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
       "engine": "EEVEE",
-      "shader": "The Wall (Custom Texture)"
+      "shader": "The Wall (Custom Texture)",
+      "wave": 1,
+      "stage": "Melodia_Portfolio_Stage",
+      "passport": {
+        "project": "Melusina Vow Cross",
+        "category": "Prop / cross",
+        "version": "wave1",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "1,952"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "1"
+          ],
+          [
+            "Shader",
+            "Komikaze \u00b7 The Wall (Custom Texture)"
+          ],
+          [
+            "Software",
+            "Blender \u00b7 Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/cross_passport.json",
+          "html": "generated/passports/cross_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "cross"
+      }
     },
     {
       "id": "lissajous_beauty_34",
@@ -356,7 +408,59 @@
       "priority": 100,
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
       "engine": "EEVEE",
-      "shader": "The Wall (Custom Texture)"
+      "shader": "The Wall (Custom Texture)",
+      "wave": 1,
+      "stage": "Melodia_Portfolio_Stage",
+      "passport": {
+        "project": "Melusina Vow Cross",
+        "category": "Prop / cross",
+        "version": "wave1",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "1,952"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "1"
+          ],
+          [
+            "Shader",
+            "Komikaze \u00b7 The Wall (Custom Texture)"
+          ],
+          [
+            "Software",
+            "Blender \u00b7 Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "front"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/cross_passport.json",
+          "html": "generated/passports/cross_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "cross"
+      }
     },
     {
       "id": "cross_low_angle",
@@ -370,7 +474,9 @@
       "priority": 100,
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
       "engine": "EEVEE",
-      "shader": "The Wall (Custom Texture)"
+      "shader": "The Wall (Custom Texture)",
+      "wave": 1,
+      "stage": "Melodia_Portfolio_Stage"
     },
     {
       "id": "cross_macro",
@@ -384,7 +490,9 @@
       "priority": 100,
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
       "engine": "EEVEE",
-      "shader": "The Wall (Custom Texture)"
+      "shader": "The Wall (Custom Texture)",
+      "wave": 1,
+      "stage": "Melodia_Portfolio_Stage"
     },
     {
       "id": "cross_silhouette",
@@ -398,7 +506,9 @@
       "priority": 100,
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
       "engine": "EEVEE",
-      "shader": "The Wall (Custom Texture)"
+      "shader": "The Wall (Custom Texture)",
+      "wave": 1,
+      "stage": "Melodia_Portfolio_Stage"
     },
     {
       "id": "gazebo1_beauty_34",
@@ -682,7 +792,59 @@
       "priority": 80,
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)"
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 1,
+      "stage": "Melodia_Portfolio_Stage",
+      "passport": {
+        "project": "Zen Lantern",
+        "category": "Prop / props",
+        "version": "wave1",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "8,277,956"
+          ],
+          [
+            "Meshes",
+            "6"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze \u00b7 Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender \u00b7 Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/zenlantern_passport.json",
+          "html": "generated/passports/zenlantern_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "zenlantern"
+      }
     },
     {
       "id": "magical_wand_beauty_34",
@@ -694,9 +856,61 @@
       "local_relative_path": "generated/assets/props/magical_wand_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 78,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Tree Shader *",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Tree Shader *"
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 1,
+      "stage": "Melodia_Portfolio_Stage",
+      "passport": {
+        "project": "Stylized Magical Wand",
+        "category": "Prop / props",
+        "version": "wave1",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "3,456"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze \u00b7 Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender \u00b7 Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/magical_wand_passport.json",
+          "html": "generated/passports/magical_wand_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "magical_wand"
+      }
     },
     {
       "id": "rosette_three_quarter",
@@ -726,7 +940,58 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Tree Shader *",
       "engine": "EEVEE",
       "shader": "Tree Shader *",
-      "wave": 2
+      "wave": 2,
+      "stage": "Melodia_Portfolio_Stage",
+      "passport": {
+        "project": "Sakura Petal",
+        "category": "Prop / props",
+        "version": "wave2",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "812,222"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze \u00b7 Tree Shader *"
+          ],
+          [
+            "Software",
+            "Blender \u00b7 Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/sakura_petal_passport.json",
+          "html": "generated/passports/sakura_petal_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "sakura_petal"
+      }
     },
     {
       "id": "melody_slime_beauty_34",
@@ -890,7 +1155,59 @@
       "priority": 70,
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Voronoi Shader (3 Tones)"
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 1,
+      "stage": "Melodia_Portfolio_Stage",
+      "passport": {
+        "project": "Zen Lantern",
+        "category": "Prop / props",
+        "version": "wave1",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "8,277,956"
+          ],
+          [
+            "Meshes",
+            "6"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze \u00b7 Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender \u00b7 Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "three_quarter"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/zenlantern_passport.json",
+          "html": "generated/passports/zenlantern_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "zenlantern"
+      }
     },
     {
       "id": "torus_knot_beauty_34",
@@ -917,9 +1234,11 @@
       "local_relative_path": "generated/assets/props/magical_wand_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 68,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Tree Shader *",
+      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Tree Shader *"
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 1,
+      "stage": "Melodia_Portfolio_Stage"
     },
     {
       "id": "quatrefoil_beauty_34",
@@ -964,7 +1283,8 @@
       "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Tree Shader *",
       "engine": "EEVEE",
       "shader": "Tree Shader *",
-      "wave": 2
+      "wave": 2,
+      "stage": "Melodia_Portfolio_Stage"
     },
     {
       "id": "door_archway_beauty_34",
@@ -1206,11 +1526,5 @@
       "shader": "Wood",
       "wave": 5
     }
-  ],
-  "passport_schema": "melodia-asset-passport/v1",
-  "latest_passport": {
-    "json": "generated/passports/melusina_passport.json",
-    "html": "generated/passports/melusina_passport.html",
-    "config": "generated/passport_config.json"
-  }
+  ]
 }

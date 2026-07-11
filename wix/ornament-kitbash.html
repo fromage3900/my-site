@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ornamental Architecture Kitbash | Brennan Shepherd</title>
 <meta name="description" content="15 gothic and baroque ornamental meshes for Unreal Engine 5.8 — rose windows, vault ribs, spiral stairs, filigree. FBX + UE pack for environment artists." />
-<meta property="og:title" content="Ornamental Architecture Kitbash — coming soon" />
-<meta property="og:description" content="15 gothic & baroque meshes for UE 5.8. FBX ready — Buy gated until Gumroad is live." />
+<meta property="og:title" content="Ornamental Architecture Kitbash — Melodia" />
+<meta property="og:description" content="15 gothic & baroque meshes for UE 5.8. FBX pack preview — purchase opens soon." />
 <meta property="og:image" content="https://fromage3900.github.io/my-site/generated/social/ornament_plate__og_1200x630.jpg" />
 <meta property="og:url" content="https://fromage3900.github.io/my-site/wix/ornament-kitbash.html" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -14,6 +14,9 @@
 <link rel="stylesheet" href="melodia-luxury-type.css">
 <link rel="stylesheet" href="melodia-editorial.css">
 <link rel="stylesheet" href="melodia-premium-system.css">
+<link rel="stylesheet" href="melodia-dream-shaders.css">
+<link rel="stylesheet" href="melodia-magical-girl.css">
+<link rel="stylesheet" href="melodia-starfield.css">
 <link rel="stylesheet" href="portfolio-pages.css">
 <link rel="stylesheet" href="melodia-game-ui.css">
 <style>
@@ -39,7 +42,7 @@
 </style>
 </head>
 <body>
-<div class="melodia-shell game-mode" data-mg="off" data-hero="editorial">
+<div class="melodia-shell fashion-mode game-mode" data-mg="soft" data-hero="editorial" data-effects="starfield,holo,magical">
 <header class="shell-nav" aria-label="Portfolio navigation">
   <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
   <nav class="nav-links" aria-label="Sections">
@@ -61,8 +64,8 @@
     <p class="kitbash-status pending" id="kitbashExportStatus" aria-live="polite">Export status loading…</p>
     <p class="kitbash-status pending" id="kitbashLaunchGates" aria-live="polite" style="margin-top:0.5rem;">Launch gates loading…</p>
     <div class="button-row" id="buy">
-      <a class="button primary button-premium-primary" id="gumroadBtn" href="#" target="_blank" rel="noopener">Gumroad — coming soon</a>
-      <a class="button button-premium" id="artstationBtn" href="#" target="_blank" rel="noopener">ArtStation — coming soon</a>
+      <a class="button primary button-premium-primary" id="gumroadBtn" href="#" target="_blank" rel="noopener">Notify me on Gumroad</a>
+      <a class="button button-premium" id="artstationBtn" href="#" target="_blank" rel="noopener">ArtStation listing soon</a>
       <a class="button button-premium" href="commissions.html">Custom commissions</a>
     </div>
     <ul class="kitbash-includes" aria-label="Pack highlights">
@@ -114,7 +117,7 @@
       </div>
     </div>
     <ul class="kitbash-excluded" id="kitbashFaq">
-      <li><strong>When can I buy?</strong> — After six store screenshots and a live Gumroad product. Buy buttons stay “coming soon” until then.</li>
+      <li><strong>When can I buy?</strong> — After store screenshots and a live Gumroad product. Buttons stay soft until then.</li>
       <li><strong>Textures included?</strong> — No. Meshes are slot-ready for your stylized masters.</li>
       <li><strong>Greybox / surreal packs?</strong> — See <a href="surreal-architecture.html">Surreal Architecture</a>. This SKU is ornaments only.</li>
       <li><strong>Japanese alpha pack?</strong> — Not redistributed (third-party).</li>
@@ -164,12 +167,12 @@
     var gatesEl = document.getElementById("kitbashLaunchGates");
     if (gatesEl && data.launch_gates) {
       var g = data.launch_gates;
-      gatesEl.textContent = "Launch gates — screenshots " + (g.screenshots || "?") +
-        " · Gumroad " + (g.gumroad_product ? "live" : "not created") +
-        " · store_live " + (data.store_live === true ? "on" : "off");
+      gatesEl.textContent = data.store_live
+        ? "Purchase live on Gumroad."
+        : "Preview pack — purchase opens after store shots + Gumroad.";
       gatesEl.className = "kitbash-status " + (data.store_live === true ? "ready" : "pending");
     } else if (gatesEl) {
-      gatesEl.textContent = "Launch gates — screenshots + Gumroad still required before Buy goes live.";
+      gatesEl.textContent = "Preview pack — purchase opens soon.";
     }
     var gum = document.getElementById("gumroadBtn");
     var art = document.getElementById("artstationBtn");
@@ -179,13 +182,13 @@
       gum.href = data.gumroad_url;
       gum.textContent = storeLive
         ? ("Buy on Gumroad — $" + data.launch_price_usd)
-        : "Gumroad — coming soon";
+        : "Notify me on Gumroad";
       if (!storeLive) gum.setAttribute("aria-disabled", "true");
       else gum.removeAttribute("aria-disabled");
     }
     if (art && data.artstation_url) {
       art.href = artLive ? data.artstation_url : "ornament-kitbash.html#buy";
-      art.textContent = artLive ? ("Buy on ArtStation — $" + data.list_price_usd) : "ArtStation — coming soon";
+      art.textContent = artLive ? ("Buy on ArtStation — $" + data.list_price_usd) : "ArtStation listing soon";
       if (!artLive) {
         art.removeAttribute("target");
         art.setAttribute("aria-disabled", "true");
@@ -218,6 +221,9 @@
   });
 })();
 </script>
+<script src="melodia-magical-girl.js"></script>
+<script src="melodia-starfield.js"></script>
+<script src="melodia-dream-shaders.js"></script>
 <script src="melodia-editorial.js"></script>
 <script>MelodiaEditorial.init({ page: 'ornament-kitbash', blenderOrnamentProof: 3 });</script>
 </body>
