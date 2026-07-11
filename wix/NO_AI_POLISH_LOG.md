@@ -59,6 +59,14 @@ Done:
 4. Hero type block: mid-fold alignment, `16ch` headline measure (Syne / Instrument Serif / Bricolage / Azeret unchanged)
 5. Index effects: dropped `instruments` chrome clutter
 
+## Pass 9 — 2026-07-11 (Surreal Architecture section)
+
+Done:
+1. New page `wix/surreal-architecture.html` + `generated/surreal_architecture_catalog.json` (42 genomes / 19 families)
+2. Changelog v2.134.0 — library bake kwargs unblock + full regen proof
+3. Wired home portal, geometry-nodes CTA, Stage footer, ornament FAQ
+4. Deployment manifest pages/sections updated
+
 ## Pass 8 — 2026-07-11 (social kit + Figma sync + honesty)
 
 Done:
