@@ -1,43 +1,43 @@
-# Figma ↔ site sync (2026-07-12)
+# Figma ↔ site sync (2026-07-12 · Pass B)
 
 **Grandmaster:** https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled  
 **AAA plan:** `../../Docs/MELODIA_FIGMA_AAA_SYSTEMS_PLAN_2026-07-12.md`  
-**Code Connect map:** `../../pipeline/figma/code_connect_map.json`  
+**AAA board:** page 12 · node `37:319`  
+**Code Connect map:** `../../pipeline/figma/code_connect_map.json` (now includes `umg` targets)  
 **Upload manifest:** `../../pipeline/figma/figma_upload_manifest.json`
 
-## This pass (Pass A — portfolio integration)
+## This pass
 
 | Mapping | Site / asset |
 |---------|----------------|
+| `AAA/SystemsBoard` | Docs plan · Figma `37:319` |
 | `Stage/CharacterPassport` | `wix/melodia-stage-character.html` |
-| `Game/Battle*` + lookbook shell | `wix/melodia-melusina.html` (fashion + soft MG + doors) |
-| `Game/BattleMobile/iOSPlay` | `.game-ui-ios-play` |
-| Specs ↔ Melusina | `wix/design-specs.html#game-ui` |
-| Loop ↔ Melusina | `wix/melodia-gameplay-loop.html` |
-| Hub door 04 | Game UI from `application-hub.html` |
+| `Game/Battle*` + lookbook shell | `wix/melodia-melusina.html` |
+| `Game/BattleMobile/iOSPlay` | `.game-ui-ios-play` → UMG `WBP_Battle_Mobile` (missing) |
+| Batch N atlas → web | `generated/assets/melodia-game-ui/*.png` (resynced from Source) |
 | Type SSOT | Syne / Instrument Serif / Bricolage / Azeret only |
 
-## AAA checklist (Figma + web)
+## AAA checklist
 
 - [x] Melusina page shares lookbook / Nikki / shared nav language  
-- [x] Type docs no longer list Fraunces / Inter / Plex as Melodia SSOT  
+- [x] Type docs + Figma page 02 luxury SSOT  
 - [x] Hub → Melusina → Specs / Loop cross-links  
-- [ ] Publish clean `Game/*` + `MG/*` variants in Figma (Pass B)  
-- [ ] `WBP_Battle_Mobile` + atlas bitmap bind (Pass C)  
-- [ ] Package → Figma upload automation (Pass D — do not claim until wired)
+- [x] Figma AAA Systems Board + MG lock  
+- [x] Code Connect UMG path stubs  
+- [ ] Publish clean `Game/*` library formally  
+- [ ] `WBP_Battle_Mobile` authored in editor (`--create --mobile-first`)  
+- [ ] Package → Figma upload automation (Pass D — do not claim)
 
 ## Operator steps
 
-1. Open Grandmaster → page 12 Game UI + page 13 MG Chrome.
-2. Keep Code Connect selectors aligned with live CSS — update map when classes change.
-3. After site CSS/HTML changes: hard-refresh live Pages, screenshot Figma vs Melusina lookbook hero.
-4. Never claim “auto-synced from portfolio package” until Pass D lands.
+1. Polish portfolio / store shots on your side — page 09 waits on those.  
+2. When Unreal idle: `py Content/Python/scaffold_melodia_wbp_atoms.py --create --mobile-first`  
+3. Keep Code Connect selectors aligned with live CSS.  
+4. Hard-refresh Melusina after atlas sync.
 
 ## Live URLs
 
-- Hub: https://fromage3900.github.io/my-site/wix/application-hub.html  
 - Melusina: https://fromage3900.github.io/my-site/wix/melodia-melusina.html  
 - iOS play: https://fromage3900.github.io/my-site/wix/melodia-melusina.html?mode=ios  
+- Hub: https://fromage3900.github.io/my-site/wix/application-hub.html  
 - Specs: https://fromage3900.github.io/my-site/wix/design-specs.html#game-ui  
-- Loop: https://fromage3900.github.io/my-site/wix/melodia-gameplay-loop.html  
-- Stage: https://fromage3900.github.io/my-site/wix/melodia-stage-character.html  

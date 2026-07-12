@@ -1,0 +1,21 @@
+{
+  "art_source": "figma_batch_n_ornate",
+  "locked_at": "2026-07-11T21:14:11.494629+00:00",
+  "ornate_slots": [
+    "T_Melodia_ElementWheel.png",
+    "T_Melodia_FiligreeCorner.png",
+    "T_Melodia_FiligreeDivider.png",
+    "T_Melodia_Hitline.png",
+    "T_Melodia_NoteHead.png",
+    "T_Melodia_NoteHeadBeam.png",
+    "T_Melodia_StaffTile.png"
+  ],
+  "note": "Re-run with --force-procedural to overwrite locked non-ornate atlas art.",
+  "figma_file": "Yx8ud7n39NdWZvnNvo4Xlf",
+  "figma_components": [
+    "Game/MusicalFiligree",
+    "Game/NoteGlyph",
+    "Game/PlaybackHead",
+    "Game/SheetMusicRoll"
+  ]
+}
