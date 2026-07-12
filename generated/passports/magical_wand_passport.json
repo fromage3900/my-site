@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Stylized Magical Wand",
+  "category": "Prop / props",
+  "version": "wave1",
+  "asset_id": "magical_wand",
+  "rows": [
+    [
+      "Triangles",
+      "3,456"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Komikaze \u00b7 Voronoi Shader (3 Tones)"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "beauty_34"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-11T17:20:03.643919+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Vault Ribs",
+  "category": "Prop / ornament",
+  "version": "wave5",
+  "asset_id": "vault_ribs",
+  "rows": [
+    [
+      "Triangles",
+      "33,156"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Komikaze \u00b7 Wood"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "front"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-11T18:29:43.256027+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

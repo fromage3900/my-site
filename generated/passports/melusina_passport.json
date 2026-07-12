@@ -2,20 +2,20 @@
   "theme": "dark",
   "project": "Melusina",
   "category": "Character / Water Hair",
-  "version": "v4 stage",
+  "version": "stage-shot",
   "asset_id": "melusina",
   "rows": [
     [
       "Triangles",
-      "296,279"
+      "294,883"
     ],
     [
       "Meshes",
-      "80"
+      "136"
     ],
     [
       "Materials",
-      "39"
+      "35"
     ],
     [
       "Textures",
@@ -23,11 +23,11 @@
     ],
     [
       "Shader",
-      "Water (Advance) + authored Melusina"
+      "Stage EEVEE \u00b7 Melodia"
     ],
     [
       "Software",
-      "Blender 5.1 \u00b7 Melodia Portfolio Stage"
+      "Blender \u00b7 Melodia Portfolio Stage v4"
     ],
     [
       "Engine",
@@ -35,21 +35,13 @@
     ],
     [
       "Capture",
-      "Cam_Beauty"
+      "silhouette \u00b7 melusina_hero_silhouette_silhouette.png"
     ],
     [
       "Date",
       "2026-07"
-    ],
-    [
-      "Stage",
-      "Melodia_Portfolio_Stage_v4"
-    ],
-    [
-      "Lane",
-      "NPR beauty + FLIP accent"
     ]
   ],
-  "generated_at": "2026-07-11T03:25:22.669693+00:00",
+  "generated_at": "2026-07-12T05:34:04.700756+00:00",
   "schema": "melodia-asset-passport/v1"
 }

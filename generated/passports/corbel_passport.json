@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Corbel Bracket",
+  "category": "Prop / ornament",
+  "version": "wave5",
+  "asset_id": "corbel",
+  "rows": [
+    [
+      "Triangles",
+      "7,628"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Komikaze \u00b7 Wood"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "beauty_34"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-11T18:29:45.636086+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

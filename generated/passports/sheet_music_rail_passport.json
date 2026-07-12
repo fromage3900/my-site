@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Sheet Music Rail",
+  "category": "Prop / ornament",
+  "version": "stage-shot",
+  "asset_id": "sheet_music_rail",
+  "rows": [
+    [
+      "Triangles",
+      "576"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Stage EEVEE \u00b7 Melodia"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage v4"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "three_quarter \u00b7 sheet_music_rail_stage_three_quarter.png"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-11T22:48:32.963296+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

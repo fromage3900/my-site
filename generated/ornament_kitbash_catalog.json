@@ -50,7 +50,7 @@
       "key": "Vault_Ribs",
       "tier": "hero",
       "pillar": "SpaceCathedral",
-      "description": "Gothic vaulted ceiling rib cluster with six crossing arches.",
+      "description": "Crossing Bezier gothic vault ribs with apex flower boss \u2014 kitbash hero cluster.",
       "use_cases": [
         "ceiling kits",
         "undercroft reveals",
@@ -275,12 +275,12 @@
     "pcg_hero": "/Game/EnvSandbox/PCG/Universal/PCG_OrnamentalArch",
     "pcg_detail": "/Game/EnvSandbox/PCG/Universal/PCG_OrnamentalDetail"
   },
-  "generated_at": "2026-07-11T03:58:00+00:00",
+  "generated_at": "2026-07-11T18:41:58.521206+00:00",
   "export_status": {
     "status": "complete",
     "exported": 15,
     "total": 15,
-    "note": "Blender SurrealArch GeoNodes FBX in KitbashExport; store_live gated on screenshots + Gumroad"
+    "note": "Blender Melodia Studio/SurrealArch FBX in KitbashExport; store_live gated on screenshots + Gumroad"
   },
   "launch_gates": {
     "fbx_blender": "15/15",
@@ -290,7 +290,5 @@
     "ue_beauty_pass": false,
     "store_live": false,
     "artstation_live": false
-  },
-  "product_folder": "G:\\EnvironmentPortfolio\\BS_GodFile\\Products\\OrnamentKitbash",
-  "release_zip": "G:\\EnvironmentPortfolio\\BS_GodFile\\Products\\OrnamentKitbash\\releases\\Melodia_Ornamental_Kitbash_v1_20260710.zip"
+  }
 }

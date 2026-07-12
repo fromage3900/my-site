@@ -1,0 +1,59 @@
+{
+  "theme": "dark",
+  "project": "RosetteMedallion",
+  "category": "Prop / ornament",
+  "version": "cute-gn",
+  "asset_id": "rosette",
+  "rows": [
+    [
+      "Triangles",
+      "12,840"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "SurrealArch GeoNodes \u00b7 kitbash"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 SurrealArch v2.134"
+    ],
+    [
+      "Engine",
+      "Geometry Nodes \u2192 FBX"
+    ],
+    [
+      "Capture",
+      "FBX scan"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ],
+    [
+      "Vertices",
+      "6,432"
+    ],
+    [
+      "FBX",
+      "242 KB"
+    ],
+    [
+      "Dims (m)",
+      "2.181 \u00d7 0.061 \u00d7 2.061"
+    ]
+  ],
+  "generated_at": "2026-07-11T18:03:50.863788+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Torus Knot",
+  "category": "Prop / ornament",
+  "version": "wave5",
+  "asset_id": "torus_knot",
+  "rows": [
+    [
+      "Triangles",
+      "7,560"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Komikaze \u00b7 Wood"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "three_quarter"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-11T18:29:44.833961+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

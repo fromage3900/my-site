@@ -1,0 +1,59 @@
+{
+  "theme": "dark",
+  "project": "RoseWindow 8Petal",
+  "category": "Prop / ornament",
+  "version": "cute-gn",
+  "asset_id": "rose_window",
+  "rows": [
+    [
+      "Triangles",
+      "15,712"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "SurrealArch GeoNodes \u00b7 kitbash"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 SurrealArch v2.134"
+    ],
+    [
+      "Engine",
+      "Geometry Nodes \u2192 FBX"
+    ],
+    [
+      "Capture",
+      "FBX scan"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ],
+    [
+      "Vertices",
+      "7,872"
+    ],
+    [
+      "FBX",
+      "290 KB"
+    ],
+    [
+      "Dims (m)",
+      "3.27 \u00d7 0.069 \u00d7 3.27"
+    ]
+  ],
+  "generated_at": "2026-07-11T18:03:50.672855+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

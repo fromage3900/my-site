@@ -1,0 +1,59 @@
+{
+  "theme": "dark",
+  "project": "GothicTracery",
+  "category": "Prop / ornament",
+  "version": "cute-gn",
+  "asset_id": "gothic_tracery",
+  "rows": [
+    [
+      "Triangles",
+      "13,304"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "SurrealArch GeoNodes \u00b7 kitbash"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 SurrealArch v2.134"
+    ],
+    [
+      "Engine",
+      "Geometry Nodes \u2192 FBX"
+    ],
+    [
+      "Capture",
+      "FBX scan"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ],
+    [
+      "Vertices",
+      "6,528"
+    ],
+    [
+      "FBX",
+      "252 KB"
+    ],
+    [
+      "Dims (m)",
+      "1.808 \u00d7 2.208 \u00d7 0.077"
+    ]
+  ],
+  "generated_at": "2026-07-11T18:03:50.806827+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

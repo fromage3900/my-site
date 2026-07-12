@@ -1,0 +1,59 @@
+{
+  "theme": "dark",
+  "project": "FiligreeRing",
+  "category": "Prop / ornament",
+  "version": "cute-gn",
+  "asset_id": "filigree_ring",
+  "rows": [
+    [
+      "Triangles",
+      "97,168"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "SurrealArch GeoNodes \u00b7 kitbash"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 SurrealArch v2.134"
+    ],
+    [
+      "Engine",
+      "Geometry Nodes \u2192 FBX"
+    ],
+    [
+      "Capture",
+      "FBX scan"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ],
+    [
+      "Vertices",
+      "46,080"
+    ],
+    [
+      "FBX",
+      "1861 KB"
+    ],
+    [
+      "Dims (m)",
+      "1.716 \u00d7 2.448 \u00d7 0.074"
+    ]
+  ],
+  "generated_at": "2026-07-11T18:03:51.012605+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Musical",
+  "category": "Prop / ornament",
+  "version": "stage-shot",
+  "asset_id": "musical",
+  "rows": [
+    [
+      "Triangles",
+      "57,592"
+    ],
+    [
+      "Meshes",
+      "7"
+    ],
+    [
+      "Materials",
+      "9"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Stage EEVEE \u00b7 Melodia"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage v4"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "beauty \u00b7 musical_stage_beauty.png"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-11T22:48:30.953128+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

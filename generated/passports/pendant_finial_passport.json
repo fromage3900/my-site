@@ -1,0 +1,59 @@
+{
+  "theme": "dark",
+  "project": "PendantFinial",
+  "category": "Prop / ornament",
+  "version": "cute-gn",
+  "asset_id": "pendant_finial",
+  "rows": [
+    [
+      "Triangles",
+      "4,844"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "SurrealArch GeoNodes \u00b7 kitbash"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 SurrealArch v2.134"
+    ],
+    [
+      "Engine",
+      "Geometry Nodes \u2192 FBX"
+    ],
+    [
+      "Capture",
+      "FBX scan"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ],
+    [
+      "Vertices",
+      "2,432"
+    ],
+    [
+      "FBX",
+      "83 KB"
+    ],
+    [
+      "Dims (m)",
+      "1.3 \u00d7 1.3 \u00d7 4.8"
+    ]
+  ],
+  "generated_at": "2026-07-11T18:03:51.029773+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

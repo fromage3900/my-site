@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Melusina Vow Cross",
+  "category": "Prop / cross",
+  "version": "wave1",
+  "asset_id": "cross",
+  "rows": [
+    [
+      "Triangles",
+      "1,952"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "1"
+    ],
+    [
+      "Shader",
+      "Komikaze \u00b7 The Wall (Custom Texture)"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "front"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-11T17:08:37.143835+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

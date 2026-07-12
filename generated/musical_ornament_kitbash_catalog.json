@@ -1,0 +1,165 @@
+{
+  "product_id": "melodia-musical-ornament-kitbash-v1",
+  "name": "Melodia Musical Ornament Kitbash",
+  "tagline": "7 celestial sheet-music ornaments for Unreal Engine 5.8+",
+  "launch_price_usd": 14,
+  "list_price_usd": 18,
+  "mesh_count": 7,
+  "hero_count": 2,
+  "detail_count": 5,
+  "engine": "Unreal Engine 5.8+",
+  "formats": [
+    "FBX",
+    "UAsset"
+  ],
+  "gumroad_url": "https://fromage3900.gumroad.com/l/musical-ornament-kitbash",
+  "artstation_url": "https://www.artstation.com/marketplace",
+  "store_live": false,
+  "artstation_live": false,
+  "sibling_of": "melodia-ornamental-architecture-kitbash-v1",
+  "meshes": [
+    {
+      "asset_name": "SM_Orn_TrebleClef",
+      "key": "Treble_Clef",
+      "tier": "hero",
+      "pillar": "CelestialSheetMusic",
+      "description": "Decorative G-clef scroll for shrine facades and HUD-scale set dressing.",
+      "use_cases": [
+        "title atelier props",
+        "shrine wall accents",
+        "rhythm arena markers"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/OrnamentMusical/SM_Orn_TrebleClef",
+      "fbx_name": "SM_Orn_TrebleClef.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_NoteHead",
+      "key": "Note_Head",
+      "tier": "detail",
+      "pillar": "CelestialSheetMusic",
+      "description": "Quarter note head with stem \u2014 clear silhouette at kitbash scale.",
+      "use_cases": [
+        "scatter notes",
+        "highway prop accents",
+        "jewelry-scale dressing"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/OrnamentMusical/SM_Orn_NoteHead",
+      "fbx_name": "SM_Orn_NoteHead.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_NoteBeam",
+      "key": "Note_Beam",
+      "tier": "detail",
+      "pillar": "CelestialSheetMusic",
+      "description": "Beamed eighth pair \u2014 Perfect telegraph / combo motif.",
+      "use_cases": [
+        "combo bursts",
+        "rail ornaments",
+        "judgment telegraph props"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/OrnamentMusical/SM_Orn_NoteBeam",
+      "fbx_name": "SM_Orn_NoteBeam.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_SheetMusicRail",
+      "key": "Sheet_Music_Rail",
+      "tier": "hero",
+      "pillar": "CelestialSheetMusic",
+      "description": "Five-line staff rail segment with bar lines and note pearls.",
+      "use_cases": [
+        "balcony rails",
+        "stage aprons",
+        "sheet-music architecture"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/OrnamentMusical/SM_Orn_SheetMusicRail",
+      "fbx_name": "SM_Orn_SheetMusicRail.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_MusicalCorner",
+      "key": "Musical_Corner",
+      "tier": "detail",
+      "pillar": "CelestialSheetMusic",
+      "description": "L-bracket filigree corner with clef-scroll curl (4-corner rotatable).",
+      "use_cases": [
+        "frame corners",
+        "HUD 3D mirrors",
+        "panel kitbash"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/OrnamentMusical/SM_Orn_MusicalCorner",
+      "fbx_name": "SM_Orn_MusicalCorner.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_MusicalDivider",
+      "key": "Musical_Divider",
+      "tier": "detail",
+      "pillar": "CelestialSheetMusic",
+      "description": "Horizontal divider bar with repeating note-beam motif.",
+      "use_cases": [
+        "section dividers",
+        "entablature accents",
+        "UI 3D chrome"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/OrnamentMusical/SM_Orn_MusicalDivider",
+      "fbx_name": "SM_Orn_MusicalDivider.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_PearlJewel",
+      "key": "Pearl_Jewel",
+      "tier": "detail",
+      "pillar": "CelestialSheetMusic",
+      "description": "Pearl center jewel with gold/iri trim ring \u2014 boss / medallion core.",
+      "use_cases": [
+        "ceiling bosses",
+        "hitline jewels",
+        "amulet props"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/OrnamentMusical/SM_Orn_PearlJewel",
+      "fbx_name": "SM_Orn_PearlJewel.fbx"
+    }
+  ],
+  "package_contents": {
+    "fbx": "7 FBX meshes with collision-ready silhouettes, 2 material slots (Base + Trim)",
+    "unreal": "UE 5.8 folder: /Game/EnvSandbox/Meshes/OrnamentMusical",
+    "docs": "Installation README + celestial sheet-music scale notes"
+  },
+  "store_tags": [
+    "kitbash",
+    "ornament",
+    "musical",
+    "sheet-music",
+    "unreal-engine",
+    "ue5",
+    "fantasy",
+    "melodia",
+    "stylized"
+  ],
+  "excluded": [
+    {
+      "name": "Gothic Ornamental Architecture Kitbash (15)",
+      "reason": "Sibling SKU \u2014 architectural gothic/baroque, not musical.",
+      "path": "/Game/EnvSandbox/Meshes/Ornament"
+    },
+    {
+      "name": "Melodia game UI textures (T_Melodia_*)",
+      "reason": "2D HUD / Batch N atlas \u2014 not 3D kitbash meshes.",
+      "path": "/Game/EnvSandbox/Textures/Source/MelodiaGameUI"
+    },
+    {
+      "name": "Melusina wardrobe / Live Link",
+      "reason": "Character clothes lane \u2014 never mixed with SM_Orn_*.",
+      "path": "Exports/MelusinaClothes"
+    }
+  ],
+  "ue_paths": {
+    "ornament_dir": "/Game/EnvSandbox/Meshes/OrnamentMusical",
+    "demo_level": "/Game/EnvSandbox/Environments/Demo/L_MusicalOrnamentShowcase",
+    "fbx_export": "G:/EnvironmentPortfolio/BS_GodFile/KitbashExport/MusicalOrnamentalMeshes",
+    "product_root": "G:/EnvironmentPortfolio/BS_GodFile/Products/MusicalOrnamentKitbash"
+  },
+  "generated_at": "2026-07-11T21:27:00.882499+00:00",
+  "product_folder": "G:\\EnvironmentPortfolio\\BS_GodFile\\Products\\MusicalOrnamentKitbash",
+  "bake_manifest": "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Audit\\musical_ornament_bake_manifest.json",
+  "bake_ok": 7,
+  "bake_fail": 0,
+  "fbx_count": 7
+}

@@ -1,0 +1,59 @@
+{
+  "theme": "dark",
+  "project": "QuatrefoilArch",
+  "category": "Prop / ornament",
+  "version": "cute-gn",
+  "asset_id": "quatrefoil",
+  "rows": [
+    [
+      "Triangles",
+      "10,008"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "SurrealArch GeoNodes \u00b7 kitbash"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 SurrealArch v2.134"
+    ],
+    [
+      "Engine",
+      "Geometry Nodes \u2192 FBX"
+    ],
+    [
+      "Capture",
+      "FBX scan"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ],
+    [
+      "Vertices",
+      "4,800"
+    ],
+    [
+      "FBX",
+      "203 KB"
+    ],
+    [
+      "Dims (m)",
+      "3.387 \u00d7 0.157 \u00d7 3.39"
+    ]
+  ],
+  "generated_at": "2026-07-11T18:03:50.781380+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

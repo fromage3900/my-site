@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Zen Lantern",
+  "category": "Prop / props",
+  "version": "wave1",
+  "asset_id": "zenlantern",
+  "rows": [
+    [
+      "Triangles",
+      "8,277,956"
+    ],
+    [
+      "Meshes",
+      "6"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Komikaze \u00b7 Voronoi Shader (3 Tones)"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "three_quarter"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-11T17:16:05.192019+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

@@ -8,6 +8,11 @@
   const DEPTH_URL = '../generated/assets/character/melusina_beauty_depth_color.png';
   const BEAUTY_URL = '../generated/assets/character/melusina_portrait_face.png';
   const FULL_BEAUTY_URL = '../generated/assets/character/melusina_beauty_void_iri.png';
+  const HERO_DIR = '../generated/assets/character/hero_20260712';
+  const HERO_BEAUTY = `${HERO_DIR}/melusina_hero_beauty_nikki.png`;
+  const HERO_JEWELRY = `${HERO_DIR}/melusina_hero_three_quarter_jewelry.png`;
+  const HERO_FRONT = `${HERO_DIR}/melusina_hero_front_nikki.png`;
+  const HERO_SILHOUETTE = `${HERO_DIR}/melusina_hero_silhouette_silhouette.png`;
   const INTAKE_URL = '../generated/blender_portfolio_intake.json';
 
   function esc(value) {
@@ -107,26 +112,33 @@
   async function hydratePlateStrip() {
     const mount = document.getElementById('stagePlateStrip');
     if (!mount) return;
-    const fallback = [
+    // Prefer tonight's hero pack; intake EEVEE cards are older and stay as optional append.
+    const heroPack = [
+      { web_path: HERO_BEAUTY, title: 'Hero beauty · Nikki' },
+      { web_path: HERO_JEWELRY, title: 'Three-quarter · Jewelry' },
+      { web_path: HERO_FRONT, title: 'Front · Nikki' },
+      { web_path: HERO_SILHOUETTE, title: 'Silhouette' },
       { web_path: BEAUTY_URL, title: 'Face portrait' },
-      { web_path: FULL_BEAUTY_URL, title: 'Full beauty' },
       { web_path: COLOR_URL, title: 'Diorama postcard' },
-      { web_path: DEPTH_URL, title: 'Depth companion' },
     ];
-    let cards = fallback;
+    let cards = heroPack;
     try {
       const intake = await fetchJson(INTAKE_URL);
       const mel = (intake.render_cards || []).filter(
         (c) => c.asset_id === 'melusina' || String(c.id || '').startsWith('melusina')
       );
       if (mel.length) {
-        cards = mel.slice(0, 6).map((c) => ({
-          web_path: c.web_path,
-          title: c.title || c.filename,
-        }));
+        const seen = new Set(cards.map((c) => c.web_path));
+        for (const c of mel) {
+          const path = c.web_path;
+          if (!path || seen.has(path)) continue;
+          cards.push({ web_path: path, title: c.title || c.filename });
+          seen.add(path);
+          if (cards.length >= 8) break;
+        }
       }
     } catch (_err) {
-      /* use fallback */
+      /* use heroPack */
     }
     mount.innerHTML = cards
       .map(

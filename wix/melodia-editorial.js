@@ -229,17 +229,9 @@
     }
   }
 
-  function blenderCardHtml(card, fashion) {
-    const href = esc(card.web_path);
-    const title = esc(card.title || card.filename || 'Komikaze plate');
-    const frame = fashion ? ' fashion-frame' : '';
-    const caption = card.caption ? `<p>${esc(card.caption)}</p>` : '';
-    const meta = card.group ? `<span class="meta-label">${esc(card.group)}</span>` : '';
-    return `<a class="image-card${frame} holo-plate" href="${href}"><img src="${href}" alt="${title}" loading="lazy" /><div>${meta}<h3>${title}</h3>${caption}</div></a>`;
-  }
-
   const BLENDER_DENY_ASSETS = new Set(['magical_wand', 'sakura_petal']);
-  const BLENDER_DENY_PATH = ['_void_iri_', 'vault_ribs_komikaze', 'rose_window_komikaze_front'];
+  // void_iri plates are studio-void duplicates; rose_window front still weak compose
+  const BLENDER_DENY_PATH = ['_void_iri_', 'rose_window_komikaze_front'];
 
   function isBlenderCardWebReady(card) {
     if (!card || !card.web_path) return false;
@@ -248,6 +240,25 @@
     const path = String(card.web_path);
     if (BLENDER_DENY_PATH.some((frag) => path.includes(frag))) return false;
     return true;
+  }
+
+  function passportTriLabel(card) {
+    const rows = card && card.passport && Array.isArray(card.passport.rows) ? card.passport.rows : [];
+    const tri = rows.find((r) => Array.isArray(r) && String(r[0]).toLowerCase() === 'triangles');
+    return tri && tri[1] ? String(tri[1]) : '';
+  }
+
+  function blenderCardHtml(card, fashion) {
+    const href = esc(card.web_path);
+    const title = esc(card.title || card.filename || 'Komikaze plate');
+    const frame = fashion ? ' fashion-frame' : '';
+    const tri = passportTriLabel(card);
+    const captionBits = [];
+    if (card.caption) captionBits.push(esc(card.caption));
+    if (tri) captionBits.push(`${esc(tri)} tris`);
+    const caption = captionBits.length ? `<p>${captionBits.join(' · ')}</p>` : '';
+    const meta = card.group ? `<span class="meta-label">${esc(card.group)}</span>` : '';
+    return `<a class="image-card${frame} holo-plate" href="${href}"><img src="${href}" alt="${title}" loading="lazy" /><div>${meta}<h3>${title}</h3>${caption}</div></a>`;
   }
 
   async function fetchBlenderCards() {
@@ -707,7 +718,8 @@
     const mathMount = document.getElementById('geometryMathChips');
     const zenMount = document.getElementById('geometryZenChips');
     const escherMount = document.getElementById('geometryEscherChips');
-    if (!lanesMount && !mathMount && !zenMount && !escherMount) return;
+    const musicalMount = document.getElementById('geometryMusicalChips');
+    if (!lanesMount && !mathMount && !zenMount && !escherMount && !musicalMount) return;
 
     try {
       const data = await fetchJson(GEOMETRY_PIPELINES_URL);
@@ -753,6 +765,23 @@
         escherMount.innerHTML = data.escher_gn_builders
           .map((id) => `<span class="math-chip"><b>${esc(id)}</b>Escher greybox GN · UE PCG port</span>`)
           .join('');
+      }
+
+      if (musicalMount) {
+        const meshes = Array.isArray(data.musical_meshes) ? data.musical_meshes : [];
+        const builders = Array.isArray(data.musical_gn_builders) ? data.musical_gn_builders : [];
+        if (meshes.length) {
+          musicalMount.innerHTML = meshes
+            .map(
+              (item) =>
+                `<span class="math-chip"><b>${esc(item.name)}</b>${esc(item.asset)} · ${esc(item.status || 'fbx_ready')}</span>`
+            )
+            .join('');
+        } else if (builders.length) {
+          musicalMount.innerHTML = builders
+            .map((id) => `<span class="math-chip"><b>${esc(id)}</b>Melodia Studio musical GN</span>`)
+            .join('');
+        }
       }
     } catch (_err) {
       if (lanesMount) {

@@ -1,0 +1,59 @@
+{
+  "theme": "dark",
+  "project": "SpiralStaircase",
+  "category": "Prop / ornament",
+  "version": "cute-gn",
+  "asset_id": "spiral_stair",
+  "rows": [
+    [
+      "Triangles",
+      "13,608"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "SurrealArch GeoNodes \u00b7 kitbash"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 SurrealArch v2.134"
+    ],
+    [
+      "Engine",
+      "Geometry Nodes \u2192 FBX"
+    ],
+    [
+      "Capture",
+      "FBX scan"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ],
+    [
+      "Vertices",
+      "6,912"
+    ],
+    [
+      "FBX",
+      "215 KB"
+    ],
+    [
+      "Dims (m)",
+      "6.52 \u00d7 1.469 \u00d7 3.569"
+    ]
+  ],
+  "generated_at": "2026-07-11T18:03:50.698441+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

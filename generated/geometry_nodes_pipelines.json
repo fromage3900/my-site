@@ -1,24 +1,52 @@
 {
-  "generated_at": "2026-07-09T17:20:00Z",
-  "note": "Honest inventory from repo + Saved/Audit logs. GN_UniversalScatter and GN_RockGenerator are NOT built.",
+  "generated_at": "2026-07-12T06:00:00Z",
+  "version": "2.134.0",
+  "note": "Honest inventory. Melodia Studio = SurrealArch N-panel. Musical GN lane is live FBX (7). GN_UniversalScatter / GN_RockGenerator remain sheet stubs only.",
+  "melodia_studio": {
+    "bl_category": "Melodia Studio",
+    "addon": "deploy/surreal_architecture_gen.py",
+    "package": "deploy/surreal_arch/",
+    "version": "2.134.0",
+    "genomes": 42,
+    "library_bake": 72,
+    "starlight_regen": 9
+  },
   "lanes": [
     {
-      "id": "surreal-arch-monolith",
+      "id": "melodia-studio-surrealarch",
       "lane": "Blender GN — live",
-      "title": "Surreal Architecture Generator",
+      "title": "Melodia Studio / SurrealArch v2.134",
       "status": "live",
       "asset_root": "BS_GodFile/deploy/surreal_architecture_gen.py",
-      "summary": "~38k-line addon building GeometryNodeTree graphs at runtime. Primary portfolio GN proof: zen shrine axis, Escher greybox, gothic/romanesque kits, DistributePointsOnFaces scatter.",
+      "summary": "Melodia Studio N-panel builds GeometryNodeTree graphs at runtime: 42 style genomes, library bake 72, Starlight regen 9. Zen shrine axis, Escher greybox, gothic kits, Nikki photo-spot genomes, DistributePointsOnFaces scatter.",
       "steps": [
-        { "order": 1, "name": "apply_geometry_nodes_to_object", "detail": "Creates SurrealArch_{obj} node tree + modifier on mesh." },
-        { "order": 2, "name": "Catalog dispatch", "detail": "100+ arch types: GB_ZEN_*, GB_ESCHER_*, towers, domes, props." },
-        { "order": 3, "name": "Greybox subgraphs", "detail": "surreal_greybox/ — MeshCube, boolean, curve primitives." },
+        { "order": 1, "name": "apply_geometry_nodes_to_object", "detail": "Creates SurrealArch_{obj} node tree + modifier; signature-aware monolith kwargs." },
+        { "order": 2, "name": "Genome / catalog dispatch", "detail": "42 genomes + 100+ arch types: GB_ZEN_*, GB_ESCHER_*, towers, domes, props." },
+        { "order": 3, "name": "Library bake", "detail": "SurrealArch_Library (72) + Surreal_Regen_Starlight (9) on Portfolio Stage v4." },
         { "order": 4, "name": "UE export", "detail": "snap_export.py trim groups + UE payload from GN output." },
-        { "order": 5, "name": "Portfolio capture", "detail": "Viewport + graph screenshots for geometry-nodes.html." }
+        { "order": 5, "name": "Portfolio dossier", "detail": "surreal-architecture.html + geometry-nodes.html proof plates." }
       ],
-      "proof_targets": ["GB_ZEN_SANDO graph", "GB_ESCHER_RELATIVITY viewport", "snap_export JSON"],
-      "sheet_href": "geometry-nodes.html#pipelines",
+      "proof_targets": ["42 genomes", "library 72", "Starlight 9", "GB_ZEN_SANDO", "GB_ESCHER_RELATIVITY"],
+      "sheet_href": "surreal-architecture.html",
       "unreal_parallel": "build_escher_relativity_room.py (PCG port of Escher math)"
+    },
+    {
+      "id": "melody-musical-gn",
+      "lane": "Blender GN — live (melody)",
+      "title": "Musical / celestial sheet-music geometry",
+      "status": "live",
+      "asset_root": "Tools/regenerate_musical_ornaments_surreal_arch.py",
+      "summary": "Melodia Studio builders TREBLE_CLEF, SHEET_MUSIC_RAIL, NOTE_HEAD (+ beams, corners, dividers, pearl jewel) bake to 7 FBX kitbash meshes for Cosmic Orrery / Melodia stage props.",
+      "steps": [
+        { "order": 1, "name": "GN builders", "detail": "build_treble_clef / sheet_music_railing / note_head in surreal_architecture_gen.py." },
+        { "order": 2, "name": "Headless bake", "detail": "regenerate_musical_ornaments_surreal_arch.py → KitbashExport/MusicalOrnamentalMeshes/." },
+        { "order": 3, "name": "Product mirror", "detail": "Products/MusicalOrnamentKitbash/FBX/ + musical_ornament_kitbash_catalog.json (store_live false)." },
+        { "order": 4, "name": "Stage plates", "detail": "run_melodia_plate_batch.py --musical → musical_20260711 beauty plates." },
+        { "order": 5, "name": "UE path", "detail": "/Game/EnvSandbox/Meshes/OrnamentMusical/ after import." }
+      ],
+      "proof_targets": ["SM_Orn_TrebleClef", "SM_Orn_SheetMusicRail", "musical_stage_beauty.png", "7/7 FBX"],
+      "sheet_href": "geometry-nodes.html#melody",
+      "unreal_parallel": "OrnamentMusical static meshes + Cosmic Orrery set dressing"
     },
     {
       "id": "roof-generator-pro",
@@ -44,7 +72,7 @@
       "title": "Higgsas node group bridge",
       "status": "external",
       "asset_root": "BS_GodFile/deploy/surreal_arch/higgsas_bridge.py",
-      "summary": "Appends NT* node groups from external Higgsas Geo Node Groups v13.blend (G:\\programs\\BlenderPlugins\\). Live code, graphs not in repo.",
+      "summary": "Appends NT* node groups from external Higgsas Geo Node Groups v13.blend. Live code, graphs not in repo.",
       "steps": [
         { "order": 1, "name": "Lazy load blend", "detail": "higgsas_bridge loads external .blend on demand." },
         { "order": 2, "name": "Apply bricks", "detail": "higgsas_apply_bricks adds brick surface modifier." },
@@ -62,7 +90,7 @@
       "title": "Universal + style PCG graphs",
       "status": "live",
       "asset_root": "/Game/EnvSandbox/PCG/Universal/",
-      "summary": "setup_pcg_universal.py rebuilt graphs 2026-07-09. MeadowBloom, RockScatter, wall moss/lichen/ivy, Sakura petal drift, Escher rooms, Cosmic orbit scatter.",
+      "summary": "setup_pcg_universal.py — MeadowBloom, RockScatter, wall moss/lichen/ivy, Sakura petal drift, Escher rooms, Cosmic orbit scatter. 9,913 ISM verified across four WP pillars.",
       "steps": [
         { "order": 1, "name": "Graph build", "detail": "setup_pcg_universal.py — 13+ style graphs + wall suite." },
         { "order": 2, "name": "Rock scatter", "detail": "build_universal_rock_scatter.py — sidesteps broken wire_scatter_chain." },
@@ -110,6 +138,24 @@
       "sheet_href": "../generated/technical/geometry-nodes-universal-scatter-sheet.html",
       "unreal_parallel": "See ue-pcg-universal lane"
     }
+  ],
+  "musical_gn_builders": [
+    "TREBLE_CLEF",
+    "SHEET_MUSIC_RAIL",
+    "NOTE_HEAD",
+    "NOTE_BEAM",
+    "MUSICAL_CORNER",
+    "MUSICAL_DIVIDER",
+    "PEARL_JEWEL"
+  ],
+  "musical_meshes": [
+    { "id": "treble", "name": "Treble Clef", "asset": "SM_Orn_TrebleClef", "status": "fbx_ready" },
+    { "id": "note-head", "name": "Note Head", "asset": "SM_Orn_NoteHead", "status": "fbx_ready" },
+    { "id": "note-beam", "name": "Note Beam", "asset": "SM_Orn_NoteBeam", "status": "fbx_ready" },
+    { "id": "sheet-rail", "name": "Sheet Music Rail", "asset": "SM_Orn_SheetMusicRail", "status": "fbx_ready" },
+    { "id": "corner", "name": "Musical Corner", "asset": "SM_Orn_MusicalCorner", "status": "fbx_ready" },
+    { "id": "divider", "name": "Musical Divider", "asset": "SM_Orn_MusicalDivider", "status": "fbx_ready" },
+    { "id": "pearl", "name": "Pearl Jewel", "asset": "SM_Orn_PearlJewel", "status": "fbx_ready" }
   ],
   "zen_gn_builders": [
     "GB_ZEN_TORII_GATE", "GB_ZEN_SANDO", "GB_ZEN_KAIRO", "GB_ZEN_HAIDEN",

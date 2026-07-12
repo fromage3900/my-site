@@ -1,0 +1,59 @@
+{
+  "theme": "dark",
+  "project": "OculusFrame",
+  "category": "Prop / ornament",
+  "version": "cute-gn",
+  "asset_id": "oculus_frame",
+  "rows": [
+    [
+      "Triangles",
+      "5,728"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "SurrealArch GeoNodes \u00b7 kitbash"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 SurrealArch v2.134"
+    ],
+    [
+      "Engine",
+      "Geometry Nodes \u2192 FBX"
+    ],
+    [
+      "Capture",
+      "FBX scan"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ],
+    [
+      "Vertices",
+      "2,930"
+    ],
+    [
+      "FBX",
+      "121 KB"
+    ],
+    [
+      "Dims (m)",
+      "2.181 \u00d7 1.466 \u00d7 2.751"
+    ]
+  ],
+  "generated_at": "2026-07-11T18:03:50.759955+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

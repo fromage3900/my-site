@@ -1,0 +1,59 @@
+{
+  "theme": "dark",
+  "project": "WovenRing",
+  "category": "Prop / ornament",
+  "version": "cute-gn",
+  "asset_id": "woven_ring",
+  "rows": [
+    [
+      "Triangles",
+      "13,572"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "SurrealArch GeoNodes \u00b7 kitbash"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 SurrealArch v2.134"
+    ],
+    [
+      "Engine",
+      "Geometry Nodes \u2192 FBX"
+    ],
+    [
+      "Capture",
+      "FBX scan"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ],
+    [
+      "Vertices",
+      "6,720"
+    ],
+    [
+      "FBX",
+      "253 KB"
+    ],
+    [
+      "Dims (m)",
+      "1.532 \u00d7 1.492 \u00d7 0.07"
+    ]
+  ],
+  "generated_at": "2026-07-11T18:03:51.053889+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

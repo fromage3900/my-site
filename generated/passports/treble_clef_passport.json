@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Treble Clef",
+  "category": "Prop / ornament",
+  "version": "stage-shot",
+  "asset_id": "treble_clef",
+  "rows": [
+    [
+      "Triangles",
+      "34,052"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Stage EEVEE \u00b7 Melodia"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage v4"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "beauty \u00b7 treble_clef_stage_beauty.png"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-11T22:48:32.227178+00:00",
+  "schema": "melodia-asset-passport/v1"
+}
