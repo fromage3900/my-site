@@ -10,23 +10,21 @@
 <meta property="og:image" content="https://fromage3900.github.io/my-site/generated/social/ornament_plate__og_1200x630.jpg" />
 <meta property="og:url" content="https://fromage3900.github.io/my-site/wix/ornament-kitbash.html" />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="stylesheet" href="melodia-tokens.css">
 <link rel="stylesheet" href="melodia-luxury-type.css">
 <link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-fashion-editorial.css">
 <link rel="stylesheet" href="melodia-premium-system.css">
-<link rel="stylesheet" href="melodia-dream-shaders.css">
-<link rel="stylesheet" href="melodia-magical-girl.css">
-<link rel="stylesheet" href="melodia-starfield.css">
-<link rel="stylesheet" href="portfolio-pages.css">
-<link rel="stylesheet" href="melodia-game-ui.css">
 <style>
 .kitbash-hero { padding: 3rem 0; }
-.kitbash-price { font-family: var(--font-mono); font-size: 1.1rem; color: var(--iri-gold, #ffe666); }
+.kitbash-price { font-family: var(--font-display); font-size: clamp(1.35rem, 2.4vw, 1.85rem); color: var(--iri-gold, #ffe666); }
 .kitbash-mesh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1.5rem; }
 .kitbash-mesh-card { padding: 0.75rem; border-radius: 10px; background: rgba(18, 24, 42, 0.92); border: 1px solid rgba(255,255,255,0.12); }
 .kitbash-mesh-card.hero { border-color: rgba(255, 230, 102, 0.35); }
 .kitbash-mesh-card h4 { margin: 0 0 0.35rem; font-family: var(--font-display); font-size: 0.95rem; }
 .kitbash-mesh-card .tier { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--iri-cyan, #66d9ff); }
+.kitbash-mesh-card .stats { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.04em; color: rgba(255,230,102,0.85); margin: 0.35rem 0 0.4rem; }
+.kitbash-mesh-card .passport-link { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--iri-cyan, #66d9ff); text-decoration: none; }
+.kitbash-mesh-card .passport-link:hover { text-decoration: underline; }
 .kitbash-mesh-card p { margin: 0; font-size: 0.82rem; line-height: 1.4; color: rgba(240,220,240,0.78); }
 .kitbash-excluded { opacity: 0.75; font-size: 0.85rem; }
 .kitbash-status { font-family: var(--font-mono); font-size: 0.72rem; padding: 0.5rem 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.1); }
@@ -42,7 +40,7 @@
 </style>
 </head>
 <body>
-<div class="melodia-shell fashion-mode game-mode" data-mg="soft" data-hero="editorial" data-effects="starfield,holo,magical">
+<div class="melodia-shell fashion-mode" data-mg="soft" data-hero="editorial" data-effects="starfield,holo,magical" data-nav-cta="ornament-kitbash.html#buy" data-nav-cta-label="View pack">
 <header class="shell-nav" aria-label="Portfolio navigation">
   <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
   <nav class="nav-links" aria-label="Sections">
@@ -57,9 +55,9 @@
 <main id="main">
 <section class="band kitbash-hero" aria-labelledby="page-title">
   <div class="inner">
-    <p class="eyebrow game-eyebrow">Digital product · UE 5.8 + FBX</p>
+    <p class="eyebrow eyebrow magazine-kicker">Digital product · UE 5.8 + FBX</p>
     <h1 id="page-title">Ornamental Architecture Kitbash</h1>
-    <p class="lede game-lede">Rose windows, vault ribs, spiral stairs, and filigree I built for Melodia EnvSandbox — fifteen meshes, FBX + UE 5.8, ready for your lookdev.</p>
+    <p class="lede lede">Rose windows, vault ribs, spiral stairs, and filigree I built for Melodia EnvSandbox — fifteen meshes, FBX + UE 5.8, ready for your lookdev.</p>
     <p class="kitbash-price" id="kitbashPrice">Launch $24 · List $29</p>
     <p class="kitbash-status pending" id="kitbashExportStatus" aria-live="polite">Export status loading…</p>
     <p class="kitbash-status pending" id="kitbashLaunchGates" aria-live="polite" style="margin-top:0.5rem;">Launch gates loading…</p>
@@ -78,11 +76,11 @@
   </div>
 </section>
 
-<section class="band game-surface-band" aria-labelledby="included-title">
+<section class="band paper fashion-band" aria-labelledby="included-title">
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow game-eyebrow">Pack contents</p>
+        <p class="eyebrow eyebrow magazine-kicker">Pack contents</p>
         <h2 id="included-title">15 meshes · 2 material slots · 3 LODs</h2>
       </div>
       <p>FBX with collision, Unreal uassets, demo showcase level, commercial license. Pair with stylized toon masters for Infold-adjacent fantasy worlds.</p>
@@ -91,11 +89,11 @@
   </div>
 </section>
 
-<section class="band game-surface-band" aria-labelledby="tech-title">
+<section class="band paper fashion-band" aria-labelledby="tech-title">
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow game-eyebrow">Technical</p>
+        <p class="eyebrow eyebrow magazine-kicker">Technical</p>
         <h2 id="tech-title">Ready for lookdev</h2>
       </div>
       <p>Centimeter scale, architectural hero sizing. Two material slots (Base + Trim). Three LODs. Simple collision. Works with Substrate Toon and stylized universal masters.</p>
@@ -108,11 +106,11 @@
   </div>
 </section>
 
-<section class="band game-void-band" aria-labelledby="faq-title">
+<section class="band astral fashion-band" aria-labelledby="faq-title">
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow game-eyebrow">FAQ</p>
+        <p class="eyebrow eyebrow magazine-kicker">FAQ</p>
         <h2 id="faq-title">Before you buy</h2>
       </div>
     </div>
@@ -126,11 +124,11 @@
   </div>
 </section>
 
-<section class="band game-void-band" aria-labelledby="excluded-title">
+<section class="band astral fashion-band" aria-labelledby="excluded-title">
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow game-eyebrow">Scope</p>
+        <p class="eyebrow eyebrow magazine-kicker">Scope</p>
         <h2 id="excluded-title">What this pack is not</h2>
       </div>
     </div>
@@ -203,7 +201,23 @@
         var card = el("article", "kitbash-mesh-card " + m.tier);
         card.appendChild(el("span", "tier", m.tier + " · " + m.pillar));
         card.appendChild(el("h4", null, m.asset_name.replace("SM_Orn_", "").replace(/_/g, " ")));
+        var verts = typeof m.vertices === "number" ? m.vertices.toLocaleString() : null;
+        var tris = typeof m.triangles === "number" ? m.triangles.toLocaleString() : null;
+        if (verts || tris) {
+          var bits = [];
+          if (verts) bits.push(verts + " verts");
+          if (tris) bits.push(tris + " tris");
+          if (m.fbx_bytes) bits.push(Math.round(m.fbx_bytes / 1024) + " KB");
+          card.appendChild(el("div", "stats", bits.join(" · ")));
+        }
         card.appendChild(el("p", null, m.description));
+        if (m.passport_html) {
+          var a = el("a", "passport-link", "Asset passport →");
+          a.href = "../" + m.passport_html;
+          a.target = "_blank";
+          a.rel = "noopener";
+          card.appendChild(a);
+        }
         grid.appendChild(card);
       });
     }
@@ -224,7 +238,8 @@
 <script src="melodia-magical-girl.js"></script>
 <script src="melodia-starfield.js"></script>
 <script src="melodia-dream-shaders.js"></script>
+<script src="melodia-site-nav.js"></script>
 <script src="melodia-editorial.js"></script>
-<script>MelodiaEditorial.init({ page: 'ornament-kitbash', blenderOrnamentProof: 3 });</script>
+<script>MelodiaEditorial.init({ page: 'ornament-kitbash', blenderOrnamentProof: 6 });</script>
 </body>
 </html>
