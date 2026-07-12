@@ -1,0 +1,400 @@
+/* Melodia visual breakdowns — lookbook flow, not AI card grids */
+
+.viz-rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(212, 184, 122, 0.9);
+}
+
+.viz-rule::before,
+.viz-rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 106, 0.45), transparent);
+}
+
+.viz-rule .glyph {
+  opacity: 0.85;
+}
+
+/* Vertical story spine */
+.viz-spine {
+  position: relative;
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  padding-left: 0;
+}
+
+@media (min-width: 900px) {
+  .viz-spine {
+    padding-left: 1.25rem;
+  }
+  .viz-spine::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(102, 217, 255, 0.35) 12%,
+      rgba(255, 110, 180, 0.3) 55%,
+      rgba(255, 230, 102, 0.25) 88%,
+      transparent
+    );
+  }
+}
+
+.viz-beat {
+  position: relative;
+  display: grid;
+  gap: 1rem 1.75rem;
+}
+
+@media (min-width: 900px) {
+  .viz-beat {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.75fr);
+    align-items: center;
+  }
+  .viz-beat.is-flip {
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.35fr);
+  }
+  .viz-beat.is-flip .viz-copy {
+    order: -1;
+  }
+  .viz-spine .viz-beat::before {
+    content: "";
+    position: absolute;
+    left: -1.25rem;
+    top: 1.35rem;
+    width: 9px;
+    height: 9px;
+    transform: translateX(-50%) rotate(45deg);
+    background: linear-gradient(135deg, #ffe666, #ff6eb4);
+    box-shadow: 0 0 0 3px rgba(13, 18, 36, 0.85);
+  }
+}
+
+.viz-plate {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+.viz-plate img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  filter: saturate(1.04) contrast(1.03);
+  transition: transform 0.7s ease, filter 0.7s ease;
+}
+
+.viz-plate:hover img {
+  transform: scale(1.03);
+  filter: saturate(1.08) contrast(1.05);
+}
+
+.viz-plate .viz-caption {
+  margin-top: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.viz-plate .viz-caption strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+}
+
+.viz-plate .viz-caption span {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(236, 234, 244, 0.55);
+}
+
+.viz-copy h3 {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.55rem, 2.6vw, 2.15rem);
+  line-height: 1.05;
+}
+
+.viz-copy p {
+  margin: 0;
+  font-family: var(--font-lede);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: rgba(236, 234, 244, 0.78);
+  max-width: 28rem;
+}
+
+.viz-copy .viz-link {
+  display: inline-flex;
+  margin-top: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--iri-gold, #ffe666);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 230, 102, 0.35);
+  padding-bottom: 0.15rem;
+}
+
+.viz-copy .viz-link:hover {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.45);
+}
+
+/* Horizontal plate rail with connectors */
+.viz-rail {
+  display: grid;
+  gap: 0;
+  align-items: stretch;
+}
+
+@media (min-width: 800px) {
+  .viz-rail {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .viz-rail-item {
+    position: relative;
+    padding: 0 1.1rem;
+  }
+  .viz-rail-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 38%;
+    right: -0.15rem;
+    width: 1.35rem;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(102, 217, 255, 0.15), rgba(255, 110, 180, 0.55), rgba(255, 230, 102, 0.15));
+  }
+  .viz-rail-item:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    top: calc(38% - 3px);
+    right: 0.35rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 110, 180, 0.85);
+    box-shadow: 0 0 10px rgba(255, 110, 180, 0.45);
+    z-index: 1;
+  }
+}
+
+.viz-rail-item .viz-plate img {
+  aspect-ratio: 4 / 5;
+}
+
+/* Process connectors (short visual steps, no cards) */
+.viz-process {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 800px) {
+  .viz-process {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+  }
+}
+
+.viz-process-step {
+  position: relative;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+@media (min-width: 800px) {
+  .viz-process-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: calc(100% - 0.65rem);
+    top: 1.1rem;
+    width: calc(100% - 1.3rem);
+    height: 1px;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(201, 168, 106, 0.55) 0 6px,
+      transparent 6px 11px
+    );
+  }
+}
+
+.viz-process-step .num {
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: rgba(102, 217, 255, 0.9);
+}
+
+.viz-process-step strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.2rem;
+  margin-bottom: 0.35rem;
+}
+
+.viz-process-step p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: rgba(236, 234, 244, 0.68);
+  max-width: 16rem;
+}
+
+/* Door row — image-first destinations */
+.viz-doors {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .viz-doors {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 1.15rem;
+  }
+}
+
+.viz-door {
+  position: relative;
+  display: block;
+  min-height: 280px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
+.viz-door img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.viz-door:hover img {
+  transform: scale(1.04);
+}
+
+.viz-door::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgba(8, 10, 18, 0.88) 100%);
+}
+
+.viz-door .viz-door-meta {
+  position: absolute;
+  left: 1.1rem;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 1;
+}
+
+.viz-door .viz-door-meta b {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 230, 102, 0.85);
+  margin-bottom: 0.35rem;
+}
+
+.viz-door .viz-door-meta strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+}
+
+/* Soften/hide AI chip dumps when visual mode is preferred */
+.melodia-shell[data-visual="lookbook"] .math-chip-grid,
+.melodia-shell[data-visual="lookbook"] .pipeline-lane,
+.melodia-shell[data-visual="lookbook"] #geometryPipelineLanes,
+.melodia-shell[data-visual="lookbook"] .kitbash-mesh-grid,
+.melodia-shell[data-visual="lookbook"] .kitbash-includes,
+.melodia-shell[data-visual="lookbook"] .card-grid,
+.melodia-shell[data-visual="lookbook"] .alignment-grid,
+.melodia-shell[data-visual="lookbook"] .stack-grid,
+.melodia-shell[data-visual="lookbook"] .breakdown-passports,
+.melodia-shell[data-visual="lookbook"] .intake-card-grid,
+.melodia-shell[data-visual="lookbook"] .world-grid:not(.viz-rail) {
+  display: none !important;
+}
+
+.technical-appendix {
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(201, 168, 106, 0.22);
+  padding-top: 1rem;
+}
+
+.technical-appendix summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(236, 234, 244, 0.55);
+  list-style: none;
+}
+
+.technical-appendix summary::-webkit-details-marker { display: none; }
+
+.technical-appendix .appendix-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.1rem;
+  margin-top: 1rem;
+}
+
+.technical-appendix .appendix-links a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: rgba(102, 217, 255, 0.9);
+  text-decoration: none;
+}
+
+.technical-appendix .appendix-links a:hover {
+  color: #ffe666;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viz-plate img,
+  .viz-door img {
+    transition: none;
+  }
+  .viz-plate:hover img,
+  .viz-door:hover img {
+    transform: none;
+  }
+}
