@@ -24,8 +24,8 @@
 - [x] Hub → Melusina → Specs / Loop cross-links  
 - [x] Figma AAA Systems Board + MG lock  
 - [x] Code Connect UMG path stubs  
-- [ ] Publish clean `Game/*` library formally  
-- [ ] `WBP_Battle_Mobile` authored in editor (`--create --mobile-first`)  
+- [x] `WBP_Battle_Mobile` shell on disk (parent MelodiaMobileHUD)  
+- [ ] Designer BindWidgets + LaneButtons + brushes (WidgetTree protected in UE 5.8 Python)  
 - [ ] Package → Figma upload automation (Pass D — do not claim)
 
 ## Operator steps
