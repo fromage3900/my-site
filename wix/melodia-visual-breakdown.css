@@ -345,10 +345,27 @@
 .melodia-shell[data-visual="lookbook"] .card-grid,
 .melodia-shell[data-visual="lookbook"] .alignment-grid,
 .melodia-shell[data-visual="lookbook"] .stack-grid,
-.melodia-shell[data-visual="lookbook"] .breakdown-passports,
 .melodia-shell[data-visual="lookbook"] .intake-card-grid,
 .melodia-shell[data-visual="lookbook"] .world-grid:not(.viz-rail) {
   display: none !important;
+}
+
+/* Passport cards stay visible in lookbook — light tech, not chip walls */
+.melodia-shell[data-visual="lookbook"] .breakdown-passports {
+  margin-top: 0.5rem;
+}
+
+.melodia-shell[data-visual="lookbook"] .viz-tech-dose {
+  margin-top: 1.75rem;
+  max-width: 42rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(236, 234, 244, 0.68);
+}
+
+.melodia-shell[data-visual="lookbook"] .viz-tech-dose strong {
+  color: rgba(255, 230, 102, 0.9);
+  font-weight: 500;
 }
 
 .technical-appendix {
