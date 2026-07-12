@@ -6,10 +6,11 @@
   const PASSPORT_HTML = '../generated/passports/melusina_passport.html';
   const COLOR_URL = '../generated/assets/character/melusina_diorama_beauty.png';
   const DEPTH_URL = '../generated/assets/character/melusina_beauty_depth_color.png';
-  const BEAUTY_URL = '../generated/assets/character/melusina_portrait_face.png';
+  const BEAUTY_URL = '../generated/assets/character/melusina_profile_bangs_nikki.png';
   const FULL_BEAUTY_URL = '../generated/assets/character/melusina_beauty_void_iri.png';
   const HERO_DIR = '../generated/assets/character/hero_20260712';
   const HERO_BEAUTY = `${HERO_DIR}/melusina_hero_beauty_nikki.png`;
+  const HERO_PROFILE = `${HERO_DIR}/melusina_profile_bangs_nikki.png`;
   const HERO_JEWELRY = `${HERO_DIR}/melusina_hero_three_quarter_jewelry.png`;
   const HERO_FRONT = `${HERO_DIR}/melusina_hero_front_nikki.png`;
   const HERO_SILHOUETTE = `${HERO_DIR}/melusina_hero_silhouette_silhouette.png`;
@@ -114,11 +115,11 @@
     if (!mount) return;
     // Prefer tonight's hero pack; intake EEVEE cards are older and stay as optional append.
     const heroPack = [
+      { web_path: HERO_PROFILE, title: 'Profile · bangs Nikki' },
       { web_path: HERO_BEAUTY, title: 'Hero beauty · Nikki' },
       { web_path: HERO_JEWELRY, title: 'Three-quarter · Jewelry' },
       { web_path: HERO_FRONT, title: 'Front · Nikki' },
-      { web_path: HERO_SILHOUETTE, title: 'Silhouette' },
-      { web_path: BEAUTY_URL, title: 'Face portrait' },
+      { web_path: FULL_BEAUTY_URL, title: 'Full beauty · void/iri' },
       { web_path: COLOR_URL, title: 'Diorama postcard' },
     ];
     let cards = heroPack;

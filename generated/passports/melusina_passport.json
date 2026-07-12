@@ -5,43 +5,16 @@
   "version": "stage-shot",
   "asset_id": "melusina",
   "rows": [
-    [
-      "Triangles",
-      "294,883"
-    ],
-    [
-      "Meshes",
-      "136"
-    ],
-    [
-      "Materials",
-      "35"
-    ],
-    [
-      "Textures",
-      "46"
-    ],
-    [
-      "Shader",
-      "Stage EEVEE \u00b7 Melodia"
-    ],
-    [
-      "Software",
-      "Blender \u00b7 Melodia Portfolio Stage v4"
-    ],
-    [
-      "Engine",
-      "Blender EEVEE"
-    ],
-    [
-      "Capture",
-      "silhouette \u00b7 melusina_hero_silhouette_silhouette.png"
-    ],
-    [
-      "Date",
-      "2026-07"
-    ]
+    ["Triangles", "294,883"],
+    ["Meshes", "136"],
+    ["Materials", "35"],
+    ["Textures", "46"],
+    ["Shader", "Water (Advance) · Nikki lights"],
+    ["Software", "Blender · Melodia Portfolio Stage v4"],
+    ["Engine", "Blender Cycles"],
+    ["Capture", "bangs profile · melusina_profile_bangs_nikki.png"],
+    ["Date", "2026-07"]
   ],
-  "generated_at": "2026-07-12T05:34:04.700756+00:00",
+  "generated_at": "2026-07-12T17:30:00+00:00",
   "schema": "melodia-asset-passport/v1"
 }
