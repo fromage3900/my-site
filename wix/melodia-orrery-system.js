@@ -1,21 +1,19 @@
 /**
- * Melodia Orrery System — 3D CSS armillary + SVG section accents.
+ * Melodia Orrery System — real 3D CSS armillary (local arm spin + plane tilts).
  */
 (function (global) {
   'use strict';
 
   const RING_CONFIG = [
-    { size: [88, 72], duration: 18, color: 'rgba(255, 110, 180, 0.52)', tiltX: 72, tiltY: -8, z: 8 },
-    { size: [128, 108], duration: 28, color: 'rgba(255, 230, 102, 0.4)', tiltX: 18, tiltY: 24, z: 16, reverse: true },
-    { size: [178, 148], duration: 42, color: 'rgba(255, 142, 200, 0.42)', tiltX: 54, tiltY: -18, z: 24 },
-    { size: [228, 198], duration: 58, color: 'rgba(204, 153, 255, 0.34)', tiltX: 12, tiltY: 36, z: 32, reverse: true },
-    { size: [298, 268], duration: 88, color: 'rgba(255, 110, 180, 0.22)', tiltX: 64, tiltY: 10, z: 40 },
-    { size: [368, 328], duration: 112, color: 'rgba(102, 217, 255, 0.2)', tiltX: 28, tiltY: -42, z: 48, reverse: true },
-    { size: [248, 248], duration: 64, color: 'rgba(255, 230, 102, 0.22)', tiltX: 90, tiltY: 0, z: 20, reverse: true },
-    { size: [312, 312], duration: 96, color: 'rgba(255, 110, 180, 0.16)', tiltX: 90, tiltY: 48, z: 36 },
+    { size: [88, 72], duration: 16, color: 'rgba(255, 110, 180, 0.55)', tiltX: 72, tiltY: -12, z: 10 },
+    { size: [128, 108], duration: 24, color: 'rgba(255, 230, 102, 0.42)', tiltX: 22, tiltY: 28, z: 18, reverse: true },
+    { size: [178, 148], duration: 36, color: 'rgba(255, 142, 200, 0.44)', tiltX: 58, tiltY: -22, z: 28 },
+    { size: [228, 198], duration: 48, color: 'rgba(204, 153, 255, 0.36)', tiltX: 14, tiltY: 40, z: 38, reverse: true },
+    { size: [298, 268], duration: 72, color: 'rgba(255, 110, 180, 0.24)', tiltX: 68, tiltY: 12, z: 48 },
+    { size: [368, 328], duration: 96, color: 'rgba(102, 217, 255, 0.22)', tiltX: 32, tiltY: -48, z: 58, reverse: true },
+    { size: [248, 248], duration: 56, color: 'rgba(255, 230, 102, 0.24)', tiltX: 86, tiltY: 6, z: 22, reverse: true },
+    { size: [312, 312], duration: 84, color: 'rgba(255, 110, 180, 0.18)', tiltX: 84, tiltY: 52, z: 42 },
   ];
-
-  const SVGNS = 'http://www.w3.org/2000/svg';
 
   const VARIANTS = {
     cosmic: `
@@ -52,12 +50,27 @@
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
+  function ensureRig(system) {
+    let rig = system.querySelector(':scope > .orrery-rig');
+    if (rig) return rig;
+    rig = document.createElement('div');
+    rig.className = 'orrery-rig';
+    const yaw = document.createElement('div');
+    yaw.className = 'orrery-yaw';
+    while (system.firstChild) {
+      yaw.appendChild(system.firstChild);
+    }
+    rig.appendChild(yaw);
+    system.appendChild(rig);
+    return rig;
+  }
+
   function addRingNodes(spin, index) {
-    const angles = index < 4 ? [0, 120, 240] : [0, 180];
+    const angles = index < 4 ? [0, 120, 240] : [45, 225];
     angles.forEach((deg) => {
       const node = document.createElement('div');
       node.className = 'orbital-node-marker';
-      node.style.transform = `rotate(${deg}deg)`;
+      node.style.setProperty('--node-angle', deg + 'deg');
       node.setAttribute('aria-hidden', 'true');
       const dot = document.createElement('span');
       dot.className = 'orbital-node-dot';
@@ -66,8 +79,32 @@
     });
   }
 
+  function addArms(spin, index) {
+    const count = index < 3 ? 4 : index < 6 ? 3 : 2;
+    for (let i = 0; i < count; i += 1) {
+      const arm = document.createElement('div');
+      arm.className = 'orbital-arm';
+      arm.style.setProperty('--arm-angle', (i * (360 / count) + (index % 2) * 15) + 'deg');
+      arm.setAttribute('aria-hidden', 'true');
+      spin.appendChild(arm);
+    }
+  }
+
   function buildCssRings(system) {
-    if (system.querySelector('.orbital-shell')) return;
+    if (system.querySelector('.orbital-shell')) {
+      ensureRig(system);
+      return;
+    }
+
+    const rig = ensureRig(system);
+    const yaw = rig.querySelector('.orrery-yaw') || rig;
+
+    if (!yaw.querySelector('.orrery-axis-gimbal')) {
+      const gimbal = document.createElement('div');
+      gimbal.className = 'orrery-axis-gimbal';
+      gimbal.setAttribute('aria-hidden', 'true');
+      yaw.appendChild(gimbal);
+    }
 
     RING_CONFIG.forEach((cfg, index) => {
       const shell = document.createElement('div');
@@ -90,19 +127,20 @@
       const ring = document.createElement('div');
       ring.className = 'orbital-path orbital-ring-' + ((index % 6) + 1);
       ring.style.borderColor = cfg.color;
-      ring.style.opacity = String(0.35 + (cfg.z / 48) * 0.45);
+      ring.style.opacity = String(0.4 + (cfg.z / 58) * 0.4);
 
       spin.appendChild(ring);
+      addArms(spin, index);
       addRingNodes(spin, index);
       tilt.appendChild(spin);
       shell.appendChild(tilt);
-      system.appendChild(shell);
+      yaw.appendChild(shell);
     });
 
-    if (!system.querySelector('.orrery-core')) {
+    if (!yaw.querySelector('.orrery-core')) {
       const core = document.createElement('div');
       core.className = 'orrery-core';
-      system.appendChild(core);
+      yaw.appendChild(core);
     }
   }
 
@@ -125,18 +163,18 @@
   function bindOrreryTilt() {
     if (prefersReducedMotion()) return;
 
-    const systems = document.querySelectorAll('.orrery-system');
-    if (!systems.length) return;
+    const rigs = () => document.querySelectorAll('.orrery-system .orrery-rig');
+    if (!rigs().length) return;
 
-    /* Soft parallax only — no rotateX/Y (read as warped chrome in the banner/hero) */
     const isMobile = window.matchMedia('(max-width: 680px)').matches;
-    const range = isMobile ? 6 : 14;
+    const range = isMobile ? 8 : 16;
 
     const onMove = (e) => {
       const mx = (e.clientX / window.innerWidth - 0.5) * range;
-      const my = (e.clientY / window.innerHeight - 0.5) * range * 0.6;
-      systems.forEach((sys) => {
-        sys.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
+      const my = (e.clientY / window.innerHeight - 0.5) * range * 0.55;
+      rigs().forEach((rig) => {
+        /* Outer 3D tilt; inner .orrery-yaw keeps continuous local yaw */
+        rig.style.transform = `rotateX(${(-my).toFixed(2)}deg) rotateY(${mx.toFixed(2)}deg)`;
       });
     };
     window.addEventListener('pointermove', onMove, { passive: true });

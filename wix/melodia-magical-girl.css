@@ -105,6 +105,36 @@
   border-bottom-color: rgba(255, 110, 180, 0.06);
 }
 
+/* Batch N — ornate musical chrome accents (echo page-12 filigree) */
+.melodia-shell[data-mg="full"] .shell-nav,
+.melodia-shell[data-mg="soft"] .shell-nav,
+.melodia-shell[data-mg="chrome"] .shell-nav {
+  background-image:
+    url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeDivider.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: min(520px, 70%) 14px;
+}
+
+.melodia-shell[data-mg="full"] .magazine-kicker,
+.melodia-shell[data-mg="soft"] .magazine-kicker {
+  position: relative;
+}
+
+.melodia-shell[data-mg="full"] .magazine-kicker::before,
+.melodia-shell[data-mg="soft"] .magazine-kicker::before {
+  content: "";
+  position: absolute;
+  left: -0.15rem;
+  top: 50%;
+  width: 1.6rem;
+  height: 1.6rem;
+  transform: translateY(-50%);
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCorner.png") center / contain no-repeat;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
 /* Kill paper-band pink inset (was fighting editorial) */
 .melodia-shell.mg-ambient .band.paper,
 .melodia-shell.mg-ambient .band.cloud,
@@ -624,12 +654,14 @@
     );
 }
 
-/* Orrery MG accents — crystals + ribbon near cosmic armillary */
+/* Orrery MG accents — crystals near armillary (don't flatten 3D) */
 .orrery-system::after {
   content: "";
   position: absolute;
   inset: 18% 22%;
   pointer-events: none;
+  transform: translateZ(64px);
+  transform-style: preserve-3d;
   background:
     radial-gradient(circle at 22% 30%, rgba(255, 110, 180, 0.55) 0 1.5px, transparent 2px),
     radial-gradient(circle at 78% 42%, rgba(255, 230, 102, 0.5) 0 1.2px, transparent 1.8px),

@@ -120,7 +120,7 @@
   50% { opacity: .5; }
 }
 
-/* Layer 5: Premium Orrery — flat (no rotateX warp); kept below nav glass */
+/* Layer 5: Premium Orrery — real 3D armillary (perspective + preserve-3d) */
 .parallax-layer-5 {
   position: absolute;
   inset: 18% max(24px, 5vw) auto auto;
@@ -130,8 +130,9 @@
   z-index: 5;
   opacity: 1;
   background: transparent;
-  perspective: none;
-  transform-style: flat;
+  perspective: 1400px;
+  perspective-origin: 50% 45%;
+  transform-style: preserve-3d;
   pointer-events: none;
   overflow: visible;
   mix-blend-mode: normal;
@@ -183,10 +184,35 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  transform-style: flat;
+  transform-style: preserve-3d;
   transform-origin: 50% 50%;
-  opacity: 0.62;
-  filter: drop-shadow(0 0 14px rgba(201, 168, 106, 0.1));
+  opacity: 0.72;
+  filter: drop-shadow(0 0 14px rgba(201, 168, 106, 0.12));
+}
+
+/* Mouse / idle yaw lives on the rig so shells keep local spin */
+.orrery-rig {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  transition: transform 0.18s ease-out;
+  will-change: transform;
+}
+
+/* Continuous yaw lives on an INNER wrapper so mouse tilt doesn't kill it */
+.orrery-yaw {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  animation: orrery-rig-yaw 96s linear infinite;
+  will-change: transform;
+}
+
+@keyframes orrery-rig-yaw {
+  from { transform: rotateY(0deg) rotateX(10deg); }
+  to { transform: rotateY(360deg) rotateX(10deg); }
 }
 
 /* Central Core — luminous, not a solid disk */
@@ -194,51 +220,113 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 36px;
-  height: 36px;
+  transform: translate3d(-50%, -50%, 12px);
+  transform-style: preserve-3d;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: radial-gradient(circle at 38% 32%, rgba(255, 255, 255, 0.95), rgba(255, 110, 180, 0.55) 38%, rgba(102, 217, 255, 0.25) 72%, transparent 100%);
-  background-size: 100% 100%;
   animation: core-material-shift 6s ease-in-out infinite;
   box-shadow:
     0 0 24px rgba(255, 110, 180, 0.45),
     0 0 48px rgba(255, 230, 102, 0.2);
+  z-index: 4;
 }
 
 @keyframes core-material-shift {
-  0%, 100% { 
-    transform: translate(-50%, -50%) scale(1);
-    background-position: 0% 50%;
+  0%, 100% {
+    transform: translate3d(-50%, -50%, 12px) scale(1);
   }
-  50% { 
-    transform: translate(-50%, -50%) scale(1.05);
-    background-position: 100% 50%;
+  50% {
+    transform: translate3d(-50%, -50%, 12px) scale(1.08);
   }
 }
 
-/* Orbital Paths (3D) — tilt plane + spin in-plane for armillary depth */
+/* Fixed meridian / polar hoop — spins on a different local axis than the rings */
+.orrery-axis-gimbal {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 72%;
+  height: 72%;
+  margin: 0;
+  transform: translate(-50%, -50%) rotateX(78deg);
+  transform-style: preserve-3d;
+  border: 1px solid rgba(102, 217, 255, 0.28);
+  border-radius: 50%;
+  box-shadow: inset 0 0 18px rgba(102, 217, 255, 0.08);
+  animation: orrery-gimbal-spin 54s linear infinite;
+  pointer-events: none;
+}
+
+.orrery-axis-gimbal::before {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border: 1px solid rgba(255, 230, 102, 0.2);
+  border-radius: 50%;
+  transform: rotateY(90deg);
+  transform-style: preserve-3d;
+}
+
+.orrery-axis-gimbal::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -6%;
+  bottom: -6%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(255, 248, 240, 0.35) 20%,
+    rgba(255, 110, 180, 0.45) 50%,
+    rgba(255, 248, 240, 0.35) 80%,
+    transparent
+  );
+}
+
+@keyframes orrery-gimbal-spin {
+  from { transform: translate(-50%, -50%) rotateX(78deg) rotateZ(0deg); }
+  to { transform: translate(-50%, -50%) rotateX(78deg) rotateZ(360deg); }
+}
+
+/* Each shell = one orbital plane in 3D space */
 .orbital-shell {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate3d(-50%, -50%, 0);
   transform-style: preserve-3d;
+  pointer-events: none;
 }
 
+/* Fixed plane tilt — then children spin LOCALLY in that plane */
 .orbital-tilt {
   position: absolute;
   inset: 0;
-  transform-style: flat;
-  /* Gentle ellipse only — heavy 3D tilt read as warped chrome */
-  transform: rotateX(var(--tilt-x, 18deg)) rotateY(var(--tilt-y, 0deg));
+  transform-style: preserve-3d;
+  transform:
+    rotateX(var(--tilt-x, 48deg))
+    rotateY(var(--tilt-y, 0deg))
+    translateZ(var(--z, 0px));
 }
 
+/* Local spin around the ring's own normal (Z of the tilted plane) */
 .orbital-spin {
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
-  animation: orbit-spin-z var(--duration, 48s) linear infinite;
+  transform-origin: 50% 50%;
+  animation: orbit-spin-local var(--duration, 48s) linear infinite;
+  will-change: transform;
+}
+
+@keyframes orbit-spin-local {
+  from { transform: rotateZ(0deg); }
+  to { transform: rotateZ(360deg); }
 }
 
 .orbital-path {
@@ -257,15 +345,57 @@
   content: '';
   position: absolute;
   inset: -1px;
-  border: 1px solid var(--border-premium);
+  border: 1px solid rgba(255, 248, 240, 0.12);
   border-radius: 50%;
   opacity: 0.65;
+}
+
+/* Radial arms — rotate WITH the local spin (not a flat disk smear) */
+.orbital-arm {
+  position: absolute;
+  inset: 0;
+  transform: rotate(var(--arm-angle, 0deg));
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.orbital-arm::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: 50%;
+  transform: translate(-50%, -100%);
+  transform-origin: 50% 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 110, 180, 0.55),
+    rgba(255, 230, 102, 0.28) 55%,
+    transparent 100%
+  );
+  box-shadow: 0 0 6px rgba(255, 110, 180, 0.25);
+}
+
+.orbital-arm::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 35% 30%, #fff, rgba(255, 230, 102, 0.85) 55%, rgba(255, 110, 180, 0.5));
+  box-shadow: 0 0 8px rgba(255, 230, 102, 0.45);
 }
 
 .orbital-node-marker {
   position: absolute;
   inset: 0;
+  transform: rotate(var(--node-angle, 0deg));
   transform-origin: 50% 50%;
+  transform-style: preserve-3d;
   pointer-events: none;
 }
 
@@ -273,17 +403,12 @@
   position: absolute;
   top: 0;
   left: 50%;
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 110, 180, 0.75) 42%, rgba(102, 217, 255, 0.5));
-  box-shadow: 0 0 12px rgba(255, 110, 180, 0.4), 0 0 5px rgba(255, 230, 102, 0.3);
-}
-
-/* Axis gimbal removed from visual budget — read as warped smear in hero */
-.orrery-axis-gimbal {
-  display: none;
+  transform: translate3d(-50%, -50%, 2px);
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.95), rgba(255, 110, 180, 0.8) 42%, rgba(102, 217, 255, 0.55));
+  box-shadow: 0 0 12px rgba(255, 110, 180, 0.45), 0 0 5px rgba(255, 230, 102, 0.35);
 }
 
 @keyframes orbit-spin-z {
@@ -294,81 +419,20 @@
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Ring 1 - Inner Core */
-.orbital-ring-1 {
-  width: 70px;
-  height: 60px;
-  --duration: 30s;
-  border-color: rgba(155, 143, 196, 0.35);
-  --tilt-x: 38deg;
-  --tilt-y: -10deg;
-  --z: 10px;
-}
-
-/* Ring 2 - Inner Mid */
-.orbital-ring-2 {
-  width: 120px;
-  height: 110px;
-  --duration: 42s;
-  border-color: rgba(201, 168, 106, 0.35);
-  animation-direction: reverse;
-  --tilt-x: 22deg;
-  --tilt-y: 18deg;
-  --z: 18px;
-}
-
-/* Ring 3 - Outer Mid */
-.orbital-ring-3 {
-  width: 180px;
-  height: 160px;
-  --duration: 56s;
-  border-color: rgba(232, 201, 184, 0.3);
-  --tilt-x: 58deg;
-  --tilt-y: -22deg;
-  --z: 26px;
-}
-
-/* Ring 4 - Inner Outer */
-.orbital-ring-4 {
-  width: 240px;
-  height: 220px;
-  --duration: 72s;
-  border-color: rgba(212, 197, 169, 0.25);
-  animation-direction: reverse;
-  --tilt-x: 14deg;
-  --tilt-y: 34deg;
-  --z: 34px;
-}
-
-/* Ring 5 - Outer */
-.orbital-ring-5 {
-  width: 320px;
-  height: 300px;
-  --duration: 96s;
-  border-color: rgba(155, 143, 196, 0.2);
-  --tilt-x: 66deg;
-  --tilt-y: 8deg;
-  --z: 42px;
-}
-
-/* Ring 6 - Outermost */
-.orbital-ring-6 {
-  width: 400px;
-  height: 380px;
-  --duration: 120s;
-  border-color: rgba(109, 184, 184, 0.15);
-  animation-direction: reverse;
-  --tilt-x: 30deg;
-  --tilt-y: -40deg;
-  --z: 52px;
-}
+/* Ring tint helpers (sizes come from JS inline) */
+.orbital-ring-1 { border-color: rgba(155, 143, 196, 0.45); }
+.orbital-ring-2 { border-color: rgba(201, 168, 106, 0.4); }
+.orbital-ring-3 { border-color: rgba(232, 201, 184, 0.38); }
+.orbital-ring-4 { border-color: rgba(212, 197, 169, 0.32); }
+.orbital-ring-5 { border-color: rgba(155, 143, 196, 0.28); }
+.orbital-ring-6 { border-color: rgba(109, 184, 184, 0.22); }
 
 /* Premium Nodes */
 .orbital-node {
   position: absolute;
   border-radius: 50%;
   background: radial-gradient(circle, var(--node-color) 0%, var(--node-color-dark) 100%);
-  box-shadow: 
+  box-shadow:
     0 0 10px var(--node-glow),
     inset 0 0 4px rgba(255, 255, 255, 0.2);
   animation: node-material-premium 6s ease-in-out infinite;
@@ -552,7 +616,8 @@ h3 {
   }
   
   .parallax-layer-5:hover {
-    transform: translateZ(45px) rotate(3deg);
+    /* Don't overwrite transform-style / perspective — leave armillary alone */
+    filter: drop-shadow(0 0 18px rgba(255, 110, 180, 0.18));
   }
   
   .parallax-layer-7:hover {
@@ -572,6 +637,9 @@ h3 {
   .orbital-shell,
   .orbital-path,
   .orbital-node,
+  .orbital-spin,
+  .orrery-yaw,
+  .orrery-axis-gimbal,
   .button.primary {
     animation: none !important;
   }

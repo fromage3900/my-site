@@ -439,15 +439,15 @@ img { display: block; max-width: 100%; }
 }
 
 .parallax-layer-5.orrery-perspective-layer {
-  perspective: 1800px;
-  perspective-origin: 50% 42%;
+  perspective: 1400px;
+  perspective-origin: 50% 45%;
   transform-style: preserve-3d;
   overflow: visible;
 }
 
 .orrery-system {
   transform-style: preserve-3d;
-  transition: transform 0.14s ease-out;
+  transition: none;
 }
 
 .melodia-orrery svg { width: 100%; height: 100%; overflow: visible; }
