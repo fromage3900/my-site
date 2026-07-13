@@ -1,6 +1,6 @@
 {
   "format": "melodia_technical_breakdown_manifest_v1",
-  "generated_at": "2026-07-13T06:35:25.415027+00:00",
+  "generated_at": "2026-07-13T06:36:46.286886+00:00",
   "scene": {
     "camera_count": 0,
     "engine": "5.8.0-55116800+++UE5+Release-5.8",
@@ -9,7 +9,7 @@
     "scene_name": "ZenForestTest",
     "timestamp": "2026-06-27T22:57:50.877188+00:00"
   },
-  "camera_count": 0,
+  "camera_count": 5,
   "material_instance_count": 30,
   "breakdowns": [
     {
@@ -17,50 +17,50 @@
       "title": "Universal master graph",
       "proof": "shader_graph",
       "destination": "renders.breakdown",
-      "camera": null,
-      "camera_configured": false,
+      "camera": "Cam_Breakdown_ShaderMaster",
+      "camera_configured": true,
       "capture_present": false,
-      "status": "needs_camera"
+      "status": "camera_ready"
     },
     {
       "id": "material_instance",
       "title": "Material instance family plate",
       "proof": "material_instance",
       "destination": "renders.materials",
-      "camera": null,
-      "camera_configured": false,
+      "camera": "Cam_Breakdown_MaterialInstance",
+      "camera_configured": true,
       "capture_present": false,
-      "status": "needs_camera"
+      "status": "camera_ready"
     },
     {
       "id": "pcg_heatmap",
       "title": "PCG density and route heatmap",
       "proof": "pcg_heatmap",
       "destination": "renders.pcg",
-      "camera": null,
-      "camera_configured": false,
+      "camera": "Cam_Breakdown_PCGHeatmap",
+      "camera_configured": true,
       "capture_present": false,
-      "status": "needs_camera"
+      "status": "camera_ready"
     },
     {
       "id": "trim_sheet",
       "title": "Trim and atlas proof",
       "proof": "trim_sheet",
       "destination": "renders.breakdown",
-      "camera": null,
-      "camera_configured": false,
+      "camera": "Cam_Breakdown_TrimSheet",
+      "camera_configured": true,
       "capture_present": false,
-      "status": "needs_camera"
+      "status": "camera_ready"
     },
     {
       "id": "world_shader",
       "title": "In-scene shader response",
       "proof": "world_shader",
       "destination": "renders.breakdown",
-      "camera": null,
-      "camera_configured": false,
+      "camera": "Cam_Breakdown_WorldShader",
+      "camera_configured": true,
       "capture_present": false,
-      "status": "needs_camera"
+      "status": "camera_ready"
     }
   ],
   "evidence": {
