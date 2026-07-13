@@ -1,0 +1,87 @@
+{
+  "format": "melodia_technical_breakdown_manifest_v1",
+  "generated_at": "2026-07-13T06:33:47.676040+00:00",
+  "scene": {
+    "camera_count": 0,
+    "engine": "5.8.0-55116800+++UE5+Release-5.8",
+    "environment_type": "stylized environment",
+    "level_path": "/Game/ZenForestTest",
+    "scene_name": "ZenForestTest",
+    "timestamp": "2026-06-27T22:57:50.877188+00:00"
+  },
+  "camera_count": 0,
+  "material_instance_count": 30,
+  "breakdowns": [
+    {
+      "id": "shader_master",
+      "title": "Universal master graph",
+      "proof": "shader_graph",
+      "destination": "renders.breakdown",
+      "camera": null,
+      "camera_configured": false,
+      "capture_present": false,
+      "status": "needs_camera"
+    },
+    {
+      "id": "material_instance",
+      "title": "Material instance family plate",
+      "proof": "material_instance",
+      "destination": "renders.materials",
+      "camera": null,
+      "camera_configured": false,
+      "capture_present": false,
+      "status": "needs_camera"
+    },
+    {
+      "id": "pcg_heatmap",
+      "title": "PCG density and route heatmap",
+      "proof": "pcg_heatmap",
+      "destination": "renders.pcg",
+      "camera": null,
+      "camera_configured": false,
+      "capture_present": false,
+      "status": "needs_camera"
+    },
+    {
+      "id": "trim_sheet",
+      "title": "Trim and atlas proof",
+      "proof": "trim_sheet",
+      "destination": "renders.breakdown",
+      "camera": null,
+      "camera_configured": false,
+      "capture_present": false,
+      "status": "needs_camera"
+    },
+    {
+      "id": "world_shader",
+      "title": "In-scene shader response",
+      "proof": "world_shader",
+      "destination": "renders.breakdown",
+      "camera": null,
+      "camera_configured": false,
+      "capture_present": false,
+      "status": "needs_camera"
+    }
+  ],
+  "evidence": {
+    "portfolio_package": "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\portfolio_package.json",
+    "camera_manifest": "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\technical_breakdown_cameras.json",
+    "material_audit": "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Audit\\material_instance_audit.json",
+    "render_manifest": "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\Renders\\renders_manifest.json"
+  },
+  "website_contract": {
+    "asset_root": "generated/assets/unreal/",
+    "intake": "tools/ingest_unreal_portfolio.ps1",
+    "target_pages": [
+      "wix/shader-breakdowns.html",
+      "wix/render-constellation.html"
+    ]
+  },
+  "next_actions": [
+    "Universal master graph",
+    "Material instance family plate",
+    "PCG density and route heatmap",
+    "Trim and atlas proof",
+    "In-scene shader response"
+  ]
+}
