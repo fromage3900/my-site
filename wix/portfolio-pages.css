@@ -326,7 +326,7 @@ a.guide-card.premium-card {
   grid-template-columns: minmax(7.5rem, 9.5rem) minmax(0, 1fr) auto;
   gap: 14px 20px;
   align-items: center;
-  padding: 18px 4px;
+  padding: 22px 28px 18px 8px; /* leave room for MG ribbon sparkle on Open */
   border-bottom: 1px solid rgba(201,168,106,.28);
   text-decoration: none;
   color: inherit;
@@ -339,6 +339,12 @@ a.guide-card.premium-card {
   border-left: 0;
   border-right: 0;
   border-top: 0;
+}
+.guide-card.mg-ribbon-card {
+  overflow: visible;
+}
+.guide-card.mg-ribbon-card > b {
+  padding-right: 1.1rem; /* keep Open clear of corner ✦ */
 }
 .guide-card:hover,
 a.guide-card.premium-card:hover {

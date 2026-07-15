@@ -145,8 +145,8 @@
       apply();
     }
 
-    // Interactive cards + stage plate strip (exclude guide-cards — list grid must stay aligned)
-    document.querySelectorAll('.portal-card, .path-row, .stage-plate-grid a').forEach(function (el) {
+    // Interactive cards + stage plate strip
+    document.querySelectorAll('.portal-card, .path-row, .guide-card, .stage-plate-grid a').forEach(function (el) {
       el.classList.add('mg-ribbon-card');
     });
 
