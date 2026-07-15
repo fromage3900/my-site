@@ -7,7 +7,7 @@
 <meta name="description" content="Brennan Shepherd — stylized environment artist. Melusina stage, Sakura worlds, and ornamental kitbash." />
 <meta property="og:title" content="Brennan Shepherd — Environment & Technical Art" />
 <meta property="og:description" content="Stylized fantasy spaces and Melodia Stage plates — visual portfolio." />
-<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/character/melusina_beauty_eevee_20260715_01.png" />
+<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/character/melusina_beauty_eevee_20260715c_01.png" />
 <meta property="og:url" content="https://fromage3900.github.io/my-site/wix/index.html" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="stylesheet" href="melodia-luxury-type.css">
@@ -15,80 +15,101 @@
 <link rel="stylesheet" href="melodia-fashion-editorial.css">
 <link rel="stylesheet" href="melodia-premium-system.css">
 <link rel="stylesheet" href="melodia-visual-breakdown.css">
-<link rel="stylesheet" href="enhanced-cosmic-hero-premium.css">
+<link rel="stylesheet" href="enhanced-cosmic-hero-premium.css?v=20260715p4">
+<link rel="stylesheet" href="melodia-editorial-polish.css?v=20260715p4">
 </head>
 <body>
 <div class="melodia-shell fashion-mode" data-mg="full" data-hero="cosmic" data-visual="lookbook" data-effects="starfield,orrery,holo,magical" data-starfield-intensity="cosmic" data-nav-cta="application-hub.html" data-nav-cta-label="Application hub">
-<header class="shell-nav" aria-label="Portfolio navigation">
+<header class="shell-nav constellation-nav" data-constellation="true" aria-label="Portfolio navigation">
   <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span data-copy="global.brand">Brennan Shepherd</span></a>
   <nav class="nav-links" aria-label="Sections">
     <a href="#plates">Plates</a>
     <a href="#worlds">Worlds</a>
-    <a href="#doors">Explore</a>
+    <a href="melodia-stage-character.html">Stage</a>
+    <a href="application-hub.html#logic">Escher</a>
     <a href="recruiter-one-sheet.html">One-sheet</a>
-    <a href="melodia-systems.html">Systems</a>
   </nav>
   <a class="nav-cta button-premium" href="application-hub.html">Application hub</a>
 </header>
 
 <main id="main">
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero has-orrery-overhead" aria-labelledby="hero-title">
   <div class="parallax-layer-1" aria-hidden="true"></div>
   <div class="parallax-layer-2" aria-hidden="true"></div>
-  <div class="parallax-layer-5" aria-hidden="true">
-    <div class="orrery-system"><div class="orrery-core"></div></div>
-  </div>
   <div class="parallax-layer-6" aria-hidden="true"></div>
   <div class="parallax-layer-7" aria-hidden="true">
-    <img id="heroLeadImage" data-hero-lock="melusina" data-plate="index.hero" src="../generated/assets/character/melusina_beauty_eevee_20260715_01.png" alt="Melusina — beauty plate, Melodia Portfolio Stage" />
+    <img id="heroLeadImage" data-hero-lock="melusina" data-plate="index.hero" src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="Melusina — beauty plate, Melodia Portfolio Stage" />
   </div>
-  <div class="parallax-layer-8">
+  <!-- Cosmic orrery as overhead detail ABOVE Melusina (not a second hero) -->
+  <div class="parallax-layer-5 hero-orrery-detail" aria-hidden="true">
+    <div class="orrery-system"><div class="orrery-core"></div></div>
+  </div>
+  <div class="parallax-layer-8 hero-copy-layer">
     <div class="hero-inner">
       <p class="kicker magazine-kicker premium-kicker" data-copy="pages.index.hero.kicker">Portfolio</p>
-      <div class="editorial-rhythm-divider sheet" aria-hidden="true"><span class="glyph">♪ · 𝄞 · ♪</span></div>
+      <div class="editorial-rhythm-divider sheet" data-divider="astral" aria-hidden="true"><span class="glyph">♪ · 𝄞 · ♪</span></div>
       <h1 id="hero-title" data-copy="pages.index.hero.headline">Pretty worlds. Real pipeline underneath.</h1>
       <p class="lede" data-copy="pages.index.hero.lede">I'm Brennan — final-year Humber environment artist. Dreamy Unreal/Blender worlds with plates you can feel before you read a single tech note.</p>
-      <div class="hero-specs">
-        <span class="spec-badge"><b>Engine</b> UE 5.8</span>
-        <span class="spec-badge"><b>Triangles</b> 72,924</span>
-        <span class="spec-badge"><b>Category</b> Stylized Environment</span>
+      <div class="hero-actions" aria-label="Primary destinations">
+        <a class="button primary button-premium-primary" href="application-hub.html">Application hub</a>
+        <a class="button button-premium" href="sakura-case-study.html">Sakura</a>
+        <a class="button button-premium" href="recruiter-one-sheet.html">One-sheet</a>
       </div>
+      <!-- Beauty + Passport Banner — design-system Template #1 (in-flow under CTAs) -->
+      <aside class="hero-passport-banner" aria-label="Asset Passport">
+        <div class="pp-banner" data-format="Banner" data-theme="Dark">
+          <div class="pp-banner-head">
+            <span class="pp-kick"><span class="pp-star" aria-hidden="true">✸</span> Asset Passport</span>
+            <span class="pp-ver">stage-v7</span>
+          </div>
+          <strong class="pp-title">Melusina</strong>
+          <span class="pp-cat">Character · Water Hair · Stage lookdev</span>
+          <dl class="pp-banner-specs">
+            <div><dt>Triangles</dt><dd>224,123</dd></div>
+            <div><dt>Meshes</dt><dd>19</dd></div>
+            <div><dt>Engine</dt><dd>Blender EEVEE</dd></div>
+            <div><dt>Capture</dt><dd>EEVEE glam · Jul 2026</dd></div>
+          </dl>
+          <a class="pp-link" href="melodia-stage-character.html">Open stage passport →</a>
+        </div>
+      </aside>
     </div>
   </div>
+  <a class="hero-scroll-cue" href="#plates"><span aria-hidden="true">↓</span> Scroll</a>
 </section>
 
-<section class="band paper fashion-band" id="plates">
+<section class="band paper fashion-band ivory" id="plates" data-surface="ivory">
   <div class="inner">
-    <div class="nikki-spark-rule" aria-hidden="true"><span class="spark">✦</span> lookbook · Melusina plates <span class="spark">✦</span></div>
+    <div class="nikki-spark-rule" data-divider="pipes" aria-hidden="true"><span class="spark">✦</span> lookbook · Melusina plates <span class="spark">✦</span></div>
     <div class="nikki-outfit-board">
       <div>
         <p class="nikki-outfit-label">Outfit board · Melusina</p>
-        <h2 class="nikki-outfit-title">Beauty, jewelry, stage prop.</h2>
-        <p>Photo-spot framing — front hero first, then ability-dress reads.</p>
+        <h2 class="nikki-outfit-title">Beauty, wireframe, stage prop.</h2>
+        <p>Photo-spot framing — glam keepers plus grey wire topology.</p>
       </div>
       <div class="nikki-stat-row" aria-label="Lookbook stats">
-        <div class="nikki-stat"><b>Capture</b><strong>Front</strong></div>
+        <div class="nikki-stat"><b>Capture</b><strong>EEVEE</strong></div>
         <div class="nikki-stat"><b>Hair</b><strong>Water Adv.</strong></div>
-        <div class="nikki-stat"><b>Light</b><strong>Nikki</strong></div>
+        <div class="nikki-stat"><b>Light</b><strong>Glam</strong></div>
       </div>
     </div>
     <p class="nikki-ribbon">Photo spot · Melusina lookbook</p>
     <div class="viz-rail">
       <div class="viz-rail-item">
         <a class="viz-plate nikki-photospot" href="melodia-stage-character.html">
-          <img src="../generated/assets/character/melusina_eevee_glam_20260715_02.png" alt="Melusina glam bust" loading="lazy" />
+          <img src="../generated/assets/character/melusina_eevee_glam_20260715c_02.png" alt="Melusina glam bust" loading="lazy" />
           <div class="viz-caption"><strong>Bust</strong><span>EEVEE glam</span></div>
         </a>
       </div>
       <div class="viz-rail-item">
         <a class="viz-plate" href="melodia-stage-character.html">
-          <img src="../generated/assets/character/melusina_beauty_eevee_20260715_01.png" alt="Melusina beauty" loading="lazy" />
-          <div class="viz-caption"><strong>Melusina</strong><span>Beauty</span></div>
+          <img data-plate="stage.wire_front" src="../generated/assets/character/melusina_front_wireframe_grey_20260715.png" alt="Melusina front grey wireframe" loading="lazy" />
+          <div class="viz-caption"><strong>Wireframe</strong><span>Front grey</span></div>
         </a>
       </div>
       <div class="viz-rail-item">
         <a class="viz-plate" href="melodia-stage-character.html">
-          <img src="../generated/assets/character/melusina_eevee_glam_20260715_05.png" alt="Melusina glam portrait" loading="lazy" />
+          <img src="../generated/assets/character/melusina_eevee_glam_20260715c_05.png" alt="Melusina glam portrait" loading="lazy" />
           <div class="viz-caption"><strong>Portrait</strong><span>EEVEE glam</span></div>
         </a>
       </div>
@@ -99,73 +120,56 @@
 
 <section class="band astral fashion-band" id="worlds">
   <div class="inner">
-    <div class="nikki-spark-rule" aria-hidden="true"><span class="spark">✦</span> ability strip · worlds <span class="spark">✦</span></div>
-    <p class="nikki-ribbon">Ability strip · world pillars</p>
+    <div class="nikki-spark-rule" data-divider="diamond" aria-hidden="true"><span class="spark">✦</span> four pillars · world chapters <span class="spark">✦</span></div>
+    <p class="nikki-ribbon">World chapters · four pillars</p>
     <div class="section-head">
       <div>
-        <p class="eyebrow magazine-kicker">Story beats</p>
-        <h2>Walk the mood before the systems.</h2>
+        <p class="eyebrow magazine-kicker">Environment pillars</p>
+        <h2>Four worlds. One production map.</h2>
       </div>
-      <p class="human-lede">Sakura path, musical ornaments, Melodia Studio — short captions, big plates.</p>
+      <p class="human-lede">Sakura Dream, Space Cathedral, Baroque Grotto, Cosmic Orrery — editorial chapters from owned <code>L_WP_*</code> levels.</p>
     </div>
-    <div class="nikki-ability-strip" aria-label="World abilities">
-      <div class="nikki-ability">
-        <b>01 · Route</b>
-        <strong>Sakura Dream</strong>
-        <p>Petal drift and calm path reads — photo-spot friendly.</p>
-      </div>
-      <div class="nikki-ability">
-        <b>02 · Dress</b>
-        <strong>Melody geometry</strong>
-        <p>Sheet-music ornaments and Studio builders.</p>
-      </div>
-      <div class="nikki-ability">
-        <b>03 · Kit</b>
-        <strong>Gothic kitbash</strong>
-        <p>Rose windows and vault ribs for level dress.</p>
-      </div>
+    <div class="world-pillars" aria-label="Four environment pillars">
+      <a class="world-pillar" href="sakura-case-study.html" data-pillar="sakura">
+        <img data-plate="hub.sakura" src="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" alt="Sakura Dream" loading="lazy" />
+        <div class="world-pillar-meta">
+          <b>01</b>
+          <strong>Sakura Dream</strong>
+          <span>Petal path · soft night shrine</span>
+        </div>
+      </a>
+      <a class="world-pillar" href="world-bible.html" data-pillar="cathedral">
+        <img src="../generated/assets/nightshift/WP_SpaceCathedral_terrain.png" alt="Space Cathedral" loading="lazy" />
+        <div class="world-pillar-meta">
+          <b>02</b>
+          <strong>Space Cathedral</strong>
+          <span>Celestial nave · Escher rhythm</span>
+        </div>
+      </a>
+      <a class="world-pillar" href="world-bible.html" data-pillar="grotto">
+        <img src="../generated/assets/nightshift/WP_BaroqueGrotto_terrain.png" alt="Baroque Grotto" loading="lazy" />
+        <div class="world-pillar-meta">
+          <b>03</b>
+          <strong>Baroque Grotto</strong>
+          <span>Bioluminescent wet rock · moss</span>
+        </div>
+      </a>
+      <a class="world-pillar" href="hero-renders.html" data-pillar="orrery">
+        <img src="../generated/assets/nightshift/WP_CosmicOrrery_terrain.png" alt="Cosmic Orrery" loading="lazy" />
+        <div class="world-pillar-meta">
+          <b>04</b>
+          <strong>Cosmic Orrery</strong>
+          <span>Armillary night · nebula accents</span>
+        </div>
+      </a>
     </div>
-    <div class="viz-spine">
-      <article class="viz-beat">
-        <a class="viz-plate" href="sakura-case-study.html">
-          <img data-plate="hub.sakura" src="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" alt="Sakura Dream terrain" loading="lazy" />
-          <div class="viz-caption"><strong>Sakura Dream</strong><span>Case study</span></div>
-        </a>
-        <div class="viz-copy">
-          <h3>Cherry path, soft night.</h3>
-          <p>Composition and atmosphere first — the shrine route you want to walk.</p>
-          <a class="viz-link" href="sakura-case-study.html">Open Sakura →</a>
-        </div>
-      </article>
-      <article class="viz-beat is-flip">
-        <a class="viz-plate" href="geometry-nodes.html">
-          <img src="../generated/assets/ornaments/musical_20260711/musical_stage_beauty.png" alt="Musical ornament stage" loading="lazy" />
-          <div class="viz-caption"><strong>Melody geometry</strong><span>Studio plates</span></div>
-        </a>
-        <div class="viz-copy">
-          <h3>Sheet-music in the void.</h3>
-          <p>Treble, rails, note forms — ornaments that still feel hand-made.</p>
-          <a class="viz-link" href="geometry-nodes.html">See the plates →</a>
-        </div>
-      </article>
-      <article class="viz-beat">
-        <a class="viz-plate" href="ornament-kitbash.html">
-          <img src="../generated/assets/ornaments/rose_window_komikaze_front.png" alt="Rose window ornament" loading="lazy" />
-          <div class="viz-caption"><strong>Ornament kitbash</strong><span>Preview</span></div>
-        </a>
-        <div class="viz-copy">
-          <h3>Gothic filigree, ready to dress a set.</h3>
-          <p>Rose windows and vault ribs for stylized cathedral looks. Purchase opens after store shots.</p>
-          <a class="viz-link" href="ornament-kitbash.html">Preview pack →</a>
-        </div>
-      </article>
-    </div>
+    <p style="margin-top:1.5rem"><a class="viz-link" href="world-bible.html" style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--iri-gold);">Full world bible →</a></p>
   </div>
 </section>
 
-<section class="band paper fashion-band" id="doors">
+<section class="band paper fashion-band ivory" id="doors" data-surface="ivory">
   <div class="inner">
-    <div class="viz-rule" aria-hidden="true"><span class="glyph">♪ doors</span></div>
+    <div class="viz-rule" data-divider="pipes-spark" aria-hidden="true"><span class="glyph">♪ doors</span></div>
     <div class="section-head">
       <div>
         <p class="eyebrow magazine-kicker">Continue</p>
@@ -179,11 +183,11 @@
         <div class="viz-door-meta"><b>Dossier</b><strong>Application hub</strong></div>
       </a>
       <a class="viz-door" href="melodia-stage-character.html">
-        <img src="../generated/assets/character/hero_20260712/melusina_hero_front_nikki.png" alt="" loading="lazy" />
+        <img data-plate="stage.front" src="../generated/assets/character/melusina_eevee_glam_20260715c_02.png" alt="" loading="lazy" />
         <div class="viz-door-meta"><b>Character</b><strong>Melusina stage</strong></div>
       </a>
       <a class="viz-door" href="recruiter-one-sheet.html">
-        <img src="../generated/assets/character/hero_20260712/melusina_hero_silhouette_silhouette.png" alt="" loading="lazy" />
+        <img data-plate="hub.melusina_secondary" src="../generated/assets/character/melusina_eevee_glam_20260715c_05.png" alt="" loading="lazy" />
         <div class="viz-door-meta"><b>Hiring</b><strong>One-sheet</strong></div>
       </a>
     </div>
@@ -191,10 +195,21 @@
 </section>
 </main>
 
-<footer class="footer">
+<footer class="footer footer-signature" aria-label="Melodia signature">
   <div class="inner">
-    <span data-copy="global.footer.left">Brennan Shepherd / Environment & Technical Artist</span>
-    <span data-copy="global.footer.right">Melodia editorial portfolio</span>
+    <div class="sig-brand">
+      <span class="sig-mark" aria-hidden="true">✸</span>
+      <span class="sig-word">MELODIA</span>
+      <span class="sig-sep" aria-hidden="true">·</span>
+      <span data-copy="global.footer.left">Brennan Shepherd</span>
+    </div>
+    <div class="sig-role">Environment &amp; Technical Artist</div>
+    <nav class="sig-links" aria-label="Contact and destinations">
+      <a href="https://github.com/fromage3900" target="_blank" rel="noopener">GitHub</a>
+      <a href="application-hub.html">Hub</a>
+      <a href="resume.html">Resume</a>
+      <a href="recruiter-one-sheet.html">One-sheet</a>
+    </nav>
   </div>
 </footer>
 </div>

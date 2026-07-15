@@ -408,6 +408,43 @@
 
 .concept p { margin: 0; color: rgba(233, 229, 242, 0.72); line-height: 1.6; }
 
+.escher-stage {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.escher-proof-plate img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.math-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.math-chip {
+  padding: 10px 12px;
+  border: 1px solid var(--border-gold);
+  background: rgba(16, 23, 54, 0.55);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  color: rgba(233, 229, 242, 0.72);
+  line-height: 1.4;
+}
+
+.math-chip b {
+  display: block;
+  color: var(--gold-soft);
+  font-weight: 500;
+  margin-bottom: 3px;
+  font-size: 0.68rem;
+}
+
 .breakdown-passports {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
