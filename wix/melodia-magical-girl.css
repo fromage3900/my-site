@@ -472,14 +472,12 @@
 
 /* Interactive ribbon cards — always a soft sparkle; stronger on hover */
 .portal-card.mg-ribbon-card,
-.path-row.mg-ribbon-card,
-.guide-card.mg-ribbon-card {
+.path-row.mg-ribbon-card {
   position: relative;
 }
 
 .portal-card.mg-ribbon-card::before,
-.path-row.mg-ribbon-card::before,
-.guide-card.mg-ribbon-card::before {
+.path-row.mg-ribbon-card::before {
   content: "";
   position: absolute;
   left: 10px;
@@ -503,15 +501,13 @@
 
 .portal-card.mg-ribbon-card:hover::before,
 .path-row.mg-ribbon-card:hover::before,
-.guide-card.mg-ribbon-card:hover::before,
 .portal-card.mg-ribbon-card:focus-visible::before,
 .path-row.mg-ribbon-card:focus-visible::before {
   opacity: 0.95;
 }
 
 .portal-card.mg-ribbon-card::after,
-.path-row.mg-ribbon-card::after,
-.guide-card.mg-ribbon-card::after {
+.path-row.mg-ribbon-card::after {
   content: "✦";
   position: absolute;
   top: 10px;
@@ -526,7 +522,6 @@
 
 .portal-card.mg-ribbon-card:hover::after,
 .path-row.mg-ribbon-card:hover::after,
-.guide-card.mg-ribbon-card:hover::after,
 .portal-card.mg-ribbon-card:focus-visible::after,
 .path-row.mg-ribbon-card:focus-visible::after {
   opacity: 1;

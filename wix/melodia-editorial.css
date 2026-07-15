@@ -136,22 +136,15 @@ img { display: block; max-width: 100%; }
   background: none;
 }
 
+/* portfolioframe.png retired — squished PNG decor removed site-wide */
 .melodia-shell::after {
-  content: "";
-  position: fixed;
-  inset: auto -8% -18% auto;
-  width: min(46vw, 620px);
-  aspect-ratio: 1;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.08;
-  background: url("../generated/assets/editorial/portfolioframe.png") center / 100% 100% no-repeat;
-  filter: invert(1);
-  transform: rotate(-8deg) translate3d(calc(var(--mouse-x) * 0.08), calc(var(--scroll-shift) * -0.02), 0);
+  content: none;
+  display: none;
 }
 
 .melodia-shell:has(.hero.has-editorial-frame)::after {
-  opacity: 0;
+  content: none;
+  display: none;
 }
 
 .shell-nav, .hero, .band, .footer, .hero-passport { position: relative; z-index: 1; }
@@ -249,7 +242,7 @@ img { display: block; max-width: 100%; }
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: saturate(1.08) contrast(1.05) brightness(0.78);
+  filter: saturate(1.06) contrast(1.02) brightness(0.92);
   transform: translate3d(0, calc(var(--scroll-shift) * 0.08), 0) scale(1.05);
 }
 
@@ -517,7 +510,7 @@ h3 { font-size: 1.85rem; line-height: 1.05; }
 em { color: var(--gold); font-style: italic; }
 
 .lede {
-  max-width: 720px;
+  max-width: 640px;
   margin: 28px 0 0;
   color: rgba(233, 229, 242, 0.86);
   font-family: var(--font-display);
@@ -527,6 +520,29 @@ em { color: var(--gold); font-style: italic; }
 }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+.hero-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.spec-badge {
+  display: inline-flex;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid rgba(200, 164, 94, 0.3);
+  border-radius: 2px;
+  background: rgba(8, 11, 19, 0.6);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: rgba(233, 229, 242, 0.8);
+}
+.spec-badge b {
+  color: var(--gold);
+  font-weight: 600;
+}
 
 .hero-passport {
   border-top: 1px solid rgba(200, 164, 94, 0.28);
@@ -583,6 +599,14 @@ em { color: var(--gold); font-style: italic; }
   color: var(--ink);
 }
 .astral { background: linear-gradient(135deg, var(--astral), var(--plum)); color: var(--lavender); }
+
+.band.paper + .band.astral::before {
+  content: "";
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin-bottom: -2px;
+}
 
 .section-head {
   display: grid;
@@ -788,6 +812,7 @@ em { color: var(--gold); font-style: italic; }
   background:
     linear-gradient(145deg, rgba(16, 23, 54, 0.92), rgba(7, 9, 18, 0.88)),
     var(--pattern-hearts-svg);
+  background-position: center;
   background-size: auto, 160px 160px;
   display: flex;
   flex-direction: column;

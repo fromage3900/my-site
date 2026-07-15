@@ -7,27 +7,14 @@
   --ornament-pearl: rgba(233, 229, 242, 0.42);
 }
 
-/* Unified portfolio frame overlay — fixes misaligned inset across pages */
+/* portfolioframe.png (starry alpha) retired — was squished via 100% 100% stretch */
 .editorial-frame-overlay,
-.ornate-frame {
-  position: absolute;
-  inset: var(--frame-inset);
-  pointer-events: none;
-  opacity: var(--frame-opacity);
-  background: url("../generated/assets/editorial/portfolioframe.png") center / 100% 100% no-repeat;
-  filter: invert(1);
-}
-
+.ornate-frame,
 .hero.editorial-framed::after,
 .hero.has-editorial-frame::after {
-  content: "";
-  position: absolute;
-  inset: var(--frame-inset);
-  pointer-events: none;
-  opacity: var(--frame-opacity);
-  z-index: 1;
-  background: url("../generated/assets/editorial/portfolioframe.png") center / 100% 100% no-repeat;
-  filter: invert(1);
+  content: none !important;
+  display: none !important;
+  background: none !important;
 }
 
 /* Card corner monogram — replaces misaligned PNG bleed on cards */
@@ -210,19 +197,21 @@
   opacity: 0.72;
 }
 
-/* Path / guide list glyph rhythm — odd ✦, even ✧ on Open affordance */
-.path-list .path-row:nth-child(odd) > b::before,
-.guide-list .guide-card:nth-child(odd) > b::before {
+/* Path list glyph rhythm — odd ✦, even ✧ (guide-cards stay clean for column align) */
+.path-list .path-row:nth-child(odd) > b::before {
   content: "✦ ";
   opacity: var(--motif-glyph-opacity, 0.42);
   color: var(--motif-accent, var(--gold-soft, #e8c9b8));
 }
 
-.path-list .path-row:nth-child(even) > b::before,
-.guide-list .guide-card:nth-child(even) > b::before {
+.path-list .path-row:nth-child(even) > b::before {
   content: "✧ ";
   opacity: calc(var(--motif-glyph-opacity, 0.42) - 0.06);
   color: var(--motif-accent, var(--gold-soft, #e8c9b8));
+}
+
+.guide-list .guide-card > b::before {
+  content: none !important;
 }
 
 .path-row,
