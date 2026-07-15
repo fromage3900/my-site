@@ -12,7 +12,7 @@
     { href: 'zbrush-breakdown.html', label: 'Breakdown', keys: ['zbrush-breakdown'] },
     { href: 'hero-renders.html', label: 'Renders', keys: ['hero-renders'] },
     { href: 'melodia-stage-character.html', label: 'Stage', keys: ['melodia-stage-character'] },
-    { href: 'world-bible.html', label: 'Worlds', keys: ['world-bible'] },
+    { href: 'sakura-case-study.html', label: 'Sakura', keys: ['sakura-case-study'] },
     { href: 'resume.html', label: 'Resume', keys: ['resume'] },
   ];
 
