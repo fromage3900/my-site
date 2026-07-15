@@ -50,25 +50,25 @@
       "best_proof": {
         "eyebrow": "Start here",
         "headline": "Links I'd actually send.",
-        "lede": "If you're deciding whether to keep scrolling, these are the pages I'm proudest of right now.",
+        "lede": "Four clicks if time is short.",
         "links": [
           {
             "step": "01",
             "title": "Resume",
-            "body": "Tools, school, past work, the boring useful stuff.",
+            "body": "Tools, school, past work.",
             "href": "resume.html"
           },
           {
             "step": "02",
-            "title": "World Bible",
-            "body": "Four world directions and what I'm trying to prove in each.",
-            "href": "world-bible.html"
+            "title": "Sakura Case Study",
+            "body": "Primary world mood — shrine path and materials.",
+            "href": "sakura-case-study.html"
           },
           {
             "step": "03",
-            "title": "Sakura Case Study",
-            "body": "The most finished mood piece — shrine path, materials, the whole feeling.",
-            "href": "sakura-case-study.html"
+            "title": "Melusina Stage",
+            "body": "Character beauty plates + asset passport (Stage v7 · EEVEE).",
+            "href": "melodia-stage-character.html"
           },
           {
             "step": "04",
@@ -78,15 +78,9 @@
           },
           {
             "step": "05",
-            "title": "Production Roadmap",
-            "body": "What I'm building next and what's still rough.",
-            "href": "production-roadmap.html"
-          },
-          {
-            "step": "06",
-            "title": "Art Test Readiness",
-            "body": "How I'd tackle a timed stylized slice.",
-            "href": "art-test-readiness.html"
+            "title": "Application Hub",
+            "body": "Longer dossier if you want the full path.",
+            "href": "application-hub.html"
           }
         ]
       },
@@ -348,7 +342,7 @@
           {
             "tag": "Asset",
             "title": "Ornamental Kitbash",
-            "body": "15 gothic & baroque UE5 ornaments — product page live; Gumroad ZIP coming soon ($24 launch).",
+            "body": "15 gothic & baroque UE5 ornaments in a preview pack. Purchase opens after store shots + Gumroad — store_live is still off.",
             "href": "ornament-kitbash.html"
           }
         ]
@@ -406,7 +400,7 @@
       "shop": {
         "eyebrow": "Shop",
         "headline": "Asset kits in the wings.",
-        "lede": "Ornament kitbash is packed (15 FBX). Purchase opens after store shots and Gumroad. Props Mini follows; Melusina Stage is portfolio proof."
+        "lede": "Ornament kitbash: 15 meshes documented for a preview pack. FBX/ZIP shipping and purchase stay gated until store shots + Gumroad. Melusina Stage is portfolio proof, not a SKU."
       },
       "portals": {
         "eyebrow": "Go deeper",

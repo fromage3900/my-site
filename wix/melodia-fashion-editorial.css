@@ -165,7 +165,7 @@
 
 .image-card.fashion-frame {
   border: 1px solid rgba(200, 164, 94, 0.38);
-  box-shadow: inset 0 0 0 10px rgba(16, 23, 54, 0.55);
+  box-shadow: inset 0 0 0 8px rgba(16, 23, 54, 0.22);
 }
 
 .image-card.fashion-frame::after {
@@ -177,6 +177,19 @@
 }
 
 .image-card.fashion-frame { position: relative; }
+
+/* Keep Melusina / character heads readable — no heavy inset wash */
+.image-card.fashion-frame img,
+.lookbook-grid .image-card img {
+  opacity: 1;
+  filter: none;
+}
+
+.fashion-mode .parallax-layer-7 img[data-hero-lock="melusina"],
+.fashion-mode #heroLeadImage[data-hero-lock="melusina"] {
+  opacity: 1;
+  filter: saturate(1.04) contrast(1.03) brightness(1);
+}
 
 .lookbook-grid .image-card h3 {
   font-family: var(--font-display);

@@ -14,7 +14,7 @@
   Fonts load from Google Fonts. Works on desktop + mobile.
 -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Instrument+Serif:ital@0;1&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Syne:wght@600;700&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{background:transparent}
@@ -26,8 +26,9 @@
   .rule{height:1px;margin:13px 0}
   .title{font-family:'Instrument Serif',serif;font-weight:500;font-size:28px;line-height:1.05}
   .cat{letter-spacing:.22em;font-size:11px;text-transform:uppercase;margin-top:4px}
-  .row{display:flex;justify-content:space-between;padding:8px 0;font-size:12.5px}
+  .row{display:grid;grid-template-columns:minmax(5.5rem,38%) 1fr;align-items:baseline;gap:8px 12px;padding:8px 0;font-size:12.5px;font-variant-numeric:tabular-nums}
   .k{letter-spacing:.12em;text-transform:uppercase}
+  .row>span:last-child{text-align:right;justify-self:end;font-weight:500}
   .foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:11px;letter-spacing:.1em}
   .burst{filter:drop-shadow(0 0 6px rgba(201,168,106,.6))}
 </style>
@@ -39,32 +40,32 @@
 var DATA = {
   "theme": "dark",
   "project": "Melusina",
-  "category": "Character / Water Hair",
-  "version": "stage-shot",
+  "category": "Character · Water Hair · Stage lookdev",
+  "version": "stage-v7",
   "rows": [
     [
       "Triangles",
-      "294,883"
+      "224,123"
     ],
     [
       "Meshes",
-      "136"
+      "19"
     ],
     [
       "Materials",
-      "35"
+      "24"
     ],
     [
       "Textures",
-      "46"
+      "40"
     ],
     [
       "Shader",
-      "Stage EEVEE · Melodia"
+      "EEVEE · Nikki lights · FadeDayNight"
     ],
     [
       "Software",
-      "Blender · Melodia Portfolio Stage v4"
+      "Blender · Melodia Portfolio Stage v7"
     ],
     [
       "Engine",
@@ -72,7 +73,7 @@ var DATA = {
     ],
     [
       "Capture",
-      "silhouette · melusina_hero_silhouette_silhouette.png"
+      "EEVEE glam · melusina_beauty_eevee_20260715c_01"
     ],
     [
       "Date",
@@ -110,10 +111,10 @@ function render(){
   document.getElementById("pp").innerHTML =
     '<div class="passport" style="background:'+c.surf+';border:1px solid '+c.bord+';box-shadow:'+c.glow+'">'
     +'<div class="head"><span class="kick" style="color:'+c.acc+'">'+burst(14,c.gold)+'Asset Passport</span><span class="ver" style="color:'+c.sec+'">'+esc(DATA.version)+'</span></div>'
-    +'<div class="rule" style="background:'+c.gold+'"></div>'
+    +'<div class="rule" style="background:transparent;color:'+c.gold+';text-align:center;letter-spacing:.14em;font-size:10px;line-height:1;height:auto;margin:13px 0">◇─◇──◇─◇</div>'
     +'<div class="title" style="color:'+c.txt+'">'+esc(DATA.project)+'</div><div class="cat" style="color:'+c.sec+'">'+esc(DATA.category)+'</div>'
     +'<div style="height:8px"></div>'+rows
-    +'<div class="rule" style="background:'+c.gold+';margin-top:13px"></div>'
+    +'<div class="rule" style="background:transparent;color:'+c.gold+';text-align:center;letter-spacing:.14em;font-size:10px;line-height:1;height:auto;margin:13px 0 6px">┊ ⋆ ┊ . ┊ ┊</div>'
     +'<div class="foot"><span style="display:flex;align-items:center;gap:7px">'+burst(10,c.gold)+'</span><span style="color:'+c.sec+'">MELODIA</span></div>'
     +'</div>';
 }

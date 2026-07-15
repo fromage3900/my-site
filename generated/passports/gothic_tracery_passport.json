@@ -1,8 +1,8 @@
 {
   "theme": "dark",
-  "project": "GothicTracery",
+  "project": "Gothic Tracery",
   "category": "Prop / ornament",
-  "version": "cute-gn",
+  "version": "wave5",
   "asset_id": "gothic_tracery",
   "rows": [
     [
@@ -23,37 +23,25 @@
     ],
     [
       "Shader",
-      "SurrealArch GeoNodes \u00b7 kitbash"
+      "Komikaze \u00b7 Voronoi Shader (3 Tones)"
     ],
     [
       "Software",
-      "Blender \u00b7 SurrealArch v2.134"
+      "Blender \u00b7 Melodia Portfolio Stage"
     ],
     [
       "Engine",
-      "Geometry Nodes \u2192 FBX"
+      "Blender EEVEE"
     ],
     [
       "Capture",
-      "FBX scan"
+      "beauty_34"
     ],
     [
       "Date",
       "2026-07"
-    ],
-    [
-      "Vertices",
-      "6,528"
-    ],
-    [
-      "FBX",
-      "252 KB"
-    ],
-    [
-      "Dims (m)",
-      "1.808 \u00d7 2.208 \u00d7 0.077"
     ]
   ],
-  "generated_at": "2026-07-11T18:03:50.806827+00:00",
+  "generated_at": "2026-07-15T05:53:28.097284+00:00",
   "schema": "melodia-asset-passport/v1"
 }

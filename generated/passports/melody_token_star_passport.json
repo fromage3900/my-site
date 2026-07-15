@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Melody Token \u00b7 Star",
+  "category": "Prop / melody_token",
+  "version": "wave6",
+  "asset_id": "melody_token_star",
+  "rows": [
+    [
+      "Triangles",
+      "4,278,450"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Komikaze \u00b7 __melody_token_ice__"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "three_quarter"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-15T17:40:33.189025+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

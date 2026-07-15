@@ -1,8 +1,8 @@
 {
   "theme": "dark",
-  "project": "OculusFrame",
+  "project": "Oculus Frame",
   "category": "Prop / ornament",
-  "version": "cute-gn",
+  "version": "wave5",
   "asset_id": "oculus_frame",
   "rows": [
     [
@@ -23,37 +23,25 @@
     ],
     [
       "Shader",
-      "SurrealArch GeoNodes \u00b7 kitbash"
+      "Komikaze \u00b7 Voronoi Shader (3 Tones)"
     ],
     [
       "Software",
-      "Blender \u00b7 SurrealArch v2.134"
+      "Blender \u00b7 Melodia Portfolio Stage"
     ],
     [
       "Engine",
-      "Geometry Nodes \u2192 FBX"
+      "Blender EEVEE"
     ],
     [
       "Capture",
-      "FBX scan"
+      "beauty_34"
     ],
     [
       "Date",
       "2026-07"
-    ],
-    [
-      "Vertices",
-      "2,930"
-    ],
-    [
-      "FBX",
-      "121 KB"
-    ],
-    [
-      "Dims (m)",
-      "2.181 \u00d7 1.466 \u00d7 2.751"
     ]
   ],
-  "generated_at": "2026-07-11T18:03:50.759955+00:00",
+  "generated_at": "2026-07-15T05:53:31.486593+00:00",
   "schema": "melodia-asset-passport/v1"
 }

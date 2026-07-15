@@ -16,6 +16,12 @@ SOURCES = {
     "vow_cross": ROOT / "generated/assets/cross/cross_komikaze_beauty_34.png",
 }
 
+# Social diorama remounts from macro hair postcard poster (face/hair fill)
+MACRO_POSTCARD_POSTER = (
+    ROOT / "generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png"
+)
+GLAM_CLOSE = ROOT / "generated/assets/character/melusina_eevee_glam_20260715c_04.png"
+
 SPECS = {
     "og_1200x630": (1200, 630),
     "square_1080": (1080, 1080),
@@ -75,14 +81,30 @@ def main() -> None:
         Image.open(pref).save(default, "JPEG", quality=90, optimize=True)
         print("DEFAULT", default.name)
 
-    # Legacy stage_diorama__* filenames → remount from glam so old links never show T-pose
+    # Legacy stage_diorama__* filenames → remount from macro hair postcard (not T-pose)
     glam = sources.get("stage_melusina")
-    if glam and glam.exists():
-        im = Image.open(glam)
+    if MACRO_POSTCARD_POSTER.exists():
+        diorama_src = MACRO_POSTCARD_POSTER
+    elif GLAM_CLOSE.exists():
+        diorama_src = GLAM_CLOSE
+    else:
+        diorama_src = glam
+    if diorama_src and Path(diorama_src).exists():
+        im = Image.open(diorama_src)
         for label, size in SPECS.items():
             legacy = OUT / f"stage_diorama__{label}.jpg"
             cover_crop(im, size).save(legacy, "JPEG", quality=88, optimize=True)
-            print("LEGACY_REMOUNT", legacy.name)
+            print("LEGACY_REMOUNT", legacy.name, "from", Path(diorama_src).name)
+            crops.append(
+                {
+                    "id": f"stage_diorama/{label}",
+                    "file": f"generated/social/{legacy.name}",
+                    "size": list(size),
+                    "source": Path(diorama_src).relative_to(ROOT).as_posix(),
+                    "bytes": legacy.stat().st_size,
+                    "note": "macro_postcard_remount",
+                }
+            )
 
     manifest = {
         "generated_at": datetime.now(timezone.utc).isoformat(),

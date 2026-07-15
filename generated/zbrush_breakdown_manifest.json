@@ -1,31 +1,92 @@
 {
   "page": "zbrush-breakdown",
-  "updated": "2026-07-10",
+  "updated": "2026-07-15",
   "asset_dir": "generated/assets/sculpt",
-  "pairs": [
+  "note": "Labelled high-poly / MatCap sculpt plates — UE companion frames still pending where marked.",
+  "sets": [
+    {
+      "id": "zen_lantern",
+      "title": "Zen Lantern",
+      "target": "zenlantern.fbx / zenlanternhigh.fbx",
+      "sku": "Stylized Props Mini",
+      "status": "sculpt_plus_eevee_glam",
+      "plates": [
+        { "id": "front", "label": "Front sculpt", "file": "sculpt_zenlantern_front.png", "dir": "sculpt" },
+        { "id": "three_quarter", "label": "Three-quarter sculpt", "file": "sculpt_zenlantern_three_quarter.png", "dir": "sculpt" },
+        { "id": "eevee_beauty", "label": "EEVEE beauty glam", "file": "zenlantern_komikaze_beauty_34.png", "dir": "props" },
+        { "id": "eevee_tq", "label": "EEVEE three-quarter glam", "file": "zenlantern_komikaze_three_quarter.png", "dir": "props" }
+      ]
+    },
+    {
+      "id": "vow_cross",
+      "title": "Melusina Vow Cross",
+      "target": "StylizedCrossProp_FBX.fbx",
+      "sku": "Stylized Cross Prop",
+      "status": "eevee_glam_live",
+      "plates": [
+        { "id": "beauty", "label": "Beauty", "file": "cross_komikaze_beauty_34.png", "dir": "cross" },
+        { "id": "front", "label": "Front", "file": "cross_komikaze_front.png", "dir": "cross" },
+        { "id": "macro", "label": "Macro", "file": "cross_komikaze_macro.png", "dir": "cross" },
+        { "id": "silhouette", "label": "Silhouette", "file": "cross_komikaze_silhouette.png", "dir": "cross" }
+      ]
+    },
+    {
+      "id": "melody_token",
+      "title": "Melody Tokens",
+      "target": "SM_Orn_MelodyToken_01–03",
+      "sku": "Musical Ornament Kitbash",
+      "status": "sculpt_plates_live",
+      "plates": [
+        { "id": "heart_01", "label": "Heart · clay", "file": "sculpt_melodytoken_heart_01.png" },
+        { "id": "heart_02", "label": "Heart · scroll", "file": "sculpt_melodytoken_heart_02.png" },
+        { "id": "heart_03", "label": "Heart · rise", "file": "sculpt_melodytoken_heart_03.png" },
+        { "id": "star", "label": "Star / icy gem", "file": "sculpt_melodytoken_star.png" },
+        { "id": "swirl", "label": "Swirl emblem", "file": "sculpt_melodytoken_swirl.png" },
+        { "id": "water", "label": "Water / citrus", "file": "sculpt_melodytoken_water.png" },
+        { "id": "water_bottom", "label": "Water · bottom facet", "file": "sculpt_melodytoken_water_bottom.png" }
+      ]
+    },
+    {
+      "id": "melusina",
+      "title": "Melusina",
+      "target": "Asset_melusina / SK_Melusina",
+      "sku": "Character · portfolio stage",
+      "status": "sculpt_plates_live",
+      "plates": [
+        { "id": "wire_front", "label": "Wire front grey", "file": "../character/melusina_front_wireframe_grey_20260715.png" },
+        { "id": "wire_34", "label": "Wire 3/4 grey", "file": "../character/melusina_34_wireframe_grey_20260715.png" }
+      ]
+    },
+    {
+      "id": "sirmelodious",
+      "title": "Sir Melodious",
+      "target": "Asset_sirmelodious / SirMelodious_rig",
+      "sku": "Character · companion",
+      "status": "sculpt_plates_live",
+      "plates": [
+        { "id": "full", "label": "Full / approach", "file": "sculpt_sirmelodious_full.png" },
+        { "id": "profile", "label": "Beak profile", "file": "sculpt_sirmelodious_profile.png" }
+      ]
+    }
+  ],
+  "pairs_pending_ue": [
     {
       "id": "orn_rose_window",
       "title": "Rose window ornament",
       "target": "SM_Orn_RoseWindow_8Petal",
-      "status": "sculpting",
-      "zbrush": "zbrush_orn_rose_window_1920x1080.png",
-      "unreal": "ue_orn_rose_window_1920x1080.png"
+      "status": "sculpting"
     },
     {
       "id": "orn_vault_ribs",
       "title": "Vault ribs cluster",
       "target": "SM_Orn_VaultRibs",
-      "status": "pending",
-      "zbrush": "zbrush_orn_vault_ribs_1920x1080.png",
-      "unreal": "ue_orn_vault_ribs_1920x1080.png"
+      "status": "pending"
     },
     {
       "id": "lancet_arch",
       "title": "Lancet / classic arch",
       "target": "SM_lancet* / SM_arch_*",
-      "status": "pending",
-      "zbrush": "zbrush_lancet_arch_1920x1080.png",
-      "unreal": "ue_lancet_arch_1920x1080.png"
+      "status": "pending"
     }
   ]
 }

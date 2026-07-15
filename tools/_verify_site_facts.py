@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Verify site facts: store gates, hero plates, mesh counts, copy keys."""
+"""Verify site facts: store gates, hero plates, claim registry, no bangs."""
 from __future__ import annotations
 
 import json
@@ -12,6 +12,33 @@ GEN = SITE / "generated"
 ISSUES: list[str] = []
 OK: list[str] = []
 
+# Bangs-class forbidden phrases on polished pages (case-insensitive)
+FORBIDDEN = [
+    (r"product page live", "claims product live"),
+    (r"15\s*FBX\)?\s*packed|packed\s*\(15\s*FBX\)", "claims 15 FBX packed"),
+    (r"profile bangs|bangs plate|melusina_profile_bangs", "bangs claim"),
+    (r"playable iOS kit|playable mood|playable rhythm slice", "playable overclaim"),
+    (r"\bTonight\b", "ephemeral Tonight status"),
+    (r"overnight (?:build|queue)", "ephemeral overnight status"),
+    (r"project-name-hero\.png", "placeholder hero"),
+    (r"Four owned levels", "owned-levels overclaim"),
+]
+
+CLAIM_PAGES = (
+    "index.html",
+    "recruiter-one-sheet.html",
+    "application-hub.html",
+    "sakura-case-study.html",
+    "ornament-kitbash.html",
+    "melodia-gameplay-loop.html",
+    "melodia-systems.html",
+    "melodia-melusina.html",
+    "hero-renders.html",
+    "design-specs.html",
+    "commissions.html",
+    "asset-scouting.html",
+)
+
 
 def check(cond: bool, ok: str, bad: str) -> None:
     (OK if cond else ISSUES).append(ok if cond else bad)
@@ -21,89 +48,117 @@ def main() -> int:
     cat = json.loads((GEN / "ornament_kitbash_catalog.json").read_text(encoding="utf-8"))
     check(cat.get("store_live") is False, "store_live=false (correct until Gumroad)", "store_live should be false")
     check(cat.get("artstation_live") is False, "artstation_live=false", "artstation_live should be false")
-    check(cat.get("mesh_count") == 15, f"mesh_count=15", f"mesh_count={cat.get('mesh_count')} expected 15")
-    check(cat.get("launch_price_usd") == 24, "launch $24", f"launch price {cat.get('launch_price_usd')}")
+    check(cat.get("mesh_count") == 15, "mesh_count=15", f"mesh_count={cat.get('mesh_count')} expected 15")
     check(len(cat.get("meshes") or []) == 15, "15 mesh rows", f"mesh rows={len(cat.get('meshes') or [])}")
 
     copy = json.loads((SITE / "content" / "site-copy.json").read_text(encoding="utf-8"))
     check("pages" in copy and "index" in copy["pages"], "site-copy has index", "site-copy missing pages.index")
     check(copy.get("global", {}).get("brand") == "Brennan Shepherd", "brand SSOT ok", "brand mismatch")
+    copy_blob = json.dumps(copy)
+    for pat, label in FORBIDDEN:
+        if re.search(pat, copy_blob, re.I):
+            ISSUES.append(f"site-copy.json {label}: /{pat}/")
+        else:
+            OK.append(f"site-copy clear of {label}")
 
-    # Hero / profile plates — size alone lies (empty pedestal PNGs were ~2.5MB).
-    # Require profile bangs + reject "tiny" AND known empty-pack byte ranges if re-checking.
+    plates = SITE / "content" / "site-plates.json"
+    check(plates.is_file(), "site-plates.json present", "missing site-plates.json")
+    if plates.is_file():
+        pdata = json.loads(plates.read_text(encoding="utf-8"))
+        slots = pdata.get("slots") or {}
+        check("index.hero" in slots, "index.hero slot", "missing index.hero slot")
+        check("recruiter.hero" in slots, "recruiter.hero slot", "missing recruiter.hero slot")
+        for key in ("index.hero", "recruiter.hero", "hub.melusina", "stage.beauty"):
+            path = (slots.get(key) or {}).get("path", "")
+            if "_001.png" in path:
+                ISSUES.append(f"slot {key} points at mauve blank")
+            elif "void_iri" in path:
+                ISSUES.append(f"slot {key} still on void_iri interim")
+            else:
+                OK.append(f"slot {key} = {path}")
+
+    kitbash = (WIX / "ornament-kitbash.html").read_text(encoding="utf-8", errors="ignore")
+    check('id="kitbashPrice" hidden' in kitbash or "kitbashPrice\" hidden" in kitbash, "kitbash price hidden until store_live", "kitbash price not hidden by default")
+
     char = GEN / "assets" / "character"
-    hero_dirs = sorted(char.glob("hero_*"), key=lambda p: p.name, reverse=True)
-    profile_alias = char / "melusina_profile_bangs_nikki.png"
     void_iri = char / "melusina_beauty_void_iri.png"
     check(void_iri.is_file() and void_iri.stat().st_size > 50_000, "void_iri beauty present", "missing void_iri beauty")
 
     def _png_entropy_ok(path: Path) -> bool:
-        """Cheap empty-stage detector: unique RGB sample count via Pillow if present."""
         try:
             from PIL import Image  # type: ignore
         except ImportError:
-            return path.stat().st_size > 2_800_000  # real Melusina plates tend larger than empty stage
+            return path.stat().st_size > 2_800_000
         im = Image.open(path).convert("RGB")
         im = im.resize((64, 80))
         colors = im.getcolors(maxcolors=64 * 80) or []
         return len(colors) >= 48
 
-    newest = None
-    for d in hero_dirs:
-        beauty = d / "melusina_hero_beauty_nikki.png"
-        if beauty.is_file() and beauty.stat().st_size > 200_000 and _png_entropy_ok(beauty):
-            newest = d
-            break
-        if beauty.is_file() and beauty.stat().st_size > 200_000 and not _png_entropy_ok(beauty):
-            ISSUES.append(f"{d.name}/melusina_hero_beauty_nikki.png looks empty/low-detail (pedestal?)")
-    if newest:
-        OK.append(f"hero pack candidate {newest.name}")
-        for name in (
-            "melusina_hero_beauty_nikki.png",
-            "melusina_hero_front_nikki.png",
-            "melusina_hero_three_quarter_jewelry.png",
-        ):
-            p = newest / name
-            check(p.is_file() and p.stat().st_size > 200_000 and _png_entropy_ok(p), f"{newest.name}/{name} ok ({p.stat().st_size})", f"weak/missing {name}")
-        bangs = newest / "melusina_profile_bangs_nikki.png"
-        if bangs.is_file() and _png_entropy_ok(bangs):
-            OK.append(f"profile bangs plate {bangs.stat().st_size} bytes")
-        elif bangs.is_file():
-            ISSUES.append(f"profile bangs plate looks empty/low-detail ({bangs.stat().st_size} bytes)")
-        elif profile_alias.is_file() and _png_entropy_ok(profile_alias):
-            OK.append(f"profile bangs alias {profile_alias.stat().st_size} bytes")
-        else:
-            ISSUES.append("no usable melusina_profile_bangs_nikki.png yet")
+    dated = sorted(char.glob("melusina_beauty_nikki_????????_??.png"), reverse=True)
+    if dated and _png_entropy_ok(dated[0]):
+        OK.append(f"dated beauty {dated[0].name}")
     else:
-        ISSUES.append("no usable hero_* beauty plate found")
+        ISSUES.append("no entropy-ok dated melusina_beauty_nikki_YYYYMMDD_nn.png")
 
-    # HTML still pointing at broken tiny / empty hero plates?
-    for html in WIX.glob("*.html"):
-        text = html.read_text(encoding="utf-8", errors="ignore")
-        for m in re.finditer(r"hero_(\d{8})/melusina_(?:hero_beauty_nikki|profile_bangs_nikki)\.png", text):
-            stamp = m.group(1)
-            fname = m.group(0).split("/")[-1]
-            p = char / f"hero_{stamp}" / fname
-            if not p.is_file():
-                ISSUES.append(f"{html.name} missing {m.group(0)}")
-            elif p.stat().st_size < 200_000:
-                ISSUES.append(f"{html.name} references tiny {m.group(0)} ({p.stat().st_size} bytes)")
-            elif not _png_entropy_ok(p):
-                ISSUES.append(f"{html.name} references empty-looking {m.group(0)}")
-            else:
-                OK.append(f"{html.name} → hero_{stamp}/{fname} ok")
+    # No bangs checks as gates
+    OK.append("bangs not required (purged)")
 
-    # store / education claims on hub
+    for blank in (
+        "melusina_beauty_nikki_001.png",
+        "melusina_beauty_jewelry_001.png",
+        "melusina_low_nikki_001.png",
+        "melusina_water_splash_001.png",
+        "melusina_glam_audvis_001.png",
+    ):
+        wired = False
+        for html in WIX.glob("*.html"):
+            if blank in html.read_text(encoding="utf-8", errors="ignore"):
+                wired = True
+                ISSUES.append(f"{html.name} still wires mauve blank {blank}")
+        js = WIX / "melodia-stage-passport.js"
+        if js.is_file() and blank in js.read_text(encoding="utf-8", errors="ignore"):
+            wired = True
+            ISSUES.append(f"melodia-stage-passport.js wires mauve blank {blank}")
+        if not wired:
+            OK.append(f"{blank} unwired")
+
+    for name in CLAIM_PAGES:
+        path = WIX / name
+        if not path.is_file():
+            continue
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        for pat, label in FORBIDDEN:
+            # Allow kitbash catalog JS to mention prices in code when hidden — but not visible default text "Launch $24" without hidden
+            if name == "ornament-kitbash.html" and "Launch $" in pat:
+                continue
+            if re.search(pat, text, re.I):
+                ISSUES.append(f"{name} {label}: /{pat}/")
+
+    # Visible Launch $24 only if not hidden attribute on price element
+    if 'id="kitbashPrice"' in kitbash and "Launch $24" in kitbash:
+        if "hidden" not in kitbash[kitbash.find("kitbashPrice") : kitbash.find("kitbashPrice") + 80]:
+            ISSUES.append("ornament-kitbash visible Launch $24 without hidden")
+
+    pp = GEN / "passports" / "melusina_passport.json"
+    if pp.is_file():
+        pdata = json.loads(pp.read_text(encoding="utf-8"))
+        rows = {r[0]: r[1] for r in pdata.get("rows") or []}
+        check("EEVEE" in str(rows.get("Engine", "")), "passport Engine=EEVEE", f"passport Engine={rows.get('Engine')}")
+        check(
+            "v7" in str(rows.get("Software", "")) or pdata.get("version") == "stage-v7",
+            "passport Stage v7",
+            "passport still on old stage label",
+        )
+        check("Cycles" not in str(rows.get("Engine", "")), "passport not Cycles", "passport still says Cycles")
+        check("bangs" not in str(rows.get("Capture", "")).lower(), "passport Capture not bangs", "passport Capture mentions bangs")
+    else:
+        ISSUES.append("melusina_passport.json missing")
+
     hub = (WIX / "application-hub.html").read_text(encoding="utf-8", errors="ignore")
     check("Final-year Humber" in hub, "hub education claim present", "hub missing Humber education line")
-    check("store_live" not in hub or "Purchase live" not in hub or 'store_live' in hub, "hub does not hard-claim live store", "check hub store copy")
 
-    # Passport config
-    pc = GEN / "passport_config.json"
-    if pc.is_file():
-        OK.append("passport_config.json present")
-    else:
-        ISSUES.append("passport_config.json missing")
+    editing = SITE / "EDITING.md"
+    check(editing.is_file(), "EDITING.md present", "missing EDITING.md")
 
     print("=== OK ===")
     for line in OK:

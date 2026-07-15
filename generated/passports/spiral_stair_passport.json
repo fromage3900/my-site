@@ -1,8 +1,8 @@
 {
   "theme": "dark",
-  "project": "SpiralStaircase",
+  "project": "Spiral Staircase",
   "category": "Prop / ornament",
-  "version": "cute-gn",
+  "version": "wave5",
   "asset_id": "spiral_stair",
   "rows": [
     [
@@ -23,37 +23,25 @@
     ],
     [
       "Shader",
-      "SurrealArch GeoNodes \u00b7 kitbash"
+      "Komikaze \u00b7 Voronoi Shader (3 Tones)"
     ],
     [
       "Software",
-      "Blender \u00b7 SurrealArch v2.134"
+      "Blender \u00b7 Melodia Portfolio Stage"
     ],
     [
       "Engine",
-      "Geometry Nodes \u2192 FBX"
+      "Blender EEVEE"
     ],
     [
       "Capture",
-      "FBX scan"
+      "beauty_34"
     ],
     [
       "Date",
       "2026-07"
-    ],
-    [
-      "Vertices",
-      "6,912"
-    ],
-    [
-      "FBX",
-      "215 KB"
-    ],
-    [
-      "Dims (m)",
-      "6.52 \u00d7 1.469 \u00d7 3.569"
     ]
   ],
-  "generated_at": "2026-07-11T18:03:50.698441+00:00",
+  "generated_at": "2026-07-15T05:53:32.565567+00:00",
   "schema": "melodia-asset-passport/v1"
 }

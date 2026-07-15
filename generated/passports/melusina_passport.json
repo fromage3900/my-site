@@ -1,20 +1,47 @@
 {
   "theme": "dark",
   "project": "Melusina",
-  "category": "Character / Water Hair",
-  "version": "stage-shot",
+  "category": "Character · Water Hair · Stage lookdev",
+  "version": "stage-v7",
   "asset_id": "melusina",
   "rows": [
-    ["Triangles", "294,883"],
-    ["Meshes", "136"],
-    ["Materials", "35"],
-    ["Textures", "46"],
-    ["Shader", "Water (Advance) · Nikki lights"],
-    ["Software", "Blender · Melodia Portfolio Stage v4"],
-    ["Engine", "Blender Cycles"],
-    ["Capture", "bangs profile · melusina_profile_bangs_nikki.png"],
-    ["Date", "2026-07"]
+    [
+      "Triangles",
+      "224,123"
+    ],
+    [
+      "Meshes",
+      "19"
+    ],
+    [
+      "Materials",
+      "24"
+    ],
+    [
+      "Textures",
+      "40"
+    ],
+    [
+      "Shader",
+      "EEVEE · Nikki lights · FadeDayNight"
+    ],
+    [
+      "Software",
+      "Blender · Melodia Portfolio Stage v7"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "EEVEE glam · melusina_beauty_eevee_20260715c_01"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
   ],
-  "generated_at": "2026-07-12T17:30:00+00:00",
+  "generated_at": "2026-07-15T21:30:00.000000+00:00",
   "schema": "melodia-asset-passport/v1"
 }

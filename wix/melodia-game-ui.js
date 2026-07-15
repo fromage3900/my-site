@@ -108,12 +108,63 @@
     return grade.charAt(0).toUpperCase() + grade.slice(1);
   }
 
+  function streakTier(combo) {
+    if (combo >= 8) return "8";
+    if (combo >= 5) return "5";
+    if (combo >= 3) return "3";
+    return "0";
+  }
+
+  function applyReactivity(root, opts) {
+    if (!root || reducedMotion) return;
+    opts = opts || {};
+    if (opts.grade) {
+      root.setAttribute("data-react-grade", opts.grade);
+      window.clearTimeout(root._gradeReactTimer);
+      root._gradeReactTimer = window.setTimeout(function () {
+        root.removeAttribute("data-react-grade");
+      }, 420);
+    }
+    if (typeof opts.streak === "number") {
+      root.setAttribute("data-react-streak", streakTier(opts.streak));
+    }
+    if (opts.ult) {
+      root.setAttribute("data-react-ult", "1");
+    } else if (opts.ult === false) {
+      root.removeAttribute("data-react-ult");
+    }
+  }
+
+  function startBeatBus(root) {
+    if (!root || reducedMotion) return;
+    var bassPhase = 0;
+    function tick() {
+      if (!document.body.contains(root)) return;
+      root.setAttribute("data-react-beat", "1");
+      window.setTimeout(function () {
+        root.removeAttribute("data-react-beat");
+      }, 120);
+      bassPhase = (bassPhase + 1) % 2;
+      if (bassPhase === 0) {
+        root.setAttribute("data-react-bass", "1");
+        window.setTimeout(function () {
+          root.removeAttribute("data-react-bass");
+        }, 280);
+      }
+      root._beatTimer = window.setTimeout(tick, BEAT_MS);
+    }
+    tick();
+  }
+
   function RhythmStrip(root) {
     this.root = root;
     this.highway = root.querySelector(".game-ui-highway");
     this.lanes = this.highway ? Array.prototype.slice.call(this.highway.querySelectorAll(".game-ui-lane")) : [];
     this.comboEl = root.querySelector("[data-rhythm-combo]");
+    this.comboNumEl = root.querySelector("[data-rhythm-combo-num]");
     this.gradeEl = root.querySelector("[data-rhythm-grade]");
+    this.sheetEl = root.querySelector(".game-ui-sheet");
+    this.playbackHead = root.querySelector(".game-ui-playback-head");
     this.statusEl = root.querySelector("[data-rhythm-status]");
     this.startBtn = root.querySelector("[data-rhythm-start]");
     this.scrollBeats = 2.2;
@@ -143,8 +194,10 @@
       lane.addEventListener("pointerdown", function (e) {
         e.preventDefault();
         self.onLaneInput(index);
-        lane.classList.add("lane-pressed");
-        setTimeout(function () { lane.classList.remove("lane-pressed"); }, 120);
+        lane.classList.add("lane-pressed", "lane-press-flash");
+        setTimeout(function () {
+          lane.classList.remove("lane-pressed", "lane-press-flash");
+        }, 180);
       });
     });
     document.addEventListener("keydown", function (e) {
@@ -155,8 +208,10 @@
         self.onLaneInput(LANE_KEYS[key]);
         var lane = self.lanes[LANE_KEYS[key]];
         if (lane) {
-          lane.classList.add("lane-pressed");
-          setTimeout(function () { lane.classList.remove("lane-pressed"); }, 120);
+          lane.classList.add("lane-pressed", "lane-press-flash");
+          setTimeout(function () {
+            lane.classList.remove("lane-pressed", "lane-press-flash");
+          }, 180);
         }
       }
     });
@@ -169,6 +224,7 @@
         id: "n" + i,
         lane: lane,
         hitMs: (leadInBeats + i * 0.5) * BEAT_MS,
+        beam: i % 4 === 2,
         judged: false
       };
     });
@@ -203,6 +259,7 @@
       if (!self.running) return;
       var elapsed = now - self.startTime;
       self.spawnAndMove(elapsed);
+      self.updatePlaybackHead(elapsed);
       self.autoMiss(elapsed);
       if (elapsed >= self.durationMs) {
         self.finish();
@@ -217,6 +274,7 @@
     this.running = false;
     if (this.raf) cancelAnimationFrame(this.raf);
     if (this.highway) this.highway.classList.remove("is-playing");
+    if (this.playbackHead) this.playbackHead.classList.remove("is-live");
     if (this.startBtn) this.startBtn.textContent = "Play rhythm strip";
     this.setStatus("Stopped");
   };
@@ -225,8 +283,22 @@
     this.running = false;
     if (this.raf) cancelAnimationFrame(this.raf);
     if (this.highway) this.highway.classList.remove("is-playing");
+    if (this.playbackHead) {
+      this.playbackHead.classList.remove("is-live");
+      this.updatePlaybackHead(this.durationMs);
+    }
     if (this.startBtn) this.startBtn.textContent = "Play again";
     this.setStatus("Complete — max combo ×" + this.maxCombo);
+  };
+
+  RhythmStrip.prototype.updatePlaybackHead = function (elapsed) {
+    if (!this.playbackHead || reducedMotion) return;
+    var staff = this.playbackHead.closest(".game-ui-staff");
+    if (!staff) return;
+    var max = Math.max(staff.clientWidth - 28, 40);
+    var t = this.durationMs > 0 ? Math.min(1, Math.max(0, elapsed / this.durationMs)) : 0;
+    this.playbackHead.style.left = (10 + t * max) + "px";
+    this.playbackHead.classList.toggle("is-live", true);
   };
 
   RhythmStrip.prototype.spawnAndMove = function (elapsed) {
@@ -243,7 +315,7 @@
       var el = this.noteEls[note.id];
       if (!el) {
         el = document.createElement("span");
-        el.className = "rhythm-note";
+        el.className = "rhythm-note" + (note.beam ? " is-beam" : "");
         el.setAttribute("data-lane-index", String(note.lane));
         this.lanes[note.lane].appendChild(el);
         this.noteEls[note.id] = el;
@@ -305,24 +377,50 @@
     }
     this.updateCombo();
     this.showGrade(grade, grade !== "miss" ? WINDOWS[grade] : null);
+    applyReactivity(this.root, {
+      grade: grade,
+      streak: this.combo,
+      ult: this.combo >= 8
+    });
   };
 
   RhythmStrip.prototype.updateCombo = function () {
-    if (this.comboEl) {
+    var label = this.combo > 0 ? "× " + this.combo : "× 0";
+    if (this.comboNumEl) {
+      this.comboNumEl.textContent = label;
+    } else if (this.comboEl && !this.comboEl.querySelector("[data-rhythm-combo-num]")) {
       this.comboEl.textContent = this.combo > 0 ? "COMBO × " + this.combo : "COMBO × 0";
+    }
+    if (this.root) {
+      this.root.setAttribute("data-react-streak", streakTier(this.combo));
+      if (this.combo >= 8) this.root.setAttribute("data-react-ult", "1");
+      else this.root.removeAttribute("data-react-ult");
     }
   };
 
   RhythmStrip.prototype.showGrade = function (grade, windowMs) {
     if (!this.gradeEl) return;
     if (!grade) {
-      this.gradeEl.className = "grade-pop game-ui-floating-grade";
+      this.gradeEl.className = "grade-pop game-ui-floating-grade is-luxury is-flourish";
       this.gradeEl.innerHTML = "READY<small>tap D F J K</small>";
       return;
     }
-    this.gradeEl.className = "grade-pop game-ui-floating-grade " + grade;
+    this.gradeEl.className = "grade-pop game-ui-floating-grade is-luxury is-flourish grade-flash " + grade;
     var sub = grade === "miss" ? "miss" : "±" + windowMs + "ms";
     this.gradeEl.innerHTML = gradeLabel(grade).toUpperCase() + "<small>" + sub + "</small>";
+    var el = this.gradeEl;
+    var sheet = this.sheetEl;
+    if (sheet) {
+      sheet.classList.add("grade-flash-sheet");
+      window.clearTimeout(sheet._flashTimer);
+      sheet._flashTimer = window.setTimeout(function () {
+        sheet.classList.remove("grade-flash-sheet");
+      }, 420);
+    }
+    window.clearTimeout(el._flashTimer);
+    el._flashTimer = window.setTimeout(function () {
+      el.classList.remove("grade-flash");
+    }, 450);
   };
 
   RhythmStrip.prototype.setStatus = function (text) {
@@ -353,7 +451,7 @@
       lanes.forEach(function (lane, laneIndex) {
         for (var i = 0; i < 3; i++) {
           var glyph = document.createElement("span");
-          glyph.className = "game-ui-note-glyph";
+          glyph.className = "game-ui-note-glyph" + (i === 1 ? " is-beam" : "");
           glyph.setAttribute("aria-hidden", "true");
           glyph.style.setProperty("--glyph-delay", (laneIndex * 0.4 + i * 0.7) + "s");
           glyph.style.top = (12 + i * 28) + "%";
@@ -368,6 +466,15 @@
     var assets = [
       "T_Melodia_FiligreeCorner.png",
       "T_Melodia_FiligreeDivider.png",
+      "T_Melodia_FiligreeCrest_Finale.png",
+      "T_Melodia_FiligreeLaneRail.png",
+      "T_Melodia_FiligreeGradeHalo.png",
+      "T_Melodia_FiligreeGradeHalo_Perfect.png",
+      "T_Melodia_FiligreeGradeHalo_Great.png",
+      "T_Melodia_FiligreeGradeHalo_Good.png",
+      "T_Melodia_FiligreeGradeHalo_Miss.png",
+      "T_Melodia_ScrollBorderRail.png",
+      "T_Melodia_SheetParchment.png",
       "T_Melodia_IriOverlay.png",
       "T_Melodia_HighwayBG.png",
       "T_Melodia_EnemyGlow.png",
@@ -380,6 +487,7 @@
       "T_Melodia_GradeGood.png",
       "T_Melodia_GradeMiss.png",
       "T_Melodia_NoteHead.png",
+      "T_Melodia_NoteHeadBeam.png",
       "T_Melodia_LanePress.png",
       "T_Melodia_SkillChipBG.png",
       "T_Melodia_SafeAreaMask.png",
@@ -475,6 +583,7 @@
     loadRhythmConfig().then(function () {
       document.querySelectorAll("[data-rhythm-playground], [data-ios-rhythm]").forEach(function (el) {
         new RhythmStrip(el);
+        startBeatBus(el);
       });
     });
   }

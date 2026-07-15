@@ -41,7 +41,7 @@
     <p class="kicker magazine-kicker premium-kicker">Digital product · preview</p>
     <h1 id="page-title">Cathedral trim for your levels.</h1>
     <p class="lede">Rose windows, vault ribs, spiral stairs, filigree — fifteen meshes from Melodia EnvSandbox. Shown as plates first.</p>
-    <p class="kitbash-price" id="kitbashPrice">Launch $24 · List $29</p>
+    <p class="kitbash-price" id="kitbashPrice" hidden>Launch $24 · List $29</p>
     <p class="kitbash-status pending" id="kitbashLaunchGates" aria-live="polite">Preview pack — purchase opens after store shots.</p>
     <div class="button-row kitbash-buy" id="buy">
       <a class="button primary button-premium-primary" id="gumroadBtn" href="#" target="_blank" rel="noopener">Notify me on Gumroad</a>
@@ -60,7 +60,7 @@
         <p class="eyebrow magazine-kicker">Hero plates</p>
         <h2>Four forms that carry the pack.</h2>
       </div>
-      <p class="human-lede">Click through — no vertex stats wall.</p>
+      <p class="human-lede">Click through — no vertex stats wall. Clay ↔ EEVEE pairing boards for rose / vault / spiral → <a href="zbrush-breakdown.html#pairs">ZBrush breakdown pairs</a>.</p>
     </div>
     <div class="viz-rail">
       <div class="viz-rail-item">
@@ -216,7 +216,16 @@
   }
   fetch(catalogUrl).then(function (r) { return r.json(); }).then(function (data) {
     var price = document.getElementById("kitbashPrice");
-    if (price) price.textContent = "Launch $" + data.launch_price_usd + " · List $" + data.list_price_usd;
+    var storeLive = data.store_live === true;
+    if (price) {
+      if (storeLive) {
+        price.hidden = false;
+        price.textContent = "Launch $" + data.launch_price_usd + " · List $" + data.list_price_usd;
+      } else {
+        price.hidden = true;
+        price.textContent = "";
+      }
+    }
     var status = document.getElementById("kitbashExportStatus");
     if (status && data.export_status) {
       var ex = data.export_status;
@@ -232,7 +241,6 @@
     }
     var gum = document.getElementById("gumroadBtn");
     var art = document.getElementById("artstationBtn");
-    var storeLive = data.store_live === true;
     var artLive = data.artstation_live === true;
     if (gum && data.gumroad_url) {
       gum.href = data.gumroad_url;

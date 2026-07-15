@@ -142,38 +142,57 @@
     );
   }
 
-  async function hydrateHairLoop() {
-    const mount = document.getElementById('stageHairLoop');
-    if (!mount) return;
+  function pickLoopEntry(entries, slot) {
+    const list = Array.isArray(entries) ? entries : [];
+    return (
+      list.find((e) => e.slot === slot && e.status === 'web_ready' && e.webm_path) ||
+      list.find((e) => e.slot === slot && e.webm_path) ||
+      null
+    );
+  }
+
+  function applyLoopMount(mount, entry, fallbackLabel) {
+    if (!mount || !entry || !entry.webm_path) {
+      if (mount) mount.hidden = true;
+      return false;
+    }
     const video = mount.querySelector('video');
     const caption = mount.querySelector('figcaption');
+    if (video) {
+      if (entry.poster) video.setAttribute('poster', entry.poster);
+      video.src = entry.webm_path;
+    }
+    if (caption) {
+      const label = entry.label || fallbackLabel || 'Hair loop';
+      const meta = [
+        entry.frame_count ? `${entry.frame_count} frames` : null,
+        entry.fps ? `${entry.fps}fps` : null,
+        entry.duration_sec ? `${entry.duration_sec}s` : null,
+      ]
+        .filter(Boolean)
+        .join(' · ');
+      caption.innerHTML =
+        `<span class="meta-label">${esc(label)}</span>` +
+        `<strong>${esc(meta || 'EEVEE loop')}</strong>` +
+        `<p>${esc(entry.caption || '')}</p>`;
+    }
+    mount.hidden = false;
+    return true;
+  }
+
+  async function hydrateHairLoop() {
+    const hair = document.getElementById('stageHairLoop');
+    const postcard = document.getElementById('stageHairPostcard');
     try {
       const data = await fetchJson(LOOPS_URL);
-      const entry = (data.entries || []).find((e) => e.status === 'web_ready' && e.webm_path) ||
-        (data.entries || [])[0];
-      if (!entry || !entry.webm_path) {
-        mount.hidden = true;
-        return;
-      }
-      if (video) {
-        if (entry.poster) video.setAttribute('poster', entry.poster);
-        video.src = entry.webm_path;
-      }
-      if (caption) {
-        const label = entry.label || 'Hair loop';
-        const meta = [
-          entry.frame_count ? `${entry.frame_count} frames` : null,
-          entry.fps ? `${entry.fps}fps` : null,
-          entry.duration_sec ? `${entry.duration_sec}s` : null,
-        ]
-          .filter(Boolean)
-          .join(' · ');
-        caption.innerHTML =
-          `<span class="meta-label">${esc(label)}</span>` +
-          `<strong>${esc(meta || 'EEVEE loop')}</strong>` +
-          `<p>${esc(entry.caption || '')}</p>`;
-      }
-      mount.hidden = false;
+      const entries = data.entries || [];
+      const hairEntry =
+        pickLoopEntry(entries, 'stage.hair_loop') ||
+        entries.find((e) => e.status === 'web_ready' && e.webm_path) ||
+        entries[0];
+      applyLoopMount(hair, hairEntry, 'Hair · AudVis 4s');
+      const postcardEntry = pickLoopEntry(entries, 'stage.hair_postcard');
+      applyLoopMount(postcard, postcardEntry, 'Hair FX · postcard');
     } catch (_err) {
       /* keep static markup fallback */
     }
@@ -207,6 +226,9 @@
       'diorama',
       'melusina_eevee_beauty_34',
       'melusina_beauty_34',
+      'melusina_eevee_portrait',
+      'beauty_depth_color',
+      'diorama_beauty',
     ];
     let cards = [];
     for (const c of heroPack) {
@@ -226,7 +248,8 @@
         const title = String(c.title || c.filename || '');
         if (!path || seen.has(path)) continue;
         if (deny.some((d) => String(path).toLowerCase().includes(d))) continue;
-        if (/diorama/i.test(title) || /beauty\s*34/i.test(title)) continue;
+        if (/diorama/i.test(title) || /beauty\s*34/i.test(title) || /portrait/i.test(title)) continue;
+        if (c.retired === true || c.web_ready === false) continue;
         cards.push({ web_path: path, title: title || c.filename });
         seen.add(path);
         if (cards.length >= 8) break;

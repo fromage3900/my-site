@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-15T21:25:19.375336+00:00",
+  "generated_at": "2026-07-15T22:19:22.758513+00:00",
   "store_live": false,
   "site": "https://fromage3900.github.io/my-site/",
   "crops": [
@@ -122,6 +122,50 @@
       ],
       "source": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
       "bytes": 48757
+    },
+    {
+      "id": "stage_diorama/og_1200x630",
+      "file": "generated/social/stage_diorama__og_1200x630.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "source": "generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png",
+      "bytes": 73836,
+      "note": "macro_postcard_remount"
+    },
+    {
+      "id": "stage_diorama/square_1080",
+      "file": "generated/social/stage_diorama__square_1080.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "source": "generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png",
+      "bytes": 111041,
+      "note": "macro_postcard_remount"
+    },
+    {
+      "id": "stage_diorama/story_1080x1920",
+      "file": "generated/social/stage_diorama__story_1080x1920.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "source": "generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png",
+      "bytes": 208892,
+      "note": "macro_postcard_remount"
+    },
+    {
+      "id": "stage_diorama/twitter_1600x900",
+      "file": "generated/social/stage_diorama__twitter_1600x900.jpg",
+      "size": [
+        1600,
+        900
+      ],
+      "source": "generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png",
+      "bytes": 116659,
+      "note": "macro_postcard_remount"
     }
   ]
 }

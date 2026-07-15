@@ -13,16 +13,16 @@
   "hero_web_path": "../generated/assets/cross/cross_komikaze_beauty_34.png",
   "render_cards": [
     {
-      "id": "melusina_portrait",
+      "id": "melusina_glam_close",
       "asset_id": "melusina",
-      "title": "Melusina — portrait",
+      "title": "Melusina — glam close",
       "group": "character",
-      "filename": "melusina_eevee_portrait.png",
-      "web_path": "../generated/assets/character/melusina_eevee_portrait.png",
-      "local_relative_path": "generated/assets/character/melusina_eevee_portrait.png",
+      "filename": "melusina_eevee_glam_20260715c_04.png",
+      "web_path": "../generated/assets/character/melusina_eevee_glam_20260715c_04.png",
+      "local_relative_path": "generated/assets/character/melusina_eevee_glam_20260715c_04.png",
       "hero_candidate": true,
-      "priority": 135,
-      "caption": "EEVEE · authored materials · Melodia studio",
+      "priority": 140,
+      "caption": "EEVEE · glam macro close · replaces legacy portrait",
       "engine": "EEVEE",
       "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend",
       "passport": {
@@ -82,7 +82,8 @@
           "config": "generated/passport_config.json"
         },
         "asset_id": "melusina"
-      }
+      },
+      "alias_of": "melusina_eevee_portrait"
     },
     {
       "id": "melusina_front",

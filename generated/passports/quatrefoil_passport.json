@@ -1,8 +1,8 @@
 {
   "theme": "dark",
-  "project": "QuatrefoilArch",
+  "project": "Quatrefoil Arch",
   "category": "Prop / ornament",
-  "version": "cute-gn",
+  "version": "wave5",
   "asset_id": "quatrefoil",
   "rows": [
     [
@@ -23,37 +23,25 @@
     ],
     [
       "Shader",
-      "SurrealArch GeoNodes \u00b7 kitbash"
+      "Komikaze \u00b7 Voronoi Shader (3 Tones)"
     ],
     [
       "Software",
-      "Blender \u00b7 SurrealArch v2.134"
+      "Blender \u00b7 Melodia Portfolio Stage"
     ],
     [
       "Engine",
-      "Geometry Nodes \u2192 FBX"
+      "Blender EEVEE"
     ],
     [
       "Capture",
-      "FBX scan"
+      "beauty_34"
     ],
     [
       "Date",
       "2026-07"
-    ],
-    [
-      "Vertices",
-      "4,800"
-    ],
-    [
-      "FBX",
-      "203 KB"
-    ],
-    [
-      "Dims (m)",
-      "3.387 \u00d7 0.157 \u00d7 3.39"
     ]
   ],
-  "generated_at": "2026-07-11T18:03:50.781380+00:00",
+  "generated_at": "2026-07-15T05:53:41.287714+00:00",
   "schema": "melodia-asset-passport/v1"
 }

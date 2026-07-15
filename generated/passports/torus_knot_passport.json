@@ -23,7 +23,7 @@
     ],
     [
       "Shader",
-      "Komikaze \u00b7 Wood"
+      "Komikaze \u00b7 Voronoi Shader (3 Tones)"
     ],
     [
       "Software",
@@ -42,6 +42,6 @@
       "2026-07"
     ]
   ],
-  "generated_at": "2026-07-11T18:29:44.833961+00:00",
+  "generated_at": "2026-07-15T05:53:38.497580+00:00",
   "schema": "melodia-asset-passport/v1"
 }

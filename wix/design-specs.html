@@ -32,7 +32,7 @@
         <main>
           <section class="hero" aria-labelledby="page-title">
             <div class="hero-media" aria-hidden="true">
-              <img src="../generated/assets/project-name-hero.png" alt="Design specification hero image" />
+              <img src="../generated/assets/l-sakurapath-hero.png" alt="Design specification — Sakura mood reference" />
             </div>
             <div class="hero-inner">
               <p class="kicker magazine-kicker">Portfolio design specifications</p>
@@ -83,106 +83,82 @@
               <div class="section-head">
                 <div>
                   <p class="eyebrow">Melodia Melusina</p>
-                  <h2>Game UI system — rhythm RPG battle chrome.</h2>
+                  <h2>Game UI — sheet music combat chrome.</h2>
                 </div>
-                <p>Figma page <strong>12 Game UI</strong> mirrors this CSS showcase. See the <a href="melodia-melusina.html">full Melodia Melusina page</a> for the complete component atlas, enemy telegraph, and 30-movement codex.</p>
+                <p>Figma page <strong>12 Game UI</strong> SSOT is <strong>SheetMusicHUD</strong> — continuous parchment staff + Batch O scrollwork. Nikki <a href="https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled?node-id=41-242" target="_blank" rel="noopener">Rhythm Reactivity Board</a> drives beat-bus motion. Discrete chips stay library-only; see the <a href="melodia-melusina.html">Melusina lookbook</a> for the playable beauty frame.</p>
                 <p class="game-ui-atom-links" style="margin-top:0.75rem;font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase">
                   Deep links:
                   <a href="melodia-melusina.html#battle-phases">Phases</a> ·
-                  <a href="melodia-melusina.html#phase-command">Command</a> ·
-                  <a href="melodia-melusina.html#phase-rhythm">Rhythm</a> ·
-                  <a href="melodia-melusina.html#phase-enemy">Enemy</a> ·
-                  <a href="melodia-melusina.html#phase-results">Results</a> ·
-                  <a href="melodia-melusina.html#field-title">Field / Title</a> ·
-                  <a href="melodia-melusina.html#atom-grade-pop">GradePop</a> ·
-                  <a href="melodia-melusina.html#components">Mobile / Codex</a>
+                  <a href="melodia-melusina.html#phase-rhythm">SheetMusicHUD</a> ·
+                  <a href="melodia-melusina.html#field-title">Field + Title</a> ·
+                  <a href="melodia-melusina.html#nikki-reactivity">Reactivity</a> ·
+                  <a href="melodia-melusina.html#batch-o">Chrome kit</a> ·
+                  <a href="melodia-melusina.html#atom-grade-pop">Grade flourishes</a> ·
+                  <a href="melodia-melusina.html#ios-battle">iOS</a>
                 </p>
+                <p style="margin-top:0.55rem;font-size:0.78rem;opacity:0.85">Batch O Figma comps include additive <code>Game/FiligreeGradeHalo/{Perfect,Great,Good,Miss}</code> color rings beside ScrollBorderRail / SheetParchment — web flourishes use the matching PNG set.</p>
               </div>
               <div class="game-ui-showcase">
-                <article class="game-ui-frame" aria-label="Rhythm battle preview">
-                  <span class="game-ui-filigree tl" aria-hidden="true">
-                  </span>
-                  <span class="game-ui-filigree tr" aria-hidden="true">
-                  </span>
-                  <span class="game-ui-filigree bl" aria-hidden="true">
-                  </span>
-                  <span class="game-ui-filigree br" aria-hidden="true">
-                  </span>
-                  <div class="game-ui-shimmer" aria-hidden="true">
-                  </div>
-                  <div class="game-ui-topbar">
-                    <span class="phase">Rhythm execution — Cherry Storm</span>
-                    <span class="combo">Combo × 24</span>
-                  </div>
+                <article class="game-ui-frame game-ui-sheet-master" aria-label="SheetMusicHUD rhythm preview">
+                  <span class="game-ui-filigree is-ornate tl" aria-hidden="true"></span>
+                  <span class="game-ui-filigree is-ornate tr" aria-hidden="true"></span>
+                  <span class="game-ui-filigree is-ornate bl" aria-hidden="true"></span>
+                  <span class="game-ui-filigree is-ornate br" aria-hidden="true"></span>
+                  <span class="game-ui-scroll-rail top" aria-hidden="true"></span>
+                  <span class="game-ui-scroll-rail bottom" aria-hidden="true"></span>
+                  <span class="game-ui-crest-finale" aria-hidden="true"></span>
+                  <div class="game-ui-shimmer" aria-hidden="true"></div>
+                  <div class="game-ui-filigree-divider is-wave" aria-hidden="true"><span>♪</span><span>𝄞</span><span>♪</span></div>
                   <div class="game-ui-sheet">
                     <div class="game-ui-sheet-head">
-                      <h3>Cherry Storm — Movement III</h3>
-                      <div class="game-ui-sheet-meta">
-                        <span class="time">4/4</span>
-                        <span class="bpm">♩ = 128</span>
+                      <div class="game-ui-sheet-title">
+                        <h3>Cherry Storm — Movement III</h3>
+                        <div class="game-ui-sheet-meta">
+                          <span class="time">4/4</span>
+                          <span class="bpm">♩ = 120</span>
+                          <span class="phase-ink">SheetMusicHUD</span>
+                        </div>
+                      </div>
+                      <div class="game-ui-combo-cartouche" aria-label="Combo">
+                        <span class="cartouche-label">Combo</span>
+                        <span class="cartouche-num">× 24</span>
                       </div>
                     </div>
                     <div class="game-ui-staff" aria-hidden="true">
                       <span class="clef">𝄞</span>
-                      <span class="note-beam b1">
-                      </span>
-                      <span class="note-beam b2">
-                      </span>
-                      <span class="note-beam b3">
-                      </span>
-                      <span class="game-ui-playback-head" aria-hidden="true">
-                      </span>
-                    </div>
-                  </div>
-                  <div class="game-ui-highway game-ui-highway-shader">
-                    <div class="game-ui-lane" data-lane="A">
-                    </div>
-                    <div class="game-ui-lane" data-lane="B">
-                    </div>
-                    <div class="game-ui-lane" data-lane="C">
-                    </div>
-                    <div class="game-ui-lane" data-lane="D">
-                    </div>
-                    <span class="grade-pop perfect" style="position:absolute;left:50%;top:1.25rem;transform:translateX(-50%);z-index:2">PERFECT<small>±90ms</small>
-                    </span>
-                    <div class="game-ui-hitline" aria-hidden="true">
-                    </div>
-                  </div>
-                  <div class="game-ui-hud-row">
-                    <div class="game-ui-element-wheel" aria-label="Element wheel">SOUND</div>
-                    <div class="game-ui-meter sp">
-                      <span class="label">SP</span>
-                      <div class="track">
-                        <div class="fill" style="width:70%">
-                        </div>
+                      <span class="game-ui-staff-ticks"></span>
+                      <div class="game-ui-ink-meters">
+                        <div class="game-ui-ink-meter sp"><span class="ink-label">SP</span><span class="ink-track"><span class="ink-fill" style="width:70%"></span></span></div>
+                        <div class="game-ui-ink-meter ult"><span class="ink-label">ULT</span><span class="ink-track"><span class="ink-fill" style="width:45%"></span></span></div>
                       </div>
+                      <span class="note-beam b1"></span>
+                      <span class="note-beam b2"></span>
+                      <span class="note-beam b3"></span>
+                      <span class="note-beam b4"></span>
+                      <span class="note-beam b5"></span>
+                      <span class="game-ui-playback-head"></span>
                     </div>
-                    <div class="game-ui-meter ult">
-                      <span class="label">ULT</span>
-                      <div class="track">
-                        <div class="fill" style="width:45%;background:var(--game-gold)">
-                        </div>
-                      </div>
+                    <div class="game-ui-highway game-ui-highway-shader">
+                      <div class="game-ui-lane" data-lane="A"></div>
+                      <div class="game-ui-lane" data-lane="B"></div>
+                      <div class="game-ui-lane" data-lane="C"></div>
+                      <div class="game-ui-lane" data-lane="D"></div>
+                      <span class="grade-pop perfect is-luxury is-flourish">PERFECT<small>±90ms</small></span>
+                      <div class="game-ui-hitline" aria-hidden="true"></div>
+                      <span class="game-ui-lane-rail" aria-hidden="true"></span>
                     </div>
-                    <div class="game-ui-dialogue">
-                      <div class="speaker">MELUSINA</div>
-                      <p>The shrine remembers every note we play together.</p>
-                    </div>
+                    <p class="game-ui-ink-dialogue"><span class="speaker">MELUSINA</span> The shrine remembers every note we play together.</p>
                   </div>
                 </article>
-                <div class="game-ui-grades">
-                  <span class="grade-pop perfect">PERFECT<small>±90ms</small>
-                  </span>
-                  <span class="grade-pop great">GREAT<small>±120ms</small>
-                  </span>
-                  <span class="grade-pop good">GOOD<small>±160ms</small>
-                  </span>
-                  <span class="grade-pop miss">MISS<small>&gt;160ms</small>
-                  </span>
+                <div class="game-ui-grades game-ui-grades-flourish" aria-label="Notation grade flourishes">
+                  <span class="grade-pop perfect is-luxury is-flourish">PERFECT<small>±90ms</small></span>
+                  <span class="grade-pop great is-luxury is-flourish">GREAT<small>±120ms</small></span>
+                  <span class="grade-pop good is-luxury is-flourish">GOOD<small>±160ms</small></span>
+                  <span class="grade-pop miss is-luxury is-flourish">MISS<small>&gt;160ms</small></span>
                 </div>
                 <div class="game-ui-dual">
-                  <aside class="game-ui-codex" aria-label="30 song skill codex preview">
-                    <h4>30 Song Skills — Codex</h4>
+                  <aside class="game-ui-codex" aria-label="30 song skill library">
+                    <h4>Song Skills — Library (not beauty frame)</h4>
                     <div class="game-ui-codex-grid">
                       <span class="game-ui-codex-chip">01 · Prelude</span>
                       <span class="game-ui-codex-chip">02 · Andante</span>
@@ -198,25 +174,26 @@
                       <span class="game-ui-codex-chip">12 · March</span>
                     </div>
                   </aside>
-                  <article class="game-ui-mobile" aria-label="Mobile thumb-zone battle">
-                    <div class="game-ui-topbar">
-                      <span class="phase">RHYTHM</span>
-                      <span class="combo">×24</span>
+                  <article class="game-ui-frame game-ui-sheet-echo game-ui-mobile" aria-label="Portrait SheetMusicHUD">
+                    <span class="game-ui-filigree is-ornate tl" aria-hidden="true"></span>
+                    <span class="game-ui-filigree is-ornate tr" aria-hidden="true"></span>
+                    <div class="game-ui-sheet" style="margin:0.5rem;padding:0.65rem">
+                      <div class="game-ui-sheet-head">
+                        <div class="game-ui-sheet-title"><h3 style="font-size:0.95rem">Cherry Storm</h3></div>
+                        <div class="game-ui-combo-cartouche"><span class="cartouche-label">Combo</span><span class="cartouche-num">× 12</span></div>
+                      </div>
+                      <div class="game-ui-highway game-ui-highway-shader" style="min-height:8rem">
+                        <div class="game-ui-lane" data-lane="A"></div>
+                        <div class="game-ui-lane" data-lane="B"></div>
+                        <div class="game-ui-lane" data-lane="C"></div>
+                        <div class="game-ui-lane" data-lane="D"></div>
+                        <div class="game-ui-hitline" aria-hidden="true"></div>
+                      </div>
                     </div>
-                    <div class="game-ui-highway game-ui-highway-shader">
-                      <div class="game-ui-lane" data-lane="A"></div>
-                      <div class="game-ui-lane" data-lane="B"></div>
-                      <div class="game-ui-lane" data-lane="C"></div>
-                      <div class="game-ui-lane" data-lane="D"></div>
-                      <div class="game-ui-hitline" aria-hidden="true"></div>
-                    </div>
-                    <div class="game-ui-mobile-skills" aria-hidden="true">
-                      <span></span><span></span><span></span><span></span>
-                    </div>
-                    <p class="game-ui-mobile-cta"><a href="melodia-melusina.html?mode=ios#ios-battle">Playable iOS kit →</a></p>
+                    <p class="game-ui-mobile-cta"><a href="melodia-melusina.html?mode=ios#ios-battle">iOS SheetMusicHUD kit →</a></p>
                   </article>
                 </div>
-                <p class="game-ui-figma-link">Figma source: <a href="https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled" target="_blank" rel="noopener">Grandmaster file · page 12 Game UI</a> · <a href="melodia-melusina.html">Melusina page</a> · <a href="melodia-melusina.html?mode=ios#ios-battle">iOS kit</a>
+                <p class="game-ui-figma-link">Figma: <a href="https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled?node-id=45-480" target="_blank" rel="noopener">SheetMusicHUD Desktop</a> · <a href="https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled?node-id=40-334" target="_blank" rel="noopener">Batch O chrome</a> · <a href="melodia-melusina.html">Melusina page</a> · <a href="melodia-melusina.html?mode=ios#ios-battle">iOS kit</a>
                 </p>
               </div>
             </div>

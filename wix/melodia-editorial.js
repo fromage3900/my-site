@@ -3,6 +3,7 @@
   'use strict';
 
   const COPY_URL = '../content/site-copy.json';
+  const PLATES_URL = '../content/site-plates.json';
   const INTAKE_URL = '../generated/unreal_portfolio_intake.json';
   const BLENDER_INTAKE_URL = '../generated/blender_portfolio_intake.json';
   const NIGHTSHIFT_MANIFEST_URL = '../generated/nightshift_manifest.json';
@@ -84,6 +85,29 @@
       { passive: true }
     );
     updateScroll();
+  }
+
+  function applyPlates(plates) {
+    if (!plates || !plates.slots) return;
+    document.querySelectorAll('[data-plate]').forEach((el) => {
+      const key = el.getAttribute('data-plate');
+      const slot = plates.slots[key];
+      if (!slot || !slot.path) return;
+      if (el.tagName === 'IMG') {
+        el.src = slot.path;
+        if (slot.alt) el.alt = slot.alt;
+      } else {
+        const img = el.querySelector('img');
+        if (img) {
+          img.src = slot.path;
+          if (slot.alt) img.alt = slot.alt;
+        }
+      }
+      if (slot.caption) {
+        const cap = el.parentElement && el.parentElement.querySelector('[data-plate-caption="' + key + '"]');
+        if (cap) cap.textContent = slot.caption;
+      }
+    });
   }
 
   function applyCopy(copy, pageKey) {
@@ -201,6 +225,13 @@
   async function hydrateIntakeHero() {
     const img = document.getElementById('heroLeadImage');
     if (!img) return;
+    // Melusina character leads stay locked until remount tool wires dated plates.
+    // Do not swap a Melusina void/iri or dated plate for blender intake cross heroes.
+    const lock = img.getAttribute('data-hero-lock') || '';
+    const srcNow = img.getAttribute('src') || '';
+    if (lock === 'melusina' || /melusina/i.test(srcNow)) {
+      return;
+    }
     try {
       const blender = await fetchJson(BLENDER_INTAKE_URL).catch(() => null);
       if (blender && blender.hero_web_path) {
@@ -231,14 +262,26 @@
 
   const BLENDER_DENY_ASSETS = new Set(['magical_wand', 'sakura_petal']);
   // void_iri plates are studio-void duplicates; rose_window front still weak compose
-  const BLENDER_DENY_PATH = ['_void_iri_', 'rose_window_komikaze_front'];
+  // Legacy Melusina portrait / Miraland T-pose postcard retired from intake grids
+  const BLENDER_DENY_PATH = [
+    '_void_iri_',
+    'rose_window_komikaze_front',
+    'melusina_eevee_portrait',
+    'beauty_depth_color',
+    'diorama_beauty',
+    'melusina_beauty_34',
+    'melusina_eevee_beauty_34',
+  ];
 
   function isBlenderCardWebReady(card) {
     if (!card || !card.web_path) return false;
     if (card.web_ready === false) return false;
+    if (card.retired === true) return false;
     if (BLENDER_DENY_ASSETS.has(card.asset_id)) return false;
     const path = String(card.web_path);
     if (BLENDER_DENY_PATH.some((frag) => path.includes(frag))) return false;
+    const title = String(card.title || card.filename || '').toLowerCase();
+    if (/portrait/i.test(title) && /melusina/i.test(title) && !/glam/i.test(title)) return false;
     return true;
   }
 
@@ -991,6 +1034,110 @@
     return getEffects(shell).includes(name);
   }
 
+  /** Decorative unicode divider pool for viz/rhythm rules. */
+  var DIVIDER_VARIANTS = [
+    {
+      id: 'astral',
+      glyph: '·͙*̩̩͙˚̩̥̩̥*̩̩̥͙　✩　*̩̩̥͙˚̩̥̩̥*̩̩͙‧͙',
+      flank: '✩',
+    },
+    { id: 'diamond', glyph: '◇─◇──◇─◇', flank: '◇─◇──◇─◇' },
+    { id: 'pipes', glyph: '┊ ⋆ ┊ . ┊ ┊', flank: '┊ ⋆ ┊ . ┊ ┊' },
+    { id: 'pipes-dot', glyph: '┊ ┊⋆ ┊ .', flank: '┊ ┊⋆ ┊ .' },
+    {
+      id: 'pipes-spark',
+      glyph: '┊ ┊ ⋆˚ ⁭ ✧. ┊ ⁭ ⁭ ⁭ ⁭',
+      flank: '┊ ┊ ⋆˚ ✧. ┊',
+    },
+  ];
+
+  function ensureEditorialPolishCss() {
+    if (
+      document.querySelector('link[data-melodia-polish], link[href*="melodia-editorial-polish.css"]')
+    ) {
+      return;
+    }
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'melodia-editorial-polish.css';
+    link.setAttribute('data-melodia-polish', '1');
+    document.head.appendChild(link);
+  }
+
+  function pickDividerVariant(el, index) {
+    var preset = el.getAttribute('data-divider');
+    var found = DIVIDER_VARIANTS.find(function (v) {
+      return v.id === preset;
+    });
+    if (found) return found;
+    return DIVIDER_VARIANTS[index % DIVIDER_VARIANTS.length];
+  }
+
+  function extractGlyphLabel(glyph) {
+    var label = glyph.getAttribute('data-label');
+    if (label) return label;
+    var raw = (glyph.textContent || '').trim();
+    if (!raw) return '';
+    var parts = raw.split(/\s+/);
+    if (parts.length > 1 && /^[♪✦✧·༚✩◇┊]/.test(parts[0])) {
+      label = parts.slice(1).join(' ');
+    } else if (!/^[·͙*̩̩˚̥✩◇┊⋆⁭✧─]/.test(raw)) {
+      label = raw;
+    }
+    if (label) glyph.setAttribute('data-label', label);
+    return label || '';
+  }
+
+  function initDividerVariants() {
+    var nodes = document.querySelectorAll(
+      '.editorial-rhythm-divider, .viz-rule, .nikki-spark-rule, .editorial-rule, .melodia-divider'
+    );
+    if (!nodes.length) return;
+    nodes.forEach(function (el, index) {
+      var variant = pickDividerVariant(el, index);
+      el.setAttribute('data-divider', variant.id);
+      el.setAttribute('data-divider-glyph', variant.glyph);
+      el.setAttribute('data-divider-flank', variant.flank);
+
+      if (el.classList.contains('nikki-spark-rule')) {
+        var sparks = el.querySelectorAll('.spark');
+        sparks.forEach(function (spark) {
+          spark.textContent = variant.flank;
+          spark.setAttribute('aria-hidden', 'true');
+        });
+        return;
+      }
+
+      if (el.classList.contains('editorial-rule')) {
+        var diamonds = el.querySelectorAll('.diamond');
+        diamonds.forEach(function (d) {
+          d.textContent = variant.flank;
+          d.classList.add('glyph-flank');
+        });
+        return;
+      }
+
+      var glyph = el.querySelector('.glyph');
+      if (glyph) {
+        var label = extractGlyphLabel(glyph);
+        glyph.textContent = label ? variant.glyph + '  ' + label : variant.glyph;
+      } else if (el.classList.contains('melodia-divider')) {
+        el.textContent = variant.glyph;
+      }
+    });
+  }
+
+  function initIvorySurfaces() {
+    // Sparse defaults when pages forget data-surface — keep cosmic dominant
+    var auto = document.querySelectorAll(
+      '.band.paper[data-ivory="auto"], .band.cloud[data-ivory="auto"]'
+    );
+    auto.forEach(function (band) {
+      band.setAttribute('data-surface', 'ivory');
+      band.classList.add('ivory');
+    });
+  }
+
   function bootEffects() {
     const shell = document.querySelector('.melodia-shell');
     if (!shell) return;
@@ -1038,11 +1185,20 @@
 
   async function init(options) {
     const pageKey = (options && options.page) || document.documentElement.getAttribute('data-page') || '';
+    ensureEditorialPolishCss();
     ensureA11yLandmarks();
     initParallax();
     initMobileNav();
+    initDividerVariants();
+    initIvorySurfaces();
 
     let copy = null;
+    try {
+      const platesRes = await fetch(PLATES_URL, { cache: 'no-store' });
+      applyPlates(await platesRes.json());
+    } catch (_err) {
+      /* static img src fallbacks remain */
+    }
     try {
       const res = await fetch(COPY_URL, { cache: 'no-store' });
       copy = await res.json();

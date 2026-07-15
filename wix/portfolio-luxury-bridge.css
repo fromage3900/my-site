@@ -5,6 +5,7 @@
 @import url("melodia-dream-shaders.css");
 @import url("melodia-night-theme.css");
 @import url("melodia-planetarium.css");
+@import url("melodia-editorial-polish.css");
 
 body {
   font-family: var(--font-body);

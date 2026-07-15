@@ -1,8 +1,8 @@
 {
   "theme": "dark",
-  "project": "RosetteMedallion",
+  "project": "Rosette Medallion",
   "category": "Prop / ornament",
-  "version": "cute-gn",
+  "version": "wave5",
   "asset_id": "rosette",
   "rows": [
     [
@@ -23,37 +23,25 @@
     ],
     [
       "Shader",
-      "SurrealArch GeoNodes \u00b7 kitbash"
+      "Komikaze \u00b7 Voronoi Shader (3 Tones)"
     ],
     [
       "Software",
-      "Blender \u00b7 SurrealArch v2.134"
+      "Blender \u00b7 Melodia Portfolio Stage"
     ],
     [
       "Engine",
-      "Geometry Nodes \u2192 FBX"
+      "Blender EEVEE"
     ],
     [
       "Capture",
-      "FBX scan"
+      "three_quarter"
     ],
     [
       "Date",
       "2026-07"
-    ],
-    [
-      "Vertices",
-      "6,432"
-    ],
-    [
-      "FBX",
-      "242 KB"
-    ],
-    [
-      "Dims (m)",
-      "2.181 \u00d7 0.061 \u00d7 2.061"
     ]
   ],
-  "generated_at": "2026-07-11T18:03:50.863788+00:00",
+  "generated_at": "2026-07-15T05:52:16.237962+00:00",
   "schema": "melodia-asset-passport/v1"
 }
