@@ -1,20 +1,21 @@
-/* Melodia stage character — hydrate Asset Passport + depth tilt from Blender pipeline. */
+/* Melodia stage character — hydrate Asset Passport + depth tilt + plate strip from site-plates.json. */
 (function () {
   'use strict';
 
   const PASSPORT_URL = '../generated/passports/melusina_passport.json';
   const PASSPORT_HTML = '../generated/passports/melusina_passport.html';
+  const PLATES_URL = '../content/site-plates.json';
   const COLOR_URL = '../generated/assets/character/melusina_diorama_beauty.png';
   const DEPTH_URL = '../generated/assets/character/melusina_beauty_depth_color.png';
-  const BEAUTY_URL = '../generated/assets/character/melusina_profile_bangs_nikki.png';
-  const FULL_BEAUTY_URL = '../generated/assets/character/melusina_beauty_void_iri.png';
-  const HERO_DIR = '../generated/assets/character/hero_20260712';
-  const HERO_BEAUTY = `${HERO_DIR}/melusina_hero_beauty_nikki.png`;
-  const HERO_PROFILE = `${HERO_DIR}/melusina_profile_bangs_nikki.png`;
-  const HERO_JEWELRY = `${HERO_DIR}/melusina_hero_three_quarter_jewelry.png`;
-  const HERO_FRONT = `${HERO_DIR}/melusina_hero_front_nikki.png`;
-  const HERO_SILHOUETTE = `${HERO_DIR}/melusina_hero_silhouette_silhouette.png`;
   const INTAKE_URL = '../generated/blender_portfolio_intake.json';
+
+  // Fallbacks until site-plates.json loads
+  let BEAUTY_URL = '../generated/assets/character/melusina_beauty_eevee_20260715_01.png';
+  let FULL_BEAUTY_URL = BEAUTY_URL;
+  let HERO_BEAUTY = BEAUTY_URL;
+  let HERO_FRONT = '../generated/assets/character/melusina_eevee_glam_20260715_02.png';
+  let HERO_JEWELRY = '../generated/assets/character/melusina_eevee_glam_20260715_03.png';
+  let HERO_SILHOUETTE = '../generated/assets/character/hero_20260712/melusina_hero_silhouette_silhouette.png';
 
   function esc(value) {
     return String(value == null ? '' : value)
@@ -28,6 +29,26 @@
     const res = await fetch(url, { cache: 'no-store' });
     if (!res.ok) throw new Error(String(res.status));
     return res.json();
+  }
+
+  async function loadPlateSlots() {
+    try {
+      const data = await fetchJson(PLATES_URL);
+      const s = data.slots || {};
+      if (s['stage.beauty'] && s['stage.beauty'].path) {
+        HERO_BEAUTY = s['stage.beauty'].path;
+        BEAUTY_URL = HERO_BEAUTY;
+        FULL_BEAUTY_URL = HERO_BEAUTY;
+      }
+      if (s['stage.front'] && s['stage.front'].path) HERO_FRONT = s['stage.front'].path;
+      if (s['stage.jewelry'] && s['stage.jewelry'].path) HERO_JEWELRY = s['stage.jewelry'].path;
+      if (s['stage.silhouette'] && s['stage.silhouette'].path) HERO_SILHOUETTE = s['stage.silhouette'].path;
+      if (s['stage.diorama'] && s['stage.diorama'].path) {
+        /* diorama used in strip */
+      }
+    } catch (_err) {
+      /* keep fallbacks */
+    }
   }
 
   function renderPassportFallback(mount, passport) {
@@ -51,7 +72,6 @@
     if (!mount) return;
     try {
       const passport = await fetchJson(PASSPORT_URL);
-      // Prefer iframe embed (design-system HTML); fallback to inline rows
       const iframe = document.createElement('iframe');
       iframe.src = PASSPORT_HTML;
       iframe.title = 'Melusina Asset Passport';
@@ -79,14 +99,8 @@
   function hydrateDepthTilt() {
     const root = document.getElementById('stageDepthTilt');
     if (!root) return;
-    const color = root.querySelector('[data-stage-color]');
-    const depth = root.querySelector('[data-stage-depth]');
-    if (color) color.src = color.getAttribute('data-src') || BEAUTY_URL;
-    if (depth) depth.src = depth.getAttribute('data-src') || DEPTH_URL;
-
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (reduce.matches) return;
-
+    const color = root.querySelector('[data-depth-color]') || root.querySelector('img');
+    if (color && color.tagName === 'IMG') color.src = DEPTH_URL;
     root.addEventListener(
       'pointermove',
       (event) => {
@@ -113,13 +127,14 @@
   async function hydratePlateStrip() {
     const mount = document.getElementById('stagePlateStrip');
     if (!mount) return;
-    // Prefer tonight's hero pack; intake EEVEE cards are older and stay as optional append.
+    await loadPlateSlots();
+    // No bangs card. Do not append solid mauve *_001 blanks.
     const heroPack = [
-      { web_path: HERO_PROFILE, title: 'Profile · bangs Nikki' },
       { web_path: HERO_BEAUTY, title: 'Hero beauty · Nikki' },
-      { web_path: HERO_JEWELRY, title: 'Three-quarter · Jewelry' },
       { web_path: HERO_FRONT, title: 'Front · Nikki' },
-      { web_path: FULL_BEAUTY_URL, title: 'Full beauty · void/iri' },
+      { web_path: HERO_JEWELRY, title: 'Three-quarter · Jewelry' },
+      { web_path: FULL_BEAUTY_URL, title: 'Beauty · Stage v7' },
+      { web_path: HERO_SILHOUETTE, title: 'Silhouette' },
       { web_path: COLOR_URL, title: 'Diorama postcard' },
     ];
     let cards = heroPack;
@@ -130,9 +145,11 @@
       );
       if (mel.length) {
         const seen = new Set(cards.map((c) => c.web_path));
+        const deny = ['_001.png', 'mauve', '/hero_sim/', 'bangs', 'profile_bangs'];
         for (const c of mel) {
           const path = c.web_path;
           if (!path || seen.has(path)) continue;
+          if (deny.some((d) => String(path).toLowerCase().includes(d))) continue;
           cards.push({ web_path: path, title: c.title || c.filename });
           seen.add(path);
           if (cards.length >= 8) break;

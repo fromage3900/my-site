@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "notes": "Named plate slots — edit with Tools/assign_plate.py or by hand. Paths are relative to my-site-clean/wix/. 2026-07-15: EEVEE glam AudVis wave promoted.",
+  "slots": {
+    "index.hero": {
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715_01.png",
+      "alt": "Melusina — EEVEE glam beauty, Melodia Portfolio Stage"
+    },
+    "recruiter.hero": {
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715_01.png",
+      "alt": "Melusina — EEVEE glam beauty, Melodia Portfolio Stage"
+    },
+    "hub.melusina": {
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715_01.png",
+      "alt": "Melusina"
+    },
+    "hub.melusina_secondary": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715_05.png",
+      "alt": "Melusina glam portrait"
+    },
+    "stage.beauty": {
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715_01.png",
+      "alt": "Hero beauty · EEVEE glam"
+    },
+    "stage.front": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715_02.png",
+      "alt": "Glam bust · EEVEE"
+    },
+    "stage.jewelry": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715_03.png",
+      "alt": "Glam three-quarter · EEVEE"
+    },
+    "stage.silhouette": {
+      "path": "../generated/assets/character/hero_20260712/melusina_hero_silhouette_silhouette.png",
+      "alt": "Silhouette"
+    },
+    "stage.diorama": {
+      "path": "../generated/assets/character/melusina_diorama_beauty.png",
+      "alt": "Diorama postcard"
+    },
+    "melusina.glam_01": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715_01.png",
+      "alt": "Melusina glam full · EEVEE"
+    },
+    "melusina.glam_02": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715_02.png",
+      "alt": "Melusina glam bust · EEVEE"
+    },
+    "melusina.glam_03": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715_03.png",
+      "alt": "Melusina glam portrait · EEVEE"
+    },
+    "melusina.glam_04": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715_04.png",
+      "alt": "Melusina glam close · EEVEE"
+    },
+    "melusina.glam_05": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715_05.png",
+      "alt": "Melusina glam three-quarter · EEVEE"
+    },
+    "sakura.hero": {
+      "path": "../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png",
+      "alt": "Sakura Dream establishing hero"
+    },
+    "kitbash.hero": {
+      "path": "../generated/assets/ornaments/vault_ribs_komikaze_beauty_34.png",
+      "alt": "Ornamental kitbash preview"
+    },
+    "hub.sakura": {
+      "path": "../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png",
+      "alt": "Sakura Path"
+    }
+  }
+}
