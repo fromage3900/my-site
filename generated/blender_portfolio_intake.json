@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-11T17:20:24.231716+00:00",
+  "generated_at": "2026-07-15T17:52:24.104548+00:00",
   "engine": "EEVEE",
   "shader_pack": "Komikaze v2",
   "shader_credit": {
@@ -8,93 +8,21 @@
     "url": "https://superhivemarket.com/products/komikaze",
     "creator_url": "https://superhivemarket.com/creators/doublegum"
   },
-  "last_wave": 2,
-  "plate_count": 65,
+  "last_wave": 1,
+  "plate_count": 78,
   "hero_web_path": "../generated/assets/cross/cross_komikaze_beauty_34.png",
   "render_cards": [
     {
-      "id": "melusina_beauty_34",
-      "asset_id": "melusina",
-      "title": "Melusina \u2014 beauty 34",
-      "group": "character",
-      "filename": "melusina_eevee_beauty_34.png",
-      "web_path": "../generated/assets/character/melusina_eevee_beauty_34.png",
-      "local_relative_path": "generated/assets/character/melusina_eevee_beauty_34.png",
-      "hero_candidate": true,
-      "priority": 135,
-      "caption": "EEVEE \u00b7 authored materials \u00b7 Melodia studio",
-      "engine": "EEVEE",
-      "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend",
-      "passport": {
-        "project": "Melusina",
-        "category": "Character / Water Hair",
-        "version": "v4 stage",
-        "theme": "dark",
-        "rows": [
-          [
-            "Triangles",
-            "295,221"
-          ],
-          [
-            "Meshes",
-            "78"
-          ],
-          [
-            "Materials",
-            "37"
-          ],
-          [
-            "Textures",
-            "46"
-          ],
-          [
-            "Shader",
-            "Water (Advance) + authored Melusina"
-          ],
-          [
-            "Software",
-            "Blender 5.1 \u00b7 Melodia Portfolio Stage"
-          ],
-          [
-            "Engine",
-            "Blender EEVEE"
-          ],
-          [
-            "Capture",
-            "Cam_Beauty"
-          ],
-          [
-            "Date",
-            "2026-07"
-          ],
-          [
-            "Stage",
-            "Melodia_Portfolio_Stage_v4"
-          ],
-          [
-            "Lane",
-            "NPR beauty + FLIP accent"
-          ]
-        ],
-        "paths": {
-          "json": "generated/passports/melusina_passport.json",
-          "html": "generated/passports/melusina_passport.html",
-          "config": "generated/passport_config.json"
-        },
-        "asset_id": "melusina"
-      }
-    },
-    {
       "id": "melusina_portrait",
       "asset_id": "melusina",
-      "title": "Melusina \u2014 portrait",
+      "title": "Melusina — portrait",
       "group": "character",
       "filename": "melusina_eevee_portrait.png",
       "web_path": "../generated/assets/character/melusina_eevee_portrait.png",
       "local_relative_path": "generated/assets/character/melusina_eevee_portrait.png",
       "hero_candidate": true,
       "priority": 135,
-      "caption": "EEVEE \u00b7 authored materials \u00b7 Melodia studio",
+      "caption": "EEVEE · authored materials · Melodia studio",
       "engine": "EEVEE",
       "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend",
       "passport": {
@@ -125,7 +53,7 @@
           ],
           [
             "Software",
-            "Blender 5.1 \u00b7 Melodia Portfolio Stage"
+            "Blender 5.1 · Melodia Portfolio Stage"
           ],
           [
             "Engine",
@@ -159,14 +87,14 @@
     {
       "id": "melusina_front",
       "asset_id": "melusina",
-      "title": "Melusina \u2014 front",
+      "title": "Melusina — front",
       "group": "character",
       "filename": "melusina_eevee_front.png",
       "web_path": "../generated/assets/character/melusina_eevee_front.png",
       "local_relative_path": "generated/assets/character/melusina_eevee_front.png",
       "hero_candidate": true,
       "priority": 125,
-      "caption": "EEVEE \u00b7 authored materials \u00b7 Melodia studio",
+      "caption": "EEVEE · authored materials · Melodia studio",
       "engine": "EEVEE",
       "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend",
       "passport": {
@@ -197,7 +125,7 @@
           ],
           [
             "Software",
-            "Blender 5.1 \u00b7 Melodia Portfolio Stage"
+            "Blender 5.1 · Melodia Portfolio Stage"
           ],
           [
             "Engine",
@@ -231,14 +159,14 @@
     {
       "id": "melusina_three_quarter",
       "asset_id": "melusina",
-      "title": "Melusina \u2014 three quarter",
+      "title": "Melusina — three quarter",
       "group": "character",
       "filename": "melusina_eevee_three_quarter.png",
       "web_path": "../generated/assets/character/melusina_eevee_three_quarter.png",
       "local_relative_path": "generated/assets/character/melusina_eevee_three_quarter.png",
       "hero_candidate": true,
       "priority": 125,
-      "caption": "EEVEE \u00b7 authored materials \u00b7 Melodia studio",
+      "caption": "EEVEE · authored materials · Melodia studio",
       "engine": "EEVEE",
       "source_blend": "G:\\MelodiaMelusina\\MelusinaFinalRig\\FinalUERig43.blend",
       "passport": {
@@ -269,7 +197,7 @@
           ],
           [
             "Software",
-            "Blender 5.1 \u00b7 Melodia Portfolio Stage"
+            "Blender 5.1 · Melodia Portfolio Stage"
           ],
           [
             "Engine",
@@ -303,14 +231,14 @@
     {
       "id": "cross_beauty_34",
       "asset_id": "cross",
-      "title": "Melusina Vow Cross \u2014 beauty 34",
+      "title": "Melusina Vow Cross — beauty 34",
       "group": "cross",
       "filename": "cross_komikaze_beauty_34.png",
       "web_path": "../generated/assets/cross/cross_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/cross/cross_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 110,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 1,
@@ -339,11 +267,11 @@
           ],
           [
             "Shader",
-            "Komikaze \u00b7 The Wall (Custom Texture)"
+            "Komikaze · The Wall (Custom Texture)"
           ],
           [
             "Software",
-            "Blender \u00b7 Melodia Portfolio Stage"
+            "Blender · Melodia Portfolio Stage"
           ],
           [
             "Engine",
@@ -369,44 +297,506 @@
     {
       "id": "lissajous_beauty_34",
       "asset_id": "lissajous",
-      "title": "Lissajous Curve Sculpture \u2014 beauty 34",
+      "title": "Lissajous Curve Sculpture — beauty 34",
       "group": "signature",
       "filename": "lissajous_komikaze_beauty_34.png",
       "web_path": "../generated/assets/signature/lissajous_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/signature/lissajous_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 105,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 2
     },
     {
+      "id": "melody_token_star_beauty_34",
+      "asset_id": "melody_token_star",
+      "title": "Melody Token · Star — beauty 34",
+      "group": "melody_token",
+      "filename": "melody_token_star_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/melody_token_star_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/melody_token_star_komikaze_beauty_34.png",
+      "hero_candidate": true,
+      "priority": 105,
+      "caption": "EEVEE · Komikaze (DoubleGum) · __melody_token_ice__",
+      "engine": "EEVEE",
+      "shader": "__melody_token_ice__",
+      "wave": 6,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Melody Token · Star",
+        "category": "Prop / melody_token",
+        "version": "wave6",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "4,278,450"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · __melody_token_ice__"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/melody_token_star_passport.json",
+          "html": "generated/passports/melody_token_star_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "melody_token_star"
+      }
+    },
+    {
+      "id": "melody_token_swirl_beauty_34",
+      "asset_id": "melody_token_swirl",
+      "title": "Melody Token · Swirl — beauty 34",
+      "group": "melody_token",
+      "filename": "melody_token_swirl_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/melody_token_swirl_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/melody_token_swirl_komikaze_beauty_34.png",
+      "hero_candidate": true,
+      "priority": 104,
+      "caption": "EEVEE · Komikaze (DoubleGum) · __melody_token_ice__",
+      "engine": "EEVEE",
+      "shader": "__melody_token_ice__",
+      "wave": 6,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Melody Token · Swirl",
+        "category": "Prop / melody_token",
+        "version": "wave6",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "1,836,108"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · __melody_token_ice__"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/melody_token_swirl_passport.json",
+          "html": "generated/passports/melody_token_swirl_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "melody_token_swirl"
+      }
+    },
+    {
+      "id": "vault_ribs_beauty_34",
+      "asset_id": "vault_ribs",
+      "title": "Vault Ribs — beauty 34",
+      "group": "ornament",
+      "filename": "vault_ribs_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/vault_ribs_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/vault_ribs_komikaze_beauty_34.png",
+      "hero_candidate": true,
+      "priority": 104,
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Vault Ribs",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "33,156"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/vault_ribs_passport.json",
+          "html": "generated/passports/vault_ribs_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "vault_ribs"
+      }
+    },
+    {
+      "id": "melody_token_water_beauty_34",
+      "asset_id": "melody_token_water",
+      "title": "Melody Token · Water — beauty 34",
+      "group": "melody_token",
+      "filename": "melody_token_water_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/melody_token_water_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/melody_token_water_komikaze_beauty_34.png",
+      "hero_candidate": true,
+      "priority": 103,
+      "caption": "EEVEE · Komikaze (DoubleGum) · __melody_token_ice__",
+      "engine": "EEVEE",
+      "shader": "__melody_token_ice__",
+      "wave": 6,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Melody Token · Water",
+        "category": "Prop / melody_token",
+        "version": "wave6",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "5,015,040"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · __melody_token_ice__"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/melody_token_water_passport.json",
+          "html": "generated/passports/melody_token_water_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "melody_token_water"
+      }
+    },
+    {
+      "id": "torus_knot_beauty_34",
+      "asset_id": "torus_knot",
+      "title": "Torus Knot — beauty 34",
+      "group": "ornament",
+      "filename": "torus_knot_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/torus_knot_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/torus_knot_komikaze_beauty_34.png",
+      "hero_candidate": true,
+      "priority": 103,
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Torus Knot",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "7,560"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/torus_knot_passport.json",
+          "html": "generated/passports/torus_knot_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "torus_knot"
+      }
+    },
+    {
+      "id": "corbel_beauty_34",
+      "asset_id": "corbel",
+      "title": "Corbel Bracket — beauty 34",
+      "group": "ornament",
+      "filename": "corbel_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/corbel_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/corbel_komikaze_beauty_34.png",
+      "hero_candidate": true,
+      "priority": 102,
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Corbel Bracket",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "7,628"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/corbel_passport.json",
+          "html": "generated/passports/corbel_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "corbel"
+      }
+    },
+    {
       "id": "gazebo_beauty_34",
       "asset_id": "gazebo",
-      "title": "Melusina Gazebo \u2014 beauty 34",
+      "title": "Melusina Gazebo — beauty 34",
       "group": "signature",
       "filename": "gazebo_komikaze_beauty_34.png",
       "web_path": "../generated/assets/signature/gazebo_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/signature/gazebo_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 102,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 2
     },
     {
+      "id": "crown_molding_beauty_34",
+      "asset_id": "crown_molding",
+      "title": "Crown Molding — beauty 34",
+      "group": "ornament",
+      "filename": "crown_molding_komikaze_beauty_34.png",
+      "web_path": "../generated/assets/ornaments/crown_molding_komikaze_beauty_34.png",
+      "local_relative_path": "generated/assets/ornaments/crown_molding_komikaze_beauty_34.png",
+      "hero_candidate": true,
+      "priority": 101,
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Crown Molding",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "60,620"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/crown_molding_passport.json",
+          "html": "generated/passports/crown_molding_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "crown_molding"
+      }
+    },
+    {
       "id": "cross_front",
       "asset_id": "cross",
-      "title": "Melusina Vow Cross \u2014 front",
+      "title": "Melusina Vow Cross — front",
       "group": "cross",
       "filename": "cross_komikaze_front.png",
       "web_path": "../generated/assets/cross/cross_komikaze_front.png",
       "local_relative_path": "generated/assets/cross/cross_komikaze_front.png",
       "hero_candidate": true,
       "priority": 100,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 1,
@@ -435,11 +825,11 @@
           ],
           [
             "Shader",
-            "Komikaze \u00b7 The Wall (Custom Texture)"
+            "Komikaze · The Wall (Custom Texture)"
           ],
           [
             "Software",
-            "Blender \u00b7 Melodia Portfolio Stage"
+            "Blender · Melodia Portfolio Stage"
           ],
           [
             "Engine",
@@ -465,14 +855,14 @@
     {
       "id": "cross_low_angle",
       "asset_id": "cross",
-      "title": "Melusina Vow Cross \u2014 low angle",
+      "title": "Melusina Vow Cross — low angle",
       "group": "cross",
       "filename": "cross_komikaze_low_angle.png",
       "web_path": "../generated/assets/cross/cross_komikaze_low_angle.png",
       "local_relative_path": "generated/assets/cross/cross_komikaze_low_angle.png",
       "hero_candidate": false,
       "priority": 100,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 1,
@@ -481,14 +871,14 @@
     {
       "id": "cross_macro",
       "asset_id": "cross",
-      "title": "Melusina Vow Cross \u2014 macro",
+      "title": "Melusina Vow Cross — macro",
       "group": "cross",
       "filename": "cross_komikaze_macro.png",
       "web_path": "../generated/assets/cross/cross_komikaze_macro.png",
       "local_relative_path": "generated/assets/cross/cross_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 100,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 1,
@@ -497,14 +887,14 @@
     {
       "id": "cross_silhouette",
       "asset_id": "cross",
-      "title": "Melusina Vow Cross \u2014 silhouette",
+      "title": "Melusina Vow Cross — silhouette",
       "group": "cross",
       "filename": "cross_komikaze_silhouette.png",
       "web_path": "../generated/assets/cross/cross_komikaze_silhouette.png",
       "local_relative_path": "generated/assets/cross/cross_komikaze_silhouette.png",
       "hero_candidate": false,
       "priority": 100,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 1,
@@ -513,14 +903,14 @@
     {
       "id": "gazebo1_beauty_34",
       "asset_id": "gazebo1",
-      "title": "Melusina Gazebo Variant \u2014 beauty 34",
+      "title": "Melusina Gazebo Variant — beauty 34",
       "group": "signature",
       "filename": "gazebo1_komikaze_beauty_34.png",
       "web_path": "../generated/assets/signature/gazebo1_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/signature/gazebo1_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 100,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 3
@@ -528,14 +918,14 @@
     {
       "id": "trefoil_beauty_34",
       "asset_id": "trefoil",
-      "title": "Trefoil Knot \u2014 beauty 34",
+      "title": "Trefoil Knot — beauty 34",
       "group": "signature",
       "filename": "trefoil_komikaze_beauty_34.png",
       "web_path": "../generated/assets/signature/trefoil_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/signature/trefoil_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 98,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 3
@@ -543,14 +933,14 @@
     {
       "id": "violin_beauty_34",
       "asset_id": "violin",
-      "title": "Melodia Violin \u2014 beauty 34",
+      "title": "Melodia Violin — beauty 34",
       "group": "props",
       "filename": "violin_komikaze_beauty_34.png",
       "web_path": "../generated/assets/props/violin_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/props/violin_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 96,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 4
@@ -558,14 +948,14 @@
     {
       "id": "lissajous_macro",
       "asset_id": "lissajous",
-      "title": "Lissajous Curve Sculpture \u2014 macro",
+      "title": "Lissajous Curve Sculpture — macro",
       "group": "signature",
       "filename": "lissajous_komikaze_macro.png",
       "web_path": "../generated/assets/signature/lissajous_komikaze_macro.png",
       "local_relative_path": "generated/assets/signature/lissajous_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 95,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 2
@@ -573,44 +963,602 @@
     {
       "id": "lissajous_three_quarter",
       "asset_id": "lissajous",
-      "title": "Lissajous Curve Sculpture \u2014 three quarter",
+      "title": "Lissajous Curve Sculpture — three quarter",
       "group": "signature",
       "filename": "lissajous_komikaze_three_quarter.png",
       "web_path": "../generated/assets/signature/lissajous_komikaze_three_quarter.png",
       "local_relative_path": "generated/assets/signature/lissajous_komikaze_three_quarter.png",
       "hero_candidate": true,
       "priority": 95,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 2
     },
     {
+      "id": "melody_token_star_back",
+      "asset_id": "melody_token_star",
+      "title": "Melody Token · Star — back",
+      "group": "melody_token",
+      "filename": "melody_token_star_komikaze_back.png",
+      "web_path": "../generated/assets/ornaments/melody_token_star_komikaze_back.png",
+      "local_relative_path": "generated/assets/ornaments/melody_token_star_komikaze_back.png",
+      "hero_candidate": false,
+      "priority": 95,
+      "caption": "EEVEE · Komikaze (DoubleGum) · __melody_token_ice__",
+      "engine": "EEVEE",
+      "shader": "__melody_token_ice__",
+      "wave": 6,
+      "stage": "ephemeral"
+    },
+    {
+      "id": "melody_token_star_front",
+      "asset_id": "melody_token_star",
+      "title": "Melody Token · Star — front",
+      "group": "melody_token",
+      "filename": "melody_token_star_komikaze_front.png",
+      "web_path": "../generated/assets/ornaments/melody_token_star_komikaze_front.png",
+      "local_relative_path": "generated/assets/ornaments/melody_token_star_komikaze_front.png",
+      "hero_candidate": true,
+      "priority": 95,
+      "caption": "EEVEE · Komikaze (DoubleGum) · __melody_token_ice__",
+      "engine": "EEVEE",
+      "shader": "__melody_token_ice__",
+      "wave": 6,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Melody Token · Star",
+        "category": "Prop / melody_token",
+        "version": "wave6",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "4,278,450"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · __melody_token_ice__"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "front"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/melody_token_star_passport.json",
+          "html": "generated/passports/melody_token_star_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "melody_token_star"
+      }
+    },
+    {
+      "id": "melody_token_star_three_quarter",
+      "asset_id": "melody_token_star",
+      "title": "Melody Token · Star — three quarter",
+      "group": "melody_token",
+      "filename": "melody_token_star_komikaze_three_quarter.png",
+      "web_path": "../generated/assets/ornaments/melody_token_star_komikaze_three_quarter.png",
+      "local_relative_path": "generated/assets/ornaments/melody_token_star_komikaze_three_quarter.png",
+      "hero_candidate": true,
+      "priority": 95,
+      "caption": "EEVEE · Komikaze (DoubleGum) · __melody_token_ice__",
+      "engine": "EEVEE",
+      "shader": "__melody_token_ice__",
+      "wave": 6,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Melody Token · Star",
+        "category": "Prop / melody_token",
+        "version": "wave6",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "4,278,450"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · __melody_token_ice__"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "three_quarter"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/melody_token_star_passport.json",
+          "html": "generated/passports/melody_token_star_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "melody_token_star"
+      }
+    },
+    {
+      "id": "melody_token_swirl_back",
+      "asset_id": "melody_token_swirl",
+      "title": "Melody Token · Swirl — back",
+      "group": "melody_token",
+      "filename": "melody_token_swirl_komikaze_back.png",
+      "web_path": "../generated/assets/ornaments/melody_token_swirl_komikaze_back.png",
+      "local_relative_path": "generated/assets/ornaments/melody_token_swirl_komikaze_back.png",
+      "hero_candidate": false,
+      "priority": 94,
+      "caption": "EEVEE · Komikaze (DoubleGum) · __melody_token_ice__",
+      "engine": "EEVEE",
+      "shader": "__melody_token_ice__",
+      "wave": 6,
+      "stage": "ephemeral"
+    },
+    {
+      "id": "melody_token_swirl_front",
+      "asset_id": "melody_token_swirl",
+      "title": "Melody Token · Swirl — front",
+      "group": "melody_token",
+      "filename": "melody_token_swirl_komikaze_front.png",
+      "web_path": "../generated/assets/ornaments/melody_token_swirl_komikaze_front.png",
+      "local_relative_path": "generated/assets/ornaments/melody_token_swirl_komikaze_front.png",
+      "hero_candidate": true,
+      "priority": 94,
+      "caption": "EEVEE · Komikaze (DoubleGum) · __melody_token_ice__",
+      "engine": "EEVEE",
+      "shader": "__melody_token_ice__",
+      "wave": 6,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Melody Token · Swirl",
+        "category": "Prop / melody_token",
+        "version": "wave6",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "1,836,108"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · __melody_token_ice__"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "front"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/melody_token_swirl_passport.json",
+          "html": "generated/passports/melody_token_swirl_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "melody_token_swirl"
+      }
+    },
+    {
+      "id": "melody_token_swirl_macro",
+      "asset_id": "melody_token_swirl",
+      "title": "Melody Token · Swirl — macro",
+      "group": "melody_token",
+      "filename": "melody_token_swirl_komikaze_macro.png",
+      "web_path": "../generated/assets/ornaments/melody_token_swirl_komikaze_macro.png",
+      "local_relative_path": "generated/assets/ornaments/melody_token_swirl_komikaze_macro.png",
+      "hero_candidate": false,
+      "priority": 94,
+      "caption": "EEVEE · Komikaze (DoubleGum) · __melody_token_ice__",
+      "engine": "EEVEE",
+      "shader": "__melody_token_ice__",
+      "wave": 6,
+      "stage": "ephemeral"
+    },
+    {
+      "id": "vault_ribs_front",
+      "asset_id": "vault_ribs",
+      "title": "Vault Ribs — front",
+      "group": "ornament",
+      "filename": "vault_ribs_komikaze_front.png",
+      "web_path": "../generated/assets/ornaments/vault_ribs_komikaze_front.png",
+      "local_relative_path": "generated/assets/ornaments/vault_ribs_komikaze_front.png",
+      "hero_candidate": true,
+      "priority": 94,
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Vault Ribs",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "33,156"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "front"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/vault_ribs_passport.json",
+          "html": "generated/passports/vault_ribs_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "vault_ribs"
+      }
+    },
+    {
+      "id": "melody_token_water_back",
+      "asset_id": "melody_token_water",
+      "title": "Melody Token · Water — back",
+      "group": "melody_token",
+      "filename": "melody_token_water_komikaze_back.png",
+      "web_path": "../generated/assets/ornaments/melody_token_water_komikaze_back.png",
+      "local_relative_path": "generated/assets/ornaments/melody_token_water_komikaze_back.png",
+      "hero_candidate": false,
+      "priority": 93,
+      "caption": "EEVEE · Komikaze (DoubleGum) · __melody_token_ice__",
+      "engine": "EEVEE",
+      "shader": "__melody_token_ice__",
+      "wave": 6,
+      "stage": "ephemeral"
+    },
+    {
+      "id": "melody_token_water_front",
+      "asset_id": "melody_token_water",
+      "title": "Melody Token · Water — front",
+      "group": "melody_token",
+      "filename": "melody_token_water_komikaze_front.png",
+      "web_path": "../generated/assets/ornaments/melody_token_water_komikaze_front.png",
+      "local_relative_path": "generated/assets/ornaments/melody_token_water_komikaze_front.png",
+      "hero_candidate": true,
+      "priority": 93,
+      "caption": "EEVEE · Komikaze (DoubleGum) · __melody_token_ice__",
+      "engine": "EEVEE",
+      "shader": "__melody_token_ice__",
+      "wave": 6,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Melody Token · Water",
+        "category": "Prop / melody_token",
+        "version": "wave6",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "5,015,040"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · __melody_token_ice__"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "front"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/melody_token_water_passport.json",
+          "html": "generated/passports/melody_token_water_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "melody_token_water"
+      }
+    },
+    {
+      "id": "melody_token_water_macro",
+      "asset_id": "melody_token_water",
+      "title": "Melody Token · Water — macro",
+      "group": "melody_token",
+      "filename": "melody_token_water_komikaze_macro.png",
+      "web_path": "../generated/assets/ornaments/melody_token_water_komikaze_macro.png",
+      "local_relative_path": "generated/assets/ornaments/melody_token_water_komikaze_macro.png",
+      "hero_candidate": false,
+      "priority": 93,
+      "caption": "EEVEE · Komikaze (DoubleGum) · __melody_token_ice__",
+      "engine": "EEVEE",
+      "shader": "__melody_token_ice__",
+      "wave": 6,
+      "stage": "ephemeral"
+    },
+    {
+      "id": "torus_knot_three_quarter",
+      "asset_id": "torus_knot",
+      "title": "Torus Knot — three quarter",
+      "group": "ornament",
+      "filename": "torus_knot_komikaze_three_quarter.png",
+      "web_path": "../generated/assets/ornaments/torus_knot_komikaze_three_quarter.png",
+      "local_relative_path": "generated/assets/ornaments/torus_knot_komikaze_three_quarter.png",
+      "hero_candidate": true,
+      "priority": 93,
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Torus Knot",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "7,560"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "three_quarter"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/torus_knot_passport.json",
+          "html": "generated/passports/torus_knot_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "torus_knot"
+      }
+    },
+    {
+      "id": "corbel_macro",
+      "asset_id": "corbel",
+      "title": "Corbel Bracket — macro",
+      "group": "ornament",
+      "filename": "corbel_komikaze_macro.png",
+      "web_path": "../generated/assets/ornaments/corbel_komikaze_macro.png",
+      "local_relative_path": "generated/assets/ornaments/corbel_komikaze_macro.png",
+      "hero_candidate": false,
+      "priority": 92,
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral"
+    },
+    {
       "id": "gazebo_low_angle",
       "asset_id": "gazebo",
-      "title": "Melusina Gazebo \u2014 low angle",
+      "title": "Melusina Gazebo — low angle",
       "group": "signature",
       "filename": "gazebo_komikaze_low_angle.png",
       "web_path": "../generated/assets/signature/gazebo_komikaze_low_angle.png",
       "local_relative_path": "generated/assets/signature/gazebo_komikaze_low_angle.png",
       "hero_candidate": false,
       "priority": 92,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 2
     },
     {
+      "id": "crown_molding_front",
+      "asset_id": "crown_molding",
+      "title": "Crown Molding — front",
+      "group": "ornament",
+      "filename": "crown_molding_komikaze_front.png",
+      "web_path": "../generated/assets/ornaments/crown_molding_komikaze_front.png",
+      "local_relative_path": "generated/assets/ornaments/crown_molding_komikaze_front.png",
+      "hero_candidate": true,
+      "priority": 91,
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Crown Molding",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "60,620"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "front"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/crown_molding_passport.json",
+          "html": "generated/passports/crown_molding_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "crown_molding"
+      }
+    },
+    {
       "id": "filigree_ring_beauty_34",
       "asset_id": "filigree_ring",
-      "title": "Filigree Ring \u2014 beauty 34",
+      "title": "Filigree Ring — beauty 34",
       "group": "ornament",
       "filename": "filigree_ring_komikaze_beauty_34.png",
       "web_path": "../generated/assets/ornaments/filigree_ring_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/ornaments/filigree_ring_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 90,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Wood",
       "engine": "EEVEE",
       "shader": "Wood",
       "wave": 5
@@ -618,14 +1566,14 @@
     {
       "id": "gazebo1_three_quarter",
       "asset_id": "gazebo1",
-      "title": "Melusina Gazebo Variant \u2014 three quarter",
+      "title": "Melusina Gazebo Variant — three quarter",
       "group": "signature",
       "filename": "gazebo1_komikaze_three_quarter.png",
       "web_path": "../generated/assets/signature/gazebo1_komikaze_three_quarter.png",
       "local_relative_path": "generated/assets/signature/gazebo1_komikaze_three_quarter.png",
       "hero_candidate": true,
       "priority": 90,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 3
@@ -633,14 +1581,14 @@
     {
       "id": "rosette_beauty_34",
       "asset_id": "rosette",
-      "title": "Rosette Medallion \u2014 beauty 34",
+      "title": "Rosette Medallion — beauty 34",
       "group": "ornament",
       "filename": "rosette_komikaze_beauty_34.png",
       "web_path": "../generated/assets/ornaments/rosette_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/ornaments/rosette_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 88,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Wood",
       "engine": "EEVEE",
       "shader": "Wood",
       "wave": 5
@@ -648,14 +1596,14 @@
     {
       "id": "trefoil_macro",
       "asset_id": "trefoil",
-      "title": "Trefoil Knot \u2014 macro",
+      "title": "Trefoil Knot — macro",
       "group": "signature",
       "filename": "trefoil_komikaze_macro.png",
       "web_path": "../generated/assets/signature/trefoil_komikaze_macro.png",
       "local_relative_path": "generated/assets/signature/trefoil_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 88,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 3
@@ -663,14 +1611,14 @@
     {
       "id": "violin_front",
       "asset_id": "violin",
-      "title": "Melodia Violin \u2014 front",
+      "title": "Melodia Violin — front",
       "group": "props",
       "filename": "violin_komikaze_front.png",
       "web_path": "../generated/assets/props/violin_komikaze_front.png",
       "local_relative_path": "generated/assets/props/violin_komikaze_front.png",
       "hero_candidate": true,
       "priority": 86,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 4
@@ -678,14 +1626,14 @@
     {
       "id": "violin_macro",
       "asset_id": "violin",
-      "title": "Melodia Violin \u2014 macro",
+      "title": "Melodia Violin — macro",
       "group": "props",
       "filename": "violin_komikaze_macro.png",
       "web_path": "../generated/assets/props/violin_komikaze_macro.png",
       "local_relative_path": "generated/assets/props/violin_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 86,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 4
@@ -693,89 +1641,227 @@
     {
       "id": "violin_three_quarter",
       "asset_id": "violin",
-      "title": "Melodia Violin \u2014 three quarter",
+      "title": "Melodia Violin — three quarter",
       "group": "props",
       "filename": "violin_komikaze_three_quarter.png",
       "web_path": "../generated/assets/props/violin_komikaze_three_quarter.png",
       "local_relative_path": "generated/assets/props/violin_komikaze_three_quarter.png",
       "hero_candidate": true,
       "priority": 86,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 4
     },
     {
-      "id": "vault_ribs_beauty_34",
-      "asset_id": "vault_ribs",
-      "title": "Vault Ribs \u2014 beauty 34",
-      "group": "ornament",
-      "filename": "vault_ribs_komikaze_beauty_34.png",
-      "web_path": "../generated/assets/ornaments/vault_ribs_komikaze_beauty_34.png",
-      "local_relative_path": "generated/assets/ornaments/vault_ribs_komikaze_beauty_34.png",
-      "hero_candidate": false,
-      "priority": 84,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
-      "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
-    },
-    {
       "id": "gothic_tracery_beauty_34",
       "asset_id": "gothic_tracery",
-      "title": "Gothic Tracery \u2014 beauty 34",
+      "title": "Gothic Tracery — beauty 34",
       "group": "ornament",
       "filename": "gothic_tracery_komikaze_beauty_34.png",
       "web_path": "../generated/assets/ornaments/gothic_tracery_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/ornaments/gothic_tracery_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 83,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Gothic Tracery",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "13,304"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/gothic_tracery_passport.json",
+          "html": "generated/passports/gothic_tracery_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "gothic_tracery"
+      }
     },
     {
       "id": "oculus_frame_beauty_34",
       "asset_id": "oculus_frame",
-      "title": "Oculus Frame \u2014 beauty 34",
+      "title": "Oculus Frame — beauty 34",
       "group": "ornament",
       "filename": "oculus_frame_komikaze_beauty_34.png",
       "web_path": "../generated/assets/ornaments/oculus_frame_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/ornaments/oculus_frame_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 82,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Oculus Frame",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "5,728"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/oculus_frame_passport.json",
+          "html": "generated/passports/oculus_frame_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "oculus_frame"
+      }
     },
     {
       "id": "spiral_stair_beauty_34",
       "asset_id": "spiral_stair",
-      "title": "Spiral Staircase \u2014 beauty 34",
+      "title": "Spiral Staircase — beauty 34",
       "group": "ornament",
       "filename": "spiral_stair_komikaze_beauty_34.png",
       "web_path": "../generated/assets/ornaments/spiral_stair_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/ornaments/spiral_stair_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 81,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Spiral Staircase",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "13,608"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/spiral_stair_passport.json",
+          "html": "generated/passports/spiral_stair_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "spiral_stair"
+      }
     },
     {
       "id": "filigree_ring_macro",
       "asset_id": "filigree_ring",
-      "title": "Filigree Ring \u2014 macro",
+      "title": "Filigree Ring — macro",
       "group": "ornament",
       "filename": "filigree_ring_komikaze_macro.png",
       "web_path": "../generated/assets/ornaments/filigree_ring_komikaze_macro.png",
       "local_relative_path": "generated/assets/ornaments/filigree_ring_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 80,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Wood",
       "engine": "EEVEE",
       "shader": "Wood",
       "wave": 5
@@ -783,18 +1869,18 @@
     {
       "id": "zenlantern_beauty_34",
       "asset_id": "zenlantern",
-      "title": "Zen Lantern \u2014 beauty 34",
+      "title": "Zen Lantern — beauty 34",
       "group": "props",
       "filename": "zenlantern_komikaze_beauty_34.png",
       "web_path": "../generated/assets/props/zenlantern_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/props/zenlantern_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 80,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 1,
-      "stage": "Melodia_Portfolio_Stage",
+      "stage": "ephemeral",
       "passport": {
         "project": "Zen Lantern",
         "category": "Prop / props",
@@ -819,11 +1905,11 @@
           ],
           [
             "Shader",
-            "Komikaze \u00b7 Voronoi Shader (3 Tones)"
+            "Komikaze · Voronoi Shader (3 Tones)"
           ],
           [
             "Software",
-            "Blender \u00b7 Melodia Portfolio Stage"
+            "Blender · Melodia Portfolio Stage"
           ],
           [
             "Engine",
@@ -849,14 +1935,14 @@
     {
       "id": "magical_wand_beauty_34",
       "asset_id": "magical_wand",
-      "title": "Stylized Magical Wand \u2014 beauty 34",
+      "title": "Stylized Magical Wand — beauty 34",
       "group": "props",
       "filename": "magical_wand_komikaze_beauty_34.png",
       "web_path": "../generated/assets/props/magical_wand_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/props/magical_wand_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 78,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 1,
@@ -885,11 +1971,11 @@
           ],
           [
             "Shader",
-            "Komikaze \u00b7 Voronoi Shader (3 Tones)"
+            "Komikaze · Voronoi Shader (3 Tones)"
           ],
           [
             "Software",
-            "Blender \u00b7 Melodia Portfolio Stage"
+            "Blender · Melodia Portfolio Stage"
           ],
           [
             "Engine",
@@ -915,14 +2001,14 @@
     {
       "id": "rosette_three_quarter",
       "asset_id": "rosette",
-      "title": "Rosette Medallion \u2014 three quarter",
+      "title": "Rosette Medallion — three quarter",
       "group": "ornament",
       "filename": "rosette_komikaze_three_quarter.png",
       "web_path": "../generated/assets/ornaments/rosette_komikaze_three_quarter.png",
       "local_relative_path": "generated/assets/ornaments/rosette_komikaze_three_quarter.png",
       "hero_candidate": false,
       "priority": 78,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Wood",
       "engine": "EEVEE",
       "shader": "Wood",
       "wave": 5
@@ -930,14 +2016,14 @@
     {
       "id": "sakura_petal_beauty_34",
       "asset_id": "sakura_petal",
-      "title": "Sakura Petal \u2014 beauty 34",
+      "title": "Sakura Petal — beauty 34",
       "group": "props",
       "filename": "sakura_petal_komikaze_beauty_34.png",
       "web_path": "../generated/assets/props/sakura_petal_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/props/sakura_petal_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 77,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Tree Shader *",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Tree Shader *",
       "engine": "EEVEE",
       "shader": "Tree Shader *",
       "wave": 2,
@@ -966,11 +2052,11 @@
           ],
           [
             "Shader",
-            "Komikaze \u00b7 Tree Shader *"
+            "Komikaze · Tree Shader *"
           ],
           [
             "Software",
-            "Blender \u00b7 Melodia Portfolio Stage"
+            "Blender · Melodia Portfolio Stage"
           ],
           [
             "Engine",
@@ -996,14 +2082,14 @@
     {
       "id": "melody_slime_beauty_34",
       "asset_id": "melody_slime",
-      "title": "Melody Slime \u2014 beauty 34",
+      "title": "Melody Slime — beauty 34",
       "group": "props",
       "filename": "melody_slime_komikaze_beauty_34.png",
       "web_path": "../generated/assets/props/melody_slime_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/props/melody_slime_komikaze_beauty_34.png",
       "hero_candidate": true,
       "priority": 76,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Tree Shader *",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Tree Shader *",
       "engine": "EEVEE",
       "shader": "Tree Shader *",
       "wave": 2
@@ -1011,29 +2097,80 @@
     {
       "id": "rose_window_front",
       "asset_id": "rose_window",
-      "title": "Rose Window 8-Petal \u2014 front",
+      "title": "Rose Window 8-Petal — front",
       "group": "ornament",
       "filename": "rose_window_komikaze_front.png",
       "web_path": "../generated/assets/ornaments/rose_window_komikaze_front.png",
       "local_relative_path": "generated/assets/ornaments/rose_window_komikaze_front.png",
       "hero_candidate": false,
       "priority": 76,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Rose Window 8-Petal",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "15,712"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "front"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/rose_window_passport.json",
+          "html": "generated/passports/rose_window_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "rose_window"
+      }
     },
     {
       "id": "brick1_beauty_34",
       "asset_id": "brick1",
-      "title": "Stylized Brick 01 (game) \u2014 beauty 34",
+      "title": "Stylized Brick 01 (game) — beauty 34",
       "group": "props",
       "filename": "brick1_komikaze_beauty_34.png",
       "web_path": "../generated/assets/props/brick1_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/props/brick1_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 75,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 2
@@ -1041,44 +2178,29 @@
     {
       "id": "brick1_high_beauty_34",
       "asset_id": "brick1_high",
-      "title": "Stylized Brick 01 (high) \u2014 beauty 34",
+      "title": "Stylized Brick 01 (high) — beauty 34",
       "group": "props",
       "filename": "brick1_high_komikaze_beauty_34.png",
       "web_path": "../generated/assets/props/brick1_high_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/props/brick1_high_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 74,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 2
     },
     {
-      "id": "vault_ribs_front",
-      "asset_id": "vault_ribs",
-      "title": "Vault Ribs \u2014 front",
-      "group": "ornament",
-      "filename": "vault_ribs_komikaze_front.png",
-      "web_path": "../generated/assets/ornaments/vault_ribs_komikaze_front.png",
-      "local_relative_path": "generated/assets/ornaments/vault_ribs_komikaze_front.png",
-      "hero_candidate": false,
-      "priority": 74,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
-      "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
-    },
-    {
       "id": "brick2_high_beauty_34",
       "asset_id": "brick2_high",
-      "title": "Stylized Brick 02 (high) \u2014 beauty 34",
+      "title": "Stylized Brick 02 (high) — beauty 34",
       "group": "props",
       "filename": "brick2_high_komikaze_beauty_34.png",
       "web_path": "../generated/assets/props/brick2_high_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/props/brick2_high_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 73,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 2
@@ -1086,78 +2208,198 @@
     {
       "id": "gothic_tracery_macro",
       "asset_id": "gothic_tracery",
-      "title": "Gothic Tracery \u2014 macro",
+      "title": "Gothic Tracery — macro",
       "group": "ornament",
       "filename": "gothic_tracery_komikaze_macro.png",
       "web_path": "../generated/assets/ornaments/gothic_tracery_komikaze_macro.png",
       "local_relative_path": "generated/assets/ornaments/gothic_tracery_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 73,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral"
     },
     {
       "id": "oculus_frame_front",
       "asset_id": "oculus_frame",
-      "title": "Oculus Frame \u2014 front",
+      "title": "Oculus Frame — front",
       "group": "ornament",
       "filename": "oculus_frame_komikaze_front.png",
       "web_path": "../generated/assets/ornaments/oculus_frame_komikaze_front.png",
       "local_relative_path": "generated/assets/ornaments/oculus_frame_komikaze_front.png",
       "hero_candidate": false,
       "priority": 72,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Oculus Frame",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "5,728"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "front"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/oculus_frame_passport.json",
+          "html": "generated/passports/oculus_frame_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "oculus_frame"
+      }
     },
     {
       "id": "spiral_stair_low_angle",
       "asset_id": "spiral_stair",
-      "title": "Spiral Staircase \u2014 low angle",
+      "title": "Spiral Staircase — low angle",
       "group": "ornament",
       "filename": "spiral_stair_komikaze_low_angle.png",
       "web_path": "../generated/assets/ornaments/spiral_stair_komikaze_low_angle.png",
       "local_relative_path": "generated/assets/ornaments/spiral_stair_komikaze_low_angle.png",
       "hero_candidate": false,
       "priority": 71,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral"
     },
     {
       "id": "woven_ring_beauty_34",
       "asset_id": "woven_ring",
-      "title": "Woven Ring \u2014 beauty 34",
+      "title": "Woven Ring — beauty 34",
       "group": "ornament",
       "filename": "woven_ring_komikaze_beauty_34.png",
       "web_path": "../generated/assets/ornaments/woven_ring_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/ornaments/woven_ring_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 70,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Woven Ring",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "13,572"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/woven_ring_passport.json",
+          "html": "generated/passports/woven_ring_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "woven_ring"
+      }
     },
     {
-      "id": "zenlantern_three_quarter",
+      "id": "zenlantern_back",
       "asset_id": "zenlantern",
-      "title": "Zen Lantern \u2014 three quarter",
+      "title": "Zen Lantern — back",
       "group": "props",
-      "filename": "zenlantern_komikaze_three_quarter.png",
-      "web_path": "../generated/assets/props/zenlantern_komikaze_three_quarter.png",
-      "local_relative_path": "generated/assets/props/zenlantern_komikaze_three_quarter.png",
-      "hero_candidate": true,
+      "filename": "zenlantern_komikaze_back.png",
+      "web_path": "../generated/assets/props/zenlantern_komikaze_back.png",
+      "local_relative_path": "generated/assets/props/zenlantern_komikaze_back.png",
+      "hero_candidate": false,
       "priority": 70,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 1,
-      "stage": "Melodia_Portfolio_Stage",
+      "stage": "ephemeral"
+    },
+    {
+      "id": "zenlantern_front",
+      "asset_id": "zenlantern",
+      "title": "Zen Lantern — front",
+      "group": "props",
+      "filename": "zenlantern_komikaze_front.png",
+      "web_path": "../generated/assets/props/zenlantern_komikaze_front.png",
+      "local_relative_path": "generated/assets/props/zenlantern_komikaze_front.png",
+      "hero_candidate": true,
+      "priority": 70,
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 1,
+      "stage": "ephemeral",
       "passport": {
         "project": "Zen Lantern",
         "category": "Prop / props",
@@ -1182,11 +2424,77 @@
           ],
           [
             "Shader",
-            "Komikaze \u00b7 Voronoi Shader (3 Tones)"
+            "Komikaze · Voronoi Shader (3 Tones)"
           ],
           [
             "Software",
-            "Blender \u00b7 Melodia Portfolio Stage"
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "front"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/zenlantern_passport.json",
+          "html": "generated/passports/zenlantern_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "zenlantern"
+      }
+    },
+    {
+      "id": "zenlantern_three_quarter",
+      "asset_id": "zenlantern",
+      "title": "Zen Lantern — three quarter",
+      "group": "props",
+      "filename": "zenlantern_komikaze_three_quarter.png",
+      "web_path": "../generated/assets/props/zenlantern_komikaze_three_quarter.png",
+      "local_relative_path": "generated/assets/props/zenlantern_komikaze_three_quarter.png",
+      "hero_candidate": true,
+      "priority": 70,
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
+      "engine": "EEVEE",
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 1,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Zen Lantern",
+        "category": "Prop / props",
+        "version": "wave1",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "8,277,956"
+          ],
+          [
+            "Meshes",
+            "6"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
           ],
           [
             "Engine",
@@ -1210,31 +2518,16 @@
       }
     },
     {
-      "id": "torus_knot_beauty_34",
-      "asset_id": "torus_knot",
-      "title": "Torus Knot \u2014 beauty 34",
-      "group": "ornament",
-      "filename": "torus_knot_komikaze_beauty_34.png",
-      "web_path": "../generated/assets/ornaments/torus_knot_komikaze_beauty_34.png",
-      "local_relative_path": "generated/assets/ornaments/torus_knot_komikaze_beauty_34.png",
-      "hero_candidate": false,
-      "priority": 69,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
-      "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
-    },
-    {
       "id": "magical_wand_macro",
       "asset_id": "magical_wand",
-      "title": "Stylized Magical Wand \u2014 macro",
+      "title": "Stylized Magical Wand — macro",
       "group": "props",
       "filename": "magical_wand_komikaze_macro.png",
       "web_path": "../generated/assets/props/magical_wand_komikaze_macro.png",
       "local_relative_path": "generated/assets/props/magical_wand_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 68,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Voronoi Shader (3 Tones)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
       "shader": "Voronoi Shader (3 Tones)",
       "wave": 1,
@@ -1243,44 +2536,146 @@
     {
       "id": "quatrefoil_beauty_34",
       "asset_id": "quatrefoil",
-      "title": "Quatrefoil Arch \u2014 beauty 34",
+      "title": "Quatrefoil Arch — beauty 34",
       "group": "ornament",
       "filename": "quatrefoil_komikaze_beauty_34.png",
       "web_path": "../generated/assets/ornaments/quatrefoil_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/ornaments/quatrefoil_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 68,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Quatrefoil Arch",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "10,008"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/quatrefoil_passport.json",
+          "html": "generated/passports/quatrefoil_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "quatrefoil"
+      }
     },
     {
       "id": "pendant_finial_beauty_34",
       "asset_id": "pendant_finial",
-      "title": "Pendant Finial \u2014 beauty 34",
+      "title": "Pendant Finial — beauty 34",
       "group": "ornament",
       "filename": "pendant_finial_komikaze_beauty_34.png",
       "web_path": "../generated/assets/ornaments/pendant_finial_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/ornaments/pendant_finial_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 67,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Pendant Finial",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "4,844"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/pendant_finial_passport.json",
+          "html": "generated/passports/pendant_finial_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "pendant_finial"
+      }
     },
     {
       "id": "sakura_petal_macro",
       "asset_id": "sakura_petal",
-      "title": "Sakura Petal \u2014 macro",
+      "title": "Sakura Petal — macro",
       "group": "props",
       "filename": "sakura_petal_komikaze_macro.png",
       "web_path": "../generated/assets/props/sakura_petal_komikaze_macro.png",
       "local_relative_path": "generated/assets/props/sakura_petal_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 67,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Tree Shader *",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Tree Shader *",
       "engine": "EEVEE",
       "shader": "Tree Shader *",
       "wave": 2,
@@ -1289,29 +2684,80 @@
     {
       "id": "door_archway_beauty_34",
       "asset_id": "door_archway",
-      "title": "Door Archway \u2014 beauty 34",
+      "title": "Door Archway — beauty 34",
       "group": "ornament",
       "filename": "door_archway_komikaze_beauty_34.png",
       "web_path": "../generated/assets/ornaments/door_archway_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/ornaments/door_archway_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 66,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Door Archway",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "4,616"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/door_archway_passport.json",
+          "html": "generated/passports/door_archway_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "door_archway"
+      }
     },
     {
       "id": "melody_slime_macro",
       "asset_id": "melody_slime",
-      "title": "Melody Slime \u2014 macro",
+      "title": "Melody Slime — macro",
       "group": "props",
       "filename": "melody_slime_komikaze_macro.png",
       "web_path": "../generated/assets/props/melody_slime_komikaze_macro.png",
       "local_relative_path": "generated/assets/props/melody_slime_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 66,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Tree Shader *",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Tree Shader *",
       "engine": "EEVEE",
       "shader": "Tree Shader *",
       "wave": 2
@@ -1319,14 +2765,14 @@
     {
       "id": "brick1_macro",
       "asset_id": "brick1",
-      "title": "Stylized Brick 01 (game) \u2014 macro",
+      "title": "Stylized Brick 01 (game) — macro",
       "group": "props",
       "filename": "brick1_komikaze_macro.png",
       "web_path": "../generated/assets/props/brick1_komikaze_macro.png",
       "local_relative_path": "generated/assets/props/brick1_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 65,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 2
@@ -1334,197 +2780,328 @@
     {
       "id": "column_capital_beauty_34",
       "asset_id": "column_capital",
-      "title": "Column Capital \u2014 beauty 34",
+      "title": "Column Capital — beauty 34",
       "group": "ornament",
       "filename": "column_capital_komikaze_beauty_34.png",
       "web_path": "../generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
       "local_relative_path": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
       "hero_candidate": false,
       "priority": 65,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Column Capital",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "4,844"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "beauty_34"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/column_capital_passport.json",
+          "html": "generated/passports/column_capital_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "column_capital"
+      }
     },
     {
       "id": "brick1_high_macro",
       "asset_id": "brick1_high",
-      "title": "Stylized Brick 01 (high) \u2014 macro",
+      "title": "Stylized Brick 01 (high) — macro",
       "group": "props",
       "filename": "brick1_high_komikaze_macro.png",
       "web_path": "../generated/assets/props/brick1_high_komikaze_macro.png",
       "local_relative_path": "generated/assets/props/brick1_high_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 64,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 2
     },
     {
-      "id": "corbel_beauty_34",
-      "asset_id": "corbel",
-      "title": "Corbel Bracket \u2014 beauty 34",
-      "group": "ornament",
-      "filename": "corbel_komikaze_beauty_34.png",
-      "web_path": "../generated/assets/ornaments/corbel_komikaze_beauty_34.png",
-      "local_relative_path": "generated/assets/ornaments/corbel_komikaze_beauty_34.png",
-      "hero_candidate": false,
-      "priority": 64,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
-      "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
-    },
-    {
       "id": "brick2_high_three_quarter",
       "asset_id": "brick2_high",
-      "title": "Stylized Brick 02 (high) \u2014 three quarter",
+      "title": "Stylized Brick 02 (high) — three quarter",
       "group": "props",
       "filename": "brick2_high_komikaze_three_quarter.png",
       "web_path": "../generated/assets/props/brick2_high_komikaze_three_quarter.png",
       "local_relative_path": "generated/assets/props/brick2_high_komikaze_three_quarter.png",
       "hero_candidate": false,
       "priority": 63,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 The Wall (Custom Texture)",
+      "caption": "EEVEE · Komikaze (DoubleGum) · The Wall (Custom Texture)",
       "engine": "EEVEE",
       "shader": "The Wall (Custom Texture)",
       "wave": 2
     },
     {
-      "id": "crown_molding_beauty_34",
-      "asset_id": "crown_molding",
-      "title": "Crown Molding \u2014 beauty 34",
-      "group": "ornament",
-      "filename": "crown_molding_komikaze_beauty_34.png",
-      "web_path": "../generated/assets/ornaments/crown_molding_komikaze_beauty_34.png",
-      "local_relative_path": "generated/assets/ornaments/crown_molding_komikaze_beauty_34.png",
-      "hero_candidate": false,
-      "priority": 63,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
-      "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
-    },
-    {
       "id": "woven_ring_macro",
       "asset_id": "woven_ring",
-      "title": "Woven Ring \u2014 macro",
+      "title": "Woven Ring — macro",
       "group": "ornament",
       "filename": "woven_ring_komikaze_macro.png",
       "web_path": "../generated/assets/ornaments/woven_ring_komikaze_macro.png",
       "local_relative_path": "generated/assets/ornaments/woven_ring_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 60,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
-    },
-    {
-      "id": "torus_knot_three_quarter",
-      "asset_id": "torus_knot",
-      "title": "Torus Knot \u2014 three quarter",
-      "group": "ornament",
-      "filename": "torus_knot_komikaze_three_quarter.png",
-      "web_path": "../generated/assets/ornaments/torus_knot_komikaze_three_quarter.png",
-      "local_relative_path": "generated/assets/ornaments/torus_knot_komikaze_three_quarter.png",
-      "hero_candidate": false,
-      "priority": 59,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
-      "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral"
     },
     {
       "id": "quatrefoil_front",
       "asset_id": "quatrefoil",
-      "title": "Quatrefoil Arch \u2014 front",
+      "title": "Quatrefoil Arch — front",
       "group": "ornament",
       "filename": "quatrefoil_komikaze_front.png",
       "web_path": "../generated/assets/ornaments/quatrefoil_komikaze_front.png",
       "local_relative_path": "generated/assets/ornaments/quatrefoil_komikaze_front.png",
       "hero_candidate": false,
       "priority": 58,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Quatrefoil Arch",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "10,008"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "front"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/quatrefoil_passport.json",
+          "html": "generated/passports/quatrefoil_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "quatrefoil"
+      }
     },
     {
       "id": "pendant_finial_macro",
       "asset_id": "pendant_finial",
-      "title": "Pendant Finial \u2014 macro",
+      "title": "Pendant Finial — macro",
       "group": "ornament",
       "filename": "pendant_finial_komikaze_macro.png",
       "web_path": "../generated/assets/ornaments/pendant_finial_komikaze_macro.png",
       "local_relative_path": "generated/assets/ornaments/pendant_finial_komikaze_macro.png",
       "hero_candidate": false,
       "priority": 57,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral"
     },
     {
       "id": "door_archway_front",
       "asset_id": "door_archway",
-      "title": "Door Archway \u2014 front",
+      "title": "Door Archway — front",
       "group": "ornament",
       "filename": "door_archway_komikaze_front.png",
       "web_path": "../generated/assets/ornaments/door_archway_komikaze_front.png",
       "local_relative_path": "generated/assets/ornaments/door_archway_komikaze_front.png",
       "hero_candidate": false,
       "priority": 56,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Door Archway",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "4,616"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "front"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/door_archway_passport.json",
+          "html": "generated/passports/door_archway_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "door_archway"
+      }
     },
     {
       "id": "column_capital_three_quarter",
       "asset_id": "column_capital",
-      "title": "Column Capital \u2014 three quarter",
+      "title": "Column Capital — three quarter",
       "group": "ornament",
       "filename": "column_capital_komikaze_three_quarter.png",
       "web_path": "../generated/assets/ornaments/column_capital_komikaze_three_quarter.png",
       "local_relative_path": "generated/assets/ornaments/column_capital_komikaze_three_quarter.png",
       "hero_candidate": false,
       "priority": 55,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
+      "caption": "EEVEE · Komikaze (DoubleGum) · Voronoi Shader (3 Tones)",
       "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
-    },
-    {
-      "id": "corbel_macro",
-      "asset_id": "corbel",
-      "title": "Corbel Bracket \u2014 macro",
-      "group": "ornament",
-      "filename": "corbel_komikaze_macro.png",
-      "web_path": "../generated/assets/ornaments/corbel_komikaze_macro.png",
-      "local_relative_path": "generated/assets/ornaments/corbel_komikaze_macro.png",
-      "hero_candidate": false,
-      "priority": 54,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
-      "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
-    },
-    {
-      "id": "crown_molding_front",
-      "asset_id": "crown_molding",
-      "title": "Crown Molding \u2014 front",
-      "group": "ornament",
-      "filename": "crown_molding_komikaze_front.png",
-      "web_path": "../generated/assets/ornaments/crown_molding_komikaze_front.png",
-      "local_relative_path": "generated/assets/ornaments/crown_molding_komikaze_front.png",
-      "hero_candidate": false,
-      "priority": 53,
-      "caption": "EEVEE \u00b7 Komikaze (DoubleGum) \u00b7 Wood",
-      "engine": "EEVEE",
-      "shader": "Wood",
-      "wave": 5
+      "shader": "Voronoi Shader (3 Tones)",
+      "wave": 5,
+      "stage": "ephemeral",
+      "passport": {
+        "project": "Column Capital",
+        "category": "Prop / ornament",
+        "version": "wave5",
+        "theme": "dark",
+        "rows": [
+          [
+            "Triangles",
+            "4,844"
+          ],
+          [
+            "Meshes",
+            "1"
+          ],
+          [
+            "Materials",
+            "1"
+          ],
+          [
+            "Textures",
+            "0"
+          ],
+          [
+            "Shader",
+            "Komikaze · Voronoi Shader (3 Tones)"
+          ],
+          [
+            "Software",
+            "Blender · Melodia Portfolio Stage"
+          ],
+          [
+            "Engine",
+            "Blender EEVEE"
+          ],
+          [
+            "Capture",
+            "three_quarter"
+          ],
+          [
+            "Date",
+            "2026-07"
+          ]
+        ],
+        "paths": {
+          "json": "generated/passports/column_capital_passport.json",
+          "html": "generated/passports/column_capital_passport.html",
+          "config": "generated/passport_config.json"
+        },
+        "asset_id": "column_capital"
+      }
     }
   ]
 }

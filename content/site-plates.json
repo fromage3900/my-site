@@ -1,61 +1,57 @@
 {
   "version": 1,
-  "notes": "Named plate slots — edit with Tools/assign_plate.py or by hand. Paths are relative to my-site-clean/wix/. 2026-07-15: EEVEE glam AudVis wave promoted.",
+  "notes": "Named plate slots — edit with Tools/assign_plate.py or by hand. Paths relative to my-site-clean/wix/. Jewelry plate killed (was content-dup of beauty). glam_03 removed (bit-identical to beauty). Melusina back deferred until Cam_Back. Wireframe greys from 2026-07-15.",
   "slots": {
     "index.hero": {
-      "path": "../generated/assets/character/melusina_beauty_eevee_20260715_01.png",
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
       "alt": "Melusina — EEVEE glam beauty, Melodia Portfolio Stage"
     },
     "recruiter.hero": {
-      "path": "../generated/assets/character/melusina_beauty_eevee_20260715_01.png",
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
       "alt": "Melusina — EEVEE glam beauty, Melodia Portfolio Stage"
     },
     "hub.melusina": {
-      "path": "../generated/assets/character/melusina_beauty_eevee_20260715_01.png",
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
       "alt": "Melusina"
     },
     "hub.melusina_secondary": {
-      "path": "../generated/assets/character/melusina_eevee_glam_20260715_05.png",
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715c_05.png",
       "alt": "Melusina glam portrait"
     },
     "stage.beauty": {
-      "path": "../generated/assets/character/melusina_beauty_eevee_20260715_01.png",
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
       "alt": "Hero beauty · EEVEE glam"
     },
     "stage.front": {
-      "path": "../generated/assets/character/melusina_eevee_glam_20260715_02.png",
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715c_02.png",
       "alt": "Glam bust · EEVEE"
     },
-    "stage.jewelry": {
-      "path": "../generated/assets/character/melusina_eevee_glam_20260715_03.png",
-      "alt": "Glam three-quarter · EEVEE"
+    "stage.wire_front": {
+      "path": "../generated/assets/character/melusina_front_wireframe_grey_20260715.png",
+      "alt": "Melusina front · grey wireframe"
+    },
+    "stage.wire_34": {
+      "path": "../generated/assets/character/melusina_34_wireframe_grey_20260715.png",
+      "alt": "Melusina three-quarter · grey wireframe"
     },
     "stage.silhouette": {
-      "path": "../generated/assets/character/hero_20260712/melusina_hero_silhouette_silhouette.png",
-      "alt": "Silhouette"
-    },
-    "stage.diorama": {
-      "path": "../generated/assets/character/melusina_diorama_beauty.png",
-      "alt": "Diorama postcard"
+      "path": "../generated/assets/character/melusina_34_wireframe_grey_20260715.png",
+      "alt": "Melusina topology stand-in (true silhouette / back plate still pending)"
     },
     "melusina.glam_01": {
-      "path": "../generated/assets/character/melusina_eevee_glam_20260715_01.png",
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715c_01.png",
       "alt": "Melusina glam full · EEVEE"
     },
     "melusina.glam_02": {
-      "path": "../generated/assets/character/melusina_eevee_glam_20260715_02.png",
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715c_02.png",
       "alt": "Melusina glam bust · EEVEE"
     },
-    "melusina.glam_03": {
-      "path": "../generated/assets/character/melusina_eevee_glam_20260715_03.png",
-      "alt": "Melusina glam portrait · EEVEE"
-    },
     "melusina.glam_04": {
-      "path": "../generated/assets/character/melusina_eevee_glam_20260715_04.png",
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715c_04.png",
       "alt": "Melusina glam close · EEVEE"
     },
     "melusina.glam_05": {
-      "path": "../generated/assets/character/melusina_eevee_glam_20260715_05.png",
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715c_05.png",
       "alt": "Melusina glam three-quarter · EEVEE"
     },
     "sakura.hero": {
@@ -69,6 +65,58 @@
     "hub.sakura": {
       "path": "../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png",
       "alt": "Sakura Path"
+    },
+    "resume.hero": {
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "alt": "Melusina — EEVEE glam beauty, Melodia Portfolio Stage"
+    },
+    "cross.hero": {
+      "path": "../generated/assets/cross/cross_komikaze_beauty_34.png",
+      "alt": "Melusina Vow Cross — EEVEE glam beauty"
+    },
+    "zenlantern.hero": {
+      "path": "../generated/assets/props/zenlantern_komikaze_beauty_34.png",
+      "alt": "Zen Lantern — EEVEE glam beauty"
+    },
+    "zenlantern.front": {
+      "path": "../generated/assets/props/zenlantern_komikaze_front.png",
+      "alt": "Zen Lantern — EEVEE glam front"
+    },
+    "zenlantern.back": {
+      "path": "../generated/assets/props/zenlantern_komikaze_back.png",
+      "alt": "Zen Lantern — EEVEE glam back"
+    },
+    "cross.back": {
+      "path": "../generated/assets/cross/cross_komikaze_back.png",
+      "alt": "Melusina Vow Cross — back"
+    },
+    "melody.heart": {
+      "path": "../generated/assets/sculpt/sculpt_melodytoken_heart_01.png",
+      "alt": "Melody Token · heart clay"
+    },
+    "melody.star": {
+      "path": "../generated/assets/sculpt/sculpt_melodytoken_star.png",
+      "alt": "Melody Token · star gem clay"
+    },
+    "melody.swirl": {
+      "path": "../generated/assets/sculpt/sculpt_melodytoken_swirl.png",
+      "alt": "Melody Token · swirl clay"
+    },
+    "melody.water": {
+      "path": "../generated/assets/sculpt/sculpt_melodytoken_water.png",
+      "alt": "Melody Token · water citrus clay"
+    },
+    "melody.star_glam": {
+      "path": "../generated/assets/ornaments/melody_token_star_komikaze_beauty_34.png",
+      "alt": "Melody Token · star EEVEE ice glam"
+    },
+    "melody.swirl_glam": {
+      "path": "../generated/assets/ornaments/melody_token_swirl_komikaze_beauty_34.png",
+      "alt": "Melody Token · swirl EEVEE ice glam"
+    },
+    "melody.water_glam": {
+      "path": "../generated/assets/ornaments/melody_token_water_komikaze_beauty_34.png",
+      "alt": "Melody Token · water EEVEE ice glam"
     }
   }
 }

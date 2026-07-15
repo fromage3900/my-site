@@ -5,17 +5,20 @@
   const PASSPORT_URL = '../generated/passports/melusina_passport.json';
   const PASSPORT_HTML = '../generated/passports/melusina_passport.html';
   const PLATES_URL = '../content/site-plates.json';
-  const COLOR_URL = '../generated/assets/character/melusina_diorama_beauty.png';
+  const LOOPS_URL = '../generated/character_loops_manifest.json';
   const DEPTH_URL = '../generated/assets/character/melusina_beauty_depth_color.png';
   const INTAKE_URL = '../generated/blender_portfolio_intake.json';
 
   // Fallbacks until site-plates.json loads
-  let BEAUTY_URL = '../generated/assets/character/melusina_beauty_eevee_20260715_01.png';
-  let FULL_BEAUTY_URL = BEAUTY_URL;
+  let BEAUTY_URL = '../generated/assets/character/melusina_beauty_eevee_20260715c_01.png';
   let HERO_BEAUTY = BEAUTY_URL;
-  let HERO_FRONT = '../generated/assets/character/melusina_eevee_glam_20260715_02.png';
-  let HERO_JEWELRY = '../generated/assets/character/melusina_eevee_glam_20260715_03.png';
-  let HERO_SILHOUETTE = '../generated/assets/character/hero_20260712/melusina_hero_silhouette_silhouette.png';
+  let HERO_FRONT = '../generated/assets/character/melusina_eevee_glam_20260715c_02.png';
+  let HERO_WIRE_FRONT = '../generated/assets/character/melusina_front_wireframe_grey_20260715.png';
+  let HERO_WIRE_34 = '../generated/assets/character/melusina_34_wireframe_grey_20260715.png';
+  let HERO_GLAM_CLOSE = '../generated/assets/character/melusina_eevee_glam_20260715c_04.png';
+  let HERO_GLAM_34 = '../generated/assets/character/melusina_eevee_glam_20260715c_05.png';
+  let HERO_SILHOUETTE = ''; // retired wrong medallion plate
+  // HERO_DIORAMA retired from public plate strip (Miraland postcard)
 
   function esc(value) {
     return String(value == null ? '' : value)
@@ -38,14 +41,12 @@
       if (s['stage.beauty'] && s['stage.beauty'].path) {
         HERO_BEAUTY = s['stage.beauty'].path;
         BEAUTY_URL = HERO_BEAUTY;
-        FULL_BEAUTY_URL = HERO_BEAUTY;
       }
       if (s['stage.front'] && s['stage.front'].path) HERO_FRONT = s['stage.front'].path;
-      if (s['stage.jewelry'] && s['stage.jewelry'].path) HERO_JEWELRY = s['stage.jewelry'].path;
-      if (s['stage.silhouette'] && s['stage.silhouette'].path) HERO_SILHOUETTE = s['stage.silhouette'].path;
-      if (s['stage.diorama'] && s['stage.diorama'].path) {
-        /* diorama used in strip */
-      }
+      if (s['stage.wire_front'] && s['stage.wire_front'].path) HERO_WIRE_FRONT = s['stage.wire_front'].path;
+      if (s['stage.wire_34'] && s['stage.wire_34'].path) HERO_WIRE_34 = s['stage.wire_34'].path;
+      if (s['melusina.glam_04'] && s['melusina.glam_04'].path) HERO_GLAM_CLOSE = s['melusina.glam_04'].path;
+      if (s['melusina.glam_05'] && s['melusina.glam_05'].path) HERO_GLAM_34 = s['melusina.glam_05'].path;
     } catch (_err) {
       /* keep fallbacks */
     }
@@ -124,36 +125,94 @@
     );
   }
 
+  async function hydrateHairLoop() {
+    const mount = document.getElementById('stageHairLoop');
+    if (!mount) return;
+    const video = mount.querySelector('video');
+    const caption = mount.querySelector('figcaption');
+    try {
+      const data = await fetchJson(LOOPS_URL);
+      const entry = (data.entries || []).find((e) => e.status === 'web_ready' && e.webm_path) ||
+        (data.entries || [])[0];
+      if (!entry || !entry.webm_path) {
+        mount.hidden = true;
+        return;
+      }
+      if (video) {
+        if (entry.poster) video.setAttribute('poster', entry.poster);
+        video.src = entry.webm_path;
+      }
+      if (caption) {
+        const label = entry.label || 'Hair loop';
+        const meta = [
+          entry.frame_count ? `${entry.frame_count} frames` : null,
+          entry.fps ? `${entry.fps}fps` : null,
+          entry.duration_sec ? `${entry.duration_sec}s` : null,
+        ]
+          .filter(Boolean)
+          .join(' · ');
+        caption.innerHTML =
+          `<span class="meta-label">${esc(label)}</span>` +
+          `<strong>${esc(meta || 'EEVEE loop')}</strong>` +
+          `<p>${esc(entry.caption || '')}</p>`;
+      }
+      mount.hidden = false;
+    } catch (_err) {
+      /* keep static markup fallback */
+    }
+  }
+
   async function hydratePlateStrip() {
     const mount = document.getElementById('stagePlateStrip');
     if (!mount) return;
     await loadPlateSlots();
-    // No bangs card. Do not append solid mauve *_001 blanks.
+    // Unique plates only — no jewelry, no diorama postcard, no legacy beauty_34.
     const heroPack = [
-      { web_path: HERO_BEAUTY, title: 'Hero beauty · Nikki' },
-      { web_path: HERO_FRONT, title: 'Front · Nikki' },
-      { web_path: HERO_JEWELRY, title: 'Three-quarter · Jewelry' },
-      { web_path: FULL_BEAUTY_URL, title: 'Beauty · Stage v7' },
-      { web_path: HERO_SILHOUETTE, title: 'Silhouette' },
-      { web_path: COLOR_URL, title: 'Diorama postcard' },
+      { web_path: HERO_BEAUTY, title: 'Hero beauty · EEVEE' },
+      { web_path: HERO_FRONT, title: 'Glam bust · EEVEE' },
+      { web_path: HERO_GLAM_CLOSE, title: 'Glam close · EEVEE' },
+      { web_path: HERO_GLAM_34, title: 'Glam three-quarter · EEVEE' },
+      { web_path: HERO_WIRE_FRONT, title: 'Wireframe · front grey' },
+      { web_path: HERO_WIRE_34, title: 'Wireframe · ¾ grey' },
     ];
-    let cards = heroPack;
+    const seen = new Set();
+    const deny = [
+      '_001.png',
+      'mauve',
+      '/hero_sim/',
+      'bangs',
+      'profile_bangs',
+      'glam_20260715c_03',
+      'jewelry',
+      'sculpt_melusina',
+      '20260714',
+      'silhouette_silhouette',
+      'diorama',
+      'melusina_eevee_beauty_34',
+      'melusina_beauty_34',
+    ];
+    let cards = [];
+    for (const c of heroPack) {
+      const path = c.web_path;
+      if (!path || seen.has(path)) continue;
+      if (deny.some((d) => String(path).toLowerCase().includes(d))) continue;
+      cards.push(c);
+      seen.add(path);
+    }
     try {
       const intake = await fetchJson(INTAKE_URL);
       const mel = (intake.render_cards || []).filter(
         (c) => c.asset_id === 'melusina' || String(c.id || '').startsWith('melusina')
       );
-      if (mel.length) {
-        const seen = new Set(cards.map((c) => c.web_path));
-        const deny = ['_001.png', 'mauve', '/hero_sim/', 'bangs', 'profile_bangs'];
-        for (const c of mel) {
-          const path = c.web_path;
-          if (!path || seen.has(path)) continue;
-          if (deny.some((d) => String(path).toLowerCase().includes(d))) continue;
-          cards.push({ web_path: path, title: c.title || c.filename });
-          seen.add(path);
-          if (cards.length >= 8) break;
-        }
+      for (const c of mel) {
+        const path = c.web_path;
+        const title = String(c.title || c.filename || '');
+        if (!path || seen.has(path)) continue;
+        if (deny.some((d) => String(path).toLowerCase().includes(d))) continue;
+        if (/diorama/i.test(title) || /beauty\s*34/i.test(title)) continue;
+        cards.push({ web_path: path, title: title || c.filename });
+        seen.add(path);
+        if (cards.length >= 8) break;
       }
     } catch (_err) {
       /* use heroPack */
@@ -172,6 +231,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     hydratePassport();
     hydrateDepthTilt();
+    hydrateHairLoop();
     hydratePlateStrip();
   });
 })();
