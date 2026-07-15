@@ -6,8 +6,8 @@
   const PASSPORT_HTML = '../generated/passports/melusina_passport.html';
   const PLATES_URL = '../content/site-plates.json';
   const LOOPS_URL = '../generated/character_loops_manifest.json';
-  const DEPTH_URL = '../generated/assets/character/melusina_beauty_depth_color.png';
   const INTAKE_URL = '../generated/blender_portfolio_intake.json';
+  // Legacy Miraland T-pose postcard (melusina_beauty_depth_color / melusina_diorama_beauty) retired.
 
   // Fallbacks until site-plates.json loads
   let BEAUTY_URL = '../generated/assets/character/melusina_beauty_eevee_20260715c_01.png';
@@ -100,8 +100,25 @@
   function hydrateDepthTilt() {
     const root = document.getElementById('stageDepthTilt');
     if (!root) return;
-    const color = root.querySelector('[data-depth-color]') || root.querySelector('img');
-    if (color && color.tagName === 'IMG') color.src = DEPTH_URL;
+    // Color = current EEVEE glam. Depth companion retired (was Miraland T-pose postcard).
+    const color =
+      root.querySelector('[data-stage-color]') ||
+      root.querySelector('.stage-color-layer') ||
+      root.querySelector('img:last-of-type');
+    const depth =
+      root.querySelector('[data-stage-depth]') ||
+      root.querySelector('.stage-depth-layer');
+    if (color && color.tagName === 'IMG') {
+      color.src = BEAUTY_URL;
+      color.removeAttribute('data-src');
+    }
+    if (depth && depth.tagName === 'IMG') {
+      depth.removeAttribute('src');
+      depth.removeAttribute('data-src');
+      depth.hidden = true;
+      depth.setAttribute('aria-hidden', 'true');
+    }
+    root.classList.add('stage-tilt-color-only');
     root.addEventListener(
       'pointermove',
       (event) => {
@@ -228,7 +245,8 @@
     }
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', async () => {
+    await loadPlateSlots();
     hydratePassport();
     hydrateDepthTilt();
     hydrateHairLoop();

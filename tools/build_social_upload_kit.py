@@ -11,7 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "generated" / "social"
 
 SOURCES = {
-    "stage_diorama": ROOT / "generated/assets/character/melusina_diorama_beauty.png",
+    # Current EEVEE glam keeper — never Miraland / T-pose postcard
+    "stage_melusina": ROOT / "generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
     "vow_cross": ROOT / "generated/assets/cross/cross_komikaze_beauty_34.png",
 }
 
@@ -69,10 +70,19 @@ def main() -> None:
             print("OK", name, size)
 
     default = OUT / "og-default.jpg"
-    pref = OUT / "stage_diorama__og_1200x630.jpg"
+    pref = OUT / "stage_melusina__og_1200x630.jpg"
     if pref.exists():
         Image.open(pref).save(default, "JPEG", quality=90, optimize=True)
         print("DEFAULT", default.name)
+
+    # Legacy stage_diorama__* filenames → remount from glam so old links never show T-pose
+    glam = sources.get("stage_melusina")
+    if glam and glam.exists():
+        im = Image.open(glam)
+        for label, size in SPECS.items():
+            legacy = OUT / f"stage_diorama__{label}.jpg"
+            cover_crop(im, size).save(legacy, "JPEG", quality=88, optimize=True)
+            print("LEGACY_REMOUNT", legacy.name)
 
     manifest = {
         "generated_at": datetime.now(timezone.utc).isoformat(),

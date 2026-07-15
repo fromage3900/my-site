@@ -9,9 +9,9 @@
 | Channel | File | Size |
 |---------|------|------|
 | Link preview (OG / Discord / Slack) | `og-default.jpg` | 1200×630 |
-| Instagram / Facebook feed | `stage_diorama__square_1080.jpg` | 1080×1080 |
-| Stories / Reels / TikTok | `stage_diorama__story_1080x1920.jpg` | 1080×1920 |
-| X / LinkedIn landscape | `stage_diorama__twitter_1600x900.jpg` | 1600×900 |
+| Instagram / Facebook feed | `stage_melusina__square_1080.jpg` | 1080×1080 |
+| Stories / Reels / TikTok | `stage_melusina__story_1080x1920.jpg` | 1080×1920 |
+| X / LinkedIn landscape | `stage_melusina__twitter_1600x900.jpg` | 1600×900 |
 | Product teaser (ornament) | `ornament_plate__square_1080.jpg` | 1080×1080 |
 | Desire object | `vow_cross__square_1080.jpg` | 1080×1080 |
 

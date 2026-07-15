@@ -1,47 +1,47 @@
 {
-  "generated_at": "2026-07-11T04:04:08.910239+00:00",
+  "generated_at": "2026-07-15T21:25:19.375336+00:00",
   "store_live": false,
   "site": "https://fromage3900.github.io/my-site/",
   "crops": [
     {
-      "id": "stage_diorama/og_1200x630",
-      "file": "generated/social/stage_diorama__og_1200x630.jpg",
+      "id": "stage_melusina/og_1200x630",
+      "file": "generated/social/stage_melusina__og_1200x630.jpg",
       "size": [
         1200,
         630
       ],
-      "source": "generated/assets/character/melusina_diorama_beauty.png",
-      "bytes": 30502
+      "source": "generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "bytes": 95647
     },
     {
-      "id": "stage_diorama/square_1080",
-      "file": "generated/social/stage_diorama__square_1080.jpg",
+      "id": "stage_melusina/square_1080",
+      "file": "generated/social/stage_melusina__square_1080.jpg",
       "size": [
         1080,
         1080
       ],
-      "source": "generated/assets/character/melusina_diorama_beauty.png",
-      "bytes": 50487
+      "source": "generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "bytes": 136173
     },
     {
-      "id": "stage_diorama/story_1080x1920",
-      "file": "generated/social/stage_diorama__story_1080x1920.jpg",
+      "id": "stage_melusina/story_1080x1920",
+      "file": "generated/social/stage_melusina__story_1080x1920.jpg",
       "size": [
         1080,
         1920
       ],
-      "source": "generated/assets/character/melusina_diorama_beauty.png",
-      "bytes": 80815
+      "source": "generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "bytes": 241517
     },
     {
-      "id": "stage_diorama/twitter_1600x900",
-      "file": "generated/social/stage_diorama__twitter_1600x900.jpg",
+      "id": "stage_melusina/twitter_1600x900",
+      "file": "generated/social/stage_melusina__twitter_1600x900.jpg",
       "size": [
         1600,
         900
       ],
-      "source": "generated/assets/character/melusina_diorama_beauty.png",
-      "bytes": 55869
+      "source": "generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "bytes": 158023
     },
     {
       "id": "vow_cross/og_1200x630",
@@ -51,7 +51,7 @@
         630
       ],
       "source": "generated/assets/cross/cross_komikaze_beauty_34.png",
-      "bytes": 30550
+      "bytes": 40052
     },
     {
       "id": "vow_cross/square_1080",
@@ -61,7 +61,7 @@
         1080
       ],
       "source": "generated/assets/cross/cross_komikaze_beauty_34.png",
-      "bytes": 38544
+      "bytes": 47857
     },
     {
       "id": "vow_cross/story_1080x1920",
@@ -71,7 +71,7 @@
         1920
       ],
       "source": "generated/assets/cross/cross_komikaze_beauty_34.png",
-      "bytes": 60668
+      "bytes": 74071
     },
     {
       "id": "vow_cross/twitter_1600x900",
@@ -81,7 +81,7 @@
         900
       ],
       "source": "generated/assets/cross/cross_komikaze_beauty_34.png",
-      "bytes": 49362
+      "bytes": 64884
     },
     {
       "id": "ornament_plate/og_1200x630",
@@ -91,7 +91,7 @@
         630
       ],
       "source": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
-      "bytes": 14441
+      "bytes": 29140
     },
     {
       "id": "ornament_plate/square_1080",
@@ -101,7 +101,7 @@
         1080
       ],
       "source": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
-      "bytes": 22978
+      "bytes": 42981
     },
     {
       "id": "ornament_plate/story_1080x1920",
@@ -111,7 +111,7 @@
         1920
       ],
       "source": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
-      "bytes": 33028
+      "bytes": 66057
     },
     {
       "id": "ornament_plate/twitter_1600x900",
@@ -121,7 +121,7 @@
         900
       ],
       "source": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
-      "bytes": 23148
+      "bytes": 48757
     }
   ]
 }
