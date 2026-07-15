@@ -1,45 +1,96 @@
-# Git Integration & Wix CLI <img align="left" src="https://user-images.githubusercontent.com/89579857/185785022-cab37bf5-26be-4f11-85f0-1fac63c07d3b.png">
+# Melodia — Live Collaborative Environment Art Platform
 
-This repo is part of Git Integration & Wix CLI, a set of tools that allows you to write, test, and publish code for your Wix site locally on your computer. 
+UE 5.8 + Blender 5.1 production platform for stylized portfolio work: real-time Blender↔Unreal level design bridge, procedural geometry generation, automatic material crosswalk, voice-driven NPCs, rhythm combat, and autonomous agent loops.
 
-Connect your site to GitHub, develop in your favorite IDE, test your code in real time, and publish your site from the command line.
+---
 
-## Set up this repository in your IDE
-This repo is connected to a Wix site. That site tracks this repo's default branch. Any code committed and pushed to that branch from your local IDE appears on the site.
+## 🚀 Onboarding: Live Collaborative Level Designer
 
-Before getting started, make sure you have the following things installed:
-* [Git](https://git-scm.com/download)
-* [Node](https://nodejs.org/en/download/), version 14.8 or later.
-* [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://yarnpkg.com/getting-started/install)
-* An SSH key [added to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+> **Two designers, one live session. Geometry in Blender streams to Unreal in real time. ~10 minutes to first sync.**
 
-To set up your local environment and start coding locally, do the following:
+### Prerequisites
 
-1. Open your terminal and navigate to where you want to store the repo.
-1. Clone the repo by running `git clone <your-repository-url>`.
-1. Navigate to the repo's directory by running `cd <directory-name>`.
-1. Install the repo's dependencies by running `npm install` or `yarn install`.
-1. Install the Wix CLI by running `npm install -g @wix/cli` or `yarn global add @wix/cli`.  
-   Once you've installed the CLI globally, you can use it with any Wix site's repo.
+- [x] **Unreal Engine 5.8** — open `BS_GodFile.uproject`, wait for shader compile
+- [x] **Blender 5.1** — N-panel → Melodia Studio tab (SurrealArch addon pre-loaded)
+- [x] **VOICEVOX 0.25+** — [download](https://voicevox.hiroshiba.jp/) → install → launch
+- [x] **One Blender instance only** — multiple instances conflict on port 9876
 
-For more information, see [Setting up Git Integration & Wix CLI](https://support.wix.com/en/article/velo-setting-up-git-integration-wix-cli-beta).
+---
 
-## Write Velo code in your IDE
-Once your repo is set up, you can write code in it as you would in any other non-Wix project. The repo's file structure matches the [public](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#public), [backend](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#backend), and [page code](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#page-code) sections in Editor X.
+### Step 1 — Verify the bridge ports
 
-Learn more about [this repo's file structure](https://support.wix.com/en/article/velo-understanding-your-sites-github-repository-beta).
+| Service | Check | Expected |
+|---------|-------|----------|
+| UE MCP | `curl http://127.0.0.1:9316/health` | `{"status":"ok","tools_registered":1325}` |
+| LiveLink | Blender N-panel → Melodia Studio → **Live Bridge** → **Refresh Status** | `[✓] LiveLink [✓] UE MCP` |
+| VOICEVOX | `curl http://127.0.0.1:50021/version` | `"0.25.2"` |
 
-## Test your code with the Local Editor
-The Local Editor allows you test changes made to your site in real time. The code in your local IDE is synced with the Local Editor, so you can test your changes before committing them to your repo. You can also change the site design in the Local Editor and sync it with your IDE.
+---
 
-Start the Local Editor by navigating to this repo's directory in your terminal and running `wix dev`.
+### Step 2 — Start the LiveLink server
 
-For more information, see [Working with the Local Editor](https://support.wix.com/en/article/velo-working-with-the-local-editor-beta).
+```
+Blender N-panel → Melodia Studio → Live Bridge → LiveLink :9876 → [Start Server]
+```
 
-## Preview and publish with the Wix CLI
-The Wix CLI is a tool that allows you to work with your site locally from your computer's terminal. You can use it to build a preview version of your site and publish it. You can also use the CLI to install [approved npm packages](https://support.wix.com/en/article/velo-working-with-npm-packages) to your site.
+Status changes to **CONNECTED**. The server now accepts FBX streams from Blender and pushes to UE.
 
-Learn more about [working with the Wix CLI](https://support.wix.com/en/article/velo-working-with-the-wix-cli-beta).
+---
 
-## Invite contributors to work with you
-Git Integration & Wix CLI extends Editor X's [concurrent editing](https://support.wix.com/en/article/editor-x-about-concurrent-editing) capabilities. Invite other developers as collaborators on your [site](https://support.wix.com/en/article/inviting-people-to-contribute-to-your-site) and your [GitHub repo](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository). Multiple developers can work on a site's code at once.
+### Step 3 — Generate & send your first asset
+
+```
+┌─ Blender ─────────────────────────────────────────┐
+│                                                    │
+│  1. Genome Carousel → pick ZEN_SHRINE → [Apply]    │
+│  2. Material Bridge → [Scan Slots] → [Auto-Match]  │
+│  3. Live Bridge → [Send + Materials]               │
+│                                                    │
+│  (toggle Live Sync ON for continuous streaming)    │
+└────────────────────────────────────────────────────┘
+                           │
+                           ▼  FBX + textures + material paths
+┌─ Unreal ───────────────────────────────────────────┐
+   Assets appear at  /Game/LiveLink/
+   ── drag into viewport to see in-level
+└────────────────────────────────────────────────────┘
+```
+
+---
+
+### Step 4 — Collaborative Workflow
+
+| Designer | Tool | What They Do |
+|----------|------|-------------|
+| **Geometry Designer** | Blender | Procedural gen, mesh editing, materials, live sync |
+| **Level Scripter** | Unreal | Blueprints, encounters, lighting, PCG scatter, NPCs |
+
+---
+
+### Port Map
+
+| Port | Service | Direction |
+|------|---------|-----------|
+| `9876` | LiveLink — FBX streaming | Blender → UE |
+| `9316` | UE Monolith MCP — Python execution | Any → UE |
+| `50021` | VOICEVOX — TTS | Any → VOICEVOX |
+
+---
+
+### Key Scripts
+
+| Script | What It Does | Where |
+|--------|-------------|--------|
+| `Tools/generate_all_voices.py` | Generate 102 NPC voice WAVs | Terminal |
+| `Content/Python/create_zunzun_bps.py` | Auto-create 7 NPC Blueprints + quests | UE |
+| `deploy/sync_surreal_to_live.ps1` | Push SurrealArch to Blender addons | Terminal |
+| `deploy/sync_site_to_github.ps1` | Sync my-site-clean → GitHub Pages | Terminal |
+
+Full guide: [Docs/ONBOARDING_LIVE_COLLAB.md](https://github.com/fromage3900/BS_GodFile/blob/main/Docs/ONBOARDING_LIVE_COLLAB.md)
+
+---
+
+## Wix CLI Info
+
+This repository is connected to the Melodia Wix site. Any commits to `main` appear at:
+**https://fromage3900.github.io/my-site/wix/index.html**
