@@ -1,12 +1,12 @@
 {
   "product_id": "melodia-musical-ornament-kitbash-v1",
   "name": "Melodia Musical Ornament Kitbash",
-  "tagline": "7 celestial sheet-music ornaments for Unreal Engine 5.8+",
+  "tagline": "10 celestial sheet-music ornaments (incl. Melody Tokens) for Unreal Engine 5.8+",
   "launch_price_usd": 14,
   "list_price_usd": 18,
-  "mesh_count": 7,
-  "hero_count": 2,
-  "detail_count": 5,
+  "mesh_count": 10,
+  "hero_count": 3,
+  "detail_count": 7,
   "engine": "Unreal Engine 5.8+",
   "formats": [
     "FBX",
@@ -115,10 +115,52 @@
       ],
       "ue_path": "/Game/EnvSandbox/Meshes/OrnamentMusical/SM_Orn_PearlJewel",
       "fbx_name": "SM_Orn_PearlJewel.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_MelodyToken_01",
+      "key": "Melody_Token_01",
+      "tier": "hero",
+      "pillar": "CelestialSheetMusic",
+      "description": "Melody Token I \u2014 collectible rhythm medallion (placeholder until beauty pass).",
+      "use_cases": [
+        "collectible props",
+        "rhythm pickup mirrors",
+        "shop hero plate"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/OrnamentMusical/SM_Orn_MelodyToken_01",
+      "fbx_name": "SM_Orn_MelodyToken_01.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_MelodyToken_02",
+      "key": "Melody_Token_02",
+      "tier": "detail",
+      "pillar": "CelestialSheetMusic",
+      "description": "Melody Token II \u2014 collectible harmony medallion (placeholder until beauty pass).",
+      "use_cases": [
+        "collectible props",
+        "combo rewards",
+        "kitbash scatter"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/OrnamentMusical/SM_Orn_MelodyToken_02",
+      "fbx_name": "SM_Orn_MelodyToken_02.fbx"
+    },
+    {
+      "asset_name": "SM_Orn_MelodyToken_03",
+      "key": "Melody_Token_03",
+      "tier": "detail",
+      "pillar": "CelestialSheetMusic",
+      "description": "Melody Token III \u2014 collectible coda medallion (placeholder until beauty pass).",
+      "use_cases": [
+        "collectible props",
+        "finale markers",
+        "jewelry-scale dressing"
+      ],
+      "ue_path": "/Game/EnvSandbox/Meshes/OrnamentMusical/SM_Orn_MelodyToken_03",
+      "fbx_name": "SM_Orn_MelodyToken_03.fbx"
     }
   ],
   "package_contents": {
-    "fbx": "7 FBX meshes with collision-ready silhouettes, 2 material slots (Base + Trim)",
+    "fbx": "10 FBX meshes (7 musical + 3 Melody Tokens), 2 material slots (Base + Trim)",
     "unreal": "UE 5.8 folder: /Game/EnvSandbox/Meshes/OrnamentMusical",
     "docs": "Installation README + celestial sheet-music scale notes"
   },
@@ -127,6 +169,7 @@
     "ornament",
     "musical",
     "sheet-music",
+    "melody-token",
     "unreal-engine",
     "ue5",
     "fantasy",
@@ -156,10 +199,10 @@
     "fbx_export": "G:/EnvironmentPortfolio/BS_GodFile/KitbashExport/MusicalOrnamentalMeshes",
     "product_root": "G:/EnvironmentPortfolio/BS_GodFile/Products/MusicalOrnamentKitbash"
   },
-  "generated_at": "2026-07-11T21:27:00.882499+00:00",
+  "generated_at": "2026-07-12T20:40:56.969130+00:00",
   "product_folder": "G:\\EnvironmentPortfolio\\BS_GodFile\\Products\\MusicalOrnamentKitbash",
   "bake_manifest": "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Audit\\musical_ornament_bake_manifest.json",
   "bake_ok": 7,
   "bake_fail": 0,
-  "fbx_count": 7
+  "fbx_count": 10
 }

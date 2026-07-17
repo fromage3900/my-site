@@ -54,6 +54,10 @@
       "path": "../generated/assets/character/melusina_eevee_glam_20260715c_05.png",
       "alt": "Melusina glam three-quarter · EEVEE"
     },
+    "melusina.glam_macro": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715_02.png",
+      "alt": "Melusina — glam macro · EEVEE hair + face detail"
+    },
     "sakura.hero": {
       "path": "../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png",
       "alt": "Sakura Dream establishing hero"

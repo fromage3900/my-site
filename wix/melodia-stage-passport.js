@@ -17,8 +17,11 @@
   let HERO_WIRE_34 = '../generated/assets/character/melusina_34_wireframe_grey_20260715.png';
   let HERO_GLAM_CLOSE = '../generated/assets/character/melusina_eevee_glam_20260715c_04.png';
   let HERO_GLAM_34 = '../generated/assets/character/melusina_eevee_glam_20260715c_05.png';
+  let HERO_GLAM_MACRO = '../generated/assets/character/melusina_eevee_glam_20260715_02.png';
   let HERO_SILHOUETTE = ''; // retired wrong medallion plate
   // HERO_DIORAMA retired from public plate strip (Miraland postcard)
+  // HERO_FRONT / stage.front never resolves to melusina_eevee_front.png or
+  // melusina_eevee_three_quarter.png (distant Miraland T-pose) — both denied below.
 
   function esc(value) {
     return String(value == null ? '' : value)
@@ -47,6 +50,7 @@
       if (s['stage.wire_34'] && s['stage.wire_34'].path) HERO_WIRE_34 = s['stage.wire_34'].path;
       if (s['melusina.glam_04'] && s['melusina.glam_04'].path) HERO_GLAM_CLOSE = s['melusina.glam_04'].path;
       if (s['melusina.glam_05'] && s['melusina.glam_05'].path) HERO_GLAM_34 = s['melusina.glam_05'].path;
+      if (s['melusina.glam_macro'] && s['melusina.glam_macro'].path) HERO_GLAM_MACRO = s['melusina.glam_macro'].path;
     } catch (_err) {
       /* keep fallbacks */
     }
@@ -206,12 +210,15 @@
     const heroPack = [
       { web_path: HERO_BEAUTY, title: 'Hero beauty · EEVEE' },
       { web_path: HERO_FRONT, title: 'Glam bust · EEVEE' },
+      { web_path: HERO_GLAM_MACRO, title: 'Melusina — glam macro' },
       { web_path: HERO_GLAM_CLOSE, title: 'Glam close · EEVEE' },
       { web_path: HERO_GLAM_34, title: 'Glam three-quarter · EEVEE' },
       { web_path: HERO_WIRE_FRONT, title: 'Wireframe · front grey' },
       { web_path: HERO_WIRE_34, title: 'Wireframe · ¾ grey' },
     ];
     const seen = new Set();
+    // melusina_eevee_front / melusina_eevee_three_quarter = distant Miraland
+    // T/A-pose stand-ins injected by intake — denied + retired, never surfaced.
     const deny = [
       '_001.png',
       'mauve',
@@ -229,6 +236,8 @@
       'melusina_eevee_portrait',
       'beauty_depth_color',
       'diorama_beauty',
+      'melusina_eevee_front.png',
+      'melusina_eevee_three_quarter.png',
     ];
     let cards = [];
     for (const c of heroPack) {

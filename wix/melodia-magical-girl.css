@@ -105,12 +105,12 @@
   border-bottom-color: rgba(255, 110, 180, 0.06);
 }
 
-/* Batch N — ornate musical chrome accents (echo page-12 filigree) */
+/* Batch O Baroque — musical chrome accents (page-12 beauty SSOT) */
 .melodia-shell[data-mg="full"] .shell-nav,
 .melodia-shell[data-mg="soft"] .shell-nav,
 .melodia-shell[data-mg="chrome"] .shell-nav {
   background-image:
-    url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeDivider.png");
+    url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeDividerScroll.png");
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: min(520px, 70%) 14px;
@@ -119,6 +119,7 @@
 .melodia-shell[data-mg="full"] .magazine-kicker,
 .melodia-shell[data-mg="soft"] .magazine-kicker {
   position: relative;
+  padding-left: 1.85rem;
 }
 
 .melodia-shell[data-mg="full"] .magazine-kicker::before,
@@ -130,9 +131,10 @@
   width: 1.6rem;
   height: 1.6rem;
   transform: translateY(-50%);
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCorner.png") center / contain no-repeat;
-  opacity: 0.55;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCornerBaroque.png") center / contain no-repeat;
+  opacity: 0.65;
   pointer-events: none;
+  filter: drop-shadow(0 0 6px rgba(196, 154, 78, 0.35));
 }
 
 /* Kill paper-band pink inset (was fighting editorial) */

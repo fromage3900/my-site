@@ -6,7 +6,7 @@
 <title>Universal Master - Technical Breakdown</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument Serif:opsz,wght@9..144,400;9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0f1426;--panel:#161d35;--panel2:#1c2340;--line:rgba(221,199,155,.22);
@@ -20,34 +20,34 @@
   .hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.72) 0 1px,transparent 1.8px);background-size:86px 86px;opacity:.16}
   .hero:after{content:"";position:absolute;right:6vw;top:13%;width:min(42vw,520px);height:330px;background:linear-gradient(140deg,transparent 0 18%,rgba(221,199,155,.28) 18% 18.5%,transparent 18.5% 38%,rgba(221,199,155,.2) 38% 38.5%,transparent 38.5%);opacity:.7}
   .hero-content{position:relative;z-index:1;max-width:980px}
-  .kicker,.eyebrow,.meta-label{font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.14em}
+  .kicker,.eyebrow,.meta-label{font-family:"Azeret Mono",monospace;text-transform:uppercase;letter-spacing:.14em}
   .kicker{font-size:13px;color:var(--gold2);margin:0 0 14px}
-  h1{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(48px,8vw,104px);line-height:.96;margin:0;letter-spacing:0}
-  .sub{font-family:Fraunces,Georgia,serif;font-size:clamp(18px,2.2vw,26px);line-height:1.35;color:var(--gold2);max-width:760px;margin:18px 0 0}
+  h1{font-family:Instrument Serif,Georgia,serif;font-weight:500;font-size:clamp(48px,8vw,104px);line-height:.96;margin:0;letter-spacing:0}
+  .sub{font-family:Instrument Serif,Georgia,serif;font-size:clamp(18px,2.2vw,26px);line-height:1.35;color:var(--gold2);max-width:760px;margin:18px 0 0}
   .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
-  .chip{font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em;font-size:11px;border:1px solid rgba(221,199,155,.36);background:rgba(255,255,255,.04);padding:8px 10px}
+  .chip{font-family:"Azeret Mono",monospace;text-transform:uppercase;letter-spacing:.08em;font-size:11px;border:1px solid rgba(221,199,155,.36);background:rgba(255,255,255,.04);padding:8px 10px}
   main{max-width:1180px;margin:0 auto;padding:34px 22px 60px}
   .band{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,.8fr);gap:22px;margin-bottom:24px}
   .panel{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:6px;padding:20px;box-shadow:0 24px 70px rgba(0,0,0,.18)}
   .panel.light{background:var(--ivory);color:var(--ink);border-color:#e3dace}
   .eyebrow{font-size:11px;color:var(--gold2);margin:0 0 12px}
-  h2{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:28px;line-height:1.05;margin:0 0 12px}
+  h2{font-family:Instrument Serif,Georgia,serif;font-weight:500;font-size:28px;line-height:1.05;margin:0 0 12px}
   p{color:var(--muted);line-height:1.58;margin:0}
   .light p{color:#5a6170}
   .module-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:16px}
   .module{border:1px solid rgba(221,199,155,.22);padding:12px;background:rgba(255,255,255,.035);min-height:74px}
-  .module strong{display:block;font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--gold2);margin-bottom:6px}
+  .module strong{display:block;font-family:"Azeret Mono",monospace;text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--gold2);margin-bottom:6px}
   .placeholder{min-height:260px;border:1px dashed rgba(221,199,155,.35);display:grid;place-items:center;text-align:center;padding:20px;background:rgba(255,255,255,.035)}
-  .placeholder span{font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--gold2)}
+  .placeholder span{font-family:"Azeret Mono",monospace;text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--gold2)}
   .flow{display:grid;grid-template-columns:repeat(7,minmax(92px,1fr));gap:8px;overflow:auto;padding-bottom:4px}
   .step{border:1px solid rgba(221,199,155,.26);padding:10px;min-height:82px;background:rgba(255,255,255,.03)}
-  .step b{display:block;color:var(--gold2);font-family:"IBM Plex Mono",monospace;font-size:11px;margin-bottom:8px}
+  .step b{display:block;color:var(--gold2);font-family:"Azeret Mono",monospace;font-size:11px;margin-bottom:8px}
   .section-list{display:grid;gap:12px}
   .breakdown{display:grid;grid-template-columns:160px 1fr;gap:16px;border-top:1px solid var(--line);padding-top:14px}
-  .badge{display:inline-flex;width:max-content;font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em;font-size:10px;color:#fff;background:var(--warn);padding:5px 8px}
+  .badge{display:inline-flex;width:max-content;font-family:"Azeret Mono",monospace;text-transform:uppercase;letter-spacing:.08em;font-size:10px;color:#fff;background:var(--warn);padding:5px 8px}
   .links{display:grid;gap:8px;margin-top:14px}
   a{color:var(--gold2)}
-  code{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--blue);word-break:break-all}
+  code{font-family:"Azeret Mono",monospace;font-size:12px;color:var(--blue);word-break:break-all}
   @media (max-width:860px){.band{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,minmax(140px,1fr))}.breakdown{grid-template-columns:1fr}.hero{min-height:480px}}
 </style>
 </head>

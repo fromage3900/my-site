@@ -1,8 +1,17 @@
 {
-  "count": 8,
-  "generated_at": "2026-07-08T06:54:39.890554+00:00",
+  "count": 14,
+  "generated_at": "2026-07-13T07:09:27.116522+00:00",
   "generated_by": "package_to_website_handoff.py",
   "renders": [
+    {
+      "aspect_ratio": "16:9",
+      "filename": "breakdown_level_Cam_Breakdown_Shader_20260708_190112_1920x1080.png",
+      "group": "breakdown",
+      "height": 1080,
+      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Breakdown/breakdown_level_Cam_Breakdown_Shader_20260708_190112_1920x1080.png",
+      "plate_role": "breakdown_sheet",
+      "width": 1920
+    },
     {
       "aspect_ratio": "16:9",
       "filename": "hero_level_20260625_055343_1920x1080.png",
@@ -36,6 +45,51 @@
       "group": "hero",
       "height": 1080,
       "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_20260627_190353_1920x1080.png",
+      "plate_role": "hero_showcase",
+      "width": 1920
+    },
+    {
+      "aspect_ratio": "16:9",
+      "filename": "hero_level_20260708_190653_1920x1080.png",
+      "group": "hero",
+      "height": 1080,
+      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_20260708_190653_1920x1080.png",
+      "plate_role": "hero_showcase",
+      "width": 1920
+    },
+    {
+      "aspect_ratio": "16:9",
+      "filename": "hero_level_20260708_191409_1920x1080.png",
+      "group": "hero",
+      "height": 1080,
+      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_20260708_191409_1920x1080.png",
+      "plate_role": "hero_showcase",
+      "width": 1920
+    },
+    {
+      "aspect_ratio": "16:9",
+      "filename": "hero_level_20260708_191436_1920x1080.png",
+      "group": "hero",
+      "height": 1080,
+      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_20260708_191436_1920x1080.png",
+      "plate_role": "hero_showcase",
+      "width": 1920
+    },
+    {
+      "aspect_ratio": "16:9",
+      "filename": "hero_level_Cam_Hero_Establishing_20260708_191145_1920x1080.png",
+      "group": "hero",
+      "height": 1080,
+      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_Cam_Hero_Establishing_20260708_191145_1920x1080.png",
+      "plate_role": "hero_showcase",
+      "width": 1920
+    },
+    {
+      "aspect_ratio": "16:9",
+      "filename": "hero_level_viewport_20260627_190846_1920x1080.png",
+      "group": "hero",
+      "height": 1080,
+      "path": "G:/EnvironmentPortfolio/BS_GodFile/Saved/Portfolio/Renders/Hero/hero_level_viewport_20260627_190846_1920x1080.png",
       "plate_role": "hero_showcase",
       "width": 1920
     },

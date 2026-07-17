@@ -1,12 +1,235 @@
 {
-  "generated_at": "2026-07-09T23:35:11.437927+00:00",
+  "generated_at": "2026-07-14T12:41:36.901355+00:00",
   "generated_by": "mi_preview_manifest.py",
   "level": "/Game/EnvSandbox/_Template/L_MaterialPreview_Studio",
+  "doctrine": "melodia_void_nikki_lens",
+  "nikki_priority": [
+    "MI_Show_NikkiHero",
+    "MI_Show_SkinSoft",
+    "MI_Show_CherryBlossom",
+    "MI_Show_FairyHearts",
+    "MI_Show_CelestialNebula",
+    "MI_NikkiHero_SakuraDream",
+    "MI_NikkiHero_CosmicOrrery",
+    "MI_NikkiHero_SpaceCathedral",
+    "MI_Show_ElementHydro",
+    "MI_SDF_RosyQuartz"
+  ],
   "frame_rate": 30,
   "loop_frames": 120,
   "resolution": 1080,
-  "count": 40,
+  "count": 44,
   "entries": [
+    {
+      "id": "MI_NikkiHero_CosmicOrrery",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/NikkiHero/MI_NikkiHero_CosmicOrrery.MI_NikkiHero_CosmicOrrery",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Cosmic_DeepField",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "hero",
+      "source": "nikki_priority",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_NikkiHero_CosmicOrrery",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_NikkiHero_CosmicOrrery"
+    },
+    {
+      "id": "MI_NikkiHero_SakuraDream",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/NikkiHero/MI_NikkiHero_SakuraDream.MI_NikkiHero_SakuraDream",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Sakura_SoftVoid",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "hero",
+      "source": "nikki_priority",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_NikkiHero_SakuraDream",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_NikkiHero_SakuraDream"
+    },
+    {
+      "id": "MI_NikkiHero_SpaceCathedral",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/NikkiHero/MI_NikkiHero_SpaceCathedral.MI_NikkiHero_SpaceCathedral",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Cosmic_DeepField",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "hero",
+      "source": "nikki_priority",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_NikkiHero_SpaceCathedral",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_NikkiHero_SpaceCathedral"
+    },
+    {
+      "id": "MI_SDF_RosyQuartz",
+      "asset_path": "/Game/EnvSandbox/Materials/SDF/Instances/MI_SDF_RosyQuartz.MI_SDF_RosyQuartz",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Sakura_SoftVoid",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "hero",
+      "source": "nikki_priority",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_SDF_RosyQuartz",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_RosyQuartz"
+    },
+    {
+      "id": "MI_Show_CelestialNebula",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_CelestialNebula.MI_Show_CelestialNebula",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Cosmic_DeepField",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "hero",
+      "source": "nikki_priority",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_CelestialNebula",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_CelestialNebula"
+    },
+    {
+      "id": "MI_Show_CherryBlossom",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_CherryBlossom.MI_Show_CherryBlossom",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Sakura_SoftVoid",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "hero",
+      "source": "nikki_priority",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_CherryBlossom",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_CherryBlossom"
+    },
+    {
+      "id": "MI_Show_ElementHydro",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_ElementHydro.MI_Show_ElementHydro",
+      "profile": "TP_Default",
+      "preview_mesh": "plane_horizontal",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.0
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "hero",
+      "source": "nikki_priority",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_ElementHydro",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_ElementHydro"
+    },
+    {
+      "id": "MI_Show_FairyHearts",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_FairyHearts.MI_Show_FairyHearts",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Sakura_SoftVoid",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "hero",
+      "source": "nikki_priority",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_FairyHearts",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_FairyHearts"
+    },
+    {
+      "id": "MI_Show_NikkiHero",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_NikkiHero.MI_Show_NikkiHero",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Sakura_SoftVoid",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "hero",
+      "source": "nikki_priority",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_NikkiHero",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_NikkiHero"
+    },
+    {
+      "id": "MI_Show_SkinSoft",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_SkinSoft.MI_Show_SkinSoft",
+      "profile": "TP_Default",
+      "preview_mesh": "sphere",
+      "backdrop": "Sakura_SoftVoid",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "hero",
+      "source": "nikki_priority",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_SkinSoft",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_SkinSoft"
+    },
     {
       "id": "MI_ZenTrim_FlowersLots",
       "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_ZenTrim_FlowersLots.MI_ZenTrim_FlowersLots",
@@ -36,9 +259,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -57,9 +280,9 @@
       "backdrop": "Cosmic_DeepField",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -78,9 +301,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -99,9 +322,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -120,9 +343,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -141,9 +364,9 @@
       "backdrop": "Cosmic_DeepField",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -162,9 +385,9 @@
       "backdrop": "Cosmic_DeepField",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -183,9 +406,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -204,9 +427,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -225,9 +448,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -246,9 +469,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -267,9 +490,9 @@
       "backdrop": "Cosmic_DeepField",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -288,9 +511,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -309,9 +532,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -330,9 +553,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -351,9 +574,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -372,9 +595,9 @@
       "backdrop": "Cosmic_DeepField",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -393,9 +616,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -414,9 +637,9 @@
       "backdrop": "Baroque_WarmVault",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -435,9 +658,9 @@
       "backdrop": "Cosmic_DeepField",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -449,48 +672,6 @@
       "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_SDF_Void_DarkMatter"
     },
     {
-      "id": "MI_Show_CelestialNebula",
-      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_CelestialNebula.MI_Show_CelestialNebula",
-      "profile": "TP_Default",
-      "preview_mesh": "sphere",
-      "backdrop": "Cosmic_DeepField",
-      "orbit_speed": 1.0,
-      "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
-      ],
-      "uv_tiling": [
-        1.0,
-        1.0
-      ],
-      "priority": "catalog",
-      "source": "starter_instances",
-      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_CelestialNebula",
-      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_CelestialNebula"
-    },
-    {
-      "id": "MI_Show_CherryBlossom",
-      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_CherryBlossom.MI_Show_CherryBlossom",
-      "profile": "TP_Default",
-      "preview_mesh": "sphere",
-      "backdrop": "Sakura_SoftVoid",
-      "orbit_speed": 1.0,
-      "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
-      ],
-      "uv_tiling": [
-        1.0,
-        1.0
-      ],
-      "priority": "catalog",
-      "source": "starter_instances",
-      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_CherryBlossom",
-      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_CherryBlossom"
-    },
-    {
       "id": "MI_Show_ContactRimHero",
       "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_ContactRimHero.MI_Show_ContactRimHero",
       "profile": "TP_Default",
@@ -498,9 +679,9 @@
       "backdrop": "Studio_Neutral",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -519,9 +700,9 @@
       "backdrop": "Studio_Neutral",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -533,48 +714,6 @@
       "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_Default"
     },
     {
-      "id": "MI_Show_ElementHydro",
-      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_ElementHydro.MI_Show_ElementHydro",
-      "profile": "TP_Default",
-      "preview_mesh": "plane_horizontal",
-      "backdrop": "Studio_Neutral",
-      "orbit_speed": 1.0,
-      "mesh_scale": [
-        1.4,
-        1.4,
-        1.0
-      ],
-      "uv_tiling": [
-        1.0,
-        1.0
-      ],
-      "priority": "catalog",
-      "source": "starter_instances",
-      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_ElementHydro",
-      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_ElementHydro"
-    },
-    {
-      "id": "MI_Show_FairyHearts",
-      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_FairyHearts.MI_Show_FairyHearts",
-      "profile": "TP_Default",
-      "preview_mesh": "sphere",
-      "backdrop": "Cosmic_DeepField",
-      "orbit_speed": 1.0,
-      "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
-      ],
-      "uv_tiling": [
-        1.0,
-        1.0
-      ],
-      "priority": "catalog",
-      "source": "starter_instances",
-      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_FairyHearts",
-      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_FairyHearts"
-    },
-    {
       "id": "MI_Show_ForestFoliage",
       "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_ForestFoliage.MI_Show_ForestFoliage",
       "profile": "TP_Default",
@@ -582,9 +721,9 @@
       "backdrop": "Studio_Neutral",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -600,12 +739,12 @@
       "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_InkWash.MI_Show_InkWash",
       "profile": "TP_Default",
       "preview_mesh": "sphere",
-      "backdrop": "Baroque_WarmVault",
+      "backdrop": "Studio_Neutral",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -617,48 +756,6 @@
       "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_InkWash"
     },
     {
-      "id": "MI_Show_NikkiHero",
-      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_NikkiHero.MI_Show_NikkiHero",
-      "profile": "TP_Default",
-      "preview_mesh": "sphere",
-      "backdrop": "Studio_Neutral",
-      "orbit_speed": 1.0,
-      "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
-      ],
-      "uv_tiling": [
-        1.0,
-        1.0
-      ],
-      "priority": "catalog",
-      "source": "starter_instances",
-      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_NikkiHero",
-      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_NikkiHero"
-    },
-    {
-      "id": "MI_Show_SkinSoft",
-      "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_SkinSoft.MI_Show_SkinSoft",
-      "profile": "TP_Default",
-      "preview_mesh": "sphere",
-      "backdrop": "Studio_Neutral",
-      "orbit_speed": 1.0,
-      "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
-      ],
-      "uv_tiling": [
-        1.0,
-        1.0
-      ],
-      "priority": "catalog",
-      "source": "starter_instances",
-      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Show_SkinSoft",
-      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Show_SkinSoft"
-    },
-    {
       "id": "MI_Show_StoneCliff",
       "asset_path": "/Game/EnvSandbox/Materials/Instances/Showcase/MI_Show_StoneCliff.MI_Show_StoneCliff",
       "profile": "TP_Stone",
@@ -666,9 +763,9 @@
       "backdrop": "Studio_Neutral",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -684,12 +781,12 @@
       "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_Trimsheet_HeavyWear.MI_Trimsheet_HeavyWear",
       "profile": "TP_Stone",
       "preview_mesh": "sphere",
-      "backdrop": "Studio_Neutral",
+      "backdrop": "Melodia_VoidGradient",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -705,12 +802,12 @@
       "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_Trimsheet_ParallaxPOM.MI_Trimsheet_ParallaxPOM",
       "profile": "TP_Stone",
       "preview_mesh": "sphere",
-      "backdrop": "Studio_Neutral",
+      "backdrop": "Melodia_VoidGradient",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -726,12 +823,12 @@
       "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_Trimsheet_VariationCracks.MI_Trimsheet_VariationCracks",
       "profile": "TP_Stone",
       "preview_mesh": "sphere",
-      "backdrop": "Studio_Neutral",
+      "backdrop": "Melodia_VoidGradient",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -747,12 +844,12 @@
       "asset_path": "/Game/EnvSandbox/Materials/Instances/Environment/Stylized/MI_Universal_TrimsheetBlend.MI_Universal_TrimsheetBlend",
       "profile": "TP_Default",
       "preview_mesh": "sphere",
-      "backdrop": "Studio_Neutral",
+      "backdrop": "Melodia_VoidGradient",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.35,
-        1.35,
-        1.35
+        1.55,
+        1.55,
+        1.55
       ],
       "uv_tiling": [
         1.0,
@@ -771,8 +868,8 @@
       "backdrop": "Sakura_SoftVoid",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.2,
-        1.2,
+        1.35,
+        1.35,
         0.08
       ],
       "uv_tiling": [
@@ -792,8 +889,8 @@
       "backdrop": "Sakura_SoftVoid",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.2,
-        1.2,
+        1.35,
+        1.35,
         0.08
       ],
       "uv_tiling": [
@@ -813,8 +910,8 @@
       "backdrop": "Sakura_SoftVoid",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.2,
-        1.2,
+        1.35,
+        1.35,
         0.08
       ],
       "uv_tiling": [
@@ -834,8 +931,8 @@
       "backdrop": "Sakura_SoftVoid",
       "orbit_speed": 1.0,
       "mesh_scale": [
-        1.2,
-        1.2,
+        1.35,
+        1.35,
         0.08
       ],
       "uv_tiling": [

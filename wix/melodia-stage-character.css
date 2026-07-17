@@ -19,6 +19,27 @@
   margin: 0 -4px;
 }
 
+/* SoftMG cohesion — light-touch frame chrome only (never the plate render
+   itself). Faint amber/rose corner wash echoes the SheetMusicHUD SoftMG
+   language so the Stage reads as the same wardrobe as the Battle UI.
+   Reference: Saved/Audit/softmg_nikki_ref_notes.md */
+.stage-plate-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 4px;
+  background: linear-gradient(
+    140deg,
+    rgba(217, 165, 102, 0.16) 0%,
+    transparent 22%,
+    transparent 78%,
+    rgba(232, 169, 161, 0.14) 100%
+  );
+  opacity: 0.6;
+}
+
 .stage-depth-tilt {
   position: relative;
   isolation: isolate;

@@ -141,7 +141,20 @@
 .melodia-shell .band.paper[data-surface="ivory"] .eyebrow,
 .melodia-shell .band.paper[data-surface="ivory"] .magazine-kicker,
 .melodia-shell .band.cloud[data-surface="ivory"] .eyebrow {
-  color: var(--ivory-gold) !important;
+  /* Keep iridescent clip — do not force solid ivory-gold (kills Figma type motion) */
+  background: linear-gradient(
+    100deg,
+    var(--ivory-gold, #c9a86a) 0%,
+    var(--iri-cyan, #66d9ff) 42%,
+    var(--iri-purple, #cc99ff) 70%,
+    var(--ivory-gold, #c9a86a) 100%
+  ) !important;
+  background-size: 220% 220% !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  animation: dream-iri-softmg 2.4s ease-in-out infinite !important;
+  filter: drop-shadow(0 0 8px rgba(201, 168, 106, 0.35));
 }
 
 .melodia-shell .band.ivory .viz-rule .glyph,

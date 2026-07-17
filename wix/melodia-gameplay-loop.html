@@ -17,6 +17,75 @@
 <link rel="stylesheet" href="melodia-premium-system.css">
 <link rel="stylesheet" href="melodia-visual-breakdown.css">
 <link rel="stylesheet" href="portfolio-pages.css">
+<style>
+  .gp-softmg-strip {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.1rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid rgba(196, 154, 78, 0.28);
+    border-radius: 0.75rem;
+    background: rgba(20, 14, 28, 0.35);
+    transition: border-color 0.5s ease, background 0.5s ease;
+  }
+  .gp-softmg-strip[data-softmg-flash="1"] {
+    border-color: rgba(102, 217, 255, 0.65);
+    background: rgba(20, 14, 28, 0.5);
+  }
+  /* SoftMG breathe — parchment wash + ink-seal crest, swapped in for the
+     Combat gold/cyan corner crest. Reference: Saved/Audit/softmg_nikki_ref_notes.md */
+  html[data-mg-breathe="soft"] .gp-softmg-strip {
+    border-color: rgba(217, 165, 102, 0.45);
+    background:
+      linear-gradient(165deg, rgba(242, 230, 207, 0.14), rgba(20, 14, 28, 0.5)),
+      url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Parchment.png") top right / 220px no-repeat;
+  }
+  .gp-softmg-crest {
+    flex: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCrestBaroque.png") center / contain no-repeat;
+    filter: drop-shadow(0 0 10px rgba(196, 154, 78, 0.35));
+    opacity: 0.75;
+    transition: opacity 0.6s ease, filter 0.6s ease, background-image 0.4s ease;
+  }
+  html[data-mg-breathe="soft"] .gp-softmg-crest {
+    opacity: 1;
+    background-image: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_SealSP.png");
+    filter: drop-shadow(0 0 12px rgba(217, 165, 102, 0.5));
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html[data-mg-breathe="soft"] .gp-softmg-crest {
+      animation: gp-softmg-breathe 2.4s ease-in-out infinite;
+    }
+  }
+  @keyframes gp-softmg-breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+  .gp-softmg-copy { min-width: 0; }
+  .gp-softmg-state {
+    margin: 0 0 0.3rem;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: #c49a4e;
+    text-transform: uppercase;
+  }
+  .gp-softmg-hint {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.82;
+  }
+  .gp-softmg-hint kbd {
+    font-family: var(--font-mono, monospace);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 0.25rem;
+    padding: 0.05rem 0.35rem;
+    font-size: 0.78em;
+  }
+</style>
 </head>
 <body>
 <div class="melodia-shell fashion-mode game-mode" data-mg="soft" data-hero="editorial" data-visual="lookbook" data-effects="starfield,holo" data-nav-cta="melodia-melusina.html" data-nav-cta-label="Battle UI">
@@ -80,6 +149,13 @@
       <li><strong>Parked</strong> — full loot/XP progression until the loop feels solid in PIE</li>
       <li><strong>Not a SKU</strong> — gameplay is portfolio proof; ornament kitbash is the store lane (<code>store_live</code> off)</li>
     </ul>
+    <div class="gp-softmg-strip" data-softmg-strip aria-live="polite">
+      <span class="gp-softmg-crest" aria-hidden="true"></span>
+      <div class="gp-softmg-copy">
+        <p class="gp-softmg-state" data-softmg-state>Combat breathe — full pace.</p>
+        <p class="gp-softmg-hint">Type <kbd>G</kbd> <kbd>F</kbd> <kbd>C</kbd> <kbd>G</kbd> to swap Combat / SoftMG breathe — the choice carries to and from the <a href="melodia-melusina.html#phase-rhythm">Battle UI</a>.</p>
+      </div>
+    </div>
   </div>
 </section>
 </main>
@@ -94,5 +170,6 @@
 <script src="melodia-magical-girl.js"></script>
 <script src="melodia-starfield.js"></script>
 <script src="melodia-site-nav.js"></script>
+<script src="melodia-gameplay-loop-softmg.js"></script>
 </body>
 </html>

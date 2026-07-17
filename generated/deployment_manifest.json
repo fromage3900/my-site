@@ -1,147 +1,40 @@
-﻿{
-    "components":  {
-                       "melodiaBreakdownCard":  "https://fromage3900.github.io/my-site/wix/melodia-breakdown-card.html",
-                       "melodiaGalleryGrid":  "https://fromage3900.github.io/my-site/wix/melodia-gallery-grid.html",
-                       "melodiaHeroEmbed":  "https://fromage3900.github.io/my-site/wix/melodia-hero-embed.html",
-                       "melodiaNavigation":  "https://fromage3900.github.io/my-site/wix/melodia-navigation-constellation.html",
-                       "melodiaPassportEmbed":  "https://fromage3900.github.io/my-site/wix/melodia-passport-embed.html",
-                       "melodiaProjectCard":  "https://fromage3900.github.io/my-site/wix/melodia-project-card.html",
-                       "melodiaSectionHeader":  "https://fromage3900.github.io/my-site/wix/melodia-section-header.html",
-                       "melodiaSmoothScroll":  "https://fromage3900.github.io/my-site/wix/melodia-smooth-scroll.html"
-                   },
-    "fallback_urls":  {
-                          "static_hero":  "https://fromage3900.github.io/my-site/generated/l-sakurapath-hero.html",
-                          "static_passport":  "https://fromage3900.github.io/my-site/generated/l-sakurapath-passport.html"
-                      },
-    "generated_at":  "2026-07-02T22:17:08.9306247Z",
-    "package_handoff":  {
-                            "configs":  {
-                                            "hero_config.json":  "https://fromage3900.github.io/my-site/generated/hero_config.json",
-                                            "materials_config.json":  "https://fromage3900.github.io/my-site/generated/materials_config.json",
-                                            "passport_config.json":  "https://fromage3900.github.io/my-site/generated/passport_config.json",
-                                            "portfolio_package_config.json":  "https://fromage3900.github.io/my-site/generated/portfolio_package_config.json",
-                                            "renders_config.json":  "https://fromage3900.github.io/my-site/generated/renders_config.json",
-                                            "stats_config.json":  "https://fromage3900.github.io/my-site/generated/stats_config.json",
-                                            "infold_asset_scouting_manifest.json":  "https://fromage3900.github.io/my-site/generated/infold_asset_scouting_manifest.json",
-                                            "local_asset_inventory.json":  "https://fromage3900.github.io/my-site/generated/local_asset_inventory.json",
-                                            "infold_application_campaign.json":  "https://fromage3900.github.io/my-site/generated/infold_application_campaign.json",
-                                            "application_tracker.json":  "https://fromage3900.github.io/my-site/generated/application_tracker.json",
-                                            "infold_research_alignment.json":  "https://fromage3900.github.io/my-site/generated/infold_research_alignment.json",
-                                            "wix_embed_manifest.json":  "https://fromage3900.github.io/my-site/generated/wix_embed_manifest.json",
-                                            "unreal_portfolio_intake.json":  "https://fromage3900.github.io/my-site/generated/unreal_portfolio_intake.json"
-                                        },
-                            "generated_at":  "2026-07-02T02:53:03.455975+00:00",
-                            "scene":  {
-                                          "engine":  "Unreal Engine 5.8.0",
-                                          "level_path":  "/Game/ZenForestTest",
-                                          "name":  "ZenForestTest"
-                                      },
-                            "source_package":  "portfolio_package.json",
-                            "stats":  {
-                                          "draw_calls":  35,
-                                          "materials":  30,
-                                          "triangles":  72924
-                                      }
-                        },
-    "portfolio":  {
-                      "hero":  {
-                                   "config":  {
-                                                  "enableParallax":  true,
-                                                  "kicker":  "3D Environment \u0026 Technical Art",
-                                                  "starCount":  100,
-                                                  "subtitle":  "3D Environment Artist \u0026 Technical Designer",
-                                                  "title":  "Brennan Shepherd"
-                                              },
-                                   "theme":  "dark",
-                                   "url":  "https://fromage3900.github.io/my-site/wix/melodia-hero-cosmic.html"
-                               },
-                      "index":  {
-                                    "iframe_strategy":  "GitHub Pages root or /wix/index.html",
-                                    "root_url":  "https://fromage3900.github.io/my-site/",
-                                    "sections":  [
-                                                     "home",
-                                                     "latest",
-                                                     "worlds",
-                                                     "looks",
-                                                     "features",
-                                                     "guides",
-                                                     "application-hub",
-                                                     "hiring-dossier",
-                                                     "sakura-case-study",
-                                                     "art-test-readiness",
-                                                     "asset-scouting",
-                                                     "hero-renders",
-                                                     "shader-breakdowns",
-                                                     "geometry-nodes",
-                                                     "surreal-architecture",
-                                                     "infold-application",
-                                                     "design-specs",
-                                                     "melodia-melusina",
-                                                     "melodia-stage-character",
-                                                     "ornament-kitbash",
-                                                     "social-kit",
-                                                     "commissions",
-                                                     "contact"
-                                                 ],
-                                    "theme":  "infinity-nikki-inspired",
-                                    "url":  "https://fromage3900.github.io/my-site/wix/index.html"
-                                },
-                      "pages":  {
-                                    "application_hub":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
-                                    "recruiter_one_sheet":  "https://fromage3900.github.io/my-site/wix/recruiter-one-sheet.html",
-                                    "hiring_dossier":  "https://fromage3900.github.io/my-site/wix/hiring-dossier.html",
-                                    "art_test_readiness":  "https://fromage3900.github.io/my-site/wix/art-test-readiness.html",
-                                    "asset_scouting":  "https://fromage3900.github.io/my-site/wix/asset-scouting.html",
-                                    "commissions":  "https://fromage3900.github.io/my-site/wix/commissions.html",
-                                    "design_specs":  "https://fromage3900.github.io/my-site/wix/design-specs.html",
-                                    "melodia_melusina":  "https://fromage3900.github.io/my-site/wix/melodia-melusina.html",
-                                    "ornament_kitbash":  "https://fromage3900.github.io/my-site/wix/ornament-kitbash.html",
-                                    "geometry_nodes":  "https://fromage3900.github.io/my-site/wix/geometry-nodes.html",
-                                    "surreal_architecture":  "https://fromage3900.github.io/my-site/wix/surreal-architecture.html",
-                                    "melodia_stage_character":  "https://fromage3900.github.io/my-site/wix/melodia-stage-character.html",
-                                    "social_kit":  "https://fromage3900.github.io/my-site/wix/social-kit.html",
-                                    "hero_renders":  "https://fromage3900.github.io/my-site/wix/hero-renders.html",
-                                    "infold_application":  "https://fromage3900.github.io/my-site/wix/infold-application.html",
-                                    "sakura_case_study":  "https://fromage3900.github.io/my-site/wix/sakura-case-study.html",
-                                    "shader_breakdowns":  "https://fromage3900.github.io/my-site/wix/shader-breakdowns.html",
-                                    "infold_research_note":  "https://fromage3900.github.io/my-site/application/infold-research-alignment.md",
-                                    "wix_embed_manifest":  "https://fromage3900.github.io/my-site/generated/wix_embed_manifest.json",
-                                    "render_constellation":  "https://fromage3900.github.io/my-site/wix/render-constellation.html"
-                                }
-                  },
-    "project":  {
-                    "name":  "Brennan Shepherd Portfolio",
-                    "performance":  "highQuality",
-                    "theme":  "infinity-nikki-inspired"
-                },
-    "projects":  [
-                     {
-                         "category":  "Environment",
-                         "engine":  "Unreal Engine 5.8",
-                         "hero":  "https://fromage3900.github.io/my-site/generated/l-sakurapath-hero.html",
-                         "materials":  209,
-                         "name":  "L_SakuraPath",
-                         "passport":  "https://fromage3900.github.io/my-site/generated/l-sakurapath-passport.html",
-                         "triangles":  "51K"
-                     },
-                     {
-                         "category":  "Environment",
-                         "engine":  "Unreal Engine 5.8",
-                         "hero":  null,
-                         "materials":  156,
-                         "name":  "Zen Forest",
-                         "passport":  null,
-                         "triangles":  "87K"
-                     },
-                     {
-                         "category":  "Procedural",
-                         "engine":  "Blender 5.1",
-                         "hero":  null,
-                         "materials":  64,
-                         "name":  "Surreal Architecture",
-                         "passport":  null,
-                         "triangles":  "124K"
-                     }
-                 ],
-    "version":  "2.0"
+{
+  "components": {
+    "melodiaBreakdownCard": "https://fromage3900.github.io/my-site/wix/melodia-breakdown-card.html",
+    "melodiaGalleryGrid": "https://fromage3900.github.io/my-site/wix/melodia-gallery-grid.html",
+    "melodiaHeroEmbed": "https://fromage3900.github.io/my-site/wix/melodia-hero-embed.html",
+    "melodiaNavigation": "https://fromage3900.github.io/my-site/wix/melodia-navigation-constellation.html",
+    "melodiaPassportEmbed": "https://fromage3900.github.io/my-site/wix/melodia-passport-embed.html",
+    "melodiaProjectCard": "https://fromage3900.github.io/my-site/wix/melodia-project-card.html",
+    "melodiaSectionHeader": "https://fromage3900.github.io/my-site/wix/melodia-section-header.html",
+    "melodiaSmoothScroll": "https://fromage3900.github.io/my-site/wix/melodia-smooth-scroll.html"
+  },
+  "fallback_urls": {
+    "static_hero": "https://fromage3900.github.io/my-site/generated/l-sakurapath-hero.html",
+    "static_passport": "https://fromage3900.github.io/my-site/generated/l-sakurapath-passport.html"
+  },
+  "generated_at": "2026-07-13T07:09:27.209301+00:00",
+  "package_handoff": {
+    "configs": {
+      "hero_config.json": "https://fromage3900.github.io/my-site/generated/hero_config.json",
+      "materials_config.json": "https://fromage3900.github.io/my-site/generated/materials_config.json",
+      "passport_config.json": "https://fromage3900.github.io/my-site/generated/passport_config.json",
+      "portfolio_package_config.json": "https://fromage3900.github.io/my-site/generated/portfolio_package_config.json",
+      "renders_config.json": "https://fromage3900.github.io/my-site/generated/renders_config.json",
+      "stats_config.json": "https://fromage3900.github.io/my-site/generated/stats_config.json"
+    },
+    "generated_at": "2026-07-13T07:09:27.209311+00:00",
+    "scene": {
+      "engine": "Unreal Engine 5.8.0",
+      "level_path": "/Game/ZenForestTest",
+      "name": "ZenForestTest"
+    },
+    "source_package": "G:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\portfolio_package.json",
+    "stats": {
+      "draw_calls": 35,
+      "materials": 30,
+      "triangles": 72924
+    }
+  },
+  "version": "2.0"
 }

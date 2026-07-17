@@ -8,14 +8,14 @@
     },
     "materials": 30,
     "pcg_graphs": 4,
-    "renders": 8,
+    "renders": 14,
     "validation_warnings": 0
   },
   "embeds": {
     "hero": "https://fromage3900.github.io/my-site/generated/l-sakurapath-hero.html",
     "passport": "https://fromage3900.github.io/my-site/generated/l-sakurapath-passport.html"
   },
-  "generated_at": "2026-07-08T06:54:39.890493+00:00",
+  "generated_at": "2026-07-13T07:09:27.116487+00:00",
   "generated_by": "package_to_website_handoff.py",
   "project": {
     "category": "stylized environment",

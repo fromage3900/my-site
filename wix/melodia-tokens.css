@@ -28,6 +28,15 @@
   --motif-accent: rgba(201, 168, 106, 0.58);
   --motif-glyph-opacity: 0.42;
   --motif-clip-opacity: 0.52;
+  /* SoftMG Nikki/FAB-inspired mood tokens — parchment + jewel-tone, no neon.
+     Notes: Saved/Audit/softmg_nikki_ref_notes.md. Bound on #phase-rhythm only. */
+  --game-parchment: #f2e6cf;
+  --game-parchment-deep: #e3d3ad;
+  --game-rose: #e8a9a1;
+  --game-amber: #d9a566;
+  --game-lavender: #b6a6d9;
+  --game-seafoam: #8fc9bd;
+  --game-ink: #3b2a22;
   /* Melodia void gradient — matches MI studio backdrop */
   --melodia-void-gradient:
     radial-gradient(

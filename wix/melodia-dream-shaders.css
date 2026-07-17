@@ -303,6 +303,34 @@
   filter: drop-shadow(0 0 10px rgba(255, 230, 102, 0.28));
 }
 
+/* SoftMG / Figma SoftMG_Baroque timeline — quieter 2.4s hue drift on titles */
+@keyframes dream-iri-softmg {
+  0%, 100% { background-position: 0% 45%; }
+  50% { background-position: 100% 55%; }
+}
+
+.melodia-shell[data-mg="soft"] .kicker,
+.melodia-shell[data-mg="soft"] .magazine-kicker,
+.melodia-shell[data-mg="soft"] .premium-kicker,
+.melodia-shell[data-mg="soft"] .eyebrow,
+.melodia-shell[data-mg="soft"] .game-eyebrow,
+.melodia-shell .game-ui-sheet-echo.is-soft .nikki-outfit-title,
+.melodia-shell .game-ui-title-chip h3,
+.melodia-shell .game-ui-field-hud .tag {
+  animation-name: dream-iri-softmg;
+  animation-duration: 2.4s;
+}
+
+.melodia-shell .game-ui-sheet-echo.is-soft .nikki-outfit-title,
+.melodia-shell .game-ui-title-chip h3 {
+  background: var(--pillar-iri-ramp, var(--dream-iri-ramp));
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 12px rgba(196, 154, 78, 0.28));
+}
+
 /* Paper bands: solid readable headlines — no transparent clip */
 .melodia-shell .band.paper .section-head h2,
 .melodia-shell .band.paper .section-head h2 em,
@@ -668,7 +696,14 @@
   .melodia-shell .band.astral::before,
   .melodia-shell .band.night::before,
   .melodia-shell .band.deep::before,
+  .melodia-shell .hero h1,
   .melodia-shell .hero h1 em,
+  .melodia-shell .kicker,
+  .melodia-shell .magazine-kicker,
+  .melodia-shell .premium-kicker,
+  .melodia-shell .eyebrow,
+  .melodia-shell .game-eyebrow,
+  .melodia-shell .game-ui-title-chip h3,
   .melodia-shell .premium-card:hover,
   .melodia-shell .image-card.holo-plate:hover::before,
   .melodia-shell .image-card.holo-plate.is-gacha-in,
