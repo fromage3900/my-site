@@ -792,6 +792,21 @@
   .world-card::after { animation: none !important; transform: none !important; }
 }
 
+/* Melodia gothic rail — recruiter polish (GothicFrame chrome, Melodia-original) */
+.hub-gothic-rail {
+  display: block;
+  width: min(28rem, 88%);
+  height: 2rem;
+  margin: 0.35rem 0 0.85rem;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_GothicFrameRail.png") left center / contain no-repeat;
+  opacity: 0.88;
+  filter: drop-shadow(0 0 10px rgba(102, 224, 255, 0.2));
+}
+
+.melodia-shell[data-mg="off"] .hub-gothic-rail {
+  display: none;
+}
+
 @media (max-width: 680px) {
   .data-row,
   .concept-list { grid-template-columns: 1fr; }
