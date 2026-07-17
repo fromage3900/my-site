@@ -15,7 +15,25 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  validate:
+    name: Validate assets & portfolio
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate assets (tiered)
+        run: python tools/validate_assets.py
+      - name: Validate portfolio (links + JSON)
+        shell: pwsh
+        run: ./tools/validate_portfolio.ps1
+
+  deploy-github-pages:
+    name: Deploy to GitHub Pages
+    needs: validate
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -23,9 +41,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Validate portfolio
-        shell: pwsh
-        run: ./tools/validate_portfolio.ps1
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
@@ -35,3 +50,22 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  deploy-wix:
+    name: Deploy to Wix
+    needs: validate
+    if: ${{ secrets.WIX_CLI_TOKEN != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install Wix CLI
+        run: npm ci
+      - name: Deploy to Wix
+        env:
+          WIX_CLI_TOKEN: ${{ secrets.WIX_CLI_TOKEN }}
+        run: npx wix deploy --site-id ${{ secrets.WIX_SITE_ID }}
