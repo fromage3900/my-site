@@ -52,7 +52,20 @@
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--game-cyan);
+  /* Iridescent kickers — solid cyan retired (Figma SoftMG / Nikki type motion) */
+  background: linear-gradient(
+    100deg,
+    var(--iri-gold, #ffe666) 0%,
+    var(--iri-cyan, #66d9ff) 38%,
+    var(--iri-purple, #cc99ff) 68%,
+    var(--iri-gold, #ffe666) 100%
+  );
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: dream-iri-softmg 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(102, 217, 255, 0.28));
 }
 
 .game-lede {
@@ -79,7 +92,7 @@
   padding: 0.45rem 0;
   min-height: 3rem;
   background:
-    url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeDivider.png") center / auto 100% no-repeat,
+    url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeDividerScroll.png") center / auto 100% no-repeat,
     linear-gradient(90deg, transparent, rgba(110, 200, 232, 0.12), transparent);
   animation: divider-sheen 5.5s ease-in-out infinite;
 }
@@ -91,7 +104,7 @@
 
 .game-ui-highway-shader {
   background:
-    url("../generated/assets/melodia-game-ui/T_Melodia_HighwayBG.png") center / cover no-repeat,
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Parchment.png") center / cover no-repeat,
     linear-gradient(180deg, rgba(4, 6, 12, 1), rgba(8, 10, 20, 1), rgba(4, 6, 12, 1));
 }
 
@@ -115,7 +128,7 @@
   width: 0.85rem;
   height: 0.85rem;
   transform: translate(-50%, -50%);
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_Hitline.png") center / contain no-repeat;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Hitline.png") center / contain no-repeat;
   filter: drop-shadow(0 0 6px rgba(255, 230, 102, 0.55));
   pointer-events: none;
 }
@@ -134,7 +147,7 @@
   width: 1.35rem;
   height: 1.35rem;
   margin-left: -0.675rem;
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_NoteHead.png") center / contain no-repeat;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_SealSP.png") center / contain no-repeat;
   filter: drop-shadow(0 0 6px rgba(255, 230, 102, 0.45));
   opacity: 0.9;
   animation: note-drift 2.8s linear infinite;
@@ -142,7 +155,7 @@
 }
 
 .game-ui-note-glyph.is-beam {
-  background-image: url("../generated/assets/melodia-game-ui/T_Melodia_NoteHeadBeam.png");
+  background-image: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Hitline.png");
   filter: drop-shadow(0 0 8px rgba(102, 217, 255, 0.55));
 }
 
@@ -327,9 +340,10 @@
   height: 4.25rem;
   pointer-events: none;
   z-index: 2;
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCorner.png") center / contain no-repeat;
+  /* SSOT: Batch O Baroque — old FiligreeCorner atom retired from beauty chrome */
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCornerBaroque.png") center / contain no-repeat;
   opacity: 0.92;
-  filter: drop-shadow(0 0 10px rgba(102, 217, 255, 0.35));
+  filter: drop-shadow(0 0 10px rgba(196, 154, 78, 0.35));
   animation: filigree-breathe 4.5s ease-in-out infinite;
 }
 
@@ -551,7 +565,7 @@
   width: 1.55rem;
   height: 1.55rem;
   margin-left: -0.775rem;
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_NoteHead.png") center / contain no-repeat;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_SealSP.png") center / contain no-repeat;
   filter: drop-shadow(0 0 8px rgba(255, 230, 102, 0.55));
   pointer-events: none;
   z-index: 2;
@@ -559,7 +573,7 @@
 }
 
 .rhythm-note.is-beam {
-  background-image: url("../generated/assets/melodia-game-ui/T_Melodia_NoteHeadBeam.png");
+  background-image: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Hitline.png");
 }
 
 .game-ui-lane[data-lane="B"] .rhythm-note {
@@ -574,7 +588,7 @@
 
 .rhythm-note.judged-perfect {
   transform: scale(1.35);
-  background-image: url("../generated/assets/melodia-game-ui/T_Melodia_NoteHeadBeam.png");
+  background-image: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Hitline.png");
   filter: brightness(1.25) drop-shadow(0 0 14px rgba(255, 230, 102, 0.85));
 }
 .rhythm-note.judged-miss { opacity: 0.2; }
@@ -602,7 +616,7 @@
   right: 1rem;
   bottom: 2.75rem;
   height: 12px;
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_Hitline.png") center / 100% 100% no-repeat;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Hitline.png") center / 100% 100% no-repeat;
   box-shadow: 0 0 16px rgba(232, 197, 106, 0.55), 0 0 28px rgba(102, 217, 255, 0.2);
   pointer-events: none;
 }
@@ -989,9 +1003,49 @@
   height: 56px;
 }
 
+/* SoftMG tier: denser jewelry, quieter motion than CombatFull */
+.game-ui-sheet-echo.is-soft .game-ui-filigree.is-baroque {
+  width: 4.25rem;
+  height: 4.25rem;
+  opacity: 0.72;
+  filter: drop-shadow(0 0 8px rgba(196, 154, 78, 0.28));
+  animation: filigree-breathe-soft 2.4s ease-in-out infinite;
+}
+
+@keyframes filigree-breathe-soft {
+  0%, 100% { opacity: 0.62; }
+  50% { opacity: 0.82; }
+}
+
+.game-ui-sheet-echo.is-soft .game-ui-filigree-crest.is-baroque {
+  width: 3.5rem;
+  height: 3.5rem;
+  opacity: 0.8;
+  margin-bottom: 0.35rem;
+}
+
+.game-ui-sheet-echo.is-soft .game-ui-filigree-brace.is-baroque {
+  max-width: 14rem;
+  height: 1.65rem;
+  opacity: 0.65;
+  margin: 0.15rem auto 0.45rem;
+}
+
 .game-ui-sheet-echo.is-soft .game-ui-scroll-rail.top {
   opacity: 0.7;
   height: 10px;
+}
+
+/* SoftMG never inherits combat beat punch */
+.game-ui-sheet-echo.is-soft[data-react-beat="1"] .game-ui-filigree.is-baroque,
+.game-ui-sheet-echo.is-soft .game-ui-filigree.is-baroque {
+  /* keep soft breathe; combat pulse stays on .game-ui-sheet-master */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-ui-sheet-echo.is-soft .game-ui-filigree.is-baroque {
+    animation: none;
+  }
 }
 
 .game-ui-mini-staff {
@@ -1053,7 +1107,7 @@
   border: 2px solid var(--game-border, rgba(201, 168, 106, 0.35));
   background:
     linear-gradient(180deg, rgba(13, 18, 36, 0.96), rgba(7, 9, 18, 0.98)),
-    url("../generated/assets/melodia-game-ui/T_Melodia_HighwayBG.png") center / cover;
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Parchment.png") center / cover;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
   padding-top: max(12px, env(safe-area-inset-top, 0px));
   padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
@@ -1326,6 +1380,7 @@ body.ios-mode .game-ui-ios-play {
   .grade-pop,
   .game-ui-filigree,
   .game-ui-filigree.is-ornate,
+  .game-ui-filigree.is-baroque,
   .game-ui-lane-rail,
   .game-ui-streak-edge,
   .game-ui-ult-arc,
@@ -1345,6 +1400,8 @@ body.ios-mode .game-ui-ios-play {
 .game-ui-filigree.is-ornate {
   width: 5rem;
   height: 5rem;
+  /* Alias → baroque SSOT (legacy class kept for any leftover markup) */
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCornerBaroque.png") center / contain no-repeat;
   filter: drop-shadow(0 0 12px rgba(102, 217, 255, 0.45)) drop-shadow(0 0 18px rgba(255, 230, 102, 0.22));
   animation: filigree-breathe-ornate 400ms ease-out infinite;
 }
@@ -1386,6 +1443,92 @@ body.ios-mode .game-ui-ios-play {
 .game-ui-filigree.tr.is-ornate { transform: scaleX(-1); }
 .game-ui-filigree.bl.is-ornate { transform: scaleY(-1); }
 .game-ui-filigree.br.is-ornate { transform: scale(-1); }
+
+/* ── Batch O Baroque · denser SoftMG / SheetMusicHUD bind (Pass L2.5) ── */
+
+.game-ui-filigree.is-baroque {
+  width: 5.5rem;
+  height: 5.5rem;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCornerBaroque.png") center / contain no-repeat;
+  filter: drop-shadow(0 0 14px rgba(196, 154, 78, 0.4)) drop-shadow(0 0 10px rgba(102, 217, 255, 0.28));
+  animation: filigree-breathe-ornate 520ms ease-out infinite;
+}
+
+.game-ui-filigree.is-baroque::before,
+.game-ui-filigree.is-baroque::after {
+  content: none;
+}
+
+.game-ui-filigree.tr.is-baroque { transform: scaleX(-1); }
+.game-ui-filigree.bl.is-baroque { transform: scaleY(-1); }
+.game-ui-filigree.br.is-baroque { transform: scale(-1); }
+
+.game-ui-sheet-echo.is-soft .game-ui-filigree.is-baroque,
+.game-ui-sheet-master .game-ui-filigree.is-baroque {
+  opacity: 0.92;
+}
+
+.game-ui-sheet-master .game-ui-filigree.is-baroque {
+  animation: filigree-breathe-ornate 520ms ease-out infinite;
+}
+
+.game-ui-sheet-echo.is-soft .game-ui-filigree.is-baroque {
+  /* SoftMG: slower breathe set above on .is-soft */
+  opacity: 0.72;
+}
+
+.game-ui-filigree-divider.is-baroque {
+  min-height: 2.75rem;
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeDividerScroll.png") center / auto 100% no-repeat,
+    linear-gradient(90deg, transparent, rgba(196, 154, 78, 0.28), transparent) center / 100% 1px no-repeat;
+}
+
+.game-ui-filigree-crest.is-baroque {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0 auto;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCrestBaroque.png") center / contain no-repeat;
+  filter: drop-shadow(0 0 12px rgba(196, 154, 78, 0.35));
+}
+
+.game-ui-filigree-medallion.is-baroque {
+  width: 3.25rem;
+  height: 3.25rem;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeMedallionRosette.png") center / contain no-repeat;
+}
+
+.game-ui-filigree-brace.is-baroque {
+  width: 100%;
+  max-width: 20rem;
+  height: 2.25rem;
+  margin: 0.35rem auto;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeBraceVolute.png") center / contain no-repeat;
+}
+
+.game-ui-batch-o-tile .swatch.corner-baroque {
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCornerBaroque.png") center / contain no-repeat;
+}
+
+.game-ui-batch-o-tile .swatch.divider-scroll {
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeDividerScroll.png") center / contain no-repeat;
+}
+
+.game-ui-batch-o-tile .swatch.crest-baroque {
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCrestBaroque.png") center / contain no-repeat;
+}
+
+.game-ui-batch-o-tile .swatch.medallion {
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeMedallionRosette.png") center / contain no-repeat;
+}
+
+.game-ui-batch-o-tile .swatch.brace {
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeBraceVolute.png") center / contain no-repeat;
+}
+
+.game-ui-batch-o-tile .swatch.atlas-baroque {
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeBatchO_Baroque.png") center / cover no-repeat;
+}
 
 .game-ui-filigree-divider.is-wave {
   position: relative;
@@ -1969,14 +2112,14 @@ body.ios-mode .game-ui-ios-play {
   z-index: 2;
   pointer-events: none;
   background-image:
-    url("../generated/assets/melodia-game-ui/T_Melodia_NoteHead.png"),
-    url("../generated/assets/melodia-game-ui/T_Melodia_NoteHead.png"),
-    url("../generated/assets/melodia-game-ui/T_Melodia_NoteHeadBeam.png"),
-    url("../generated/assets/melodia-game-ui/T_Melodia_NoteHead.png"),
-    url("../generated/assets/melodia-game-ui/T_Melodia_NoteHead.png"),
-    url("../generated/assets/melodia-game-ui/T_Melodia_NoteHeadBeam.png"),
-    url("../generated/assets/melodia-game-ui/T_Melodia_NoteHead.png"),
-    url("../generated/assets/melodia-game-ui/T_Melodia_NoteHeadBeam.png");
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_SealSP.png"),
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_SealSP.png"),
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Hitline.png"),
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_SealSP.png"),
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_SealSP.png"),
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Hitline.png"),
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_SealSP.png"),
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Hitline.png");
   background-size: 1.35rem, 1.35rem, 1.55rem, 1.35rem, 1.35rem, 1.55rem, 1.25rem, 1.45rem;
   background-repeat: no-repeat;
   background-position:
@@ -2159,7 +2302,7 @@ body.ios-mode .game-ui-ios-play {
 
 .game-ui-crest-finale {
   background:
-    url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCrest_Finale.png") center / contain no-repeat;
+    url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCrestBaroque.png") center / contain no-repeat;
   border: none;
   box-shadow: none;
   opacity: 0.9;
@@ -2168,7 +2311,7 @@ body.ios-mode .game-ui-ios-play {
 .game-ui-lane-rail {
   height: 1.15rem;
   background:
-    url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeLaneRail.png") center / 100% 100% no-repeat;
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_LaneInk.png") center / 100% 100% no-repeat;
   box-shadow: none;
   opacity: 0.85;
 }
@@ -2230,6 +2373,7 @@ body.ios-mode .game-ui-ios-play {
   opacity: 0.75;
 }
 
+[data-react-beat="1"] .game-ui-sheet-master .game-ui-filigree.is-baroque,
 [data-react-beat="1"] .game-ui-sheet-master .game-ui-filigree.is-ornate,
 [data-react-beat="1"] .game-ui-sheet {
   filter: brightness(1.08);
@@ -2284,6 +2428,7 @@ body.ios-mode .game-ui-ios-play {
   overflow: hidden;
 }
 
+.game-ui-ios-play .game-ui-filigree.is-baroque,
 .game-ui-ios-play .game-ui-filigree.is-ornate {
   width: 3.25rem;
   height: 3.25rem;
@@ -2357,6 +2502,7 @@ body.ios-mode .game-ui-ios-play {
   box-shadow: inset 0 0 0 1px rgba(102, 217, 255, 0.06);
 }
 
+.game-ui-sheet-echo .game-ui-filigree.is-baroque,
 .game-ui-sheet-echo .game-ui-filigree.is-ornate {
   width: 3.75rem;
   height: 3.75rem;
@@ -2401,14 +2547,14 @@ body.ios-mode .game-ui-ios-play {
   position: absolute;
   width: 0.95rem;
   height: 0.95rem;
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_NoteHead.png") center / contain no-repeat;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_SealSP.png") center / contain no-repeat;
   opacity: 0.9;
 }
 
 .game-ui-results-staff .results-note.n1 { left: 18%; top: 1.15rem; }
 .game-ui-results-staff .results-note.n2 { left: 34%; top: 0.55rem; }
 .game-ui-results-staff .results-note.n3 { left: 52%; top: 1.35rem; }
-.game-ui-results-staff .results-note.n4 { left: 70%; top: 0.75rem; background-image: url("../generated/assets/melodia-game-ui/T_Melodia_NoteHeadBeam.png"); width: 1.15rem; height: 1.15rem; }
+.game-ui-results-staff .results-note.n4 { left: 70%; top: 0.75rem; background-image: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Hitline.png"); width: 1.15rem; height: 1.15rem; }
 
 .game-ui-results-staff .results-bar {
   position: absolute;
@@ -2418,5 +2564,733 @@ body.ios-mode .game-ui-ios-play {
   width: 2px;
   background: linear-gradient(180deg, var(--game-gold), var(--game-cyan));
   opacity: 0.75;
+}
+
+/* ── The Shrine Remembers · SoftMG-only combo-8 flourish ──
+   Reuses locked Baroque PNGs (CrestBaroque / MedallionRosette / BraceVolute)
+   already bound through .is-baroque — no new atlas art. Quiet SoftMG 2.4s
+   timing, never the combat beat punch. */
+
+.game-ui-shrine-remembers {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0.85rem 0 0;
+  padding: 0.45rem 0.75rem 0.6rem;
+  border-radius: 12px;
+  text-align: center;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease, max-height 0.6s ease;
+}
+
+.game-ui-shrine-crest-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.game-ui-shrine-brace.game-ui-filigree-brace.is-baroque {
+  max-width: 12rem;
+  height: 1.35rem;
+  margin: 0 auto 0.1rem;
+  opacity: 0.5;
+}
+
+.game-ui-shrine-medallion.game-ui-filigree-medallion.is-baroque {
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 0.5;
+}
+
+.game-ui-shrine-crest.game-ui-filigree-crest.is-baroque {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0;
+  opacity: 0.55;
+  transform: scale(0.85);
+  filter: drop-shadow(0 0 6px rgba(196, 154, 78, 0.3));
+  transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+}
+
+.game-ui-shrine-ink {
+  margin: 0.1rem 0 0;
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.1s;
+}
+
+/* Tattoo — quiet permanence once unlocked (this session or restored via localStorage) */
+.melodia-shell[data-mg="soft"] [data-shrine-awake="1"] .game-ui-shrine-remembers {
+  opacity: 0.6;
+  max-height: 6rem;
+  transform: translateY(0);
+}
+
+.melodia-shell[data-mg="soft"] [data-shrine-awake="1"] .game-ui-shrine-crest {
+  opacity: 0.65;
+  transform: scale(1);
+}
+
+.melodia-shell[data-mg="soft"] [data-shrine-awake="1"] .game-ui-shrine-medallion,
+.melodia-shell[data-mg="soft"] [data-shrine-awake="1"] .game-ui-shrine-brace {
+  opacity: 0.55;
+}
+
+.melodia-shell[data-mg="soft"] [data-shrine-awake="1"] .game-ui-shrine-ink {
+  opacity: 0.8;
+}
+
+/* One-shot illuminated flourish — combo 8, SoftMG 2.4s, no combat beat punch */
+.melodia-shell[data-mg="soft"] [data-shrine-flourish="1"] .game-ui-shrine-remembers {
+  opacity: 1;
+  max-height: 6rem;
+  transform: translateY(0);
+  animation: shrine-remembers-glow 2.4s ease-in-out 1;
+}
+
+.melodia-shell[data-mg="soft"] [data-shrine-flourish="1"] .game-ui-shrine-crest {
+  opacity: 1;
+  transform: scale(1);
+  animation: shrine-crest-breathe 2.4s ease-in-out 1;
+}
+
+.melodia-shell[data-mg="soft"] [data-shrine-flourish="1"] .game-ui-shrine-medallion {
+  opacity: 0.9;
+  animation: shrine-medallion-lift 2.4s ease-in-out 1;
+}
+
+.melodia-shell[data-mg="soft"] [data-shrine-flourish="1"] .game-ui-shrine-brace {
+  opacity: 0.9;
+  animation: dream-iri-softmg 2.4s ease-in-out 1, shrine-medallion-lift 2.4s ease-in-out 1;
+}
+
+.melodia-shell[data-mg="soft"] [data-shrine-flourish="1"] .game-ui-shrine-ink {
+  opacity: 1;
+  animation: shrine-ink-wash 2.4s ease-in-out 1;
+}
+
+@keyframes shrine-remembers-glow {
+  0%, 100% { box-shadow: none; }
+  15%, 60% {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 230, 102, 0.4),
+      0 0 26px rgba(255, 230, 102, 0.26);
+  }
+}
+
+@keyframes shrine-crest-breathe {
+  0%, 100% { transform: scale(0.9); filter: drop-shadow(0 0 6px rgba(196, 154, 78, 0.3)); }
+  50% { transform: scale(1.08); filter: drop-shadow(0 0 16px rgba(255, 230, 102, 0.6)); }
+}
+
+@keyframes shrine-medallion-lift {
+  0%, 100% { transform: translateY(2px); opacity: 0.6; }
+  50% { transform: translateY(-2px); opacity: 1; }
+}
+
+@keyframes shrine-ink-wash {
+  0%, 100% { text-shadow: none; opacity: 0.9; }
+  50% { text-shadow: 0 0 12px rgba(102, 217, 255, 0.4); opacity: 1; }
+}
+
+/* Reactivity board proof-of-fire — Motion/SoftMG_Baroque strip */
+.demo-shrine-crest.game-ui-filigree-crest.is-baroque {
+  width: 2.15rem;
+  height: 2.15rem;
+  margin: 0;
+  opacity: 0.5;
+  transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+.game-ui-react-strip[data-strip="softmg-baroque"][data-shrine-lit="1"] {
+  box-shadow: inset 0 0 0 1px rgba(255, 230, 102, 0.4), 0 0 24px rgba(255, 230, 102, 0.18);
+}
+
+.game-ui-react-strip[data-strip="softmg-baroque"][data-shrine-lit="1"] .demo-shrine-crest {
+  opacity: 1;
+  filter: drop-shadow(0 0 14px rgba(255, 230, 102, 0.65));
+}
+
+/* ── Clef Code · SoftMG⇄Combat breathe toggle (type G F C G on the rhythm strip) ── */
+.game-ui-sheet-master[data-mg-breathe="soft"] .game-ui-filigree.is-baroque {
+  opacity: 0.72;
+  filter: drop-shadow(0 0 8px rgba(196, 154, 78, 0.28));
+  animation: filigree-breathe-soft 2.4s ease-in-out infinite;
+}
+
+.game-ui-clef-note {
+  transition: opacity 0.4s ease;
+}
+
+.game-ui-clef-hint {
+  opacity: 0.72;
+  font-size: 0.82em;
+}
+
+.game-ui-react-strip[data-strip="softmg-baroque"][data-clef-lit="1"] {
+  box-shadow: inset 0 0 0 1px rgba(196, 154, 78, 0.42), 0 0 22px rgba(196, 154, 78, 0.2);
+}
+
+.game-ui-react-strip[data-strip="softmg-baroque"][data-clef-lit="1"] .demo-shrine-crest {
+  opacity: 0.9;
+  filter: drop-shadow(0 0 12px rgba(196, 154, 78, 0.55));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-ui-shrine-remembers,
+  .game-ui-shrine-crest,
+  .game-ui-shrine-medallion,
+  .game-ui-shrine-brace,
+  .game-ui-shrine-ink,
+  .demo-shrine-crest {
+    transition: none;
+    animation: none !important;
+  }
+
+  .melodia-shell[data-mg="soft"] [data-shrine-flourish="1"] .game-ui-shrine-remembers,
+  .melodia-shell[data-mg="soft"] [data-shrine-awake="1"] .game-ui-shrine-remembers {
+    opacity: 1;
+    max-height: 6rem;
+    transform: none;
+  }
+
+  .melodia-shell[data-mg="soft"] [data-shrine-flourish="1"] .game-ui-shrine-crest,
+  .melodia-shell[data-mg="soft"] [data-shrine-awake="1"] .game-ui-shrine-crest {
+    opacity: 0.85;
+    transform: none;
+  }
+
+  .melodia-shell[data-mg="soft"] [data-shrine-flourish="1"] .game-ui-shrine-ink,
+  .melodia-shell[data-mg="soft"] [data-shrine-awake="1"] .game-ui-shrine-ink {
+    opacity: 0.85;
+  }
+
+  .game-ui-react-strip[data-strip="softmg-baroque"][data-shrine-lit="1"] .demo-shrine-crest {
+    opacity: 0.85;
+    filter: none;
+  }
+
+  .game-ui-sheet-master[data-mg-breathe="soft"] .game-ui-filigree.is-baroque {
+    animation: none !important;
+  }
+
+  .game-ui-clef-note {
+    transition: none;
+  }
+
+  .game-ui-react-strip[data-strip="softmg-baroque"][data-clef-lit="1"] .demo-shrine-crest {
+    opacity: 0.85;
+    filter: none;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SoftMG Nikki/FAB luxury pass — #phase-rhythm SoftMG beauty path ONLY.
+   Parchment + ink-seal + jewel-tone chrome, cyan neon highway demoted.
+   Scoped to the #phase-rhythm id so Command/Enemy/Results phases and the
+   iOS kit keep their existing Combat chrome untouched. Independent of the
+   Clef Code data-mg-breathe toggle above (that swaps animation speed only —
+   this block owns color/texture and applies in both breathe modes).
+   Reference: Saved/Audit/softmg_nikki_ref_notes.md
+   ══════════════════════════════════════════════════════════════════════════ */
+
+#phase-rhythm.game-ui-sheet-master {
+  background: linear-gradient(180deg, var(--game-parchment) 0%, var(--game-parchment-deep) 100%);
+  border: 1px solid rgba(59, 42, 34, 0.32);
+  box-shadow:
+    inset 0 0 0 1px rgba(217, 165, 102, 0.22),
+    0 24px 64px rgba(59, 42, 34, 0.28);
+}
+
+#phase-rhythm .game-ui-sheet {
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Parchment.png") center / cover no-repeat,
+    linear-gradient(180deg, var(--game-parchment) 0%, var(--game-parchment-deep) 100%);
+  border: 1px solid rgba(59, 42, 34, 0.28);
+  box-shadow: inset 0 0 30px rgba(59, 42, 34, 0.12);
+}
+
+#phase-rhythm .game-ui-sheet::after {
+  background: linear-gradient(90deg, transparent, var(--game-amber), var(--game-rose), var(--game-lavender), transparent);
+  opacity: 0.55;
+}
+
+#phase-rhythm .game-ui-sheet-title h3,
+#phase-rhythm .game-ui-sheet-head h3 {
+  color: var(--game-ink);
+}
+
+#phase-rhythm .game-ui-sheet-meta .phase-ink,
+#phase-rhythm .game-ui-sheet-meta .time,
+#phase-rhythm .game-ui-sheet-meta .bpm {
+  color: rgba(59, 42, 34, 0.72);
+}
+
+#phase-rhythm .game-ui-combo-cartouche {
+  border-color: rgba(217, 165, 102, 0.65);
+  background: rgba(242, 230, 207, 0.9);
+  box-shadow: inset 0 0 0 1px rgba(182, 166, 217, 0.2), 0 0 16px rgba(217, 165, 102, 0.16);
+}
+
+#phase-rhythm .game-ui-combo-cartouche .cartouche-label {
+  color: rgba(59, 42, 34, 0.68);
+}
+
+#phase-rhythm .game-ui-combo-cartouche .cartouche-num {
+  color: var(--game-amber);
+}
+
+#phase-rhythm .game-ui-staff {
+  background: rgba(227, 211, 173, 0.55);
+  border: 1px solid rgba(217, 165, 102, 0.28);
+}
+
+#phase-rhythm .game-ui-staff::before {
+  opacity: 0.55;
+}
+
+#phase-rhythm .game-ui-staff .clef {
+  color: var(--game-ink);
+}
+
+#phase-rhythm .game-ui-staff .note-beam {
+  background: linear-gradient(90deg, var(--game-amber), var(--game-rose));
+  box-shadow: 0 0 6px rgba(217, 165, 102, 0.35);
+}
+
+#phase-rhythm .game-ui-staff-ticks {
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(8.333% - 1px),
+      rgba(59, 42, 34, 0.14) calc(8.333% - 1px),
+      rgba(59, 42, 34, 0.14) 8.333%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(25% - 1px),
+      rgba(217, 165, 102, 0.22) calc(25% - 1px),
+      rgba(217, 165, 102, 0.22) 25%
+    );
+}
+
+/* Ink-seal meters — SP/ULT read as a wax/ink seal badge, not a glass bar */
+#phase-rhythm .game-ui-ink-meter {
+  gap: 0.55rem;
+}
+
+#phase-rhythm .game-ui-ink-meter::before {
+  content: "";
+  width: 1.7rem;
+  height: 1.7rem;
+  flex: 0 0 auto;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_SealSP.png") center / contain no-repeat;
+  filter: drop-shadow(0 0 4px rgba(59, 42, 34, 0.25));
+}
+
+#phase-rhythm .game-ui-ink-meter.ult::before {
+  background-image: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_SealULT.png");
+}
+
+#phase-rhythm .game-ui-ink-meter .ink-label {
+  color: rgba(59, 42, 34, 0.62);
+}
+
+#phase-rhythm .game-ui-ink-meter .ink-track {
+  background: rgba(59, 42, 34, 0.14);
+}
+
+#phase-rhythm .game-ui-ink-meter .ink-fill {
+  background: linear-gradient(90deg, var(--game-seafoam), rgba(143, 201, 189, 0.55));
+  box-shadow: 0 0 6px rgba(143, 201, 189, 0.4);
+}
+
+#phase-rhythm .game-ui-ink-meter.ult .ink-fill {
+  background: linear-gradient(90deg, var(--game-lavender), rgba(182, 166, 217, 0.5));
+  box-shadow: 0 0 6px rgba(182, 166, 217, 0.4);
+}
+
+/* Scroll rails — soft scroll scallop, not gold/cyan combat rail */
+#phase-rhythm .game-ui-scroll-rail {
+  background-image: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_ScrollEdge.png");
+  opacity: 0.9;
+}
+
+/* Highway — staff-ink lanes, no neon rail / glass glow */
+#phase-rhythm .game-ui-highway {
+  background: rgba(227, 211, 173, 0.32);
+}
+
+#phase-rhythm .game-ui-lane {
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_LaneInk.png") center / 100% 100% no-repeat,
+    rgba(242, 230, 207, 0.35);
+  border: 1px solid rgba(59, 42, 34, 0.14);
+}
+
+#phase-rhythm .game-ui-lane::after {
+  color: rgba(59, 42, 34, 0.55);
+}
+
+#phase-rhythm .game-ui-lane[data-lane="A"] { --lane-color: var(--game-amber); }
+#phase-rhythm .game-ui-lane[data-lane="B"] { --lane-color: var(--game-seafoam); }
+#phase-rhythm .game-ui-lane[data-lane="C"] { --lane-color: var(--game-rose); }
+#phase-rhythm .game-ui-lane[data-lane="D"] { --lane-color: var(--game-lavender); }
+
+#phase-rhythm .rhythm-note {
+  filter: drop-shadow(0 0 6px rgba(217, 165, 102, 0.45));
+}
+#phase-rhythm .game-ui-lane[data-lane="B"] .rhythm-note { filter: drop-shadow(0 0 6px rgba(143, 201, 189, 0.5)); }
+#phase-rhythm .game-ui-lane[data-lane="C"] .rhythm-note { filter: drop-shadow(0 0 6px rgba(232, 169, 161, 0.5)); }
+#phase-rhythm .game-ui-lane[data-lane="D"] .rhythm-note { filter: drop-shadow(0 0 6px rgba(182, 166, 217, 0.45)); }
+
+#phase-rhythm .game-ui-hitline {
+  background-image: url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Hitline.png");
+  box-shadow: 0 0 12px rgba(217, 165, 102, 0.4);
+}
+
+/* Combat gold/cyan lane-rail glow retired on the SoftMG beauty path — the
+   ink-seal staff + soft hitline above already carry the rhythm chrome. */
+#phase-rhythm .game-ui-lane-rail,
+#phase-rhythm .game-ui-lane-rail::before {
+  display: none;
+}
+
+/* Ink dialogue — softened speaker chip, no cyan tag */
+#phase-rhythm .game-ui-ink-dialogue {
+  color: rgba(59, 42, 34, 0.85);
+}
+
+#phase-rhythm .game-ui-ink-dialogue .speaker {
+  color: var(--game-amber);
+}
+
+#phase-rhythm .game-ui-sheet-skill-note,
+#phase-rhythm .game-ui-play-hint {
+  color: rgba(59, 42, 34, 0.62);
+}
+
+#phase-rhythm .game-ui-play-controls {
+  background: rgba(227, 211, 173, 0.4);
+  border-bottom: 1px solid rgba(59, 42, 34, 0.16);
+}
+
+#phase-rhythm .game-ui-play-hint kbd {
+  border-color: rgba(59, 42, 34, 0.22);
+  background: rgba(242, 230, 207, 0.6);
+  color: var(--game-ink);
+}
+
+/* Legacy sci-fi HUD row — hidden on the SoftMG beauty path (chips/meters
+   live in the ink-seal staff above; element wheel stays library-only) */
+#phase-rhythm .game-ui-hud-row {
+  display: none;
+}
+
+/* Reactivity glows — same channels (Beat/Streak), warm palette instead of cyan */
+#phase-rhythm .game-ui-streak-edge {
+  background: var(--game-rose);
+}
+
+/* data-react-* attributes are set on #phase-rhythm itself (the RhythmStrip
+   root) — attribute must attach directly to the id, not as a descendant. */
+#phase-rhythm[data-react-streak="3"] .game-ui-streak-edge {
+  background: var(--game-seafoam);
+  box-shadow: 0 0 16px rgba(143, 201, 189, 0.5);
+}
+
+#phase-rhythm[data-react-streak="5"] .game-ui-streak-edge {
+  background: var(--game-rose);
+  box-shadow: 0 0 18px rgba(232, 169, 161, 0.55);
+}
+
+#phase-rhythm[data-react-streak="8"] .game-ui-streak-edge {
+  background: var(--game-amber);
+  box-shadow: 0 0 22px rgba(217, 165, 102, 0.7);
+}
+
+#phase-rhythm[data-react-beat="1"] .game-ui-hitline {
+  box-shadow: 0 0 24px rgba(217, 165, 102, 0.75), 0 0 40px rgba(232, 169, 161, 0.3);
+}
+
+#phase-rhythm .game-ui-lane.lane-press-flash {
+  box-shadow: inset 0 0 24px rgba(217, 165, 102, 0.32);
+  border-color: rgba(217, 165, 102, 0.5);
+}
+
+#phase-rhythm .grade-pop.great::before {
+  background: radial-gradient(circle, rgba(143, 201, 189, 0.24) 0 45%, transparent 46%);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SoftMG echo — Command / Enemy `.game-ui-sheet-echo` panels.
+   These keep their existing Batch O Combat chrome (gold/cyan corners, staff
+   rails) per the SoftMG-scoping note above — only the skill-facing surface
+   (the chip that shows the chosen song skill) and a faint parchment corner
+   wash pick up the SoftMG Infold language, so Command/Enemy read as
+   siblings of the rhythm sheet rather than a different game.
+   Reference: Saved/Audit/softmg_nikki_ref_notes.md
+   ══════════════════════════════════════════════════════════════════════════ */
+[data-phase-panel="command"].game-ui-sheet-echo,
+[data-phase-panel="enemy"].game-ui-sheet-echo {
+  position: relative;
+}
+
+[data-phase-panel="command"].game-ui-sheet-echo::before,
+[data-phase-panel="enemy"].game-ui-sheet-echo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 45% at 8% 0%, rgba(242, 230, 207, 0.1), transparent 70%);
+  mix-blend-mode: soft-light;
+  z-index: 0;
+}
+
+/* PillowChip — the skill the player is about to play (or the enemy's
+   telegraphed skill) reads as a soft pillow fill, not a glass tab */
+.game-ui-skill-chip.is-selected {
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_PillowChip.png") center / cover no-repeat,
+    linear-gradient(180deg, var(--game-parchment), var(--game-parchment-deep));
+  border-color: rgba(217, 165, 102, 0.55);
+  color: var(--game-ink);
+  box-shadow: 0 0 0 1px rgba(217, 165, 102, 0.2), 0 4px 14px rgba(59, 42, 34, 0.22);
+}
+
+[data-phase-panel="enemy"] .telegraph {
+  position: relative;
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_PillowChip.png") center / cover no-repeat,
+    linear-gradient(180deg, var(--game-parchment), var(--game-parchment-deep));
+  color: var(--game-ink);
+  font-size: 0.85rem;
+}
+
+/* ── Batch N language → Melodia portfolio chrome (2026-07-16)
+   Skill ring + combo burst: pearl/gold/iri-cyan on void.
+   Gated by data-mg only — does not touch phase machine / tabs. ── */
+.melodia-shell[data-mg="soft"] .game-ui-skill-strip,
+.melodia-shell[data-mg="chrome"] .game-ui-skill-strip,
+.melodia-shell[data-mg="full"] .game-ui-skill-strip {
+  position: relative;
+  isolation: isolate;
+}
+
+.melodia-shell[data-mg="soft"] .game-ui-skill-strip::before,
+.melodia-shell[data-mg="chrome"] .game-ui-skill-strip::before,
+.melodia-shell[data-mg="full"] .game-ui-skill-strip::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(14rem, 70%);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_SkillRing.png") center / contain no-repeat;
+  opacity: 0.42;
+  pointer-events: none;
+  z-index: 0;
+  filter: drop-shadow(0 0 12px rgba(102, 224, 255, 0.25));
+}
+
+.melodia-shell[data-mg="soft"] .game-ui-skill-strip > *,
+.melodia-shell[data-mg="chrome"] .game-ui-skill-strip > *,
+.melodia-shell[data-mg="full"] .game-ui-skill-strip > * {
+  position: relative;
+  z-index: 1;
+}
+
+.melodia-shell[data-mg="soft"] .game-ui-combo-cartouche,
+.melodia-shell[data-mg="chrome"] .game-ui-combo-cartouche,
+.melodia-shell[data-mg="full"] .game-ui-combo-cartouche {
+  position: relative;
+  overflow: visible;
+}
+
+.melodia-shell[data-mg="soft"] .game-ui-combo-cartouche::after,
+.melodia-shell[data-mg="chrome"] .game-ui-combo-cartouche::after,
+.melodia-shell[data-mg="full"] .game-ui-combo-cartouche::after {
+  content: "";
+  position: absolute;
+  inset: -55%;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_ComboBurst.png") center / contain no-repeat;
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: screen;
+}
+
+.melodia-shell[data-mg="soft"] .game-ui-combo-cartouche .cartouche-label,
+.melodia-shell[data-mg="soft"] .game-ui-combo-cartouche .cartouche-num,
+.melodia-shell[data-mg="chrome"] .game-ui-combo-cartouche .cartouche-label,
+.melodia-shell[data-mg="chrome"] .game-ui-combo-cartouche .cartouche-num,
+.melodia-shell[data-mg="full"] .game-ui-combo-cartouche .cartouche-label,
+.melodia-shell[data-mg="full"] .game-ui-combo-cartouche .cartouche-num {
+  position: relative;
+  z-index: 1;
+}
+
+/* Streak-aware burst punch — CSS only, reads data-react-streak from beat bus */
+.melodia-shell[data-mg="soft"] [data-react-streak="5"] .game-ui-combo-cartouche::after,
+.melodia-shell[data-mg="soft"] [data-react-streak="8"] .game-ui-combo-cartouche::after,
+.melodia-shell[data-mg="chrome"] [data-react-streak="5"] .game-ui-combo-cartouche::after,
+.melodia-shell[data-mg="chrome"] [data-react-streak="8"] .game-ui-combo-cartouche::after,
+.melodia-shell[data-mg="full"] [data-react-streak="5"] .game-ui-combo-cartouche::after,
+.melodia-shell[data-mg="full"] [data-react-streak="8"] .game-ui-combo-cartouche::after {
+  opacity: 0.55;
+  animation: combo-burst-pulse 720ms ease-out;
+}
+
+@keyframes combo-burst-pulse {
+  0% { opacity: 0.2; transform: scale(0.85); }
+  40% { opacity: 0.7; transform: scale(1.05); }
+  100% { opacity: 0.45; transform: scale(1); }
+}
+
+/* Gothic frame corners — portfolio / recruiter polish (void + gold) */
+.game-ui-gothic-corner {
+  position: absolute;
+  width: 4.5rem;
+  height: 4.5rem;
+  pointer-events: none;
+  z-index: 3;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_GothicFrameCorner.png") center / contain no-repeat;
+  opacity: 0.85;
+}
+
+.game-ui-gothic-corner.tl { top: 0.2rem; left: 0.2rem; }
+.game-ui-gothic-corner.tr { top: 0.2rem; right: 0.2rem; transform: scaleX(-1); }
+.game-ui-gothic-corner.bl { bottom: 0.2rem; left: 0.2rem; transform: scaleY(-1); }
+.game-ui-gothic-corner.br { bottom: 0.2rem; right: 0.2rem; transform: scale(-1); }
+
+.game-ui-gothic-rail {
+  display: block;
+  width: min(36rem, 100%);
+  height: 2.25rem;
+  margin: 0.75rem auto 1.25rem;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_GothicFrameRail.png") center / contain no-repeat;
+  opacity: 0.9;
+}
+
+.melodia-shell[data-mg="off"] .game-ui-skill-strip::before,
+.melodia-shell[data-mg="off"] .game-ui-combo-cartouche::after,
+.melodia-shell[data-mg="off"] .game-ui-gothic-corner,
+.melodia-shell[data-mg="off"] .game-ui-gothic-rail {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .melodia-shell [data-react-streak] .game-ui-combo-cartouche::after {
+    animation: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Motion cohort parity — Figma RhythmReactivityBoard (41:242) newly-authored cues
+   StaffShimmer (Bass) · NoteTrailIri (Grade=Perfect) · BreakCrestReveal (Break)
+   Mirrors the 3 keyframed Figma nodes (95:1857/1858/1859) so Figma ↔ web ↔ UE
+   read the same. Channel map: melodia-motion-connect.json.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* StaffShimmer — Bass-gated horizontal sheen sweep across the staff plate (~600ms) */
+.game-ui-staff-ticks {
+  position: relative;
+}
+
+.game-ui-staff-ticks::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -30%;
+  width: 22%;
+  background: linear-gradient(100deg, transparent, rgba(255, 245, 209, 0.55), transparent);
+  transform: skewX(-14deg);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+[data-react-bass="1"] .game-ui-staff-ticks::after {
+  animation: staff-shimmer-sweep 600ms ease-out;
+}
+
+@keyframes staff-shimmer-sweep {
+  0% { left: -30%; opacity: 0; }
+  20% { opacity: 0.85; }
+  100% { left: 120%; opacity: 0; }
+}
+
+/* SoftMG beauty path — warm amber sheen instead of pearl */
+#phase-rhythm .game-ui-staff-ticks::after {
+  background: linear-gradient(100deg, transparent, rgba(217, 165, 102, 0.5), transparent);
+}
+
+/* NoteTrailIri — cyan→gold trail behind a Perfect-judged note (~280ms) */
+.rhythm-note.judged-perfect::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.5rem;
+  height: 2.4rem;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(102, 217, 255, 0), #66d9ff 45%, #ffe566 100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  animation: note-trail-iri 280ms ease-out;
+}
+
+@keyframes note-trail-iri {
+  0% { opacity: 0; transform: translate(-50%, 12%) scaleY(0.4); }
+  30% { opacity: 0.95; }
+  100% { opacity: 0; transform: translate(-50%, -82%) scaleY(1.2); }
+}
+
+/* SoftMG beauty path — seafoam→amber trail */
+#phase-rhythm .rhythm-note.judged-perfect::after {
+  background: linear-gradient(180deg, rgba(143, 201, 189, 0), var(--game-seafoam, #8fc9bd) 45%, var(--game-amber, #d9a566) 100%);
+}
+
+/* BreakCrestReveal — crest scale-in + gold flash on toughness break (~500ms) */
+[data-react-break="1"] .game-ui-crest-finale {
+  animation: break-crest-reveal 500ms ease-out;
+}
+
+@keyframes break-crest-reveal {
+  0% { transform: translateX(-50%) scale(0.5); opacity: 0; filter: drop-shadow(0 0 0 rgba(255, 230, 102, 0)); }
+  50% { transform: translateX(-50%) scale(1.08); opacity: 1; filter: drop-shadow(0 0 18px rgba(255, 230, 102, 0.7)); }
+  100% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+}
+
+/* data-mg=off silences the cohort cues (accessibility tier) */
+.melodia-shell[data-mg="off"] .game-ui-staff-ticks::after,
+.melodia-shell[data-mg="off"] .rhythm-note.judged-perfect::after,
+.melodia-shell[data-mg="off"] [data-react-break="1"] .game-ui-crest-finale {
+  animation: none !important;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-ui-staff-ticks::after,
+  .rhythm-note.judged-perfect::after,
+  [data-react-break="1"] .game-ui-crest-finale {
+    animation: none !important;
+  }
 }
 

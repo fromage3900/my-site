@@ -126,5 +126,23 @@
     ],
     "export_scale": "2x PNG via download_assets (defaultScale 2)",
     "bind": "#phase-rhythm .game-ui-sheet-master (SoftMG beauty path only — Combat highway on other phase panels keeps the existing cyan/gold Batch O chrome); .game-ui-sheet-echo.is-soft Command/Enemy echo panels use SoftMG/PillowChip for skill fills"
+  },
+  "motion_connect_pass": {
+    "art_source": "figma_rhythm_reactivity_board",
+    "generated_at": "2026-07-17T14:00:00-04:00",
+    "manifest": "wix/melodia-motion-connect.json",
+    "note": "Cross-lane motion SSOT — maps Figma RhythmReactivityBoard (41:242) Motion/* nodes to web CSS selectors + @keyframes + reactivity channels, and to the UE NativePaint driver fields in Imports/UI/Specs/_MOTION_CHANNELS.md. Figma cohort is 100% keyframed: 19 animated members over a 2,400ms loop.",
+    "figma_file": "Yx8ud7n39NdWZvnNvo4Xlf",
+    "figma_board": "Game/RhythmReactivityBoard",
+    "figma_board_node": "41:242",
+    "authored_2026-07-17": {
+      "Motion/StaffShimmer": "95:1857",
+      "Motion/NoteTrailIri": "95:1858",
+      "Motion/BreakCrestReveal": "95:1859"
+    },
+    "web": ["wix/melodia-game-ui.css", "wix/melodia-game-ui.js"],
+    "ue_spec": "Imports/UI/Specs/_MOTION_CHANNELS.md",
+    "tiers": "data-mg full|soft|chrome|off — off + prefers-reduced-motion silence every cue",
+    "coverage": "18 mapped components (19 cohort members; two CornerBaroque share one FiligreeBreathe row)"
   }
 }

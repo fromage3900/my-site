@@ -135,6 +135,152 @@
     }
   }
 
+  var SHRINE_STORAGE_KEY = "melodia_shrine_remembers";
+  var SHRINE_FLOURISH_MS = 2400;
+
+  function shrineTattooUnlocked() {
+    try {
+      return window.localStorage.getItem(SHRINE_STORAGE_KEY) === "1";
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function unlockShrineTattoo() {
+    try {
+      window.localStorage.setItem(SHRINE_STORAGE_KEY, "1");
+    } catch (e) {
+      /* storage unavailable — tattoo stays session-only */
+    }
+  }
+
+  function restoreShrineTattoo(root) {
+    if (!root || !shrineTattooUnlocked()) return;
+    root.setAttribute("data-shrine-awake", "1");
+  }
+
+  function setShrineBoardLit(lit) {
+    var board = document.querySelector("[data-shrine-board]");
+    if (!board) return;
+    if (lit) board.setAttribute("data-shrine-lit", "1");
+    else board.removeAttribute("data-shrine-lit");
+  }
+
+  function triggerShrineRemembers(root) {
+    if (!root) return;
+    unlockShrineTattoo();
+    root.setAttribute("data-shrine-awake", "1");
+    if (root._shrineFired) return;
+    root._shrineFired = true;
+    root.setAttribute("data-shrine-flourish", "1");
+    setShrineBoardLit(true);
+    window.clearTimeout(root._shrineFlourishTimer);
+    var holdMs = reducedMotion ? 1200 : SHRINE_FLOURISH_MS;
+    root._shrineFlourishTimer = window.setTimeout(function () {
+      root.removeAttribute("data-shrine-flourish");
+      setShrineBoardLit(false);
+    }, holdMs);
+  }
+
+  function clearShrineFlourish(root) {
+    if (!root) return;
+    root._shrineFired = false;
+    window.clearTimeout(root._shrineFlourishTimer);
+    root.removeAttribute("data-shrine-flourish");
+    setShrineBoardLit(false);
+    /* data-shrine-awake tattoo intentionally persists past combo breaks */
+  }
+
+  /* ── Clef Code · type the clef letters (G F C G) to swap the rhythm
+     strip between Combat breathe (default, fast ornate) and SoftMG
+     breathe (slow, quiet). Also lights the SoftMG_Baroque reactivity
+     board strip so the lookbook can prove the channel fired. ── */
+  var CLEF_CODE = ["g", "f", "c", "g"];
+  var MG_BREATHE_STORAGE_KEY = "melodia_mg_breathe";
+
+  function storedBreatheMode() {
+    try {
+      return window.localStorage.getItem(MG_BREATHE_STORAGE_KEY) === "soft" ? "soft" : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function persistBreatheMode(mode) {
+    try {
+      window.localStorage.setItem(MG_BREATHE_STORAGE_KEY, mode);
+    } catch (e) {
+      /* storage unavailable — breathe choice stays session-only */
+    }
+  }
+
+  function clefBreatheMode(root) {
+    return root.getAttribute("data-mg-breathe") === "soft" ? "soft" : "combat";
+  }
+
+  function setClefBoardLit(lit) {
+    var board = document.querySelector('[data-strip="softmg-baroque"]');
+    if (!board) return;
+    if (lit) board.setAttribute("data-clef-lit", "1");
+    else board.removeAttribute("data-clef-lit");
+  }
+
+  function announceClef(root, mode) {
+    var note = root.querySelector("[data-clef-status]");
+    if (!note) return;
+    window.clearTimeout(root._clefNoteTimer);
+    note.innerHTML = '<span class="speaker">MELUSINA</span> ' + (mode === "soft"
+      ? "There — a quieter measure. SoftMG breathe."
+      : "Back to the beat. Combat breathe.");
+    note.hidden = false;
+    root._clefNoteTimer = window.setTimeout(function () {
+      note.hidden = true;
+    }, reducedMotion ? 1600 : 2600);
+  }
+
+  function toggleClefBreathe(root) {
+    if (!root) return;
+    var next = clefBreatheMode(root) === "soft" ? "combat" : "soft";
+    root.setAttribute("data-mg-breathe", next);
+    document.documentElement.setAttribute("data-mg-breathe", next);
+    persistBreatheMode(next);
+    setClefBoardLit(next === "soft");
+    announceClef(root, next);
+  }
+
+  function initClefCode() {
+    var root = document.querySelector("[data-rhythm-playground]");
+    if (!root) return;
+    if (storedBreatheMode() === "soft") {
+      root.setAttribute("data-mg-breathe", "soft");
+      document.documentElement.setAttribute("data-mg-breathe", "soft");
+      setClefBoardLit(true);
+    }
+    var buffer = [];
+    document.addEventListener("keydown", function (e) {
+      var key = e.key.toLowerCase();
+      if (key.length !== 1 || key < "a" || key > "z") return;
+      buffer.push(key);
+      if (buffer.length > CLEF_CODE.length) buffer.shift();
+      if (buffer.length === CLEF_CODE.length && buffer.every(function (k, i) {
+        return k === CLEF_CODE[i];
+      })) {
+        buffer.length = 0;
+        toggleClefBreathe(root);
+      }
+    });
+  }
+
+  // BreakCrestReveal channel — one-shot 500ms pulse at the toughness-break/finale peak.
+  function pulseBreak(root) {
+    if (!root) return;
+    root.setAttribute("data-react-break", "1");
+    window.clearTimeout(root._breakTimer);
+    root._breakTimer = window.setTimeout(function () {
+      root.removeAttribute("data-react-break");
+    }, 500);
+  }
+
   function startBeatBus(root) {
     if (!root || reducedMotion) return;
     var bassPhase = 0;
@@ -177,6 +323,7 @@
     this.raf = 0;
     this.hitLineRatio = 0.78;
     this.bind();
+    restoreShrineTattoo(this.root);
   }
 
   RhythmStrip.prototype.bind = function () {
@@ -371,9 +518,16 @@
   RhythmStrip.prototype.registerJudgment = function (grade) {
     if (grade === "miss") {
       this.combo = 0;
+      clearShrineFlourish(this.root);
     } else {
       this.combo += 1;
       if (this.combo > this.maxCombo) this.maxCombo = this.combo;
+      if (this.combo >= 8) {
+        triggerShrineRemembers(this.root);
+      }
+      if (this.combo === 8) {
+        pulseBreak(this.root);
+      }
     }
     this.updateCombo();
     this.showGrade(grade, grade !== "miss" ? WINDOWS[grade] : null);
@@ -464,30 +618,39 @@
   function fillAssetGrid(root) {
     if (!root) return;
     var assets = [
-      "T_Melodia_FiligreeCorner.png",
-      "T_Melodia_FiligreeDivider.png",
-      "T_Melodia_FiligreeCrest_Finale.png",
-      "T_Melodia_FiligreeLaneRail.png",
+      "T_Melodia_SoftMG_Parchment.png",
+      "T_Melodia_SoftMG_SealSP.png",
+      "T_Melodia_SoftMG_SealULT.png",
+      "T_Melodia_SoftMG_Hitline.png",
+      "T_Melodia_SoftMG_LaneInk.png",
+      "T_Melodia_SoftMG_ScrollEdge.png",
+      "T_Melodia_SoftMG_PillowChip.png",
+      "T_Melodia_FiligreeCornerBaroque.png",
+      "T_Melodia_FiligreeDividerScroll.png",
+      "T_Melodia_FiligreeCrestBaroque.png",
+      "T_Melodia_FiligreeMedallionRosette.png",
+      "T_Melodia_FiligreeBraceVolute.png",
+      "T_Melodia_FiligreeBatchO_Baroque.png",
       "T_Melodia_FiligreeGradeHalo.png",
       "T_Melodia_FiligreeGradeHalo_Perfect.png",
       "T_Melodia_FiligreeGradeHalo_Great.png",
       "T_Melodia_FiligreeGradeHalo_Good.png",
       "T_Melodia_FiligreeGradeHalo_Miss.png",
+      "T_Melodia_SkillRing.png",
+      "T_Melodia_ComboBurst.png",
+      "T_Melodia_GothicFrameCorner.png",
+      "T_Melodia_GothicFrameRail.png",
       "T_Melodia_ScrollBorderRail.png",
       "T_Melodia_SheetParchment.png",
       "T_Melodia_IriOverlay.png",
-      "T_Melodia_HighwayBG.png",
       "T_Melodia_EnemyGlow.png",
       "T_Melodia_ElementWheel.png",
       "T_Melodia_StaffTile.png",
-      "T_Melodia_Hitline.png",
       "T_Melodia_SheenSweep.png",
       "T_Melodia_GradePerfect.png",
       "T_Melodia_GradeGreat.png",
       "T_Melodia_GradeGood.png",
       "T_Melodia_GradeMiss.png",
-      "T_Melodia_NoteHead.png",
-      "T_Melodia_NoteHeadBeam.png",
       "T_Melodia_LanePress.png",
       "T_Melodia_SkillChipBG.png",
       "T_Melodia_SafeAreaMask.png",
@@ -579,6 +742,7 @@
     document.querySelectorAll(".game-ui-playback-head").forEach(animatePlaybackHead);
     initDecorativeNotes();
     initPhaseSwitch();
+    initClefCode();
     document.querySelectorAll("[data-ios-play]").forEach(initIosPhaseSwitch);
     loadRhythmConfig().then(function () {
       document.querySelectorAll("[data-rhythm-playground], [data-ios-rhythm]").forEach(function (el) {
