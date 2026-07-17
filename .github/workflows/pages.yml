@@ -54,8 +54,11 @@ jobs:
   deploy-wix:
     name: Deploy to Wix
     needs: validate
-    if: ${{ secrets.WIX_CLI_TOKEN != '' }}
+    if: env.WIX_CLI_TOKEN != ''
     runs-on: ubuntu-latest
+    env:
+      WIX_CLI_TOKEN: ${{ secrets.WIX_CLI_TOKEN }}
+      WIX_SITE_ID: ${{ secrets.WIX_SITE_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -66,6 +69,4 @@ jobs:
       - name: Install Wix CLI
         run: npm ci
       - name: Deploy to Wix
-        env:
-          WIX_CLI_TOKEN: ${{ secrets.WIX_CLI_TOKEN }}
-        run: npx wix deploy --site-id ${{ secrets.WIX_SITE_ID }}
+        run: npx wix deploy --site-id $WIX_SITE_ID
