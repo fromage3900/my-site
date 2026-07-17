@@ -54,7 +54,7 @@ jobs:
   deploy-wix:
     name: Deploy to Wix
     needs: validate
-    if: ${{ secrets.WIX_CLI_TOKEN != '' }}
+    if: secrets.WIX_CLI_TOKEN != ''
     runs-on: ubuntu-latest
     env:
       WIX_CLI_TOKEN: ${{ secrets.WIX_CLI_TOKEN }}
