@@ -14,109 +14,255 @@
   "lanes": [
     {
       "id": "melodia-studio-surrealarch",
-      "lane": "Blender GN — live",
+      "lane": "Blender GN \u00e2\u20ac\u201d live",
       "title": "Melodia Studio / SurrealArch v2.134",
       "status": "live",
       "asset_root": "BS_GodFile/deploy/surreal_architecture_gen.py",
       "summary": "Melodia Studio N-panel builds GeometryNodeTree graphs at runtime: 42 style genomes, library bake 72, Starlight regen 9. Zen shrine axis, Escher greybox, gothic kits, Nikki photo-spot genomes, DistributePointsOnFaces scatter.",
       "steps": [
-        { "order": 1, "name": "apply_geometry_nodes_to_object", "detail": "Creates SurrealArch_{obj} node tree + modifier; signature-aware monolith kwargs." },
-        { "order": 2, "name": "Genome / catalog dispatch", "detail": "42 genomes + 100+ arch types: GB_ZEN_*, GB_ESCHER_*, towers, domes, props." },
-        { "order": 3, "name": "Library bake", "detail": "SurrealArch_Library (72) + Surreal_Regen_Starlight (9) on Portfolio Stage v4." },
-        { "order": 4, "name": "UE export", "detail": "snap_export.py trim groups + UE payload from GN output." },
-        { "order": 5, "name": "Portfolio dossier", "detail": "surreal-architecture.html + geometry-nodes.html proof plates." }
+        {
+          "order": 1,
+          "name": "apply_geometry_nodes_to_object",
+          "detail": "Creates SurrealArch_{obj} node tree + modifier; signature-aware monolith kwargs."
+        },
+        {
+          "order": 2,
+          "name": "Genome / catalog dispatch",
+          "detail": "42 genomes + 100+ arch types: GB_ZEN_*, GB_ESCHER_*, towers, domes, props."
+        },
+        {
+          "order": 3,
+          "name": "Library bake",
+          "detail": "SurrealArch_Library (72) + Surreal_Regen_Starlight (9) on Portfolio Stage v4."
+        },
+        {
+          "order": 4,
+          "name": "UE export",
+          "detail": "snap_export.py trim groups + UE payload from GN output."
+        },
+        {
+          "order": 5,
+          "name": "Portfolio dossier",
+          "detail": "surreal-architecture.html + geometry-nodes.html proof plates."
+        }
       ],
-      "proof_targets": ["42 genomes", "library 72", "Starlight 9", "GB_ZEN_SANDO", "GB_ESCHER_RELATIVITY"],
+      "proof_targets": [
+        "42 genomes",
+        "library 72",
+        "Starlight 9",
+        "GB_ZEN_SANDO",
+        "GB_ESCHER_RELATIVITY"
+      ],
       "sheet_href": "surreal-architecture.html",
       "unreal_parallel": "build_escher_relativity_room.py (PCG port of Escher math)"
     },
     {
       "id": "melody-musical-gn",
-      "lane": "Blender GN — live (melody)",
+      "lane": "Blender GN \u00e2\u20ac\u201d live (melody)",
       "title": "Musical / celestial sheet-music geometry",
       "status": "live",
       "asset_root": "Tools/regenerate_musical_ornaments_surreal_arch.py",
-      "summary": "Melodia Studio builders bake 10 musical FBX kitbash meshes (7 ornament + 3 Melody Tokens). TrebleClef + MusicalCorner are human hand-remake — leave SSOT FBX until artist overwrite. Melody Token clay / MatCap plates are live on zbrush-breakdown; FBX may still be placeholders until sculpt finals land.",
+      "summary": "Melodia Studio builders bake 10 musical FBX kitbash meshes (7 ornament + 3 Melody Tokens). TrebleClef + MusicalCorner are human hand-remake \u00e2\u20ac\u201d leave SSOT FBX until artist overwrite. Melody Token clay / MatCap plates are live on zbrush-breakdown; FBX may still be placeholders until sculpt finals land.",
       "steps": [
-        { "order": 1, "name": "GN builders", "detail": "build_treble_clef / sheet_music_railing / note_head in surreal_architecture_gen.py (hand-remake meshes skip regen)." },
-        { "order": 2, "name": "Headless bake", "detail": "regenerate_musical_ornaments_surreal_arch.py → KitbashExport/MusicalOrnamentalMeshes/ (flat SSOT)." },
-        { "order": 3, "name": "WIP hierarchy", "detail": "KitbashExport/OrnamentMusic_WIP/Musical/{HandRemake,Tokens,Polish} + staging buckets (copy only)." },
-        { "order": 4, "name": "Product mirror", "detail": "Products/MusicalOrnamentKitbash/FBX/ + musical_ornament_kitbash_catalog.json (store_live false)." },
-        { "order": 5, "name": "Stage plates", "detail": "run_melodia_plate_batch.py --musical → musical beauty plates." }
+        {
+          "order": 1,
+          "name": "GN builders",
+          "detail": "build_treble_clef / sheet_music_railing / note_head in surreal_architecture_gen.py (hand-remake meshes skip regen)."
+        },
+        {
+          "order": 2,
+          "name": "Headless bake",
+          "detail": "regenerate_musical_ornaments_surreal_arch.py \u00e2\u2020\u2019 KitbashExport/MusicalOrnamentalMeshes/ (flat SSOT)."
+        },
+        {
+          "order": 3,
+          "name": "WIP hierarchy",
+          "detail": "KitbashExport/OrnamentMusic_WIP/Musical/{HandRemake,Tokens,Polish} + staging buckets (copy only)."
+        },
+        {
+          "order": 4,
+          "name": "Product mirror",
+          "detail": "Products/MusicalOrnamentKitbash/FBX/ + musical_ornament_kitbash_catalog.json (store_live false)."
+        },
+        {
+          "order": 5,
+          "name": "Stage plates",
+          "detail": "run_melodia_plate_batch.py --musical \u00e2\u2020\u2019 musical beauty plates."
+        }
       ],
-      "proof_targets": ["SM_Orn_TrebleClef", "SM_Orn_MelodyToken_01", "SM_Orn_SheetMusicRail", "10/10 FBX"],
+      "proof_targets": [
+        "SM_Orn_TrebleClef",
+        "SM_Orn_MelodyToken_01",
+        "SM_Orn_SheetMusicRail",
+        "10/10 FBX"
+      ],
       "sheet_href": "geometry-nodes.html#melody",
       "unreal_parallel": "OrnamentMusical static meshes + Cosmic Orrery set dressing"
     },
     {
       "id": "roof-generator-pro",
-      "lane": "Blender GN — partial",
+      "lane": "Blender GN \u00e2\u20ac\u201d partial",
       "title": "RoofGeneratorPro SHED / BUTTERFLY",
       "status": "partial",
       "asset_root": "RoofGeneratorPro/FromagesRoofGenerator",
       "summary": "Only SHED (8 nodes) and BUTTERFLY (9 nodes) are true procedural GN. All other roof types use a 2-node pass-through wrapper over bmesh output.",
       "steps": [
-        { "order": 1, "name": "use_geonode flag", "detail": "FromageRoof_GN modifier on roof mesh." },
-        { "order": 2, "name": "SHED / BUTTERFLY", "detail": "Procedural slope + valley logic in GN." },
-        { "order": 3, "name": "Other roofs", "detail": "bmesh roof → Input→Output pass-through (v3.3 baseline)." },
-        { "order": 4, "name": "validate_gn.py", "detail": "Headless validation enforces procedural for SHED/BUTTERFLY." },
-        { "order": 5, "name": "Future", "detail": "Expand procedural GN beyond pass-through for gable/hip types." }
+        {
+          "order": 1,
+          "name": "use_geonode flag",
+          "detail": "FromageRoof_GN modifier on roof mesh."
+        },
+        {
+          "order": 2,
+          "name": "SHED / BUTTERFLY",
+          "detail": "Procedural slope + valley logic in GN."
+        },
+        {
+          "order": 3,
+          "name": "Other roofs",
+          "detail": "bmesh roof \u00e2\u2020\u2019 Input\u00e2\u2020\u2019Output pass-through (v3.3 baseline)."
+        },
+        {
+          "order": 4,
+          "name": "validate_gn.py",
+          "detail": "Headless validation enforces procedural for SHED/BUTTERFLY."
+        },
+        {
+          "order": 5,
+          "name": "Future",
+          "detail": "Expand procedural GN beyond pass-through for gable/hip types."
+        }
       ],
-      "proof_targets": ["validate_gn.py log", "SHED node count", "BUTTERFLY node count"],
+      "proof_targets": [
+        "validate_gn.py log",
+        "SHED node count",
+        "BUTTERFLY node count"
+      ],
       "sheet_href": "geometry-nodes.html#pipelines",
-      "unreal_parallel": "N/A — architectural roof tool"
+      "unreal_parallel": "N/A \u00e2\u20ac\u201d architectural roof tool"
     },
     {
       "id": "higgsas-bridge",
-      "lane": "Blender GN — external",
+      "lane": "Blender GN \u00e2\u20ac\u201d external",
       "title": "Higgsas node group bridge",
       "status": "external",
       "asset_root": "BS_GodFile/deploy/surreal_arch/higgsas_bridge.py",
       "summary": "Appends NT* node groups from external Higgsas Geo Node Groups v13.blend. Live code, graphs not in repo.",
       "steps": [
-        { "order": 1, "name": "Lazy load blend", "detail": "higgsas_bridge loads external .blend on demand." },
-        { "order": 2, "name": "Apply bricks", "detail": "higgsas_apply_bricks adds brick surface modifier." },
-        { "order": 3, "name": "Dependency", "detail": "Requires local BlenderPlugins install." },
-        { "order": 4, "name": "Portfolio", "detail": "Document as external dependency, not owned GN." },
-        { "order": 5, "name": "Capture", "detail": "Screenshot NTBricks Grid in use if available." }
+        {
+          "order": 1,
+          "name": "Lazy load blend",
+          "detail": "higgsas_bridge loads external .blend on demand."
+        },
+        {
+          "order": 2,
+          "name": "Apply bricks",
+          "detail": "higgsas_apply_bricks adds brick surface modifier."
+        },
+        {
+          "order": 3,
+          "name": "Dependency",
+          "detail": "Requires local BlenderPlugins install."
+        },
+        {
+          "order": 4,
+          "name": "Portfolio",
+          "detail": "Document as external dependency, not owned GN."
+        },
+        {
+          "order": 5,
+          "name": "Capture",
+          "detail": "Screenshot NTBricks Grid in use if available."
+        }
       ],
-      "proof_targets": ["external .blend path", "modifier screenshot"],
+      "proof_targets": [
+        "external .blend path",
+        "modifier screenshot"
+      ],
       "sheet_href": "geometry-nodes.html#pipelines",
       "unreal_parallel": "N/A"
     },
     {
       "id": "ue-pcg-universal",
-      "lane": "Unreal PCG — live",
+      "lane": "Unreal PCG \u00e2\u20ac\u201d live",
       "title": "Universal + style PCG graphs",
       "status": "live",
       "asset_root": "/Game/EnvSandbox/PCG/Universal/",
-      "summary": "setup_pcg_universal.py — MeadowBloom, RockScatter, wall moss/lichen/ivy, Sakura petal drift, Escher rooms, Cosmic orbit scatter. 9,913 ISM verified across four WP pillars.",
+      "summary": "setup_pcg_universal.py \u00e2\u20ac\u201d MeadowBloom, RockScatter, wall moss/lichen/ivy, Sakura petal drift, Escher rooms, Cosmic orbit scatter. 9,913 ISM verified across four WP pillars.",
       "steps": [
-        { "order": 1, "name": "Graph build", "detail": "setup_pcg_universal.py — 13+ style graphs + wall suite." },
-        { "order": 2, "name": "Rock scatter", "detail": "build_universal_rock_scatter.py — sidesteps broken wire_scatter_chain." },
-        { "order": 3, "name": "WP pillars", "detail": "setup_wp_pillar_levels.py assigns volumes per L_WP_* level." },
-        { "order": 4, "name": "ISM verify", "detail": "9,913 total ISM across four pillars (audit 2026-07-09)." },
-        { "order": 5, "name": "Capture", "detail": "pcg_l_wp_* plates into portfolio_package.json." }
+        {
+          "order": 1,
+          "name": "Graph build",
+          "detail": "setup_pcg_universal.py \u00e2\u20ac\u201d 13+ style graphs + wall suite."
+        },
+        {
+          "order": 2,
+          "name": "Rock scatter",
+          "detail": "build_universal_rock_scatter.py \u00e2\u20ac\u201d sidesteps broken wire_scatter_chain."
+        },
+        {
+          "order": 3,
+          "name": "WP pillars",
+          "detail": "setup_wp_pillar_levels.py assigns volumes per L_WP_* level."
+        },
+        {
+          "order": 4,
+          "name": "ISM verify",
+          "detail": "9,913 total ISM across four pillars (audit 2026-07-09)."
+        },
+        {
+          "order": 5,
+          "name": "Capture",
+          "detail": "pcg_l_wp_* plates into portfolio_package.json."
+        }
       ],
-      "proof_targets": ["pcg_universal_build.json", "wp_pillar_levels.json", "pcg-heatmap.png"],
+      "proof_targets": [
+        "pcg_universal_build.json",
+        "wp_pillar_levels.json",
+        "generated/assets/portfolio-scan/pcg-heatmap.png"
+      ],
       "sheet_href": "pcg-system-impact.html",
       "unreal_parallel": "NOT Blender GN_UniversalScatter (planned only)"
     },
     {
       "id": "ue-geometryscript",
-      "lane": "UE GeometryScript — partial",
+      "lane": "UE GeometryScript \u00e2\u20ac\u201d partial",
       "title": "Math structures + terrain block-in",
       "status": "in_progress",
       "asset_root": "/Game/EnvSandbox/Meshes/",
-      "summary": "generate_math_structures.py — 13 catalog structures. Only SM_Math_MobiusStrip baked (1,344 tris). WP terrains use Perlin GeometryScript seeds.",
+      "summary": "generate_math_structures.py \u00e2\u20ac\u201d 13 catalog structures. Only SM_Math_MobiusStrip baked (1,344 tris). WP terrains use Perlin GeometryScript seeds.",
       "steps": [
-        { "order": 1, "name": "Parametric bake", "detail": "DynamicMesh → StaticMesh via GeometryScript APIs." },
-        { "order": 2, "name": "Catalog", "detail": "Docs/GEOMETRYSCRIPT_MATH_CATALOG.md — torus knot, epitrochoid, gyroid, etc." },
-        { "order": 3, "name": "Audit", "detail": "geometryscript_meshes.json tracks bake status." },
-        { "order": 4, "name": "Terrain", "detail": "SM_Terrain_* MeshTerrain_Seed on all four WP pillars." },
-        { "order": 5, "name": "NightShift", "detail": "MI preview spheres → sdf-material-gallery.html." }
+        {
+          "order": 1,
+          "name": "Parametric bake",
+          "detail": "DynamicMesh \u00e2\u2020\u2019 StaticMesh via GeometryScript APIs."
+        },
+        {
+          "order": 2,
+          "name": "Catalog",
+          "detail": "Docs/GEOMETRYSCRIPT_MATH_CATALOG.md \u00e2\u20ac\u201d torus knot, epitrochoid, gyroid, etc."
+        },
+        {
+          "order": 3,
+          "name": "Audit",
+          "detail": "geometryscript_meshes.json tracks bake status."
+        },
+        {
+          "order": 4,
+          "name": "Terrain",
+          "detail": "SM_Terrain_* MeshTerrain_Seed on all four WP pillars."
+        },
+        {
+          "order": 5,
+          "name": "NightShift",
+          "detail": "MI preview spheres \u00e2\u2020\u2019 sdf-material-gallery.html."
+        }
       ],
-      "proof_targets": ["geometryscript_meshes.json", "orrery hero", "MI gallery"],
+      "proof_targets": [
+        "geometryscript_meshes.json",
+        "orrery hero",
+        "MI gallery"
+      ],
       "sheet_href": "sdf-material-gallery.html",
       "unreal_parallel": "melodia-orrery-system.js web mirror"
     },
@@ -128,13 +274,35 @@
       "asset_root": "/Blender/GeometryNodes/ (does not exist in repo)",
       "summary": "Technical sheets exist but no .blend files, no Python builders, no committed graphs. Rock scatter is implemented in UE PCG instead.",
       "steps": [
-        { "order": 1, "name": "Honest label", "detail": "Mark sheets as planned until Blender assets exist." },
-        { "order": 2, "name": "Redirect proof", "detail": "Point rock story to build_universal_rock_scatter.py." },
-        { "order": 3, "name": "Redirect scatter", "detail": "Point scatter story to SurrealArch DistributePointsOnFaces + UE PCG." },
-        { "order": 4, "name": "Build or retire", "detail": "Either create GN_UniversalScatter in Blender or remove from nav." },
-        { "order": 5, "name": "terrain_gn.py", "detail": "World-loop backlog — file does not exist yet." }
+        {
+          "order": 1,
+          "name": "Honest label",
+          "detail": "Mark sheets as planned until Blender assets exist."
+        },
+        {
+          "order": 2,
+          "name": "Redirect proof",
+          "detail": "Point rock story to build_universal_rock_scatter.py."
+        },
+        {
+          "order": 3,
+          "name": "Redirect scatter",
+          "detail": "Point scatter story to SurrealArch DistributePointsOnFaces + UE PCG."
+        },
+        {
+          "order": 4,
+          "name": "Build or retire",
+          "detail": "Either create GN_UniversalScatter in Blender or remove from nav."
+        },
+        {
+          "order": 5,
+          "name": "terrain_gn.py",
+          "detail": "World-loop backlog \u00e2\u20ac\u201d file does not exist yet."
+        }
       ],
-      "proof_targets": ["none yet"],
+      "proof_targets": [
+        "none yet"
+      ],
       "sheet_href": "../generated/technical/geometry-nodes-universal-scatter-sheet.html",
       "unreal_parallel": "See ue-pcg-universal lane"
     }
@@ -149,29 +317,113 @@
     "PEARL_JEWEL"
   ],
   "musical_meshes": [
-    { "id": "treble", "name": "Treble Clef", "asset": "SM_Orn_TrebleClef", "status": "hand_remake" },
-    { "id": "note-head", "name": "Note Head", "asset": "SM_Orn_NoteHead", "status": "fbx_ready" },
-    { "id": "note-beam", "name": "Note Beam", "asset": "SM_Orn_NoteBeam", "status": "fbx_ready" },
-    { "id": "sheet-rail", "name": "Sheet Music Rail", "asset": "SM_Orn_SheetMusicRail", "status": "fbx_ready" },
-    { "id": "corner", "name": "Musical Corner", "asset": "SM_Orn_MusicalCorner", "status": "hand_remake" },
-    { "id": "divider", "name": "Musical Divider", "asset": "SM_Orn_MusicalDivider", "status": "fbx_ready" },
-    { "id": "pearl", "name": "Pearl Jewel", "asset": "SM_Orn_PearlJewel", "status": "fbx_ready" },
-    { "id": "token-01", "name": "Melody Token 01", "asset": "SM_Orn_MelodyToken_01", "status": "sculpt_plates_live" },
-    { "id": "token-02", "name": "Melody Token 02", "asset": "SM_Orn_MelodyToken_02", "status": "sculpt_plates_live" },
-    { "id": "token-03", "name": "Melody Token 03", "asset": "SM_Orn_MelodyToken_03", "status": "sculpt_plates_live" }
+    {
+      "id": "treble",
+      "name": "Treble Clef",
+      "asset": "SM_Orn_TrebleClef",
+      "status": "hand_remake"
+    },
+    {
+      "id": "note-head",
+      "name": "Note Head",
+      "asset": "SM_Orn_NoteHead",
+      "status": "fbx_ready"
+    },
+    {
+      "id": "note-beam",
+      "name": "Note Beam",
+      "asset": "SM_Orn_NoteBeam",
+      "status": "fbx_ready"
+    },
+    {
+      "id": "sheet-rail",
+      "name": "Sheet Music Rail",
+      "asset": "SM_Orn_SheetMusicRail",
+      "status": "fbx_ready"
+    },
+    {
+      "id": "corner",
+      "name": "Musical Corner",
+      "asset": "SM_Orn_MusicalCorner",
+      "status": "hand_remake"
+    },
+    {
+      "id": "divider",
+      "name": "Musical Divider",
+      "asset": "SM_Orn_MusicalDivider",
+      "status": "fbx_ready"
+    },
+    {
+      "id": "pearl",
+      "name": "Pearl Jewel",
+      "asset": "SM_Orn_PearlJewel",
+      "status": "fbx_ready"
+    },
+    {
+      "id": "token-01",
+      "name": "Melody Token 01",
+      "asset": "SM_Orn_MelodyToken_01",
+      "status": "sculpt_plates_live"
+    },
+    {
+      "id": "token-02",
+      "name": "Melody Token 02",
+      "asset": "SM_Orn_MelodyToken_02",
+      "status": "sculpt_plates_live"
+    },
+    {
+      "id": "token-03",
+      "name": "Melody Token 03",
+      "asset": "SM_Orn_MelodyToken_03",
+      "status": "sculpt_plates_live"
+    }
   ],
   "zen_gn_builders": [
-    "GB_ZEN_TORII_GATE", "GB_ZEN_SANDO", "GB_ZEN_KAIRO", "GB_ZEN_HAIDEN",
-    "GB_ZEN_HONDEN", "GB_ZEN_LANTERN", "GB_ZEN_KARESANSUI", "GB_ZEN_TOBIISHI"
+    "GB_ZEN_TORII_GATE",
+    "GB_ZEN_SANDO",
+    "GB_ZEN_KAIRO",
+    "GB_ZEN_HAIDEN",
+    "GB_ZEN_HONDEN",
+    "GB_ZEN_LANTERN",
+    "GB_ZEN_KARESANSUI",
+    "GB_ZEN_TOBIISHI"
   ],
   "escher_gn_builders": [
-    "GB_ESCHER_RELATIVITY", "GB_ESCHER_PENROSE_LOOP", "GB_ESCHER_GRAVITY_SHIFT",
-    "GB_ESCHER_BELVEDERE", "GB_ESCHER_WATERFALL", "GB_ESCHER_RECURSIVE"
+    "GB_ESCHER_RELATIVITY",
+    "GB_ESCHER_PENROSE_LOOP",
+    "GB_ESCHER_GRAVITY_SHIFT",
+    "GB_ESCHER_BELVEDERE",
+    "GB_ESCHER_WATERFALL",
+    "GB_ESCHER_RECURSIVE"
   ],
   "math_structures": [
-    { "id": "mobius", "name": "Möbius strip", "tier": "Curves", "asset": "SM_Math_MobiusStrip", "status": "baked" },
-    { "id": "torus-knot", "name": "Torus knot (2,3)", "tier": "Orrery", "asset": "SM_Math_TorusKnot_2_3", "status": "code_ready" },
-    { "id": "epitrochoid", "name": "Epitrochoid ring", "tier": "Orrery", "asset": "SM_Math_Epitrochoid_Ring", "status": "code_ready" },
-    { "id": "fibonacci", "name": "Fibonacci sphere anchors", "tier": "Scatter", "asset": "SM_Math_FibonacciSphere_Anchors", "status": "code_ready" }
+    {
+      "id": "mobius",
+      "name": "M\u00c3\u00b6bius strip",
+      "tier": "Curves",
+      "asset": "SM_Math_MobiusStrip",
+      "status": "baked"
+    },
+    {
+      "id": "torus-knot",
+      "name": "Torus knot (2,3)",
+      "tier": "Orrery",
+      "asset": "SM_Math_TorusKnot_2_3",
+      "status": "code_ready"
+    },
+    {
+      "id": "epitrochoid",
+      "name": "Epitrochoid ring",
+      "tier": "Orrery",
+      "asset": "SM_Math_Epitrochoid_Ring",
+      "status": "code_ready"
+    },
+    {
+      "id": "fibonacci",
+      "name": "Fibonacci sphere anchors",
+      "tier": "Scatter",
+      "asset": "SM_Math_FibonacciSphere_Anchors",
+      "status": "code_ready"
+    }
   ]
 }
