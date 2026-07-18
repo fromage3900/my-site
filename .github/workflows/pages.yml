@@ -18,9 +18,21 @@ jobs:
   validate:
     name: Validate assets & portfolio
     runs-on: ubuntu-latest
+    outputs:
+      wix_enabled: ${{ steps.check_wix.outputs.wix_enabled }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Check Wix token availability
+        id: check_wix
+        run: |
+          if [ -n "$WIX_TOKEN" ]; then
+            echo "wix_enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "wix_enabled=false" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          WIX_TOKEN: ${{ secrets.WIX_CLI_TOKEN }}
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -54,7 +66,7 @@ jobs:
   deploy-wix:
     name: Deploy to Wix
     needs: validate
-    if: secrets.WIX_CLI_TOKEN != ''
+    if: needs.validate.outputs.wix_enabled == 'true'
     runs-on: ubuntu-latest
     env:
       WIX_CLI_TOKEN: ${{ secrets.WIX_CLI_TOKEN }}
