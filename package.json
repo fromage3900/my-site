@@ -3,11 +3,20 @@
     "@wix/cli": "^1.0.0",
     "@wix/eslint-plugin-cli": "^1.0.0",
     "eslint": "^8.25.0",
-    "react": "16.14.0"
+    "postcss-scss": "^4.0.9",
+    "react": "16.14.0",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^36.0.1"
   },
   "scripts": {
     "postinstall": "wix sync-types",
     "dev": "wix dev",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint:css": "stylelint wix/**/*.css --custom-syntax postcss-scss",
+    "lint:tokens": "node tools/lint-tokens.js",
+    "paths:wix": "python tools/normalize-paths.py wix",
+    "paths:github": "python tools/normalize-paths.py github",
+    "verify:manifest": "python tools/verify_deployment_manifest.py",
+    "verify:all": "npm run lint:tokens && python tools/_verify_site_facts.py && python tools/validate_assets.py"
   }
 }

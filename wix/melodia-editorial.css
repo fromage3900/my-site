@@ -11,60 +11,64 @@
 @import url("melodia-night-theme.css");
 @import url("melodia-editorial-polish.css");
 
+/* ===== LEGACY TOKEN ALIASES (for backward compat) =====
+   These map old token names to new semantic tokens.
+   Pages using --void, --astral, --ink, --gold, etc. will continue to work.
+*/
 :root {
-  /* Premium Celestial Colors - Honkai/Genshin/LV Inspired */
-  --void: #0D1224;
-  --astral: #1A1F3A;
-  --plum: #2A3055;
-  --iris: #9B8FC4;
-  --sakura: #E8C9B8;
-  --gold: #C9A86A;
-  --gold-soft: #E8C9B8;
-  --ivory: #070912;
-  --paper: rgba(16, 23, 54, 0.62);
-  --ink: rgba(236, 234, 244, 0.92);
-  --muted: rgba(236, 234, 244, 0.66);
-  --lavender: rgba(236, 234, 244, 0.92);
-  --pearl: #F0DCF0;
-  --line: rgba(201, 168, 106, 0.34);
-  --soft-line: rgba(34, 26, 42, 0.1);
-  --max: 1180px;
-  --scroll-shift: 0px;
-  --mouse-x: 0px;
-  --mouse-y: 0px;
-  
-  /* Premium Material Colors */
-  --luxury-platinum: #D4C5A9;
-  --iridescent-cyan: #7BB8B8;
-  --editorial-cream: #FEFAF2;
-  
-  /* Material Gradients */
-  --gold-iridescent: linear-gradient(135deg, #C9A86A 0%, #E8C9B8 25%, #D4C5A9 50%, #C9A86A 75%, #E8C9B8 100%);
-  --celestial-shift: linear-gradient(135deg, #0D1224 0%, #1A1F3A 50%, #2A3055 100%);
-  --luxury-shimmer: linear-gradient(45deg, #FEFAF2 0%, #F5F2ED 50%, #FEFAF2 100%);
-  
-  /* Premium Glow Colors */
-  --gold-glow: rgba(201, 168, 106, 0.8);
-  --crystal-glow: rgba(123, 184, 184, 0.8);
-  --platinum-glow: rgba(212, 197, 169, 0.6);
-  --iris-glow: rgba(155, 143, 196, 0.7);
-  --rose-glow: rgba(232, 201, 184, 0.7);
-  
-  /* Premium Border Colors */
-  --border-gold: rgba(201, 168, 106, 0.3);
-  --border-premium: rgba(201, 168, 106, 0.2);
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  
-  /* Premium Shadow Colors */
-  --shadow-premium: rgba(201, 168, 106, 0.2);
-  --shadow-material: rgba(123, 184, 184, 0.15);
-  --shadow-luxury: rgba(232, 201, 184, 0.15);
-  
-  /* Premium Text Colors */
-  --text-primary: #ECEAF4;
-  --text-secondary: #A9A7C0;
-  --text-accent: #E8C9B8;
-  --text-muted: #6E6080;
+  /* Legacy color aliases */
+  --void:              var(--color-surface-base);
+  --astral:            var(--color-surface-sunken);
+  --plum:              var(--color-surface-inverse);
+  --iris:              var(--color-accent-iris);
+  --sakura:            var(--color-accent-tertiary);
+  --gold:              var(--color-accent-primary);
+  --gold-soft:         var(--color-accent-tertiary);
+  --ivory:             var(--color-surface-raised);
+  --paper:             var(--color-surface-sunken);
+  --ink:               var(--color-text-primary);
+  --muted:             var(--color-text-secondary);
+  --lavender:          var(--color-text-primary);
+  --pearl:             var(--color-text-inverse);
+  --line:              var(--color-border-default);
+  --soft-line:         var(--color-border-subtle);
+  --max:               var(--max);
+  --scroll-shift:      var(--scroll-shift);
+  --mouse-x:           var(--mouse-x);
+  --mouse-y:           var(--mouse-y);
+
+  /* Legacy premium material aliases */
+  --luxury-platinum:   var(--color-accent-primary);
+  --iridescent-cyan:   var(--color-accent-astral);
+  --editorial-cream:   var(--color-surface-raised);
+
+  /* Legacy gradients */
+  --gold-iridescent:   linear-gradient(135deg, var(--color-accent-primary) 0%, var(--color-accent-tertiary) 25%, var(--color-accent-primary) 50%, var(--color-accent-primary) 75%, var(--color-accent-tertiary) 100%);
+  --celestial-shift:   linear-gradient(135deg, var(--color-surface-base) 0%, var(--color-surface-sunken) 50%, var(--color-surface-inverse) 100%);
+  --luxury-shimmer:    linear-gradient(45deg, var(--color-surface-raised) 0%, var(--color-surface-base) 50%, var(--color-surface-raised) 100%);
+
+  /* Legacy glow aliases */
+  --gold-glow:         var(--glow-gold);
+  --crystal-glow:      var(--glow-astral);
+  --platinum-glow:     var(--glow-gold);
+  --iris-glow:         var(--glow-astral);
+  --rose-glow:         var(--glow-gold);
+
+  /* Legacy border aliases */
+  --border-gold:       var(--color-rule-gold);
+  --border-premium:    var(--color-border-default);
+  --border-subtle:     var(--color-border-subtle);
+
+  /* Legacy shadow aliases */
+  --shadow-premium:    var(--shadow-sm);
+  --shadow-material:   var(--shadow-sm);
+  --shadow-luxury:     var(--shadow-md);
+
+  /* Legacy text aliases */
+  --text-primary:      var(--color-text-primary);
+  --text-secondary:    var(--color-text-secondary);
+  --text-accent:       var(--color-text-accent);
+  --text-muted:        var(--color-text-tertiary);
 }
 
 * { box-sizing: border-box; }

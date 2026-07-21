@@ -92,7 +92,7 @@
       "portals": {
         "eyebrow": "Go deeper",
         "headline": "Pick a door.",
-        "lede": "Freelance work, the Sakura write-up, or the full Infold application hub.",
+        "lede": "Freelance work, the Sakura write-up, or the full application hub.",
         "links": [
           {
             "step": "✦ Work",
@@ -110,7 +110,7 @@
           },
           {
             "step": "✦ Apply",
-            "title": "Infold Portfolio",
+            "title": "Studio Portfolio",
             "body": "The longer application read — worlds, craft notes, review order.",
             "href": "application-hub.html",
             "accent": "iris"
@@ -232,7 +232,7 @@
           {
             "step": "01 / Hub",
             "title": "Application Hub",
-            "body": "Infold-facing portfolio — longer, more context.",
+            "body": "Industry-facing portfolio — longer, more context.",
             "href": "application-hub.html"
           },
           {
@@ -405,7 +405,7 @@
       "portals": {
         "eyebrow": "Go deeper",
         "headline": "Pick a door.",
-        "lede": "Freelance work, the Sakura write-up, or the full Infold application hub.",
+        "lede": "Freelance work, the Sakura write-up, or the full application hub.",
         "links": [
           {
             "step": "✦ Work",
@@ -423,11 +423,389 @@
           },
           {
             "step": "✦ Apply",
-            "title": "Infold Portfolio",
+            "title": "Studio Portfolio",
             "body": "The longer application read — worlds, craft notes, review order.",
             "href": "application-hub.html",
             "accent": "iris"
           }
+        ]
+      }
+    },
+    "melodia-stage-character": {
+      "title": "Melusina Stage — Asset Passport | Brennan Shepherd",
+      "meta_description": "Melodia Portfolio Stage character plates with Nikki iridescence, Magical Girl ribbon chrome, design-system Asset Passport, and depth-tilt companion from the Blender EEVEE pipeline.",
+      "hero": {
+        "kicker": "Melodia Portfolio Stage · v7 · Nikki iri",
+        "headline": "Melusina — stage passport.",
+        "lede": "EEVEE glam beauty and grey wire topology first; the Asset Passport sits beside the plates as a short production card — triangles, meshes, shader lane — not a tech essay.",
+        "eyebrow": "Melodia Portfolio Stage · v7 · Nikki iri"
+      },
+      "outfit_board": {
+        "label": "Ability dress · character plate",
+        "title": "Beauty first. Passport second.",
+        "body": "Infinity Nikki photo-spot framing — beauty hero, grey wireframe, then the asset card.",
+        "stats": [
+          { "label": "Stage", "value": "v7" },
+          { "label": "Hair", "value": "Water Adv." },
+          { "label": "Light", "value": "Nikki" }
+        ]
+      },
+      "plates": {
+        "beauty": {
+          "title": "Melusina beauty — EEVEE glam plate",
+          "caption": "Pointer tilt · EEVEE glam · iridescent rim"
+        },
+        "hair_loop": {
+          "label": "Hair · AudVis 4s",
+          "title": "EEVEE glam · 96 frames · 24fps · 4s",
+          "body": "First 4 seconds of the AudVis hair sway — looped for stage."
+        },
+        "hair_postcard": {
+          "label": "Hair FX · macro postcard",
+          "title": "Macro zoom · face / hair fill · 4s loop",
+          "body": "Tight social-crop zoom on the AudVis hair sway — face and fill detail, not a full-body plate."
+        }
+      },
+      "zbrush_link": {
+        "text": "From clay →",
+        "href": "zbrush-breakdown.html#melusina-sculpt",
+        "body": "MatCap sculpt plates beside these glam keepers on the ZBrush breakdown."
+      }
+    },
+    "melodia-melusina": {
+      "title": "Melodia Melusina — Game UI | Brennan Shepherd",
+      "meta_description": "Melodia Melusina rhythm RPG UI — SheetMusicHUD continuous staff combat, Batch O scrollwork, notation grade flourishes, and Figma-synced battle chrome.",
+      "hero": {
+        "kicker": "Melodia Melusina · Figma page 12 · SheetMusicHUD",
+        "headline": "Celestial sheet music combat.",
+        "lede": "Turn-based rhythm RPG UI from the Grandmaster Figma library — SheetMusicHUD continuous staff + Batch O Baroque / SoftMG chrome, skill-ring + combo-burst accents (pearl/gold/iri-cyan on void), gothic portfolio frames, and motion prototypes for Unreal WBP_*. Batch N MusicalFiligree / NoteHead atlas slots are deprecated — do not re-bind. Atoms stay library-only; the beauty frame is a continuous score.",
+        "outfit_board": {
+          "label": "Outfit board · Game UI",
+          "title": "Sheet music combat. Portfolio chrome.",
+          "body": "Same Melodia lookbook language as Stage and Hub — the beauty frame is a continuous score framed in scrollwork before Unreal binds every WBP.",
+          "stats": [
+            { "label": "SSOT", "value": "SheetHUD" },
+            { "label": "Web", "value": "L2 live" },
+            { "label": "WBP", "value": "2 live" }
+          ]
+        }
+      },
+      "cta_row": {
+        "buttons": [
+          { "label": "SheetMusicHUD", "href": "https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled?node-id=45-480", "external": true },
+          { "label": "Batch O chrome", "href": "https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled?node-id=40-334", "external": true },
+          { "label": "Baroque filigree", "href": "https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled?node-id=58-716", "external": true },
+          { "label": "Motion board", "href": "https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled?node-id=41-242", "external": true },
+          { "label": "Final polish", "href": "#final-polish" },
+          { "label": "iOS battle kit", "href": "melodia-melusina.html?mode=ios#ios-battle" }
+        ]
+      },
+      "final_polish": {
+        "eyebrow": "Prep checklist · Figma → web → UE",
+        "headline": "Game UI polish board.",
+        "lede": "Section-by-section gate before UE L3. Motion + baroque filigree expanded in Figma first; check each strip here, then bind.",
+        "steps": [
+          { "num": "01", "title": "SheetMusicHUD", "body": "Depth stack ≥4 · one hero zone lit · scroll rails no rotate break · iri grade ramp.", "href": "#phase-rhythm" },
+          { "num": "02", "title": "Motion board", "body": "IdleBreathe · PerfectStreak · BreakReveal · ULTReady · SoftMG_Baroque keyframed (2.4s).", "href": "https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled?node-id=41-242", "external": true },
+          { "num": "03", "title": "Baroque O", "body": "CornerBaroque · DividerScroll · CrestBaroque · MedallionRosette · BraceVolute — denser than Batch O.", "href": "https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled?node-id=58-716", "external": true },
+          { "num": "04", "title": "iOS kit", "body": "Portrait primary · ≥44px lanes · landscape nudge · thumb chrome clear of fingers.", "href": "#ios-battle" },
+          { "num": "05", "title": "Batch O web", "body": "Baroque PNGs bound on SoftMG / SheetMusicHUD · chips stay library-only · beauty = continuous score.", "href": "#batch-o" },
+          { "num": "06", "title": "UE L3 next", "body": "Reimport atlas · bitmap filigree bind · Mobile BindWidgets · Command→Results WBPs." }
+        ]
+      },
+      "system_passport": {
+        "hud": {
+          "title": "Melodia Rhythm Chrome",
+          "rows": [
+            { "label": "Clarity", "value": "Grade / lane / turn ≤0.5s" },
+            { "label": "Tokens", "value": "Syne stack + iri ramp" },
+            { "label": "Beauty", "value": "SheetMusicHUD + scrollwork" }
+          ]
+        },
+        "production": {
+          "title": "Catch-up queue",
+          "rows": [
+            { "label": "Live", "value": "WBP_Battle_Rhythm · GradePop" },
+            { "label": "Figma", "value": "SheetMusicHUD", "href": "https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled?node-id=45-480", "external": true },
+            { "label": "Next", "value": "WBP brush bind" }
+          ]
+        }
+      },
+      "phases": {
+        "eyebrow": "Movement & measure",
+        "headline": "Command · perform · resolve · breathe.",
+        "lede": "MelodiaCore phases — dominant zone lit, others dimmed. Windows from melodia_rules.json.",
+        "panels": [
+          { "id": "phase-command", "title": "Battle command — choose a song skill", "chips": ["Basic", "Skill · Cherry Storm", "Guard", "ULT"] },
+          { "id": "phase-rhythm", "title": "Rhythm execution — Cherry Storm", "bpm": "♩ = 120", "song": "Cherry Storm — Movement III" },
+          { "id": "phase-enemy", "title": "Enemy turn — Shrine Warden", "toughness": "48 / 120", "telegraph": "Cherry Storm incoming — prepare guard" },
+          { "id": "phase-results", "title": "Victory — Movement clear", "max_combo": "× 24", "stats": { "perfect": 18, "great": 6, "good": 2, "miss": 1 } }
+        ]
+      },
+      "field_title": {
+        "eyebrow": "Field + Title",
+        "headline": "Exploration chrome & atelier title.",
+        "lede": "Game/FieldHUD and Game/Title echo SheetMusicHUD lightly (parchment wash + mini staff) — Melusina stays visible; battle chrome does not swallow the character fantasy.",
+        "field_hud": { "phase": "Field · Sakura Path", "combo": "♪ Atelier", "dialogue": "The path opens when the shrine bell answers." },
+        "title_atelier": { "title": "Melodia Melusina", "lede": "Celestial sheet music combat", "cta": ["Begin", "Codex"] }
+      },
+      "nikki_reactivity": {
+        "eyebrow": "Pass L2 · Nikki motion",
+        "headline": "Rhythm reactivity on the web.",
+        "lede": "Mirrors Figma Game/RhythmReactivityBoard (keyframed 2.4s — IdleBreathe · PerfectStreak · BreakReveal · ULTReady · SoftMG_Baroque). Beat bus drives scroll rails, filigree breathe, hitline pulse, ink-meter shimmer, streak edge, and notation grade halos while you play the SheetMusicHUD strip above.",
+        "strips": [
+          { "id": "idle", "title": "Motion/IdleBreathe", "body": "FiligreeBreathe 400ms · StaffShimmer bass-gated · PortraitIri 2.4s" },
+          { "id": "perfect", "title": "Motion/PerfectStreak", "body": "NoteTrailIri 280ms · GradeFlourish 420ms · StreakGlowEdge 3/5/8" },
+          { "id": "break", "title": "Motion/BreakReveal", "body": "BreakCrestReveal 500ms · HitlinePulse · PhaseDim secondaries 40%" },
+          { "id": "ult", "title": "Motion/ULTReady", "body": "ULTArcPulse 800ms · SPMeterShimmer · MobileLanePress 180ms" },
+          { "id": "softmg-baroque", "title": "Motion/SoftMG_Baroque", "body": "ShrineCrestReveal 2.4s · InkDialogueWash · CrestTattoo persists (localStorage)", "clef_hint": "ClefBreatheToggle — type G F C G on the rhythm strip to swap SoftMG ⇄ Combat breathe" }
+        ],
+        "channel_matrix": "Beat → FiligreeBreathe, HitlinePulse · Bass → StaffShimmer, SPMeterShimmer · Grade → GradePopLuxury, NoteTrailIri · Streak → StreakGlowEdge (3/5/8) · Break → BreakCrestReveal · High/ULT → ULTArcPulse · Phase → PhaseDim · Lane → MobileLanePress · Shrine → ShrineCrestReveal (combo 8, SoftMG, one-shot) · Clef → ClefBreatheToggle (type G F C G, SoftMG ⇄ Combat)"
+      },
+      "batch_o": {
+        "eyebrow": "Batch O · Atelier Ornate",
+        "headline": "Scrollwork chrome kit.",
+        "lede": "One framing jewelry system from Game/FiligreeBatchO — corners, wave, crest, rails, grade halos, border rail + parchment. Denser baroque expansion: FiligreeBatchO_Baroque. Not inventory chips; not 3D FiligreeRing kitbash.",
+        "tiles": ["CornerOrnate", "DividerWave", "CrestFinale", "LaneRail", "GradeHalo", "Halo · Perfect", "Halo · Great", "Halo · Good", "Halo · Miss", "ScrollBorderRail", "SheetParchment", "CornerBaroque", "DividerScroll", "CrestBaroque", "MedallionRosette", "BraceVolute", "Baroque atlas"]
+      },
+      "components": {
+        "eyebrow": "Library inventory",
+        "headline": "Atoms stay off the beauty frame.",
+        "lede": "Grade flourishes, enemy telegraph, and skill codex mapped via code_connect_map.json — library units for Code Connect, not the default SheetMusicHUD composition.",
+        "grade_pop": [
+          { "grade": "PERFECT", "window": "±90ms", "class": "perfect is-luxury is-flourish" },
+          { "grade": "GREAT", "window": "±120ms", "class": "great is-luxury is-flourish" },
+          { "grade": "GOOD", "window": "±160ms", "class": "good is-luxury is-flourish" },
+          { "grade": "MISS", "window": ">160ms", "class": "miss is-luxury is-flourish" }
+        ],
+        "enemy_card": { "name": "Shrine Warden", "telegraph": "Cherry Storm incoming — prepare guard", "toughness": "48 / 120" },
+        "codex": { "title": "30 Song Skills — Library", "grid": "data-codex-grid" },
+        "mobile_preview": { "title": "Cherry Storm", "bpm": "♩ = 120" },
+        "figma_link": { "spec": "Design specs · Game UI", "beauty": "SheetMusicHUD", "figma": "Figma master", "chrome": "Batch O", "ios": "battle kit" }
+      },
+      "ios_battle": {
+        "eyebrow": "iOS · portrait primary",
+        "headline": "Mobile gameplay kit.",
+        "lede": "Playable thumb-zone rhythm with SheetMusicHUD staff strip — safe areas, ≥44pt lanes, vertical highway. Open with ?mode=ios for full-viewport play.",
+        "cta": { "label": "Play", "keys": "Tap lanes A–D" }
+      },
+      "envsandbox_assets": {
+        "eyebrow": "EnvSandbox export",
+        "headline": "Alphas & textures for Unreal.",
+        "lede": "Procedural exports from Figma-synced tokens → /Game/EnvSandbox/Alphas_Melodia + /Game/EnvSandbox/Textures/Melodia/GameUI. Run export_melodia_game_ui_assets.py then import_melodia_game_ui_textures.py in-editor.",
+        "asset_grid": "data-game-ui-assets"
+      }
+    },
+    "melodia-gallery-grid": {
+      "title": "Melodia Gallery Grid",
+      "meta_description": "Dynamic masonry gallery for illustrations and digital artwork — URL-configured.",
+      "hero": {
+        "title": "Illustrations",
+        "subtitle": "Traditional & Digital Artwork"
+      },
+      "empty_state": {
+        "icon": "✦",
+        "text": "No illustrations yet"
+      }
+    },
+    "melodia-breakdown-card": {
+      "title": "Melodia Breakdown Card",
+      "meta_description": "Technical breakdown card for Unreal material/shader analysis — URL-configured.",
+      "hero": {
+        "title": "Material Breakdown",
+        "subtitle": "Technical Specifications"
+      },
+      "specs_column": {
+        "title": "Technical Specs",
+        "rows": [
+          { "label": "Base Color", "value": "MI_Show_CosmicNebula" },
+          { "label": "Normal", "value": "T_CosmicNebula_N" },
+          { "label": "Roughness", "value": "T_CosmicNebula_R" },
+          { "label": "Metallic", "value": "0.0" },
+          { "label": "Specular", "value": "0.5" },
+          { "label": "Opacity", "value": "1.0" },
+          { "label": "Blend Mode", "value": "Opaque" },
+          { "label": "Shading Model", "value": "Unlit" },
+          { "label": "Two Sided", "value": "false" }
+        ]
+      },
+      "preview_column": {
+        "title": "Preview",
+        "placeholder": "Upload material preview or capture from Unreal",
+        "error_bg": "linear-gradient(135deg, #141A30 0%, #3C5C9E 100%)"
+      },
+      "metrics_grid": {
+        "title": "Performance Metrics",
+        "metrics": [
+          { "label": "Instruction Count", "value": "TBD" },
+          { "label": "Texture Samplers", "value": "TBD" },
+          { "label": "Vertex Interpolators", "value": "TBD" },
+          { "label": "Custom UVs", "value": "TBD" }
+        ]
+      },
+      "notes_section": {
+        "title": "Notes",
+        "placeholder": "Shader notes, optimization tips, instance notes..."
+      }
+    },
+    "melodia-project-card": {
+      "title": "Melodia Project Card",
+      "meta_description": "Portfolio project card with asset passport integration — URL-configured.",
+      "hero": {
+        "title": "Project Title",
+        "category": "Environment / Character / Prop",
+        "bg_gradient": "linear-gradient(135deg, #241B2E 0%, #3C5C9E 100%)"
+      },
+      "content": {
+        "passport": {
+          "title": "Asset Passport",
+          "rows": [
+            ["Triangles", "TBD"],
+            ["Textures", "TBD"],
+            ["Materials", "TBD"],
+            ["Software", "Unreal Engine + Blender"],
+            ["Engine", "Unreal Engine 5.8"],
+            ["Date", "2026-06"]
+          ]
+        },
+        "metrics": {
+          "title": "Quick Metrics",
+          "items": [
+            { "label": "Triangles", "value": "TBD" },
+            { "label": "Draw Calls", "value": "TBD" },
+            { "label": "Materials", "value": "TBD" },
+            { "label": "Textures", "value": "TBD" }
+          ]
+        },
+        "tech_stack": {
+          "title": "Tech Stack",
+          "tags": ["Unreal Engine 5.8", "Blender", "Substance Painter", "PCG"]
+        }
+      },
+      "placeholder_gradient": "linear-gradient(135deg, #241B2E 0%, #3C5C9E 100%)"
+    },
+    "melodia-passport-embed": {
+      "title": "Melodia Asset Passport — Wix Embed",
+      "meta_description": "Standalone Asset Passport component for Wix HTML embed — URL-configurable.",
+      "hero": {
+        "theme": "dark",
+        "project": "Procedural Cathedral",
+        "category": "Environment / PCG",
+        "version": "v0.1 (greybox)",
+        "rows": [
+          ["Triangles", "TBD"],
+          ["Textures", "TBD"],
+          ["Materials", "TBD"],
+          ["Software", "Unreal Engine + PCG"],
+          ["Engine", "Unreal Engine 5.8"],
+          ["Date", "2026-06"]
+        ]
+      },
+      "url_overrides": {
+        "supported": ["theme", "project", "category", "version", "triangles", "textures", "materials", "software", "engine", "date", "drawcalls", "lod"]
+      },
+      "colors": {
+        "dark": { "surf": "#1C2340", "bord": "rgba(201,168,106,.35)", "txt": "#ECEAF4", "sec": "#A9A7C0", "acc": "#DDC79B", "gold": "#C9A86A", "glow": "0 0 40px rgba(60,92,158,.35)", "line": "rgba(255,255,255,.06)" },
+        "light": { "surf": "#FFFFFF", "bord": "rgba(176,141,79,.4)", "txt": "#241B2E", "sec": "#6E6080", "acc": "#A7884E", "gold": "#B08D4F", "glow": "0 18px 40px rgba(36,27,46,.12)", "line": "rgba(0,0,0,.06)" }
+      }
+    },
+    "pcg-system-impact": {
+      "title": "PCG System Impact | Brennan Shepherd",
+      "meta_description": "In-scene proof that PCG systems affect composition and traversal: route proof, heatmap, and capture slots that update from intake.",
+      "hero": {
+        "kicker": "PCG / in-scene proof",
+        "headline": "Prove the rules shape the route.",
+        "lede": "This page pairs the PCG heatmap with route-proof capture slots so reviewers can see the procedural system protecting traversal and composition.",
+        "cta": [
+          { "label": "Render Constellation", "href": "render-constellation.html" },
+          { "label": "Intake JSON", "href": "../generated/unreal_portfolio_intake.json" },
+          { "label": "World bible", "href": "world-bible.html" }
+        ]
+      },
+      "impact_plates": {
+        "eyebrow": "Impact Plates",
+        "headline": "Route proof + beauty.",
+        "lede": "These cards are fed by the Unreal intake JSON. Once the PCG route-proof plate is captured and ingested, it will appear here automatically."
+      },
+      "next_capture": {
+        "eyebrow": "What to capture next",
+        "headline": "Minimum proof for “PCG system” credibility.",
+        "lede": "These filenames match the capture brief. The goal: one plate that reads “procedural logic” and one that reads “final beauty.”",
+        "cards": [
+          {
+            "tag": "renders.pcg",
+            "title": "ZEN_SHRINE_AXIS route proof plate",
+            "body": "Filename: pcg_zen_shrine_axis_route_proof_1920x1080.png — debug overlay or graph + a matching in-world crop that demonstrates the dressing rules."
+          },
+          {
+            "tag": "PCG heatmap",
+            "title": "Exclusion heatmap",
+            "body": "Shows route-safe exclusion zones and the “why” behind your dressing density."
+          }
+        ]
+      }
+    },
+    "material-loop-gallery": {
+      "title": "Material Loop Gallery | Brennan Shepherd",
+      "meta_description": "Animated material instance loops — studio PP, pillar backdrops, profile-based swatch staging on M_Master_Toon_Universal.",
+      "hero": {
+        "kicker": "Material preview studio",
+        "headline": "Loops that show iridescence moving.",
+        "lede": "L_MaterialPreview_Studio captures — frozen NikkiDream PP, pillar cyclorama backdrops, and profile-routed swatch meshes. The pipeline runs in batches of 3 per night; run Tools\\publish_material_loops.ps1 and walk away.",
+        "cta": [
+          { "label": "Shader breakdowns", "href": "shader-breakdowns.html" },
+          { "label": "Legacy MI spheres", "href": "sdf-material-gallery.html" },
+          { "label": "World bible", "href": "world-bible.html" }
+        ]
+      },
+      "hero_validation": {
+        "title": "MI_ZenTrim_FlowersLots",
+        "lede": "Sakura trimsheet with layer B flower density — the proof loop for roughness and iridescence reads."
+      },
+      "gallery": { "id": "miLoopGallery", "live": true }
+    },
+    "shader-breakdowns": {
+      "title": "Shader Breakdowns | Brennan Shepherd",
+      "meta_description": "Stylized Unreal materials — universal master, water, trims, PCG surfaces.",
+      "hero": {
+        "kicker": "Unreal shaders",
+        "headline": "Materials I actually use in the worlds.",
+        "lede": "Not every graph is finished — but these are the families I'd put in front of an art director. Impact pages tie shaders back to in-scene proof."
+      },
+      "signals": {
+        "eyebrow": "Right now",
+        "headline": "What I'm pushing in captures.",
+        "lede": "The list I'd give myself before a render night."
+      },
+      "latest_intake": {
+        "eyebrow": "Latest intake",
+        "headline": "Most recent breakdown plate.",
+        "lede": "Pulled from portfolio_package.json via ingest — Cam_Breakdown_Shader captures land here first."
+      },
+      "material_previews": {
+        "eyebrow": "Material previews",
+        "headline": "Swatch plates that actually read.",
+        "lede": "Studio PP loops replace checkerboard spheres — open the material loop gallery for animated MI proof. Static NightShift grids remain in the per-instance MI gallery.",
+        "grid": [
+          { "image": "../generated/assets/nightshift/grid_cosmic_all.png", "alt": "Cosmic SDF material instance preview grid", "title": "Cosmic family grid", "caption": "Nine cosmic instances — nebula, starfield, aurora veil, void deep." },
+          { "image": "../generated/assets/nightshift/grid_nikki_heroes.png", "alt": "Nikki hero SDF material preview grid", "title": "Nikki hero grid", "caption": "Six magical-girl SDF heroes — Rosy Quartz, Ivory Scrollwork, Nebula Veil, Starfield Dust." },
+          { "image": "../generated/assets/nightshift/celestial_nebula_nasa_sphere.png", "alt": "CelestialNebula with NASA star map", "title": "CelestialNebula + NASA", "caption": "Starmap-driven nebula sphere — Space Cathedral pillar proof." }
+        ]
+      },
+      "pages": {
+        "eyebrow": "Breakdown index",
+        "headline": "Drill into one system.",
+        "lede": "Each link is a different slice — master graph, water, trims, particles, PCG.",
+        "cards": [
+          { "step": "Master", "title": "Universal Master", "body": "Core stylized surface system and instance scope.", "href": "../generated/technical/universal-master.html", "accent": "gold" },
+          { "step": "Graph", "title": "Material Graph", "body": "Node story — blend, parallax, stylization.", "href": "../generated/technical/universal-material-graph-sheet.html", "accent": "sakura" },
+          { "step": "Water", "title": "Grand Water", "body": "Shoreline, depth, fantasy water controls.", "href": "../generated/technical/water-material-design-sheet.html", "accent": "iris" },
+          { "step": "Proof", "title": "Universal Material Impact", "body": "In-scene before/after slots.", "href": "universal-material-impact.html", "accent": "gold" },
+          { "step": "PCG", "title": "PCG System Impact", "body": "Route proof and dressing variation.", "href": "pcg-system-impact.html", "accent": "sakura" },
+          { "step": "Scatter", "title": "PCG Scatter Materials", "body": "How generated meshes get instances.", "href": "../generated/technical/pcg-scatter-design-sheet.html", "accent": "iris" },
+          { "step": "Loop", "title": "Material Loop Gallery", "body": "Animated MI previews — studio PP, pillar backdrops, profile swatches.", "href": "material-loop-gallery.html", "accent": "gold" },
+          { "step": "MI", "title": "SDF Material Gallery", "body": "Per-instance NightShift previews — cosmic and Nikki hero spheres.", "href": "sdf-material-gallery.html", "accent": "gold" },
+          { "step": "Form", "title": "Sculpt & Procedural → Editor", "body": "Blender base + sculpt pass, procedural/Escher kits, ZBrush for sculptural pieces.", "href": "zbrush-breakdown.html", "accent": "sakura" }
         ]
       }
     }

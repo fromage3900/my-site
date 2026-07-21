@@ -170,7 +170,7 @@
     font-weight: 500;
   }
 
-  .metric-value.tbd {
+  .metric-value.pending {
     color: #A85751;
     font-style: italic;
     font-size: 12px;
@@ -400,7 +400,7 @@
     item.className = 'metric-item';
     item.innerHTML = `
       <span class="metric-label">${metric.label}</span>
-      <span class="metric-value ${value === null || value === undefined ? 'tbd' : ''}">${value !== null && value !== undefined ? value.toLocaleString() : 'TBD'}</span>
+      <span class="metric-value ${value === null || value === undefined ? 'pending' : ''}">${value !== null && value !== undefined ? value.toLocaleString() : '—'}</span>
     `;
     performanceContainer.appendChild(item);
   });
