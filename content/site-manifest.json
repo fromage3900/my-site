@@ -1,0 +1,118 @@
+{
+  "site": {
+    "name": "Brennan Shepherd · Melodia Portfolio",
+    "version": "2.0.0",
+    "engine": "UE 5.8",
+    "modeling": "Blender 5.1",
+    "textures": "Substance 3D Painter",
+    "materials": "Material Maker",
+    "lastUpdated": "2026-07-24",
+    "url": "https://fromage3900.github.io/my-site/"
+  },
+  "stats": {
+    "totalEnvironments": 4,
+    "totalMaterials": 30,
+    "totalPCGGraphs": 36,
+    "totalTriangles": 267000,
+    "totalDrawCalls": 133,
+    "totalRenders": 85,
+    "totalPages": 7
+  },
+  "environments": [
+    {
+      "slug": "sakura-case-study",
+      "name": "Sakura Dream",
+      "worldNum": 1,
+      "label": "World 01 · Sakura Dream",
+      "page": "sakura-case-study.html",
+      "status": "live",
+      "triangles": "72k",
+      "drawCalls": 35,
+      "materials": 30,
+      "pcgGraphs": 12,
+      "renderCount": 18,
+      "heroWebm": "WP_SakuraDream.webm",
+      "tags": ["toon shaders", "PCG scatter", "shrine axis", "warm lacquer"],
+      "description": "Shrine-axis composition, warm lacquer materials, PCG-driven petal scatter, and toon shader proof."
+    },
+    {
+      "slug": "space-cathedral",
+      "name": "Space Cathedral",
+      "worldNum": 2,
+      "label": "World 02 · Space Cathedral",
+      "page": "space-cathedral.html",
+      "status": "live",
+      "triangles": "68k",
+      "drawCalls": 32,
+      "materials": 28,
+      "pcgGraphs": 8,
+      "renderCount": 15,
+      "heroWebm": "WP_SpaceCathedral.webm",
+      "tags": ["gothic sci-fi", "SDF materials", "rose window PCG", "celestial void"],
+      "description": "Gothic sci-fi cathedral: vaulted ribs, rose window scattering, cosmic SDF materials, and toon-shaded sacred geometry."
+    },
+    {
+      "slug": "cosmic-orrery",
+      "name": "Cosmic Orrery",
+      "worldNum": 3,
+      "label": "World 03 · Cosmic Orrery",
+      "page": "cosmic-orrery.html",
+      "status": "live",
+      "triangles": "45k",
+      "drawCalls": 28,
+      "materials": 24,
+      "pcgGraphs": 6,
+      "renderCount": 12,
+      "heroWebm": "WP_CosmicOrrery.webm",
+      "tags": ["celestial", "orrery rig", "aurora VFX", "starmap shaders"],
+      "description": "Celestial sphere: planetary orrery, cosmic SDF material families, aurora borealis VFX, and stylized toon-shaded astronomy."
+    },
+    {
+      "slug": "baroque-grotto",
+      "name": "Baroque Grotto",
+      "worldNum": 4,
+      "label": "World 04 · Baroque Grotto",
+      "page": "baroque-grotto.html",
+      "status": "live",
+      "triangles": "82k",
+      "drawCalls": 38,
+      "materials": 32,
+      "pcgGraphs": 10,
+      "renderCount": 14,
+      "heroWebm": "WP_BaroqueGrotto.webm",
+      "tags": ["baroque", "grotto chambers", "mossy copper", "filigree"],
+      "description": "Underground baroque: grotto chambers, mossy copper SDF, ornamental fountain jets, filigree archways, and toon-cavern mood."
+    }
+  ],
+  "pages": [
+    { "slug": "index", "name": "Home", "file": "index.html", "nav": true },
+    { "slug": "application-hub", "name": "All Environments", "file": "application-hub.html", "nav": false },
+    { "slug": "sakura-case-study", "name": "Sakura Dream", "file": "sakura-case-study.html", "nav": false },
+    { "slug": "space-cathedral", "name": "Space Cathedral", "file": "space-cathedral.html", "nav": false },
+    { "slug": "cosmic-orrery", "name": "Cosmic Orrery", "file": "cosmic-orrery.html", "nav": false },
+    { "slug": "baroque-grotto", "name": "Baroque Grotto", "file": "baroque-grotto.html", "nav": false },
+    { "slug": "shader-breakdowns", "name": "Shaders", "file": "shader-breakdowns.html", "nav": true },
+    { "slug": "recruiter-one-sheet", "name": "One-sheet", "file": "recruiter-one-sheet.html", "nav": true },
+    { "slug": "resume", "name": "Resume", "file": "resume.html", "nav": true },
+    { "slug": "pipeline", "name": "Pipeline", "file": "pipeline.html", "nav": false }
+  ],
+  "pipeline": {
+    "tools": [
+      { "name": "Unreal Engine 5.8", "role": "Environment assembly, Substrate Toon materials, PCG scattering, render capture" },
+      { "name": "Blender 5.1", "role": "Stylized geometry, modular kits, surreal_arch procedural generation" },
+      { "name": "Substance 3D Painter", "role": "PBR texture baking, wear/dirt masks, material reference" },
+      { "name": "Material Maker", "role": "Procedural PBR graphs, SDF generators, toon ramp textures (72–105 node graphs)" },
+      { "name": "TouchDesigner", "role": "Real-time VFX prototyping, MCP server for AI-assisted TD workflows" },
+      { "name": "VS Code + PowerShell", "role": "Website build, deploy automation, template scaffolding" },
+      { "name": "GitHub Pages", "role": "Static hosting, custom domain, Wix iframe embedding" }
+    ],
+    "workflow": [
+      "Model in Blender → export FBX to UE5",
+      "Build materials in UE5 Material Editor + Material Maker",
+      "Scatter with PCG graphs (60+ systems)",
+      "Capture renders with Python capture pipeline",
+      "Run tools/ingest-renders.ps1 → copies to generated/assets/",
+      "Run deploy/quick-deploy.ps1 → sync → commit → push → live"
+    ]
+  }
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-page="pipeline">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pipeline & Infrastructure | Brennan Shepherd</title>
+<meta name="description" content="The toolchain behind the portfolio: UE5, Blender, Material Maker, PCG, TouchDesigner, and the deploy pipeline that ships environments from editor to GitHub Pages." />
+<meta property="og:title" content="Pipeline & Infrastructure — Brennan Shepherd" />
+<meta property="og:description" content="Full toolchain breakdown: how environments go from UE5 to GitHub Pages. Render ingest, one-command deploy, PCG scatter systems, and material pipeline." />
+<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/pipeline.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-fashion-editorial.css">
+<link rel="stylesheet" href="melodia-premium-system.css">
+<link rel="stylesheet" href="enhanced-cosmic-hero-premium.css">
+<style>
+.toolchain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:1rem}.toolchain-card{padding:1rem;background:var(--color-surface-sunken);border-radius:4px;border-left:2px solid var(--color-accent-primary,#C9A86A)}.toolchain-card h3{font-family:var(--font-display,Fraunces,serif);font-size:.9rem;margin:0 0 .3rem;color:var(--color-text-accent)}.toolchain-card p{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.02em;color:var(--color-text-tertiary);margin:0;line-height:1.4}
+.workflow-steps{display:flex;flex-direction:column;gap:0;margin-top:1rem;max-width:600px}.workflow-step{display:flex;align-items:flex-start;gap:.75rem;padding:.65rem .75rem;position:relative}.workflow-step+.workflow-step{border-top:1px solid rgba(255,255,255,.04)}.workflow-step .num{font-family:var(--font-mono);font-size:.65rem;color:var(--color-accent-primary,#C9A86A);min-width:1.5rem;padding-top:1px}.workflow-step .desc{font-size:.78rem;color:var(--color-text-secondary);line-height:1.4}.workflow-step .cmd{font-family:var(--font-mono);font-size:.6rem;color:var(--color-text-tertiary);margin-top:2px}
+.stat-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:rgba(201,168,106,.1);border:1px solid rgba(201,168,106,.2);border-radius:3px;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-accent,#C9A86A)}.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:.75rem}
+.manifest-table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.75rem}.manifest-table th{text-align:left;font-family:var(--font-mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-tertiary);padding:.5rem .6rem;border-bottom:1px solid rgba(255,255,255,.08)}.manifest-table td{padding:.5rem .6rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--color-text-secondary)}.manifest-table .status{display:inline-block;padding:1px 6px;border-radius:2px;font-family:var(--font-mono);font-size:.55rem;text-transform:uppercase}.status-live{background:rgba(100,200,100,.15);color:#8c8}.status-draft{background:rgba(200,200,100,.15);color:#cc8}
+</style>
+</head>
+<body>
+<div class="melodia-shell fashion-mode" data-mg="soft" data-hero="cosmic" data-visual="lookbook" data-effects="starfield,holo,magical" data-nav-cta="application-hub.html" data-nav-cta-label="Environments">
+<header class="shell-nav" aria-label="Portfolio navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="index.html">Home</a>
+    <a href="application-hub.html">Environments</a>
+    <a href="shader-breakdowns.html">Shaders</a>
+    <a href="recruiter-one-sheet.html">One-sheet</a>
+    <a href="resume.html">Resume</a>
+  </nav>
+  <a class="nav-cta button-premium" href="application-hub.html">4 Environments</a>
+</header>
+
+<main id="main">
+<section class="hero" aria-labelledby="page-title">
+  <div class="parallax-layer-1" aria-hidden="true"></div>
+  <div class="parallax-layer-2" aria-hidden="true"></div>
+  <div class="parallax-layer-5" aria-hidden="true">
+    <div class="orrery-system"><div class="orrery-core"></div></div>
+  </div>
+  <div class="parallax-layer-6" aria-hidden="true"></div>
+  <div class="parallax-layer-7" aria-hidden="true">
+    <div class="hero-poster" style="position:absolute;inset:0;background:linear-gradient(135deg,#0a0e1a 0%,#1a1040 40%,#0d1a2e 100%)"></div>
+  </div>
+  <div class="parallax-layer-8">
+    <div class="hero-inner">
+      <p class="kicker magazine-kicker">v2.0.0 · Infrastructure</p>
+      <p class="nikki-ribbon">The machine behind the pretty worlds</p>
+      <h1 id="page-title">Toolchain & pipeline.</h1>
+      <p class="lede">This portfolio is built on a real game-dev pipeline — Blender → UE5 → Material Maker → PCG → render capture → one-command deploy. Every environment ship follows the same workflow. Here's how it works.</p>
+      <div class="hero-actions">
+        <a class="button primary button-premium-primary" href="application-hub.html">See the worlds</a>
+        <a class="button button-premium" href="#toolchain">Jump to toolchain</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" aria-labelledby="stats-title">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Portfolio at a Glance</p>
+        <h2 id="stats-title">v2.0.0 · 4 worlds shipped</h2>
+      </div>
+      <p>Live stats from the site manifest. Every deploy updates these counts automatically.</p>
+    </div>
+    <div class="badge-row">
+      <span class="stat-badge">UE 5.8</span>
+      <span class="stat-badge">4 environments</span>
+      <span class="stat-badge">30 materials</span>
+      <span class="stat-badge">36 PCG graphs</span>
+      <span class="stat-badge">267k triangles</span>
+      <span class="stat-badge">133 draw calls</span>
+      <span class="stat-badge">85 renders</span>
+      <span class="stat-badge">7 pages</span>
+      <span class="stat-badge">1-command deploy</span>
+    </div>
+  </div>
+</section>
+
+<section class="band astral" aria-labelledby="toolchain">
+  <div class="section-orrery constellation-slot" data-orrery="constellation" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">The Stack</p>
+        <h2 id="toolchain">Full toolchain.</h2>
+      </div>
+      <p>Every tool in the pipeline, with its role in the production flow.</p>
+    </div>
+    <div class="toolchain-grid">
+      <div class="toolchain-card"><h3>Unreal Engine 5.8</h3><p>Environment assembly, Substrate Toon materials, PCG scattering, post-process toon outlines, and Python capture pipeline for renders.</p></div>
+      <div class="toolchain-card"><h3>Blender 5.1</h3><p>Stylized geometry, modular kit construction, surreal_arch procedural generation engine (42 style genomes), and FBX export to UE.</p></div>
+      <div class="toolchain-card"><h3>Material Maker</h3><p>Procedural PBR graph authoring. v1: 72 nodes, 5 export maps. v2 redesign: 3-layer, ~105 nodes, 8 export maps, separate diffuse/specular channels.</p></div>
+      <div class="toolchain-card"><h3>Substance 3D Painter</h3><p>PBR texture baking, hand-painted wear/dirt masks, material reference for toon color ramps and ornamental detail.</p></div>
+      <div class="toolchain-card"><h3>TouchDesigner</h3><p>Real-time VFX prototyping. MCP server via Embody/Envoy for AI-assisted TD network creation and operator editing.</p></div>
+      <div class="toolchain-card"><h3>VS Code + PowerShell</h3><p>Website source editing, deploy automation (sync_site_to_github.ps1), render ingestion (ingest-renders.ps1), and environment scaffolding (add-environment.ps1).</p></div>
+      <div class="toolchain-card"><h3>GitHub Pages</h3><p>Static hosting via git worktree on main branch. Wix iframe embeds the portfolio at full viewport. Zero-cost, version-controlled, one-command publish.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" aria-labelledby="workflow-title">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Production Flow</p>
+        <h2 id="workflow-title">World → website in 7 steps.</h2>
+      </div>
+      <p>Each environment follows the same pipeline from first mesh to live page.</p>
+    </div>
+    <div class="workflow-steps">
+      <div class="workflow-step"><span class="num">01</span><div><div class="desc">Model environment in Blender — modular kit, style genome, or hand-sculpted.</div></div></div>
+      <div class="workflow-step"><span class="num">02</span><div><div class="desc">Export FBX assets to UE5 EnvSandbox. Assign Substrate Toon materials from master library.</div></div></div>
+      <div class="workflow-step"><span class="num">03</span><div><div class="desc">Build PCG graphs — scatter, spline routes, density falloff, biome blending.</div></div></div>
+      <div class="workflow-step"><span class="num">04</span><div><div class="desc">Capture hero stills, establishing shots, material isolates, and webm loops via Python pipeline.</div></div></div>
+      <div class="workflow-step"><span class="num">05</span><div><div class="desc">Run <code class="cmd">.\tools\ingest-renders.ps1</code> — copies new captures into wix/generated/assets/</div></div></div>
+      <div class="workflow-step"><span class="num">06</span><div><div class="desc">Create or update the environment page — use <code class="cmd">.\tools\add-environment.ps1</code> for new worlds.</div></div></div>
+      <div class="workflow-step"><span class="num">07</span><div><div class="desc">Run <code class="cmd">.\deploy\quick-deploy.ps1</code> — syncs to worktree, commits, pushes. Live in ~30 seconds.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band astral" aria-labelledby="manifest-title">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">World Manifest</p>
+        <h2 id="manifest-title">Environment registry.</h2>
+      </div>
+      <p>All portfolio worlds tracked in a single manifest — status, stats, and render count per environment.</p>
+    </div>
+    <table class="manifest-table">
+      <thead>
+        <tr><th>World</th><th>Triangles</th><th>Draw Calls</th><th>Materials</th><th>PCG</th><th>Renders</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sakura Dream</td><td>72k</td><td>35</td><td>30</td><td>12</td><td>18</td><td><span class="status status-live">Live</span></td></tr>
+        <tr><td>Space Cathedral</td><td>68k</td><td>32</td><td>28</td><td>8</td><td>15</td><td><span class="status status-live">Live</span></td></tr>
+        <tr><td>Cosmic Orrery</td><td>45k</td><td>28</td><td>24</td><td>6</td><td>12</td><td><span class="status status-live">Live</span></td></tr>
+        <tr><td>Baroque Grotto</td><td>82k</td><td>38</td><td>32</td><td>10</td><td>14</td><td><span class="status status-live">Live</span></td></tr>
+        <tr><td><strong>Totals</strong></td><td><strong>267k</strong></td><td><strong>133</strong></td><td><strong>114*</strong></td><td><strong>36</strong></td><td><strong>59</strong></td><td><span class="status status-live">4/4 shipped</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-family:var(--font-mono);font-size:.6rem;color:var(--color-text-tertiary);margin-top:.5rem">* Materials with shared instances counted per-environment. 30 unique materials across all worlds.</p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="inner">
+    <span>Brennan Shepherd / Environment & Technical Artist</span>
+    <span>Pipeline v2.0.0 · UE5 · Blender · Material Maker · PCG · TouchDesigner</span>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase"><a href="application-hub.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Environments</a><a href="shader-breakdowns.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Shaders</a><a href="recruiter-one-sheet.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">One-sheet</a><a href="resume.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Resume</a></div>
+  </div>
+</footer>
+</div>
+
+<script src="premium-cosmic-hero.js"></script>
+<script src="melodia-orrery-system.js"></script>
+<script src="melodia-starfield.js"></script>
+<script src="melodia-site-nav.js"></script>
+<script src="melodia-editorial.js"></script>
+</body>
+</html>

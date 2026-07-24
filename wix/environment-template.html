@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" data-page="sakura-case-study">
+<html lang="en" data-page="%%ENV_SLUG%%">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sakura Dream Case Study | Brennan Shepherd</title>
-<meta name="description" content="Sakura Dream — stylized sakura shrine environment. Shrine-axis composition, toon materials, PCG blossom scattering, and UE5 portfolio proof." />
-<meta property="og:title" content="Sakura Dream — Brennan Shepherd Environment Art" />
-<meta property="og:description" content="Shrine-axis composition, warm lacquer materials, PCG-driven petal scatter, and toon shader proof. Infinity Nikki–aligned environment art." />
-<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
-<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/sakura-case-study.html" />
+<title>%%ENV_NAME%% Case Study | Brennan Shepherd</title>
+<meta name="description" content="%%META_DESC%%" />
+<meta property="og:title" content="%%ENV_NAME%% — Brennan Shepherd Environment Art" />
+<meta property="og:description" content="%%OG_DESC%%" />
+<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/landscape-loops/%%OG_IMAGE%%" />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/%%ENV_SLUG%%.html" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="stylesheet" href="melodia-luxury-type.css">
 <link rel="stylesheet" href="melodia-editorial.css">
@@ -42,14 +42,14 @@
   </div>
   <div class="parallax-layer-6" aria-hidden="true"></div>
   <div class="parallax-layer-7" aria-hidden="true">
-    <video autoplay loop muted playsinline poster="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" class="hero-video" src="../generated/assets/landscape-loops/WP_SakuraDream.webm"></video>
+    <video autoplay loop muted playsinline poster="../generated/assets/landscape-loops/%%HERO_POSTER%%" class="hero-video" src="../generated/assets/landscape-loops/%%HERO_WEBM%%"></video>
   </div>
   <div class="parallax-layer-8">
     <div class="hero-inner">
-      <p class="kicker magazine-kicker">World 01 · Sakura Dream</p>
-      <p class="nikki-ribbon">桜の夢 · Infinity Nikki–aligned environment</p>
-      <h1 id="page-title">A calm route through petal light.</h1>
-      <p class="lede">Sakura Dream is the mood pillar — a shrine approach you can read in one scroll, with warm lacquer, soft bloom, and material families that prove the world is designed, not decorated. Built for the magical girl / romantic fantasy signal.</p>
+      <p class="kicker magazine-kicker">%%WORLD_LABEL%%</p>
+      <p class="nikki-ribbon">%%RIBBON%%</p>
+      <h1 id="page-title">%%HERO_TITLE%%</h1>
+      <p class="lede">%%HERO_LEDE%%</p>
       <div class="hero-actions">
         <a class="button primary button-premium-primary" href="shader-breakdowns.html">View materials</a>
         <a class="button button-premium" href="application-hub.html">All environments</a>
@@ -58,20 +58,21 @@
   </div>
 </section>
 
+<!-- ===== ASSET PASSPORT ===== -->
 <section class="band paper" aria-labelledby="stats-title">
   <div class="inner">
     <div class="section-head">
       <div>
         <p class="eyebrow">Asset Passport</p>
-        <h2 id="stats-title">Sakura Dream · Specs</h2>
+        <h2 id="stats-title">%%ENV_NAME%% · Specs</h2>
       </div>
-      <p>UE5 environment with full Substrate Toon material stack, PCG procedural scattering, and toon outline post-process.</p>
+      <p>%%STATS_INTRO%%</p>
     </div>
     <div class="stat-row">
-      <div class="stat-item"><div class="num">72k</div><div class="lbl">Triangles</div></div>
-      <div class="stat-item"><div class="num">35</div><div class="lbl">Draw Calls</div></div>
-      <div class="stat-item"><div class="num">30</div><div class="lbl">Materials</div></div>
-      <div class="stat-item"><div class="num">12</div><div class="lbl">PCG Graphs</div></div>
+      <div class="stat-item"><div class="num">%%TRIANGLES%%</div><div class="lbl">Triangles</div></div>
+      <div class="stat-item"><div class="num">%%DRAW_CALLS%%</div><div class="lbl">Draw Calls</div></div>
+      <div class="stat-item"><div class="num">%%MATERIAL_COUNT%%</div><div class="lbl">Materials</div></div>
+      <div class="stat-item"><div class="num">%%PCG_COUNT%%</div><div class="lbl">PCG Graphs</div></div>
       <div class="stat-item"><div class="num">UE 5.8</div><div class="lbl">Engine</div></div>
       <div class="stat-item"><div class="num">Blender</div><div class="lbl">Modeling</div></div>
       <div class="stat-item"><div class="num">Substance</div><div class="lbl">Textures</div></div>
@@ -79,66 +80,69 @@
   </div>
 </section>
 
+<!-- ===== HERO STILLS / BREAKDOWN ===== -->
 <section class="band astral" aria-labelledby="breakdown-title">
   <div class="section-orrery constellation-slot" data-orrery="constellation" aria-hidden="true"></div>
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow">Technical Breakdown</p>
-        <h2 id="breakdown-title">Wireframe + material isolates.</h2>
+        <p class="eyebrow">%%SECTION2_EYEBROW%%</p>
+        <h2 id="breakdown-title">%%SECTION2_TITLE%%</h2>
       </div>
-      <p>Hero renders with wireframe overlays (topology proof) and material isolate views (shader proof).</p>
+      <p>%%SECTION2_DESC%%</p>
     </div>
     <div class="breakdown-grid">
       <div class="breakdown-card">
-        <img src="../generated/assets/unreal/hero-hero-level-cam-hero-establishing-20260709-182314-1920x1080.png" alt="Sakura Dream establishing shot" loading="lazy" />
-        <div class="label">Establishing · Hero angle</div>
+        <img src="../generated/assets/unreal/%%BREAKDOWN_IMG_1%%" alt="%%BREAKDOWN_ALT_1%%" loading="lazy" />
+        <div class="label">%%BREAKDOWN_LABEL_1%%</div>
       </div>
       <div class="breakdown-card">
-        <img src="../generated/assets/unreal/hero-hero-level-cam-hero-route-20260709-185437-1920x1080.png" alt="Sakura Dream route shot" loading="lazy" />
-        <div class="label">Player route · Walkable path</div>
+        <img src="../generated/assets/unreal/%%BREAKDOWN_IMG_2%%" alt="%%BREAKDOWN_ALT_2%%" loading="lazy" />
+        <div class="label">%%BREAKDOWN_LABEL_2%%</div>
       </div>
       <div class="breakdown-card">
-        <img src="../generated/assets/unreal/hero-hero-level-cam-hero-materials-20260709-181159-1920x1080.png" alt="Sakura Dream material isolate" loading="lazy" />
-        <div class="label">Material isolate · Surface language</div>
+        <img src="../generated/assets/unreal/%%BREAKDOWN_IMG_3%%" alt="%%BREAKDOWN_ALT_3%%" loading="lazy" />
+        <div class="label">%%BREAKDOWN_LABEL_3%%</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ===== MACRO / ORNAMENT GALLERY ===== -->
 <section class="band paper" aria-labelledby="macro-title">
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow">Detail Shots</p>
-        <h2 id="macro-title">Komikaze macro gallery.</h2>
+        <p class="eyebrow">%%SECTION3_EYEBROW%%</p>
+        <h2 id="macro-title">%%SECTION3_TITLE%%</h2>
       </div>
-      <p>Architectural and prop detail renders from the sakura environment — ornaments, lanterns, petals, and signature elements.</p>
+      <p>%%SECTION3_DESC%%</p>
     </div>
     <div class="macro-grid">
-      <img src="../generated/assets/props/sakura_petal_komikaze_beauty_34.png" alt="Sakura petal macro" loading="lazy" />
-      <img src="../generated/assets/props/zenlantern_komikaze_beauty_34.png" alt="Zen lantern" loading="lazy" />
-      <img src="../generated/assets/ornaments/column_capital_komikaze_beauty_34.png" alt="Column capital" loading="lazy" />
-      <img src="../generated/assets/ornaments/rosette_komikaze_beauty_34.png" alt="Rosette ornament" loading="lazy" />
-      <img src="../generated/assets/props/magical_wand_komikaze_beauty_34.png" alt="Magical wand prop" loading="lazy" />
-      <img src="../generated/assets/ornaments/torus_knot_komikaze_beauty_34.png" alt="Torus knot detail" loading="lazy" />
+      <img src="../generated/assets/%%MACRO_IMG_1%%" alt="%%MACRO_ALT_1%%" loading="lazy" />
+      <img src="../generated/assets/%%MACRO_IMG_2%%" alt="%%MACRO_ALT_2%%" loading="lazy" />
+      <img src="../generated/assets/%%MACRO_IMG_3%%" alt="%%MACRO_ALT_3%%" loading="lazy" />
+      <img src="../generated/assets/%%MACRO_IMG_4%%" alt="%%MACRO_ALT_4%%" loading="lazy" />
+      <img src="../generated/assets/%%MACRO_IMG_5%%" alt="%%MACRO_ALT_5%%" loading="lazy" />
+      <img src="../generated/assets/%%MACRO_IMG_6%%" alt="%%MACRO_ALT_6%%" loading="lazy" />
     </div>
   </div>
 </section>
 
+<!-- ===== PCG SYSTEMS ===== -->
 <section class="band astral" aria-labelledby="pcg-title">
   <div class="inner">
     <div class="section-head">
       <div>
         <p class="eyebrow">PCG Systems</p>
-        <h2 id="pcg-title">Procedural dressing proof.</h2>
+        <h2 id="pcg-title">%%PCG_SECTION_TITLE%%</h2>
       </div>
-      <p>PCG graphs drive blossom scatter, moss groundcover, petal drift, lantern placement, and shrine route scattering.</p>
+      <p>%%PCG_SECTION_DESC%%</p>
     </div>
     <div class="alignment-grid">
-      <article class="alignment-card premium-card"><span>Scatter</span><div><h3>PCG_SakuraGrove</h3><p>Sakura tree scattering with density falloff around the shrine path.</p></div></article>
-      <article class="alignment-card premium-card"><span>VFX</span><div><h3>PCG_BlossomPath</h3><p>Petal drift along the player route — animated material instances.</p></div></article>
-      <article class="alignment-card premium-card"><span>Ground</span><div><h3>PCG_Zen_MossGroundcover</h3><p>Moss and groundcover with biome blending and slope exclusion.</p></div></article>
+      <article class="alignment-card premium-card"><span>%%PCG_TAG_1%%</span><div><h3>%%PCG_NAME_1%%</h3><p>%%PCG_DESC_1%%</p></div></article>
+      <article class="alignment-card premium-card"><span>%%PCG_TAG_2%%</span><div><h3>%%PCG_NAME_2%%</h3><p>%%PCG_DESC_2%%</p></div></article>
+      <article class="alignment-card premium-card"><span>%%PCG_TAG_3%%</span><div><h3>%%PCG_NAME_3%%</h3><p>%%PCG_DESC_3%%</p></div></article>
     </div>
   </div>
 </section>
@@ -147,8 +151,7 @@
 <footer class="footer">
   <div class="inner">
     <span>Brennan Shepherd / Environment & Technical Artist</span>
-    <span>Sakura Dream · UE5 · PCG · Toon Materials · <a href="application-hub.html" style="color:inherit;text-decoration:underline">View all environments</a></span>
-    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-tertiary)"><span>v2.0.0</span><span>UE 5.8</span><span>World 01</span><a href="pipeline.html" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">Pipeline</a></div>
+    <span>%%ENV_NAME%% · UE5 · PCG · SDF Materials · <a href="application-hub.html" style="color:inherit;text-decoration:underline">View all environments</a></span>
     <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase"><a href="pcg-system-impact.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">PCG Systems</a><a href="material-loop-gallery.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Material Loops</a><a href="sdf-material-gallery.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">SDF Gallery</a><a href="shader-breakdowns.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Shaders</a></div>
   </div>
 </footer>

@@ -18,32 +18,32 @@
   },
   "pages": {
     "recruiter-one-sheet": {
-      "title": "Recruiter One-Sheet | Brennan Shepherd",
-      "meta_description": "Quick read on Brennan Shepherd — stylized environment art, Unreal, and where to click next.",
+      "title": "Recruiter One-Sheet | Brennan Shepherd — Environment & Technical Artist",
+      "meta_description": "Brennan Shepherd — environment artist for stylized fantasy worlds. UE5 Substrate Toon, PCG scattering, magical girl aesthetic. Targeting Infinity Nikki / Papergames / Infold.",
       "hero": {
-        "kicker": "Recruiter one-sheet",
-        "headline": "Environment art taste, technical art follow-through.",
-        "lede": "Stylized environments, Unreal material systems, and procedural dressing with clear production proof. Start with resume, then Sakura."
+        "kicker": "Recruiter one-sheet · Brennan Shepherd",
+        "headline": "Stylized fantasy worlds with real pipeline underneath.",
+        "lede": "Environment artist targeting stylized fantasy, magical girl aesthetic, and technical art roles — UE5 Substrate Toon, PCG scattering, SDF materials, and procedural worldbuilding. Built for studios like Papergames / Infold (Infinity Nikki), HoYoverse, and stylized AA."
       },
       "at_a_glance": {
-        "eyebrow": "At a glance",
-        "headline": "Where I fit.",
-        "lede": "Short on purpose. If you've only got a couple minutes, this is the gist.",
+        "eyebrow": "At A Glance",
+        "headline": "Best roles to consider.",
+        "lede": "One-sheet is short on purpose — gives a recruiter the shape of the candidate and sends art reviewers to the right proof.",
         "cards": [
           {
             "tag": "Primary",
-            "title": "Stylized environment artist",
-            "body": "Mood, composition, routes you want to walk, materials that read from far away and still hold up in a close-up."
+            "title": "Stylized Environment Artist",
+            "body": "Soft pastel worlds, readable player routes, toon shaders, sakura atmospheres, and hero renders. UE5, Blender, Maya, ZBrush, Substance Painter. Infinity Nikki–aligned aesthetic."
           },
           {
-            "tag": "Also",
-            "title": "Technical art curious",
-            "body": "Shader graphs, PCG, Geometry Nodes — I'm not pretending to be a senior TA, but I like building systems that save future-me from repainting the same rock."
+            "tag": "Secondary",
+            "title": "Technical Artist",
+            "body": "Material systems (19 showcase MIs), PCG graph libraries (60+ graphs), render pipeline automation, MCP server integration, TouchDesigner real-time VFX."
           },
           {
-            "tag": "The vibe",
-            "title": "Fashion-fantasy editorial",
-            "body": "Think lookbook meets game world: gold trim energy, soft bloom, a little impossible geometry — but still readable."
+            "tag": "Nikki Relevance",
+            "title": "Magical Girl Aesthetic",
+            "body": "Substrate toon outline, iridescent sheen, soft bloom, warm lacquer trims, SDF ornamental detail, PCG blossom scattering — all built for fashion-fantasy worlds."
           }
         ]
       },
@@ -55,31 +55,25 @@
           {
             "step": "01",
             "title": "Resume",
-            "body": "Tools, school, past work.",
+            "body": "Tools, school, past work. 15+ skills listed.",
             "href": "resume.html"
           },
           {
             "step": "02",
-            "title": "Sakura Case Study",
-            "body": "Primary world mood — shrine path and materials.",
+            "title": "Sakura Dream (Nikki-aligned)",
+            "body": "Primary world proof — shrine route, petal light, toon materials.",
             "href": "sakura-case-study.html"
           },
           {
             "step": "03",
-            "title": "Melusina Stage",
-            "body": "Character beauty plates + asset passport (Stage v7 · EEVEE).",
-            "href": "melodia-stage-character.html"
-          },
-          {
-            "step": "04",
-            "title": "Shader Breakdowns",
-            "body": "Where the stylized material work lives.",
+            "title": "Material Showcase",
+            "body": "19 showcase MIs — NikkiHero, CelestialNebula, SDF, Cosmic.",
             "href": "shader-breakdowns.html"
           },
           {
-            "step": "05",
+            "step": "04",
             "title": "Application Hub",
-            "body": "Longer dossier if you want the full path.",
+            "body": "Full dossier — all 4 environments, PCG systems, character work.",
             "href": "application-hub.html"
           }
         ]

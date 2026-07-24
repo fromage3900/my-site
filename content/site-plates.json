@@ -3,12 +3,12 @@
   "notes": "Named plate slots — edit with Tools/assign_plate.py or by hand. Paths relative to my-site-clean/wix/. Jewelry plate killed (was content-dup of beauty). glam_03 removed (bit-identical to beauty). Melusina back deferred until Cam_Back. Wireframe greys from 2026-07-15.",
   "slots": {
     "index.hero": {
-      "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
-      "alt": "Melusina — EEVEE glam beauty, Melodia Portfolio Stage"
+      "path": "../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png",
+      "alt": "Sakura Dream — stylized fantasy environment hero render"
     },
     "recruiter.hero": {
-      "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
-      "alt": "Melusina — EEVEE glam beauty, Melodia Portfolio Stage"
+      "path": "../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png",
+      "alt": "Sakura Dream — stylized fantasy environment hero render"
     },
     "hub.melusina": {
       "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
