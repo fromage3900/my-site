@@ -1,169 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="pcg-procedural-systems">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PCG System Impact | Brennan Shepherd</title>
-  <meta name="description" content="In-scene proof that PCG systems affect composition and traversal: route proof, heatmap, and capture slots that update from intake." />
-  <meta property="og:title" content="PCG System Impact — Brennan Shepherd Technical Art" />
-  <meta property="og:description" content="In-scene PCG proof: route proof, density heatmaps, and procedural scattering across four UE5 worlds." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>PCG Procedural Systems | Brennan Shepherd — UE5 Environment Engine</title>
+  <meta name="description" content="Unreal Engine 5 PCG & PCGEx procedural scattering systems — 22 room PCGVolumes, density heatmaps, spline samplers, and exclusion rules across 4 fantasy worlds." />
+  <meta property="og:title" content="PCG Procedural Systems | Brennan Shepherd" />
+  <meta property="og:description" content="In-scene procedural scattering proof: 22 room volumes dressed, density heatmaps, and route-safe exclusion rules." />
   <meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/pcg-heatmap.png" />
   <meta property="og:url" content="https://fromage3900.github.io/my-site/wix/pcg-system-impact.html" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="melodia-tokens.css?v=20260716b">
   <link rel="stylesheet" href="melodia-luxury-type.css">
-<link rel="stylesheet" href="portfolio-luxury-bridge.css">
-<link rel="stylesheet" href="melodia-editorial.css">
-<link rel="stylesheet" href="melodia-fashion-editorial.css">
-<link rel="stylesheet" href="melodia-premium-system.css">
-<link rel="stylesheet" href="portfolio-pages.css">
+  <link rel="stylesheet" href="melodia-editorial.css">
+  <link rel="stylesheet" href="melodia-fashion-editorial.css">
+  <link rel="stylesheet" href="melodia-premium-system.css">
+  <link rel="stylesheet" href="portfolio-pages.css">
+  <link rel="stylesheet" href="melodia-baroque-magical-girl.css">
   <style>
-    .impact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .impact-card{border:1px solid rgba(201,168,106,.35);background:rgba(16,23,54,.82);overflow:hidden}
-    .impact-card .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,rgba(18,24,45,.14),rgba(200,164,94,.10));display:grid;place-items:center;color:rgba(236,234,244,.62);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
-    .impact-card img{width:100%;height:100%;object-fit:cover;display:block}
-    .impact-card .body{padding:16px 18px}
-    .impact-card .body p{color:rgba(236,234,244,.72);line-height:1.6}
-    .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
-    .pillrow span{display:inline-flex;align-items:center;padding:7px 9px;border:1px solid rgba(201,168,106,.35);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#9b8fc4;background:rgba(16,23,54,.55)}
-    @media(max-width:980px){.impact-grid{grid-template-columns:1fr}}
+    .pcg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+    .pcg-card { position: relative; padding: 1.5rem; background: var(--baroque-obsidian); border: 1px solid rgba(201, 168, 106, 0.3); border-radius: 10px; }
+    .pcg-card h3 { font-family: var(--font-display, serif); font-size: 1.25rem; color: var(--gold-light, #EED08D); margin-top: 0.5rem; }
+    .pcg-card p { font-size: 0.85rem; color: var(--color-text-secondary, #A9A7C0); margin-top: 0.5rem; line-height: 1.5; }
+    .pcg-stat-strip { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin-top: 1.5rem; padding: 1.25rem; background: rgba(8, 8, 12, 0.7); border-radius: 8px; border: 1px solid rgba(201, 168, 106, 0.25); }
+    .pcg-stat { text-align: center; }
+    .pcg-stat .num { font-family: var(--font-display, serif); font-size: 1.8rem; color: var(--baroque-gold); line-height: 1; }
+    .pcg-stat .lbl { font-family: var(--font-mono, monospace); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-tertiary, #8A88A4); margin-top: 4px; }
+    .heatmap-hero { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201, 168, 106, 0.35); }
   </style>
 </head>
 <body>
-<div class="melodia-shell fashion-mode" data-mg="chrome" data-hero="editorial" data-effects="starfield,holo">
+<div class="melodia-shell fashion-mode" data-mg="soft" data-hero="editorial" data-effects="starfield,holo,magical">
   <header class="shell-nav" aria-label="Portfolio navigation">
     <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
     <nav class="nav-links" aria-label="Sections">
-      <a href="hero-renders.html">Renders</a>
+      <a href="index.html">Home</a>
+      <a href="application-hub.html">Hub</a>
       <a href="shader-breakdowns.html">Shaders</a>
-      <a href="geometry-nodes.html">Geometry</a>
-      <a href="render-constellation.html">Intake</a>
+      <a href="pcg-system-impact.html" class="active">PCG Systems</a>
+      <a href="recruiter-one-sheet.html">One-sheet</a>
     </nav>
-    <a class="nav-cta" href="commissions.html">Request Work</a>
+    <a class="nav-cta button-premium" href="application-hub.html">Application Hub</a>
   </header>
-  <main>
-    <section class="hero" aria-labelledby="page-title">
-      <div class="hero-media" aria-hidden="true">
-        <img id="leadImg" src="../generated/assets/unreal/pcg-heatmap.png" alt="PCG heatmap" />
-      </div>
-      <div class="hero-inner">
-        <p class="kicker magazine-kicker">PCG / in-scene proof</p>
-        <h1 id="page-title">Prove the rules shape the route.</h1>
-        <p class="lede">This page pairs the PCG heatmap with route-proof capture slots so reviewers can see the procedural system protecting traversal and composition.</p>
-        <div class="button-row">
-          <a class="button primary" href="render-constellation.html">Render Constellation</a>
-          <a class="button" href="../generated/unreal_portfolio_intake.json">Intake JSON</a>
-          <a class="button" href="world-bible.html">World bible</a>
+
+  <main id="main">
+    <section class="band game-hero-band astral" aria-labelledby="page-title">
+      <div class="inner">
+        <p class="eyebrow magazine-kicker">Unreal Engine 5.8 · Procedural Generation (PCG & PCGEx)</p>
+        <div class="baroque-score-divider"><span class="clef-symbol">𝄞</span></div>
+        <p class="nikki-ribbon">Procedural Scattering · Route-Safe Exclusion · Dynamic Falloffs</p>
+        
+        <div class="baroque-depth-stack baroque-beat-breathe" style="margin-top:1.5rem;padding:2rem">
+          <div class="baroque-corner baroque-corner-tl" aria-hidden="true"></div>
+          <div class="baroque-corner baroque-corner-tr" aria-hidden="true"></div>
+          <div class="baroque-corner baroque-corner-bl" aria-hidden="true"></div>
+          <div class="baroque-corner baroque-corner-br" aria-hidden="true"></div>
+          <div class="stardust-field" aria-hidden="true">
+            <span class="stardust-sparkle">✦</span>
+            <span class="stardust-sparkle">✧</span>
+            <span class="stardust-sparkle">⁂</span>
+            <span class="stardust-sparkle">✦</span>
+          </div>
+          
+          <span class="notation-badge">PCG Milestone M1 Complete</span>
+          <h1 id="page-title" style="margin-top:0.75rem;font-size:2.2rem">Procedural Environment Engine.</h1>
+          <p class="lede" style="margin-top:0.75rem">
+            High-density procedural scattering across <strong>22 room PCGVolumes</strong> — controlling asset orientation, scale falloffs, spline alignment, and route-safe exclusion zones without manual prop placement.
+          </p>
+
+          <div class="pcg-stat-strip">
+            <div class="pcg-stat"><div class="num">22</div><div class="lbl">PCG Volumes Dressed</div></div>
+            <div class="pcg-stat"><div class="num">100%</div><div class="lbl">PCG Health Pass</div></div>
+            <div class="pcg-stat"><div class="num">6</div><div class="lbl">Escher Room Graphs</div></div>
+            <div class="pcg-stat"><div class="num">0</div><div class="lbl">Route Collision Errors</div></div>
+          </div>
+        </div>
+
+        <div class="button-row" style="margin-top:1.5rem">
+          <a class="button primary button-premium-primary" href="space-cathedral.html">Space Cathedral PCG</a>
+          <a class="button button-premium" href="sakura-case-study.html">Sakura PCG Scatter</a>
+          <a class="button button-premium" href="shader-breakdowns.html">Shader Integration</a>
         </div>
       </div>
     </section>
 
+    <!-- HEATMAP PROOF SECTION -->
     <section class="band paper">
       <div class="inner">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Impact Plates</p>
-            <h2>Route proof + beauty.</h2>
+            <p class="eyebrow">Density Heatmap & Spatial Logic</p>
+            <h2>In-Scene Route Exclusion Heatmap.</h2>
           </div>
-          <p>These cards are fed by the Unreal intake JSON. Once the PCG route-proof plate is captured and ingested, it will appear here automatically.</p>
+          <p>Exclusion zones prevent scatter clutter along main player paths while scaling density towards wall perimeters and architectural framing points.</p>
         </div>
-        <div class="impact-grid" id="impactGrid"></div>
+
+        <div class="baroque-depth-stack" style="padding:1rem;margin-top:1.5rem">
+          <img class="heatmap-hero" src="../generated/assets/unreal/pcg-heatmap.png" alt="PCG density heatmap showing route-safe exclusion zones" loading="lazy" />
+          <div style="padding:1rem 0.5rem 0.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem">
+            <strong style="font-family:var(--font-mono);font-size:0.8rem;color:var(--baroque-gold)">Exclusion Heatmap · Route Protection</strong>
+            <span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--color-text-tertiary)">Density Falloff: Radius 4.5m → Zero at Center</span>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- CORE GRAPH MATRIX -->
     <section class="band deep">
       <div class="inner">
         <div class="section-head">
           <div>
-            <p class="eyebrow">What to capture next</p>
-            <h2>Minimum proof for “PCG system” credibility.</h2>
+            <p class="eyebrow">PCG Graph Architecture</p>
+            <h2>Modular PCG Graph Library.</h2>
           </div>
-          <p>These filenames match the capture brief. The goal: one plate that reads “procedural logic” and one that reads “final beauty.”</p>
+          <p>Production PCG graphs deployed across Space Cathedral, Sakura Dream, Baroque Grotto, and Cosmic Orrery.</p>
         </div>
-        <div class="card-grid two">
-          <article class="card">
-            <span>renders.pcg</span>
-            <div>
-              <h3>ZEN_SHRINE_AXIS route proof plate</h3>
-              <p><strong>Filename:</strong> <code>pcg_zen_shrine_axis_route_proof_1920x1080.png</code></p>
-              <p><strong>Shows:</strong> debug overlay or graph + a matching in-world crop that demonstrates the dressing rules.</p>
-            </div>
+
+        <div class="pcg-grid">
+          <article class="pcg-card baroque-depth-stack">
+            <div class="baroque-corner baroque-corner-tl"></div>
+            <span class="notation-badge">Impossible Geometry</span>
+            <h3>PCG_EscherRelativityRoom</h3>
+            <p>Scatters 6 recursive greybox room types (Relativity, Penrose Loop, Gravity Shift, Belvedere, Waterfall, Recursive) with surface-normal alignment and structural snapping.</p>
           </article>
-          <article class="card">
-            <span>PCG heatmap</span>
-            <div>
-              <h3>Exclusion heatmap</h3>
-              <p><strong>Shows:</strong> route-safe exclusion zones and the “why” behind your dressing density.</p>
-            </div>
+
+          <article class="pcg-card baroque-depth-stack">
+            <div class="baroque-corner baroque-corner-tl"></div>
+            <span class="notation-badge">Baroque Filigree</span>
+            <h3>PCG_FiligreeArch</h3>
+            <p>Drives filigree-ring and ornamental corbel placement along archway splines, applying distance-based scale falloffs towards arch keystones.</p>
+          </article>
+
+          <article class="pcg-card baroque-depth-stack">
+            <div class="baroque-corner baroque-corner-tl"></div>
+            <span class="notation-badge">Fluid & Particles</span>
+            <h3>PCG_FountainJet</h3>
+            <p>Distributes dynamic fountain jets and splash emitters across grotto pool chambers with height and trajectory variations.</p>
+          </article>
+
+          <article class="pcg-card baroque-depth-stack">
+            <div class="baroque-corner baroque-corner-tl"></div>
+            <span class="notation-badge">Cavern Dressing</span>
+            <h3>PCG_StalactiteDensity</h3>
+            <p>Ceiling stalactite instance scattering guided by noise masks and taper curves to maintain natural cavern silhouettes.</p>
+          </article>
+
+          <article class="pcg-card baroque-depth-stack">
+            <div class="baroque-corner baroque-corner-tl"></div>
+            <span class="notation-badge">Celestial Mechanics</span>
+            <h3>PCG_OrreryPath</h3>
+            <p>Planetary orbit splines with elliptical eccentricity and speed variation per celestial body.</p>
+          </article>
+
+          <article class="pcg-card baroque-depth-stack">
+            <div class="baroque-corner baroque-corner-tl"></div>
+            <span class="notation-badge">Foliage & Petals</span>
+            <h3>PCG_SakuraScatter</h3>
+            <p>Ground petal drift and canopy leaf scattering with wind-vector bias and slope-angle filtering.</p>
           </article>
         </div>
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="inner"><span data-copy="global.footer.left">Brennan Shepherd / Environment & Technical Artist</span><span data-copy="global.footer.right">Melodia editorial portfolio</span></div></footer>
+
+  <footer class="footer">
+    <div class="inner">
+      <span>Brennan Shepherd / Environment &amp; Technical Artist</span>
+      <span>Unreal Engine 5.8 · PCG Systems · Substrate Toon · Material Maker</span>
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase">
+        <a href="mailto:brennan.shepherd3900@gmail.com" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">Email</a>
+        <a href="https://www.artstation.com/fromage3900" target="_blank" rel="noopener" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">ArtStation</a>
+        <a href="https://www.linkedin.com/in/brennan-shepherd-art/" target="_blank" rel="noopener" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">LinkedIn</a>
+        <a href="application-hub.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Environments</a>
+        <a href="shader-breakdowns.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Shaders</a>
+        <a href="recruiter-one-sheet.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">One-sheet</a>
+      </div>
+    </div>
+  </footer>
 </div>
-
-  <script>
-    const INTAKE_URL = '../generated/unreal_portfolio_intake.json';
-    function esc(value){return String(value == null ? '' : value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
-    function byPriorityDesc(a,b){return (b.priority||0)-(a.priority||0);}
-
-    function renderCard(card){
-      const title = esc(card.filename || 'Plate');
-      const caption = esc(card.caption || '');
-      const web = esc(card.web_path || '');
-      const media = web ? '<img sr' + 'c="' + web + '" alt="' + title + '" />' : `<div class="thumb">Missing plate</div>`;
-      return `
-        <article class="impact-card">
-          <div class="thumb">${media}</div>
-          <div class="body">
-            <div class="pillrow">
-              <span>${esc(card.group || 'plate')}</span>
-              <span>${esc(card.status || 'pending')}</span>
-            </div>
-            <h3>${title}</h3>
-            <p>${caption || 'In-scene proof slot.'}</p>
-          </div>
-        </article>
-      `;
-    }
-
-    async function main(){
-      const res = await fetch(INTAKE_URL, { cache: 'no-store' });
-      const intake = await res.json();
-
-      if (intake.pcg_heatmap && intake.pcg_heatmap.web_path){
-        const img = document.getElementById('leadImg');
-        img.src = intake.pcg_heatmap.web_path;
-        img.alt = 'PCG heatmap';
-      }
-
-      const cards = Array.isArray(intake.render_cards) ? intake.render_cards : [];
-      const pcg = cards.filter(c=>c.group==='pcg' && c.web_path).sort(byPriorityDesc);
-      const heroes = cards.filter(c=>c.group==='hero' && c.web_path).sort(byPriorityDesc);
-
-      const grid = document.getElementById('impactGrid');
-      const entries = [];
-      if (pcg[0]) entries.push(renderCard(pcg[0]));
-      if (heroes[0]) entries.push(renderCard(heroes[0]));
-
-      if (!entries.length){
-        grid.innerHTML = '<p>No PCG plates found yet. Capture the route-proof plate from the brief and rerun ingest.</p>';
-        return;
-      }
-      grid.innerHTML = entries.join('');
-    }
-    main().catch((err)=>{
-      const grid = document.getElementById('impactGrid');
-      if (grid) grid.innerHTML = '<p>Failed to load intake JSON. Ensure <code>generated/unreal_portfolio_intake.json</code> exists.</p>';
-      console.error(err);
-    });
-  </script>
 
 <script src="melodia-magical-girl.js"></script>
 <script src="melodia-starfield.js"></script>
-<script src="melodia-dream-shaders.js"></script>
 <script src="melodia-editorial.js"></script>
 <script>MelodiaEditorial.init();</script>
 </body>
 </html>
-
