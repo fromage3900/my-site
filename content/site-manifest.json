@@ -1,0 +1,104 @@
+{
+  "version": "2.0.0",
+  "generated": "2026-07-27",
+  "artist": {
+    "name": "Brennan Shepherd",
+    "title": "Environment & Technical Artist",
+    "location": "Toronto, ON",
+    "email": "brennan.shepherd3900@gmail.com",
+    "artstation": "https://www.artstation.com/fromage3900",
+    "linkedin": "https://www.linkedin.com/in/brennan-shepherd-art/",
+    "github": "https://github.com/fromage3900",
+    "site": "https://fromage3900.github.io/my-site/wix/index.html"
+  },
+  "engine": "Unreal Engine 5.8",
+  "pipeline": "UE5 + Blender 5.1 + Material Maker + PCG/PCGEx + TouchDesigner",
+  "stats": {
+    "worlds": 4,
+    "material_instances": 22,
+    "pcg_graphs": 60,
+    "nightshift_spheres": 29
+  },
+  "environments": [
+    {
+      "id": "sakura-dream",
+      "title": "Sakura Dream",
+      "slug": "sakura-case-study",
+      "world_index": 1,
+      "status": "live",
+      "hero_image": "generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png",
+      "loop_video": "generated/assets/landscape-loops/WP_SakuraDream.webm",
+      "terrain_thumb": "generated/assets/landscape-loops/WP_SakuraDream_terrain.png",
+      "tags": ["cherry-blossom", "toon-water", "PCG-scatter", "sakura", "landscape"],
+      "materials": ["MI_Show_CherryBlossom", "MI_GrandWater_SakuraPond", "MI_Landscape_SakuraDream"],
+      "description": "Romantic sakura landscape with Gerstner wave pond, PCG blossom scatter, and petal shadow projection."
+    },
+    {
+      "id": "space-cathedral",
+      "title": "Space Cathedral",
+      "slug": "space-cathedral",
+      "world_index": 2,
+      "status": "live",
+      "hero_image": "generated/assets/landscape-loops/WP_SpaceCathedral_terrain.png",
+      "loop_video": "generated/assets/landscape-loops/WP_SpaceCathedral.webm",
+      "terrain_thumb": "generated/assets/landscape-loops/WP_SpaceCathedral_terrain.png",
+      "tags": ["gothic", "sci-fi", "SDF-materials", "rose-window", "PCG-vaults"],
+      "materials": ["MI_Show_CelestialNebula", "MI_Cosmic_StarfieldA", "MI_SDF_RoseWindow_Radial"],
+      "description": "Gothic sci-fi hybrid: vaulted ribs, rose window PCG scatter, celestial SDF materials, toon cathedral mood."
+    },
+    {
+      "id": "cosmic-orrery",
+      "title": "Cosmic Orrery",
+      "slug": "cosmic-orrery",
+      "world_index": 3,
+      "status": "live",
+      "hero_image": "generated/assets/landscape-loops/WP_CosmicOrrery_terrain.png",
+      "loop_video": "generated/assets/landscape-loops/WP_CosmicOrrery.webm",
+      "terrain_thumb": "generated/assets/landscape-loops/WP_CosmicOrrery_terrain.png",
+      "tags": ["cosmic", "planetary", "aurora", "SDF-materials", "Niagara"],
+      "materials": ["MI_Cosmic_AuroraVeil", "MI_Cosmic_EclipseHalo", "MI_SDF_VoidStarlight"],
+      "description": "Celestial sphere with planetary orrery rings, aurora borealis VFX, and toon-shaded cosmic SDF surfaces."
+    },
+    {
+      "id": "baroque-grotto",
+      "title": "Baroque Grotto",
+      "slug": "baroque-grotto",
+      "world_index": 4,
+      "status": "live",
+      "hero_image": "generated/assets/landscape-loops/WP_BaroqueGrotto_terrain.png",
+      "loop_video": "generated/assets/landscape-loops/WP_BaroqueGrotto.webm",
+      "terrain_thumb": "generated/assets/landscape-loops/WP_BaroqueGrotto_terrain.png",
+      "tags": ["baroque", "underground", "grotto", "copper", "filigree"],
+      "materials": ["MI_SDF_MossyCopper", "MI_SDF_Altar_GoldFiligree", "MI_SDF_IvoryScrollwork"],
+      "description": "Underground baroque grotto: mossy copper SDF, ornamental fountain jets, filigree archways, cavern toon mood."
+    }
+  ],
+  "materials": {
+    "master": "M_Master_Toon_Universal",
+    "substrate_profile": "Toon BSDF",
+    "instance_count": 22,
+    "families": ["NikkiHero", "Cosmic", "SDF-Ornamental", "Landscape", "Water", "Impressionist"],
+    "showcase_instances": [
+      "MI_Show_NikkiHero", "MI_Show_CelestialNebula", "MI_Show_CherryBlossom",
+      "MI_Show_StoneCliff", "MI_Show_ZenGarden", "MI_Show_BaroqueMarble",
+      "MI_SDF_RoseWindow_Radial", "MI_SDF_Altar_GoldFiligree", "MI_SDF_MossyCopper",
+      "MI_SDF_AuroraVeil", "MI_SDF_VoidStarlight", "MI_SDF_CelestialVinyl",
+      "MI_Cosmic_StarfieldA", "MI_Cosmic_AuroraVeil", "MI_Cosmic_EclipseHalo",
+      "MI_Cosmic_BlueNebulaA", "MI_Cosmic_PurpleNebulaA", "MI_Landscape_SakuraDream",
+      "MI_GrandWater_SakuraPond", "MI_Impressionist_Watercolour", "MI_Show_TriplanarRock",
+      "MI_Toon_SDF_Ornamental"
+    ]
+  },
+  "pages": {
+    "index": "wix/index.html",
+    "hub": "wix/application-hub.html",
+    "one_sheet": "wix/recruiter-one-sheet.html",
+    "resume": "wix/resume.html",
+    "shaders": "wix/shader-breakdowns.html",
+    "pipeline": "wix/pipeline.html",
+    "sakura": "wix/sakura-case-study.html",
+    "space_cathedral": "wix/space-cathedral.html",
+    "cosmic_orrery": "wix/cosmic-orrery.html",
+    "baroque_grotto": "wix/baroque-grotto.html"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "slug": "universal-material-graph-sheet",
+  "title": "Universal Material Graph",
+  "asset": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal",
+  "engine": "Unreal Engine 5.8",
+  "status": "partial",
+  "purpose": "Document the Universal Master material graph, its material functions, exposed parameters, validation proof, and portfolio capture targets.",
+  "graphFlow": [
+    "Texture Slot A/B",
+    "Packed Masks",
+    "Trim / UV Controls",
+    "Parallax + Height",
+    "Stylization Functions",
+    "Substrate Toon Output",
+    "Debug / Quality Switches"
+  ],
+  "functions": [
+    {
+      "name": "MF_NikkiDreamGrade",
+      "role": "Primary working stylization grade and reference wiring pattern.",
+      "status": "verified reference",
+      "portfolioProof": "Show input pins, consumed Color/Emissive outputs, and one visible instance variation."
+    },
+    {
+      "name": "MF_Madoka",
+      "role": "Cute / radial / glow language layer.",
+      "status": "recently repaired, needs final visual proof",
+      "portfolioProof": "Show exposed tunables, Emissive route, and nonzero glow/radial preview."
+    },
+    {
+      "name": "MF_Itto",
+      "role": "Crack, spiral, ink, wear, and roughness/height accent layer.",
+      "status": "recently repaired, needs final visual proof",
+      "portfolioProof": "Show IttoSpiralIntensity, crack controls, and visible spiral/crack preview."
+    },
+    {
+      "name": "MF_ParallaxCore / MF_RealParallax",
+      "role": "Height-based UV offset, self-shadowing, and material depth response.",
+      "status": "capture needed",
+      "portfolioProof": "Show height input, UV offset path, and before/after material surface depth."
+    },
+    {
+      "name": "MF_ColorRampAdvanced",
+      "role": "Toon banding, palette response, dawn/dusk/night or style-grade transitions.",
+      "status": "capture needed",
+      "portfolioProof": "Show ramp parameter controls and DayCyclePhase response when wired."
+    }
+  ],
+  "captureTargets": [
+    "Full graph overview at readable zoom",
+    "Function call cluster: Nikki / Madoka / Itto",
+    "Parameter groups in material instance",
+    "IridescencePower remap node",
+    "Emissive aggregation into final output",
+    "Parallax/height branch",
+    "One neutral default render",
+    "One stylized Madoka render",
+    "One stylized Itto render",
+    "Shader complexity or instruction stats"
+  ]
+}

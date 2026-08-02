@@ -1,0 +1,48 @@
+{
+    "generated_at":  "2026-07-02T16:14:47.6749961Z",
+    "target_studio":  "Infold Games",
+    "target_roles":  [
+                         "Environment Artist",
+                         "Technical Artist",
+                         "Stylized World Artist"
+                     ],
+    "source_status":  {
+                          "local_generated_assets":  [
+                                                         "generated/assets/l-sakurapath-hero.png",
+                                                         "generated/assets/latest-hero.png",
+                                                         "generated/assets/project-name-hero.png"
+                                                     ],
+                          "google_drive_status":  "Waiting for a specific shared folder link or local Google Drive sync path",
+                          "local_workspace_inventory":  "generated/local_asset_inventory.json"
+                      },
+    "categories":  [
+                       {
+                           "name":  "Hero render",
+                           "promote_when":  "Wide, polished, readable, stylized, fantasy-forward, and useful above the fold"
+                       },
+                       {
+                           "name":  "Painting or concept",
+                           "promote_when":  "Shows color taste, worldbuilding, composition, or material/costume thinking"
+                       },
+                       {
+                           "name":  "Process proof",
+                           "promote_when":  "Explains a decision quickly through blockout, paintover, before-after, or callout"
+                       },
+                       {
+                           "name":  "Technical proof",
+                           "promote_when":  "Shows material graph, procedural controls, optimization stats, or Unreal handoff clarity"
+                       }
+                   ],
+    "scoring":  {
+                    "visual_charm":  60,
+                    "technical_repeatability":  25,
+                    "communication_polish":  15
+                },
+    "live_pages_to_update":  [
+                                 "wix/index.html",
+                                 "wix/hero-renders.html",
+                                 "wix/sakura-case-study.html",
+                                 "wix/hiring-dossier.html",
+                                 "wix/asset-scouting.html"
+                             ]
+}

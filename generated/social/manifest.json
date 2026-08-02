@@ -1,0 +1,171 @@
+{
+  "generated_at": "2026-07-15T22:19:22.758513+00:00",
+  "store_live": false,
+  "site": "https://fromage3900.github.io/my-site/",
+  "crops": [
+    {
+      "id": "stage_melusina/og_1200x630",
+      "file": "generated/social/stage_melusina__og_1200x630.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "source": "generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "bytes": 95647
+    },
+    {
+      "id": "stage_melusina/square_1080",
+      "file": "generated/social/stage_melusina__square_1080.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "source": "generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "bytes": 136173
+    },
+    {
+      "id": "stage_melusina/story_1080x1920",
+      "file": "generated/social/stage_melusina__story_1080x1920.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "source": "generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "bytes": 241517
+    },
+    {
+      "id": "stage_melusina/twitter_1600x900",
+      "file": "generated/social/stage_melusina__twitter_1600x900.jpg",
+      "size": [
+        1600,
+        900
+      ],
+      "source": "generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "bytes": 158023
+    },
+    {
+      "id": "vow_cross/og_1200x630",
+      "file": "generated/social/vow_cross__og_1200x630.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "source": "generated/assets/cross/cross_komikaze_beauty_34.png",
+      "bytes": 40052
+    },
+    {
+      "id": "vow_cross/square_1080",
+      "file": "generated/social/vow_cross__square_1080.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "source": "generated/assets/cross/cross_komikaze_beauty_34.png",
+      "bytes": 47857
+    },
+    {
+      "id": "vow_cross/story_1080x1920",
+      "file": "generated/social/vow_cross__story_1080x1920.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "source": "generated/assets/cross/cross_komikaze_beauty_34.png",
+      "bytes": 74071
+    },
+    {
+      "id": "vow_cross/twitter_1600x900",
+      "file": "generated/social/vow_cross__twitter_1600x900.jpg",
+      "size": [
+        1600,
+        900
+      ],
+      "source": "generated/assets/cross/cross_komikaze_beauty_34.png",
+      "bytes": 64884
+    },
+    {
+      "id": "ornament_plate/og_1200x630",
+      "file": "generated/social/ornament_plate__og_1200x630.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "source": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
+      "bytes": 29140
+    },
+    {
+      "id": "ornament_plate/square_1080",
+      "file": "generated/social/ornament_plate__square_1080.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "source": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
+      "bytes": 42981
+    },
+    {
+      "id": "ornament_plate/story_1080x1920",
+      "file": "generated/social/ornament_plate__story_1080x1920.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "source": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
+      "bytes": 66057
+    },
+    {
+      "id": "ornament_plate/twitter_1600x900",
+      "file": "generated/social/ornament_plate__twitter_1600x900.jpg",
+      "size": [
+        1600,
+        900
+      ],
+      "source": "generated/assets/ornaments/column_capital_komikaze_beauty_34.png",
+      "bytes": 48757
+    },
+    {
+      "id": "stage_diorama/og_1200x630",
+      "file": "generated/social/stage_diorama__og_1200x630.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "source": "generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png",
+      "bytes": 73836,
+      "note": "macro_postcard_remount"
+    },
+    {
+      "id": "stage_diorama/square_1080",
+      "file": "generated/social/stage_diorama__square_1080.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "source": "generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png",
+      "bytes": 111041,
+      "note": "macro_postcard_remount"
+    },
+    {
+      "id": "stage_diorama/story_1080x1920",
+      "file": "generated/social/stage_diorama__story_1080x1920.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "source": "generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png",
+      "bytes": 208892,
+      "note": "macro_postcard_remount"
+    },
+    {
+      "id": "stage_diorama/twitter_1600x900",
+      "file": "generated/social/stage_diorama__twitter_1600x900.jpg",
+      "size": [
+        1600,
+        900
+      ],
+      "source": "generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png",
+      "bytes": 116659,
+      "note": "macro_postcard_remount"
+    }
+  ]
+}

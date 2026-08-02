@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Oculus Frame",
+  "category": "Prop / ornament",
+  "version": "wave5",
+  "asset_id": "oculus_frame",
+  "rows": [
+    [
+      "Triangles",
+      "5,728"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Komikaze \u00b7 Voronoi Shader (3 Tones)"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "beauty_34"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-15T05:53:31.486593+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

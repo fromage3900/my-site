@@ -1,0 +1,8 @@
+{
+  "slug": "trimsheet-workflow-design-sheet",
+  "title": "Trimsheet Workflow",
+  "assetRoot": "/Game/EnvSandbox/Materials/",
+  "status": "planned",
+  "focus": ["trim atlas layout", "UV conventions", "material instance controls", "packed mask usage", "asset examples", "texel density"],
+  "captureTargets": ["trim texture sheet", "UV layout overlay", "material instance trim controls", "in-scene usage", "before/after asset proof"]
+}

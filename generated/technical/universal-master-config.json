@@ -1,0 +1,59 @@
+{
+  "slug": "universal-master",
+  "title": "Universal Master",
+  "kicker": "Unreal Shaders / Master Material",
+  "subtitle": "A reusable shader foundation for environment assets, trimsheets, vertex blending, masks, and portfolio breakdowns.",
+  "status": "partial",
+  "discipline": "Unreal Shaders",
+  "engine": "Unreal Engine 5.8",
+  "category": "Shader System",
+  "version": "v0.1",
+  "date": "2026-06",
+  "coreModules": [
+    "Base surface",
+    "Packed masks",
+    "Trim controls",
+    "Vertex blend",
+    "Detail normals",
+    "World alignment",
+    "Debug views"
+  ],
+  "breakdownSections": [
+    {
+      "title": "Shader Purpose",
+      "type": "overview",
+      "notes": "Explain what the Universal Master controls, what asset families use it, and why it avoids one-off material graphs."
+    },
+    {
+      "title": "Parameter Groups",
+      "type": "shader",
+      "notes": "Document exposed controls for albedo, roughness, normal intensity, packed mask channels, trim offsets, and blend weights."
+    },
+    {
+      "title": "Graph Architecture",
+      "type": "graph",
+      "notes": "Show the material function layout and the flow from texture inputs to final material attributes."
+    },
+    {
+      "title": "Trimsheet Integration",
+      "type": "trimsheet",
+      "notes": "Show UV conventions, trim ID usage, tile/offset controls, and asset examples using shared trims."
+    },
+    {
+      "title": "PCG / Geometry Nodes Compatibility",
+      "type": "pipeline",
+      "notes": "Show how generated meshes receive material instances, masks, attributes, or randomization values."
+    },
+    {
+      "title": "Optimization Notes",
+      "type": "performance",
+      "notes": "Track shader complexity, texture memory, static switches, instance count, and platform notes."
+    }
+  ],
+  "metrics": {
+    "materialFunctions": null,
+    "textureSets": null,
+    "staticSwitches": null,
+    "instances": null
+  }
+}

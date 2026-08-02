@@ -1,0 +1,57 @@
+﻿{
+  "generated_at": "2026-07-15T22:20:00.0000000Z",
+  "generated_by": "encode_melusina_loops.ps1 + 4s trim/macro postcard",
+  "notes": "Live hair slot uses first 4s of AudVis. Full 10s master kept as encode source only. Do not commit raw PNG dumps.",
+  "count": 3,
+  "web_ready": 3,
+  "entries": [
+    {
+      "id": "melusina_glam_audvis_4s",
+      "label": "Glam · hair / AudVis 4s loop",
+      "caption": "First 4 seconds of the EEVEE AudVis hair sway — looped for stage.",
+      "frame_count": 96,
+      "fps": 24,
+      "duration_sec": 4,
+      "max_width": 1080,
+      "poster": "../generated/assets/character-loops/melusina_glam_audvis_4s_poster.png",
+      "webm_path": "../generated/assets/character-loops/melusina_glam_audvis_4s.webm",
+      "local_relative_path": "generated/assets/character-loops/melusina_glam_audvis_4s.webm",
+      "encoded": true,
+      "source": "audvis_webm_trim",
+      "status": "web_ready",
+      "slot": "stage.hair_loop"
+    },
+    {
+      "id": "melusina_glam_macro_postcard_4s",
+      "label": "Hair FX · macro postcard",
+      "caption": "Macro zoom of the 4s AudVis loop — face/hair fill for social postcard crops.",
+      "frame_count": 96,
+      "fps": 24,
+      "duration_sec": 4,
+      "max_width": 1080,
+      "poster": "../generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png",
+      "webm_path": "../generated/assets/character-loops/melusina_glam_macro_postcard_4s.webm",
+      "local_relative_path": "generated/assets/character-loops/melusina_glam_macro_postcard_4s.webm",
+      "encoded": true,
+      "source": "audvis_4s_macro_crop",
+      "status": "web_ready",
+      "slot": "stage.hair_postcard"
+    },
+    {
+      "id": "melusina_glam_audvis",
+      "label": "Glam · hair / AudVis master (10s)",
+      "caption": "Full EEVEE stage loop encode source — not the live stage slot.",
+      "frame_count": 240,
+      "fps": 24,
+      "duration_sec": 10,
+      "max_width": 1080,
+      "poster": "../generated/assets/character-loops/melusina_glam_audvis_poster.png",
+      "webm_path": "../generated/assets/character-loops/melusina_glam_audvis.webm",
+      "local_relative_path": "generated/assets/character-loops/melusina_glam_audvis.webm",
+      "encoded": true,
+      "source": "blender_png_dump",
+      "status": "encode_source",
+      "slot": "stage.hair_loop_master"
+    }
+  ]
+}

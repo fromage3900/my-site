@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>L_SakuraPath</title>
+<link rel="stylesheet" href="../components/melodia-animations.css">
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: #090c10; color: #f4f0ea; font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif; }
+.hero { min-height: 520px; height: 100vh; max-height: 760px; display: grid; align-items: end; padding: clamp(28px, 7vw, 76px); background-size: cover; background-position: center; background-image: linear-gradient(90deg, rgba(7,10,14,.74), rgba(7,10,14,.18)), url('assets/l-sakurapath-hero.png'); overflow: hidden; position: relative; }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(244,240,234,.8) 0 1px, transparent 1.8px); background-size: 92px 92px; opacity: .18; animation: drift 18s linear infinite; }
+.hero::after { content: ""; position: absolute; inset: auto -10% -25% -10%; height: 48%; background: linear-gradient(90deg, rgba(138,169,214,.20), rgba(216,178,122,.18), rgba(173,116,103,.18)); filter: blur(30px); transform: skewY(-5deg); }
+.content { position: relative; z-index: 1; max-width: 920px; }
+.kicker { margin: 0 0 14px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: #d8b27a; }
+h1 { margin: 0; font-size: clamp(42px, 8vw, 96px); line-height: .98; letter-spacing: 0; }
+.sub { margin: 18px 0 0; max-width: 680px; font-size: clamp(18px, 2.2vw, 25px); line-height: 1.38; color: rgba(244,240,234,.82); }
+.meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+.pill { border: 1px solid rgba(244,240,234,.25); padding: 8px 11px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; background: rgba(9,12,16,.34); }
+@keyframes drift { to { background-position: 92px 92px; } }
+</style>
+</head>
+<body>
+<main class="hero">
+  <section class="content">
+    <p class="kicker">3D Environment &amp; Technical Art</p>
+    <h1>L_SakuraPath</h1>
+    <p class="sub">experimental expressions</p>
+    <div class="meta"><span class="pill">abstract</span><span class="pill">Unreal Engine</span><span class="pill">Portfolio Render</span></div>
+  </section>
+</main>
+</body>
+</html>

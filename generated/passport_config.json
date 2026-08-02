@@ -1,0 +1,49 @@
+{
+  "animations": true,
+  "category": "Prop / props",
+  "decorativeStars": true,
+  "highlight": "environment",
+  "hoverEffects": true,
+  "project": "Zen Lantern",
+  "rows": [
+    [
+      "Triangles",
+      "8,277,956"
+    ],
+    [
+      "Meshes",
+      "6"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Komikaze \u00b7 Voronoi Shader (3 Tones)"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "front"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "theme": "dark",
+  "version": "wave1",
+  "asset_id": "zenlantern"
+}

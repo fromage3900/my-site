@@ -1,0 +1,20 @@
+{
+  "github": {
+    "repository": "fromage3900/my-site",
+    "branch": "main",
+    "pages_base_url": "https://fromage3900.github.io/my-site",
+    "auto_deploy": true,
+    "commit_message_prefix": "Update Unreal portfolio assets"
+  },
+  "wix": {
+    "site_url": "",
+    "update_strategy": "iframe",
+    "cache_duration": 3600
+  },
+  "components": {
+    "source_dir": "_staging/design-system",
+    "target_components": "components",
+    "target_projects": "projects",
+    "target_generated": "generated"
+  }
+}

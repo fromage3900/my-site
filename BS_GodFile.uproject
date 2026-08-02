@@ -1,0 +1,316 @@
+﻿{
+    "FileVersion":  3,
+    "EngineAssociation":  "5.8",
+    "Category":  "",
+    "Description":  "",
+    "Modules":  [
+                    {
+                        "Name":  "BS_GodFile",
+                        "Type":  "Runtime",
+                        "LoadingPhase":  "Default"
+                    }
+                ],
+    "Plugins":  [
+                    {
+                        "Name":  "ModelingToolsEditorMode",
+                        "Enabled":  true,
+                        "TargetAllowList":  [
+                                                "Editor"
+                                            ]
+                    },
+                    {
+                        "Name":  "PCGBiomeCore",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGBiomeSample",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGPrimitives",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGPrimitives_MeshPartitionInterop",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGToolset",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGExternalDataInterop",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGFastGeoInterop",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGGeometryScriptInterop",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGInstancedActorsInterop",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGMeshPartitionInterop",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGNaniteAssembliesInterop",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGNiagaraInterop",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGPythonInterop",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGWaterInterop",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PCGExtendedToolkit",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "CelestialVault",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "ChaosClothAsset",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "ChaosClothAssetDataflowNodes",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "ChaosClothAssetUsdDataflowNodes",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "ChaosClothAssetEditorCore",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "ChaosClothGenerator",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "ChaosFlesh",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "ChaosInsights",
+                        "Enabled":  false
+                    },
+                    {
+                        "Name":  "ChaosFleshGenerator",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "CinematicSequenceNavigator",
+                        "Enabled":  false,
+                        "SupportedTargetPlatforms":  [
+                                                         "Win64",
+                                                         "Linux",
+                                                         "Mac"
+                                                     ]
+                    },
+                    {
+                        "Name":  "CodeEditor",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "DynamicWind",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "GeoReferencing",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "Harmonix",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "HDRIBackdrop",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "LidarPointCloud",
+                        "Enabled":  true,
+                        "SupportedTargetPlatforms":  [
+                                                         "Win64",
+                                                         "Mac",
+                                                         "Linux"
+                                                     ]
+                    },
+                    {
+                        "Name":  "DynamicMaterial",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "DynamicMaterialMediaStreamBridge",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "MaterialValidation",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "MCPClientToolset",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "MeshPartitionWater",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "MusicEnvironment",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "NaniteDisplacedMesh",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "ExampleCustomDataInterface",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "NiagaraNanite",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "NiagaraToolsets",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "NiagaraUIRenderer",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "NiagaraFluids",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "PanoramicCapture",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "ProceduralVegetationEditor",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "RazerChromaDevices",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "RenderGrid",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "SandboxedEditing",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "Soundscape",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "SunPosition",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "Text3D",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "TextureGraph",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "WidgetEditorToolPalette",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "UAFAnimGraph",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "ModelContextProtocol",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "VirtualHeightfieldMesh",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "VirtualCameraCore",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "VirtualCamera",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "Volumetrics",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "WaterAdvanced",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "WaterExtras",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "MeshBlend",
+                        "Enabled":  true,
+                        "MarketplaceURL":  "com.epicgames.launcher://ue/Fab/product/1f4abe73-4cda-42db-995a-c9f8ca4790e5"
+                    },
+                    {
+                        "Name":  "GaeaUnrealTools",
+                        "Enabled":  false
+                    },
+                    {
+                        "Name":  "PythonScriptPlugin",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "GameplayStateTree",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "Monolith",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "SpeedTreeImporter",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "KawaiiPhysics",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "ProceduralModelingToolkit",
+                        "Enabled":  true,
+                        "TargetAllowList":  [
+                                                "Editor"
+                                            ]
+                    },
+                    {
+                        "Name":  "ProceduralDungeon",
+                        "Enabled":  true
+                    }
+                ]
+}

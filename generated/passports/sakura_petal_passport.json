@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Sakura Petal",
+  "category": "Prop / props",
+  "version": "wave2",
+  "asset_id": "sakura_petal",
+  "rows": [
+    [
+      "Triangles",
+      "812,222"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Komikaze \u00b7 Tree Shader *"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "beauty_34"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-11T17:20:22.249112+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

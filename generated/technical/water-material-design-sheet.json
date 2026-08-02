@@ -1,0 +1,8 @@
+{
+  "slug": "water-material-design-sheet",
+  "title": "Water Material System",
+  "asset": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Water",
+  "status": "partial",
+  "focus": ["Gerstner waves", "water noise", "foam and ripple response", "translucent/two-sided material cost", "Niagara ripple link"],
+  "captureTargets": ["full graph overview", "wave function cluster", "noise and foam branch", "ripple material link", "neutral water preview", "stylized water preview", "instruction stats"]
+}

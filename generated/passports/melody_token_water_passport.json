@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Melody Token \u00b7 Water",
+  "category": "Prop / melody_token",
+  "version": "wave6",
+  "asset_id": "melody_token_water",
+  "rows": [
+    [
+      "Triangles",
+      "5,015,040"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Komikaze \u00b7 __melody_token_ice__"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "front"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-15T17:40:42.836969+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

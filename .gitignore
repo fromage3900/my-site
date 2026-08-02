@@ -1,0 +1,41 @@
+﻿# UE generated / transient
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/
+.vs/
+*.sln
+*.slnx
+*.VC.db
+*.VC.opendb
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Local backups / bundles (never commit)
+*.bundle
+Saved/Backups/
+
+# Local level overrides (editor-generated)
+Content/ZenForestTest.ini
+
+# World Partition conversion artifacts (experimental — tracked on wp-experiments branch)
+Content/ZenForestTest_WP*
+Content/ZenForestTest_HLODLayer_*
+Content/__ExternalActors__/ZenForestTest/
+Content/__ExternalActors__/ZenForestTest_WP/
+
+# Python cache
+Content/Python/__pycache__/
+*.pyc
+
+# Autonomous worker output and local process state
+_staging/
+Products/_Staging/
+deploy/*.pid
+*.blend1
+nul
+
+# Blender Flip/cache output; source .blend and exported deliverables remain tracked explicitly.
+KitbashExport/flip_cache_*/

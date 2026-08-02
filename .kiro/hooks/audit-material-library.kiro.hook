@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Audit Material Library",
+  "description": "Audit material library on save",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*.py"
+    ]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "python Content/Python/audit_material_library.py"
+  }
+}

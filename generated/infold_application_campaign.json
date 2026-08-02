@@ -1,0 +1,41 @@
+{
+    "generated_at":  "2026-07-02T16:30:22.0042273Z",
+    "target_studio":  "Infold Games",
+    "target_positioning":  "Stylized environment artist with technical art leverage",
+    "send_first":  "wix/application-hub.html",
+    "backup_send":  "wix/recruiter-one-sheet.html",
+    "reviewer_path":  [
+                          "wix/application-hub.html",
+                          "wix/sakura-case-study.html",
+                          "wix/hero-renders.html",
+                          "wix/shader-breakdowns.html",
+                          "wix/geometry-nodes.html",
+                          "wix/art-test-readiness.html",
+                          "wix/asset-scouting.html"
+                      ],
+    "proof_points":  [
+                         {
+                             "area":  "Environment art",
+                             "proof":  "Sakura case study, hero renders, editorial homepage"
+                         },
+                         {
+                             "area":  "Technical art",
+                             "proof":  "Shader breakdowns, material configs, Geometry Nodes pages"
+                         },
+                         {
+                             "area":  "Production systems",
+                             "proof":  "Deployment manifests, local asset inventory, validation script, GitHub Pages workflow"
+                         },
+                         {
+                             "area":  "Art-test readiness",
+                             "proof":  "Three-day mock test brief and dedicated readiness page"
+                         }
+                     ],
+    "next_actions":  [
+                         "Publish GitHub Pages through Actions or update gh-pages when GitHub upload connectivity permits",
+                         "Add live resume PDF or resume page once source resume is available",
+                         "Replace placeholder strongest-work set after Google Drive folder or synced path is available",
+                         "Create one final hero render from the best Sakura or Drive asset candidate",
+                         "Track applications and follow-ups in generated/application_tracker.json"
+                     ]
+}

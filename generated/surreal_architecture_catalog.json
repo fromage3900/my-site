@@ -1,0 +1,494 @@
+{
+  "product_id": "melodia-surreal-architecture-addon",
+  "name": "Surreal Architecture",
+  "version": "2.134.0",
+  "tagline": "Blender Geometry Nodes addon for style genomes, greybox compose, and Miraland-adjacent stage graphs.",
+  "blurb": "Procedural architecture OS for Melodia \u2014 42 style genomes, SurrealArch_Library bake, Nikki photo-spot graphs, and ornament FBX handoff. Not a store SKU; portfolio + production tool.",
+  "store_live": false,
+  "engine": "Blender 5.1",
+  "paths": {
+    "monolith": "deploy/surreal_architecture_gen.py",
+    "package": "deploy/surreal_arch/",
+    "genomes": "deploy/surreal_os/genomes/",
+    "changelog": "deploy/SURREAL_ARCH_CHANGELOG.md",
+    "regen": "Tools/regen_surreal_meshes.py",
+    "sync": "deploy/sync_surreal_to_live.ps1"
+  },
+  "proof": {
+    "library_meshes": 72,
+    "starlight_spawn": 9,
+    "ornament_fbx": 15,
+    "genome_count": 42,
+    "stage_blend": "KitbashExport/Melodia_Portfolio_Stage_v4.blend"
+  },
+  "families": {
+    "Zen": {
+      "count": 9,
+      "ids": [
+        "zen_kairo_enclosure_v1",
+        "zen_karesansui_v1",
+        "zen_pagoda_spire_v1",
+        "zen_roji_path",
+        "zen_shrine_axis",
+        "zen_shrine_courtyard",
+        "zen_shrine_sakura",
+        "zen_stream_garden_v1",
+        "zen_tea_garden"
+      ]
+    },
+    "NikkiMirage": {
+      "count": 5,
+      "ids": [
+        "nikki_melodia_stage_v1",
+        "nikki_mirage_v1",
+        "nikki_photospot_plaza_v1",
+        "nikki_starlight_reverie_v1",
+        "nikki_winter_kingdom_v1"
+      ]
+    },
+    "NikkiFlorawish": {
+      "count": 4,
+      "ids": [
+        "nikki_bloom_eternal_v1",
+        "nikki_florawish_cottage_v1",
+        "nikki_postcard_overlook_v1",
+        "nikki_wishfield_garden_v1"
+      ]
+    },
+    "NikkiHeartcraft": {
+      "count": 4,
+      "ids": [
+        "nikki_grand_tree_sanctuary_v1",
+        "nikki_heartcraft_palace_v1",
+        "nikki_queens_ruins_v1",
+        "nikki_snail_ranch_fairy_v1"
+      ]
+    },
+    "Gothic": {
+      "count": 3,
+      "ids": [
+        "gothic_chapter_house_v1",
+        "gothic_cloister_v1",
+        "gothic_nave_crossing_v1"
+      ]
+    },
+    "Asian": {
+      "count": 2,
+      "ids": [
+        "asian_city_recursive_v1",
+        "asian_city_v1"
+      ]
+    },
+    "Romanesque": {
+      "count": 2,
+      "ids": [
+        "romanesque_apse_v1",
+        "romanesque_cloister_v1"
+      ]
+    },
+    "Sci-Fi": {
+      "count": 2,
+      "ids": [
+        "scifi_deck_v1",
+        "scifi_industrial_yard_v1"
+      ]
+    },
+    "ArtDeco": {
+      "count": 1,
+      "ids": [
+        "art_deco_lobby_v1"
+      ]
+    },
+    "ArtNouveau": {
+      "count": 1,
+      "ids": [
+        "art_nouveau_v1"
+      ]
+    },
+    "Baroque": {
+      "count": 1,
+      "ids": [
+        "baroque_church_v1"
+      ]
+    },
+    "Brutalist": {
+      "count": 1,
+      "ids": [
+        "brutalist_plaza_v1"
+      ]
+    },
+    "Byzantine": {
+      "count": 1,
+      "ids": [
+        "byzantine_basilica_v1"
+      ]
+    },
+    "Mesoamerican": {
+      "count": 1,
+      "ids": [
+        "meso_pyramid_courtyard_v1"
+      ]
+    },
+    "Moorish": {
+      "count": 1,
+      "ids": [
+        "moorish_courtyard_v1"
+      ]
+    },
+    "NikkiStoneville": {
+      "count": 1,
+      "ids": [
+        "nikki_stoneville_citadel_v1"
+      ]
+    },
+    "Renaissance": {
+      "count": 1,
+      "ids": [
+        "renaissance_piazza_v1"
+      ]
+    },
+    "Venetian": {
+      "count": 1,
+      "ids": [
+        "venetian_canal_v1"
+      ]
+    },
+    "Western": {
+      "count": 1,
+      "ids": [
+        "western_castle_v1"
+      ]
+    }
+  },
+  "genomes": [
+    {
+      "id": "art_deco_lobby_v1",
+      "family": "ArtDeco",
+      "compose_style": "ART_DECO",
+      "default_graph": "ART_DECO",
+      "surreal_transform": "vertical_stretch"
+    },
+    {
+      "id": "art_nouveau_v1",
+      "family": "ArtNouveau",
+      "compose_style": "ART_NOUVEAU",
+      "default_graph": "ART_NOUVEAU",
+      "surreal_transform": "organic_twist"
+    },
+    {
+      "id": "asian_city_recursive_v1",
+      "family": "Asian",
+      "compose_style": "ASIAN_CITY_RECURSIVE",
+      "default_graph": "ASIAN_CITY_RECURSIVE",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "asian_city_v1",
+      "family": "Asian",
+      "compose_style": "ASIAN_CITY",
+      "default_graph": "ASIAN_CITY",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "baroque_church_v1",
+      "family": "Baroque",
+      "compose_style": "BAROQUE_CHURCH",
+      "default_graph": "BAROQUE_CHURCH",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "brutalist_plaza_v1",
+      "family": "Brutalist",
+      "compose_style": "BRUTALIST_PLAZA",
+      "default_graph": "BRUTALIST_PLAZA",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "byzantine_basilica_v1",
+      "family": "Byzantine",
+      "compose_style": "BYZANTINE_BASILICA",
+      "default_graph": "BYZANTINE_BASILICA",
+      "surreal_transform": "vertical_stretch"
+    },
+    {
+      "id": "gothic_chapter_house_v1",
+      "family": "Gothic",
+      "compose_style": "GOTHIC_CHAPTER_HOUSE",
+      "default_graph": "GOTHIC_CHAPTER_HOUSE",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "gothic_cloister_v1",
+      "family": "Gothic",
+      "compose_style": "GOTHIC_CLOISTER",
+      "default_graph": "CLOISTER",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "gothic_nave_crossing_v1",
+      "family": "Gothic",
+      "compose_style": "GOTHIC_NAVE_CROSSING",
+      "default_graph": "GOTHIC_NAVE_CROSSING",
+      "surreal_transform": "vertical_stretch"
+    },
+    {
+      "id": "meso_pyramid_courtyard_v1",
+      "family": "Mesoamerican",
+      "compose_style": "MESOAMERICAN_PYRAMID",
+      "default_graph": "MESOAMERICAN_PYRAMID",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "moorish_courtyard_v1",
+      "family": "Moorish",
+      "compose_style": "MOORISH_COURTYARD",
+      "default_graph": "MOORISH_COURTYARD",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "nikki_bloom_eternal_v1",
+      "family": "NikkiFlorawish",
+      "compose_style": "BLOOM_ETERNAL",
+      "default_graph": "ZEN_STREAM_GARDEN",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "nikki_florawish_cottage_v1",
+      "family": "NikkiFlorawish",
+      "compose_style": "FLORAWISH_COTTAGE",
+      "default_graph": "ZEN_TEA_GARDEN",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "nikki_grand_tree_sanctuary_v1",
+      "family": "NikkiHeartcraft",
+      "compose_style": "GRAND_TREE_SANCTUARY",
+      "default_graph": "ART_NOUVEAU",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "nikki_heartcraft_palace_v1",
+      "family": "NikkiHeartcraft",
+      "compose_style": "HEARTCRAFT_PALACE",
+      "default_graph": "BAROQUE_CHURCH",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "nikki_melodia_stage_v1",
+      "family": "NikkiMirage",
+      "compose_style": "STARLIGHT_REVERIE",
+      "default_graph": "ZEN_TEA_GARDEN",
+      "surreal_transform": "vertical_stretch"
+    },
+    {
+      "id": "nikki_mirage_v1",
+      "family": "NikkiMirage",
+      "compose_style": "NIKKI_MIRAGE",
+      "default_graph": "RENAISSANCE_PIAZZA",
+      "surreal_transform": "axis_displacement"
+    },
+    {
+      "id": "nikki_photospot_plaza_v1",
+      "family": "NikkiMirage",
+      "compose_style": "STARLIGHT_REVERIE",
+      "default_graph": "ZEN_SHRINE_COURTYARD",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "nikki_postcard_overlook_v1",
+      "family": "NikkiFlorawish",
+      "compose_style": "ZEN_SHRINE",
+      "default_graph": "ZEN_SAKURA_WALK",
+      "surreal_transform": "organic_twist"
+    },
+    {
+      "id": "nikki_queens_ruins_v1",
+      "family": "NikkiHeartcraft",
+      "compose_style": "QUEENS_RUINS",
+      "default_graph": "BYZANTINE_BASILICA",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "nikki_snail_ranch_fairy_v1",
+      "family": "NikkiHeartcraft",
+      "compose_style": "SNAIL_RANCH_FAIRY",
+      "default_graph": "MOORISH_COURTYARD",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "nikki_starlight_reverie_v1",
+      "family": "NikkiMirage",
+      "compose_style": "STARLIGHT_REVERIE",
+      "default_graph": "ZEN_SAKURA_WALK",
+      "surreal_transform": "organic_twist"
+    },
+    {
+      "id": "nikki_stoneville_citadel_v1",
+      "family": "NikkiStoneville",
+      "compose_style": "STONEVILLE_CITADEL",
+      "default_graph": "CLOISTER",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "nikki_winter_kingdom_v1",
+      "family": "NikkiMirage",
+      "compose_style": "WINTER_KINGDOM",
+      "default_graph": "ZEN_STREAM_GARDEN",
+      "surreal_transform": "vertical_stretch"
+    },
+    {
+      "id": "nikki_wishfield_garden_v1",
+      "family": "NikkiFlorawish",
+      "compose_style": "WISHFIELD_GARDEN",
+      "default_graph": "ZEN_STREAM_GARDEN",
+      "surreal_transform": "none"
+    },
+    {
+      "id": "renaissance_piazza_v1",
+      "family": "Renaissance",
+      "compose_style": "RENAISSANCE_PIAZZA",
+      "default_graph": "RENAISSANCE_PIAZZA",
+      "surreal_transform": "vertical_stretch"
+    },
+    {
+      "id": "romanesque_apse_v1",
+      "family": "Romanesque",
+      "compose_style": "ROMANESQUE_APSE",
+      "default_graph": "ROMANESQUE_APSE",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "romanesque_cloister_v1",
+      "family": "Romanesque",
+      "compose_style": "ROMANESQUE_CLOISTER",
+      "default_graph": "ROMANESQUE_CLOISTER",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "scifi_deck_v1",
+      "family": "Sci-Fi",
+      "compose_style": "SCIFI_DECK",
+      "default_graph": "SCI_FI_DECK_EXPANSION",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "scifi_industrial_yard_v1",
+      "family": "Sci-Fi",
+      "compose_style": "SCIFI_DECK",
+      "default_graph": "SCI_FI_INDUSTRIAL_YARD",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "venetian_canal_v1",
+      "family": "Venetian",
+      "compose_style": "VENETIAN_CANAL",
+      "default_graph": "VENETIAN_CANAL",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "western_castle_v1",
+      "family": "Western",
+      "compose_style": "WESTERN_CASTLE",
+      "default_graph": "CLOISTER",
+      "surreal_transform": "recursive_interior"
+    },
+    {
+      "id": "zen_kairo_enclosure_v1",
+      "family": "Zen",
+      "compose_style": "ZEN_SHRINE",
+      "default_graph": "ZEN_KAIRO_ENCLOSURE",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "zen_karesansui_v1",
+      "family": "Zen",
+      "compose_style": "ZEN_SHRINE",
+      "default_graph": "ZEN_KARESANSHUI_WALK",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "zen_pagoda_spire_v1",
+      "family": "Zen",
+      "compose_style": "ZEN_SHRINE",
+      "default_graph": "ZEN_PAGODA_SPIRE",
+      "surreal_transform": "vertical_stretch"
+    },
+    {
+      "id": "zen_roji_path",
+      "family": "Zen",
+      "compose_style": "ZEN_SHRINE",
+      "default_graph": "ZEN_ROJI_PATH",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "zen_shrine_axis",
+      "family": "Zen",
+      "compose_style": "ZEN_SHRINE",
+      "default_graph": "ZEN_SHRINE_AXIS",
+      "surreal_transform": "vertical_stretch"
+    },
+    {
+      "id": "zen_shrine_courtyard",
+      "family": "Zen",
+      "compose_style": "ZEN_SHRINE",
+      "default_graph": "ZEN_SHRINE_COURTYARD",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "zen_shrine_sakura",
+      "family": "Zen",
+      "compose_style": "ZEN_SHRINE",
+      "default_graph": "ZEN_SAKURA_WALK",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "zen_stream_garden_v1",
+      "family": "Zen",
+      "compose_style": "ZEN_SHRINE",
+      "default_graph": "ZEN_STREAM_GARDEN",
+      "surreal_transform": "axis_compression"
+    },
+    {
+      "id": "zen_tea_garden",
+      "family": "Zen",
+      "compose_style": "ZEN_SHRINE",
+      "default_graph": "ZEN_TEA_GARDEN",
+      "surreal_transform": "axis_compression"
+    }
+  ],
+  "recent_changes": [
+    {
+      "version": "2.134.0",
+      "title": "Library bake unblock + full mesh regen",
+      "bullets": [
+        "Signature-aware apply_geometry_nodes_to_object \u2014 only pass monolith= when builders declare it (fixes base_x / node.location TypeError)",
+        "integration.py patched apply accepts **kwargs; no broad TypeError retry that turned failures into None locations",
+        "higgsas_bridge absolute imports; sync_surreal_to_live.ps1 path fix for surreal_arch copy",
+        "Tools/regen_surreal_meshes.py \u2014 force-rebake SurrealArch_Library (72) + Surreal_Regen_Starlight (9) on Stage v4"
+      ]
+    },
+    {
+      "version": "2.133.0",
+      "title": "Nikki photo-spot genomes",
+      "bullets": [
+        "nikki_photospot_plaza_v1, nikki_postcard_overlook_v1, nikki_melodia_stage_v1",
+        "Genome catalog 42; surreal_transform coverage complete"
+      ]
+    },
+    {
+      "version": "2.132.0",
+      "title": "Nikki + Meso compose_roles parity",
+      "bullets": [
+        "9 missing compose styles wired so genome compose_style always resolves",
+        "Live Blender sync restores monolithic addon on disk"
+      ]
+    }
+  ],
+  "site_links": {
+    "stage": "wix/melodia-stage-character.html",
+    "ornament": "wix/ornament-kitbash.html",
+    "geometry": "wix/geometry-nodes.html",
+    "social": "wix/social-kit.html"
+  },
+  "generated_at": "2026-07-11T04:11:11.633097+00:00"
+}
