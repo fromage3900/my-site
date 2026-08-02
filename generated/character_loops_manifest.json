@@ -1,4 +1,4 @@
-﻿{
+{
   "generated_at": "2026-07-15T22:20:00.0000000Z",
   "generated_by": "encode_melusina_loops.ps1 + 4s trim/macro postcard",
   "notes": "Live hair slot uses first 4s of AudVis. Full 10s master kept as encode source only. Do not commit raw PNG dumps.",
