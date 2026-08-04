@@ -64,7 +64,7 @@ class FigmaClient:
         await self.client.aclose()
 
     async def get(self, path: str, params: dict = None) -> dict:
-        url = urljoin(FIGMA_API_BASE, path)
+        url = FIGMA_API_BASE + path
         resp = await self.client.get(url, params=params)
         resp.raise_for_status()
         return resp.json()

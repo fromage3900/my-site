@@ -66,6 +66,15 @@
   --primitive-game-seafoam:         #8FC9BD;
   --primitive-game-ink:             #3B2A22;
 
+  /* ===== MELUSINA / MAGICAL GIRL PRIMITIVES ===== */
+  --primitive-melusina-ice:         #b8eeff;
+  --primitive-melusina-aqua:        #7fd4ff;
+  --primitive-melusina-pearl:       #f0f8ff;
+  --primitive-melusina-blush:       #ffcce8;
+  --primitive-melusina-star:        #ffe080;
+  --primitive-melusina-void:        #0e0828;
+
+
   /* ===== SEMANTIC TOKENS — LIGHT MODE (Ivory Editorial) ===== */
   --color-surface-base:     var(--primitive-ivory-100);
   --color-surface-raised:   var(--primitive-ivory-50);
@@ -209,14 +218,14 @@
   --radius-lg:   8px;
   --radius-pill: 999px;
 
-  /* ===== TYPOGRAPHY (from tokens.json global.fontFamilies) ===== */
-  --font-display:       'Fraunces', Georgia, serif;
+  /* ===== TYPOGRAPHY (Updated for Melusina) ===== */
+  --font-display:       'Kaisei Decol', 'Fraunces', Georgia, serif;
   --font-display-fallback: Georgia, serif;
-  --font-cover:         'Cinzel', 'Fraunces', Georgia, serif;
-  --font-body:          'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
+  --font-cover:         'Kaisei Decol', 'Cinzel', Georgia, serif;
+  --font-body:          'M PLUS Rounded 1c', 'Inter', system-ui, sans-serif;
   --font-body-fallback: 'Inter', system-ui, sans-serif;
   --font-mono:          'Azeret Mono', 'IBM Plex Mono', monospace;
-  --font-brand:         'Cinzel', 'Fraunces', Georgia, serif;
+  --font-brand:         'Kaisei Decol', 'Cinzel', serif;
 
   /* Type scale (matches tokens.json global.type) */
   --text-display-xl:    clamp(48px, 8vw, 72px) / 1.05 var(--font-display);
@@ -270,6 +279,17 @@
   [data-pillar="sakura"],
   .accent-sakura {
     --motif-accent: rgba(255, 110, 180, 0.55);
+  }
+
+  [data-pillar="melusina"],
+  .accent-melusina {
+    --motif-accent: rgba(127, 212, 255, 0.55); /* aqua */
+    --color-accent-tertiary: var(--primitive-melusina-aqua);
+    --color-accent-primary: var(--primitive-melusina-star);
+    --color-surface-base: var(--primitive-melusina-void);
+    --color-surface-sunken: #1a1435;
+    --color-text-primary: var(--primitive-melusina-pearl);
+    --color-text-accent: var(--primitive-melusina-blush);
   }
 
   [data-pillar="cathedral"],
