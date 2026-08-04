@@ -283,3 +283,26 @@
   0% { opacity: 0.3; filter: blur(8px); }
   100% { opacity: 0.75; filter: blur(14px); }
 }
+
+/* ==========================================================================
+   5. KINETIC TYPOGRAPHY & SCROLL REVEALS
+   ========================================================================== */
+
+#hero-title {
+  animation: kinetic-breathe 6s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+  display: inline-block;
+  transform-origin: center;
+}
+
+@keyframes kinetic-breathe {
+  0% {
+    letter-spacing: normal;
+    text-shadow: 0 0 10px rgba(255, 183, 225, 0.2);
+  }
+  100% {
+    letter-spacing: 0.05em;
+    text-shadow: 
+      0 0 20px rgba(255, 183, 225, 0.6),
+      0 0 30px rgba(136, 229, 255, 0.4);
+  }
+}

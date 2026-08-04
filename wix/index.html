@@ -24,11 +24,16 @@
 <link rel="stylesheet" href="melodia-editorial.css">
 <link rel="stylesheet" href="melodia-components.css">
 <link rel="stylesheet" href="melodia-baroque-magical-girl.css">
+<link rel="stylesheet" href="melodia-view-transitions.css">
+<meta name="view-transition" content="same-origin" />
 <style>
 .env-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:1.5rem}.env-card{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:flex-end;text-decoration:none}.env-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}.env-card:hover img{transform:scale(1.04)}.env-card .overlay{position:relative;z-index:1;padding:1rem 1rem .85rem;width:100%;background:linear-gradient(transparent,rgba(20,26,48,.88))}.env-card .env-name{font-family:var(--font-display,Fraunces,serif);font-size:1.15rem;color:#fff;display:block}.env-card .env-tag{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold,var(--color-accent-primary,#C9A86A));display:block;margin-top:2px}.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}:focus-visible{outline:2px solid var(--color-accent-primary,#C9A86A);outline-offset:2px}@media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero-poster{display:block}.env-card img{transition:none}}
 </style>
 </head>
 <body>
+<div id="global-preloader">
+  <div class="preloader-clef">𝄞</div>
+</div>
 <a class="skip-link" href="#main">Skip to portfolio</a>
 <div class="melodia-shell fashion-mode" data-pillar="melusina" data-mg="full" data-hero="cosmic" data-visual="lookbook" data-effects="starfield,orrery,planetarium,holo,instruments,magical" data-nav-cta="application-hub.html" data-nav-cta-label="Environments">
 <header class="shell-nav constellation-nav" aria-label="Portfolio navigation">
@@ -155,5 +160,21 @@
 <script src="melodia-site-nav.js"></script>
 <script src="melodia-editorial.js"></script>
 <script>MelodiaEditorial.init({ page: 'index' });</script>
+
+<!-- Top 1% UI Overhaul Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+<script src="melodia-smooth-scroll.js"></script>
+<script src="melodia-magnetic-buttons.js"></script>
+<script src="melodia-scroll-animations.js"></script>
+<script src="melodia-webgl-stardust.js"></script>
+<script>
+  window.addEventListener('load', () => {
+    const preloader = document.getElementById('global-preloader');
+    if (preloader) preloader.classList.add('loaded');
+  });
+</script>
 </body>
 </html>
