@@ -1,0 +1,18 @@
+{
+  "asset_id": "demo",
+  "project": "Demo Asset",
+  "category": "Character / Stylized",
+  "version": "v1.0",
+  "theme": "dark",
+  "engine": "Blender EEVEE",
+  "software": "Blender 5.1 + Melodia Stage",
+  "shader": "Authored / Komikaze NPR",
+  "capture": "Cam_Beauty",
+  "created": "2026-08-01T01:46:29.577569+00:00",
+  "stats": {
+    "triangles": 12345,
+    "materials": 4,
+    "textures": 2,
+    "meshes": 3
+  }
+}

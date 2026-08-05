@@ -25,9 +25,9 @@
   <nav class="nav-links" aria-label="Sections">
     <a href="index.html">Home</a>
     <a href="application-hub.html">Hub</a>
-    <a href="melodia-melusina.html">Game UI</a>
-    <a href="melodia-gameplay-loop.html">Loop</a>
-    <a href="design-specs.html">Specs</a>
+    <a href="shader-breakdowns.html">Shaders</a>
+    <a href="pipeline.html">Pipeline</a>
+    <a href="recruiter-one-sheet.html">One-sheet</a>
   </nav>
   <a class="nav-cta button-premium" href="application-hub.html">Application hub</a>
 </header>
@@ -40,8 +40,8 @@
     <p class="lede">TouchDesigner handles the live layer: audio analysis, OSC routing, portfolio preview, and beat-reactive polish before anything gets frozen into UE.</p>
     <div class="hero-actions">
       <a class="button primary button-premium-primary" href="application-hub.html">Back to hub</a>
-      <a class="button button-premium" href="../_TouchDesigner/README.md">TD workspace</a>
-      <a class="button button-premium" href="design-specs.html#game-ui">Game UI specs</a>
+      <a class="button button-premium" href="pipeline.html">Pipeline overview</a>
+      <a class="button button-premium" href="shader-breakdowns.html">Material proof</a>
     </div>
   </div>
 </section>
@@ -131,53 +131,24 @@
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow magazine-kicker">Escher Geometry Gallery</p>
-        <h2>M.C. Escher-inspired procedural geometry.</h2>
+        <p class="eyebrow magazine-kicker">Escher PCG Systems &mdash; Space Cathedral</p>
+        <h2>Impossible geometry driven by PCG.</h2>
       </div>
-      <p>Five impossible structures built entirely in TouchDesigner SOPs, rendered with Nikki-style bloom and polish.</p>
+      <p>Six Blender greybox builders &mdash; Relativity, Penrose Loop, Gravity Shift, Belvedere, Waterfall, Recursive &mdash; port to Unreal as <code>PCG_Escher*</code> graphs on <strong>L_WP_SpaceCathedral</strong>. TouchDesigner previews the iteration before anything gets frozen into UE.</p>
     </div>
-    
-    <div class="escher-carousel" id="escherCarousel">
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <img src="../../_TouchDesigner/grandmaster_melodia/renders/escher_gallery/escher_penrose_stairs.png" alt="Penrose Impossible Stairs">
-          <div class="slide-caption">
-            <h3>Penrose Impossible Stairs</h3>
-            <p>Four connected staircases forming an infinite loop</p>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <img src="../../_TouchDesigner/grandmaster_melodia/renders/escher_gallery/escher_spiral_staircase.png" alt="Spiral Staircase">
-          <div class="slide-caption">
-            <h3>Spiral Staircase</h3>
-            <p>60 steps wrapping a central column in ascending helix</p>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <img src="../../_TouchDesigner/grandmaster_melodia/renders/escher_gallery/escher_fractal_tower.png" alt="Fractal Tower">
-          <div class="slide-caption">
-            <h3>Recursive Fractal Tower</h3>
-            <p>Self-similar boxes scaled, rotated, and stacked 8 times</p>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <img src="../../_TouchDesigner/grandmaster_melodia/renders/escher_gallery/escher_tessellation.png" alt="Tessellation Grid">
-          <div class="slide-caption">
-            <h3>Geometric Tessellation</h3>
-            <p>Interlocking diamond pattern on a warped grid</p>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <img src="../../_TouchDesigner/grandmaster_melodia/renders/escher_gallery/escher_belvedere.png" alt="Belvedere Arches">
-          <div class="slide-caption">
-            <h3>Belvedere Impossible Arches</h3>
-            <p>Pillars supporting upper and lower floors simultaneously</p>
-          </div>
-        </div>
+    <div class="card-grid" style="margin-top:1.5rem">
+      <div class="card premium-card" style="padding:0;overflow:hidden">
+        <img src="../generated/assets/unreal/level_escher_ascent.png" alt="Escher Ascent level plate &mdash; PCG impossible geometry" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover" loading="lazy" />
+        <div style="padding:1rem"><strong style="font-family:var(--font-mono);font-size:.75rem;letter-spacing:.06em">L_WP_EscherAscent</strong><p style="font-size:.8rem;margin-top:.35rem;color:var(--color-text-secondary)">Full level plate &mdash; PCG_EscherRelativityRoom deployed on terrain</p></div>
       </div>
-      <button class="carousel-nav prev" aria-label="Previous slide">←</button>
-      <button class="carousel-nav next" aria-label="Next slide">→</button>
-      <div class="carousel-dots"></div>
+      <div class="card premium-card" style="padding:0;overflow:hidden">
+        <img src="../generated/assets/nightshift/WP_SpaceCathedral_terrain.png" alt="Space Cathedral terrain &mdash; Escher PCG pillar" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover" loading="lazy" />
+        <div style="padding:1rem"><strong style="font-family:var(--font-mono);font-size:.75rem;letter-spacing:.06em">L_WP_SpaceCathedral</strong><p style="font-size:.8rem;margin-top:.35rem;color:var(--color-text-secondary)">Terrain overview &mdash; Escher PCG pillar layout, Space Cathedral world</p></div>
+      </div>
+    </div>
+    <div class="hero-actions" style="margin-top:1.5rem">
+      <a class="button button-premium" href="space-cathedral.html">Space Cathedral full breakdown</a>
+      <a class="button button-premium" href="application-hub.html#logic">Interactive Escher graph</a>
     </div>
   </div>
 </section>
@@ -204,8 +175,9 @@
 
 <footer class="footer">
   <div class="inner">
-    <span>Brennan Shepherd / TouchDesigner</span>
-    <span>Envoy MCP + OSC + worldgen preview</span>
+    <span>Brennan Shepherd / Environment &amp; Technical Artist</span>
+    <span>TouchDesigner &middot; Envoy MCP &middot; OSC &middot; worldgen preview</span>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase"><a href="mailto:brennan.shepherd3900@gmail.com" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">Email</a><a href="https://www.artstation.com/fromage3900" target="_blank" rel="noopener" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">ArtStation</a><a href="https://www.linkedin.com/in/brennan-shepherd-art/" target="_blank" rel="noopener" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">LinkedIn</a><a href="application-hub.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Environments</a><a href="shader-breakdowns.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Shaders</a><a href="recruiter-one-sheet.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">One-sheet</a></div>
   </div>
 </footer>
 </div>

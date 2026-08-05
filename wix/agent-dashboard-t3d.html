@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>♩ T3D Agent Dashboard — Melodia</title>
+<style>
+body { font-family: 'Courier New', monospace; background: #0b0a13; color: #f2d69e; margin: 0; padding: 20px; }
+.dashboard { max-width: 1400px; margin: 0 auto; }
+h1 { color: #78ebff; border-bottom: 2px solid #38293b; padding-bottom: 10px; }
+h2 { color: #e8a9a1; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
+.section { background: #1a1520; border: 1px solid #38293b; border-radius: 8px; padding: 20px; margin: 15px 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.card { background: #0b0a13; border: 1px solid #38293b; border-radius: 6px; padding: 15px; }
+.card h3 { color: #78ebff; margin: 0 0 8px 0; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.stat { font-size: 28px; font-weight: bold; color: #f2d69e; }
+.stat-sub { font-size: 13px; color: #8b7a9a; }
+.pass { color: #22c55e; }
+.fail { color: #ef4444; }
+.warn { color: #eab308; }
+.info { color: #78ebff; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th { text-align: left; padding: 6px 8px; color: #78ebff; border-bottom: 1px solid #38293b; }
+td { padding: 6px 8px; border-bottom: 1px solid #1a1520; }
+code { background: #1a1520; padding: 1px 4px; border-radius: 3px; font-size: 11px; color: #e8a9a1; }
+pre { background: #0b0a13; padding: 10px; border-radius: 4px; font-size: 11px; overflow-x: auto; }
+footer { text-align: center; color: #4a3b52; margin-top: 30px; font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="dashboard">
+<h1>♩ T3D Agent Dashboard — Melodia Environment</h1>
+<p>Live T3D-powered automation · 2026-08-04 16:30:29</p>
+
+<div class="section">
+<h2>Monolith MCP Status</h2>
+<div class="grid">
+<div class="card"><h3>Actions</h3><div class="stat" id="action-count">1328</div><div class="stat-sub">across 24 namespaces</div></div>
+<div class="card"><h3>Engine</h3><div class="stat">UE 5.8</div><div class="stat-sub">++UE5+Release-5.8</div></div>
+<div class="card"><h3>T3D Exports</h3><div class="stat">7</div><div class="stat-sub">stock widgets + pipeline specs</div></div>
+<div class="card"><h3>Compile Gate</h3><div class="stat pass">PASS</div><div class="stat-sub">28 BPs · 0 errors · 0 dirty</div></div>
+</div>
+</div>
+
+<div class="section">
+<h2>T3D Automation Workflows</h2>
+<table>
+<tr><th>Workflow</th><th>Status</th><th>Detail</th><th>Path</th></tr>
+<tr><td>NL → Blueprint Pipeline</td><td class="pass">READY</td><td>DeepSeek V4 + Qwen3:8b → JSON spec → T3D injection</td><td><code>Tools/nl_to_blueprint.py</code></td></tr>
+<tr><td>Bulk Widget Skinning</td><td class="pass">READY</td><td>5 stock widgets exported as T3D — find/replace textures → re-inject</td><td><code>Saved/T3D/stock_widgets/</code></td></tr>
+<tr><td>Pattern Cloning</td><td class="pass">READY</td><td>Rhythm pipeline exported as reusable JSON spec — inject into N BPs</td><td><code>Saved/T3D/rhythm_pipeline_spec.json</code></td></tr>
+<tr><td>Self-Healing Loop</td><td class="pass">READY</td><td>Auto-detect missing BP nodes → T3D fix → re-verify → HTML report</td><td><code>Tools/continuous_loop.py</code></td></tr>
+<tr><td>Batch Parallel Injection</td><td class="pass">READY</td><td>4 BPs in parallel via ThreadPoolExecutor — ~2s each</td><td><code>Tools/t3d_demo.py</code></td></tr>
+<tr><td>UI Spec Generation</td><td class="pass">READY</td><td>Figma → JSON → Widget BP in 1 atomic <code>build_ui_from_spec</code> call</td><td><code>Monolith ui:: namespace</code></td></tr>
+<tr><td>Graph Fingerprint Drift</td><td class="warn">ACTIVE</td><td>Structural hash detects BP corruption — auto-repair via T3D inject</td><td><code>get_graph_fingerprint</code></td></tr>
+</table>
+</div>
+
+<div class="section">
+<h2>Bulk Skinning Ready — Exported Stock Widgets</h2>
+<p class="info">These 5 stock widgets are now exported as T3D. <strong>To Melodia-skin them:</strong> find/replace texture paths (e.g. <code>T_DialogueBackground</code> → <code>T_Melodia_Universal_ParchmentFrame</code>), then inject via <code>build_blueprint_from_spec</code> in ~30 seconds total.</p>
+<table>
+<tr><th>Widget</th><th>T3D Size</th><th>Stock Textures</th><th>→ Melodia Replacement</th></tr>
+<tr><td>BP_ExploreUI</td><td>144 KB</td><td>T_ExploreMarker, T_Minimap</td><td>T_Melodia_Universal_ParchmentFrame</td></tr>
+<tr><td>BP_CraftBar</td><td>74 KB</td><td>T_CraftProgress, T_CraftIcon</td><td>T_Melodia_Universal_DividerScroll</td></tr>
+<tr><td>BP_QuestNotificationListUI</td><td>37 KB</td><td>T_QuestMarker, T_NotificationBG</td><td>T_Melodia_Universal_CrestBaroque</td></tr>
+<tr><td>BP_FadeTransitionUI</td><td>33 KB</td><td>T_FadeGradient</td><td>T_Melodia_Universal_ParchmentFrame</td></tr>
+<tr><td>BP_QuestNotification</td><td>171 B</td><td>Minimal — text only</td><td>Style override only</td></tr>
+</table>
+</div>
+
+<div class="section">
+<h2>Rhythm Pipeline — Reusable T3D Spec</h2>
+<p class="info">The rhythm combat pipeline is now <strong>a single JSON spec</strong> — drop it into any encounter BP's <code>build_blueprint_from_spec</code> call.</p>
+<table>
+<tr><th>Node</th><th>Function</th><th>Class</th></tr>
+<tr><td>N_Get</td><td>Get MelodiaRhythmCombatSubsystem</td><td><code>/Script/BS_GodFile.MelodiaRhythmCombatSubsystem</code></td></tr>
+<tr><td>N_SS</td><td>StartSession(SkillId: RhythmSkill_MelasPlea)</td><td><code>MelodiaRhythmCombatSubsystem</code></td></tr>
+<tr><td>N_SR</td><td>SubmitRatedInput(Grade, HitCount, MissCount)</td><td><code>MelodiaRhythmCombatSubsystem</code></td></tr>
+<tr><td>N_CR</td><td>ConsumePendingRequest(OutRequest)</td><td><code>MelodiaRhythmCombatSubsystem</code></td></tr>
+</table>
+<pre>{
+  "nodes": [
+    {"id":"N_Get","type":"CallFunction","function_name":"Get","function_class":"/Script/BS_GodFile.MelodiaRhythmCombatSubsystem","position":[0,0]},
+    {"id":"N_SS","type":"CallFunction","function_name":"StartSession","function_class":"/Script/BS_GodFile.MelodiaRhythmCombatSubsystem","position":[350,0]},
+    {"id":"N_SR","type":"CallFunction","function_name":"SubmitRatedInput","function_class":"/Script/BS_GodFile.MelodiaRhythmCombatSubsystem","position":[700,0]},
+    {"id":"N_CR","type":"CallFunction","function_name":"ConsumePendingRequest","function_class":"/Script/BS_GodFile.MelodiaRhythmCombatSubsystem","position":[1050,0]}
+  ],
+  "connections": [
+    {"source":"N_Get","source_pin":"ReturnValue","target":"N_SS","target_pin":"self"},
+    {"source":"N_SS","source_pin":"then","target":"N_SR","target_pin":"execute"},
+    {"source":"N_SR","source_pin":"then","target":"N_CR","target_pin":"execute"}
+  ],
+  "pin_defaults": [
+    {"node_id":"N_SS","pin_name":"SkillId","value":"RhythmSkill_MelasPlea"}
+  ],
+  "auto_compile": true
+}
+</pre>
+</div>
+
+<div class="section">
+<h2>UI Migration — Final Status</h2>
+<table>
+<tr><th>Domain</th><th>Status</th><th>Details</th></tr>
+<tr><td>Widget Inheritance Fix</td><td class="pass">PASS</td><td>4 MelodiaIntegration widgets reparented from UserWidget → stock parents</td></tr>
+<tr><td>Victory/Defeat Dialogue</td><td class="pass">PASS</td><td>2 new widgets + BP_BattleController CreateWidget nodes swapped</td></tr>
+<tr><td>Battle Sub-Widgets</td><td class="pass">PASS</td><td>5 new — ItemUse, SkillUse, UnitBattleDetails, PlayerUnitList, BossUI</td></tr>
+<tr><td>QuillScript UI</td><td class="pass">PASS</td><td>4 WBPs authored + assigned to 5 narrative scenes</td></tr>
+<tr><td>Stock→Melodia Textures</td><td class="pass">PASS</td><td>22 texture replacements across 5 parent BPs</td></tr>
+<tr><td>NoteHighway</td><td class="pass">PASS</td><td>Texture + Show/Hide visibility + rhythm pipeline (StartSession→Input→Consume)</td></tr>
+<tr><td>OnBattleRequested Binding</td><td class="pass">PASS</td><td>Wired in BP_MelodiaSirMelodiousMorningIntro — BeginPlay → Subsystem → Bind</td></tr>
+</table>
+</div>
+
+<div class="section">
+<h2>T3D Quick Reference — Monolith Actions</h2>
+<table>
+<tr><th>Action</th><th>Namespace</th><th>Use Case</th><th>Transaction Cost</th></tr>
+<tr><td><code>build_blueprint_from_spec</code></td><td>blueprint</td><td>Atomic subgraph injection — entire BP from 1 JSON</td><td>1 call = 10-20x speedup</td></tr>
+<tr><td><code>build_ui_from_spec</code></td><td>ui</td><td>Full Widget BP from JSON spec — tree + props + anims</td><td>1 call = ~50+ manual</td></tr>
+<tr><td><code>export_asset_text</code></td><td>project</td><td>Any asset → raw T3D text dump (universal escape hatch)</td><td>1 read call</td></tr>
+<tr><td><code>export_graph</code></td><td>blueprint</td><td>Live BP EventGraph → JSON topology</td><td>1 read call</td></tr>
+<tr><td><code>get_graph_fingerprint</code></td><td>blueprint</td><td>Structural hash — detect BP corruption</td><td>1 read call</td></tr>
+<tr><td><code>assert_graph_matches</code></td><td>blueprint</td><td>Verify BP matches expected spec</td><td>1 verify call</td></tr>
+<tr><td><code>batch_execute</code></td><td>blueprint</td><td>Multi-step atomic transactions</td><td>N ops in 1 call</td></tr>
+</table>
+</div>
+
+<footer>
+Generated by Monolith MCP v0.20.3 · BS_GodFile · 2026-08-04 16:30:29 · <code>agent-dashboard-t3d.html</code>
+</footer>
+</div>
+</body>
+</html>

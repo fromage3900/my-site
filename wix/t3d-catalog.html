@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T3D Asset Catalog — Melodia Skinning Dashboard</title>
+<style>
+body { font-family: 'Courier New', monospace; background: #0b0a13; color: #f2d69e; margin: 0; padding: 20px; }
+.dashboard { max-width: 1400px; margin: 0 auto; }
+h1 { color: #78ebff; border-bottom: 2px solid #38293b; padding-bottom: 10px; }
+h2 { color: #e8a9a1; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
+.section { background: #1a1520; border: 1px solid #38293b; border-radius: 8px; padding: 20px; margin: 15px 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+.card { background: #0b0a13; border: 1px solid #38293b; border-radius: 6px; padding: 15px; }
+.card h3 { color: #78ebff; margin: 0 0 8px 0; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.card .cat { color: #8b7a9a; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.card .size { font-size: 22px; font-weight: bold; color: #f2d69e; }
+.card .sub { font-size: 12px; color: #8b7a9a; }
+.stat { font-size: 28px; font-weight: bold; color: #f2d69e; }
+.stat-sub { font-size: 13px; color: #8b7a9a; }
+.pass { color: #22c55e; }
+.fail { color: #ef4444; }
+.warn { color: #eab308; }
+.info { color: #78ebff; }
+.muted { color: #4a3b52; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th { text-align: left; padding: 6px 8px; color: #78ebff; border-bottom: 1px solid #38293b; }
+td { padding: 6px 8px; border-bottom: 1px solid #1a1520; }
+code { background: #1a1520; padding: 1px 4px; border-radius: 3px; font-size: 11px; color: #e8a9a1; }
+pre { background: #0b0a13; padding: 10px; border-radius: 4px; font-size: 11px; overflow-x: auto; white-space: pre-wrap; }
+.progress-bar { height: 20px; background: #1a1520; border-radius: 10px; overflow: hidden; margin: 5px 0; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, #78ebff, #22c55e); border-radius: 10px; transition: width 0.5s; }
+.progress-fill.warn { background: linear-gradient(90deg, #eab308, #ef4444); }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+.badge.stock { background: #38293b; color: #eab308; }
+.badge.migrated { background: #1a3a1a; color: #22c55e; }
+footer { text-align: center; color: #4a3b52; margin-top: 30px; font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="dashboard">
+
+<h1>T3D Asset Catalog — Melodia Skinning Dashboard</h1>
+<p>Full bulk conversion catalog &middot; 2026-08-05</p>
+
+<div class="section">
+<h2>Catalog Overview</h2>
+<div class="grid">
+<div class="card"><h3>Total T3D Exports</h3><div class="stat">23</div><div class="sub">18 new + 5 previous</div></div>
+<div class="card"><h3>Catalog Size</h3><div class="stat">7.89 MB</div><div class="sub">full_catalog + stock_widgets</div></div>
+<div class="card"><h3>Migrated</h3><div class="stat pass">5</div><div class="sub">Melodia skinning applied</div></div>
+<div class="card"><h3>Stock Remaining</h3><div class="stat warn">18</div><div class="sub">awaiting bulk skinning</div></div>
+</div>
+</div>
+
+<div class="section">
+<h2>Migration Progress</h2>
+<p class="info">5 / 23 widgets migrated to Melodia (21.7%)</p>
+<div class="progress-bar"><div class="progress-fill warn" style="width:21.7%"></div></div>
+<table>
+<tr><th>Phase</th><th>Count</th><th>Progress</th></tr>
+<tr><td>Melodia-skinner (complete)</td><td class="pass">5</td><td><div class="progress-bar" style="width:120px"><div class="progress-fill" style="width:100%"></div></div></td></tr>
+<tr><td>Awaiting bulk pipeline</td><td class="warn">18</td><td><div class="progress-bar" style="width:120px"><div class="progress-fill warn" style="width:0%"></div></div></td></tr>
+</table>
+</div>
+
+<div class="section">
+<h2>Asset Grid — All Categories</h2>
+
+<h3 style="color:#78ebff">Combat / HUD</h3>
+<div class="grid">
+<div class="card"><h3>BP_ActionTimeBar</h3><div class="cat">Combat / HUD</div><div class="size">177 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_DamageTextUI</h3><div class="cat">Combat / HUD</div><div class="size">205 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_EnemyUnitUI</h3><div class="cat">Combat / HUD</div><div class="size">62 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_HPBar</h3><div class="cat">Combat / HUD</div><div class="size">87 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_MPBar</h3><div class="cat">Combat / HUD</div><div class="size">87 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_PlayerUnitUI</h3><div class="cat">Combat / HUD</div><div class="size">158 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_TargetIcon</h3><div class="cat">Combat / HUD</div><div class="size">49 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_UnitClass</h3><div class="cat">Combat / HUD</div><div class="size">66 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+</div>
+
+<h3 style="color:#78ebff;margin-top:20px">Interaction</h3>
+<div class="grid">
+<div class="card"><h3>BP_InteractionUI</h3><div class="cat">Interaction</div><div class="size">99 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_MobileUI</h3><div class="cat">Interaction</div><div class="size">248 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+</div>
+
+<h3 style="color:#78ebff;margin-top:20px">Dialogues</h3>
+<div class="grid">
+<div class="card"><h3>BP_InfoDialogue</h3><div class="cat">Dialogues</div><div class="size">111 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_LevelUpDialogue</h3><div class="cat">Dialogues</div><div class="size">599 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_ItemObtainDialogue</h3><div class="cat">Dialogues</div><div class="size">1.09 MB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_YesNoDialogue</h3><div class="cat">Dialogues</div><div class="size">210 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+</div>
+
+<h3 style="color:#78ebff;margin-top:20px">Main Menu</h3>
+<div class="grid">
+<div class="card"><h3>BP_PartyUI</h3><div class="cat">Main Menu</div><div class="size">1.23 MB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_EquipmentDetails</h3><div class="cat">Main Menu</div><div class="size">688 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_ItemDetails</h3><div class="cat">Main Menu</div><div class="size">1.30 MB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+<div class="card"><h3>BP_UnitDetails</h3><div class="cat">Main Menu</div><div class="size">897 KB</div><div class="sub">Stock textures</div><span class="badge stock">Stock</span></div>
+</div>
+
+<h3 style="color:#78ebff;margin-top:20px">Exploration / Misc (already migrated)</h3>
+<div class="grid">
+<div class="card"><h3>BP_ExploreUI</h3><div class="cat">Exploration</div><div class="size">140 KB</div><div class="sub">T_Melodia_Universal_ParchmentFrame</div><span class="badge migrated">Migrated</span></div>
+<div class="card"><h3>BP_CraftBar</h3><div class="cat">Exploration</div><div class="size">72 KB</div><div class="sub">T_Melodia_Universal_DividerScroll</div><span class="badge migrated">Migrated</span></div>
+<div class="card"><h3>BP_FadeTransitionUI</h3><div class="cat">Exploration</div><div class="size">32 KB</div><div class="sub">T_Melodia_Universal_ParchmentFrame</div><span class="badge migrated">Migrated</span></div>
+<div class="card"><h3>BP_QuestNotification</h3><div class="cat">Exploration</div><div class="size">171 B</div><div class="sub">Style override only</div><span class="badge migrated">Migrated</span></div>
+<div class="card"><h3>BP_QuestNotificationListUI</h3><div class="cat">Exploration</div><div class="size">37 KB</div><div class="sub">T_Melodia_Universal_CrestBaroque</div><span class="badge migrated">Migrated</span></div>
+</div>
+</div>
+
+<div class="section">
+<h2>Bulk Skinning Pipeline</h2>
+<p class="info">Convert all 18 remaining stock widgets to Melodia in a single pass using find/replace across the T3D exports, then re-inject via <code>build_blueprint_from_spec</code>.</p>
+
+<h3 style="color:#78ebff">Step 1: Find/Replace Texture Paths</h3>
+<p>Run this PowerShell command to batch-replace stock texture references with Melodia equivalents across all T3D files:</p>
+<pre><code>$dir = "C:\EnvironmentPortfolio\BS_GodFile\Saved\T3D\full_catalog"
+$replacements = @{
+  "Texture2D '/Game/TurnBasedJRPGTemplate/Textures/UI/T_ActionBarBG'" = "Texture2D '/Game/MelodiaCore/Textures/UI/T_Melodia_Universal_ParchmentFrame'"
+  "Texture2D '/Game/TurnBasedJRPGTemplate/Textures/UI/T_DamageNumber'" = "Texture2D '/Game/MelodiaCore/Textures/UI/T_Melodia_Universal_FiligreeNumber'"
+  "Texture2D '/Game/TurnBasedJRPGTemplate/Textures/UI/T_HPFill'"      = "Texture2D '/Game/MelodiaCore/Textures/UI/T_Melodia_Universal_GildedFill'"
+  "Texture2D '/Game/TurnBasedJRPGTemplate/Textures/UI/T_MPFill'"      = "Texture2D '/Game/MelodiaCore/Textures/UI/T_Melodia_Universal_CrystalFill'"
+  "Texture2D '/Game/TurnBasedJRPGTemplate/Textures/UI/T_PortraitFrame'" = "Texture2D '/Game/MelodiaCore/Textures/UI/T_Melodia_Universal_CameoFrame'"
+  "Texture2D '/Game/TurnBasedJRPGTemplate/Textures/UI/T_TargetRing'"  = "Texture2D '/Game/MelodiaCore/Textures/UI/T_Melodia_Universal_OrnateRing'"
+  "Texture2D '/Game/TurnBasedJRPGTemplate/Textures/UI/T_DialogueBG'"  = "Texture2D '/Game/MelodiaCore/Textures/UI/T_Melodia_Universal_ParchmentFrame'"
+  "Texture2D '/Game/TurnBasedJRPGTemplate/Textures/UI/T_ItemIcon'"    = "Texture2D '/Game/MelodiaCore/Textures/UI/T_Melodia_Universal_ItemGlyph'"
+  "Texture2D '/Game/TurnBasedJRPGTemplate/Textures/UI/T_EquipmentSlot'" = "Texture2D '/Game/MelodiaCore/Textures/UI/T_Melodia_Universal_EquipmentBorder'"
+  "Texture2D '/Game/TurnBasedJRPGTemplate/Textures/UI/T_PartyPortrait'" = "Texture2D '/Game/MelodiaCore/Textures/UI/T_Melodia_Universal_PortraitCrest'"
+  "Texture2D '/Game/TurnBasedJRPGTemplate/Textures/UI/T_MenuBG'"      = "Texture2D '/Game/MelodiaCore/Textures/UI/T_Melodia_Universal_VelvetBackdrop'"
+}
+Get-ChildItem $dir -Filter *.t3d | % {
+  $c = Get-Content $_.FullName -Raw
+  $replacements.Keys | % { $c = $c -replace [regex]::Escape($_), $replacements[$_] }
+  $c | Set-Content $_.FullName -Encoding utf8
+}
+Write-Output "Bulk texture replacement complete on $((Get-ChildItem $dir -Filter *.t3d).Count) files"</code></pre>
+
+<h3 style="color:#78ebff">Step 2: Re-inject via Monolith MCP</h3>
+<p>For each modified T3D, call <code>build_blueprint_from_spec</code> to re-inject the Melodia-skinned graph:</p>
+<pre><code>$body = @{
+  jsonrpc = "2.0"; id = 1; method = "tools/call"
+  params = @{
+    name = "blueprint"
+    arguments = @{
+      action = "build_blueprint_from_spec"
+      bp_path = "/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_ActionTimeBar"
+      spec_path = "C:\EnvironmentPortfolio\BS_GodFile\Saved\T3D\full_catalog\BP_ActionTimeBar.t3d"
+      auto_compile = $true
+    }
+  }
+} | ConvertTo-Json -Depth 10
+Invoke-RestMethod -Uri "http://127.0.0.1:9316/mcp" -Method Post -Body $body -ContentType "application/json" -TimeoutSec 60</code></pre>
+
+<h3 style="color:#78ebff">Step 3: Batch Injection (all 18 in parallel)</h3>
+<p>Use ThreadPoolExecutor to re-inject all 18 widgets in ~2 minutes:</p>
+<pre><code>python -c "
+import json, urllib.request, os
+widgets = [f.replace('.t3d','') for f in os.listdir('C:/EnvironmentPortfolio/BS_GodFile/Saved/T3D/full_catalog') if f.endswith('.t3d')]
+from concurrent.futures import ThreadPoolExecutor
+def inject(w):
+  body = json.dumps({'jsonrpc':'2.0','id':1,'method':'tools/call','params':{'name':'blueprint','arguments':{'action':'build_blueprint_from_spec','bp_path':'/Game/TurnBasedJRPGTemplate/Blueprints/UI/'+w,'spec_path':'C:/EnvironmentPortfolio/BS_GodFile/Saved/T3D/full_catalog/'+w+'.t3d','auto_compile':True}}}).encode()
+  r = urllib.request.Request('http://127.0.0.1:9316/mcp', data=body, headers={'Content-Type':'application/json'})
+  return w, urllib.request.urlopen(r, timeout=60).status
+with ThreadPoolExecutor(max_workers=4) as ex:
+  for w, s in ex.map(lambda w: inject(w), widgets):
+    print(f'{w}: {\"OK\" if s==200 else \"FAIL\"} ({s})')
+"
+</code></pre>
+</div>
+
+<div class="section">
+<h2>Widget Replacement Status</h2>
+<table>
+<tr><th>Widget</th><th>Category</th><th>T3D Size</th><th>Status</th><th>Melodia Replacement</th></tr>
+<tr><td>BP_ActionTimeBar</td><td>Combat/HUD</td><td>177 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_DamageTextUI</td><td>Combat/HUD</td><td>205 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_EnemyUnitUI</td><td>Combat/HUD</td><td>62 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_HPBar</td><td>Combat/HUD</td><td>87 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_MPBar</td><td>Combat/HUD</td><td>87 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_PlayerUnitUI</td><td>Combat/HUD</td><td>158 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_TargetIcon</td><td>Combat/HUD</td><td>49 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_UnitClass</td><td>Combat/HUD</td><td>66 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_InteractionUI</td><td>Interaction</td><td>99 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_MobileUI</td><td>Interaction</td><td>248 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_InfoDialogue</td><td>Dialogues</td><td>111 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_LevelUpDialogue</td><td>Dialogues</td><td>599 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_ItemObtainDialogue</td><td>Dialogues</td><td>1.09 MB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_YesNoDialogue</td><td>Dialogues</td><td>210 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_PartyUI</td><td>Main Menu</td><td>1.23 MB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_EquipmentDetails</td><td>Main Menu</td><td>688 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_ItemDetails</td><td>Main Menu</td><td>1.30 MB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr><td>BP_UnitDetails</td><td>Main Menu</td><td>897 KB</td><td><span class="badge stock">Stock</span></td><td class="muted">Pending</td></tr>
+<tr style="background:#1a3a1a"><td>BP_ExploreUI</td><td>Exploration</td><td>140 KB</td><td><span class="badge migrated">Migrated</span></td><td>T_Melodia_Universal_ParchmentFrame</td></tr>
+<tr style="background:#1a3a1a"><td>BP_CraftBar</td><td>Exploration</td><td>72 KB</td><td><span class="badge migrated">Migrated</span></td><td>T_Melodia_Universal_DividerScroll</td></tr>
+<tr style="background:#1a3a1a"><td>BP_FadeTransitionUI</td><td>Exploration</td><td>32 KB</td><td><span class="badge migrated">Migrated</span></td><td>T_Melodia_Universal_ParchmentFrame</td></tr>
+<tr style="background:#1a3a1a"><td>BP_QuestNotification</td><td>Exploration</td><td>171 B</td><td><span class="badge migrated">Migrated</span></td><td>Style override only</td></tr>
+<tr style="background:#1a3a1a"><td>BP_QuestNotificationListUI</td><td>Exploration</td><td>37 KB</td><td><span class="badge migrated">Migrated</span></td><td>T_Melodia_Universal_CrestBaroque</td></tr>
+</table>
+</div>
+
+<div class="section">
+<h2>Melodia Texture Map — Stock to Replacement</h2>
+<table>
+<tr><th>Stock Texture Pattern</th><th>Melodia Replacement</th><th>Applied To</th></tr>
+<tr><td><code>T_ActionBarBG</code> / <code>T_DialogueBG</code></td><td><code>T_Melodia_Universal_ParchmentFrame</code></td><td>BP_ActionTimeBar, BP_InfoDialogue, BP_YesNoDialogue, BP_ExploreUI, BP_FadeTransitionUI</td></tr>
+<tr><td><code>T_DamageNumber</code></td><td><code>T_Melodia_Universal_FiligreeNumber</code></td><td>BP_DamageTextUI</td></tr>
+<tr><td><code>T_HPFill</code></td><td><code>T_Melodia_Universal_GildedFill</code></td><td>BP_HPBar</td></tr>
+<tr><td><code>T_MPFill</code></td><td><code>T_Melodia_Universal_CrystalFill</code></td><td>BP_MPBar</td></tr>
+<tr><td><code>T_PortraitFrame</code></td><td><code>T_Melodia_Universal_CameoFrame</code></td><td>BP_PlayerUnitUI, BP_EnemyUnitUI, BP_PartyUI</td></tr>
+<tr><td><code>T_TargetRing</code></td><td><code>T_Melodia_Universal_OrnateRing</code></td><td>BP_TargetIcon</td></tr>
+<tr><td><code>T_ItemIcon</code></td><td><code>T_Melodia_Universal_ItemGlyph</code></td><td>BP_ItemDetails, BP_ItemObtainDialogue</td></tr>
+<tr><td><code>T_EquipmentSlot</code></td><td><code>T_Melodia_Universal_EquipmentBorder</code></td><td>BP_EquipmentDetails</td></tr>
+<tr><td><code>T_PartyPortrait</code></td><td><code>T_Melodia_Universal_PortraitCrest</code></td><td>BP_PartyUI</td></tr>
+<tr><td><code>T_MenuBG</code></td><td><code>T_Melodia_Universal_VelvetBackdrop</code></td><td>BP_PartyUI, BP_EquipmentDetails, BP_ItemDetails, BP_UnitDetails</td></tr>
+<tr><td><code>T_CraftProgress</code></td><td><code>T_Melodia_Universal_DividerScroll</code></td><td>BP_CraftBar</td></tr>
+<tr><td><code>T_QuestMarker</code></td><td><code>T_Melodia_Universal_CrestBaroque</code></td><td>BP_QuestNotificationListUI</td></tr>
+<tr><td><code>T_UnitClassIcon</code></td><td><code>T_Melodia_Universal_ClassSigil</code></td><td>BP_UnitClass</td></tr>
+<tr><td><code>T_LevelUpStar</code></td><td><code>T_Melodia_Universal_StarBurst</code></td><td>BP_LevelUpDialogue</td></tr>
+<tr><td><code>T_InteractionPrompt</code></td><td><code>T_Melodia_Universal_InteractionGlyph</code></td><td>BP_InteractionUI, BP_MobileUI</td></tr>
+</table>
+</div>
+
+<div class="section">
+<h2>T3D Export Locations</h2>
+<table>
+<tr><th>Directory</th><th>Path</th><th>File Count</th></tr>
+<tr><td>Export path (new)</td><td><code>C:\EnvironmentPortfolio\BS_GodFile\Saved\T3D\full_catalog\</code></td><td>18</td></tr>
+<tr><td>Export path (previous)</td><td><code>C:\EnvironmentPortfolio\BS_GodFile\Saved\T3D\stock_widgets\</code></td><td>5</td></tr>
+<tr><td>Catalog JSON</td><td><code>C:\EnvironmentPortfolio\BS_GodFile\Saved\T3D\t3d_catalog.json</code></td><td>—</td></tr>
+<tr><td>Dashboard HTML</td><td><code>C:\EnvironmentPortfolio\BS_GodFile\my-site-clean\wix\t3d-catalog.html</code></td><td>—</td></tr>
+</table>
+</div>
+
+<footer>
+Generated by Monolith MCP &middot; BS_GodFile &middot; 2026-08-05 &middot; <code>t3d-catalog.html</code>
+</footer>
+</div>
+</body>
+</html>
