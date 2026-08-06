@@ -50,7 +50,7 @@
       <p class="kicker magazine-kicker">World 03 · Cosmic Orrery</p>
       <p class="nikki-ribbon">宇宙のオラリ · Celestial mechanics</p>
       <h1 id="page-title">Planets in toon orbit.</h1>
-      <p class="lede">Cosmic Orrery is a celestial diorama — planetary bodies trace SDF orbits through aurora-lit space, with nebula veils, starfields, and a fully cosmic SDF material family. Built for the celestial / starry fantasy signal.</p>
+      <p class="lede">Cosmic Orrery is a celestial diorama — 12 MI_Cosmic material instances (aurora veil, eclipse halo, void deep, nebula bands) across planetary bodies tracing SDF orbits through toon-shaded starfields. Uses the real 4K NASA starmap texture wired into MI_Show_CelestialNebula. Built for the celestial / starry fantasy signal.</p>
       <div class="hero-actions">
         <a class="button primary button-premium-primary" href="shader-breakdowns.html">View materials</a>
         <a class="button button-premium" href="application-hub.html">All environments</a>
@@ -69,13 +69,12 @@
       <p>Celestial environment with full cosmic SDF material stack, orrery rig, and aurora particle systems.</p>
     </div>
     <div class="stat-row">
-      <div class="stat-item"><div class="num">45k</div><div class="lbl">Triangles</div></div>
-      <div class="stat-item"><div class="num">28</div><div class="lbl">Draw Calls</div></div>
-      <div class="stat-item"><div class="num">24</div><div class="lbl">Materials</div></div>
-      <div class="stat-item"><div class="num">6</div><div class="lbl">PCG Graphs</div></div>
+      <div class="stat-item"><div class="num">12</div><div class="lbl">MI_Cosmic Instances</div></div>
+      <div class="stat-item"><div class="num">2</div><div class="lbl">PCG Orbit Graphs</div></div>
+      <div class="stat-item"><div class="num">NASA</div><div class="lbl">4K Starmap</div></div>
       <div class="stat-item"><div class="num">UE 5.8</div><div class="lbl">Engine</div></div>
-      <div class="stat-item"><div class="num">Blender</div><div class="lbl">Modeling</div></div>
-      <div class="stat-item"><div class="num">Substance</div><div class="lbl">Textures</div></div>
+      <div class="stat-item"><div class="num">Niagara</div><div class="lbl">VFX Systems</div></div>
+      <div class="stat-item"><div class="num">Substrate</div><div class="lbl">Toon Shading</div></div>
     </div>
   </div>
 </section>
@@ -143,9 +142,9 @@
       <p>PCG graphs drive planetary orbit paths, asteroid belt density fields, and aurora curtain placement across the celestial sphere.</p>
     </div>
     <div class="alignment-grid">
-      <article class="alignment-card premium-card"><span>Orbit</span><div><h3>PCG_OrreryPath</h3><p>Planetary orbit splines with elliptical eccentricity and speed variation per body.</p></div></article>
-      <article class="alignment-card premium-card"><span>Belt</span><div><h3>PCG_AsteroidDensity</h3><p>Asteroid scattering with ring-density falloff and size-variation curves.</p></div></article>
-      <article class="alignment-card premium-card"><span>Curtain</span><div><h3>PCG_AuroraPlacement</h3><p>Aurora curtain instances along celestial horizon with color-tinting driven by cosmic SDF.</p></div></article>
+      <article class="alignment-card premium-card"><span>Orbit</span><div><h3>PCG_Cosmic_OrbitScatter</h3><p>Orbital body scatter — real PCG graph from the Cosmic style library. Places planetary instances along elliptical orbit paths.</p></div></article>
+      <article class="alignment-card premium-card"><span>Ring</span><div><h3>PCG_Cosmic_OrbitalRing</h3><p>Ring system scattering — asteroid belt density around planetary bodies, driven by distance falloff from orbit center.</p></div></article>
+      <article class="alignment-card premium-card"><span>VFX</span><div><h3>NS_SDF_ParallaxFish + NS_ConstellationDraw</h3><p>Niagara constellation draw system (10 modules, real DreamIntensity/DreamTwinkleSpeed user params) + parallax fish-swim particle layer.</p></div></article>
     </div>
   </div>
 </section>
