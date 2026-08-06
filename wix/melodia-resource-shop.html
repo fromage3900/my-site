@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Melodia — Resource Shop</title>
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<style>
+  :root {
+    --surface-base: #141A30;
+    --surface-card: #1C2340;
+    --surface-hover: #242D52;
+    --text-primary: #ECEAF4;
+    --text-secondary: #A9A7C0;
+    --text-muted: #6B6880;
+    --gold: #C9A86A;
+    --gold-dim: rgba(201,168,106,0.3);
+    --gold-glow: rgba(201,168,106,0.08);
+    --border: rgba(201,168,106,0.15);
+    --radius: 12px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-body), system-ui, sans-serif;
+    background: var(--surface-base);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2rem;
+    border-bottom: 1px solid var(--border);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .top-nav .brand {
+    font-family: var(--font-brand);
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .top-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+  .top-nav a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+  }
+  .hero .kicker {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero .lede {
+    font-family: var(--font-lede);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+  .hero .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .stat-block {
+    text-align: center;
+  }
+  .stat-block .num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-block .label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── SECTION ── */
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+  }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--text-primary);
+  }
+  .section-head .badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+  }
+  .section-head .count {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+
+  /* ── PRODUCT CARD ── */
+  .product-card {
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+  .product-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 1.5rem 0;
+  }
+  .product-card .card-icon {
+    font-size: 1.8rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gold-glow);
+    border: 1px solid var(--gold-dim);
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+  .product-card .card-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--text-primary);
+  }
+  .product-card .card-subtitle {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+  .product-card .card-body {
+    padding: 1.5rem;
+  }
+  .product-card .description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+  }
+
+  /* ── PREVIEW IMAGE ── */
+  .preview-wrap {
+    background: var(--surface-base);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .preview-wrap img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  .preview-wrap .caption {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── DETAIL GRID ── */
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .detail-cell {
+    background: var(--surface-base);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .detail-cell .cell-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+  }
+  .detail-cell .cell-value {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--gold);
+  }
+  .detail-cell .cell-note {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.2rem;
+  }
+
+  /* ── EMOTE SHOWCASE ── */
+  .emote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .emote-cell {
+    background: var(--surface-base);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.5rem;
+    text-align: center;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .emote-cell:hover {
+    border-color: var(--gold-dim);
+    background: var(--surface-hover);
+  }
+  .emote-cell img {
+    width: 112px;
+    height: 112px;
+    image-rendering: pixelated;
+    border-radius: 4px;
+  }
+  .emote-cell .emote-name {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── OVERLAY SHOWCASE ── */
+  .overlay-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .overlay-cell {
+    background: var(--surface-base);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .overlay-cell:hover { border-color: var(--gold-dim); }
+  .overlay-cell img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .overlay-cell .overlay-name {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    padding: 0.5rem 0.75rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── WALLPAPER SHOWCASE ── */
+  .pack-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .pack-tab {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .pack-tab:hover, .pack-tab.active {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--gold-glow);
+  }
+  .wallpaper-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .wallpaper-preview .wp-frame {
+    aspect-ratio: 9/19.5;
+    background: var(--surface-base);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+  .wallpaper-preview .wp-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .wallpaper-preview .wp-frame .wp-label {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    background: rgba(20,26,48,0.8);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  /* ── POSTCARD SHOWCASE ── */
+  .postcard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .postcard-cell {
+    aspect-ratio: 3/2;
+    background: var(--surface-base);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .postcard-cell:hover {
+    border-color: var(--gold-dim);
+    transform: translateY(-2px);
+  }
+  .postcard-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ── CTA BUTTONS ── */
+  .cta-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .btn {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--surface-base);
+  }
+  .btn-primary:hover { background: #d4b87a; }
+  .btn-secondary {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+  }
+  .btn-secondary:hover {
+    background: var(--gold-glow);
+    border-color: var(--gold);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover {
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .footer p {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+  .footer a { color: var(--gold); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.8rem; }
+    .wallpaper-preview { grid-template-columns: 1fr; }
+    .emote-grid { grid-template-columns: repeat(3, 1fr); }
+    .overlay-grid { grid-template-columns: 1fr; }
+    .detail-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <span class="brand">Melodia</span>
+  <a href="index.html">Portfolio</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="kicker">Resource Shop</p>
+  <h1>Free & Paid <em>Game Dev Assets</em></h1>
+  <p class="lede">Twitch emotes, stream overlays, phone wallpapers, and printable postcards — all crafted from the Melodia art pipeline. Zero new renders, pure asset reuse.</p>
+  <div class="stats-row">
+    <div class="stat-block">
+      <span class="num">238</span>
+      <span class="label">Files Generated</span>
+    </div>
+    <div class="stat-block">
+      <span class="num">4</span>
+      <span class="label">Product Lines</span>
+    </div>
+    <div class="stat-block">
+      <span class="num">15</span>
+      <span class="label">Twitch Emotes</span>
+    </div>
+    <div class="stat-block">
+      <span class="num">7</span>
+      <span class="label">OBS Overlays</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PRODUCT 1: TWITCH EMOTES -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-head">
+    <h2>Twitch Emote Pack</h2>
+    <span class="badge">Free</span>
+    <span class="count">135 files</span>
+  </div>
+
+  <div class="product-card">
+    <div class="card-header">
+      <div class="card-icon">📊</div>
+      <div>
+        <div class="card-title">15 Emotes × 3 Sizes × 3 Variants</div>
+        <div class="card-subtitle">Twitch-ready · 112/56/28px · Transparent + Dark + Gold</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="description">
+        Every emote is derived from Melodia's in-game rhythm UI — grade halos, combo bursts, skill rings, and filigree crests. Each comes in three sizes (Twitch spec) and three background variants for different stream themes.
+      </p>
+
+      <div class="detail-grid">
+        <div class="detail-cell">
+          <div class="cell-label">Emotes</div>
+          <div class="cell-value">15</div>
+          <div class="cell-note">Perfect, Great, Good, Miss, Combo, Skill, Spin, Finale, Rosette, Seal, Pillow + v2 variants</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Sizes</div>
+          <div class="cell-value">3</div>
+          <div class="cell-note">112×112 (large), 56×56 (medium), 28×28 (small)</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Backgrounds</div>
+          <div class="cell-value">3</div>
+          <div class="cell-note">Transparent, Dark (#141A30), Gold tint</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Source</div>
+          <div class="cell-value">Game UI</div>
+          <div class="cell-note">Filigree grade halos, combo burst, skill ring, element wheel</div>
+        </div>
+      </div>
+
+      <div class="preview-wrap">
+        <img src="../../generated/products/twitch-emotes/preview_grid.png" alt="Twitch emote preview grid" loading="lazy" />
+        <div class="caption">Preview — 15 emotes at 112×112 (transparent variant)</div>
+      </div>
+
+      <div class="emote-grid">
+        <div class="emote-cell">
+          <img src="../../generated/products/twitch-emotes/transparent/melodia_perfect_1x.png" alt="Perfect emote" loading="lazy" />
+          <div class="emote-name">perfect</div>
+        </div>
+        <div class="emote-cell">
+          <img src="../../generated/products/twitch-emotes/transparent/melodia_great_1x.png" alt="Great emote" loading="lazy" />
+          <div class="emote-name">great</div>
+        </div>
+        <div class="emote-cell">
+          <img src="../../generated/products/twitch-emotes/transparent/melodia_good_1x.png" alt="Good emote" loading="lazy" />
+          <div class="emote-name">good</div>
+        </div>
+        <div class="emote-cell">
+          <img src="../../generated/products/twitch-emotes/transparent/melodia_miss_1x.png" alt="Miss emote" loading="lazy" />
+          <div class="emote-name">miss</div>
+        </div>
+        <div class="emote-cell">
+          <img src="../../generated/products/twitch-emotes/transparent/melodia_combo_1x.png" alt="Combo emote" loading="lazy" />
+          <div class="emote-name">combo</div>
+        </div>
+        <div class="emote-cell">
+          <img src="../../generated/products/twitch-emotes/transparent/melodia_skill_1x.png" alt="Skill emote" loading="lazy" />
+          <div class="emote-name">skill</div>
+        </div>
+        <div class="emote-cell">
+          <img src="../../generated/products/twitch-emotes/transparent/melodia_spin_1x.png" alt="Spin emote" loading="lazy" />
+          <div class="emote-name">spin</div>
+        </div>
+        <div class="emote-cell">
+          <img src="../../generated/products/twitch-emotes/transparent/melodia_finale_1x.png" alt="Finale emote" loading="lazy" />
+          <div class="emote-name">finale</div>
+        </div>
+        <div class="emote-cell">
+          <img src="../../generated/products/twitch-emotes/transparent/melodia_rosette_1x.png" alt="Rosette emote" loading="lazy" />
+          <div class="emote-name">rosette</div>
+        </div>
+        <div class="emote-cell">
+          <img src="../../generated/products/twitch-emotes/transparent/melodia_seal_1x.png" alt="Seal emote" loading="lazy" />
+          <div class="emote-name">seal</div>
+        </div>
+        <div class="emote-cell">
+          <img src="../../generated/products/twitch-emotes/transparent/melodia_pillow_1x.png" alt="Pillow emote" loading="lazy" />
+          <div class="emote-name">pillow</div>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="../../generated/products/twitch-emotes/" download>Download Free</a>
+        <a class="btn btn-secondary" href="../../generated/products/twitch-emotes/README.md">README</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PRODUCT 2: OBS OVERLAYS -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-head">
+    <h2>OBS Overlay Pack</h2>
+    <span class="badge">Free / Paid</span>
+    <span class="count">7 overlays + elements</span>
+  </div>
+
+  <div class="product-card">
+    <div class="card-header">
+      <div class="card-icon">🖥️</div>
+      <div>
+        <div class="card-title">7 Stream Overlay Templates</div>
+        <div class="card-subtitle">1920×1080 · PNG with transparency · Modular elements</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="description">
+        Gothic frames, baroque corners, parchment lower thirds, and alert boxes — all built from Melodia's filigree UI system. Drop them into OBS, Streamlabs, or any compositing tool. Individual elements included for custom layouts.
+      </p>
+
+      <div class="detail-grid">
+        <div class="detail-cell">
+          <div class="cell-label">Templates</div>
+          <div class="cell-value">7</div>
+          <div class="cell-note">Gothic frame, Baroque frame, Lower third, Alert box, Starting soon, Scene transition, Minimal corners</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Resolution</div>
+          <div class="cell-value">1080p</div>
+          <div class="cell-note">1920×1080 with 32-bit transparency</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Elements</div>
+          <div class="cell-value">20+</div>
+          <div class="cell-note">Corners, dividers, backgrounds, accents — organized by category</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Source</div>
+          <div class="cell-value">Filigree UI</div>
+          <div class="cell-note">GothicFrameCorner, FiligreeCornerBaroque, SoftMG_Parchment, SealSP</div>
+        </div>
+      </div>
+
+      <div class="preview-wrap">
+        <img src="../../generated/products/obs-overlays/preview_grid.png" alt="OBS overlay preview grid" loading="lazy" />
+        <div class="caption">Preview — 7 overlay templates at reduced resolution</div>
+      </div>
+
+      <div class="overlay-grid">
+        <div class="overlay-cell">
+          <img src="../../generated/products/obs-overlays/overlays/gothic_frame.png" alt="Gothic Frame overlay" loading="lazy" />
+          <div class="overlay-name">gothic_frame</div>
+        </div>
+        <div class="overlay-cell">
+          <img src="../../generated/products/obs-overlays/overlays/baroque_frame.png" alt="Baroque Frame overlay" loading="lazy" />
+          <div class="overlay-name">baroque_frame</div>
+        </div>
+        <div class="overlay-cell">
+          <img src="../../generated/products/obs-overlays/overlays/lower_third.png" alt="Lower Third overlay" loading="lazy" />
+          <div class="overlay-name">lower_third</div>
+        </div>
+        <div class="overlay-cell">
+          <img src="../../generated/products/obs-overlays/overlays/alert_box.png" alt="Alert Box overlay" loading="lazy" />
+          <div class="overlay-name">alert_box</div>
+        </div>
+        <div class="overlay-cell">
+          <img src="../../generated/products/obs-overlays/overlays/starting_soon.png" alt="Starting Soon overlay" loading="lazy" />
+          <div class="overlay-name">starting_soon</div>
+        </div>
+        <div class="overlay-cell">
+          <img src="../../generated/products/obs-overlays/overlays/scene_transition.png" alt="Scene Transition overlay" loading="lazy" />
+          <div class="overlay-name">scene_transition</div>
+        </div>
+        <div class="overlay-cell">
+          <img src="../../generated/products/obs-overlays/overlays/minimal_corners.png" alt="Minimal Corners overlay" loading="lazy" />
+          <div class="overlay-name">minimal_corners</div>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="../../generated/products/obs-overlays/" download>Download Free</a>
+        <a class="btn btn-secondary" href="../../generated/products/obs-overlays/README.md">README</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PRODUCT 3: WALLPAPER PACKS -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-head">
+    <h2>Wallpaper Packs</h2>
+    <span class="badge">Free / Paid</span>
+    <span class="count">84 files</span>
+  </div>
+
+  <div class="product-card">
+    <div class="card-header">
+      <div class="card-icon">📱</div>
+      <div>
+        <div class="card-title">5 Packs × 3 Phone Sizes</div>
+        <div class="card-subtitle">iPhone · Android · Universal — smart-cropped from existing renders</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="description">
+        Character portraits, beauty plates, world landscapes, and abstract material renders — all smart-cropped to phone aspect ratios. Five themed packs covering every mood from celestial gothic to cosmic abstract.
+      </p>
+
+      <div class="detail-grid">
+        <div class="detail-cell">
+          <div class="cell-label">Packs</div>
+          <div class="cell-value">5</div>
+          <div class="cell-note">Portraits, Beauty, Worlds, Cosmic Materials, SDF Materials</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Sizes</div>
+          <div class="cell-value">3</div>
+          <div class="cell-note">iPhone (1290×2796), Android (1080×2400), Universal (1080×1920)</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Total</div>
+          <div class="cell-value">84</div>
+          <div class="cell-note">28 source images × 3 sizes</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Source</div>
+          <div class="cell-value">Renders</div>
+          <div class="cell-note">Character, landscape, and material loop PNGs</div>
+        </div>
+      </div>
+
+      <div class="wallpaper-preview">
+        <div class="wp-frame">
+          <img src="../../generated/assets/character/melusina_beauty_nikki_001.png" alt="Nikki Dream wallpaper" loading="lazy" />
+          <span class="wp-label"> Nikki Dream</span>
+        </div>
+        <div class="wp-frame">
+          <img src="../../generated/assets/character/melusina_beauty_void_iri.png" alt="Void Celestial wallpaper" loading="lazy" />
+          <span class="wp-label"> Void Celestial</span>
+        </div>
+        <div class="wp-frame">
+          <img src="../../generated/assets/material-loops/MI_Cosmic_AuroraVeil.png" alt="Aurora Veil wallpaper" loading="lazy" />
+          <span class="wp-label"> Aurora Veil</span>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="../../generated/products/wallpaper-packs/" download>Download Free</a>
+        <a class="btn btn-secondary" href="../../generated/products/wallpaper-packs/README.md">README</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PRODUCT 4: POSTCARDS -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-head">
+    <h2>Postcards</h2>
+    <span class="badge">Print-Ready</span>
+    <span class="count">12 designs + back template</span>
+  </div>
+
+  <div class="product-card">
+    <div class="card-header">
+      <div class="card-icon">📮</div>
+      <div>
+        <div class="card-title">12 Print-Ready Postcard Designs</div>
+        <div class="card-subtitle">6×4" · 300dpi · Gold border · Parchment back with seal</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="description">
+        Physical mail that stands out. Each postcard features a different Melodia render with a gold border and "Melodia" wordmark. The back uses parchment texture with address lines, a wax seal stamp, and portfolio URL. Send to recruiters, collaborators, or sell at conventions.
+      </p>
+
+      <div class="detail-grid">
+        <div class="detail-cell">
+          <div class="cell-label">Designs</div>
+          <div class="cell-value">12</div>
+          <div class="cell-note">8 character + 2 world + 2 material</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Print Spec</div>
+          <div class="cell-value">300dpi</div>
+          <div class="cell-note">1875×1275px with 0.125" bleed</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Cost</div>
+          <div class="cell-value">~$30</div>
+          <div class="cell-note">600 cards via Vistaprint (50 per design)</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Back</div>
+          <div class="cell-value">Template</div>
+          <div class="cell-note">Parchment + address lines + seal + URL</div>
+        </div>
+      </div>
+
+      <div class="preview-wrap">
+        <img src="../../generated/products/postcards/preview_grid.png" alt="Postcard preview grid" loading="lazy" />
+        <div class="caption">Preview — 12 postcard front designs at reduced resolution</div>
+      </div>
+
+      <div class="postcard-grid">
+        <div class="postcard-cell">
+          <img src="../../generated/products/postcards/fronts/classic_beauty_front.png" alt="Classic Beauty postcard" loading="lazy" />
+        </div>
+        <div class="postcard-cell">
+          <img src="../../generated/products/postcards/fronts/nikki_dream_front.png" alt="Nikki Dream postcard" loading="lazy" />
+        </div>
+        <div class="postcard-cell">
+          <img src="../../generated/products/postcards/fronts/void_celestial_front.png" alt="Void Celestial postcard" loading="lazy" />
+        </div>
+        <div class="postcard-cell">
+          <img src="../../generated/products/postcards/fronts/court_formal_front.png" alt="Court Formal postcard" loading="lazy" />
+        </div>
+        <div class="postcard-cell">
+          <img src="../../generated/products/postcards/fronts/world_sakura_front.png" alt="World Sakura postcard" loading="lazy" />
+        </div>
+        <div class="postcard-cell">
+          <img src="../../generated/products/postcards/fronts/material_aurora_front.png" alt="Material Aurora postcard" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="../../generated/products/postcards/" download>Download Files</a>
+        <a class="btn btn-secondary" href="../../generated/products/postcards/print_spec.md">Print Spec</a>
+        <a class="btn btn-ghost" href="../../generated/products/postcards/README.md">README</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ── HOW IT'S MADE ── -->
+<section class="section">
+  <div class="section-head">
+    <h2>How It's Made</h2>
+    <span class="count">Zero new renders</span>
+  </div>
+  <div class="product-card">
+    <div class="card-body">
+      <p class="description">
+        Every product on this page was generated from existing game assets — no new 3D renders, no new photography. A single Python script (<code>tools/build_asset_products.py</code>) processes the source textures through crop, resize, composite, and layout operations to produce print-ready and upload-ready files.
+      </p>
+      <div class="detail-grid">
+        <div class="detail-cell">
+          <div class="cell-label">Source Assets</div>
+          <div class="cell-value">50+</div>
+          <div class="cell-note">Game UI textures, character renders, material loops, landscape loops</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Build Script</div>
+          <div class="cell-value">Python</div>
+          <div class="cell-note">Pillow (PIL) — crop, resize, composite, grid generation</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Total Output</div>
+          <div class="cell-value">238</div>
+          <div class="cell-note">Files across 4 product lines, all with READMEs</div>
+        </div>
+        <div class="detail-cell">
+          <div class="cell-label">Pipeline</div>
+          <div class="cell-value">Automated</div>
+          <div class="cell-note">Re-run anytime: <code>python tools/build_asset_products.py</code></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Art from <a href="index.html">Melodia</a> — a stylized rhythm-action game project. All assets free for personal and commercial use with attribution.</p>
+</footer>
+
+</body>
+</html>
