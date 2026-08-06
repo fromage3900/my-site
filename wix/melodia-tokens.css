@@ -2,11 +2,13 @@
    Generated from tokens.json (Figma SSOT). Do not edit manually — run token sync.
    All CSS files must @import this FIRST before any other styles. */
 
+@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Cinzel:wght@400;600;700&family=Instrument+Serif:ital@0;1&family=Syne:wght@500;600;700;800&display=swap");
+
 :root {
   /* ===== PRIMITIVE COLORS (from tokens.json primitives) ===== */
-  --primitive-ivory-50:  #FFF8EE;
+  --primitive-ivory-50:  #FCFBF8;
   --primitive-ivory-100: #F8ECD6;
-  --primitive-ivory-200: #F3E6C8;
+  --primitive-ivory-200: #EFEAE1;
   --primitive-ivory-300: #E3DACE;
 
   --primitive-plum-500:  #6E6080;
@@ -218,14 +220,14 @@
   --radius-lg:   8px;
   --radius-pill: 999px;
 
-  /* ===== TYPOGRAPHY (Updated for Melusina) ===== */
-  --font-display:       'Kaisei Decol', 'Fraunces', Georgia, serif;
-  --font-display-fallback: Georgia, serif;
-  --font-cover:         'Kaisei Decol', 'Cinzel', Georgia, serif;
-  --font-body:          'M PLUS Rounded 1c', 'Inter', system-ui, sans-serif;
-  --font-body-fallback: 'Inter', system-ui, sans-serif;
-  --font-mono:          'Azeret Mono', 'IBM Plex Mono', monospace;
-  --font-brand:         'Kaisei Decol', 'Cinzel', serif;
+  /* ===== TYPOGRAPHY (Luxury Typography Stack — SSOT) ===== */
+  --font-brand:         'Syne', 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-display:       'Instrument Serif', 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
+  --font-display-fallback: 'Iowan Old Style', Georgia, serif;
+  --font-cover:         'Cinzel', 'Instrument Serif', Georgia, serif;
+  --font-body:          'Bricolage Grotesque', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  --font-body-fallback: 'Avenir Next', system-ui, sans-serif;
+  --font-mono:          'Azeret Mono', ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', monospace;
 
   /* Type scale (matches tokens.json global.type) */
   --text-display-xl:    clamp(48px, 8vw, 72px) / 1.05 var(--font-display);
