@@ -32,12 +32,16 @@ foreach ($page in $pages) {
   $matches = [regex]::Matches($html, 'href="([^"]+)"|src="([^"]+)"')
   foreach ($match in $matches) {
     $ref = if ($match.Groups[1].Value) { $match.Groups[1].Value } else { $match.Groups[2].Value }
-    if ($ref -match '^(https?:|mailto:|#)' -or $ref -match '\$\{' -or [string]::IsNullOrWhiteSpace($ref)) { continue }
+    if ($ref -match '^(https?:|mailto:|#)' -or $ref -match '\$\{' -or $ref -match '%%[^%]+%%' -or [string]::IsNullOrWhiteSpace($ref)) { continue }
     $clean = ($ref -split '#')[0]
     $clean = ($clean -split '\?')[0]
     if ([string]::IsNullOrWhiteSpace($clean)) { continue }
     $full = [System.IO.Path]::GetFullPath((Join-Path $page.DirectoryName $clean))
-    if (-not (Test-Path -LiteralPath $full)) {
+    $rootFull = [System.IO.Path]::GetFullPath($Root).TrimEnd('\', '/')
+    $insideRepo = $full.Equals($rootFull, [StringComparison]::OrdinalIgnoreCase) -or
+      $full.StartsWith($rootFull + '\', [StringComparison]::OrdinalIgnoreCase) -or
+      $full.StartsWith($rootFull + '/', [StringComparison]::OrdinalIgnoreCase)
+    if (-not $insideRepo -or -not (Test-Path -LiteralPath $full)) {
       $relativePage = $page.FullName
       if ($relativePage.StartsWith($Root)) { $relativePage = $relativePage.Substring($Root.Length).TrimStart([char[]]@('\','/')) }
       $missing.Add("$relativePage -> $ref")
