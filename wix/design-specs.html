@@ -140,7 +140,7 @@
               <tr>
                 <td><span class="spec-badge">P0-10</span></td>
                 <td><strong>Main Menu Wiring</strong></td>
-                <td>Wire <code>New Game</code>, <code>Continue</code>, <code>Load</code> in <code>WBP_MainMenu</code> directly to <code>UMelodiaTravelSubsystem</code> and canonical <code>BP_MelodiaJRPGGameInstance</code>.</td>
+                <td>Wire <code>New Game</code>, <code>Continue</code>, <code>Load</code> in <code>WBP_MainMenu</code> directly to <code>UMelodiaTravelSubsystem</code> and canonical <code>BP_MelodiaJRPGGameInstance</code>. Fonts are live: Syne / Instrument Serif via <code>F_Melodia_UI</code> — do not treat the menu as a broken-font bug.</td>
                 <td>Main Menu buttons route cleanly to gameplay levels and canonical save slots.</td>
               </tr>
               <tr>
@@ -152,7 +152,7 @@
               <tr>
                 <td><span class="spec-badge">P0-12</span></td>
                 <td><strong>Packaged Route Launch</strong></td>
-                <td>Add <code>L_MelusinaMorning</code>, <code>L_Melodia_Dreamstate</code>, <code>L_KaleidoNave</code> to <code>+MapsToCook</code> in <code>DefaultGame.ini</code> and package build.</td>
+                <td>Add <code>L_MelusinaMorning</code> and <code>L_KaleidoNave</code> to <code>+MapsToCook</code> in <code>DefaultGame.ini</code> and package build. Do not cook a live <code>L_Melodia_Dreamstate</code> — that map is merged.</td>
                 <td>Executable launches and runs standalone outside Unreal Editor without black screens.</td>
               </tr>
             </tbody>

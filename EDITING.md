@@ -45,6 +45,13 @@ Do not publish labels that outrun reality:
 - “Playable” / “Tonight” / “overnight” as shipping status
 - Stage **v4** on live Melusina passport (use **v7 · EEVEE**)
 - `project-name-hero.png` placeholders on live heroes
+- Stale GN counts: **24/165**, **73 looks**, or 39/49/59 as the builder total (live is **165 / 12**, presets **33/165**, **100 looks**)
+- Niagara 3D FLIP / Water V10 as the Melusina **hair solver** (cine is Geometry Cache Alembic 1–240 + Niagara drip; gameplay is `SK_MelusinaHair`)
+- Blender idle as live (locomotion speed 0 is mocap `A_Melusina_Idle_Mocap_RootX`; Blender idle is on disk, not wired)
+- Unreal **B2 Cam_Beauty** plates as published (git push of plates historically off)
+- Live map `L_Melodia_Dreamstate` (merged into `L_KaleidoNave`)
+- Genshin SDF as the shipped character look (hybrid Komikaze + UE Toon)
+- Broken `WBP_MainMenu` fonts (Syne / Instrument Serif via `F_Melodia_UI` are live)
 
 Verify: `python my-site-clean/tools/_verify_site_facts.py`
 

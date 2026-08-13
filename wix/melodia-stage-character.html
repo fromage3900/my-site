@@ -49,11 +49,12 @@
   <p>Beauty plates and stage lookdev. Live gameplay skeleton is <code>SK_Melusina_Skeleton</code>. V2Test ARP split static meshes are portfolio/review only.</p>
   <div class="row"><span>Skeleton</span><strong>SK_Melusina_Skeleton · 465 bones · underscore · cm</strong></div>
   <div class="row"><span>Mocap</span><strong>RTG_Mocap_to_Melusina — clips do not import directly onto SK_Melusina</strong></div>
-  <div class="row"><span>Idle</span><strong>Locomotion speed 0 = mocap idle. Blender idle is not live until PIE.</strong></div>
-  <div class="row"><span>Gameplay hair</span><strong>SK_MelusinaHair — Flip / water-hair Alembic is cine Layer C only</strong></div>
+  <div class="row"><span>Idle</span><strong>Speed 0 = mocap A_Melusina_Idle_Mocap_RootX. Blender idle on disk, not wired.</strong></div>
+  <div class="row"><span>Cine hair</span><strong>Geometry Cache Alembic 1–240 + Niagara drip — not Niagara 3D FLIP</strong></div>
+  <div class="row"><span>Gameplay hair</span><strong>SK_MelusinaHair fallback. Do not read Flip stills as live hair.</strong></div>
   <div class="row"><span>V2Test ARP</span><strong>Portfolio / review only — not the live gameplay skeleton</strong></div>
   <div class="row"><span>Wardrobe</span><strong>Melusina wardrobe SSOT in Blender — not LiveLink scratch</strong></div>
-  <p class="human-lede" style="margin-top:1.25rem">Cine Flip stills (Cam_Beauty, EEVEE glam) sit beside the July beauty plates — they are not the gameplay hair component.</p>
+  <p class="human-lede" style="margin-top:1.25rem">Local Blender EEVEE Flip stills sit beside July beauty plates. They are cine, not gameplay hair, and not Unreal B2 Cam_Beauty (those plates are not published). Niagara 3D FLIP is not the hair solver.</p>
   <div class="links">
     <a href="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_01.png">Flip cine f96</a>
     <a href="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_02.png">Flip cine f240</a>

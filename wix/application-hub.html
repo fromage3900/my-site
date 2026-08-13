@@ -7,7 +7,7 @@
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>Melodia World &amp; Pipeline Architecture Hub</title>
-<meta name="description" content="Melodia World &amp; Pipeline Architecture Hub — Dual-Track JRPG Level Routes (/Game/Melodia/Levels/Opening/L_MelusinaMorning, L_Melodia_Dreamstate, L_KaleidoNave) and Echo DCC Bridge Integration." />
+<meta name="description" content="Melodia World &amp; Pipeline Architecture Hub — Dual-Track JRPG Level Routes (/Game/Melodia/Levels/Opening/L_MelusinaMorning → /Game/EnvSandbox/Environments/L_KaleidoNave) and Echo DCC Bridge Integration." />
 <meta property="og:title" content="Melodia World &amp; Pipeline Architecture Hub" />
 <meta property="og:description" content="Explore level routing architecture, QuillScript narrative gating, Harmonix rhythm highway, and real-time Echo DCC automation bridge for Unreal Engine 5.8." />
 <meta property="og:image" content="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
@@ -47,7 +47,7 @@
     <span class="hub-gothic-rail" aria-hidden="true"></span>
     <p class="nikki-ribbon">World &amp; Pipeline Architecture Hub</p>
     <h1 id="page-title">Integrated Level Routes &amp; Echo DCC Bridge</h1>
-    <p class="lede">As of 2026-08-13: travel routes across <code>L_MelusinaMorning</code>, <code>L_Melodia_Dreamstate</code>, and <code>L_KaleidoNave</code>. Rhythm OWNER LOCK WORKED; QuillScript OWNER LOCK WORKED; A1 stock battle not closed; formal Q/W/O/P harness OPEN. BlenderMCP :9876 is the live agent path.</p>
+    <p class="lede">As of 2026-08-13: travel route <code>L_MelusinaMorning</code> → <code>L_KaleidoNave</code> (Dreamstate merged; no live <code>L_Melodia_Dreamstate</code>). Rhythm OWNER LOCK WORKED; QuillScript OWNER LOCK WORKED; A1 stock battle not closed; formal Q/W/O/P harness OPEN. BlenderMCP :9876 is the live agent path. Idle is mocap <code>A_Melusina_Idle_Mocap_RootX</code>.</p>
     <div class="hero-actions">
       <a class="button primary button-premium-primary" href="melodia-gameplay-loop.html">Gameplay Loop</a>
       <a class="button button-premium" href="design-specs.html">12 P0 Design Specs</a>
@@ -81,12 +81,12 @@
       </article>
       <article class="viz-beat is-flip component-card">
         <a class="viz-plate" href="melodia-gameplay-loop.html">
-          <img data-plate="hub.melusina" src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="L_Melodia_Dreamstate" loading="lazy" />
-          <div class="viz-caption"><strong>L_Melodia_Dreamstate</strong><span>Traversal</span></div>
+          <img data-plate="hub.melusina" src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="L_KaleidoNave" loading="lazy" />
+          <div class="viz-caption"><strong>L_KaleidoNave</strong><span>Traversal</span></div>
         </a>
         <div class="viz-copy">
-          <h3>Dreamstate Traversal &amp; Turn-Based Encounter</h3>
-          <p>Player controls Melusina under <code>BP_MelodiaJRPGGameMode</code> with 150ms input debouncing. Interacting with <code>BP_InteractionBattle</code> triggers combat UI at z-order 10.</p>
+          <h3>KaleidoNave Traversal &amp; Turn-Based Encounter</h3>
+          <p>Player controls Melusina under <code>BP_MelodiaJRPGGameMode</code> with 150ms input debouncing. Dreamstate is merged into this map. Interacting with <code>BP_InteractionBattle</code> triggers combat UI at z-order 10. A1 stock battle is not closed.</p>
           <a class="viz-link" href="melodia-gameplay-loop.html">Traversal &amp; combat specs →</a>
         </div>
       </article>
@@ -159,8 +159,8 @@
       </div>
       <div class="viz-rail-item">
         <a class="viz-plate" href="melodia-gameplay-loop.html">
-          <img src="../generated/assets/nightshift/WP_SpaceCathedral_terrain.png" alt="Dreamstate Traversal" loading="lazy" />
-          <div class="viz-caption"><strong>Traversal</strong><span>L_Melodia_Dreamstate</span></div>
+          <img src="../generated/assets/nightshift/WP_SpaceCathedral_terrain.png" alt="KaleidoNave Traversal" loading="lazy" />
+          <div class="viz-caption"><strong>Traversal</strong><span>L_KaleidoNave</span></div>
         </a>
       </div>
       <div class="viz-rail-item">
@@ -214,7 +214,7 @@
       <div class="viz-process-step">
         <span class="num">03</span>
         <strong>Mocap &amp; Pose</strong>
-        <p>Retarget through <code>RTG_Mocap_to_Melusina</code> onto <code>SK_Melusina_Skeleton</code> (465 bones). Locomotion speed 0 = <strong>mocap idle</strong>, not Blender idle. LiveLink in-addon is stub. V2Test ARP splits are portfolio/review only.</p>
+        <p>Retarget through <code>RTG_Mocap_to_Melusina</code> onto <code>SK_Melusina_Skeleton</code> (465 bones). Locomotion speed 0 = mocap <code>A_Melusina_Idle_Mocap_RootX</code>. Blender idle is on disk, not wired. LiveLink in-addon is stub. V2Test ARP splits are portfolio/review only.</p>
       </div>
       <div class="viz-process-step">
         <span class="num">04</span>
@@ -248,7 +248,7 @@
           <div class="passport-head"><span>C++ Subsystem</span><span>Travel Engine</span></div>
           <h3 class="passport-title">UMelodiaTravelSubsystem</h3>
           <div class="passport-row"><span>Method</span><strong>SeamlessTravel()</strong></div>
-          <div class="passport-row"><span>Sanctuary Route</span><strong>L_MelusinaMorning &rarr; Dreamstate</strong></div>
+          <div class="passport-row"><span>Sanctuary Route</span><strong>L_MelusinaMorning &rarr; L_KaleidoNave</strong></div>
           <div class="passport-row"><span>Safe Anchor</span><strong>Morning_RoomShell</strong></div>
         </article>
       </div>

@@ -19,11 +19,11 @@
   "pages": {
     "recruiter-one-sheet": {
       "title": "Recruiter One-Sheet | Brennan Shepherd — Environment & Technical Artist",
-      "meta_description": "Brennan Shepherd — environment artist for stylized fantasy worlds. UE5 Substrate Toon, PCG scattering, magical girl aesthetic. Targeting Infinity Nikki / Papergames / Infold.",
+      "meta_description": "Brennan Shepherd — stylized environment & technical artist. Melodia Studio 165 GN / 12 cats; UE 5.8 C++ slice; Komikaze + UE Toon. As of 2026-08-13.",
       "hero": {
-        "kicker": "Recruiter one-sheet · Brennan Shepherd",
-        "headline": "Stylized fantasy worlds with real pipeline underneath.",
-        "lede": "Environment artist targeting stylized fantasy, magical girl aesthetic, and technical art roles — UE5 Substrate Toon, PCG scattering, SDF materials, and procedural worldbuilding. Built for studios like Papergames / Infold (Infinity Nikki), HoYoverse, and stylized AA."
+        "kicker": "Recruiter sendoff · 2026-08-13 · 30 seconds",
+        "headline": "Stylized worlds, Geometry Nodes library, Unreal C++ slice.",
+        "lede": "Who: Brennan Shepherd — stylized environment & technical artist, Humber 3D Animation, Toronto. Shipped: Melodia Studio on Blender 5.2 — 165 GN builders / 12 categories, presets 33/165 (20%), 100 looks; UE 5.8 C++ Persona-lite slice; opening L_MelusinaMorning → L_KaleidoNave. Rhythm and QuillScript owner-lock worked; A1 stock battle still open. Stack: Unreal 5.8 C++, Blender 5.2 GN, PCG, hybrid Komikaze NPR + UE Toon. Character polish is that hybrid — not a Genshin SDF ship."
       },
       "at_a_glance": {
         "eyebrow": "At A Glance",
@@ -33,17 +33,17 @@
           {
             "tag": "Primary",
             "title": "Stylized Environment Artist",
-            "body": "Soft pastel worlds, readable player routes, toon shaders, sakura atmospheres, and hero renders. UE5, Blender, Maya, ZBrush, Substance Painter. Infinity Nikki–aligned aesthetic."
+            "body": "Soft pastel worlds, readable player routes, sakura atmospheres, hero stills. Look is hybrid Komikaze NPR + UE Toon — a Nikki-adjacent lens, not a Genshin SDF character ship."
           },
           {
             "tag": "Secondary",
             "title": "Technical Artist",
-            "body": "Material systems (19 showcase MIs), PCG graph libraries (60+ graphs), render pipeline automation, MCP server integration, TouchDesigner real-time VFX."
+            "body": "Melodia Studio Geometry Nodes (165 builders / 12 categories) is the shipped GN product. Unreal PCG dressing, Python capture, BlenderMCP :9876. Preset coverage 33/165 with 100 looks."
           },
           {
-            "tag": "Nikki Relevance",
-            "title": "Magical Girl Aesthetic",
-            "body": "Substrate toon outline, iridescent sheen, soft bloom, warm lacquer trims, SDF ornamental detail, PCG blossom scattering — all built for fashion-fantasy worlds."
+            "tag": "Melusina + Studio",
+            "title": "Character and GN library",
+            "body": "Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay fallback SK_MelusinaHair. Idle is mocap A_Melusina_Idle_Mocap_RootX. Menu fonts (Syne / Instrument Serif via F_Melodia_UI) are live."
           }
         ]
       },
@@ -55,26 +55,26 @@
           {
             "step": "01",
             "title": "Resume",
-            "body": "Tools, school, past work. 15+ skills listed.",
+            "body": "Who, school, tools. Start here if time is short.",
             "href": "resume.html"
           },
           {
             "step": "02",
-            "title": "Sakura Dream (Nikki-aligned)",
-            "body": "Primary world proof — shrine route, petal light, toon materials.",
-            "href": "sakura-case-study.html"
+            "title": "Melodia Studio (GN product)",
+            "body": "165 builders / 12 categories · presets 33/165 · 100 looks.",
+            "href": "geometry-nodes.html"
           },
           {
             "step": "03",
-            "title": "Material Showcase",
-            "body": "19 showcase MIs — NikkiHero, CelestialNebula, SDF, Cosmic.",
-            "href": "shader-breakdowns.html"
+            "title": "Melusina",
+            "body": "Mocap idle, cine Geometry Cache hair vs SK_MelusinaHair gameplay fallback.",
+            "href": "melodia-stage-character.html"
           },
           {
             "step": "04",
-            "title": "Application Hub",
-            "body": "Full dossier — all 4 environments, PCG systems, character work.",
-            "href": "application-hub.html"
+            "title": "Sakura Dream",
+            "body": "Primary environment plate — shrine route, toon + Komikaze lens.",
+            "href": "sakura-case-study.html"
           }
         ]
       },
@@ -431,7 +431,7 @@
       "hero": {
         "kicker": "Melodia Portfolio Stage · v7 · Nikki iri",
         "headline": "Melusina — stage passport.",
-        "lede": "EEVEE glam beauty and grey wire topology first; the Asset Passport sits beside the plates as a short production card — triangles, meshes, shader lane — not a tech essay.",
+        "lede": "EEVEE glam beauty and grey wire topology first; the Asset Passport sits beside the plates. Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay is SK_MelusinaHair. Idle is mocap A_Melusina_Idle_Mocap_RootX. Look is hybrid Komikaze + UE Toon — not a Genshin SDF ship.",
         "eyebrow": "Melodia Portfolio Stage · v7 · Nikki iri"
       },
       "outfit_board": {
@@ -440,8 +440,8 @@
         "body": "Infinity Nikki photo-spot framing — beauty hero, grey wireframe, then the asset card.",
         "stats": [
           { "label": "Stage", "value": "v7" },
-          { "label": "Hair", "value": "Water Adv." },
-          { "label": "Light", "value": "Nikki" }
+          { "label": "Hair", "value": "GC cine + SK fallback" },
+          { "label": "Idle", "value": "Mocap" }
         ]
       },
       "plates": {
@@ -452,7 +452,7 @@
         "hair_loop": {
           "label": "Hair · AudVis 4s",
           "title": "EEVEE glam · 96 frames · 24fps · 4s",
-          "body": "First 4 seconds of the AudVis hair sway — looped for stage."
+          "body": "Cine Geometry Cache (Alembic 1–240) + Niagara drip — not the gameplay hair mesh. AudVis loop is a stage plate, not SK_MelusinaHair."
         },
         "hair_postcard": {
           "label": "Hair FX · macro postcard",

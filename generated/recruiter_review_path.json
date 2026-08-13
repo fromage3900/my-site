@@ -1,54 +1,54 @@
 {
-  "generated_at": "2026-07-10T19:00:00Z",
-  "title": "Infold-facing reviewer path",
+  "generated_at": "2026-08-13T20:00:00Z",
+  "title": "Recruiter sendoff path — 2026-08-13",
   "steps": [
     {
       "step": "01",
-      "href": "resume.html",
-      "title": "Resume",
-      "body": "Candidate summary, tools, and proof links — start here."
+      "href": "recruiter-one-sheet.html",
+      "title": "Recruiter one-sheet",
+      "body": "30-second skim: who, what shipped, stack, links."
     },
     {
       "step": "02",
-      "href": "sakura-case-study.html",
-      "title": "Sakura case study",
-      "body": "Primary world proof — route, foliage, pearly bloom."
+      "href": "resume.html",
+      "title": "Resume",
+      "body": "Candidate summary, tools, and proof links."
     },
     {
       "step": "03",
-      "href": "recruiter-one-sheet.html",
-      "title": "Recruiter one-sheet",
-      "body": "One-page summary for fast intake."
+      "href": "geometry-nodes.html",
+      "title": "Melodia Studio",
+      "body": "165 GN builders / 12 categories · presets 33/165 · 100 looks."
     },
     {
       "step": "04",
-      "href": "hero-renders.html",
-      "title": "Hero Renders",
-      "body": "NightShift terrain, Nikki grids, Sakura mood plates — beauty first."
+      "href": "melodia-stage-character.html",
+      "title": "Melusina",
+      "body": "Mocap idle A_Melusina_Idle_Mocap_RootX. Cine Geometry Cache hair vs SK_MelusinaHair fallback."
     },
     {
       "step": "05",
-      "href": "shader-breakdowns.html",
-      "title": "Shader Proof",
-      "body": "CelestialNebula + NASA, cosmic/Nikki MI grids, material impact pages."
+      "href": "sakura-case-study.html",
+      "title": "Sakura Dream",
+      "body": "Primary environment plate — shrine route, Komikaze + UE Toon lens."
     },
     {
       "step": "06",
-      "href": "geometry-nodes.html",
-      "title": "Geometry & PCG",
-      "body": "Honest pipeline: SurrealArch GN, UE PCG, GeometryScript."
+      "href": "application-hub.html",
+      "title": "Architecture hub",
+      "body": "Opening route L_MelusinaMorning → L_KaleidoNave. Rhythm and Quill worked; A1 battle open."
     },
     {
       "step": "07",
-      "href": "melodia-melusina.html",
-      "title": "Melodia Melusina",
-      "body": "Figma-synced rhythm RPG UI."
+      "href": "hero-renders.html",
+      "title": "Hero Renders",
+      "body": "Local plates. Unreal B2 Cam_Beauty is not published."
     },
     {
       "step": "08",
       "href": "ornament-kitbash.html",
       "title": "Ornamental Kitbash",
-      "body": "Optional product — 15 ornaments; Gumroad ZIP coming soon."
+      "body": "Optional product — 15 ornaments; store_live remains false."
     }
   ]
 }

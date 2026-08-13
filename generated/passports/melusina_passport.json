@@ -55,11 +55,15 @@
     ],
     [
       "Idle",
-      "Locomotion speed 0 = mocap idle; Blender idle not live until PIE"
+      "Locomotion speed 0 = mocap A_Melusina_Idle_Mocap_RootX; Blender idle on disk, not wired"
+    ],
+    [
+      "Cine hair",
+      "Geometry Cache Alembic 1–240 + Niagara drip — not Niagara 3D FLIP"
     ],
     [
       "Gameplay hair",
-      "SK_MelusinaHair — Flip / water-hair Alembic is cine Layer C only"
+      "SK_MelusinaHair fallback. Local EEVEE Flip stills are cine, not B2 Cam_Beauty"
     ]
   ],
   "generated_at": "2026-07-15T21:30:00.000000+00:00",

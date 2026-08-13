@@ -109,7 +109,7 @@
     "workflow": [
       "Model in Blender → export FBX to UE5",
       "Build materials in UE5 Material Editor + Material Maker",
-      "Scatter with PCG graphs (60+ systems)",
+      "Scatter with PCG graphs (tracked dressing systems — do not quote stale 60+)",
       "Capture renders with Python capture pipeline",
       "Run tools/ingest-renders.ps1 → copies to generated/assets/",
       "Run deploy/quick-deploy.ps1 → sync → commit → push → live"

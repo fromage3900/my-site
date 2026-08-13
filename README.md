@@ -2,6 +2,16 @@
 
 UE 5.8 + Blender 5.2 production platform for stylized portfolio work: Melodia Studio Geometry Nodes (165 builders / 12 GN Stack categories), Unreal C++ JRPG slice, and DCC bridges.
 
+## Recruiter sendoff (30 seconds) — 2026-08-13
+
+**Who:** Brennan Shepherd — stylized environment & technical artist, Humber 3D Animation, Toronto.
+
+**What shipped:** Melodia Studio on Blender 5.2 (**165 GN builders / 12 categories**, presets **33/165 (20%)**, 100 looks) plus a UE 5.8 C++ Persona-lite slice. Opening route `L_MelusinaMorning` → `L_KaleidoNave`. Rhythm and QuillScript owner-lock worked; A1 stock battle is still open.
+
+**Stack:** Unreal 5.8 C++, Blender 5.2 Geometry Nodes, PCG, hybrid **Komikaze NPR + UE Toon**. Character polish is that hybrid — not a Genshin SDF ship. Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay fallback is `SK_MelusinaHair`. Idle is mocap `A_Melusina_Idle_Mocap_RootX` (Blender idle is on disk, not wired). `WBP_MainMenu` fonts are Syne / Instrument Serif via `F_Melodia_UI`.
+
+**Skim these:** [One-sheet](wix/recruiter-one-sheet.html) · [Home](wix/index.html) · [Melodia Studio](wix/geometry-nodes.html) · [Melusina](wix/melodia-stage-character.html) · [Resume](wix/resume.html)
+
 **As of 2026-08-13.** Live agent MCP is **BlenderMCP :9876**. Melodia Studio Live Bridge LiveLink is a stub. Port 9317 is legacy.
 
 ---

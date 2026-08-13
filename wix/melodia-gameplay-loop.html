@@ -50,7 +50,7 @@
     <p class="kicker magazine-kicker">P0 First Dream · as of 2026-08-13</p>
     <div class="editorial-rhythm-divider sheet" data-divider="astral" aria-hidden="true"><span class="glyph">♪ · ♥ · ♪</span></div>
     <h1 id="page-title">The 7-Stage Sanctuary-to-Save Loop Flow Architecture</h1>
-    <p class="lede">Editorial look-book for Melodia's Persona-lite JRPG loop. As of 2026-08-13: <strong>rhythm OWNER LOCK WORKED</strong>; <strong>QuillScript OWNER LOCK WORKED</strong>; formal runtime harness with real Q/W/O/P is still OPEN; A1 stock battle path is not closed. Live character is <code>SK_Melusina_Skeleton</code> (465 bones). Do not advertise Blender idle as live until PIE.</p>
+    <p class="lede">Editorial look-book for Melodia's Persona-lite JRPG loop. As of 2026-08-13: <strong>rhythm OWNER LOCK WORKED</strong>; <strong>QuillScript OWNER LOCK WORKED</strong>; formal runtime harness with real Q/W/O/P is still OPEN; A1 stock battle path is not closed. Live character is <code>SK_Melusina_Skeleton</code> (465 bones). Idle is mocap <code>A_Melusina_Idle_Mocap_RootX</code>; Blender idle is on disk, not wired. Route is <code>L_MelusinaMorning</code> → <code>L_KaleidoNave</code> (Dreamstate merged — no live <code>L_Melodia_Dreamstate</code>).</p>
     <div class="hero-actions">
       <a class="button button-premium-primary" href="#loop-architecture">7-Stage Loop Architecture</a>
       <a class="button button-premium" href="#co-op-skills">Co-Op Skills &amp; Resonance</a>
@@ -84,14 +84,14 @@
       <article class="loop-stage-card component-card">
         <span class="stage-num">Stage 02</span>
         <h3>Authored Departure Gate</h3>
-        <p>Transition trigger calls <span class="code-inline">UMelodiaTravelSubsystem::SeamlessTravel</span> to exit sanctuary and initiate background level loading into dreamstate traversal.</p>
+        <p>Transition trigger calls <span class="code-inline">UMelodiaTravelSubsystem::SeamlessTravel</span> to exit sanctuary and load traversal in <span class="code-inline">L_KaleidoNave</span> (Dreamstate merged — do not resurrect <span class="code-inline">L_Melodia_Dreamstate</span>).</p>
       </article>
 
       <!-- Stage 3 -->
       <article class="loop-stage-card component-card">
         <span class="stage-num">Stage 03</span>
-        <h3>Dreamstate Traversal</h3>
-        <p>Exploration in <span class="code-inline">L_Melodia_Dreamstate</span> under <span class="code-inline">BP_MelodiaJRPGGameMode</span>. Player controls Melusina with input context stack managed by <span class="code-inline">UMelodiaInputContextSubsystem</span> (150ms debouncing).</p>
+        <h3>KaleidoNave Traversal</h3>
+        <p>Exploration in <span class="code-inline">L_KaleidoNave</span> under <span class="code-inline">BP_MelodiaJRPGGameMode</span>. Player controls Melusina with input context stack managed by <span class="code-inline">UMelodiaInputContextSubsystem</span> (150ms debouncing). <code>L_Melodia_Dreamstate</code> is merged out — not a live map.</p>
       </article>
 
       <!-- Stage 4 -->
@@ -251,7 +251,7 @@
           <tr>
             <td><strong style="color:#8cc">Fled</strong></td>
             <td>Fires <code>OnBattleOver(Fled)</code></td>
-            <td>Returns party to exploration state in <code>L_Melodia_Dreamstate</code> at pre-encounter vector without rewards.</td>
+            <td>Returns party to exploration state in <code>L_KaleidoNave</code> at pre-encounter vector without rewards.</td>
             <td>Retains current party HP/MP levels without post-battle bonus restore.</td>
           </tr>
           <tr>
