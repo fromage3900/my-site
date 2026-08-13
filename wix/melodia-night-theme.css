@@ -1,7 +1,7 @@
 /* Melodia Night Theme — site-wide darker nighttime palette + magical hues */
 
 :root {
-  --night-void: #070912;
+  --night-void: var(--primitive-plum-900);
   --night-ink: #0b0f1f;
   --night-astral: #101736;
   --night-plum: #1c1633;

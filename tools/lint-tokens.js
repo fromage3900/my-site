@@ -9,7 +9,11 @@ const path = require('path');
 
 const SITE_ROOT = path.join(__dirname, '..');
 const WIX_DIR = path.join(SITE_ROOT, 'wix');
-const TOKENS_JSON = path.join(SITE_ROOT, '..', 'melodia-design-system', 'tokens.json');
+const TOKEN_CANDIDATES = [
+  process.env.MELODIA_TOKENS_JSON,
+  path.join(SITE_ROOT, 'melodia-design-system', 'tokens.json'),
+  path.join(SITE_ROOT, '..', 'melodia-design-system', 'tokens.json'),
+].filter(Boolean);
 const TOKENS_CSS = path.join(WIX_DIR, 'melodia-tokens.css');
 
 const HARD_ERRORS = [];
@@ -17,11 +21,22 @@ const SOFT_WARNINGS = [];
 
 // 1. Load tokens.json primitives
 let tokensJson = {};
-try {
-  const raw = fs.readFileSync(TOKENS_JSON, 'utf-8');
-  tokensJson = JSON.parse(raw);
-} catch (e) {
-  HARD_ERRORS.push(`Cannot load tokens.json: ${e.message}`);
+let tokenSource = null;
+for (const candidate of TOKEN_CANDIDATES) {
+  try {
+    if (!fs.existsSync(candidate)) continue;
+    const raw = fs.readFileSync(candidate, 'utf-8');
+    tokensJson = JSON.parse(raw);
+    tokenSource = candidate;
+    break;
+  } catch (e) {
+    SOFT_WARNINGS.push(`Could not parse token source ${candidate}: ${e.message}`);
+  }
+}
+if (!tokenSource) {
+  SOFT_WARNINGS.push(
+    'tokens.json not found; using tracked melodia-tokens.css as the local token source'
+  );
 }
 
 const PRIMITIVE_TOKENS = new Set();

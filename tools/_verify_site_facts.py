@@ -2,11 +2,26 @@
 """Verify site facts: store gates, hero plates, claim registry, no bangs."""
 from __future__ import annotations
 
+import argparse
 import json
+import os
 import re
 from pathlib import Path
 
-SITE = Path(r"G:\EnvironmentPortfolio\BS_GodFile\my-site-clean")
+def _default_site_root() -> Path:
+    repository_root = Path(__file__).resolve().parents[1]
+    configured = os.environ.get("MELODIA_WEBSITE_ROOT")
+    if configured:
+        return Path(configured).expanduser().resolve()
+    if repository_root.name.lower() == "my-site-clean":
+        return repository_root
+    nested = repository_root / "my-site-clean"
+    if (nested / "wix").is_dir() and (nested / "content").is_dir():
+        return nested
+    return repository_root
+
+
+SITE = _default_site_root()
 WIX = SITE / "wix"
 GEN = SITE / "generated"
 ISSUES: list[str] = []
@@ -45,6 +60,23 @@ def check(cond: bool, ok: str, bad: str) -> None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description="Validate site claims and evidence assets.")
+    parser.add_argument(
+        "--site-root",
+        default=None,
+        help="website checkout to validate (defaults to MELODIA_WEBSITE_ROOT or workspace discovery)",
+    )
+    args = parser.parse_args()
+    global SITE, WIX, GEN
+    if args.site_root:
+        SITE = Path(args.site_root).expanduser().resolve()
+        WIX = SITE / "wix"
+        GEN = SITE / "generated"
+
+    if not SITE.is_dir():
+        print(f"site root not found: {SITE}")
+        return 1
+
     cat = json.loads((GEN / "ornament_kitbash_catalog.json").read_text(encoding="utf-8"))
     check(cat.get("store_live") is False, "store_live=false (correct until Gumroad)", "store_live should be false")
     check(cat.get("artstation_live") is False, "artstation_live=false", "artstation_live should be false")

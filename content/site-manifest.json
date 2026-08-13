@@ -102,7 +102,7 @@
       { "name": "Blender 5.1", "role": "Stylized geometry, modular kits, surreal_arch procedural generation" },
       { "name": "Substance 3D Painter", "role": "PBR texture baking, wear/dirt masks, material reference" },
       { "name": "Material Maker", "role": "Procedural PBR graphs, SDF generators, toon ramp textures (72–105 node graphs)" },
-      { "name": "TouchDesigner", "role": "Real-time VFX prototyping, MCP server for AI-assisted TD workflows" },
+      { "name": "TouchDesigner", "role": "Real-time VFX prototyping, MCP server for TouchDesigner workflows" },
       { "name": "VS Code + PowerShell", "role": "Website build, deploy automation, template scaffolding" },
       { "name": "GitHub Pages", "role": "Static hosting, custom domain, Wix iframe embedding" }
     ],

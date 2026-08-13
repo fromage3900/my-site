@@ -5,6 +5,11 @@ node_modules/
 .wix/
 jsconfig.json
 .git_disabled/
+.env
+.env.local
+.mcp.json
+__pycache__/
+*.pyc
 
 # Raw Blender frame dumps (exceed Pages 1GB limit, not referenced by site)
 generated/assets/character/melusina_glam_audvis_001.png*.png

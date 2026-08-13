@@ -3,43 +3,68 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Brennan Shepherd | Environment & Technical Artist — Stylized Fantasy Worlds</title>
-<meta name="description" content="Brennan Shepherd — environment artist building stylized fantasy worlds in Unreal Engine 5. Sakura Dream, Space Cathedral, Cosmic Orrery, Baroque Grotto. Substrate Toon materials, PCG scattering, magical girl aesthetic." />
-<meta property="og:title" content="Brennan Shepherd — Environment & Technical Art" />
-<meta property="og:description" content="Stylized fantasy environments with real pipeline underneath. UE5 Substrate Toon, PCG scattering, SDF materials. 4 portfolio worlds." />
-<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<title>MELODIA — Dual-Track Production & P0 First Dream JRPG Vertical Slice</title>
+<meta name="description" content="Melodia — Dual-Track Production State featuring the P0 First Dream Persona-lite JRPG vertical slice (UE 5.8 C++, QuillScript, Harmonix rhythm highway, binary save persistence) and the Echo Multi-Modal Pipeline (Blender 5.2, TouchDesigner, Monolith MCP Port 9316)." />
+<meta property="og:title" content="MELODIA — Dual-Track Production & P0 First Dream Vertical Slice" />
+<meta property="og:description" content="Dual-Track Production State: Persona-lite JRPG loop in UE 5.8 C++ paired with the Echo Multi-Modal DCC Automation Pipeline." />
+<meta property="og:image" content="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
 <meta property="og:url" content="https://fromage3900.github.io/my-site/wix/index.html" />
 <meta name="twitter:card" content="summary_large_image" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Brennan Shepherd",
-  "jobTitle": "Environment & Technical Artist",
-  "description": "Stylized fantasy world builder specializing in Unreal Engine 5 Substrate Toon materials, PCG scattering, and SDF ornamental detail.",
-  "knowsAbout": ["Unreal Engine", "Blender", "Substance Painter", "Material Maker", "PCG", "TouchDesigner", "ZBrush"],
-  "sameAs": ["https://fromage3900.github.io/my-site/wix/index.html"]
+  "@type": "SoftwareApplication",
+  "name": "Melodia",
+  "applicationCategory": "Game",
+  "operatingSystem": "Windows",
+  "description": "Dual-Track Production JRPG Vertical Slice & Echo Multi-Modal Pipeline built in Unreal Engine 5.8 C++ and Blender 5.2.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
 }
 </script>
+<link rel="stylesheet" href="melodia-tokens.css">
+<link rel="stylesheet" href="melodia-luxury-type.css">
 <link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-game-ui.css">
 <link rel="stylesheet" href="melodia-components.css">
+<link rel="stylesheet" href="melodia-mobile.css">
 <style>
-.env-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:1.5rem}.env-card{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:flex-end;text-decoration:none}.env-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}.env-card:hover img{transform:scale(1.04)}.env-card .overlay{position:relative;z-index:1;padding:1rem 1rem .85rem;width:100%;background:linear-gradient(transparent,rgba(20,26,48,.88))}.env-card .env-name{font-family:var(--font-display,Fraunces,serif);font-size:1.15rem;color:#fff;display:block}.env-card .env-tag{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold,var(--color-accent-primary,#C9A86A));display:block;margin-top:2px}.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}:focus-visible{outline:2px solid var(--color-accent-primary,#C9A86A);outline-offset:2px}@media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero-poster{display:block}.env-card img{transition:none}}
+.env-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:1.5rem}
+.env-card{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:flex-end;text-decoration:none}
+.env-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.env-card:hover img{transform:scale(1.04)}
+.env-card .overlay{position:relative;z-index:1;padding:1rem 1rem .85rem;width:100%;background:linear-gradient(transparent,rgba(20,26,48,.88))}
+.env-card .env-name{font-family:var(--font-display,Fraunces,serif);font-size:1.15rem;color:#fff;display:block}
+.env-card .env-tag{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold,var(--color-accent-primary,#C9A86A));display:block;margin-top:2px}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+:focus-visible{outline:2px solid var(--color-accent-primary,#C9A86A);outline-offset:2px}
+.gates-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.5rem}
+.gate-card{padding:1rem;background:rgba(20,26,48,0.7);border:1px solid rgba(201,168,106,0.25);border-radius:4px}
+.gate-card h4{font-family:var(--font-display,Fraunces,serif);color:var(--color-accent-primary,#C9A86A);font-size:.95rem;margin-bottom:.4rem}
+.gate-card p{font-size:.78rem;color:var(--color-text-secondary,#A9A7C0);line-height:1.4}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero-poster{display:block}.env-card img{transition:none}}
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to portfolio</a>
-<div class="melodia-shell fashion-mode" data-mg="full" data-hero="cosmic" data-visual="lookbook" data-effects="starfield,orrery,planetarium,holo,instruments,magical" data-nav-cta="application-hub.html" data-nav-cta-label="Environments">
-<header class="shell-nav constellation-nav" aria-label="Portfolio navigation">
-  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="melodia-shell fashion-mode" data-mg="full" data-hero="cosmic" data-visual="lookbook" data-effects="starfield,orrery,planetarium,holo,instruments,magical" data-nav-cta="melodia-gameplay-loop.html" data-nav-cta-label="Playable JRPG Loop">
+<header class="shell-nav constellation-nav" aria-label="Melodia navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
   <nav class="nav-links" aria-label="Sections">
-    <a href="application-hub.html">Environments</a>
-    <a href="shader-breakdowns.html">Shaders</a>
-    <a href="melodia-ui-design-system.html">UI Design System</a>
-    <a href="recruiter-one-sheet.html">One-sheet</a>
-    <a href="resume.html">Resume</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="melodia-gameplay-loop.html">JRPG Loop</a>
+    <a href="design-specs.html">P0 Gates</a>
+    <a href="pipeline.html">Echo Pipeline</a>
+    <a href="application-hub.html">Architecture Hub</a>
   </nav>
-  <a class="nav-cta button-premium" href="application-hub.html">4 Environments</a>
+  <a class="nav-cta button-premium" href="melodia-gameplay-loop.html">Playable JRPG Loop</a>
 </header>
 
 <main id="main">
@@ -55,71 +80,254 @@
   </div>
   <div class="parallax-layer-8 hero-copy-layer">
     <div class="hero-inner">
-      <p class="kicker magazine-kicker premium-kicker">Portfolio · Brennan Shepherd</p>
+      <p class="kicker magazine-kicker premium-kicker">MELODIA — Dual-Track Production &amp; P0 First Dream Vertical Slice</p>
       <div class="editorial-rhythm-divider sheet" data-divider="astral" aria-hidden="true"><span class="glyph">♪ · ♥ · ♪</span></div>
-      <h1 id="hero-title">Pretty worlds. Real pipeline underneath.</h1>
-      <p class="lede">Final-year environment artist focused on <strong>stylized fantasy worlds, UE5 Substrate Toon materials, PCG procedural dressing, and magical girl aesthetic</strong> — targeting Infinity Nikki, HoYoverse, and stylized AA studios.</p>
+      <h1 id="hero-title">Dual-Track Production &amp; P0 First Dream Vertical Slice</h1>
+      <p class="lede">Melodia pairs a compact <strong>Persona-lite JRPG gameplay slice</strong> (QuillScript dialogue authority, stock turn-based combat, Harmonix rhythm highway, binary save persistence) with an enterprise <strong>Unreal Engine 5.8 C++ architecture</strong>, supported by the <strong>Echo Multi-Modal Pipeline</strong> (bridging Blender 5.2, UE 5.8, TouchDesigner audio reactivity, and Monolith MCP HTTP Port 9316).</p>
       <div class="hero-actions" aria-label="Primary destinations">
-        <a class="button primary button-premium-primary" href="application-hub.html">Explore 4 environments</a>
-        <a class="button button-premium" href="sakura-case-study.html">Sakura Dream</a>
-        <a class="button button-premium" href="recruiter-one-sheet.html">One-sheet</a>
+        <a class="button primary button-premium-primary" href="melodia-gameplay-loop.html">Explore 7-Stage JRPG Loop</a>
+        <a class="button button-premium" href="design-specs.html">Inspect 12 P0 Gates</a>
+        <a class="button button-premium" href="pipeline.html">Echo Pipeline Matrix</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="band paper" aria-labelledby="worlds-title">
+<!-- Editorial Section: The First Dream -->
+<section class="band editorial paper" aria-labelledby="editorial-title">
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow">Portfolio Worlds</p>
-        <h2 id="worlds-title">Four environments. One material system.</h2>
+        <p class="eyebrow">Editorial Feature</p>
+        <h2 id="editorial-title">The First Dream: A Vertical Slice</h2>
       </div>
-      <p>Each world built with M_Master_Toon_Universal — 916 expressions, 11 static switches, full Substrate Toon BSDF. PCG scattering, SDF ornamental detail, and toon outline post-process across all pillars.</p>
+      <p>Melodia's 'First Dream' is a highly concentrated <strong>Persona-lite JRPG loop</strong> that serves as our foundational vertical slice, bringing together robust subsystems into a seamless player experience.</p>
     </div>
-    <div class="env-grid">
-      <a class="env-card" href="sakura-case-study.html">
-        <img src="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" alt="Sakura Dream" loading="lazy" />
-        <div class="overlay"><span class="env-name">Sakura Dream</span><span class="env-tag">Shrine axis · Petal light · Toon materials</span></div>
-      </a>
-      <a class="env-card" href="space-cathedral.html">
-        <img src="../generated/assets/nightshift/WP_SpaceCathedral_terrain.png" alt="Space Cathedral" loading="lazy" />
-        <div class="overlay"><span class="env-name">Space Cathedral</span><span class="env-tag">Cosmic gothic · CelestialNebula · PCG grammar</span></div>
-      </a>
-      <a class="env-card" href="cosmic-orrery.html">
-        <img src="../generated/assets/nightshift/WP_CosmicOrrery_terrain.png" alt="Cosmic Orrery" loading="lazy" />
-        <div class="overlay"><span class="env-name">Cosmic Orrery</span><span class="env-tag">Planetary scatter · Orbital rings · Starmap shaders</span></div>
-      </a>
-      <a class="env-card" href="baroque-grotto.html">
-        <img src="../generated/assets/nightshift/WP_BaroqueGrotto_terrain.png" alt="Baroque Grotto" loading="lazy" />
-        <div class="overlay"><span class="env-name">Baroque Grotto</span><span class="env-tag">Ornate architecture · SDF ornament · Grotto scatter</span></div>
-      </a>
+    <div class="editorial-content" style="font-family: var(--font-body, system-ui, sans-serif); color: var(--color-text-secondary, #A9A7C0); line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 2rem; background: rgba(20, 26, 48, 0.5); border: 1px solid rgba(201, 168, 106, 0.3); border-radius: 8px;">
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 1rem;"><strong>QuillScript Narrative Engine:</strong> Empowers character interactions with typed terminal results and strict narrative authority.</li>
+        <li style="margin-bottom: 1rem;"><strong>Rhythm Combat System:</strong> Powered by the Harmonix music clock, syncing actions to a 128 BPM highway to defer damage multipliers based on timing.</li>
+        <li style="margin-bottom: 1rem;"><strong>12 P0 Foundation Gates:</strong> The critical baseline matrix ensuring battle UI, save/load persistence, input debouncing, and script routing are fundamentally stable.</li>
+        <li style="margin-bottom: 1rem;"><strong>Echo Multi-Modal Pipeline:</strong> The enterprise backbone connecting Blender 5.2, Unreal Engine 5.8, TouchDesigner, and Monolith MCP over specialized IPC ports for a rapid, iterative design workflow.</li>
+      </ul>
+      <p style="margin-top: 1.5rem; font-style: italic;">This vertical slice proves our core JRPG technology and paves the way for the broader environment-art platform's procedural generation and variant automation.</p>
+      
+      <h3 style="margin-top: 2rem; margin-bottom: 0.5rem; color: var(--color-accent-primary, #C9A86A); font-family: var(--font-display, Fraunces, serif);">Level Routing & Roles</h3>
+      <table style="width: 100%; text-align: left; border-collapse: collapse; margin-top: 1rem; font-size: 0.9rem;">
+        <tr style="border-bottom: 1px solid rgba(201, 168, 106, 0.3);"><th style="padding: 0.5rem;">#</th><th style="padding: 0.5rem;">Level</th><th style="padding: 0.5rem;">Role</th><th style="padding: 0.5rem;">Production Notes</th></tr>
+        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.5rem;">1</td><td style="padding: 0.5rem; color: #fff;">L_MelusinaMorning</td><td style="padding: 0.5rem;">Bedroom / Sir intro</td><td style="padding: 0.5rem;">Live path under Melodia/Levels/Opening only</td></tr>
+        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.5rem;">2</td><td style="padding: 0.5rem; color: #fff;">L_KaleidoNave</td><td style="padding: 0.5rem;">Traversal (merged Dreamstate)</td><td style="padding: 0.5rem;">Cathedral kit FBX ready; no Dreamstate map</td></tr>
+        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.5rem;">3</td><td style="padding: 0.5rem; color: #fff;">ZenForestTest</td><td style="padding: 0.5rem;">First JRPG encounter</td><td style="padding: 0.5rem;">Magicians SM_Lantern, not zenlantern.fbx</td></tr>
+        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.5rem;">4</td><td style="padding: 0.5rem; color: #fff;">Roguelike rooms</td><td style="padding: 0.5rem;">Expedition close</td><td style="padding: 0.5rem;">Ornament kitbash already at Meshes/Ornament</td></tr>
+      </table>
     </div>
   </div>
 </section>
 
-<section class="band astral" aria-labelledby="focus-title">
+<!-- Section: First Dream Environments -->
+<section class="band paper" aria-labelledby="worlds-title" style="margin-bottom: 2rem;">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Production Environments</p>
+        <h2 id="worlds-title">Five Core Levels. One First Dream.</h2>
+      </div>
+      <p>The First Dream gameplay loop routes through these five specific environments.</p>
+    </div>
+    <div class="env-grid">
+      <div class="env-card" style="background: rgba(201,168,106,0.1); border: 1px solid rgba(201,168,106,0.3);">
+        <div class="overlay"><span class="env-name">L_MelusinaMorning</span><span class="env-tag">Bedroom / Sir intro</span></div>
+      </div>
+      <div class="env-card" style="background: rgba(201,168,106,0.1); border: 1px solid rgba(201,168,106,0.3);">
+        <div class="overlay"><span class="env-name">L_KaleidoNave</span><span class="env-tag">Traversal (merged Dreamstate)</span></div>
+      </div>
+      <div class="env-card" style="background: rgba(201,168,106,0.1); border: 1px solid rgba(201,168,106,0.3);">
+        <div class="overlay"><span class="env-name">ZenForestTest</span><span class="env-tag">First JRPG encounter</span></div>
+      </div>
+      <div class="env-card" style="background: rgba(201,168,106,0.1); border: 1px solid rgba(201,168,106,0.3);">
+        <div class="overlay"><span class="env-name">Roguelike rooms</span><span class="env-tag">Expedition close</span></div>
+      </div>
+      <div class="env-card" style="background: rgba(201,168,106,0.1); border: 1px solid rgba(201,168,106,0.3);">
+        <div class="overlay"><span class="env-name">L_fallenmoon</span><span class="env-tag">Extended Encounter</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 1: Persona-Lite JRPG Loop Overview -->
+<section class="band paper" aria-labelledby="loop-title">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Primary Production Track</p>
+        <h2 id="loop-title">Persona-Lite JRPG Gameplay Loop &amp; Narrative Authority</h2>
+      </div>
+      <p>The "First Dream" vertical slice establishes an end-to-end JRPG gameplay flow traversing sanctuary dialogue, seamless level travel, turn-based combat, rhythm timing enhancement, typed result handling, and binary state persistence.</p>
+    </div>
+    <div class="alignment-grid">
+      <article class="alignment-card premium-card component-card" data-pillar="nikki">
+        <span class="spec-badge">Narrative Engine</span>
+        <div>
+          <h3>QuillScript Narrative Authority</h3>
+          <p>Interpreter <code>WBP_QuillDialogue</code> governs NPC interactions and dialogue branching in <code>L_MelusinaMorning</code>. Authored departure gates remain locked until narrative choices complete.</p>
+        </div>
+      </article>
+      <article class="alignment-card premium-card component-card" data-pillar="sakura">
+        <span class="spec-badge">Turn-Based Combat</span>
+        <div>
+          <h3>Turn-Based JRPG Engine</h3>
+          <p>Stock turn-based combat via <code>BP_BattleController</code> and <code>BP_BattleUI</code> (z-order 10). Features co-op synergies like Melusina's <code>Petal Cadence</code> and Sir's <code>Skybound Refrain</code>.</p>
+        </div>
+      </article>
+      <article class="alignment-card premium-card component-card" data-pillar="cosmic">
+        <span class="spec-badge">Rhythm Enhancement</span>
+        <div>
+          <h3>Harmonix Rhythm Highway</h3>
+          <p>Scrolling highway <code>WBP_MelodiaRhythmHighway</code> synchronized to 128 BPM music clock. Defers damage multiplier calculation (~3.05s window) to ensure timing accuracy rewards.</p>
+        </div>
+      </article>
+      <article class="alignment-card premium-card component-card" data-pillar="grotto">
+        <span class="spec-badge">State Persistence</span>
+        <div>
+          <h3>Canonical Binary Save System</h3>
+          <p>Binary <code>USaveGame</code> writing state to <code>Melodia_SaveSlot_0</code>. Enforces strict saving locks (<code>bCanSave = false</code>) during active turn-based combat encounters.</p>
+        </div>
+      </article>
+    </div>
+    <div class="hero-actions" style="margin-top:2rem;justify-content:center">
+      <a class="button button-premium-primary" href="melodia-gameplay-loop.html">View Full 7-Stage Loop Breakdown →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: Echo Multi-Modal Pipeline Summary & Port Matrix -->
+<section class="band astral" aria-labelledby="pipeline-title">
   <div class="section-orrery constellation-slot" data-orrery="constellation" aria-hidden="true"></div>
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow">Nikki-Aligned</p>
-        <h2 id="focus-title">Built for the magical girl lookbook.</h2>
+        <p class="eyebrow">Secondary Production Track</p>
+        <h2 id="pipeline-title">Echo Multi-Modal Pipeline &amp; Network Matrix</h2>
       </div>
-      <p>Every environment ships with toon outlines, iridescent sheen, soft bloom, warm lacquer surfaces, and PCG blossom/firefly scattering — the Infinity Nikki / romantic fantasy signal.</p>
+      <p>Real-time DCC automation platform linking Blender 5.2, UE 5.8, TouchDesigner, and Web publishing across 6 dedicated IPC network service ports.</p>
     </div>
     <div class="alignment-grid">
-      <article class="alignment-card premium-card"><span>Material</span><div><h3>MI_Show_NikkiHero</h3><p>Full Nikki hero stack — rim light, glow, sparkle, iridescence. Built on M_Master_Toon_Universal.</p></div></article>
-      <article class="alignment-card premium-card"><span>Material</span><div><h3>MI_Show_CelestialNebula</h3><p>NASA starmap-driven nebula shader with space parallax. Used in Space Cathedral and Cosmic Orrery.</p></div></article>
-      <article class="alignment-card premium-card"><span>Material</span><div><h3>MI_Show_CherryBlossom</h3><p>Flower shadow garden with projected petal shadows and sparkle — Sakura Dream signature surface.</p></div></article>
-      <article class="alignment-card premium-card"><span>System</span><div><h3>PCG Scatter Library</h3><p>60+ PCG graphs across universal, sakura, baroque, cosmic, escher styles. Density-falloff, spline routes, biome blending.</p></div></article>
-      <article class="alignment-card premium-card"><span>System</span><div><h3>19 Showcase Materials</h3><p>From NikkiHero to CelestialNebula to SDF ornament — each with webm animation loops and material isolate previews.</p></div></article>
-      <article class="alignment-card premium-card"><span>Pipeline</span><div><h3>Render Automation</h3><p>Python capture pipeline exports hero/breakdown/material renders directly from UE to website. Portfolio updates in one command.</p></div></article>
+      <article class="alignment-card premium-card component-card">
+        <span class="spec-badge">Port 9876 UDP</span>
+        <div>
+          <h3>LiveLink MoCap Stream</h3>
+          <p>Real-time pose, skeletal, and facial motion capture stream from Blender 5.2 directly to Unreal Engine 5.8 viewports.</p>
+        </div>
+      </article>
+      <article class="alignment-card premium-card component-card">
+        <span class="spec-badge">Port 9316 HTTP</span>
+        <div>
+          <h3>Monolith MCP Proxy</h3>
+          <p>Unreal Engine 5.8 automation proxy with 16 specialized query tools. Logs telemetry to <code>Saved/Logs/MonolithCalls.jsonl</code>.</p>
+        </div>
+      </article>
+      <article class="alignment-card premium-card component-card">
+        <span class="spec-badge">Port 9317 HTTP</span>
+        <div>
+          <h3>Blender MCP Bridge</h3>
+          <p>HTTP bridge for automated mesh import, armature binding, toon material generation, and FBX scene exports.</p>
+        </div>
+      </article>
+      <article class="alignment-card premium-card component-card">
+        <span class="spec-badge">Port 55558 TCP</span>
+        <div>
+          <h3>UEBlueprintMCP Socket API</h3>
+          <p>Socket interface for length-prefixed graph node query, dynamic node creation, and blueprint wire injection.</p>
+        </div>
+      </article>
+      <article class="alignment-card premium-card component-card">
+        <span class="spec-badge">Port 50021 / 50022 REST</span>
+        <div>
+          <h3>VOICEVOX &amp; Melusina Voice</h3>
+          <p>Neural speech synthesis engine with 7 Japanese voice models and custom Melusina TTS proxy for dialogue rendering.</p>
+        </div>
+      </article>
     </div>
     <div class="hero-actions" style="margin-top:2rem;justify-content:center">
-      <a class="button button-premium" href="recruiter-one-sheet.html">Recruiter one-sheet</a>
-      <a class="button button-premium" href="resume.html">Resume</a>
-      <a class="button button-premium" href="shader-breakdowns.html">Full material proof</a>
+      <a class="button button-premium" href="pipeline.html">Explore Complete Echo Pipeline Matrix →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: 12 P0 Foundation Gates Summary Grid -->
+<section class="band paper" aria-labelledby="gates-title">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Verification Framework</p>
+        <h2 id="gates-title">12 P0 Foundation Verification Gates Summary</h2>
+      </div>
+      <p>Binary baseline matrix establishing operational stability across UI, input debouncing, narrative script routing, save persistence, and packaged standalone builds. <br><strong style="color:var(--color-accent-primary,#C9A86A);">Status Note: As of 2026-08-07, all 12 P0 foundation gates are unclaimed and unverified until PIE proof is recorded.</strong></p>
+    </div>
+    <div class="gates-grid">
+      <div class="gate-card">
+        <span class="spec-badge">P0-01</span>
+        <h4>Battle Widget Identification</h4>
+        <p>Instantiate <code>BP_BattleUI</code> at runtime on <code>BeginPlay</code> at z-order 10.</p>
+      </div>
+      <div class="gate-card">
+        <span class="spec-badge">P0-02</span>
+        <h4>Input Parity &amp; Debouncing</h4>
+        <p>Enforce 150ms debouncing across Mouse, Keyboard, and Gamepad.</p>
+      </div>
+      <div class="gate-card">
+        <span class="spec-badge">P0-03</span>
+        <h4>Result Matrix Pass</h4>
+        <p>Bind <code>OnBattleOver</code> to transition <code>Victory</code>, <code>Defeat</code>, <code>Fled</code>, <code>Unavailable</code>.</p>
+      </div>
+      <div class="gate-card">
+        <span class="spec-badge">P0-04</span>
+        <h4>Save/Load Persistence</h4>
+        <p>Serialize canonical slot <code>Melodia_SaveSlot_0</code> using binary <code>USaveGame</code>.</p>
+      </div>
+      <div class="gate-card">
+        <span class="spec-badge">P0-05</span>
+        <h4>Reward Idempotency</h4>
+        <p>Validate flags prior to granting items/XP upon level reload.</p>
+      </div>
+      <div class="gate-card">
+        <span class="spec-badge">P0-06</span>
+        <h4>Quill Unavailable Load</h4>
+        <p>Implement null-check fallback to bypass missing dialogue files.</p>
+      </div>
+      <div class="gate-card">
+        <span class="spec-badge">P0-07</span>
+        <h4>Safe Script Rerouting</h4>
+        <p>Route invalid dialogue script nodes to safe location <code>Morning_RoomShell</code>.</p>
+      </div>
+      <div class="gate-card">
+        <span class="spec-badge">P0-08</span>
+        <h4>Interpreter Invalidation</h4>
+        <p>Flush pending delegates safely on mid-dialogue level transition.</p>
+      </div>
+      <div class="gate-card">
+        <span class="spec-badge">P0-09</span>
+        <h4>Mid-Battle Save Lock</h4>
+        <p>Enforce <code>bCanSave = false</code> during active turn-based encounters.</p>
+      </div>
+      <div class="gate-card">
+        <span class="spec-badge">P0-10</span>
+        <h4>Main Menu Wiring</h4>
+        <p>Wire <code>WBP_MainMenu</code> to <code>UMelodiaTravelSubsystem</code> and game instance.</p>
+      </div>
+      <div class="gate-card">
+        <span class="spec-badge">P0-11</span>
+        <h4>Room Shell Anchor</h4>
+        <p>Attach tag <code>Melodia_RoomShell_Anchor</code> to morning spawn actor.</p>
+      </div>
+      <div class="gate-card">
+        <span class="spec-badge">P0-12</span>
+        <h4>Packaged Route Launch</h4>
+        <p>Cook maps cleanly in <code>DefaultGame.ini</code> for standalone executable execution.</p>
+      </div>
+    </div>
+    <div class="hero-actions" style="margin-top:2rem;justify-content:center">
+      <a class="button button-premium" href="design-specs.html">Inspect Detailed Design Specifications →</a>
     </div>
   </div>
 </section>
@@ -127,10 +335,16 @@
 
 <footer class="footer">
   <div class="inner">
-    <span>Brennan Shepherd / Environment & Technical Artist</span>
-    <span>Stylized fantasy worlds · UE5 · PCG · Toon Materials · Toronto, ON</span>
-    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-tertiary)"><span>v2.0.0</span><span>UE 5.8</span><span>4 worlds</span><span>30 materials</span><span>36 PCG graphs</span><span>267k tris</span><a href="pipeline.html" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">Pipeline</a></div>
-    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase"><a href="pcg-system-impact.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">PCG Systems</a><a href="material-loop-gallery.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Material Loops</a><a href="sdf-material-gallery.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">SDF Gallery</a><a href="commissions.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Commissions</a></div>
+    <span>MELODIA — Dual-Track Production</span>
+    <span>Unreal Engine 5.8 C++ · QuillScript · Harmonix Rhythm · Echo Multi-Modal Pipeline</span>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-tertiary)"><span>v2.0.0</span><span>UE 5.8</span><span>Blender 5.2</span><span>12 P0 Gates</span><span>6 Network Ports</span></div>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase">
+      <a href="index.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Overview</a>
+      <a href="melodia-gameplay-loop.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">JRPG Loop</a>
+      <a href="design-specs.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">P0 Gates</a>
+      <a href="pipeline.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Pipeline</a>
+      <a href="application-hub.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Architecture Hub</a>
+    </div>
   </div>
 </footer>
 </div>
@@ -139,7 +353,8 @@
 <script src="melodia-orrery-system.js"></script>
 <script src="melodia-planetarium.js"></script>
 <script src="melodia-magical-girl.js"></script>
-<script src="melodia-dream-shaders.js"></script>
+<script src="melodia-escher-interact.js"></script>
+<script src="melodia-game-ui.js"></script>
 <script src="melodia-site-nav.js"></script>
 <script src="melodia-editorial.js"></script>
 <script>MelodiaEditorial.init({ page: 'index' });</script>

@@ -3,169 +3,369 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Pipeline & Infrastructure | Brennan Shepherd</title>
-<meta name="description" content="The toolchain behind the portfolio: UE5, Blender, Material Maker, PCG, TouchDesigner, and the deploy pipeline that ships environments from editor to GitHub Pages." />
-<meta property="og:title" content="Pipeline & Infrastructure — Brennan Shepherd" />
-<meta property="og:description" content="Full toolchain breakdown: how environments go from UE5 to GitHub Pages. Render ingest, one-command deploy, PCG scatter systems, and material pipeline." />
-<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
+<title>Echo Multi-Modal Pipeline &amp; Infrastructure | Melodia Dual-Track Production</title>
+<meta name="description" content="Technical architecture of the Melodia Echo Multi-Modal Pipeline: Port 9876 LiveLink UDP, Port 9316 Monolith MCP HTTP, Port 9317 Blender MCP, Port 55558 UEBlueprintMCP, TouchDesigner 4-band audio streamer, and sRGB-to-Linear toon color transformation." />
+<meta property="og:title" content="Echo Multi-Modal Pipeline — Melodia Infrastructure" />
+<meta property="og:description" content="DCC automation bridge connecting Blender 5.2, UE 5.8 C++, TouchDesigner CHOPs, VOICEVOX neural speech, and web asset compilers across dedicated network ports." />
+<meta property="og:image" content="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
 <meta property="og:url" content="https://fromage3900.github.io/my-site/wix/pipeline.html" />
 <meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="melodia-tokens.css">
 <link rel="stylesheet" href="melodia-luxury-type.css">
 <link rel="stylesheet" href="melodia-editorial.css">
-<link rel="stylesheet" href="melodia-fashion-editorial.css">
-<link rel="stylesheet" href="melodia-premium-system.css">
-<link rel="stylesheet" href="enhanced-cosmic-hero-premium.css">
+<link rel="stylesheet" href="melodia-game-ui.css">
+<link rel="stylesheet" href="melodia-components.css">
+<link rel="stylesheet" href="melodia-mobile.css">
 <style>
-.toolchain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:1rem}.toolchain-card{padding:1rem;background:var(--color-surface-sunken);border-radius:4px;border-left:2px solid var(--color-accent-primary,#C9A86A)}.toolchain-card h3{font-family:var(--font-display,Fraunces,serif);font-size:.9rem;margin:0 0 .3rem;color:var(--color-text-accent)}.toolchain-card p{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.02em;color:var(--color-text-tertiary);margin:0;line-height:1.4}
-.workflow-steps{display:flex;flex-direction:column;gap:0;margin-top:1rem;max-width:600px}.workflow-step{display:flex;align-items:flex-start;gap:.75rem;padding:.65rem .75rem;position:relative}.workflow-step+.workflow-step{border-top:1px solid rgba(255,255,255,.04)}.workflow-step .num{font-family:var(--font-mono);font-size:.65rem;color:var(--color-accent-primary,#C9A86A);min-width:1.5rem;padding-top:1px}.workflow-step .desc{font-size:.78rem;color:var(--color-text-secondary);line-height:1.4}.workflow-step .cmd{font-family:var(--font-mono);font-size:.6rem;color:var(--color-text-tertiary);margin-top:2px}
-.stat-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:rgba(201,168,106,.1);border:1px solid rgba(201,168,106,.2);border-radius:3px;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-accent,#C9A86A)}.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:.75rem}
-.manifest-table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.75rem}.manifest-table th{text-align:left;font-family:var(--font-mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-tertiary);padding:.5rem .6rem;border-bottom:1px solid rgba(255,255,255,.08)}.manifest-table td{padding:.5rem .6rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--color-text-secondary)}.manifest-table .status{display:inline-block;padding:1px 6px;border-radius:2px;font-family:var(--font-mono);font-size:.55rem;text-transform:uppercase}.status-live{background:rgba(100,200,100,.15);color:#8c8}.status-draft{background:rgba(200,200,100,.15);color:#cc8}
+.toolchain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:1.25rem}
+.toolchain-card{padding:1.25rem;background:rgba(20,26,48,0.7);border-radius:4px;border-left:3px solid var(--color-accent-primary,#C9A86A);border:1px solid rgba(201,168,106,0.25)}
+.toolchain-card h3{font-family:var(--font-display,Fraunces,serif);font-size:1rem;margin:0 0 .5rem;color:var(--color-accent-primary,#C9A86A)}
+.toolchain-card p{font-size:.78rem;color:var(--color-text-secondary,#A9A7C0);margin:0;line-height:1.5}
+.workflow-steps{display:flex;flex-direction:column;gap:0;margin-top:1rem;max-width:800px}
+.workflow-step{display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;position:relative}
+.workflow-step+.workflow-step{border-top:1px solid rgba(255,255,255,.05)}
+.workflow-step .num{font-family:var(--font-mono);font-size:.75rem;color:var(--color-accent-primary,#C9A86A);min-width:1.75rem;padding-top:1px}
+.workflow-step .desc{font-size:.8rem;color:var(--color-text-secondary);line-height:1.5}
+.stat-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:rgba(201,168,106,.1);border:1px solid rgba(201,168,106,.25);border-radius:3px;font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-primary,#C9A86A)}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:.75rem}
+.manifest-table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.8rem}
+.manifest-table th{text-align:left;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-tertiary);padding:.6rem .75rem;border-bottom:1px solid rgba(201,168,106,.3);background:rgba(20,26,48,0.9)}
+.manifest-table td{padding:.6rem .75rem;border-bottom:1px solid rgba(255,255,255,.05);color:var(--color-text-secondary)}
+.manifest-table .status{display:inline-block;padding:2px 8px;border-radius:3px;font-family:var(--font-mono);font-size:.6rem;text-transform:uppercase}
+.status-live{background:rgba(100,200,100,.15);color:#8c8}
 </style>
 </head>
 <body>
-<div class="melodia-shell fashion-mode" data-mg="soft" data-hero="cosmic" data-visual="lookbook" data-effects="starfield,holo,magical" data-nav-cta="application-hub.html" data-nav-cta-label="Environments">
-<header class="shell-nav" aria-label="Portfolio navigation">
-  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="melodia-shell fashion-mode" data-mg="soft" data-hero="cosmic" data-visual="lookbook" data-effects="starfield,holo,magical">
+<header class="shell-nav constellation-nav" aria-label="Melodia navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
   <nav class="nav-links" aria-label="Sections">
-    <a href="index.html">Home</a>
-    <a href="application-hub.html">Environments</a>
-    <a href="shader-breakdowns.html">Shaders</a>
-    <a href="recruiter-one-sheet.html">One-sheet</a>
-    <a href="resume.html">Resume</a>
+    <a href="index.html">Overview</a>
+    <a href="melodia-gameplay-loop.html">JRPG Loop</a>
+    <a href="design-specs.html">P0 Gates</a>
+    <a href="pipeline.html" class="active">Echo Pipeline</a>
+    <a href="application-hub.html">Architecture Hub</a>
   </nav>
-  <a class="nav-cta button-premium" href="application-hub.html">4 Environments</a>
+  <a class="nav-cta button-premium" href="application-hub.html">Architecture Hub</a>
 </header>
 
 <main id="main">
 <section class="hero" aria-labelledby="page-title">
-  <div class="parallax-layer-1" aria-hidden="true"></div>
-  <div class="parallax-layer-2" aria-hidden="true"></div>
-  <div class="parallax-layer-5" aria-hidden="true">
-    <div class="orrery-system"><div class="orrery-core"></div></div>
-  </div>
-  <div class="parallax-layer-6" aria-hidden="true"></div>
-  <div class="parallax-layer-7" aria-hidden="true">
-    <div class="hero-poster" style="position:absolute;inset:0;background:linear-gradient(135deg,#0a0e1a 0%,#1a1040 40%,#0d1a2e 100%)"></div>
-  </div>
-  <div class="parallax-layer-8">
-    <div class="hero-inner">
-      <p class="kicker magazine-kicker">v2.0.0 · Infrastructure</p>
-      <p class="nikki-ribbon">The machine behind the pretty worlds</p>
-      <h1 id="page-title">Toolchain & pipeline.</h1>
-      <p class="lede">This portfolio is built on a real game-dev pipeline — Blender → UE5 → Material Maker → PCG → render capture → one-command deploy. Every environment ship follows the same workflow. Here's how it works.</p>
-      <div class="hero-actions">
-        <a class="button primary button-premium-primary" href="application-hub.html">See the worlds</a>
-        <a class="button button-premium" href="#toolchain">Jump to toolchain</a>
-      </div>
+  <div class="hero-inner">
+    <p class="kicker magazine-kicker">Echo Multi-Modal Pipeline · Network Architecture</p>
+    <div class="editorial-rhythm-divider sheet" data-divider="astral" aria-hidden="true"><span class="glyph">♪ · ♥ · ♪</span></div>
+    <h1 id="page-title">Echo Pipeline &amp; DCC Infrastructure</h1>
+    <p class="lede">The Echo Multi-Modal Pipeline connects Blender 5.2, Unreal Engine 5.8 C++, TouchDesigner CHOP audio processing, VOICEVOX neural speech, and web asset compilers across 6 dedicated IPC network ports. Built to automate material crosswalks, real-time MoCap streams, toon profile shading, and distribution packaging.</p>
+    <div class="hero-actions">
+      <a class="button primary button-premium-primary" href="#port-matrix">Explore Network Matrix</a>
+      <a class="button button-premium" href="#material-crosswalks">Material Math &amp; Audio Streamer</a>
     </div>
   </div>
 </section>
 
-<section class="band paper" aria-labelledby="stats-title">
+<!-- Band 1: Network Port Allocation Matrix -->
+<section class="band paper" id="port-matrix" aria-labelledby="ports-title">
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow">Portfolio at a Glance</p>
-        <h2 id="stats-title">v2.0.0 · 4 worlds shipped</h2>
+        <p class="eyebrow">Echo Multi-Modal Network Matrix</p>
+        <h2 id="ports-title">IPC Port Allocation &amp; Service Protocols</h2>
       </div>
-      <p>Live stats from the site manifest. Every deploy updates these counts automatically.</p>
+      <p>Dedicated local network ports linking DCC applications, engine automation proxies, speech synthesis, and socket graph APIs.</p>
     </div>
-    <div class="badge-row">
-      <span class="stat-badge">UE 5.8</span>
-      <span class="stat-badge">4 environments</span>
-      <span class="stat-badge">30 materials</span>
-      <span class="stat-badge">36 PCG graphs</span>
-      <span class="stat-badge">267k triangles</span>
-      <span class="stat-badge">133 draw calls</span>
-      <span class="stat-badge">85 renders</span>
-      <span class="stat-badge">7 pages</span>
-      <span class="stat-badge">1-command deploy</span>
+    
+    <div class="badge-row" style="margin-bottom: 1.5rem;">
+      <span class="stat-badge">Port 9876 UDP LiveLink</span>
+      <span class="stat-badge">Port 9316 HTTP Monolith MCP</span>
+      <span class="stat-badge">Port 9317 HTTP Blender MCP</span>
+      <span class="stat-badge">Port 55558 TCP UEBlueprintMCP</span>
+      <span class="stat-badge">Port 50021 REST VOICEVOX</span>
+      <span class="stat-badge">Port 50022 REST Melusina TTS</span>
+    </div>
+
+    <div class="game-ui-frame" style="padding: 1.25rem; background: rgba(20,26,48,0.7); border: 1px solid rgba(201,168,106,0.3); border-radius: 4px; overflow-x: auto;">
+      <table class="manifest-table" style="margin-top:0;">
+        <thead>
+          <tr>
+            <th>Port</th>
+            <th>Protocol</th>
+            <th>Endpoint</th>
+            <th>Service Description</th>
+            <th>Telemetry / Log Destination</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--color-accent-primary, #C9A86A)">9876</strong></td>
+            <td><span class="spec-badge">UDP</span></td>
+            <td><code>localhost:9876</code></td>
+            <td>LiveLink pose, skeleton, and facial motion capture stream from Blender 5.2 to Unreal Engine 5.8.</td>
+            <td>Real-time Viewport Ingest</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--color-accent-primary, #C9A86A)">9316</strong></td>
+            <td><span class="spec-badge">HTTP / JSON-RPC</span></td>
+            <td><code>http://localhost:9316/mcp</code></td>
+            <td>Monolith MCP Unreal Engine automation proxy providing 16 specialized query and execution tools.</td>
+            <td><code>Saved/Logs/MonolithCalls.jsonl</code></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--color-accent-primary, #C9A86A)">9317</strong></td>
+            <td><span class="spec-badge">HTTP</span></td>
+            <td><code>http://localhost:9317</code></td>
+            <td>Blender MCP bridge for automated mesh import, armature binding, and scene export pipelines.</td>
+            <td>Blender Console Log</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--color-accent-primary, #C9A86A)">55558</strong></td>
+            <td><span class="spec-badge">TCP</span></td>
+            <td><code>localhost:55558</code></td>
+            <td>UEBlueprintMCP socket API for length-prefixed graph node query, creation, and injection.</td>
+            <td>UE5 Output Log</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--color-accent-primary, #C9A86A)">50021</strong></td>
+            <td><span class="spec-badge">HTTP REST</span></td>
+            <td><code>http://localhost:50021</code></td>
+            <td>VOICEVOX neural speech synthesis engine driving 7 Japanese character voice models.</td>
+            <td>VOICEVOX Server Output</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--color-accent-primary, #C9A86A)">50022</strong></td>
+            <td><span class="spec-badge">HTTP REST</span></td>
+            <td><code>http://localhost:50022</code></td>
+            <td>Melusina custom voice synthesis proxy for automated character dialogue rendering.</td>
+            <td>Dialogue Ingest Buffer</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
-<section class="band astral" aria-labelledby="toolchain">
-  <div class="section-orrery constellation-slot" data-orrery="constellation" aria-hidden="true"></div>
+<!-- Band 2: Core Subsystems & Technical Deep Dives (7 Cards) -->
+<section class="band astral" id="material-crosswalks" aria-labelledby="toolchain">
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow">The Stack</p>
-        <h2 id="toolchain">Full toolchain.</h2>
+        <p class="eyebrow">Echo Pipeline Core Systems</p>
+        <h2 id="toolchain">Subsystem Architecture &amp; Innovations</h2>
       </div>
-      <p>Every tool in the pipeline, with its role in the production flow.</p>
+      <p>Modular automation engines powering real-time rendering, material math, CHOP audio reactivity, and web compiler outputs.</p>
     </div>
+    
     <div class="toolchain-grid">
-      <div class="toolchain-card"><h3>Unreal Engine 5.8</h3><p>Environment assembly, Substrate Toon materials, PCG scattering, post-process toon outlines, and Python capture pipeline for renders.</p></div>
-      <div class="toolchain-card"><h3>Blender 5.1</h3><p>Stylized geometry, modular kit construction, surreal_arch procedural generation engine (42 style genomes), and FBX export to UE.</p></div>
-      <div class="toolchain-card"><h3>Material Maker</h3><p>Procedural PBR graph authoring. v1: 72 nodes, 5 export maps. v2 redesign: 3-layer, ~105 nodes, 8 export maps, separate diffuse/specular channels.</p></div>
-      <div class="toolchain-card"><h3>Substance 3D Painter</h3><p>PBR texture baking, hand-painted wear/dirt masks, material reference for toon color ramps and ornamental detail.</p></div>
-      <div class="toolchain-card"><h3>TouchDesigner</h3><p>Real-time VFX prototyping. MCP server via Embody/Envoy for AI-assisted TD network creation and operator editing.</p></div>
-      <div class="toolchain-card"><h3>VS Code + PowerShell</h3><p>Website source editing, deploy automation (sync_site_to_github.ps1), render ingestion (ingest-renders.ps1), and environment scaffolding (add-environment.ps1).</p></div>
-      <div class="toolchain-card"><h3>GitHub Pages</h3><p>Static hosting via git worktree on main branch. Wix iframe embeds the portfolio at full viewport. Zero-cost, version-controlled, one-command publish.</p></div>
+      <!-- Card 1 -->
+      <div class="toolchain-card component-card">
+        <h3>UE 5.8 C++ &amp; Blueprint Socket API</h3>
+        <p>Unreal Engine 5.8 C++ core backed by Monolith MCP (Port 9316) logging telemetry to <code>Saved/Logs/MonolithCalls.jsonl</code>. Operates UEBlueprintMCP socket interface (Port 55558 TCP) enabling dynamic length-prefixed graph node query and injection without manual editor intervention.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="toolchain-card component-card">
+        <h3>Blender 5.2 &amp; LiveLink MoCap Stream</h3>
+        <p>Blender 5.2 integration featuring the Blender MCP bridge (Port 9317 HTTP) for automated mesh import, armature binding, and FBX batch export. LiveLink motion capture stream operates via Port 9876 UDP to broadcast real-time pose and facial animation directly to UE5 viewports.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="toolchain-card component-card">
+        <h3>Automated Material Crosswalks &amp; Toon Math</h3>
+        <p>Converts sRGB color space to Linear via standard transformation:<br>
+        <code>Linear(c) = c / 12.92</code> for <code>c &le; 0.04045</code>, else <code>((c + 0.055) / 1.055)^2.4</code>.<br>
+        <strong>Hex #352D40 Warm-Violet Evaluation:</strong> R=53 (0.20784 &rarr; Linear 0.035133), G=45 (0.17647 &rarr; Linear 0.026330), B=64 (0.25098 &rarr; Linear 0.052814). Evaluated Vector: <code>LinearColor(0.035133, 0.026330, 0.052814, 1.0)</code>.<br>
+        Script <code>create_tp_melusina.py</code> generates <code>TP_Melusina</code> configuring <code>DiffuseRamp</code>, <code>SpecularRamp</code>, indirect intensity (0.3), extinction (0.3), and <code>T_HatchPattern</code>.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="toolchain-card component-card">
+        <h3>TouchDesigner 4-Band RMS Audio Streamer</h3>
+        <p>Script <code>build_harmonic_audio_streamer.py</code> constructs real-time CHOP audio analysis pipeline:<br>
+        1. <strong>Sub-Bass (20–100Hz):</strong> Triggers camera shake &amp; low-frequency Niagara ground pulses.<br>
+        2. <strong>Mid-Range (250–2500Hz):</strong> Modulates vocal/instrumental lighting &amp; rim light brightness.<br>
+        3. <strong>High-Frequency (4k–12kHz):</strong> Drives particle sparkle emitters &amp; rhythm highway highlights.<br>
+        4. <strong>Master RMS Envelope:</strong> Controls global atmospheric pulse &amp; post-process bloom.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="toolchain-card component-card">
+        <h3>VOICEVOX &amp; Melusina Neural Speech</h3>
+        <p>Dual REST speech synthesis pipeline leveraging VOICEVOX (Port 50021 REST) with 7 Japanese character voice models, alongside the Melusina custom voice proxy (Port 50022 REST) for automated dialogue audio generation and lip-sync metadata generation.</p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="toolchain-card component-card">
+        <h3>Web Asset Product Compiler</h3>
+        <p>Script <code>tools/build_asset_products.py</code> compiles raw 3D renders into web-ready distribution packages:<br>
+        &bull; <strong>135 Twitch Emotes:</strong> 15 types &times; 3 resolutions (28x28, 56x56, 112x112) &times; 3 background modes.<br>
+        &bull; <strong>7 OBS Overlays:</strong> 1080p stream templates + UI frames.<br>
+        &bull; <strong>78 Phone Wallpapers:</strong> Across 3 screen aspect ratios.<br>
+        &bull; <strong>12 Postcards:</strong> 300dpi print-ready front designs + 1 canonical back template.</p>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="toolchain-card component-card">
+        <h3>Git LFS &amp; Live-Ops Infrastructure</h3>
+        <p>Enterprise live-ops architecture enforcing mandatory Git LFS asset locking (<code>lockable</code> attribute across <code>.uasset</code>, <code>.umap</code>, <code>.blend</code>, <code>.fbx</code>). Integrates runtime feature flags via <code>UMelodiaFeatureFlagSubsystem</code> and a 6-week trunk-based release workflow.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- Band 3: Echo Multi-Modal 7-Stage DCC Data Pipeline -->
 <section class="band paper" aria-labelledby="workflow-title">
   <div class="inner">
     <div class="section-head">
       <div>
         <p class="eyebrow">Production Flow</p>
-        <h2 id="workflow-title">World → website in 7 steps.</h2>
+        <h2 id="workflow-title">Echo Multi-Modal 7-Stage DCC Data Pipeline</h2>
       </div>
-      <p>Each environment follows the same pipeline from first mesh to live page.</p>
+      <p>Data execution pathway from Blender 5.2 asset authoring to web product compilation and live-ops deployment.</p>
     </div>
     <div class="workflow-steps">
-      <div class="workflow-step"><span class="num">01</span><div><div class="desc">Model environment in Blender — modular kit, style genome, or hand-sculpted.</div></div></div>
-      <div class="workflow-step"><span class="num">02</span><div><div class="desc">Export FBX assets to UE5 EnvSandbox. Assign Substrate Toon materials from master library.</div></div></div>
-      <div class="workflow-step"><span class="num">03</span><div><div class="desc">Build PCG graphs — scatter, spline routes, density falloff, biome blending.</div></div></div>
-      <div class="workflow-step"><span class="num">04</span><div><div class="desc">Capture hero stills, establishing shots, material isolates, and webm loops via Python pipeline.</div></div></div>
-      <div class="workflow-step"><span class="num">05</span><div><div class="desc">Run <code class="cmd">.\tools\ingest-renders.ps1</code> — copies new captures into wix/generated/assets/</div></div></div>
-      <div class="workflow-step"><span class="num">06</span><div><div class="desc">Create or update the environment page — use <code class="cmd">.\tools\add-environment.ps1</code> for new worlds.</div></div></div>
-      <div class="workflow-step"><span class="num">07</span><div><div class="desc">Run <code class="cmd">.\deploy\quick-deploy.ps1</code> — syncs to worktree, commits, pushes. Live in ~30 seconds.</div></div></div>
+      <div class="workflow-step">
+        <span class="num">01</span>
+        <div>
+          <div class="desc"><strong>LiveLink MoCap Ingest &amp; Armature Binding:</strong> Stream Blender 5.2 skeletal &amp; facial motion capture directly into Unreal Engine 5.8 via Port 9876 UDP LiveLink.</div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <span class="num">02</span>
+        <div>
+          <div class="desc"><strong>Monolith &amp; Blender MCP Orchestration:</strong> Execute automated scene assembly and mesh imports over Port 9316 HTTP (Monolith) and Port 9317 HTTP (Blender MCP), logging to <code>MonolithCalls.jsonl</code>.</div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <span class="num">03</span>
+        <div>
+          <div class="desc"><strong>UEBlueprintMCP Socket API Injection:</strong> Query and inject length-prefixed Blueprint graph nodes dynamically via Port 55558 TCP.</div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <span class="num">04</span>
+        <div>
+          <div class="desc"><strong>Toon Profile Math &amp; sRGB-to-Linear Transformation:</strong> Execute <code>create_tp_melusina.py</code> to configure <code>TP_Melusina</code> toon profile ramps and transform colors (e.g., `#352D40` &rarr; `LinearColor(0.035133, 0.026330, 0.052814, 1.0)`).</div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <span class="num">05</span>
+        <div>
+          <div class="desc"><strong>TouchDesigner CHOP Real-Time Audio Streaming:</strong> Run <code>build_harmonic_audio_streamer.py</code> to broadcast 4-band audio CHOPs (Sub-Bass, Mid-Range, High-Freq, Master RMS) driving Niagara VFX and bloom.</div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <span class="num">06</span>
+        <div>
+          <div class="desc"><strong>VOICEVOX &amp; Melusina Dialogue Synthesis:</strong> Generate Japanese character voice audio and timing lip-sync metadata via REST Ports 50021 and 50022.</div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <span class="num">07</span>
+        <div>
+          <div class="desc"><strong>Web Asset Product Compilation &amp; Packaging:</strong> Execute <code>tools/build_asset_products.py</code> to compile renders into 135 Twitch Emotes, 7 OBS Overlays, 78 Wallpapers, and 12 300dpi Postcards.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- Band 4: Web Asset Product Compiler Output Manifest -->
 <section class="band astral" aria-labelledby="manifest-title">
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow">World Manifest</p>
-        <h2 id="manifest-title">Environment registry.</h2>
+        <p class="eyebrow">Distribution Manifest</p>
+        <h2 id="manifest-title">Web Asset Product Compiler Output Manifest</h2>
       </div>
-      <p>All portfolio worlds tracked in a single manifest — status, stats, and render count per environment.</p>
+      <p>Authoritative distribution registry compiled by <code>tools/build_asset_products.py</code> for web, streaming, print, and mobile platforms.</p>
     </div>
-    <table class="manifest-table">
-      <thead>
-        <tr><th>World</th><th>Triangles</th><th>Draw Calls</th><th>Materials</th><th>PCG</th><th>Renders</th><th>Status</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Sakura Dream</td><td>72k</td><td>35</td><td>30</td><td>12</td><td>18</td><td><span class="status status-live">Live</span></td></tr>
-        <tr><td>Space Cathedral</td><td>68k</td><td>32</td><td>28</td><td>8</td><td>15</td><td><span class="status status-live">Live</span></td></tr>
-        <tr><td>Cosmic Orrery</td><td>45k</td><td>28</td><td>24</td><td>6</td><td>12</td><td><span class="status status-live">Live</span></td></tr>
-        <tr><td>Baroque Grotto</td><td>82k</td><td>38</td><td>32</td><td>10</td><td>14</td><td><span class="status status-live">Live</span></td></tr>
-        <tr><td><strong>Totals</strong></td><td><strong>267k</strong></td><td><strong>133</strong></td><td><strong>114*</strong></td><td><strong>36</strong></td><td><strong>59</strong></td><td><span class="status status-live">4/4 shipped</span></td></tr>
-      </tbody>
-    </table>
-    <p style="font-family:var(--font-mono);font-size:.6rem;color:var(--color-text-tertiary);margin-top:.5rem">* Materials with shared instances counted per-environment. 30 unique materials across all worlds.</p>
+    <div style="overflow-x:auto">
+      <table class="manifest-table">
+        <thead>
+          <tr>
+            <th>Asset Category</th>
+            <th>Total Units</th>
+            <th>Variants / Resolutions</th>
+            <th>Technical Format</th>
+            <th>Target Platform / Service</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Twitch Emotes</strong></td>
+            <td>135 PNGs</td>
+            <td>15 Types &times; 3 Res (28x28, 56x56, 112x112) &times; 3 BG Modes</td>
+            <td>Transparent PNG</td>
+            <td>Twitch / Discord Chat</td>
+            <td><span class="status status-live">Compiled</span></td>
+          </tr>
+          <tr>
+            <td><strong>OBS Stream Overlays</strong></td>
+            <td>7 Assets</td>
+            <td>1080p Stream Templates + Modular UI Frames</td>
+            <td>Full-HD WebM / PNG</td>
+            <td>OBS Studio / Live Streaming</td>
+            <td><span class="status status-live">Compiled</span></td>
+          </tr>
+          <tr>
+            <td><strong>Mobile Wallpapers</strong></td>
+            <td>78 Assets</td>
+            <td>3 Screen Aspect Ratios (16:9, 19.5:9, 20:9)</td>
+            <td>Ultra-HD PNG / JPEG</td>
+            <td>iOS / Android Devices</td>
+            <td><span class="status status-live">Compiled</span></td>
+          </tr>
+          <tr>
+            <td><strong>Print Postcards</strong></td>
+            <td>12 Cards</td>
+            <td>12 Front Designs + 1 Canonical Back Template</td>
+            <td>300dpi CMYK Print PDF</td>
+            <td>Physical Merchandise</td>
+            <td><span class="status status-live">Compiled</span></td>
+          </tr>
+          <tr>
+            <td><strong>IPC Network Services</strong></td>
+            <td>6 Services</td>
+            <td>Ports 9876, 9316, 9317, 55558, 50021, 50022</td>
+            <td>UDP / HTTP / TCP REST</td>
+            <td>Echo Multi-Modal Backbone</td>
+            <td><span class="status status-live">Active</span></td>
+          </tr>
+          <tr>
+            <td><strong>Totals</strong></td>
+            <td><strong>232 Assets + 6 Ports</strong></td>
+            <td><strong>Multi-Platform Distribution Suite</strong></td>
+            <td><strong>Automated Output</strong></td>
+            <td><strong>Melodia Live-Ops</strong></td>
+            <td><span class="status status-live">Ready</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-family:var(--font-mono);font-size:.65rem;color:var(--color-text-tertiary);margin-top:.5rem">* All compiled web products automatically generated via <code>python tools/build_asset_products.py</code> from master 3D render outputs.</p>
   </div>
 </section>
 </main>
 
 <footer class="footer">
   <div class="inner">
-    <span>Brennan Shepherd / Environment & Technical Artist</span>
-    <span>Pipeline v2.0.0 · UE5 · Blender · Material Maker · PCG · TouchDesigner</span>
-    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase"><a href="application-hub.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Environments</a><a href="shader-breakdowns.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Shaders</a><a href="recruiter-one-sheet.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">One-sheet</a><a href="resume.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Resume</a></div>
+    <span>Melodia Dual-Track Production · Echo Multi-Modal Pipeline</span>
+    <span>UE 5.8 C++ · Blender 5.2 · TouchDesigner 4-Band CHOPs · VOICEVOX · Monolith MCP</span>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase">
+      <a href="index.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Overview</a>
+      <a href="melodia-gameplay-loop.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">JRPG Loop</a>
+      <a href="design-specs.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">P0 Gates</a>
+      <a href="pipeline.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Pipeline</a>
+      <a href="application-hub.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Architecture Hub</a>
+    </div>
   </div>
 </footer>
 </div>
 
-<script src="premium-cosmic-hero.js"></script>
-<script src="melodia-orrery-system.js"></script>
 <script src="melodia-starfield.js"></script>
 <script src="melodia-site-nav.js"></script>
 <script src="melodia-editorial.js"></script>
+<script>MelodiaEditorial.init({ page: 'pipeline' });</script>
 </body>
 </html>
