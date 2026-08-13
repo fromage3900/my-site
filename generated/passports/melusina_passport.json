@@ -39,7 +39,27 @@
     ],
     [
       "Date",
-      "2026-07"
+      "2026-08-13"
+    ],
+    [
+      "Skeleton",
+      "SK_Melusina_Skeleton · 465 bones · underscore · cm"
+    ],
+    [
+      "Mocap",
+      "RTG_Mocap_to_Melusina — clips do not import directly onto SK_Melusina"
+    ],
+    [
+      "Gameplay mesh",
+      "V2Test ARP split static meshes are portfolio/review only"
+    ],
+    [
+      "Idle",
+      "Locomotion speed 0 = mocap idle; Blender idle not live until PIE"
+    ],
+    [
+      "Gameplay hair",
+      "SK_MelusinaHair — Flip / water-hair Alembic is cine Layer C only"
     ]
   ],
   "generated_at": "2026-07-15T21:30:00.000000+00:00",

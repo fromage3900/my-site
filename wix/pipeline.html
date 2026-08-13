@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Echo Multi-Modal Pipeline &amp; Infrastructure | Melodia Dual-Track Production</title>
-<meta name="description" content="Technical architecture of the Melodia Echo Multi-Modal Pipeline: Port 9876 LiveLink UDP, Port 9316 Monolith MCP HTTP, Port 9317 Blender MCP, Port 55558 UEBlueprintMCP, TouchDesigner 4-band audio streamer, and sRGB-to-Linear toon color transformation." />
+<meta name="description" content="Melodia Echo pipeline as of 2026-08-13: BlenderMCP :9876 (LiveLink in-addon is stub), Monolith MCP :9316, UEBlueprintMCP :55558. Port 9317 is legacy." />
 <meta property="og:title" content="Echo Multi-Modal Pipeline — Melodia Infrastructure" />
 <meta property="og:description" content="DCC automation bridge connecting Blender 5.2, UE 5.8 C++, TouchDesigner CHOPs, VOICEVOX neural speech, and web asset compilers across dedicated network ports." />
 <meta property="og:image" content="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
@@ -56,7 +56,7 @@
     <p class="kicker magazine-kicker">Echo Multi-Modal Pipeline · Network Architecture</p>
     <div class="editorial-rhythm-divider sheet" data-divider="astral" aria-hidden="true"><span class="glyph">♪ · ♥ · ♪</span></div>
     <h1 id="page-title">Echo Pipeline &amp; DCC Infrastructure</h1>
-    <p class="lede">The Echo Multi-Modal Pipeline connects Blender 5.2, Unreal Engine 5.8 C++, TouchDesigner CHOP audio processing, VOICEVOX neural speech, and web asset compilers across 6 dedicated IPC network ports. Built to automate material crosswalks, real-time MoCap streams, toon profile shading, and distribution packaging.</p>
+    <p class="lede">As of 2026-08-13 the Echo pipeline connects Blender 5.2 Melodia Studio (165 GN builders), Unreal Engine 5.8 C++, TouchDesigner CHOP audio, VOICEVOX, and web compilers. Live agent MCP is <strong>BlenderMCP :9876</strong>. Melodia Studio Live Bridge LiveLink is a stub on the same port — not the agent path. Port 9317 is a legacy adapter (do not use).</p>
     <div class="hero-actions">
       <a class="button primary button-premium-primary" href="#port-matrix">Explore Network Matrix</a>
       <a class="button button-premium" href="#material-crosswalks">Material Math &amp; Audio Streamer</a>
@@ -76,9 +76,10 @@
     </div>
     
     <div class="badge-row" style="margin-bottom: 1.5rem;">
-      <span class="stat-badge">Port 9876 UDP LiveLink</span>
+      <span class="stat-badge">Port 9876 BlenderMCP</span>
+      <span class="stat-badge">Port 9876 LiveLink stub</span>
       <span class="stat-badge">Port 9316 HTTP Monolith MCP</span>
-      <span class="stat-badge">Port 9317 HTTP Blender MCP</span>
+      <span class="stat-badge">Port 9317 legacy — do not use</span>
       <span class="stat-badge">Port 55558 TCP UEBlueprintMCP</span>
       <span class="stat-badge">Port 50021 REST VOICEVOX</span>
       <span class="stat-badge">Port 50022 REST Melusina TTS</span>
@@ -98,24 +99,24 @@
         <tbody>
           <tr>
             <td><strong style="color:var(--color-accent-primary, #C9A86A)">9876</strong></td>
-            <td><span class="spec-badge">UDP</span></td>
+            <td><span class="spec-badge">TCP / JSON</span></td>
             <td><code>localhost:9876</code></td>
-            <td>LiveLink pose, skeleton, and facial motion capture stream from Blender 5.2 to Unreal Engine 5.8.</td>
-            <td>Real-time Viewport Ingest</td>
+            <td>Live agent path: <strong>BlenderMCP</strong> (N → BlenderMCP → Connect). Melodia Studio Live Bridge LiveLink on this port is a stub — scratch <code>/Game/LiveLink/</code> only, not ornament/wardrobe SSOT. One live bridge at a time.</td>
+            <td>Blender console · <code>Tools/blender_mcp_client.py</code></td>
           </tr>
           <tr>
             <td><strong style="color:var(--color-accent-primary, #C9A86A)">9316</strong></td>
             <td><span class="spec-badge">HTTP / JSON-RPC</span></td>
             <td><code>http://localhost:9316/mcp</code></td>
-            <td>Monolith MCP Unreal Engine automation proxy providing 16 specialized query and execution tools.</td>
+            <td>Monolith MCP Unreal Engine automation proxy providing specialized query and execution tools.</td>
             <td><code>Saved/Logs/MonolithCalls.jsonl</code></td>
           </tr>
           <tr>
             <td><strong style="color:var(--color-accent-primary, #C9A86A)">9317</strong></td>
-            <td><span class="spec-badge">HTTP</span></td>
+            <td><span class="spec-badge">Legacy</span></td>
             <td><code>http://localhost:9317</code></td>
-            <td>Blender MCP bridge for automated mesh import, armature binding, and scene export pipelines.</td>
-            <td>Blender Console Log</td>
+            <td>Legacy Blender adapter. Do not use — live Blender MCP is BlenderMCP on port 9876.</td>
+            <td>Deprecated</td>
           </tr>
           <tr>
             <td><strong style="color:var(--color-accent-primary, #C9A86A)">55558</strong></td>
@@ -164,8 +165,8 @@
 
       <!-- Card 2 -->
       <div class="toolchain-card component-card">
-        <h3>Blender 5.2 &amp; LiveLink MoCap Stream</h3>
-        <p>Blender 5.2 integration featuring the Blender MCP bridge (Port 9317 HTTP) for automated mesh import, armature binding, and FBX batch export. LiveLink motion capture stream operates via Port 9876 UDP to broadcast real-time pose and facial animation directly to UE5 viewports.</p>
+        <h3>Blender 5.2 Melodia Studio &amp; BlenderMCP</h3>
+        <p>Melodia Studio (operators <code>surreal_arch.*</code> / <code>mel_gn.*</code>): 165 GN builders, 12 GN Stack categories. Agent control is <strong>BlenderMCP :9876</strong> (N → BlenderMCP → Connect). Live Bridge LiveLink is a stub. Mocap clips retarget through <code>RTG_Mocap_to_Melusina</code> onto <code>SK_Melusina_Skeleton</code> — they do not import directly onto the skeleton. Port 9317 is legacy.</p>
       </div>
 
       <!-- Card 3 -->
@@ -226,13 +227,13 @@
       <div class="workflow-step">
         <span class="num">01</span>
         <div>
-          <div class="desc"><strong>LiveLink MoCap Ingest &amp; Armature Binding:</strong> Stream Blender 5.2 skeletal &amp; facial motion capture directly into Unreal Engine 5.8 via Port 9876 UDP LiveLink.</div>
+          <div class="desc"><strong>BlenderMCP + Melodia Studio:</strong> Connect the open Blender 5.2 GUI on port 9876 via N → BlenderMCP. LiveLink in-addon is a stub. GN Stack: 165 builders / 12 categories as of 2026-08-13.</div>
         </div>
       </div>
       <div class="workflow-step">
         <span class="num">02</span>
         <div>
-          <div class="desc"><strong>Monolith &amp; Blender MCP Orchestration:</strong> Execute automated scene assembly and mesh imports over Port 9316 HTTP (Monolith) and Port 9317 HTTP (Blender MCP), logging to <code>MonolithCalls.jsonl</code>.</div>
+          <div class="desc"><strong>Monolith MCP Orchestration:</strong> Execute Unreal automation over Port 9316 HTTP, logging to <code>MonolithCalls.jsonl</code>. Do not use legacy Port 9317 for Blender.</div>
         </div>
       </div>
       <div class="workflow-step">
@@ -327,8 +328,8 @@
           <tr>
             <td><strong>IPC Network Services</strong></td>
             <td>6 Services</td>
-            <td>Ports 9876, 9316, 9317, 55558, 50021, 50022</td>
-            <td>UDP / HTTP / TCP REST</td>
+            <td>Ports 9876 BlenderMCP, 9316 Monolith, 55558 UEBlueprintMCP, 50021/50022 TTS (9317 legacy)</td>
+            <td>TCP / HTTP / REST</td>
             <td>Echo Multi-Modal Backbone</td>
             <td><span class="status status-live">Active</span></td>
           </tr>
@@ -358,6 +359,7 @@
       <a href="design-specs.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">P0 Gates</a>
       <a href="pipeline.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Pipeline</a>
       <a href="application-hub.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Architecture Hub</a>
+      <a href="credits.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Credits</a>
     </div>
   </div>
 </footer>

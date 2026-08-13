@@ -3,10 +3,10 @@
     "name": "Brennan Shepherd · Melodia Portfolio",
     "version": "2.0.0",
     "engine": "UE 5.8",
-    "modeling": "Blender 5.1",
+    "modeling": "Blender 5.2",
     "textures": "Substance 3D Painter",
     "materials": "Material Maker",
-    "lastUpdated": "2026-07-24",
+    "lastUpdated": "2026-08-13",
     "url": "https://fromage3900.github.io/my-site/"
   },
   "stats": {
@@ -94,12 +94,12 @@
     { "slug": "shader-breakdowns", "name": "Shaders", "file": "shader-breakdowns.html", "nav": true },
     { "slug": "recruiter-one-sheet", "name": "One-sheet", "file": "recruiter-one-sheet.html", "nav": true },
     { "slug": "resume", "name": "Resume", "file": "resume.html", "nav": true },
-    { "slug": "pipeline", "name": "Pipeline", "file": "pipeline.html", "nav": false }
+    { "slug": "credits", "name": "Credits", "file": "credits.html", "nav": false },
   ],
   "pipeline": {
     "tools": [
       { "name": "Unreal Engine 5.8", "role": "Environment assembly, Substrate Toon materials, PCG scattering, render capture" },
-      { "name": "Blender 5.1", "role": "Stylized geometry, modular kits, surreal_arch procedural generation" },
+      { "name": "Blender 5.2", "role": "Melodia Studio GN Stack (165 builders / 12 categories), stylized geometry, modular kits" },
       { "name": "Substance 3D Painter", "role": "PBR texture baking, wear/dirt masks, material reference" },
       { "name": "Material Maker", "role": "Procedural PBR graphs, SDF generators, toon ramp textures (72–105 node graphs)" },
       { "name": "TouchDesigner", "role": "Real-time VFX prototyping, MCP server for TouchDesigner workflows" },

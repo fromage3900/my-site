@@ -580,7 +580,7 @@
       "ios_battle": {
         "eyebrow": "iOS · portrait primary",
         "headline": "Mobile gameplay kit.",
-        "lede": "Playable thumb-zone rhythm with SheetMusicHUD staff strip — safe areas, ≥44pt lanes, vertical highway. Open with ?mode=ios for full-viewport play.",
+        "lede": "Web lookbook HUD for SheetMusicHUD — not the Unreal PIE Q/W/O/P harness (still OPEN). Open with ?mode=ios for the full-viewport frame.",
         "cta": { "label": "Play", "keys": "Tap lanes A–D" }
       },
       "envsandbox_assets": {
