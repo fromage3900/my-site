@@ -431,7 +431,7 @@
       "hero": {
         "kicker": "Melodia Portfolio Stage · v7 · Nikki iri",
         "headline": "Melusina — stage passport.",
-        "lede": "EEVEE glam beauty and grey wire topology first; the Asset Passport sits beside the plates. Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay is SK_MelusinaHair. Idle is mocap A_Melusina_Idle_Mocap_RootX. Look is hybrid Komikaze + UE Toon — not a Genshin SDF ship.",
+        "lede": "EEVEE glam beauty and grey wire topology first; the Asset Passport sits beside the plates. Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay is SK_MelusinaHair. Idle is mocap A_Melusina_Idle_Mocap_RootX. Cam_Beauty on live v22 reads bald because Flip cache globules sit below the scalp (existing 1–240, not a new bake) — that still is not full cine water-hair. Look is hybrid Komikaze + UE Toon — not a Genshin SDF ship.",
         "eyebrow": "Melodia Portfolio Stage · v7 · Nikki iri"
       },
       "outfit_board": {

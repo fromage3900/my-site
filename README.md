@@ -10,6 +10,8 @@ UE 5.8 + Blender 5.2 production platform for stylized portfolio work: Melodia St
 
 **Stack:** Unreal 5.8 C++, Blender 5.2 Geometry Nodes, PCG, hybrid **Komikaze NPR + UE Toon**. Character polish is that hybrid — not a Genshin SDF ship. Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay fallback is `SK_MelusinaHair`. Idle is mocap `A_Melusina_Idle_Mocap_RootX` (Blender idle is on disk, not wired). `WBP_MainMenu` fonts are Syne / Instrument Serif via `F_Melodia_UI`.
 
+**Plates:** Flip EEVEE glam stills are local cine. Cam_Beauty on live v22 (Nikki 900/550/280/140, Review_Queue hidden) reads bald because Flip cache globules sit below the scalp (max Z ≈ 1.015 vs head ≈ 1.442) — existing 1–240 cache, not a new bake. That still is not full cine water-hair. Unreal B2 Cam_Beauty is still pending.
+
 **Skim these:** [One-sheet](wix/recruiter-one-sheet.html) · [Home](wix/index.html) · [Melodia Studio](wix/geometry-nodes.html) · [Melusina](wix/melodia-stage-character.html) · [Resume](wix/resume.html)
 
 **As of 2026-08-13.** Live agent MCP is **BlenderMCP :9876**. Melodia Studio Live Bridge LiveLink is a stub. Port 9317 is legacy.

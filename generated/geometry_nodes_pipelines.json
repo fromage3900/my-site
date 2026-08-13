@@ -69,7 +69,7 @@
         {
           "order": 5,
           "name": "Portfolio dossier",
-          "detail": "surreal-architecture.html + geometry-nodes.html proof plates. Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay hair stays SK_MelusinaHair. Niagara 3D FLIP is not the hair solver. Local EEVEE Flip stills are cine plates — Unreal B2 Cam_Beauty is not published."
+          "detail": "surreal-architecture.html + geometry-nodes.html proof plates. Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay hair stays SK_MelusinaHair. Niagara 3D FLIP is not the hair solver. Local EEVEE Flip stills are cine plates. Cam_Beauty on live v22 reads bald because Flip cache globules sit below the scalp (existing 1–240, not a new bake). Unreal B2 Cam_Beauty is still pending."
         }
       ],
       "proof_targets": [

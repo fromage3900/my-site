@@ -20,6 +20,10 @@
   .links { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
   .links a { color: var(--gold); font-size: 0.8rem; }
   .badge { display: inline-block; margin-top: 1.5rem; padding: 0.4rem 1rem; border: 1px solid var(--gold); border-radius: 999px; font-size: 0.75rem; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; }
+  .stills { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1.25rem; }
+  .stills img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201,168,106,0.25); }
+  .stills.single { grid-template-columns: 1fr; }
+  .still-cap { font-size: 0.68rem; color: var(--text-secondary); margin: 0.35rem 0 0; }
 </style>
 </head>
 <body>
@@ -35,7 +39,15 @@
   <div class="row"><span>Locks</span><strong>Rhythm WORKED · Quill WORKED · A1 battle OPEN</strong></div>
   <div class="row"><span>Idle</span><strong>Mocap A_Melusina_Idle_Mocap_RootX</strong></div>
   <div class="row"><span>Hair</span><strong>Cine GC Alembic 1–240 + Niagara drip; SK fallback</strong></div>
-  <p style="margin-top:1rem">Character polish is hybrid Komikaze NPR + UE Toon — not a Genshin SDF ship. Menu fonts (Syne / Instrument Serif via <code>F_Melodia_UI</code>) are live. Unreal B2 Cam_Beauty plates are not published.</p>
+  <p style="margin-top:1rem">Character polish is hybrid Komikaze NPR + UE Toon — not a Genshin SDF ship. Menu fonts (Syne / Instrument Serif via <code>F_Melodia_UI</code>) are live. Flip EEVEE glam stills are local cine plates. Cam_Beauty on live v22 (Nikki 900/550/280/140, Review_Queue hidden) reads bald because Flip cache globules sit below the scalp (max Z ≈ 1.015 vs head ≈ 1.442) — existing 1–240 cache, not a new bake. That plate is not full cine water-hair. Unreal B2 Cam_Beauty is still pending.</p>
+  <div class="stills">
+    <img data-plate="melusina.flip_01" src="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_01.png" alt="Melusina Flip water-hair cine EEVEE, frame 96 — not gameplay hair" />
+    <img data-plate="melusina.flip_02" src="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_02.png" alt="Melusina Flip water-hair cine EEVEE, frame 240 — not gameplay hair" />
+  </div>
+  <div class="stills single">
+    <img data-plate="melusina.nikki_cam_beauty" src="../generated/melusina_cam_beauty_nikki_2026-08-13.png" alt="Cam_Beauty on live v22 — plate reads bald; Flip cache globules below scalp" />
+    <p class="still-cap">Cam_Beauty v22 · bald because cache is below scalp · not a new bake</p>
+  </div>
   <div class="links">
     <a href="recruiter-one-sheet.html">One-sheet</a>
     <a href="resume.html">Resume</a>
