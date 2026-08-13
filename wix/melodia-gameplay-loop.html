@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" data-page="gameplay-loop">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Melodia — 7-Stage JRPG Gameplay Loop &amp; Editorial Look-Book</title>
+<meta name="description" content="Editorial look-book detailing Melodia's 7-stage sanctuary-to-save JRPG loop architecture, co-op skills (Petal Cadence, Skybound Refrain), WBP_MelodiaRhythmHighway timing deferral, and combat result matrix." />
+<meta property="og:title" content="Melodia — 7-Stage JRPG Gameplay Loop" />
+<meta property="og:description" content="Sanctuary dialogue, seamless travel, turn-based combat, rhythm timing enhancement, combat result matrix, and canonical binary save persistence." />
+<meta property="og:image" content="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/melodia-gameplay-loop.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="melodia-tokens.css">
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-game-ui.css">
+<link rel="stylesheet" href="melodia-components.css">
+<link rel="stylesheet" href="melodia-mobile.css">
+<style>
+.loop-flow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+.loop-stage-card { position: relative; padding: 1.5rem; background: rgba(20,26,48,0.85); border: 1px solid rgba(201,168,106,0.3); border-radius: 6px; }
+.loop-stage-card .stage-num { font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-accent-primary, #C9A86A); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+.loop-stage-card h3 { font-family: var(--font-display, Fraunces, serif); font-size: 1.15rem; color: var(--color-text-primary, #ECEAF4); margin-bottom: 0.5rem; }
+.loop-stage-card p { font-size: 0.8rem; color: var(--color-text-secondary, #A9A7C0); line-height: 1.5; }
+.code-inline { font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-accent-primary, #C9A86A); background: rgba(201,168,106,0.1); padding: 2px 6px; border-radius: 3px; }
+.rhythm-tier-table, .result-matrix-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.8rem; }
+.rhythm-tier-table th, .result-matrix-table th { text-align: left; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-tertiary, #A9A7C0); padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(201,168,106,0.3); }
+.rhythm-tier-table td, .result-matrix-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--color-text-secondary, #A9A7C0); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="melodia-shell fashion-mode" data-mg="soft" data-hero="editorial" data-visual="lookbook" data-effects="starfield,orrery,planetarium,holo,magical">
+<header class="shell-nav constellation-nav" aria-label="Melodia navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="index.html">Overview</a>
+    <a href="melodia-gameplay-loop.html" class="active">JRPG Loop</a>
+    <a href="design-specs.html">P0 Gates</a>
+    <a href="pipeline.html">Echo Pipeline</a>
+    <a href="application-hub.html">Architecture Hub</a>
+  </nav>
+  <a class="nav-cta button-premium" href="design-specs.html">P0 Gates Matrix</a>
+</header>
+
+<main id="main" class="editorial-container">
+<!-- Hero Look-Book Section -->
+<section class="hero has-editorial-frame" aria-labelledby="page-title">
+  <div class="hero-inner">
+    <p class="kicker magazine-kicker">P0 First Dream · as of 2026-08-13</p>
+    <div class="editorial-rhythm-divider sheet" data-divider="astral" aria-hidden="true"><span class="glyph">♪ · ♥ · ♪</span></div>
+    <h1 id="page-title">The 7-Stage Sanctuary-to-Save Loop Flow Architecture</h1>
+    <p class="lede">Editorial look-book for Melodia's Persona-lite JRPG loop. As of 2026-08-13: <strong>rhythm OWNER LOCK WORKED</strong>; <strong>QuillScript OWNER LOCK WORKED</strong>; formal runtime harness with real Q/W/O/P is still OPEN; A1 stock battle path is not closed. Live character is <code>SK_Melusina_Skeleton</code> (465 bones). Idle is mocap <code>A_Melusina_Idle_Mocap_RootX</code>; Blender idle is on disk, not wired. Route is <code>L_MelusinaMorning</code> → <code>L_KaleidoNave</code> (Dreamstate merged — no live <code>L_Melodia_Dreamstate</code>). Flip stills below are cine EEVEE — not a gameplay idle or Unreal B2 Cam_Beauty plate.</p>
+    <div class="hero-actions">
+      <a class="button button-premium-primary" href="#loop-architecture">7-Stage Loop Architecture</a>
+      <a class="button button-premium" href="#co-op-skills">Co-Op Skills &amp; Resonance</a>
+      <a class="button button-premium" href="#rhythm-highway">Rhythm Highway Math</a>
+      <a class="button button-premium" href="#result-matrix">Result Matrix &amp; C++ Restoration</a>
+    </div>
+    <div class="viz-rail" aria-label="Melusina cine stills — not gameplay captures" style="margin-top:1.75rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+      <a href="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_01.png">
+        <img data-plate="melusina.flip_01" src="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_01.png" alt="Melusina Flip cine EEVEE frame 96 — not gameplay idle" loading="lazy" style="width:100%;height:180px;object-fit:cover;border-radius:6px;border:1px solid rgba(201,168,106,0.3)" />
+      </a>
+      <a href="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_02.png">
+        <img data-plate="melusina.flip_02" src="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_02.png" alt="Melusina Flip cine EEVEE frame 240 — not gameplay hair" loading="lazy" style="width:100%;height:180px;object-fit:cover;border-radius:6px;border:1px solid rgba(201,168,106,0.3)" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 1: 7-Stage Loop Flow Architecture -->
+<section id="loop-architecture" class="band paper fashion-band ivory" data-surface="ivory">
+  <div class="inner">
+    <div class="viz-rule" data-divider="diamond"><span class="glyph">✦ loop architecture</span></div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow magazine-kicker">Core Gameplay Loop</p>
+        <h2>7-Stage Sanctuary-to-Save Architecture Flow</h2>
+      </div>
+      <p>Authored pathway linking narrative, travel, combat, rhythm timing, result branching, and disk serialization. Rhythm and Quill lanes are locked worked — not in-progress. A1 stock battle and the Q/W/O/P harness remain OPEN.</p>
+    </div>
+
+    <div class="loop-flow-grid">
+      <!-- Stage 1 -->
+      <article class="loop-stage-card component-card">
+        <span class="stage-num">Stage 01</span>
+        <h3>Sanctuary Dialogue</h3>
+        <p>Player interacts with Morning Sir NPC in <span class="code-inline">L_MelusinaMorning</span>. QuillScript OWNER LOCK WORKED. Formal runtime harness with real Q/W/O/P is still OPEN (ledger pass is probe-level).</p>
+      </article>
+
+      <!-- Stage 2 -->
+      <article class="loop-stage-card component-card">
+        <span class="stage-num">Stage 02</span>
+        <h3>Authored Departure Gate</h3>
+        <p>Transition trigger calls <span class="code-inline">UMelodiaTravelSubsystem::SeamlessTravel</span> to exit sanctuary and load traversal in <span class="code-inline">L_KaleidoNave</span> (Dreamstate merged — do not resurrect <span class="code-inline">L_Melodia_Dreamstate</span>).</p>
+      </article>
+
+      <!-- Stage 3 -->
+      <article class="loop-stage-card component-card">
+        <span class="stage-num">Stage 03</span>
+        <h3>KaleidoNave Traversal</h3>
+        <p>Exploration in <span class="code-inline">L_KaleidoNave</span> under <span class="code-inline">BP_MelodiaJRPGGameMode</span>. Player controls Melusina with input context stack managed by <span class="code-inline">UMelodiaInputContextSubsystem</span> (150ms debouncing). <code>L_Melodia_Dreamstate</code> is merged out — not a live map.</p>
+      </article>
+
+      <!-- Stage 4 -->
+      <article class="loop-stage-card component-card">
+        <span class="stage-num">Stage 04</span>
+        <h3>Stock JRPG Encounter</h3>
+        <p>Interacting with <span class="code-inline">BP_InteractionBattle</span> is the authored stock encounter path. <strong>A1 stock battle is not closed.</strong> Do not treat this as a finished vertical slice.</p>
+      </article>
+
+      <!-- Stage 5 -->
+      <article class="loop-stage-card component-card">
+        <span class="stage-num">Stage 05</span>
+        <h3>Harmonix Rhythm Highway</h3>
+        <p>OWNER LOCK WORKED. Scrolling note highway <span class="code-inline">WBP_MelodiaRhythmHighway</span> is the locked rhythm lane. Formal Q/W/O/P harness for this highway remains OPEN.</p>
+      </article>
+
+      <!-- Stage 6 -->
+      <article class="loop-stage-card component-card">
+        <span class="stage-num">Stage 06</span>
+        <h3>Typed Result Matrix</h3>
+        <p>Combat terminates returning <span class="code-inline">EBSBattleResult</span> (<span class="code-inline">Victory</span>, <span class="code-inline">Defeat</span>, <span class="code-inline">Fled</span>, <span class="code-inline">Unavailable</span>). Triggers <span class="code-inline">UMelodiaJRPGPostBattleLibrary::RestorePartyAfterBattle</span>.</p>
+      </article>
+
+      <!-- Stage 7 -->
+      <article class="loop-stage-card component-card">
+        <span class="stage-num">Stage 07</span>
+        <h3>Canonical Save Checkpoint</h3>
+        <p>Binary state serialized via <span class="code-inline">USaveGameSubsystem</span> to <span class="code-inline">Melodia_SaveSlot_0</span>. Saving is locked (<span class="code-inline">bCanSave = false</span>) during active combat.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: Co-Op Skills & Party Resonance -->
+<section id="co-op-skills" class="band astral fashion-band">
+  <div class="inner">
+    <div class="viz-rule" data-divider="astral"><span class="glyph">✦ party synergy</span></div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow magazine-kicker">Combat Mechanics</p>
+        <h2>Co-Op Skills &amp; Party Resonance Synergy</h2>
+      </div>
+      <p>Turn-based combat abilities designed for multi-character resonance and tactical combo execution.</p>
+    </div>
+
+    <div class="grid-2-col" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-top:1.5rem">
+      <article class="alignment-card premium-card component-card" data-pillar="nikki">
+        <span class="spec-badge">Melusina Ability</span>
+        <h3>BP_MelusinaPetalCadence</h3>
+        <p>Melusina casts a harmonic petal wave that applies the <span class="code-inline">BP_Resonance</span> status buff to all party members. Increases speed by 15% and primes party members for follow-up elemental finishers.</p>
+        <div style="margin-top:1rem;font-family:var(--font-mono);font-size:.7rem;color:var(--color-accent-primary,#C9A86A)">Effect: Applies BP_Resonance Status Buff</div>
+      </article>
+
+      <article class="alignment-card premium-card component-card" data-pillar="sakura">
+        <span class="spec-badge">Morning Sir Ability</span>
+        <h3>BP_SirSkyboundRefrain</h3>
+        <p>Morning Sir delivers a high-impact skybound strike. If the target or caster carries the <span class="code-inline">BP_Resonance</span> buff, the ability consumes the charges to inflict <strong>2.5x conditional bonus damage</strong> and restore party HP/MP.</p>
+        <div style="margin-top:1rem;font-family:var(--font-mono);font-size:.7rem;color:var(--color-accent-primary,#C9A86A)">Synergy: 2.5x Conditional Damage vs BP_Resonance</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Harmonix Rhythm Highway & Timing Math -->
+<section id="rhythm-highway" class="band paper fashion-band ivory" data-surface="ivory">
+  <div class="inner">
+    <div class="viz-rule" data-divider="pipes"><span class="glyph">✦ rhythm highway</span></div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow magazine-kicker">Audio Clock Synchronization</p>
+        <h2>WBP_MelodiaRhythmHighway &amp; Timing Deferral Math</h2>
+      </div>
+      <p>OWNER LOCK WORKED. Optional Harmonix rhythm layer. Formal runtime harness with real Q/W/O/P is still OPEN — this page is the look-book, not a PIE claim.</p>
+    </div>
+
+    <div class="game-ui-frame" style="padding:1.5rem;background:rgba(20,26,48,0.7);border-radius:6px;margin-top:1.5rem">
+      <h3 style="font-family:var(--font-display);color:var(--color-accent-primary,#C9A86A);margin-bottom:.75rem">128 BPM Music Clock Resolution &amp; Damage Multiplier Deferral</h3>
+      <p style="font-size:.85rem;color:var(--color-text-secondary);line-height:1.6;margin-bottom:1rem">
+        The rhythm engine integrates <span class="code-inline">UMusicClockComponent</span> loaded with the <span class="code-inline">128BPMarpeggiomelody_beatgrid</span> beat map. When a player executes <span class="code-inline">UseSkillWithRhythm(StockSkill)</span>, damage output is deferred until <span class="code-inline">FinishSession()</span> latches the <span class="code-inline">PendingDamageMultiplier</span> at the end of the note highway stream (<strong>~3.05s latch window</strong>). This prevents premature anim-notify resolution (which occurs at <strong>~0.51s</strong>) from truncating player rhythm input.
+      </p>
+
+      <table class="rhythm-tier-table">
+        <thead>
+          <tr>
+            <th>Timing Accuracy Tier</th>
+            <th>Timing Window (Delta)</th>
+            <th>Damage Multiplier</th>
+            <th>Resonance &amp; Visual Feedback</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:#C9A86A">Perfect</strong></td>
+            <td>&plusmn; 45ms</td>
+            <td><strong>1.50x Damage</strong></td>
+            <td>Grants 2x BP_Resonance charges + Niagara sparkle bloom</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#A9A7C0">Great</strong></td>
+            <td>&plusmn; 90ms</td>
+            <td><strong>1.25x Damage</strong></td>
+            <td>Grants 1x BP_Resonance charge + Gold ring pulse</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#A9A7C0">Good</strong></td>
+            <td>&plusmn; 140ms</td>
+            <td><strong>1.10x Damage</strong></td>
+            <td>Standard damage output + Soft chime audio</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#8c8">Miss / Skipped</strong></td>
+            <td>&gt; 140ms</td>
+            <td><strong>1.00x Baseline</strong></td>
+            <td>No penalty blocking turn execution; baseline damage resolved</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: Combat Result Matrix & C++ Post-Battle Restoration -->
+<section id="result-matrix" class="band astral fashion-band">
+  <div class="inner">
+    <div class="viz-rule" data-divider="astral"><span class="glyph">✦ result matrix</span></div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow magazine-kicker">Terminal State Resolution</p>
+        <h2>Combat Result Matrix &amp; C++ Post-Battle Restoration</h2>
+      </div>
+      <p>Typed terminal result handling via <code>EBSBattleResult</code> and property reflection fixes in <code>UMelodiaJRPGPostBattleLibrary</code>.</p>
+    </div>
+
+    <div class="game-ui-frame" style="padding:1.5rem;background:rgba(20,26,48,0.7);border-radius:6px;margin-top:1.5rem">
+      <table class="result-matrix-table">
+        <thead>
+          <tr>
+            <th>Result Enum (EBSBattleResult)</th>
+            <th>Bridge Delegate Behavior</th>
+            <th>Narrative &amp; Level Routing</th>
+            <th>Post-Battle Party Restore</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:#C9A86A">Victory</strong></td>
+            <td>Fires <code>OnBattleOver(Victory)</code></td>
+            <td>Idempotent XP/loot granted via <code>UMelodiaGameStateSubsystem</code>; resumes QuillScript victory branch.</td>
+            <td>Executes <code>UMelodiaJRPGPostBattleLibrary::RestorePartyAfterBattle</code> (restores HP/MP, fixes <code>currentMP</code> reflection).</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#f88">Defeat</strong></td>
+            <td>Fires <code>OnBattleOver(Defeat)</code></td>
+            <td>Triggers defeat dialogue or reloads last canonical checkpoint from <code>Melodia_SaveSlot_0</code>.</td>
+            <td>Restores party to pre-battle state upon reload from disk.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#8cc">Fled</strong></td>
+            <td>Fires <code>OnBattleOver(Fled)</code></td>
+            <td>Returns party to exploration state in <code>L_KaleidoNave</code> at pre-encounter vector without rewards.</td>
+            <td>Retains current party HP/MP levels without post-battle bonus restore.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#c8c">Unavailable</strong></td>
+            <td>Fires <code>OnBattleOver(Unavailable)</code></td>
+            <td>Triggers null-check fallback; reroutes narrative to safe anchor <code>Morning_RoomShell</code>.</td>
+            <td>Bypasses reward processing and logs warning to telemetry log.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="passport-card component-card" style="margin-top:1.5rem">
+      <div class="passport-head"><span>C++ Patch Detail</span><span>Property Reflection Fix</span></div>
+      <h3 class="passport-title">UMelodiaJRPGPostBattleLibrary &amp; Property Reflection Fix</h3>
+      <p>
+        The static C++ library <span class="code-inline">UMelodiaJRPGPostBattleLibrary</span> executes party cleanup upon combat completion. During audit, a legacy reflection property typo was identified where character Magic Points were bound as <span class="code-inline" style="color:#f88">curentMP</span>. This has been updated to the canonical property <span class="code-inline" style="color:#8c8">currentMP</span> across all Blueprint reflection tables, ensuring status restoration functions cleanly without silent property lookup failures.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: Figma UI Asset Suite Integration -->
+<section id="figma-ui-suite" class="band paper fashion-band ivory" data-surface="ivory">
+  <div class="inner">
+    <div class="viz-rule" data-divider="diamond"><span class="glyph">✦ figma ui assets</span></div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow magazine-kicker">Authored Design System Assets</p>
+        <h2>Figma UI Asset Suite &amp; Tactical Icon Matrix</h2>
+      </div>
+      <p>Direct integration of exported Figma essential UI components, tactical combat iconsets, and sheet music HUD assemblies.</p>
+    </div>
+
+    <!-- Sub-Section: Tactical Combat Icons (15 icons) -->
+    <h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--primitive-plum-900);margin-top:1.5rem">Tactical Combat Iconset (15 Icons)</h3>
+    <div class="figma-icon-grid">
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_SwordIcon.png" alt="Sword Icon" loading="lazy"><span>Sword</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_SpellbookIcon.png" alt="Spellbook Icon" loading="lazy"><span>Spellbook</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_TideIcon.png" alt="Tide Icon" loading="lazy"><span>Tide</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_EmberIcon.png" alt="Ember Icon" loading="lazy"><span>Ember</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_IceIcon.png" alt="Ice Icon" loading="lazy"><span>Ice</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_GuardIcon.png" alt="Guard Icon" loading="lazy"><span>Guard</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_HealIcon.png" alt="Heal Icon" loading="lazy"><span>Heal</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_ArmorIcon.png" alt="Armor Icon" loading="lazy"><span>Armor</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_BootsIcon.png" alt="Boots Icon" loading="lazy"><span>Boots</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_RingIcon.png" alt="Ring Icon" loading="lazy"><span>Ring</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_PotionIcon.png" alt="Potion Icon" loading="lazy"><span>Potion</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_ArcaneIcon.png" alt="Arcane Icon" loading="lazy"><span>Arcane</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_HelmIcon.png" alt="Helm Icon" loading="lazy"><span>Helm</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_StrikeIcon.png" alt="Strike Icon" loading="lazy"><span>Strike</span></div>
+      <div class="figma-icon-item"><img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_NatureIcon.png" alt="Nature Icon" loading="lazy"><span>Nature</span></div>
+    </div>
+
+    <!-- Sub-Section: Combat Cards & Banners -->
+    <h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--primitive-plum-900);margin-top:2rem">Authored Combat Cards &amp; Banners</h3>
+    <div class="figma-card-showcase">
+      <div class="figma-card-preview">
+        <img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_ActionCard.png" alt="Action Card UI" loading="lazy">
+        <h4>Action Card Component</h4>
+        <p>Tactical action selector with filigree border ornamentation and cost counters.</p>
+      </div>
+      <div class="figma-card-preview">
+        <img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_Card_Blessing.png" alt="Blessing Card UI" loading="lazy">
+        <h4>Blessing Card</h4>
+        <p>Buff presentation surface featuring gold leaf borders and status duration text.</p>
+      </div>
+      <div class="figma-card-preview">
+        <img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_Card_Burden.png" alt="Burden Card UI" loading="lazy">
+        <h4>Burden Card</h4>
+        <p>Debuff status container with plum warning trims and dissonance indicators.</p>
+      </div>
+      <div class="figma-card-preview">
+        <img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_TurnOrderBanner.png" alt="Turn Order Banner UI" loading="lazy">
+        <h4>Turn Order Banner</h4>
+        <p>Real-time turn sequence bar managing active combatant initiative queues.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="inner">
+    <span>MELODIA — 7-Stage JRPG Gameplay Loop &amp; Editorial Look-Book</span>
+    <span>Unreal Engine 5.8 C++ · QuillScript · Harmonix Rhythm · USaveGame Persistence</span>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase">
+      <a href="index.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Overview</a>
+      <a href="melodia-gameplay-loop.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">JRPG Loop</a>
+      <a href="design-specs.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">P0 Gates</a>
+      <a href="pipeline.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Pipeline</a>
+      <a href="application-hub.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Architecture Hub</a>
+    </div>
+  </div>
+</footer>
+</div>
+
+<script src="melodia-starfield.js"></script>
+<script src="melodia-orrery-system.js"></script>
+<script src="melodia-planetarium.js"></script>
+<script src="melodia-magical-girl.js"></script>
+<script src="melodia-escher-interact.js"></script>
+<script src="melodia-game-ui.js"></script>
+<script src="melodia-site-nav.js"></script>
+<script src="melodia-editorial.js"></script>
+<script>MelodiaEditorial.init({ page: 'gameplay-loop' });</script>
+</body>
+</html>

@@ -11,7 +11,7 @@
     { href: 'application-hub.html', label: 'Hub', keys: ['application-hub'] },
     { href: 'zbrush-breakdown.html', label: 'Breakdown', keys: ['zbrush-breakdown'] },
     { href: 'hero-renders.html', label: 'Renders', keys: ['hero-renders'] },
-    { href: 'melodia-melusina.html', label: 'Stage', keys: ['melodia-melusina', 'melodia-stage-character'] },
+    { href: 'melodia-stage-character.html', label: 'Stage', keys: ['melodia-stage-character'] },
     { href: 'world-bible.html', label: 'Worlds', keys: ['world-bible'] },
     { href: 'resume.html', label: 'Resume', keys: ['resume'] },
   ];

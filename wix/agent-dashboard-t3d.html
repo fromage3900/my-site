@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>T3D Agent Dashboard &amp;middot; Live 2026-08-06</title>
+<style>
+* { box-sizing: border-box; }
+body { font-family: 'Courier New', monospace; background: #0b0a13; color: #f2d69e; margin: 0; padding: 20px; }
+.header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #38293b; padding-bottom: 15px; margin-bottom: 20px; }
+.title { font-size: 26px; color: #78ebff; letter-spacing: 1px; }
+.subtitle { font-size: 13px; color: #666; }
+.meta { font-size: 12px; color: #555555; text-align: right; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.card { background: #1a1520; border: 1px solid #38293b; border-radius: 8px; padding: 14px; }
+.card h3 { margin: 0 0 8px 0; color: #78ebff; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.stat-row { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid #15101a; font-size: 13px; }
+.stat-label { color: #777; }
+.stat-value { color: #f2d69e; font-weight: bold; }
+.stat-value.good { color: #22c55e; }
+.stat-value.bad { color: #ef4444; }
+.bar { height: 14px; background: #15101a; border: 1px solid #38293b; border-radius: 7px; overflow: hidden; margin: 6px 0 4px; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #78ebff, #f2d69e); }
+.bar-label { font-size: 11px; color: #666; }
+.section { margin: 24px 0 12px; font-size: 15px; color: #78ebff; text-transform: uppercase; letter-spacing: 1px; border-left: 3px solid #78ebff; padding-left: 8px; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 12px; }
+th { text-align: left; color: #78ebff; border-bottom: 1px solid #38293b; padding: 6px 8px; text-transform: uppercase; letter-spacing: 1px; }
+td { padding: 6px 8px; border-bottom: 1px solid #15101a; }
+tr:hover td { background: #1f1830; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: bold; }
+.badge.migrated { background: #22c55e22; border: 1px solid #22c55e; color: #22c55e; }
+.badge.stock { background: #ef444422; border: 1px solid #ef4444; color: #ef4444; }
+.badge.partial { background: #f2d69e22; border: 1px solid #f2d69e; color: #f2d69e; }
+.badge.ok { background: #22c55e22; border: 1px solid #22c55e; color: #22c55e; }
+.badge.warn { background: #f2d69e22; border: 1px solid #f2d69e; color: #f2d69e; }
+.code { background: #15101a; border: 1px solid #38293b; border-radius: 6px; padding: 12px; font-size: 12px; white-space: pre-wrap; color: #f2d69e; margin: 8px 0 20px; }
+.flag { font-size: 11px; color: #78ebff; }
+a { color: #78ebff; }
+.footer { margin-top: 30px; border-top: 1px solid #38293b; padding-top: 10px; font-size: 11px; color: #555555; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <div class="title">T3D Agent Dashboard &amp;middot; Live 2026-08-06</div>
+    <div class="subtitle">Monolith MCP status, session-claim verification, rhythm pipeline, and live T3D catalog</div>
+  </div>
+  <div class="meta">generated 2026-08-06 via Tools/rebuild_t3d_dashboards.py</div>
+</div>
+
+<div class="section">Overall verdict <span class="badge warn">PARTIAL</span></div>
+<div class="card" style="font-size:13px;color:#bbb">Skills (as MelodiaRhythmSkillDefinition DataAssets, all 8 present + rhythm pipeline auto-discovery), injected BPs (all 4 present, 0 errors), 0 errored blueprints, and the bridge collapse are all TRUE. The &#x27;Full UI Sweep&#x27; claim is substantially FALSE: only Victory/Defeat dialogues and the Orrery widget are actually Melodia-skinned; LevelUp, ItemObtain, PartyUI, Skill/Quest/Item Details, Equipment UI and Equipment Details remain on stock template textures (their slot/stat structure is correct but styling is not Melodia). &#x27;14 nodes in 3 BPs in one transaction&#x27; is unverifiable from live state (no transaction log exposed).</div>
+
+<div class="section">Monolith MCP status</div>
+<div class="grid">
+  <div class="card"><h3>MCP endpoint</h3><div class="stat-value good">LIVE</div><div class="stat-label">127.0.0.1:9316/mcp &middot; UE 5.8</div></div>
+  <div class="card"><h3>Indexed assets</h3><div class="stat-value">11295</div><div class="stat-label">project assets</div></div>
+  <div class="card"><h3>Blueprints</h3><div class="stat-value">448</div><div class="stat-label">219 widget BPs</div></div>
+  <div class="card"><h3>Errored blueprints</h3><div class="stat-value good">0</div><div class="stat-label">compile_error_count 0</div></div>
+</div>
+
+<div class="section">Session claims vs live UE</div>
+<table><tr><th>Claim</th><th>Verdict</th><th>Evidence</th></tr><tr><td>8 Rhythm Skills created</td><td><span class="badge ok">TRUE</span></td><td style="color:#999">All 8 present as MelodiaRhythmSkillDefinition DataAssets under /Game/MelodiaIntegration/Config; auto-discovered by UMelodiaRhythmCombatSubsystem</td></tr><tr><td>T3D injection: 4 BPs wired (t3d_demo.py)</td><td><span class="badge ok">TRUE</span></td><td style="color:#999">BP_BattleController/BP_BattleUI/GameInstance/BP_InteractionBattle all present, compile 0 errors; exact 14-node transaction count unverifiable from live state</td></tr><tr><td>Full UI Sweep - all Melodia styled</td><td><span class="badge warn">PARTIAL/FALSE</span></td><td style="color:#999">3/12 widgets skinned - only Victory/Defeat dialogues and Orrery confirmed</td></tr><tr><td>Compiled 0 errors</td><td><span class="badge ok">TRUE</span></td><td style="color:#999">list_errored_blueprints = 0; 4 non-BP editor log errors (unloadable uasset, audio device, Niagara shader)</td></tr><tr><td>Battle bridge collapse (adapter deleted)</td><td><span class="badge ok">TRUE</span></td><td style="color:#999">Name-based ClassifyJRPGBattleResult + AbortPendingBattle on start failure; 0 BattleAdapter hits in project or source</td></tr></table>
+
+<div class="section">Rhythm skills (8)</div>
+<table><tr><th>Skill</th><th>Status</th><th>Asset</th><th>Class</th></tr><tr><td>Cadence Strike</td><td><span class="badge ok">found</span></td><td style="color:#666">/Game/MelodiaIntegration/Config/DA_CadenceStrike</td><td>MelodiaRhythmSkillDefinition</td></tr><tr><td>Resonant Arc</td><td><span class="badge ok">found</span></td><td style="color:#666">/Game/MelodiaIntegration/Config/DA_ResonantArc</td><td>MelodiaRhythmSkillDefinition</td></tr><tr><td>Lullaby Mend</td><td><span class="badge ok">found</span></td><td style="color:#666">/Game/MelodiaIntegration/Config/DA_LullabyMend</td><td>MelodiaRhythmSkillDefinition</td></tr><tr><td>Downbeat Break</td><td><span class="badge ok">found</span></td><td style="color:#666">/Game/MelodiaIntegration/Config/DA_DownbeatBreak</td><td>MelodiaRhythmSkillDefinition</td></tr><tr><td>Dissonant Silence</td><td><span class="badge ok">found</span></td><td style="color:#666">/Game/MelodiaIntegration/Config/DA_DissonantSilence</td><td>MelodiaRhythmSkillDefinition</td></tr><tr><td>Tempo Shift</td><td><span class="badge ok">found</span></td><td style="color:#666">/Game/MelodiaIntegration/Config/DA_TempoShift</td><td>MelodiaRhythmSkillDefinition</td></tr><tr><td>Crescendo Wave</td><td><span class="badge ok">found</span></td><td style="color:#666">/Game/MelodiaIntegration/Config/DA_CrescendoWave</td><td>MelodiaRhythmSkillDefinition</td></tr><tr><td>Harmony Shield</td><td><span class="badge ok">found</span></td><td style="color:#666">/Game/MelodiaIntegration/Config/DA_HarmonyShield</td><td>MelodiaRhythmSkillDefinition</td></tr></table>
+
+<div class="section">UI sweep check</div>
+<table><tr><th>Widget</th><th>Live state</th><th>Melodia refs</th><th>Notes</th></tr><tr><td>Victory Dialogue</td><td><span class="badge migrated">SKINNED</span></td><td>5</td><td style="color:#999">5 T_Melodia_Universal_* refs (DividerScroll x3, ParchmentFrame). Gold tint R=0.887923 G=0.672443 B=0.341914. Melodia palette confirmed.</td></tr><tr><td>Defeat Dialogue</td><td><span class="badge migrated">SKINNED</span></td><td>1</td><td style="color:#999">1 T_Melodia_Universal_* ref (ParchmentFrame background), gold tint present. Partially skinned.</td></tr><tr><td>Level Up Dialogue</td><td><span class="badge stock">STOCK</span></td><td>0</td><td style="color:#999">0 Melodia refs. Uses stock T_DialogueBackground / T_BlueUnderline. Claim of Melodia styling FALSE.</td></tr><tr><td>Item Obtain Dialogue</td><td><span class="badge stock">STOCK</span></td><td>0</td><td style="color:#999">0 Melodia refs. Uses stock T_DialogueBackground / T_Gold / T_TargetIcon. Claim of Melodia styling FALSE.</td></tr><tr><td>Party UI</td><td><span class="badge stock">STOCK</span></td><td>0</td><td style="color:#999">0 Melodia refs. Uses stock T_DialogueBackground / T_MenuBackground. Claim of Melodia styling FALSE.</td></tr><tr><td>Skill Details</td><td><span class="badge stock">STOCK</span></td><td>0</td><td style="color:#999">0 Melodia refs. Claim of Melodia styling FALSE.</td></tr><tr><td>Quest Details</td><td><span class="badge stock">STOCK</span></td><td>0</td><td style="color:#999">0 Melodia refs. Claim of Melodia styling FALSE.</td></tr><tr><td>Item Details</td><td><span class="badge stock">STOCK</span></td><td>0</td><td style="color:#999">0 Melodia refs. Claim of Melodia styling FALSE.</td></tr><tr><td>Unit Details</td><td><span class="badge stock">STOCK</span></td><td>0</td><td style="color:#999">0 Melodia refs. Claim of Melodia styling FALSE.</td></tr><tr><td>Equipment UI (5 slots)</td><td><span class="badge stock">STOCK</span></td><td>0</td><td style="color:#999">Structure VERIFIED: 5 slot buttons (Wapon/Weapon, ArmorButton, HelmButton, ShieldButton, BootsButton). Styling NOT Melodia: 0 texture refs, stock parent BP_UIBase_C.</td></tr><tr><td>Equipment Details (8 stat lines)</td><td><span class="badge stock">STOCK</span></td><td>0</td><td style="color:#999">Structure VERIFIED: 8 stat text lines (HpText, MPText, PhysicalAttackText, MagicalAttackText, DefenseText, MagicalDefenseText, SpeedText, HitText). Styling NOT Melodia: 0 texture refs.</td></tr><tr><td>Orrery World Map</td><td><span class="badge migrated">SKINNED</span></td><td>14</td><td style="color:#999">Skinned via EnvSandbox/Textures/Melodia/GameUI set (T_Melodia_SoftMG_Parchment, T_Melodia_FiligreeBraceVolute, T_Melodia_FiligreeMedallionRosette, T_Filigree_DividerScroll, T_Melodia_SoftMG_Hitline) with gold tints. NOT the T_Melodia_Universal_* set. Widget named WBP_ComicOrrery, not BP_OrreryWorldMap.</td></tr></table>
+
+<div class="section">Battle bridge collapse</div>
+<div class="card"><div class="stat-row"><span class="stat-label">Adapter assets remaining</span><span class="stat-value"><span class="badge stock">GONE</span></span></div><div class="stat-row"><span class="stat-label">Adapter source hits</span><span class="stat-value"><span class="badge stock">GONE</span></span></div><div class="stat-row"><span class="stat-label">Name-based classification</span><span class="stat-value"><span class="badge ok">OK</span></span></div><div class="stat-row"><span class="stat-label">AbortPendingBattle on start failure</span><span class="stat-value"><span class="badge ok">OK</span></span></div></div>
+
+<div class="section">T3D automation workflows</div>
+<div class="card"><div class="stat-row"><span class="stat-label">nl_to_blueprint.py - NL-&gt;JSON-&gt;T3D injection</span><span class="stat-value good">READY</span></div><div class="stat-row"><span class="stat-label">continuous_loop.py - self-healing BP fix loop</span><span class="stat-value good">READY</span></div><div class="stat-row"><span class="stat-label">t3d_demo.py - parallel batch injection (4 BPs)</span><span class="stat-value good">READY</span></div><div class="stat-row"><span class="stat-label">build_blueprint_from_spec - atomic subgraph</span><span class="stat-value good">READY</span></div><div class="stat-row"><span class="stat-label">build_ui_from_spec - Widget BP from JSON</span><span class="stat-value good">READY</span></div></div>
+
+<div class="section">Live catalog (2026-08-06 re-export)</div>
+<div class="grid">
+  <div class="card"><h3>Exports</h3><div class="stat-value">23/23</div><div class="stat-label">failed 0</div></div>
+  <div class="card"><h3>Total size</h3><div class="stat-value">15.59 MB</div><div class="stat-label">live T3D text</div></div>
+  <div class="card"><h3>Migrated</h3><div class="stat-value good">4</div><div class="stat-label">stock 19</div></div>
+  <div class="card"><h3>Progress</h3><div class="stat-value">17.4%</div><div class="stat-label">of 23 widgets</div></div>
+</div>
+<div class="footer">Evidence: Saved/Melodia/session_claims_verification.json (Monolith MCP index + T3D export scans) &middot; Live catalog: Saved/T3D/live_catalog/*.t3d &middot; Dashboards regenerated 2026-08-06</div>
+</body>
+</html>

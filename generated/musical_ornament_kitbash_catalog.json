@@ -188,8 +188,8 @@
       "path": "/Game/EnvSandbox/Textures/Source/MelodiaGameUI"
     },
     {
-      "name": "Melusina wardrobe / Live Link",
-      "reason": "Character clothes lane \u2014 never mixed with SM_Orn_*.",
+      "name": "Melusina wardrobe (not LiveLink scratch)",
+      "reason": "Character clothes lane — never mixed with SM_Orn_*. LiveLink /Game/LiveLink/ is scratch only.",
       "path": "Exports/MelusinaClothes"
     }
   ],

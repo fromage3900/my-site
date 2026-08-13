@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="noindex" />
 <title>%%ENV_NAME%% Case Study | Brennan Shepherd</title>
 <meta name="description" content="%%META_DESC%%" />
 <meta property="og:title" content="%%ENV_NAME%% — Brennan Shepherd Environment Art" />
@@ -17,7 +16,7 @@
 <link rel="stylesheet" href="melodia-premium-system.css">
 <link rel="stylesheet" href="enhanced-cosmic-hero-premium.css">
 <style>
-.breakdown-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-top:1rem}.breakdown-card{position:relative;border-radius:4px;overflow:hidden;background:var(--color-surface-sunken)}.breakdown-card img{width:100%;display:block}.breakdown-card .label{padding:.5rem .65rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary)}.stat-row{display:flex;flex-wrap:wrap;gap:1rem 2rem;margin-top:1.25rem;padding:1.25rem;background:var(--color-surface-sunken);border-radius:4px}.stat-item{text-align:center}.stat-item .num{font-family:var(--font-display);font-size:1.6rem;line-height:1;color:var(--color-text-accent)}.stat-item .lbl{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-tertiary);margin-top:4px}.macro-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-top:1rem}.macro-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:3px}.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.breakdown-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-top:1rem}.breakdown-card{position:relative;border-radius:4px;overflow:hidden;background:var(--color-surface-sunken)}.breakdown-card img{width:100%;display:block}.breakdown-card .label{padding:.5rem .65rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary)}.stat-row{display:flex;flex-wrap:wrap;gap:1rem 2rem;margin-top:1.25rem;padding:1.25rem;background:var(--color-surface-sunken);border-radius:4px}.stat-item{text-align:center}.stat-item .num{font-family:var(--font-display,Fraunces,serif);font-size:1.6rem;line-height:1;color:var(--color-text-accent)}.stat-item .lbl{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-tertiary);margin-top:4px}.macro-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-top:1rem}.macro-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:3px}.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 </style>
 </head>
 <body>
@@ -43,7 +42,7 @@
   </div>
   <div class="parallax-layer-6" aria-hidden="true"></div>
   <div class="parallax-layer-7" aria-hidden="true">
-    <video autoplay loop muted playsinline poster="../generated/assets/latest-hero.png" data-template-poster="%%HERO_POSTER%%" class="hero-video" src="#" data-template-url="../generated/assets/landscape-loops/%%HERO_WEBM%%"></video>
+    <video autoplay loop muted playsinline poster="../generated/assets/landscape-loops/%%HERO_POSTER%%" class="hero-video" src="../generated/assets/landscape-loops/%%HERO_WEBM%%"></video>
   </div>
   <div class="parallax-layer-8">
     <div class="hero-inner">
@@ -94,15 +93,15 @@
     </div>
     <div class="breakdown-grid">
       <div class="breakdown-card">
-        <img src="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" data-template-url="%%BREAKDOWN_IMG_1%%" alt="%%BREAKDOWN_ALT_1%%" loading="lazy" />
+        <img src="../generated/assets/unreal/%%BREAKDOWN_IMG_1%%" alt="%%BREAKDOWN_ALT_1%%" loading="lazy" />
         <div class="label">%%BREAKDOWN_LABEL_1%%</div>
       </div>
       <div class="breakdown-card">
-        <img src="../generated/assets/unreal/materials-grid-families-review.png" data-template-url="%%BREAKDOWN_IMG_2%%" alt="%%BREAKDOWN_ALT_2%%" loading="lazy" />
+        <img src="../generated/assets/unreal/%%BREAKDOWN_IMG_2%%" alt="%%BREAKDOWN_ALT_2%%" loading="lazy" />
         <div class="label">%%BREAKDOWN_LABEL_2%%</div>
       </div>
       <div class="breakdown-card">
-        <img src="../generated/assets/unreal/scene-sakuradream-full.png" data-template-url="%%BREAKDOWN_IMG_3%%" alt="%%BREAKDOWN_ALT_3%%" loading="lazy" />
+        <img src="../generated/assets/unreal/%%BREAKDOWN_IMG_3%%" alt="%%BREAKDOWN_ALT_3%%" loading="lazy" />
         <div class="label">%%BREAKDOWN_LABEL_3%%</div>
       </div>
     </div>
@@ -120,12 +119,12 @@
       <p>%%SECTION3_DESC%%</p>
     </div>
     <div class="macro-grid">
-      <img src="../generated/assets/latest-hero.png" data-template-url="%%MACRO_IMG_1%%" alt="%%MACRO_ALT_1%%" loading="lazy" />
-      <img src="../generated/assets/latest-hero.png" data-template-url="%%MACRO_IMG_2%%" alt="%%MACRO_ALT_2%%" loading="lazy" />
-      <img src="../generated/assets/latest-hero.png" data-template-url="%%MACRO_IMG_3%%" alt="%%MACRO_ALT_3%%" loading="lazy" />
-      <img src="../generated/assets/latest-hero.png" data-template-url="%%MACRO_IMG_4%%" alt="%%MACRO_ALT_4%%" loading="lazy" />
-      <img src="../generated/assets/latest-hero.png" data-template-url="%%MACRO_IMG_5%%" alt="%%MACRO_ALT_5%%" loading="lazy" />
-      <img src="../generated/assets/latest-hero.png" data-template-url="%%MACRO_IMG_6%%" alt="%%MACRO_ALT_6%%" loading="lazy" />
+      <img src="../generated/assets/%%MACRO_IMG_1%%" alt="%%MACRO_ALT_1%%" loading="lazy" />
+      <img src="../generated/assets/%%MACRO_IMG_2%%" alt="%%MACRO_ALT_2%%" loading="lazy" />
+      <img src="../generated/assets/%%MACRO_IMG_3%%" alt="%%MACRO_ALT_3%%" loading="lazy" />
+      <img src="../generated/assets/%%MACRO_IMG_4%%" alt="%%MACRO_ALT_4%%" loading="lazy" />
+      <img src="../generated/assets/%%MACRO_IMG_5%%" alt="%%MACRO_ALT_5%%" loading="lazy" />
+      <img src="../generated/assets/%%MACRO_IMG_6%%" alt="%%MACRO_ALT_6%%" loading="lazy" />
     </div>
   </div>
 </section>
@@ -153,7 +152,7 @@
   <div class="inner">
     <span>Brennan Shepherd / Environment & Technical Artist</span>
     <span>%%ENV_NAME%% · UE5 · PCG · SDF Materials · <a href="application-hub.html" style="color:inherit;text-decoration:underline">View all environments</a></span>
-    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase"><a href="pcg-system-impact.html" style="color:var(--color-text-tertiary);text-decoration:none">PCG Systems</a><a href="material-loop-gallery.html" style="color:var(--color-text-tertiary);text-decoration:none">Material Loops</a><a href="sdf-material-gallery.html" style="color:var(--color-text-tertiary);text-decoration:none">SDF Gallery</a><a href="shader-breakdowns.html" style="color:var(--color-text-tertiary);text-decoration:none">Shaders</a></div>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase"><a href="pcg-system-impact.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">PCG Systems</a><a href="material-loop-gallery.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Material Loops</a><a href="sdf-material-gallery.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">SDF Gallery</a><a href="shader-breakdowns.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Shaders</a></div>
   </div>
 </footer>
 </div>

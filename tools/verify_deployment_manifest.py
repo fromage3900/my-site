@@ -1,16 +1,22 @@
 #!/usr/bin/env python3
 """
-Verify Deployment Manifest — checks that all assets in deployment-manifest.json resolve (200 OK)
+Verify Deployment Manifest — checks that all assets in deployment_manifest.json resolve (200 OK)
 Run after GitHub Pages deploy to validate live URLs.
 """
 
+import argparse
 import json
 import sys
+import urllib.error
 import urllib.request
-from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
 
-MANIFEST_PATH = Path(__file__).parent.parent / "generated" / "deployment-manifest.json"
+GENERATED_DIR = Path(__file__).resolve().parent.parent / "generated"
+MANIFEST_CANDIDATES = (
+    GENERATED_DIR / "deployment_manifest.json",
+    GENERATED_DIR / "deployment-manifest.json",
+)
 
 def check_url(url: str) -> tuple[str, int, str]:
     """Return (url, status_code, error_msg)"""
@@ -24,11 +30,23 @@ def check_url(url: str) -> tuple[str, int, str]:
         return url, 0, str(e)
 
 def main() -> int:
-    if not MANIFEST_PATH.exists():
-        print(f"::warning:: Manifest not found at {MANIFEST_PATH}")
+    parser = argparse.ArgumentParser(description="Verify deployment asset URLs.")
+    parser.add_argument(
+        "--manifest",
+        default=None,
+        help="manifest path; defaults to deployment_manifest.json with legacy fallback",
+    )
+    args = parser.parse_args()
+    manifest_path = Path(args.manifest).expanduser().resolve() if args.manifest else next(
+        (path for path in MANIFEST_CANDIDATES if path.exists()),
+        MANIFEST_CANDIDATES[0],
+    )
+
+    if not manifest_path.exists():
+        print(f"::warning:: Manifest not found at {manifest_path}")
         return 0  # Don't fail if manifest doesn't exist yet
 
-    manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     urls = []
 
     # Collect all asset URLs from manifest

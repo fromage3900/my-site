@@ -45,7 +45,7 @@ TIMEOUT = httpx.Timeout(60.0)
 # Node IDs we care about (from ART_SOURCE.json)
 NODE_MAP = {
     "softmg_kit": "61:531",           # Game/SoftMG_Kit
-    "filigree_baroque": "128:11220",  # Game/FiligreeBatchO_Baroque (Now Melusina)
+    "filigree_baroque": "58:716",     # Game/FiligreeBatchO_Baroque
     "motion_board": "41:242",         # Game/RhythmReactivityBoard
 }
 
@@ -60,17 +60,11 @@ class FigmaClient:
     def __init__(self):
         self.client = httpx.AsyncClient(headers=HEADERS, timeout=TIMEOUT)
 
-    async def __aenter__(self):
-        return self
-
-    async def __aexit__(self, exc_type, exc_val, exc_tb):
-        await self.close()
-
     async def close(self):
         await self.client.aclose()
 
     async def get(self, path: str, params: dict = None) -> dict:
-        url = FIGMA_API_BASE + path
+        url = urljoin(FIGMA_API_BASE, path)
         resp = await self.client.get(url, params=params)
         resp.raise_for_status()
         return resp.json()

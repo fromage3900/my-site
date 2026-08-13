@@ -416,7 +416,7 @@
       const placeholder = item.placeholder || `linear-gradient(135deg, #141A30 0%, #3C5C9E 100%)`;
 
       galleryItem.innerHTML = `
-        <img class="gallery-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" data-asset-url="${image}" alt="${item.caption}" onerror="this.style.background='${placeholder}'">
+        <img class="gallery-image" src="${image}" alt="${item.caption}" onerror="this.style.background='${placeholder}'">
         <p class="gallery-caption">${item.caption || 'Step'}</p>
       `;
 

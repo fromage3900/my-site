@@ -1,39 +1,65 @@
 {
-  "generated_at": "2026-07-12T21:15:00Z",
-  "version": "2.134.0",
-  "note": "Honest inventory. Melodia Studio = SurrealArch N-panel. Musical kitbash lane is 10 FBX (7 polish + 3 Melody Tokens). TrebleClef + MusicalCorner are hand-remake (do not auto-regen). GN_UniversalScatter / GN_RockGenerator remain sheet stubs only.",
+  "generated_at": "2026-08-13T17:00:00Z",
+  "as_of": "2026-08-13",
+  "version": "2.131.0",
+  "note": "Honest inventory as of 2026-08-13. Melodia Studio (Blender 5.2): 165 GN builders, 12 GN Stack categories, 165 RQ_MEL_* review-queue objects. Preset coverage 33/165 (20%), 100 looks. P0 hero presets smoked headless 2026-08-13. P2 fingerprint baseline on 12 heavy trees. Operators surreal_arch.* / mel_gn.*. LiveLink in-addon is stub; live agent MCP is BlenderMCP :9876. Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay hair stays SK_MelusinaHair. Niagara 3D FLIP is not the hair solver. Locomotion idle is mocap A_Melusina_Idle_Mocap_RootX; Blender idle is on disk, not wired. V2Test ARP splits are portfolio/review only. Musical kitbash lane is 10 FBX (7 polish + 3 Melody Tokens). GN_UniversalScatter / GN_RockGenerator remain sheet stubs only. Do not quote stale 39/49/59 as the builder total (Set Dressing is one category of 39). Do not quote stale 24/165 or 73 looks.",
   "melodia_studio": {
     "bl_category": "Melodia Studio",
     "addon": "deploy/surreal_architecture_gen.py",
     "package": "deploy/surreal_arch/",
-    "version": "2.134.0",
-    "genomes": 42,
+    "version": "2.131.0",
+    "engine": "Blender 5.2",
+    "operators": ["surreal_arch.*", "mel_gn.*"],
+    "gn_builders": 165,
+    "gn_stack_categories": 12,
+    "review_queue_rq_mel": 165,
+    "preset_coverage": "33/165 (20%)",
+    "preset_looks": 100,
+    "p0_heroes_smoked": "2026-08-13 headless",
+    "p2_fingerprint_trees": 12,
+    "livelink": "stub (Melodia Studio Live Bridge)",
+    "mcp": "BlenderMCP :9876",
+    "gn_stack": [
+      "Primitives",
+      "Profiles",
+      "Math & Attributes",
+      "Structures",
+      "Magic Effects",
+      "Ornament",
+      "Filigree & Crests",
+      "Musical Notation",
+      "Castle Kit",
+      "Operations",
+      "Mesh Tools",
+      "Set Dressing"
+    ],
+    "style_genome_catalog": 42,
     "library_bake": 72,
     "starlight_regen": 9
   },
   "lanes": [
     {
       "id": "melodia-studio-surrealarch",
-      "lane": "Blender GN \u00e2\u20ac\u201d live",
-      "title": "Melodia Studio / SurrealArch v2.134",
+      "lane": "Blender GN — live",
+      "title": "Melodia Studio / GN Stack",
       "status": "live",
       "asset_root": "BS_GodFile/deploy/surreal_architecture_gen.py",
-      "summary": "Melodia Studio N-panel builds GeometryNodeTree graphs at runtime: 42 style genomes, library bake 72, Starlight regen 9. Zen shrine axis, Escher greybox, gothic kits, Nikki photo-spot genomes, DistributePointsOnFaces scatter.",
+      "summary": "Melodia Studio N-panel (operators surreal_arch.* / mel_gn.*) builds GeometryNodeTree graphs: 165 GN builders across 12 GN Stack categories, 165 RQ_MEL_* objects. Preset coverage 33/165 (20%), 100 looks. P0 hero presets smoked headless 2026-08-13. P2 fingerprint baseline on 12 heavy trees. Style-genome compose remains a separate catalog (42 families on this site).",
       "steps": [
         {
           "order": 1,
-          "name": "apply_geometry_nodes_to_object",
-          "detail": "Creates SurrealArch_{obj} node tree + modifier; signature-aware monolith kwargs."
+          "name": "GN Stack apply",
+          "detail": "mel_gn.* builders register 165 trees into 12 categories; Review Queue RQ_MEL_* = 165."
         },
         {
           "order": 2,
-          "name": "Genome / catalog dispatch",
-          "detail": "42 genomes + 100+ arch types: GB_ZEN_*, GB_ESCHER_*, towers, domes, props."
+          "name": "Presets + fingerprints",
+          "detail": "33/165 builders have presets (100 looks). P0 heroes smoked headless 2026-08-13. P2 fingerprint baseline covers 12 heavy trees."
         },
         {
           "order": 3,
-          "name": "Library bake",
-          "detail": "SurrealArch_Library (72) + Surreal_Regen_Starlight (9) on Portfolio Stage v4."
+          "name": "Style genomes / library bake",
+          "detail": "Compose-style catalog still lists 42 families. SurrealArch_Library (72) + Surreal_Regen_Starlight (9) are historical bake counts."
         },
         {
           "order": 4,
@@ -43,15 +69,15 @@
         {
           "order": 5,
           "name": "Portfolio dossier",
-          "detail": "surreal-architecture.html + geometry-nodes.html proof plates."
+          "detail": "surreal-architecture.html + geometry-nodes.html proof plates. Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay hair stays SK_MelusinaHair. Niagara 3D FLIP is not the hair solver. Local EEVEE Flip stills are cine plates. Cam_Beauty on live v22 reads bald because Flip cache globules sit below the scalp (existing 1–240, not a new bake). Unreal B2 Cam_Beauty is still pending."
         }
       ],
       "proof_targets": [
-        "42 genomes",
-        "library 72",
-        "Starlight 9",
-        "GB_ZEN_SANDO",
-        "GB_ESCHER_RELATIVITY"
+        "165 GN builders",
+        "12 GN Stack categories",
+        "33/165 presets (20%)",
+        "100 looks",
+        "RQ_MEL_* = 165"
       ],
       "sheet_href": "surreal-architecture.html",
       "unreal_parallel": "build_escher_relativity_room.py (PCG port of Escher math)"

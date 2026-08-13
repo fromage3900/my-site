@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Melodia — Stage Character · Melusina</title>
+<meta name="description" content="Melusina stage facts as of 2026-08-13: SK_Melusina_Skeleton (465 bones), RTG_Mocap_to_Melusina retarget, V2Test review-only." />
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<style>
+  :root {
+    --surface-base: #141A30;
+    --text-primary: #ECEAF4;
+    --text-secondary: #A9A7C0;
+    --gold: #C9A86A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-body), system-ui, sans-serif;
+    background: var(--surface-base);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .card {
+    max-width: 640px;
+    text-align: left;
+    border: 1px solid rgba(201,168,106,0.2);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+  }
+  h1 { color: var(--gold); font-size: 1.6rem; margin-bottom: 0.5rem; text-align: center; }
+  .kicker { display: block; text-align: center; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  p { color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem; }
+  .row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.45rem 0; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; }
+  .row span { color: var(--text-secondary); }
+  .row strong { color: var(--text-primary); text-align: right; }
+  .badge { display: inline-block; margin-top: 1.5rem; padding: 0.4rem 1rem; border: 1px solid var(--gold); border-radius: 999px; font-size: 0.75rem; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; }
+  .links { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+  .links a { color: var(--gold); font-size: 0.8rem; }
+  .stills { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1.25rem; }
+  .stills img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201,168,106,0.25); }
+  .stills.single { grid-template-columns: 1fr; }
+  .still-cap { font-size: 0.7rem; color: var(--text-secondary); margin-top: 0.35rem; text-align: center; }
+</style>
+</head>
+<body>
+<div class="card">
+  <span class="kicker">As of 2026-08-13</span>
+  <h1>Melusina — live character</h1>
+  <p>Beauty plates and stage lookdev. Live gameplay skeleton is <code>SK_Melusina_Skeleton</code>. V2Test ARP split static meshes are portfolio/review only.</p>
+  <div class="row"><span>Skeleton</span><strong>SK_Melusina_Skeleton · 465 bones · underscore · cm</strong></div>
+  <div class="row"><span>Mocap</span><strong>RTG_Mocap_to_Melusina — clips do not import directly onto SK_Melusina</strong></div>
+  <div class="row"><span>Idle</span><strong>Speed 0 = mocap A_Melusina_Idle_Mocap_RootX. Blender idle on disk, not wired.</strong></div>
+  <div class="row"><span>Cine hair</span><strong>Geometry Cache Alembic 1–240 + Niagara drip — not Niagara 3D FLIP</strong></div>
+  <div class="row"><span>Gameplay hair</span><strong>SK_MelusinaHair fallback. Do not read Flip stills as live hair.</strong></div>
+  <div class="row"><span>V2Test ARP</span><strong>Portfolio / review only — not the live gameplay skeleton</strong></div>
+  <div class="row"><span>Wardrobe</span><strong>Melusina wardrobe SSOT in Blender — not LiveLink scratch</strong></div>
+  <p class="human-lede" style="margin-top:1.25rem">Flip EEVEE glam stills are cine Geometry Cache plates, not gameplay hair. Cam_Beauty on live v22 (Nikki 900/550/280/140, Review_Queue hidden) reads bald because Flip cache globules sit below the scalp (max Z ≈ 1.015 vs head ≈ 1.442) — existing 1–240 cache, not a new bake. Do not claim full cine water-hair in that still. Unreal B2 Cam_Beauty is still pending. Niagara 3D FLIP is not the hair solver.</p>
+  <div class="stills">
+    <div>
+      <a href="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_01.png"><img data-plate="melusina.flip_01" src="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_01.png" alt="Melusina Flip water-hair cine EEVEE, frame 96" /></a>
+      <p class="still-cap">Flip cine f96 · not SK_MelusinaHair</p>
+    </div>
+    <div>
+      <a href="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_02.png"><img data-plate="melusina.flip_02" src="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_02.png" alt="Melusina Flip water-hair cine EEVEE, frame 240" /></a>
+      <p class="still-cap">Flip cine f240 · not SK_MelusinaHair</p>
+    </div>
+  </div>
+  <div class="stills single">
+    <div>
+      <a href="../generated/melusina_cam_beauty_nikki_2026-08-13.png"><img data-plate="melusina.nikki_cam_beauty" src="../generated/melusina_cam_beauty_nikki_2026-08-13.png" alt="Cam_Beauty on live v22 — plate reads bald; Flip cache globules below scalp" /></a>
+      <p class="still-cap">Cam_Beauty v22 · bald because cache is below scalp · existing 1–240, not a new bake</p>
+    </div>
+  </div>
+  <div class="links">
+    <a href="melodia-melusina.html">Lookbook</a>
+    <a href="geometry-nodes.html">Melodia Studio</a>
+    <a href="credits.html">Credits</a>
+    <a href="application-hub.html">Hub</a>
+  </div>
+  <p style="text-align:center"><span class="badge">Currency pass 2026-08-13</span></p>
+</div>
+</body>
+</html>

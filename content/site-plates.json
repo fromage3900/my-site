@@ -121,6 +121,18 @@
     "melody.water_glam": {
       "path": "../generated/assets/ornaments/melody_token_water_komikaze_beauty_34.png",
       "alt": "Melody Token · water EEVEE ice glam"
+    },
+    "melusina.flip_01": {
+      "path": "../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_01.png",
+      "alt": "Melusina Flip water-hair cine EEVEE, frame 96 — not gameplay hair, not Unreal B2 Cam_Beauty"
+    },
+    "melusina.flip_02": {
+      "path": "../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_02.png",
+      "alt": "Melusina Flip water-hair cine EEVEE, frame 240 — not gameplay hair, not Unreal B2 Cam_Beauty"
+    },
+    "melusina.nikki_cam_beauty": {
+      "path": "../generated/melusina_cam_beauty_nikki_2026-08-13.png",
+      "alt": "Cam_Beauty on live v22, Nikki 900/550/280/140, Review_Queue hidden. Plate reads bald: Flip cache globules sit below the scalp (max Z ≈ 1.015 vs head ≈ 1.442) — existing 1–240 cache, not a new bake. Not full cine water-hair. Unreal B2 Cam_Beauty still pending."
     }
   }
 }

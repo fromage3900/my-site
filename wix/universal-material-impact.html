@@ -102,7 +102,7 @@
       const title = esc(card.filename || label || 'Plate');
       const caption = esc(card.caption || '');
       const web = esc(card.web_path || '');
-      const media = web ? '<img sr' + 'c="' + web + '" alt="' + title + '" />' : `<div class="thumb">Missing plate</div>`;
+      const media = web ? `<img src="${web}" alt="${title}" />` : `<div class="thumb">Missing plate</div>`;
       return `
         <article class="impact-card">
           <div class="thumb">${media}</div>

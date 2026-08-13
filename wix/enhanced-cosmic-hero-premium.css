@@ -1,9 +1,9 @@
 :root {
   /* Premium Color Palette - Honkai/Genshin/LV Inspired */
-  --celestial-deep: #0D1224;
+  --celestial-deep: var(--primitive-astral-900);
   --celestial-mid: #1A1F3A;
   --celestial-light: #2A3055;
-  --luxury-gold: #C9A86A;
+  --luxury-gold: var(--primitive-gold-500);
   --luxury-rose: #E8C9B8;
   --luxury-platinum: #D4C5A9;
   --iridescent-cyan: #7BB8B8;
@@ -12,8 +12,8 @@
   --editorial-cream: #FEFAF2;
   
   /* Material Gradients */
-  --gold-iridescent: linear-gradient(135deg, #C9A86A 0%, #E8C9B8 25%, #D4C5A9 50%, #C9A86A 75%, #E8C9B8 100%);
-  --celestial-shift: linear-gradient(135deg, #0D1224 0%, #1A1F3A 50%, #2A3055 100%);
+  --gold-iridescent: linear-gradient(135deg, var(--primitive-gold-500) 0%, #E8C9B8 25%, #D4C5A9 50%, var(--primitive-gold-500) 75%, #E8C9B8 100%);
+  --celestial-shift: linear-gradient(135deg, var(--primitive-astral-900) 0%, #1A1F3A 50%, #2A3055 100%);
   --luxury-shimmer: linear-gradient(45deg, #FEFAF2 0%, #F5F2ED 50%, #FEFAF2 100%);
   
   /* Premium Text Colors */
@@ -166,8 +166,8 @@
   object-position: 62% 16%;
   filter: saturate(1.05) contrast(1.03) brightness(0.98);
   /* Wider radial mask — keep Melusina face/bust clear */
-  -webkit-mask-image: radial-gradient(ellipse 88% 90% at 62% 40%, #000 52%, transparent 88%);
-  mask-image: radial-gradient(ellipse 88% 90% at 62% 40%, #000 52%, transparent 88%);
+  -webkit-mask-image: radial-gradient(ellipse 88% 90% at 62% 40%, var(--primitive-plum-900) 52%, transparent 88%);
+  mask-image: radial-gradient(ellipse 88% 90% at 62% 40%, var(--primitive-plum-900) 52%, transparent 88%);
 }
 
 .parallax-layer-7::after {
@@ -386,7 +386,7 @@
   height: 5px;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle at 35% 30%, #fff, rgba(255, 230, 102, 0.85) 55%, rgba(255, 110, 180, 0.5));
+  background: radial-gradient(circle at 35% 30%, var(--primitive-ivory-50), rgba(255, 230, 102, 0.85) 55%, rgba(255, 110, 180, 0.5));
   box-shadow: 0 0 8px rgba(255, 230, 102, 0.45);
 }
 
@@ -460,7 +460,7 @@
 
 /* Gold Leaf Nodes */
 .node-gold {
-  --node-color: #C9A86A;
+  --node-color: var(--primitive-gold-500);
   --node-color-dark: #A7884E;
   --node-color-shift: #E8C9B8;
   --node-glow: rgba(201, 168, 106, 0.8);
@@ -768,14 +768,14 @@ h3 {
 
 .hero.has-orrery-overhead .parallax-layer-8.hero-copy-layer .kicker,
 .hero.has-orrery-overhead .parallax-layer-8.hero-copy-layer .premium-kicker {
-  color: #f0e6d4;
+  color: var(--primitive-ivory-100);
   text-shadow:
     0 1px 2px rgba(7, 9, 18, 0.85),
     0 0 18px rgba(7, 9, 18, 0.55);
 }
 
 .hero.has-orrery-overhead .parallax-layer-8.hero-copy-layer h1 {
-  color: #f7f4ee;
+  color: var(--primitive-ivory-100);
   text-shadow:
     0 2px 4px rgba(7, 9, 18, 0.9),
     0 0 28px rgba(7, 9, 18, 0.65),
@@ -894,17 +894,17 @@ h3 {
   font-size: 0.62rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #ddc79b;
+  color: var(--primitive-gold-300);
 }
 
 .pp-star {
   display: inline-block;
   margin-right: 6px;
-  color: #c9a86a;
+  color: var(--primitive-gold-500);
   text-shadow: 0 0 12px rgba(201, 168, 106, 0.45);
 }
 
-.pp-ver { color: #a9a7c0; letter-spacing: 0.12em; }
+.pp-ver { color: var(--primitive-lavender-100); letter-spacing: 0.12em; }
 
 .pp-title {
   display: block;
@@ -912,7 +912,7 @@ h3 {
   font-size: clamp(1.25rem, 2vw, 1.45rem);
   font-weight: 500;
   line-height: 1.1;
-  color: #eceaf4;
+  color: var(--primitive-lavender-100);
 }
 
 .pp-cat {
@@ -923,7 +923,7 @@ h3 {
   font-size: 0.62rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #a9a7c0;
+  color: var(--primitive-lavender-100);
 }
 
 .pp-banner-specs {
@@ -947,7 +947,7 @@ h3 {
 }
 
 .pp-banner-specs dt {
-  color: #a9a7c0;
+  color: var(--primitive-lavender-100);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -955,7 +955,7 @@ h3 {
 
 .pp-banner-specs dd {
   margin: 0;
-  color: #eceaf4;
+  color: var(--primitive-lavender-100);
   text-align: right;
   justify-self: end;
   max-width: 100%;
@@ -970,10 +970,10 @@ h3 {
   font-size: 0.62rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #c9a86a;
+  color: var(--primitive-gold-500);
 }
 
-.pp-link:hover { color: #ddc79b; }
+.pp-link:hover { color: var(--primitive-gold-300); }
 
 .hero.has-orrery-overhead .hero-actions {
   margin-top: 22px;
@@ -1013,7 +1013,7 @@ h3 {
 }
 
 .hero-scroll-cue:hover {
-  color: #ddc79b;
+  color: var(--primitive-gold-300);
   border-color: rgba(201, 168, 106, 0.55);
 }
 
@@ -1031,7 +1031,7 @@ h3 {
   min-height: 240px;
   border: 1px solid rgba(201, 168, 106, 0.32);
   border-radius: 2px;
-  background: #12162a;
+  background: var(--primitive-astral-900);
   transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
 }
 
@@ -1049,7 +1049,7 @@ h3 {
   inset: auto 0 0;
   padding: 18px 14px 14px;
   background: linear-gradient(0deg, rgba(7, 9, 18, 0.92) 0%, rgba(7, 9, 18, 0.35) 70%, transparent 100%);
-  color: #eceaf4;
+  color: var(--primitive-lavender-100);
 }
 
 .world-pillar-meta b {
@@ -1057,7 +1057,7 @@ h3 {
   font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.18em;
-  color: #c9a86a;
+  color: var(--primitive-gold-500);
 }
 
 .world-pillar-meta strong {
@@ -1102,7 +1102,7 @@ h3 {
 }
 
 .sig-mark {
-  color: #c9a86a;
+  color: var(--primitive-gold-500);
   font-size: 1rem;
   text-shadow: 0 0 14px rgba(201, 168, 106, 0.4);
 }
@@ -1111,7 +1111,7 @@ h3 {
   font-family: var(--font-brand, var(--font-display));
   font-weight: 700;
   letter-spacing: 0.22em;
-  color: #eceaf4;
+  color: var(--primitive-lavender-100);
 }
 
 .sig-sep { opacity: 0.45; }
@@ -1135,10 +1135,10 @@ h3 {
   font-size: 0.66rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #ddc79b;
+  color: var(--primitive-gold-300);
 }
 
-.sig-links a:hover { color: #eceaf4; }
+.sig-links a:hover { color: var(--primitive-lavender-100); }
 
 /* Constellation Navigator accent on shell-nav */
 .shell-nav.constellation-nav .nav-links {
@@ -1164,7 +1164,7 @@ h3 {
 
 .shell-nav.constellation-nav .nav-links a.is-active .nav-star,
 .shell-nav.constellation-nav .nav-links a:hover .nav-star {
-  background: #c9a86a;
+  background: var(--primitive-gold-500);
   box-shadow: 0 0 8px rgba(201, 168, 106, 0.55);
 }
 

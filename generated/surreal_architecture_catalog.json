@@ -1,11 +1,12 @@
 {
-  "product_id": "melodia-surreal-architecture-addon",
-  "name": "Surreal Architecture",
-  "version": "2.134.0",
-  "tagline": "Blender Geometry Nodes addon for style genomes, greybox compose, and Miraland-adjacent stage graphs.",
-  "blurb": "Procedural architecture OS for Melodia \u2014 42 style genomes, SurrealArch_Library bake, Nikki photo-spot graphs, and ornament FBX handoff. Not a store SKU; portfolio + production tool.",
+  "product_id": "melodia-studio-addon",
+  "name": "Melodia Studio",
+  "version": "2.131.0",
+  "as_of": "2026-08-13",
+  "tagline": "Blender 5.2 Geometry Nodes addon — Melodia Studio GN Stack, style genomes, and greybox compose.",
+  "blurb": "Melodia Studio for Blender 5.2 — 165 GN builders across 12 GN Stack categories, 165 RQ_MEL_* review-queue objects, preset coverage 33/165 (20%) with 100 looks. Operators surreal_arch.* / mel_gn.*. Style-genome compose catalog still lists 42 families. Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay hair stays SK_MelusinaHair. Niagara 3D FLIP is not the hair solver. Not a store SKU; portfolio + production tool. As of 2026-08-13.",
   "store_live": false,
-  "engine": "Blender 5.1",
+  "engine": "Blender 5.2",
   "paths": {
     "monolith": "deploy/surreal_architecture_gen.py",
     "package": "deploy/surreal_arch/",
@@ -15,11 +16,18 @@
     "sync": "deploy/sync_surreal_to_live.ps1"
   },
   "proof": {
+    "gn_builders": 165,
+    "gn_stack_categories": 12,
+    "review_queue_rq_mel": 165,
+    "preset_coverage": "33/165 (20%)",
+    "preset_looks": 100,
+    "p0_heroes_smoked": "2026-08-13 headless",
+    "p2_fingerprint_trees": 12,
     "library_meshes": 72,
     "starlight_spawn": 9,
     "ornament_fbx": 15,
     "genome_count": 42,
-    "stage_blend": "KitbashExport/Melodia_Portfolio_Stage_v4.blend"
+    "stage_blend": "live pin is Melodia_Portfolio_Stage_v22 (do not save from agents)"
   },
   "families": {
     "Zen": {
@@ -457,6 +465,19 @@
     }
   ],
   "recent_changes": [
+    {
+      "version": "2.131.0",
+      "title": "GN Stack currency — 165 builders (as of 2026-08-13)",
+      "bullets": [
+        "165 GN builders, 12 GN Stack categories, 165 RQ_MEL_* review-queue objects",
+        "Preset coverage 33/165 (20%), 100 looks — P0 heroes smoked headless 2026-08-13",
+        "P2 fingerprint baseline exists for 12 heavy trees",
+        "Product name Melodia Studio; operators surreal_arch.* / mel_gn.*; Blender 5.2",
+        "LiveLink in-addon is stub; live agent MCP is BlenderMCP :9876",
+        "Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay hair stays SK_MelusinaHair. Niagara 3D FLIP is not the hair solver",
+        "Do not quote stale 39/49/59 as the builder total (Set Dressing category is 39)"
+      ]
+    },
     {
       "version": "2.134.0",
       "title": "Library bake unblock + full mesh regen",

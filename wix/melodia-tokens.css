@@ -2,13 +2,11 @@
    Generated from tokens.json (Figma SSOT). Do not edit manually — run token sync.
    All CSS files must @import this FIRST before any other styles. */
 
-@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Cinzel:wght@400;600;700&family=Instrument+Serif:ital@0;1&family=Syne:wght@500;600;700;800&display=swap");
-
 :root {
   /* ===== PRIMITIVE COLORS (from tokens.json primitives) ===== */
-  --primitive-ivory-50:  #FCFBF8;
+  --primitive-ivory-50:  #FFF8EE;
   --primitive-ivory-100: #F8ECD6;
-  --primitive-ivory-200: #EFEAE1;
+  --primitive-ivory-200: #F3E6C8;
   --primitive-ivory-300: #E3DACE;
 
   --primitive-plum-500:  #6E6080;
@@ -67,15 +65,6 @@
   --primitive-game-lavender:        #B6A6D9;
   --primitive-game-seafoam:         #8FC9BD;
   --primitive-game-ink:             #3B2A22;
-
-  /* ===== MELUSINA / MAGICAL GIRL PRIMITIVES ===== */
-  --primitive-melusina-ice:         #b8eeff;
-  --primitive-melusina-aqua:        #7fd4ff;
-  --primitive-melusina-pearl:       #f0f8ff;
-  --primitive-melusina-blush:       #ffcce8;
-  --primitive-melusina-star:        #ffe080;
-  --primitive-melusina-void:        #0e0828;
-
 
   /* ===== SEMANTIC TOKENS — LIGHT MODE (Ivory Editorial) ===== */
   --color-surface-base:     var(--primitive-ivory-100);
@@ -220,14 +209,14 @@
   --radius-lg:   8px;
   --radius-pill: 999px;
 
-  /* ===== TYPOGRAPHY (Luxury Typography Stack — SSOT) ===== */
-  --font-brand:         'Syne', 'Avenir Next', 'Segoe UI', sans-serif;
-  --font-display:       'Instrument Serif', 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
-  --font-display-fallback: 'Iowan Old Style', Georgia, serif;
-  --font-cover:         'Cinzel', 'Instrument Serif', Georgia, serif;
-  --font-body:          'Bricolage Grotesque', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
-  --font-body-fallback: 'Avenir Next', system-ui, sans-serif;
-  --font-mono:          'Azeret Mono', ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', monospace;
+  /* ===== TYPOGRAPHY (from tokens.json global.fontFamilies) ===== */
+  --font-display:       "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-display-fallback: Georgia, serif;
+  --font-cover:         "Syne", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body:          "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body-fallback: "Avenir Next", "Segoe UI", sans-serif;
+  --font-mono:          "Azeret Mono", ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
+  --font-brand:         "Syne", "Avenir Next", "Segoe UI", sans-serif;
 
   /* Type scale (matches tokens.json global.type) */
   --text-display-xl:    clamp(48px, 8vw, 72px) / 1.05 var(--font-display);
@@ -281,17 +270,6 @@
   [data-pillar="sakura"],
   .accent-sakura {
     --motif-accent: rgba(255, 110, 180, 0.55);
-  }
-
-  [data-pillar="melusina"],
-  .accent-melusina {
-    --motif-accent: rgba(127, 212, 255, 0.55); /* aqua */
-    --color-accent-tertiary: var(--primitive-melusina-aqua);
-    --color-accent-primary: var(--primitive-melusina-star);
-    --color-surface-base: var(--primitive-melusina-void);
-    --color-surface-sunken: #1a1435;
-    --color-text-primary: var(--primitive-melusina-pearl);
-    --color-text-accent: var(--primitive-melusina-blush);
   }
 
   [data-pillar="cathedral"],

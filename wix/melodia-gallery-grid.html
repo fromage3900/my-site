@@ -218,7 +218,7 @@
       const placeholder = item.placeholder || `linear-gradient(135deg, #1C2340 0%, #3C5C9E 100%)`;
 
       galleryItem.innerHTML = `
-        <img class="gallery-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" data-asset-url="${image}" alt="${item.title}" onerror="this.style.background='${placeholder}'">
+        <img class="gallery-image" src="${image}" alt="${item.title}" onerror="this.style.background='${placeholder}'">
         <div class="gallery-overlay">
           <h3 class="gallery-item-title">${item.title}</h3>
           <span class="gallery-item-category">${item.category || 'Illustration'}</span>

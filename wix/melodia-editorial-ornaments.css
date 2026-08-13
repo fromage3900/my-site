@@ -136,14 +136,14 @@
 .premium-kicker:not(.motif-no-glyph)::after {
   content: " ✦";
   opacity: var(--motif-glyph-opacity, 0.42);
-  color: var(--motif-accent, var(--gold, #c9a86a));
+  color: var(--motif-accent, var(--gold, var(--primitive-gold-500)));
 }
 
 /* Tier A2 — hollow sparkle (lists, secondary affordances) */
 .motif-star-glyph-open::after {
   content: " ✧";
   opacity: calc(var(--motif-glyph-opacity, 0.42) - 0.04);
-  color: var(--motif-accent, var(--gold, #c9a86a));
+  color: var(--motif-accent, var(--gold, var(--primitive-gold-500)));
 }
 
 /* Tier B — 8-point clip star (::before corners) */
@@ -224,7 +224,7 @@
 
 /* Portal corner glyph uses tier A — pillar tint via accent-* on card */
 .portal-card::after {
-  color: var(--motif-accent, var(--gold, #c9a86a));
+  color: var(--motif-accent, var(--gold, var(--primitive-gold-500)));
   opacity: 0.72;
 }
 
