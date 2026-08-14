@@ -79,7 +79,7 @@ body {
   background:
     radial-gradient(circle at 22% 12%, rgba(102, 217, 255, 0.08), transparent 34%),
     radial-gradient(circle at 82% 18%, rgba(204, 153, 255, 0.08), transparent 36%),
-    linear-gradient(180deg, var(--ivory), #0b0f1f);
+    linear-gradient(180deg, var(--ivory), var(--primitive-astral-900));
   color: var(--ink);
   font-family: var(--font-body);
   letter-spacing: var(--tracking-body, 0);
@@ -129,7 +129,7 @@ img { display: block; max-width: 100%; }
     radial-gradient(circle at 12% 16%, rgba(232, 201, 184, 0.08), transparent 28%),
     radial-gradient(circle at 78% 22%, rgba(155, 143, 196, 0.10), transparent 32%),
     radial-gradient(circle at 50% 80%, rgba(102, 217, 255, 0.06), transparent 40%),
-    linear-gradient(180deg, var(--ivory) 0%, #101736 50%, #0b0f1f 100%);
+    linear-gradient(180deg, var(--ivory) 0%, var(--primitive-astral-900) 50%, var(--primitive-astral-900) 100%);
 }
 
 .melodia-shell::before {

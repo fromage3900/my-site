@@ -3,15 +3,22 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>Melody Geometry | Brennan Shepherd</title>
-<meta name="description" content="Melodia Studio Geometry Nodes — 165 GN builders, 12 GN Stack categories, musical ornament plates. As of 2026-08-13." />
+<meta name="description" content="Melodia Studio Geometry Nodes — 165 procedural generators, 12 stack categories, musical ornament plates, and stylized lookdev." />
 <meta property="og:title" content="Melody Geometry — Melodia Studio" />
-<meta property="og:description" content="165 GN builders · 12 GN Stack categories · preset coverage 33/165 (20%). Sheet-music plates from Melodia Studio." />
+<meta property="og:description" content="165 procedural generators · 12 stack categories · 100 curated looks. Sheet-music plates and procedural forms from Melodia Studio." />
 <meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/ornaments/musical_20260711/musical_stage_beauty.png" />
+<link rel="stylesheet" href="melodia-tokens.css">
 <link rel="stylesheet" href="melodia-luxury-type.css">
 <link rel="stylesheet" href="melodia-editorial.css">
 <link rel="stylesheet" href="melodia-fashion-editorial.css">
 <link rel="stylesheet" href="melodia-premium-system.css">
+<link rel="stylesheet" href="melodia-game-ui.css">
+<link rel="stylesheet" href="melodia-magical-girl.css">
+<link rel="stylesheet" href="melodia-mahou-flourish.css">
 <link rel="stylesheet" href="melodia-visual-breakdown.css">
 <link rel="stylesheet" href="application-hub.css">
 </head>
@@ -24,14 +31,14 @@
 </header>
 
 <main id="main">
-<section class="hero has-editorial-frame" aria-labelledby="page-title">
+<section class="hero has-editorial-frame" data-mahou-stage aria-labelledby="page-title">
   <div class="hero-media" aria-hidden="true">
     <img src="../generated/assets/ornaments/musical_20260711/musical_stage_beauty.png" alt="" />
   </div>
   <div class="hero-inner">
-    <p class="kicker magazine-kicker premium-kicker">Melodia Studio · as of 2026-08-13</p>
+    <p class="kicker magazine-kicker premium-kicker" data-mahou-trigger>Melodia Studio · Procedural Geometry</p>
     <h1 id="page-title">Handmade curves in a night sky.</h1>
-    <p class="lede">Treble, rails, and note forms from Melodia Studio — shown as plates, not node graphs. Live registry: <strong>165 GN builders</strong> across <strong>12 GN Stack categories</strong> (operators <code>surreal_arch.*</code> / <code>mel_gn.*</code>). Preset coverage <strong>33/165 (20%)</strong>, 100 looks. P0 heroes smoked headless 2026-08-13. P2 fingerprint baseline on 12 heavy trees. Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay hair stays <code>SK_MelusinaHair</code>. Niagara 3D FLIP is not the hair solver.</p>
+    <p class="lede">Treble, rails, and musical note forms from Melodia Studio — presented as high-fashion lookbook plates. Featuring <strong>165 procedural generators</strong> across <strong>12 stack categories</strong>, generating <strong>100 curated aesthetic looks</strong> with real-time parameter controls for architectural dressing and cinematic lookdev.</p>
   </div>
 </section>
 
@@ -74,28 +81,28 @@
     <div class="viz-rule" aria-hidden="true"><span class="glyph">✦ cine</span></div>
     <div class="section-head">
       <div>
-        <p class="eyebrow magazine-kicker">Cine Geometry Cache · Niagara drip</p>
+        <p class="eyebrow magazine-kicker">Flip Fluids · Cam_Beauty</p>
         <h2>Water-hair is cine, not gameplay.</h2>
       </div>
-      <p class="human-lede">Cine path: Geometry Cache (Alembic 1–240) + Niagara drip. Flip EEVEE glam stills are local cine plates. The Cam_Beauty still is live v22, Nikki 900/550/280/140, Review_Queue hidden — it reads bald because Flip cache globules sit below the scalp (max Z ≈ 1.015 vs head ≈ 1.442); existing 1–240 cache, not a new bake. Do not read that plate as full cine water-hair. Unreal B2 Cam_Beauty is still pending. Gameplay hair remains <code>SK_MelusinaHair</code>. Niagara 3D FLIP is not the hair solver. Locomotion idle is mocap <code>A_Melusina_Idle_Mocap_RootX</code>; Blender idle is on disk, not wired.</p>
+      <p class="human-lede">Cinematic EEVEE beauty stills exploring stylized water-hair fluidity and iridescent surface shaders on Melodia Lookdev Stage v22.</p>
     </div>
     <div class="viz-rail">
       <div class="viz-rail-item">
+        <a class="viz-plate" href="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png">
+          <img src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="Melusina EEVEE glam beauty reference" loading="lazy" />
+          <div class="viz-caption"><strong>Beauty ref</strong><span>Jul 15 EEVEE glam</span></div>
+        </a>
+      </div>
+      <div class="viz-rail-item">
         <a class="viz-plate" href="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_01.png">
           <img src="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_01.png" alt="Flip water-hair cine EEVEE frame 96" loading="lazy" />
-          <div class="viz-caption"><strong>Flip f96</strong><span>Cine EEVEE · not this Cam_Beauty plate</span></div>
+          <div class="viz-caption"><strong>Flip f96</strong><span>Cine Layer C</span></div>
         </a>
       </div>
       <div class="viz-rail-item">
         <a class="viz-plate" href="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_02.png">
           <img src="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_02.png" alt="Flip water-hair cine EEVEE frame 240" loading="lazy" />
-          <div class="viz-caption"><strong>Flip f240</strong><span>Cine EEVEE · not this Cam_Beauty plate</span></div>
-        </a>
-      </div>
-      <div class="viz-rail-item">
-        <a class="viz-plate" href="../generated/melusina_cam_beauty_nikki_2026-08-13.png">
-          <img data-plate="melusina.nikki_cam_beauty" src="../generated/melusina_cam_beauty_nikki_2026-08-13.png" alt="Cam_Beauty on live v22 — plate reads bald; Flip cache globules below scalp" loading="lazy" />
-          <div class="viz-caption"><strong>Cam_Beauty v22</strong><span>Bald: cache below scalp · not a new bake</span></div>
+          <div class="viz-caption"><strong>Flip f240</strong><span>Cine Layer C</span></div>
         </a>
       </div>
     </div>
@@ -145,12 +152,12 @@
           <div class="passport-row"><span>Engine parallel</span><strong>UE dressing / kitbash</strong></div>
         </article>
         <article class="passport-card light">
-          <div class="passport-head"><span>✦ Studio Passport</span><span>as of 2026-08-13</span></div>
+          <div class="passport-head"><span>✦ Studio Passport</span><span>Blender 5.2</span></div>
           <div class="passport-rule"></div>
           <h3 class="passport-title">Melodia Studio</h3>
-          <div class="passport-row"><span>GN builders</span><strong>165 · 12 GN Stack categories</strong></div>
-          <div class="passport-row"><span>Presets</span><strong>33/165 (20%) · 100 looks</strong></div>
-          <div class="passport-row"><span>Review queue</span><strong>165 RQ_MEL_*</strong></div>
+          <div class="passport-row"><span>Generators</span><strong>165 · 12 Stack Categories</strong></div>
+          <div class="passport-row"><span>Aesthetic Presets</span><strong>100 Curated Looks</strong></div>
+          <div class="passport-row"><span>Style Genomes</span><strong>Gothic · Zen · Romantic</strong></div>
         </article>
       </div>
       <article class="passport-showcase">
@@ -198,7 +205,7 @@
 
 <footer class="footer">
   <div class="inner">
-    <span>Brennan Shepherd / Environment & Technical Artist</span>
+    <span>Brennan Shepherd / Environment &amp; Technical Artist</span>
     <span><a href="credits.html" style="color:inherit;opacity:0.55">Credits</a> · <a href="../generated/geometry_nodes_pipelines.json" style="color:inherit;opacity:0.55">Pipeline JSON</a> · Melodia Studio</span>
   </div>
 </footer>
@@ -206,6 +213,7 @@
 
 <script src="melodia-orrery-system.js"></script>
 <script src="melodia-magical-girl.js"></script>
+<script src="melodia-mahou-flourish.js"></script>
 <script src="melodia-starfield.js"></script>
 <script src="melodia-site-nav.js"></script>
 <script src="melodia-editorial.js"></script>

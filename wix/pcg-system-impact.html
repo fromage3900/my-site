@@ -1,8 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>L_FallenMoon — PCG scatter survey</title>
 <meta name="description" content="Procedural generation systems breakdown - density heatmaps, world placement, and hero graph plan/section drawings from a stylized UE5 environment portfolio.">
 <meta property="og:title" content="L_FallenMoon — PCG scatter survey">
@@ -13,21 +16,21 @@
 <body>
 <style>
 :root{
-  --ground:#0B1020; --surface:#141B33; --surface-2:#1B2340; --line:#2A3358;
-  --ink:#E9EBF7; --muted:#8A93B8; --accent:#7FD8E8;
-  --good:#8FE3C2; --warn:#FFD59E;
+  --ground: var(--primitive-astral-900); --surface: var(--primitive-astral-700); --surface-2: var(--primitive-plum-900); --line: var(--color-border-subtle);
+  --ink: var(--primitive-ivory-50); --muted: var(--primitive-slate-300); --accent: var(--primitive-astral-300);
+  --good: var(--primitive-status-success); --warn: var(--primitive-gold-300);
 }
 @media (prefers-color-scheme: light){
-  :root{ --ground:#F4F5FB; --surface:#FFFFFF; --surface-2:#EDEFF8; --line:#D5D9EC;
-         --ink:#151A2E; --muted:#5C648A; --accent:#2E7C93; --good:#2F8A6A; --warn:#9A6B1E; }
+  :root{ --ground: var(--primitive-ivory-100); --surface: var(--primitive-ivory-50); --surface-2: var(--primitive-ivory-200); --line: var(--primitive-ivory-300);
+         --ink: var(--primitive-plum-800); --muted: var(--primitive-plum-500); --accent: var(--primitive-astral-500); --good: var(--primitive-status-success); --warn: var(--primitive-status-warning); }
 }
 :root[data-theme="dark"]{
-  --ground:#0B1020; --surface:#141B33; --surface-2:#1B2340; --line:#2A3358;
-  --ink:#E9EBF7; --muted:#8A93B8; --accent:#7FD8E8; --good:#8FE3C2; --warn:#FFD59E;
+  --ground: var(--primitive-astral-900); --surface: var(--primitive-astral-700); --surface-2: var(--primitive-plum-900); --line: var(--color-border-subtle);
+  --ink: var(--primitive-ivory-50); --muted: var(--primitive-slate-300); --accent: var(--primitive-astral-300); --good: var(--primitive-status-success); --warn: var(--primitive-gold-300);
 }
 :root[data-theme="light"]{
-  --ground:#F4F5FB; --surface:#FFFFFF; --surface-2:#EDEFF8; --line:#D5D9EC;
-  --ink:#151A2E; --muted:#5C648A; --accent:#2E7C93; --good:#2F8A6A; --warn:#9A6B1E;
+  --ground: var(--primitive-ivory-100); --surface: var(--primitive-ivory-50); --surface-2: var(--primitive-ivory-200); --line: var(--primitive-ivory-300);
+  --ink: var(--primitive-plum-800); --muted: var(--primitive-plum-500); --accent: var(--primitive-astral-500); --good: var(--primitive-status-success); --warn: var(--primitive-status-warning);
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);
@@ -117,7 +120,7 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
         <p class="cap">Section &mdash; looking along the axis. Ribs spring from both colonnades and meet at the apex.</p></div>
     </div>
     <div class="legend">
-      <span><i class="dot" style="background:#F5C77E"></i>4 layers &middot; colonnade, arcade, tensor ribs, rose window</span>
+      <span><i class="dot" style="background:var(--primitive-gold-300)"></i>4 layers &middot; colonnade, arcade, tensor ribs, rose window</span>
       <span>126 m aisle &middot; 23.8 m apex &middot; <b>0</b> instances in the walkway</span>
     </div>
   </section>

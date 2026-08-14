@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>Sculpt &amp; Procedural → Editor | Brennan Shepherd</title>
 <meta name="description" content="Labelled high-poly sculpt plates — Zen Lantern, Melody Tokens, Melusina, Sir Melodious — beside the Blender → Unreal production pipeline." />
 <link rel="stylesheet" href="melodia-luxury-type.css">
@@ -75,7 +78,7 @@
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border: 1px solid rgba(200, 164, 94, 0.28);
-  background: #1a1c22;
+  background: var(--primitive-plum-900);
 }
 .sculpt-plate .frame img {
   width: 100%;
@@ -83,7 +86,7 @@
   object-fit: contain;
   object-position: center;
   display: block;
-  background: #2a2c33;
+  background: var(--primitive-plum-800);
 }
 .sculpt-plate .caption {
   margin: 0;
@@ -395,21 +398,6 @@
             <p class="stage-label">EEVEE · Three-quarter glam</p>
             <div class="frame"><img data-plate="melusina.glam_05" src="../generated/assets/character/melusina_eevee_glam_20260715c_05.png" alt="Melusina EEVEE glam three-quarter plate" loading="lazy" width="800" height="1000" /></div>
             <p class="caption">Turned glam — costume color and film rim.</p>
-          </div>
-          <div class="sculpt-plate">
-            <p class="stage-label">EEVEE · Flip cine f96</p>
-            <div class="frame"><img data-plate="melusina.flip_01" src="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_01.png" alt="Melusina Flip water-hair cine EEVEE frame 96" loading="lazy" width="800" height="1000" /></div>
-            <p class="caption">Cine Geometry Cache plate — not SK_MelusinaHair, not Unreal B2 Cam_Beauty.</p>
-          </div>
-          <div class="sculpt-plate">
-            <p class="stage-label">EEVEE · Flip cine f240</p>
-            <div class="frame"><img data-plate="melusina.flip_02" src="../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_02.png" alt="Melusina Flip water-hair cine EEVEE frame 240" loading="lazy" width="800" height="1000" /></div>
-            <p class="caption">Cine Geometry Cache plate — hair solver is not Niagara 3D FLIP.</p>
-          </div>
-          <div class="sculpt-plate">
-            <p class="stage-label">Cam_Beauty · live v22</p>
-            <div class="frame"><img data-plate="melusina.nikki_cam_beauty" src="../generated/melusina_cam_beauty_nikki_2026-08-13.png" alt="Cam_Beauty on live v22 — plate reads bald; Flip cache globules below scalp" loading="lazy" width="800" height="1000" /></div>
-            <p class="caption">Nikki 900/550/280/140, Review_Queue hidden. Bald because cache globules sit below the scalp (max Z ≈ 1.015 vs head ≈ 1.442) — existing 1–240 cache, not a new bake. Not full cine water-hair.</p>
           </div>
           <div class="sculpt-plate">
             <p class="stage-label">EEVEE · Back</p>

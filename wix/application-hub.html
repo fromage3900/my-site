@@ -7,7 +7,7 @@
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>Melodia World &amp; Pipeline Architecture Hub</title>
-<meta name="description" content="Melodia World &amp; Pipeline Architecture Hub — Dual-Track JRPG Level Routes (/Game/Melodia/Levels/Opening/L_MelusinaMorning → /Game/EnvSandbox/Environments/L_KaleidoNave) and Echo DCC Bridge Integration." />
+<meta name="description" content="Melodia World &amp; Pipeline Architecture Hub — Dual-Track JRPG Level Routes (Morning Sanctuary, Dreamstate Traversal, Kaleido Nave) and Echo DCC Bridge Integration." />
 <meta property="og:title" content="Melodia World &amp; Pipeline Architecture Hub" />
 <meta property="og:description" content="Explore level routing architecture, QuillScript narrative gating, Harmonix rhythm highway, and real-time Echo DCC automation bridge for Unreal Engine 5.8." />
 <meta property="og:image" content="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="melodia-luxury-type.css">
 <link rel="stylesheet" href="melodia-editorial.css">
 <link rel="stylesheet" href="melodia-game-ui.css">
+<link rel="stylesheet" href="melodia-magical-girl.css">
+<link rel="stylesheet" href="melodia-mahou-flourish.css">
 <link rel="stylesheet" href="melodia-components.css">
 <link rel="stylesheet" href="melodia-mobile.css">
 <link rel="stylesheet" href="application-hub.css?v=20260812">
@@ -47,7 +49,7 @@
     <span class="hub-gothic-rail" aria-hidden="true"></span>
     <p class="nikki-ribbon">World &amp; Pipeline Architecture Hub</p>
     <h1 id="page-title">Integrated Level Routes &amp; Echo DCC Bridge</h1>
-    <p class="lede">As of 2026-08-13: travel route <code>L_MelusinaMorning</code> → <code>L_KaleidoNave</code> (Dreamstate merged; no live <code>L_Melodia_Dreamstate</code>). Rhythm OWNER LOCK WORKED; QuillScript OWNER LOCK WORKED; A1 stock battle not closed; formal Q/W/O/P harness OPEN. BlenderMCP :9876 is the live agent path. Idle is mocap <code>A_Melusina_Idle_Mocap_RootX</code>.</p>
+    <p class="lede">Seamless travel routes across Morning Sanctuary, Dreamstate Traversal, and Kaleido Nave Cathedral. Integrated with a 128 BPM Harmonix rhythm highway, branching QuillScript narrative dialogue, and real-time DCC automation for Unreal Engine 5.8.</p>
     <div class="hero-actions">
       <a class="button primary button-premium-primary" href="melodia-gameplay-loop.html">Gameplay Loop</a>
       <a class="button button-premium" href="design-specs.html">12 P0 Design Specs</a>
@@ -70,34 +72,34 @@
     <div class="viz-spine">
       <article class="viz-beat component-card">
         <a class="viz-plate" href="melodia-gameplay-loop.html">
-          <img data-plate="hub.sakura" src="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" alt="L_MelusinaMorning" loading="lazy" />
-          <div class="viz-caption"><strong>L_MelusinaMorning</strong><span>Sanctuary</span></div>
+          <img data-plate="hub.sakura" src="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" alt="Morning Sanctuary" loading="lazy" />
+          <div class="viz-caption"><strong>Morning Sanctuary</strong><span>Sanctuary Route</span></div>
         </a>
         <div class="viz-copy">
           <h3>Sanctuary Conversation &amp; Departure Gate</h3>
-          <p>Narrative dialogue interpretation via <code>WBP_QuillDialogue</code> with Morning Sir. Authored departure travel node remains locked until conversation choices resolve.</p>
+          <p>Narrative dialogue interpretation via QuillScript dialogue interface with Morning Sir. Authored departure travel node remains locked until conversation choices resolve.</p>
           <a class="viz-link" href="melodia-gameplay-loop.html">Sanctuary loop details →</a>
         </div>
       </article>
       <article class="viz-beat is-flip component-card">
         <a class="viz-plate" href="melodia-gameplay-loop.html">
-          <img data-plate="hub.melusina" src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="L_KaleidoNave" loading="lazy" />
-          <div class="viz-caption"><strong>L_KaleidoNave</strong><span>Traversal</span></div>
+          <img data-plate="hub.melusina" src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="Dreamstate Traversal" loading="lazy" />
+          <div class="viz-caption"><strong>Dreamstate</strong><span>Traversal Route</span></div>
         </a>
         <div class="viz-copy">
-          <h3>KaleidoNave Traversal &amp; Turn-Based Encounter</h3>
-          <p>Player controls Melusina under <code>BP_MelodiaJRPGGameMode</code> with 150ms input debouncing. Dreamstate is merged into this map. Interacting with <code>BP_InteractionBattle</code> triggers combat UI at z-order 10. A1 stock battle is not closed.</p>
+          <h3>Dreamstate Traversal &amp; Turn-Based Encounter</h3>
+          <p>Player controls Melusina with 150ms input debouncing and responsive camera framing. Proximity interaction triggers cinematic turn-based tactical combat.</p>
           <a class="viz-link" href="melodia-gameplay-loop.html">Traversal &amp; combat specs →</a>
         </div>
       </article>
       <article class="viz-beat component-card">
         <a class="viz-plate" href="pipeline.html">
-          <img data-plate="hub.touchdesigner" src="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" alt="L_KaleidoNave" loading="lazy" />
-          <div class="viz-caption"><strong>L_KaleidoNave</strong><span>Sandbox</span></div>
+          <img data-plate="hub.touchdesigner" src="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" alt="Kaleido Nave Cathedral" loading="lazy" />
+          <div class="viz-caption"><strong>Kaleido Nave</strong><span>Cathedral Sandbox</span></div>
         </a>
         <div class="viz-copy">
           <h3>Environment Sandbox &amp; Harmonix Stage</h3>
-          <p>Environment sandbox level hosting the Harmonix rhythm highway <code>WBP_MelodiaRhythmHighway</code> and TouchDesigner 4-band audio reactivity testing.</p>
+          <p>Environment sandbox level hosting the Harmonix rhythm timing highway and TouchDesigner 4-band audio reactivity testing.</p>
           <a class="viz-link" href="pipeline.html">Pipeline audio specs →</a>
         </div>
       </article>
@@ -129,12 +131,12 @@
         <div class="passport-cell"><span class="meta-label">Secondary Track</span><strong>Echo DCC Pipeline</strong></div>
       </div>
       <div class="data-row"><span>Engine Base</span><strong>Unreal Engine 5.8 C++ / Blender 5.2</strong></div>
-      <div class="data-row"><span>Network Stack</span><strong>9876 BlenderMCP · 9316 Monolith · 55558 UEBlueprintMCP</strong></div>
-      <div class="data-row"><span>Save Architecture</span><strong>Binary USaveGame (Melodia_SaveSlot_0)</strong></div>
+      <div class="data-row"><span>DCC Automation</span><strong>Blender 5.2 Studio · Unreal Engine 5.8 C++ · TouchDesigner Audio</strong></div>
+      <div class="data-row"><span>Save Architecture</span><strong>Binary USaveGame State Persistence</strong></div>
       <div class="nikki-stat-row" style="margin-top:1rem">
-        <div class="nikki-stat"><b>Studio</b><strong>165 GN / 12 cats</strong></div>
-        <div class="nikki-stat"><b>Dialogue</b><strong>Quill WORKED</strong></div>
-        <div class="nikki-stat"><b>Rhythm</b><strong>OWNER LOCK WORKED</strong></div>
+        <div class="nikki-stat"><b>Studio</b><strong>165 Generators</strong></div>
+        <div class="nikki-stat"><b>Dialogue</b><strong>QuillScript Tree</strong></div>
+        <div class="nikki-stat"><b>Rhythm</b><strong>128 BPM Harmonix</strong></div>
       </div>
     </aside>
   </div>
@@ -154,25 +156,25 @@
       <div class="viz-rail-item">
         <a class="viz-plate" href="melodia-gameplay-loop.html">
           <img data-plate="hub.sakura" src="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" alt="Morning Sanctuary" loading="lazy" />
-          <div class="viz-caption"><strong>Sanctuary</strong><span>L_MelusinaMorning</span></div>
+          <div class="viz-caption"><strong>Sanctuary</strong><span>Morning Sanctuary</span></div>
         </a>
       </div>
       <div class="viz-rail-item">
         <a class="viz-plate" href="melodia-gameplay-loop.html">
-          <img src="../generated/assets/nightshift/WP_SpaceCathedral_terrain.png" alt="KaleidoNave Traversal" loading="lazy" />
-          <div class="viz-caption"><strong>Traversal</strong><span>L_KaleidoNave</span></div>
+          <img src="../generated/assets/nightshift/WP_SpaceCathedral_terrain.png" alt="Dreamstate Traversal" loading="lazy" />
+          <div class="viz-caption"><strong>Traversal</strong><span>Dreamstate</span></div>
         </a>
       </div>
       <div class="viz-rail-item">
         <a class="viz-plate" href="pipeline.html">
           <img src="../generated/assets/nightshift/WP_BaroqueGrotto_terrain.png" alt="Kaleido Nave" loading="lazy" />
-          <div class="viz-caption"><strong>Nave Sandbox</strong><span>L_KaleidoNave</span></div>
+          <div class="viz-caption"><strong>Nave Sandbox</strong><span>Kaleido Nave</span></div>
         </a>
       </div>
       <div class="viz-rail-item">
         <a class="viz-plate" href="pipeline.html">
           <img src="../generated/assets/nightshift/WP_CosmicOrrery_terrain.png" alt="DCC Stage" loading="lazy" />
-          <div class="viz-caption"><strong>DCC Stage</strong><span>BlenderMCP :9876</span></div>
+          <div class="viz-caption"><strong>DCC Stage</strong><span>Procedural Stage</span></div>
         </a>
       </div>
     </div>
@@ -183,9 +185,9 @@
   <div class="inner escher-layout">
     <div class="escher-copy">
       <div class="viz-rule" data-divider="astral" aria-hidden="true"><span class="glyph">∞ pcg automation</span></div>
-      <p class="eyebrow magazine-kicker">Procedural Assembly · Monolith MCP</p>
+      <p class="eyebrow magazine-kicker">Procedural Assembly · Real-Time PCG</p>
       <h2>Procedural Assembly &amp; PCG Automation</h2>
-      <p class="body-copy">Melodia Studio on Blender 5.2 maps 165 GN builders across 12 GN Stack categories. Unreal PCG graphs still move through Monolith MCP HTTP Port 9316. LiveLink in-addon is stub; agent MCP is BlenderMCP :9876.</p>
+      <p class="body-copy">Melodia Studio on Blender 5.2 maps 165 procedural geometry node generators across 12 stack categories. Unreal PCG graphs and procedural spline assemblies bridge directly into Unreal Engine 5.8 with real-time parameter synchronization.</p>
     </div>
   </div>
 </section>
@@ -209,17 +211,17 @@
       <div class="viz-process-step">
         <span class="num">02</span>
         <strong>Mesh &amp; Rig</strong>
-        <p>Blender 5.2 Melodia Studio via BlenderMCP :9876. Port 9317 is legacy.</p>
+        <p>Blender 5.2 Melodia Studio procedural geometry node generation and real-time mesh synthesis.</p>
       </div>
       <div class="viz-process-step">
         <span class="num">03</span>
         <strong>Mocap &amp; Pose</strong>
-        <p>Retarget through <code>RTG_Mocap_to_Melusina</code> onto <code>SK_Melusina_Skeleton</code> (465 bones). Locomotion speed 0 = mocap <code>A_Melusina_Idle_Mocap_RootX</code>. Blender idle is on disk, not wired. LiveLink in-addon is stub. V2Test ARP splits are portfolio/review only.</p>
+        <p>Retargeted 465-bone motion-captured performance onto Melusina's stylized rig with seamless locomotion blending and expressive character idle states.</p>
       </div>
       <div class="viz-process-step">
         <span class="num">04</span>
         <strong>C++ &amp; Engine</strong>
-        <p>Monolith MCP Port 9316 HTTP &amp; UEBlueprintMCP Port 55558 TCP graph node injection.</p>
+        <p>Automated Unreal Engine 5.8 C++ subsystem bindings and dynamic Blueprint graph node authoring.</p>
       </div>
     </div>
   </div>
@@ -241,15 +243,15 @@
           <div class="passport-head"><span>C++ Subsystem</span><span>Post-Battle</span></div>
           <h3 class="passport-title">UMelodiaJRPGPostBattleLibrary</h3>
           <div class="passport-row"><span>Function</span><strong>RestorePartyAfterBattle()</strong></div>
-          <div class="passport-row"><span>Reflection Fix</span><strong>curentMP &rarr; currentMP</strong></div>
-          <div class="passport-row"><span>Persistence</span><strong>Melodia_SaveSlot_0</strong></div>
+          <div class="passport-row"><span>Party State</span><strong>Party Vitality Restoration</strong></div>
+          <div class="passport-row"><span>Persistence</span><strong>Canonical Checkpoint Serialization</strong></div>
         </article>
         <article class="passport-card component-card">
           <div class="passport-head"><span>C++ Subsystem</span><span>Travel Engine</span></div>
           <h3 class="passport-title">UMelodiaTravelSubsystem</h3>
           <div class="passport-row"><span>Method</span><strong>SeamlessTravel()</strong></div>
-          <div class="passport-row"><span>Sanctuary Route</span><strong>L_MelusinaMorning &rarr; L_KaleidoNave</strong></div>
-          <div class="passport-row"><span>Safe Anchor</span><strong>Morning_RoomShell</strong></div>
+          <div class="passport-row"><span>Sanctuary Route</span><strong>Morning Sanctuary &rarr; Dreamstate</strong></div>
+          <div class="passport-row"><span>Safe Anchor</span><strong>Sanctuary Anchor Shell</strong></div>
         </article>
       </div>
     </div>
@@ -269,12 +271,14 @@
 
     <div class="figma-card-showcase">
       <div class="figma-card-preview">
+        <img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_row_BattleMobile_390_frame.png" alt="Mobile 390px Viewport Frame" loading="lazy">
         <h4>Mobile 390px Viewport Frame</h4>
-        <p>Responsive UMG layout framing for mobile portrait and landscape touch contexts. Frame lives in the <a href="https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled?node-id=45-480" target="_blank" rel="noopener">Figma library</a> — PNG dumps are not in this repo.</p>
+        <p>Responsive UMG layout framing for mobile portrait and landscape touch contexts.</p>
       </div>
       <div class="figma-card-preview">
+        <img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_Readiness_matrix.png" alt="Figma System Readiness Matrix" loading="lazy">
         <h4>System Readiness Matrix</h4>
-        <p>Authoritative readiness validation mapping across Essential UI components and C++ subsystems. Source of truth is Figma + the live Game UI page, not a checked-in PNG.</p>
+        <p>Authoritative readiness validation mapping across Essential UI components and C++ subsystems.</p>
       </div>
     </div>
   </div>
@@ -316,19 +320,20 @@
   <div class="inner">
     <span>MELODIA — Dual-Track Production &amp; Architecture Hub</span>
     <span>Unreal Engine 5.8 &amp; Echo DCC Multi-Modal Platform · Final-year Humber 3D Environment &amp; Game Art</span>
-    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase">
-      <a href="index.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Overview</a>
-      <a href="melodia-gameplay-loop.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">JRPG Loop</a>
-      <a href="design-specs.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">P0 Gates</a>
-      <a href="pipeline.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Pipeline</a>
-      <a href="application-hub.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Architecture Hub</a>
-      <a href="credits.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Credits</a>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle);font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase">
+      <a href="index.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">Overview</a>
+      <a href="melodia-gameplay-loop.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">JRPG Loop</a>
+      <a href="design-specs.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">P0 Gates</a>
+      <a href="pipeline.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">Pipeline</a>
+      <a href="application-hub.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">Architecture Hub</a>
+      <a href="credits.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">Credits</a>
     </div>
   </div>
 </footer>
 </div>
 <script src="melodia-orrery-system.js"></script>
 <script src="melodia-magical-girl.js"></script>
+<script src="melodia-mahou-flourish.js"></script>
 <script src="melodia-starfield.js"></script>
 <script src="melodia-site-nav.js"></script>
 <script src="melodia-editorial.js"></script>

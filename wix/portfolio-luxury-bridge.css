@@ -49,11 +49,11 @@ body {
 .melodia-shell .nav-cta,
 .melodia-shell .button-premium {
   border: 1px solid var(--border-gold, rgba(201, 168, 106, 0.34));
-  background: linear-gradient(135deg, var(--astral, #1a1f3a), var(--plum, #2a3055));
+  background: linear-gradient(135deg, var(--astral, var(--primitive-astral-700)), var(--plum, var(--primitive-astral-500)));
   color: var(--lavender, var(--primitive-lavender-100));
 }
 
 .melodia-shell .hero {
-  background: linear-gradient(135deg, var(--void, var(--primitive-astral-900)), var(--plum, #2a3055));
+  background: linear-gradient(135deg, var(--void, var(--primitive-astral-900)), var(--plum, var(--primitive-astral-500)));
   color: var(--lavender, var(--primitive-lavender-100));
 }

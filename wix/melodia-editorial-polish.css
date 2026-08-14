@@ -1,11 +1,11 @@
 /* Melodia editorial polish — divider variants, ivory surfaces, passport alignment */
 
 :root {
-  --ivory-50: #fff8ee;
-  --ivory-100: #f8ecd6;
-  --ivory-200: #f3e6c8;
-  --ivory-ink: #241b2e;
-  --ivory-muted: #5a4f62;
+  --ivory-50: var(--primitive-ivory-50);
+  --ivory-100: var(--primitive-ivory-100);
+  --ivory-200: var(--primitive-ivory-200);
+  --ivory-ink: var(--primitive-plum-800);
+  --ivory-muted: var(--primitive-plum-500);
   --ivory-gold: var(--primitive-gold-500);
   --ivory-gold-bright: var(--primitive-gold-300);
   --ivory-line: rgba(201, 168, 106, 0.48);

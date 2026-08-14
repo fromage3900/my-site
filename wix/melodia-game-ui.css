@@ -5,7 +5,7 @@
   --game-void: var(--void, var(--primitive-astral-900));
   --game-gold: var(--iri-gold, var(--primitive-gold-100));
   --game-cyan: var(--iri-cyan, var(--primitive-astral-300));
-  --game-pearl: var(--iri-pearl, #f0dcf0);
+  --game-pearl: var(--iri-pearl, var(--primitive-sakura-100));
   --game-magenta: var(--iri-magenta, var(--primitive-sakura-300));
   --game-surface: rgba(18, 24, 42, 0.92);
   --game-border: rgba(255, 255, 255, 0.12);
@@ -295,7 +295,7 @@
 }
 
 .game-ui-frame {
-  background: linear-gradient(180deg, var(--game-void) 0%, #121a30 100%);
+  background: linear-gradient(180deg, var(--game-void) 0%, var(--primitive-astral-900) 100%);
   border: 1px solid var(--game-border);
   border-radius: 16px;
   overflow: hidden;
@@ -3263,7 +3263,7 @@ body.ios-mode .game-ui-ios-play {
 
 /* SoftMG beauty path — seafoam→amber trail */
 #phase-rhythm .rhythm-note.judged-perfect::after {
-  background: linear-gradient(180deg, rgba(143, 201, 189, 0), var(--game-seafoam, #8fc9bd) 45%, var(--game-amber, #d9a566) 100%);
+  background: linear-gradient(180deg, rgba(143, 201, 189, 0), var(--game-seafoam, var(--primitive-nikki-seafoam)) 45%, var(--game-amber, var(--primitive-nikki-amber)) 100%);
 }
 
 /* BreakCrestReveal — crest scale-in + gold flash on toughness break (~500ms) */
@@ -3426,7 +3426,7 @@ body.ios-mode .game-ui-ios-play {
   border-radius: 9999px;
   background: linear-gradient(135deg, rgba(255, 110, 180, 0.25), rgba(201, 168, 106, 0.25));
   border: 1px solid rgba(255, 230, 102, 0.4);
-  color: var(--primitive-gold-100, #fff3d1);
+  color: var(--primitive-gold-100, var(--primitive-gold-100));
   font-size: 0.6rem;
   letter-spacing: 0.12em;
   font-weight: 700;
@@ -3470,34 +3470,34 @@ body.ios-mode .game-ui-ios-play {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 2px solid var(--mg-accent-pink, #ff6eb4);
-  box-shadow: 0 0 8px var(--mg-accent-pink, #ff6eb4);
+  border: 2px solid var(--mg-accent-pink, var(--color-accent-tertiary));
+  box-shadow: 0 0 8px var(--mg-accent-pink, var(--color-accent-tertiary));
   transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
 }
 
 .rhythm-bar-pulse-ring[data-hit-flash="perfect"] {
-  --hit-gold: #ffe666;
+  --hit-gold: var(--primitive-gold-100);
   border-color: var(--hit-gold);
   box-shadow: 0 0 16px var(--hit-gold);
   transform: scale(1.4);
 }
 
 .rhythm-bar-pulse-ring[data-hit-flash="great"] {
-  --hit-cyan: #66d9ff;
+  --hit-cyan: var(--color-accent-astral);
   border-color: var(--hit-cyan);
   box-shadow: 0 0 14px var(--hit-cyan);
   transform: scale(1.3);
 }
 
 .rhythm-bar-pulse-ring[data-hit-flash="good"] {
-  --hit-purple: #cc99ff;
+  --hit-purple: var(--primitive-lavender-300);
   border-color: var(--hit-purple);
   box-shadow: 0 0 12px var(--hit-purple);
   transform: scale(1.2);
 }
 
 .rhythm-bar-pulse-ring[data-hit-flash="miss"] {
-  --hit-red: #ff5566;
+  --hit-red: var(--primitive-status-error);
   border-color: var(--hit-red);
   box-shadow: 0 0 10px var(--hit-red);
   transform: scale(0.85);
@@ -3546,7 +3546,7 @@ body.ios-mode .game-ui-ios-play {
 .rhythm-bar-combo {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--primitive-gold-100, #ffe666);
+  color: var(--primitive-gold-100, var(--primitive-gold-100));
   letter-spacing: 0.08em;
   min-width: 85px;
   text-align: right;
@@ -3563,7 +3563,7 @@ body.ios-mode .game-ui-ios-play {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 180, 220, 0.4);
-  color: var(--primitive-gold-100, #ffe666);
+  color: var(--primitive-gold-100, var(--primitive-gold-100));
   font-family: var(--font-mono, monospace);
   font-size: 0.68rem;
   font-weight: 600;
@@ -3605,10 +3605,10 @@ body.ios-mode .game-ui-ios-play {
   animation: rhythmFloater 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.rhythm-floater.perfect { --hit-gold: #ffe666; color: var(--hit-gold); filter: drop-shadow(0 0 8px var(--hit-gold)); }
-.rhythm-floater.great { --hit-cyan: #66d9ff; color: var(--hit-cyan); filter: drop-shadow(0 0 8px var(--hit-cyan)); }
-.rhythm-floater.good { --hit-purple: #cc99ff; color: var(--hit-purple); filter: drop-shadow(0 0 8px var(--hit-purple)); }
-.rhythm-floater.miss { --hit-red: #ff5566; color: var(--hit-red); filter: drop-shadow(0 0 6px var(--hit-red)); }
+.rhythm-floater.perfect { --hit-gold: var(--primitive-gold-100); color: var(--hit-gold); filter: drop-shadow(0 0 8px var(--hit-gold)); }
+.rhythm-floater.great { --hit-cyan: var(--color-accent-astral); color: var(--hit-cyan); filter: drop-shadow(0 0 8px var(--hit-cyan)); }
+.rhythm-floater.good { --hit-purple: var(--primitive-lavender-300); color: var(--hit-purple); filter: drop-shadow(0 0 8px var(--hit-purple)); }
+.rhythm-floater.miss { --hit-red: var(--primitive-status-error); color: var(--hit-red); filter: drop-shadow(0 0 6px var(--hit-red)); }
 
 
 @keyframes rhythmFloater {

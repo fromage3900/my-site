@@ -1,18 +1,18 @@
 :root {
   --void: var(--primitive-plum-900);
-  --astral: #101736;
-  --plum: #1c1633;
-  --iris: #9b8fc4;
+  --astral: var(--primitive-astral-900);
+  --plum: var(--primitive-plum-900);
+  --iris: var(--primitive-iris-300);
   --gold: var(--primitive-gold-500);
-  --gold-soft: #e4c990;
+  --gold-soft: var(--primitive-gold-300);
   --ivory: var(--primitive-plum-900);
   --paper: rgba(16, 23, 54, 0.62);
   --ink: rgba(236, 234, 244, 0.92);
   --muted: rgba(236, 234, 244, 0.66);
   --lavender: rgba(236, 234, 244, 0.92);
   --sakura: var(--primitive-sakura-500);
-  --pearl: #fbf3ff;
-  --mint: #b9dfc8;
+  --pearl: var(--primitive-ivory-50);
+  --mint: var(--primitive-nikki-seafoam);
   --star-ink: rgba(201,168,106,.22);
   --line: rgba(201, 168, 106, .34);
   --soft-line: rgba(36, 27, 46, .12);

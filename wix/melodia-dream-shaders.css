@@ -5,9 +5,9 @@
   --iri-cyan: var(--primitive-astral-300);
   --iri-gold: var(--primitive-gold-100);
   --iri-purple: var(--primitive-iris-500);
-  --iri-pearl: #f0dcf0;
+  --iri-pearl: var(--primitive-sakura-100);
   --iri-seafoam: var(--primitive-status-success);
-  --iri-lavender: #c8b6db;
+  --iri-lavender: var(--primitive-lavender-300);
   --dream-iri-ramp: linear-gradient(
     128deg,
     var(--iri-cyan) 0%,
@@ -99,25 +99,25 @@
 .melodia-shell[data-pillar="sakura"],
 .image-card[data-pillar="sakura"],
 .world-card.sakura {
-  --pillar-iri-ramp: linear-gradient(128deg, #ffb3c8 0%, var(--primitive-gold-100) 42%, #e8a0c8 100%);
+  --pillar-iri-ramp: linear-gradient(128deg, var(--primitive-sakura-300) 0%, var(--primitive-gold-100) 42%, var(--primitive-sakura-500) 100%);
 }
 
 .melodia-shell[data-pillar="cathedral"],
 .image-card[data-pillar="cathedral"],
 .world-card.cathedral {
-  --pillar-iri-ramp: linear-gradient(128deg, #9b8cff 0%, var(--primitive-astral-300) 45%, var(--primitive-iris-500) 100%);
+  --pillar-iri-ramp: linear-gradient(128deg, var(--primitive-iris-300) 0%, var(--primitive-astral-300) 45%, var(--primitive-iris-500) 100%);
 }
 
 .melodia-shell[data-pillar="grotto"],
 .image-card[data-pillar="grotto"],
 .world-card.castle {
-  --pillar-iri-ramp: linear-gradient(128deg, #5cb8a8 0%, #d4b87a 42%, #3d8a7a 100%);
+  --pillar-iri-ramp: linear-gradient(128deg, var(--primitive-nikki-seafoam) 0%, var(--primitive-gold-300) 42%, var(--primitive-status-success) 100%);
 }
 
 .melodia-shell[data-pillar="orrery"],
 .image-card[data-pillar="orrery"],
 .world-card.grotto {
-  --pillar-iri-ramp: linear-gradient(128deg, #7a9eff 0%, var(--primitive-astral-300) 38%, #b388ff 100%);
+  --pillar-iri-ramp: linear-gradient(128deg, var(--primitive-astral-300) 0%, var(--primitive-astral-300) 38%, var(--primitive-lavender-300) 100%);
 }
 
 /* Ambient iridescent wash on every melodia page */
@@ -491,7 +491,7 @@
 /* Light paper heroes — soft iridescent frame */
 .melodia-shell .band.paper .hero,
 .melodia-shell .hero.hero-proof {
-  color: var(--ink, #221a2a);
+  color: var(--ink, var(--primitive-plum-800));
 }
 
 .melodia-shell .band.paper .hero h1 {
@@ -803,7 +803,7 @@
 
 .mg-crystal-badge::before {
   content: "❖";
-  color: var(--mg-accent-pink, #ff6eb4);
+  color: var(--mg-accent-pink, var(--color-accent-tertiary));
   font-size: 0.75rem;
   animation: mg-crystal-sparkle 3s ease-in-out infinite;
 }

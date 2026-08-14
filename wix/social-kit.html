@@ -3,10 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>Social Kit</title>
 <link rel="stylesheet" href="melodia-luxury-type.css">
 <style>
-  :root { --surface-base: #141A30; --text-primary: #ECEAF4; --text-secondary: #A9A7C0; --gold: #C9A86A; }
+  :root { --surface-base: var(--primitive-astral-900); --text-primary: var(--primitive-ivory-50); --text-secondary: var(--primitive-slate-300); --gold: var(--primitive-gold-500); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: var(--font-body), system-ui, sans-serif; background: var(--surface-base); color: var(--text-primary); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
   .card { max-width: 640px; text-align: center; border: 1px solid rgba(201,168,106,0.2); border-radius: 12px; padding: 3rem 2rem; }
