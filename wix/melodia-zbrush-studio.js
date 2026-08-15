@@ -48,13 +48,16 @@
     if (!root) return;
 
     var activeIndex = 0;
+    var currentPass = 'primary'; // 'primary' | 'alternate'
 
     function render() {
       var item = SCULPTS[activeIndex];
+      var currentSrc = currentPass === 'alternate' ? item.fallback : item.image;
+
       root.innerHTML = `
         <div class="zbrush-studio-container">
           <div class="zbrush-viewport">
-            <img src="${item.image}" alt="${item.name}" onerror="this.src='${item.fallback}'" />
+            <img id="zbrush-viewport-img" src="${currentSrc}" alt="${item.name}" onerror="this.src='${item.fallback}'" />
           </div>
 
           <div class="zbrush-studio-sidebar">
@@ -65,6 +68,11 @@
                   <strong>${s.name}</strong>
                 </button>
               `).join('')}
+            </div>
+
+            <div class="zbrush-pass-toggle">
+              <button type="button" class="zbrush-pass-btn ${currentPass === 'primary' ? 'active' : ''}" data-pass="primary">Primary View</button>
+              <button type="button" class="zbrush-pass-btn ${currentPass === 'alternate' ? 'active' : ''}" data-pass="alternate">Angle / Alternate</button>
             </div>
 
             <div class="zbrush-passport-sheet">
@@ -92,10 +100,17 @@
           render();
         });
       });
+
+      root.querySelectorAll('[data-pass]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          currentPass = btn.getAttribute('data-pass');
+          render();
+        });
+      });
     }
 
     render();
   }
 
-  global.MelodiaZBrushStudio = { init: init };
+  global.MelodiaZBrushStudio = { init: init, SCULPTS: SCULPTS };
 })(window);

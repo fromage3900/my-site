@@ -137,17 +137,69 @@
       var shutter = root.querySelector('#photobooth-shutter');
       if (shutter) {
         shutter.addEventListener('click', function () {
+          var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
           var stage = root.querySelector('#photobooth-stage');
-          if (stage) {
+          if (stage && !reduceMotion) {
             stage.style.transition = 'filter 0.05s ease';
             stage.style.filter = 'brightness(2.2) contrast(1.5)';
             setTimeout(function () {
               stage.style.transition = 'filter 0.4s ease';
               stage.style.filter = '';
             }, 120);
+          } else if (stage && reduceMotion) {
+            stage.style.transition = 'opacity 0.1s ease';
+            stage.style.opacity = '0.82';
+            setTimeout(function () {
+              stage.style.transition = 'opacity 0.2s ease';
+              stage.style.opacity = '';
+            }, 120);
           }
-          if (global.MelodiaMahouFlourish) {
+          if (global.MelodiaMahouFlourish && !reduceMotion) {
             global.MelodiaMahouFlourish.burst(shutter.getBoundingClientRect().left + 50, shutter.getBoundingClientRect().top);
+          }
+        });
+      }
+
+      // Touch & Pointer Gesture Integration (Pinch-to-zoom & Tap Focus)
+      var stageEl = root.querySelector('#photobooth-stage');
+      if (stageEl) {
+        var initialDist = 0;
+        var initialScale = state.currentLens.scale;
+
+        stageEl.addEventListener('touchstart', function (e) {
+          if (e.touches.length === 2) {
+            initialDist = Math.hypot(
+              e.touches[0].clientX - e.touches[1].clientX,
+              e.touches[0].clientY - e.touches[1].clientY
+            );
+            initialScale = state.currentLens.scale;
+          }
+        }, { passive: true });
+
+        stageEl.addEventListener('touchmove', function (e) {
+          if (e.touches.length === 2 && initialDist > 0) {
+            var currentDist = Math.hypot(
+              e.touches[0].clientX - e.touches[1].clientX,
+              e.touches[0].clientY - e.touches[1].clientY
+            );
+            var factor = currentDist / initialDist;
+            var newScale = Math.max(1, Math.min(2.5, initialScale * factor));
+            var img = root.querySelector('#photobooth-img');
+            if (img) img.style.transform = 'scale(' + newScale.toFixed(2) + ')';
+            if (e.cancelable) e.preventDefault();
+          }
+        }, { passive: false });
+
+        stageEl.addEventListener('click', function (e) {
+          if (e.target.closest('.photobooth-controls') || e.target.closest('.photobooth-stamp')) return;
+          var rect = stageEl.getBoundingClientRect();
+          var x = e.clientX - rect.left;
+          var y = e.clientY - rect.top;
+          var crosshair = stageEl.querySelector('.photobooth-crosshair');
+          if (crosshair) {
+            crosshair.style.left = x + 'px';
+            crosshair.style.top = y + 'px';
+            crosshair.style.transition = 'left 0.25s ease, top 0.25s ease';
           }
         });
       }
@@ -156,5 +208,5 @@
     render();
   }
 
-  global.MelodiaPhotobooth = { init: init };
+  global.MelodiaPhotobooth = { init: init, POSES: POSES, FILTERS: FILTERS, LENSES: LENSES };
 })(window);

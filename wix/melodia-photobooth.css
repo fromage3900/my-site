@@ -179,3 +179,16 @@
 .photobooth-shutter-btn:active {
   transform: scale(0.97);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .photobooth-stage-image,
+  .photobooth-chip,
+  .photobooth-shutter-btn,
+  .photobooth-crosshair {
+    transition: none !important;
+  }
+  .photobooth-shutter-btn:hover,
+  .photobooth-shutter-btn:active {
+    transform: none !important;
+  }
+}

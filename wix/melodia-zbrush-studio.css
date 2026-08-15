@@ -119,3 +119,11 @@
 }
 .zbrush-passport-row span { color: var(--color-text-secondary); }
 .zbrush-passport-row strong { color: var(--color-text-primary); }
+
+@media (prefers-reduced-motion: reduce) {
+  .zbrush-viewport img,
+  .zbrush-asset-item,
+  .zbrush-pass-btn {
+    transition: none !important;
+  }
+}
