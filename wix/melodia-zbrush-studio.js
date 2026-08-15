@@ -8,8 +8,8 @@
     {
       id: 'zen_lantern',
       name: 'Zen Lantern (High-Poly)',
-      image: '../generated/assets/sculpt_zen_lantern_beauty.png',
-      fallback: '../generated/assets/character/melusina_beauty_34.png',
+      image: '../generated/assets/props/zenlantern_komikaze_beauty_34.png',
+      fallback: '../generated/assets/sculpt/sculpt_zenlantern_three_quarter.png',
       polycount: '1.8M Polys (SubD Level 5)',
       tools: 'ZBrush / 3DCoat / Blender Retopo',
       notes: 'Curved pagoda eaves, filigree lattice perforations, soft-edge bevels for Komikaze Toon normals.'
@@ -17,8 +17,8 @@
     {
       id: 'melody_tokens',
       name: 'Melody Token Quartet',
-      image: '../generated/assets/melody_token_swirl_komikaze_beauty_34.png',
-      fallback: '../generated/assets/character/melusina_34_wireframe_grey_20260715.png',
+      image: '../generated/assets/ornaments/melody_token_swirl_komikaze_beauty_34.png',
+      fallback: '../generated/assets/sculpt/sculpt_melodytoken_swirl.png',
       polycount: '4-Piece Set · 450K Triangles',
       tools: 'ZBrush Boolean DynaMesh + QuadRemesher',
       notes: 'Four musical-celestial motifs (Star, Swirl, Heart, Water) sculpted for physics drop pickups.'
@@ -26,7 +26,7 @@
     {
       id: 'melusina_head',
       name: 'Melusina Bust & Jewelry',
-      image: '../generated/assets/character/melusina_hero_20260712/melusina_hero_three_quarter_jewelry.png',
+      image: '../generated/assets/sculpt/sculpt_melusina_three_quarter.png',
       fallback: '../generated/assets/character/melusina_beauty_eevee_20260715c_01.png',
       polycount: 'Hero Mesh · 68K Low-Poly Quad',
       tools: 'Maya Retopology / ZBrush Detailing',
@@ -35,8 +35,8 @@
     {
       id: 'gothic_kitbash',
       name: 'Gothic Architectural Kitbash',
-      image: '../generated/assets/character/melusina_eevee_glam_20260715c_03.png',
-      fallback: '../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png',
+      image: '../generated/assets/ornaments/rose_window_komikaze_front.png',
+      fallback: '../generated/assets/ornaments/vault_ribs_komikaze_beauty_34.png',
       polycount: '15 Modular Mesh Assets',
       tools: 'Blender 5.2 Geometry Nodes + ZBrush Trim',
       notes: 'Ribbed vaults, traceried rose windows, pointed arches engineered for PCG procedural assembly.'

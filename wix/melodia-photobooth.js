@@ -8,7 +8,7 @@
   var POSES = [
     { id: 'glam_c01', name: 'Glam Pose I', src: '../generated/assets/character/melusina_beauty_eevee_20260715c_01.png' },
     { id: 'glam_c02', name: 'Glam Pose II', src: '../generated/assets/character/melusina_eevee_glam_20260715c_02.png' },
-    { id: 'three_quarter', name: '3/4 Jewelry', src: '../generated/assets/character/melusina_hero_20260712/melusina_hero_three_quarter_jewelry.png' },
+    { id: 'three_quarter', name: '3/4 Jewelry', src: '../generated/assets/character/hero_20260712/melusina_hero_three_quarter_jewelry.png' },
     { id: 'flip_hair', name: 'Water Hair', src: '../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_01.png' },
     { id: 'wireframe', name: 'Topology Mesh', src: '../generated/assets/character/melusina_34_wireframe_grey_20260715.png' }
   ];
