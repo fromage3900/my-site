@@ -57,22 +57,32 @@
       root.innerHTML = `
         <div class="zbrush-studio-container">
           <div class="zbrush-viewport">
-            <img id="zbrush-viewport-img" src="${currentSrc}" alt="${item.name}" onerror="this.src='${item.fallback}'" />
+            <img id="zbrush-viewport-img" src="${currentSrc}" alt="${item.name}" onerror="this.onerror=null; this.src='${item.fallback}';" />
           </div>
 
           <div class="zbrush-studio-sidebar">
-            <div class="zbrush-asset-list">
+            <div class="zbrush-asset-list" role="tablist" aria-label="Sculpt Models">
               ${SCULPTS.map((s, idx) => `
-                <button type="button" class="zbrush-asset-item ${idx === activeIndex ? 'active' : ''}" data-index="${idx}">
-                  <span>✦</span>
+                <button type="button" 
+                        class="zbrush-asset-item ${idx === activeIndex ? 'active' : ''}" 
+                        data-index="${idx}"
+                        role="tab"
+                        aria-selected="${idx === activeIndex ? 'true' : 'false'}">
+                  <span aria-hidden="true">✦</span>
                   <strong>${s.name}</strong>
                 </button>
               `).join('')}
             </div>
 
-            <div class="zbrush-pass-toggle">
-              <button type="button" class="zbrush-pass-btn ${currentPass === 'primary' ? 'active' : ''}" data-pass="primary">Primary View</button>
-              <button type="button" class="zbrush-pass-btn ${currentPass === 'alternate' ? 'active' : ''}" data-pass="alternate">Angle / Alternate</button>
+            <div class="zbrush-pass-toggle" role="group" aria-label="Sculpt View Passes">
+              <button type="button" 
+                      class="zbrush-pass-btn ${currentPass === 'primary' ? 'active' : ''}" 
+                      data-pass="primary"
+                      aria-pressed="${currentPass === 'primary' ? 'true' : 'false'}">Primary View</button>
+              <button type="button" 
+                      class="zbrush-pass-btn ${currentPass === 'alternate' ? 'active' : ''}" 
+                      data-pass="alternate"
+                      aria-pressed="${currentPass === 'alternate' ? 'true' : 'false'}">Angle / Alternate</button>
             </div>
 
             <div class="zbrush-passport-sheet">

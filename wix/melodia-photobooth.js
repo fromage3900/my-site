@@ -44,36 +44,41 @@
             <img class="photobooth-stage-image ${state.currentFilter.class}" 
                  id="photobooth-img" 
                  src="${state.currentPose.src}" 
-                 alt="Melusina Photobooth" 
+                 alt="Melusina Photobooth — ${state.currentPose.name}" 
+                 onerror="this.onerror=null; this.src='../generated/assets/character/melusina_beauty_eevee_20260715c_01.png';"
                  style="transform: scale(${state.currentLens.scale});" />
             
-            <div class="photobooth-viewfinder">
+            <div class="photobooth-viewfinder" aria-hidden="true">
               <div class="photobooth-frame-corner top-left"></div>
               <div class="photobooth-frame-corner top-right"></div>
               <div class="photobooth-frame-corner bottom-left"></div>
               <div class="photobooth-frame-corner bottom-right"></div>
               <div class="photobooth-crosshair"></div>
             </div>
-            <div class="photobooth-stickers-layer" id="photobooth-stickers"></div>
+            <div class="photobooth-stickers-layer" id="photobooth-stickers" aria-hidden="true"></div>
           </div>
 
           <div class="photobooth-controls">
             <!-- Poses -->
             <div class="photobooth-toolbar">
-              <div class="photobooth-group">
+              <div class="photobooth-group" role="group" aria-label="Pose Selection">
                 <span class="photobooth-label">Pose:</span>
                 ${POSES.map(p => `
-                  <button type="button" class="photobooth-chip ${p.id === state.currentPose.id ? 'active' : ''}" data-pose="${p.id}">
+                  <button type="button" class="photobooth-chip ${p.id === state.currentPose.id ? 'active' : ''}" 
+                          data-pose="${p.id}"
+                          aria-pressed="${p.id === state.currentPose.id ? 'true' : 'false'}">
                     ${p.name}
                   </button>
                 `).join('')}
               </div>
 
               <!-- Lenses -->
-              <div class="photobooth-group">
+              <div class="photobooth-group" role="group" aria-label="Focal Length Selection">
                 <span class="photobooth-label">Focal Length:</span>
                 ${LENSES.map(l => `
-                  <button type="button" class="photobooth-chip ${l.id === state.currentLens.id ? 'active' : ''}" data-lens="${l.id}">
+                  <button type="button" class="photobooth-chip ${l.id === state.currentLens.id ? 'active' : ''}" 
+                          data-lens="${l.id}"
+                          aria-pressed="${l.id === state.currentLens.id ? 'true' : 'false'}">
                     ${l.name}
                   </button>
                 `).join('')}
@@ -82,16 +87,18 @@
 
             <!-- Filters & Shutter -->
             <div class="photobooth-toolbar">
-              <div class="photobooth-group">
+              <div class="photobooth-group" role="group" aria-label="Atmosphere LUT Selection">
                 <span class="photobooth-label">Atmosphere:</span>
                 ${FILTERS.map(f => `
-                  <button type="button" class="photobooth-chip ${f.id === state.currentFilter.id ? 'active' : ''}" data-filter="${f.id}">
+                  <button type="button" class="photobooth-chip ${f.id === state.currentFilter.id ? 'active' : ''}" 
+                          data-filter="${f.id}"
+                          aria-pressed="${f.id === state.currentFilter.id ? 'true' : 'false'}">
                     ${f.name}
                   </button>
                 `).join('')}
               </div>
 
-              <button type="button" class="photobooth-shutter-btn" id="photobooth-shutter">
+              <button type="button" class="photobooth-shutter-btn" id="photobooth-shutter" aria-label="Capture snapshot burst">
                 <span>✦ Capture Photo</span>
               </button>
             </div>
@@ -117,7 +124,11 @@
           state.currentLens = LENSES.find(l => l.id === id) || state.currentLens;
           var img = root.querySelector('#photobooth-img');
           if (img) img.style.transform = 'scale(' + state.currentLens.scale + ')';
-          root.querySelectorAll('[data-lens]').forEach(b => b.classList.toggle('active', b === btn));
+          root.querySelectorAll('[data-lens]').forEach(function (b) {
+            var active = b === btn;
+            b.classList.toggle('active', active);
+            b.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
         });
       });
 
@@ -130,7 +141,11 @@
             FILTERS.forEach(f => img.classList.remove(f.class));
             img.classList.add(state.currentFilter.class);
           }
-          root.querySelectorAll('[data-filter]').forEach(b => b.classList.toggle('active', b === btn));
+          root.querySelectorAll('[data-filter]').forEach(function (b) {
+            var active = b === btn;
+            b.classList.toggle('active', active);
+            b.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
         });
       });
 
@@ -189,6 +204,12 @@
             if (e.cancelable) e.preventDefault();
           }
         }, { passive: false });
+
+        var resetTouchGesture = function () {
+          initialDist = 0;
+        };
+        stageEl.addEventListener('touchend', resetTouchGesture, { passive: true });
+        stageEl.addEventListener('touchcancel', resetTouchGesture, { passive: true });
 
         stageEl.addEventListener('click', function (e) {
           if (e.target.closest('.photobooth-controls') || e.target.closest('.photobooth-stamp')) return;
