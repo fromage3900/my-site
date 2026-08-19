@@ -1,0 +1,113 @@
+{
+  "generated_utc": "2026-08-19T06:00:59.715822+00:00",
+  "standing": "hold",
+  "standing_detail": "14/15 pass; remaining hold/warn/open",
+  "editor_reachable": true,
+  "claims": [
+    {
+      "id": "completion_gates",
+      "label": "Completion gates (ledger-backed)",
+      "status": "pass",
+      "evidence": "Saved/gate_ledger.json via echo_run.py status",
+      "detail": "4/4 PASS  |  runtime: [pass]  |  save_load: [pass]  |  repeat_consume: [pass]  |  package_launch: [pass]"
+    },
+    {
+      "id": "battle_gates",
+      "label": "Battle encounter gates (ledger-backed)",
+      "status": "pass",
+      "evidence": "Saved/gate_ledger.json \u00b7 battle_encounter: [pass] 2026-08-19 \u00b7 battle_integration_map: [pass] 2026-08-19",
+      "detail": "Owner closed BP_BattleController::Show infinite-loop claim 2026-08-19"
+    },
+    {
+      "id": "contract_echo_pipeline",
+      "label": "Echo pipeline spec valid (specs/echo_pipeline.json)",
+      "status": "pass",
+      "evidence": "echo_run.py validate-spec specs/echo_pipeline.json -> ok:true",
+      "detail": ""
+    },
+    {
+      "id": "contract_verb_contract",
+      "label": "Verb contract defined (melodia: intents in echo pipeline)",
+      "status": "pass",
+      "evidence": "echo_pipeline.json agent_contract.verbs = 7 entries",
+      "detail": "melodia:battle:<EncounterId>; melodia:quest:<QuestId>; melodia:flag:<FlagId>:<true|false>; melodia:travel:<LevelId> ..."
+    },
+    {
+      "id": "policy_parseable",
+      "label": "MCP tool policy parseable + forbidden-path tokens defined",
+      "status": "pass",
+      "evidence": "specs/mcp_tool_policy.v1.json -> 42 tools, 3 forbidden path tokens",
+      "detail": "forbidden: content/_project/, l_sakurapath, sakura"
+    },
+    {
+      "id": "baseline_fingerprints",
+      "label": "Blueprint fingerprint baseline present + parseable",
+      "status": "pass",
+      "evidence": "Docs/T3D_Baseline/bp_fingerprints.json -> 279 fingerprints",
+      "detail": ""
+    },
+    {
+      "id": "baseline_ci_gates",
+      "label": "CI quality gates defined (specs/ci_gates.json)",
+      "status": "pass",
+      "evidence": "specs/ci_gates.json -> 8 quality gate thresholds",
+      "detail": "graph_fingerprint=exact_match, blueprint_compile=0_errors, material_compile=0_errors, shader_instructions=max_150, triangle_budget=max_250k, pie_smoke=0_crashes"
+    },
+    {
+      "id": "baseline_art_gates",
+      "label": "Art gate baseline present (specs/art_gates_baseline.json)",
+      "status": "pass",
+      "evidence": "specs/art_gates_baseline.json present + parseable",
+      "detail": ""
+    },
+    {
+      "id": "doc_links",
+      "label": "Doc local links below breakdown threshold",
+      "status": "warn",
+      "evidence": "Tools/doc_link_check.py -> 465 links checked, 37 broken",
+      "detail": "37 broken local links \u2014 historical docs debt, not a Hermes/gate blocker"
+    },
+    {
+      "id": "hygiene_utf8",
+      "label": "Tracked text files are strict UTF-8",
+      "status": "pass",
+      "evidence": "strict UTF-8 on 760 files under specs/Tools/deploy, 0 decode failures",
+      "detail": ""
+    },
+    {
+      "id": "editor_reachable",
+      "label": "Monolith reachable on 127.0.0.1:9316",
+      "status": "pass",
+      "evidence": "socket connect to 127.0.0.1:9316 -> yes",
+      "detail": ""
+    },
+    {
+      "id": "hermes_harness",
+      "label": "Hermes agentic harness (not a model pull)",
+      "status": "pass",
+      "evidence": "deploy/hermes_mcp.py + hermes_daemon.py + melodia_mcp_server.py",
+      "detail": "MATH 16/16 scores this harness. Do not ollama pull hermes3."
+    },
+    {
+      "id": "orchestrator_swe_light",
+      "label": "SWE Light Qwen/Muse wrapper expansion",
+      "status": "pass",
+      "evidence": "C:\\EnvironmentPortfolio\\BS_GodFile\\deploy\\melodia_mcp_server.py",
+      "detail": "Animation/Audio/UI wrappers on disk; victory audit checked off"
+    },
+    {
+      "id": "model_qwen_local",
+      "label": "Local Qwen for Hermes-harness eval",
+      "status": "pass",
+      "evidence": "qwen3.8-27b:latest, qwen2.5-coder:7b, qwen2.5-coder:14b",
+      "detail": "python Tools/run_math_models.py --model qwen2.5-coder:7b"
+    },
+    {
+      "id": "model_muse_glimmer",
+      "label": "Muse Glimmer for Hermes-harness eval",
+      "status": "pass",
+      "evidence": "muse-glimmer-30b:latest, hf.co/bartowski/Muse-Glimmer-30B-GGUF:Q4_K_M",
+      "detail": "python Tools/run_math_models.py --run-muse"
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "schema": "melodia.math.evidence.v1",
+  "captured_at": "2026-08-19T01:47:59-04:00",
+  "editor_contacted": true,
+  "monolith_required": false,
+  "command": "python Tools/test_melodia_mcp.py",
+  "mcp_tests": {
+    "passed": 21,
+    "total": 21,
+    "failed": 0,
+    "runner": "Tools/test_melodia_mcp.py"
+  },
+  "contract_tests": {
+    "passed": 20,
+    "total": 20,
+    "coverage_floor": 20,
+    "editor_contacted": false,
+    "runner": "Tools/run_contract_tests.py",
+    "stamp": "2026-08-19T00:16-04:00"
+  },
+  "server": {
+    "entrypoint": "deploy/melodia_mcp_server.py",
+    "tool_count": 25,
+    "tools": [
+      "melodia_animation_get_runtime_abp",
+      "melodia_animation_validate_bindings",
+      "melodia_animation_validate_state_machine",
+      "melodia_audio_get_rhythm_catalog",
+      "melodia_audio_list_assets",
+      "melodia_audio_validate_metasound",
+      "melodia_bp_get_template",
+      "melodia_bp_list_fixtures",
+      "melodia_bp_validate_fixture",
+      "melodia_bp_validate_p0_route",
+      "melodia_config_get_allowlist",
+      "melodia_narrative_audit_idempotency",
+      "melodia_narrative_get_record",
+      "melodia_persona_get_quests",
+      "melodia_persona_get_stats",
+      "melodia_quill_list_scripts",
+      "melodia_quill_validate_notification",
+      "melodia_rhythm_list_skills",
+      "melodia_system_compile_feedback",
+      "melodia_system_golden_run_preflight",
+      "melodia_system_health",
+      "melodia_system_list_subsystems",
+      "melodia_ui_get_battle_hud",
+      "melodia_ui_list_widgets",
+      "melodia_ui_validate_widget"
+    ]
+  },
+  "policy": {
+    "default_decision": "deny",
+    "file": "specs/mcp_tool_policy.v1.json"
+  },
+  "snapshots": {
+    "system_health": {
+      "schema": "melodia.system.health.v1",
+      "status": "degraded",
+      "timestamp": "2026-08-19T00:15:46.607934",
+      "monolith_reachable": true,
+      "policy_default_is_deny": true,
+      "qsc_count": 8,
+      "live_asset_probe": "four DA/BP paths returned false via Monolith this stamp"
+    },
+    "golden_run_preflight": {
+      "schema": "melodia.system.golden_run_preflight.v1",
+      "ready": true,
+      "next_step": "golden_run",
+      "check_names": [
+        "route_maps",
+        "config_asset",
+        "completion_gates",
+        "all_completion_gates_pass",
+        "echo_pipeline",
+        "monolith_reachable"
+      ]
+    },
+    "quill_scripts": {
+      "count": 8
+    },
+    "bp_fixtures": {
+      "count": 12
+    },
+    "subsystems": {
+      "count": 20,
+      "names": [
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaAudioReactivePresentationSubsystem.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaExternalJRPGBridgeSubsystem.h"
+        },
+        {
+          "class_name": "IMelodiaInputContextProvider",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaInputContextSubsystem.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaIOSInputSubsystem.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaJRPGBattleOverlaySubsystem.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaJRPGPartyBootstrapSubsystem.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaLLMRouter.h"
+        },
+        {
+          "class_name": "UWorldSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaMusicClockSubsystem.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaNarrativeSubsystem.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaPersonaSubsystem.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaPrototypeCaptureSubsystem.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaQuantumDrawSubsystem.h"
+        },
+        {
+          "class_name": "UTickableWorldSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaRhythmCombatSubsystem.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaSaveRecoverySubsystem.h"
+        },
+        {
+          "class_name": "IMelodiaTravelProvider",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaTravelSubsystem.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaTraversalCapabilityProvider.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaUIBridgeSubsystem.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaUIFeedbackSubsystem.h"
+        },
+        {
+          "class_name": "UGameInstanceSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaWaterGameplaySubsystem.h"
+        },
+        {
+          "class_name": "UWorldSubsystem",
+          "header": "Source/BS_GodFile/MelodiaIntegration/MelodiaWaterInteractionSubsystem.h"
+        }
+      ]
+    },
+    "idempotency_audit": {
+      "all_paths_guarded": true,
+      "item_is_logging_stub": true,
+      "finding_count": 7
+    },
+    "p0_route": {
+      "fixture_count": 5,
+      "script_count": 2
+    },
+    "notification_contract": {
+      "valid_example": "melodia:battle:encounter_01",
+      "valid": true,
+      "invalid_example": "melodia:hack:encounter_01",
+      "invalid_rejected": true
+    },
+    "allowlist_keys": [
+      "DialogueRewardIds",
+      "NarrativeFlagIds",
+      "QuestIds",
+      "StateAnchorIds",
+      "WorldChallengeIds"
+    ]
+  },
+  "runtime_gates_documented": {
+    "source": "Saved/Echo/state.txt + Docs/Handoffs/SESSION_HANDOFF_2026-08-18.md",
+    "stamp": "2026-08-18 16:20",
+    "completion": [
+      {
+        "gate": "runtime",
+        "state": "PASS",
+        "date": "2026-08-13",
+        "note": "Owner-verified real keyboard input through BP_BattleUI::OnKeyDown"
+      },
+      {
+        "gate": "save_load",
+        "state": "PASS",
+        "date": "2026-08-14",
+        "note": "Canonical BP_JRPGSaveGame slot across process restart"
+      },
+      {
+        "gate": "repeat_consume",
+        "state": "PASS",
+        "date": "2026-08-14",
+        "note": "melodia:stat: idempotent per IntentId"
+      },
+      {
+        "gate": "package_launch",
+        "state": "PASS",
+        "date": "2026-08-14",
+        "note": "UE 5.8 packaged Gauntlet passed outside editor"
+      }
+    ],
+    "open": [
+      {
+        "gate": "battle_encounter",
+        "state": "FAIL",
+        "date": "2026-08-18 16:19",
+        "note": "BP_BattleController::Show infinite loop after battle UI spawn"
+      },
+      {
+        "gate": "battle_integration_map",
+        "state": "FAIL",
+        "date": "2026-08-18 16:19",
+        "note": "Same PIE session; UI created, Show looped"
+      }
+    ],
+    "pie_smoke": {
+      "map": "MelodiaIntegrationMap",
+      "samples": 47,
+      "blueprint_runtime_errors": 0
+    }
+  },
+  "not_claimed": [
+    "No public 100-task LLM eval log (no TCA/PAR/SCR/RCF/TER run JSON).",
+    "No certified Hermes 3 / LongCat scorecard on disk.",
+    "MCP v1 tools are read-only; they do not spawn lights or mutate Blueprints."
+  ]
+}

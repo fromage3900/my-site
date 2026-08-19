@@ -1,0 +1,184 @@
+{
+  "schema": "melodia.math_run.v1",
+  "kind": "harness_self_eval",
+  "model": "none",
+  "note": "Scores the MCP tool surface with golden expects. Not an LLM leaderboard.",
+  "captured_at": "2026-08-19T01:47:45-04:00",
+  "editor_contacted": true,
+  "tasks_spec": "specs/mcp/math_tasks.v1.json",
+  "passed": 24,
+  "total": 24,
+  "failed": 0,
+  "held": 0,
+  "tca_pct": 100.0,
+  "tasks": [
+    {
+      "id": "notify_battle_allow",
+      "tool": "melodia_quill_validate_notification",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "notify_hack_deny",
+      "tool": "melodia_quill_validate_notification",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "notify_stat_allow",
+      "tool": "melodia_quill_validate_notification",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "quill_list_has_scripts",
+      "tool": "melodia_quill_list_scripts",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "narrative_record_schema",
+      "tool": "melodia_narrative_get_record",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "allowlist_schema",
+      "tool": "melodia_config_get_allowlist",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "fixtures_list",
+      "tool": "melodia_bp_list_fixtures",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "fixture_unknown_invalid",
+      "tool": "melodia_bp_validate_fixture",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "template_world_challenge",
+      "tool": "melodia_bp_get_template",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "template_missing_errors",
+      "tool": "melodia_bp_get_template",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "subsystems_listed",
+      "tool": "melodia_system_list_subsystems",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "health_schema",
+      "tool": "melodia_system_health",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "idempotency_audit",
+      "tool": "melodia_narrative_audit_idempotency",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "p0_route_five_fixtures",
+      "tool": "melodia_bp_validate_p0_route",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "golden_preflight_ready_flag",
+      "tool": "melodia_system_golden_run_preflight",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "persona_stats_schema",
+      "tool": "melodia_persona_get_stats",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "audio_list_schema",
+      "tool": "melodia_audio_list_assets",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "audio_rhythm_catalog",
+      "tool": "melodia_audio_get_rhythm_catalog",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "audio_metasound_offline",
+      "tool": "melodia_audio_validate_metasound",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "ui_list_schema",
+      "tool": "melodia_ui_list_widgets",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "ui_battle_hud",
+      "tool": "melodia_ui_get_battle_hud",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "compile_feedback_offline",
+      "tool": "melodia_system_compile_feedback",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "animation_sm_editor",
+      "tool": "melodia_animation_validate_state_machine",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "ui_validate_widget_offline",
+      "tool": "melodia_ui_validate_widget",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    }
+  ]
+}
