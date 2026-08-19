@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="30">
+<title>Melodia Project Health</title>
+<style>
+* { box-sizing: border-box; }
+body { font-family: 'Courier New', monospace; background: #0b0a13; color: #f2d69e; margin: 0; padding: 20px; }
+.header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #38293b; padding-bottom: 15px; margin-bottom: 20px; }
+.title { font-size: 26px; color: #78ebff; letter-spacing: 1px; }
+.subtitle { font-size: 13px; color: #666; }
+.meta { font-size: 12px; color: #555555; text-align: right; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.card { background: #1a1520; border: 1px solid #38293b; border-radius: 8px; padding: 14px; }
+.card h3 { margin: 0 0 8px 0; color: #78ebff; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.stat-row { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid #15101a; font-size: 13px; }
+.stat-label { color: #777; }
+.stat-value { color: #f2d69e; font-weight: bold; text-align: right; }
+.stat-value.good { color: #22c55e; }
+.stat-value.bad { color: #ef4444; }
+.stat-value.warn { color: #eab308; }
+.stat-value.muted { color: #555555; }
+.bar { height: 14px; background: #15101a; border: 1px solid #38293b; border-radius: 7px; overflow: hidden; margin: 6px 0 4px; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #78ebff, #f2d69e); }
+.bar-label { font-size: 11px; color: #666; }
+.section { margin: 24px 0 12px; font-size: 15px; color: #78ebff; text-transform: uppercase; letter-spacing: 1px; border-left: 3px solid #78ebff; padding-left: 8px; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 12px; }
+th { text-align: left; color: #78ebff; border-bottom: 1px solid #38293b; padding: 6px 8px; text-transform: uppercase; letter-spacing: 1px; }
+td { padding: 6px 8px; border-bottom: 1px solid #15101a; vertical-align: top; }
+tr:hover td { background: #1f1830; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: bold; }
+.badge.pass { background: #22c55e22; border: 1px solid #22c55e; color: #22c55e; }
+.badge.hold { background: #eab30822; border: 1px solid #eab308; color: #eab308; }
+.badge.open { background: #77777722; border: 1px solid #555555; color: #555555; }
+.badge.fail { background: #ef444422; border: 1px solid #ef4444; color: #ef4444; }
+.badge.warn { background: #eab30822; border: 1px solid #eab308; color: #eab308; }
+.code { background: #15101a; border: 1px solid #38293b; border-radius: 6px; padding: 12px; font-size: 12px; white-space: pre-wrap; color: #f2d69e; margin: 8px 0 20px; }
+.footer { margin-top: 30px; border-top: 1px solid #38293b; padding-top: 10px; font-size: 11px; color: #555555; }
+a { color: #78ebff; }
+.orchestra { font-size: 13px; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <div class="title">Melodia Project Health</div>
+    <div class="subtitle">Standing scorecard — Echo gates, Hermes harness, Qwen/Muse lanes, SWE Light orchestrator</div>
+  </div>
+  <div class="meta">generated 2026-08-19 06:00:59 · editor up · refresh 30s</div>
+</div>
+
+<div class="section">Orchestra</div>
+<div class="card orchestra">
+  <a href="dashboards.html">hub</a>
+  &nbsp;·&nbsp; <a href="loop_monitor.html">loop_monitor</a>
+  &nbsp;·&nbsp; <a href="live_dashboard.html">live PIE</a>
+  &nbsp;·&nbsp; <a href="metrics_dashboard.html">metrics PIE</a>
+  &nbsp;·&nbsp; <a href="agent-dashboard-t3d.html">T3D claims</a>
+  &nbsp;·&nbsp; <a href="t3d-catalog.html">T3D catalog</a>
+  &nbsp;·&nbsp; <a href="melusina-agent-harness.html">Hermes harness</a>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Overall standing</h3>
+    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value hold">HOLD</span></div>
+    <div class="stat-row"><span class="stat-label">Detail</span><span class="stat-value muted">14/15 pass; remaining hold/warn/open</span></div>
+  </div>
+  <div class="card">
+    <h3>Pass rate</h3>
+    <div class="bar"><div class="bar-fill" style="width:93%"></div></div>
+    <div class="bar-label">14/15 claims pass</div>
+  </div>
+  <div class="card">
+    <h3>How to read this</h3>
+    <div class="stat-row"><span class="stat-label">PASS</span><span class="stat-value good">claim verified right now</span></div>
+    <div class="stat-row"><span class="stat-label">HOLD</span><span class="stat-value warn">editor-backed; re-verify with editor up</span></div>
+    <div class="stat-row"><span class="stat-label">WARN</span><span class="stat-value warn">under threshold but tracked</span></div>
+    <div class="stat-row"><span class="stat-label">OPEN</span><span class="stat-value muted">not yet verified</span></div>
+    <div class="stat-row"><span class="stat-label">FAIL</span><span class="stat-value bad">claim broken or missing</span></div>
+  </div>
+</div>
+
+<div class="section">Claim verdicts</div>
+<table>
+<tr><th>Status</th><th>Claim</th><th>Evidence</th></tr>
+<tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>Completion gates (ledger-backed)</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">Saved/gate_ledger.json via echo_run.py status</td>
+    </tr><tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>Battle encounter gates (ledger-backed)</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">Saved/gate_ledger.json · battle_encounter: [pass] 2026-08-19 · battle_integration_map: [pass] 2026-08-19</td>
+    </tr><tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>Echo pipeline spec valid (specs/echo_pipeline.json)</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">echo_run.py validate-spec specs/echo_pipeline.json -> ok:true</td>
+    </tr><tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>Verb contract defined (melodia: intents in echo pipeline)</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">echo_pipeline.json agent_contract.verbs = 7 entries</td>
+    </tr><tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>MCP tool policy parseable + forbidden-path tokens defined</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">specs/mcp_tool_policy.v1.json -> 42 tools, 3 forbidden path tokens</td>
+    </tr><tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>Blueprint fingerprint baseline present + parseable</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">Docs/T3D_Baseline/bp_fingerprints.json -> 279 fingerprints</td>
+    </tr><tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>CI quality gates defined (specs/ci_gates.json)</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">specs/ci_gates.json -> 8 quality gate thresholds</td>
+    </tr><tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>Art gate baseline present (specs/art_gates_baseline.json)</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">specs/art_gates_baseline.json present + parseable</td>
+    </tr><tr>
+      <td><span class="badge warn">WARN</span></td>
+      <td>Doc local links below breakdown threshold</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">Tools/doc_link_check.py -> 465 links checked, 37 broken</td>
+    </tr><tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>Tracked text files are strict UTF-8</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">strict UTF-8 on 760 files under specs/Tools/deploy, 0 decode failures</td>
+    </tr><tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>Monolith reachable on 127.0.0.1:9316</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">socket connect to 127.0.0.1:9316 -> yes</td>
+    </tr><tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>Hermes agentic harness (not a model pull)</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">deploy/hermes_mcp.py + hermes_daemon.py + melodia_mcp_server.py</td>
+    </tr><tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>SWE Light Qwen/Muse wrapper expansion</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">C:\EnvironmentPortfolio\BS_GodFile\deploy\melodia_mcp_server.py</td>
+    </tr><tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>Local Qwen for Hermes-harness eval</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">qwen3.8-27b:latest, qwen2.5-coder:7b, qwen2.5-coder:14b</td>
+    </tr><tr>
+      <td><span class="badge pass">PASS</span></td>
+      <td>Muse Glimmer for Hermes-harness eval</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">muse-glimmer-30b:latest, hf.co/bartowski/Muse-Glimmer-30B-GGUF:Q4_K_M</td>
+    </tr>
+</table>
+
+<div class="section">Refresh policy</div>
+<div class="code">- This page is regenerated on demand (python Tools/project_health_dashboard.py) and by rebuild_all_dashboards.py.
+- Auto-refreshes every 30s when served from Saved/ (python -m http.server 8080 -d Saved).
+- Editor-backed claims (completion gates, live allowlist) are HOLD when 9316 is down; the ledger is the current historical record.
+- CI runs the offline slice (contract parse, policy parse, baseline existence, doc links, UTF-8 hygiene) on push/PR.
+- The programatic gate/ledger layer is echo_run.py + Saved/gate_ledger.json; this dashboard is the human-readable view.</div>
+
+<div class="footer">
+  Generated 2026-08-19 06:00:59 via Tools/project_health_dashboard.py · data sources: Saved/gate_ledger.json, specs/echo_pipeline.json, specs/mcp_tool_policy.v1.json, specs/ci_gates.json, specs/art_gates_baseline.json, Docs/T3D_Baseline/bp_fingerprints.json, Tools/doc_link_check.py, strict UTF-8 walk · Part of the Melodia dashboard family (rebuild_all_dashboards.py)
+</div>
+</body>
+</html>
