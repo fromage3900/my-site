@@ -1,7 +1,7 @@
 {
-  "generated_utc": "2026-08-19T06:00:59.715822+00:00",
+  "generated_utc": "2026-08-19T09:38:56.937575+00:00",
   "standing": "hold",
-  "standing_detail": "14/15 pass; remaining hold/warn/open",
+  "standing_detail": "13/17 pass; remaining hold/warn/open",
   "editor_reachable": true,
   "claims": [
     {
@@ -36,7 +36,7 @@
       "id": "policy_parseable",
       "label": "MCP tool policy parseable + forbidden-path tokens defined",
       "status": "pass",
-      "evidence": "specs/mcp_tool_policy.v1.json -> 42 tools, 3 forbidden path tokens",
+      "evidence": "specs/mcp_tool_policy.v1.json -> 51 tools, 3 forbidden path tokens",
       "detail": "forbidden: content/_project/, l_sakurapath, sakura"
     },
     {
@@ -71,7 +71,7 @@
       "id": "hygiene_utf8",
       "label": "Tracked text files are strict UTF-8",
       "status": "pass",
-      "evidence": "strict UTF-8 on 760 files under specs/Tools/deploy, 0 decode failures",
+      "evidence": "strict UTF-8 on 770 files under specs/Tools/deploy, 0 decode failures",
       "detail": ""
     },
     {
@@ -86,7 +86,7 @@
       "label": "Hermes agentic harness (not a model pull)",
       "status": "pass",
       "evidence": "deploy/hermes_mcp.py + hermes_daemon.py + melodia_mcp_server.py",
-      "detail": "MATH 16/16 scores this harness. Do not ollama pull hermes3."
+      "detail": "MATH 32/32 scores this harness (2026-08-19T05:08:55-04:00). Do not ollama pull hermes3."
     },
     {
       "id": "orchestrator_swe_light",
@@ -100,14 +100,28 @@
       "label": "Local Qwen for Hermes-harness eval",
       "status": "pass",
       "evidence": "qwen3.8-27b:latest, qwen2.5-coder:7b, qwen2.5-coder:14b",
-      "detail": "python Tools/run_math_models.py --model qwen2.5-coder:7b"
+      "detail": "run JSON 2026-08-19T01:45:34-04:00: TCA=100.0% EXEC=87.5%"
     },
     {
       "id": "model_muse_glimmer",
       "label": "Muse Glimmer for Hermes-harness eval",
-      "status": "pass",
+      "status": "hold",
       "evidence": "muse-glimmer-30b:latest, hf.co/bartowski/Muse-Glimmer-30B-GGUF:Q4_K_M",
-      "detail": "python Tools/run_math_models.py --run-muse"
+      "detail": "tag installed 2026-08-19; PASS requires a completed run JSON (python Tools/run_math_models.py --run-muse)"
+    },
+    {
+      "id": "toronto_lanes",
+      "label": "Toronto integration lanes (Cohere / Q# / NeMo Guardrails)",
+      "status": "hold",
+      "evidence": "artifact present, no completed run: cohere",
+      "detail": "held until a run JSON exists (see Saved/Audit)"
+    },
+    {
+      "id": "run_evidence_consistency",
+      "label": "Run evidence consistency (no PASS without run JSON)",
+      "status": "hold",
+      "evidence": "Saved/Audit/math_run_*.json scan",
+      "detail": "in_progress: math_run_qwen3.8-27b_in_progress.json"
     }
   ]
 }

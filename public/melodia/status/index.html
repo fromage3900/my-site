@@ -47,7 +47,7 @@ a { color: #78ebff; }
     <div class="title">Melodia Project Health</div>
     <div class="subtitle">Standing scorecard — Echo gates, Hermes harness, Qwen/Muse lanes, SWE Light orchestrator</div>
   </div>
-  <div class="meta">generated 2026-08-19 06:00:59 · editor up · refresh 30s</div>
+  <div class="meta">generated 2026-08-19 09:39:18 · editor up · refresh 30s</div>
 </div>
 
 <div class="section">Orchestra</div>
@@ -65,12 +65,12 @@ a { color: #78ebff; }
   <div class="card">
     <h3>Overall standing</h3>
     <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value hold">HOLD</span></div>
-    <div class="stat-row"><span class="stat-label">Detail</span><span class="stat-value muted">14/15 pass; remaining hold/warn/open</span></div>
+    <div class="stat-row"><span class="stat-label">Detail</span><span class="stat-value muted">13/17 pass; remaining hold/warn/open</span></div>
   </div>
   <div class="card">
     <h3>Pass rate</h3>
-    <div class="bar"><div class="bar-fill" style="width:93%"></div></div>
-    <div class="bar-label">14/15 claims pass</div>
+    <div class="bar"><div class="bar-fill" style="width:76%"></div></div>
+    <div class="bar-label">13/17 claims pass</div>
   </div>
   <div class="card">
     <h3>How to read this</h3>
@@ -104,7 +104,7 @@ a { color: #78ebff; }
     </tr><tr>
       <td><span class="badge pass">PASS</span></td>
       <td>MCP tool policy parseable + forbidden-path tokens defined</td>
-      <td class="code" style="margin:0;white-space:normal;font-size:11px">specs/mcp_tool_policy.v1.json -> 42 tools, 3 forbidden path tokens</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">specs/mcp_tool_policy.v1.json -> 51 tools, 3 forbidden path tokens</td>
     </tr><tr>
       <td><span class="badge pass">PASS</span></td>
       <td>Blueprint fingerprint baseline present + parseable</td>
@@ -124,7 +124,7 @@ a { color: #78ebff; }
     </tr><tr>
       <td><span class="badge pass">PASS</span></td>
       <td>Tracked text files are strict UTF-8</td>
-      <td class="code" style="margin:0;white-space:normal;font-size:11px">strict UTF-8 on 760 files under specs/Tools/deploy, 0 decode failures</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">strict UTF-8 on 770 files under specs/Tools/deploy, 0 decode failures</td>
     </tr><tr>
       <td><span class="badge pass">PASS</span></td>
       <td>Monolith reachable on 127.0.0.1:9316</td>
@@ -142,9 +142,17 @@ a { color: #78ebff; }
       <td>Local Qwen for Hermes-harness eval</td>
       <td class="code" style="margin:0;white-space:normal;font-size:11px">qwen3.8-27b:latest, qwen2.5-coder:7b, qwen2.5-coder:14b</td>
     </tr><tr>
-      <td><span class="badge pass">PASS</span></td>
+      <td><span class="badge hold">HOLD</span></td>
       <td>Muse Glimmer for Hermes-harness eval</td>
       <td class="code" style="margin:0;white-space:normal;font-size:11px">muse-glimmer-30b:latest, hf.co/bartowski/Muse-Glimmer-30B-GGUF:Q4_K_M</td>
+    </tr><tr>
+      <td><span class="badge hold">HOLD</span></td>
+      <td>Toronto integration lanes (Cohere / Q# / NeMo Guardrails)</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">artifact present, no completed run: cohere</td>
+    </tr><tr>
+      <td><span class="badge hold">HOLD</span></td>
+      <td>Run evidence consistency (no PASS without run JSON)</td>
+      <td class="code" style="margin:0;white-space:normal;font-size:11px">Saved/Audit/math_run_*.json scan</td>
     </tr>
 </table>
 
@@ -156,7 +164,7 @@ a { color: #78ebff; }
 - The programatic gate/ledger layer is echo_run.py + Saved/gate_ledger.json; this dashboard is the human-readable view.</div>
 
 <div class="footer">
-  Generated 2026-08-19 06:00:59 via Tools/project_health_dashboard.py · data sources: Saved/gate_ledger.json, specs/echo_pipeline.json, specs/mcp_tool_policy.v1.json, specs/ci_gates.json, specs/art_gates_baseline.json, Docs/T3D_Baseline/bp_fingerprints.json, Tools/doc_link_check.py, strict UTF-8 walk · Part of the Melodia dashboard family (rebuild_all_dashboards.py)
+  Generated 2026-08-19 09:39:18 via Tools/project_health_dashboard.py · data sources: Saved/gate_ledger.json, specs/echo_pipeline.json, specs/mcp_tool_policy.v1.json, specs/ci_gates.json, specs/art_gates_baseline.json, Docs/T3D_Baseline/bp_fingerprints.json, Tools/doc_link_check.py, strict UTF-8 walk · Part of the Melodia dashboard family (rebuild_all_dashboards.py)
 </div>
 </body>
 </html>

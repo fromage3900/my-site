@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-page="melusina-agent-harness">
 <head>
 <meta charset="utf-8" />
@@ -7,7 +7,7 @@
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>Melusina Agent Harness — Runtime Evidence | Brennan Shepherd</title>
-<meta name="description" content="Working evidence for Melodia's typed MCP harness in Unreal Engine 5.8: 21/21 MCP tests, 24/24 MATH tasks, 20/20 offline contract suites, 25 read-only tools, and ledger-backed runtime gates." />
+<meta name="description" content="Working evidence for Melodia's typed MCP harness in Unreal Engine 5.8: 26/26 MCP tests, 32/32 MATH tasks, 20/20 offline contract suites, 25 read-only tools, and ledger-backed runtime gates." />
 <meta property="og:title" content="Melusina Agent Harness — Runtime Evidence" />
 <meta property="og:description" content="Documented MCP contract tests and UE 5.8 completion gates. LLM model scores are not published until a run log exists." />
 <meta property="og:image" content="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
@@ -89,15 +89,15 @@
     <h1 class="whitepaper-title">Melusina Agent Harness</h1>
     <p class="whitepaper-subtitle">
       Hermes is this harness: typed MCP tools, default-deny policy, and Echo ledger gates against Unreal Engine 5.8.
-      Qwen is the local model lane. Muse Glimmer is not installed on this box yet. No unpublished LLM scoreboard.
+      Qwen 3.8-27B and Muse Glimmer 30B are the local model lanes (CPU-routed on this 12 GB-VRAM box). No unpublished LLM scoreboard.
     </p>
     <div class="meta-badges">
       <span class="meta-badge"><strong>Engine:</strong> UE 5.8 C++</span>
-      <span class="meta-badge"><strong>MCP tests:</strong> <span id="mcp-score">21/21</span></span>
+      <span class="meta-badge"><strong>MCP tests:</strong> <span id="mcp-score">26/26</span></span>
       <span class="meta-badge"><strong>Contract suites:</strong> <span id="contract-score">20/20</span></span>
       <span class="meta-badge"><strong>Tools:</strong> <span id="tool-count">25</span> read-only</span>
-      <span class="meta-badge"><strong>MATH eval:</strong> <span id="math-badge">24/24</span> harness</span>
-      <span class="meta-badge"><strong>Evidence stamp:</strong> <span id="evidence-stamp">2026-08-19 00:28 ET</span></span>
+      <span class="meta-badge"><strong>MATH eval:</strong> <span id="math-badge">32/32</span> harness</span>
+      <span class="meta-badge"><strong>Evidence stamp:</strong> <span id="evidence-stamp">2026-08-19 05:15 ET</span></span>
     </div>
   </header>
 
@@ -106,9 +106,11 @@
     <p class="callout-desc">
       Hermes is the agentic harness (<code>deploy/hermes_mcp.py</code>), not a Nous Hermes 3 weight to pull.
       Unpublished “Hermes 3 / LongCat 98.8% Certified AAA” numbers stay withdrawn.
-      The 24/24 MATH run scores this tool surface (16 core + 8 Animation/Audio/UI). Qwen eval via
-      <code>python Tools/run_math_models.py --model qwen2.5-coder:7b</code>. Live blueprint benchmark:
-      <code>python scripts/benchmark_model_workflows.py --model qwen2.5-coder:7b</code>.
+      The 32/32 MATH run scores this tool surface (ledger-backed, run JSON in
+      <code>generated/melodia/status/math_run_latest.json</code>). Model lanes run via
+      <code>python Tools/run_math_models.py --model qwen3.8-27b</code> and
+      <code>python Tools/run_math_models.py --run-muse</code> (local tags installed 2026-08-19; on this
+      box big models route CPU-only via <code>--cpu</code>).
     </p>
   </div>
 
@@ -135,7 +137,7 @@
       </article>
       <article class="metric-card">
         <span class="metric-code">MATH eval</span>
-        <div class="metric-value" id="math-score">24/24</div>
+        <div class="metric-value" id="math-score">32/32</div>
         <div class="metric-name">Tools/run_math_eval.py</div>
         <p class="metric-desc">24 golden MCP tasks (16 core + 8 Animation/Audio/UI). Harness self-eval, not an LLM. TER measured in run_math_models.py.</p>
       </article>
@@ -194,13 +196,13 @@
             <td><code>runtime</code></td>
             <td><span class="badge-pass">PASS</span></td>
             <td>2026-08-13</td>
-            <td>Owner-verified real keyboard input through <code>BP_BattleUI::OnKeyDown</code>.</td>
+            <td>Owner-verified real keyboard input through <code>battle UI widget's key-down handler</code>.</td>
           </tr>
           <tr>
             <td><code>save_load</code></td>
             <td><span class="badge-pass">PASS</span></td>
             <td>2026-08-14</td>
-            <td>Canonical <code>BP_JRPGSaveGame</code> slot across a full process restart.</td>
+            <td>Canonical <code>save-game object</code> slot across a full process restart.</td>
           </tr>
           <tr>
             <td><code>repeat_consume</code></td>
@@ -224,7 +226,7 @@
             <td><code>battle_encounter</code></td>
             <td><span class="badge-pass">PASS</span></td>
             <td>2026-08-19</td>
-            <td>Owner closed the stale <code>BP_BattleController::Show</code> infinite-loop claim. Ledger supersedes 08-18 FAIL.</td>
+            <td>Owner closed the stale <code>battle controller's show call</code> infinite-loop claim. Ledger supersedes 08-18 FAIL.</td>
           </tr>
           <tr>
             <td><code>battle_integration_map</code></td>
@@ -349,7 +351,8 @@ python Tools/echo_run.py status           # Echo ledger / gate states</pre>
         <div class="track-number">Still open</div>
         <h3 class="track-title">Model lanes</h3>
         <ul class="track-invariants">
-          <li>Muse Glimmer: no local tag / OpenRouter key yet</li>
+          <li>Muse Glimmer 30B: local ollama tag installed 2026-08-19; run via <code>run_math_models.py --run-muse --cpu</code></li>
+          <li>Qwen 3.8-27B: local tag installed; run via <code>run_math_models.py --model qwen3.8-27b --cpu</code></li>
           <li>TER ratio: run <code>run_math_models.py</code> without <code>--no-ter</code> for full measurement</li>
         </ul>
       </article>
@@ -360,9 +363,11 @@ python Tools/echo_run.py status           # Echo ledger / gate states</pre>
     <div class="callout-box">
       <h2 class="callout-title">Honest next step for a model eval</h2>
       <p class="callout-desc">
-        Hermes is the harness. Point a local Qwen at it with
-        <code>python Tools/run_math_models.py --model qwen2.5-coder:7b</code>.
-        Do not <code>ollama pull hermes3</code>. Muse Glimmer stays skipped until it is actually reachable.
+        Hermes is the harness. Point a local model at it with
+        <code>python Tools/run_math_models.py --model qwen3.8-27b --cpu</code> or
+        <code>python Tools/run_math_models.py --run-muse --cpu</code>.
+        Do not <code>ollama pull hermes3</code>. A model lane is published only when its run JSON
+        exists in <code>generated/melodia/status/math_run_models_latest.json</code>.
         Standing: <a href="project_health.html">project_health.html</a>
         · orchestra: <a href="dashboards.html">dashboards.html</a>.
       </p>
@@ -379,7 +384,7 @@ python Tools/echo_run.py status           # Echo ledger / gate states</pre>
 <footer class="footer">
   <div class="inner">
     <span>Brennan Shepherd / Melusina Agent Harness</span>
-    <span>Evidence stamp 2026-08-19 · harness MATH 24/24 · MCP 21/21 · unpublished fake LLM scores withdrawn</span>
+    <span>Evidence stamp 2026-08-19 · harness MATH 32/32 · MCP 26/26 · unpublished fake LLM scores withdrawn</span>
   </div>
 </footer>
 </div>
@@ -428,3 +433,5 @@ python Tools/echo_run.py status           # Echo ledger / gate states</pre>
 </script>
 </body>
 </html>
+
+

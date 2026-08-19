@@ -3,11 +3,11 @@
   "kind": "harness_self_eval",
   "model": "none",
   "note": "Scores the MCP tool surface with golden expects. Not an LLM leaderboard.",
-  "captured_at": "2026-08-19T01:47:45-04:00",
+  "captured_at": "2026-08-19T05:08:55-04:00",
   "editor_contacted": true,
   "tasks_spec": "specs/mcp/math_tasks.v1.json",
-  "passed": 24,
-  "total": 24,
+  "passed": 32,
+  "total": 32,
   "failed": 0,
   "held": 0,
   "tca_pct": 100.0,
@@ -176,6 +176,62 @@
     {
       "id": "ui_validate_widget_offline",
       "tool": "melodia_ui_validate_widget",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "economy_get_state",
+      "tool": "melodia_economy_get_state",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "economy_grief_hook",
+      "tool": "melodia_economy_activate_grief_hook",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "economy_cast_healing_song",
+      "tool": "melodia_economy_cast_skill",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "economy_cast_mana_song",
+      "tool": "melodia_economy_cast_skill",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "hud_economy_state",
+      "tool": "melodia_ui_get_economy_hud",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "encounter_start_p0",
+      "tool": "melodia_encounter_start",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "encounter_resolve_p0",
+      "tool": "melodia_encounter_resolve",
+      "pass": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "quest_p0_status",
+      "tool": "melodia_quest_check_p0",
       "pass": true,
       "status": "pass",
       "detail": "ok"

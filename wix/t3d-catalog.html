@@ -51,57 +51,57 @@ a { color: #78ebff; }
     <div class="card">
       <h3>Melodia migration progress</h3>
       <div class="bar"><div class="bar-fill" style="width:17.4%"></div></div>
-      <div class="bar-label">4/23 widgets carry Melodia palette references (F_Melodia_UI font / T_Melodia_Universal_* textures)</div>
+      <div class="bar-label">4/23 widgets carry Melodia palette references (UI font library font / T_Melodia_Universal_* textures)</div>
     </div>
     </div>
 <div class="section">Live re-export audit</div>
-<div class="card"><div class="stat-row"><span class="stat-label">widgets_reparented</span><span class="stat-value">4</span></div><div class="stat-row"><span class="stat-label">bps_compiled_clean</span><span class="stat-value">28</span></div><div class="stat-row"><span class="stat-label">texture_replacements</span><span class="stat-value">22</span></div><div class="stat-row"><span class="stat-label">errored_blueprints</span><span class="stat-value">0</span></div><div class="stat-row"><span class="stat-label">new_widgets_created</span><span class="stat-value">11</span></div><div style="margin-top:8px;font-size:11px;color:#666">2026-08-06: 23/23 re-exported via Monolith MCP export_asset_text; only BP_ExploreUI carries T_Melodia_Universal_* texture refs in live T3D (ParchmentFrame). BP_HPBar/BP_MPBar/BP_ActionTimeBar reference Melodia UI font F_Melodia_UI. Catalog entries for BP_CraftBar/BP_FadeTransitionUI/BP_QuestNotification/BP_QuestNotificationListUI reverted stock-&gt;stock (no Melodia refs found in live text); BP_QuestNotification recovered from 171-byte stub to 876733 bytes.</div></div>
+<div class="card"><div class="stat-row"><span class="stat-label">widgets_reparented</span><span class="stat-value">4</span></div><div class="stat-row"><span class="stat-label">bps_compiled_clean</span><span class="stat-value">28</span></div><div class="stat-row"><span class="stat-label">texture_replacements</span><span class="stat-value">22</span></div><div class="stat-row"><span class="stat-label">errored_blueprints</span><span class="stat-value">0</span></div><div class="stat-row"><span class="stat-label">new_widgets_created</span><span class="stat-value">11</span></div><div style="margin-top:8px;font-size:11px;color:#666">2026-08-06: 23/23 re-exported via Monolith MCP export_asset_text; only Explore UI carries parchment-frame texture refs in live T3D (ParchmentFrame). HP Bar/MP Bar/Action Time Bar reference Melodia UI font library. Catalog entries for Craft Bar/Fade Transition UI/Quest Notification/Quest NotificationListUI reverted stock-&gt;stock (no Melodia refs found in live text); Quest Notification recovered from 171-byte stub to 876733 bytes.</div></div>
 <div class="section">Combat / HUD (8)</div><table>
 <tr><th>Widget</th><th>Live status</th><th>Melodia replacement</th><th>Nodes (old &rarr; live)</th><th>Size (old &rarr; live)</th></tr>
 <tr>
-<td><b>BP_ActionTimeBar</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_ActionTimeBar</span></td>
+<td><b>Action Time Bar</b></td>
 <td><span class="badge migrated">MIGRATED</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>72 &rarr; 116</td>
 <td>176.9 KB &rarr; 310.8 KB</td>
 </tr><tr>
-<td><b>BP_DamageTextUI</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_DamageTextUI</span></td>
+<td><b>Damage Text UI</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>84 &rarr; 179</td>
 <td>204.5 KB &rarr; 441.8 KB</td>
 </tr><tr>
-<td><b>BP_EnemyUnitUI</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_EnemyUnitUI</span></td>
+<td><b>Enemy Unit UI</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>28 &rarr; 42</td>
 <td>61.6 KB &rarr; 103.4 KB</td>
 </tr><tr>
-<td><b>BP_HPBar</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_HPBar</span></td>
+<td><b>HP Bar</b></td>
 <td><span class="badge migrated">MIGRATED</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>35 &rarr; 59</td>
 <td>87.2 KB &rarr; 156.6 KB</td>
 </tr><tr>
-<td><b>BP_MPBar</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_MPBar</span></td>
+<td><b>MP Bar</b></td>
 <td><span class="badge migrated">MIGRATED</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>35 &rarr; 59</td>
 <td>87.1 KB &rarr; 156.5 KB</td>
 </tr><tr>
-<td><b>BP_PlayerUnitUI</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_PlayerUnitUI</span></td>
+<td><b>Player Unit UI</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>69 &rarr; 113</td>
 <td>158.2 KB &rarr; 285.9 KB</td>
 </tr><tr>
-<td><b>BP_TargetIcon</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_TargetIcon</span></td>
+<td><b>Target Icon</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>24 &rarr; 34</td>
 <td>48.6 KB &rarr; 81.4 KB</td>
 </tr><tr>
-<td><b>BP_UnitClass</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_UnitClass</span></td>
+<td><b>Unit Class</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>30 &rarr; 58</td>
@@ -109,13 +109,13 @@ a { color: #78ebff; }
 </tr></table><div class="section">Interaction (2)</div><table>
 <tr><th>Widget</th><th>Live status</th><th>Melodia replacement</th><th>Nodes (old &rarr; live)</th><th>Size (old &rarr; live)</th></tr>
 <tr>
-<td><b>BP_InteractionUI</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_InteractionUI</span></td>
+<td><b>Interaction UI</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>46 &rarr; 69</td>
 <td>98.5 KB &rarr; 158.8 KB</td>
 </tr><tr>
-<td><b>BP_MobileUI</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_MobileUI</span></td>
+<td><b>Mobile UI</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>109 &rarr; 188</td>
@@ -123,25 +123,25 @@ a { color: #78ebff; }
 </tr></table><div class="section">Dialogues (4)</div><table>
 <tr><th>Widget</th><th>Live status</th><th>Melodia replacement</th><th>Nodes (old &rarr; live)</th><th>Size (old &rarr; live)</th></tr>
 <tr>
-<td><b>BP_InfoDialogue</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/Dialogues/BP_InfoDialogue</span></td>
+<td><b>Info Dialogue</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>60 &rarr; 82</td>
 <td>111.4 KB &rarr; 170.5 KB</td>
 </tr><tr>
-<td><b>BP_ItemObtainDialogue</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/Dialogues/BP_ItemObtainDialogue</span></td>
+<td><b>Item Obtain Dialogue</b></td>
 <td><span class="badge stock">STOCK</span></td>
 <td>&mdash;</td>
 <td>386 &rarr; 386</td>
 <td>1.06 MB &rarr; 1.06 MB</td>
 </tr><tr>
-<td><b>BP_LevelUpDialogue</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/Dialogues/BP_LevelUpDialogue</span></td>
+<td><b>Level Up Dialogue</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>246 &rarr; 469</td>
 <td>598.9 KB &rarr; 1.37 MB</td>
 </tr><tr>
-<td><b>BP_YesNoDialogue</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/Dialogues/BP_YesNoDialogue</span></td>
+<td><b>Yes/No Dialogue</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>96 &rarr; 147</td>
@@ -149,25 +149,25 @@ a { color: #78ebff; }
 </tr></table><div class="section">Main Menu (4)</div><table>
 <tr><th>Widget</th><th>Live status</th><th>Melodia replacement</th><th>Nodes (old &rarr; live)</th><th>Size (old &rarr; live)</th></tr>
 <tr>
-<td><b>BP_EquipmentDetails</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/MainMenu/BP_EquipmentDetails</span></td>
+<td><b>Equipment Details</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>302 &rarr; 548</td>
 <td>688.1 KB &rarr; 1.51 MB</td>
 </tr><tr>
-<td><b>BP_ItemDetails</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/MainMenu/BP_ItemDetails</span></td>
+<td><b>Item Details</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>470 &rarr; 1034</td>
 <td>1.30 MB &rarr; 3.02 MB</td>
 </tr><tr>
-<td><b>BP_PartyUI</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/MainMenu/BP_PartyUI</span></td>
+<td><b>Party UI</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>450 &rarr; 987</td>
 <td>1.23 MB &rarr; 2.79 MB</td>
 </tr><tr>
-<td><b>BP_UnitDetails</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/MainMenu/BP_UnitDetails</span></td>
+<td><b>Unit Details</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>398 &rarr; 646</td>
@@ -175,31 +175,31 @@ a { color: #78ebff; }
 </tr></table><div class="section">Exploration / Misc (5)</div><table>
 <tr><th>Widget</th><th>Live status</th><th>Melodia replacement</th><th>Nodes (old &rarr; live)</th><th>Size (old &rarr; live)</th></tr>
 <tr>
-<td><b>BP_CraftBar</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_CraftBar</span></td>
+<td><b>Craft Bar</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>37 &rarr; 56</td>
 <td>72.4 KB &rarr; 134.4 KB</td>
 </tr><tr>
-<td><b>BP_ExploreUI</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_ExploreUI</span></td>
+<td><b>Explore UI</b></td>
 <td><span class="badge migrated">MIGRATED</span> <span class="flag">[drifted]</span></td>
-<td>T_Melodia_Universal_ParchmentFrame</td>
+<td>parchment-frame texture</td>
 <td>67 &rarr; 93</td>
 <td>140.4 KB &rarr; 234.0 KB</td>
 </tr><tr>
-<td><b>BP_FadeTransitionUI</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_FadeTransitionUI</span></td>
+<td><b>Fade Transition UI</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>20 &rarr; 26</td>
 <td>32.0 KB &rarr; 48.7 KB</td>
 </tr><tr>
-<td><b>BP_QuestNotification</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_QuestNotification</span></td>
+<td><b>Quest Notification</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[stub recovered]</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>0 &rarr; 233</td>
 <td>0.2 KB &rarr; 856.2 KB</td>
 </tr><tr>
-<td><b>BP_QuestNotificationListUI</b><br><span style="color:#666">/Game/TurnBasedJRPGTemplate/Blueprints/UI/BP_QuestNotificationListUI</span></td>
+<td><b>Quest Notification List</b></td>
 <td><span class="badge stock">STOCK</span> <span class="flag">[drifted]</span></td>
 <td>&mdash;</td>
 <td>15 &rarr; 25</td>
@@ -207,17 +207,17 @@ a { color: #78ebff; }
 </tr></table>
 <div class="section">Bulk skinning snippets</div>
 <div class="code"># PowerShell - find/replace stock textures with Melodia parchment frame across all live exports
-$map = @{ 'T_MenuBackground' = 'T_Melodia_Universal_ParchmentFrame'; 'T_DialogueBackground' = 'T_Melodia_Universal_ParchmentFrame' }
-Get-ChildItem 'C:\EnvironmentPortfolio\BS_GodFile\Saved\T3D\live_catalog\*.t3d' | ForEach-Object {
+$map = @{ 'menu-background texture' = 'parchment-frame texture'; 'dialogue-background texture' = 'parchment-frame texture' }
+Get-ChildItem '<project>/Saved/T3D/live_catalog/*.t3d' | ForEach-Object {
   $t = Get-Content $_.FullName -Raw
   foreach ($k in $map.Keys) { $t = $t.Replace($k, $map[$k]) }
   Set-Content $_.FullName $t
 }</div>
 <div class="code"># Python - report which live exports still reference stock template textures (the 19 stock widgets)
 import json, re
-for f in sorted(__import__('glob').glob(r'C:\EnvironmentPortfolio\BS_GodFile\Saved\T3D\live_catalog\*.t3d')):
+for f in sorted(__import__('glob').glob(r'<project>/Saved/T3D/live_catalog/*.t3d')):
     t = open(f, encoding='utf-8').read()
-    stock = sorted(set(re.findall(r'T_[A-Za-z0-9_]+', t)) - {'T_Melodia_Universal_ParchmentFrame', 'T_Melodia_Universal_DividerScroll', 'T_Melodia_Universal_CrestBaroque'})
+    stock = sorted(set(re.findall(r'T_<name>', t)) - {'parchment-frame texture', 'divider-scroll texture', 'crest-baroque texture'})
     if stock: print(f.split('\\')[-1], len(stock), 'stock texture refs')</div>
 <div class="footer">T3D catalog re-exported from live UE via Monolith MCP (project.export_asset_text) on 2026-08-06 &middot; drift compared against the 2026-08-05 exports in Saved\T3D\full_catalog and Saved\T3D\stock_widgets &middot; 5649 Begin-Object nodes across 23 live exports</div>
 </body>

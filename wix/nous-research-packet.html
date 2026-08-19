@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-page="nous-research-packet">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Research Packet — Agent Harness &amp; Model Eval | Brennan Shepherd</title>
-<meta name="description" content="Honest runtime evidence for Melodia's Hermes MCP harness: 21/21 MCP tests, 24/24 MATH tasks, 20/20 contract suites, Qwen model eval, project health scorecard. For Nous Research and similar labs." />
+<meta name="description" content="Honest runtime evidence for Melodia's Hermes MCP harness: 21/21 MCP tests, 32/32 MATH tasks, 20/20 contract suites, Qwen model eval, project health scorecard. For Nous Research and similar labs." />
 <meta property="og:title" content="Melodia Research Packet — Agent Harness Evidence" />
 <meta property="og:description" content="Typed MCP harness in UE 5.8 with ledger-backed gates. Published scores only when run logs exist." />
 <meta property="og:url" content="https://fromage3900.github.io/my-site/wix/nous-research-packet.html" />
@@ -83,7 +83,7 @@
     </article>
   </div>
 
-  <p class="note"><strong>Reproduce locally:</strong> <code>python BS_GodFile/Tools/health.py --json</code> · <code>python BS_GodFile/Tools/run_math_eval.py</code> · <code>python BS_GodFile/Tools/run_math_models.py --model qwen2.5-coder:7b</code> · <code>python scripts/benchmark_model_workflows.py --model qwen2.5-coder:7b</code> (live Ollama; use <code>--reference</code> for fixture-only)</p>
+  <p class="note"><strong>Reproduce locally:</strong> <code>python BS_GodFile/Tools/health.py --json</code> · <code>python BS_GodFile/Tools/run_math_eval.py</code> · <code>python BS_GodFile/Tools/run_math_models.py --model qwen3.8-27b --cpu</code> · <code>python BS_GodFile/Tools/run_math_models.py --run-muse --cpu</code> (live Ollama; run JSONs land in <code>BS_GodFile/Saved/Audit/</code> and <code>generated/melodia/status/</code>)</p>
 
   <div class="card-grid">
     <article class="card">
@@ -100,7 +100,7 @@
       <ul>
         <li>No fake 98.8% / 100-task LLM leaderboard</li>
         <li>Hermes ≠ Nous Hermes 3 model weights</li>
-        <li>Blueprint benchmark: live Ollama mode in <code>benchmark_model_workflows.py</code>; reference mode is fixture validation only</li>
+        <li>Blueprint benchmark: live Ollama mode in <code>run_math_models.py</code>; MATH tool-surface eval in <code>run_math_eval.py</code>; run JSONs are the only published scores</li>
       </ul>
     </article>
   </div>
@@ -110,3 +110,4 @@
 <script src="melodia-site-nav.js"></script>
 </body>
 </html>
+
