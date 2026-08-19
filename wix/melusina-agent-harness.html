@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" data-page="melusina-agent-harness">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<title>Melusina Agent Harness — Runtime Evidence | Brennan Shepherd</title>
+<meta name="description" content="Working evidence for Melodia's typed MCP harness in Unreal Engine 5.8: 21/21 MCP tests, 24/24 MATH tasks, 20/20 offline contract suites, 25 read-only tools, and ledger-backed runtime gates." />
+<meta property="og:title" content="Melusina Agent Harness — Runtime Evidence" />
+<meta property="og:description" content="Documented MCP contract tests and UE 5.8 completion gates. LLM model scores are not published until a run log exists." />
+<meta property="og:image" content="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/melusina-agent-harness.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="melodia-tokens.css">
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-fashion-editorial.css">
+<link rel="stylesheet" href="melodia-game-ui.css">
+<link rel="stylesheet" href="melodia-magical-girl.css">
+<link rel="stylesheet" href="melodia-components.css">
+<link rel="stylesheet" href="melodia-mobile.css">
+<style>
+.harness-shell{max-width:1240px;margin:0 auto;padding:2.5rem 1.5rem 6rem}
+.whitepaper-header{text-align:center;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--color-border-subtle,rgba(201,168,106,.25))}
+.whitepaper-kicker{display:inline-block;font-family:var(--font-mono,monospace);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-primary,#C9A86A);margin-bottom:1rem;padding:4px 14px;background:var(--color-surface-raised,rgba(20,26,48,.6));border:1px solid var(--color-border-subtle,rgba(201,168,106,.25));border-radius:20px}
+.whitepaper-title{font-family:var(--font-display,Syne,serif);font-size:clamp(2rem,4.5vw,3.2rem);color:var(--color-text-primary,#FFF8EE);line-height:1.15;margin:0 0 1.2rem;font-weight:500}
+.whitepaper-subtitle{font-size:1.05rem;line-height:1.65;color:var(--color-text-secondary,#B8C2D8);max-width:860px;margin:0 auto 1.5rem}
+.meta-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:1rem}
+.meta-badge{font-family:var(--font-mono,monospace);font-size:.68rem;padding:4px 10px;border-radius:4px;background:var(--color-surface-sunken,#0A0E22);border:1px solid var(--color-border-subtle,rgba(201,168,106,.25));color:var(--color-text-secondary,#B8C2D8)}
+.meta-badge strong{color:var(--color-accent-primary,#C9A86A)}
+.whitepaper-section{margin-bottom:3.5rem}
+.section-tag{font-family:var(--font-mono,monospace);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-primary,#C9A86A);display:block;margin-bottom:.4rem}
+.section-heading{font-family:var(--font-display,Syne,serif);font-size:1.85rem;color:var(--color-text-primary,#FFF8EE);margin:0 0 .8rem;font-weight:500}
+.section-desc{font-size:.95rem;color:var(--color-text-secondary,#B8C2D8);line-height:1.6;max-width:900px;margin:0}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:1.5rem}
+.metric-card{background:var(--color-surface-sunken,#0A0E22);border:1px solid var(--color-border-subtle,rgba(201,168,106,.25));border-radius:6px;padding:1.4rem 1.2rem}
+.metric-code{font-family:var(--font-mono,monospace);font-size:.72rem;color:var(--color-accent-primary,#C9A86A);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.5rem}
+.metric-value{font-family:var(--font-display,Syne,serif);font-size:2rem;font-weight:600;color:var(--color-text-primary,#FFF8EE);line-height:1.1;margin-bottom:.35rem}
+.metric-name{font-size:.85rem;color:var(--color-text-accent,#E5C98E);margin-bottom:.5rem}
+.metric-desc{font-size:.78rem;color:var(--color-text-secondary,#B8C2D8);line-height:1.45;margin:0}
+.table-responsive{overflow-x:auto;border-radius:6px;border:1px solid var(--color-border-subtle,rgba(201,168,106,.25));background:var(--color-surface-sunken,#0A0E22);margin-top:1.5rem}
+.benchmark-table{width:100%;border-collapse:collapse;text-align:left;font-size:.85rem}
+.benchmark-table th{background:var(--color-surface-raised,#101633);color:var(--color-accent-primary,#C9A86A);font-family:var(--font-mono,monospace);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:1rem 1.2rem;border-bottom:1px solid var(--color-border-subtle,rgba(201,168,106,.3))}
+.benchmark-table td{padding:.9rem 1.2rem;border-bottom:1px solid rgba(201,168,106,.12);color:var(--color-text-secondary,#B8C2D8);vertical-align:top}
+.benchmark-table code{font-size:.72rem}
+.badge-pass,.badge-fail,.badge-open{display:inline-block;padding:2px 7px;border-radius:3px;font-family:var(--font-mono,monospace);font-size:.65rem}
+.badge-pass{background:rgba(74,222,128,.15);color:#4ade80;border:1px solid rgba(74,222,128,.3)}
+.badge-fail{background:rgba(248,113,113,.15);color:#f87171;border:1px solid rgba(248,113,113,.3)}
+.badge-open{background:rgba(201,168,106,.12);color:var(--color-accent-primary,#C9A86A);border:1px solid rgba(201,168,106,.3)}
+.tracks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:1.5rem}
+.track-card{background:var(--color-surface-sunken,#0A0E22);border:1px solid var(--color-border-subtle,rgba(201,168,106,.25));border-radius:6px;padding:1.4rem}
+.track-number{font-family:var(--font-mono,monospace);font-size:.72rem;color:var(--color-accent-primary,#C9A86A);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
+.track-title{font-family:var(--font-display,Syne,serif);font-size:1.15rem;color:var(--color-text-primary,#FFF8EE);margin:0 0 .6rem;font-weight:500}
+.track-invariants{list-style:none;padding:0;margin:0;font-size:.78rem;color:var(--color-text-secondary,#B8C2D8)}
+.track-invariants li{padding-left:1.1rem;position:relative;margin-bottom:.4rem;line-height:1.45}
+.track-invariants li::before{content:"";position:absolute;left:0;top:.45rem;width:6px;height:6px;border-radius:1px;background:var(--color-accent-primary,#C9A86A)}
+.callout-box{border:1px solid var(--color-border-subtle,rgba(201,168,106,.35));border-radius:6px;padding:1.4rem 1.6rem;margin:1.5rem 0;background:var(--color-surface-sunken,#0A0E22)}
+.callout-box.is-warn{border-color:rgba(248,113,113,.45)}
+.callout-title{font-family:var(--font-display,Syne,serif);font-size:1.1rem;color:var(--color-accent-primary,#C9A86A);margin:0 0 .5rem}
+.callout-desc{font-size:.88rem;color:var(--color-text-primary,#FFF8EE);line-height:1.6;margin:0}
+.tool-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem}
+.tool-chip{font-family:var(--font-mono,monospace);font-size:.65rem;padding:5px 8px;border:1px solid var(--color-border-subtle);border-radius:3px;color:var(--color-text-secondary)}
+.repro{font-family:var(--font-mono,monospace);font-size:.75rem;background:#060919;border:1px solid rgba(201,168,106,.2);border-radius:4px;padding:1rem 1.15rem;color:#E2E8F0;overflow-x:auto;line-height:1.5;margin:1rem 0}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="melodia-shell fashion-mode" data-mg="soft" data-hero="cosmic" data-visual="lookbook" data-effects="starfield,holo">
+<header class="shell-nav constellation-nav" aria-label="Melodia navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="index.html">Atelier</a>
+    <a href="melodia-atelier-lab.html">Shader &amp; PCG Lab</a>
+    <a href="melusina-agent-harness.html" class="active">Agent Harness</a>
+    <a href="dashboards.html">Dashboards</a>
+    <a href="project_health.html">Health</a>
+    <a href="shader-breakdowns.html">Shaders</a>
+    <a href="pipeline.html">Echo Pipeline</a>
+    <a href="recruiter-one-sheet.html">Dossier</a>
+  </nav>
+  <a class="nav-cta button-premium" href="recruiter-one-sheet.html">Recruiter One-Sheet</a>
+</header>
+
+<main id="main" class="harness-shell">
+  <header class="whitepaper-header">
+    <span class="whitepaper-kicker">Hermes agentic harness · UE 5.8 MCP</span>
+    <h1 class="whitepaper-title">Melusina Agent Harness</h1>
+    <p class="whitepaper-subtitle">
+      Hermes is this harness: typed MCP tools, default-deny policy, and Echo ledger gates against Unreal Engine 5.8.
+      Qwen is the local model lane. Muse Glimmer is not installed on this box yet. No unpublished LLM scoreboard.
+    </p>
+    <div class="meta-badges">
+      <span class="meta-badge"><strong>Engine:</strong> UE 5.8 C++</span>
+      <span class="meta-badge"><strong>MCP tests:</strong> <span id="mcp-score">21/21</span></span>
+      <span class="meta-badge"><strong>Contract suites:</strong> <span id="contract-score">20/20</span></span>
+      <span class="meta-badge"><strong>Tools:</strong> <span id="tool-count">25</span> read-only</span>
+      <span class="meta-badge"><strong>MATH eval:</strong> <span id="math-badge">24/24</span> harness</span>
+      <span class="meta-badge"><strong>Evidence stamp:</strong> <span id="evidence-stamp">2026-08-19 00:28 ET</span></span>
+    </div>
+  </header>
+
+  <div class="callout-box is-warn">
+    <h2 class="callout-title">What this page does not claim</h2>
+    <p class="callout-desc">
+      Hermes is the agentic harness (<code>deploy/hermes_mcp.py</code>), not a Nous Hermes 3 weight to pull.
+      Unpublished “Hermes 3 / LongCat 98.8% Certified AAA” numbers stay withdrawn.
+      The 24/24 MATH run scores this tool surface (16 core + 8 Animation/Audio/UI). Qwen eval via
+      <code>python Tools/run_math_models.py --model qwen2.5-coder:7b</code>. Live blueprint benchmark:
+      <code>python scripts/benchmark_model_workflows.py --model qwen2.5-coder:7b</code>.
+    </p>
+  </div>
+
+  <section class="whitepaper-section" aria-labelledby="section-live">
+    <span class="section-tag">01 · Captured this stamp</span>
+    <h2 id="section-live" class="section-heading">Live snapshots (editor not required)</h2>
+    <p class="section-desc">
+      Ran <code>python Tools/test_melodia_mcp.py</code> and <code>python Tools/run_contract_tests.py</code> from
+      <code>BS_GodFile</code> on 2026-08-19. Monolith was reachable; no Unreal asset was mutated. Evidence JSON:
+      <a href="../generated/melodia/status/math_evidence_2026-08-19.json"><code>math_evidence_2026-08-19.json</code></a>.
+    </p>
+    <div class="metrics-grid">
+      <article class="metric-card">
+        <span class="metric-code">MCP suite</span>
+        <div class="metric-value">21/21</div>
+        <div class="metric-name">Tools/test_melodia_mcp.py</div>
+        <p class="metric-desc">Registry matches schema spec, every tool has a policy entry, default-deny, offline tools return typed schemas.</p>
+      </article>
+      <article class="metric-card">
+        <span class="metric-code">Contract floor</span>
+        <div class="metric-value">20/20</div>
+        <div class="metric-name">Tools/run_contract_tests.py</div>
+        <p class="metric-desc">Coverage floor is 20. Includes MCP policy, T3D safe-wire, fixtures, wardrobe, package-launch montage, Echo.</p>
+      </article>
+      <article class="metric-card">
+        <span class="metric-code">MATH eval</span>
+        <div class="metric-value" id="math-score">24/24</div>
+        <div class="metric-name">Tools/run_math_eval.py</div>
+        <p class="metric-desc">24 golden MCP tasks (16 core + 8 Animation/Audio/UI). Harness self-eval, not an LLM. TER measured in run_math_models.py.</p>
+      </article>
+      <article class="metric-card">
+        <span class="metric-code">TER</span>
+        <div class="metric-value" id="ter-ratio">—</div>
+        <div class="metric-name">Token Efficiency Ratio</div>
+        <p class="metric-desc">TER = tokens_constrained / tokens_unconstrained. Target ≤ 0.20. Populated from live model runs only.</p>
+      </article>
+      <article class="metric-card">
+        <span class="metric-code">Tool surface</span>
+        <div class="metric-value">25</div>
+        <div class="metric-name">deploy/melodia_mcp_server.py</div>
+        <p class="metric-desc">All <code>melodia_*</code> v1 tools declare <code>mutates: false</code> and <code>approval_required: none</code>.</p>
+      </article>
+      <article class="metric-card">
+        <span class="metric-code">Health</span>
+        <div class="metric-value">degraded</div>
+        <div class="metric-name">melodia_system_health</div>
+        <p class="metric-desc">Specs + policy + 8 Quill scripts present. Monolith :9316 reachable. Four live DA/BP probes returned false this stamp.</p>
+      </article>
+      <article class="metric-card">
+        <span class="metric-code">Preflight</span>
+        <div class="metric-value">ready</div>
+        <div class="metric-name">golden_run_preflight</div>
+        <p class="metric-desc">Route maps Morning / KaleidoNave / IntegrationMap true. Completion gates all pass in the Echo ledger. Next step: golden_run.</p>
+      </article>
+      <article class="metric-card">
+        <span class="metric-code">Idempotency audit</span>
+        <div class="metric-value">guarded</div>
+        <div class="metric-name">7 findings · item stub</div>
+        <p class="metric-desc"><code>all_paths_guarded: true</code>. <code>item_is_logging_stub: true</code> — item grants log; they do not yet persist inventory.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="whitepaper-section" aria-labelledby="section-gates">
+    <span class="section-tag">02 · Documented runtime (owner-verified)</span>
+    <h2 id="section-gates" class="section-heading">Completion gates vs open battle gates</h2>
+    <p class="section-desc">
+      Source: <code>Saved/Echo/state.txt</code> (2026-08-18 16:20) and
+      <code>Docs/Handoffs/SESSION_HANDOFF_2026-08-18.md</code>. These are ledger rows, not LLM scores.
+    </p>
+    <div class="table-responsive">
+      <table class="benchmark-table">
+        <thead>
+          <tr>
+            <th>Gate</th>
+            <th>State</th>
+            <th>Date</th>
+            <th>What was actually verified</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>runtime</code></td>
+            <td><span class="badge-pass">PASS</span></td>
+            <td>2026-08-13</td>
+            <td>Owner-verified real keyboard input through <code>BP_BattleUI::OnKeyDown</code>.</td>
+          </tr>
+          <tr>
+            <td><code>save_load</code></td>
+            <td><span class="badge-pass">PASS</span></td>
+            <td>2026-08-14</td>
+            <td>Canonical <code>BP_JRPGSaveGame</code> slot across a full process restart.</td>
+          </tr>
+          <tr>
+            <td><code>repeat_consume</code></td>
+            <td><span class="badge-pass">PASS</span></td>
+            <td>2026-08-14</td>
+            <td><code>melodia:stat:</code> idempotent per IntentId; Priestess Quill + SaveToSlot + ResumeScript replay.</td>
+          </tr>
+          <tr>
+            <td><code>package_launch</code></td>
+            <td><span class="badge-pass">PASS</span></td>
+            <td>2026-08-14</td>
+            <td>UE 5.8 packaged Gauntlet launched outside the editor. <code>release_tag.yml</code> checks only these four.</td>
+          </tr>
+          <tr>
+            <td>PIE smoke</td>
+            <td><span class="badge-pass">47 samples</span></td>
+            <td>2026-08-18</td>
+            <td><code>MelodiaIntegrationMap</code> — zero Blueprint Runtime Errors in that smoke.</td>
+          </tr>
+          <tr>
+            <td><code>battle_encounter</code></td>
+            <td><span class="badge-pass">PASS</span></td>
+            <td>2026-08-19</td>
+            <td>Owner closed the stale <code>BP_BattleController::Show</code> infinite-loop claim. Ledger supersedes 08-18 FAIL.</td>
+          </tr>
+          <tr>
+            <td><code>battle_integration_map</code></td>
+            <td><span class="badge-pass">PASS</span></td>
+            <td>2026-08-19</td>
+            <td>Same owner close. Not a completion gate. Gameplay blocker row is no longer FAIL.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="whitepaper-section" aria-labelledby="section-contracts">
+    <span class="section-tag">03 · What the tools actually do</span>
+    <h2 id="section-contracts" class="section-heading">Working MCP contracts</h2>
+    <p class="section-desc">
+      Offline calls from this stamp (no editor write). Notification grammar rejects unknown verbs.
+      P0 route reports 5 fixtures and 2 scripts. 12 Blueprint fixture specs. 20 C++ subsystem headers enumerated.
+    </p>
+    <div class="table-responsive">
+      <table class="benchmark-table">
+        <thead>
+          <tr>
+            <th>Check</th>
+            <th>Input / query</th>
+            <th>Observed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Quill notify allow</td>
+            <td><code>melodia:battle:encounter_01</code></td>
+            <td><span class="badge-pass">is_valid_verb true</span></td>
+          </tr>
+          <tr>
+            <td>Quill notify deny</td>
+            <td><code>melodia:hack:encounter_01</code></td>
+            <td><span class="badge-pass">rejected</span></td>
+          </tr>
+          <tr>
+            <td>Quill scripts</td>
+            <td><code>melodia_quill_list_scripts</code></td>
+            <td>8 <code>.qsc</code> sources</td>
+          </tr>
+          <tr>
+            <td>Allowlist sets</td>
+            <td><code>melodia_config_get_allowlist</code></td>
+            <td>WorldChallengeIds, StateAnchorIds, NarrativeFlagIds, DialogueRewardIds, QuestIds</td>
+          </tr>
+          <tr>
+            <td>P0 route</td>
+            <td><code>melodia_bp_validate_p0_route</code></td>
+            <td>5 fixtures, 2 scripts</td>
+          </tr>
+          <tr>
+            <td>Policy</td>
+            <td><code>specs/mcp_tool_policy.v1.json</code></td>
+            <td><code>default_decision: deny</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="section-desc" style="margin-top:1.25rem">Registered tools (18):</p>
+    <div class="tool-list" id="tool-list">
+      <span class="tool-chip">melodia_persona_get_stats</span>
+      <span class="tool-chip">melodia_persona_get_quests</span>
+      <span class="tool-chip">melodia_quill_list_scripts</span>
+      <span class="tool-chip">melodia_quill_validate_notification</span>
+      <span class="tool-chip">melodia_rhythm_list_skills</span>
+      <span class="tool-chip">melodia_narrative_get_record</span>
+      <span class="tool-chip">melodia_config_get_allowlist</span>
+      <span class="tool-chip">melodia_bp_list_fixtures</span>
+      <span class="tool-chip">melodia_bp_get_template</span>
+      <span class="tool-chip">melodia_bp_validate_fixture</span>
+      <span class="tool-chip">melodia_system_health</span>
+      <span class="tool-chip">melodia_system_list_subsystems</span>
+      <span class="tool-chip">melodia_narrative_audit_idempotency</span>
+      <span class="tool-chip">melodia_bp_validate_p0_route</span>
+      <span class="tool-chip">melodia_system_golden_run_preflight</span>
+      <span class="tool-chip">melodia_animation_validate_state_machine</span>
+      <span class="tool-chip">melodia_animation_validate_bindings</span>
+      <span class="tool-chip">melodia_animation_get_runtime_abp</span>
+    </div>
+  </section>
+
+  <section class="whitepaper-section" aria-labelledby="section-how">
+    <span class="section-tag">04 · Reproduce</span>
+    <h2 id="section-how" class="section-heading">Commands that produced this page</h2>
+    <pre class="repro">cd BS_GodFile
+python Tools/test_melodia_mcp.py          # expect 21/21
+python Tools/run_contract_tests.py        # expect 20/20, coverage floor=20
+python Tools/echo_run.py status           # Echo ledger / gate states</pre>
+    <div class="tracks-grid">
+      <article class="track-card">
+        <div class="track-number">Surface</div>
+        <h3 class="track-title">MCP server</h3>
+        <ul class="track-invariants">
+          <li><code>deploy/melodia_mcp_server.py</code></li>
+          <li>Schema: <code>specs/mcp/melodia_mcp_tools.v1.json</code></li>
+          <li>Registered in <code>.mcp.json</code> as <code>melodia</code></li>
+        </ul>
+      </article>
+      <article class="track-card">
+        <div class="track-number">Authority</div>
+        <h3 class="track-title">Policy + live bridge</h3>
+        <ul class="track-invariants">
+          <li>Default-deny: <code>Tools/mcp_policy.py</code></li>
+          <li>Monolith MCP: <code>127.0.0.1:9316</code></li>
+          <li>Read-only v1 — no spawn_actor / T3D inject on this tool list</li>
+        </ul>
+      </article>
+      <article class="track-card">
+        <div class="track-number">Shipped</div>
+        <h3 class="track-title">SWE Light wrappers</h3>
+        <ul class="track-invariants">
+          <li>Animation / Audio / UI MCP tools on disk (25 <code>melodia_*</code> tools)</li>
+          <li>Live Ollama blueprint benchmark — honest logs in <code>Saved/Audit/</code></li>
+          <li>Standing: <a href="project_health.html">project_health.html</a> · <a href="dashboards.html">dashboards hub</a></li>
+        </ul>
+      </article>
+      <article class="track-card">
+        <div class="track-number">Still open</div>
+        <h3 class="track-title">Model lanes</h3>
+        <ul class="track-invariants">
+          <li>Muse Glimmer: no local tag / OpenRouter key yet</li>
+          <li>TER ratio: run <code>run_math_models.py</code> without <code>--no-ter</code> for full measurement</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="whitepaper-section">
+    <div class="callout-box">
+      <h2 class="callout-title">Honest next step for a model eval</h2>
+      <p class="callout-desc">
+        Hermes is the harness. Point a local Qwen at it with
+        <code>python Tools/run_math_models.py --model qwen2.5-coder:7b</code>.
+        Do not <code>ollama pull hermes3</code>. Muse Glimmer stays skipped until it is actually reachable.
+        Standing: <a href="project_health.html">project_health.html</a>
+        · orchestra: <a href="dashboards.html">dashboards.html</a>.
+      </p>
+      <div style="margin-top:1.25rem;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="button primary button-premium-primary" href="project_health.html">Project health</a>
+        <a class="button button-premium" href="recruiter-one-sheet.html">Recruiter one-sheet</a>
+        <a class="button button-premium" href="index.html">Lookbook</a>
+        <a class="button button-premium" href="../generated/melodia/status/math_evidence_2026-08-19.json">Raw evidence JSON</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="inner">
+    <span>Brennan Shepherd / Melusina Agent Harness</span>
+    <span>Evidence stamp 2026-08-19 · harness MATH 24/24 · MCP 21/21 · unpublished fake LLM scores withdrawn</span>
+  </div>
+</footer>
+</div>
+
+<script>
+(function () {
+  var url = '../generated/melodia/status/math_evidence_2026-08-19.json';
+  fetch(url).then(function (r) { return r.ok ? r.json() : null; }).then(function (data) {
+    if (!data) return;
+    var mcp = data.mcp_tests || {};
+    var ct = data.contract_tests || {};
+    var el;
+    el = document.getElementById('mcp-score');
+    if (el && mcp.total) el.textContent = (mcp.passed || 0) + '/' + mcp.total;
+    el = document.getElementById('contract-score');
+    if (el && ct.total) el.textContent = (ct.passed || 0) + '/' + ct.total;
+    el = document.getElementById('tool-count');
+    if (el && data.server && data.server.tool_count) el.textContent = String(data.server.tool_count);
+    el = document.getElementById('evidence-stamp');
+    if (el && data.captured_at) el.textContent = data.captured_at;
+    var list = document.getElementById('tool-list');
+    if (list && data.server && data.server.tools && data.server.tools.length) {
+      list.innerHTML = data.server.tools.map(function (name) {
+        return '<span class="tool-chip">' + name + '</span>';
+      }).join('');
+    }
+  }).catch(function () { /* static fallback already in HTML */ });
+  fetch('../generated/melodia/status/math_run_latest.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (data) {
+    if (!data) return;
+    var el = document.getElementById('math-score');
+    if (el && data.total) {
+      el.textContent = (data.passed || 0) + '/' + data.total;
+      var badge = document.getElementById('math-badge');
+      if (badge) badge.textContent = el.textContent;
+    }
+  }).catch(function () {});
+  fetch('../generated/melodia/status/math_run_models_latest.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (bundle) {
+    if (!bundle || !bundle.runs || !bundle.runs.length) return;
+    var latest = bundle.runs[bundle.runs.length - 1];
+    var terEl = document.getElementById('ter-ratio');
+    if (terEl && latest.ter_ratio != null) {
+      terEl.textContent = String(latest.ter_ratio);
+    }
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>

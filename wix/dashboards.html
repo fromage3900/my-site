@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-page="dashboards">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Melodia Dashboards — Hermes Harness Orchestra | Brennan Shepherd</title>
+<meta name="description" content="Snapshot dashboards for Melodia project health, Hermes MCP harness, PIE telemetry, and T3D claims. GitHub Pages copies are regenerated snapshots, not a live editor feed." />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/dashboards.html" />
+<link rel="stylesheet" href="melodia-tokens.css">
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-components.css">
+<link rel="stylesheet" href="melodia-mobile.css">
+<style>
+.dash-shell{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem 5rem}
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:1.4rem}
+.dash-card{display:block;padding:1.2rem 1.15rem;background:var(--color-surface-sunken,#0A0E22);border:1px solid var(--color-border-subtle,rgba(201,168,106,.25));border-radius:6px;text-decoration:none;color:inherit}
+.dash-card h3{margin:0 0 .4rem;font-family:var(--font-display,Syne,serif);font-size:1.05rem;color:var(--color-text-primary,#FFF8EE)}
+.dash-card p{margin:0;font-size:.8rem;line-height:1.45;color:var(--color-text-secondary,#B8C2D8)}
+.dash-kicker{font-family:var(--font-mono,monospace);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent-primary,#C9A86A);margin-bottom:.35rem}
+.note{font-size:.85rem;color:var(--color-text-secondary);line-height:1.55;max-width:46rem}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="melodia-shell fashion-mode" data-mg="soft" data-hero="cosmic" data-visual="lookbook">
+<header class="shell-nav constellation-nav" aria-label="Melodia navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="index.html">Atelier</a>
+    <a href="melusina-agent-harness.html">Hermes Harness</a>
+    <a href="dashboards.html" class="active">Dashboards</a>
+    <a href="project_health.html">Health</a>
+    <a href="pipeline.html">Echo Pipeline</a>
+    <a href="recruiter-one-sheet.html">Dossier</a>
+  </nav>
+</header>
+<main id="main" class="dash-shell">
+  <p class="dash-kicker">Orchestra · snapshots</p>
+  <h1>Live dashboards on the lookbook</h1>
+  <p class="note">
+    These pages are the human-readable face of the Hermes agentic harness
+    (<code>deploy/hermes_mcp.py</code> + <code>deploy/melodia_mcp_server.py</code>), Echo ledger, and PIE generators.
+    GitHub Pages cannot talk to Unreal on :9316. What you see online is the last regenerated snapshot.
+    Hermes is the harness, not a model to pull. Qwen is local on Ollama. Muse Glimmer is not installed here yet.
+  </p>
+  <div class="dash-grid">
+    <a class="dash-card" href="project_health.html">
+      <div class="dash-kicker">Standing</div>
+      <h3>Project health</h3>
+      <p>Completion gates, battle gates, contract, policy, Hermes harness, Qwen/Muse lanes, SWE Light orchestrator.</p>
+    </a>
+    <a class="dash-card" href="melusina-agent-harness.html">
+      <div class="dash-kicker">Hermes</div>
+      <h3>Agent harness</h3>
+      <p>MATH 16/16 tool-surface self-eval. Named-model Qwen runs go here when the JSON exists.</p>
+    </a>
+    <a class="dash-card" href="loop_monitor.html">
+      <div class="dash-kicker">Editor</div>
+      <h3>Loop monitor</h3>
+      <p>Connection checklist: Monolith, dirty packages, BP wiring. Snapshot from Saved/.</p>
+    </a>
+    <a class="dash-card" href="live_dashboard.html">
+      <div class="dash-kicker">PIE</div>
+      <h3>Live dashboard</h3>
+      <p>Current only while PIE is active. This copy is a snapshot.</p>
+    </a>
+    <a class="dash-card" href="metrics_dashboard.html">
+      <div class="dash-kicker">PIE</div>
+      <h3>Metrics dashboard</h3>
+      <p>Character speed, anim state, loop phase from MELUSINA_LOOP markers.</p>
+    </a>
+    <a class="dash-card" href="agent-dashboard-t3d.html">
+      <div class="dash-kicker">Claims</div>
+      <h3>T3D agent dashboard</h3>
+      <p>Session claims vs live UE verdicts (TRUE / PARTIAL / FALSE).</p>
+    </a>
+    <a class="dash-card" href="t3d-catalog.html">
+      <div class="dash-kicker">Audit</div>
+      <h3>T3D catalog</h3>
+      <p>Widget migration audit: migrated / stock / drifted.</p>
+    </a>
+  </div>
+</main>
+</div>
+</body>
+</html>

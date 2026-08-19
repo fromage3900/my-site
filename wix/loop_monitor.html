@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Melodia Loop Monitor</title>
+<style>
+  body { font-family: 'Courier New', monospace; background: #0b0a13; color: #f2d69e; margin:0; padding:20px; }
+  h1 { color: #78ebff; font-size: 28px; margin-bottom: 5px; }
+  .sub { color: #888; font-size: 14px; margin-bottom: 20px; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; padding: 8px; color: #78ebff; border-bottom: 1px solid #38293b; }
+  td { padding: 8px; border-bottom: 1px solid #1a1520; }
+  .stat { display: inline-block; padding: 4px 12px; border-radius: 4px; font-weight: bold; }
+  .loop-diagram { 
+    background: #1a1520; border: 1px solid #38293b; border-radius: 8px; 
+    padding: 20px; margin: 20px 0; text-align: center; font-size: 18px;
+  }
+  .step { display: inline-block; padding: 8px 16px; margin: 4px; border-radius: 4px; }
+  .connected { background: #22c55e33; border: 1px solid #22c55e; }
+  .missing { background: #ef444433; border: 1px solid #ef4444; }
+  .arrow { color: #555; margin: 0 8px; }
+</style>
+</head>
+<body>
+<h1>♫ Melodia — Persona-Lite Loop Monitor</h1>
+<div class="sub">2026-08-19 00:16:49 · <span class="stat" style="background:#eab30822;color:#eab308">8/14 connected (57%)</span></div>
+
+<div class="loop-diagram">
+  <span class="step connected">New Game</span>
+  <span class="arrow">→</span>
+  <span class="step">Quill Dialogue</span>
+  <span class="arrow">→</span>
+  <span class="step">Battle Intent</span>
+  <span class="arrow">→</span>
+  <span class="step connected">Battle</span>
+  <span class="arrow">→</span>
+  <span class="step">CompleteBattle</span>
+  <span class="arrow">→</span>
+  <span class="step">Quill Resume</span>
+  <span class="arrow">→</span>
+  <span class="step">KaleidoNave</span>
+</div>
+
+<table>
+<tr><th></th><th>Connection</th><th>Status</th></tr>
+
+        <tr>
+            <td style="font-size:24px">✅</td>
+            <td style="padding:8px">Monolith server</td>
+            <td style="color:#22c55e">v0.20.3</td>
+        </tr>
+        <tr>
+            <td style="font-size:24px">✅</td>
+            <td style="padding:8px">No dirty packages</td>
+            <td style="color:#22c55e"></td>
+        </tr>
+        <tr>
+            <td style="font-size:24px">✅</td>
+            <td style="padding:8px">Zero BP errors</td>
+            <td style="color:#22c55e"></td>
+        </tr>
+        <tr>
+            <td style="font-size:24px">❌</td>
+            <td style="padding:8px">Battle→Narrative (CompleteBattle)</td>
+            <td style="color:#ef4444">MISSING</td>
+        </tr>
+        <tr>
+            <td style="font-size:24px">✅</td>
+            <td style="padding:8px">RegisterSkill</td>
+            <td style="color:#22c55e">node: A3","7E9BDDDE4A771C7B07DB399FA35135D2"]}]},{"id":"K2Node_CallFunction_46","class</td>
+        </tr>
+        <tr>
+            <td style="font-size:24px">❌</td>
+            <td style="padding:8px">StartSession</td>
+            <td style="color:#ef4444">MISSING</td>
+        </tr>
+        <tr>
+            <td style="font-size:24px">✅</td>
+            <td style="padding:8px">RecordInputNow</td>
+            <td style="color:#22c55e">node: ythm","is_self_context":true},{"id":"K2Node_CallFunction_9","class":"K2Node_Call</td>
+        </tr>
+        <tr>
+            <td style="font-size:24px">✅</td>
+            <td style="padding:8px">ConsumePendingRequest</td>
+            <td style="color:#22c55e">node: C44C96CB0078667BCB1075831"]}]},{"id":"K2Node_CallFunction_128","class":"K2Node_C</td>
+        </tr>
+        <tr>
+            <td style="font-size:24px">❌</td>
+            <td style="padding:8px">TryGrantShards</td>
+            <td style="color:#ef4444">MISSING</td>
+        </tr>
+        <tr>
+            <td style="font-size:24px">✅</td>
+            <td style="padding:8px">MelodiaNoteHighway</td>
+            <td style="color:#22c55e">node: ,"name":"InVisibility","direction":"input","type":"byte","default_value":"Collap</td>
+        </tr>
+        <tr>
+            <td style="font-size:24px">❌</td>
+            <td style="padding:8px">Config: smoke encounter allowlisted</td>
+            <td style="color:#ef4444"></td>
+        </tr>
+        <tr>
+            <td style="font-size:24px">❌</td>
+            <td style="padding:8px">Config: KaleidoNave allowlisted</td>
+            <td style="color:#ef4444"></td>
+        </tr>
+        <tr>
+            <td style="font-size:24px">✅</td>
+            <td style="padding:8px">BP_InteractionBattle has smoke tag</td>
+            <td style="color:#22c55e"></td>
+        </tr>
+        <tr>
+            <td style="font-size:24px">❌</td>
+            <td style="padding:8px">Build: zero errors</td>
+            <td style="color:#ef4444">21294 errors</td>
+        </tr>
+</table>
+
+<p style="color:#555;margin-top:20px;font-size:12px">
+  Auto-refresh: <button onclick="location.reload()">Refresh</button>
+  · Generated by Melodia Loop Monitor
+</p>
+</body>
+</html>
