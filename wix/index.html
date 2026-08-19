@@ -31,13 +31,13 @@
 <link rel="stylesheet" href="melodia-tokens.css">
 <link rel="stylesheet" href="melodia-luxury-type.css">
 <link rel="stylesheet" href="melodia-editorial.css">
-<link rel="stylesheet" href="melodia-game-ui.css">
 <link rel="stylesheet" href="melodia-magical-girl.css">
 <link rel="stylesheet" href="melodia-mahou-flourish.css">
 <link rel="stylesheet" href="melodia-photobooth.css">
 <link rel="stylesheet" href="melodia-zbrush-studio.css">
 <link rel="stylesheet" href="melodia-components.css">
 <link rel="stylesheet" href="melodia-mobile.css">
+<link rel="stylesheet" href="melodia-home-hardening.css">
 <style>
 .env-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; margin-top: 1.5rem; }
 .env-card { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 16/10; display: flex; align-items: flex-end; text-decoration: none; border: 1px solid var(--color-border-subtle, rgba(201,168,106,.25)); background: var(--color-surface-sunken, #0A0E22); box-shadow: 0 8px 24px rgba(0,0,0,.35); transition: transform .3s ease, border-color .3s ease; }
@@ -60,6 +60,10 @@
   <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
   <nav class="nav-links" aria-label="Sections">
     <a href="index.html" class="active">Atelier</a>
+    <a href="melodia-atelier-lab.html">Shader &amp; PCG Lab</a>
+    <a href="melusina-agent-harness.html">Agent Harness</a>
+    <a href="dashboards.html">Dashboards</a>
+    <a href="project_health.html">Health</a>
     <a href="#canonical-worlds">4 Worlds</a>
     <a href="#melusina-photobooth">Photobooth</a>
     <a href="#zbrush-studio">ZBrush Sculpt</a>
@@ -81,16 +85,36 @@
   <div class="parallax-layer-7" aria-hidden="true">
     <video autoplay loop muted playsinline poster="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" class="hero-video" src="../generated/assets/landscape-loops/WP_SakuraDream.webm"></video>
   </div>
+  <figure class="hero-macro-plate">
+    <img
+      src="../generated/assets/character/melusina_eevee_glam_20260715_02.png"
+      alt="Melusina EEVEE glam macro — hair and face detail"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      aria-hidden="true"
+      poster="../generated/assets/character/melusina_eevee_glam_20260715_02.png"
+    >
+      <source src="../generated/assets/character-loops/melusina_glam_macro_postcard_4s.webm" type="video/webm" />
+    </video>
+  </figure>
   <div class="parallax-layer-8 hero-copy-layer">
     <div class="hero-inner">
       <p class="kicker magazine-kicker premium-kicker">Infold Games &amp; Infinity Nikki Lookbook Standard</p>
-      <div class="editorial-rhythm-divider sheet" data-divider="astral" aria-hidden="true"><span class="glyph">♪ · ♥ · ♪</span></div>
+      <div class="game-ui-filigree-divider is-baroque" aria-hidden="true"></div>
       <h1 id="hero-title">Stylized Fashion-Fantasy Worlds with Real Engine Pipeline</h1>
       <p class="lede">Brennan Shepherd — stylized environment artist and technical artist. High-fashion romantic worldbuilding in Unreal Engine 5.8 C++, Substrate Toon shaders, PCG scattering ecosystems, and diegetic Game UI systems tailored for studios like Papergames / Infold (Infinity Nikki) and HoYoverse.</p>
-      <div class="hero-actions" aria-label="Primary destinations">
+      <div class="hero-actions game-ui-frame" aria-label="Primary destinations">
         <a class="button primary button-premium-primary" href="recruiter-one-sheet.html">Recruiter One-Sheet</a>
+        <a class="button button-premium" href="melusina-agent-harness.html">Agent Harness</a>
+        <a class="button button-premium" href="melodia-atelier-lab.html">Interactive Atelier Lab</a>
         <a class="button button-premium" href="#canonical-worlds">Explore 4 Worlds</a>
-        <a class="button button-premium" href="#melusina-photobooth">Launch Photobooth</a>
         <a class="button button-premium" href="shader-breakdowns.html">Material Lab</a>
       </div>
     </div>
@@ -111,6 +135,8 @@
     <div class="env-grid">
       <!-- 1. L_SakuraDream -->
       <a class="env-card" href="sakura-case-study.html">
+        <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
+        <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
         <img src="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" alt="L_SakuraDream — Primary Nikki Proof" loading="lazy" />
         <div class="overlay">
           <span class="env-name">L_SakuraDream</span>
@@ -120,6 +146,8 @@
 
       <!-- 2. L_KaleidoNave -->
       <a class="env-card" href="space-cathedral.html">
+        <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
+        <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
         <img src="../generated/assets/nightshift/WP_SpaceCathedral_terrain.png" alt="L_KaleidoNave — Space Cathedral Nave" loading="lazy" />
         <div class="overlay">
           <span class="env-name">L_KaleidoNave</span>
@@ -129,6 +157,8 @@
 
       <!-- 3. L_MelusinasMorning -->
       <a class="env-card" href="melodia-stage-character.html">
+        <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
+        <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
         <img src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="L_MelusinasMorning — Character Atelier" loading="lazy" />
         <div class="overlay">
           <span class="env-name">L_MelusinasMorning</span>
@@ -138,6 +168,8 @@
 
       <!-- 4. L_FallenMoon -->
       <a class="env-card" href="pcg-system-impact.html">
+        <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
+        <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
         <img src="../generated/assets/nightshift/WP_CosmicOrrery_terrain.png" alt="L_FallenMoon — Cosmic Crater &amp; PCG Scatter" loading="lazy" />
         <div class="overlay">
           <span class="env-name">L_FallenMoon</span>
@@ -148,7 +180,7 @@
   </div>
 </section>
 
-<div class="game-ui-filigree-divider" aria-hidden="true"></div>
+<div class="editorial-rule lookbook-section-rule" aria-hidden="true"><span class="diamond"></span></div>
 
 <!-- Section: Melusina Photobooth (Infinity Nikki Photo-Spot) -->
 <section id="melusina-photobooth" class="band astral" aria-labelledby="photobooth-title">
@@ -166,7 +198,7 @@
   </div>
 </section>
 
-<div class="game-ui-filigree-divider" aria-hidden="true"></div>
+<div class="editorial-rule lookbook-section-rule" aria-hidden="true"><span class="diamond"></span></div>
 
 <!-- Section: ZBrush High-Poly Sculpt & Geometry Studio -->
 <section id="zbrush-studio" class="band paper" aria-labelledby="zbrush-title">
@@ -184,45 +216,7 @@
   </div>
 </section>
 
-<div class="game-ui-filigree-divider" aria-hidden="true"></div>
-
-<!-- Section: Cosmic Orrery & Kawaii Physics -->
-<section id="cosmic-orrery" class="band deep" aria-labelledby="orrery-title">
-  <div class="section-orrery constellation-slot" data-orrery="constellation" aria-hidden="true"></div>
-  <div class="inner">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow magazine-kicker">Celestial Systems</p>
-        <h2 id="orrery-title">Cosmic Orrery &amp; Kawaii Motion Flourishes</h2>
-      </div>
-      <p>Interactive celestial mechanics, planetary gear mathematics, stardust pointer trails, and Sailor Moon &amp; Madoka Magica-inspired transformation henshin bursts.</p>
-    </div>
-
-    <div class="alignment-grid">
-      <article class="alignment-card premium-card component-card" data-pillar="cosmic">
-        <span class="spec-badge">Orrery System</span>
-        <div>
-          <h3>Planetary Gear Mechanics</h3>
-          <p>Real-time SVG celestial mechanics simulating planetary orbit ratios, epicycles, and starry coordinate rings synchronized with the portfolio clock.</p>
-        </div>
-      </article>
-      <article class="alignment-card premium-card component-card" data-pillar="sakura">
-        <span class="spec-badge">Mahou Flourish</span>
-        <div>
-          <h3>Henshin Sigils &amp; Stardust</h3>
-          <p>Lightweight transformation bursts, sacred geometry sigil overlays, and throttled stardust pointer trails respecting user accessibility preferences.</p>
-        </div>
-      </article>
-      <article class="alignment-card premium-card component-card" data-pillar="nikki">
-        <span class="spec-badge">Substrate Shaders</span>
-        <div>
-          <h3>19 Showcase Material Instances</h3>
-          <p>Iridescent sheen, soft bloom, warm lacquer trims, and SDF ornamental detail engineered on M_Master_Toon_Universal.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+<div class="editorial-rule lookbook-section-rule" aria-hidden="true"><span class="diamond"></span></div>
 
 <!-- Recruiter Fast-Skim Contact Strip -->
 <section class="band cloud ivory" data-surface="ivory" aria-labelledby="contact-title">
@@ -239,6 +233,21 @@
       <a class="table-row" href="recruiter-one-sheet.html" style="text-decoration:none;color:inherit;">
         <span>One-Sheet</span>
         <div><h3>Recruiter One-Sheet (30-Second Skim)</h3><p>Role alignment, 4 canonical worlds, verified metrics, proof links.</p></div>
+        <b>Open →</b>
+      </a>
+      <a class="table-row" href="melusina-agent-harness.html" style="text-decoration:none;color:inherit;">
+        <span>Research</span>
+        <div><h3>Melusina Agent Harness</h3><p>Typed MCP tools, 16/16 offline tests, 20/20 contract suites, harness MATH eval, and ledger-backed UE 5.8 runtime gates. No unpublished LLM scoreboard.</p></div>
+        <b>Open →</b>
+      </a>
+      <a class="table-row" href="project_health.html" style="text-decoration:none;color:inherit;">
+        <span>Status</span>
+        <div><h3>Project Health Scorecard</h3><p>Live claims page: completion gates, Hermes harness, Qwen/Muse lanes. Regenerated by <code>python Tools/health.py</code>.</p></div>
+        <b>Open →</b>
+      </a>
+      <a class="table-row" href="dashboards.html" style="text-decoration:none;color:inherit;">
+        <span>Ops</span>
+        <div><h3>Dashboard orchestra</h3><p>Health, loop monitor, PIE telemetry, T3D claims — snapshots linked for GitHub Pages.</p></div>
         <b>Open →</b>
       </a>
       <a class="table-row" href="resume.html" style="text-decoration:none;color:inherit;">
