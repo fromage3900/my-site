@@ -35,7 +35,7 @@
     ],
     [
       "Capture",
-      "Cam_Beauty live v22 · bald (cache below scalp) · Flip cine 20260813_01/02"
+      "EEVEE glam · melusina_beauty_eevee_20260715c_01"
     ],
     [
       "Date",
@@ -55,15 +55,11 @@
     ],
     [
       "Idle",
-      "Locomotion speed 0 = mocap A_Melusina_Idle_Mocap_RootX; Blender idle on disk, not wired"
-    ],
-    [
-      "Cine hair",
-      "Geometry Cache Alembic 1–240 + Niagara drip — not Niagara 3D FLIP"
+      "Locomotion speed 0 = mocap idle; Blender idle not live until PIE"
     ],
     [
       "Gameplay hair",
-      "SK_MelusinaHair fallback. Flip EEVEE glam stills are cine. Cam_Beauty v22 reads bald (cache below scalp); Unreal B2 still pending"
+      "SK_MelusinaHair — Flip / water-hair Alembic is cine Layer C only"
     ]
   ],
   "generated_at": "2026-07-15T21:30:00.000000+00:00",

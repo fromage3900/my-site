@@ -1,0 +1,1656 @@
+{
+  "schema": "melodia.math_run.v1",
+  "kind": "guardrailed_agentic_workflow",
+  "harness": "run_math_guardrails.py (MATH + guardrail gate)",
+  "model": "qwen2.5-coder:7b",
+  "backend": "ollama (qwen2.5-coder:7b)",
+  "guardrails_mode": "nemo",
+  "retry_budget": 2,
+  "note": "Every model tool call intercepted by the guardrail gate before execution. Blocked calls counted; denial reason fed back; agent may retry within budget.",
+  "captured_at": "2026-08-19T19:55:29-04:00",
+  "editor_contacted": false,
+  "passed": 30,
+  "total": 32,
+  "total_nominal": 32,
+  "scored": 31,
+  "held": 1,
+  "failed": 1,
+  "tca_pct": 96.8,
+  "arg_pct": 93.5,
+  "exec_pct": 96.8,
+  "par_pct": 81.6,
+  "blocked_call_rate_pct": 18.4,
+  "blocked_calls": 7,
+  "attempted_calls": 38,
+  "authorized_calls": 31,
+  "recovery_pct": 100.0,
+  "recovered_tasks": 7,
+  "blocked_tasks": 7,
+  "recovered_calls": 31,
+  "ter_ratio": null,
+  "ter_target": 0.2,
+  "ter_meets_target": false,
+  "tokens_unconstrained": 0,
+  "tokens_constrained": 38032,
+  "ter_samples": 0,
+  "tasks": [
+    {
+      "id": "notify_battle_allow",
+      "gold_tool": "melodia_quill_validate_notification",
+      "chosen_tool": "melodia_quill_validate_notification",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_quill_validate_notification",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_quill_validate_notification"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "notify_hack_deny",
+      "gold_tool": "melodia_quill_validate_notification",
+      "chosen_tool": "melodia_quill_validate_notification",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_quill_validate_notification",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_quill_validate_notification"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "notify_stat_allow",
+      "gold_tool": "melodia_quill_validate_notification",
+      "chosen_tool": "melodia_quill_validate_notification",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_quill_validate_notification",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_quill_validate_notification"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "quill_list_has_scripts",
+      "gold_tool": "melodia_quill_list_scripts",
+      "chosen_tool": "melodia_quill_list_scripts",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_quill_list_scripts",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_quill_list_scripts"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "narrative_record_schema",
+      "gold_tool": "melodia_narrative_get_record",
+      "chosen_tool": "melodia_narrative_get_record",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_narrative_get_record",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_narrative_get_record"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "allowlist_schema",
+      "gold_tool": "melodia_config_get_allowlist",
+      "chosen_tool": "melodia_config_get_allowlist",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_config_get_allowlist",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_config_get_allowlist"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "fixtures_list",
+      "gold_tool": "melodia_bp_list_fixtures",
+      "chosen_tool": "melodia_bp_list_fixtures",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_bp_list_fixtures",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_bp_list_fixtures"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "fixture_unknown_invalid",
+      "gold_tool": "melodia_bp_validate_fixture",
+      "chosen_tool": "melodia_bp_validate_fixture",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_bp_validate_fixture",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_bp_validate_fixture"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "template_world_challenge",
+      "gold_tool": "melodia_bp_get_template",
+      "chosen_tool": "melodia_bp_get_template",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_bp_get_template",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_bp_get_template"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "template_missing_errors",
+      "gold_tool": "melodia_bp_get_template",
+      "chosen_tool": "melodia_bp_get_template",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_bp_get_template",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_bp_get_template"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "subsystems_listed",
+      "gold_tool": "melodia_system_list_subsystems",
+      "chosen_tool": "melodia_system_list_subsystems",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_system_list_subsystems",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_system_list_subsystems"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "health_schema",
+      "gold_tool": "melodia_system_health",
+      "chosen_tool": "melodia_system_health",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_system_health",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_system_health"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "idempotency_audit",
+      "gold_tool": "melodia_narrative_audit_idempotency",
+      "chosen_tool": "melodia_narrative_audit_idempotency",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_narrative_audit_idempotency",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_narrative_audit_idempotency"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "p0_route_five_fixtures",
+      "gold_tool": "melodia_bp_validate_p0_route",
+      "chosen_tool": "melodia_bp_validate_p0_route",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_bp_validate_p0_route",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_bp_validate_p0_route"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "golden_preflight_ready_flag",
+      "gold_tool": "melodia_system_golden_run_preflight",
+      "chosen_tool": "melodia_system_golden_run_preflight",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_system_golden_run_preflight",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_system_golden_run_preflight"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "persona_stats_schema",
+      "gold_tool": "melodia_persona_get_stats",
+      "chosen_tool": "melodia_persona_get_stats",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_persona_get_stats",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_persona_get_stats"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "audio_list_schema",
+      "gold_tool": "melodia_audio_list_assets",
+      "chosen_tool": "melodia_audio_list_assets",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_audio_list_assets",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_audio_list_assets"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "audio_rhythm_catalog",
+      "gold_tool": "melodia_audio_get_rhythm_catalog",
+      "chosen_tool": "melodia_audio_get_rhythm_catalog",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_audio_get_rhythm_catalog",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_audio_get_rhythm_catalog"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "audio_metasound_offline",
+      "gold_tool": "melodia_audio_validate_metasound",
+      "chosen_tool": "melodia_audio_validate_metasound",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": false,
+          "reason": "allowed by policy; arguments for tool 'melodia_audio_validate_metasound' do not match its schema: 'metasound_path' is a required property",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_audio_validate_metasound",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": false,
+              "reason": "arguments for tool 'melodia_audio_validate_metasound' do not match its schema: 'metasound_path' is a required property",
+              "detail": {
+                "rail": "tool_call_validation"
+              }
+            }
+          }
+        },
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_audio_validate_metasound",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_audio_validate_metasound"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 2,
+      "blocked": false
+    },
+    {
+      "id": "ui_list_schema",
+      "gold_tool": "melodia_ui_list_widgets",
+      "chosen_tool": "melodia_ui_list_widgets",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_ui_list_widgets",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_ui_list_widgets"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "ui_battle_hud",
+      "gold_tool": "melodia_ui_get_battle_hud",
+      "chosen_tool": "melodia_ui_get_battle_hud",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_ui_get_battle_hud",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_ui_get_battle_hud"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "compile_feedback_offline",
+      "gold_tool": "melodia_system_compile_feedback",
+      "chosen_tool": "melodia_system_compile_feedback",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_system_compile_feedback",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_system_compile_feedback"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "animation_sm_editor",
+      "gold_tool": "melodia_animation_validate_state_machine",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "hold",
+      "detail": "editor_required \u2014 Monolith unreachable on :9316",
+      "guardrail_verdicts": [],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "ui_validate_widget_offline",
+      "gold_tool": "melodia_ui_validate_widget",
+      "chosen_tool": "melodia_ui_validate_widget",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_ui_validate_widget",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_ui_validate_widget"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "economy_get_state",
+      "gold_tool": "melodia_economy_get_state",
+      "chosen_tool": "melodia_economy_get_state",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_economy_get_state",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_economy_get_state"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "economy_grief_hook",
+      "gold_tool": "melodia_economy_activate_grief_hook",
+      "chosen_tool": "melodia_economy_activate_grief_hook",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": false,
+          "reason": "allowed by policy; arguments for tool 'melodia_economy_activate_grief_hook' do not match its schema: 'dungeon_id' is a required property",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_economy_activate_grief_hook",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": false,
+              "reason": "arguments for tool 'melodia_economy_activate_grief_hook' do not match its schema: 'dungeon_id' is a required property",
+              "detail": {
+                "rail": "tool_call_validation"
+              }
+            }
+          }
+        },
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_economy_activate_grief_hook",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_economy_activate_grief_hook"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 2,
+      "blocked": false
+    },
+    {
+      "id": "economy_cast_healing_song",
+      "gold_tool": "melodia_economy_cast_skill",
+      "chosen_tool": "melodia_economy_cast_skill",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": false,
+          "reason": "allowed by policy; arguments for tool 'melodia_economy_cast_skill' do not match its schema: 'skill_id' is a required property",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_economy_cast_skill",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": false,
+              "reason": "arguments for tool 'melodia_economy_cast_skill' do not match its schema: 'skill_id' is a required property",
+              "detail": {
+                "rail": "tool_call_validation"
+              }
+            }
+          }
+        },
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_economy_cast_skill",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_economy_cast_skill"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 2,
+      "blocked": false
+    },
+    {
+      "id": "economy_cast_mana_song",
+      "gold_tool": "melodia_economy_cast_skill",
+      "chosen_tool": "melodia_economy_cast_skill",
+      "tool_match": true,
+      "args_match": false,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": false,
+          "reason": "allowed by policy; arguments for tool 'melodia_economy_cast_skill' do not match its schema: 'skill_id' is a required property",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_economy_cast_skill",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": false,
+              "reason": "arguments for tool 'melodia_economy_cast_skill' do not match its schema: 'skill_id' is a required property",
+              "detail": {
+                "rail": "tool_call_validation"
+              }
+            }
+          }
+        },
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_economy_cast_skill",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_economy_cast_skill"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 2,
+      "blocked": false
+    },
+    {
+      "id": "hud_economy_state",
+      "gold_tool": "melodia_ui_get_economy_hud",
+      "chosen_tool": "melodia_economy_get_state",
+      "tool_match": false,
+      "args_match": true,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "schema: got 'melodia.economy.state.v1' want 'melodia.ui.economy_hud.v1'",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_economy_get_state",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_economy_get_state"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 1,
+      "blocked": false
+    },
+    {
+      "id": "encounter_start_p0",
+      "gold_tool": "melodia_encounter_start",
+      "chosen_tool": "melodia_encounter_start",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": false,
+          "reason": "allowed by policy; arguments for tool 'melodia_encounter_start' do not match its schema: 'encounter_id' is a required property",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_encounter_start",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": false,
+              "reason": "arguments for tool 'melodia_encounter_start' do not match its schema: 'encounter_id' is a required property",
+              "detail": {
+                "rail": "tool_call_validation"
+              }
+            }
+          }
+        },
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_encounter_start",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_encounter_start"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 2,
+      "blocked": false
+    },
+    {
+      "id": "encounter_resolve_p0",
+      "gold_tool": "melodia_encounter_resolve",
+      "chosen_tool": "melodia_encounter_resolve",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": false,
+          "reason": "allowed by policy; arguments for tool 'melodia_encounter_resolve' do not match its schema: 'encounter_id' is a required property",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_encounter_resolve",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": false,
+              "reason": "arguments for tool 'melodia_encounter_resolve' do not match its schema: 'encounter_id' is a required property",
+              "detail": {
+                "rail": "tool_call_validation"
+              }
+            }
+          }
+        },
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_encounter_resolve",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_encounter_resolve"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 2,
+      "blocked": false
+    },
+    {
+      "id": "quest_p0_status",
+      "gold_tool": "melodia_quest_check_p0",
+      "chosen_tool": "melodia_quest_check_p0",
+      "tool_match": true,
+      "args_match": false,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok",
+      "guardrail_verdicts": [
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": false,
+          "reason": "allowed by policy; arguments for tool 'melodia_quest_check_p0' do not match its schema: 'quest_id' is a required property",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_quest_check_p0",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": false,
+              "reason": "arguments for tool 'melodia_quest_check_p0' do not match its schema: 'quest_id' is a required property",
+              "detail": {
+                "rail": "tool_call_validation"
+              }
+            }
+          }
+        },
+        {
+          "engine": "nemo",
+          "layer": "nemo-iorails + policy",
+          "allowed": true,
+          "reason": "allowed by policy; tool call and arguments conform to the declared schema",
+          "detail": {
+            "policy": {
+              "engine": "policy",
+              "layer": "mcp_policy.default-deny",
+              "allowed": true,
+              "reason": "allowed by policy",
+              "detail": {
+                "allowed": true,
+                "tool": "melodia_quest_check_p0",
+                "operation": "read",
+                "required_approval": "none",
+                "granted_approval": "none"
+              }
+            },
+            "nemo": {
+              "engine": "nemo",
+              "layer": "nemo-iorails.tool_call_validation",
+              "allowed": true,
+              "reason": "tool call and arguments conform to the declared schema",
+              "detail": {
+                "rail": "ok",
+                "tool": "melodia_quest_check_p0"
+              }
+            }
+          }
+        }
+      ],
+      "attempts": 2,
+      "blocked": false
+    }
+  ]
+}

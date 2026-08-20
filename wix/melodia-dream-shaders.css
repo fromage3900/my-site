@@ -4,10 +4,22 @@
   /* Canonical Nikki iridescence ramp — hex fallback, OKLCH when supported */
   --iri-cyan: var(--primitive-astral-300);
   --iri-gold: var(--primitive-gold-100);
+  --iri-magenta: var(--primitive-sakura-300);
   --iri-purple: var(--primitive-iris-500);
   --iri-pearl: var(--primitive-sakura-100);
   --iri-seafoam: var(--primitive-status-success);
   --iri-lavender: var(--primitive-lavender-300);
+  /* Aquatic Melody title ramp — gold/cyan/magenta/pearl (not ROYGBIV). */
+  --melodia-iri-text: linear-gradient(
+    105deg,
+    var(--primitive-gold-100) 0%,
+    var(--iri-cyan) 28%,
+    var(--iri-magenta) 52%,
+    var(--iri-pearl, var(--primitive-ivory-50)) 78%,
+    var(--primitive-gold-300) 100%
+  );
+  /* Magical-girl sparkle cursor (inline SVG — no cursor PNG in game-ui pack). */
+  --melodia-mg-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2366D9FF'/%3E%3Cstop offset='40%25' stop-color='%23FFE666'/%3E%3Cstop offset='72%25' stop-color='%23FF6EB4'/%3E%3Cstop offset='100%25' stop-color='%23FFF8EE'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M16 1.5L18.8 13.2L30.5 16L18.8 18.8L16 30.5L13.2 18.8L1.5 16L13.2 13.2Z'/%3E%3Ccircle cx='16' cy='16' r='1.7' fill='%23FFF8EE'/%3E%3C/svg%3E") 16 16, pointer;
   --dream-iri-ramp: linear-gradient(
     128deg,
     var(--iri-cyan) 0%,
@@ -70,6 +82,9 @@
     );
   }
 
+  .melodia-shell[data-pillar="melusina"],
+  .image-card[data-pillar="melusina"],
+  .world-card.melusina,
   .melodia-shell[data-pillar="grotto"],
   .image-card[data-pillar="grotto"],
   .world-card.castle,
@@ -82,6 +97,9 @@
     );
   }
 
+  .melodia-shell[data-pillar="fallenmoon"],
+  .image-card[data-pillar="fallenmoon"],
+  .world-card.fallenmoon,
   .melodia-shell[data-pillar="orrery"],
   .image-card[data-pillar="orrery"],
   .world-card.grotto,
@@ -108,12 +126,18 @@
   --pillar-iri-ramp: linear-gradient(128deg, var(--primitive-iris-300) 0%, var(--primitive-astral-300) 45%, var(--primitive-iris-500) 100%);
 }
 
+.melodia-shell[data-pillar="melusina"],
+.image-card[data-pillar="melusina"],
+.world-card.melusina,
 .melodia-shell[data-pillar="grotto"],
 .image-card[data-pillar="grotto"],
 .world-card.castle {
   --pillar-iri-ramp: linear-gradient(128deg, var(--primitive-nikki-seafoam) 0%, var(--primitive-gold-300) 42%, var(--primitive-status-success) 100%);
 }
 
+.melodia-shell[data-pillar="fallenmoon"],
+.image-card[data-pillar="fallenmoon"],
+.world-card.fallenmoon,
 .melodia-shell[data-pillar="orrery"],
 .image-card[data-pillar="orrery"],
 .world-card.grotto {
@@ -124,6 +148,35 @@
 .melodia-shell {
   position: relative;
   isolation: isolate;
+}
+
+/* Site-wide magical-girl sparkle cursor on interactive chrome */
+.melodia-shell a,
+.melodia-shell button,
+.melodia-shell .button,
+.melodia-shell .button-premium,
+.melodia-shell .nav-cta,
+.melodia-shell .nav-links a,
+.melodia-shell .brand,
+.melodia-shell .env-card,
+.melodia-shell .env-thumb,
+.melodia-shell .card,
+.melodia-shell .premium-card,
+.melodia-shell .image-card,
+.melodia-shell .world-card,
+.melodia-shell .portal-card,
+.melodia-shell .material-card,
+.melodia-shell .path-row,
+.melodia-shell .skill-cloud span,
+.melodia-shell .contact-strip a,
+.melodia-shell .path-actions a,
+.melodia-shell .planetarium-mini,
+.melodia-shell .planetarium-node,
+.melodia-shell summary,
+.melodia-shell [role="button"],
+.melodia-shell input[type="button"],
+.melodia-shell input[type="submit"] {
+  cursor: var(--melodia-mg-cursor);
 }
 
 .melodia-shell > .dream-aurora-layer,
@@ -163,6 +216,113 @@
     calc(142px / var(--dream-sparkle-density)) calc(142px / var(--dream-sparkle-density)),
     calc(196px / var(--dream-sparkle-density)) calc(196px / var(--dream-sparkle-density));
   animation: dream-sparkle-twinkle 6s ease-in-out infinite alternate;
+}
+
+.melodia-shell > .dream-planet-layer,
+.melodia-shell > .figma-bubble-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.melodia-shell > .dream-planet-layer {
+  opacity: 0.14;
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_IriOverlay.png") center / cover no-repeat,
+    radial-gradient(ellipse at 72% 18%, var(--iri-cyan), transparent 34%),
+    radial-gradient(ellipse at 22% 78%, var(--iri-purple), transparent 38%);
+  background-size: cover, 100% 100%, 100% 100%;
+  mix-blend-mode: screen;
+  animation: dream-planet-drift 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.melodia-shell > .dream-planet-layer::before {
+  content: "";
+  position: absolute;
+  top: 8%;
+  right: 4%;
+  width: clamp(180px, 27vw, 420px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 27%, var(--iri-pearl) 0 2%, transparent 2.8%),
+    radial-gradient(circle at 58% 66%, var(--iri-seafoam) 0 1.2%, transparent 2%),
+    radial-gradient(circle at 42% 42%, var(--iri-cyan) 0%, var(--iri-purple) 52%, var(--primitive-astral-900) 100%);
+  box-shadow: var(--glow-astral);
+  opacity: 0.28;
+}
+
+.melodia-shell > .dream-planet-layer::after {
+  content: "";
+  position: absolute;
+  top: 23%;
+  right: 1%;
+  width: clamp(220px, 34vw, 520px);
+  height: clamp(58px, 9vw, 132px);
+  border: 1px solid var(--iri-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--iri-purple);
+  opacity: 0.22;
+  transform: rotate(-18deg);
+}
+
+.melodia-shell > .figma-bubble-layer {
+  opacity: 0.18;
+  background:
+    radial-gradient(circle at 12% 18%, var(--iri-pearl) 0 2px, transparent 3px),
+    radial-gradient(circle at 35% 26%, transparent 0 13px, var(--iri-cyan) 14px 15px, transparent 16px),
+    radial-gradient(circle at 79% 22%, transparent 0 8px, var(--iri-gold) 9px 10px, transparent 11px),
+    radial-gradient(circle at 18% 72%, transparent 0 19px, var(--iri-purple) 20px 21px, transparent 22px),
+    radial-gradient(circle at 67% 78%, var(--iri-seafoam) 0 3px, transparent 4px),
+    radial-gradient(circle at 88% 62%, transparent 0 12px, var(--iri-pearl) 13px 14px, transparent 15px);
+  background-size: 100% 100%;
+  mix-blend-mode: normal;
+  animation: figma-bubble-drift 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.melodia-shell > .figma-bubble-layer::before {
+  content: "";
+  position: absolute;
+  top: clamp(78px, 12vh, 168px);
+  left: clamp(16px, 7vw, 120px);
+  width: min(56vw, 720px);
+  height: 34px;
+  background:
+    radial-gradient(circle at 6% 50%, var(--iri-cyan) 0 4px, transparent 5px),
+    radial-gradient(circle at 20% 50%, var(--iri-gold) 0 4px, transparent 5px),
+    radial-gradient(circle at 34% 50%, var(--iri-pearl) 0 4px, transparent 5px),
+    radial-gradient(circle at 48% 50%, var(--iri-purple) 0 4px, transparent 5px),
+    radial-gradient(circle at 62% 50%, var(--iri-cyan) 0 4px, transparent 5px),
+    radial-gradient(circle at 76% 50%, var(--iri-gold) 0 4px, transparent 5px),
+    radial-gradient(circle at 90% 50%, var(--iri-pearl) 0 4px, transparent 5px);
+  opacity: 0.7;
+}
+
+.melodia-shell[data-hero="cosmic"] > .dream-planet-layer {
+  opacity: 0.22;
+}
+
+.melodia-shell[data-mg="full"] > .figma-bubble-layer {
+  opacity: 0.24;
+}
+
+.melodia-shell.dream-reduced > .dream-planet-layer,
+.melodia-shell.dream-reduced > .figma-bubble-layer {
+  animation-duration: 42s;
+}
+
+@keyframes dream-planet-drift {
+  from { transform: translate3d(-1.2%, -0.6%, 0) scale(1.02); }
+  to { transform: translate3d(1.2%, 0.8%, 0) scale(1.06); }
+}
+
+@keyframes figma-bubble-drift {
+  from { transform: translate3d(-0.8%, 0.6%, 0); }
+  to { transform: translate3d(0.8%, -0.8%, 0); }
 }
 
 .melodia-shell.dream-reduced > .dream-aurora-layer {
@@ -244,34 +404,47 @@
     0 2px 24px rgba(8, 11, 19, 0.45);
 }
 
-/* Full hero title iridescence — astral/hero only; paper bands stay solid ink */
+/* Full hero title iridescence — aquatic Melody ramp; paper bands stay solid ink */
 .melodia-shell .hero h1,
 .melodia-shell.fashion-mode .hero h1,
 .melodia-shell .band.astral .section-head h2,
 .melodia-shell .band.deep .section-head h2 {
-  background: var(--pillar-iri-ramp, var(--dream-iri-ramp));
-  background-size: 220% 220%;
+  background: var(--melodia-iri-text);
+  background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: dream-iri-text 11s ease-in-out infinite;
-  filter: drop-shadow(0 0 18px rgba(204, 153, 255, 0.22));
+  -webkit-text-fill-color: transparent;
+  animation: dream-iri-text 11s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--iri-cyan) 28%, transparent));
+  transition:
+    filter 0.28s ease,
+    background-size 0.45s ease;
+}
+
+.melodia-shell .hero:hover h1,
+.melodia-shell .hero h1:hover,
+.melodia-shell .band.astral .section-head:hover h2,
+.melodia-shell .band.deep .section-head:hover h2 {
+  background-size: 260% 100%;
+  filter: drop-shadow(0 0 22px color-mix(in srgb, var(--iri-magenta) 36%, transparent));
 }
 
 .melodia-shell .hero h1 em,
 .melodia-shell .hero h1 strong {
   font-style: italic;
-  background: var(--pillar-iri-ramp, var(--dream-iri-ramp));
-  background-size: 200% 200%;
+  background: var(--melodia-iri-text);
+  background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: dream-iri-text 10s ease-in-out infinite;
+  -webkit-text-fill-color: transparent;
+  animation: dream-iri-text 10s ease-in-out infinite alternate;
 }
 
 @keyframes dream-iri-text {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
 }
 
 .melodia-shell .hero .lede,
@@ -286,21 +459,27 @@
 .melodia-shell .kicker,
 .melodia-shell .magazine-kicker,
 .melodia-shell .premium-kicker,
-.melodia-shell .eyebrow {
-  background: linear-gradient(
-    100deg,
-    var(--iri-gold) 0%,
-    var(--iri-cyan) 40%,
-    var(--iri-purple) 72%,
-    var(--iri-gold) 100%
-  );
-  background-size: 200% 200%;
+.melodia-shell .eyebrow,
+.melodia-shell .hero .kicker,
+.melodia-shell .hero .magazine-kicker {
+  background: var(--melodia-iri-text);
+  background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: dream-iri-text 8s ease-in-out infinite;
+  -webkit-text-fill-color: transparent;
+  animation: dream-iri-text 8s ease-in-out infinite alternate;
   text-shadow: none;
-  filter: drop-shadow(0 0 10px rgba(255, 230, 102, 0.28));
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--iri-gold) 32%, transparent));
+  transition: filter 0.28s ease, background-size 0.4s ease;
+}
+
+.melodia-shell .kicker:hover,
+.melodia-shell .magazine-kicker:hover,
+.melodia-shell .premium-kicker:hover,
+.melodia-shell .eyebrow:hover {
+  background-size: 260% 100%;
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--iri-cyan) 40%, transparent));
 }
 
 /* SoftMG / Figma SoftMG_Baroque timeline — quieter 2.4s hue drift on titles */
@@ -438,6 +617,214 @@
   );
 }
 
+/* Aquatic Melody pointer sheen — a single refraction pass on hover/focus. */
+.melodia-shell .button,
+.melodia-shell .button-premium,
+.melodia-shell .nav-cta,
+.melodia-shell .nav-links a,
+.melodia-shell .brand,
+.melodia-shell .path-actions a,
+.melodia-shell .contact-strip a,
+.melodia-shell .skill-cloud span,
+.melodia-shell .hero-actions .button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.melodia-shell .button::after,
+.melodia-shell .button-premium::after,
+.melodia-shell .nav-cta::after,
+.melodia-shell .nav-links a::after,
+.melodia-shell .brand::after,
+.melodia-shell .path-actions a::after,
+.melodia-shell .contact-strip a::after,
+.melodia-shell .skill-cloud span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      110deg,
+      transparent 22%,
+      var(--iri-cyan) 38%,
+      var(--iri-gold) 48%,
+      var(--iri-magenta) 58%,
+      var(--iri-pearl, var(--primitive-ivory-50)) 66%,
+      transparent 78%
+    ),
+    url("../generated/assets/melodia-game-ui/T_Melodia_SheenSweep.png") center / auto 180% no-repeat;
+  background-size: 280% 100%, auto 180%;
+  background-position: 140% 0, 140% 50%;
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition:
+    opacity 0.22s ease,
+    background-position 0.72s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.melodia-shell .button:hover::after,
+.melodia-shell .button:focus-visible::after,
+.melodia-shell .button-premium:hover::after,
+.melodia-shell .button-premium:focus-visible::after,
+.melodia-shell .nav-cta:hover::after,
+.melodia-shell .nav-cta:focus-visible::after,
+.melodia-shell .nav-links a:hover::after,
+.melodia-shell .nav-links a:focus-visible::after,
+.melodia-shell .brand:hover::after,
+.melodia-shell .brand:focus-visible::after,
+.melodia-shell .path-actions a:hover::after,
+.melodia-shell .path-actions a:focus-visible::after,
+.melodia-shell .contact-strip a:hover::after,
+.melodia-shell .contact-strip a:focus-visible::after,
+.melodia-shell .skill-cloud span:hover::after {
+  background-position: -140% 0, -140% 50%;
+  opacity: 0.3;
+}
+
+.melodia-shell .button > *,
+.melodia-shell .button-premium > *,
+.melodia-shell .nav-cta > *,
+.melodia-shell .brand > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .melodia-shell .button::after,
+  .melodia-shell .button-premium::after,
+  .melodia-shell .nav-cta::after,
+  .melodia-shell .nav-links a::after,
+  .melodia-shell .brand::after,
+  .melodia-shell .path-actions a::after,
+  .melodia-shell .contact-strip a::after,
+  .melodia-shell .skill-cloud span::after {
+    transition: opacity 0.2s ease;
+    background-position: 50% 0, 50% 50%;
+  }
+
+  .melodia-shell .button:hover::after,
+  .melodia-shell .button:focus-visible::after,
+  .melodia-shell .button-premium:hover::after,
+  .melodia-shell .button-premium:focus-visible::after,
+  .melodia-shell .nav-cta:hover::after,
+  .melodia-shell .nav-cta:focus-visible::after,
+  .melodia-shell .nav-links a:hover::after,
+  .melodia-shell .nav-links a:focus-visible::after,
+  .melodia-shell .brand:hover::after,
+  .melodia-shell .brand:focus-visible::after,
+  .melodia-shell .path-actions a:hover::after,
+  .melodia-shell .path-actions a:focus-visible::after,
+  .melodia-shell .contact-strip a:hover::after,
+  .melodia-shell .contact-strip a:focus-visible::after,
+  .melodia-shell .skill-cloud span:hover::after {
+    background-position: 50% 0, 50% 50%;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .melodia-shell .button::after,
+  .melodia-shell .button-premium::after,
+  .melodia-shell .nav-cta::after,
+  .melodia-shell .nav-links a::after,
+  .melodia-shell .brand::after,
+  .melodia-shell .path-actions a::after,
+  .melodia-shell .contact-strip a::after,
+  .melodia-shell .skill-cloud span::after {
+    display: none;
+  }
+}
+
+/* Shared sheen layer for framed cards, image plates, and photo mounts. */
+.melodia-shell .melodia-iri-frame {
+  position: relative;
+  isolation: isolate;
+}
+
+.melodia-shell .melodia-iri-sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      110deg,
+      transparent 22%,
+      var(--iri-cyan) 38%,
+      var(--iri-gold) 48%,
+      var(--iri-magenta) 58%,
+      var(--iri-pearl, var(--primitive-ivory-50)) 66%,
+      transparent 78%
+    ),
+    url("../generated/assets/melodia-game-ui/T_Melodia_SheenSweep.png") center / auto 180% no-repeat;
+  background-size: 280% 100%, auto 180%;
+  background-position: 140% 0, 140% 50%;
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition:
+    opacity 0.24s ease,
+    background-position 0.72s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.melodia-shell .melodia-iri-frame:hover > .melodia-iri-sheen,
+.melodia-shell .melodia-iri-frame:focus-within > .melodia-iri-sheen,
+.melodia-shell .melodia-iri-frame:focus-visible > .melodia-iri-sheen {
+  background-position: -140% 0, -140% 50%;
+  opacity: 0.32;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .melodia-shell > .dream-planet-layer,
+  .melodia-shell > .figma-bubble-layer {
+    display: none;
+  }
+
+  .melodia-shell .melodia-iri-sheen,
+  .melodia-shell .button::after,
+  .melodia-shell .button-premium::after,
+  .melodia-shell .nav-cta::after,
+  .melodia-shell .nav-links a::after,
+  .melodia-shell .brand::after,
+  .melodia-shell .path-actions a::after,
+  .melodia-shell .contact-strip a::after,
+  .melodia-shell .skill-cloud span::after {
+    transition: opacity 0.2s ease;
+    background-position: 50% 0, 50% 50%;
+  }
+
+  .melodia-shell .melodia-iri-frame:hover > .melodia-iri-sheen,
+  .melodia-shell .melodia-iri-frame:focus-within > .melodia-iri-sheen,
+  .melodia-shell .melodia-iri-frame:focus-visible > .melodia-iri-sheen,
+  .melodia-shell .button:hover::after,
+  .melodia-shell .button:focus-visible::after,
+  .melodia-shell .button-premium:hover::after,
+  .melodia-shell .button-premium:focus-visible::after,
+  .melodia-shell .nav-cta:hover::after,
+  .melodia-shell .nav-cta:focus-visible::after,
+  .melodia-shell .nav-links a:hover::after,
+  .melodia-shell .nav-links a:focus-visible::after,
+  .melodia-shell .brand:hover::after,
+  .melodia-shell .brand:focus-visible::after,
+  .melodia-shell .path-actions a:hover::after,
+  .melodia-shell .path-actions a:focus-visible::after,
+  .melodia-shell .contact-strip a:hover::after,
+  .melodia-shell .contact-strip a:focus-visible::after,
+  .melodia-shell .skill-cloud span:hover::after {
+    background-position: 50% 0, 50% 50%;
+  }
+}
+
+@media (prefers-contrast: high), (prefers-contrast: more) {
+  .melodia-shell > .dream-planet-layer,
+  .melodia-shell > .figma-bubble-layer,
+  .melodia-shell .melodia-iri-sheen {
+    display: none;
+  }
+}
+
 /* Fashion paper/cloud bands — night glass wash */
 .melodia-shell.fashion-mode .band.paper,
 .melodia-shell.fashion-mode .band.cloud {
@@ -447,7 +834,7 @@
     radial-gradient(ellipse 60% 40% at 8% 90%, rgba(204, 153, 255, 0.06), transparent 50%);
 }
 
-.melodia-shell .editorial-rule .diamond {
+.melodia-shell .editorial-rule .diamond:not(.glyph-flank) {
   background: var(--dream-iri-ramp);
   background-size: 200% 200%;
   animation: dream-iri-text 8s ease-in-out infinite;
@@ -495,9 +882,16 @@
 }
 
 .melodia-shell .band.paper .hero h1 {
+  background: none;
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+  color: var(--ink, var(--primitive-plum-800));
+  -webkit-text-fill-color: currentColor;
+  animation: none;
+  filter: none;
   text-shadow:
-    0 0 32px rgba(204, 153, 255, 0.12),
-    0 2px 16px rgba(34, 26, 42, 0.08);
+    0 0 32px color-mix(in srgb, var(--iri-lavender) 18%, transparent),
+    0 2px 16px color-mix(in srgb, var(--primitive-plum-900) 12%, transparent);
 }
 
 /* ── Holo plate: thin-film sweep on render / material cards ── */
@@ -778,7 +1172,7 @@
   transform: translateX(-50%);
   width: 32px;
   height: 12px;
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCornerBaroque.png") center / contain no-repeat;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_128_16249.png") center / contain no-repeat;
   opacity: 0.85;
   filter: drop-shadow(0 0 4px rgba(255, 230, 102, 0.6));
   pointer-events: none;

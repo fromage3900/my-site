@@ -80,14 +80,20 @@
 .editorial-rule[data-divider] .diamond.glyph-flank {
   width: auto;
   height: auto;
+  min-width: 0;
+  min-height: 0;
   background: none;
   border: 0;
+  outline: none;
+  box-shadow: none;
   transform: none;
+  animation: none;
+  filter: none;
   font-family: var(--font-mono, "Azeret Mono", monospace);
   letter-spacing: 0.12em;
   white-space: pre;
   font-size: 0.72rem;
-  color: rgba(221, 199, 155, 0.78);
+  color: color-mix(in srgb, var(--primitive-gold-300, var(--color-accent-primary)) 78%, transparent);
 }
 
 /* ——— Sparse ivory reading surfaces (overrides night paper) ——— */
@@ -261,7 +267,7 @@
 .pp-title,
 .passport-title,
 .stage-passport-fallback .pp-title {
-  font-family: var(--font-display, "Instrument Serif", Georgia, serif);
+  font-family: var(--font-display, "Syne", sans-serif);
   font-weight: 500;
   line-height: 1.12;
   letter-spacing: 0.01em;

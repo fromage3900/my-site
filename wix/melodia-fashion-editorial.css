@@ -39,12 +39,12 @@
   background: linear-gradient(90deg, transparent, var(--fashion-rule), transparent);
 }
 
-.editorial-rule .diamond {
+.editorial-rule .diamond:not(.glyph-flank) {
   width: 7px;
   height: 7px;
   transform: rotate(45deg);
   background: var(--fashion-foil);
-  box-shadow: 0 0 0 1px rgba(200, 164, 94, 0.4);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--fashion-foil, var(--color-accent-primary)) 40%, transparent);
 }
 
 .monogram-stamp {

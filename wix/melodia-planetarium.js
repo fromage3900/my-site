@@ -29,10 +29,11 @@
   });
 
   const NODES = [
-    { id: 'sakura', label: 'Sakura Dream', short: 'Sakura', kana: '桜', href: 'sakura-case-study.html', arm: 1, angle: 32, color: '#ff6eb4', r: 5.5 },
-    { id: 'cathedral', label: 'Space Cathedral', short: 'Cathedral', kana: '星', href: 'world-bible.html', arm: 0, angle: 114, color: '#9b8fc4', r: 5.5 },
-    { id: 'grotto', label: 'Baroque Grotto', short: 'Grotto', kana: '洞', href: 'world-bible.html', arm: 2, angle: 204, color: '#5eb8b0', r: 5 },
-    { id: 'orrery', label: 'Cosmic Orrery', short: 'Orrery', kana: '宙', href: 'application-hub.html#worlds', arm: 4, angle: 292, color: '#ff8ec8', r: 5.5 },
+    { id: 'melusina', label: 'L_MelusinaMorning · Melusina Stage', short: 'Melusina', kana: '姫', href: 'melodia-stage-character.html', arm: 2, angle: 204, color: '#5eb8b0', r: 5 },
+    { id: 'sakura', label: 'L_SakuraDream · Sakura Dream', short: 'Sakura', kana: '桜', href: 'sakura-case-study.html', arm: 1, angle: 32, color: '#ff6eb4', r: 5.5 },
+    { id: 'cathedral', label: 'L_KaleidoNave · Space Cathedral', short: 'Cathedral', kana: '星', href: 'space-cathedral.html', arm: 0, angle: 114, color: '#9b8fc4', r: 5.5 },
+    { id: 'fallenmoon', label: 'L_FallenMoon · Fallen Moon PCG', short: 'FallenMoon', kana: '月', href: 'pcg-system-impact.html', arm: 4, angle: 292, color: '#ff8ec8', r: 5.5 },
+    { id: 'orrery', label: 'Cosmic Orrery', short: 'Orrery', kana: '宙', href: 'cosmic-orrery.html', arm: 1, angle: 340, color: '#66d9ff', r: 5 },
     { id: 'shaders', label: 'Shader Breakdowns', short: 'Shaders', kana: '光', href: 'shader-breakdowns.html', arm: 0, angle: 252, color: '#ffe666', r: 4.5 },
     { id: 'renders', label: 'Hero Renders', short: 'Renders', kana: '景', href: 'hero-renders.html', arm: 5, angle: 160, color: '#e8c9b8', r: 4.5 },
     { id: 'hub', label: 'Application Hub', short: 'Hub', kana: '門', href: 'application-hub.html', arm: 3, angle: 320, color: '#c9a86a', r: 5 },
@@ -45,23 +46,26 @@
     { ...NODES[2], arm: 2 },
     { ...NODES[3], arm: 3 },
     { ...NODES[4], arm: 0 },
-    { ...NODES[6], arm: 3 },
+    { ...NODES[7], arm: 3 },
   ];
 
   const MINI_LINES = [
     ['sakura', 'hub'],
     ['cathedral', 'shaders'],
-    ['grotto', 'orrery'],
+    ['melusina', 'fallenmoon'],
+    ['fallenmoon', 'orrery'],
     ['orrery', 'hub'],
+    ['fallenmoon', 'hub'],
   ];
 
   const LINES = [
     ['sakura', 'renders'],
     ['cathedral', 'shaders'],
-    ['grotto', 'geometry'],
+    ['melusina', 'geometry'],
+    ['fallenmoon', 'hub'],
     ['orrery', 'hub'],
     ['sakura', 'hub'],
-    ['cathedral', 'orrery'],
+    ['cathedral', 'fallenmoon'],
   ];
 
   const SVGNS = 'http://www.w3.org/2000/svg';
@@ -103,11 +107,15 @@
       this.legendEl = null;
       this.nodeEls = {};
       this.lineEls = [];
+      this.trailEls = {};
+      this.trailHistory = {};
       this.raf = 0;
+      this._hidden = false;
 
       this.build();
       this.bind();
-      if (!this.reduceMotion) this.loop();
+      this.drawStars(performance.now());
+      this.loop();
     }
 
     build() {
@@ -162,12 +170,15 @@
       this.perspectiveWrap.appendChild(this.svg);
       this.linesG = document.createElementNS(SVGNS, 'g');
       this.linesG.setAttribute('class', 'planetarium-lines');
+      this.trailsG = document.createElementNS(SVGNS, 'g');
+      this.trailsG.setAttribute('class', 'planetarium-trails');
       this.armsG = document.createElementNS(SVGNS, 'g');
       this.armsG.setAttribute('class', 'planetarium-arms');
       this.nodesG = document.createElementNS(SVGNS, 'g');
       this.nodesG.setAttribute('class', 'planetarium-nodes');
 
       this.world.appendChild(this.linesG);
+      this.world.appendChild(this.trailsG);
       this.world.appendChild(this.armsG);
       this.world.appendChild(this.nodesG);
 
@@ -267,6 +278,17 @@
       g.appendChild(body);
       g.appendChild(label);
 
+      if (this.isMini && !this.reduceMotion) {
+        const trail = document.createElementNS(SVGNS, 'polyline');
+        trail.setAttribute('class', `planetarium-trail ${node.arm % 2 === 0 ? 'trail-cyan' : 'trail-pink'}`);
+        trail.setAttribute('fill', 'none');
+        trail.setAttribute('stroke-width', '2.2');
+        trail.setAttribute('points', '');
+        this.trailsG.appendChild(trail);
+        this.trailEls[node.id] = trail;
+        this.trailHistory[node.id] = [];
+      }
+
       g.addEventListener('mouseenter', () => this.setFocus(node));
       g.addEventListener('focus', () => this.setFocus(node));
       g.addEventListener('click', () => {
@@ -326,19 +348,33 @@
         const x = (s.x + parallaxX * depth) * this.w;
         const y = (s.y + parallaxY * depth) * this.h;
         const tw = 0.45 + Math.sin(t * 0.002 + s.twinkle) * 0.35;
-        const alpha = tw * depth * (this.isHero ? 0.35 : 0.55);
-        this.ctx.fillStyle = s.z > 0.6 ? `rgba(255,230,102,${alpha})` : `rgba(236,234,244,${alpha})`;
+        const base = this.isMini ? 0.78 : this.isHero ? 0.35 : 0.55;
+        const alpha = tw * depth * base;
+        this.ctx.fillStyle = s.z > 0.6
+          ? `rgba(255,230,102,${alpha})`
+          : this.isMini
+            ? `rgba(255,182,220,${alpha})`
+            : `rgba(236,234,244,${alpha})`;
         this.ctx.beginPath();
-        this.ctx.arc(x, y, s.size * depth, 0, Math.PI * 2);
+        this.ctx.arc(x, y, s.size * depth * (this.isMini ? 1.35 : 1), 0, Math.PI * 2);
         this.ctx.fill();
       });
 
-      const grad = this.ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(cx, cy));
-      grad.addColorStop(0, 'rgba(102,217,255,0.04)');
-      grad.addColorStop(0.55, 'transparent');
-      grad.addColorStop(1, 'rgba(8,11,19,0.25)');
-      this.ctx.fillStyle = grad;
-      this.ctx.fillRect(0, 0, this.w, this.h);
+      if (this.isMini) {
+        const bloom = this.ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(cx, cy));
+        bloom.addColorStop(0, 'rgba(255,110,180,0.08)');
+        bloom.addColorStop(0.45, 'rgba(102,217,255,0.05)');
+        bloom.addColorStop(1, 'rgba(8,11,19,0.2)');
+        this.ctx.fillStyle = bloom;
+        this.ctx.fillRect(0, 0, this.w, this.h);
+      } else {
+        const grad = this.ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(cx, cy));
+        grad.addColorStop(0, 'rgba(102,217,255,0.04)');
+        grad.addColorStop(0.55, 'transparent');
+        grad.addColorStop(1, 'rgba(8,11,19,0.25)');
+        this.ctx.fillStyle = grad;
+        this.ctx.fillRect(0, 0, this.w, this.h);
+      }
     }
 
     setFocus(node) {
@@ -424,6 +460,19 @@
         line.setAttribute('x2', String(pb.x));
         line.setAttribute('y2', String(pb.y));
       });
+
+      if (this.isMini && !this.reduceMotion) {
+        this.nodes.forEach((node) => {
+          const trail = this.trailEls[node.id];
+          if (!trail) return;
+          const pos = this.nodeWorldPos(node);
+          const hist = this.trailHistory[node.id];
+          hist.push(`${pos.x.toFixed(1)},${pos.y.toFixed(1)}`);
+          if (hist.length > 22) hist.shift();
+          trail.setAttribute('points', hist.join(' '));
+          trail.style.opacity = String(0.45 + pos.opacity * 0.4);
+        });
+      }
     }
 
     bind() {
@@ -475,7 +524,15 @@
       };
 
       this.root.addEventListener('pointermove', onHoverMove, { passive: true });
-      window.addEventListener('resize', () => this.resizeCanvas());
+      window.addEventListener('resize', () => {
+        this.resizeCanvas();
+        this.drawStars(performance.now());
+      });
+
+      document.addEventListener('visibilitychange', () => {
+        this._hidden = document.visibilityState === 'hidden';
+        if (!this._hidden && !this.raf) this.loop();
+      });
 
       if (!this.isHero) {
         this.setFocus(this.nodes[0]);
@@ -484,6 +541,10 @@
 
     loop() {
       const tick = (t) => {
+        if (this._hidden) {
+          this.raf = 0;
+          return;
+        }
         if (!this.reduceMotion && !this.drag.on) {
           this.arms.forEach((arm, i) => {
             this.armAngles[i] += arm.speed;
@@ -499,6 +560,12 @@
         this.drawStars(t);
         this.raf = requestAnimationFrame(tick);
       };
+      if (this.reduceMotion) {
+        this.updateTransforms();
+        this.drawStars(performance.now());
+        this.raf = 0;
+        return;
+      }
       this.raf = requestAnimationFrame(tick);
     }
 
@@ -570,6 +637,17 @@
   function boot() {
     mountAll();
     mountHeroReplacement();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      /* Safety net when pages forget MelodiaEditorial.init */
+      window.setTimeout(() => {
+        if (!document.querySelector('.planetarium') && document.querySelector('[data-planetarium]')) {
+          boot();
+        }
+      }, 120);
+    });
   }
 
   global.MelodiaPlanetarium = {

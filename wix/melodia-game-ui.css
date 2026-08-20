@@ -92,7 +92,8 @@
   padding: 0.45rem 0;
   min-height: 3rem;
   background:
-    url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeDividerScroll.png") center / auto 100% no-repeat,
+    /* Figma Game/FiligreeBatchO_Baroque — 2026-08-04 DividerScroll export, node 128:16464. */
+    url("../generated/assets/melodia-game-ui/T_Melodia_128_16464.png") center / auto 100% no-repeat,
     linear-gradient(90deg, transparent, rgba(110, 200, 232, 0.12), transparent);
   animation: divider-sheen 5.5s ease-in-out infinite;
 }
@@ -340,8 +341,8 @@
   height: 4.25rem;
   pointer-events: none;
   z-index: 2;
-  /* SSOT: Batch O Baroque — old FiligreeCorner atom retired from beauty chrome */
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCornerBaroque.png") center / contain no-repeat;
+  /* SSOT: Batch O Baroque — 2026-08-04 CornerBaroque export. */
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_128_16249.png") center / contain no-repeat;
   opacity: 0.92;
   filter: drop-shadow(0 0 10px rgba(196, 154, 78, 0.35));
   animation: filigree-breathe 4.5s ease-in-out infinite;
@@ -1400,7 +1401,7 @@ body.ios-mode .game-ui-ios-play {
   width: 5rem;
   height: 5rem;
   /* Alias → baroque SSOT (legacy class kept for any leftover markup) */
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCornerBaroque.png") center / contain no-repeat;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_128_16249.png") center / contain no-repeat;
   filter: drop-shadow(0 0 12px rgba(102, 217, 255, 0.45)) drop-shadow(0 0 18px rgba(255, 230, 102, 0.22));
   animation: filigree-breathe-ornate 400ms ease-out infinite;
 }
@@ -1448,7 +1449,7 @@ body.ios-mode .game-ui-ios-play {
 .game-ui-filigree.is-baroque {
   width: 5.5rem;
   height: 5.5rem;
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCornerBaroque.png") center / contain no-repeat;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_128_16249.png") center / contain no-repeat;
   filter: drop-shadow(0 0 14px rgba(196, 154, 78, 0.4)) drop-shadow(0 0 10px rgba(102, 217, 255, 0.28));
   animation: filigree-breathe-ornate 520ms ease-out infinite;
 }
@@ -1479,7 +1480,7 @@ body.ios-mode .game-ui-ios-play {
 .game-ui-filigree-divider.is-baroque {
   min-height: 2.75rem;
   background:
-    url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeDividerScroll.png") center / auto 100% no-repeat,
+    url("../generated/assets/melodia-game-ui/T_Melodia_128_16464.png") center / auto 100% no-repeat,
     linear-gradient(90deg, transparent, rgba(196, 154, 78, 0.28), transparent) center / 100% 1px no-repeat;
 }
 
@@ -1506,11 +1507,11 @@ body.ios-mode .game-ui-ios-play {
 }
 
 .game-ui-batch-o-tile .swatch.corner-baroque {
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCornerBaroque.png") center / contain no-repeat;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_128_16249.png") center / contain no-repeat;
 }
 
 .game-ui-batch-o-tile .swatch.divider-scroll {
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeDividerScroll.png") center / contain no-repeat;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_128_16464.png") center / contain no-repeat;
 }
 
 .game-ui-batch-o-tile .swatch.crest-baroque {
@@ -2339,8 +2340,8 @@ body.ios-mode .game-ui-ios-play {
   border: none;
   box-shadow: none;
   padding: 0.5rem;
-  font-family: var(--font-display);
-  letter-spacing: 0.04em;
+  font-family: var(--font-decorative, var(--font-display));
+  letter-spacing: 0.02em;
 }
 
 .grade-pop.is-flourish.perfect {
@@ -3354,7 +3355,7 @@ body.ios-mode .game-ui-ios-play {
   border-radius: 4px;
 }
 .figma-card-preview h4 {
-  font-family: var(--font-display, Fraunces, serif);
+  font-family: var(--font-display, "Syne", sans-serif);
   font-size: 0.95rem;
   color: var(--primitive-ivory-50);
   margin-top: 0.6rem;

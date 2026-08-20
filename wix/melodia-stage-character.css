@@ -288,7 +288,7 @@
 }
 
 .stage-passport-fallback .pp-title {
-  font-family: var(--font-display, "Instrument Serif", Georgia, serif);
+  font-family: var(--font-display, "Syne", sans-serif);
   font-size: 1.75rem;
   margin: 0.65rem 0 0.15rem;
 }
@@ -361,7 +361,7 @@
 .stage-hair-loop figcaption strong,
 .stage-hair-postcard figcaption strong {
   display: block;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, "Syne", sans-serif);
   font-size: 1.05rem;
   font-weight: 500;
 }

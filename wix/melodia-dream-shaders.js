@@ -18,6 +18,16 @@
       sparkle.className = 'dream-sparkle-layer';
       sparkle.setAttribute('aria-hidden', 'true');
 
+      const planet = document.createElement('div');
+      planet.className = 'dream-planet-layer';
+      planet.setAttribute('aria-hidden', 'true');
+
+      const bubbles = document.createElement('div');
+      bubbles.className = 'figma-bubble-layer';
+      bubbles.setAttribute('aria-hidden', 'true');
+
+      shell.insertBefore(bubbles, shell.firstChild);
+      shell.insertBefore(planet, shell.firstChild);
       shell.insertBefore(sparkle, shell.firstChild);
       shell.insertBefore(aurora, shell.firstChild);
     });
@@ -26,15 +36,71 @@
   function detectPillar(card) {
     const blob = `${card.textContent || ''} ${card.querySelector('img')?.src || ''} ${card.querySelector('img')?.alt || ''}`.toLowerCase();
     if (/sakura|sakuradream|meadowbloom/.test(blob)) return 'sakura';
-    if (/cathedral|celestial|spacecathedral|hoshi|nebula.*nasa/.test(blob)) return 'cathedral';
-    if (/grotto|baroque|biogrotto|moss|castle/.test(blob)) return 'grotto';
-    if (/orrery|cosmic|cosmicorrery|orbit/.test(blob)) return 'orrery';
+    if (/cathedral|celestial|spacecathedral|kaleidonave|kaleido|hoshi|nebula.*nasa/.test(blob)) return 'cathedral';
+    if (/melusina|melusinamorning|melusinasmorning|atelier|stage|character/.test(blob)) return 'melusina';
+    /* Orrery pillar is separate from L_FallenMoon (World 04) — do not collapse */
+    if (/orrery|cosmicorrery|cosmic.?orrery/.test(blob) && !/fallenmoon|fallen.?moon|crater/.test(blob)) {
+      return 'orrery';
+    }
+    if (/fallenmoon|fallen.?moon|crater|\bmoon\b/.test(blob)) return 'fallenmoon';
     return null;
   }
 
   function applyPillarTag(el, pillar) {
     if (!pillar || el.dataset.pillar) return;
     el.dataset.pillar = pillar;
+  }
+
+  const IRI_SHEEN_TARGETS = [
+    '.card',
+    '.premium-card',
+    '.component-card',
+    '.image-card',
+    '.image-plate',
+    '.world-card',
+    '.portal-card',
+    '.path-row',
+    '.guide-card',
+    '.breakdown-card',
+    '.material-card',
+    '.figma-swatch-card',
+    '.figma-card-preview',
+    '.figma-icon-item',
+    '.viz-plate',
+    '.viz-door',
+    '.toolchain-card',
+    '.passport-card',
+    '.loop-stage-card',
+    '.game-ui-frame',
+    '.stage-plate-frame',
+    '.stage-depth-tilt',
+    '.stage-plate-grid > a',
+    '.atelier-viewport-card',
+    '.atelier-control-card',
+    '.atelier-world-card',
+    '.photobooth-container',
+    '.photobooth-viewport',
+    '.zbrush-studio-container',
+    '.zbrush-viewport',
+    '.hero-macro-plate',
+    '.env-card',
+    '.env-thumb',
+    '.env-showcase a',
+    '.hero-actions .button',
+    '.table-row',
+    '.alignment-card',
+  ].join(',');
+
+  function initIriSheenFrames() {
+    document.querySelectorAll(`.melodia-shell ${IRI_SHEEN_TARGETS}`).forEach((frame) => {
+      if (frame.querySelector(':scope > .melodia-iri-sheen')) return;
+
+      frame.classList.add('melodia-iri-frame');
+      const sheen = document.createElement('span');
+      sheen.className = 'melodia-iri-sheen';
+      sheen.setAttribute('aria-hidden', 'true');
+      frame.appendChild(sheen);
+    });
   }
 
   let gachaObserver = null;
@@ -84,6 +150,8 @@
       const pillar = detectPillar(card);
       applyPillarTag(card, pillar);
     });
+
+    initIriSheenFrames();
   }
 
   function initWorldCardRims() {
@@ -93,7 +161,17 @@
       rim.className = 'holo-rim';
       rim.setAttribute('aria-hidden', 'true');
       card.insertBefore(rim, card.firstChild);
-      const pillarMap = { sakura: 'sakura', cathedral: 'cathedral', castle: 'grotto', grotto: 'orrery' };
+      const pillarMap = {
+        sakura: 'sakura',
+        cathedral: 'cathedral',
+        kaleidonave: 'cathedral',
+        melusina: 'melusina',
+        melusinamorning: 'melusina',
+        castle: 'melusina',
+        grotto: 'fallenmoon',
+        fallenmoon: 'fallenmoon',
+        orrery: 'orrery'
+      };
       Object.keys(pillarMap).forEach((cls) => {
         if (card.classList.contains(cls)) applyPillarTag(card, pillarMap[cls]);
       });
@@ -194,6 +272,7 @@
     }
 
     initHoloPlates();
+    initIriSheenFrames();
     initWorldCardRims();
     initScrollFresnel();
     bindHoloPointer(shellEl);
@@ -202,7 +281,10 @@
       let holoTimer = null;
       const mo = new MutationObserver(() => {
         window.clearTimeout(holoTimer);
-        holoTimer = window.setTimeout(() => initHoloPlates(), 150);
+        holoTimer = window.setTimeout(() => {
+          initHoloPlates();
+          initIriSheenFrames();
+        }, 150);
       });
       mo.observe(shellEl, { childList: true, subtree: true });
     }
@@ -212,6 +294,7 @@
     init: initDreamShaders,
     mountDreamLayers,
     initHoloPlates,
+    initIriSheenFrames,
     initWorldCardRims,
     detectPillar,
   };

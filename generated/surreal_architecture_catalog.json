@@ -4,7 +4,7 @@
   "version": "2.131.0",
   "as_of": "2026-08-13",
   "tagline": "Blender 5.2 Geometry Nodes addon — Melodia Studio GN Stack, style genomes, and greybox compose.",
-  "blurb": "Melodia Studio for Blender 5.2 — 165 GN builders across 12 GN Stack categories, 165 RQ_MEL_* review-queue objects, preset coverage 33/165 (20%) with 100 looks. Operators surreal_arch.* / mel_gn.*. Style-genome compose catalog still lists 42 families. Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay hair stays SK_MelusinaHair. Niagara 3D FLIP is not the hair solver. Not a store SKU; portfolio + production tool. As of 2026-08-13.",
+  "blurb": "Melodia Studio for Blender 5.2 — 165 GN builders across 12 GN Stack categories, 165 RQ_MEL_* review-queue objects, preset coverage 33/165 (20%) with 100 looks. Operators surreal_arch.* / mel_gn.*. Style-genome compose catalog still lists 42 families. Flip / water-hair Alembic is cine only; gameplay hair stays SK_MelusinaHair. Not a store SKU; portfolio + production tool. As of 2026-08-13.",
   "store_live": false,
   "engine": "Blender 5.2",
   "paths": {
@@ -474,7 +474,7 @@
         "P2 fingerprint baseline exists for 12 heavy trees",
         "Product name Melodia Studio; operators surreal_arch.* / mel_gn.*; Blender 5.2",
         "LiveLink in-addon is stub; live agent MCP is BlenderMCP :9876",
-        "Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay hair stays SK_MelusinaHair. Niagara 3D FLIP is not the hair solver",
+        "Flip / water-hair Alembic is cine Layer C only; gameplay hair stays SK_MelusinaHair",
         "Do not quote stale 39/49/59 as the builder total (Set Dressing category is 39)"
       ]
     },

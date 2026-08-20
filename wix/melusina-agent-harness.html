@@ -196,13 +196,13 @@
             <td><code>runtime</code></td>
             <td><span class="badge-pass">PASS</span></td>
             <td>2026-08-13</td>
-            <td>Owner-verified real keyboard input through <code>battle UI widget's key-down handler</code>.</td>
+            <td>Owner-verified real keyboard input through <code>BP_BattleUI::OnKeyDown</code>.</td>
           </tr>
           <tr>
             <td><code>save_load</code></td>
             <td><span class="badge-pass">PASS</span></td>
             <td>2026-08-14</td>
-            <td>Canonical <code>save-game object</code> slot across a full process restart.</td>
+            <td>Canonical <code>BP_JRPGSaveGame</code> slot across a full process restart.</td>
           </tr>
           <tr>
             <td><code>repeat_consume</code></td>
@@ -226,7 +226,7 @@
             <td><code>battle_encounter</code></td>
             <td><span class="badge-pass">PASS</span></td>
             <td>2026-08-19</td>
-            <td>Owner closed the stale <code>battle controller's show call</code> infinite-loop claim. Ledger supersedes 08-18 FAIL.</td>
+            <td>Owner closed the stale <code>BP_BattleController::Show</code> infinite-loop claim. Ledger supersedes 08-18 FAIL.</td>
           </tr>
           <tr>
             <td><code>battle_integration_map</code></td>

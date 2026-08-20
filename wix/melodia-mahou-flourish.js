@@ -155,19 +155,18 @@
 
     document.body.appendChild(particle);
 
-    particle.addEventListener('animationend', function () {
+    var cleanedUp = false;
+    function cleanup() {
+      if (cleanedUp) return;
+      cleanedUp = true;
       if (particle.parentNode) {
         particle.parentNode.removeChild(particle);
       }
       activeParticles = Math.max(0, activeParticles - 1);
-    }, { once: true });
+    }
 
-    setTimeout(function () {
-      if (particle.parentNode) {
-        particle.parentNode.removeChild(particle);
-        activeParticles = Math.max(0, activeParticles - 1);
-      }
-    }, 850);
+    particle.addEventListener('animationend', cleanup, { once: true });
+    setTimeout(cleanup, 850);
   }
 
   function initPointerTrails() {
@@ -191,6 +190,19 @@
     triggers.forEach(function (el) {
       if (el.getAttribute('data-mahou-bound')) return;
       el.setAttribute('data-mahou-bound', 'true');
+
+      if (el.tagName !== 'BUTTON' && el.tagName !== 'A') {
+        if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+        if (!el.hasAttribute('role')) el.setAttribute('role', 'button');
+        if (!el.hasAttribute('aria-label')) el.setAttribute('aria-label', 'Trigger henshin flourish burst');
+
+        el.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            el.click();
+          }
+        });
+      }
 
       el.addEventListener('click', function (event) {
         var stageTarget = el.closest('[data-mahou-stage]') || el.closest('.hero');

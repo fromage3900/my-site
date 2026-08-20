@@ -1,12 +1,16 @@
 /* Melodia typography SSOT — atelier / cathedral signal
-   Strictly adheres to project documented font stack:
-   Brand: Syne · Display: Instrument Serif · Body: Bricolage Grotesque · UI: Azeret Mono
+   Strictly adheres to project documented font stack (F_Melodia_UI composite):
+   Cover support: Cinzel · Display/UI: Syne
+   Kawaii/decorative: Twinkle Star · Body: Bricolage Grotesque
+   UI: Syne (web mapping for F_Melodia_UI) · Technical: Azeret Mono
 */
-@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Instrument+Serif:ital@0;1&family=Syne:wght@500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Cinzel:wght@400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=Twinkle+Star&display=swap");
 
 :root {
-  --font-brand: "Syne", "Avenir Next", "Segoe UI", sans-serif;
-  --font-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-brand: "Cinzel", "Syne", "Avenir Next", "Segoe UI", sans-serif;
+  --font-cover: "Cinzel", "Syne", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Syne", "Avenir Next", "Segoe UI", sans-serif;
+  --font-decorative: "Twinkle Star", "Syne", "Avenir Next", sans-serif;
   --font-body: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
   --font-mono: "Azeret Mono", ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
   --font-lede: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
@@ -14,6 +18,19 @@
   --tracking-display: 0.01em;
   --tracking-body: 0.01em;
   --tracking-mono: 0.06em;
+}
+
+/* Kawaii flourish moments — mirrored from UE role (rank letters, ULT names,
+   menu wordmark). Star-dot terminals tie to the ✸ eight-point brand mark.
+   Use sparingly: one flourish per view. */
+.decorative,
+.rank-letter,
+.rank-flourish,
+.henshin-wordmark,
+.game-ui-floating-grade.is-flourish {
+  font-family: var(--font-decorative);
+  letter-spacing: var(--tracking-display);
+  font-weight: 400;
 }
 
 /* Optional denser display for store / kitbash pages */

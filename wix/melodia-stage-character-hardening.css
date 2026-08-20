@@ -1,0 +1,758 @@
+/* Stage Character hardening — Syne UI, void-legible ink, magical-girl sparkles.
+   Loaded last on melodia-stage-character.html. Tokens only. */
+
+html[data-page="stage-character"] {
+  /* F_Melodia_UI web mapping */
+  --font-home-ui: "Syne", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: var(--font-home-ui);
+  --font-lede: var(--font-home-ui);
+
+  /* Force astral-night ink on the void shell even when OS prefers light.
+     premium-system maps --ink → --color-text-primary; without this, plum
+     text lands on night navy and becomes illegible. */
+  --color-surface-base: var(--primitive-astral-900);
+  --color-surface-raised: var(--primitive-astral-700);
+  --color-surface-sunken: var(--primitive-plum-900);
+  --color-surface-inverse: var(--primitive-ivory-100);
+  --color-text-primary: var(--primitive-ivory-50);
+  --color-text-secondary: var(--primitive-slate-300);
+  --color-text-tertiary: var(--primitive-slate-400);
+  --color-text-inverse: var(--primitive-astral-900);
+  --color-text-accent: var(--primitive-gold-300);
+  --ink: var(--night-lavender, var(--color-text-primary));
+  --muted: var(--night-muted, var(--color-text-secondary));
+  --lavender: var(--color-text-primary);
+  --void: var(--color-surface-base);
+  --paper: color-mix(in srgb, var(--primitive-astral-900) 62%, transparent);
+
+  /* Mid/deep iri stops — readable on dark void (not washed pastel). */
+  --melodia-iri-text: linear-gradient(
+    105deg,
+    var(--primitive-gold-300) 0%,
+    var(--primitive-astral-300, var(--iri-cyan)) 26%,
+    var(--primitive-sakura-300, var(--iri-magenta)) 48%,
+    var(--primitive-iris-300, var(--iri-purple)) 70%,
+    var(--primitive-gold-100) 100%
+  );
+
+  /* Sakura pillar motif + dark color-scheme */
+  --motif-accent: var(--melodia-sakura-300, var(--primitive-sakura-300));
+  color-scheme: dark;
+}
+
+/* ——— Fonts: Syne on chrome + display; kill editorial serif leftovers ——— */
+html[data-page="stage-character"] .brand,
+html[data-page="stage-character"] .shell-nav .nav-links a,
+html[data-page="stage-character"] .shell-nav .nav-cta,
+html[data-page="stage-character"] .shell-nav .nav-toggle,
+html[data-page="stage-character"] .button,
+html[data-page="stage-character"] .button-premium,
+html[data-page="stage-character"] .btn,
+html[data-page="stage-character"] h1,
+html[data-page="stage-character"] h2,
+html[data-page="stage-character"] h3,
+html[data-page="stage-character"] .lede,
+html[data-page="stage-character"] .human-lede,
+html[data-page="stage-character"] .passport-title,
+html[data-page="stage-character"] .viz-process-step strong,
+html[data-page="stage-character"] .viz-door-meta strong,
+html[data-page="stage-character"] .stage-hair-loop figcaption strong,
+html[data-page="stage-character"] .stage-hair-postcard figcaption strong {
+  font-family: var(--font-home-ui);
+  font-style: normal;
+}
+
+html[data-page="stage-character"] .lede,
+html[data-page="stage-character"] .human-lede {
+  font-style: normal;
+  font-weight: 500;
+}
+
+html[data-page="stage-character"] h1,
+html[data-page="stage-character"] .hero .hero-inner h1,
+html[data-page="stage-character"] .band .section-head h2 {
+  font-family: var(--font-home-ui) !important;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.02em;
+}
+
+/* ——— Contrast: light ink on void; solid body copy ——— */
+html[data-page="stage-character"] body,
+html[data-page="stage-character"] .melodia-shell {
+  color: var(--color-text-primary);
+}
+
+html[data-page="stage-character"] .hero .lede,
+html[data-page="stage-character"] .band .human-lede,
+html[data-page="stage-character"] .band .section-head > p,
+html[data-page="stage-character"] .band .body-copy,
+html[data-page="stage-character"] .viz-process-step p,
+html[data-page="stage-character"] .passport-row strong,
+html[data-page="stage-character"] .footer {
+  background: none !important;
+  background-clip: border-box !important;
+  -webkit-background-clip: border-box !important;
+  color: var(--color-text-secondary) !important;
+  -webkit-text-fill-color: currentColor !important;
+  filter: none !important;
+  text-shadow: none;
+}
+
+html[data-page="stage-character"] .hero .lede {
+  color: var(--color-text-primary) !important;
+}
+
+html[data-page="stage-character"] .hero h1,
+html[data-page="stage-character"] .band .section-head h2,
+html[data-page="stage-character"] .passport-title {
+  background: var(--melodia-iri-text) !important;
+  background-size: 220% 100% !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: none !important;
+  text-shadow: none;
+  animation: stage-iri-text-drift 9s ease-in-out infinite alternate;
+}
+
+html[data-page="stage-character"] .hero .kicker,
+html[data-page="stage-character"] .hero .magazine-kicker,
+html[data-page="stage-character"] .band .section-head .eyebrow,
+html[data-page="stage-character"] .band .section-head .magazine-kicker {
+  background: var(--melodia-iri-text);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: none;
+  animation: stage-iri-text-drift 7s ease-in-out infinite alternate;
+  opacity: 1;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+/* Fallback solid accent if clip fails to paint */
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  html[data-page="stage-character"] .hero .kicker,
+  html[data-page="stage-character"] .band .section-head .eyebrow {
+    color: var(--color-text-accent) !important;
+    -webkit-text-fill-color: currentColor !important;
+    background: none !important;
+  }
+}
+
+@keyframes stage-iri-text-drift {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+html[data-page="stage-character"] .shell-nav .nav-links a,
+html[data-page="stage-character"] .shell-nav .brand {
+  color: var(--color-text-primary);
+}
+
+html[data-page="stage-character"] .shell-nav .nav-links a:hover,
+html[data-page="stage-character"] .shell-nav .nav-links a.active {
+  color: var(--color-text-accent);
+}
+
+html[data-page="stage-character"] .passport-row span,
+html[data-page="stage-character"] .passport-head,
+html[data-page="stage-character"] .viz-door-meta b,
+html[data-page="stage-character"] .viz-process-step .num {
+  color: var(--color-text-accent);
+}
+
+/* ——— Magical girl sparkles: mount-visible layers + cute hero accents ——— */
+html[data-page="stage-character"] .melodia-shell > .dream-sparkle-layer,
+html[data-page="stage-character"] .melodia-shell > .figma-bubble-layer,
+html[data-page="stage-character"] .melodia-shell > .dream-aurora-layer,
+html[data-page="stage-character"] .melodia-shell > .mg-layer,
+html[data-page="stage-character"] .melodia-shell .mg-crystal,
+html[data-page="stage-character"] .melodia-shell .mg-ribbon-trail {
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: none;
+}
+
+html[data-page="stage-character"] .melodia-shell > .dream-sparkle-layer {
+  z-index: 1;
+  opacity: 0.55 !important;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(circle, var(--iri-pearl, var(--primitive-sakura-100)) 0 1.1px, transparent 1.8px),
+    radial-gradient(circle, var(--iri-gold, var(--primitive-gold-300)) 0 1px, transparent 1.7px),
+    radial-gradient(circle, var(--iri-cyan, var(--primitive-astral-300)) 0 1.2px, transparent 1.9px),
+    radial-gradient(circle, var(--iri-magenta, var(--primitive-sakura-300)) 0 1px, transparent 1.7px);
+  background-size:
+    calc(88px / var(--dream-sparkle-density, 1)) calc(88px / var(--dream-sparkle-density, 1)),
+    calc(142px / var(--dream-sparkle-density, 1)) calc(142px / var(--dream-sparkle-density, 1)),
+    calc(118px / var(--dream-sparkle-density, 1)) calc(118px / var(--dream-sparkle-density, 1)),
+    calc(176px / var(--dream-sparkle-density, 1)) calc(176px / var(--dream-sparkle-density, 1));
+  animation: stage-sparkle-twinkle 6s ease-in-out infinite alternate !important;
+}
+
+html[data-page="stage-character"] .melodia-shell > .figma-bubble-layer {
+  z-index: 1;
+  opacity: 0.36;
+  mix-blend-mode: screen;
+}
+
+html[data-page="stage-character"] .melodia-shell > .dream-aurora-layer {
+  z-index: 0;
+  opacity: 0.38;
+}
+
+html[data-page="stage-character"] .melodia-shell .mg-crystal {
+  opacity: 0.72;
+  z-index: 6;
+}
+
+html[data-page="stage-character"] .melodia-shell .mg-ribbon-trail {
+  opacity: 0.7;
+  z-index: 5;
+}
+
+/* Hero-local cute stars (above opaque hero chrome; pink/cyan/gold) */
+html[data-page="stage-character"] .hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+html[data-page="stage-character"] .hero > .hero-star-accents {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+html[data-page="stage-character"] .hero > .hero-star-accents::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.72;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(circle, var(--iri-pearl, var(--primitive-sakura-100)) 0 1.1px, transparent 1.8px),
+    radial-gradient(circle, var(--iri-gold, var(--primitive-gold-300)) 0 1px, transparent 1.7px),
+    radial-gradient(circle, var(--iri-cyan, var(--primitive-astral-300)) 0 1.2px, transparent 1.9px),
+    radial-gradient(circle, var(--melodia-sakura-300, var(--primitive-sakura-300)) 0 1px, transparent 1.7px);
+  background-size: 92px 92px, 148px 148px, 118px 118px, 176px 176px;
+  background-position: 12% 18%, 68% 22%, 42% 64%, 78% 72%;
+  animation: stage-sparkle-twinkle 7s ease-in-out infinite alternate;
+}
+
+html[data-page="stage-character"] .hero > .hero-star-accents::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.42;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(circle at 18% 28%, transparent 0 7px, color-mix(in srgb, var(--iri-cyan, var(--primitive-astral-300)) 70%, transparent) 8px 9px, transparent 10px),
+    radial-gradient(circle at 82% 36%, transparent 0 5px, color-mix(in srgb, var(--iri-gold, var(--primitive-gold-300)) 75%, transparent) 6px 7px, transparent 8px),
+    radial-gradient(circle at 64% 78%, transparent 0 10px, color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-300)) 65%, transparent) 11px 12px, transparent 13px),
+    radial-gradient(circle at 28% 72%, var(--iri-pearl, var(--primitive-sakura-100)) 0 1.4px, transparent 2.2px),
+    radial-gradient(circle at 74% 18%, var(--iri-cyan, var(--primitive-astral-300)) 0 1.2px, transparent 2px),
+    radial-gradient(circle at 48% 14%, var(--iri-gold, var(--primitive-gold-100)) 0 1px, transparent 1.8px);
+  animation: stage-sparkle-twinkle 5.2s ease-in-out infinite alternate-reverse;
+}
+
+html[data-page="stage-character"] .hero-star-diamond {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0.88;
+  animation: stage-diamond-tick 6.5s ease-in-out infinite;
+  box-shadow:
+    0 0 14px color-mix(in srgb, var(--iri-cyan, var(--primitive-astral-300)) 55%, transparent),
+    0 0 5px color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-300)) 40%, transparent);
+}
+
+html[data-page="stage-character"] .hero-star-diamond.d1 {
+  top: 16%;
+  left: 6%;
+  background: linear-gradient(135deg, var(--iri-cyan, var(--primitive-astral-300)), var(--iri-magenta, var(--primitive-sakura-300)));
+}
+html[data-page="stage-character"] .hero-star-diamond.d2 {
+  top: 22%;
+  right: 8%;
+  width: 9px;
+  height: 9px;
+  background: linear-gradient(135deg, var(--iri-gold, var(--primitive-gold-100)), var(--iri-cyan, var(--primitive-astral-300)));
+  animation-delay: 1.2s;
+}
+html[data-page="stage-character"] .hero-star-diamond.d3 {
+  top: 58%;
+  left: 4%;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, var(--iri-magenta, var(--primitive-sakura-300)), var(--iri-gold, var(--primitive-gold-300)));
+  animation-delay: 2.4s;
+}
+html[data-page="stage-character"] .hero-star-diamond.d4 {
+  bottom: 22%;
+  right: 12%;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(135deg, var(--iri-cyan, var(--primitive-astral-300)), var(--iri-gold, var(--primitive-gold-100)));
+  animation-delay: 3.6s;
+}
+html[data-page="stage-character"] .hero-star-diamond.d5 {
+  top: 38%;
+  left: 42%;
+  width: 7px;
+  height: 7px;
+  opacity: 0.48;
+  background: linear-gradient(135deg, var(--iri-gold, var(--primitive-gold-300)), var(--iri-magenta, var(--primitive-sakura-300)));
+  animation-delay: 1.8s;
+}
+html[data-page="stage-character"] .hero-star-diamond.d6 {
+  bottom: 28%;
+  left: 18%;
+  width: 9px;
+  height: 9px;
+  background: linear-gradient(135deg, var(--iri-magenta, var(--primitive-sakura-300)), var(--iri-cyan, var(--primitive-astral-300)));
+  animation-delay: 4.8s;
+}
+
+@keyframes stage-sparkle-twinkle {
+  0%, 100% { opacity: 0.38; transform: translate3d(0, 0, 0); }
+  50% { opacity: 0.62; transform: translate3d(0, -3px, 0); }
+}
+
+@keyframes stage-diamond-tick {
+  0%, 100% { opacity: 0.55; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.88; transform: scale(1.12) rotate(8deg); }
+}
+
+@media (max-width: 833px) {
+  html[data-page="stage-character"] .hero-star-diamond.d5,
+  html[data-page="stage-character"] .hero-star-diamond.d6 {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-page="stage-character"] .hero h1,
+  html[data-page="stage-character"] .band .section-head h2,
+  html[data-page="stage-character"] .passport-title,
+  html[data-page="stage-character"] .hero .kicker,
+  html[data-page="stage-character"] .band .section-head .eyebrow,
+  html[data-page="stage-character"] .hero > .hero-star-accents::before,
+  html[data-page="stage-character"] .hero > .hero-star-accents::after,
+  html[data-page="stage-character"] .hero-star-diamond,
+  html[data-page="stage-character"] .melodia-shell > .dream-sparkle-layer {
+    animation: none !important;
+  }
+
+  html[data-page="stage-character"] .melodia-shell > .dream-sparkle-layer {
+    opacity: 0.28;
+  }
+
+  html[data-page="stage-character"] .hero > .hero-star-accents::before {
+    opacity: 0.4;
+  }
+
+  html[data-page="stage-character"] .hero-star-diamond {
+    opacity: 0.58;
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: more), (prefers-contrast: high) {
+  html[data-page="stage-character"] .hero h1,
+  html[data-page="stage-character"] .band .section-head h2,
+  html[data-page="stage-character"] .passport-title,
+  html[data-page="stage-character"] .hero .kicker,
+  html[data-page="stage-character"] .band .section-head .eyebrow,
+  html[data-page="stage-character"] .band .section-head .magazine-kicker {
+    background: none !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+    color: var(--color-text-primary) !important;
+    -webkit-text-fill-color: currentColor !important;
+    animation: none !important;
+  }
+
+  html[data-page="stage-character"] .hero .kicker,
+  html[data-page="stage-character"] .band .section-head .eyebrow,
+  html[data-page="stage-character"] .band .section-head .magazine-kicker {
+    color: var(--color-text-accent) !important;
+  }
+
+  html[data-page="stage-character"] .melodia-shell > .dream-sparkle-layer,
+  html[data-page="stage-character"] .hero > .hero-star-accents::before,
+  html[data-page="stage-character"] .hero > .hero-star-accents::after {
+    opacity: 0.14;
+    mix-blend-mode: normal;
+  }
+
+  html[data-page="stage-character"] .hero-star-diamond {
+    box-shadow: none;
+    opacity: 0.45;
+  }
+
+  html[data-page="stage-character"] .viz-door::before,
+  html[data-page="stage-character"] .viz-door .game-ui-filigree,
+  html[data-page="stage-character"] .passport-card .game-ui-filigree {
+    opacity: 0.22;
+    mix-blend-mode: normal;
+  }
+
+  html[data-page="stage-character"] .footer {
+    background: var(--color-surface-sunken, var(--primitive-astral-900)) !important;
+    color: var(--color-text-primary) !important;
+  }
+}
+
+/* ——— Void / astral shell (kill cream ivory lookbook wash) ——— */
+html[data-page="stage-character"],
+html[data-page="stage-character"] body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  background: var(--color-surface-base, var(--primitive-astral-900));
+}
+
+html[data-page="stage-character"] .melodia-shell {
+  background:
+    radial-gradient(
+      ellipse 70% 55% at 12% 8%,
+      color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-300)) 22%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 55% 48% at 88% 12%,
+      color-mix(in srgb, var(--iri-cyan, var(--primitive-astral-300)) 18%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 50% 100%,
+      color-mix(in srgb, var(--iri-gold, var(--primitive-gold-300)) 10%, transparent),
+      transparent 50%
+    ),
+    linear-gradient(
+      180deg,
+      var(--primitive-plum-900) 0%,
+      var(--primitive-astral-900) 48%,
+      var(--primitive-astral-900) 100%
+    ) !important;
+}
+
+html[data-page="stage-character"] .shell-nav {
+  box-sizing: border-box;
+  max-width: calc(100vw - var(--melodia-space-16, 16px));
+  background: color-mix(in srgb, var(--primitive-astral-900) 82%, transparent) !important;
+  border-color: color-mix(
+    in srgb,
+    var(--iri-magenta, var(--primitive-sakura-300)) 28%,
+    var(--iri-cyan, var(--primitive-astral-300)) 18%
+  ) !important;
+}
+
+html[data-page="stage-character"] .hero {
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 70% 20%,
+      color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-300)) 16%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 50% 45% at 15% 70%,
+      color-mix(in srgb, var(--iri-cyan) 12%, transparent),
+      transparent 50%
+    ),
+    linear-gradient(
+      165deg,
+      var(--primitive-plum-900) 0%,
+      var(--primitive-astral-900) 55%,
+      color-mix(in srgb, var(--primitive-sakura-500) 12%, var(--primitive-astral-900)) 100%
+    ) !important;
+}
+
+/* Figma DividerScroll T_Melodia_128_16464 */
+html[data-page="stage-character"] .game-ui-filigree-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 2.75rem;
+  margin: 0.55rem auto 1.1rem;
+  max-width: min(36rem, 92vw);
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_128_16464.png") center / auto 100% no-repeat,
+    linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--iri-cyan) 14%, transparent),
+      transparent
+    );
+}
+
+html[data-page="stage-character"] .viz-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--melodia-space-16, 14px);
+  margin: 0 auto 1.25rem;
+  max-width: min(42rem, 90vw);
+  min-height: 2.5rem;
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_128_16464.png") center / auto 100% no-repeat;
+}
+
+html[data-page="stage-character"] .viz-rule .glyph {
+  font-family: var(--font-home-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: color-mix(
+    in srgb,
+    var(--motif-accent, var(--primitive-sakura-300)) 80%,
+    var(--iri-pearl, var(--primitive-sakura-100))
+  );
+  background: color-mix(in srgb, var(--primitive-astral-900) 78%, transparent);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--melodia-radius-pill, 999px);
+}
+
+/* Bands — aquatic void plates */
+html[data-page="stage-character"] .band.paper,
+html[data-page="stage-character"] .band.astral,
+html[data-page="stage-character"] .fashion-band {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--primitive-astral-900) 94%, transparent),
+      color-mix(in srgb, var(--primitive-plum-900) 96%, transparent)
+    ),
+    radial-gradient(
+      circle at 18% 26%,
+      color-mix(in srgb, var(--iri-cyan) 8%, transparent),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 82% 72%,
+      color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-300)) 8%, transparent),
+      transparent 42%
+    ) !important;
+  color: var(--color-text-primary);
+}
+
+html[data-page="stage-character"] .fashion-band::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-300)) 55%, transparent) 22%,
+    color-mix(in srgb, var(--iri-cyan) 45%, transparent) 50%,
+    color-mix(in srgb, var(--iri-gold) 40%, transparent) 78%,
+    transparent
+  ) !important;
+  opacity: 0.72;
+  height: 2px;
+}
+
+/* Viz doors — SoftMG parchment + CornerBaroque T_Melodia_128_16249 + iri sheen */
+html[data-page="stage-character"] .viz-door {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid color-mix(
+    in srgb,
+    var(--iri-magenta, var(--primitive-sakura-300)) 32%,
+    var(--iri-cyan) 12%
+  ) !important;
+  background: var(--primitive-astral-900);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--iri-gold) 12%, transparent),
+    0 18px 40px color-mix(in srgb, var(--primitive-astral-900) 55%, transparent);
+}
+
+html[data-page="stage-character"] .viz-door::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Parchment.png") center / cover no-repeat;
+  mix-blend-mode: soft-light;
+  opacity: 0.14;
+  border: 0 !important;
+}
+
+html[data-page="stage-character"] .viz-door .game-ui-filigree {
+  z-index: 4;
+  width: 3.25rem;
+  height: 3.25rem;
+  opacity: 0.78;
+}
+
+html[data-page="stage-character"] .viz-door .viz-door-meta {
+  z-index: 5;
+  background: linear-gradient(
+    transparent,
+    color-mix(in srgb, var(--primitive-astral-900) 92%, transparent)
+  );
+}
+
+html[data-page="stage-character"] .viz-door .stage-iri-sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    linear-gradient(
+      110deg,
+      transparent 28%,
+      var(--iri-cyan) 43%,
+      var(--iri-gold) 50%,
+      var(--iri-purple) 57%,
+      transparent 72%
+    ),
+    url("../generated/assets/melodia-game-ui/T_Melodia_SheenSweep.png") center / auto 180% no-repeat;
+  background-size: 280% 100%, auto 180%;
+  background-position: 140% 0, 140% 50%;
+  mix-blend-mode: screen;
+  transition:
+    opacity 0.24s ease,
+    background-position 0.72s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html[data-page="stage-character"] .viz-door:hover .stage-iri-sheen,
+html[data-page="stage-character"] .viz-door:focus-visible .stage-iri-sheen {
+  background-position: -140% 0, -140% 50%;
+  opacity: 0.32;
+}
+
+/* Passport cards — SoftMG parchment + CornerBaroque */
+html[data-page="stage-character"] .passport-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Parchment.png") center / cover no-repeat,
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--primitive-astral-900) 92%, var(--iri-cyan)),
+      color-mix(in srgb, var(--primitive-plum-900) 94%, var(--iri-magenta, var(--primitive-sakura-300)))
+    ) !important;
+  border: 1px solid color-mix(
+    in srgb,
+    var(--iri-magenta, var(--primitive-sakura-300)) 28%,
+    var(--iri-cyan) 14%
+  ) !important;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--iri-gold) 14%, transparent),
+    0 18px 40px color-mix(in srgb, var(--primitive-astral-900) 45%, transparent),
+    inset 0 0 40px color-mix(in srgb, var(--iri-cyan) 6%, transparent) !important;
+  color: var(--color-text-primary);
+}
+
+html[data-page="stage-character"] .passport-card.light {
+  background:
+    url("../generated/assets/melodia-game-ui/T_Melodia_SoftMG_Parchment.png") center / cover no-repeat,
+    linear-gradient(
+      155deg,
+      color-mix(in srgb, var(--primitive-plum-900) 88%, var(--iri-magenta, var(--primitive-sakura-300))),
+      color-mix(in srgb, var(--primitive-astral-900) 90%, var(--iri-cyan))
+    ) !important;
+}
+
+html[data-page="stage-character"] .passport-card .game-ui-filigree {
+  z-index: 2;
+  width: 2.75rem;
+  height: 2.75rem;
+  opacity: 0.7;
+}
+
+html[data-page="stage-character"] .passport-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+html[data-page="stage-character"] .passport-rule {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-300)) 45%, transparent),
+    color-mix(in srgb, var(--iri-cyan) 35%, transparent),
+    transparent
+  ) !important;
+  height: 1px;
+  border: 0;
+}
+
+html[data-page="stage-character"] .viz-process-step {
+  background: color-mix(in srgb, var(--primitive-astral-900) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-300)) 22%, transparent);
+  box-shadow: inset 0 0 24px color-mix(in srgb, var(--iri-cyan) 5%, transparent);
+}
+
+/* Footer — sakura → cyan aquatic iridescence */
+html[data-page="stage-character"] .footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-top: 1px solid color-mix(
+    in srgb,
+    var(--iri-magenta, var(--primitive-sakura-300)) 42%,
+    color-mix(in srgb, var(--iri-cyan) 28%, transparent)
+  );
+  background:
+    radial-gradient(
+      ellipse 70% 120% at 12% 0%,
+      color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-300)) 26%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 55% 100% at 88% 100%,
+      color-mix(in srgb, var(--iri-cyan) 18%, transparent),
+      transparent 55%
+    ),
+    linear-gradient(
+      118deg,
+      color-mix(in srgb, var(--primitive-sakura-500) 34%, var(--primitive-astral-900)) 0%,
+      color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-300)) 22%, var(--primitive-plum-900)) 32%,
+      color-mix(in srgb, var(--iri-cyan) 16%, var(--primitive-astral-900)) 62%,
+      color-mix(in srgb, var(--iri-gold) 12%, var(--primitive-plum-900)) 84%,
+      color-mix(in srgb, var(--iri-pearl, var(--primitive-sakura-100)) 8%, var(--primitive-astral-900)) 100%
+    ),
+    var(--color-surface-sunken, var(--primitive-astral-900)) !important;
+}
+
+html[data-page="stage-character"] .footer .inner {
+  position: relative;
+  z-index: 1;
+}
+
+html[data-page="stage-character"] .footer a:focus-visible,
+html[data-page="stage-character"] .viz-door:focus-visible,
+html[data-page="stage-character"] .shell-nav a:focus-visible {
+  outline: 2px solid var(--melodia-focus-ring, var(--iri-cyan));
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-page="stage-character"] .viz-door .stage-iri-sheen,
+  html[data-page="stage-character"] .game-ui-filigree-divider {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 833px) {
+  html[data-page="stage-character"] .viz-door .game-ui-filigree {
+    width: 2.5rem;
+    height: 2.5rem;
+    opacity: 0.55;
+  }
+}

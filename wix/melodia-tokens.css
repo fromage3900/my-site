@@ -210,19 +210,22 @@
   --radius-pill: 999px;
 
   /* ===== TYPOGRAPHY (from tokens.json global.fontFamilies) ===== */
-  --font-display:       "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
-  --font-display-fallback: Georgia, serif;
-  --font-cover:         "Syne", "Avenir Next", "Segoe UI", sans-serif;
+  /* F_Melodia_UI web mapping: Syne is the display/UI face site-wide. */
+  --font-display:       "Syne", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display-fallback: "Avenir Next", "Segoe UI", sans-serif;
+  --font-cover:         "Cinzel", "Syne", "Avenir Next", "Segoe UI", sans-serif;
+  --font-decorative:    "Twinkle Star", "Syne", "Avenir Next", sans-serif;
   --font-body:          "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
   --font-body-fallback: "Avenir Next", "Segoe UI", sans-serif;
   --font-mono:          "Azeret Mono", ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
-  --font-brand:         "Syne", "Avenir Next", "Segoe UI", sans-serif;
+  --font-brand:         "Cinzel", "Syne", "Avenir Next", "Segoe UI", sans-serif;
 
   /* Type scale (matches tokens.json global.type) */
   --text-display-xl:    clamp(48px, 8vw, 72px) / 1.05 var(--font-display);
   --text-display-lg:    clamp(40px, 6vw, 56px) / 1.07 var(--font-display);
   --text-title-project: clamp(32px, 5vw, 40px) / 1.1 var(--font-display);
   --text-header-section: clamp(24px, 4vw, 28px) / 1.2 var(--font-display);
+  --text-flourish:      clamp(22px, 4vw, 30px) / 1.2 var(--font-decorative);
   --text-header-sub:    clamp(18px, 3vw, 20px) / 1.4 var(--font-body);
   --text-body-lg:       clamp(16px, 2.5vw, 18px) / 1.67 var(--font-body);
   --text-body:          clamp(14px, 2vw, 16px) / 1.625 var(--font-body);
@@ -273,16 +276,21 @@
   }
 
   [data-pillar="cathedral"],
+  [data-pillar="kaleidonave"],
   [data-pillar="cosmic"],
   .accent-cosmic {
     --motif-accent: rgba(102, 217, 255, 0.55);
   }
 
+  [data-pillar="melusina"],
+  [data-pillar="melusinamorning"],
+  [data-pillar="melusinasmorning"],
   [data-pillar="grotto"],
   .accent-gold {
     --motif-accent: rgba(201, 168, 106, 0.58);
   }
 
+  [data-pillar="fallenmoon"],
   [data-pillar="orrery"],
   .accent-iris {
     --motif-accent: rgba(255, 110, 180, 0.58);

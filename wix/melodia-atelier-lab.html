@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" data-page="melodia-atelier-lab">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<title>Lookbook Atelier &amp; Substrate Shader Lab | Brennan Shepherd</title>
+<meta name="description" content="Interactive Substrate Toon Shader Laboratory, 4-World Atmosphere Stage, PCG Procedural Scattering Engine, and TouchDesigner Resonance Synthesizer by Brennan Shepherd." />
+<meta property="og:title" content="Lookbook Atelier &amp; Substrate Shader Lab | Brennan Shepherd" />
+<meta property="og:description" content="Interactive real-time stylized shader studio, procedural PCG scattering heatmap, and fashion-fantasy world lookbook." />
+<meta property="og:image" content="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/melodia-atelier-lab.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="melodia-tokens.css">
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-game-ui.css">
+<link rel="stylesheet" href="melodia-magical-girl.css">
+<link rel="stylesheet" href="melodia-components.css">
+<link rel="stylesheet" href="melodia-atelier-lab.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="melodia-shell fashion-mode" data-mg="full" data-hero="cosmic" data-visual="lookbook" data-effects="starfield,orrery,planetarium,holo,instruments,magical">
+  <header class="shell-nav constellation-nav" aria-label="Melodia navigation">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="index.html">Atelier</a>
+      <a href="melodia-atelier-lab.html" class="active">Shader &amp; PCG Lab</a>
+      <a href="melusina-agent-harness.html">AI Research (MATH)</a>
+      <a href="application-hub.html">4 Worlds</a>
+      <a href="shader-breakdowns.html">Shaders</a>
+      <a href="recruiter-one-sheet.html">Dossier</a>
+      <a href="resume.html">Resume</a>
+    </nav>
+    <a class="nav-cta button-premium" href="recruiter-one-sheet.html">Recruiter One-Sheet</a>
+  </header>
+
+  <main id="main" class="atelier-lab-shell">
+    <div class="atelier-lab-container">
+      
+      <!-- Studio Header -->
+      <header class="atelier-lab-header">
+        <span class="atelier-lab-kicker">✦ Unreal Engine 5.8 C++ · Substrate Toon · PCG Scattering ✦</span>
+        <h1 class="atelier-lab-title">Lookbook Atelier &amp; Technical Art Studio</h1>
+        <p class="atelier-lab-subtitle">
+          An interactive laboratory built to explore real-time Substrate Toon shaders, dynamic 4-world atmospheric particle simulations, procedural PCG scattering heatmaps, and TouchDesigner audio-reactive resonance.
+        </p>
+      </header>
+
+      <!-- Navigation Tabs -->
+      <nav class="atelier-tabs-nav" role="tablist" aria-label="Atelier Studio Modules">
+        <button type="button" class="atelier-tab-btn active" data-tab="shader-lab" role="tab" aria-selected="true" aria-controls="panel-shader-lab">
+          <span>✧</span> Substrate Toon Lab
+        </button>
+        <button type="button" class="atelier-tab-btn" data-tab="world-stage" role="tab" aria-selected="false" aria-controls="panel-world-stage">
+          <span>✦</span> 4-World Atmospheres
+        </button>
+        <button type="button" class="atelier-tab-btn" data-tab="pcg-engine" role="tab" aria-selected="false" aria-controls="panel-pcg-engine">
+          <span>⬡</span> PCG Scatter Engine
+        </button>
+        <button type="button" class="atelier-tab-btn" data-tab="audio-resonance" role="tab" aria-selected="false" aria-controls="panel-audio-resonance">
+          <span>♪</span> Resonance Chamber
+        </button>
+        <button type="button" class="atelier-tab-btn" data-tab="turntable-studio" role="tab" aria-selected="false" aria-controls="panel-turntable-studio">
+          <span>◈</span> Asset Turntable
+        </button>
+      </nav>
+
+      <!-- TAB 1: SUBSTRATE TOON SHADER LABORATORY -->
+      <section id="panel-shader-lab" class="atelier-tab-panel active" role="tabpanel" aria-label="Substrate Toon Shader Lab">
+        <div class="atelier-stage-grid">
+          <!-- Canvas Viewport -->
+          <div class="atelier-viewport-card">
+            <div class="atelier-canvas-wrapper">
+              <canvas id="canvas-shader-lab" class="atelier-main-canvas"></canvas>
+              <div class="atelier-overlay-hud">
+                <span class="atelier-hud-badge">M_Master_Toon_Universal · Live Substrate Simulation</span>
+                <span class="atelier-hud-badge" id="telemetry-frametime">0.38 ms</span>
+              </div>
+            </div>
+            <div class="atelier-telemetry-grid">
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">Shader Complexity</span>
+                <span class="atelier-telemetry-value" id="telemetry-drawcalls">1 MI Pass</span>
+              </div>
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">Geometric Budget</span>
+                <span class="atelier-telemetry-value" id="telemetry-triangles">32.4k Tris</span>
+              </div>
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">Pipeline Standard</span>
+                <span class="atelier-telemetry-value">Substrate BSDF</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls Panel -->
+          <div class="atelier-control-card">
+            <h2 class="atelier-section-subtitle">Substrate Toon Modulator</h2>
+            <p class="atelier-section-desc">
+              Adjust real-time multi-band cel ramps, thin-film iridescence, dual-ring anisotropic specular highlights, and SDF outline profiles.
+            </p>
+
+            <!-- Presets -->
+            <div class="atelier-chip-group" role="group" aria-label="Material Presets">
+              <button type="button" class="atelier-preset-chip active" data-preset="nikki-silk">Nikki Silk &amp; Pearl</button>
+              <button type="button" class="atelier-preset-chip" data-preset="sakura-lacquer">Sakura Lacquer</button>
+              <button type="button" class="atelier-preset-chip" data-preset="celestial-astral">Celestial Astral</button>
+              <button type="button" class="atelier-preset-chip" data-preset="melusina-caustic">Melusina Caustic</button>
+              <button type="button" class="atelier-preset-chip" data-preset="gothic-obsidian">Gothic Obsidian</button>
+            </div>
+
+            <!-- Sliders -->
+            <div class="atelier-slider-group">
+              <div class="atelier-slider-header">
+                <span class="atelier-slider-label">Toon Step Hardness</span>
+                <span class="atelier-slider-val" id="val-toon-hardness">0.7</span>
+              </div>
+              <input type="range" id="slider-toon-hardness" class="atelier-range-input" min="0.1" max="1.0" step="0.05" value="0.65" />
+            </div>
+
+            <div class="atelier-slider-group">
+              <div class="atelier-slider-header">
+                <span class="atelier-slider-label">Thin-Film Iridescence</span>
+                <span class="atelier-slider-val" id="val-iridescence">0.9</span>
+              </div>
+              <input type="range" id="slider-iridescence" class="atelier-range-input" min="0.0" max="1.0" step="0.05" value="0.95" />
+            </div>
+
+            <div class="atelier-slider-group">
+              <div class="atelier-slider-header">
+                <span class="atelier-slider-label">Anisotropic Specular Rings</span>
+                <span class="atelier-slider-val" id="val-specular">0.9</span>
+              </div>
+              <input type="range" id="slider-specular" class="atelier-range-input" min="0.0" max="1.0" step="0.05" value="0.85" />
+            </div>
+
+            <div class="atelier-slider-group">
+              <div class="atelier-slider-header">
+                <span class="atelier-slider-label">Anime Rim Light Intensity</span>
+                <span class="atelier-slider-val" id="val-rim">0.9</span>
+              </div>
+              <input type="range" id="slider-rim" class="atelier-range-input" min="0.0" max="1.0" step="0.05" value="0.9" />
+            </div>
+
+            <div class="atelier-slider-group">
+              <div class="atelier-slider-header">
+                <span class="atelier-slider-label">SDF Outline Thickness</span>
+                <span class="atelier-slider-val" id="val-outline">2.0 px</span>
+              </div>
+              <input type="range" id="slider-outline" class="atelier-range-input" min="0.0" max="5.0" step="0.2" value="2.0" />
+            </div>
+
+            <div class="atelier-slider-group">
+              <div class="atelier-slider-header">
+                <span class="atelier-slider-label">Water Caustic Frequency</span>
+                <span class="atelier-slider-val" id="val-caustic">1.5x</span>
+              </div>
+              <input type="range" id="slider-caustic" class="atelier-range-input" min="0.0" max="5.0" step="0.2" value="1.5" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: 4-WORLD ATMOSPHERE STAGE -->
+      <section id="panel-world-stage" class="atelier-tab-panel" role="tabpanel" aria-label="4-World Atmospheres">
+        <div class="atelier-stage-grid">
+          <!-- Canvas Viewport -->
+          <div class="atelier-viewport-card">
+            <div class="atelier-canvas-wrapper">
+              <canvas id="canvas-world-stage" class="atelier-main-canvas"></canvas>
+              <div class="atelier-overlay-hud">
+                <span class="atelier-hud-badge">Interactive Atmosphere Physics · Mouse Deflection</span>
+                <span class="atelier-hud-badge">60 FPS Particle Flow</span>
+              </div>
+            </div>
+            <div class="atelier-telemetry-grid">
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">Active Atmosphere</span>
+                <span class="atelier-telemetry-value">Dynamic LUT</span>
+              </div>
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">Lighting System</span>
+                <span class="atelier-telemetry-value">Lumen + Toon Ramp</span>
+              </div>
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">VFX Particles</span>
+                <span class="atelier-telemetry-value">90 Emitters</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls & World Switcher -->
+          <div class="atelier-control-card">
+            <h2 class="atelier-section-subtitle">Canonical Worlds Atmosphere</h2>
+            <p class="atelier-section-desc" id="world-desc-text">
+              Golden sunrise, warm lacquer architecture, and swirling cherry blossom petal vortex.
+            </p>
+
+            <div class="atelier-worlds-strip" role="group" aria-label="Canonical Worlds">
+              <div class="atelier-world-card" data-world="melusina">
+                <img src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="Melusina Morning" loading="lazy" />
+                <div class="atelier-world-card-overlay">
+                  <span class="atelier-world-card-tag">World 01</span>
+                  <h3 class="atelier-world-card-name">Melusina Morning</h3>
+                </div>
+              </div>
+              <div class="atelier-world-card active" data-world="sakura">
+                <img src="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" alt="Sakura Dream" loading="lazy" />
+                <div class="atelier-world-card-overlay">
+                  <span class="atelier-world-card-tag">World 02</span>
+                  <h3 class="atelier-world-card-name">Sakura Dream</h3>
+                </div>
+              </div>
+              <div class="atelier-world-card" data-world="space-cathedral">
+                <img src="../generated/assets/nightshift/WP_SpaceCathedral_terrain.png" alt="Kaleido Nave" loading="lazy" />
+                <div class="atelier-world-card-overlay">
+                  <span class="atelier-world-card-tag">World 03</span>
+                  <h3 class="atelier-world-card-name">Kaleido Nave</h3>
+                </div>
+              </div>
+              <div class="atelier-world-card" data-world="fallen-moon">
+                <img src="../generated/assets/unreal/level_fallen_moon.png" alt="Fallen Moon" loading="lazy" />
+                <div class="atelier-world-card-overlay">
+                  <span class="atelier-world-card-tag">World 04</span>
+                  <h3 class="atelier-world-card-name">Fallen Moon</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: PCG PROCEDURAL SCATTERING ENGINE -->
+      <section id="panel-pcg-engine" class="atelier-tab-panel" role="tabpanel" aria-label="PCG Procedural Scattering Engine">
+        <div class="atelier-stage-grid">
+          <!-- Canvas Viewport -->
+          <div class="atelier-viewport-card">
+            <div class="atelier-canvas-wrapper">
+              <canvas id="canvas-pcg-stage" class="atelier-main-canvas"></canvas>
+              <div class="atelier-overlay-hud">
+                <span class="atelier-hud-badge">PCG Graph Ecosystem · Topographic Scatter Simulation</span>
+                <span class="atelier-hud-badge" id="pcg-instance-count">450 Instanced Points</span>
+              </div>
+            </div>
+            <div class="atelier-telemetry-grid">
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">Scatter Density</span>
+                <span class="atelier-telemetry-value" id="val-pcg-density">450/m²</span>
+              </div>
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">Slope Threshold</span>
+                <span class="atelier-telemetry-value" id="val-pcg-slope">35°</span>
+              </div>
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">Compute Cost</span>
+                <span class="atelier-telemetry-value">&lt; 0.45 ms</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls Panel -->
+          <div class="atelier-control-card">
+            <h2 class="atelier-section-subtitle">Procedural Scatter Controller</h2>
+            <p class="atelier-section-desc">
+              Simulate Brennan's 60+ PCG graphs in Unreal Engine 5.8. Filter by slope, elevation, and biome layer.
+            </p>
+
+            <!-- Layer Selection -->
+            <div class="atelier-pcg-paint-bar" role="group" aria-label="PCG Scatter Layer">
+              <button type="button" class="atelier-toggle-btn active" data-layer="petals">Petal Carpet</button>
+              <button type="button" class="atelier-toggle-btn" data-layer="lanterns">Stone Lanterns</button>
+              <button type="button" class="atelier-toggle-btn" data-layer="crystals">Cathedral Crystals</button>
+              <button type="button" class="atelier-toggle-btn" data-layer="rosettes">Ivory Rosettes</button>
+            </div>
+
+            <!-- Sliders -->
+            <div class="atelier-slider-group">
+              <div class="atelier-slider-header">
+                <span class="atelier-slider-label">Instance Density</span>
+                <span class="atelier-slider-val">450 / m²</span>
+              </div>
+              <input type="range" id="slider-pcg-density" class="atelier-range-input" min="50" max="1000" step="25" value="450" />
+            </div>
+
+            <div class="atelier-slider-group">
+              <div class="atelier-slider-header">
+                <span class="atelier-slider-label">Max Slope Angle</span>
+                <span class="atelier-slider-val">35°</span>
+              </div>
+              <input type="range" id="slider-pcg-slope" class="atelier-range-input" min="10" max="60" step="5" value="35" />
+            </div>
+
+            <button type="button" class="button button-premium" id="btn-pcg-random-seed" style="margin-top: 1rem; width: 100%;">
+              Re-roll Procedural Seed
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: TOUCHDESIGNER RESONANCE CHAMBER -->
+      <section id="panel-audio-resonance" class="atelier-tab-panel" role="tabpanel" aria-label="Resonance Chamber">
+        <div class="atelier-stage-grid">
+          <!-- Canvas Viewport -->
+          <div class="atelier-viewport-card">
+            <div class="atelier-canvas-wrapper">
+              <canvas id="canvas-audio-stage" class="atelier-main-canvas"></canvas>
+              <div class="atelier-overlay-hud">
+                <span class="atelier-hud-badge">TouchDesigner 4-Band RMS Visualizer</span>
+                <span class="atelier-hud-badge">Harmonic Astrolabe</span>
+              </div>
+            </div>
+            <div class="atelier-telemetry-grid">
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">Sub-Bass Kick</span>
+                <span class="atelier-telemetry-value">55 Hz</span>
+              </div>
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">Harmonic Mid</span>
+                <span class="atelier-telemetry-value">440 Hz</span>
+              </div>
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">Shimmer Treble</span>
+                <span class="atelier-telemetry-value">3.2 kHz</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls & Synth Pads -->
+          <div class="atelier-control-card">
+            <h2 class="atelier-section-subtitle">Audio-Reactive Synthesis</h2>
+            <p class="atelier-section-desc">
+              Trigger harmonic chord arpeggios simulating real-time audio analysis streamed into Unreal Engine 5.8 shader parameters.
+            </p>
+
+            <div class="atelier-audio-pads" role="group" aria-label="Harmonic Synthesizer Chords">
+              <div class="atelier-audio-pad-btn" data-chord="sakura-arpeggio">
+                <span class="atelier-pad-icon">🌸</span>
+                <span class="atelier-pad-title">Sakura Arpeggio</span>
+              </div>
+              <div class="atelier-audio-pad-btn" data-chord="cathedral-choir">
+                <span class="atelier-pad-icon">⛪</span>
+                <span class="atelier-pad-title">Cathedral Choir</span>
+              </div>
+              <div class="atelier-audio-pad-btn" data-chord="melusina-dew">
+                <span class="atelier-pad-icon">💧</span>
+                <span class="atelier-pad-title">Melusina Dew</span>
+              </div>
+              <div class="atelier-audio-pad-btn" data-chord="astral-fanfare">
+                <span class="atelier-pad-icon">🌌</span>
+                <span class="atelier-pad-title">Astral Fanfare</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: 360-DEGREE ASSET & WARDROBE TURNTABLE -->
+      <section id="panel-turntable-studio" class="atelier-tab-panel" role="tabpanel" aria-label="360-Degree Asset Turntable">
+        <div class="atelier-stage-grid">
+          <!-- Canvas Viewport -->
+          <div class="atelier-viewport-card">
+            <div class="atelier-canvas-wrapper" style="min-height: 480px; position: relative;">
+              <div id="canvas-turntable-stage" style="width: 100%; height: 100%; min-height: 480px; position: absolute; inset: 0;"></div>
+              <div class="atelier-overlay-hud">
+                <span class="atelier-hud-badge">Real-Time WebGL 3D Studio · Substrate PBR</span>
+                <span class="atelier-hud-badge" id="turntable-3d-rot-status">Orbit: Active</span>
+              </div>
+            </div>
+            <div class="atelier-telemetry-grid">
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">Active Asset</span>
+                <span class="atelier-telemetry-value" id="viewer-asset-name">Fabric Lookdev Sphere</span>
+              </div>
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">PBR Fabric Set</span>
+                <span class="atelier-telemetry-value" id="viewer-fabric-name">Royal Velvet</span>
+              </div>
+              <div class="atelier-telemetry-item">
+                <span class="atelier-telemetry-label">Geometry Budget</span>
+                <span class="atelier-telemetry-value" id="viewer-triangles">4.6k Tris</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls Panel -->
+          <div class="atelier-control-card">
+            <h2 class="atelier-section-subtitle">Real-Time 3D Asset &amp; Shading Inspector</h2>
+            <p class="atelier-section-desc">
+              Inspect real geometric assets across Substrate PBR, Toon anime shading, tangent normals, ORM channels, and wireframe topology.
+            </p>
+
+            <div class="atelier-control-group" style="margin-bottom: 12px;">
+              <label class="atelier-control-label" style="font-size: 0.82rem; text-transform: uppercase; color: #c9a86a; display: block; margin-bottom: 6px;">Select 3D Asset</label>
+              <div class="atelier-chip-group" role="group" aria-label="3D Asset Selection">
+                <button type="button" class="atelier-preset-chip active" data-turntable-asset="fabric-sphere">Lookdev Sphere</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-asset="melusina-hero">Melusina (Hero Rig)</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-asset="sir-melodious">Sir Melodious (FBX)</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-asset="zundamon">Zundamon (FBX)</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-asset="melody-token-water">Water Token (90MB)</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-asset="melody-token-star">Star Token (80MB)</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-asset="prop-harp">Sacred Harp (FBX)</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-asset="grand-piano">Grand Piano (GLB)</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-asset="prop-fountain">Atlantis Fountain (FBX)</button>
+              </div>
+            </div>
+
+            <div class="atelier-control-group" style="margin-bottom: 12px;">
+              <label class="atelier-control-label" style="font-size: 0.82rem; text-transform: uppercase; color: #c9a86a; display: block; margin-bottom: 6px;">Shading Inspection Pass</label>
+              <div class="atelier-chip-group" role="group" aria-label="Turntable Render Modes">
+                <button type="button" class="atelier-preset-chip active" data-turntable-mode="pbr">PBR Beauty</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-mode="toon">Substrate Toon</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-mode="normal">Normals</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-mode="roughness">Roughness</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-mode="metallic">Metallic</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-mode="wireframe">Wireframe</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-mode="clay">Clay</button>
+              </div>
+            </div>
+
+            <div class="atelier-control-group" style="margin-bottom: 12px;">
+              <label class="atelier-control-label" style="font-size: 0.82rem; text-transform: uppercase; color: #c9a86a; display: block; margin-bottom: 6px;">PBR Fabric Material</label>
+              <div class="atelier-chip-group" role="group" aria-label="Fabric Sets">
+                <button type="button" class="atelier-preset-chip active" data-turntable-fabric="RoyalVelvet">Royal Velvet</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-fabric="GildedBrocade">Gilded Brocade</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-fabric="SheerSilk">Sheer Silk</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-fabric="BaroqueLace">Baroque Lace</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-fabric="GoldEmbroidery">Gold Embroidery</button>
+                <button type="button" class="atelier-preset-chip" data-turntable-fabric="CelestialWeave">Celestial Weave</button>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 8px; margin-top: 1rem;">
+              <button type="button" class="button button-premium" id="btn-turntable-autorotate" style="flex: 1;">
+                Toggle Auto-Rotation
+              </button>
+              <a href="realtime-3d-viewer.html" class="button primary button-premium-primary" style="text-align: center; text-decoration: none; padding: 10px 16px;">
+                Full 3D Studio ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Editorial Footer Banner -->
+      <section class="atelier-footer-callout">
+        <h3>Explore Brennan Shepherd's Complete Portfolio Dossier</h3>
+        <p>
+          Environment art, technical art pipelines, Substrate Toon shaders, and PCG scattering systems crafted for studios like Papergames / Infold (Infinity Nikki) and HoYoverse.
+        </p>
+        <div class="atelier-btn-row">
+          <a class="button primary button-premium-primary" href="recruiter-one-sheet.html">Recruiter One-Sheet</a>
+          <a class="button button-premium" href="realtime-3d-viewer.html">Real-Time 3D Studio</a>
+          <a class="button button-premium" href="shader-breakdowns.html">Material Breakdowns</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script src="melodia-3d-viewport.js"></script>
+<script src="melodia-atelier-lab.js"></script>
+<script src="melodia-editorial.js"></script>
+<script>MelodiaEditorial.init({ page: 'melodia-atelier-lab' });</script>
+</body>
+</html>

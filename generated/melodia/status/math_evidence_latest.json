@@ -1,0 +1,149 @@
+{
+  "schema": "melodia.math.evidence.v1",
+  "captured_at": "2026-08-19T05:10:36-04:00",
+  "derived_from": [
+    "Saved/gate_ledger.json",
+    "Saved/Audit/math_run_latest.json",
+    "Saved/Audit/math_run_models_latest.json",
+    "Tools/test_melodia_mcp.py (live)",
+    "Tools/run_contract_tests.py --json (live)"
+  ],
+  "command": "python Tools/emit_math_evidence.py",
+  "mcp_tests": {
+    "passed": 26,
+    "total": 26,
+    "failed": 0,
+    "runner": "Tools/test_melodia_mcp.py",
+    "derived": true,
+    "exit": 0
+  },
+  "contract_tests": {
+    "passed": 20,
+    "total": 20,
+    "coverage_floor": 20,
+    "editor_contacted": false,
+    "runner": "Tools/run_contract_tests.py",
+    "derived": true,
+    "stamp": "2026-08-19T05:10"
+  },
+  "math_eval": {
+    "captured_at": "2026-08-19T05:08:55-04:00",
+    "editor_contacted": true,
+    "passed": 32,
+    "total": 32,
+    "held": 0,
+    "tca_pct": 100.0,
+    "tasks_spec": "specs/mcp/math_tasks.v1.json"
+  },
+  "model_runs": {
+    "runs": [
+      {
+        "model": "qwen2.5-coder:7b",
+        "backend": "ollama (qwen2.5-coder:7b)",
+        "captured_at": "2026-08-19T01:45:34-04:00",
+        "passed": 21,
+        "total": 24,
+        "held": 0,
+        "tca_pct": 100.0,
+        "arg_pct": 87.5,
+        "exec_pct": 87.5,
+        "ter_ratio": null,
+        "ter_meets_target": false
+      }
+    ],
+    "updated_at": "2026-08-19T01:45:34-04:00"
+  },
+  "server": {
+    "entrypoint": "deploy/melodia_mcp_server.py",
+    "tool_count": 34,
+    "tools": [
+      "melodia_persona_get_stats",
+      "melodia_persona_get_quests",
+      "melodia_quill_list_scripts",
+      "melodia_quill_validate_notification",
+      "melodia_rhythm_list_skills",
+      "melodia_narrative_get_record",
+      "melodia_config_get_allowlist",
+      "melodia_bp_list_fixtures",
+      "melodia_bp_get_template",
+      "melodia_bp_validate_fixture",
+      "melodia_system_health",
+      "melodia_system_list_subsystems",
+      "melodia_narrative_audit_idempotency",
+      "melodia_bp_validate_p0_route",
+      "melodia_system_golden_run_preflight",
+      "melodia_animation_validate_state_machine",
+      "melodia_animation_validate_bindings",
+      "melodia_animation_get_runtime_abp",
+      "melodia_audio_list_assets",
+      "melodia_audio_validate_metasound",
+      "melodia_audio_get_rhythm_catalog",
+      "melodia_ui_list_widgets",
+      "melodia_ui_validate_widget",
+      "melodia_ui_get_battle_hud",
+      "melodia_system_compile_feedback",
+      "melodia_economy_get_state",
+      "melodia_economy_rhythm_hit",
+      "melodia_economy_cast_skill",
+      "melodia_economy_activate_grief_hook",
+      "melodia_ui_get_economy_hud",
+      "melodia_encounter_start",
+      "melodia_encounter_enemy_action",
+      "melodia_encounter_resolve",
+      "melodia_quest_check_p0"
+    ],
+    "policy": {
+      "default_decision": "deny",
+      "file": "specs/mcp_tool_policy.v1.json"
+    }
+  },
+  "runtime_gates_documented": {
+    "source": "Saved/gate_ledger.json (latest row per gate id; derived, not hand-edited)",
+    "completion": [
+      {
+        "gate": "runtime",
+        "state": "PASS",
+        "date": "2026-08-13",
+        "note": "Owner-verified REAL keyboard input through BP_BattleUI::OnKeyDown, 2026-08-13. Supersedes the 2026-08-12 18:57 row (session pie_smoke_1_145605), whose note cited only 'Restoration wired in CompleteBat"
+      },
+      {
+        "gate": "save_load",
+        "state": "PASS",
+        "date": "2026-08-14",
+        "note": "Owner-verified 2026-08-14: canonical save/load works and the slot surfaces on the main menu, confirmed after a closed-editor C++ rebuild. Owner statement is ground truth per _AGENT_WORKING_AGREEMENT.m"
+      },
+      {
+        "gate": "repeat_consume",
+        "state": "PASS",
+        "date": "2026-08-14",
+        "note": "Live authored Priestess Quill first occurrence plus canonical SaveToSlot checkpoint ResumeScript replay; social stat and quest intent remained exactly once after reload."
+      },
+      {
+        "gate": "package_launch",
+        "state": "PASS",
+        "date": "2026-08-14",
+        "note": "UE 5.8 packaged Gauntlet passed outside editor: mounted 2782-package IoStore, loaded MelodiaMainMenu, and added WBP_MainMenu to viewport on map cycles."
+      }
+    ],
+    "battle": [
+      {
+        "gate": "battle_encounter",
+        "state": "PASS",
+        "date": "2026-08-19",
+        "note": "Owner 2026-08-19: BP_BattleController::Show infinite-loop claim is stale and closed. Supersedes 2026-08-18 FAIL rows. See Docs/ASSET_MISMATCH_AUDIT_2026-08-18.md \u00a73.2."
+      },
+      {
+        "gate": "battle_integration_map",
+        "state": "PASS",
+        "date": "2026-08-19",
+        "note": "Owner 2026-08-19: same close as battle_encounter. Show-loop FAIL rows are historical, not current standing."
+      }
+    ],
+    "historical_fail_rows_are_not_standing": true
+  },
+  "not_claimed": [
+    "No public 100-task LLM eval log (no TCA/PAR/SCR/RCF/TER run JSON).",
+    "No certified Hermes 3 / LongCat scorecard on disk.",
+    "A model lane is PASS only when its run JSON exists; tag presence is installation, not evidence."
+  ]
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-page="index">
+<html lang="en" data-page="index" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,7 +9,7 @@
 <title>MELODIA — Infold &amp; Infinity Nikki Lookbook Portfolio | Brennan Shepherd</title>
 <meta name="description" content="MELODIA — Stylized environment art &amp; technical art portfolio targeting Infold Games / Infinity Nikki. Unreal Engine 5.8 C++, Substrate Toon shaders, PCG scattering, Melusina Photobooth, and 4 canonical levels." />
 <meta property="og:title" content="MELODIA — Infold &amp; Infinity Nikki Lookbook Portfolio" />
-<meta property="og:description" content="Stylized environment art &amp; technical art portfolio — 4 canonical levels (environment stage, environment stage, environment stage, environment stage), interactive Photobooth, ZBrush studio, and Substrate Toon shaders." />
+<meta property="og:description" content="Stylized environment art &amp; technical art portfolio — 4 canonical levels (L_MelusinaMorning, L_SakuraDream, L_KaleidoNave, L_FallenMoon), interactive Photobooth, ZBrush studio, and Substrate Toon shaders." />
 <meta property="og:image" content="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
 <meta property="og:url" content="https://fromage3900.github.io/my-site/wix/index.html" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -45,29 +45,28 @@
 .env-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 .env-card:hover img { transform: scale(1.05); }
 .env-card .overlay { position: relative; z-index: 1; padding: 1.2rem 1.1rem 1rem; width: 100%; background: linear-gradient(transparent, rgba(10, 14, 34, 0.95)); }
-.env-card .env-name { font-family: var(--font-display, serif); font-size: 1.25rem; color: var(--color-text-primary, #FFF8EE); display: block; font-weight: 400; }
+.env-card .env-name { font-family: var(--font-display, "Syne", sans-serif); font-size: 1.25rem; color: var(--color-text-primary, #FFF8EE); display: block; font-weight: 700; }
 .env-card .env-tag { font-family: var(--font-mono, monospace); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--color-accent-primary, #C9A86A); display: block; margin-top: 4px; }
-.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.hero-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-video, .hero-poster, .hero-bg-plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 :focus-visible { outline: 2px solid var(--color-accent-primary, #C9A86A); outline-offset: 2px; }
-@media (prefers-reduced-motion: reduce) { .hero-video { display: none; } .hero-poster { display: block; } .env-card img { transition: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-video, .hero-bg-video { display: none !important; }
+  .hero-poster { display: block; opacity: 1; }
+  .env-card img { transition: none; }
+}
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<div class="melodia-shell fashion-mode" data-mg="full" data-hero="cosmic" data-visual="lookbook" data-effects="starfield,orrery,planetarium,holo,instruments,magical" data-nav-cta="recruiter-one-sheet.html" data-nav-cta-label="Recruiter One-Sheet">
+<div class="melodia-shell astral-mode" data-mg="full" data-hero="cosmic" data-visual="astral-game" data-theme="dark" data-effects="starfield,holo,magical" data-nav-cta="recruiter-one-sheet.html" data-nav-cta-label="Recruiter One-Sheet">
 <header class="shell-nav constellation-nav" aria-label="Melodia navigation">
   <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
   <nav class="nav-links" aria-label="Sections">
-    <a href="index.html" class="active">Atelier</a>
-    <a href="melodia-atelier-lab.html">Shader &amp; PCG Lab</a>
-    <a href="melusina-agent-harness.html">Agent Harness</a>
-    <a href="dashboards.html">Dashboards</a>
-    <a href="project_health.html">Health</a>
-    <a href="#canonical-worlds">4 Worlds</a>
+    <a href="#canonical-worlds">Worlds</a>
     <a href="#melusina-photobooth">Photobooth</a>
-    <a href="#zbrush-studio">ZBrush Sculpt</a>
+    <a href="pipeline.html">Pipeline</a>
     <a href="shader-breakdowns.html">Shaders</a>
+    <a href="melodia-gameplay-loop.html">Gameplay</a>
     <a href="recruiter-one-sheet.html">Dossier</a>
   </nav>
   <a class="nav-cta button-premium" href="recruiter-one-sheet.html">Recruiter One-Sheet</a>
@@ -75,15 +74,44 @@
 
 <main id="main">
 <!-- Hero Lookbook Stage -->
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero" aria-labelledby="hero-title" data-pillar="sakura">
+  <!--
+    Hero BG drop-in (NVIDIA packet):
+    1) Put new plates in generated/assets/unreal/nvidia/ (or unreal/)
+    2) Swap [data-hero-bg-slot="primary"] img/video poster + [data-hero-bg-slot="secondary"] img
+    3) Keep .hero-bg-scrim + Melusina .hero-macro-plate unchanged
+  -->
   <div class="parallax-layer-1" aria-hidden="true"></div>
   <div class="parallax-layer-2" aria-hidden="true"></div>
-  <div class="parallax-layer-6" aria-hidden="true"></div>
-  <div class="parallax-layer-5 hero-orrery-detail" aria-hidden="true">
-    <div class="orrery-system"><div class="orrery-core"></div></div>
+  <!-- Secondary soft plate — lavender establishing (subtle depth / crossfade layer) -->
+  <div class="parallax-layer-6 hero-bg-secondary" aria-hidden="true" data-hero-bg-slot="secondary">
+    <img
+      class="hero-bg-plate hero-bg-plate--secondary"
+      src="../generated/assets/unreal/hero-hero-level-cam-hero-establishing-20260709-182124-1920x1080.png"
+      alt=""
+      decoding="async"
+      loading="eager"
+    />
   </div>
-  <div class="parallax-layer-7" aria-hidden="true">
-    <video autoplay loop muted playsinline poster="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" class="hero-video" src="../generated/assets/landscape-loops/world map.webm"></video>
+  <!-- Primary cinematic plate + atmospheric SakuraDream loop -->
+  <div class="parallax-layer-7 hero-bg-primary" aria-hidden="true" data-hero-bg-slot="primary">
+    <img
+      class="hero-poster hero-bg-plate hero-bg-plate--primary"
+      src="../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png"
+      alt=""
+      decoding="async"
+      fetchpriority="high"
+    />
+    <video
+      class="hero-video hero-bg-video"
+      autoplay
+      loop
+      muted
+      playsinline
+      poster="../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png"
+      src="../generated/assets/landscape-loops/WP_SakuraDream.webm"
+    ></video>
+    <div class="hero-bg-scrim"></div>
   </div>
   <figure class="hero-macro-plate">
     <img
@@ -104,25 +132,32 @@
       <source src="../generated/assets/character-loops/melusina_glam_macro_postcard_4s.webm" type="video/webm" />
     </video>
   </figure>
+  <!-- Soft Melodia star/diamond accents — above bg, below copy; no instrument HUD -->
+  <div class="hero-star-accents" aria-hidden="true">
+    <span class="hero-star-diamond d1"></span>
+    <span class="hero-star-diamond d2"></span>
+    <span class="hero-star-diamond d3"></span>
+    <span class="hero-star-diamond d4"></span>
+    <span class="hero-star-diamond d5"></span>
+    <span class="hero-star-diamond d6"></span>
+  </div>
   <div class="parallax-layer-8 hero-copy-layer">
     <div class="hero-inner">
-      <p class="kicker magazine-kicker premium-kicker">Infold Games &amp; Infinity Nikki Lookbook Standard</p>
+      <p class="kicker magazine-kicker premium-kicker">Infold · Infinity Nikki lookbook</p>
       <div class="game-ui-filigree-divider is-baroque" aria-hidden="true"></div>
-      <h1 id="hero-title">Stylized Fashion-Fantasy Worlds with Real Engine Pipeline</h1>
-      <p class="lede">Brennan Shepherd — stylized environment artist and technical artist. High-fashion romantic worldbuilding in Unreal Engine 5.8 C++, Substrate Toon shaders, PCG scattering ecosystems, and diegetic Game UI systems tailored for studios like Papergames / Infold (Infinity Nikki) and HoYoverse.</p>
-      <div class="hero-actions game-ui-frame" aria-label="Primary destinations">
+      <h1 id="hero-title">Cinematic fashion-fantasy worlds in Unreal Engine 5.8</h1>
+      <p class="lede">Brennan Shepherd — stylized environment &amp; technical artist. Romantic lighting, Substrate Toon materials, PCG scatter ecosystems, and diegetic Game UI for studios like Papergames / Infold and HoYoverse.</p>
+      <div class="hero-actions" aria-label="Primary destinations">
         <a class="button primary button-premium-primary" href="recruiter-one-sheet.html">Recruiter One-Sheet</a>
-        <a class="button button-premium" href="melusina-agent-harness.html">Agent Harness</a>
-        <a class="button button-premium" href="melodia-atelier-lab.html">Interactive Atelier Lab</a>
-        <a class="button button-premium" href="#canonical-worlds">Explore 4 Worlds</a>
-        <a class="button button-premium" href="shader-breakdowns.html">Material Lab</a>
+        <a class="button button-premium" href="pipeline.html">Blender → UE Pipeline</a>
+        <a class="button button-premium" href="melodia-gameplay-loop.html">First Dream Loop</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Section: 4 Canonical Worlds (SSOT) -->
-<section id="canonical-worlds" class="band paper fashion-band ivory" data-surface="ivory" aria-labelledby="worlds-title">
+<section id="canonical-worlds" class="band astral void-panel" data-surface="void" aria-labelledby="worlds-title">
   <div class="inner">
     <div class="section-head">
       <div>
@@ -133,57 +168,65 @@
     </div>
     
     <div class="env-grid">
-      <!-- 1. environment stage -->
-      <a class="env-card" href="sakura-case-study.html">
-        <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
-        <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
-        <img src="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" alt="environment stage — Primary Nikki Proof" loading="lazy" />
-        <div class="overlay">
-          <span class="env-name">environment stage</span>
-          <span class="env-tag">Primary Infold/Nikki Proof · Shrine Route &amp; Petal Light</span>
-        </div>
-      </a>
-
-      <!-- 2. environment stage -->
-      <a class="env-card" href="space-cathedral.html">
-        <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
-        <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
-        <img src="../generated/assets/nightshift/world map.png" alt="environment stage — Space Cathedral Nave" loading="lazy" />
-        <div class="overlay">
-          <span class="env-name">environment stage</span>
-          <span class="env-tag">Gothic Sci-Fi Cathedral · Vaulted Kaleidoscope Geometry</span>
-        </div>
-      </a>
-
-      <!-- 3. environment stage -->
+      <!-- 1. L_MelusinaMorning -->
       <a class="env-card" href="melodia-stage-character.html">
         <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
         <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
-        <img src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="environment stage — Character Atelier" loading="lazy" />
+        <img src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="L_MelusinaMorning — Character Atelier" loading="lazy" />
         <div class="overlay">
-          <span class="env-name">environment stage</span>
+          <span class="env-name">L_MelusinaMorning</span>
           <span class="env-tag">Opening Atelier &amp; Morning Chamber · Character Stage</span>
         </div>
       </a>
 
-      <!-- 4. environment stage -->
+      <!-- 2. L_SakuraDream -->
+      <a class="env-card" href="sakura-case-study.html">
+        <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
+        <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
+        <img src="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" alt="L_SakuraDream — Primary Nikki Proof" loading="lazy" />
+        <div class="overlay">
+          <span class="env-name">L_SakuraDream</span>
+          <span class="env-tag">Primary Infold/Nikki Proof · Shrine Route &amp; Petal Light</span>
+        </div>
+      </a>
+
+      <!-- 3. L_KaleidoNave -->
+      <a class="env-card" href="space-cathedral.html">
+        <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
+        <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
+        <img src="../generated/assets/nightshift/WP_SpaceCathedral_terrain.png" alt="L_KaleidoNave — Space Cathedral Nave" loading="lazy" />
+        <div class="overlay">
+          <span class="env-name">L_KaleidoNave</span>
+          <span class="env-tag">Gothic Sci-Fi Cathedral · Vaulted Kaleidoscope Geometry</span>
+        </div>
+      </a>
+
+      <!-- 4. L_FallenMoon — level plate (not Cosmic Orrery terrain) -->
       <a class="env-card" href="pcg-system-impact.html">
         <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
         <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
-        <img src="../generated/assets/nightshift/world map.png" alt="environment stage — Cosmic Crater &amp; PCG Scatter" loading="lazy" />
+        <img src="../generated/assets/unreal/level_fallen_moon.png" alt="L_FallenMoon — Cosmic crater &amp; PCG scatter ecosystem" loading="lazy" />
         <div class="overlay">
-          <span class="env-name">environment stage</span>
+          <span class="env-name">L_FallenMoon</span>
           <span class="env-tag">Cosmic Moonlit Aurora · PCG Scatter Ecosystem</span>
         </div>
       </a>
     </div>
+
+    <p class="pillar-case-strip" style="margin-top:1.35rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary,#A9A7C0);line-height:1.7">
+      Pillar case studies ·
+      <a href="sakura-case-study.html" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">Sakura Dream</a>
+      · <a href="space-cathedral.html" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">Space Cathedral</a>
+      · <a href="cosmic-orrery.html" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">Cosmic Orrery</a>
+      · <a href="application-hub.html" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">All environments</a>
+    </p>
   </div>
 </section>
 
 <div class="editorial-rule lookbook-section-rule" aria-hidden="true"><span class="diamond"></span></div>
 
 <!-- Section: Melusina Photobooth (Infinity Nikki Photo-Spot) -->
-<section id="melusina-photobooth" class="band astral" aria-labelledby="photobooth-title">
+<section id="melusina-photobooth" class="band astral void-panel" data-surface="void" aria-labelledby="photobooth-title">
   <div class="inner">
     <div class="section-head">
       <div>
@@ -201,7 +244,7 @@
 <div class="editorial-rule lookbook-section-rule" aria-hidden="true"><span class="diamond"></span></div>
 
 <!-- Section: ZBrush High-Poly Sculpt & Geometry Studio -->
-<section id="zbrush-studio" class="band paper" aria-labelledby="zbrush-title">
+<section id="zbrush-studio" class="band astral void-panel" data-surface="void" aria-labelledby="zbrush-title">
   <div class="inner">
     <div class="section-head">
       <div>
@@ -219,7 +262,7 @@
 <div class="editorial-rule lookbook-section-rule" aria-hidden="true"><span class="diamond"></span></div>
 
 <!-- Recruiter Fast-Skim Contact Strip -->
-<section class="band cloud ivory" data-surface="ivory" aria-labelledby="contact-title">
+<section class="band astral void-panel" data-surface="void" aria-labelledby="contact-title">
   <div class="inner">
     <div class="section-head">
       <div>
@@ -273,13 +316,10 @@
 </footer>
 </div>
 
-<script src="melodia-planetarium.js"></script>
-<script src="melodia-cosmic-instruments.js"></script>
 <script src="melodia-magical-girl.js"></script>
 <script src="melodia-starfield.js"></script>
 <script src="melodia-dream-shaders.js"></script>
 <script src="melodia-site-nav.js"></script>
-<script src="melodia-mahou-flourish.js"></script>
 <script src="melodia-photobooth.js"></script>
 <script src="melodia-zbrush-studio.js"></script>
 <script src="melodia-editorial.js"></script>
@@ -288,7 +328,6 @@ document.addEventListener('DOMContentLoaded', function () {
   MelodiaEditorial.init({ page: 'index' });
   if (window.MelodiaPhotobooth) MelodiaPhotobooth.init('#melusina-photobooth-mount');
   if (window.MelodiaZBrushStudio) MelodiaZBrushStudio.init('#zbrush-studio-mount');
-  if (window.MelodiaMahouFlourish) MelodiaMahouFlourish.init();
 });
 </script>
 </body>

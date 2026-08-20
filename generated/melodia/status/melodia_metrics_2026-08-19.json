@@ -1,0 +1,7 @@
+{
+  "note": "derived from run JSONs only; tokens are raw counts, not economics",
+  "recovery_under_failure_pct": 100.0,
+  "task_success_rate_pct": 100.0,
+  "tokens_constrained": 18307,
+  "tokens_unconstrained": null
+}

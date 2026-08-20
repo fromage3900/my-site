@@ -20,12 +20,11 @@
     "T_Melodia_StaffTile.png"
   ],
   "baroque_slots": [
-    "T_Melodia_FiligreeBatchO_Baroque.png",
-    "T_Melodia_FiligreeCornerBaroque.png",
-    "T_Melodia_FiligreeDividerScroll.png",
-    "T_Melodia_FiligreeCrestBaroque.png",
-    "T_Melodia_FiligreeMedallionRosette.png",
-    "T_Melodia_FiligreeBraceVolute.png"
+    "T_Melodia_58_606.png",
+    "T_Melodia_58_633.png",
+    "T_Melodia_58_664.png",
+    "T_Melodia_58_689.png",
+    "T_Melodia_58_704.png"
   ],
   "note": "Baroque set from Game/FiligreeBatchO_Baroque (58:716). SoftMG / SheetMusicHUD bind via .is-baroque.",
   "figma_file": "Yx8ud7n39NdWZvnNvo4Xlf",
@@ -38,16 +37,15 @@
     "Game/FiligreeBatchO_Baroque"
   ],
   "figma_nodes": {
-    "FiligreeBatchO_Baroque": "58:716",
-    "CornerBaroque": "58:606",
-    "DividerScroll": "58:633",
-    "CrestBaroque": "58:664",
-    "MedallionRosette": "58:689",
-    "BraceVolute": "58:704"
+    "FiligreeBatchO_Baroque": "58:606",
+    "style=CornerBaroque": "58:633",
+    "style=DividerScroll": "58:664",
+    "style=CrestBaroque": "58:689",
+    "style=MedallionRosette": "58:704"
   },
   "deprecated_batch_n": {
     "status": "deprecated_2026-07-16",
-    "note": "Batch N MusicalFiligree/NoteGlyph/NoteBeam AND Batch O Ornate (non-Baroque) are retired. Beauty + highway SSOT is SoftMG kit + FiligreeBatchO_Baroque. Web CSS binds notes→SealSP, beams/hitline→SoftMG_Hitline, lane rail→SoftMG_LaneInk, highway BG→SoftMG_Parchment, crest finale→CrestBaroque.",
+    "note": "Batch N MusicalFiligree/NoteGlyph/NoteBeam AND Batch O Ornate (non-Baroque) are retired. Beauty + highway SSOT is SoftMG kit + FiligreeBatchO_Baroque. Web CSS binds notes\u00e2\u2020\u2019SealSP, beams/hitline\u00e2\u2020\u2019SoftMG_Hitline, lane rail\u00e2\u2020\u2019SoftMG_LaneInk, highway BG\u00e2\u2020\u2019SoftMG_Parchment, crest finale\u00e2\u2020\u2019CrestBaroque.",
     "retired_atlas_slots": [
       "T_Melodia_FiligreeCorner.png",
       "T_Melodia_FiligreeDivider.png",
@@ -93,20 +91,21 @@
       "T_Melodia_GothicFrameCorner.png",
       "T_Melodia_GothicFrameRail.png"
     ],
-    "bind": "data-mg soft|chrome|full — skill strip ring + combo cartouche burst; gothic corners on portfolio frames. Never drives phase machine."
+    "bind": "data-mg soft|chrome|full \u00e2\u20ac\u201d skill strip ring + combo cartouche burst; gothic corners on portfolio frames. Never drives phase machine."
   },
   "softmg_nikki_fab_pass": {
-    "art_source": "figma_grandmaster_softmg_kit",
-    "generated_at": "2026-07-16T23:30:00+00:00",
-    "exported_at": "2026-07-16T20:00:00-04:00",
-    "generator": "use_figma (Figma Plugin API) — Grandmaster Yx8ud7n39NdWZvnNvo4Xlf, page '12 Game UI' (7:2), frame Game/SoftMG_Kit",
-    "inspiration": "Nikki/FAB/Infold-inspired mood only — see Saved/Audit/softmg_nikki_ref_notes.md. No third-party sprites shipped; every component is hand-authored in Figma (gradient parchment + vector grain hatch, scallop-ribbon vector, ink-seal rings with EllipseNode arcData fill tracks, staff-tick vectors, clef glyph U+1D11E watermark, pillow chip).",
     "figma_status": "exported",
-    "figma_file": "Yx8ud7n39NdWZvnNvo4Xlf",
-    "figma_page": "12 Game UI",
-    "figma_kit_frame": "Game/SoftMG_Kit",
+    "exported_at": "2026-08-03T21:19:12.736839Z",
+    "slots": [
+      "T_Melodia_62_531.png",
+      "T_Melodia_62_534.png",
+      "T_Melodia_63_531.png",
+      "T_Melodia_63_537.png",
+      "T_Melodia_64_531.png",
+      "T_Melodia_64_533.png",
+      "T_Melodia_64_536.png"
+    ],
     "figma_nodes": {
-      "Game/SoftMG_Kit": "61:531",
       "SoftMG/ParchmentPanel": "62:531",
       "SoftMG/ScrollEdge": "62:534",
       "SoftMG/SealSP": "63:531",
@@ -114,24 +113,13 @@
       "SoftMG/LaneInk": "64:531",
       "SoftMG/Hitline": "64:533",
       "SoftMG/PillowChip": "64:536"
-    },
-    "slots": [
-      "T_Melodia_SoftMG_Parchment.png",
-      "T_Melodia_SoftMG_SealSP.png",
-      "T_Melodia_SoftMG_SealULT.png",
-      "T_Melodia_SoftMG_ScrollEdge.png",
-      "T_Melodia_SoftMG_LaneInk.png",
-      "T_Melodia_SoftMG_Hitline.png",
-      "T_Melodia_SoftMG_PillowChip.png"
-    ],
-    "export_scale": "2x PNG via download_assets (defaultScale 2)",
-    "bind": "#phase-rhythm .game-ui-sheet-master (SoftMG beauty path only — Combat highway on other phase panels keeps the existing cyan/gold Batch O chrome); .game-ui-sheet-echo.is-soft Command/Enemy echo panels use SoftMG/PillowChip for skill fills"
+    }
   },
   "motion_connect_pass": {
     "art_source": "figma_rhythm_reactivity_board",
     "generated_at": "2026-07-17T14:00:00-04:00",
     "manifest": "wix/melodia-motion-connect.json",
-    "note": "Cross-lane motion SSOT — maps Figma RhythmReactivityBoard (41:242) Motion/* nodes to web CSS selectors + @keyframes + reactivity channels, and to the UE NativePaint driver fields in Imports/UI/Specs/_MOTION_CHANNELS.md. Figma cohort is 100% keyframed: 19 animated members over a 2,400ms loop.",
+    "note": "Cross-lane motion SSOT \u00e2\u20ac\u201d maps Figma RhythmReactivityBoard (41:242) Motion/* nodes to web CSS selectors + @keyframes + reactivity channels, and to the UE NativePaint driver fields in Imports/UI/Specs/_MOTION_CHANNELS.md. Figma cohort is 100% keyframed: 19 animated members over a 2,400ms loop.",
     "figma_file": "Yx8ud7n39NdWZvnNvo4Xlf",
     "figma_board": "Game/RhythmReactivityBoard",
     "figma_board_node": "41:242",
@@ -140,9 +128,13 @@
       "Motion/NoteTrailIri": "95:1858",
       "Motion/BreakCrestReveal": "95:1859"
     },
-    "web": ["wix/melodia-game-ui.css", "wix/melodia-game-ui.js"],
+    "web": [
+      "wix/melodia-game-ui.css",
+      "wix/melodia-game-ui.js"
+    ],
     "ue_spec": "Imports/UI/Specs/_MOTION_CHANNELS.md",
-    "tiers": "data-mg full|soft|chrome|off — off + prefers-reduced-motion silence every cue",
+    "tiers": "data-mg full|soft|chrome|off \u00e2\u20ac\u201d off + prefers-reduced-motion silence every cue",
     "coverage": "18 mapped components (19 cohort members; two CornerBaroque share one FiligreeBreathe row)"
-  }
+  },
+  "last_full_export": "2026-08-03T21:19:12.759454Z"
 }

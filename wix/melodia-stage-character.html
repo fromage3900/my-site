@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-page="stage-character">
+<html lang="en" data-page="stage-character" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,11 +19,14 @@
 <link rel="stylesheet" href="melodia-game-ui.css">
 <link rel="stylesheet" href="melodia-magical-girl.css">
 <link rel="stylesheet" href="melodia-mahou-flourish.css">
+<link rel="stylesheet" href="melodia-dream-shaders.css">
 <link rel="stylesheet" href="melodia-visual-breakdown.css">
+<link rel="stylesheet" href="melodia-stage-character.css">
+<link rel="stylesheet" href="melodia-stage-character-hardening.css">
 </head>
 <body>
-<div class="melodia-shell fashion-mode" data-mg="soft" data-hero="editorial" data-visual="lookbook" data-effects="starfield,orrery,holo,magical" data-nav-cta="melodia-melusina.html" data-nav-cta-label="Game UI Lookbook">
-<header class="shell-nav" aria-label="Portfolio navigation">
+<div class="melodia-shell mg-ui-chrome" data-mg="full" data-hero="cosmic" data-visual="lookbook" data-pillar="sakura" data-effects="starfield,holo,magical" data-nav-cta="melodia-melusina.html" data-nav-cta-label="Game UI Lookbook">
+<header class="shell-nav mg-nav-chrome" aria-label="Portfolio navigation">
   <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
   <nav class="nav-links" aria-label="Sections">
     <a href="index.html">Home</a>
@@ -38,10 +41,18 @@
 
 <main id="main">
 <!-- Hero Section -->
-<section class="hero has-editorial-frame" data-mahou-stage aria-labelledby="page-title">
+<section class="hero has-editorial-frame" data-mahou-stage data-pillar="sakura" aria-labelledby="page-title">
+  <div class="hero-star-accents" aria-hidden="true">
+    <span class="hero-star-diamond d1"></span>
+    <span class="hero-star-diamond d2"></span>
+    <span class="hero-star-diamond d3"></span>
+    <span class="hero-star-diamond d4"></span>
+    <span class="hero-star-diamond d5"></span>
+    <span class="hero-star-diamond d6"></span>
+  </div>
   <div class="hero-inner">
-    <p class="kicker magazine-kicker premium-kicker" data-mahou-trigger>Melodia · Character Lookdev &amp; Rigging</p>
-    <div class="editorial-rhythm-divider sheet" data-divider="astral" aria-hidden="true"><span class="glyph">✦ · 𝄞 · ✦</span></div>
+    <p class="kicker magazine-kicker premium-kicker" data-mahou-trigger>World 01 · L_MelusinaMorning · Character Lookdev &amp; Rigging</p>
+    <div class="game-ui-filigree-divider is-baroque" aria-hidden="true"></div>
     <h1 id="page-title">Melusina — Celestial Songstress.</h1>
     <p class="lede">High-fashion character lookdev, Substrate toon shading, skeletal rigging architecture, and motion capture retargeting for Unreal Engine 5.8. Designed with harmonic silhouette lines, iridescent velvet accents, and expressive facial deformation hierarchies.</p>
   </div>
@@ -60,21 +71,32 @@
     </div>
 
     <div class="viz-doors" aria-label="Character visual plates">
-      <a class="viz-door" href="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png">
+      <a class="viz-door holo-plate" href="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png">
+        <span class="game-ui-filigree tl is-baroque" aria-hidden="true"></span>
+        <span class="game-ui-filigree tr is-baroque" aria-hidden="true"></span>
+        <span class="game-ui-filigree bl is-baroque" aria-hidden="true"></span>
+        <span class="game-ui-filigree br is-baroque" aria-hidden="true"></span>
+        <span class="stage-iri-sheen" aria-hidden="true"></span>
         <img src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="Melusina Full Beauty Plate" loading="lazy" />
         <div class="viz-door-meta"><b>Lookdev 01</b><strong>Full Ensemble</strong></div>
       </a>
-      <a class="viz-door" href="../generated/assets/character/melusina_eevee_glam_20260715c_03.png">
+      <a class="viz-door holo-plate" href="../generated/assets/character/melusina_eevee_glam_20260715c_03.png">
+        <span class="game-ui-filigree tl is-baroque" aria-hidden="true"></span>
+        <span class="game-ui-filigree tr is-baroque" aria-hidden="true"></span>
+        <span class="game-ui-filigree bl is-baroque" aria-hidden="true"></span>
+        <span class="game-ui-filigree br is-baroque" aria-hidden="true"></span>
+        <span class="stage-iri-sheen" aria-hidden="true"></span>
         <img src="../generated/assets/character/melusina_eevee_glam_20260715c_03.png" alt="Melusina Portrait Close-Up" loading="lazy" />
         <div class="viz-door-meta"><b>Lookdev 02</b><strong>Portrait &amp; Crown</strong></div>
       </a>
-      <a class="viz-door" href="../generated/assets/character/melusina_sirmelodious_companion.png">
+      <a class="viz-door holo-plate" href="../generated/assets/character/melusina_sirmelodious_companion.png">
+        <span class="game-ui-filigree tl is-baroque" aria-hidden="true"></span>
+        <span class="game-ui-filigree tr is-baroque" aria-hidden="true"></span>
+        <span class="game-ui-filigree bl is-baroque" aria-hidden="true"></span>
+        <span class="game-ui-filigree br is-baroque" aria-hidden="true"></span>
+        <span class="stage-iri-sheen" aria-hidden="true"></span>
         <img src="../generated/assets/character/melusina_sirmelodious_companion.png" alt="Melusina with Sir Melodious" loading="lazy" />
         <div class="viz-door-meta"><b>Lookdev 03</b><strong>Sir Melodious Pair</strong></div>
-      </a>
-      <a class="viz-door" href="../generated/assets/character/melusina_waterhair_v23_final_0071.png">
-        <img src="../generated/assets/character/melusina_waterhair_v23_final_0071.png" alt="Melusina water-hair v23 final render, peak volume frame 71" loading="lazy" />
-        <div class="viz-door-meta"><b>Lookdev 04</b><strong>Water-Hair FLIP Cine</strong></div>
       </a>
     </div>
   </div>
@@ -95,6 +117,8 @@
     <div class="breakdown-passports">
       <div class="passport-stack">
         <article class="passport-card">
+          <span class="game-ui-filigree tl is-baroque" aria-hidden="true"></span>
+          <span class="game-ui-filigree tr is-baroque" aria-hidden="true"></span>
           <div class="passport-head"><span>✦ Skeletal Architecture</span><span>Deformation</span></div>
           <div class="passport-rule"></div>
           <h3 class="passport-title">465-Bone Master Rig</h3>
@@ -104,6 +128,8 @@
         </article>
 
         <article class="passport-card light">
+          <span class="game-ui-filigree tl is-baroque" aria-hidden="true"></span>
+          <span class="game-ui-filigree tr is-baroque" aria-hidden="true"></span>
           <div class="passport-head"><span>✦ Substrate Shading</span><span>Lookdev</span></div>
           <div class="passport-rule"></div>
           <h3 class="passport-title">Substrate Toon BSDF</h3>
@@ -115,6 +141,8 @@
 
       <div class="passport-stack">
         <article class="passport-card">
+          <span class="game-ui-filigree tl is-baroque" aria-hidden="true"></span>
+          <span class="game-ui-filigree tr is-baroque" aria-hidden="true"></span>
           <div class="passport-head"><span>✦ Motion Pipeline</span><span>Animation</span></div>
           <div class="passport-rule"></div>
           <h3 class="passport-title">IK Retargeting Engine</h3>
@@ -124,6 +152,8 @@
         </article>
 
         <article class="passport-card light">
+          <span class="game-ui-filigree tl is-baroque" aria-hidden="true"></span>
+          <span class="game-ui-filigree tr is-baroque" aria-hidden="true"></span>
           <div class="passport-head"><span>✦ Companion Rig</span><span>Sir Melodious</span></div>
           <div class="passport-rule"></div>
           <h3 class="passport-title">Avian Companion Setup</h3>
@@ -184,6 +214,7 @@
 
 <script src="melodia-starfield.js"></script>
 <script src="melodia-orrery-system.js"></script>
+<script src="melodia-dream-shaders.js"></script>
 <script src="melodia-magical-girl.js"></script>
 <script src="melodia-mahou-flourish.js"></script>
 <script src="melodia-site-nav.js"></script>

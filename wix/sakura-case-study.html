@@ -29,7 +29,7 @@
 .breakdown-card .label{padding:.5rem .65rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary)}
 .stat-row{display:flex;flex-wrap:wrap;gap:1rem 2rem;margin-top:1.25rem;padding:1.25rem;background:var(--color-surface-sunken);border:1px solid var(--color-border-subtle);border-radius:4px}
 .stat-item{text-align:center}
-.stat-item .num{font-family:var(--font-display,Fraunces,serif);font-size:1.6rem;line-height:1;color:var(--color-text-accent)}
+.stat-item .num{font-family:var(--font-display,"Syne",sans-serif);font-size:1.6rem;line-height:1;color:var(--color-text-accent)}
 .stat-item .lbl{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-tertiary);margin-top:4px}
 .macro-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-top:1rem}
 .macro-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:3px;border:1px solid var(--color-border-subtle)}
@@ -59,11 +59,11 @@
   </div>
   <div class="parallax-layer-6" aria-hidden="true"></div>
   <div class="parallax-layer-7" aria-hidden="true">
-    <video autoplay loop muted playsinline poster="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" class="hero-video" src="../generated/assets/landscape-loops/world map.webm"></video>
+    <video autoplay loop muted playsinline poster="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" class="hero-video" src="../generated/assets/landscape-loops/WP_SakuraDream.webm"></video>
   </div>
   <div class="parallax-layer-8">
     <div class="hero-inner">
-      <p class="kicker magazine-kicker" data-mahou-trigger>World 01 · Sakura Dream</p>
+      <p class="kicker magazine-kicker" data-mahou-trigger>World 02 · L_SakuraDream · Sakura Dream</p>
       <p class="nikki-ribbon">桜の夢 · Infinity Nikki–aligned environment</p>
       <h1 id="page-title">A calm route through petal light.</h1>
       <p class="lede">Sakura Dream is the mood pillar — a shrine approach you can read in one scroll, with warm lacquer, soft bloom, and material families that prove the world is designed, not decorated. Built for the magical girl / romantic fantasy signal.</p>
@@ -157,9 +157,9 @@
       <p>PCG graphs drive blossom scatter, moss groundcover, petal drift, lantern placement, and shrine route scattering.</p>
     </div>
     <div class="alignment-grid">
-      <article class="alignment-card premium-card mg-ribbon-card"><span>Scatter</span><div><h3>procedural graph</h3><p>Sakura tree scattering with density falloff around the shrine path.</p></div></article>
-      <article class="alignment-card premium-card mg-ribbon-card"><span>VFX</span><div><h3>procedural graph</h3><p>Petal drift along the player route — animated material instances.</p></div></article>
-      <article class="alignment-card premium-card mg-ribbon-card"><span>Ground</span><div><h3>procedural graph</h3><p>Moss and groundcover with biome blending and slope exclusion.</p></div></article>
+      <article class="alignment-card premium-card mg-ribbon-card"><span>Scatter</span><div><h3>PCG_SakuraGrove</h3><p>Sakura tree scattering with density falloff around the shrine path.</p></div></article>
+      <article class="alignment-card premium-card mg-ribbon-card"><span>VFX</span><div><h3>PCG_BlossomPath</h3><p>Petal drift along the player route — animated material instances.</p></div></article>
+      <article class="alignment-card premium-card mg-ribbon-card"><span>Ground</span><div><h3>PCG_Zen_MossGroundcover</h3><p>Moss and groundcover with biome blending and slope exclusion.</p></div></article>
     </div>
   </div>
 </section>
@@ -169,7 +169,7 @@
   <div class="inner">
     <span>Brennan Shepherd / Environment & Technical Artist</span>
     <span>Sakura Dream · UE5 · PCG · Toon Materials · <a href="application-hub.html" style="color:inherit;text-decoration:underline">View all environments</a></span>
-    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--color-border-subtle);font-family:var(--font-mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-tertiary)"><span>v2.0.0</span><span>UE 5.8</span><span>World 01</span><a href="pipeline.html" style="color:var(--color-accent-primary, var(--primitive-gold-500));text-decoration:none">Pipeline</a></div>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--color-border-subtle);font-family:var(--font-mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-tertiary)"><span>v2.0.0</span><span>UE 5.8</span><span>World 02</span><a href="pipeline.html" style="color:var(--color-accent-primary, var(--primitive-gold-500));text-decoration:none">Pipeline</a></div>
     <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle);font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase"><a href="pcg-system-impact.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">PCG Systems</a><a href="material-loop-gallery.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">Material Loops</a><a href="sdf-material-gallery.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">SDF Gallery</a><a href="shader-breakdowns.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">Shaders</a></div>
   </div>
 </footer>
@@ -182,5 +182,6 @@
 <script src="melodia-mahou-flourish.js"></script>
 <script src="melodia-site-nav.js"></script>
 <script src="melodia-editorial.js"></script>
+<script>MelodiaEditorial.init({ page: 'sakura-case-study' });</script>
 </body>
 </html>

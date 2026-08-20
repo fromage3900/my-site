@@ -3,8 +3,14 @@ Pytest configuration and shared fixtures for Wix Portfolio E2E Test Suite.
 Provides path resolution and parsed HTMLDocument / CSSDocument instances.
 """
 
+import sys
 from pathlib import Path
 import pytest
+
+_tests_dir = str(Path(__file__).parent.resolve())
+if _tests_dir not in sys.path:
+    sys.path.insert(0, _tests_dir)
+
 from dom_harness import HTMLDocument, CSSDocument
 
 

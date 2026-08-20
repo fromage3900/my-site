@@ -11,7 +11,8 @@
       "perfect": 1.5,
       "great": 1.25,
       "good": 1.0,
-      "miss": 0.55
+      "miss": 1.0,
+      "_note": "expressive-only, no miss penalty (Decision 016)"
     },
     "default_bpm": 120
   },

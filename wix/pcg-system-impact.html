@@ -6,11 +6,18 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<title>environment stage — PCG scatter survey</title>
+<title>L_FallenMoon — PCG scatter survey</title>
 <meta name="description" content="Procedural generation systems breakdown - density heatmaps, world placement, and hero graph plan/section drawings from a stylized UE5 environment portfolio.">
-<meta property="og:title" content="environment stage — PCG scatter survey">
+<meta property="og:title" content="L_FallenMoon — PCG scatter survey">
 <meta property="og:description" content="Procedural generation systems breakdown for a stylized UE5 environment portfolio.">
 <meta property="og:type" content="article">
+<link rel="stylesheet" href="melodia-tokens.css">
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-fashion-editorial.css">
+<link rel="stylesheet" href="melodia-premium-system.css">
+<link rel="stylesheet" href="melodia-magical-girl.css">
+<link rel="stylesheet" href="melodia-mahou-flourish.css">
 <style>*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0}img,canvas{max-width:100%}</style>
 </head>
 <body>
@@ -34,28 +41,28 @@
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);
-  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-family:var(--font-body);
   font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1120px;margin:0 auto;padding:56px 24px 80px;display:flex;flex-direction:column;gap:40px}
-.eyebrow{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:11.5px;
+.eyebrow{font-family:var(--font-mono);font-size:11.5px;
   letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
-h1{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+h1{font-family:var(--font-display);
   font-weight:600;font-size:clamp(30px,4.4vw,46px);line-height:1.12;margin:0 0 14px;
   letter-spacing:-.015em;text-wrap:balance}
 .lede{margin:0;max-width:62ch;color:var(--muted);font-size:16.5px}
 .lede strong{color:var(--ink);font-weight:600}
-h2{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+h2{font-family:var(--font-display);
   font-weight:600;font-size:21px;margin:0 0 6px;letter-spacing:-.01em}
 .sec-note{margin:0 0 20px;color:var(--muted);font-size:14px;max-width:64ch}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .panel-head{padding:16px 20px;border-bottom:1px solid var(--line);
   display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
 .panel-head h2{margin:0}
-.stat{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:12px;
+.stat{font-family:var(--font-mono);font-size:12px;
   color:var(--muted);font-variant-numeric:tabular-nums}
 .worldcanvas{display:block;width:100%;height:auto;background:transparent}
 .legend{display:flex;flex-wrap:wrap;gap:8px 20px;padding:14px 20px;border-top:1px solid var(--line);
-  font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:11.5px;color:var(--muted)}
+font-family:var(--font-mono);font-size:11.5px;color:var(--muted)}
 .legend span{display:inline-flex;align-items:center;gap:7px}
 .dot{width:9px;height:9px;border-radius:2px;flex:none}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
@@ -67,14 +74,14 @@ h2{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
 .card canvas{display:block;width:100%;height:auto}
 .card-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:9px;flex:1}
 .card-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.card-name{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+.card-name{font-family:var(--font-display);
   font-size:18px;font-weight:600;letter-spacing:-.01em}
-.chip{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:10px;
+.chip{font-family:var(--font-mono);font-size:10px;
   letter-spacing:.09em;text-transform:uppercase;padding:3px 8px;border-radius:3px;
   border:1px solid currentColor;flex:none}
 .c-hero{color:var(--accent)} .c-walk{color:var(--good)} .c-warn{color:var(--warn)} .c-mut{color:var(--muted)}
-.tech{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:11.5px;color:var(--muted)}
-.metrics{display:flex;gap:18px;font-family:ui-monospace,"Cascadia Code",Consolas,monospace;
+.tech{font-family:var(--font-mono);font-size:11.5px;color:var(--muted)}
+.metrics{display:flex;gap:18px;font-family:var(--font-mono);
   font-size:12px;font-variant-numeric:tabular-nums;padding-top:2px}
 .metrics b{display:block;font-weight:600;font-size:15px;color:var(--ink)}
 .metrics i{font-style:normal;color:var(--muted);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
@@ -91,7 +98,7 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
 
 <div class="wrap">
   <header>
-    <p class="eyebrow">environment stage &middot; PCG scatter survey</p>
+    <p class="eyebrow">L_FallenMoon &middot; PCG scatter survey</p>
     <h1>Six scatters, finally in their own volumes</h1>
     <p class="lede">Density maps for every PCG graph in the level &mdash; <strong>605 instances</strong> across six
     volumes. Until this pass, five of the six generated at the world origin regardless of where their
@@ -137,7 +144,7 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
     problem, so it does not show in these maps; it surfaced in the Z ranges. Worth a look before any capture.
   </div>
 
-  <footer>Generated from live instance transforms in <code>environment stage</code>. Counts are level-wide
+  <footer>Generated from live instance transforms in <code>L_FallenMoon</code>. Counts are level-wide
   per volume, measured in a separate call after generation settled.</footer>
 </div>
 
@@ -289,6 +296,6 @@ draw();
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
 new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 </script>
-
+<script src="melodia-mahou-flourish.js"></script>
 </body>
 </html>

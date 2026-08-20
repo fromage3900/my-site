@@ -110,7 +110,7 @@
 .melodia-shell[data-mg="soft"] .shell-nav,
 .melodia-shell[data-mg="chrome"] .shell-nav {
   background-image:
-    url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeDividerScroll.png");
+    url("../generated/assets/melodia-game-ui/T_Melodia_128_16464.png");
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: min(520px, 70%) 14px;
@@ -131,7 +131,7 @@
   width: 1.6rem;
   height: 1.6rem;
   transform: translateY(-50%);
-  background: url("../generated/assets/melodia-game-ui/T_Melodia_FiligreeCornerBaroque.png") center / contain no-repeat;
+  background: url("../generated/assets/melodia-game-ui/T_Melodia_128_16249.png") center / contain no-repeat;
   opacity: 0.65;
   pointer-events: none;
   filter: drop-shadow(0 0 6px rgba(196, 154, 78, 0.35));
@@ -235,6 +235,8 @@
   line-height: 1 !important;
   margin: 0 !important;
   white-space: nowrap;
+  color: var(--color-text-inverse) !important;
+  -webkit-text-fill-color: currentColor;
   transform: none;
 }
 

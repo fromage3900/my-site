@@ -350,26 +350,98 @@
   max-width: 420px;
   cursor: default;
   touch-action: manipulation;
+  border-radius: 50%;
+  isolation: isolate;
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      color-mix(in srgb, var(--iri-cyan, var(--primitive-astral-300)) 14%, transparent),
+      color-mix(in srgb, var(--primitive-astral-900) 88%, transparent) 58%,
+      var(--primitive-astral-900) 100%
+    ),
+    var(--melodia-void-gradient, var(--primitive-astral-900));
+  box-shadow:
+    inset 0 0 60px color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-500)) 12%, transparent),
+    0 18px 48px color-mix(in srgb, var(--primitive-astral-900) 55%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--iri-cyan, var(--primitive-astral-300)) 28%, transparent);
 }
 
 .planetarium-mini-mount {
   min-height: 280px;
+  display: grid;
+  place-items: center;
+}
+
+.planetarium-mini .planetarium-canvas {
+  border-radius: 50%;
+  opacity: 0.85;
+  mix-blend-mode: screen;
 }
 
 .planetarium-mini .planetarium-hint-mini {
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.72;
+  opacity: 0.82;
+  color: color-mix(in srgb, var(--iri-gold, var(--primitive-gold-100)) 72%, var(--color-text-primary));
+}
+
+.planetarium-mini .planetarium-focus {
+  color: var(--color-text-primary, var(--primitive-ivory-50));
+  text-shadow: 0 0 18px color-mix(in srgb, var(--iri-cyan, var(--primitive-astral-300)) 35%, transparent);
 }
 
 .planetarium-mini .planetarium-arm {
-  stroke-width: 1.35;
-  opacity: 0.78;
+  stroke-width: 1.55;
+  opacity: 0.92;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--iri-cyan, var(--primitive-astral-300)) 35%, transparent));
 }
 
 .planetarium-mini .planetarium-core-ring {
-  stroke: rgba(255, 110, 180, 0.45);
+  stroke: color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-500)) 70%, transparent);
+}
+
+/* Always-readable kana on mini (explorer already forces opacity) */
+.planetarium-mini .planetarium-node-label {
+  opacity: 1;
+  fill: var(--iri-cyan, var(--primitive-astral-300));
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  paint-order: stroke fill;
+  stroke: color-mix(in srgb, var(--primitive-astral-900) 85%, transparent);
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-500)) 55%, transparent));
+}
+
+.planetarium-mini .planetarium-node:nth-child(odd) .planetarium-node-label {
+  fill: color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-500)) 55%, var(--primitive-ivory-50));
+}
+
+.planetarium-mini .planetarium-node circle.node-body {
+  filter:
+    drop-shadow(0 0 10px color-mix(in srgb, var(--node-color, var(--iri-magenta, var(--primitive-sakura-500))) 70%, transparent))
+    drop-shadow(0 0 18px color-mix(in srgb, var(--iri-cyan, var(--primitive-astral-300)) 35%, transparent));
+}
+
+.planetarium-trail {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.78;
+  pointer-events: none;
+  stroke-width: 2.8;
+}
+
+.planetarium-trail.trail-pink {
+  stroke: var(--iri-magenta, var(--primitive-sakura-500));
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--iri-magenta, var(--primitive-sakura-500)) 70%, transparent));
+}
+
+.planetarium-trail.trail-cyan {
+  stroke: var(--iri-cyan, var(--primitive-astral-300));
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--iri-cyan, var(--primitive-astral-300)) 70%, transparent));
 }
 
 @media (max-width: 680px) {
@@ -378,5 +450,14 @@
   }
   .planetarium-mini-mount {
     min-height: 220px;
+  }
+  .planetarium-mini .planetarium-node-label {
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planetarium-trail {
+    opacity: 0.28;
   }
 }

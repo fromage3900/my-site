@@ -290,6 +290,7 @@ class HTMLDocument:
     """Wrapper around HTML DOM tree with query shortcuts."""
 
     def __init__(self, html_content: str):
+        self.raw_html: str = html_content
         parser = DOMParser()
         parser.feed(html_content)
         self.root = parser.root

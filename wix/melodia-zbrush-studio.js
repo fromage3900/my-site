@@ -4,43 +4,36 @@
 (function (global) {
   'use strict';
 
+  // Default selected = first entry. Melusina clay sculpts are the only clean plates;
+  // all zenlantern_* / melody_* komikaze beauty_* plates have broken purple AO noise.
   var SCULPTS = [
-    {
-      id: 'zen_lantern',
-      name: 'Zen Lantern (High-Poly)',
-      image: '../generated/assets/props/zenlantern_komikaze_beauty_34.png',
-      fallback: '../generated/assets/sculpt/sculpt_zenlantern_three_quarter.png',
-      polycount: '1.8M Polys (SubD Level 5)',
-      tools: 'ZBrush / 3DCoat / Blender Retopo',
-      notes: 'Curved pagoda eaves, filigree lattice perforations, soft-edge bevels for Komikaze Toon normals.'
-    },
-    {
-      id: 'melody_tokens',
-      name: 'Melody Token Quartet',
-      image: '../generated/assets/ornaments/melody_token_swirl_komikaze_beauty_34.png',
-      fallback: '../generated/assets/sculpt/sculpt_melodytoken_swirl.png',
-      polycount: '4-Piece Set · 450K Triangles',
-      tools: 'ZBrush Boolean DynaMesh + QuadRemesher',
-      notes: 'Four musical-celestial motifs (Star, Swirl, Heart, Water) sculpted for physics drop pickups.'
-    },
     {
       id: 'melusina_head',
       name: 'Melusina Bust & Jewelry',
       image: '../generated/assets/sculpt/sculpt_melusina_three_quarter.png',
-      fallback: '../generated/assets/character/melusina_beauty_eevee_20260715c_01.png',
+      fallback: '../generated/assets/sculpt/sculpt_melusina_profile.png',
       polycount: 'Hero Mesh · 68K Low-Poly Quad',
       tools: 'Maya Retopology / ZBrush Detailing',
       notes: 'Stylized facial planar transitions with Subdivision surface support and water-hair attachment curve flow.'
     },
     {
-      id: 'gothic_kitbash',
-      name: 'Gothic Architectural Kitbash',
-      image: '../generated/assets/ornaments/rose_window_komikaze_front.png',
-      fallback: '../generated/assets/ornaments/vault_ribs_komikaze_beauty_34.png',
-      polycount: '15 Modular Mesh Assets',
-      tools: 'Blender 5.2 Geometry Nodes + ZBrush Trim',
-      notes: 'Ribbed vaults, traceried rose windows, pointed arches engineered for PCG procedural assembly.'
-    }
+      id: 'melody_tokens',
+      name: 'Melody Token Quartet',
+      image: '../generated/assets/sculpt/sculpt_melodytoken_swirl.png',
+      fallback: '../generated/assets/sculpt/sculpt_melodytoken_star.png',
+      polycount: '4-Piece Set · 450K Triangles',
+      tools: 'ZBrush Boolean DynaMesh + QuadRemesher',
+      notes: 'Four musical-celestial motifs (Star, Swirl, Heart, Water) sculpted for physics drop pickups.'
+    },
+    {
+      id: 'zen_lantern',
+      name: 'Zen Lantern (High-Poly)',
+      image: '../generated/assets/sculpt/sculpt_zenlantern_three_quarter.png',
+      fallback: '../generated/assets/sculpt/sculpt_zenlantern_front.png',
+      polycount: '1.8M Polys (SubD Level 5)',
+      tools: 'ZBrush / 3DCoat / Blender Retopo',
+      notes: 'Curved pagoda eaves, filigree lattice perforations, soft-edge bevels for Komikaze Toon normals.'
+    },
   ];
 
   function init(containerSelector) {
@@ -57,7 +50,7 @@
       root.innerHTML = `
         <div class="zbrush-studio-container">
           <div class="zbrush-viewport">
-            <img id="zbrush-viewport-img" src="${currentSrc}" alt="${item.name}" onerror="this.onerror=null; this.src='${item.fallback}';" />
+            <img id="zbrush-viewport-img" src="${currentSrc}" alt="${item.name}" onerror="this.onerror=null; this.src='${currentPass === 'alternate' ? item.image : item.fallback}';" />
           </div>
 
           <div class="zbrush-studio-sidebar">

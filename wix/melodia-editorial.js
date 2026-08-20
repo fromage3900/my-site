@@ -225,11 +225,11 @@
   async function hydrateIntakeHero() {
     const img = document.getElementById('heroLeadImage');
     if (!img) return;
-    // Melusina character leads stay locked until remount tool wires dated plates.
+    // Locked plates stay put (Melusina character, recruiter env cinematic, etc.).
     // Do not swap a Melusina void/iri or dated plate for blender intake cross heroes.
     const lock = img.getAttribute('data-hero-lock') || '';
     const srcNow = img.getAttribute('src') || '';
-    if (lock === 'melusina' || /melusina/i.test(srcNow)) {
+    if (lock || /melusina/i.test(srcNow)) {
       return;
     }
     try {
@@ -419,7 +419,7 @@
     mount.innerHTML = links
       .map((link) => {
         const accent = esc(link.accent || 'gold');
-        const pillar = esc(link.accent || 'grotto');
+        const pillar = esc(link.accent || 'sakura');
         return `<a class="portal-card accent-${accent}" data-pillar="${pillar}" href="${esc(link.href)}"><span class="portal-step">${esc(link.step)}</span><div><h3>${esc(link.title)}</h3><p>${esc(link.body)}</p></div><span class="portal-open">Open →</span></a>`;
       })
       .join('');
@@ -661,10 +661,10 @@
         const pillars = production.wp_pillars;
         const wpData = [
           ['Total PCG ISM', String(production.pcg_total_ism || '—')],
-          ['SakuraDream', String(pillars.SakuraDream?.total_ism || '—')],
-          ['SpaceCathedral', String(pillars.SpaceCathedral?.total_ism || '—')],
-          ['BaroqueGrotto', String(pillars.BaroqueGrotto?.total_ism || '—')],
-          ['CosmicOrrery', String(pillars.CosmicOrrery?.total_ism || '—')],
+          ['L_MelusinaMorning', String(pillars.MelusinaMorning?.total_ism || pillars.L_MelusinaMorning?.total_ism || '—')],
+          ['L_SakuraDream', String(pillars.SakuraDream?.total_ism || pillars.L_SakuraDream?.total_ism || '—')],
+          ['L_KaleidoNave', String(pillars.SpaceCathedral?.total_ism || pillars.L_KaleidoNave?.total_ism || '—')],
+          ['L_FallenMoon', String(pillars.FallenMoon?.total_ism || pillars.L_FallenMoon?.total_ism || '—')],
         ];
         wpStatsEl.innerHTML = wpData
           .map(
@@ -673,7 +673,7 @@
           )
           .join('');
         if (wpSummary) {
-          wpSummary.textContent = `Verified 2026-07-09 from wp_pillar_levels.json — all four pillars passed ISM regen.`;
+          wpSummary.textContent = `Verified from wp_pillar_levels.json — all four canonical pillars passed ISM regen.`;
         }
       }
 
@@ -1064,6 +1064,22 @@
     document.head.appendChild(link);
   }
 
+  function ensureDreamShadersScript() {
+    if (global.MelodiaDreamShaders) return Promise.resolve();
+    if (document.querySelector('script[src*="melodia-dream-shaders.js"]')) {
+      return Promise.resolve();
+    }
+
+    return new Promise((resolve) => {
+      const script = document.createElement('script');
+      script.src = 'melodia-dream-shaders.js';
+      script.async = false;
+      script.onload = resolve;
+      script.onerror = resolve;
+      document.head.appendChild(script);
+    });
+  }
+
   function pickDividerVariant(el, index) {
     var preset = el.getAttribute('data-divider');
     var found = DIVIDER_VARIANTS.find(function (v) {
@@ -1149,7 +1165,8 @@
       global.MelodiaStarfield.init({ intensity: starIntensity });
     }
 
-    if (hasEffect(shell, 'holo') && global.MelodiaDreamShaders) {
+    // Dream shaders own iri sheen frames + cursor gleam — boot whenever the module is present.
+    if (global.MelodiaDreamShaders) {
       global.MelodiaDreamShaders.init();
     }
 
@@ -1185,6 +1202,7 @@
 
   async function init(options) {
     const pageKey = (options && options.page) || document.documentElement.getAttribute('data-page') || '';
+    await ensureDreamShadersScript();
     ensureEditorialPolishCss();
     ensureA11yLandmarks();
     initParallax();
