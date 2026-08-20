@@ -2,7 +2,17 @@
 
 UE 5.8 + Blender 5.2 production platform for stylized portfolio work: Melodia Studio Geometry Nodes (165 builders / 12 GN Stack categories), Unreal C++ JRPG slice, and DCC bridges.
 
-## Recruiter sendoff (30 seconds) — 2026-08-13
+## Recruiter / NVIDIA sendoff — 2026-08-20
+
+**Primary outreach page:** [NVIDIA + recruiter sendoff](wix/nvidia-recruiter-sendoff.html) · live: `https://fromage3900.github.io/my-site/wix/nvidia-recruiter-sendoff.html`
+
+**Honest local-AI headline:** Qwen 2.5 Coder 7B MATH **22/32** (TCA **93.5%** · ARG **74.2%** · EXEC **71.0%**); P0 **4/10** (TCA 100% · ARG/EXEC 40%); Muse 30B does **not** fit ~12&nbsp;GB VRAM (prior MATH 0/32); Hermes = MCP harness not Hermes 3 weights; overnight Tier 0 MCP **26/26** green, contracts soft.
+
+**Also skim:** [One-sheet](wix/recruiter-one-sheet.html) · [Research packet](wix/nous-research-packet.html) · [Harness](wix/melusina-agent-harness.html) · [Home](wix/index.html) · [Resume](wix/resume.html)
+
+---
+
+## Recruiter sendoff (30 seconds) — 2026-08-13 (portfolio art baseline)
 
 **Who:** Brennan Shepherd — stylized environment & technical artist, Humber 3D Animation, Toronto.
 

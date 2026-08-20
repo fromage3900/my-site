@@ -1,0 +1,104 @@
+{
+  "schema": "melodia.p0_scenario_run.v1",
+  "kind": "p0_economy_mcp_scenarios",
+  "model": "qwen2.5-coder:7b",
+  "captured_at": "2026-08-20T13:30:16-04:00",
+  "passed": 4,
+  "total": 10,
+  "failed": 6,
+  "tca_pct": 100.0,
+  "arg_pct": 40.0,
+  "exec_pct": 40.0,
+  "tasks": [
+    {
+      "id": "p0_encounter_start",
+      "gold_tool": "melodia_encounter_start",
+      "chosen_tool": "melodia_encounter_start",
+      "tool_match": true,
+      "args_match": false,
+      "exec_ok": false,
+      "detail": "melodia_encounter_start() got an unexpected keyword argument 'dungeon_name'"
+    },
+    {
+      "id": "p0_rhythm_hit",
+      "gold_tool": "melodia_economy_rhythm_hit",
+      "chosen_tool": "melodia_economy_rhythm_hit",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "p0_cast_healing",
+      "gold_tool": "melodia_economy_cast_skill",
+      "chosen_tool": "melodia_economy_cast_skill",
+      "tool_match": true,
+      "args_match": false,
+      "exec_ok": false,
+      "detail": "melodia_economy_cast_skill() got an unexpected keyword argument 'skill'"
+    },
+    {
+      "id": "p0_cast_mana",
+      "gold_tool": "melodia_economy_cast_skill",
+      "chosen_tool": "melodia_economy_cast_skill",
+      "tool_match": true,
+      "args_match": false,
+      "exec_ok": false,
+      "detail": "melodia_economy_cast_skill() got an unexpected keyword argument 'skill'"
+    },
+    {
+      "id": "p0_cast_utility_debuff",
+      "gold_tool": "melodia_economy_cast_skill",
+      "chosen_tool": "melodia_economy_cast_skill",
+      "tool_match": true,
+      "args_match": false,
+      "exec_ok": false,
+      "detail": "melodia_economy_cast_skill() got an unexpected keyword argument 'skill'"
+    },
+    {
+      "id": "p0_economy_hud",
+      "gold_tool": "melodia_ui_get_economy_hud",
+      "chosen_tool": "melodia_ui_get_economy_hud",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "p0_enemy_action",
+      "gold_tool": "melodia_encounter_enemy_action",
+      "chosen_tool": "melodia_encounter_enemy_action",
+      "tool_match": true,
+      "args_match": false,
+      "exec_ok": false,
+      "detail": "melodia_encounter_enemy_action() missing 1 required positional argument: 'encounter_id'"
+    },
+    {
+      "id": "p0_encounter_resolve",
+      "gold_tool": "melodia_encounter_resolve",
+      "chosen_tool": "melodia_encounter_resolve",
+      "tool_match": true,
+      "args_match": false,
+      "exec_ok": false,
+      "detail": "melodia_encounter_resolve() missing 1 required positional argument: 'encounter_id'"
+    },
+    {
+      "id": "p0_quest_status",
+      "gold_tool": "melodia_quest_check_p0",
+      "chosen_tool": "melodia_quest_check_p0",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "p0_grief_hook",
+      "gold_tool": "melodia_economy_activate_grief_hook",
+      "chosen_tool": "melodia_economy_activate_grief_hook",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "detail": "ok"
+    }
+  ]
+}

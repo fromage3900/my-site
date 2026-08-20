@@ -1,0 +1,346 @@
+{
+  "schema": "melodia.math_run.v1",
+  "kind": "model_via_hermes_harness",
+  "harness": "hermes (deploy/hermes_mcp.py + deploy/melodia_mcp_server.py)",
+  "model": "muse-glimmer-30b:latest",
+  "backend": "ollama (muse-glimmer-30b:latest) cpu",
+  "note": "Scores a model choosing Hermes MCP tools. Not a Nous Hermes 3 weight pull.",
+  "captured_at": "2026-08-19T09:47:52-04:00",
+  "editor_contacted": true,
+  "passed": 0,
+  "total": 32,
+  "scored": 32,
+  "held": 0,
+  "failed": 32,
+  "tca_pct": 0.0,
+  "arg_pct": 0.0,
+  "exec_pct": 0.0,
+  "ter_ratio": 10.0611,
+  "ter_target": 0.2,
+  "ter_meets_target": false,
+  "tokens_unconstrained": 3043,
+  "tokens_constrained": 30616,
+  "ter_samples": 32,
+  "tasks": [
+    {
+      "id": "notify_battle_allow",
+      "gold_tool": "melodia_quill_validate_notification",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "HTTP Error 500: Internal Server Error"
+    },
+    {
+      "id": "notify_hack_deny",
+      "gold_tool": "melodia_quill_validate_notification",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "notify_stat_allow",
+      "gold_tool": "melodia_quill_validate_notification",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "quill_list_has_scripts",
+      "gold_tool": "melodia_quill_list_scripts",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "narrative_record_schema",
+      "gold_tool": "melodia_narrative_get_record",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "allowlist_schema",
+      "gold_tool": "melodia_config_get_allowlist",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "fixtures_list",
+      "gold_tool": "melodia_bp_list_fixtures",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "fixture_unknown_invalid",
+      "gold_tool": "melodia_bp_validate_fixture",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "template_world_challenge",
+      "gold_tool": "melodia_bp_get_template",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "template_missing_errors",
+      "gold_tool": "melodia_bp_get_template",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "subsystems_listed",
+      "gold_tool": "melodia_system_list_subsystems",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "health_schema",
+      "gold_tool": "melodia_system_health",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "idempotency_audit",
+      "gold_tool": "melodia_narrative_audit_idempotency",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "p0_route_five_fixtures",
+      "gold_tool": "melodia_bp_validate_p0_route",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "golden_preflight_ready_flag",
+      "gold_tool": "melodia_system_golden_run_preflight",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "persona_stats_schema",
+      "gold_tool": "melodia_persona_get_stats",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "audio_list_schema",
+      "gold_tool": "melodia_audio_list_assets",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "audio_rhythm_catalog",
+      "gold_tool": "melodia_audio_get_rhythm_catalog",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "audio_metasound_offline",
+      "gold_tool": "melodia_audio_validate_metasound",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "ui_list_schema",
+      "gold_tool": "melodia_ui_list_widgets",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "ui_battle_hud",
+      "gold_tool": "melodia_ui_get_battle_hud",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "compile_feedback_offline",
+      "gold_tool": "melodia_system_compile_feedback",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "animation_sm_editor",
+      "gold_tool": "melodia_animation_validate_state_machine",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "ui_validate_widget_offline",
+      "gold_tool": "melodia_ui_validate_widget",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "economy_get_state",
+      "gold_tool": "melodia_economy_get_state",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "economy_grief_hook",
+      "gold_tool": "melodia_economy_activate_grief_hook",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "economy_cast_healing_song",
+      "gold_tool": "melodia_economy_cast_skill",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "economy_cast_mana_song",
+      "gold_tool": "melodia_economy_cast_skill",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "hud_economy_state",
+      "gold_tool": "melodia_ui_get_economy_hud",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "encounter_start_p0",
+      "gold_tool": "melodia_encounter_start",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "encounter_resolve_p0",
+      "gold_tool": "melodia_encounter_resolve",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "quest_p0_status",
+      "gold_tool": "melodia_quest_check_p0",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    }
+  ]
+}

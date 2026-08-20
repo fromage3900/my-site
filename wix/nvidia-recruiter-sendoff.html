@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-page="nvidia-recruiter-sendoff">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NVIDIA + Recruiter Sendoff | Brennan Shepherd — Melodia</title>
+<meta name="description" content="Honest Aug 2026 sendoff: local Ollama on RTX 4070 (12 GB), Hermes MCP harness (not Hermes 3 weights), Qwen MATH TCA 93.5% / ARG 74.2% / EXEC 71.0%, Muse 30B VRAM reality, recruiter proof links." />
+<meta property="og:title" content="Melodia sendoff — NVIDIA + recruiters" />
+<meta property="og:description" content="Local inference on consumer RTX + UE/Blender creative toolchain. Dated run JSON only — no fake 98% leaderboards." />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/nvidia-recruiter-sendoff.html" />
+<link rel="stylesheet" href="melodia-tokens.css">
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-components.css">
+<style>
+.packet{max-width:1040px;margin:0 auto;padding:2.5rem 1.5rem 5rem}
+.packet h1{font-family:var(--font-display,Syne,serif);font-size:clamp(1.85rem,4vw,2.75rem);color:var(--color-text-primary);margin:0 0 .75rem;line-height:1.15}
+.packet .lede{color:var(--color-text-secondary);line-height:1.65;margin-bottom:1.75rem;max-width:46rem}
+.eyebrow{font-family:var(--font-mono,monospace);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-primary);margin:0 0 .85rem}
+.audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:1.25rem 0 2rem}
+.audience{background:var(--color-surface-sunken,#F3E6C8);border:1px solid var(--color-border-subtle);border-radius:6px;padding:1.25rem 1.2rem}
+.audience h2{font-size:.78rem;margin:0 0 .65rem;font-family:var(--font-mono,monospace);letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-primary)}
+.audience p{font-size:.9rem;line-height:1.55;color:var(--color-text-secondary);margin:0}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:1.25rem 0}
+.card{background:var(--color-surface-raised,#FFF8EE);border:1px solid var(--color-border-subtle);border-radius:6px;padding:1.15rem}
+.card h3{font-size:.72rem;color:var(--color-accent-primary);margin:0 0 .45rem;font-family:var(--font-mono,monospace);letter-spacing:.08em;text-transform:uppercase}
+.card p,.card ul{font-size:.86rem;color:var(--color-text-secondary);line-height:1.55;margin:0}
+.card ul{padding-left:1.1rem}
+.card a{color:var(--color-text-accent)}
+.metric{font-family:var(--font-display,Syne,serif);font-size:1.55rem;color:var(--color-text-primary);margin:.15rem 0 .4rem}
+.metric-sub{font-family:var(--font-mono,monospace);font-size:.72rem;color:var(--color-text-tertiary);letter-spacing:.04em}
+.section-label{font-family:var(--font-mono,monospace);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent-primary);margin:2.25rem 0 .65rem}
+.note{font-size:.82rem;color:var(--color-text-tertiary);border-left:3px solid var(--color-accent-primary);padding-left:.75rem;margin:1.5rem 0;line-height:1.55}
+.pitch{background:var(--color-surface-inverse,#241B2E);color:var(--color-text-inverse,#FFF8EE);border-radius:6px;padding:1.25rem 1.3rem;margin:1rem 0}
+.pitch h3{margin:0 0 .5rem;font-family:var(--font-mono,monospace);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--primitive-gold-300,#DDC79B)}
+.pitch p{margin:0;font-size:.9rem;line-height:1.6;color:var(--primitive-ivory-100,#F8ECD6)}
+.link-row{display:flex;flex-wrap:wrap;gap:.5rem .85rem;margin-top:1rem}
+.link-row a{font-family:var(--font-mono,monospace);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-accent);text-decoration:none;border-bottom:1px solid transparent}
+.link-row a:hover{border-color:var(--color-text-accent)}
+.hw{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:1rem 0 1.5rem}
+.hw span{display:block;padding:.7rem .8rem;border:1px solid var(--color-border-subtle);border-radius:4px;font-size:.8rem;color:var(--color-text-secondary);background:var(--color-surface-raised)}
+.hw strong{display:block;font-family:var(--font-mono,monospace);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-primary);margin-bottom:.25rem}
+</style>
+</head>
+<body>
+<div class="melodia-shell">
+<header class="shell-nav" aria-label="Navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
+  <nav class="nav-links">
+    <a href="recruiter-one-sheet.html">Recruiter</a>
+    <a href="nous-research-packet.html">Research</a>
+    <a href="melusina-agent-harness.html">Harness</a>
+    <a href="dashboards.html">Dashboards</a>
+    <a href="project_health.html">Health</a>
+  </nav>
+</header>
+
+<main id="main" class="packet">
+  <p class="eyebrow">Sendoff packet · 2026-08-20 · NVIDIA + recruiters</p>
+  <h1>Local AI on an RTX box, plus a shipped stylized portfolio.</h1>
+  <p class="lede">
+    One page for two readers. <strong>NVIDIA</strong> gets the consumer-GPU reality: Ollama lanes on ~12&nbsp;GB VRAM, honest MATH metrics, Hermes as an MCP harness (not Hermes&nbsp;3 weights).
+    <strong>Recruiters</strong> get what shipped, evidence URLs, and the UE / Blender creative stack behind Melodia.
+    Scores appear only when a dated run JSON exists — no fake 98% leaderboards.
+  </p>
+
+  <div class="audience-grid">
+    <article class="audience">
+      <h2>For NVIDIA</h2>
+      <p>RTX 4070-class local inference + creative DCC/engine toolchain (UE 5.8, Blender, Ollama). Spatial content pipeline with an auditable agent harness — Toronto SIL / Vector-facing fluency without claiming unpublished Nemotron product wins.</p>
+    </article>
+    <article class="audience">
+      <h2>For recruiters</h2>
+      <p>Stylized environment &amp; technical artist: four portfolio worlds, Substrate Toon spine, PCG / Geometry Nodes, character atelier, plus a typed MCP harness with ledger-backed gates. Start at the one-sheet; deep-dive here for AI/tooling proof.</p>
+    </article>
+  </div>
+
+  <p class="section-label">Hardware lane (honest)</p>
+  <div class="hw">
+    <span><strong>GPU</strong>RTX 4070-class · ~12 GB VRAM</span>
+    <span><strong>Local runtime</strong>Ollama on-box</span>
+    <span><strong>Fits GPU</strong>Qwen 2.5 Coder 7B (primary MATH lane)</span>
+    <span><strong>Does not fit</strong>Muse Glimmer 30B (~21 GB) → CPU / OpenRouter path</span>
+  </div>
+
+  <p class="section-label">Session scoreboard · dated runs only</p>
+  <div class="card-grid">
+    <article class="card">
+      <h3>Qwen 7B · MATH</h3>
+      <p class="metric">22 / 32</p>
+      <p class="metric-sub">TCA 93.5% · ARG 74.2% · EXEC 71.0%</p>
+      <p style="margin-top:.55rem"><code>qwen2.5-coder:7b</code> via Hermes MCP · captured 2026-08-20 13:30 ET</p>
+    </article>
+    <article class="card">
+      <h3>Qwen 7B · P0 scenarios</h3>
+      <p class="metric">4 / 10</p>
+      <p class="metric-sub">TCA 100% · ARG 40% · EXEC 40%</p>
+      <p style="margin-top:.55rem">Economy / encounter MCP scenarios — tool-choice strong; arg/exec soft on schema mismatches</p>
+    </article>
+    <article class="card">
+      <h3>Harness self-eval</h3>
+      <p class="metric">31 / 32</p>
+      <p class="metric-sub">TCA 100% · 1 HOLD (editor SM)</p>
+      <p style="margin-top:.55rem">Golden MCP tool surface — not an LLM leaderboard</p>
+    </article>
+    <article class="card">
+      <h3>Muse Glimmer 30B</h3>
+      <p class="metric">0 / 32</p>
+      <p class="metric-sub">Prior MATH · does not fit 12 GB</p>
+      <p style="margin-top:.55rem">CPU/OpenRouter path only on this box. Not pitched as a green lane.</p>
+    </article>
+    <article class="card">
+      <h3>MCP suite</h3>
+      <p class="metric">26 / 26</p>
+      <p class="metric-sub">Expanded · overnight Tier 0</p>
+      <p style="margin-top:.55rem"><code>test_melodia_mcp.py</code> green on 2026-08-20 overnight preflight</p>
+    </article>
+    <article class="card">
+      <h3>Contracts</h3>
+      <p class="metric">Soft</p>
+      <p class="metric-sub">6 / 20 in overnight Tier 0</p>
+      <p style="margin-top:.55rem">MCP core green; broader T3D / BP / wardrobe contracts still fail floor — tracked, not hidden</p>
+    </article>
+  </div>
+
+  <p class="note">
+    <strong>Naming:</strong> Hermes = MCP agent harness (<code>deploy/hermes_mcp.py</code> + <code>melodia_mcp_server.py</code>), not Nous Hermes&nbsp;3 model weights.
+    Reproduce: <code>python Tools/run_math_models.py</code> · <code>python Tools/test_melodia_mcp.py</code> · evidence under <code>BS_GodFile/Saved/Audit/</code> and site mirrors in <code>generated/melodia/status/</code>.
+  </p>
+
+  <p class="section-label">Paste-ready pitches</p>
+  <div class="pitch">
+    <h3>NVIDIA paragraph</h3>
+    <p>I run a UE 5.8 stylized production pipeline and a typed MCP agent harness on a consumer RTX 4070 (~12&nbsp;GB): Qwen 2.5 Coder 7B through Ollama scores MATH TCA 93.5% / ARG 74.2% / EXEC 71.0% (22/32) with P0 TCA 100% but ARG/EXEC 40% — Muse Glimmer 30B does not fit VRAM (prior MATH 0/32 on CPU). Hermes here is the harness, not Hermes&nbsp;3 weights; overnight Tier&nbsp;0 MCP tests are green (26/26) while contract suites stay soft. That is the honest local-inference + creative GPU story I bring to Toronto SIL / Higher Ed DevRel conversations.</p>
+  </div>
+  <div class="pitch">
+    <h3>Recruiter paragraph</h3>
+    <p>Brennan Shepherd — Toronto-based stylized environment &amp; technical artist (Humber 3D). Melodia ships four reviewable UE worlds, a Substrate Toon material spine, Blender Geometry Nodes / PCG systems, and a Melusina character atelier, plus a public evidence trail for the Hermes MCP harness (Qwen MATH 22/32 at TCA 93.5%, harness self-eval 31/32). Best skim: recruiter one-sheet → environments hub → this sendoff for AI/tooling proof → resume.</p>
+  </div>
+
+  <p class="section-label">What shipped · proof links</p>
+  <div class="card-grid">
+    <article class="card">
+      <h3>Portfolio narrative</h3>
+      <ul>
+        <li>Four canonical UE environments + Melusina character stage</li>
+        <li>Substrate Toon / PCG / Geometry Nodes (Melodia Studio)</li>
+        <li>Echo ledger gates + agent dashboards (snapshots on Pages)</li>
+      </ul>
+    </article>
+    <article class="card">
+      <h3>Tech stack</h3>
+      <ul>
+        <li>Unreal Engine 5.8 · Blender · Ollama</li>
+        <li>Python MCP harness · Monolith :9316</li>
+        <li>TouchDesigner / ZBrush / Substance as needed</li>
+      </ul>
+    </article>
+    <article class="card">
+      <h3>We do not claim</h3>
+      <ul>
+        <li>No fake 98% / Hermes&nbsp;3 weight leaderboard</li>
+        <li>No “Muse 30B fits 12&nbsp;GB” story</li>
+        <li>No unpublished Nemotron product certification</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="link-row">
+    <a href="https://fromage3900.github.io/my-site/wix/index.html">Live home</a>
+    <a href="recruiter-one-sheet.html">Recruiter one-sheet</a>
+    <a href="nous-research-packet.html">Research packet</a>
+    <a href="melusina-agent-harness.html">Hermes harness</a>
+    <a href="dashboards.html">Dashboard hub</a>
+    <a href="project_health.html">Project health</a>
+    <a href="application-hub.html">Environments hub</a>
+    <a href="resume.html">Resume</a>
+    <a href="../generated/melodia/status/math_run_qwen2.5-coder_7b_2026-08-20.json">Qwen MATH JSON</a>
+    <a href="../public/melodia/status/index.html">Status mirror</a>
+    <a href="mailto:brennan.shepherd3900@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/brennan-shepherd-3b6111307/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/fromage3900/MelodiaMelusinaV2" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="inner">
+    <span>Brennan Shepherd · Environment &amp; Technical Artist · Toronto, ON</span>
+    <span>Sendoff stamp 2026-08-20 · evidence-backed only</span>
+  </div>
+</footer>
+</div>
+<script src="melodia-site-nav.js"></script>
+</body>
+</html>

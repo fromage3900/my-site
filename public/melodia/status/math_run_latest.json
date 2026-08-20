@@ -3,13 +3,13 @@
   "kind": "harness_self_eval",
   "model": "none",
   "note": "Scores the MCP tool surface with golden expects. Not an LLM leaderboard.",
-  "captured_at": "2026-08-19T05:08:55-04:00",
-  "editor_contacted": true,
+  "captured_at": "2026-08-20T10:46:06-04:00",
+  "editor_contacted": false,
   "tasks_spec": "specs/mcp/math_tasks.v1.json",
-  "passed": 32,
+  "passed": 31,
   "total": 32,
   "failed": 0,
-  "held": 0,
+  "held": 1,
   "tca_pct": 100.0,
   "tasks": [
     {
@@ -169,9 +169,9 @@
     {
       "id": "animation_sm_editor",
       "tool": "melodia_animation_validate_state_machine",
-      "pass": true,
-      "status": "pass",
-      "detail": "ok"
+      "pass": false,
+      "status": "hold",
+      "detail": "editor_required \u2014 Monolith unreachable on :9316"
     },
     {
       "id": "ui_validate_widget_offline",
