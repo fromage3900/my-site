@@ -108,6 +108,16 @@
       rotSpeed: 0.004,
       polyCount: '4.8k Tris'
     },
+    'melusina-shirt': {
+      name: 'Melusina (Updated Hero Shirt)',
+      category: 'Characters & Companions',
+      type: 'fbx',
+      path: 'models/UpdatedShirt.fbx',
+      defaultFabric: 'MelusinaShirt',
+      scale: 0.015,
+      rotSpeed: 0.005,
+      polyCount: '14.2k Tris'
+    },
     'melusina-hero': {
       name: 'Melusina (Full Production Rig & Wardrobe)',
       category: 'Characters & Companions',
@@ -403,15 +413,15 @@
   Melodia3DViewer.prototype.setupPedestal = function () {
     this.pedestalGroup = new THREE.Group();
 
-    var shadowPlaneGeo = new THREE.PlaneGeometry(12, 12);
+    var shadowPlaneGeo = new THREE.PlaneGeometry(16, 16);
     var shadowPlaneMat = new THREE.ShadowMaterial({ opacity: 0.35 });
     var shadowPlane = new THREE.Mesh(shadowPlaneGeo, shadowPlaneMat);
     shadowPlane.rotation.x = -Math.PI / 2;
-    shadowPlane.position.y = -1.2;
+    shadowPlane.position.y = -1.75;
     shadowPlane.receiveShadow = true;
     this.pedestalGroup.add(shadowPlane);
 
-    var ringGeo = new THREE.TorusGeometry(1.6, 0.02, 16, 64);
+    var ringGeo = new THREE.TorusGeometry(1.8, 0.025, 16, 64);
     var ringMat = new THREE.MeshStandardMaterial({
       color: 0xc9a86a,
       metalness: 0.9,
@@ -420,17 +430,17 @@
     });
     var ringMesh = new THREE.Mesh(ringGeo, ringMat);
     ringMesh.rotation.x = Math.PI / 2;
-    ringMesh.position.y = -1.18;
+    ringMesh.position.y = -1.73;
     this.pedestalGroup.add(ringMesh);
 
-    var discGeo = new THREE.CylinderGeometry(1.58, 1.58, 0.04, 48);
+    var discGeo = new THREE.CylinderGeometry(1.78, 1.78, 0.05, 48);
     var discMat = new THREE.MeshStandardMaterial({
       color: 0x161224,
       roughness: 0.6,
       metalness: 0.3
     });
     var discMesh = new THREE.Mesh(discGeo, discMat);
-    discMesh.position.y = -1.21;
+    discMesh.position.y = -1.76;
     discMesh.receiveShadow = true;
     this.pedestalGroup.add(discMesh);
 
@@ -547,12 +557,16 @@
         }
       });
 
-      var box = new THREE.Box3().setFromObject(object3D);
-      var center = box.getCenter(new THREE.Vector3());
-      object3D.position.sub(center);
-
       var scale = def.scale || 1.0;
       object3D.scale.set(scale, scale, scale);
+
+      var box = new THREE.Box3().setFromObject(object3D);
+      var center = box.getCenter(new THREE.Vector3());
+
+      // Center horizontally and ground bottom neatly on top of the lowered plate (y = -1.72)
+      object3D.position.x = -center.x;
+      object3D.position.z = -center.z;
+      object3D.position.y = -box.min.y - 1.72;
 
       group.add(object3D);
       self.updateTelemetry(def);
