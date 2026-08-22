@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Melodia — Rhythm Staff</title>
+<script>p5.disableFriendlyErrors = true;</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/addons/p5.sound.min.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #0A0E22; overflow: hidden; }
+  canvas { display: block; }
+  .hint {
+    position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
+    font-family: 'Inter', system-ui, sans-serif; font-size: 12px; letter-spacing: .04em;
+    color: #94a3b8; opacity: .7; pointer-events: none; text-align: center;
+  }
+  .hint b { color: #C9A86A; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="hint">click to let music in &middot; move to steer the playhead &middot; press <b>S</b> to save a banner</div>
+<script>
+// ===== Melodia — a living rhythm staff. Music is the key. =====
+// Palette: void #0A0E22, gold #C9A86A, iris #5BD6E0, sakura #FFB7C5, violet #A78BFA, white #FFF8EE
+const PAL = {
+  void:  [10, 14, 34],
+  gold:  [201, 168, 106],
+  iris:  [91, 214, 224],
+  sakura:[255, 183, 197],
+  violet:[167, 139, 250],
+  white: [255, 248, 238],
+};
+const SEED = 7321;
+
+let notes = [];
+let sparks = [];
+let stars = [];
+let playX;            // playhead x (mouse-steered)
+let t = 0;
+let audioOn = false;
+let oscPool = [];
+let staffY = [];
+let starsFade = 0;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  pixelDensity(1);
+  randomSeed(SEED); noiseSeed(SEED);
+  playX = width * 0.72;
+  layoutStaff();
+  // ambient starfield
+  for (let i = 0; i < 150; i++) {
+    stars.push({ x: random(width), y: random(height), r: random(0.4, 1.4), a: random(0.1, 0.4), tw: random(TWO_PI) });
+  }
+  // seed the first notes travelling left-to-right
+  for (let i = 0; i < 6; i++) spawnNote(random(width * 0.2, width * 1.1), random(0, staffY.length - 1), true);
+  // soft sine voices (pooled, muted until click)
+  for (let i = 0; i < 8; i++) {
+    let o = new p5.Oscillator('sine'); o.amp(0); o.start(); oscPool.push(o);
+  }
+}
+
+function layoutStaff() {
+  staffY = [];
+  const mid = height * 0.56;
+  const gap = max(22, height * 0.045);
+  for (let i = 0; i < 5; i++) staffY.push(mid + (i - 2) * gap);
+}
+
+function spawnNote(x, lane, initial) {
+  const cols = [PAL.gold, PAL.iris, PAL.sakura, PAL.violet];
+  notes.push({
+    x: x, lane: lane,
+    y: staffY[lane] + sin(x * 0.01 + lane) * 6,
+    vx: random(0.6, 1.4),
+    col: cols[floor(random(cols.length))],
+    r: random(8, 13),
+    trail: [],
+    hit: false,
+  });
+}
+
+function draw() {
+  t += 0.016;
+  // background: void + radial vignette
+  background(PAL.void[0], PAL.void[1], PAL.void[2]);
+  drawVignette();
+  drawStars();
+  drawStaffGlow();
+  drawStaff();
+
+  // playhead breathing
+  const pulse = 0.5 + 0.5 * sin(t * 2.2);
+  push();
+  stroke(PAL.gold[0], PAL.gold[1], PAL.gold[2], 200);
+  strokeWeight(2.2);
+  line(playX, height * 0.18, playX, height * 0.86);
+  noStroke();
+  fill(PAL.white[0], PAL.white[1], PAL.white[2], 200);
+  circle(playX, staffY[2], 8 + pulse * 5);
+  noFill();
+  stroke(PAL.gold[0], PAL.gold[1], PAL.gold[2], 90 * pulse);
+  strokeWeight(1.4);
+  circle(playX, staffY[2], 24 + pulse * 22);
+  pop();
+
+  // notes
+  for (let i = notes.length - 1; i >= 0; i--) {
+    let n = notes[i];
+    n.x += n.vx;
+    n.y = staffY[n.lane] + sin(n.x * 0.01 + n.lane) * 6;
+    n.trail.push({ x: n.x, y: n.y });
+    if (n.trail.length > 18) n.trail.shift();
+
+    // draw ribbon trail
+    noFill();
+    for (let j = 1; j < n.trail.length; j++) {
+      const a = map(j, 0, n.trail.length, 0, 120);
+      stroke(n.col[0], n.col[1], n.col[2], a);
+      strokeWeight(map(j, 0, n.trail.length, 0.5, 3.5));
+      line(n.trail[j - 1].x, n.trail[j - 1].y, n.trail[j].x, n.trail[j].y);
+    }
+
+    // note head (glow)
+    push();
+    drawingContext.shadowBlur = 18;
+    drawingContext.shadowColor = `rgba(${n.col[0]},${n.col[1]},${n.col[2]},0.9)`;
+    noStroke();
+    fill(n.col[0], n.col[1], n.col[2]);
+    ellipse(n.x, n.y, n.r * 2, n.r * 1.5);
+    // stem
+    stroke(PAL.white[0], PAL.white[1], PAL.white[2], 180);
+    strokeWeight(1.6);
+    line(n.x + n.r * 0.8, n.y, n.x + n.r * 0.8, n.y - 22);
+    pop();
+
+    // hit the playhead?
+    if (!n.hit && abs(n.x - playX) < 6) {
+      n.hit = true;
+      burst(n.x, n.y, n.col);
+      if (audioOn) pluck();
+    }
+    if (n.x > width + 40) notes.splice(i, 1);
+  }
+
+  // sparks
+  for (let i = sparks.length - 1; i >= 0; i--) {
+    let s = sparks[i];
+    s.x += s.vx; s.y += s.vy; s.vy += 0.04; s.life -= 0.02;
+    noStroke();
+    fill(s.col[0], s.col[1], s.col[2], 255 * s.life);
+    circle(s.x, s.y, s.r * (0.4 + s.life));
+    if (s.life <= 0) sparks.splice(i, 1);
+  }
+
+  // gentle sparing respawn so the staff keeps playing
+  if (notes.length < 6 && frameCount % 40 === 0) spawnNote(-20, floor(random(staffY.length)), false);
+}
+
+function burst(x, y, col) {
+  for (let i = 0; i < 16; i++) {
+    const a = random(TWO_PI), sp = random(1, 4);
+    sparks.push({ x, y, vx: cos(a) * sp, vy: sin(a) * sp - 1, r: random(2, 5), life: 1, col });
+  }
+  // a soft ring ripple
+  rings.push({ x, y, r: 10, life: 1, col });
+}
+let rings = [];
+function drawRings() {
+  for (let i = rings.length - 1; i >= 0; i--) {
+    let g = rings[i];
+    g.r += 3; g.life -= 0.03;
+    noFill(); stroke(g.col[0], g.col[1], g.col[2], 200 * g.life); strokeWeight(1.5);
+    circle(g.x, g.y, g.r * 2);
+    if (g.life <= 0) rings.splice(i, 1);
+  }
+}
+
+function pluck() {
+  const scale = [0, 2, 4, 7, 9]; // pentatonic
+  const f = 220 * Math.pow(2, scale[floor(random(scale.length))] / 12);
+  let o = oscPool.find(o => o.amp() < 0.001) || oscPool[0];
+  o.freq(f);
+  o.amp(0.12, 0.01); o.amp(0, 0.4, 0.05);
+}
+
+function drawStaff() {
+  // undulating gold lines (living staff)
+  push();
+  strokeWeight(1.3);
+  for (let l = 0; l < staffY.length; l++) {
+    stroke(PAL.gold[0], PAL.gold[1], PAL.gold[2], 70);
+    noFill();
+    beginShape();
+    for (let x = 0; x <= width; x += 14) {
+      const y = staffY[l] + noise(x * 0.003, l * 0.7, t * 0.3) * 10 - 5;
+      vertex(x, y);
+    }
+    endShape();
+  }
+  // a drawn clef flourish at left
+  push();
+  translate(70, staffY[2]);
+  stroke(PAL.gold[0], PAL.gold[1], PAL.gold[2], 150); strokeWeight(3); noFill();
+  bezier(-6, 60, -40, 16, -28, -54, 24, -42);
+  fill(PAL.gold[0], PAL.gold[1], PAL.gold[2], 160); noStroke(); circle(20, 30, 12);
+  pop();
+  pop();
+  drawRings();
+}
+
+function drawStaffGlow() {
+  push();
+  noStroke();
+  const g = drawingContext.createLinearGradient(0, staffY[0] - 30, 0, staffY[4] + 60);
+  g.addColorStop(0, 'rgba(201,168,106,0)');
+  g.addColorStop(1, 'rgba(201,168,106,0.10)');
+  drawingContext.fillStyle = g;
+  drawingContext.fillRect(0, staffY[0] - 30, width, (staffY[4] + 60) - (staffY[0] - 30));
+  pop();
+}
+
+function drawVignette() {
+  push();
+  noStroke();
+  const g = drawingContext.createRadialGradient(width/2, height*0.6, height*0.2, width/2, height*0.6, height*0.9);
+  g.addColorStop(0, 'rgba(18,24,58,0.5)');
+  g.addColorStop(1, 'rgba(5,6,15,0)');
+  drawingContext.fillStyle = g;
+  drawingContext.fillRect(0, 0, width, height);
+  pop();
+}
+
+function drawStars() {
+  push(); noStroke();
+  for (let s of stars) {
+    const tw = 0.5 + 0.5 * sin(t * 0.6 + s.tw);
+    fill(PAL.white[0], PAL.white[1], PAL.white[2], s.a * 255 * tw);
+    circle(s.x, s.y, s.r);
+  }
+  pop();
+}
+
+function mouseMoved() { playX = constrain(mouseX, width * 0.3, width * 0.9); }
+function mousePressed() {
+  if (!audioOn) {
+    audioOn = true;
+    userStartAudio();
+    for (let o of oscPool) o.amp(0);
+  }
+  // spawn a note at the cursor's nearest lane
+  let lane = 0, best = 1e9;
+  for (let l = 0; l < staffY.length; l++) { const d = abs(mouseY - staffY[l]); if (d < best) { best = d; lane = l; } }
+  spawnNote(mouseX, lane, false);
+}
+function keyPressed() {
+  if (key === 's' || key === 'S') saveCanvas('melodia-rhythm-banner', 'png');
+  if (key === 'r' || key === 'R') { randomSeed(millis()); noiseSeed(millis()); notes = []; sparks = []; rings = []; }
+}
+function windowResized() { resizeCanvas(windowWidth, windowHeight); layoutStaff(); }
+</script>
+</body>
+</html>
