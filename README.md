@@ -8,7 +8,7 @@ UE 5.8 + Blender 5.2 production platform for stylized portfolio work: Melodia St
 
 **Honest local-AI headline:** Qwen 2.5 Coder 7B MATH **22/32** (TCA **93.5%** · ARG **74.2%** · EXEC **71.0%**); P0 **4/10** (TCA 100% · ARG/EXEC 40%); Muse 30B does **not** fit ~12&nbsp;GB VRAM (prior MATH 0/32); Hermes = MCP harness not Hermes 3 weights; overnight Tier 0 MCP **26/26** green, contracts soft.
 
-**Also skim:** [One-sheet](wix/recruiter-one-sheet.html) · [Research packet](wix/nous-research-packet.html) · [Harness](wix/melusina-agent-harness.html) · [Home](wix/index.html) · [Resume](wix/resume.html)
+**Also skim:** [One-sheet](wix/recruiter-one-sheet.html) · [Research packet](wix/nous-research-packet.html) · [Model Tooling](wix/melusina-model-tooling.html) · [Home](wix/index.html) · [Resume](wix/resume.html)
 
 ---
 
@@ -24,13 +24,13 @@ UE 5.8 + Blender 5.2 production platform for stylized portfolio work: Melodia St
 
 **Skim these:** [One-sheet](wix/recruiter-one-sheet.html) · [Home](wix/index.html) · [Melodia Studio](wix/geometry-nodes.html) · [Melusina](wix/melodia-stage-character.html) · [Resume](wix/resume.html)
 
-**As of 2026-08-13.** Live agent MCP is **BlenderMCP :9876**. Melodia Studio Live Bridge LiveLink is a stub. Port 9317 is legacy.
+**As of 2026-08-13.** Live bridge is **BlenderMCP :9876**. Melodia Studio Live Bridge LiveLink is a stub. Port 9317 is legacy.
 
 ---
 
 ## Onboarding: Live Collaborative Level Designer
 
-> Two designers, one live session. Connect BlenderMCP on 9876. ~10 minutes to first agent ping.
+> Two designers, one live session. Connect BlenderMCP on 9876. ~10 minutes to first bridge connection.
 
 ### Prerequisites
 
@@ -82,7 +82,7 @@ Mocap clips retarget through `RTG_Mocap_to_Melusina` onto `SK_Melusina_Skeleton`
 
 | Port | Service | Direction |
 |------|---------|-----------|
-| `9876` | **BlenderMCP** — live agent MCP | Cursor/agent ↔ open Blender 5.2 GUI |
+| `9876` | **BlenderMCP** — live bridge | Cursor/agent ↔ open Blender 5.2 GUI |
 | `9876` | LiveLink stub (same port; one bridge at a time) | Scratch `/Game/LiveLink/` only |
 | `9316` | UE Monolith MCP | Any → UE |
 | `9317` | Legacy adapter | Do not use |

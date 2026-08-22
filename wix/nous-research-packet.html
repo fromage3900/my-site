@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Research Packet — Agent Harness &amp; Model Eval | Brennan Shepherd</title>
+<title>Research Packet — Model Tooling &amp; Eval | Brennan Shepherd</title>
 <meta name="description" content="Honest runtime evidence for Melodia's Hermes MCP harness: 21/21 MCP tests, 24/24 MATH tasks, 20/20 contract suites, Qwen model eval, project health scorecard. For Nous Research and similar labs." />
-<meta property="og:title" content="Melodia Research Packet — Agent Harness Evidence" />
+<meta property="og:title" content="Melodia Research Packet — Model Tooling Evidence" />
 <meta property="og:description" content="Typed MCP harness in UE 5.8 with ledger-backed gates. Published scores only when run logs exist." />
 <meta property="og:url" content="https://fromage3900.github.io/my-site/wix/nous-research-packet.html" />
 <link rel="stylesheet" href="melodia-tokens.css">
@@ -32,22 +32,22 @@
   <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
   <nav class="nav-links">
     <a href="recruiter-one-sheet.html">Recruiter</a>
-    <a href="melusina-agent-harness.html">Harness</a>
+    <a href="melusina-model-tooling.html">Model Tooling</a>
     <a href="dashboards.html">Dashboards</a>
     <a href="project_health.html">Health</a>
   </nav>
 </header>
 <main id="main" class="packet">
   <p class="eyebrow" style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-primary)">Research outreach · Aug 2026</p>
-  <h1>Agent harness evidence (honest scoreboard)</h1>
-  <p class="lede">Melodia ships a typed MCP harness inside Unreal Engine 5.8 — not a demo page. Hermes here means the agentic tool router (<code>deploy/hermes_mcp.py</code> + <code>melodia_mcp_server.py</code>), not Nous Hermes 3 weights. LLM scores are published only when a dated run log exists on disk.</p>
+  <h1>Model tooling evidence (honest scoreboard)</h1>
+  <p class="lede">Melodia ships a typed MCP model tooling inside Unreal Engine 5.8 — not a demo page. Hermes here means the agentic tool router (<code>deploy/hermes_mcp.py</code> + <code>melodia_mcp_server.py</code>), not Nous Hermes 3 weights. LLM scores are published only when a dated run log exists on disk.</p>
 
   <div class="card-grid">
     <article class="card">
       <h2>MCP harness</h2>
       <p class="metric">21 / 21</p>
       <p>Registry + policy self-test (<code>test_melodia_mcp.py</code>). 25 read-only <code>melodia_*</code> tools including Animation, Audio, UI wrappers.</p>
-      <p style="margin-top:.75rem"><a href="melusina-agent-harness.html">Full harness page →</a></p>
+      <p style="margin-top:.75rem"><a href="melusina-model-tooling.html">Full harness page →</a></p>
     </article>
     <article class="card">
       <h2>Contract floor</h2>
@@ -72,7 +72,7 @@
     <article class="card">
       <h2>Project health</h2>
       <p class="metric">HOLD</p>
-      <p>13/15 claims PASS — Echo + battle gates, Hermes harness, Qwen lane, <strong>SWE Light orchestrator PASS</strong> (Animation/Audio/UI wrappers on disk). Muse lane OPEN; doc links WARN.</p>
+      <p>13/15 claims PASS — Echo + battle gates, local model tooling, Qwen lane, <strong>local model wrapper PASS</strong> (Animation/Audio/UI wrappers on disk). Muse lane OPEN; doc links WARN.</p>
       <p style="margin-top:.75rem"><a href="project_health.html">Live scorecard →</a></p>
     </article>
     <article class="card">
