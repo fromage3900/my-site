@@ -107,7 +107,47 @@
       </g>
     </svg>
   </div>
+  <div id="live" class="live">
+    <div class="live-row">
+      <span class="live-label">LIVE STANDING</span>
+      <span id="standing" class="live-val">reading the gate ledger…</span>
+    </div>
+    <div class="bar"><div id="barfill" class="bar-fill"></div></div>
+    <div id="summary" class="live-sum"></div>
+    <div class="live-foot">Pulled from the game repo's real <code>Saved/gate_ledger.json</code> — never invented.</div>
+  </div>
   <p>Generated from <a href="https://github.com/fromage3900/MelodiaMelusinaV2">MelodiaMelusinaV2</a> · Docs/melodia-architecture.svg</p>
 </div>
+<script>
+  // Read the honest, ledger-backed status the sync workflow publishes.
+  fetch('https://fromage3900.github.io/my-site/public/melodia/status/sync_status.json')
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(d => {
+      const closed = d.gates_closed || 0, total = d.gates_total || 0;
+      const pct = total ? Math.round(100 * closed / total) : 0;
+      document.getElementById('standing').textContent =
+        (d.standing || 'in progress') + ` — ${closed}/${total} gates closed`;
+      document.getElementById('barfill').style.width = pct + '%';
+      document.getElementById('summary').textContent = d.summary || '';
+    })
+    .catch(e => {
+      document.getElementById('standing').textContent = 'standing: in progress (ledger offline)';
+      document.getElementById('summary').textContent =
+        'Local models (Qwen / Muse) used only for catalog rows, beat maps and QA. Never the product.';
+    });
+</script>
+<style>
+  .live { margin-top: 1.4rem; border: 1px solid #1e293b; border-radius: 12px;
+          padding: 1.1rem 1.2rem; background: #0d1228; }
+  .live-row { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap; }
+  .live-label { font: 600 11px 'Inter', sans-serif; letter-spacing: .14em; color: #C9A86A; }
+  .live-val { font: 700 1.05rem 'Inter', sans-serif; color: #FFF8EE; }
+  .bar { height: 8px; border-radius: 6px; background: #1e293b; margin: .8rem 0 .6rem; overflow: hidden; }
+  .bar-fill { height: 100%; width: 0; border-radius: 6px;
+              background: linear-gradient(90deg, #5BD6E0, #C9A86A); transition: width 1.1s ease; }
+  .live-sum { font: 400 .9rem 'Inter', sans-serif; color: #cbd5e1; line-height: 1.5; max-width: 70ch; }
+  .live-foot { margin-top: .7rem; font: 400 .75rem 'Inter', sans-serif; color: #64748b; }
+  code { color: #94a3b8; }
+</style>
 </body>
 </html>
