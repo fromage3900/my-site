@@ -42,6 +42,19 @@ let audioOn = false;
 let oscPool = [];
 let staffY = [];
 let starsFade = 0;
+let progress = 0.5;   // 0..1, driven by real gate_ledger via sync_status.json
+let progressLabel = "";
+
+// Pull the honest, ledger-backed progress so the art breathes with the real
+// project state. Falls back to a calm mid-value if offline.
+fetch('https://fromage3900.github.io/my-site/public/melodia/status/sync_status.json')
+  .then(r => r.ok ? r.json() : Promise.reject(r.status))
+  .then(d => {
+    const closed = d.gates_closed || 0, total = d.gates_total || 1;
+    progress = total ? closed / total : 0.5;
+    progressLabel = `${closed}/${total} gates closed`;
+  })
+  .catch(() => { progress = 0.5; progressLabel = "ledger offline"; });
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -89,6 +102,19 @@ function draw() {
   drawStars();
   drawStaffGlow();
   drawStaff();
+
+  // subtle progress readout (top-left), tied to the real ledger
+  push();
+  noStroke();
+  fill(PAL.gold[0], PAL.gold[1], PAL.gold[2], 220);
+  textFont('Inter'); textSize(12); textStyle(BOLD);
+  textAlign(LEFT, TOP);
+  text('MELUSINA · ' + progressLabel, 18, 16);
+  // slim progress underline
+  const bw = 160;
+  fill(PAL.gold[0], PAL.gold[1], PAL.gold[2], 60); rect(18, 36, bw, 3, 2);
+  fill(PAL.gold[0], PAL.gold[1], PAL.gold[2], 220); rect(18, 36, bw * progress, 3, 2);
+  pop();
 
   // playhead breathing
   const pulse = 0.5 + 0.5 * sin(t * 2.2);
@@ -154,8 +180,10 @@ function draw() {
     if (s.life <= 0) sparks.splice(i, 1);
   }
 
-  // gentle sparing respawn so the staff keeps playing
-  if (notes.length < 6 && frameCount % 40 === 0) spawnNote(-20, floor(random(staffY.length)), false);
+  // density scales with real progress: more gates closed => a fuller staff,
+  // but never empty, never overwhelming.
+  const target = floor(4 + progress * 6); // 4..10 notes
+  if (notes.length < target && frameCount % 24 === 0) spawnNote(-20, floor(random(staffY.length)), false);
 }
 
 function burst(x, y, col) {
