@@ -127,6 +127,11 @@
     renderer.setSize(width, height, false);
   }
 
+  function markUnavailable() {
+    var root = document.querySelector('.atmosphere-shell');
+    if (root) root.classList.add('no-webgl');
+  }
+
   function animate() {
     window.requestAnimationFrame(animate);
     if (document.hidden) return;
@@ -154,7 +159,10 @@
     mount = document.getElementById('atmosphere-canvas');
     reducedMotion = Boolean(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     THREE = window.THREE;
-    if (!mount || !THREE || !window.WebGLRenderingContext) return;
+    if (!mount || !THREE || !window.WebGLRenderingContext) {
+      markUnavailable();
+      return;
+    }
 
     try {
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
@@ -218,6 +226,7 @@
       resize();
       animate();
     } catch (error) {
+      markUnavailable();
       if (window.console && window.console.error) window.console.error('Melodia atmosphere:', error);
     }
   }

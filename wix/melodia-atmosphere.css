@@ -35,6 +35,10 @@ button {
     var(--melodia-void-gradient);
 }
 
+.atmosphere-shell:not(.no-webgl) .atmosphere-fallback {
+  display: none;
+}
+
 .atmosphere-poster,
 .atmosphere-canvas,
 .atmosphere-veil,
@@ -275,6 +279,7 @@ button {
 }
 
 .atmosphere-fallback {
+  display: block;
   position: absolute;
   z-index: 6;
   right: var(--space-24);
