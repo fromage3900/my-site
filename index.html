@@ -1,16 +1,67 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-page="atmosphere" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta http-equiv="refresh" content="0; url=wix/index.html" />
-<title>Brennan Shepherd Portfolio</title>
-<style>
-  html, body { margin: 0; min-height: 100%; background: #101525; color: #f8f1e7; font-family: Inter, system-ui, sans-serif; display: grid; place-items: center; }
-  a { color: #f2b8c8; }
-</style>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="theme-color" content="#141A30" />
+<title>Melodia — Atmosphere Before Spectacle</title>
+<meta name="description" content="Melodia Melusina — a quiet Three.js gateway into living worlds, procedural environments, and technical art." />
+<meta property="og:title" content="Melodia — Atmosphere Before Spectacle" />
+<meta property="og:description" content="A breathing Three.js gateway into Melodia’s Living Worlds." />
+<meta property="og:image" content="wix/living-worlds-poster.svg" />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/" />
+<link rel="stylesheet" href="wix/melodia-tokens.css" />
+<link rel="stylesheet" href="wix/melodia-atmosphere.css" />
 </head>
 <body>
-  <p>Opening <a href="wix/index.html">Brennan Shepherd portfolio</a>.</p>
+<div class="atmosphere-shell">
+  <img class="atmosphere-poster" src="wix/living-worlds-poster.svg" alt="" aria-hidden="true" />
+  <div id="atmosphere-canvas" class="atmosphere-canvas" aria-hidden="true"></div>
+  <div class="atmosphere-veil" aria-hidden="true"></div>
+  <div class="atmosphere-grain" aria-hidden="true"></div>
+
+  <header class="atmosphere-header" aria-label="Melodia gateway navigation">
+    <a class="atmosphere-brand" href="wix/index.html"><span class="atmosphere-brand-mark" aria-hidden="true"></span>Melodia</a>
+    <a href="wix/index.html">Portfolio archive ↗</a>
+  </header>
+
+  <main class="atmosphere-main">
+    <div class="atmosphere-copy">
+      <p class="atmosphere-kicker">Melodia / Melusina · field study · 01–03</p>
+      <h1>Atmosphere<br /><em>before spectacle.</em></h1>
+      <p class="atmosphere-lede">A quiet doorway into worlds that breathe, remember, and eventually look back. Enter the three-chapter procedural study, or move directly into the full environment art portfolio.</p>
+      <div class="atmosphere-actions" aria-label="Primary destinations">
+        <a class="atmosphere-action primary" href="wix/melodia-living-worlds.html">Enter Living Worlds <span aria-hidden="true">&nbsp;↗</span></a>
+        <a class="atmosphere-action" href="wix/index.html">Open portfolio</a>
+      </div>
+      <div class="atmosphere-meta" aria-label="Field study details">
+        <div class="atmosphere-meta-item">
+          <p class="atmosphere-meta-label">Medium</p>
+          <span class="atmosphere-meta-value">Three.js / WebGL</span>
+        </div>
+        <div class="atmosphere-meta-item">
+          <p class="atmosphere-meta-label">Worlds</p>
+          <span class="atmosphere-meta-value">03 dreamscapes</span>
+        </div>
+        <div class="atmosphere-meta-item">
+          <p class="atmosphere-meta-label">Mood</p>
+          <span class="atmosphere-meta-value">Beautiful dread</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <p class="atmosphere-fallback">The gateway is still beautiful without WebGL. Choose a destination above to continue.</p>
+  <footer class="atmosphere-footer">
+    <span>Stylized environment &amp; technical art · Toronto, ON</span>
+    <span>Serene sublime → biological revelation → ontological dread</span>
+  </footer>
+</div>
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script defer src="wix/melodia-atmosphere.js"></script>
 </body>
 </html>

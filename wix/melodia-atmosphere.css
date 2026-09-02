@@ -1,0 +1,374 @@
+/* Root atmosphere gateway — quiet enough to invite, alive enough to remember. */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--primitive-astral-900);
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--primitive-astral-900);
+  color: var(--primitive-ivory-50);
+  font-family: var(--font-body);
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.atmosphere-shell {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 56% 68% at 54% 46%, rgba(214, 169, 176, 0.18), transparent 70%),
+    var(--melodia-void-gradient);
+}
+
+.atmosphere-shell:not(.no-webgl) .atmosphere-fallback {
+  display: none;
+}
+
+.atmosphere-poster,
+.atmosphere-canvas,
+.atmosphere-veil,
+.atmosphere-grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.atmosphere-poster {
+  z-index: -4;
+  object-fit: cover;
+  opacity: 0.74;
+  filter: saturate(0.62) brightness(0.56);
+  transform: scale(1.035);
+  transition: opacity 1.4s ease, filter 1.4s ease;
+}
+
+.atmosphere-canvas {
+  z-index: -3;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.atmosphere-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.atmosphere-shell.is-ready .atmosphere-canvas {
+  opacity: 1;
+}
+
+.atmosphere-shell.is-ready .atmosphere-poster {
+  opacity: 0.16;
+  filter: saturate(0.9) brightness(0.42);
+}
+
+.atmosphere-veil {
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(10, 14, 28, 0.8), rgba(10, 14, 28, 0.08) 52%, rgba(10, 14, 28, 0.56)),
+    linear-gradient(180deg, rgba(10, 14, 28, 0.66), transparent 32%, rgba(10, 14, 28, 0.72));
+  box-shadow: inset 0 0 170px rgba(10, 14, 28, 0.78);
+}
+
+.atmosphere-grain {
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.2;
+  background-image:
+    radial-gradient(circle at 20% 29%, rgba(255, 248, 238, 0.52) 0 0.6px, transparent 0.9px),
+    radial-gradient(circle at 80% 68%, rgba(194, 186, 224, 0.46) 0 0.7px, transparent 1px);
+  background-size: 8px 8px, 13px 13px;
+  mix-blend-mode: soft-light;
+}
+
+.atmosphere-header {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(var(--space-16), 3vw, var(--space-32)) clamp(var(--space-16), 5vw, var(--space-96));
+}
+
+.atmosphere-brand,
+.atmosphere-header a {
+  color: var(--primitive-ivory-50);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.atmosphere-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-family: var(--font-brand);
+  font-size: 0.83rem;
+  font-weight: 700;
+}
+
+.atmosphere-brand-mark {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--primitive-gold-500);
+  transform: rotate(45deg);
+  box-shadow: 0 0 16px rgba(201, 168, 106, 0.58);
+}
+
+.atmosphere-header a {
+  color: var(--primitive-gold-300);
+  transition: color 180ms ease;
+}
+
+.atmosphere-header a:hover {
+  color: var(--primitive-ivory-50);
+}
+
+.atmosphere-main {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  min-height: 100svh;
+  align-items: center;
+  padding: 120px clamp(var(--space-24), 9vw, var(--space-128)) 100px;
+}
+
+.atmosphere-copy {
+  width: min(650px, 100%);
+}
+
+.atmosphere-kicker,
+.atmosphere-meta-label {
+  margin: 0;
+  color: var(--primitive-nikki-rose);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.atmosphere-copy h1 {
+  margin: var(--space-16) 0 var(--space-24);
+  color: var(--primitive-ivory-50);
+  font-family: var(--font-cover);
+  font-size: clamp(4rem, 10vw, 9.5rem);
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 0.82;
+  text-shadow: 0 22px 72px rgba(10, 14, 28, 0.74);
+}
+
+.atmosphere-copy h1 em {
+  color: var(--primitive-nikki-rose);
+  font-weight: 400;
+}
+
+.atmosphere-lede {
+  max-width: 510px;
+  margin: 0;
+  color: var(--primitive-ivory-100);
+  font-size: clamp(0.9rem, 1.45vw, 1.08rem);
+  line-height: 1.65;
+  text-shadow: 0 5px 28px rgba(10, 14, 28, 0.94);
+}
+
+.atmosphere-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12, 12px);
+  margin-top: var(--space-32);
+}
+
+.atmosphere-action {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-24);
+  border: 1px solid rgba(201, 168, 106, 0.42);
+  border-radius: var(--radius-pill);
+  background: rgba(20, 26, 48, 0.4);
+  color: var(--primitive-ivory-50);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  backdrop-filter: blur(15px);
+  transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.atmosphere-action:hover {
+  transform: translateY(-3px);
+  border-color: var(--primitive-gold-500);
+  background: rgba(46, 36, 56, 0.72);
+}
+
+.atmosphere-action.primary {
+  border-color: var(--primitive-nikki-rose);
+  background: rgba(214, 169, 176, 0.18);
+  box-shadow: 0 0 30px rgba(214, 169, 176, 0.18);
+}
+
+.atmosphere-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(110px, auto));
+  gap: var(--space-24);
+  margin-top: clamp(var(--space-32), 7vh, var(--space-64));
+}
+
+.atmosphere-meta-item {
+  padding-top: var(--space-12, 12px);
+  border-top: 1px solid rgba(201, 168, 106, 0.28);
+}
+
+.atmosphere-meta-value {
+  display: block;
+  margin-top: 6px;
+  color: var(--primitive-ivory-100);
+  font-family: var(--font-display);
+  font-size: 0.84rem;
+}
+
+.atmosphere-footer {
+  position: absolute;
+  z-index: 4;
+  right: clamp(var(--space-24), 5vw, var(--space-96));
+  bottom: clamp(var(--space-16), 3vw, var(--space-32));
+  left: clamp(var(--space-24), 5vw, var(--space-96));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  color: var(--primitive-slate-300);
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.atmosphere-footer span:last-child {
+  color: var(--primitive-gold-300);
+  text-align: right;
+}
+
+.atmosphere-fallback {
+  display: block;
+  position: absolute;
+  z-index: 6;
+  right: var(--space-24);
+  bottom: 92px;
+  max-width: 300px;
+  padding: var(--space-12) var(--space-16);
+  border-left: 1px solid var(--primitive-gold-500);
+  background: rgba(20, 26, 48, 0.54);
+  color: var(--primitive-slate-300);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  line-height: 1.55;
+}
+
+.atmosphere-shell :focus-visible {
+  outline: 2px solid var(--primitive-nikki-rose);
+  outline-offset: 4px;
+}
+
+@media (max-width: 720px) {
+  body {
+    overflow: auto;
+  }
+
+  .atmosphere-shell {
+    min-height: 100svh;
+  }
+
+  .atmosphere-header {
+    padding-inline: var(--space-16);
+  }
+
+  .atmosphere-header a {
+    font-size: 0.54rem;
+  }
+
+  .atmosphere-main {
+    min-height: 820px;
+    align-items: flex-start;
+    padding: 150px var(--space-24) 150px;
+  }
+
+  .atmosphere-copy h1 {
+    font-size: clamp(3.8rem, 19vw, 6.5rem);
+  }
+
+  .atmosphere-lede {
+    max-width: 390px;
+    font-size: 0.84rem;
+  }
+
+  .atmosphere-meta {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-12, 12px);
+  }
+
+  .atmosphere-meta-value {
+    font-size: 0.68rem;
+  }
+
+  .atmosphere-footer {
+    right: var(--space-24);
+    bottom: var(--space-24);
+    left: var(--space-24);
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .atmosphere-footer span:last-child {
+    text-align: left;
+  }
+
+  .atmosphere-fallback {
+    right: var(--space-24);
+    bottom: 142px;
+    left: var(--space-24);
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atmosphere-poster,
+  .atmosphere-canvas,
+  .atmosphere-action,
+  .atmosphere-header a {
+    transition: none;
+  }
+
+  .atmosphere-grain {
+    display: none;
+  }
+}
