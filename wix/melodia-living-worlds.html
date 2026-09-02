@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" data-page="melodia-living-worlds" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="theme-color" content="#141A30" />
+<title>Living Worlds — Melodia / Melusina Three.js Field Study</title>
+<meta name="description" content="Enter three procedural Melodia dreamscapes: Sea Above, Faraway Mother, and Horizon Eater. A real-time Three.js field study in beautiful dread." />
+<meta property="og:title" content="Melodia — Living Worlds" />
+<meta property="og:description" content="Three procedural dreamscapes. One landscape that eventually looks back." />
+<meta property="og:image" content="living-worlds-poster.svg" />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/melodia-living-worlds.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="melodia-tokens.css" />
+<link rel="stylesheet" href="melodia-luxury-type.css" />
+<link rel="stylesheet" href="melodia-editorial.css" />
+<link rel="stylesheet" href="melodia-site-chrome.css" />
+<link rel="stylesheet" href="melodia-magical-girl.css" />
+<link rel="stylesheet" href="melodia-mobile.css" />
+<link rel="stylesheet" href="melodia-living-worlds.css" />
+</head>
+<body data-living-scene="faraway-mother">
+<a class="skip-link" href="#living-copy">Skip to scene description</a>
+<div class="melodia-shell living-shell" data-mg="chrome" data-theme="dark" data-nav-cta="recruiter-one-sheet.html" data-nav-cta-label="Recruiter One-Sheet">
+  <header class="shell-nav constellation-nav" aria-label="Melodia navigation">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="index.html">Home</a>
+      <a href="application-hub.html">Hub</a>
+      <a href="cosmic-orrery.html">Orrery</a>
+      <a href="melodia-living-worlds.html" class="is-active" aria-current="page">Living</a>
+      <a href="world-bible.html">Worlds</a>
+      <a href="resume.html">Resume</a>
+    </nav>
+    <a class="nav-cta button-premium" href="recruiter-one-sheet.html">Recruiter One-Sheet</a>
+  </header>
+
+  <main id="main" class="living-main">
+    <section class="living-stage" aria-labelledby="living-title">
+      <img class="living-poster" src="living-worlds-poster.svg" alt="" aria-hidden="true" />
+      <div id="living-canvas" class="living-canvas" aria-hidden="true"></div>
+      <div class="living-vignette" aria-hidden="true"></div>
+      <div class="living-grain" aria-hidden="true"></div>
+      <div class="living-reticle" aria-hidden="true"><span></span></div>
+
+      <div class="living-title-lockup">
+        <p class="living-kicker">WebGL field study · Melodia / Melusina</p>
+        <h1 id="living-title">Living <em>Worlds</em></h1>
+        <p class="living-thesis">The first view is beautiful. The second contains something unexplained. The third proves the landscape has anatomy.</p>
+      </div>
+
+      <div class="living-runtime" aria-label="Runtime status">
+        <span class="living-runtime-dot" aria-hidden="true"></span>
+        <span id="living-runtime-copy">Preparing procedural dreamscape…</span>
+      </div>
+
+      <div class="living-controls">
+        <div class="living-scene-rail" aria-label="Choose a chapter">
+          <p class="living-control-label">Dream sequence</p>
+          <div class="living-scene-buttons">
+            <button type="button" class="living-scene-button" data-scene="sea-above" aria-pressed="false">
+              <span class="living-scene-number">01</span>
+              <span><b>Sea Above</b><small>Impossible water</small></span>
+            </button>
+            <button type="button" class="living-scene-button is-active" data-scene="faraway-mother" aria-pressed="true">
+              <span class="living-scene-number">02</span>
+              <span><b>Faraway Mother</b><small>Living terrain</small></span>
+            </button>
+            <button type="button" class="living-scene-button" data-scene="horizon-eater" aria-pressed="false">
+              <span class="living-scene-number">03</span>
+              <span><b>Horizon Eater</b><small>Ontological dread</small></span>
+            </button>
+          </div>
+        </div>
+
+        <article id="living-copy" class="living-copy" aria-live="polite">
+          <div class="living-copy-head">
+            <span id="living-chapter">Chapter II · Biological Revelation</span>
+            <button type="button" id="living-motion" class="living-motion" aria-pressed="true">
+              <span aria-hidden="true">◉</span> Motion on
+            </button>
+          </div>
+          <h2 id="living-scene-title">Faraway Mother</h2>
+          <p id="living-scene-description">The mountain inhales. A pupil larger than a lighthouse opens inside its folds, and a tear-river remembers the way home.</p>
+          <dl class="living-motifs">
+            <div><dt>Motifs</dt><dd id="living-motif-copy">fabric terrain · eyelid fold · tear river</dd></div>
+            <div><dt>Interaction</dt><dd>drag to orbit · 1–3 to travel</dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <p class="living-drag-hint" aria-hidden="true"><span>Drag</span> to disturb the dream</p>
+      <div id="living-fallback" class="living-fallback" hidden>
+        <p class="living-control-label">The dream is resting</p>
+        <h2>WebGL could not wake this landscape.</h2>
+        <p id="living-fallback-copy">The illustrated field note remains available while the real-time renderer is unavailable.</p>
+      </div>
+      <noscript>
+        <div class="living-noscript">Enable JavaScript to enter the procedural dreamscapes.</div>
+      </noscript>
+    </section>
+  </main>
+</div>
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script defer src="melodia-site-nav.js"></script>
+<script defer src="melodia-editorial.js"></script>
+<script defer src="melodia-living-worlds.js"></script>
+</body>
+</html>
