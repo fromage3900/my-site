@@ -10,6 +10,7 @@
     { href: 'index.html', label: 'Home', keys: ['index', ''] },
     { href: 'application-hub.html', label: 'Hub', keys: ['application-hub'] },
     { href: 'cosmic-orrery.html', label: 'Orrery', keys: ['cosmic-orrery'] },
+    { href: 'melodia-living-worlds.html', label: 'Living', keys: ['melodia-living-worlds'] },
     { href: 'zbrush-breakdown.html', label: 'Breakdown', keys: ['zbrush-breakdown'] },
     { href: 'hero-renders.html', label: 'Renders', keys: ['hero-renders'] },
     { href: 'melodia-stage-character.html', label: 'Stage', keys: ['melodia-stage-character'] },

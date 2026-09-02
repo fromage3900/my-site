@@ -1,5 +1,13 @@
 # Melodia — Live Collaborative Environment Art Platform
 
+<p align="center">
+  <img src="wix/living-worlds-poster.svg" alt="Melodia Living Worlds — three procedural dreamscapes" width="100%" />
+</p>
+
+<p align="center"><strong><a href="https://fromage3900.github.io/my-site/wix/melodia-living-worlds.html">Enter Living Worlds ↗</a></strong> · Sea Above · Faraway Mother · Horizon Eater</p>
+
+> A zero-asset Three.js field study in serene impossibility, biological revelation, and ontological dread. Procedural geometry, shader-driven water and tears, living terrain, spatial compression, keyboard/pointer navigation, reduced-motion support, and an illustrated fallback.
+
 UE 5.8 + Blender 5.2 production platform for stylized portfolio work: Melodia Studio Geometry Nodes (165 builders / 12 GN Stack categories), Unreal C++ JRPG slice, and DCC bridges.
 
 ## Recruiter / NVIDIA sendoff — 2026-08-20
