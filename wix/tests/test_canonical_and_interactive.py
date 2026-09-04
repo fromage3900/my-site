@@ -416,3 +416,35 @@ def test_figma_game_ui_assets_live_and_wired():
 
 
 
+
+
+def test_mahou_rare_ambient_events_contract():
+    """Rare decorative events must remain sparse, removable, and reduced-motion aware."""
+    wix_dir = _get_wix_dir()
+    mf_js = os.path.join(wix_dir, "melodia-mahou-flourish.js")
+    mf_css = os.path.join(wix_dir, "melodia-mahou-flourish.css")
+
+    with open(mf_js, "r", encoding="utf-8") as f:
+        js_code = f.read()
+    with open(mf_css, "r", encoding="utf-8") as f:
+        css_code = f.read()
+
+    for symbol in [
+        "constellationBloom",
+        "petalCrack",
+        "wakeCursorSigil",
+        "rareCooldown",
+        "IntersectionObserver",
+        "data-mahou-rare-seen",
+    ]:
+        assert symbol in js_code, f"Mahou rare-event contract missing {symbol}"
+
+    for css_class in [
+        ".mahou-constellation-event",
+        ".mahou-petal-crack",
+        ".mahou-cursor-sigil",
+    ]:
+        assert css_class in css_code, f"Mahou rare-event CSS missing {css_class}"
+
+    assert "prefers-reduced-motion: reduce" in css_code
+    assert "removeAfter" in js_code
