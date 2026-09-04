@@ -659,8 +659,67 @@ def test_curated_art_gallery_contract():
     ]:
         assert required in page, f"Curated Art contract missing {required}"
 
-    assert page.count('<figure class="art-piece') >= 12
+    assert page.count('<figure class="art-piece') == 12
     assert 'data-starfield-intensity="subtle"' in page
     assert ".art-grid" in css
     assert ".curated-art-hero" in css
     assert "curated-art.html" in nav
+
+
+def test_art_first_navigation_and_gallery_performance_contract():
+    """Primary navigation, gallery viewer, responsive derivatives, and role hierarchy stay intentional."""
+    wix_dir = _get_wix_dir()
+    root = os.path.abspath(os.path.join(wix_dir, ".."))
+
+    with open(os.path.join(wix_dir, "melodia-site-nav.js"), "r", encoding="utf-8") as f:
+        nav = f.read()
+    with open(os.path.join(wix_dir, "index.html"), "r", encoding="utf-8") as f:
+        home = f.read()
+    with open(os.path.join(wix_dir, "curated-art.html"), "r", encoding="utf-8") as f:
+        art = f.read()
+    with open(os.path.join(wix_dir, "curated-art-viewer.js"), "r", encoding="utf-8") as f:
+        viewer = f.read()
+    with open(os.path.join(root, "tools", "build_curated_art_derivatives.py"), "r", encoding="utf-8") as f:
+        builder = f.read()
+    with open(os.path.join(root, ".github", "workflows", "pages.yml"), "r", encoding="utf-8") as f:
+        workflow = f.read()
+
+    primary = ["Home", "Art", "Worlds", "Melodia", "About"]
+    for label in primary:
+        assert f"label: '{label}'" in nav
+    assert "MORE_LINKS" in nav
+    assert "More <span" in nav
+
+    assert "VIEW · Selected Art" in home
+    assert "WORLD · Four Worlds" in home
+    assert "ENTER ✦ · Melodia" in home
+    assert 'id="technical-practice"' in home
+    assert 'id="selected-art-preview"' in home
+
+    assert art.count('<figure class="art-piece') == 12
+    assert "curated-art-viewer.js" in art
+    assert 'data-art-silence="true"' in art
+    assert 'type="image/webp"' in art
+    assert "ARCHIVE · Render archive" in art
+    assert "PROCESS · Sculpt breakdown" in art
+    assert "SYSTEM · Technical hub" in art
+
+    for symbol in ["ArrowLeft", "ArrowRight", "pointerdown", "aria-modal", "art-viewer-open", "quietSections"]:
+        assert symbol in viewer
+
+    for symbol in ["WIDTHS = (480, 800, 1280)", "WEBP", "data-art-optimize", "PAGES = ["]:
+        assert symbol in builder
+
+    assert workflow.count("Build responsive art derivatives") >= 3
+
+
+def test_world_signature_compositions_contract():
+    wix_dir = _get_wix_dir()
+    with open(os.path.join(wix_dir, "melodia-mahou-flourish.js"), "r", encoding="utf-8") as f:
+        js = f.read()
+    with open(os.path.join(wix_dir, "melodia-mahou-flourish.css"), "r", encoding="utf-8") as f:
+        css = f.read()
+
+    assert "mountWorldSignature" in js
+    for skin in ["sakura", "cathedral", "moon", "melusina"]:
+        assert f".mahou-world-signature.{skin}" in css
