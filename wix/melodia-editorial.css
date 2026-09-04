@@ -1,16 +1,16 @@
-@import url("melodia-tokens.css");
-@import url("melodia-site-chrome.css");
-@import url("melodia-starfield.css");
-@import url("melodia-editorial-ornaments.css");
-@import url("melodia-mobile.css");
-@import url("melodia-dream-shaders.css");
-@import url("melodia-planetarium.css");
-@import url("melodia-cosmic-instruments.css");
-@import url("melodia-tiling-patterns.css");
-@import url("melodia-magical-girl.css");
-@import url("melodia-game-ui.css");
-@import url("melodia-night-theme.css");
-@import url("melodia-editorial-polish.css");
+@import url("melodia-tokens.css?v=20260904p1");
+@import url("melodia-site-chrome.css?v=20260904p1");
+@import url("melodia-starfield.css?v=20260904p1");
+@import url("melodia-editorial-ornaments.css?v=20260904p1");
+@import url("melodia-mobile.css?v=20260904p1");
+@import url("melodia-dream-shaders.css?v=20260904p1");
+@import url("melodia-planetarium.css?v=20260904p1");
+@import url("melodia-cosmic-instruments.css?v=20260904p1");
+@import url("melodia-tiling-patterns.css?v=20260904p1");
+@import url("melodia-magical-girl.css?v=20260904p1");
+@import url("melodia-game-ui.css?v=20260904p1");
+@import url("melodia-night-theme.css?v=20260904p1");
+@import url("melodia-editorial-polish.css?v=20260904p1");
 
 /* ===== LEGACY TOKEN ALIASES (for backward compat) =====
    These map old token names to new semantic tokens.
