@@ -756,7 +756,7 @@
 }
 
 @keyframes mahou-world-drift {
-  0%, 100% { translate: 0 0; rotate: -8deg; opacity: calc(var(--mahou-world-mote-opacity) * .55); }
+  0%, 100% { translate: 0 0; rotate: -8deg; opacity: .18; }
   48% { translate: 18px -26px; rotate: 18deg; opacity: var(--mahou-world-mote-opacity); }
   72% { translate: -9px -12px; rotate: 38deg; }
 }
@@ -952,7 +952,7 @@
 @media (max-width: 720px) {
   .mahou-living-filigree { top: -18px; height: 96px; opacity: .16; }
   .mahou-living-filigree.is-awake { opacity: .42; }
-  .mahou-world-mote { opacity: calc(var(--mahou-world-mote-opacity) * .72); }
+  .mahou-world-mote { opacity: .24; }
 }
 
 
