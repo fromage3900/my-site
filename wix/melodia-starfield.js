@@ -16,6 +16,11 @@
   let mouseNX = 0.42;
   let mouseNY = 0.38;
   let scrollY = 0;
+  let compositionAlpha = 1;
+  let compositionTarget = 1;
+  let negativeSpaceZones = [];
+  let compositionSections = [];
+  let compositionRaf = 0;
 
   const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)');
   const isMobile = () => window.matchMedia('(max-width: 680px)').matches;
@@ -165,6 +170,103 @@
     scrollY = window.scrollY || 0;
   }
 
+  function classifyCompositionSections() {
+    compositionSections = Array.from(document.querySelectorAll('.hero, main > .band, main > section.band'));
+    const modes = ['bloom', 'hush', 'drift', 'void', 'drift', 'hush', 'crescendo', 'void'];
+    compositionSections.forEach((section, index) => {
+      section.setAttribute('data-starfield-space', index === 0 ? 'bloom' : modes[index % modes.length]);
+    });
+  }
+
+  function sectionTarget(mode) {
+    const mobile = isMobile();
+    const table = {
+      bloom: mobile ? 0.84 : 0.94,
+      crescendo: mobile ? 0.72 : 0.82,
+      drift: mobile ? 0.48 : 0.58,
+      hush: mobile ? 0.22 : 0.3,
+      void: mobile ? 0.08 : 0.12
+    };
+    return table[mode] || (mobile ? 0.44 : 0.54);
+  }
+
+  function updateNegativeSpaceZones() {
+    const selectors = [
+      '.hero-inner',
+      '.section-head',
+      '.nikki-outfit-board',
+      '.escher-copy',
+      '.viz-copy'
+    ];
+    const candidates = Array.from(document.querySelectorAll(selectors.join(',')));
+    const visible = [];
+    for (let i = 0; i < candidates.length; i++) {
+      const rect = candidates[i].getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > h || rect.width < 80 || rect.height < 28) continue;
+      const overlap = Math.min(rect.bottom, h) - Math.max(rect.top, 0);
+      if (overlap <= 0) continue;
+      visible.push({ rect, overlap });
+    }
+    visible.sort((a, b) => b.overlap - a.overlap);
+
+    negativeSpaceZones = visible.slice(0, isMobile() ? 2 : 3).map(({ rect }) => {
+      const padX = isMobile() ? 34 : 70;
+      const padY = isMobile() ? 24 : 42;
+      return {
+        cx: rect.left + rect.width * 0.5,
+        cy: rect.top + rect.height * 0.5,
+        rx: Math.max(90, rect.width * 0.5 + padX),
+        ry: Math.max(62, rect.height * 0.5 + padY),
+        floor: isMobile() ? 0.08 : 0.13
+      };
+    });
+  }
+
+  function updateScrollComposition() {
+    compositionRaf = 0;
+    if (!compositionSections.length) classifyCompositionSections();
+
+    const focusY = h * (isMobile() ? 0.43 : 0.5);
+    let active = compositionSections[0];
+    let best = Infinity;
+    compositionSections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const center = rect.top + rect.height * 0.5;
+      const distance = Math.abs(center - focusY);
+      if (distance < best) {
+        best = distance;
+        active = section;
+      }
+    });
+
+    if (active) {
+      const mode = active.getAttribute('data-starfield-space') || 'drift';
+      compositionTarget = sectionTarget(mode);
+      document.documentElement.setAttribute('data-starfield-space', mode);
+    }
+
+    updateNegativeSpaceZones();
+  }
+
+  function scheduleCompositionUpdate() {
+    if (compositionRaf) return;
+    compositionRaf = window.requestAnimationFrame(updateScrollComposition);
+  }
+
+  function negativeSpaceFactor(x, y) {
+    let factor = 1;
+    for (let i = 0; i < negativeSpaceZones.length; i++) {
+      const z = negativeSpaceZones[i];
+      const nx = (x - z.cx) / z.rx;
+      const ny = (y - z.cy) / z.ry;
+      const d = nx * nx + ny * ny;
+      if (d >= 1) continue;
+      const eased = z.floor + (1 - z.floor) * Math.pow(Math.max(0, d), 0.72);
+      factor = Math.min(factor, eased);
+    }
+    return factor;
+  }
+
   function drawWatercolorWash(t) {
     if (!ctx || reduceMotion().matches || isMobile()) return;
     const time = t * 0.001;
@@ -228,8 +330,13 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
 
+    compositionAlpha += (compositionTarget - compositionAlpha) * (reduceMotion().matches ? 1 : 0.045);
+
+    ctx.save();
+    ctx.globalAlpha = Math.max(0.04, compositionAlpha);
     drawWatercolorWash(t);
     drawThinFilmBands(t);
+    ctx.restore();
 
     ctx.globalCompositeOperation = 'screen';
     const mx = mouseNX - 0.5;
@@ -251,7 +358,9 @@
 
       const alphaWave = 0.48 + 0.52 * Math.sin(time * (0.65 + depth * 1.3) + s.tw);
       const layerAlpha = s.layer === 'far' ? 0.5 : s.layer === 'mid' ? 0.82 : 1;
-      const alpha = (0.018 + depth * 0.24) * alphaWave * layerAlpha * (intensity === 'cosmic' ? 1.05 : 0.92);
+      const quiet = negativeSpaceFactor(x, y);
+      const alpha = (0.018 + depth * 0.24) * alphaWave * layerAlpha *
+        (intensity === 'cosmic' ? 1.05 : 0.92) * compositionAlpha * quiet;
 
       const cycles = 0.45 + depth * 1.08;
       const [pr, pg, pb] = iqPalette(time + depth * 0.45 + scrollFactor * 0.2, cycles);
@@ -393,11 +502,17 @@
 
     mountCanvas(shell);
     resize();
+    classifyCompositionSections();
+    updateScrollComposition();
     shell.dataset.starfieldIntensity = intensity;
     if (reduceMotion().matches) shell.classList.add('starfield-reduced');
 
     startLoop();
-    window.addEventListener('resize', resize, { passive: true });
+    window.addEventListener('resize', () => {
+      resize();
+      scheduleCompositionUpdate();
+    }, { passive: true });
+    window.addEventListener('scroll', scheduleCompositionUpdate, { passive: true });
     window.addEventListener('pointermove', (e) => {
       spawnCursorSparkle(e.clientX, e.clientY);
     }, { passive: true });
@@ -408,5 +523,11 @@
     makeStars();
   }
 
-  global.MelodiaStarfield = { init, setIntensity, stopLoop };
+  global.MelodiaStarfield = {
+    init,
+    setIntensity,
+    stopLoop,
+    updateScrollComposition,
+    negativeSpaceFactor
+  };
 })(window);
