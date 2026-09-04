@@ -1463,7 +1463,7 @@ main > section.band,
   transform-origin:center;
   opacity:0;
   animation:mahou-phi-node-wake var(--phi-time-2) ease-out forwards;
-  animation-delay:calc((var(--phi-node-i) % 8) * .055s);
+  animation-delay:var(--phi-node-delay, 0s);
 }
 
 .mahou-phi-glyph {
