@@ -1,0 +1,39 @@
+{
+  "build": "20260904p1",
+  "canonical": [
+    "index.html",
+    "curated-art.html",
+    "world-bible.html",
+    "melodia-living-worlds.html",
+    "resume.html",
+    "hero-renders.html",
+    "zbrush-breakdown.html",
+    "shader-breakdowns.html",
+    "cosmic-orrery.html",
+    "application-hub.html",
+    "pipeline.html"
+  ],
+  "secondary_case_studies": [
+    "sakura-case-study.html",
+    "space-cathedral.html",
+    "pcg-system-impact.html",
+    "melodia-stage-character.html"
+  ],
+  "internal_not_navigation": [
+    "dashboards.html",
+    "project_health.html",
+    "agent-dashboard-t3d.html",
+    "metrics_dashboard.html",
+    "loop_monitor.html",
+    "production-roadmap.html"
+  ],
+  "component_examples": [
+    "melodia-hero-embed.html",
+    "melodia-passport-embed.html",
+    "melodia-project-card.html",
+    "melodia-breakdown-card.html",
+    "melodia-gallery-grid.html",
+    "melodia-section-header.html",
+    "melodia-smooth-scroll.html"
+  ]
+}
