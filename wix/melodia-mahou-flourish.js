@@ -445,9 +445,32 @@
     return 'astral';
   }
 
+  function mountWorldSignature(skin) {
+    if (!skin || skin === 'astral' || document.querySelector('.mahou-world-signature')) return;
+    var allowed = /^(sakura|cathedral|moon|melusina)$/.test(skin);
+    if (!allowed) return;
+
+    var signature = document.createElement('div');
+    signature.className = 'mahou-world-signature ' + skin;
+    signature.setAttribute('aria-hidden', 'true');
+
+    if (skin === 'sakura') {
+      signature.innerHTML = '<span class="sig-petal p1"></span><span class="sig-petal p2"></span><span class="sig-petal p3"></span><span class="sig-arc"></span>';
+    } else if (skin === 'cathedral') {
+      signature.innerHTML = '<span class="sig-rose r1"></span><span class="sig-rose r2"></span><span class="sig-axis"></span>';
+    } else if (skin === 'moon') {
+      signature.innerHTML = '<span class="sig-moon-halo"></span><span class="sig-moon-dot"></span>';
+    } else {
+      signature.innerHTML = '<span class="sig-waterline w1"></span><span class="sig-waterline w2"></span><span class="sig-pearl"></span>';
+    }
+
+    document.body.appendChild(signature);
+  }
+
   function applyWorldSkin() {
     var skin = resolveWorldSkin();
     document.documentElement.setAttribute('data-mahou-world', skin);
+    mountWorldSignature(skin);
 
     var shell = document.querySelector('.melodia-shell') || document.body;
     if (!shell || shell.querySelector(':scope > .mahou-world-ambience')) return skin;
@@ -1035,6 +1058,7 @@
     wakeCursorSigil: wakeCursorSigil,
     resolveWorldSkin: resolveWorldSkin,
     applyWorldSkin: applyWorldSkin,
+    mountWorldSignature: mountWorldSignature,
     initLivingFiligree: initLivingFiligree,
     bindRarePortalTransitions: bindRarePortalTransitions,
     initMusicalShores: initMusicalShores,
