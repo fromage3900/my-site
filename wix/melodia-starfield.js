@@ -180,14 +180,15 @@
 
   function sectionTarget(mode) {
     const mobile = isMobile();
+    const mobileScale = mobile ? 0.92 : 1;
     const table = {
-      bloom: mobile ? 0.84 : 0.94,
-      crescendo: mobile ? 0.72 : 0.82,
-      drift: mobile ? 0.48 : 0.58,
-      hush: mobile ? 0.22 : 0.3,
-      void: mobile ? 0.08 : 0.12
+      bloom: 1,
+      crescendo: 0.618,
+      drift: 0.382,
+      hush: 0.236,
+      void: 0.146
     };
-    return table[mode] || (mobile ? 0.44 : 0.54);
+    return (table[mode] || 0.382) * mobileScale;
   }
 
   function updateNegativeSpaceZones() {
@@ -357,7 +358,7 @@
       if (x < -60 || x > w + 60 || y < -60 || y > h + 60) continue;
 
       const alphaWave = 0.48 + 0.52 * Math.sin(time * (0.65 + depth * 1.3) + s.tw);
-      const layerAlpha = s.layer === 'far' ? 0.5 : s.layer === 'mid' ? 0.82 : 1;
+      const layerAlpha = s.layer === 'far' ? 0.382 : s.layer === 'mid' ? 0.618 : 1;
       const quiet = negativeSpaceFactor(x, y);
       const alpha = (0.018 + depth * 0.24) * alphaWave * layerAlpha *
         (intensity === 'cosmic' ? 1.05 : 0.92) * compositionAlpha * quiet;
