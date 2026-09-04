@@ -100,10 +100,10 @@ html[data-page="index"] {
   --melodia-iri-text: linear-gradient(
     105deg,
     var(--primitive-gold-100) 0%,
-    var(--iri-cyan, var(--primitive-astral-300)) 28%,
-    var(--iri-magenta, var(--primitive-sakura-300)) 52%,
-    var(--iri-pearl, var(--primitive-ivory-50)) 78%,
-    var(--primitive-gold-300) 100%
+    var(--primitive-ivory-50) 24%,
+    var(--primitive-lavender-100) 48%,
+    var(--primitive-gold-300) 72%,
+    var(--primitive-ivory-50) 100%
   );
 }
 
@@ -126,7 +126,7 @@ html[data-page="index"] .hero h1 {
   -webkit-text-fill-color: transparent !important;
   filter: none !important;
   text-shadow: none;
-  animation: melodia-iri-text-drift 9s ease-in-out infinite alternate;
+  animation: melodia-iri-text-drift 12s ease-in-out infinite alternate;
 }
 
 @keyframes melodia-iri-text-drift {
@@ -167,8 +167,8 @@ html[data-page="index"] .hero-actions .button:not(.primary) {
   color: var(--color-text-primary);
   border-color: color-mix(
     in srgb,
-    var(--iri-cyan, var(--primitive-astral-300)) 42%,
-    var(--iri-magenta, var(--primitive-sakura-300))
+    var(--primitive-gold-500) 56%,
+    var(--primitive-lavender-300)
   );
   background-color: color-mix(in srgb, var(--primitive-astral-900) 72%, transparent);
   background-image: none;
@@ -1583,4 +1583,31 @@ html[data-page="index"] .home-art-preview-cta { margin:2rem 0 0; }
   html[data-page="index"] .home-art-plate.wide { grid-column:2 / -1; margin-top:2.5rem; }
   html[data-page="index"] .home-art-plate.detail { grid-column:1 / span 4; margin-top:1.5rem; }
   html[data-page="index"] .home-art-plate { min-height:200px; }
+}
+
+
+/* Portfolio polish: reserve iridescence for the hero title.
+   Small labels stay gold so the eye has a clear hierarchy. */
+html[data-page="index"] .magazine-kicker,
+html[data-page="index"] .premium-kicker,
+html[data-page="index"] .eyebrow {
+  background: none !important;
+  color: var(--primitive-gold-300) !important;
+  -webkit-text-fill-color: currentColor !important;
+  animation: none !important;
+  filter: none !important;
+}
+
+html[data-page="index"] .section-head > p {
+  max-width: 42ch;
+  color: color-mix(in srgb, var(--primitive-ivory-50) 70%, var(--primitive-slate-300));
+}
+
+html[data-page="index"] .band .section-head h2 {
+  color: var(--primitive-ivory-50);
+}
+
+html[data-page="index"] .env-card .env-tag,
+html[data-page="index"] .pillar-case-strip {
+  color: var(--primitive-gold-300);
 }
