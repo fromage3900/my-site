@@ -1700,3 +1700,33 @@ html[data-page="index"] .footer::before {
   );
   box-shadow: 0 0 18px color-mix(in srgb, var(--primitive-gold-300) 22%, transparent);
 }
+
+
+/* Wix iframe fit contract — inner document uses the full embed viewport.
+   Outer Wix element sizing is handled by the host/editor. */
+html.wix-embedded,
+html.wix-embedded body {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  overflow-x: clip;
+}
+
+html.wix-embedded .melodia-shell {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+}
+
+@media (min-width: 1081px) {
+  html.wix-embedded .shell-nav {
+    inset: 12px 16px auto;
+    max-width: calc(100% - 32px);
+  }
+
+  html.wix-embedded .hero {
+    min-height: 100dvh;
+  }
+}
