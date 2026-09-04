@@ -37,6 +37,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Build responsive art derivatives
+        run: |
+          python -m pip install pillow
+          python tools/build_curated_art_derivatives.py
       - name: Validate assets (tiered)
         run: python tools/validate_assets.py
       - name: Validate portfolio (links + JSON)
@@ -53,6 +57,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build responsive art derivatives
+        run: |
+          python -m pip install pillow
+          python tools/build_curated_art_derivatives.py
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
@@ -78,6 +90,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build responsive art derivatives
+        run: |
+          python -m pip install pillow
+          python tools/build_curated_art_derivatives.py
       - name: Install Wix CLI
         run: npm ci
       - name: Deploy to Wix
