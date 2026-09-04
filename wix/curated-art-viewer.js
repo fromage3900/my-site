@@ -129,11 +129,13 @@
     });
 
     if ('IntersectionObserver' in window) {
+      var quietSections = new Set();
       var silenceObserver = new IntersectionObserver(function (entries) {
-        var quiet = entries.some(function (entry) {
-          return entry.isIntersecting && entry.intersectionRatio >= 0.42;
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.42) quietSections.add(entry.target);
+          else quietSections.delete(entry.target);
         });
-        body.classList.toggle('art-silence-active', quiet);
+        body.classList.toggle('art-silence-active', quietSections.size > 0);
       }, { threshold: [0.42, 0.62] });
 
       document.querySelectorAll('[data-art-silence="true"]').forEach(function (section) {
