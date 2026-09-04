@@ -463,3 +463,193 @@
     display: none !important;
   }
 }
+
+
+/* ===== RARE AMBIENT EVENTS — handcrafted, sparse, non-blocking ===== */
+.mahou-constellation-event {
+  position: fixed;
+  z-index: 96;
+  width: min(260px, 54vw);
+  aspect-ratio: 13 / 9;
+  transform: translate(-50%, -50%) scale(.72) rotate(-4deg);
+  transform-origin: center;
+  pointer-events: none;
+  opacity: 0;
+  filter: drop-shadow(0 0 12px rgba(121, 216, 232, .18));
+  animation: mahou-constellation-bloom 2.45s cubic-bezier(.2,.72,.18,1) forwards;
+}
+
+.mahou-constellation-event svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.mahou-constellation-lines line {
+  stroke: rgba(121, 216, 232, .52);
+  stroke-width: 1;
+  stroke-dasharray: 9 10;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  animation: mahou-constellation-draw 1.3s ease-out forwards;
+}
+
+.mahou-constellation-nodes circle {
+  fill: rgba(255, 238, 186, .96);
+  stroke: rgba(255, 136, 204, .7);
+  stroke-width: 1;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mahou-node-wake 1.35s ease-out both;
+}
+
+.mahou-constellation-nodes .n2,
+.mahou-constellation-nodes .n5,
+.mahou-constellation-nodes .n8 { animation-delay: .12s; }
+
+.mahou-constellation-nodes .n3,
+.mahou-constellation-nodes .n6 { animation-delay: .24s; }
+
+.mahou-constellation-glyph {
+  position: absolute;
+  left: 52%;
+  top: 45%;
+  color: rgba(255, 230, 102, .95);
+  font-size: 1rem;
+  text-shadow: 0 0 12px rgba(255, 136, 204, .75), 0 0 24px rgba(121, 216, 232, .45);
+  animation: mahou-glyph-heartbeat 1.7s ease-in-out both;
+}
+
+@keyframes mahou-constellation-bloom {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.64) rotate(-7deg); }
+  20% { opacity: .88; }
+  68% { opacity: .72; transform: translate(-50%, -50%) scale(1) rotate(1deg); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.08) rotate(3deg); }
+}
+
+@keyframes mahou-constellation-draw {
+  from { stroke-dashoffset: 60; opacity: 0; }
+  to { stroke-dashoffset: 0; opacity: .9; }
+}
+
+@keyframes mahou-node-wake {
+  0% { transform: scale(.2); opacity: 0; }
+  48% { transform: scale(1.55); opacity: 1; }
+  100% { transform: scale(1); opacity: .82; }
+}
+
+@keyframes mahou-glyph-heartbeat {
+  0%, 100% { transform: translate(-50%, -50%) scale(.45) rotate(0deg); opacity: 0; }
+  35% { transform: translate(-50%, -50%) scale(1.3) rotate(18deg); opacity: 1; }
+  68% { transform: translate(-50%, -50%) scale(.88) rotate(36deg); opacity: .72; }
+}
+
+/* A star briefly fractures into eight paper-like petals. */
+.mahou-petal-crack {
+  position: fixed;
+  z-index: 97;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.mahou-crack-star {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: rgba(255, 237, 166, .98);
+  font-size: 1.1rem;
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(255, 136, 204, .8), 0 0 20px rgba(121, 216, 232, .48);
+  transform: translate(-50%, -50%);
+  animation: mahou-crack-star-pop 1.15s ease-out forwards;
+}
+
+.mahou-petal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 9px;
+  height: 15px;
+  border-radius: 80% 8% 80% 8%;
+  background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(255,136,204,.74) 45%, rgba(121,216,232,.48));
+  box-shadow: 0 0 10px rgba(255,136,204,.25);
+  transform-origin: 50% 100%;
+  animation: mahou-petal-flight 1.45s cubic-bezier(.15,.65,.25,1) forwards;
+}
+
+.mahou-petal:nth-of-type(even) {
+  background: linear-gradient(145deg, rgba(255,248,204,.95), rgba(188,164,255,.7) 55%, rgba(121,216,232,.4));
+}
+
+@keyframes mahou-crack-star-pop {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.25) rotate(-30deg); }
+  30% { opacity: 1; transform: translate(-50%, -50%) scale(1.45) rotate(8deg); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(.4) rotate(48deg); }
+}
+
+@keyframes mahou-petal-flight {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--a)) translateX(4px) scale(.35);
+  }
+  18% { opacity: .95; }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--a)) translateX(var(--d)) rotate(95deg) scale(.16);
+  }
+}
+
+/* Dormant cursor seal: wakes only after the pointer rests and a cooldown expires. */
+.mahou-cursor-sigil {
+  position: fixed;
+  z-index: 95;
+  width: 58px;
+  height: 58px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.55);
+}
+
+.mahou-cursor-sigil.is-awake {
+  animation: mahou-cursor-wake 2.05s ease-out forwards;
+}
+
+.mahou-cursor-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(121, 216, 232, .55);
+  inset: 6px;
+}
+
+.mahou-cursor-ring.inner {
+  inset: 17px;
+  border-color: rgba(255, 136, 204, .62);
+  border-style: dashed;
+}
+
+.mahou-cursor-diamond {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 230, 102, .92);
+  text-shadow: 0 0 9px rgba(255, 136, 204, .65);
+  font-size: .82rem;
+}
+
+@keyframes mahou-cursor-wake {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.45) rotate(-28deg); }
+  22% { opacity: .72; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  72% { opacity: .48; transform: translate(-50%, -50%) scale(.92) rotate(72deg); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.08) rotate(105deg); }
+}
+
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .mahou-constellation-event,
+  .mahou-petal-crack,
+  .mahou-cursor-sigil {
+    display: none !important;
+    animation: none !important;
+  }
+}
