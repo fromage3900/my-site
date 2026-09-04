@@ -7,7 +7,14 @@
 
   function boot() {
     var pieces = Array.prototype.slice.call(document.querySelectorAll('.art-piece'));
-    var links = pieces.map(function (piece) { return piece.querySelector('a[href]'); }).filter(Boolean);
+    var seenHrefs = new Set();
+    var links = pieces.map(function (piece) { return piece.querySelector('a[href]'); }).filter(function (link) {
+      if (!link) return false;
+      var href = link.getAttribute('href') || '';
+      if (!href || seenHrefs.has(href)) return false;
+      seenHrefs.add(href);
+      return true;
+    });
     if (!links.length) return;
 
     var body = document.body;
@@ -15,6 +22,7 @@
     var active = -1;
     var restoreFocus = null;
     var pointerStartX = null;
+    var didSwipe = false;
 
     var viewer = document.createElement('div');
     viewer.className = 'art-viewer';
@@ -97,6 +105,10 @@
     next.addEventListener('click', function () { render(active + 1); });
 
     viewer.addEventListener('click', function (event) {
+      if (didSwipe) {
+        didSwipe = false;
+        return;
+      }
       if (event.target === viewer || event.target.classList.contains('art-viewer-stage')) shut();
     });
 
@@ -109,6 +121,7 @@
       var dx = event.clientX - pointerStartX;
       pointerStartX = null;
       if (Math.abs(dx) < 52) return;
+      didSwipe = true;
       render(active + (dx < 0 ? 1 : -1));
     }, { passive: true });
 
