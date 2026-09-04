@@ -83,10 +83,10 @@ html[data-page="works-on-paper"] { background:#0a0711; color-scheme:dark; }
 .art-piece a { display:block; text-decoration:none; color:inherit; }
 .art-piece img {
   display:block; width:100%; height:auto;
-  transition:transform 1.618s cubic-bezier(.18,.72,.18,1), filter .8s ease;
+  transition:transform 1.618s cubic-bezier(.18,.72,.18,1);
 }
 .art-piece a:hover img,
-.art-piece a:focus-visible img { transform:translateY(-3px); filter:saturate(1.025); }
+.art-piece a:focus-visible img { transform:translateY(-3px); filter:none; }
 
 /* Digital: one poster-like vertical, one broad graphic counterweight. */
 .digital-vertical { grid-column:1 / span 7; }
@@ -454,4 +454,12 @@ body.paper-contact-sheet .pigment-marginalia,
 body.paper-contact-sheet .pigment-brush-score {
   opacity: 0 !important;
   pointer-events: none !important;
+}
+
+
+/* Original-art fidelity: pigment systems live around the paintings, never on them. */
+.paper-shell .art-piece img,
+.paper-shell .paper-hero-image img,
+.paper-shell .art-viewer-image {
+  filter: none !important;
 }
