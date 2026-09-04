@@ -475,3 +475,38 @@ def test_mahou_particle_garden_contract():
         assert symbol in page, f"Particle Garden contract missing {symbol}"
 
     assert 'href="mahou-particle-garden.html"' in hub
+
+
+def test_mahou_filigree_world_skin_and_portal_contract():
+    """Shared Mahou layer must expose living SVG filigree, world skins, and sparse portal transitions."""
+    wix_dir = _get_wix_dir()
+    mf_js = os.path.join(wix_dir, "melodia-mahou-flourish.js")
+    mf_css = os.path.join(wix_dir, "melodia-mahou-flourish.css")
+
+    with open(mf_js, "r", encoding="utf-8") as f:
+        js_code = f.read()
+    with open(mf_css, "r", encoding="utf-8") as f:
+        css_code = f.read()
+
+    for symbol in [
+        "resolveWorldSkin",
+        "applyWorldSkin",
+        "filigreeSvg",
+        "initLivingFiligree",
+        "bindRarePortalTransitions",
+        "melodia-mahou-portal-count",
+        "count % 4 === 0",
+    ]:
+        assert symbol in js_code, f"Mahou authored-world contract missing {symbol}"
+
+    for skin in ["sakura", "cathedral", "moon", "melusina", "astral"]:
+        assert f'data-mahou-world="{skin}"' in css_code, f"World skin CSS missing {skin}"
+
+    for css_class in [
+        ".mahou-living-filigree",
+        ".mahou-world-ambience",
+        ".mahou-page-portal",
+    ]:
+        assert css_class in css_code, f"Mahou authored-world CSS missing {css_class}"
+
+    assert "prefers-reduced-motion: reduce" in css_code
