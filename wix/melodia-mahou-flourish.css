@@ -645,11 +645,17 @@
   100% { opacity: 0; transform: translate(-50%, -50%) scale(1.08) rotate(105deg); }
 }
 
-@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+@media (prefers-reduced-motion: reduce) {
   .mahou-constellation-event,
   .mahou-petal-crack,
   .mahou-cursor-sigil {
     display: none !important;
     animation: none !important;
+  }
+}
+
+@media (pointer: coarse) {
+  .mahou-cursor-sigil {
+    display: none !important;
   }
 }
