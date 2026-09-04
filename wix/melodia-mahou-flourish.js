@@ -843,12 +843,70 @@
     }, { passive: true });
   }
 
+  function initScrollScore() {
+    var sections = Array.prototype.slice.call(document.querySelectorAll('.hero, main > .band, main > section.band'));
+    if (!sections.length) return;
+
+    var activeIndex = -1;
+    var raf = 0;
+    var lastSoundAt = -Infinity;
+
+    function update() {
+      raf = 0;
+      var focusY = window.innerHeight * (window.matchMedia('(max-width: 720px)').matches ? 0.46 : 0.52);
+      var bestIndex = 0;
+      var bestDistance = Infinity;
+
+      sections.forEach(function (section, index) {
+        var rect = section.getBoundingClientRect();
+        var center = rect.top + rect.height * 0.5;
+        var distance = Math.abs(center - focusY);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          bestIndex = index;
+        }
+
+        var local = Math.max(0, Math.min(1, (focusY - rect.top) / Math.max(rect.height, 1)));
+        section.style.setProperty('--mahou-section-progress', local.toFixed(3));
+      });
+
+      document.documentElement.style.setProperty('--mahou-scroll-phrase', String(bestIndex % 8));
+
+      if (bestIndex === activeIndex) return;
+      activeIndex = bestIndex;
+      sections.forEach(function (section, index) {
+        section.classList.toggle('mahou-current-phrase', index === activeIndex);
+      });
+
+      var active = sections[activeIndex];
+      var header = active && active.querySelector('h1, h2');
+      if (header) {
+        pulseScoreShore(header, false);
+        var now = performance.now();
+        if (soundState.enabled && now - lastSoundAt > 3000) {
+          playHeaderChord(header.textContent || 'Melodia', true);
+          lastSoundAt = now;
+        }
+      }
+    }
+
+    function schedule() {
+      if (raf) return;
+      raf = window.requestAnimationFrame(update);
+    }
+
+    update();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+  }
+
   function initAmbientEvents() {
     applyWorldSkin();
     mountMoonPhaseMark();
     mountSoundToggle();
     initLivingFiligree();
     initMusicalShores();
+    initScrollScore();
     initLingeringRoseWindow();
     initTouchRipples();
     if (!prefersReducedMotion()) {
@@ -888,6 +946,7 @@
     initLivingFiligree: initLivingFiligree,
     bindRarePortalTransitions: bindRarePortalTransitions,
     initMusicalShores: initMusicalShores,
+    initScrollScore: initScrollScore,
     playHeaderChord: playHeaderChord,
     spawnDreamCreature: spawnDreamCreature,
     revealHiddenRose: revealHiddenRose,
