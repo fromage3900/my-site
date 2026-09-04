@@ -1013,14 +1013,20 @@
     window.addEventListener('resize', schedule, { passive: true });
   }
 
+  function mahouMusicEnabled() {
+    return document.documentElement.getAttribute('data-mahou-music') !== 'off';
+  }
+
   function initAmbientEvents() {
     applyWorldSkin();
     applyPhiComposition();
     mountMoonPhaseMark();
-    mountSoundToggle();
+    if (mahouMusicEnabled()) {
+      mountSoundToggle();
+      initMusicalShores();
+      initScrollScore();
+    }
     initLivingFiligree();
-    initMusicalShores();
-    initScrollScore();
     initLingeringRoseWindow();
     initTouchRipples();
     if (!prefersReducedMotion()) {
