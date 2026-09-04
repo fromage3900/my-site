@@ -383,11 +383,172 @@
     });
   }
 
+  function pageSlug() {
+    var file = (window.location.pathname.split('/').pop() || 'index.html').replace(/\.html$/i, '');
+    return (document.documentElement.getAttribute('data-page') || file || 'index').toLowerCase();
+  }
+
+  function resolveWorldSkin() {
+    var slug = pageSlug();
+    var shell = document.querySelector('.melodia-shell');
+    var pillar = shell ? (shell.getAttribute('data-pillar') || '') : '';
+    pillar = pillar.toLowerCase();
+
+    if (/stage-character|melodia-melusina|wardrobe|character/.test(slug)) return 'melusina';
+    if (/space-cathedral|kaleido|cathedral/.test(slug) || pillar === 'cathedral') return 'cathedral';
+    if (/pcg-system-impact|fallen|moon/.test(slug) || pillar === 'fallenmoon') return 'moon';
+    if (/sakura/.test(slug) || pillar === 'sakura') return 'sakura';
+    if (/cosmic-orrery|orrery/.test(slug) || pillar === 'orrery' || pillar === 'cosmic') return 'moon';
+    return 'astral';
+  }
+
+  function applyWorldSkin() {
+    var skin = resolveWorldSkin();
+    document.documentElement.setAttribute('data-mahou-world', skin);
+
+    var shell = document.querySelector('.melodia-shell') || document.body;
+    if (!shell || shell.querySelector(':scope > .mahou-world-ambience')) return skin;
+
+    var layer = document.createElement('div');
+    layer.className = 'mahou-world-ambience';
+    layer.setAttribute('aria-hidden', 'true');
+
+    var count = prefersReducedMotion() ? 3 : 7;
+    for (var i = 0; i < count; i++) {
+      var mote = document.createElement('span');
+      mote.className = 'mahou-world-mote m' + (i + 1);
+      mote.style.setProperty('--mahou-i', String(i));
+      mote.style.setProperty('--mahou-x', ((9 + i * 14 + (i % 2) * 5) % 96) + '%');
+      mote.style.setProperty('--mahou-delay', (i * -1.7) + 's');
+      layer.appendChild(mote);
+    }
+    shell.appendChild(layer);
+    return skin;
+  }
+
+  function filigreeSvg() {
+    return (
+      '<svg class="mahou-filigree-svg" viewBox="0 0 520 150" preserveAspectRatio="none" aria-hidden="true">' +
+        '<g class="mahou-filigree-lines">' +
+          '<path pathLength="1" d="M8 78 C62 16 112 22 152 64 C174 87 196 91 221 74 C239 62 249 48 260 24" />' +
+          '<path pathLength="1" d="M512 78 C458 16 408 22 368 64 C346 87 324 91 299 74 C281 62 271 48 260 24" />' +
+          '<path class="minor" pathLength="1" d="M24 101 C91 54 139 60 180 92 C204 111 226 108 260 80 C294 108 316 111 340 92 C381 60 429 54 496 101" />' +
+          '<path class="minor" pathLength="1" d="M72 116 C117 94 150 96 184 116 M448 116 C403 94 370 96 336 116" />' +
+        '</g>' +
+        '<g class="mahou-filigree-rosette" transform="translate(260 69)">' +
+          '<circle pathLength="1" r="24" />' +
+          '<circle class="minor" pathLength="1" r="12" />' +
+          '<path pathLength="1" d="M0 -31 L7 -8 L31 0 L7 8 L0 31 L-7 8 L-31 0 L-7 -8 Z" />' +
+        '</g>' +
+        '<circle class="mahou-filigree-gem left" cx="28" cy="98" r="3" />' +
+        '<circle class="mahou-filigree-gem right" cx="492" cy="98" r="3" />' +
+      '</svg>'
+    );
+  }
+
+  function initLivingFiligree() {
+    var sections = Array.prototype.slice.call(document.querySelectorAll('main > .band, main > section.band'));
+    if (!sections.length) return;
+
+    sections.forEach(function (section, index) {
+      if (index % 2 !== 0 || index > 10 || section.querySelector(':scope > .mahou-living-filigree')) return;
+      if (window.getComputedStyle(section).position === 'static') section.style.position = 'relative';
+
+      var ornament = document.createElement('div');
+      ornament.className = 'mahou-living-filigree';
+      ornament.setAttribute('aria-hidden', 'true');
+      ornament.innerHTML = filigreeSvg();
+      section.appendChild(ornament);
+      section.classList.add('mahou-filigree-host');
+    });
+
+    if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
+      document.querySelectorAll('.mahou-living-filigree').forEach(function (el) {
+        el.classList.add('is-awake');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting || entry.intersectionRatio < 0.24) return;
+        var ornament = entry.target.querySelector(':scope > .mahou-living-filigree');
+        if (ornament) ornament.classList.add('is-awake');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: [0.24, 0.45] });
+
+    document.querySelectorAll('.mahou-filigree-host').forEach(function (section) {
+      observer.observe(section);
+    });
+  }
+
+  function eligiblePortalLink(link) {
+    if (!link || !link.href || link.target === '_blank' || link.hasAttribute('download')) return false;
+    if (link.getAttribute('aria-disabled') === 'true') return false;
+    var raw = link.getAttribute('href') || '';
+    if (!raw || raw.charAt(0) === '#' || raw.indexOf('mailto:') === 0 || raw.indexOf('tel:') === 0 || raw.indexOf('javascript:') === 0) return false;
+    try {
+      var url = new URL(link.href, window.location.href);
+      return url.origin === window.location.origin && url.pathname !== window.location.pathname;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function portalOverlay() {
+    var existing = document.querySelector('.mahou-page-portal');
+    if (existing) return existing;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'mahou-page-portal';
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.innerHTML =
+      '<div class="mahou-page-portal-ring r1"></div>' +
+      '<div class="mahou-page-portal-ring r2"></div>' +
+      '<div class="mahou-page-portal-iris"></div>' +
+      '<div class="mahou-page-portal-star">✦</div>';
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+
+  function shouldPortalTransition() {
+    if (prefersReducedMotion()) return false;
+    var key = 'melodia-mahou-portal-count';
+    var count = 0;
+    try { count = parseInt(sessionStorage.getItem(key) || '0', 10) || 0; } catch (e) {}
+    count += 1;
+    try { sessionStorage.setItem(key, String(count)); } catch (e) {}
+    return count % 4 === 0;
+  }
+
+  function bindRarePortalTransitions() {
+    document.addEventListener('click', function (event) {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      var link = event.target && event.target.closest ? event.target.closest('a') : null;
+      if (!eligiblePortalLink(link) || !shouldPortalTransition()) return;
+
+      event.preventDefault();
+      var overlay = portalOverlay();
+      overlay.classList.remove('is-opening');
+      void overlay.offsetWidth;
+      overlay.classList.add('is-opening');
+
+      window.setTimeout(function () {
+        window.location.href = link.href;
+      }, 620);
+    });
+  }
+
   function initAmbientEvents() {
-    if (prefersReducedMotion()) return;
-    initSectionBlooms();
-    bindRarePetalCracks();
-    initDormantCursorSigil();
+    applyWorldSkin();
+    initLivingFiligree();
+    if (!prefersReducedMotion()) {
+      initSectionBlooms();
+      bindRarePetalCracks();
+      initDormantCursorSigil();
+      bindRarePortalTransitions();
+    }
   }
 
   function init() {
@@ -413,6 +574,10 @@
     constellationBloom: constellationBloom,
     petalCrack: petalCrack,
     wakeCursorSigil: wakeCursorSigil,
+    resolveWorldSkin: resolveWorldSkin,
+    applyWorldSkin: applyWorldSkin,
+    initLivingFiligree: initLivingFiligree,
+    bindRarePortalTransitions: bindRarePortalTransitions,
     initAmbientEvents: initAmbientEvents
   };
 })(window);
