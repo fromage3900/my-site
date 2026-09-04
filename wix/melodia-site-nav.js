@@ -14,6 +14,8 @@
     { href: 'resume.html', label: 'About', keys: ['resume', 'recruiter-one-sheet'] },
   ];
 
+  var moreHandlersBound = false;
+
   var MORE_LINKS = [
     { href: 'hero-renders.html', label: 'Render archive', keys: ['hero-renders'] },
     { href: 'zbrush-breakdown.html', label: 'Sculpt breakdown', keys: ['zbrush-breakdown'] },
@@ -79,6 +81,25 @@
     );
   }
 
+  function bindMoreMenuDismissal() {
+    if (moreHandlersBound) return;
+    moreHandlersBound = true;
+
+    document.addEventListener('click', function (event) {
+      if (event.target && event.target.closest && event.target.closest('.nav-more')) return;
+      document.querySelectorAll('.nav-more[open]').forEach(function (details) {
+        details.removeAttribute('open');
+      });
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key !== 'Escape') return;
+      document.querySelectorAll('.nav-more[open]').forEach(function (details) {
+        details.removeAttribute('open');
+      });
+    });
+  }
+
   function applyNav() {
     var header = document.querySelector('header.shell-nav');
     if (!header) return;
@@ -107,6 +128,7 @@
     nav.innerHTML = LINKS.map(function (item) {
       return linkHtml(item, item.keys.indexOf(key) !== -1, constellation);
     }).join('') + moreHtml(key, constellation);
+    bindMoreMenuDismissal();
 
     var cta = header.querySelector('.nav-cta');
     if (!cta) {
