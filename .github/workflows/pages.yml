@@ -45,7 +45,7 @@ jobs:
         run: python tools/validate_assets.py
       - name: Validate core JavaScript syntax
         run: |
-          node --check wix/melodia-site-nav.js
+          node --check wix/wix-entry-bootstrap.js\n          node --check wix/melodia-site-nav.js
           node --check wix/melodia-editorial.js
           node --check wix/melodia-mahou-flourish.js
           node --check wix/melodia-starfield.js
