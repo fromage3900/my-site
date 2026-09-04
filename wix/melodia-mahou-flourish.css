@@ -954,3 +954,291 @@
   .mahou-living-filigree.is-awake { opacity: .42; }
   .mahou-world-mote { opacity: calc(var(--mahou-world-mote-opacity) * .72); }
 }
+
+
+/* ===== MUSICAL SHORES + SURREAL MOBILE LAYER ===== */
+.mahou-score-shore {
+  position: relative;
+  width: min(100%, 760px);
+  height: 58px;
+  margin: .15rem 0 .55rem;
+  pointer-events: none;
+  opacity: .42;
+  overflow: visible;
+  filter: drop-shadow(0 0 7px color-mix(in srgb, var(--mahou-world-primary) 18%, transparent));
+}
+
+.hero .mahou-score-shore {
+  width: min(92%, 820px);
+  margin-top: .4rem;
+}
+
+.mahou-score-shore-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.mahou-score-waterlines path {
+  fill: none;
+  stroke: var(--mahou-world-secondary);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  opacity: .55;
+  transform-origin: center;
+}
+
+.mahou-score-waterlines path:nth-child(2),
+.mahou-score-waterlines path:nth-child(4) {
+  stroke: var(--mahou-world-gold);
+  opacity: .34;
+}
+
+.mahou-score-notes ellipse {
+  fill: var(--mahou-world-primary);
+  stroke: var(--mahou-world-gold);
+  stroke-width: .8;
+}
+
+.mahou-score-notes line {
+  stroke: var(--mahou-world-gold);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.mahou-shore-pearl {
+  fill: rgba(255,255,255,.82);
+  stroke: var(--mahou-world-primary);
+  stroke-width: 1;
+}
+
+.mahou-score-shore.is-rippling .mahou-score-waterlines path {
+  animation: mahou-score-ripple 1.05s cubic-bezier(.16,.72,.2,1);
+}
+
+.mahou-score-shore.is-rippling .mahou-score-notes {
+  animation: mahou-score-notes-lift 1.05s ease-out;
+}
+
+.mahou-score-shore.is-rippling .mahou-shore-pearl {
+  animation: mahou-score-pearl 1s ease-out;
+}
+
+@keyframes mahou-score-ripple {
+  0% { transform: translateY(0) scaleX(1); opacity: .35; }
+  32% { transform: translateY(-4px) scaleX(1.018); opacity: .86; }
+  68% { transform: translateY(3px) scaleX(.994); }
+  100% { transform: translateY(0) scaleX(1); opacity: .55; }
+}
+
+@keyframes mahou-score-notes-lift {
+  0%,100% { transform: translateY(0); opacity: .82; }
+  36% { transform: translateY(-8px); opacity: 1; }
+}
+
+@keyframes mahou-score-pearl {
+  0%,100% { transform: scale(1); opacity: .68; }
+  42% { transform: scale(1.8); opacity: 1; }
+}
+
+/* Explicit opt-in sound control: never autoplay. */
+.mahou-sound-toggle {
+  position: fixed;
+  right: 18px;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 98;
+  border: 1px solid color-mix(in srgb, var(--mahou-world-gold) 45%, transparent);
+  border-radius: 999px;
+  padding: 9px 12px;
+  background: rgba(7,8,18,.58);
+  color: rgba(255,255,255,.72);
+  font: 600 .62rem/1 var(--font-mono, ui-monospace, monospace);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,.22);
+}
+
+.mahou-sound-toggle.is-awake {
+  color: var(--mahou-world-gold);
+  border-color: var(--mahou-world-primary);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--mahou-world-primary) 22%, transparent), 0 10px 30px rgba(0,0,0,.22);
+}
+
+/* Browsing-session moon phase. Tiny, decorative, intentionally non-interactive. */
+.mahou-moon-phase-mark {
+  position: fixed;
+  left: 16px;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  pointer-events: none;
+  color: rgba(255,255,255,.38);
+  font: 500 .56rem/1 var(--font-mono, ui-monospace, monospace);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.mahou-moon-phase-mark span {
+  font-size: .95rem;
+  color: var(--mahou-world-secondary);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--mahou-world-primary) 42%, transparent);
+}
+
+:root[data-mahou-moon-phase="full"] .mahou-world-ambience {
+  filter: brightness(1.13) saturate(1.08);
+}
+:root[data-mahou-moon-phase="new"] .mahou-world-ambience {
+  filter: brightness(.78) saturate(.85);
+}
+:root[data-mahou-moon-phase="gibbous"] .mahou-living-filigree {
+  opacity: .25;
+}
+
+/* Rare koi / jelly apparitions crossing the viewport. */
+.mahou-dream-creature {
+  position: fixed;
+  z-index: 6;
+  top: var(--creature-y);
+  left: -120px;
+  width: 84px;
+  height: 44px;
+  pointer-events: none;
+  opacity: 0;
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--mahou-world-primary) 28%, transparent));
+  animation: mahou-creature-cross var(--creature-duration) linear forwards;
+}
+
+.mahou-dream-creature.koi { transform: rotate(-4deg); }
+.mahou-koi-body {
+  position:absolute;left:18px;top:13px;width:44px;height:20px;border-radius:55% 48% 48% 55%;
+  border:1px solid var(--mahou-world-primary);
+  background:linear-gradient(90deg,rgba(255,255,255,.06),color-mix(in srgb,var(--mahou-world-primary) 22%,transparent));
+}
+.mahou-koi-tail {
+  position:absolute;left:5px;top:11px;width:24px;height:24px;
+  clip-path:polygon(100% 50%,0 0,22% 50%,0 100%);
+  background:color-mix(in srgb,var(--mahou-world-secondary) 34%,transparent);
+}
+.mahou-koi-fin {
+  position:absolute;width:16px;height:8px;border-radius:50% 0 50% 0;
+  border-top:1px solid var(--mahou-world-gold);
+}
+.mahou-koi-fin.f1{left:36px;top:6px;transform:rotate(-18deg)}
+.mahou-koi-fin.f2{left:39px;top:31px;transform:rotate(20deg)}
+.mahou-koi-eye{position:absolute;left:55px;top:18px;width:2px;height:2px;border-radius:50%;background:var(--mahou-world-gold)}
+
+.mahou-dream-creature.jelly { width:62px;height:78px; }
+.mahou-jelly-cap {
+  position:absolute;left:8px;top:5px;width:46px;height:28px;
+  border-radius:50% 50% 18% 18%;
+  border:1px solid var(--mahou-world-secondary);
+  background:radial-gradient(circle at 50% 8%,rgba(255,255,255,.22),transparent 48%),color-mix(in srgb,var(--mahou-world-primary) 13%,transparent);
+}
+.mahou-jelly-tentacle {
+  position:absolute;top:31px;width:1px;height:42px;background:linear-gradient(var(--mahou-world-primary),transparent);
+  transform-origin:top;
+}
+.mahou-jelly-tentacle.t1{left:19px;transform:rotate(8deg)}
+.mahou-jelly-tentacle.t2{left:31px;height:50px}
+.mahou-jelly-tentacle.t3{left:44px;transform:rotate(-8deg)}
+
+@keyframes mahou-creature-cross {
+  0% { translate: 0 0; opacity: 0; }
+  10% { opacity: .16; }
+  44% { translate: 48vw -18px; opacity: .32; }
+  76% { opacity: .2; }
+  100% { translate: calc(100vw + 180px) 16px; opacity: 0; }
+}
+
+/* Rose window: revealed only after lingering inside a section. */
+.mahou-hidden-rose-window {
+  position:absolute;
+  z-index:1;
+  right:clamp(-70px,-4vw,-18px);
+  top:50%;
+  width:min(320px,52vw);
+  aspect-ratio:1;
+  transform:translateY(-50%) scale(.62) rotate(-18deg);
+  opacity:0;
+  pointer-events:none;
+  mix-blend-mode:screen;
+  filter:blur(2px) drop-shadow(0 0 22px color-mix(in srgb,var(--mahou-world-primary) 22%,transparent));
+  transition:opacity 1.8s ease,transform 2.6s cubic-bezier(.18,.68,.18,1),filter 1.8s ease;
+}
+.mahou-hidden-rose-window.is-revealed {
+  opacity:.17;
+  transform:translateY(-50%) scale(1) rotate(0deg);
+  filter:blur(0) drop-shadow(0 0 22px color-mix(in srgb,var(--mahou-world-primary) 28%,transparent));
+}
+.mahou-hidden-rose-window svg{width:100%;height:100%}
+.mahou-hidden-rose-window circle,
+.mahou-hidden-rose-window path,
+.mahou-hidden-rose-window line{
+  fill:none;stroke:var(--mahou-world-primary);stroke-width:1;vector-effect:non-scaling-stroke
+}
+.mahou-hidden-rose-window .inner,
+.mahou-hidden-rose-window line{stroke:var(--mahou-world-secondary);opacity:.7}
+
+/* Touching empty space leaves a short-lived water-ring wake. */
+.mahou-touch-ripple {
+  position:fixed;
+  z-index:94;
+  width:12px;height:12px;
+  margin:-6px 0 0 -6px;
+  border-radius:50%;
+  border:1px solid var(--mahou-world-secondary);
+  pointer-events:none;
+  opacity:.72;
+  box-shadow:0 0 12px color-mix(in srgb,var(--mahou-world-primary) 24%,transparent);
+  animation:mahou-touch-water 1.2s ease-out forwards;
+}
+.mahou-touch-ripple::after {
+  content:"♪";
+  position:absolute;
+  left:50%;top:50%;
+  color:var(--mahou-world-gold);
+  font-size:.65rem;
+  transform:translate(-50%,-50%);
+  opacity:.7;
+}
+@keyframes mahou-touch-water {
+  0%{transform:scale(.35);opacity:.74}
+  100%{transform:scale(8);opacity:0}
+}
+
+@media (max-width: 720px) {
+  .mahou-score-shore { height: 46px; margin-top: -.05rem; opacity: .48; }
+  .mahou-score-shore-svg { height: 52px; }
+  .mahou-sound-toggle {
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    padding: 8px 10px;
+    font-size: .55rem;
+  }
+  .mahou-moon-phase-mark {
+    left: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+  .mahou-hidden-rose-window { opacity:0; width:min(260px,70vw); right:-90px; }
+  .mahou-hidden-rose-window.is-revealed { opacity:.14; }
+  .mahou-dream-creature { transform:scale(.82); transform-origin:left center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mahou-score-shore.is-rippling .mahou-score-waterlines path,
+  .mahou-score-shore.is-rippling .mahou-score-notes,
+  .mahou-score-shore.is-rippling .mahou-shore-pearl,
+  .mahou-dream-creature,
+  .mahou-touch-ripple {
+    animation:none !important;
+  }
+  .mahou-dream-creature,
+  .mahou-touch-ripple { display:none !important; }
+  .mahou-score-shore { opacity:.32; }
+  .mahou-hidden-rose-window { transition:none; }
+}
