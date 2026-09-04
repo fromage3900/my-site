@@ -219,16 +219,16 @@ html[data-page="index"] .env-card .game-ui-gothic-corner {
 html[data-page="index"] .band .section-head h2 {
   font-family: var(--font-home-ui);
   font-size: clamp(2rem, 3.2vw, 2.6rem);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
 }
 
 /* Figma UI display treatment: Syne replaces the retired editorial serif
    without letting the wider UI face collide with the macro render. */
 html[data-page="index"] .hero .hero-inner h1 {
   font-family: var(--font-home-ui);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.025em;
 }
 
@@ -1562,7 +1562,7 @@ html[data-page="index"] .home-art-plate.wide { grid-column: 7 / -1; margin-top: 
 html[data-page="index"] .home-art-plate.detail { grid-column: 8 / span 4; margin-top: 1.25rem; }
 html[data-page="index"] .home-art-plate img {
   width:100%; height:100%; min-height:inherit; object-fit:cover;
-  transition:transform 1.618s cubic-bezier(.18,.72,.18,1), filter .8s ease;
+  transition:transform 1.618s cubic-bezier(.18,.72,.18,1);
 }
 html[data-page="index"] .home-art-plate.major img { aspect-ratio:4/5; object-position:50% 36%; }
 html[data-page="index"] .home-art-plate.wide img { aspect-ratio:16/10; }
@@ -1571,11 +1571,11 @@ html[data-page="index"] .home-art-plate span {
   position:absolute; left:12px; bottom:10px; z-index:2;
   padding:6px 8px; border-radius:999px;
   background:rgba(5,4,12,.64); color:rgba(255,248,238,.82);
-  font:600 .58rem/1 var(--font-mono); letter-spacing:.12em; text-transform:uppercase;
+  font:600 .64rem/1 var(--font-mono); letter-spacing:.12em; text-transform:uppercase;
   backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
 }
 html[data-page="index"] .home-art-plate:hover img,
-html[data-page="index"] .home-art-plate:focus-visible img { transform:scale(1.018); filter:saturate(1.04); }
+html[data-page="index"] .home-art-plate:focus-visible img { transform:scale(1.018); filter:none; }
 html[data-page="index"] .home-art-preview-cta { margin:2rem 0 0; }
 @media (max-width:720px){
   html[data-page="index"] .home-art-preview-grid { grid-template-columns:repeat(5,minmax(0,1fr)); }
@@ -1610,4 +1610,93 @@ html[data-page="index"] .band .section-head h2 {
 html[data-page="index"] .env-card .env-tag,
 html[data-page="index"] .pillar-case-strip {
   color: var(--primitive-gold-300);
+}
+
+
+/* Final UI-chrome palette pass — gold/pearl/lavender for interface;
+   cyan and sakura remain atmospheric, not structural. */
+html[data-page="index"] .shell-nav {
+  border-color: color-mix(
+    in srgb,
+    var(--primitive-gold-500) 52%,
+    var(--primitive-lavender-300)
+  ) !important;
+}
+
+html[data-page="index"] .shell-nav .nav-links a:hover,
+html[data-page="index"] .shell-nav .nav-links a:focus-visible {
+  color: var(--primitive-gold-300);
+}
+
+html[data-page="index"] .shell-nav .nav-cta,
+html[data-page="index"] .hero-actions .button:not(.primary) {
+  border-color: color-mix(
+    in srgb,
+    var(--primitive-gold-500) 58%,
+    var(--primitive-lavender-300)
+  ) !important;
+}
+
+html[data-page="index"] .env-card {
+  border-color: color-mix(
+    in srgb,
+    var(--primitive-gold-500) 38%,
+    var(--primitive-lavender-300)
+  );
+}
+
+html[data-page="index"] .env-card:hover,
+html[data-page="index"] .env-card:focus-visible {
+  border-color: var(--primitive-gold-300);
+}
+
+html[data-page="index"] .table-list,
+html[data-page="index"] .table-row,
+html[data-page="index"] #melusina-photobooth-mount,
+html[data-page="index"] #zbrush-studio-mount {
+  border-color: color-mix(
+    in srgb,
+    var(--primitive-gold-500) 32%,
+    var(--primitive-lavender-300)
+  ) !important;
+}
+
+html[data-page="index"] .table-row > span:first-child {
+  color: var(--primitive-gold-300) !important;
+}
+
+html[data-page="index"] .footer {
+  border-top-color: color-mix(
+    in srgb,
+    var(--primitive-gold-500) 48%,
+    var(--primitive-lavender-300)
+  ) !important;
+  background:
+    radial-gradient(
+      ellipse 65% 120% at 14% 0%,
+      color-mix(in srgb, var(--primitive-lavender-300) 12%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 48% 90% at 86% 100%,
+      color-mix(in srgb, var(--primitive-gold-300) 9%, transparent),
+      transparent 58%
+    ),
+    linear-gradient(
+      118deg,
+      var(--primitive-plum-900) 0%,
+      var(--primitive-astral-900) 58%,
+      var(--primitive-plum-900) 100%
+    ) !important;
+}
+
+html[data-page="index"] .footer::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--primitive-gold-300) 58%, transparent) 34%,
+    color-mix(in srgb, var(--primitive-lavender-100) 54%, transparent) 66%,
+    transparent 100%
+  );
+  box-shadow: 0 0 18px color-mix(in srgb, var(--primitive-gold-300) 22%, transparent);
 }
