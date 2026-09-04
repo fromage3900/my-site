@@ -57,7 +57,7 @@ html[data-page="curated-art"] {
   height: 100%;
   object-fit: cover;
   object-position: 61.8% 38.2%;
-  filter: saturate(.88) contrast(1.02);
+  filter: none;
   transform: scale(1.015);
 }
 
@@ -142,13 +142,13 @@ html[data-page="curated-art"] {
   height: 100%;
   min-height: 280px;
   object-fit: cover;
-  transition: transform 1.618s cubic-bezier(.18,.72,.18,1), filter 1s ease;
+  transition: transform 1.618s cubic-bezier(.18,.72,.18,1);
 }
 
 .art-piece a:hover img,
 .art-piece a:focus-visible img {
   transform: scale(1.018);
-  filter: saturate(1.04);
+  filter: none;
 }
 
 .art-piece figcaption {
@@ -170,7 +170,7 @@ html[data-page="curated-art"] {
 .art-piece figcaption small {
   opacity: .54;
   font-family: var(--font-mono);
-  font-size: .58rem;
+  font-size: .62rem;
   text-transform: uppercase;
   letter-spacing: .12em;
   text-align: right;
@@ -558,4 +558,28 @@ body.art-viewer-open { overflow:hidden; }
 @media(prefers-reduced-motion:reduce){
   body.art-silence-active .curated-art-shell > .melodia-starfield-canvas,
   body.art-viewer-open .curated-art-shell > .melodia-starfield-canvas { transition:none !important; }
+}
+
+
+/* Artwork fidelity: gallery chrome may move around the work, but never recolor it. */
+.curated-art-shell .art-piece img,
+.curated-art-shell .curated-hero-image img,
+.curated-art-shell .art-viewer-image {
+  filter: none !important;
+}
+
+@media (max-width: 520px) {
+  .curated-art-hero h1 {
+    line-height: 1.02;
+  }
+
+  .curated-art-hero .lede {
+    font-size: 1rem;
+    line-height: 1.62;
+    max-width: 32ch;
+  }
+
+  .art-piece figcaption small {
+    font-size: .64rem;
+  }
 }
