@@ -12,6 +12,7 @@
     { href: 'cosmic-orrery.html', label: 'Orrery', keys: ['cosmic-orrery'] },
     { href: 'melodia-living-worlds.html', label: 'Living', keys: ['melodia-living-worlds'] },
     { href: 'zbrush-breakdown.html', label: 'Breakdown', keys: ['zbrush-breakdown'] },
+    { href: 'curated-art.html', label: 'Art', keys: ['curated-art'] },
     { href: 'hero-renders.html', label: 'Renders', keys: ['hero-renders'] },
     { href: 'melodia-stage-character.html', label: 'Stage', keys: ['melodia-stage-character'] },
     { href: 'world-bible.html', label: 'Worlds', keys: ['world-bible'] },
