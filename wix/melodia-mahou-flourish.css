@@ -1242,3 +1242,70 @@
   .mahou-score-shore { opacity:.32; }
   .mahou-hidden-rose-window { transition:none; }
 }
+
+
+/* ===== SCROLL SCORE + NEGATIVE SPACE RHYTHM ===== */
+main > .band,
+main > section.band,
+.hero {
+  --mahou-section-progress: .5;
+}
+
+.mahou-score-shore {
+  transform-origin: left center;
+  transition: opacity .75s ease, filter .75s ease;
+}
+
+.mahou-current-phrase .mahou-score-shore {
+  opacity: .72;
+  filter:
+    drop-shadow(0 0 8px color-mix(in srgb, var(--mahou-world-primary) 28%, transparent))
+    drop-shadow(0 0 18px color-mix(in srgb, var(--mahou-world-secondary) 14%, transparent));
+}
+
+.mahou-current-phrase .mahou-score-waterlines {
+  transform: translateY(calc((var(--mahou-section-progress) - .5) * -3px));
+  transform-origin: center;
+}
+
+.mahou-current-phrase .mahou-score-notes {
+  transform: translateX(calc((var(--mahou-section-progress) - .5) * 8px));
+  transform-origin: center;
+}
+
+[data-starfield-space="hush"] .mahou-score-shore,
+[data-starfield-space="void"] .mahou-score-shore {
+  opacity: .26;
+}
+
+[data-starfield-space="crescendo"] .mahou-score-shore,
+[data-starfield-space="bloom"] .mahou-score-shore {
+  opacity: .58;
+}
+
+/* Negative-space passages get more breathing room on narrow screens.
+   The starfield canvas itself opens a matching void behind visible copy. */
+@media (max-width: 720px) {
+  main > .band[data-starfield-space="hush"],
+  main > section.band[data-starfield-space="hush"] {
+    padding-top: clamp(5.2rem, 14vh, 8.5rem);
+    padding-bottom: clamp(5.2rem, 14vh, 8.5rem);
+  }
+
+  main > .band[data-starfield-space="void"],
+  main > section.band[data-starfield-space="void"] {
+    padding-top: clamp(6rem, 17vh, 10rem);
+    padding-bottom: clamp(6rem, 17vh, 10rem);
+  }
+
+  .mahou-current-phrase .mahou-score-shore {
+    opacity: .68;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mahou-current-phrase .mahou-score-waterlines,
+  .mahou-current-phrase .mahou-score-notes {
+    transform: none !important;
+  }
+}
