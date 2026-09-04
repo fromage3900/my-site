@@ -43,6 +43,14 @@ jobs:
           python tools/build_curated_art_derivatives.py
       - name: Validate assets (tiered)
         run: python tools/validate_assets.py
+      - name: Validate core JavaScript syntax
+        run: |
+          node --check wix/melodia-site-nav.js
+          node --check wix/melodia-editorial.js
+          node --check wix/melodia-mahou-flourish.js
+          node --check wix/melodia-starfield.js
+          node --check wix/curated-art-viewer.js
+          node --check wix/pigment-memory.js
       - name: Validate portfolio (links + JSON)
         shell: pwsh
         run: ./tools/validate_portfolio.ps1
