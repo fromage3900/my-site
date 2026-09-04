@@ -1264,12 +1264,12 @@ main > section.band,
 }
 
 .mahou-current-phrase .mahou-score-waterlines {
-  transform: translateY(calc((var(--mahou-section-progress) - .5) * -3px));
+  transform: translateY(var(--mahou-shore-lift, 0px));
   transform-origin: center;
 }
 
 .mahou-current-phrase .mahou-score-notes {
-  transform: translateX(calc((var(--mahou-section-progress) - .5) * 8px));
+  transform: translateX(var(--mahou-shore-drift, 0px));
   transform-origin: center;
 }
 
