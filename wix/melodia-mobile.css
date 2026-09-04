@@ -42,8 +42,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 42px;
-    min-height: 42px;
+    min-width: 44px;
+    min-height: 44px;
     padding: 0;
     border: 1px solid var(--line, rgba(201, 168, 106, 0.32));
     border-radius: 2px;
@@ -95,7 +95,7 @@
   }
 
   .melodia-shell {
-    overflow-x: visible;
+    overflow-x: clip;
   }
 
   .band {
@@ -109,9 +109,9 @@
 
   .shell-nav .nav-cta {
     display: inline-flex;
-    min-height: 36px;
-    padding: 8px 10px;
-    font-size: 0.58rem;
+    min-height: 44px;
+    padding: 9px 10px;
+    font-size: 0.64rem;
   }
 
   .hero {
@@ -141,7 +141,7 @@
   .hero h1,
   h1 {
     font-size: clamp(2.2rem, 11vw, 3.4rem) !important;
-    line-height: 0.95;
+    line-height: 1.02;
   }
 
   h2 {
@@ -235,5 +235,35 @@
   .shell-nav .nav-more-menu a {
     padding: 10px 12px;
     color: rgba(236,234,244,.72);
+  }
+}
+
+
+/* 390px nav polish — keep labels readable without crowding the fixed header. */
+@media (max-width: 520px) {
+  .shell-nav {
+    gap: 7px;
+  }
+
+  .shell-nav .brand {
+    gap: 8px;
+    padding-inline: 4px;
+    font-size: .68rem;
+    letter-spacing: .12em;
+  }
+
+  .shell-nav .brand-mark {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+  }
+
+  .shell-nav .nav-cta {
+    letter-spacing: .09em;
+  }
+
+  .nav-toggle {
+    font-size: .66rem;
+    letter-spacing: .1em;
   }
 }
