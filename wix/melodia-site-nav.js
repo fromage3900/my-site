@@ -8,15 +8,19 @@
 
   var LINKS = [
     { href: 'index.html', label: 'Home', keys: ['index', ''] },
-    { href: 'application-hub.html', label: 'Hub', keys: ['application-hub'] },
-    { href: 'cosmic-orrery.html', label: 'Orrery', keys: ['cosmic-orrery'] },
-    { href: 'melodia-living-worlds.html', label: 'Living', keys: ['melodia-living-worlds'] },
-    { href: 'zbrush-breakdown.html', label: 'Breakdown', keys: ['zbrush-breakdown'] },
     { href: 'curated-art.html', label: 'Art', keys: ['curated-art'] },
-    { href: 'hero-renders.html', label: 'Renders', keys: ['hero-renders'] },
-    { href: 'melodia-stage-character.html', label: 'Stage', keys: ['melodia-stage-character'] },
-    { href: 'world-bible.html', label: 'Worlds', keys: ['world-bible'] },
-    { href: 'resume.html', label: 'Resume', keys: ['resume'] },
+    { href: 'world-bible.html', label: 'Worlds', keys: ['world-bible', 'sakura-case-study', 'space-cathedral', 'pcg-system-impact', 'melodia-stage-character'] },
+    { href: 'melodia-living-worlds.html', label: 'Melodia', keys: ['melodia-living-worlds', 'melodia-gameplay-loop', 'melodia-rhythm-hero'] },
+    { href: 'resume.html', label: 'About', keys: ['resume', 'recruiter-one-sheet'] },
+  ];
+
+  var MORE_LINKS = [
+    { href: 'hero-renders.html', label: 'Render archive', keys: ['hero-renders'] },
+    { href: 'zbrush-breakdown.html', label: 'Sculpt breakdown', keys: ['zbrush-breakdown'] },
+    { href: 'shader-breakdowns.html', label: 'Shader breakdowns', keys: ['shader-breakdowns'] },
+    { href: 'cosmic-orrery.html', label: 'Cosmic Orrery', keys: ['cosmic-orrery'] },
+    { href: 'application-hub.html', label: 'Architecture Hub', keys: ['application-hub'] },
+    { href: 'pipeline.html', label: 'Echo pipeline', keys: ['pipeline'] },
   ];
 
   function pageKey() {
@@ -60,6 +64,21 @@
     );
   }
 
+  function moreHtml(key, constellation) {
+    var active = MORE_LINKS.some(function (item) { return item.keys.indexOf(key) !== -1; });
+    var star = constellation ? '<span class="nav-star" aria-hidden="true"></span>' : '';
+    return (
+      '<details class="nav-more' + (active ? ' is-active' : '') + '">' +
+        '<summary>' + star + 'More <span aria-hidden="true">✦</span></summary>' +
+        '<div class="nav-more-menu">' +
+          MORE_LINKS.map(function (item) {
+            return linkHtml(item, item.keys.indexOf(key) !== -1, constellation);
+          }).join('') +
+        '</div>' +
+      '</details>'
+    );
+  }
+
   function applyNav() {
     var header = document.querySelector('header.shell-nav');
     if (!header) return;
@@ -85,20 +104,9 @@
       header.appendChild(nav);
     }
 
-    // Home keeps in-page section anchors when markup already provides them;
-    // other pages get the shared recruiter link set.
-    var keepLocal = key === 'index' && nav.querySelector('a[href^="#"]');
-    if (!keepLocal) {
-      nav.innerHTML = LINKS.map(function (item) {
-        return linkHtml(item, item.keys.indexOf(key) !== -1, constellation);
-      }).join('');
-    } else if (constellation) {
-      Array.prototype.forEach.call(nav.querySelectorAll('a'), function (a) {
-        if (!a.querySelector('.nav-star')) {
-          a.insertAdjacentHTML('afterbegin', '<span class="nav-star" aria-hidden="true"></span>');
-        }
-      });
-    }
+    nav.innerHTML = LINKS.map(function (item) {
+      return linkHtml(item, item.keys.indexOf(key) !== -1, constellation);
+    }).join('') + moreHtml(key, constellation);
 
     var cta = header.querySelector('.nav-cta');
     if (!cta) {
@@ -121,5 +129,5 @@
     boot();
   }
 
-  global.MelodiaSiteNav = { refresh: applyNav, links: LINKS };
+  global.MelodiaSiteNav = { refresh: applyNav, links: LINKS, moreLinks: MORE_LINKS };
 })(typeof window !== 'undefined' ? window : this);
