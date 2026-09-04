@@ -659,3 +659,298 @@
     display: none !important;
   }
 }
+
+
+/* ===== LIVING FILIGREE + WORLD SKINS ===== */
+:root {
+  --mahou-world-primary: rgba(255, 136, 204, .72);
+  --mahou-world-secondary: rgba(121, 216, 232, .62);
+  --mahou-world-gold: rgba(255, 230, 160, .72);
+  --mahou-world-mote-opacity: .36;
+}
+
+:root[data-mahou-world="sakura"] {
+  --mahou-world-primary: rgba(255, 146, 192, .84);
+  --mahou-world-secondary: rgba(255, 222, 236, .64);
+  --mahou-world-gold: rgba(255, 226, 160, .78);
+  --mahou-world-mote-opacity: .42;
+}
+
+:root[data-mahou-world="cathedral"] {
+  --mahou-world-primary: rgba(188, 164, 255, .82);
+  --mahou-world-secondary: rgba(112, 218, 242, .62);
+  --mahou-world-gold: rgba(255, 224, 168, .6);
+  --mahou-world-mote-opacity: .3;
+}
+
+:root[data-mahou-world="moon"] {
+  --mahou-world-primary: rgba(124, 196, 255, .72);
+  --mahou-world-secondary: rgba(198, 214, 255, .54);
+  --mahou-world-gold: rgba(229, 236, 255, .58);
+  --mahou-world-mote-opacity: .27;
+}
+
+:root[data-mahou-world="melusina"] {
+  --mahou-world-primary: rgba(150, 229, 240, .76);
+  --mahou-world-secondary: rgba(255, 176, 218, .58);
+  --mahou-world-gold: rgba(255, 236, 178, .72);
+  --mahou-world-mote-opacity: .34;
+}
+
+.mahou-world-ambience {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.mahou-world-mote {
+  position: absolute;
+  left: var(--mahou-x);
+  top: calc(14% + (var(--mahou-i) * 11%));
+  width: 12px;
+  height: 18px;
+  opacity: var(--mahou-world-mote-opacity);
+  filter: drop-shadow(0 0 9px var(--mahou-world-secondary));
+  animation: mahou-world-drift 15s ease-in-out infinite;
+  animation-delay: var(--mahou-delay);
+}
+
+:root[data-mahou-world="sakura"] .mahou-world-mote {
+  border-radius: 85% 10% 85% 10%;
+  background: linear-gradient(145deg, rgba(255,255,255,.74), var(--mahou-world-primary));
+  transform: rotate(28deg);
+}
+
+:root[data-mahou-world="cathedral"] .mahou-world-mote {
+  width: 10px;
+  height: 22px;
+  clip-path: polygon(50% 0, 100% 38%, 72% 100%, 0 68%);
+  border: 1px solid rgba(255,255,255,.14);
+  background: linear-gradient(155deg, var(--mahou-world-primary), rgba(121,216,232,.1));
+}
+
+:root[data-mahou-world="moon"] .mahou-world-mote {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(222, 235, 255, .92);
+  box-shadow: 0 0 12px var(--mahou-world-primary), 18px -12px 0 -1px rgba(124,196,255,.3);
+}
+
+:root[data-mahou-world="melusina"] .mahou-world-mote {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 240, 205, .48);
+  background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.96), var(--mahou-world-primary) 48%, rgba(255,176,218,.12) 76%);
+  box-shadow: 0 0 11px rgba(150,229,240,.24);
+}
+
+:root[data-mahou-world="astral"] .mahou-world-mote {
+  width: 8px;
+  height: 8px;
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+  background: var(--mahou-world-gold);
+}
+
+@keyframes mahou-world-drift {
+  0%, 100% { translate: 0 0; rotate: -8deg; opacity: calc(var(--mahou-world-mote-opacity) * .55); }
+  48% { translate: 18px -26px; rotate: 18deg; opacity: var(--mahou-world-mote-opacity); }
+  72% { translate: -9px -12px; rotate: 38deg; }
+}
+
+/* SVG tracery grows around selected sections, then settles into quiet decoration. */
+.mahou-living-filigree {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  width: min(94%, 1120px);
+  height: 132px;
+  transform: translateX(-50%);
+  z-index: 4;
+  pointer-events: none;
+  opacity: .2;
+  transition: opacity .8s ease, filter .8s ease;
+  overflow: visible;
+}
+
+.mahou-living-filigree.is-awake {
+  opacity: .66;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--mahou-world-primary) 32%, transparent));
+}
+
+.mahou-filigree-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.mahou-filigree-lines path,
+.mahou-filigree-rosette path,
+.mahou-filigree-rosette circle {
+  fill: none;
+  stroke: var(--mahou-world-gold);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.mahou-filigree-lines .minor,
+.mahou-filigree-rosette .minor {
+  stroke: var(--mahou-world-secondary);
+  opacity: .66;
+}
+
+.mahou-living-filigree.is-awake .mahou-filigree-lines path,
+.mahou-living-filigree.is-awake .mahou-filigree-rosette path,
+.mahou-living-filigree.is-awake .mahou-filigree-rosette circle {
+  animation: mahou-filigree-draw 1.9s cubic-bezier(.16,.78,.22,1) forwards;
+}
+
+.mahou-living-filigree.is-awake .mahou-filigree-lines .minor {
+  animation-delay: .18s;
+}
+
+.mahou-filigree-gem {
+  fill: var(--mahou-world-primary);
+  opacity: 0;
+}
+
+.mahou-living-filigree.is-awake .mahou-filigree-gem {
+  animation: mahou-filigree-gem 1.6s .72s ease-out forwards;
+}
+
+.mahou-filigree-host:hover > .mahou-living-filigree {
+  opacity: .82;
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--mahou-world-primary) 46%, transparent));
+}
+
+@keyframes mahou-filigree-draw {
+  0% { stroke-dashoffset: 1; opacity: .12; }
+  100% { stroke-dashoffset: 0; opacity: .9; }
+}
+
+@keyframes mahou-filigree-gem {
+  0% { opacity: 0; r: 1px; }
+  45% { opacity: 1; r: 5px; }
+  100% { opacity: .74; r: 3px; }
+}
+
+/* Every fourth eligible internal navigation gets a brief iris/sigil transition. */
+.mahou-page-portal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.mahou-page-portal.is-opening {
+  animation: mahou-portal-stage .72s ease-out forwards;
+}
+
+.mahou-page-portal-iris {
+  position: absolute;
+  width: 20vmax;
+  height: 20vmax;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(7,8,18,.98) 0 38%, transparent 40%),
+    conic-gradient(from 20deg, var(--mahou-world-primary), rgba(255,255,255,.84), var(--mahou-world-secondary), var(--mahou-world-gold), var(--mahou-world-primary));
+  transform: scale(.08);
+  opacity: .92;
+}
+
+.mahou-page-portal.is-opening .mahou-page-portal-iris {
+  animation: mahou-portal-iris .7s cubic-bezier(.18,.72,.24,1) forwards;
+}
+
+.mahou-page-portal-ring {
+  position: absolute;
+  width: min(50vmin, 460px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid var(--mahou-world-gold);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--mahou-world-primary) 28%, transparent);
+  opacity: 0;
+}
+
+.mahou-page-portal-ring.r2 {
+  width: min(36vmin, 330px);
+  border-style: dashed;
+  border-color: var(--mahou-world-secondary);
+}
+
+.mahou-page-portal.is-opening .mahou-page-portal-ring.r1 {
+  animation: mahou-portal-ring .66s ease-out forwards;
+}
+
+.mahou-page-portal.is-opening .mahou-page-portal-ring.r2 {
+  animation: mahou-portal-ring .56s .06s ease-out forwards reverse;
+}
+
+.mahou-page-portal-star {
+  position: relative;
+  z-index: 2;
+  color: var(--mahou-world-gold);
+  font-size: 1.4rem;
+  opacity: 0;
+  text-shadow: 0 0 18px var(--mahou-world-primary);
+}
+
+.mahou-page-portal.is-opening .mahou-page-portal-star {
+  animation: mahou-portal-star .62s ease-out forwards;
+}
+
+@keyframes mahou-portal-stage {
+  0% { opacity: 0; background: rgba(7,8,18,0); }
+  18% { opacity: 1; }
+  100% { opacity: 1; background: rgba(7,8,18,.88); }
+}
+
+@keyframes mahou-portal-iris {
+  0% { transform: scale(.08) rotate(-20deg); filter: blur(2px); }
+  72% { transform: scale(5.8) rotate(18deg); filter: blur(0); }
+  100% { transform: scale(8.4) rotate(30deg); }
+}
+
+@keyframes mahou-portal-ring {
+  0% { transform: scale(.35) rotate(-40deg); opacity: 0; }
+  34% { opacity: .88; }
+  100% { transform: scale(1.5) rotate(70deg); opacity: 0; }
+}
+
+@keyframes mahou-portal-star {
+  0% { transform: scale(.2) rotate(-40deg); opacity: 0; }
+  38% { transform: scale(1.6) rotate(8deg); opacity: 1; }
+  100% { transform: scale(.5) rotate(58deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mahou-world-mote { animation: none !important; opacity: .14; }
+  .mahou-living-filigree,
+  .mahou-living-filigree.is-awake { opacity: .35; filter: none; }
+  .mahou-living-filigree.is-awake .mahou-filigree-lines path,
+  .mahou-living-filigree.is-awake .mahou-filigree-rosette path,
+  .mahou-living-filigree.is-awake .mahou-filigree-rosette circle,
+  .mahou-living-filigree.is-awake .mahou-filigree-gem {
+    animation: none !important;
+    stroke-dashoffset: 0;
+    opacity: .5;
+  }
+  .mahou-page-portal { display: none !important; }
+}
+
+@media (max-width: 720px) {
+  .mahou-living-filigree { top: -18px; height: 96px; opacity: .16; }
+  .mahou-living-filigree.is-awake { opacity: .42; }
+  .mahou-world-mote { opacity: calc(var(--mahou-world-mote-opacity) * .72); }
+}
