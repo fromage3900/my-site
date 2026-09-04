@@ -448,3 +448,30 @@ def test_mahou_rare_ambient_events_contract():
 
     assert "prefers-reduced-motion: reduce" in css_code
     assert "removeAfter" in js_code
+
+
+def test_mahou_particle_garden_contract():
+    """PixiJS garden must stay linked, self-contained, interactive, and motion-aware."""
+    wix_dir = _get_wix_dir()
+    page_path = os.path.join(wix_dir, "mahou-particle-garden.html")
+    hub_path = os.path.join(wix_dir, "application-hub.html")
+
+    assert os.path.isfile(page_path), "Mahou Particle Garden page missing"
+
+    with open(page_path, "r", encoding="utf-8") as f:
+        page = f.read()
+    with open(hub_path, "r", encoding="utf-8") as f:
+        hub = f.read()
+
+    for symbol in [
+        "pixi.js@8.16.0",
+        "await app.init",
+        "pointermove",
+        "pointerdown",
+        "wakeSigil",
+        "nextRare",
+        "prefers-reduced-motion",
+    ]:
+        assert symbol in page, f"Particle Garden contract missing {symbol}"
+
+    assert 'href="mahou-particle-garden.html"' in hub
