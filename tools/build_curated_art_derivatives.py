@@ -13,7 +13,10 @@ except ImportError:
     raise
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGE = ROOT / "wix" / "curated-art.html"
+PAGES = [
+    ROOT / "wix" / "curated-art.html",
+    ROOT / "wix" / "index.html",
+]
 OUT = ROOT / "generated" / "optimized" / "curated-art"
 WIDTHS = (480, 800, 1280)
 QUALITY = 82
@@ -40,13 +43,14 @@ def output_stem(src: str) -> str:
 
 def main() -> int:
     parser = CuratedImageParser()
-    parser.feed(PAGE.read_text(encoding="utf-8"))
+    for page in PAGES:
+        parser.feed(page.read_text(encoding="utf-8"))
     unique = list(dict.fromkeys(parser.sources))
     OUT.mkdir(parents=True, exist_ok=True)
 
     written = 0
     for src in unique:
-        source = (PAGE.parent / src).resolve()
+        source = (ROOT / "wix" / src).resolve()
         if not source.is_file():
             print(f"missing curated source: {source}", file=sys.stderr)
             return 2
