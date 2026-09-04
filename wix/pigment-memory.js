@@ -39,7 +39,28 @@
   }
 
   function samplePalette(img) {
-    if (!img || !img.complete || !img.naturalWidth) return Promise.resolve(state.palette.slice());
+    if (!img) return Promise.resolve(state.palette.slice());
+    if (!img.complete || !img.naturalWidth) {
+      return new Promise(function (resolve) {
+        var done = false;
+        function finish() {
+          if (done) return;
+          done = true;
+          img.removeEventListener('load', finish);
+          img.removeEventListener('error', fail);
+          samplePalette(img).then(resolve);
+        }
+        function fail() {
+          if (done) return;
+          done = true;
+          img.removeEventListener('load', finish);
+          img.removeEventListener('error', fail);
+          resolve(state.palette.slice());
+        }
+        img.addEventListener('load', finish, { once: true });
+        img.addEventListener('error', fail, { once: true });
+      });
+    }
     return new Promise(function (resolve) {
       try {
         var canvas = document.createElement('canvas');
@@ -141,7 +162,18 @@
       if (state.activePiece) drawCapillaryAura(state.activePiece);
     }
     resize();
+    var redrawRaf = 0;
+    function redrawActiveAura() {
+      redrawRaf = 0;
+      if (state.activePiece) drawCapillaryAura(state.activePiece);
+      else drawPaperFibers();
+    }
+    function scheduleAuraRedraw() {
+      if (redrawRaf) return;
+      redrawRaf = window.requestAnimationFrame(redrawActiveAura);
+    }
     window.addEventListener('resize',resize,{passive:true});
+    window.addEventListener('scroll',scheduleAuraRedraw,{passive:true});
     return canvas;
   }
 
@@ -245,6 +277,10 @@
     resize();
     addEventListener('resize',resize,{passive:true});
     function frame(t){
+      if (reduced.matches) {
+        ctx.clearRect(0,0,innerWidth,innerHeight);
+        return;
+      }
       ctx.clearRect(0,0,innerWidth,innerHeight);
       state.trail = state.trail.filter(function(p){ return t-p.t < 2100; });
       for (var i=0;i<state.trail.length;i++) {
@@ -436,6 +472,12 @@
 
   function maybeWetChorus(previous,next) {
     if (reduced.matches || state.wetChorusDone || !previous || !next) return;
+    try {
+      if (sessionStorage.getItem('pigment-wet-chorus-seen') === '1') {
+        state.wetChorusDone = true;
+        return;
+      }
+    } catch (e) {}
     var visits=0;
     try{ visits=parseInt(sessionStorage.getItem('pigment-memory-transitions')||'0',10)||0; visits++; sessionStorage.setItem('pigment-memory-transitions',String(visits)); }catch(e){visits=1;}
     if (visits<3) return;
