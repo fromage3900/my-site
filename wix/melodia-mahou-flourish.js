@@ -699,11 +699,6 @@
       entries.forEach(function (entry) {
         if (!entry.isIntersecting || entry.intersectionRatio < 0.58) return;
         var header = entry.target;
-        var now = performance.now();
-        if (soundState.enabled && now - soundState.lastHeaderTone > 1700) {
-          playHeaderChord(header.textContent || 'Melodia', true);
-          soundState.lastHeaderTone = now;
-        }
         pulseScoreShore(header, false);
       });
     }, { threshold: [0.58] });
@@ -868,6 +863,8 @@
 
         var local = Math.max(0, Math.min(1, (focusY - rect.top) / Math.max(rect.height, 1)));
         section.style.setProperty('--mahou-section-progress', local.toFixed(3));
+        section.style.setProperty('--mahou-shore-lift', ((local - 0.5) * -3).toFixed(2) + 'px');
+        section.style.setProperty('--mahou-shore-drift', ((local - 0.5) * 8).toFixed(2) + 'px');
       });
 
       document.documentElement.style.setProperty('--mahou-scroll-phrase', String(bestIndex % 8));
