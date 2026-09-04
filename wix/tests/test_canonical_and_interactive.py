@@ -582,3 +582,49 @@ def test_scroll_score_starfield_negative_space_contract():
     assert "initScrollScore" in mf_code
     assert "mahou-current-phrase" in mf_styles
     assert "--mahou-section-progress" in mf_code
+
+
+def test_phi_composition_engine_contract():
+    """Golden-ratio composition must drive layout, spacing, harmony, phyllotaxis, and starfield opacity."""
+    wix_dir = _get_wix_dir()
+    mf_js = os.path.join(wix_dir, "melodia-mahou-flourish.js")
+    mf_css = os.path.join(wix_dir, "melodia-mahou-flourish.css")
+    star_js = os.path.join(wix_dir, "melodia-starfield.js")
+
+    with open(mf_js, "r", encoding="utf-8") as f:
+        js_code = f.read()
+    with open(mf_css, "r", encoding="utf-8") as f:
+        css_code = f.read()
+    with open(star_js, "r", encoding="utf-8") as f:
+        star_code = f.read()
+
+    for symbol in [
+        "applyPhiComposition",
+        "1.618033988749895",
+        "phyllotaxisBloom",
+        "137.50776405003785",
+        "golden-horizon",
+        "void-majority",
+        "fibonacci-stack",
+        "5 / 4",
+        "3 / 2",
+        "8 / 5",
+    ]:
+        assert symbol in js_code, f"Phi composition JS missing {symbol}"
+
+    for symbol in [
+        "--phi-major: 61.803%",
+        "--phi-minor: 38.197%",
+        "--phi-13: 13px",
+        "--phi-21: 21px",
+        "--phi-34: 34px",
+        "--phi-55: 55px",
+        "--phi-89: 89px",
+        "--phi-144: 144px",
+        ".mahou-phyllotaxis-event",
+        'data-phi-layout="golden-horizon"',
+    ]:
+        assert symbol in css_code, f"Phi composition CSS missing {symbol}"
+
+    for opacity in ["0.618", "0.382", "0.236", "0.146"]:
+        assert opacity in star_code, f"Phi starfield ladder missing {opacity}"
