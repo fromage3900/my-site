@@ -540,14 +540,323 @@
     });
   }
 
+  var soundState = {
+    ctx: null,
+    enabled: false,
+    lastHeaderTone: -Infinity
+  };
+
+  function hashText(text) {
+    var h = 2166136261;
+    for (var i = 0; i < text.length; i++) {
+      h ^= text.charCodeAt(i);
+      h += (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24);
+    }
+    return h >>> 0;
+  }
+
+  function noteSetFor(text) {
+    var scale = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33];
+    var h = hashText(text || 'melodia');
+    return [
+      scale[h % scale.length],
+      scale[(h >>> 3) % scale.length],
+      scale[(h >>> 7) % scale.length]
+    ];
+  }
+
+  function getSoundContext() {
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return null;
+    if (!soundState.ctx) soundState.ctx = new AudioContext();
+    if (soundState.ctx.state === 'suspended') soundState.ctx.resume();
+    return soundState.ctx;
+  }
+
+  function setSoundEnabled(enabled) {
+    soundState.enabled = !!enabled;
+    try { sessionStorage.setItem('melodia-mahou-sound', enabled ? '1' : '0'); } catch (e) {}
+    var button = document.querySelector('.mahou-sound-toggle');
+    if (button) {
+      button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+      button.textContent = enabled ? '♪ sound awake' : '♪ sound asleep';
+      button.classList.toggle('is-awake', enabled);
+    }
+  }
+
+  function playHeaderChord(text, quiet) {
+    if (!soundState.enabled) return;
+    var ctx = getSoundContext();
+    if (!ctx) return;
+
+    var freqs = noteSetFor(text);
+    var now = ctx.currentTime;
+    var master = ctx.createGain();
+    master.gain.setValueAtTime(quiet ? 0.0001 : 0.0001, now);
+    master.gain.linearRampToValueAtTime(quiet ? 0.025 : 0.045, now + 0.035);
+    master.gain.exponentialRampToValueAtTime(0.0001, now + (quiet ? 0.58 : 0.82));
+    master.connect(ctx.destination);
+
+    freqs.forEach(function (freq, index) {
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = index === 1 ? 'triangle' : 'sine';
+      osc.frequency.setValueAtTime(freq * (index === 2 ? 2 : 1), now);
+      gain.gain.setValueAtTime(index === 1 ? 0.34 : 0.24, now);
+      osc.connect(gain);
+      gain.connect(master);
+      osc.start(now + index * 0.025);
+      osc.stop(now + (quiet ? 0.62 : 0.9));
+    });
+  }
+
+  function mountSoundToggle() {
+    if (document.querySelector('.mahou-sound-toggle')) return;
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'mahou-sound-toggle';
+    button.setAttribute('aria-label', 'Toggle Melodia ambient musical interactions');
+    button.setAttribute('aria-pressed', 'false');
+    button.textContent = '♪ sound asleep';
+    document.body.appendChild(button);
+
+    var stored = false;
+    try { stored = sessionStorage.getItem('melodia-mahou-sound') === '1'; } catch (e) {}
+    if (stored) setSoundEnabled(true);
+
+    button.addEventListener('click', function () {
+      var next = !soundState.enabled;
+      if (next) getSoundContext();
+      setSoundEnabled(next);
+      if (next) playHeaderChord(document.title || 'Melodia', false);
+    });
+  }
+
+  function scoreShoreSvg(text) {
+    var h = hashText(text || 'shore');
+    var notes = '';
+    for (var i = 0; i < 6; i++) {
+      var x = 58 + ((h >>> (i * 3)) % 410);
+      var line = (h >>> (i * 2 + 1)) % 5;
+      var y = 22 + line * 10 + ((i % 2) ? -3 : 2);
+      var stem = i % 2 === 0 ? -17 : 17;
+      notes +=
+        '<g class="mahou-shore-note n' + i + '" transform="translate(' + x + ' ' + y + ')">' +
+          '<ellipse rx="4.2" ry="3.1" transform="rotate(-18)" />' +
+          '<line x1="3.5" y1="0" x2="3.5" y2="' + stem + '" />' +
+        '</g>';
+    }
+
+    return (
+      '<svg class="mahou-score-shore-svg" viewBox="0 0 520 78" preserveAspectRatio="none" aria-hidden="true">' +
+        '<g class="mahou-score-waterlines">' +
+          '<path d="M0 18 C72 10 126 28 196 18 S334 10 520 18" />' +
+          '<path d="M0 28 C74 20 132 38 208 28 S348 20 520 28" />' +
+          '<path d="M0 38 C68 30 128 47 206 38 S352 30 520 38" />' +
+          '<path d="M0 48 C76 40 140 57 218 48 S370 40 520 48" />' +
+          '<path d="M0 58 C82 50 144 67 224 58 S382 50 520 58" />' +
+        '</g>' +
+        '<g class="mahou-score-notes">' + notes + '</g>' +
+        '<circle class="mahou-shore-pearl p1" cx="28" cy="37" r="3" />' +
+        '<circle class="mahou-shore-pearl p2" cx="492" cy="42" r="2.6" />' +
+      '</svg>'
+    );
+  }
+
+  function pulseScoreShore(header, playSound) {
+    var shore = header && header.parentNode ? header.parentNode.querySelector(':scope > .mahou-score-shore') : null;
+    if (!shore) return;
+    shore.classList.remove('is-rippling');
+    void shore.offsetWidth;
+    shore.classList.add('is-rippling');
+    window.setTimeout(function () { shore.classList.remove('is-rippling'); }, 1150);
+    if (playSound) playHeaderChord(header.textContent || 'Melodia', false);
+  }
+
+  function initMusicalShores() {
+    var headers = Array.prototype.slice.call(document.querySelectorAll('.hero h1, main section h2, main .band h2'));
+    headers.forEach(function (header, index) {
+      if (header.getAttribute('data-mahou-shore-bound')) return;
+      header.setAttribute('data-mahou-shore-bound', 'true');
+
+      var shore = document.createElement('div');
+      shore.className = 'mahou-score-shore';
+      shore.setAttribute('aria-hidden', 'true');
+      shore.innerHTML = scoreShoreSvg(header.textContent || 'Melodia');
+      header.insertAdjacentElement('afterend', shore);
+
+      var activate = function () { pulseScoreShore(header, true); };
+      header.addEventListener('pointerdown', activate, { passive: true });
+      header.addEventListener('focus', function () { pulseScoreShore(header, false); });
+
+      if (index === 0 && !prefersReducedMotion()) {
+        window.setTimeout(function () { pulseScoreShore(header, false); }, 900);
+      }
+    });
+
+    if (!('IntersectionObserver' in window)) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting || entry.intersectionRatio < 0.58) return;
+        var header = entry.target;
+        var now = performance.now();
+        if (soundState.enabled && now - soundState.lastHeaderTone > 1700) {
+          playHeaderChord(header.textContent || 'Melodia', true);
+          soundState.lastHeaderTone = now;
+        }
+        pulseScoreShore(header, false);
+      });
+    }, { threshold: [0.58] });
+
+    headers.forEach(function (header) { observer.observe(header); });
+  }
+
+  function sessionMoonPhase() {
+    var key = 'melodia-mahou-page-orbit';
+    var visits = 0;
+    try {
+      visits = parseInt(sessionStorage.getItem(key) || '0', 10) || 0;
+      visits += 1;
+      sessionStorage.setItem(key, String(visits));
+    } catch (e) {
+      visits = 1;
+    }
+    var phases = ['new', 'crescent', 'quarter', 'gibbous', 'full', 'gibbous', 'quarter', 'crescent'];
+    var phase = phases[(visits - 1) % phases.length];
+    document.documentElement.setAttribute('data-mahou-moon-phase', phase);
+    return phase;
+  }
+
+  function mountMoonPhaseMark() {
+    if (document.querySelector('.mahou-moon-phase-mark')) return;
+    var phase = sessionMoonPhase();
+    var glyphs = { 'new': '●', 'crescent': '◔', 'quarter': '◐', 'gibbous': '◕', 'full': '○' };
+    var mark = document.createElement('div');
+    mark.className = 'mahou-moon-phase-mark';
+    mark.setAttribute('aria-hidden', 'true');
+    mark.innerHTML = '<span>' + (glyphs[phase] || '◔') + '</span><small>' + phase + '</small>';
+    document.body.appendChild(mark);
+  }
+
+  function dreamCreatureMarkup(kind) {
+    if (kind === 'jelly') {
+      return '<span class="mahou-jelly-cap"></span><span class="mahou-jelly-tentacle t1"></span><span class="mahou-jelly-tentacle t2"></span><span class="mahou-jelly-tentacle t3"></span>';
+    }
+    return '<span class="mahou-koi-body"></span><span class="mahou-koi-tail"></span><span class="mahou-koi-fin f1"></span><span class="mahou-koi-fin f2"></span><span class="mahou-koi-eye"></span>';
+  }
+
+  function spawnDreamCreature() {
+    if (prefersReducedMotion() || document.hidden || document.querySelector('.mahou-dream-creature')) return;
+    var skin = resolveWorldSkin();
+    var kind = skin === 'melusina' || skin === 'moon' ? 'jelly' : 'koi';
+    var creature = document.createElement('div');
+    creature.className = 'mahou-dream-creature ' + kind;
+    creature.setAttribute('aria-hidden', 'true');
+    creature.style.setProperty('--creature-y', (20 + Math.random() * 55).toFixed(1) + 'vh');
+    creature.style.setProperty('--creature-duration', (11 + Math.random() * 5).toFixed(1) + 's');
+    creature.innerHTML = dreamCreatureMarkup(kind);
+    document.body.appendChild(creature);
+    removeAfter(creature, 17500);
+  }
+
+  function initRareCreatures() {
+    if (prefersReducedMotion()) return;
+    var first = 16000 + Math.random() * 9000;
+    window.setTimeout(function loop() {
+      if (Math.random() < 0.62) spawnDreamCreature();
+      window.setTimeout(loop, 24000 + Math.random() * 18000);
+    }, first);
+  }
+
+  function hiddenRoseSvg() {
+    var spokes = '';
+    for (var i = 0; i < 12; i++) {
+      var a = (i / 12) * Math.PI * 2;
+      var x = 160 + Math.cos(a) * 94;
+      var y = 160 + Math.sin(a) * 94;
+      spokes += '<line x1="160" y1="160" x2="' + x.toFixed(1) + '" y2="' + y.toFixed(1) + '" />';
+    }
+    return '<svg viewBox="0 0 320 320" aria-hidden="true"><circle cx="160" cy="160" r="118"/><circle class="inner" cx="160" cy="160" r="78"/><circle class="inner" cx="160" cy="160" r="34"/>' + spokes + '<path d="M160 42 C188 92 228 110 278 160 C228 188 210 228 160 278 C132 228 92 210 42 160 C92 132 110 92 160 42 Z"/></svg>';
+  }
+
+  function revealHiddenRose(section) {
+    if (!section || section.querySelector(':scope > .mahou-hidden-rose-window')) return;
+    if (window.getComputedStyle(section).position === 'static') section.style.position = 'relative';
+    var rose = document.createElement('div');
+    rose.className = 'mahou-hidden-rose-window';
+    rose.setAttribute('aria-hidden', 'true');
+    rose.innerHTML = hiddenRoseSvg();
+    section.appendChild(rose);
+    window.requestAnimationFrame(function () { rose.classList.add('is-revealed'); });
+  }
+
+  function initLingeringRoseWindow() {
+    if (!('IntersectionObserver' in window)) return;
+    var shown = false;
+    var timer = null;
+    var current = null;
+    var sections = Array.prototype.slice.call(document.querySelectorAll('main > .band, main > section.band'));
+
+    var observer = new IntersectionObserver(function (entries) {
+      if (shown) return;
+      entries.forEach(function (entry) {
+        if (shown) return;
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.62) {
+          if (current === entry.target) return;
+          current = entry.target;
+          if (timer) window.clearTimeout(timer);
+          timer = window.setTimeout(function () {
+            if (!shown && current === entry.target) {
+              revealHiddenRose(entry.target);
+              shown = true;
+              try { sessionStorage.setItem('melodia-mahou-rose-seen', '1'); } catch (e) {}
+            }
+          }, prefersReducedMotion() ? 2200 : 4600);
+        } else if (current === entry.target) {
+          current = null;
+          if (timer) window.clearTimeout(timer);
+          timer = null;
+        }
+      });
+    }, { threshold: [0.62] });
+
+    var already = false;
+    try { already = sessionStorage.getItem('melodia-mahou-rose-seen') === '1'; } catch (e) {}
+    if (already) return;
+    sections.forEach(function (section, index) {
+      if (index > 0 && index % 2 === 0) observer.observe(section);
+    });
+  }
+
+  function initTouchRipples() {
+    document.addEventListener('pointerdown', function (event) {
+      if (event.target && event.target.closest && event.target.closest('button, a, input, textarea, select')) return;
+      if (prefersReducedMotion()) return;
+
+      var ring = document.createElement('span');
+      ring.className = 'mahou-touch-ripple';
+      ring.setAttribute('aria-hidden', 'true');
+      ring.style.left = event.clientX + 'px';
+      ring.style.top = event.clientY + 'px';
+      document.body.appendChild(ring);
+      removeAfter(ring, 1300);
+    }, { passive: true });
+  }
+
   function initAmbientEvents() {
     applyWorldSkin();
+    mountMoonPhaseMark();
+    mountSoundToggle();
     initLivingFiligree();
+    initMusicalShores();
+    initLingeringRoseWindow();
+    initTouchRipples();
     if (!prefersReducedMotion()) {
       initSectionBlooms();
       bindRarePetalCracks();
       initDormantCursorSigil();
       bindRarePortalTransitions();
+      initRareCreatures();
     }
   }
 
@@ -578,6 +887,11 @@
     applyWorldSkin: applyWorldSkin,
     initLivingFiligree: initLivingFiligree,
     bindRarePortalTransitions: bindRarePortalTransitions,
+    initMusicalShores: initMusicalShores,
+    playHeaderChord: playHeaderChord,
+    spawnDreamCreature: spawnDreamCreature,
+    revealHiddenRose: revealHiddenRose,
+    sessionMoonPhase: sessionMoonPhase,
     initAmbientEvents: initAmbientEvents
   };
 })(window);
