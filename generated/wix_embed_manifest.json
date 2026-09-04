@@ -65,4 +65,4 @@
   },
   "embedded_entry_target": "https://fromage3900.github.io/my-site/wix/index.html",
   "embed_entry_behavior": "application-hub.html is the stable Wix iframe URL; when entered from the external Wix shell it bootstraps to the art-first wix/index.html. Direct and in-site Architecture Hub visits remain technical."
-}\n
+}
