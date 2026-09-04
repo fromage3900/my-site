@@ -169,3 +169,272 @@ body.art-viewer-open { overflow:hidden; }
   .paper-section { padding:5.5rem 0; }
 }
 @media(prefers-reduced-motion:reduce){ .art-piece img{transition:none;} }
+
+
+/* Pigment Memory render layers */
+:root {
+  --pigment-1:#78cfd8;
+  --pigment-2:#d995b6;
+  --pigment-3:#8f75bc;
+  --pigment-4:#c8a46a;
+  --pigment-5:#291f33;
+}
+
+.pigment-field,
+.pigment-constellation-canvas,
+.pigment-pixi-weather {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+
+.pigment-field { z-index:1; opacity:.9; mix-blend-mode:multiply; }
+.pigment-pixi-weather { z-index:3; opacity:.52; }
+.pigment-constellation-canvas { z-index:92; }
+
+.paper-shell > *:not(.melodia-starfield-canvas) { position:relative; z-index:4; }
+
+.art-piece.is-pigment-active {
+  --active-pigment:var(--pigment-1);
+}
+
+.art-piece.is-pigment-active figcaption::before {
+  content:"";
+  display:inline-block;
+  width:21px;
+  height:2px;
+  margin-right:8px;
+  vertical-align:middle;
+  background:linear-gradient(90deg,var(--pigment-1),var(--pigment-2));
+  box-shadow:34px 0 0 color-mix(in srgb,var(--pigment-3) 62%,transparent);
+}
+
+/* CSS-built paintbrush cursor; no image asset required. */
+@media (pointer:fine) {
+  body.has-pigment-brush,
+  body.has-pigment-brush a,
+  body.has-pigment-brush button { cursor:none !important; }
+}
+
+.pigment-brush-cursor {
+  position:fixed;
+  left:0; top:0;
+  z-index:10020;
+  width:34px;
+  height:34px;
+  pointer-events:none;
+  opacity:0;
+  transform:rotate(-38deg);
+  transform-origin:50% 80%;
+  transition:opacity .18s ease;
+  filter:drop-shadow(0 3px 5px rgba(20,10,25,.18));
+}
+
+.pigment-brush-cursor.is-visible { opacity:1; }
+
+.brush-handle {
+  position:absolute;
+  left:15px; top:0;
+  width:5px; height:22px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#5b372b,#bb7c55 45%,#4d2b26);
+}
+
+.brush-ferrule {
+  position:absolute;
+  left:12px; top:18px;
+  width:11px; height:7px;
+  border-radius:2px;
+  background:linear-gradient(90deg,#807b87,#d8d4dc 45%,#716c78);
+  border:1px solid rgba(30,20,40,.22);
+}
+
+.brush-bristles {
+  position:absolute;
+  left:12px; top:24px;
+  width:11px; height:10px;
+  clip-path:polygon(10% 0,90% 0,60% 100%,42% 82%,28% 100%);
+  background:linear-gradient(180deg,var(--pigment-2),var(--pigment-1) 58%,var(--pigment-4));
+}
+
+/* Tiny live palette / archival annotation. */
+.pigment-marginalia {
+  position:fixed;
+  z-index:88;
+  left:max(13px,env(safe-area-inset-left));
+  top:50%;
+  translate:0 -50%;
+  display:grid;
+  gap:7px;
+  max-width:124px;
+  pointer-events:none;
+  color:rgba(245,237,223,.58);
+  font:600 .5rem/1.45 var(--font-mono,monospace);
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+.pigment-swatches { display:flex; gap:4px; align-items:end; height:21px; }
+.pigment-swatch {
+  display:block; width:7px; height:13px;
+  border-radius:7px 7px 3px 3px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.08);
+}
+.pigment-swatch:nth-child(2){height:21px}
+.pigment-swatch:nth-child(3){height:9px}
+.pigment-swatch:nth-child(4){height:17px}
+.pigment-swatch:nth-child(5){height:11px}
+.pigment-meta-title { color:rgba(245,237,223,.78); }
+.pigment-meta-type { opacity:.58; }
+
+/* Five imperfect painted staff-lines driven by the active palette. */
+.pigment-brush-score {
+  position:fixed;
+  z-index:87;
+  left:50%;
+  bottom:max(18px,env(safe-area-inset-bottom));
+  translate:-50% 0;
+  width:min(360px,44vw);
+  height:86px;
+  pointer-events:none;
+  opacity:.34;
+  transition:opacity .618s ease;
+}
+.pigment-brush-score svg { width:100%; height:100%; overflow:visible; }
+.pigment-score-line {
+  fill:none;
+  stroke:color-mix(in srgb,var(--pigment-5) 72%,var(--pigment-1));
+  stroke-width:1.1;
+  stroke-linecap:round;
+  opacity:.55;
+}
+.pigment-score-line:nth-child(2),
+.pigment-score-line:nth-child(4) { stroke:var(--pigment-2); opacity:.34; }
+.pigment-note { filter:drop-shadow(0 0 5px color-mix(in srgb,var(--pigment-1) 25%,transparent)); }
+
+/* Opt-in musicality + utility controls. */
+.pigment-sound-toggle,
+.pigment-contact-toggle {
+  position:fixed;
+  z-index:97;
+  right:max(13px,env(safe-area-inset-right));
+  border:1px solid rgba(220,204,184,.22);
+  border-radius:999px;
+  background:rgba(10,7,17,.68);
+  color:rgba(248,239,226,.68);
+  padding:9px 11px;
+  font:600 .54rem/1 var(--font-mono,monospace);
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  cursor:pointer;
+}
+.pigment-sound-toggle { bottom:max(15px,env(safe-area-inset-bottom)); }
+.pigment-contact-toggle { bottom:max(54px,calc(env(safe-area-inset-bottom) + 40px)); }
+.pigment-sound-toggle.is-awake {
+  color:var(--pigment-4);
+  border-color:color-mix(in srgb,var(--pigment-1) 56%,transparent);
+  box-shadow:0 0 18px color-mix(in srgb,var(--pigment-1) 16%,transparent);
+}
+
+/* Once-only wet-on-wet modulation between two paintings. */
+.pigment-wet-chorus {
+  position:fixed;
+  inset:0;
+  z-index:95;
+  pointer-events:none;
+  overflow:hidden;
+  background:rgba(245,237,223,.04);
+  animation:wet-chorus-fade 2.618s ease forwards;
+}
+.wet-pool {
+  position:absolute;
+  top:50%;
+  width:62vmax;
+  height:62vmax;
+  border-radius:50%;
+  translate:0 -50%;
+  filter:blur(38px);
+  opacity:0;
+}
+.wet-pool.a {
+  left:-32vmax;
+  background:radial-gradient(circle,var(--wet-a),transparent 66%);
+  animation:wet-pool-a 2.618s cubic-bezier(.18,.72,.18,1) forwards;
+}
+.wet-pool.b {
+  right:-32vmax;
+  background:radial-gradient(circle,var(--wet-b),transparent 66%);
+  animation:wet-pool-b 2.618s cubic-bezier(.18,.72,.18,1) forwards;
+}
+.wet-seam {
+  position:absolute;
+  left:50%; top:17%;
+  width:1px; height:66%;
+  background:linear-gradient(transparent,color-mix(in srgb,var(--wet-a) 50%,var(--wet-b)),transparent);
+  opacity:0;
+  animation:wet-seam 2.618s ease forwards;
+}
+@keyframes wet-pool-a { 0%{opacity:0;transform:translateX(-16%)} 38.2%{opacity:.18} 61.8%{opacity:.28;transform:translateX(48%)} 100%{opacity:0;transform:translateX(58%)} }
+@keyframes wet-pool-b { 0%{opacity:0;transform:translateX(16%)} 38.2%{opacity:.16} 61.8%{opacity:.26;transform:translateX(-48%)} 100%{opacity:0;transform:translateX(-58%)} }
+@keyframes wet-seam { 0%,38.2%{opacity:0} 61.8%{opacity:.32} 100%{opacity:0} }
+@keyframes wet-chorus-fade { 0%,100%{opacity:0} 23.6%,61.8%{opacity:1} }
+
+/* Contact sheet: practical archive view without changing the art. */
+body.paper-contact-sheet .paper-hero,
+body.paper-contact-sheet .paper-section-head,
+body.paper-contact-sheet .paper-exit { display:none; }
+body.paper-contact-sheet .paper-section {
+  background:var(--paper) !important;
+  color:var(--paper-ink) !important;
+  padding:3rem 0;
+}
+body.paper-contact-sheet .paper-grid {
+  display:grid !important;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr)) !important;
+  gap:21px !important;
+}
+body.paper-contact-sheet .art-piece {
+  grid-column:auto !important;
+  margin:0 !important;
+}
+body.paper-contact-sheet .art-piece img {
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:contain;
+  background:#ede3d6;
+}
+body.paper-contact-sheet .art-piece figcaption { color:var(--paper-ink) !important; }
+
+/* Artwork viewer is absolute visual silence. */
+body.art-viewer-open .pigment-field,
+body.art-viewer-open .pigment-pixi-weather,
+body.art-viewer-open .pigment-constellation-canvas,
+body.art-viewer-open .pigment-marginalia,
+body.art-viewer-open .pigment-brush-score,
+body.art-viewer-open .pigment-brush-cursor { opacity:0 !important; }
+
+/* Paper passages mute GPU weather; interludes can breathe again. */
+body.art-silence-active .pigment-pixi-weather { opacity:.12; }
+body.art-silence-active .pigment-brush-score { opacity:.17; }
+
+@media(max-width:820px){
+  .pigment-marginalia { display:none; }
+  .pigment-brush-score { width:54vw; left:12px; translate:0 0; bottom:max(16px,env(safe-area-inset-bottom)); opacity:.25; }
+  .pigment-sound-toggle { right:10px; bottom:max(12px,env(safe-area-inset-bottom)); }
+  .pigment-contact-toggle { right:10px; bottom:max(50px,calc(env(safe-area-inset-bottom) + 38px)); }
+}
+@media(max-width:520px){
+  .pigment-brush-score { width:46vw; opacity:.2; }
+  .pigment-pixi-weather { opacity:.28; }
+}
+@media(prefers-reduced-motion:reduce){
+  .pigment-pixi-weather,
+  .pigment-constellation-canvas,
+  .pigment-brush-cursor,
+  .pigment-wet-chorus { display:none !important; }
+  .pigment-brush-score { opacity:.16; }
+}
