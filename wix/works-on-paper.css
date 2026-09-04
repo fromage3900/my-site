@@ -438,3 +438,20 @@ body.art-silence-active .pigment-brush-score { opacity:.17; }
   .pigment-wet-chorus { display:none !important; }
   .pigment-brush-score { opacity:.16; }
 }
+
+
+/* Hardening: native cursor returns when the custom brush is intentionally hidden. */
+body.art-viewer-open.has-pigment-brush,
+body.art-viewer-open.has-pigment-brush button,
+body.art-viewer-open.has-pigment-brush a {
+  cursor: auto !important;
+}
+
+body.paper-contact-sheet .pigment-field,
+body.paper-contact-sheet .pigment-pixi-weather,
+body.paper-contact-sheet .pigment-constellation-canvas,
+body.paper-contact-sheet .pigment-marginalia,
+body.paper-contact-sheet .pigment-brush-score {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
