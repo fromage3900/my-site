@@ -9,15 +9,16 @@
                         "Run tools/validate_portfolio.ps1",
                         "Commit to main",
                         "Push main",
-                        "Push same commit to gh-pages",
-                        "Wix iframe displays GitHub Pages source"
+                        "GitHub Actions validates and deploys GitHub Pages",
+                        "If Wix credentials are available, the workflow also deploys Wix",
+                        "Wix iframe displays the GitHub Pages source"
                     ],
     "embed_settings":  {
                            "mode":  "Embed a site",
                            "width":  "100% / stretch full width",
                            "height":  "At least 1600px, increase for long-page presentation",
                            "scrolling":  "Allow page scroll inside iframe or use a tall embed container",
-                           "cache_note":  "After gh-pages deploy, refresh/publish Wix if iframe cache lags."
+                           "cache_note":  "After the main-branch Pages workflow succeeds, refresh/publish Wix if the iframe cache lags."
                        },
     "recruiter_routes":  {
                              "application_hub":  "https://fromage3900.github.io/my-site/wix/application-hub.html",
