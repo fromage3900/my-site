@@ -510,3 +510,40 @@ def test_mahou_filigree_world_skin_and_portal_contract():
         assert css_class in css_code, f"Mahou authored-world CSS missing {css_class}"
 
     assert "prefers-reduced-motion: reduce" in css_code
+
+
+def test_mahou_musical_shores_mobile_surreal_contract():
+    """Shared Mahou layer must expose musical score-shores and rare surreal mobile events."""
+    wix_dir = _get_wix_dir()
+    mf_js = os.path.join(wix_dir, "melodia-mahou-flourish.js")
+    mf_css = os.path.join(wix_dir, "melodia-mahou-flourish.css")
+
+    with open(mf_js, "r", encoding="utf-8") as f:
+        js_code = f.read()
+    with open(mf_css, "r", encoding="utf-8") as f:
+        css_code = f.read()
+
+    for symbol in [
+        "initMusicalShores",
+        "scoreShoreSvg",
+        "playHeaderChord",
+        "melodia-mahou-sound",
+        "sessionMoonPhase",
+        "spawnDreamCreature",
+        "initLingeringRoseWindow",
+        "mahou-touch-ripple",
+    ]:
+        assert symbol in js_code, f"Musical shore / surreal mobile contract missing {symbol}"
+
+    for css_class in [
+        ".mahou-score-shore",
+        ".mahou-sound-toggle",
+        ".mahou-moon-phase-mark",
+        ".mahou-dream-creature",
+        ".mahou-hidden-rose-window",
+        ".mahou-touch-ripple",
+    ]:
+        assert css_class in css_code, f"Musical shore / surreal mobile CSS missing {css_class}"
+
+    assert "prefers-reduced-motion: reduce" in css_code
+    assert "sessionStorage" in js_code
