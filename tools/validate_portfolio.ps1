@@ -25,35 +25,67 @@ foreach ($file in $jsonFiles) {
   Write-Host "OK JSON $file"
 }
 
+function Test-LocalReference {
+  param(
+    [string]$PagePath,
+    [string]$Reference
+  )
+
+  if ([string]::IsNullOrWhiteSpace($Reference)) { return $null }
+  if ($Reference -match '^(https?:|mailto:|tel:|javascript:|data:|blob:|#)' -or
+      $Reference -match '\$\{' -or
+      $Reference -match '%%[^%]+%%') {
+    return $null
+  }
+
+  $clean = ($Reference -split '#')[0]
+  $clean = ($clean -split '\?')[0]
+  if ([string]::IsNullOrWhiteSpace($clean)) { return $null }
+
+  $pageDirectory = Split-Path -Parent $PagePath
+  $full = [System.IO.Path]::GetFullPath((Join-Path $pageDirectory $clean))
+  $rootFull = [System.IO.Path]::GetFullPath($Root).TrimEnd('\', '/')
+  $insideRepo = $full.Equals($rootFull, [StringComparison]::OrdinalIgnoreCase) -or
+    $full.StartsWith($rootFull + '\', [StringComparison]::OrdinalIgnoreCase) -or
+    $full.StartsWith($rootFull + '/', [StringComparison]::OrdinalIgnoreCase)
+
+  if (-not $insideRepo -or -not (Test-Path -LiteralPath $full)) {
+    return $Reference
+  }
+
+  return $null
+}
+
 $pages = Get-ChildItem -LiteralPath (Join-Path $Root 'wix') -Filter '*.html' -File
-$missing = New-Object System.Collections.Generic.List[string]
+$missing = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+
 foreach ($page in $pages) {
   $html = Get-Content -LiteralPath $page.FullName -Raw
-  $matches = [regex]::Matches($html, 'href="([^"]+)"|src="([^"]+)"')
+  $relativePage = $page.FullName
+  if ($relativePage.StartsWith($Root)) {
+    $relativePage = $relativePage.Substring($Root.Length).TrimStart([char[]]@('\','/'))
+  }
+
+  $matches = [regex]::Matches($html, '(?:href|src|poster)="([^"]+)"')
   foreach ($match in $matches) {
-    $ref = if ($match.Groups[1].Value) { $match.Groups[1].Value } else { $match.Groups[2].Value }
-    if ($ref -match '^(https?:|mailto:|#)' -or $ref -match '\$\{' -or $ref -match '%%[^%]+%%' -or [string]::IsNullOrWhiteSpace($ref)) { continue }
-    $clean = ($ref -split '#')[0]
-    $clean = ($clean -split '\?')[0]
-    if ([string]::IsNullOrWhiteSpace($clean)) { continue }
-    $full = [System.IO.Path]::GetFullPath((Join-Path $page.DirectoryName $clean))
-    $rootFull = [System.IO.Path]::GetFullPath($Root).TrimEnd('\', '/')
-    $insideRepo = $full.Equals($rootFull, [StringComparison]::OrdinalIgnoreCase) -or
-      $full.StartsWith($rootFull + '\', [StringComparison]::OrdinalIgnoreCase) -or
-      $full.StartsWith($rootFull + '/', [StringComparison]::OrdinalIgnoreCase)
-    if (-not $insideRepo -or -not (Test-Path -LiteralPath $full)) {
-      $relativePage = $page.FullName
-      if ($relativePage.StartsWith($Root)) { $relativePage = $relativePage.Substring($Root.Length).TrimStart([char[]]@('\','/')) }
-      $missing.Add("$relativePage -> $ref")
+    $bad = Test-LocalReference -PagePath $page.FullName -Reference $match.Groups[1].Value
+    if ($bad) { [void]$missing.Add("$relativePage -> $bad") }
+  }
+
+  $srcsets = [regex]::Matches($html, 'srcset="([^"]+)"')
+  foreach ($srcset in $srcsets) {
+    $candidates = $srcset.Groups[1].Value -split ','
+    foreach ($candidate in $candidates) {
+      $ref = (($candidate.Trim()) -split '\s+')[0]
+      $bad = Test-LocalReference -PagePath $page.FullName -Reference $ref
+      if ($bad) { [void]$missing.Add("$relativePage -> $bad") }
     }
   }
 }
 
 if ($missing.Count -gt 0) {
-  $missing | ForEach-Object { Write-Host "MISSING $_" }
-  throw "Portfolio validation failed with $($missing.Count) missing local references."
+  $missing | Sort-Object | ForEach-Object { Write-Host "MISSING $_" }
+  throw "Portfolio validation failed with $($missing.Count) unique missing local references."
 }
 
 Write-Host "OK portfolio validation passed for $($pages.Count) pages"
-
-
