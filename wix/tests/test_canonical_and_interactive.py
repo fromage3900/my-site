@@ -547,3 +547,38 @@ def test_mahou_musical_shores_mobile_surreal_contract():
 
     assert "prefers-reduced-motion: reduce" in css_code
     assert "sessionStorage" in js_code
+
+
+def test_scroll_score_starfield_negative_space_contract():
+    """Starfield must breathe by scroll phrase and open negative-space zones around live copy."""
+    wix_dir = _get_wix_dir()
+    star_js = os.path.join(wix_dir, "melodia-starfield.js")
+    star_css = os.path.join(wix_dir, "melodia-starfield.css")
+    mf_js = os.path.join(wix_dir, "melodia-mahou-flourish.js")
+    mf_css = os.path.join(wix_dir, "melodia-mahou-flourish.css")
+
+    with open(star_js, "r", encoding="utf-8") as f:
+        star_code = f.read()
+    with open(star_css, "r", encoding="utf-8") as f:
+        star_styles = f.read()
+    with open(mf_js, "r", encoding="utf-8") as f:
+        mf_code = f.read()
+    with open(mf_css, "r", encoding="utf-8") as f:
+        mf_styles = f.read()
+
+    for symbol in [
+        "compositionAlpha",
+        "compositionTarget",
+        "negativeSpaceZones",
+        "updateScrollComposition",
+        "negativeSpaceFactor",
+        "data-starfield-space",
+    ]:
+        assert symbol in star_code, f"Scroll starfield composition missing {symbol}"
+
+    for mode in ["bloom", "crescendo", "drift", "hush", "void"]:
+        assert f'data-starfield-space="{mode}"' in star_styles, f"Starfield CSS missing mode {mode}"
+
+    assert "initScrollScore" in mf_code
+    assert "mahou-current-phrase" in mf_styles
+    assert "--mahou-section-progress" in mf_code
