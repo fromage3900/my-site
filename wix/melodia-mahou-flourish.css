@@ -1309,3 +1309,229 @@ main > section.band,
     transform: none !important;
   }
 }
+
+
+/* ===== PHI COMPOSITION ENGINE =====
+   Mathematical structure stays invisible: ratios guide balance, spacing and focal bias. */
+:root {
+  --phi: 1.618033989;
+  --phi-major: 61.803%;
+  --phi-minor: 38.197%;
+  --phi-13: 13px;
+  --phi-21: 21px;
+  --phi-34: 34px;
+  --phi-55: 55px;
+  --phi-89: 89px;
+  --phi-144: 144px;
+  --phi-opacity-1: 1;
+  --phi-opacity-2: .618;
+  --phi-opacity-3: .382;
+  --phi-opacity-4: .236;
+  --phi-opacity-5: .146;
+  --phi-time-fast: .618s;
+  --phi-time-1: 1s;
+  --phi-time-2: 1.618s;
+  --phi-time-3: 2.618s;
+}
+
+.mahou-phi-composed {
+  --phi-focus-x: var(--phi-major);
+  --phi-focus-y: var(--phi-minor);
+  --phi-gap: var(--phi-55);
+  --phi-gap-small: var(--phi-34);
+}
+
+.mahou-phi-composed .section-head {
+  gap: var(--phi-gap-small) var(--phi-gap);
+}
+
+.mahou-phi-composed .mahou-score-shore {
+  transition:
+    opacity var(--phi-time-fast) ease,
+    filter var(--phi-time-1) ease;
+}
+
+.mahou-phi-composed .mahou-living-filigree {
+  transition:
+    opacity var(--phi-time-2) ease,
+    filter var(--phi-time-2) ease;
+}
+
+.mahou-phi-image {
+  object-position: var(--phi-object-x, 50%) var(--phi-object-y, 50%);
+  transition: object-position var(--phi-time-2) ease;
+}
+
+@media (min-width: 900px) {
+  .mahou-phi-composed[data-phi-layout="spiral-left"] .section-head,
+  .mahou-phi-composed[data-phi-layout="phi-split"] .section-head {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.618fr);
+  }
+
+  .mahou-phi-composed[data-phi-layout="spiral-right"] .section-head,
+  .mahou-phi-composed[data-phi-layout="golden-horizon"] .section-head {
+    grid-template-columns: minmax(0, 1.618fr) minmax(0, 1fr);
+  }
+
+  .mahou-phi-composed[data-phi-layout="void-majority"] .section-head {
+    grid-template-columns: minmax(0, .618fr) minmax(0, 1fr);
+    max-width: min(100%, 980px);
+  }
+
+  .mahou-phi-composed[data-phi-layout="void-majority"] .section-head > :first-child {
+    max-width: 34rem;
+  }
+
+  .mahou-phi-composed[data-phi-layout="fibonacci-stack"] .section-head {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 890px;
+  }
+
+  .mahou-phi-composed[data-phi-layout="fibonacci-stack"] .section-head > p,
+  .mahou-phi-composed[data-phi-layout="fibonacci-stack"] .section-head .human-lede {
+    max-width: 55ch;
+    margin-left: var(--phi-55);
+  }
+}
+
+/* Implied golden-spiral light mass: just enough to weight the frame, never a visible diagram. */
+.mahou-phi-composed::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: var(--phi-focus-x);
+  top: var(--phi-focus-y);
+  width: min(52vw, 620px);
+  aspect-ratio: 1.618 / 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: var(--phi-opacity-5);
+  background:
+    radial-gradient(ellipse at center,
+      color-mix(in srgb, var(--mahou-world-primary) 22%, transparent),
+      transparent 68%);
+  filter: blur(28px);
+}
+
+.mahou-phi-composed[data-phi-layout="void-majority"]::after {
+  opacity: var(--phi-opacity-4);
+  width: min(40vw, 520px);
+}
+
+.mahou-phi-composed[data-phi-layout="golden-horizon"]::after {
+  width: min(66vw, 840px);
+  opacity: var(--phi-opacity-5);
+}
+
+/* Rare phyllotaxis event: 34 nodes distributed at the golden angle (137.507764°). */
+.mahou-phyllotaxis-event {
+  position: fixed;
+  z-index: 96;
+  width: min(240px, 48vw);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  pointer-events: none;
+  opacity: 0;
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--mahou-world-primary) 34%, transparent));
+  animation: mahou-phi-bloom var(--phi-time-3) cubic-bezier(.2,.72,.18,1) forwards;
+}
+
+.mahou-phyllotaxis-event svg { width:100%; height:100%; overflow:visible; }
+
+.mahou-phi-orbit {
+  fill:none;
+  stroke:var(--mahou-world-secondary);
+  stroke-width:.8;
+  stroke-dasharray:3 8;
+  opacity:.34;
+  transform-origin:120px 120px;
+  animation:mahou-phi-orbit-spin 8.472s linear infinite;
+}
+
+.mahou-phi-orbit.o2 {
+  stroke:var(--mahou-world-gold);
+  opacity:.24;
+  animation-direction:reverse;
+}
+
+.mahou-phi-node {
+  fill:var(--mahou-world-gold);
+  stroke:var(--mahou-world-primary);
+  stroke-width:.6;
+  transform-box:fill-box;
+  transform-origin:center;
+  opacity:0;
+  animation:mahou-phi-node-wake var(--phi-time-2) ease-out forwards;
+  animation-delay:calc((var(--phi-node-i) % 8) * .055s);
+}
+
+.mahou-phi-glyph {
+  position:absolute;
+  left:50%;
+  top:50%;
+  translate:-50% -50%;
+  color:var(--mahou-world-gold);
+  font:italic 1rem/1 Georgia,serif;
+  opacity:.54;
+  text-shadow:0 0 14px var(--mahou-world-primary);
+}
+
+@keyframes mahou-phi-bloom {
+  0% { opacity:0; transform:scale(.382) rotate(-13deg); }
+  23.6% { opacity:.72; }
+  61.8% { opacity:.618; transform:scale(1) rotate(8deg); }
+  100% { opacity:0; transform:scale(1.08) rotate(21deg); }
+}
+
+@keyframes mahou-phi-node-wake {
+  0% { opacity:0; transform:scale(.382); }
+  61.8% { opacity:.9; transform:scale(1.18); }
+  100% { opacity:.618; transform:scale(1); }
+}
+
+@keyframes mahou-phi-orbit-spin {
+  to { transform:rotate(360deg); }
+}
+
+@media (max-width: 720px) {
+  .mahou-phi-composed {
+    padding-top: max(var(--phi-gap-small), 2.4rem);
+    padding-bottom: max(var(--phi-gap-small), 2.4rem);
+  }
+
+  .mahou-phi-composed[data-phi-layout="void-majority"] {
+    padding-top: var(--phi-89);
+    padding-bottom: var(--phi-89);
+  }
+
+  .mahou-phi-composed[data-phi-layout="spiral-left"] .section-head,
+  .mahou-phi-composed[data-phi-layout="phi-split"] .section-head {
+    width: min(88%, 34rem);
+    margin-right: auto;
+  }
+
+  .mahou-phi-composed[data-phi-layout="spiral-right"] .section-head,
+  .mahou-phi-composed[data-phi-layout="golden-horizon"] .section-head {
+    width: min(88%, 34rem);
+    margin-left: auto;
+  }
+
+  .mahou-phi-composed[data-phi-layout="void-majority"] .section-head {
+    width: min(82%, 31rem);
+  }
+
+  .mahou-phi-composed::after {
+    width: 88vw;
+    opacity: .11;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mahou-phyllotaxis-event { display:none !important; }
+  .mahou-phi-image,
+  .mahou-phi-composed .mahou-score-shore,
+  .mahou-phi-composed .mahou-living-filigree {
+    transition:none !important;
+  }
+}
