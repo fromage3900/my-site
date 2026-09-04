@@ -57,6 +57,26 @@
       text-transform: uppercase;
     }
     .mode-toggle:hover { background: rgba(255,255,255,.94); }
+    .sanctuary-back {
+      position: absolute;
+      z-index: 40;
+      top: 18px;
+      right: 18px;
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 13px;
+      border: 1px solid rgba(74,63,107,.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,.62);
+      color: var(--plum);
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      font: 700 .62rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .sanctuary-back:hover { background: rgba(255,255,255,.94); }
     .side, .phrase-card, .masthead { transition: opacity .28s ease, transform .28s ease; }
     body.mode-player .side {
       opacity: 0;
@@ -175,6 +195,9 @@
       .side { width: 210px; max-height: 42vh; font-size: .6rem; }
       .ui { padding: 12px; }
       .phrase-card { min-width: 96vw; }
+      .mode-toggle { top: 10px; left: 10px; }
+      .sanctuary-back { top: 10px; right: 10px; }
+      .masthead { margin-top: 42px; }
     }
   </style>
   <script type="importmap">
@@ -188,11 +211,12 @@
 </head>
 <body class="mode-player">
   <div id="stage">
-    <button class="mode-toggle" id="modeToggle" type="button" aria-pressed="false">Player · Lab</button>
+    <button class="mode-toggle" id="modeToggle" type="button" aria-pressed="false">Open Lab</button>
+    <a class="sanctuary-back" href="../">← Melodia</a>
     <div class="ui">
       <header class="masthead">
         <h1>𝄞 Cymatic Sanctuary 𝄞</h1>
-        <p>Melodia · 12 instruments · resonant phrases · ♪ unlock barriers</p>
+        <p>Touch instruments. Build a phrase. Make one of the four gates answer.</p>
       </header>
 
       <aside class="side" aria-label="Instrument legend">
@@ -251,7 +275,7 @@
       document.body.classList.toggle('mode-player', !enteringLab);
       document.body.classList.toggle('mode-lab', enteringLab);
       modeToggle.setAttribute('aria-pressed', enteringLab ? 'true' : 'false');
-      modeToggle.textContent = enteringLab ? 'Lab · Player' : 'Player · Lab';
+      modeToggle.textContent = enteringLab ? 'Player View' : 'Open Lab';
     });
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
