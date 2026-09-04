@@ -292,7 +292,7 @@
       var px = 120 + Math.cos(angle) * radius;
       var py = 120 + Math.sin(angle) * radius;
       var pr = i % 8 === 0 ? 3.2 : (i % 5 === 0 ? 2.4 : 1.7);
-      nodes += '<circle class="mahou-phi-node n' + i + '" cx="' + px.toFixed(2) + '" cy="' + py.toFixed(2) + '" r="' + pr + '" style="--phi-node-i:' + i + '"></circle>';
+      nodes += '<circle class="mahou-phi-node n' + i + '" cx="' + px.toFixed(2) + '" cy="' + py.toFixed(2) + '" r="' + pr + '" style="--phi-node-i:' + i + ';--phi-node-delay:' + ((i % 8) * 0.055).toFixed(3) + 's"></circle>';
     }
 
     var bloom = document.createElement('div');
