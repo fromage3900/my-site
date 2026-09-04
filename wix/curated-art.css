@@ -487,3 +487,75 @@ html[data-page="curated-art"] {
     transition: none;
   }
 }
+
+
+/* Gallery viewer + silence zones */
+.art-picture { display:block; width:100%; height:100%; }
+body.art-silence-active .curated-art-shell > .melodia-starfield-canvas,
+body.art-viewer-open .curated-art-shell > .melodia-starfield-canvas {
+  opacity:.045 !important;
+}
+body.art-silence-active .curated-art-shell .mahou-world-ambience,
+body.art-silence-active .curated-art-shell .mahou-living-filigree,
+body.art-silence-active .curated-art-shell .mahou-dream-creature,
+body.art-viewer-open .curated-art-shell .mahou-world-ambience,
+body.art-viewer-open .curated-art-shell .mahou-living-filigree,
+body.art-viewer-open .curated-art-shell .mahou-dream-creature,
+body.art-viewer-open .curated-art-shell .mahou-score-shore {
+  opacity:0 !important;
+  transition:opacity .618s ease !important;
+}
+body.art-viewer-open { overflow:hidden; }
+
+.art-viewer {
+  position:fixed; inset:0; z-index:10000;
+  display:grid; place-items:center;
+  background:rgba(3,3,8,.975);
+  color:#fff8ee;
+}
+.art-viewer[hidden] { display:none; }
+.art-viewer-stage {
+  width:100%; height:100%;
+  display:grid; place-items:center;
+  padding:max(56px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(70px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));
+}
+.art-viewer-image {
+  display:block;
+  max-width:min(94vw,1600px);
+  max-height:calc(100svh - 150px);
+  width:auto; height:auto;
+  object-fit:contain;
+  user-select:none; -webkit-user-drag:none;
+  box-shadow:0 24px 90px rgba(0,0,0,.38);
+}
+.art-viewer-meta {
+  position:fixed; left:max(18px,env(safe-area-inset-left)); right:max(18px,env(safe-area-inset-right));
+  bottom:max(18px,env(safe-area-inset-bottom));
+  display:grid; grid-template-columns:1fr auto; gap:16px; align-items:end;
+  pointer-events:none;
+}
+.art-viewer-caption { min-width:0; }
+.art-viewer-caption strong { display:block; font:500 .9rem/1.2 var(--font-display); }
+.art-viewer-caption span { display:block; margin-top:4px; opacity:.5; font:600 .56rem/1 var(--font-mono); letter-spacing:.12em; text-transform:uppercase; }
+.art-viewer-progress { font:600 .58rem/1 var(--font-mono); letter-spacing:.16em; opacity:.58; }
+.art-viewer-close,
+.art-viewer-prev,
+.art-viewer-next {
+  position:fixed; z-index:2;
+  width:44px; height:44px; border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(8,7,16,.54); color:#fff8ee;
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  cursor:pointer;
+}
+.art-viewer-close { top:max(12px,env(safe-area-inset-top)); right:max(12px,env(safe-area-inset-right)); }
+.art-viewer-prev { left:max(12px,env(safe-area-inset-left)); top:50%; translate:0 -50%; }
+.art-viewer-next { right:max(12px,env(safe-area-inset-right)); top:50%; translate:0 -50%; }
+@media(max-width:720px){
+  .art-viewer-prev,.art-viewer-next { top:auto; bottom:max(72px,calc(env(safe-area-inset-bottom) + 54px)); }
+  .art-viewer-image { max-width:100%; max-height:calc(100svh - 150px); }
+}
+@media(prefers-reduced-motion:reduce){
+  body.art-silence-active .curated-art-shell > .melodia-starfield-canvas,
+  body.art-viewer-open .curated-art-shell > .melodia-starfield-canvas { transition:none !important; }
+}
