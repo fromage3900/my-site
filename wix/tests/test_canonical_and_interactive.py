@@ -628,3 +628,39 @@ def test_phi_composition_engine_contract():
 
     for opacity in ["0.618", "0.382", "0.236", "0.146"]:
         assert opacity in star_code, f"Phi starfield ladder missing {opacity}"
+
+
+def test_curated_art_gallery_contract():
+    """Curated Art is the quiet art-first route, distinct from render archive and technical proof."""
+    wix_dir = _get_wix_dir()
+    page_path = os.path.join(wix_dir, "curated-art.html")
+    css_path = os.path.join(wix_dir, "curated-art.css")
+    nav_path = os.path.join(wix_dir, "melodia-site-nav.js")
+
+    assert os.path.isfile(page_path), "Curated Art page missing"
+    assert os.path.isfile(css_path), "Curated Art stylesheet missing"
+
+    with open(page_path, "r", encoding="utf-8") as f:
+        page = f.read()
+    with open(css_path, "r", encoding="utf-8") as f:
+        css = f.read()
+    with open(nav_path, "r", encoding="utf-8") as f:
+        nav = f.read()
+
+    for required in [
+        "The things I want you to remember.",
+        "Image before explanation.",
+        "Places built to hold a feeling.",
+        "Small things deserve drama too.",
+        "The hand underneath the polish.",
+        "hero-renders.html",
+        "zbrush-breakdown.html",
+        "application-hub.html",
+    ]:
+        assert required in page, f"Curated Art contract missing {required}"
+
+    assert page.count('<figure class="art-piece') >= 12
+    assert 'data-starfield-intensity="subtle"' in page
+    assert ".art-grid" in css
+    assert ".curated-art-hero" in css
+    assert "curated-art.html" in nav
