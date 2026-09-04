@@ -995,6 +995,7 @@
       const close = () => {
         nav.classList.remove('nav-open');
         toggle.setAttribute('aria-expanded', 'false');
+        nav.querySelectorAll('details[open]').forEach((details) => details.removeAttribute('open'));
       };
 
       toggle.addEventListener('click', () => {
@@ -1014,7 +1015,7 @@
     if (!shell) return;
     const main = shell.querySelector('main');
     if (main && !main.id) main.id = 'main';
-    if (!shell.querySelector(':scope > .skip-link')) {
+    if (!document.querySelector('.skip-link')) {
       const skip = document.createElement('a');
       skip.className = 'skip-link';
       skip.href = '#main';
