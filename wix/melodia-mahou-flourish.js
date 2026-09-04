@@ -276,6 +276,43 @@
     return bloom;
   }
 
+  function phyllotaxisBloom(target) {
+    if (!ambientAllowed()) return null;
+
+    var GOLDEN_ANGLE = 137.50776405003785 * Math.PI / 180;
+    var rect = target && target.getBoundingClientRect ? target.getBoundingClientRect() : null;
+    var x = rect ? Math.max(105, Math.min(window.innerWidth - 105, rect.left + rect.width * 0.382)) : window.innerWidth * 0.382;
+    var y = rect ? Math.max(110, Math.min(window.innerHeight - 110, rect.top + Math.min(rect.height * 0.618, 260))) : window.innerHeight * 0.618;
+
+    var count = 34;
+    var nodes = '';
+    for (var i = 0; i < count; i++) {
+      var angle = i * GOLDEN_ANGLE;
+      var radius = 8.4 * Math.sqrt(i);
+      var px = 120 + Math.cos(angle) * radius;
+      var py = 120 + Math.sin(angle) * radius;
+      var pr = i % 8 === 0 ? 3.2 : (i % 5 === 0 ? 2.4 : 1.7);
+      nodes += '<circle class="mahou-phi-node n' + i + '" cx="' + px.toFixed(2) + '" cy="' + py.toFixed(2) + '" r="' + pr + '" style="--phi-node-i:' + i + '"></circle>';
+    }
+
+    var bloom = document.createElement('div');
+    bloom.className = 'mahou-phyllotaxis-event';
+    bloom.setAttribute('aria-hidden', 'true');
+    bloom.style.left = x + 'px';
+    bloom.style.top = y + 'px';
+    bloom.innerHTML =
+      '<svg viewBox="0 0 240 240" aria-hidden="true">' +
+        '<circle class="mahou-phi-orbit o1" cx="120" cy="120" r="74"></circle>' +
+        '<circle class="mahou-phi-orbit o2" cx="120" cy="120" r="46"></circle>' +
+        '<g class="mahou-phi-nodes">' + nodes + '</g>' +
+      '</svg>' +
+      '<span class="mahou-phi-glyph">φ</span>';
+    document.body.appendChild(bloom);
+    markRareEvent();
+    removeAfter(bloom, 2618);
+    return bloom;
+  }
+
   function petalCrack(x, y) {
     if (!ambientAllowed()) return null;
 
@@ -348,8 +385,12 @@
 
     var sections = Array.prototype.slice.call(document.querySelectorAll('.hero, main > .band, main > section.band'));
     sections.forEach(function (section, index) {
-      if (index === 0 || index % 3 !== 1) return;
-      section.setAttribute('data-mahou-rare-candidate', 'constellation');
+      if (index === 0) return;
+      if (index % 6 === 4) {
+        section.setAttribute('data-mahou-rare-candidate', 'phyllotaxis');
+      } else if (index % 3 === 1) {
+        section.setAttribute('data-mahou-rare-candidate', 'constellation');
+      }
     });
 
     var observer = new IntersectionObserver(function (entries) {
@@ -358,11 +399,13 @@
         var el = entry.target;
         if (el.getAttribute('data-mahou-rare-seen') === 'true') return;
         el.setAttribute('data-mahou-rare-seen', 'true');
-        if (rareEventReady()) constellationBloom(el);
+        if (!rareEventReady()) return;
+        if (el.getAttribute('data-mahou-rare-candidate') === 'phyllotaxis') phyllotaxisBloom(el);
+        else constellationBloom(el);
       });
     }, { threshold: [0.42, 0.62] });
 
-    document.querySelectorAll('[data-mahou-rare-candidate="constellation"]').forEach(function (section) {
+    document.querySelectorAll('[data-mahou-rare-candidate]').forEach(function (section) {
       observer.observe(section);
     });
   }
@@ -556,13 +599,17 @@
   }
 
   function noteSetFor(text) {
-    var scale = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33];
-    var h = hashText(text || 'melodia');
-    return [
-      scale[h % scale.length],
-      scale[(h >>> 3) % scale.length],
-      scale[(h >>> 7) % scale.length]
+    var roots = [220.00, 246.94, 261.63, 293.66, 329.63, 349.23, 392.00];
+    var ratioFamilies = [
+      [1, 5 / 4, 3 / 2],
+      [1, 4 / 3, 5 / 3],
+      [1, 8 / 5, 2],
+      [1, 6 / 5, 8 / 5]
     ];
+    var h = hashText(text || 'melodia');
+    var root = roots[h % roots.length];
+    var ratios = ratioFamilies[(h >>> 4) % ratioFamilies.length];
+    return ratios.map(function (ratio) { return root * ratio; });
   }
 
   function getSoundContext() {
@@ -838,6 +885,52 @@
     }, { passive: true });
   }
 
+  function applyPhiComposition() {
+    var PHI = 1.618033988749895;
+    var MAJOR = 1 / PHI;
+    var MINOR = 1 - MAJOR;
+    var archetypes = [
+      'spiral-left',
+      'phi-split',
+      'void-majority',
+      'spiral-right',
+      'golden-horizon',
+      'fibonacci-stack'
+    ];
+    var fib = [13, 21, 34, 55, 89, 144];
+    var sections = Array.prototype.slice.call(document.querySelectorAll('.hero, main > .band, main > section.band'));
+    if (!sections.length) return;
+
+    var offset = hashText(pageSlug()) % archetypes.length;
+    document.documentElement.style.setProperty('--phi', PHI.toFixed(9));
+    document.documentElement.style.setProperty('--phi-major', (MAJOR * 100).toFixed(3) + '%');
+    document.documentElement.style.setProperty('--phi-minor', (MINOR * 100).toFixed(3) + '%');
+
+    sections.forEach(function (section, index) {
+      if (section.getAttribute('data-phi-lock') === 'off') return;
+      var archetype = index === 0 ? 'golden-horizon' : archetypes[(index + offset) % archetypes.length];
+      var focusLeft = archetype === 'spiral-left' || archetype === 'phi-split';
+      var focusX = focusLeft ? MINOR : MAJOR;
+      var focusY = index % 2 === 0 ? MINOR : MAJOR;
+      var fibStep = fib[(index + offset) % fib.length];
+
+      section.classList.add('mahou-phi-composed');
+      section.setAttribute('data-phi-layout', archetype);
+      section.style.setProperty('--phi-focus-x', (focusX * 100).toFixed(3) + '%');
+      section.style.setProperty('--phi-focus-y', (focusY * 100).toFixed(3) + '%');
+      section.style.setProperty('--phi-gap', fibStep + 'px');
+      section.style.setProperty('--phi-gap-small', Math.max(13, fibStep / PHI).toFixed(1) + 'px');
+
+      var imgs = section.querySelectorAll('.hero-media img, .viz-plate img, .viz-door img, .image-card img, .env-card img');
+      Array.prototype.forEach.call(imgs, function (img) {
+        if (img.getAttribute('data-phi-focus') === 'off') return;
+        img.style.setProperty('--phi-object-x', (focusX * 100).toFixed(2) + '%');
+        img.style.setProperty('--phi-object-y', (focusY * 100).toFixed(2) + '%');
+        img.classList.add('mahou-phi-image');
+      });
+    });
+  }
+
   function initScrollScore() {
     var sections = Array.prototype.slice.call(document.querySelectorAll('.hero, main > .band, main > section.band'));
     if (!sections.length) return;
@@ -899,6 +992,7 @@
 
   function initAmbientEvents() {
     applyWorldSkin();
+    applyPhiComposition();
     mountMoonPhaseMark();
     mountSoundToggle();
     initLivingFiligree();
@@ -936,6 +1030,7 @@
     triggerHenshin: triggerHenshin,
     burst: burst,
     constellationBloom: constellationBloom,
+    phyllotaxisBloom: phyllotaxisBloom,
     petalCrack: petalCrack,
     wakeCursorSigil: wakeCursorSigil,
     resolveWorldSkin: resolveWorldSkin,
@@ -943,6 +1038,7 @@
     initLivingFiligree: initLivingFiligree,
     bindRarePortalTransitions: bindRarePortalTransitions,
     initMusicalShores: initMusicalShores,
+    applyPhiComposition: applyPhiComposition,
     initScrollScore: initScrollScore,
     playHeaderChord: playHeaderChord,
     spawnDreamCreature: spawnDreamCreature,
