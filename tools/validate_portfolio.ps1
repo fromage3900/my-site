@@ -89,3 +89,39 @@ if ($missing.Count -gt 0) {
 }
 
 Write-Host "OK portfolio validation passed for $($pages.Count) pages"
+
+
+# PUBLIC ROUTE SYNC
+$publicManifestPath = Join-Path $Root 'wix/public-routes.json'
+if (-not (Test-Path -LiteralPath $publicManifestPath)) {
+  throw "Missing public route manifest: wix/public-routes.json"
+}
+$publicManifest = Get-Content -LiteralPath $publicManifestPath -Raw | ConvertFrom-Json
+$publicBuild = [string]$publicManifest.build
+$requiredPublicMarkers = @(
+  'melodia-luxury-type.css',
+  'melodia-editorial.css',
+  'melodia-site-nav.js',
+  'melodia-editorial.js'
+)
+
+foreach ($route in $publicManifest.canonical) {
+  $routePath = Join-Path $Root (Join-Path 'wix' ([string]$route))
+  if (-not (Test-Path -LiteralPath $routePath)) {
+    throw "Missing canonical public route: wix/$route"
+  }
+
+  $routeHtml = Get-Content -LiteralPath $routePath -Raw
+  $buildMarker = 'name="melodia-build" content="' + $publicBuild + '"'
+  if ($routeHtml -notlike ('*' + $buildMarker + '*')) {
+    throw "Public route build drift: wix/$route does not declare $publicBuild"
+  }
+
+  foreach ($marker in $requiredPublicMarkers) {
+    if ($routeHtml -notlike ('*' + $marker + '*')) {
+      throw "Public route stack drift: wix/$route is missing $marker"
+    }
+  }
+}
+
+Write-Host "OK public route sync build $publicBuild across $($publicManifest.canonical.Count) canonical pages"
