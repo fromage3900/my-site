@@ -270,3 +270,15 @@ Four additional reviewer-reachable pages were normalized without erasing their d
 - `melodia-atelier-lab.html` is explicitly framed as an interactive web laboratory. Hard-coded pseudo-benchmarks such as 0.38 ms, 60 FPS, <0.45 ms, and implied live execution of 60+ UE PCG graphs were removed or relabeled as browser-demo state.
 
 The four pages now declare build `20260904p1`, load the shared site navigation/editorial stack, and are included in `reviewer_priority_supporting` so CI prevents future style/build drift.
+
+
+## Completed follow-up — interactive technical-art tier
+
+The second reviewer-facing cleanup tier is complete:
+
+- `sdf-material-gallery.html` is now framed as a controlled material atlas rather than an SDF/debug gallery.
+- `render-constellation.html` now leads with finished imagery and treats scene/audit data as supporting context rather than the subject of the page.
+- `realtime-3d-viewer.html` now clearly identifies itself as a browser-side WebGL study and no longer loads the shared site navigation/editorial layer twice.
+- `melodia-atelier-lab.html` now explicitly distinguishes browser studies from live Unreal telemetry, uses study-oriented language for shader/PCG modules, and initializes the shared editorial layer only once.
+
+All four are part of `reviewer_priority_supporting` and are therefore covered by the same build/stack CI contract as the earlier secondary-page tier.
