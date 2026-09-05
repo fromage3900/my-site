@@ -44,7 +44,8 @@
         "status": "metadata_supported",
         "passport_href": "../generated/passports/melusina_passport.html",
         "passport_json": "../generated/passports/melusina_passport.json",
-        "note": "The production passport belongs to the Melusina asset; this Cam_Beauty plate is a separate lookdev evidence frame."
+        "note": "The production passport belongs to the Melusina asset; this Cam_Beauty plate is a separate lookdev evidence frame.",
+        "passport_id": "melusina"
       },
       "material": {
         "status": "visual_only",
@@ -58,7 +59,8 @@
           "translucent/emissive wing and hat accents",
           "graphic music-note panel"
         ],
-        "note": "Do not collapse the character into one blanket material label. Exact per-zone shader bindings for this specific plate are not encoded in the current website intake."
+        "note": "Do not collapse the character into one blanket material label. Exact per-zone shader bindings for this specific plate are not encoded in the current website intake.",
+        "passport_id": "melusina_multizone_visual"
       }
     },
     "terrain_emissive_capture_182314": {
@@ -82,7 +84,8 @@
         "asset_id": null,
         "label": "Environment terrain/scatter study",
         "status": "unverified",
-        "note": "The filename is a hero camera capture, but the current site metadata does not establish a defensible world identity from this plate."
+        "note": "The filename is a hero camera capture, but the current site metadata does not establish a defensible world identity from this plate.",
+        "passport_id": "environment_terrain_capture"
       },
       "material": {
         "status": "visual_only",
@@ -91,7 +94,8 @@
           "dark purple terrain",
           "bright cyan/emissive scatter"
         ],
-        "note": "Useful as a lighting/scatter study, not a Sakura material passport."
+        "note": "Useful as a lighting/scatter study, not a Sakura material passport.",
+        "passport_id": "violet_terrain_visual"
       }
     },
     "violet_terrain_study": {
@@ -115,7 +119,8 @@
         "asset_id": null,
         "label": "Terrain form study",
         "status": "unverified",
-        "note": "Retain only as an environment study until a true world beauty capture exists."
+        "note": "Retain only as an environment study until a true world beauty capture exists.",
+        "passport_id": "environment_terrain_capture"
       },
       "material": {
         "status": "visual_only",
@@ -124,7 +129,8 @@
           "violet terrain",
           "soft atmospheric gradient"
         ],
-        "note": "The plate demonstrates surface color/form, not a named production material instance."
+        "note": "The plate demonstrates surface color/form, not a named production material instance.",
+        "passport_id": "violet_terrain_visual"
       }
     },
     "sakura_surfaces_grid": {
@@ -147,7 +153,8 @@
         "asset_id": null,
         "label": "Sakura material study",
         "status": "family_supported",
-        "note": "Catalogued by Unreal intake in the sakura_mood group."
+        "note": "Catalogued by Unreal intake in the sakura_mood group.",
+        "passport_id": "sakura_material_study"
       },
       "material": {
         "status": "family_supported",
@@ -157,7 +164,8 @@
           "MI_Show_CherryBlossom",
           "MI_Show_ForestFoliage"
         ],
-        "note": "The website intake identifies the plate as Sakura surfaces, but does not encode which sphere is which instance. Do not make per-sphere instance claims."
+        "note": "The website intake identifies the plate as Sakura surfaces, but does not encode which sphere is which instance. Do not make per-sphere instance claims.",
+        "passport_id": "sakura_surface_family"
       }
     },
     "sakura_stonepath_preview": {
@@ -179,12 +187,14 @@
         "asset_id": null,
         "label": "Stone-path material preview",
         "status": "family_supported",
-        "note": "Catalogued by Unreal intake in the sakura_mood group."
+        "note": "Catalogued by Unreal intake in the sakura_mood group.",
+        "passport_id": "sakura_material_study"
       },
       "material": {
         "status": "family_supported",
         "label": "Sakura stone-path surface family",
-        "note": "Exact material instance is not encoded in the current website intake; use as surface-study evidence only."
+        "note": "Exact material instance is not encoded in the current website intake; use as surface-study evidence only.",
+        "passport_id": "sakura_surface_family"
       }
     },
     "rose_window_front": {
@@ -208,14 +218,16 @@
         "label": "Rose Window 8-Petal",
         "status": "metadata_supported",
         "passport_href": "../generated/passports/rose_window_passport.html",
-        "passport_json": "../generated/passports/rose_window_passport.json"
+        "passport_json": "../generated/passports/rose_window_passport.json",
+        "passport_id": "rose_window"
       },
       "material": {
         "status": "metadata_supported",
         "label": "Komikaze · Voronoi Shader (3 Tones)",
         "shader": "Voronoi Shader (3 Tones)",
         "engine": "Blender EEVEE",
-        "note": "This is the defensible material assignment for the front plate."
+        "note": "This is the defensible material assignment for the front plate.",
+        "passport_id": "komikaze_voronoi_3tone"
       }
     },
     "gazebo_variant_beauty": {
@@ -238,14 +250,16 @@
         "asset_id": "gazebo1",
         "label": "Melusina Gazebo Variant",
         "status": "metadata_supported",
-        "note": "Intake identifies this as gazebo1, wave 3."
+        "note": "Intake identifies this as gazebo1, wave 3.",
+        "passport_id": "gazebo1"
       },
       "material": {
         "status": "metadata_supported",
         "label": "Komikaze · Voronoi Shader (3 Tones)",
         "shader": "Voronoi Shader (3 Tones)",
         "engine": "Blender EEVEE",
-        "note": "Treat as lookdev/diagnostic material evidence rather than a polished architecture hero."
+        "note": "Treat as lookdev/diagnostic material evidence rather than a polished architecture hero.",
+        "passport_id": "komikaze_voronoi_3tone"
       }
     },
     "violin_front": {
@@ -269,7 +283,8 @@
         "asset_id": "violin",
         "label": "Melodia Violin",
         "status": "metadata_supported",
-        "note": "Intake identifies the front plate as a wave-4 prop render."
+        "note": "Intake identifies the front plate as a wave-4 prop render.",
+        "passport_id": "violin"
       },
       "material": {
         "status": "metadata_supported",
@@ -279,7 +294,8 @@
         "observed_surfaces": [
           "pale rose/ivory matte-to-satin body",
           "ornamental relief/scrollwork"
-        ]
+        ],
+        "passport_id": "komikaze_wall_custom_texture"
       }
     },
     "vow_cross_macro_filigree": {
@@ -305,7 +321,8 @@
         "status": "metadata_supported",
         "passport_href": "../generated/passports/cross_passport.html",
         "passport_json": "../generated/passports/cross_passport.json",
-        "note": "Geometry/asset identity is consistent with the Vow Cross family."
+        "note": "Geometry/asset identity is consistent with the Vow Cross family.",
+        "passport_id": "cross"
       },
       "material": {
         "status": "visual_only",
@@ -335,7 +352,8 @@
         "label": "Melusina Vow Cross",
         "status": "metadata_supported",
         "passport_href": "../generated/passports/cross_passport.html",
-        "passport_json": "../generated/passports/cross_passport.json"
+        "passport_json": "../generated/passports/cross_passport.json",
+        "passport_id": "cross"
       },
       "material": {
         "status": "visual_only",
@@ -363,14 +381,16 @@
         "asset_id": "lissajous",
         "label": "Lissajous Curve Sculpture",
         "status": "metadata_supported",
-        "note": "Intake identifies this as wave-2 signature geometry."
+        "note": "Intake identifies this as wave-2 signature geometry.",
+        "passport_id": "lissajous"
       },
       "material": {
         "status": "metadata_supported",
         "label": "Komikaze · Voronoi Shader (3 Tones)",
         "shader": "Voronoi Shader (3 Tones)",
         "engine": "Blender EEVEE",
-        "note": "The macro is strongest as geometry/form evidence; material proof is secondary."
+        "note": "The macro is strongest as geometry/form evidence; material proof is secondary.",
+        "passport_id": "komikaze_voronoi_3tone"
       }
     },
     "melusina_design_sketch": {
@@ -397,12 +417,14 @@
         "label": "Melusina · concept/design evidence",
         "status": "metadata_supported",
         "passport_href": "../generated/passports/melusina_passport.html",
-        "passport_json": "../generated/passports/melusina_passport.json"
+        "passport_json": "../generated/passports/melusina_passport.json",
+        "passport_id": "melusina"
       },
       "material": {
         "status": "not_applicable",
         "label": "Concept drawing · no production material passport",
-        "note": "Do not infer final material assignments from concept colors."
+        "note": "Do not infer final material assignments from concept colors.",
+        "passport_id": "concept_color_reference"
       }
     },
     "melusina_sculpt_profile": {
@@ -430,12 +452,14 @@
         "label": "Melusina · sculpt/form evidence",
         "status": "metadata_supported",
         "passport_href": "../generated/passports/melusina_passport.html",
-        "passport_json": "../generated/passports/melusina_passport.json"
+        "passport_json": "../generated/passports/melusina_passport.json",
+        "passport_id": "melusina"
       },
       "material": {
         "status": "not_applicable",
         "label": "Neutral grey clay / MatCap preview",
-        "note": "Preview material only. This plate is sculpt/form evidence, not a production material passport."
+        "note": "Preview material only. This plate is sculpt/form evidence, not a production material passport.",
+        "passport_id": "neutral_clay_preview"
       }
     },
     "rejected_space_cathedral_terrain": {
@@ -566,5 +590,9 @@
         "label": "No defensible Sakura material assignment"
       }
     }
+  },
+  "registries": {
+    "asset_passports": "../content/asset-passports.json",
+    "material_passports": "../content/material-passports.json"
   }
 }
