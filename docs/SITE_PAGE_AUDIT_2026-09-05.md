@@ -282,3 +282,31 @@ The second reviewer-facing cleanup tier is complete:
 - `melodia-atelier-lab.html` now explicitly distinguishes browser studies from live Unreal telemetry, uses study-oriented language for shader/PCG modules, and initializes the shared editorial layer only once.
 
 All four are part of `reviewer_priority_supporting` and are therefore covered by the same build/stack CI contract as the earlier secondary-page tier.
+
+
+## Pixel-reviewed render passport pass
+
+A later 2026-09-05 pass reviewed the actual published pixels rather than trusting render filenames or inherited captions.
+
+Key outcome: **asset identity, material assignment, and render evidence are now separate contracts.**
+
+New authored SSOTs:
+
+- `content/asset-passports.json`
+- `content/material-passports.json`
+- `content/render-passports.json`
+
+`generated/passports/*.json` remains authoritative for generated production metrics where present.
+
+Corrections made:
+
+- the 182314 hero-camera plate is no longer called Sakura Dream; it is labelled as a dark violet terrain / cyan emissive-scatter study
+- `scene-sakuradream-full.png` is labelled as a violet terrain study, not a full world beauty
+- `WP_SpaceCathedral_terrain.png` and `level_fallen_moon.png` are explicitly rejected as public world proof after pixel review
+- the blank `rose_window_void_iri_beauty_34.png` plate is rejected; the visible front Rose Window plate carries the asset + Voronoi 3-tone assignment
+- the empty Lissajous beauty plate is rejected; the visible macro plate is promoted
+- Violin uses its front plate for silhouette/asset evidence and is metadata-linked to `The Wall (Custom Texture)`
+- Melusina sketch and sculpt plates explicitly carry no production material claim; the sculpt uses neutral clay/MatCap as preview-only
+- Home, Selected Art, World Bible, Hero Renders, Recruiter One-Sheet, Architecture Hub, Atelier, Space Cathedral, Sakura case study, and Hiring Dossier were updated so known rejected stills are not presented as finished evidence
+
+Rule going forward: **a filename, world slot, or asset name may suggest identity, but only reviewed pixels plus metadata can authorize the public caption/passport assignment.**
