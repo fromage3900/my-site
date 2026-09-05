@@ -234,16 +234,17 @@
       "path": "../generated/assets/signature/gazebo1_komikaze_beauty_34.png",
       "display_name": "Melusina Gazebo Variant · beauty ¾",
       "evidence": {
-        "status": "supporting",
-        "confidence": "medium",
+        "status": "reject",
+        "confidence": "high",
         "visually_proves": [
-          "cylindrical colonnade/gazebo form",
-          "circular platform",
-          "stylized stippled three-tone preview"
+          "lower circular platform",
+          "vertical columns",
+          "pink/purple stippled three-tone surface"
         ],
         "does_not_prove": [
-          "polished environment architecture beauty",
-          "final production material quality"
+          "complete gazebo silhouette",
+          "roof/canopy form",
+          "portfolio-quality architecture composition"
         ]
       },
       "asset": {
@@ -258,7 +259,7 @@
         "label": "Komikaze · Voronoi Shader (3 Tones)",
         "shader": "Voronoi Shader (3 Tones)",
         "engine": "Blender EEVEE",
-        "note": "Treat as lookdev/diagnostic material evidence rather than a polished architecture hero.",
+        "note": "Shader assignment is metadata-backed, but the crop is not strong enough for public hero use.",
         "passport_id": "komikaze_voronoi_3tone"
       }
     },
@@ -913,6 +914,36 @@
         "status": "metadata_supported",
         "label": "Komikaze · Voronoi Shader (3 Tones)",
         "note": "The shader assignment is metadata-backed, but this particular capture is too distant to visually demonstrate it."
+      }
+    },
+    "rejected_gazebo_variant_three_quarter": {
+      "path": "../generated/assets/signature/gazebo1_komikaze_three_quarter.png",
+      "display_name": "Rejected Melusina Gazebo Variant · three-quarter",
+      "evidence": {
+        "status": "reject",
+        "confidence": "high",
+        "visually_proves": [
+          "lower circular platform",
+          "vertical columns",
+          "pink/purple stippled surface"
+        ],
+        "does_not_prove": [
+          "complete gazebo silhouette",
+          "roof/canopy",
+          "strong architecture presentation"
+        ]
+      },
+      "asset": {
+        "asset_id": "gazebo1",
+        "passport_id": "gazebo1",
+        "label": "Melusina Gazebo Variant",
+        "status": "metadata_supported"
+      },
+      "material": {
+        "passport_id": "komikaze_voronoi_3tone",
+        "status": "metadata_supported",
+        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "note": "Material lineage is valid; capture composition is rejected."
       }
     }
   },
