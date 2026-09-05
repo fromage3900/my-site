@@ -258,3 +258,15 @@ The next reviewer-reachable technical pages are now synchronized to build `20260
 - added the current build token and shared navigation behavior
 
 These four pages are now included in `reviewer_priority_supporting`, so CI will enforce the same build marker and shared type/nav/editorial stack on them going forward.
+
+
+## Completed follow-up — web-lab and technical-map tier
+
+Four additional reviewer-reachable pages were normalized without erasing their distinct purpose:
+
+- `sdf-material-gallery.html` now presents a stable material-family study instead of a dated NightShift/Nikki capture catalog. Manifest access is secondary, not the primary CTA.
+- `render-constellation.html` is now a technical portfolio map rather than an exposed ingest dashboard. Dated production-signal and next-capture sections were removed from the visitor view, and only finished web-backed render cards are shown.
+- `realtime-3d-viewer.html` now identifies itself as a browser WebGL inspector rather than claiming game-specific quality equivalence. Recruiter-heavy navigation was replaced with the normal portfolio path.
+- `melodia-atelier-lab.html` is explicitly framed as an interactive web laboratory. Hard-coded pseudo-benchmarks such as 0.38 ms, 60 FPS, <0.45 ms, and implied live execution of 60+ UE PCG graphs were removed or relabeled as browser-demo state.
+
+The four pages now declare build `20260904p1`, load the shared site navigation/editorial stack, and are included in `reviewer_priority_supporting` so CI prevents future style/build drift.
