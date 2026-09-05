@@ -22,7 +22,13 @@
       "assigned_asset_families": [
         "rose_window",
         "lissajous",
-        "gazebo1"
+        "gazebo1",
+        "rosette",
+        "quatrefoil",
+        "torus_knot",
+        "spiral_stair",
+        "zenlantern",
+        "magical_wand"
       ]
     },
     "sakura_surface_family": {
