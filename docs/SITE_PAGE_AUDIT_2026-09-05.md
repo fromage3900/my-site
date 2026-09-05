@@ -310,3 +310,17 @@ Corrections made:
 - Home, Selected Art, World Bible, Hero Renders, Recruiter One-Sheet, Architecture Hub, Atelier, Space Cathedral, Sakura case study, and Hiring Dossier were updated so known rejected stills are not presented as finished evidence
 
 Rule going forward: **a filename, world slot, or asset name may suggest identity, but only reviewed pixels plus metadata can authorize the public caption/passport assignment.**
+
+
+## Render audition v2
+
+The follow-up visual audition materially changed the public art edit.
+
+- Selected Art now uses four actual Hero Level environment frames — Night Bridge, Crater Terrain, Violet Scatter, and Dusk Terrain — instead of material spheres or mislabeled world placeholders.
+- Material sphere/grid studies stay on technical breakdown surfaces rather than the art-first moodboard.
+- Cropped Gazebo Variant captures were rejected and the Rosette Medallion was promoted in their place.
+- The tiny/distant Magical Wand beauty capture was rejected and removed from the Sakura visual macro grid; Quatrefoil now occupies that evidence slot.
+- Architecture Hub stale plate hydration bindings were removed where they could reintroduce rejected Sakura/Kaleido imagery at runtime.
+- The four canonical world names remain concept/production identities, but their public cards explicitly distinguish supporting study imagery from still-pending canonical beauty captures.
+
+Evidence remains governed by `content/render-passports.json`; a public image must pass pixel review independently of its filename or intended world.
