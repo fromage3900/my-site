@@ -12,7 +12,7 @@
   var state = {
     activeTab: 'shader-lab',
     shader: {
-      preset: 'nikki-silk',
+      preset: 'pearl-silk',
       toonHardness: 0.75,
       iridescence: 0.85,
       specularRings: 0.9,
@@ -64,8 +64,8 @@
 
   // --- Presets Data ---
   var SHADER_PRESETS = {
-    'nikki-silk': {
-      name: 'Nikki Hero Silk & Pearl',
+    'pearl-silk': {
+      name: 'Pearl Silk & Sheen',
       toonHardness: 0.65,
       iridescence: 0.95,
       specularRings: 0.85,
@@ -277,7 +277,7 @@
       var cy = h / 2;
       var radius = Math.min(w, h) * 0.32;
 
-      var preset = SHADER_PRESETS[state.shader.preset] || SHADER_PRESETS['nikki-silk'];
+      var preset = SHADER_PRESETS[state.shader.preset] || SHADER_PRESETS['pearl-silk'];
 
       // Ambient Space Background
       var bgGrad = ctx.createRadialGradient(cx, cy, radius * 0.5, cx, cy, radius * 2.2);
