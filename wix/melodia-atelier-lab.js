@@ -153,10 +153,10 @@
       name: 'Fallen Moon',
       tag: 'World 04 · L_FallenMoon',
       lut: '#D8C6FF',
-      heroSrc: '../generated/assets/unreal/hero-hero-level-cam-hero-establishing-20260709-182314-1920x1080.png',
+      heroSrc: '../generated/assets/unreal/hero-hero-level-20260625-055343-1920x1080.png',
       particleType: 'star',
       color: [210, 190, 255],
-      ambientDesc: 'Target atmosphere: astral midnight, nebula veil, and constellation trails. Current source image is supporting terrain/scatter evidence, not a finished world beauty.'
+      ambientDesc: 'Target atmosphere: astral midnight, nebula veil, and constellation trails. Current source image is a reviewed crater terrain-form study, not a finished world beauty.'
     }
   };
 
