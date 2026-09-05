@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="melodia-build" content="20260904p1" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>SDF Material Gallery | Brennan Shepherd</title>
-<meta name="description" content="Per-instance NightShift material previews — Cosmic SDF, Nikki hero surfaces, ornamental toon trims, and supporting SDF library." />
-<link rel="stylesheet" href="melodia-luxury-type.css">
-<link rel="stylesheet" href="melodia-editorial.css">
-<link rel="stylesheet" href="melodia-fashion-editorial.css">
-<link rel="stylesheet" href="melodia-premium-system.css">
+<meta name="description" content="A controlled material-family atlas for cosmic SDF surfaces, stylized hero materials, ornamental toon trims, and supporting shader studies." />
+<link rel="stylesheet" href="melodia-luxury-type.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-editorial.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-fashion-editorial.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-premium-system.css?v=20260904p1">
 <style>
 .mi-group { margin-bottom: 54px; }
 .mi-group:last-child { margin-bottom: 0; }
@@ -27,24 +28,24 @@
 <header class="shell-nav" aria-label="Portfolio navigation">
   <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
   <nav class="nav-links" aria-label="Sections">
-    <a href="shader-breakdowns.html">Shaders</a>
-    <a href="render-constellation.html">Intake</a>
-    <a href="application-hub.html">Hub</a>
+    <a href="index.html">Home</a>
     <a href="world-bible.html">Worlds</a>
+    <a href="shader-breakdowns.html">Shaders</a>
+    <a href="material-loop-gallery.html">Motion Studies</a>
   </nav>
-  <a class="nav-cta button-premium" href="../generated/nightshift_manifest.json">Manifest</a>
+  <a class="nav-cta button-premium" href="universal-material-impact.html">Material System</a>
 </header>
 <main>
 <section class="hero has-editorial-frame" aria-labelledby="page-title">
-  <div class="hero-media" aria-hidden="true"><img src="../generated/assets/nightshift/grid_nikki_heroes.png" alt="Nikki hero SDF material preview grid" /></div>
+  <div class="hero-media" aria-hidden="true"><img src="../generated/assets/nightshift/grid_nikki_heroes.png" alt="Stylized hero SDF material preview grid" /></div>
   <div class="hero-inner">
-    <p class="kicker magazine-kicker premium-kicker">NightShift instance catalog</p>
-    <h1 id="page-title">Every MI, one sphere at a time.</h1>
-    <p class="lede">July 2026 NightShift captures — static sphere plates. For animated studio loops with PP and pillar backdrops, see the <a href="material-loop-gallery.html">material loop gallery</a>. Instances are reparented on <code>M_Master_Toon_Universal</code>; masters stay frozen.</p>
+    <p class="kicker magazine-kicker premium-kicker">Material family atlas</p>
+    <h1 id="page-title">Every material family, under one light.</h1>
+    <p class="lede">Static sphere studies make material families comparable without changing the lighting between examples. Animated response lives in the <a href="material-loop-gallery.html">material motion study</a>; the shared master stays stable while instances carry the authored variation.</p>
     <div class="button-row">
       <a class="button primary button-premium-primary" href="material-loop-gallery.html">Material loops</a>
       <a class="button button-premium" href="shader-breakdowns.html">Shader breakdowns</a>
-      <a class="button button-premium" href="render-constellation.html">Render intake</a>
+      <a class="button button-premium" href="render-constellation.html">Render constellation</a>
       <a class="button button-premium" href="universal-material-impact.html">Material impact</a>
     </div>
   </div>
@@ -53,10 +54,10 @@
 <section class="band paper fashion-band">
   <div class="inner">
     <div class="editorial-rule"><span class="diamond" aria-hidden="true"></span><span>Overview grids</span><span class="diamond" aria-hidden="true"></span></div>
-    <div class="section-head"><div><h2>Family grids before the per-instance read.</h2></div><p>These composite plates are the fastest recruiter scan — then drill into individual instances below.</p></div>
+    <div class="section-head"><div><h2>Families first, instances second.</h2></div><p>The composite plates establish each material language at a glance; individual instances below show where the family branches.</p></div>
     <div class="image-grid">
       <figure class="image-card premium-card material-proof-frame"><img src="../generated/assets/nightshift/grid_cosmic_all.png" alt="Cosmic SDF family grid" loading="lazy" /><div><h3>Cosmic family grid</h3><p>Nine cosmic instances — nebula, starfield, aurora veil, void deep.</p></div></figure>
-      <figure class="image-card premium-card material-proof-frame"><img src="../generated/assets/nightshift/grid_nikki_heroes.png" alt="Nikki hero SDF grid" loading="lazy" /><div><h3>Nikki hero grid</h3><p>Six magical-girl SDF heroes — Rosy Quartz through Starfield Dust.</p></div></figure>
+      <figure class="image-card premium-card material-proof-frame"><img src="../generated/assets/nightshift/grid_nikki_heroes.png" alt="Stylized hero SDF material grid" loading="lazy" /><div><h3>Hero surface grid</h3><p>Six stylized hero surfaces, from Rosy Quartz through Starfield Dust.</p></div></figure>
       <figure class="image-card premium-card material-proof-frame"><img src="../generated/assets/nightshift/celestial_nebula_nasa_sphere.png" alt="CelestialNebula with NASA star map" loading="lazy" /><div><h3>CelestialNebula + NASA</h3><p>Starmap-driven nebula sphere — Space Cathedral pillar proof.</p></div></figure>
     </div>
   </div>
@@ -67,14 +68,15 @@
   <div class="inner" id="miGalleryGroups" aria-live="polite"></div>
 </section>
 </main>
-<footer class="footer"><div class="inner"><span>SDF material gallery / Brennan Shepherd</span><span>NightShift · 2026-07-09</span></div></footer>
-</div><script src="melodia-orrery-system.js"></script>
-<script src="melodia-planetarium.js"></script>
-<script src="melodia-cosmic-instruments.js"></script>
-<script src="melodia-magical-girl.js"></script>
-<script src="melodia-starfield.js"></script>
-<script src="melodia-dream-shaders.js"></script>
-<script src="melodia-editorial.js"></script>
-<script>MelodiaEditorial.init({ materialGallery: true });</script>
+<footer class="footer"><div class="inner"><span>SDF material gallery · Brennan Shepherd</span><span>Static material atlas · controlled lighting</span></div></footer>
+</div><script src="melodia-orrery-system.js?v=20260904p1"></script>
+<script src="melodia-planetarium.js?v=20260904p1"></script>
+<script src="melodia-cosmic-instruments.js?v=20260904p1"></script>
+<script src="melodia-magical-girl.js?v=20260904p1"></script>
+<script src="melodia-starfield.js?v=20260904p1"></script>
+<script src="melodia-dream-shaders.js?v=20260904p1"></script>
+<script src="melodia-site-nav.js?v=20260904p1"></script>
+<script src="melodia-editorial.js?v=20260904p1"></script>
+<script>MelodiaEditorial.init({ materialGallery: true, page: 'sdf-material-gallery' });</script>
 </body>
 </html>
