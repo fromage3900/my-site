@@ -583,3 +583,197 @@ body.art-viewer-open { overflow:hidden; }
     font-size: .64rem;
   }
 }
+
+
+/* Phi moodboard composition — Fibonacci spans, phyllotactic stagger, DOM-order safe. */
+.curated-art-shell {
+  --phi: 1.618;
+  --phi-seed: clamp(.72rem, 1.18vw, 1.18rem);
+  --phi-gap: calc(var(--phi-seed) * 2);
+}
+
+.curated-art-shell .band {
+  padding-block: calc(var(--phi-seed) * 8) calc(var(--phi-seed) * 13);
+}
+
+.curated-art-shell .section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+  gap: calc(var(--phi-seed) * 3);
+  align-items: end;
+  margin-bottom: calc(var(--phi-seed) * 5);
+}
+
+.curated-art-shell .section-head > p {
+  justify-self: end;
+  max-width: 34rem;
+}
+
+.art-grid {
+  grid-template-columns: repeat(13, minmax(0, 1fr));
+  column-gap: var(--phi-gap);
+  row-gap: calc(var(--phi-seed) * 3);
+}
+
+/* 8 : 5 opening split — the first golden rectangle. */
+.art-grid-opening .art-hero-piece {
+  grid-column: 1 / span 8;
+}
+.art-grid-opening .art-hero-piece img {
+  aspect-ratio: 1 / 1.618;
+  object-position: 50% 38%;
+}
+.art-grid-opening .art-landscape-piece {
+  grid-column: 9 / span 5;
+  margin-top: calc(var(--phi-seed) * 8);
+}
+.art-grid-opening .art-landscape-piece img {
+  aspect-ratio: 1.618 / 1;
+}
+
+/* Worlds alternate 8/5 and 5/8 weights instead of four equal cards. */
+.art-grid-worlds .world-a {
+  grid-column: 1 / span 8;
+}
+.art-grid-worlds .world-a img {
+  aspect-ratio: 1.618 / 1;
+}
+.art-grid-worlds .world-b {
+  grid-column: 9 / span 5;
+  margin-top: calc(var(--phi-seed) * 5);
+}
+.art-grid-worlds .world-b img {
+  aspect-ratio: 1 / 1.18;
+}
+.art-grid-worlds .world-c {
+  grid-column: 2 / span 5;
+  margin-top: calc(var(--phi-seed) * 3);
+}
+.art-grid-worlds .world-c img {
+  aspect-ratio: 1.618 / 1;
+}
+
+/* Object board: one 5-column pin beside an 8-column anchor, then 3/5/3 detail beats. */
+.art-grid-objects .object-tall {
+  grid-column: 1 / span 5;
+}
+.art-grid-objects .object-tall img {
+  aspect-ratio: 4 / 5;
+}
+.art-grid-objects .object-wide {
+  grid-column: 6 / span 8;
+  margin-top: calc(var(--phi-seed) * 5);
+}
+.art-grid-objects .object-wide img {
+  aspect-ratio: 1.618 / 1;
+}
+.art-grid-objects .object-small:nth-of-type(3) {
+  grid-column: 2 / span 3;
+  margin-top: calc(var(--phi-seed) * 3);
+}
+.art-grid-objects .object-small:nth-of-type(4) {
+  grid-column: 5 / span 5;
+  margin-top: calc(var(--phi-seed) * 8);
+}
+.art-grid-objects .object-small:nth-of-type(5) {
+  grid-column: 10 / span 3;
+  margin-top: calc(var(--phi-seed) * 2);
+}
+.art-grid-objects .object-small:nth-of-type(3) img,
+.art-grid-objects .object-small:nth-of-type(5) img {
+  aspect-ratio: 1;
+}
+.art-grid-objects .object-small:nth-of-type(4) img {
+  aspect-ratio: 4 / 5;
+}
+
+/* Studies behave like pinned paper fragments, not a closing two-card row. */
+.art-grid-studies {
+  align-items: start;
+}
+.art-grid-studies .study-sketch {
+  grid-column: 1 / span 5;
+}
+.art-grid-studies .study-sculpt {
+  grid-column: 7 / span 5;
+  margin-top: calc(var(--phi-seed) * 5);
+}
+.art-grid-studies img {
+  aspect-ratio: 4 / 5;
+}
+
+.art-piece figcaption {
+  padding-top: calc(var(--phi-seed) * .8);
+}
+
+@media (max-width: 820px) {
+  .curated-art-shell .section-head {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 5fr);
+    gap: calc(var(--phi-seed) * 2);
+  }
+  .art-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+  .art-grid-opening .art-hero-piece,
+  .art-grid-worlds .world-a,
+  .art-grid-objects .object-wide {
+    grid-column: 1 / span 8;
+    margin-top: 0;
+  }
+  .art-grid-opening .art-landscape-piece,
+  .art-grid-worlds .world-b {
+    grid-column: 4 / span 5;
+    margin-top: calc(var(--phi-seed) * 5);
+  }
+  .art-grid-worlds .world-c,
+  .art-grid-objects .object-tall,
+  .art-grid-studies .study-sketch {
+    grid-column: 1 / span 5;
+  }
+  .art-grid-objects .object-small:nth-of-type(3) {
+    grid-column: 2 / span 3;
+  }
+  .art-grid-objects .object-small:nth-of-type(4) {
+    grid-column: 4 / span 5;
+    margin-top: calc(var(--phi-seed) * 5);
+  }
+  .art-grid-objects .object-small:nth-of-type(5) {
+    grid-column: 1 / span 3;
+  }
+  .art-grid-studies .study-sculpt {
+    grid-column: 4 / span 5;
+  }
+}
+
+@media (max-width: 520px) {
+  .curated-art-shell .section-head {
+    display: block;
+  }
+  .curated-art-shell .section-head > p {
+    margin-top: calc(var(--phi-seed) * 2);
+  }
+  .art-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    row-gap: calc(var(--phi-seed) * 2);
+  }
+  .art-grid-opening .art-hero-piece,
+  .art-grid-worlds .world-a,
+  .art-grid-objects .object-wide {
+    grid-column: 1 / span 5;
+  }
+  .art-grid-opening .art-landscape-piece,
+  .art-grid-worlds .world-b,
+  .art-grid-objects .object-tall,
+  .art-grid-studies .study-sculpt {
+    grid-column: 2 / span 4;
+  }
+  .art-grid-worlds .world-c,
+  .art-grid-studies .study-sketch,
+  .art-grid-objects .object-small:nth-of-type(4) {
+    grid-column: 1 / span 4;
+  }
+  .art-grid-objects .object-small:nth-of-type(3),
+  .art-grid-objects .object-small:nth-of-type(5) {
+    grid-column: 3 / span 3;
+  }
+}
