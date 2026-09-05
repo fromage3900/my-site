@@ -125,3 +125,42 @@ foreach ($route in $publicManifest.canonical) {
 }
 
 Write-Host "OK public route sync build $publicBuild across $($publicManifest.canonical.Count) canonical pages"
+
+
+# ROUTE HYGIENE
+function Assert-NoIndexRoute {
+  param(
+    [string]$Route,
+    [string]$Category
+  )
+
+  $routePath = Join-Path $Root (Join-Path 'wix' $Route)
+  if (-not (Test-Path -LiteralPath $routePath)) {
+    throw "Missing $Category route: wix/$Route"
+  }
+
+  $routeHtml = Get-Content -LiteralPath $routePath -Raw
+  if ($routeHtml -notmatch 'name=["'']robots["''][^>]*content=["''][^"'']*noindex') {
+    throw "Route hygiene failed: wix/$Route ($Category) must declare noindex"
+  }
+}
+
+foreach ($route in $publicManifest.internal_not_navigation) {
+  Assert-NoIndexRoute -Route ([string]$route) -Category 'internal'
+}
+
+foreach ($route in $publicManifest.component_examples) {
+  Assert-NoIndexRoute -Route ([string]$route) -Category 'component'
+}
+
+foreach ($route in $publicManifest.retired_redirects) {
+  Assert-NoIndexRoute -Route ([string]$route) -Category 'retired'
+  $retiredPath = Join-Path $Root (Join-Path 'wix' ([string]$route))
+  $retiredHtml = Get-Content -LiteralPath $retiredPath -Raw
+  if ($retiredHtml -notmatch 'http-equiv=["'']refresh["'']' -or
+      $retiredHtml -notmatch 'rel=["'']canonical["'']') {
+    throw "Route hygiene failed: wix/$route retired route must redirect and declare canonical"
+  }
+}
+
+Write-Host "OK route hygiene: internal/component/retired boundaries enforced"
