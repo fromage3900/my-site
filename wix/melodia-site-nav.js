@@ -21,8 +21,8 @@
     { href: 'zbrush-breakdown.html', label: 'Sculpt breakdown', keys: ['zbrush-breakdown'] },
     { href: 'shader-breakdowns.html', label: 'Shader breakdowns', keys: ['shader-breakdowns'] },
     { href: 'cosmic-orrery.html', label: 'Cosmic Orrery', keys: ['cosmic-orrery'] },
-    { href: 'application-hub.html', label: 'Architecture Hub', keys: ['application-hub'] },
-    { href: 'pipeline.html', label: 'Echo pipeline', keys: ['pipeline'] },
+    { href: 'sdf-material-gallery.html', label: 'Material Atlas', keys: ['sdf-material-gallery'] },
+    { href: 'melodia-atelier-lab.html', label: 'Technical Art Atelier', keys: ['melodia-atelier-lab'] },
   ];
 
   function pageKey() {
@@ -105,8 +105,8 @@
     if (!header) return;
 
     var shell = document.querySelector('.melodia-shell');
-    var ctaHref = (shell && shell.getAttribute('data-nav-cta')) || 'application-hub.html';
-    var ctaLabel = (shell && shell.getAttribute('data-nav-cta-label')) || 'Application hub';
+    var ctaHref = (shell && shell.getAttribute('data-nav-cta')) || 'curated-art.html';
+    var ctaLabel = (shell && shell.getAttribute('data-nav-cta-label')) || 'Selected art';
     var key = pageKey();
     var constellation = wantsConstellation(header);
 
