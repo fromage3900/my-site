@@ -171,3 +171,51 @@ The first moodboard pass was subsequently reviewed against the actual published 
 - `generated/passports/*.json` — generated production metrics remain authoritative where available.
 
 A render is no longer allowed to inherit a world or material claim merely because its filename contains that name.
+
+
+## Render audition v2 — actual-pixel curation
+
+The archive was visually auditioned again after the first passport correction. This pass removed technically useful material previews from the art-first moodboard and promoted only images that work as pictures.
+
+### Current Selected Art board
+
+| Role | Plate | Public label | Evidence status |
+|---|---|---|---|
+| Character anchor | `melusina_cam_beauty_nikki_2026-08-13.png` | Melusina | Accepted character/lookdev evidence |
+| Environment anchor | `hero-hero-level-20260708-190653-1920x1080.png` | Night Bridge Study | Accepted Hero Level environment study; canonical world unassigned |
+| Environment | `hero-hero-level-20260625-055343-1920x1080.png` | Crater Terrain Study | Accepted terrain-form study |
+| Environment | `hero-hero-level-cam-hero-materials-20260709-181046-1920x1080.png` | Violet Scatter Study | Accepted terrain/atmosphere study |
+| Environment | `hero-hero-level-20260627-190109-1920x1080.png` | Dusk Terrain Study | Accepted atmosphere study |
+| Ornament | `rose_window_komikaze_front.png` | Rose Window | Accepted asset + Voronoi 3-tone material evidence |
+| Ornament | `rosette_komikaze_three_quarter.png` | Rosette Medallion | Accepted asset + Voronoi 3-tone material evidence |
+| Instrument | `violin_komikaze_front.png` | Melodia Violin | Accepted asset + The Wall custom-texture material evidence |
+| Detail | `cross_hero_macro_filigree.png` | Vow Cross | Accepted macro surface evidence; exact hero-prefixed shader binding remains conservative |
+| Procedural form | `lissajous_komikaze_macro.png` | Lissajous | Accepted form + Voronoi 3-tone material evidence |
+| Hand/process | `melusina_design_sketch.png` | Melusina Design | Accepted concept evidence; no production material claim |
+| Hand/process | `sculpt_melusina_profile.png` | Melusina Profile | Accepted sculpt evidence; clay/MatCap preview only |
+
+### Explicitly rejected public captures
+
+- `WP_SpaceCathedral_terrain.png` — grey preview primitive over blurred outdoor/HDRI background.
+- `level_fallen_moon.png` — same weak preview condition; not a Fallen Moon beauty.
+- `hero_l_wp_sakuradream_1920x1080.png` — near-empty blue horizon; not Sakura world proof.
+- `rose_window_void_iri_beauty_34.png` — flat/blue failed capture.
+- `lissajous_komikaze_beauty_34.png` — empty/pale studio frame.
+- `gazebo1_komikaze_beauty_34.png` and `gazebo1_komikaze_three_quarter.png` — upper architecture cropped away; lower platform/columns float in an empty frame.
+- `magical_wand_komikaze_beauty_34.png` — wand is too small/distant to prove silhouette or material.
+
+### Useful technical studies deliberately removed from the art-first board
+
+`sakura-surfaces-grid.png` and `sakura-stonepath-fixed.png` remain useful material evidence and may appear on shader/world breakdown pages, but they are no longer treated as primary art-board images.
+
+### Runtime safety
+
+Named plate hydration was hardened in `content/site-plates.json`:
+
+- generic `index.hero` and `recruiter.hero` resolve to the reviewed Night Bridge Study;
+- Sakura-specific `sakura.hero` and `hub.sakura` resolve to the Sakura surface-family study and explicitly say world beauty is pending;
+- stale `data-plate` hooks that could resurrect rejected hero placeholders were removed from Architecture Hub public imagery.
+
+### Metadata caveat found during audition
+
+The generated Zen Lantern passport reports **8,277,956 triangles** across six meshes. The generated value is preserved as source metadata, but it is flagged in `content/asset-passports.json` for source-asset verification before becoming a prominent public claim.
