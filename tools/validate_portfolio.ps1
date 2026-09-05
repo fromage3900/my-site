@@ -164,3 +164,26 @@ foreach ($route in $publicManifest.retired_redirects) {
 }
 
 Write-Host "OK route hygiene: internal/component/retired boundaries enforced"
+
+
+# REVIEWER-PRIORITY SUPPORTING ROUTES
+foreach ($route in $publicManifest.reviewer_priority_supporting) {
+  $routePath = Join-Path $Root (Join-Path 'wix' ([string]$route))
+  if (-not (Test-Path -LiteralPath $routePath)) {
+    throw "Missing reviewer-priority route: wix/$route"
+  }
+
+  $routeHtml = Get-Content -LiteralPath $routePath -Raw
+  $buildMarker = 'name="melodia-build" content="' + $publicBuild + '"'
+  if ($routeHtml -notlike ('*' + $buildMarker + '*')) {
+    throw "Reviewer route build drift: wix/$route does not declare $publicBuild"
+  }
+
+  foreach ($marker in $requiredPublicMarkers) {
+    if ($routeHtml -notlike ('*' + $marker + '*')) {
+      throw "Reviewer route stack drift: wix/$route is missing $marker"
+    }
+  }
+}
+
+Write-Host "OK reviewer-priority route sync build $publicBuild across $($publicManifest.reviewer_priority_supporting.Count) supporting pages"
