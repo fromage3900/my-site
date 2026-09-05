@@ -677,8 +677,9 @@
         }
       }
 
+      const isPublicConstellation = document.documentElement.dataset.page === 'render-constellation';
       const statData = [
-        ['Readiness', `${readiness.score || 0}/100`],
+        [isPublicConstellation ? 'Evidence coverage' : 'Readiness', `${readiness.score || 0}/100`],
         ['Web-ready plates', `${counts.renders_web_ready || 0}/${counts.renders_total || 0}`],
         ['Shader families', counts.shader_families || 0],
         ['Portfolio MIs', production?.portfolio_mis || counts.material_instances || 0],
@@ -709,7 +710,12 @@
       if (cardsEl) {
         const cards = Array.isArray(intake.render_cards) ? intake.render_cards : [];
         const visible = cards
-          .filter((card) => card.status !== 'deprecated' && card.id !== 'materials-grid-families-review')
+          .filter(
+            (card) =>
+              card.status !== 'deprecated' &&
+              card.id !== 'materials-grid-families-review' &&
+              (!isPublicConstellation || Boolean(card.web_path))
+          )
           .sort((a, b) => (b.priority || 0) - (a.priority || 0));
         cardsEl.innerHTML = visible.length
           ? visible
@@ -719,10 +725,13 @@
                 const media = card.web_path
                   ? `<img src="${esc(card.web_path)}" alt="${esc(card.filename)}" loading="lazy" />`
                   : `<span>${esc(card.status)}</span>`;
-                return `<article class="intake-card premium-card"><div class="${thumbClass}">${media}</div><div class="intake-card-body"><span class="intake-pill">${esc(card.group)}</span><span class="intake-pill">${esc(card.status)}</span><h3>${esc(card.filename)}</h3><p>${esc(card.caption)}</p></div></article>`;
+                const statusPill = isPublicConstellation ? '' : `<span class="intake-pill">${esc(card.status)}</span>`;
+                return `<article class="intake-card premium-card"><div class="${thumbClass}">${media}</div><div class="intake-card-body"><span class="intake-pill">${esc(card.group)}</span>${statusPill}<h3>${esc(card.filename)}</h3><p>${esc(card.caption)}</p></div></article>`;
               })
               .join('')
-          : '<p class="body-copy">No render cards in intake. Run tools/ingest_unreal_portfolio.ps1.</p>';
+          : isPublicConstellation
+            ? '<p class="body-copy">No finished technical plates are available in this view right now. <a href="hero-renders.html">Open the render archive</a>.</p>'
+            : '<p class="body-copy">No render cards in intake. Run tools/ingest_unreal_portfolio.ps1.</p>';
       }
 
       const familiesEl = document.getElementById('intakeFamilies');
