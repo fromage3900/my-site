@@ -720,6 +720,200 @@
         "label": "Dusk Terrain · Atmospheric Study",
         "note": "Atmosphere/composition evidence only."
       }
+    },
+    "rosette_three_quarter": {
+      "path": "../generated/assets/ornaments/rosette_komikaze_three_quarter.png",
+      "display_name": "Rosette Medallion · three-quarter",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "large looping radial rosette geometry",
+          "multiple interlocking circular/petal openings",
+          "clear three-quarter depth read",
+          "yellow/pink/purple stylized three-tone surface"
+        ],
+        "does_not_prove": [
+          "final in-world architectural placement"
+        ]
+      },
+      "asset": {
+        "asset_id": "rosette",
+        "passport_id": "rosette",
+        "label": "Rosette Medallion",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/rosette_passport.html",
+        "passport_json": "../generated/passports/rosette_passport.json"
+      },
+      "material": {
+        "passport_id": "komikaze_voronoi_3tone",
+        "status": "metadata_supported",
+        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "shader": "Voronoi Shader (3 Tones)",
+        "engine": "Blender EEVEE"
+      }
+    },
+    "quatrefoil_front_reviewed": {
+      "path": "../generated/assets/ornaments/quatrefoil_komikaze_front.png",
+      "display_name": "Quatrefoil Arch · front",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "large circular ornamental frame",
+          "four internal circular/lobed openings",
+          "strong front-on silhouette",
+          "yellow/pink/purple stylized three-tone surface"
+        ],
+        "does_not_prove": [
+          "architectural scale or installed context"
+        ]
+      },
+      "asset": {
+        "asset_id": "quatrefoil",
+        "passport_id": "quatrefoil",
+        "label": "Quatrefoil Arch",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/quatrefoil_passport.html",
+        "passport_json": "../generated/passports/quatrefoil_passport.json"
+      },
+      "material": {
+        "passport_id": "komikaze_voronoi_3tone",
+        "status": "metadata_supported",
+        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "shader": "Voronoi Shader (3 Tones)",
+        "engine": "Blender EEVEE"
+      }
+    },
+    "torus_knot_three_quarter_reviewed": {
+      "path": "../generated/assets/ornaments/torus_knot_komikaze_three_quarter.png",
+      "display_name": "Torus Knot · three-quarter",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "interwoven flattened loop geometry",
+          "multi-loop knot silhouette",
+          "three-quarter form depth",
+          "purple surface with pink/yellow Voronoi accents"
+        ],
+        "does_not_prove": [
+          "final architectural use"
+        ]
+      },
+      "asset": {
+        "asset_id": "torus_knot",
+        "passport_id": "torus_knot",
+        "label": "Torus Knot",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/torus_knot_passport.html",
+        "passport_json": "../generated/passports/torus_knot_passport.json"
+      },
+      "material": {
+        "passport_id": "komikaze_voronoi_3tone",
+        "status": "metadata_supported",
+        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "shader": "Voronoi Shader (3 Tones)",
+        "engine": "Blender EEVEE"
+      }
+    },
+    "spiral_stair_low_angle_reviewed": {
+      "path": "../generated/assets/ornaments/spiral_stair_komikaze_low_angle.png",
+      "display_name": "Spiral Staircase · low angle",
+      "evidence": {
+        "status": "supporting",
+        "confidence": "high",
+        "visually_proves": [
+          "long ascending stair sequence",
+          "repeated posts/rail supports",
+          "clear linear rise and perspective",
+          "yellow/pink three-tone surface"
+        ],
+        "does_not_prove": [
+          "close detail quality",
+          "installed architectural context"
+        ]
+      },
+      "asset": {
+        "asset_id": "spiral_stair",
+        "passport_id": "spiral_stair",
+        "label": "Spiral Staircase",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/spiral_stair_passport.html",
+        "passport_json": "../generated/passports/spiral_stair_passport.json"
+      },
+      "material": {
+        "passport_id": "komikaze_voronoi_3tone",
+        "status": "metadata_supported",
+        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "shader": "Voronoi Shader (3 Tones)",
+        "engine": "Blender EEVEE"
+      }
+    },
+    "zenlantern_front_reviewed": {
+      "path": "../generated/assets/props/zenlantern_komikaze_front.png",
+      "display_name": "Zen Lantern · front",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "tall stylized lantern body",
+          "wide peaked roof/hat silhouette",
+          "flared base",
+          "side ornamental protrusions",
+          "yellow/pink/purple three-tone surface",
+          "small reference sketch visible at lower right"
+        ],
+        "does_not_prove": [
+          "correctness of the unusually high generated triangle count"
+        ]
+      },
+      "asset": {
+        "asset_id": "zenlantern",
+        "passport_id": "zenlantern",
+        "label": "Zen Lantern",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/zenlantern_passport.html",
+        "passport_json": "../generated/passports/zenlantern_passport.json",
+        "note": "Generated passport triangle count should be re-verified before prominent public use."
+      },
+      "material": {
+        "passport_id": "komikaze_voronoi_3tone",
+        "status": "metadata_supported",
+        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "shader": "Voronoi Shader (3 Tones)",
+        "engine": "Blender EEVEE"
+      }
+    },
+    "rejected_magical_wand_beauty": {
+      "path": "../generated/assets/props/magical_wand_komikaze_beauty_34.png",
+      "display_name": "Rejected Magical Wand beauty capture",
+      "evidence": {
+        "status": "reject",
+        "confidence": "high",
+        "visually_proves": [
+          "very small narrow wand-like object centered in a large pale empty frame"
+        ],
+        "does_not_prove": [
+          "strong asset silhouette",
+          "material readability",
+          "portfolio-quality presentation"
+        ]
+      },
+      "asset": {
+        "asset_id": "magical_wand",
+        "passport_id": "magical_wand",
+        "label": "Stylized Magical Wand",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/magical_wand_passport.html",
+        "passport_json": "../generated/passports/magical_wand_passport.json"
+      },
+      "material": {
+        "passport_id": "komikaze_voronoi_3tone",
+        "status": "metadata_supported",
+        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "note": "The shader assignment is metadata-backed, but this particular capture is too distant to visually demonstrate it."
+      }
     }
   },
   "registries": {
