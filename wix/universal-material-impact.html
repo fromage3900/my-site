@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="universal-material-impact">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="melodia-build" content="20260904p1" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Universal Material Impact | Brennan Shepherd</title>
-  <meta name="description" content="In-scene proof that the universal master material affects the environment read: hero plates, capture slots, and shader family context." />
-  <link rel="stylesheet" href="melodia-luxury-type.css">
-<link rel="stylesheet" href="melodia-editorial.css">
-  <link rel="stylesheet" href="melodia-fashion-editorial.css">
-<link rel="stylesheet" href="melodia-premium-system.css">  <style>
+  <meta name="description" content="In-scene proof of a shared stylized material system across Melodia environments: hero plates, material families, and art-directed variation from one reusable master." />
+  <link rel="stylesheet" href="melodia-luxury-type.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-editorial.css?v=20260904p1">
+  <link rel="stylesheet" href="melodia-fashion-editorial.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-premium-system.css?v=20260904p1">  <style>
     .impact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
     .impact-card{border:1px solid rgba(201,168,106,.35);background:rgba(16,23,54,.82);overflow:hidden}
     .impact-card .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,rgba(18,24,45,.14),rgba(200,164,94,.10));display:grid;place-items:center;color:rgba(236,234,244,.62);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
@@ -41,13 +42,13 @@
         <img id="leadImg" src="../generated/assets/unreal/hero-hero-level-20260625-055343-1920x1080.png" alt="Universal material impact hero plate" />
       </div>
       <div class="hero-inner">
-        <p class="kicker magazine-kicker">Universal material / in-scene proof</p>
-        <h1 id="page-title">Show the shader changing the world.</h1>
-        <p class="lede">This page pairs hero plates with capture slots so a reviewer can see the universal master material’s effect on the environment — not just a graph screenshot.</p>
+        <p class="kicker magazine-kicker">Shared material language · in-scene proof</p>
+        <h1 id="page-title">One material spine, many worlds.</h1>
+        <p class="lede">The universal master carries the same stylized lighting logic across different environments while leaving room for art-directed roughness, color, ornament, and iridescence. The point is not the graph by itself; it is the consistency it creates in finished scenes.</p>
         <div class="button-row">
-          <a class="button primary" href="../generated/technical/universal-master.html">Universal master page</a>
-          <a class="button" href="../generated/materials_config.json">Materials config</a>
-          <a class="button" href="world-bible.html">World bible</a>
+          <a class="button primary button-premium-primary" href="shader-breakdowns.html">Shader breakdowns</a>
+          <a class="button button-premium" href="world-bible.html">See the worlds</a>
+          <a class="button button-premium" href="../generated/technical/universal-master.html">Technical master</a>
         </div>
       </div>
     </section>
@@ -59,7 +60,7 @@
             <p class="eyebrow">Impact Plates</p>
             <h2>Beauty first, proof beside it.</h2>
           </div>
-          <p>These cards read from the Unreal intake JSON. When you ingest new breakdown plates (shader graph, celestial nebula, Niagara), they will automatically appear here.</p>
+          <p>Finished hero and material plates are paired here so the shared shader language can be judged in context rather than as an isolated node graph.</p>
         </div>
         <div class="impact-grid" id="impactGrid"></div>
       </div>
@@ -69,32 +70,32 @@
       <div class="inner">
         <div class="section-head">
           <div>
-            <p class="eyebrow">What to capture next</p>
-            <h2>Minimum proof for “universal shader” credibility.</h2>
+            <p class="eyebrow">System logic</p>
+            <h2>Reusable controls, art-directed outcomes.</h2>
           </div>
-          <p>These slots correspond to the filenames already listed in the capture brief. Drop them into the render pipeline and rerun ingest.</p>
+          <p>The same master is deliberately not a one-click look. It standardizes the technical spine, then exposes the controls that let each world keep its own material identity.</p>
         </div>
         <div class="card-grid two">
           <article class="card">
-            <span>renders.breakdown</span>
+            <span>Shared controls</span>
             <div>
-              <h3>Universal Master graph plate</h3>
-              <p><strong>Filename:</strong> <code>breakdown_shader_universal_master_substrate_1920x1080.png</code></p>
-              <p><strong>Shows:</strong> the universal master controls + one in-scene crop that clearly reads the blend/layer result.</p>
+              <h3>One lighting and layering language.</h3>
+              <p>Common toon response, layered masks, roughness behavior, and optional stylized effects reduce duplicated shader logic across the project.</p>
             </div>
           </article>
           <article class="card">
-            <span>renders.materials</span>
+            <span>World variation</span>
             <div>
-              <h3>Material family swatch grid</h3>
-              <p><strong>Shows:</strong> consistent response across Zen / Showcase / Baroque families and where the universal master is driving variation.</p>
+              <h3>Families stay visually distinct.</h3>
+              <p>Zen, showcase, baroque, cosmic, and SDF-driven materials branch through authored parameters rather than separate disconnected shader stacks.</p>
             </div>
           </article>
         </div>
+        <p style="margin-top:1rem"><a class="button button-premium" href="../generated/materials_config.json">Inspect material configuration</a></p>
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="inner"><span>Brennan Shepherd / Environment & Technical Artist</span><span>Universal material impact page</span></div></footer>
+  <footer class="footer"><div class="inner"><span>Brennan Shepherd / Environment & Technical Artist</span><span>Universal material system · in-scene evidence</span></div></footer>
 
   <script>
     const INTAKE_URL = '../generated/unreal_portfolio_intake.json';
@@ -112,7 +113,6 @@
           <div class="body">
             <div class="pillrow">
               <span>${esc(card.group || 'plate')}</span>
-              <span>${esc(card.status || 'pending')}</span>
             </div>
             <h3>${title}</h3>
             <p>${caption || 'In-scene proof slot.'}</p>
@@ -155,25 +155,26 @@
       if (breakdowns[0]) entries.push(renderCard(breakdowns[0], 'Breakdown plate'));
 
       if (!entries.length){
-        grid.innerHTML = '<p>No plates found yet. Run the Unreal ingest pipeline so <code>generated/unreal_portfolio_intake.json</code> includes web paths.</p>';
+        grid.innerHTML = '<p>Material plates are temporarily unavailable here. <a href="shader-breakdowns.html">Open the shader breakdowns</a> for the finished material overview.</p>';
         return;
       }
       grid.innerHTML = entries.join('');
     }
     main().catch((err)=>{
       const grid = document.getElementById('impactGrid');
-      if (grid) grid.innerHTML = '<p>Failed to load intake JSON. Ensure <code>generated/unreal_portfolio_intake.json</code> exists.</p>';
+      if (grid) grid.innerHTML = '<p>The material plate feed is temporarily unavailable. <a href="shader-breakdowns.html">Open the shader breakdowns</a> instead.</p>';
       console.error(err);
     });
   </script>
 </div>
-<script src="melodia-planetarium.js"></script>
-<script src="melodia-cosmic-instruments.js"></script>
-<script src="melodia-magical-girl.js"></script>
-<script src="melodia-starfield.js"></script>
-<script src="melodia-dream-shaders.js"></script>
-<script src="melodia-editorial.js"></script>
-<script>MelodiaEditorial.init();</script>
+<script src="melodia-planetarium.js?v=20260904p1"></script>
+<script src="melodia-cosmic-instruments.js?v=20260904p1"></script>
+<script src="melodia-magical-girl.js?v=20260904p1"></script>
+<script src="melodia-starfield.js?v=20260904p1"></script>
+<script src="melodia-dream-shaders.js?v=20260904p1"></script>
+<script src="melodia-site-nav.js?v=20260904p1"></script>
+<script src="melodia-editorial.js?v=20260904p1"></script>
+<script>MelodiaEditorial.init({ page: 'universal-material-impact' });</script>
 </body>
 </html>
 
