@@ -181,3 +181,39 @@ A file being in `wix/` does not mean it is a public portfolio destination.
 Canonical pages should be polished and synchronized; supporting pages should be
 intentional; internal dashboards should be clearly internal; component harnesses should
 stay out of search/navigation; retired routes should redirect cleanly.
+
+
+## Completed follow-up — reviewer-facing secondary pages
+
+The first cleanup tier is now substantially complete.
+
+### Reworked as finished case studies
+
+- `pcg-system-impact.html` now opens as a Fallen Moon procedural-world case study rather than a raw scatter survey. The 605 live instances, density maps, Infinite Nave plan/section, and remaining Mandala elevation exception are preserved as evidence; visitor copy leads with composition and traversal.
+- `material-loop-gallery.html` now presents only finished captured loops. Pending catalog entries no longer render as public "Awaiting capture" cards. The batch command and manifest moved into an optional pipeline disclosure.
+- `universal-material-impact.html` no longer contains filenames or "what to capture next" TODOs. It now explains the shared material spine and world-level variation, with technical configuration available as an optional deep dive.
+
+### Reviewer path synchronized
+
+The following supporting pages now declare build `20260904p1` and cache-bust the current shared CSS/JS:
+
+- recruiter-one-sheet
+- hiring-dossier
+- melodia-stage-character
+- sakura-case-study
+- space-cathedral
+- baroque-grotto
+- geometry-nodes
+- credits
+- commissions
+- art-test-readiness
+- surreal-architecture
+- PCG System Impact
+- Material Loop Gallery
+- Universal Material Impact
+
+General recruiter/portfolio metadata no longer defines the work through Infold / Infinity Nikki. Company-specific language remains appropriate only on explicitly targeted campaign/sendoff evidence.
+
+### New CI boundary
+
+`public-routes.json` now contains `reviewer_priority_supporting`. Portfolio validation requires those routes to carry the same build marker and shared luxury type / editorial CSS / site nav / editorial JS stack as the canonical visitor routes.
