@@ -92,6 +92,10 @@
     "credits.html",
     "commissions.html",
     "art-test-readiness.html",
-    "surreal-architecture.html"
+    "surreal-architecture.html",
+    "sdf-material-gallery.html",
+    "render-constellation.html",
+    "realtime-3d-viewer.html",
+    "melodia-atelier-lab.html"
   ]
 }
