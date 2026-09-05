@@ -417,9 +417,9 @@
       var elFrameTime = document.getElementById('telemetry-frametime');
       var elDrawCalls = document.getElementById('telemetry-drawcalls');
       var elTriangles = document.getElementById('telemetry-triangles');
-      if (elFrameTime) elFrameTime.textContent = '0.38 ms';
-      if (elDrawCalls) elDrawCalls.textContent = '1 MI Pass';
-      if (elTriangles) elTriangles.textContent = '32.4k Tris';
+      if (elFrameTime) elFrameTime.textContent = 'Interactive demo';
+      if (elDrawCalls) elDrawCalls.textContent = 'Browser shader';
+      if (elTriangles) elTriangles.textContent = 'Study mesh';
 
       requestAnimationFrame(renderShader);
     }
@@ -720,7 +720,7 @@
 
       // Update HUD count
       var countEl = document.getElementById('pcg-instance-count');
-      if (countEl) countEl.textContent = state.pcg.instances.length + ' Instanced Points';
+      if (countEl) countEl.textContent = state.pcg.instances.length + ' Sample Points';
     }
 
     function renderPcg() {
