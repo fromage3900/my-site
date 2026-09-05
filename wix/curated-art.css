@@ -777,3 +777,81 @@ body.art-viewer-open { overflow:hidden; }
     grid-column: 3 / span 3;
   }
 }
+
+
+/* Pixel-reviewed render passport annotations. */
+.render-passport-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .42rem;
+  padding-top: .72rem;
+  border-top: 1px solid color-mix(in srgb, currentColor 11%, transparent);
+  margin-top: .68rem;
+}
+
+.render-passport-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .38rem;
+  padding: .34rem .48rem;
+  border: 1px solid color-mix(in srgb, currentColor 13%, transparent);
+  background: color-mix(in srgb, currentColor 3.5%, transparent);
+  color: inherit;
+  text-decoration: none;
+  font: 500 .56rem/1.25 var(--font-mono);
+  letter-spacing: .055em;
+  border-radius: 999px;
+}
+
+.render-passport-chip strong {
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.render-passport-label {
+  opacity: .48;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+.render-passport-chip.asset-passport[href]:hover,
+.render-passport-chip.asset-passport[href]:focus-visible {
+  border-color: color-mix(in srgb, var(--primitive-gold-500) 58%, currentColor);
+}
+
+.render-passport-chip.material-metadata_supported,
+.render-passport-chip.material-family_supported {
+  border-color: color-mix(in srgb, var(--primitive-gold-500) 34%, transparent);
+}
+
+.render-passport-chip.material-visual_only {
+  border-style: dashed;
+  opacity: .82;
+}
+
+.render-passport-chip.material-not_applicable {
+  opacity: .58;
+}
+
+.render-passport-chip.evidence-accepted {
+  border-color: color-mix(in srgb, var(--primitive-gold-300) 32%, transparent);
+}
+
+.render-passport-chip.evidence-supporting {
+  border-style: dashed;
+  opacity: .76;
+}
+
+[data-evidence-status="supporting"] figcaption small::after {
+  content: " · study";
+}
+
+@media (max-width: 520px) {
+  .render-passport-strip {
+    gap: .35rem;
+  }
+  .render-passport-chip {
+    padding: .31rem .44rem;
+    font-size: .54rem;
+  }
+}
