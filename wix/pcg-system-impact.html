@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="pcg-system-impact" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="melodia-build" content="20260904p1" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<title>L_FallenMoon — PCG scatter survey</title>
-<meta name="description" content="Procedural generation systems breakdown - density heatmaps, world placement, and hero graph plan/section drawings from a stylized UE5 environment portfolio.">
-<meta property="og:title" content="L_FallenMoon — PCG scatter survey">
-<meta property="og:description" content="Procedural generation systems breakdown for a stylized UE5 environment portfolio.">
+<title>Fallen Moon — Procedural World Systems | Brennan Shepherd</title>
+<meta name="description" content="A visual UE5 PCG case study for Fallen Moon: six procedural systems, 605 live instances, traversal-safe placement, density maps, and the Infinite Nave hero structure.">
+<meta property="og:title" content="Fallen Moon — Procedural World Systems">
+<meta property="og:description" content="Six procedural systems shaped into one readable world, with traversal kept clear and placement verified from live UE5 instances.">
 <meta property="og:type" content="article">
-<link rel="stylesheet" href="melodia-tokens.css">
-<link rel="stylesheet" href="melodia-luxury-type.css">
-<link rel="stylesheet" href="melodia-editorial.css">
-<link rel="stylesheet" href="melodia-fashion-editorial.css">
-<link rel="stylesheet" href="melodia-premium-system.css">
-<link rel="stylesheet" href="melodia-magical-girl.css">
-<link rel="stylesheet" href="melodia-mahou-flourish.css">
+<link rel="stylesheet" href="melodia-tokens.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-luxury-type.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-editorial.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-fashion-editorial.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-premium-system.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-magical-girl.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-mahou-flourish.css?v=20260904p1">
 <style>*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0}img,canvas{max-width:100%}</style>
 </head>
 <body>
@@ -96,19 +97,32 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
 }
 </style>
 
+<div class="melodia-shell fashion-mode" data-mg="soft" data-hero="editorial" data-effects="holo">
+<header class="shell-nav" aria-label="Portfolio navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="world-bible.html">Worlds</a>
+    <a href="hero-renders.html">Renders</a>
+    <a href="shader-breakdowns.html">Shaders</a>
+    <a href="pipeline.html">Pipeline</a>
+  </nav>
+  <a class="nav-cta button-premium" href="world-bible.html">World Bible</a>
+</header>
 <div class="wrap">
   <header>
-    <p class="eyebrow">L_FallenMoon &middot; PCG scatter survey</p>
-    <h1>Six scatters, finally in their own volumes</h1>
-    <p class="lede">Density maps for every PCG graph in the level &mdash; <strong>605 instances</strong> across six
-    volumes. Until this pass, five of the six generated at the world origin regardless of where their
-    volume sat, because <code>coordinate_space</code> defaults to <strong>WORLD</strong>. The map below is what
-    correct placement looks like.</p>
+    <p class="eyebrow">Fallen Moon · Procedural world systems</p>
+    <h1>Six procedural systems, one readable world.</h1>
+    <p class="lede">Fallen Moon uses six PCG graphs as distinct spatial motifs rather than one blanket scatter. This study maps <strong>605 live instances</strong> to show where procedural detail supports composition, where traversal stays deliberately empty, and how a coordinate-space correction moved five systems back into their authored volumes.</p>
+    <div class="button-row" style="margin-top:1.25rem">
+      <a class="button primary button-premium-primary" href="world-bible.html">See the world</a>
+      <a class="button button-premium" href="shader-breakdowns.html">Material systems</a>
+      <a class="button button-premium" href="pipeline.html">Production pipeline</a>
+    </div>
   </header>
 
   <section class="panel">
     <div class="panel-head">
-      <h2>World placement</h2>
+      <h2>Six systems, six territories.</h2>
       <span class="stat">XY plane &middot; 12 000 uu spacing</span>
     </div>
     <canvas class="worldcanvas" id="world" width="2100" height="1150"></canvas>
@@ -117,7 +131,7 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
 
   <section class="panel">
     <div class="panel-head">
-      <h2>Hero &mdash; Infinite Nave</h2>
+      <h2>Infinite Nave — structure around the player.</h2>
       <span class="stat">ZenForestTest &middot; 480 instances</span>
     </div>
     <div class="hero-grid">
@@ -133,19 +147,20 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
   </section>
 
   <section>
-    <h2>Density by graph</h2>
-    <p class="sec-note">Each map is binned over that graph&rsquo;s own footprint, so shape reads clearly
-    regardless of scale. Brighter means more instances per cell.</p>
+    <h2>Procedural signatures by graph.</h2>
+    <p class="sec-note">Each map is normalized to its own footprint so the design intent remains legible across very different scales. Brighter cells indicate greater local density.</p>
     <div class="grid" id="grid"></div>
   </section>
 
   <div class="callout">
-    <b>Mandala sits at Z&nbsp;5755</b> &mdash; roughly 57&nbsp;m above everything else. It is not a density
-    problem, so it does not show in these maps; it surfaced in the Z ranges. Worth a look before any capture.
+    <b>Production note — Mandala elevation.</b> One system currently sits at Z&nbsp;5755, roughly 57&nbsp;m above the rest of the study. The density maps are correct; the Z-range exposes the remaining vertical-placement exception without hiding it.
   </div>
 
-  <footer>Generated from live instance transforms in <code>L_FallenMoon</code>. Counts are level-wide
-  per volume, measured in a separate call after generation settled.</footer>
+  <footer>
+    <span>Measured from settled live instance transforms in <code>L_FallenMoon</code>.</span>
+    <span style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:.5rem"><a href="world-bible.html">World Bible</a><a href="shader-breakdowns.html">Shaders</a><a href="application-hub.html">Architecture Hub</a></span>
+  </footer>
+</div>
 </div>
 
 <script>
@@ -296,6 +311,9 @@ draw();
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
 new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 </script>
-<script src="melodia-mahou-flourish.js"></script>
+<script src="melodia-mahou-flourish.js?v=20260904p1"></script>
+<script src="melodia-site-nav.js?v=20260904p1"></script>
+<script src="melodia-editorial.js?v=20260904p1"></script>
+<script>if (window.MelodiaEditorial) MelodiaEditorial.init({ page: 'pcg-system-impact' });</script>
 </body>
 </html>
