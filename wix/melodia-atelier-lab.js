@@ -135,28 +135,28 @@
       name: 'Sakura Dream',
       tag: 'World 02 · L_SakuraDream',
       lut: '#FFD6E0',
-      heroSrc: '../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png',
+      heroSrc: '../generated/assets/portfolio-scan/sakura-surfaces-grid.png',
       particleType: 'petal',
       color: [245, 180, 195],
-      ambientDesc: 'Golden sunrise, warm lacquer architecture, and swirling cherry blossom petal vortex.'
+      ambientDesc: 'Target atmosphere: golden sunrise, warm lacquer architecture, and cherry-blossom motion. Current source image is a material-family study, not a finished world beauty.'
     },
     'space-cathedral': {
       name: 'Kaleido Nave',
       tag: 'World 03 · L_KaleidoNave',
       lut: '#C9D6FF',
-      heroSrc: '../generated/assets/nightshift/WP_SpaceCathedral_terrain.png',
+      heroSrc: '../generated/assets/ornaments/rose_window_komikaze_front.png',
       particleType: 'prism',
       color: [180, 200, 255],
-      ambientDesc: 'Gothic sci-fi nave with iridescent rose window light prisms and stardust motes.'
+      ambientDesc: 'Target atmosphere: gothic sci-fi nave, rose-window light prisms, and stardust. Current source image is an ornament study, not a finished nave beauty.'
     },
     'fallen-moon': {
       name: 'Fallen Moon',
       tag: 'World 04 · L_FallenMoon',
       lut: '#D8C6FF',
-      heroSrc: '../generated/assets/unreal/level_fallen_moon.png',
+      heroSrc: '../generated/assets/unreal/hero-hero-level-cam-hero-establishing-20260709-182314-1920x1080.png',
       particleType: 'star',
       color: [210, 190, 255],
-      ambientDesc: 'Astral midnight with deep space nebula veil and glowing constellation star trails.'
+      ambientDesc: 'Target atmosphere: astral midnight, nebula veil, and constellation trails. Current source image is supporting terrain/scatter evidence, not a finished world beauty.'
     }
   };
 
