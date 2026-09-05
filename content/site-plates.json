@@ -1,14 +1,18 @@
 {
   "version": 1,
-  "notes": "Named plate slots — edit with Tools/assign_plate.py or by hand. Paths relative to my-site-clean/wix/. Jewelry plate killed (was content-dup of beauty). glam_03 removed (bit-identical to beauty). Melusina back deferred until Cam_Back. Wireframe greys from 2026-07-15.",
+  "notes": "Named plate slots — edit with Tools/assign_plate.py or by hand. Paths relative to my-site-clean/wix/. Jewelry plate killed (was content-dup of beauty). glam_03 removed (bit-identical to beauty). Melusina back deferred until Cam_Back. Wireframe greys from 2026-07-15. 2026-09-05 pixel review: legacy Sakura horizon slots are retained only as placeholders and explicitly rejected as public hero evidence; see content/render-passports.json.",
   "slots": {
     "index.hero": {
       "path": "../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png",
-      "alt": "Sakura Dream — stylized fantasy environment hero render"
+      "alt": "Sakura horizon placeholder — rejected as public environment proof after pixel review",
+      "status": "rejected_public_hero",
+      "evidence_note": "Near-empty blue horizon/plane; does not visibly prove Sakura Dream, shrine route, or petal-light environment."
     },
     "recruiter.hero": {
       "path": "../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png",
-      "alt": "Sakura Dream — stylized fantasy environment hero render"
+      "alt": "Sakura horizon placeholder — rejected as public environment proof after pixel review",
+      "status": "rejected_public_hero",
+      "evidence_note": "Near-empty blue horizon/plane; does not visibly prove Sakura Dream, shrine route, or petal-light environment."
     },
     "hub.melusina": {
       "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
@@ -60,7 +64,9 @@
     },
     "sakura.hero": {
       "path": "../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png",
-      "alt": "Sakura Dream establishing hero"
+      "alt": "Sakura horizon placeholder — rejected as public environment proof after pixel review",
+      "status": "rejected_public_hero",
+      "evidence_note": "Near-empty blue horizon/plane; does not visibly prove Sakura Dream, shrine route, or petal-light environment."
     },
     "kitbash.hero": {
       "path": "../generated/assets/ornaments/vault_ribs_komikaze_beauty_34.png",
@@ -68,7 +74,9 @@
     },
     "hub.sakura": {
       "path": "../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png",
-      "alt": "Sakura Path"
+      "alt": "Sakura horizon placeholder — rejected as public environment proof after pixel review",
+      "status": "rejected_public_hero",
+      "evidence_note": "Near-empty blue horizon/plane; does not visibly prove Sakura Dream, shrine route, or petal-light environment."
     },
     "resume.hero": {
       "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
