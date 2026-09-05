@@ -217,3 +217,44 @@ General recruiter/portfolio metadata no longer defines the work through Infold /
 ### New CI boundary
 
 `public-routes.json` now contains `reviewer_priority_supporting`. Portfolio validation requires those routes to carry the same build marker and shared luxury type / editorial CSS / site nav / editorial JS stack as the canonical visitor routes.
+
+
+## Completed follow-up — technical-art lab tier
+
+The next reviewer-reachable technical pages are now synchronized to build `20260904p1`.
+
+### SDF Material Gallery
+
+- reframed from a dated NightShift capture catalog into a controlled material-family atlas
+- removed "Nikki hero" and recruiter-scan language from visitor-facing copy
+- replaced intake/manifest-heavy navigation with portfolio destinations
+- preserved the static sphere evidence and link to animated material motion studies
+- added the shared site navigation runtime and current build token
+
+### Render Constellation
+
+- reframed from an Unreal intake/dashboard page into a visual production-evidence map
+- removed visible "next capture needs" / rerun-command framing from the reviewer path
+- replaced stale loading/question-mark copy with deliberate editorial language
+- replaced raw JSON navigation with Home / Worlds / Renders / Shaders / Architecture Hub
+- preserved package statistics, PCG evidence, material-family mapping, and render-card hydration
+- added the shared site navigation runtime and current build token
+
+### Real-Time 3D Viewer
+
+- removed "Infinity Nikki-grade" positioning
+- simplified the navigation to the current portfolio hierarchy
+- reframed the page as a real-time material and asset inspection studio
+- preserved orbit, topology, channel-isolation, fabric, shading, and asset controls
+- added shared site-nav/editorial runtime and the current build token
+
+### Melodia Atelier Lab
+
+- removed AI-research and studio-target links from the primary lab navigation
+- replaced the "Nikki Silk & Pearl" public preset label with "Dream Silk & Pearl"
+- removed the closing Papergames / Infold / HoYoverse dossier pitch
+- reframed the footer callout around the broader technical-art portfolio
+- preserved the shader, atmosphere, PCG, resonance, and turntable experiments
+- added the current build token and shared navigation behavior
+
+These four pages are now included in `reviewer_priority_supporting`, so CI will enforce the same build marker and shared type/nav/editorial stack on them going forward.
