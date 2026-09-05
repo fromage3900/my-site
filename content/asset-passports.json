@@ -1,0 +1,108 @@
+{
+  "schema": "melodia-asset-passport-registry/v1",
+  "authored_at": "2026-09-05",
+  "rule": "Never infer production metrics from pixels. Generated passports remain authoritative where they exist; authored passports only fill identity/lineage gaps using intake metadata.",
+  "passports": {
+    "melusina": {
+      "label": "Melusina",
+      "category": "Character / stage lookdev",
+      "authority": "generated_passport",
+      "generated_json": "../generated/passports/melusina_passport.json",
+      "generated_html": "../generated/passports/melusina_passport.html",
+      "evidence_roles": [
+        "beauty lookdev",
+        "concept design",
+        "sculpt/form"
+      ],
+      "caveat": "A given plate may not prove water-hair or final gameplay material bindings."
+    },
+    "rose_window": {
+      "label": "Rose Window 8-Petal",
+      "category": "Prop / ornament",
+      "authority": "generated_passport",
+      "generated_json": "../generated/passports/rose_window_passport.json",
+      "generated_html": "../generated/passports/rose_window_passport.html",
+      "metrics": {
+        "triangles": 15712,
+        "meshes": 1,
+        "materials": 1,
+        "textures": 0
+      },
+      "engine": "Blender EEVEE"
+    },
+    "cross": {
+      "label": "Melusina Vow Cross",
+      "category": "Prop / cross",
+      "authority": "generated_passport",
+      "generated_json": "../generated/passports/cross_passport.json",
+      "generated_html": "../generated/passports/cross_passport.html",
+      "metrics": {
+        "triangles": 1952,
+        "meshes": 1,
+        "materials": 1,
+        "textures": 1
+      },
+      "engine": "Blender EEVEE"
+    },
+    "violin": {
+      "label": "Melodia Violin",
+      "category": "Prop / instrument",
+      "authority": "blender_intake",
+      "source": "generated/blender_portfolio_intake.json",
+      "intake_wave": 4,
+      "engine": "Blender EEVEE",
+      "metrics_status": "not published in current intake",
+      "evidence_views": [
+        "front",
+        "beauty 34",
+        "macro",
+        "three quarter"
+      ]
+    },
+    "lissajous": {
+      "label": "Lissajous Curve Sculpture",
+      "category": "Signature / procedural sculpture",
+      "authority": "blender_intake",
+      "source": "generated/blender_portfolio_intake.json",
+      "intake_wave": 2,
+      "engine": "Blender EEVEE",
+      "metrics_status": "not published in current intake",
+      "evidence_views": [
+        "macro"
+      ],
+      "rejected_views": [
+        "beauty 34",
+        "three quarter"
+      ]
+    },
+    "gazebo1": {
+      "label": "Melusina Gazebo Variant",
+      "category": "Signature / architecture study",
+      "authority": "blender_intake",
+      "source": "generated/blender_portfolio_intake.json",
+      "intake_wave": 3,
+      "engine": "Blender EEVEE",
+      "metrics_status": "not published in current intake",
+      "evidence_views": [
+        "beauty 34",
+        "three quarter"
+      ],
+      "evidence_quality": "lookdev/diagnostic"
+    },
+    "environment_terrain_capture": {
+      "label": "Environment Terrain / Scatter Study",
+      "category": "Environment study",
+      "authority": "render_evidence_only",
+      "metrics_status": "unverified",
+      "caveat": "The current 182314 plate does not visually establish a canonical world identity."
+    },
+    "sakura_material_study": {
+      "label": "Sakura Material Study",
+      "category": "Environment material study",
+      "authority": "unreal_intake",
+      "source": "generated/unreal_portfolio_intake.json",
+      "engine": "Unreal Engine",
+      "metrics_status": "render-level metrics not assigned"
+    }
+  }
+}
