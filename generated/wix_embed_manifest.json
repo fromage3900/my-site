@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T03:56:59.4743003Z",
+  "generated_at": "2026-09-04T00:00:00Z",
   "public_domain": "https://www.fromageart.xyz/",
   "primary_iframe_source": "https://fromage3900.github.io/my-site/wix/application-hub.html",
   "fallback_iframe_source": "https://fromage3900.github.io/my-site/wix/index.html",
@@ -14,11 +14,10 @@
     "Wix keeps the stable application-hub iframe URL; the embedded entry bootstrap routes first contact to wix/index.html"
   ],
   "embed_settings": {
-    "mode": "Embed a site",
-    "width": "100% / stretch full width",
-    "height": "At least 1600px, increase for long-page presentation",
-    "scrolling": "Allow page scroll inside iframe or use a tall embed container",
-    "cache_note": "After the main-branch Pages workflow succeeds, refresh/publish Wix if the iframe cache lags."
+    "desktop": "Managed by the enabled Wix custom embed `Melodia Desktop Portfolio Frame`; full viewport, fixed inset 0, border 0, body scroll locked.",
+    "mobile_tablet": "Existing Wix layout remains active below 1081px.",
+    "inner_bridge": "wix/wix-embed-bridge.js marks iframe mode and reports viewport/document metrics to the parent.",
+    "cache_note": "Canonical GitHub Pages routes use build token 20260904p1."
   },
   "recruiter_routes": {
     "application_hub": "https://fromage3900.github.io/my-site/wix/application-hub.html",
@@ -60,9 +59,18 @@
     "recommended_description": "Portfolio for Brennan Shepherd, an environment designer focused on stylized shaders, Unreal integration, retopology, look development, and editorial fantasy worlds.",
     "wix_home_embed": "https://fromage3900.github.io/my-site/wix/application-hub.html",
     "fallback_home_embed": "https://fromage3900.github.io/my-site/wix/index.html",
-    "note": "Wix keeps the stable iframe URL, while wix-entry-bootstrap.js sends external-shell first contact to the art-first homepage. Wix page settings still own top-level fromageart.xyz metadata.",
+    "note": "Wix owns top-level fromageart.xyz SEO and domain routing. Desktop first contact is rendered by the enabled full-viewport Melodia custom embed; direct GitHub Pages routes retain their own metadata.",
     "embedded_home_target": "https://fromage3900.github.io/my-site/wix/index.html"
   },
   "embedded_entry_target": "https://fromage3900.github.io/my-site/wix/index.html",
-  "embed_entry_behavior": "application-hub.html is the stable Wix iframe URL; when entered from the external Wix shell it bootstraps to the art-first wix/index.html. Direct and in-site Architecture Hub visits remain technical."
+  "embed_entry_behavior": "application-hub.html is the stable Wix iframe URL; when entered from the external Wix shell it bootstraps to the art-first wix/index.html. Direct and in-site Architecture Hub visits remain technical.",
+  "desktop_shell": {
+    "mode": "Wix Custom Embed full-viewport overlay",
+    "custom_embed_id": "4e22ce16-4ded-439b-b1dc-a65c5049708d",
+    "custom_embed_name": "Melodia Desktop Portfolio Frame",
+    "breakpoint": "min-width: 1081px",
+    "source": "https://fromage3900.github.io/my-site/wix/index.html?embed=wix&v=20260904p1",
+    "behavior": "On the Wix home route at desktop widths, BODY_END custom code mounts a fixed 100vw x 100dvh iframe above the manually-sized editor HTML element. Mobile/tablet remain on the normal Wix layout.",
+    "reason": "Eliminates desktop letterboxing, manual embed gutter drift, stale container sizing, and double-scroll behavior without replacing the Wix domain shell."
+  }
 }
