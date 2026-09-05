@@ -103,6 +103,36 @@
       "source": "generated/unreal_portfolio_intake.json",
       "engine": "Unreal Engine",
       "metrics_status": "render-level metrics not assigned"
+    },
+    "hero_level_environment_studies": {
+      "label": "Hero Level Environment Studies",
+      "category": "Environment / Unreal render studies",
+      "authority": "portfolio_render_catalog",
+      "source": "generated/portfolio_render_catalog.json",
+      "metrics_status": "render-level geometry/material metrics not published",
+      "evidence_views": [
+        {
+          "id": "night_bridge_study_190653",
+          "capture": "2026-07-08 19:06",
+          "path": "../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png"
+        },
+        {
+          "id": "crater_terrain_study_055343",
+          "capture": "2026-06-25 05:54",
+          "path": "../generated/assets/unreal/hero-hero-level-20260625-055343-1920x1080.png"
+        },
+        {
+          "id": "violet_scatter_study_181046",
+          "capture": "2026-07-09 18:10",
+          "path": "../generated/assets/unreal/hero-hero-level-cam-hero-materials-20260709-181046-1920x1080.png"
+        },
+        {
+          "id": "dusk_terrain_study_190109",
+          "capture": "2026-06-27 19:01",
+          "path": "../generated/assets/unreal/hero-hero-level-20260627-190109-1920x1080.png"
+        }
+      ],
+      "caveat": "Catalog identifies these as Hero-group environment renders but does not establish a canonical Melodia world name for any individual frame."
     }
   }
 }
