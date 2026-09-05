@@ -1,0 +1,570 @@
+{
+  "schema": "melodia-render-evidence/v1",
+  "reviewed_at": "2026-09-05",
+  "review_method": "Pixel-level review of the published render plates, cross-checked against generated Blender/Unreal intake and generated asset passports.",
+  "status_definitions": {
+    "accepted": "The image visibly proves its stated asset or study role.",
+    "supporting": "Useful evidence, but not sufficient for the stronger world/material claim by itself.",
+    "reject": "Do not use as public proof for the claimed asset/world/material."
+  },
+  "material_assignment_definitions": {
+    "metadata_supported": "The specific render is linked by intake metadata to the stated shader/material family.",
+    "family_supported": "The render is catalogued in the stated material family, but exact per-surface/per-sphere instance mapping is not encoded.",
+    "visual_only": "The visible surface can be described, but an exact technical material assignment is not proven for this file.",
+    "not_applicable": "The plate is concept/form evidence and should not carry a production material passport.",
+    "unverified": "No defensible material assignment can be made from current evidence."
+  },
+  "entries": {
+    "melusina_cam_beauty_20260813": {
+      "path": "../generated/assets/character/melusina_cam_beauty_nikki_2026-08-13.png",
+      "display_name": "Melusina · Cam_Beauty lookdev",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "Melusina character design",
+          "white bodice",
+          "cyan-to-violet gradient sleeves",
+          "layered pink/lavender skirt panels",
+          "music-note paneling",
+          "chain trim",
+          "small wing accents",
+          "luminous/translucent hat accessory",
+          "face markings"
+        ],
+        "does_not_prove": [
+          "full cine water-hair",
+          "gameplay hair implementation",
+          "a single uniform garment material"
+        ]
+      },
+      "asset": {
+        "asset_id": "melusina",
+        "label": "Melusina",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/melusina_passport.html",
+        "passport_json": "../generated/passports/melusina_passport.json",
+        "note": "The production passport belongs to the Melusina asset; this Cam_Beauty plate is a separate lookdev evidence frame."
+      },
+      "material": {
+        "status": "visual_only",
+        "label": "Multi-zone character lookdev",
+        "observed_surfaces": [
+          "skin/face",
+          "white bodice cloth",
+          "gradient cyan-violet sleeves",
+          "pink/lavender layered skirt",
+          "chain/metal trim",
+          "translucent/emissive wing and hat accents",
+          "graphic music-note panel"
+        ],
+        "note": "Do not collapse the character into one blanket material label. Exact per-zone shader bindings for this specific plate are not encoded in the current website intake."
+      }
+    },
+    "terrain_emissive_capture_182314": {
+      "path": "../generated/assets/unreal/hero-hero-level-cam-hero-establishing-20260709-182314-1920x1080.png",
+      "display_name": "Emissive terrain / scatter capture",
+      "evidence": {
+        "status": "supporting",
+        "confidence": "high for visible content; low for world identity",
+        "visually_proves": [
+          "dark violet terrain field",
+          "cyan/emissive scattered forms",
+          "Unreal environment test capture"
+        ],
+        "does_not_prove": [
+          "Sakura shrine route",
+          "cherry blossoms or petal field",
+          "specific world identity from pixels alone"
+        ]
+      },
+      "asset": {
+        "asset_id": null,
+        "label": "Environment terrain/scatter study",
+        "status": "unverified",
+        "note": "The filename is a hero camera capture, but the current site metadata does not establish a defensible world identity from this plate."
+      },
+      "material": {
+        "status": "visual_only",
+        "label": "Violet terrain + cyan emissive accents",
+        "observed_surfaces": [
+          "dark purple terrain",
+          "bright cyan/emissive scatter"
+        ],
+        "note": "Useful as a lighting/scatter study, not a Sakura material passport."
+      }
+    },
+    "violet_terrain_study": {
+      "path": "../generated/assets/unreal/scene-sakuradream-full.png",
+      "display_name": "Violet terrain study",
+      "evidence": {
+        "status": "supporting",
+        "confidence": "high",
+        "visually_proves": [
+          "rolling/mounded terrain form",
+          "violet surface palette",
+          "environment terrain study"
+        ],
+        "does_not_prove": [
+          "full Sakura Dream environment",
+          "shrine architecture",
+          "finished route composition"
+        ]
+      },
+      "asset": {
+        "asset_id": null,
+        "label": "Terrain form study",
+        "status": "unverified",
+        "note": "Retain only as an environment study until a true world beauty capture exists."
+      },
+      "material": {
+        "status": "visual_only",
+        "label": "Violet procedural terrain surface",
+        "observed_surfaces": [
+          "violet terrain",
+          "soft atmospheric gradient"
+        ],
+        "note": "The plate demonstrates surface color/form, not a named production material instance."
+      }
+    },
+    "sakura_surfaces_grid": {
+      "path": "../generated/assets/portfolio-scan/sakura-surfaces-grid.png",
+      "display_name": "Sakura surface quartet",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "four material preview spheres",
+          "contrasting dark wood/earth, warm red, mossy green and dark surface reads",
+          "Sakura material-family study"
+        ],
+        "does_not_prove": [
+          "final in-world shading",
+          "exact sphere-to-instance mapping"
+        ]
+      },
+      "asset": {
+        "asset_id": null,
+        "label": "Sakura material study",
+        "status": "family_supported",
+        "note": "Catalogued by Unreal intake in the sakura_mood group."
+      },
+      "material": {
+        "status": "family_supported",
+        "label": "Sakura surface family previews",
+        "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+        "related_instances": [
+          "MI_Show_CherryBlossom",
+          "MI_Show_ForestFoliage"
+        ],
+        "note": "The website intake identifies the plate as Sakura surfaces, but does not encode which sphere is which instance. Do not make per-sphere instance claims."
+      }
+    },
+    "sakura_stonepath_preview": {
+      "path": "../generated/assets/portfolio-scan/sakura-stonepath-fixed.png",
+      "display_name": "Sakura stone-path surface preview",
+      "evidence": {
+        "status": "supporting",
+        "confidence": "high",
+        "visually_proves": [
+          "stone-like material preview on a sphere",
+          "surface scale/roughness read"
+        ],
+        "does_not_prove": [
+          "finished path asset",
+          "in-world Sakura route"
+        ]
+      },
+      "asset": {
+        "asset_id": null,
+        "label": "Stone-path material preview",
+        "status": "family_supported",
+        "note": "Catalogued by Unreal intake in the sakura_mood group."
+      },
+      "material": {
+        "status": "family_supported",
+        "label": "Sakura stone-path surface family",
+        "note": "Exact material instance is not encoded in the current website intake; use as surface-study evidence only."
+      }
+    },
+    "rose_window_front": {
+      "path": "../generated/assets/ornaments/rose_window_komikaze_front.png",
+      "display_name": "Rose Window 8-Petal · front",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "radial eight-petal/loop geometry",
+          "circular rose-window silhouette",
+          "front-on ornamental rhythm",
+          "three-tone stylized surface"
+        ],
+        "does_not_prove": [
+          "void-iridescent variant"
+        ]
+      },
+      "asset": {
+        "asset_id": "rose_window",
+        "label": "Rose Window 8-Petal",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/rose_window_passport.html",
+        "passport_json": "../generated/passports/rose_window_passport.json"
+      },
+      "material": {
+        "status": "metadata_supported",
+        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "shader": "Voronoi Shader (3 Tones)",
+        "engine": "Blender EEVEE",
+        "note": "This is the defensible material assignment for the front plate."
+      }
+    },
+    "gazebo_variant_beauty": {
+      "path": "../generated/assets/signature/gazebo1_komikaze_beauty_34.png",
+      "display_name": "Melusina Gazebo Variant · beauty ¾",
+      "evidence": {
+        "status": "supporting",
+        "confidence": "medium",
+        "visually_proves": [
+          "cylindrical colonnade/gazebo form",
+          "circular platform",
+          "stylized stippled three-tone preview"
+        ],
+        "does_not_prove": [
+          "polished environment architecture beauty",
+          "final production material quality"
+        ]
+      },
+      "asset": {
+        "asset_id": "gazebo1",
+        "label": "Melusina Gazebo Variant",
+        "status": "metadata_supported",
+        "note": "Intake identifies this as gazebo1, wave 3."
+      },
+      "material": {
+        "status": "metadata_supported",
+        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "shader": "Voronoi Shader (3 Tones)",
+        "engine": "Blender EEVEE",
+        "note": "Treat as lookdev/diagnostic material evidence rather than a polished architecture hero."
+      }
+    },
+    "violin_front": {
+      "path": "../generated/assets/props/violin_komikaze_front.png",
+      "display_name": "Melodia Violin · front",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "full violin silhouette",
+          "long neck and strings",
+          "ornamental lower-body scroll/filigree",
+          "pale rose/ivory stylized surface"
+        ],
+        "does_not_prove": [
+          "acoustic functionality",
+          "Unreal runtime material"
+        ]
+      },
+      "asset": {
+        "asset_id": "violin",
+        "label": "Melodia Violin",
+        "status": "metadata_supported",
+        "note": "Intake identifies the front plate as a wave-4 prop render."
+      },
+      "material": {
+        "status": "metadata_supported",
+        "label": "Komikaze · The Wall (Custom Texture)",
+        "shader": "The Wall (Custom Texture)",
+        "engine": "Blender EEVEE",
+        "observed_surfaces": [
+          "pale rose/ivory matte-to-satin body",
+          "ornamental relief/scrollwork"
+        ]
+      }
+    },
+    "vow_cross_macro_filigree": {
+      "path": "../generated/assets/cross/cross_hero_macro_filigree.png",
+      "display_name": "Melusina Vow Cross · filigree macro",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high for surface; medium for exact render lineage",
+        "visually_proves": [
+          "raised filigree relief",
+          "pale pink/ivory pearly surface",
+          "rough/cracked edge treatment",
+          "macro surface variation"
+        ],
+        "does_not_prove": [
+          "full cross silhouette",
+          "exact shader binding for this hero-macro file"
+        ]
+      },
+      "asset": {
+        "asset_id": "cross",
+        "label": "Melusina Vow Cross",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/cross_passport.html",
+        "passport_json": "../generated/passports/cross_passport.json",
+        "note": "Geometry/asset identity is consistent with the Vow Cross family."
+      },
+      "material": {
+        "status": "visual_only",
+        "label": "Pale pearlescent relief / filigree",
+        "related_shader": "Komikaze · The Wall (Custom Texture)",
+        "note": "The Komikaze cross series is metadata-linked to The Wall; this separate hero-macro filename is not explicitly wired to that shader in the current intake, so the exact assignment remains conservative."
+      }
+    },
+    "vow_cross_beauty": {
+      "path": "../generated/assets/cross/cross_hero_beauty_34.png",
+      "display_name": "Melusina Vow Cross · hero beauty",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "full stylized cross form",
+          "heart/scroll relief motifs",
+          "pale pink/ivory pearly surface",
+          "rough/chipped edge accents"
+        ],
+        "does_not_prove": [
+          "exact shader binding for this hero-beauty file"
+        ]
+      },
+      "asset": {
+        "asset_id": "cross",
+        "label": "Melusina Vow Cross",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/cross_passport.html",
+        "passport_json": "../generated/passports/cross_passport.json"
+      },
+      "material": {
+        "status": "visual_only",
+        "label": "Pale pearlescent relief",
+        "related_shader": "Komikaze · The Wall (Custom Texture)",
+        "note": "Use the generated cross passport for asset metrics; treat the surface description on this hero plate as visual evidence unless lineage is added to intake."
+      }
+    },
+    "lissajous_macro": {
+      "path": "../generated/assets/signature/lissajous_komikaze_macro.png",
+      "display_name": "Lissajous Curve Sculpture · macro",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "looping Lissajous curve/tube geometry",
+          "clear sculptural silhouette",
+          "neutral stylized preview surface"
+        ],
+        "does_not_prove": [
+          "complex material variation"
+        ]
+      },
+      "asset": {
+        "asset_id": "lissajous",
+        "label": "Lissajous Curve Sculpture",
+        "status": "metadata_supported",
+        "note": "Intake identifies this as wave-2 signature geometry."
+      },
+      "material": {
+        "status": "metadata_supported",
+        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "shader": "Voronoi Shader (3 Tones)",
+        "engine": "Blender EEVEE",
+        "note": "The macro is strongest as geometry/form evidence; material proof is secondary."
+      }
+    },
+    "melusina_design_sketch": {
+      "path": "../generated/assets/character/melusina_design_sketch.png",
+      "display_name": "Melusina · design sketch",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "front-view character concept",
+          "hat/star motif",
+          "long blue/cyan hair silhouette",
+          "white dress silhouette",
+          "bow/chest glyph",
+          "layered skirt and boots"
+        ],
+        "does_not_prove": [
+          "final topology",
+          "production materials"
+        ]
+      },
+      "asset": {
+        "asset_id": "melusina",
+        "label": "Melusina · concept/design evidence",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/melusina_passport.html",
+        "passport_json": "../generated/passports/melusina_passport.json"
+      },
+      "material": {
+        "status": "not_applicable",
+        "label": "Concept drawing · no production material passport",
+        "note": "Do not infer final material assignments from concept colors."
+      }
+    },
+    "melusina_sculpt_profile": {
+      "path": "../generated/assets/sculpt/sculpt_melusina_profile.png",
+      "display_name": "Melusina · sculpt profile study",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "head/upper-torso sculpt form",
+          "pointed ear",
+          "stylized facial features",
+          "high collar",
+          "gathered sleeve folds",
+          "ornamental chest applique"
+        ],
+        "does_not_prove": [
+          "skin shader",
+          "cloth shader",
+          "final production materials"
+        ]
+      },
+      "asset": {
+        "asset_id": "melusina",
+        "label": "Melusina · sculpt/form evidence",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/melusina_passport.html",
+        "passport_json": "../generated/passports/melusina_passport.json"
+      },
+      "material": {
+        "status": "not_applicable",
+        "label": "Neutral grey clay / MatCap preview",
+        "note": "Preview material only. This plate is sculpt/form evidence, not a production material passport."
+      }
+    },
+    "rejected_space_cathedral_terrain": {
+      "path": "../generated/assets/nightshift/WP_SpaceCathedral_terrain.png",
+      "display_name": "Rejected public Space Cathedral proof",
+      "evidence": {
+        "status": "reject",
+        "confidence": "high",
+        "visually_proves": [
+          "grey foreground preview primitive",
+          "blurred green outdoor/HDRI test background"
+        ],
+        "does_not_prove": [
+          "Space Cathedral",
+          "Kaleido Nave",
+          "cathedral architecture",
+          "cosmic material language"
+        ]
+      },
+      "asset": {
+        "asset_id": null,
+        "label": "Preview/test capture",
+        "status": "unverified"
+      },
+      "material": {
+        "status": "unverified",
+        "label": "Do not assign a public material passport"
+      }
+    },
+    "rejected_fallen_moon_level": {
+      "path": "../generated/assets/unreal/level_fallen_moon.png",
+      "display_name": "Rejected public Fallen Moon proof",
+      "evidence": {
+        "status": "reject",
+        "confidence": "high",
+        "visually_proves": [
+          "grey foreground preview primitive",
+          "blurred green outdoor/HDRI test background"
+        ],
+        "does_not_prove": [
+          "Fallen Moon",
+          "cosmic crater",
+          "PCG ecosystem",
+          "moonlit aurora"
+        ]
+      },
+      "asset": {
+        "asset_id": null,
+        "label": "Preview/test capture",
+        "status": "unverified"
+      },
+      "material": {
+        "status": "unverified",
+        "label": "Do not assign a public material passport"
+      }
+    },
+    "rejected_rose_window_void_iri": {
+      "path": "../generated/assets/ornaments/rose_window_void_iri_beauty_34.png",
+      "display_name": "Rejected Rose Window void-iri proof",
+      "evidence": {
+        "status": "reject",
+        "confidence": "high",
+        "visually_proves": [
+          "flat blue frame only"
+        ],
+        "does_not_prove": [
+          "rose-window geometry",
+          "iridescent material"
+        ]
+      },
+      "asset": {
+        "asset_id": "rose_window",
+        "label": "Rose Window 8-Petal",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/rose_window_passport.html"
+      },
+      "material": {
+        "status": "unverified",
+        "label": "Void-iridescent claim not visible in this capture"
+      }
+    },
+    "rejected_lissajous_beauty": {
+      "path": "../generated/assets/signature/lissajous_komikaze_beauty_34.png",
+      "display_name": "Rejected Lissajous beauty proof",
+      "evidence": {
+        "status": "reject",
+        "confidence": "high",
+        "visually_proves": [
+          "empty/pale studio frame"
+        ],
+        "does_not_prove": [
+          "Lissajous geometry",
+          "material"
+        ]
+      },
+      "asset": {
+        "asset_id": "lissajous",
+        "label": "Lissajous Curve Sculpture",
+        "status": "metadata_supported"
+      },
+      "material": {
+        "status": "unverified",
+        "label": "No visible material evidence"
+      }
+    },
+    "rejected_sakura_hero_horizon": {
+      "path": "../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png",
+      "display_name": "Rejected Sakura hero proof",
+      "evidence": {
+        "status": "reject",
+        "confidence": "high",
+        "visually_proves": [
+          "near-empty blue horizon/plane"
+        ],
+        "does_not_prove": [
+          "Sakura Dream environment",
+          "shrine route",
+          "petal light"
+        ]
+      },
+      "asset": {
+        "asset_id": null,
+        "label": "Placeholder horizon capture",
+        "status": "unverified"
+      },
+      "material": {
+        "status": "unverified",
+        "label": "No defensible Sakura material assignment"
+      }
+    }
+  }
+}
