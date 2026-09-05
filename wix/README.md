@@ -49,7 +49,7 @@ The custom domain is a Wix Studio shell around the GitHub Pages portfolio.
 As of 2026-09-04, the published Wix site has an enabled BODY_END custom embed:
 
 - **Name:** `Melodia Desktop Portfolio Frame`
-- **ID:** `4e22ce16-4ded-439b-b1dc-a65c5049708d`
+- **ID:** `f9bb4701-21e2-41b2-a88b-9016bf5abb51`
 - **Breakpoint:** `min-width: 1081px`
 - **Source:** `index.html?embed=wix&v=20260904p1`
 
