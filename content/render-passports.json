@@ -589,6 +589,137 @@
         "status": "unverified",
         "label": "No defensible Sakura material assignment"
       }
+    },
+    "night_bridge_study_190653": {
+      "path": "../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png",
+      "display_name": "Night Bridge Study",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "finished environment composition with foreground/midground/depth",
+          "large tree silhouette",
+          "arched bridge/rail structure",
+          "torii-like architectural edge",
+          "cyan-magenta terrain treatment",
+          "green/red emissive architectural accents",
+          "warm orange linear accents",
+          "starry nocturnal sky"
+        ],
+        "does_not_prove": [
+          "canonical Sakura/Kaleido/Fallen Moon world identity",
+          "exact Unreal material instance names"
+        ]
+      },
+      "asset": {
+        "asset_id": "hero_level_environment_studies",
+        "passport_id": "hero_level_environment_studies",
+        "label": "Hero Level Environment Studies",
+        "status": "metadata_supported",
+        "note": "Portfolio catalog identifies this as a Hero-group render captured 2026-07-08; no canonical world name is encoded."
+      },
+      "material": {
+        "passport_id": "night_bridge_visual",
+        "status": "visual_only",
+        "label": "Night Bridge · Neon Stylized Environment",
+        "note": "Pixel-reviewed appearance only; exact Unreal shader bindings are not encoded for this plate."
+      }
+    },
+    "crater_terrain_study_055343": {
+      "path": "../generated/assets/unreal/hero-hero-level-20260625-055343-1920x1080.png",
+      "display_name": "Crater Terrain Study",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "broad sculpted terrain bowl",
+          "rocky raised rim",
+          "smoother central basin",
+          "daylight directional-light read",
+          "large-scale terrain form"
+        ],
+        "does_not_prove": [
+          "canonical Fallen Moon identity",
+          "final environment dressing",
+          "exact terrain material instance"
+        ]
+      },
+      "asset": {
+        "asset_id": "hero_level_environment_studies",
+        "passport_id": "hero_level_environment_studies",
+        "label": "Hero Level Environment Studies",
+        "status": "metadata_supported",
+        "note": "Portfolio catalog identifies this as a Hero-group environment render captured 2026-06-25."
+      },
+      "material": {
+        "passport_id": "crater_terrain_visual",
+        "status": "visual_only",
+        "label": "Crater Terrain · Neutral Sculpted Surface",
+        "note": "Terrain-form and lighting evidence; exact production material binding is unverified."
+      }
+    },
+    "violet_scatter_study_181046": {
+      "path": "../generated/assets/unreal/hero-hero-level-cam-hero-materials-20260709-181046-1920x1080.png",
+      "display_name": "Violet Scatter Study",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "dark terrain with repeated surface patterning",
+          "small scattered forms across the terrain",
+          "pink-violet atmospheric gradient",
+          "strong silhouette/readability experiment"
+        ],
+        "does_not_prove": [
+          "canonical world identity",
+          "exact material instance names"
+        ]
+      },
+      "asset": {
+        "asset_id": "hero_level_environment_studies",
+        "passport_id": "hero_level_environment_studies",
+        "label": "Hero Level Environment Studies",
+        "status": "metadata_supported",
+        "note": "Portfolio catalog identifies this as a Hero Materials camera capture from 2026-07-09."
+      },
+      "material": {
+        "passport_id": "violet_scatter_visual",
+        "status": "visual_only",
+        "label": "Violet Scatter · Stylized Terrain Study",
+        "note": "Visual look study only; exact Unreal shader bindings are unverified."
+      }
+    },
+    "dusk_terrain_study_190109": {
+      "path": "../generated/assets/unreal/hero-hero-level-20260627-190109-1920x1080.png",
+      "display_name": "Dusk Terrain Study",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "deep orange cloudscape",
+          "near-black terrain silhouette",
+          "low-horizon illumination",
+          "atmosphere-first composition"
+        ],
+        "does_not_prove": [
+          "canonical world identity",
+          "finished gameplay route",
+          "exact surface material binding"
+        ]
+      },
+      "asset": {
+        "asset_id": "hero_level_environment_studies",
+        "passport_id": "hero_level_environment_studies",
+        "label": "Hero Level Environment Studies",
+        "status": "metadata_supported",
+        "note": "Portfolio catalog identifies this as a Hero-group environment render captured 2026-06-27."
+      },
+      "material": {
+        "passport_id": "dusk_terrain_visual",
+        "status": "visual_only",
+        "label": "Dusk Terrain · Atmospheric Study",
+        "note": "Atmosphere/composition evidence only."
+      }
     }
   },
   "registries": {
