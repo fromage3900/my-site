@@ -15,8 +15,9 @@
 <link rel="stylesheet" href="melodia-game-ui.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-magical-girl.css?v=20260904p1">
 <style>
-  .viewer-3d-app { display: grid; grid-template-columns: 280px 1fr 320px; gap: 16px; height: calc(100vh - 120px); margin: 16px 24px 24px; }
-  @media (max-width: 1100px) { .viewer-3d-app { grid-template-columns: 1fr; height: auto; } }
+  .viewer-3d-main { padding-top: 92px; }
+  .viewer-3d-app { display: grid; grid-template-columns: 280px 1fr 320px; gap: 16px; height: calc(100dvh - 160px); margin: 16px 24px 24px; }
+  @media (max-width: 1100px) { .viewer-3d-main { padding-top: 80px; } .viewer-3d-app { grid-template-columns: 1fr; height: auto; } }
   .viewer-panel { background: rgba(16, 20, 42, 0.85); border: 1px solid rgba(201, 168, 106, 0.25); border-radius: 12px; padding: 20px; backdrop-filter: blur(16px); display: flex; flex-direction: column; gap: 14px; overflow-y: auto; }
   .viewer-viewport-box { position: relative; background: radial-gradient(circle at 50% 40%, #1e172e 0%, #080c1d 100%); border: 1px solid rgba(201, 168, 106, 0.35); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 12px 40px rgba(0,0,0,0.6); }
   .viewer-3d-canvas-container { flex: 1; width: 100%; height: 100%; position: relative; cursor: grab; }
@@ -49,7 +50,7 @@
     </nav>
     <a class="nav-cta button-premium" href="curated-art.html">Selected Art</a>
   </header>
-  <main id="main" style="padding-top: 10px;">
+  <main id="main" class="viewer-3d-main">
     <div style="padding: 0 24px;">
       <h1 class="atelier-lab-title" style="font-size: 1.8rem; margin: 0;">Real-Time 3D Material &amp; Asset Studio</h1>
       <p style="color: #a4adc9; font-size: 0.95rem; margin: 4px 0 12px;">An interactive WebGL viewport for polygonal assets, PBR fabric studies, Substrate Toon response, orbit inspection, topology viewing, and individual material-channel reads.</p>
@@ -78,7 +79,7 @@
       </aside>
       <section id="viewer-viewport" class="viewer-viewport-box" aria-label="3D WebGL Viewport">
         <div class="viewer-hud-overlay">
-          <div class="viewer-hud-pill">✦ Real-Time WebGL · Substrate PBR Engine</div>
+          <div class="viewer-hud-pill">✦ Real-Time WebGL · Material Inspector</div>
           <div class="viewer-hud-pill" id="viewer-rot-status">Auto-Rotate: ON</div>
         </div>
         <div id="webgl-viewport-container" class="viewer-3d-canvas-container"></div>
@@ -173,6 +174,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
+<script src="melodia-site-nav.js?v=20260904p1"></script>
+<script src="melodia-editorial.js?v=20260904p1"></script>
+<script>if (window.MelodiaEditorial) MelodiaEditorial.init({ page: 'realtime-3d-viewer' });</script>
 <script src="melodia-site-nav.js?v=20260904p1"></script>
 <script src="melodia-editorial.js?v=20260904p1"></script>
 <script>if (window.MelodiaEditorial) MelodiaEditorial.init({ page: 'realtime-3d-viewer' });</script>
