@@ -25,6 +25,8 @@
     "agent-dashboard-t3d.html",
     "metrics_dashboard.html",
     "loop_monitor.html",
+    "live_dashboard.html",
+    "t3d-catalog.html",
     "production-roadmap.html"
   ],
   "component_examples": [
@@ -34,6 +36,46 @@
     "melodia-breakdown-card.html",
     "melodia-gallery-grid.html",
     "melodia-section-header.html",
-    "melodia-smooth-scroll.html"
+    "melodia-smooth-scroll.html",
+    "melodia-navigation-constellation.html",
+    "melodia-rhythm-hero.html"
+  ],
+  "retired_redirects": [
+    "capture-brief.html",
+    "asset-scouting.html",
+    "social-kit.html"
+  ],
+  "public_supporting": [
+    "art-test-readiness.html",
+    "baroque-grotto.html",
+    "commissions.html",
+    "credits.html",
+    "design-specs.html",
+    "geometry-nodes.html",
+    "hiring-dossier.html",
+    "material-loop-gallery.html",
+    "melodia-atelier-lab.html",
+    "melodia-gameplay-loop.html",
+    "melodia-melusina.html",
+    "melodia-stage-character.html",
+    "ornament-kitbash.html",
+    "pcg-system-impact.html",
+    "realtime-3d-viewer.html",
+    "recruiter-one-sheet.html",
+    "render-constellation.html",
+    "sakura-case-study.html",
+    "sdf-material-gallery.html",
+    "space-cathedral.html",
+    "surreal-architecture.html",
+    "touchdesigner-architecture.html",
+    "universal-material-impact.html"
+  ],
+  "targeted_evidence": [
+    "melusina-model-tooling.html",
+    "nous-research-packet.html",
+    "nvidia-recruiter-sendoff.html"
+  ],
+  "experience_labs": [
+    "mahou-particle-garden.html"
   ]
 }
