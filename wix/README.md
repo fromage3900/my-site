@@ -42,9 +42,27 @@ surfaces rather than separate portfolio destinations.
 
 ## Wix
 
-The custom domain is a Wix shell embedding the GitHub Pages site. The stable Wix iframe
-URL remains `application-hub.html`, which bootstraps external iframe first-contact to
-`index.html?embed=wix`.
+The custom domain is a Wix Studio shell around the GitHub Pages portfolio.
 
-`wix-embed-bridge.js` marks iframe mode and reports embed measurements to the parent.
-The outer Wix HTML element still must be stretched/sized correctly in the Wix editor.
+### Desktop
+
+As of 2026-09-04, the published Wix site has an enabled BODY_END custom embed:
+
+- **Name:** `Melodia Desktop Portfolio Frame`
+- **ID:** `4e22ce16-4ded-439b-b1dc-a65c5049708d`
+- **Breakpoint:** `min-width: 1081px`
+- **Source:** `index.html?embed=wix&v=20260904p1`
+
+On the Wix home route at desktop widths, this mounts the portfolio as a fixed,
+borderless `100vw × 100dvh` iframe and locks the underlying Wix page scroll. This
+bypasses the manually sized editor HTML element that previously caused letterboxing,
+gutter drift, and awkward desktop framing.
+
+### Mobile / tablet
+
+Below 1081px, the custom desktop overlay unmounts and the existing Wix layout remains
+active.
+
+`wix-embed-bridge.js` marks iframe mode and reports document/viewport measurements to
+the parent. The older `application-hub.html` bootstrap remains for compatibility, but
+the current desktop shell enters the art-first `index.html` directly.
