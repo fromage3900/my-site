@@ -3,16 +3,17 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="melodia-build" content="20260904p1" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>Real-Time 3D Asset Studio | Brennan Shepherd</title>
-<meta name="description" content="Hardware-accelerated WebGL 3D asset viewer and PBR fabric lookbook for Unreal Engine 5.8 Substrate Toon assets by Brennan Shepherd." />
-<link rel="stylesheet" href="melodia-tokens.css">
-<link rel="stylesheet" href="melodia-luxury-type.css">
-<link rel="stylesheet" href="melodia-editorial.css">
-<link rel="stylesheet" href="melodia-game-ui.css">
-<link rel="stylesheet" href="melodia-magical-girl.css">
+<meta name="description" content="Interactive WebGL asset and material viewer for stylized 3D meshes, PBR fabric studies, Substrate Toon response, topology inspection, and channel isolation." />
+<link rel="stylesheet" href="melodia-tokens.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-luxury-type.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-editorial.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-game-ui.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-magical-girl.css?v=20260904p1">
 <style>
   .viewer-3d-app { display: grid; grid-template-columns: 280px 1fr 320px; gap: 16px; height: calc(100vh - 120px); margin: 16px 24px 24px; }
   @media (max-width: 1100px) { .viewer-3d-app { grid-template-columns: 1fr; height: auto; } }
@@ -37,23 +38,21 @@
 <body>
 <a class="skip-link" href="#viewer-viewport">Skip to 3D Viewport</a>
 <div class="melodia-shell fashion-mode" data-mg="full" data-hero="cosmic" data-visual="lookbook">
-  <header class="shell-nav constellation-nav" aria-label="Melodia navigation">
-    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
+  <header class="shell-nav constellation-nav" aria-label="Portfolio navigation">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
     <nav class="nav-links" aria-label="Sections">
-      <a href="index.html">Atelier</a>
-      <a href="realtime-3d-viewer.html" class="active">Realtime 3D Studio</a>
-      <a href="melodia-atelier-lab.html">Shader Lab</a>
-      <a href="application-hub.html">4 Worlds</a>
+      <a href="index.html">Home</a>
+      <a href="curated-art.html">Art</a>
+      <a href="world-bible.html">Worlds</a>
+      <a href="melodia-atelier-lab.html">Atelier Lab</a>
       <a href="shader-breakdowns.html">Shaders</a>
-      <a href="recruiter-one-sheet.html">Dossier</a>
-      <a href="resume.html">Resume</a>
     </nav>
-    <a class="nav-cta button-premium" href="recruiter-one-sheet.html">Recruiter One-Sheet</a>
+    <a class="nav-cta button-premium" href="curated-art.html">Selected Art</a>
   </header>
   <main id="main" style="padding-top: 10px;">
     <div style="padding: 0 24px;">
-      <h1 class="atelier-lab-title" style="font-size: 1.8rem; margin: 0;">Real-Time 3D WebGL Asset &amp; Fabric Studio</h1>
-      <p style="color: #a4adc9; font-size: 0.95rem; margin: 4px 0 12px;">Hardware-accelerated 3D WebGL viewport running real polygonal meshes, Infinity Nikki-grade PBR fabric materials, and Substrate Toon shaders with full orbit controls and channel isolation.</p>
+      <h1 class="atelier-lab-title" style="font-size: 1.8rem; margin: 0;">Real-Time 3D Material &amp; Asset Studio</h1>
+      <p style="color: #a4adc9; font-size: 0.95rem; margin: 4px 0 12px;">An interactive WebGL viewport for polygonal assets, PBR fabric studies, Substrate Toon response, orbit inspection, topology viewing, and individual material-channel reads.</p>
     </div>
     <div class="viewer-3d-app">
       <aside class="viewer-panel" aria-label="3D Asset Catalog">
@@ -117,7 +116,7 @@
     </div>
   </main>
 </div>
-<script src="melodia-3d-viewport.js"></script>
+<script src="melodia-3d-viewport.js?v=20260904p1"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var urlParams = new URLSearchParams(window.location.search);
@@ -174,5 +173,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
+<script src="melodia-site-nav.js?v=20260904p1"></script>
+<script src="melodia-editorial.js?v=20260904p1"></script>
+<script>if (window.MelodiaEditorial) MelodiaEditorial.init({ page: 'realtime-3d-viewer' });</script>
 </body>
 </html>
