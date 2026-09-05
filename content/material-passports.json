@@ -1,0 +1,79 @@
+{
+  "schema": "melodia-material-passport-registry/v1",
+  "authored_at": "2026-09-05",
+  "rule": "A material passport describes a technical shader/material assignment only when metadata supports it. Visual-only entries describe appearance without pretending to know the shader binding.",
+  "passports": {
+    "komikaze_wall_custom_texture": {
+      "label": "Komikaze · The Wall (Custom Texture)",
+      "assignment_level": "metadata_supported",
+      "engine": "Blender EEVEE",
+      "source": "generated/blender_portfolio_intake.json",
+      "assigned_asset_families": [
+        "cross",
+        "violin"
+      ],
+      "notes": "Exact assignment is supported for the Komikaze cross/violin intake series. Separate hero-prefixed cross renders require conservative plate-level lineage."
+    },
+    "komikaze_voronoi_3tone": {
+      "label": "Komikaze · Voronoi Shader (3 Tones)",
+      "assignment_level": "metadata_supported",
+      "engine": "Blender EEVEE",
+      "source": "generated/blender_portfolio_intake.json",
+      "assigned_asset_families": [
+        "rose_window",
+        "lissajous",
+        "gazebo1"
+      ]
+    },
+    "sakura_surface_family": {
+      "label": "Sakura Surface Family",
+      "assignment_level": "family_supported",
+      "engine": "Unreal Engine",
+      "source": [
+        "generated/unreal_portfolio_intake.json",
+        "generated/materials_config.json"
+      ],
+      "parent_master": "/Game/EnvSandbox/Materials/Masters/M_Master_Toon_Universal.M_Master_Toon_Universal",
+      "related_instances": [
+        "MI_Show_CherryBlossom",
+        "MI_Show_ForestFoliage"
+      ],
+      "caveat": "Current website intake does not encode which sphere in sakura-surfaces-grid corresponds to which exact material instance."
+    },
+    "melusina_multizone_visual": {
+      "label": "Melusina Multi-Zone Character Lookdev",
+      "assignment_level": "visual_only",
+      "observed_zones": [
+        "skin/face",
+        "white bodice",
+        "cyan-violet sleeves",
+        "pink/lavender layered skirt",
+        "chain trim",
+        "translucent/emissive wing and hat accents",
+        "music-note graphic panel"
+      ],
+      "caveat": "Do not treat the entire outfit as one material; exact binding for the reviewed Cam_Beauty file is not encoded."
+    },
+    "violet_terrain_visual": {
+      "label": "Violet Terrain + Emissive Accent Study",
+      "assignment_level": "visual_only",
+      "observed_zones": [
+        "violet/dark terrain",
+        "cyan emissive scatter"
+      ],
+      "caveat": "No canonical world or exact material instance is assigned from pixels alone."
+    },
+    "neutral_clay_preview": {
+      "label": "Neutral Grey Clay / MatCap Preview",
+      "assignment_level": "preview_only",
+      "production_material": false,
+      "purpose": "Sculpt/form readability"
+    },
+    "concept_color_reference": {
+      "label": "Concept Colour Reference",
+      "assignment_level": "not_applicable",
+      "production_material": false,
+      "purpose": "Design intent only; never a production material binding."
+    }
+  }
+}
