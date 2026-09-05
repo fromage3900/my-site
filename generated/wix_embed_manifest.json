@@ -66,7 +66,7 @@
   "embed_entry_behavior": "application-hub.html is the stable Wix iframe URL; when entered from the external Wix shell it bootstraps to the art-first wix/index.html. Direct and in-site Architecture Hub visits remain technical.",
   "desktop_shell": {
     "mode": "Wix Custom Embed full-viewport overlay",
-    "custom_embed_id": "4e22ce16-4ded-439b-b1dc-a65c5049708d",
+    "custom_embed_id": "f9bb4701-21e2-41b2-a88b-9016bf5abb51",
     "custom_embed_name": "Melodia Desktop Portfolio Frame",
     "breakpoint": "min-width: 1081px",
     "source": "https://fromage3900.github.io/my-site/wix/index.html?embed=wix&v=20260904p1",
