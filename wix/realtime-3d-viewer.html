@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<title>Real-Time 3D Asset Studio | Brennan Shepherd</title>
-<meta name="description" content="Interactive WebGL asset and material viewer for stylized 3D meshes, PBR fabric studies, Substrate Toon response, topology inspection, and channel isolation." />
+<title>Interactive 3D Asset Studio | Brennan Shepherd</title>
+<meta name="description" content="Interactive WebGL study for inspecting stylized assets, fabric materials, topology, and individual shading channels in the browser." />
 <link rel="stylesheet" href="melodia-tokens.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-luxury-type.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-editorial.css?v=20260904p1">
@@ -52,8 +52,8 @@
   </header>
   <main id="main" class="viewer-3d-main">
     <div style="padding: 0 24px;">
-      <h1 class="atelier-lab-title" style="font-size: 1.8rem; margin: 0;">Real-Time 3D Material &amp; Asset Studio</h1>
-      <p style="color: #a4adc9; font-size: 0.95rem; margin: 4px 0 12px;">An interactive WebGL viewport for polygonal assets, PBR fabric studies, Substrate Toon response, orbit inspection, topology viewing, and individual material-channel reads.</p>
+      <h1 class="atelier-lab-title" style="font-size: 1.8rem; margin: 0;">Interactive 3D Asset Studio</h1>
+      <p style="color: #a4adc9; font-size: 0.95rem; margin: 4px 0 12px;">A browser-side WebGL study for orbiting stylized assets, comparing fabric materials, inspecting topology, and isolating individual shading channels.</p>
     </div>
     <div class="viewer-3d-app">
       <aside class="viewer-panel" aria-label="3D Asset Catalog">
@@ -79,7 +79,7 @@
       </aside>
       <section id="viewer-viewport" class="viewer-viewport-box" aria-label="3D WebGL Viewport">
         <div class="viewer-hud-overlay">
-          <div class="viewer-hud-pill">✦ Real-Time WebGL · Material Inspector</div>
+          <div class="viewer-hud-pill">✦ WebGL asset study · material inspector</div>
           <div class="viewer-hud-pill" id="viewer-rot-status">Auto-Rotate: ON</div>
         </div>
         <div id="webgl-viewport-container" class="viewer-3d-canvas-container"></div>
@@ -87,12 +87,12 @@
           <div class="telemetry-item"><span>Active Asset</span><span id="viewer-asset-name">PBR Fabric Lookdev Sphere</span></div>
           <div class="telemetry-item"><span>Active Fabric / Material</span><span id="viewer-fabric-name">Royal Velvet</span></div>
           <div class="telemetry-item"><span>Geometry Budget</span><span id="viewer-triangles">4.6k Tris</span></div>
-          <div class="telemetry-item"><span>Shading Pass</span><span id="viewer-shading-pass">Physical PBR (ORM)</span></div>
+          <div class="telemetry-item"><span>Shading Pass</span><span id="viewer-shading-pass">PBR study (ORM)</span></div>
         </div>
       </section>
       <aside class="viewer-panel" aria-label="Shading &amp; Material Controls">
         <h2 style="font-size: 1rem; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;"><span>✧</span> Shading &amp; Channels</h2>
-        <div class="group-title">Render Inspection Mode</div>
+        <div class="group-title">Shading Study Mode</div>
         <div class="mode-grid">
           <button type="button" class="mode-btn active" data-mode="pbr">PBR Beauty</button>
           <button type="button" class="mode-btn" data-mode="toon">Substrate Toon</button>
@@ -103,7 +103,7 @@
           <button type="button" class="mode-btn" data-mode="wireframe">Wireframe</button>
           <button type="button" class="mode-btn" data-mode="clay">Clay MatCap</button>
         </div>
-        <div class="group-title">Fantasy Fabric PBR Set</div>
+        <div class="group-title">Fantasy Fabric Studies</div>
         <button type="button" class="fabric-btn active" data-fabric="RoyalVelvet"><span>Royal Velvet</span><span class="tag-badge">Dual-Sheen</span></button>
         <button type="button" class="fabric-btn" data-fabric="GildedBrocade"><span>Gilded Brocade</span><span class="tag-badge">Gold Jacquard</span></button>
         <button type="button" class="fabric-btn" data-fabric="SheerSilk"><span>Sheer Silk</span><span class="tag-badge">Anisotropic</span></button>
@@ -112,7 +112,7 @@
         <button type="button" class="fabric-btn" data-fabric="CelestialWeave"><span>Celestial Weave</span><span class="tag-badge">Iridescent</span></button>
         <button type="button" class="fabric-btn" data-fabric="MelusinaShirt"><span>Melusina Shirt Silk</span><span class="tag-badge">Hero Wardrobe</span></button>
         <div class="group-title">Studio Controls</div>
-        <button type="button" id="btn-toggle-rotate" class="asset-btn" style="justify-content: center; text-align: center;">Toggle Turntable Rotation</button>
+        <button type="button" id="btn-toggle-rotate" class="asset-btn" style="justify-content: center; text-align: center;">Toggle Rotation</button>
       </aside>
     </div>
   </main>
@@ -174,9 +174,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
-<script src="melodia-site-nav.js?v=20260904p1"></script>
-<script src="melodia-editorial.js?v=20260904p1"></script>
-<script>if (window.MelodiaEditorial) MelodiaEditorial.init({ page: 'realtime-3d-viewer' });</script>
 <script src="melodia-site-nav.js?v=20260904p1"></script>
 <script src="melodia-editorial.js?v=20260904p1"></script>
 <script>if (window.MelodiaEditorial) MelodiaEditorial.init({ page: 'realtime-3d-viewer' });</script>
