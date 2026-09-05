@@ -74,6 +74,55 @@
       "assignment_level": "not_applicable",
       "production_material": false,
       "purpose": "Design intent only; never a production material binding."
+    },
+    "night_bridge_visual": {
+      "label": "Night Bridge · Neon Stylized Environment",
+      "assignment_level": "visual_only",
+      "production_binding_verified": false,
+      "observed_surfaces": [
+        "cyan/magenta terrain",
+        "dark foliage",
+        "green/red emissive architectural edges",
+        "warm orange line accents",
+        "starry night sky"
+      ],
+      "caveat": "Exact Unreal material instances are not encoded for this render."
+    },
+    "crater_terrain_visual": {
+      "label": "Crater Terrain · Neutral Sculpted Surface",
+      "assignment_level": "visual_only",
+      "production_binding_verified": false,
+      "observed_surfaces": [
+        "light neutral terrain",
+        "rocky crater rim",
+        "smooth central basin",
+        "daylight sky"
+      ],
+      "caveat": "Use as terrain-form and lighting evidence, not as a named material instance proof."
+    },
+    "violet_scatter_visual": {
+      "label": "Violet Scatter · Stylized Terrain Study",
+      "assignment_level": "visual_only",
+      "production_binding_verified": false,
+      "observed_surfaces": [
+        "dark tiled/stepped terrain",
+        "violet-pink atmospheric gradient",
+        "small repeated scatter forms",
+        "high-contrast black silhouettes"
+      ],
+      "caveat": "The render is a visual look study; exact shader/material bindings are unverified."
+    },
+    "dusk_terrain_visual": {
+      "label": "Dusk Terrain · Atmospheric Study",
+      "assignment_level": "visual_only",
+      "production_binding_verified": false,
+      "observed_surfaces": [
+        "near-black terrain silhouette",
+        "orange cloud illumination",
+        "deep blue-black sky",
+        "low horizon light"
+      ],
+      "caveat": "Atmosphere/composition evidence only; exact surface material bindings are unverified."
     }
   }
 }
