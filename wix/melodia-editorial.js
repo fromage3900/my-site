@@ -879,30 +879,18 @@
       const catalog = catalogRes ? await catalogRes.json() : { entries: [] };
       const entries = Array.isArray(manifest.entries) ? manifest.entries : [];
       const ready = entries.filter((e) => e.webm_path && e.status === 'web_ready');
-      const readyIds = new Set(ready.map((e) => e.id));
-      const catalogEntries = Array.isArray(catalog.entries) ? catalog.entries : [];
-      const pending = catalogEntries.filter((e) => e.id && !readyIds.has(e.id));
-
       const hero = ready.find((e) => e.priority === 'hero' || e.id === 'MI_ZenTrim_FlowersLots') || ready[0];
-      const heroPending = !hero && pending.find((e) => e.priority === 'hero' || e.id === 'MI_ZenTrim_FlowersLots');
 
       if (heroMount) {
         if (hero) {
           const poster = hero.poster ? ` poster="${esc(hero.poster)}"` : '';
           heroMount.innerHTML = `<figure class="image-card premium-card material-proof-frame loop-hero-card" data-pillar="sakura"><video autoplay loop muted playsinline${poster} src="${esc(hero.webm_path)}"></video><div><h3>${esc(hero.id)}</h3><p>${esc(hero.backdrop || 'Melodia_VoidGradient')} · ${esc(hero.preview_mesh || 'sphere')} · ${esc(String(hero.duration_sec || '4'))}s loop</p></div></figure>`;
-        } else if (heroPending) {
-          heroMount.innerHTML = `<figure class="image-card premium-card material-proof-frame loop-hero-card loop-pending" data-pillar="sakura"><div class="loop-pending-swatch" aria-hidden="true"></div><div><h3>${esc(heroPending.id)}</h3><p>Awaiting capture — ${esc(heroPending.preview_mesh || 'swatch')} · ${esc(heroPending.backdrop || 'studio')}</p></div></figure>`;
+        } else {
+          heroMount.innerHTML = '';
         }
       }
 
       if (mount) {
-        const pendingTiles = pending
-          .slice(0, 12)
-          .map(
-            (item) =>
-              `<figure class="image-card premium-card material-proof-frame mi-loop-tile loop-pending"><div class="loop-pending-swatch" aria-hidden="true"></div><div><h3>${esc(item.id)}</h3><p>Awaiting capture · ${esc(item.preview_mesh || '')}</p></div></figure>`
-          )
-          .join('');
 
         const groups = {
           hero: ready.filter((e) => e.priority === 'hero'),
@@ -932,17 +920,13 @@
           })
           .join('');
 
-        if (pending.length > 0) {
-          html += `<section class="mi-group"><div class="section-head"><div><p class="eyebrow">Pipeline queue</p><h2>Awaiting capture</h2></div><p>Batches of 3 per <code>publish_material_loops.ps1</code> run — no empty gallery while the catalog fills in.</p></div><div class="image-grid mi-grid">${pendingTiles}</div></section>`;
-        }
-
         mount.innerHTML =
           html ||
-          '<p class="body-copy">Material loops pending capture. Run <code>Tools\\publish_material_loops.ps1</code> when ready.</p>';
+          '<p class="body-copy">No finished material loops are published in this view yet. <a href="shader-breakdowns.html">Open the shader breakdowns</a> for the current finished material work.</p>';
       }
     } catch (_err) {
       const fallback =
-        '<p class="body-copy">Material loop manifest unavailable. Run <code>Tools\\publish_material_loops.ps1</code> to generate manifests.</p>';
+        '<p class="body-copy">The material-loop feed is temporarily unavailable. <a href="shader-breakdowns.html">Open the shader breakdowns</a> instead.</p>';
       if (mount) mount.innerHTML = fallback;
       if (heroMount) heroMount.innerHTML = fallback;
     }
