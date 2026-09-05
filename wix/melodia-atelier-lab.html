@@ -7,10 +7,10 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<title>Lookbook Atelier &amp; Substrate Shader Lab | Brennan Shepherd</title>
+<title>Interactive Technical Art Atelier | Brennan Shepherd</title>
 <meta name="description" content="Interactive technical-art lab for stylized shaders, world atmospheres, procedural scattering, audio-reactive experiments, and real-time 3D inspection." />
-<meta property="og:title" content="Lookbook Atelier &amp; Substrate Shader Lab | Brennan Shepherd" />
-<meta property="og:description" content="Interactive real-time stylized shader studio, procedural PCG scattering heatmap, and fashion-fantasy world lookbook." />
+<meta property="og:title" content="Interactive Technical Art Atelier | Brennan Shepherd" />
+<meta property="og:description" content="Interactive browser studies translating Melodia’s shader, PCG, atmosphere, audio, and asset ideas into playable technical-art sketches." />
 <meta property="og:image" content="../generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png" />
 <meta property="og:url" content="https://fromage3900.github.io/my-site/wix/melodia-atelier-lab.html" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -76,22 +76,22 @@
             <div class="atelier-canvas-wrapper">
               <canvas id="canvas-shader-lab" class="atelier-main-canvas"></canvas>
               <div class="atelier-overlay-hud">
-                <span class="atelier-hud-badge">M_Master_Toon_Universal · Live Substrate Simulation</span>
-                <span class="atelier-hud-badge" id="telemetry-frametime">0.38 ms</span>
+                <span class="atelier-hud-badge">Browser shader study · M_Master_Toon_Universal reference</span>
+                <span class="atelier-hud-badge" id="telemetry-frametime">Interactive demo</span>
               </div>
             </div>
             <div class="atelier-telemetry-grid">
               <div class="atelier-telemetry-item">
-                <span class="atelier-telemetry-label">Shader Complexity</span>
-                <span class="atelier-telemetry-value" id="telemetry-drawcalls">1 MI Pass</span>
+                <span class="atelier-telemetry-label">Study Mode</span>
+                <span class="atelier-telemetry-value" id="telemetry-drawcalls">Browser shader</span>
               </div>
               <div class="atelier-telemetry-item">
-                <span class="atelier-telemetry-label">Geometric Budget</span>
-                <span class="atelier-telemetry-value" id="telemetry-triangles">32.4k Tris</span>
+                <span class="atelier-telemetry-label">Demo Geometry</span>
+                <span class="atelier-telemetry-value" id="telemetry-triangles">Study mesh</span>
               </div>
               <div class="atelier-telemetry-item">
-                <span class="atelier-telemetry-label">Pipeline Standard</span>
-                <span class="atelier-telemetry-value">Substrate BSDF</span>
+                <span class="atelier-telemetry-label">Production Reference</span>
+                <span class="atelier-telemetry-value">Stylized material system</span>
               </div>
             </div>
           </div>
@@ -172,8 +172,8 @@
             <div class="atelier-canvas-wrapper">
               <canvas id="canvas-world-stage" class="atelier-main-canvas"></canvas>
               <div class="atelier-overlay-hud">
-                <span class="atelier-hud-badge">Interactive Atmosphere Physics · Mouse Deflection</span>
-                <span class="atelier-hud-badge">60 FPS Particle Flow</span>
+                <span class="atelier-hud-badge">Interactive atmosphere sketch · mouse deflection</span>
+                <span class="atelier-hud-badge">Browser particle field</span>
               </div>
             </div>
             <div class="atelier-telemetry-grid">
@@ -182,12 +182,12 @@
                 <span class="atelier-telemetry-value">Dynamic LUT</span>
               </div>
               <div class="atelier-telemetry-item">
-                <span class="atelier-telemetry-label">Lighting System</span>
-                <span class="atelier-telemetry-value">Lumen + Toon Ramp</span>
+                <span class="atelier-telemetry-label">Visual Reference</span>
+                <span class="atelier-telemetry-value">Toon-lit atmosphere</span>
               </div>
               <div class="atelier-telemetry-item">
-                <span class="atelier-telemetry-label">VFX Particles</span>
-                <span class="atelier-telemetry-value">90 Emitters</span>
+                <span class="atelier-telemetry-label">Interaction Layer</span>
+                <span class="atelier-telemetry-value">Browser particles</span>
               </div>
             </div>
           </div>
@@ -241,22 +241,22 @@
             <div class="atelier-canvas-wrapper">
               <canvas id="canvas-pcg-stage" class="atelier-main-canvas"></canvas>
               <div class="atelier-overlay-hud">
-                <span class="atelier-hud-badge">PCG Graph Ecosystem · Topographic Scatter Simulation</span>
-                <span class="atelier-hud-badge" id="pcg-instance-count">450 Instanced Points</span>
+                <span class="atelier-hud-badge">Procedural spacing study · browser simulation</span>
+                <span class="atelier-hud-badge" id="pcg-instance-count">450 Sample Points</span>
               </div>
             </div>
             <div class="atelier-telemetry-grid">
               <div class="atelier-telemetry-item">
-                <span class="atelier-telemetry-label">Scatter Density</span>
-                <span class="atelier-telemetry-value" id="val-pcg-density">450/m²</span>
+                <span class="atelier-telemetry-label">Sample Density</span>
+                <span class="atelier-telemetry-value" id="val-pcg-density">450 samples</span>
               </div>
               <div class="atelier-telemetry-item">
                 <span class="atelier-telemetry-label">Slope Threshold</span>
                 <span class="atelier-telemetry-value" id="val-pcg-slope">35°</span>
               </div>
               <div class="atelier-telemetry-item">
-                <span class="atelier-telemetry-label">Compute Cost</span>
-                <span class="atelier-telemetry-value">&lt; 0.45 ms</span>
+                <span class="atelier-telemetry-label">Engine Cost</span>
+                <span class="atelier-telemetry-value">Not benchmarked</span>
               </div>
             </div>
           </div>
@@ -265,7 +265,7 @@
           <div class="atelier-control-card">
             <h2 class="atelier-section-subtitle">Procedural Scatter Controller</h2>
             <p class="atelier-section-desc">
-              Simulate Brennan's 60+ PCG graphs in Unreal Engine 5.8. Filter by slope, elevation, and biome layer.
+              A browser-side abstraction of the spacing, slope, and biome controls used in Melodia PCG workflows. This module demonstrates the design logic rather than executing the live Unreal graphs.
             </p>
 
             <!-- Layer Selection -->
@@ -280,7 +280,7 @@
             <div class="atelier-slider-group">
               <div class="atelier-slider-header">
                 <span class="atelier-slider-label">Instance Density</span>
-                <span class="atelier-slider-val">450 / m²</span>
+                <span class="atelier-slider-val">450 samples</span>
               </div>
               <input type="range" id="slider-pcg-density" class="atelier-range-input" min="50" max="1000" step="25" value="450" />
             </div>
@@ -308,7 +308,7 @@
             <div class="atelier-canvas-wrapper">
               <canvas id="canvas-audio-stage" class="atelier-main-canvas"></canvas>
               <div class="atelier-overlay-hud">
-                <span class="atelier-hud-badge">TouchDesigner 4-Band RMS Visualizer</span>
+                <span class="atelier-hud-badge">Audio-reactive frequency study</span>
                 <span class="atelier-hud-badge">Harmonic Astrolabe</span>
               </div>
             </div>
@@ -332,7 +332,7 @@
           <div class="atelier-control-card">
             <h2 class="atelier-section-subtitle">Audio-Reactive Synthesis</h2>
             <p class="atelier-section-desc">
-              Trigger harmonic chord arpeggios simulating real-time audio analysis streamed into Unreal Engine 5.8 shader parameters.
+              Trigger harmonic chord studies and watch the browser visualization respond. The module is inspired by the TouchDesigner/Unreal integration workflow; it is not a live engine stream.
             </p>
 
             <div class="atelier-audio-pads" role="group" aria-label="Harmonic Synthesizer Chords">
