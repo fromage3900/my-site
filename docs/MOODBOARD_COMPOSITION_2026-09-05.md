@@ -129,3 +129,45 @@ Do **not** add:
 - technical proof that belongs in a breakdown page
 
 The target is remembered images, not inventory completeness.
+
+
+## Pixel-review correction — 2026-09-05
+
+The first moodboard pass was subsequently reviewed against the actual published pixels rather than filenames alone. The visual review found that several legacy captures had inherited stronger labels than the image could support.
+
+### Evidence corrections
+
+| Previous public claim | Pixel-reviewed result | Action |
+|---|---|---|
+| Sakura Dream establishing | Dark violet terrain with cyan/emissive scatter; no visible shrine/petals | Reframed as **Emissive Terrain Study** |
+| Full Sakura Dream environment | Violet rolling terrain mound/surface study | Reframed as **Violet Terrain Study** |
+| Space Cathedral / Kaleido Nave terrain | Grey preview primitive over blurred green outdoor/HDRI test background | **Rejected as public world proof** |
+| Fallen Moon environment | Grey preview primitive over blurred green outdoor/HDRI test background | **Rejected as public world proof** |
+| Rose Window void-iridescent beauty | Flat blue frame; geometry/material not visible | **Rejected**; visible front plate promoted instead |
+| Lissajous beauty | Empty/pale studio frame | **Rejected**; macro curve plate promoted instead |
+| Melodia Violin beauty ¾ | Asset visible but weaker silhouette | Front plate promoted for asset evidence |
+| Melusina concept / sculpt | Strong design/form evidence | Material passport explicitly **N/A / preview-only** |
+
+### Current reviewed Selected Art evidence
+
+1. Melusina Cam_Beauty — character/lookdev evidence; multi-zone surface description only.
+2. Emissive Terrain Study — Unreal terrain/scatter evidence; canonical world identity unverified.
+3. Violet Terrain Study — terrain form/surface evidence; not a finished Sakura beauty.
+4. Sakura Surface Quartet — material-family evidence; exact sphere-to-instance mapping not encoded.
+5. Sakura Stone-Path Surface — material preview; not an in-world route capture.
+6. Rose Window front — asset + Komikaze Voronoi 3-tone metadata-backed material evidence.
+7. Melusina Gazebo Variant — architecture/lookdev evidence; diagnostic-quality Voronoi 3-tone surface.
+8. Melodia Violin front — asset + Komikaze The Wall metadata-backed material evidence.
+9. Vow Cross filigree macro — strong visual surface evidence; exact hero-macro shader lineage remains conservative.
+10. Lissajous macro — curve/form + metadata-backed Voronoi 3-tone evidence.
+11. Melusina design sketch — concept/design evidence; no production material passport.
+12. Melusina sculpt profile — sculpt/form evidence; neutral clay/MatCap is preview-only.
+
+### Passport SSOTs
+
+- `content/asset-passports.json` — asset identity and production-lineage registry.
+- `content/material-passports.json` — technical material/shader registry with assignment confidence.
+- `content/render-passports.json` — image-specific pixel-review verdict and asset/material links.
+- `generated/passports/*.json` — generated production metrics remain authoritative where available.
+
+A render is no longer allowed to inherit a world or material claim merely because its filename contains that name.
