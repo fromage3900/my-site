@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fromage3900.github.io/my-site/sitemap.xml
