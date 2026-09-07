@@ -53,7 +53,7 @@ This creates stagger and visual growth without random masonry or DOM reordering.
 
 | Weight | Work | Source | Intended role |
 |---|---|---|---|
-| Anchor | Melusina beauty portrait | `generated/assets/character/melusina_cam_beauty_nikki_2026-08-13.png` | Primary human/character memory |
+| Anchor | Melusina beauty portrait | `generated/assets/character/melusina_beauty_eevee_20260715c_01.png` | Primary human/character memory |
 | Anchor | Sakura Dream establishing | `generated/assets/unreal/hero-hero-level-cam-hero-establishing-20260709-182314-1920x1080.png` | Primary world memory |
 | Anchor | Sakura Dream full world | `generated/assets/unreal/scene-sakuradream-full.png` | Broad environment breath |
 | Medium | Kaleido Nave / Space Cathedral | `generated/assets/nightshift/WP_SpaceCathedral_terrain.png` | Monumental architecture counterpoint |
@@ -181,7 +181,7 @@ The archive was visually auditioned again after the first passport correction. T
 
 | Role | Plate | Public label | Evidence status |
 |---|---|---|---|
-| Character anchor | `melusina_cam_beauty_nikki_2026-08-13.png` | Melusina | Accepted character/lookdev evidence |
+| Character anchor | `melusina_beauty_eevee_20260715c_01.png` | Melusina | Temporary EEVEE stage beauty fallback; replace with reviewed UE B2 Cam_Beauty |
 | Environment anchor | `hero-hero-level-20260708-190653-1920x1080.png` | Night Bridge Study | Accepted Hero Level environment study; canonical world unassigned |
 | Environment | `hero-hero-level-20260625-055343-1920x1080.png` | Crater Terrain Study | Accepted terrain-form study |
 | Environment | `hero-hero-level-cam-hero-materials-20260709-181046-1920x1080.png` | Violet Scatter Study | Accepted terrain/atmosphere study |
@@ -219,3 +219,10 @@ Named plate hydration was hardened in `content/site-plates.json`:
 ### Metadata caveat found during audition
 
 The generated Zen Lantern passport reports **8,277,956 triangles** across six meshes. The generated value is preserved as source metadata, but it is flagged in `content/asset-passports.json` for source-asset verification before becoming a prominent public claim.
+
+
+## 2026-09-06 Melusina recruiter hotfix
+
+- The 2026-08-13 Cam_Beauty plate is explicitly rejected for public use because the hair cache sits below the scalp and the character reads bald.
+- Recruiter-facing surfaces temporarily fall back to `melusina_beauty_eevee_20260715c_01.png`, the existing EEVEE Stage/Resume beauty.
+- This is a stopgap, not a claim that the EEVEE frame is the pending Unreal B2 Cam_Beauty. Replace it after the next UE capture is reviewed.
