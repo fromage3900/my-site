@@ -1,131 +1,40 @@
-# Melodia — Live Collaborative Environment Art Platform
+# Melodia Melusina — Brennan Shepherd
 
-<p align="center">
-  <img src="wix/living-worlds-poster.svg" alt="Melodia Living Worlds — three procedural dreamscapes" width="100%" />
-</p>
+**Environment Designer · Technical Artist · Unreal Engine 5.8 · Blender · ZBrush · Procedural Worldbuilding**
 
-<p align="center"><strong><a href="https://fromage3900.github.io/my-site/wix/melodia-living-worlds.html">Enter Living Worlds ↗</a></strong> · Sea Above · Faraway Mother · Horizon Eater</p>
+Melodia Melusina is my ongoing stylized environment-art and technical-art project: a musical fantasy world built around serene environments, procedural systems, expressive materials, character work, and interactive experiments.
 
-> A zero-asset Three.js field study in serene impossibility, biological revelation, and ontological dread. Procedural geometry, shader-driven water and tears, living terrain, spatial compression, keyboard/pointer navigation, reduced-motion support, and an illustrated fallback.
+I use the project to explore how environment design, look development, procedural tooling, and gameplay systems can share one coherent visual language.
 
-UE 5.8 + Blender 5.2 production platform for stylized portfolio work: Melodia Studio Geometry Nodes (165 builders / 12 GN Stack categories), Unreal C++ JRPG slice, and DCC bridges.
+## Recruiter entry points
 
-## Recruiter / NVIDIA sendoff — 2026-08-20
+- **[Selected Art](https://fromage3900.github.io/my-site/wix/curated-art.html)** — curated visual work and detail studies
+- **[Portfolio](https://fromage3900.github.io/my-site/wix/index.html)** — main environment and technical-art presentation
+- **[Living Worlds](https://fromage3900.github.io/my-site/wix/melodia-living-worlds.html)** — interactive Three.js world studies
+- **[Technical Practice](https://fromage3900.github.io/my-site/wix/geometry-nodes.html)** — procedural and Geometry Nodes work
+- **[Melusina](https://fromage3900.github.io/my-site/wix/melodia-stage-character.html)** — character and presentation studies
+- **[Resume](https://fromage3900.github.io/my-site/wix/resume.html)** — experience and tools
 
-**Primary outreach page:** [NVIDIA + recruiter sendoff](wix/nvidia-recruiter-sendoff.html) · live: `https://fromage3900.github.io/my-site/wix/nvidia-recruiter-sendoff.html`
+## Practice
 
-**Honest local-AI headline:** Qwen 2.5 Coder 7B MATH **22/32** (TCA **93.5%** · ARG **74.2%** · EXEC **71.0%**); P0 **4/10** (TCA 100% · ARG/EXEC 40%); Muse 30B does **not** fit ~12&nbsp;GB VRAM (prior MATH 0/32); Hermes = MCP harness not Hermes 3 weights; overnight Tier 0 MCP **26/26** green, contracts soft.
+My current work centers on:
 
-**Also skim:** [One-sheet](wix/recruiter-one-sheet.html) · [Research packet](wix/nous-research-packet.html) · [Model Tooling](wix/melusina-model-tooling.html) · [Home](wix/index.html) · [Resume](wix/resume.html)
+- Stylized environment design and worldbuilding
+- Unreal Engine 5.8 lighting, materials, shaders, PCG, and runtime systems
+- Blender procedural modeling and Geometry Nodes
+- ZBrush sculpting and asset development
+- Technical-art tooling and pipeline automation
+- Musical and rhythm-driven interaction
+- WebGL / Three.js experiments for interactive presentation
 
----
+## Melodia
 
-## Recruiter sendoff (30 seconds) — 2026-08-13 (portfolio art baseline)
+Melodia is built as a single artistic universe rather than a collection of disconnected portfolio pieces. Environments, instruments, characters, materials, and procedural tools are developed together so that the technical systems support the same visual and musical identity.
 
-**Who:** Brennan Shepherd — stylized environment & technical artist, Humber 3D Animation, Toronto.
+The project moves between serene fantasy and the surreal: luminous water, ornate instruments, dreamlike architecture, hand-shaped detail, procedural growth, and environments designed to feel alive.
 
-**What shipped:** Melodia Studio on Blender 5.2 (**165 GN builders / 12 categories**, presets **33/165 (20%)**, 100 looks) plus a UE 5.8 C++ Persona-lite slice. Opening route `L_MelusinaMorning` → `L_KaleidoNave`. Rhythm and QuillScript owner-lock worked; A1 stock battle is still open.
+## About
 
-**Stack:** Unreal 5.8 C++, Blender 5.2 Geometry Nodes, PCG, hybrid **Komikaze NPR + UE Toon**. Character polish is that hybrid — not a Genshin SDF ship. Cine water-hair is Geometry Cache (Alembic 1–240) + Niagara drip; gameplay fallback is `SK_MelusinaHair`. Idle is mocap `A_Melusina_Idle_Mocap_RootX` (Blender idle is on disk, not wired). `WBP_MainMenu` fonts are Syne / Instrument Serif via `F_Melodia_UI`.
+I’m **Brennan Shepherd**, an environment designer and technical artist based in Toronto, Canada. My focus is stylized worldbuilding with a mix of traditional art sensibility and procedural/technical production.
 
-**Plates:** Flip EEVEE glam stills are local cine. Cam_Beauty on live v22 (Nikki 900/550/280/140, Review_Queue hidden) reads bald because Flip cache globules sit below the scalp (max Z ≈ 1.015 vs head ≈ 1.442) — existing 1–240 cache, not a new bake. That still is not full cine water-hair. Unreal B2 Cam_Beauty is still pending.
-
-**Skim these:** [One-sheet](wix/recruiter-one-sheet.html) · [Home](wix/index.html) · [Melodia Studio](wix/geometry-nodes.html) · [Melusina](wix/melodia-stage-character.html) · [Resume](wix/resume.html)
-
-**As of 2026-08-13.** Live bridge is **BlenderMCP :9876**. Melodia Studio Live Bridge LiveLink is a stub. Port 9317 is legacy.
-
----
-
-## Onboarding: Live Collaborative Level Designer
-
-> Two designers, one live session. Connect BlenderMCP on 9876. ~10 minutes to first bridge connection.
-
-### Prerequisites
-
-- [x] **Unreal Engine 5.8** — open `BS_GodFile.uproject`, wait for shader compile
-- [x] **Blender 5.2** — N-panel → **Melodia Studio** tab
-- [x] **VOICEVOX 0.25+** — [download](https://voicevox.hiroshiba.jp/) → install → launch
-- [x] **One Blender instance only** — multiple instances conflict on port 9876
-
----
-
-### Step 1 — Verify the bridge ports
-
-| Service | Check | Expected |
-|---------|-------|----------|
-| UE MCP | `curl http://127.0.0.1:9316/health` | JSON health from Monolith MCP |
-| BlenderMCP | N → **BlenderMCP** → **Connect to MCP server** (port 9876) | Agent ping via `python Tools/blender_mcp_client.py get_scene_info` |
-| LiveLink stub | Melodia Studio → Live Bridge → Refresh Status | Optional scratch only — not the agent path |
-| VOICEVOX | `curl http://127.0.0.1:50021/version` | `"0.25.2"` |
-
----
-
-### Step 2 — Connect BlenderMCP (not Live Bridge)
-
-```
-Blender N-panel → BlenderMCP → Connect to MCP server (9876)
-```
-
-Do **not** use Melodia Studio → Live Bridge → Start Server for agent control. That button is LiveLink, a stub, and shares the port.
-
----
-
-### Step 3 — Generate & send your first asset
-
-```
-┌─ Blender ─────────────────────────────────────────┐
-│                                                    │
-│  1. Melodia Studio → GN Stack → apply a builder    │
-│  2. Material Bridge → [Scan Slots] → [Auto-Match]  │
-│  3. Export FBX / kitbash buses — not LiveLink SSOT │
-│                                                    │
-└────────────────────────────────────────────────────┘
-```
-
-Mocap clips retarget through `RTG_Mocap_to_Melusina` onto `SK_Melusina_Skeleton` (465 bones). They do not import directly onto the skeleton.
-
----
-
-### Port Map
-
-| Port | Service | Direction |
-|------|---------|-----------|
-| `9876` | **BlenderMCP** — live bridge | Cursor/agent ↔ open Blender 5.2 GUI |
-| `9876` | LiveLink stub (same port; one bridge at a time) | Scratch `/Game/LiveLink/` only |
-| `9316` | UE Monolith MCP | Any → UE |
-| `9317` | Legacy adapter | Do not use |
-| `50021` | VOICEVOX — TTS | Any → VOICEVOX |
-
-Melodia Studio: **165 GN builders**, **12 GN Stack categories**, presets **33/165 (20%)**, 100 looks. Operators `surreal_arch.*` / `mel_gn.*`.
-
----
-
-### Key Scripts
-
-| Script | What It Does | Where |
-|--------|-------------|--------|
-| `Tools/generate_all_voices.py` | Generate 102 NPC voice WAVs | Terminal |
-| `Content/Python/create_zunzun_bps.py` | Auto-create 7 NPC Blueprints + quests | UE |
-| `deploy/sync_surreal_to_live.ps1` | Push SurrealArch to Blender addons | Terminal |
-| `deploy/sync_site_to_github.ps1` | Sync my-site-clean → GitHub Pages | Terminal |
-
-Full guide: [Docs/ONBOARDING_LIVE_COLLAB.md](https://github.com/fromage3900/BS_GodFile/blob/main/Docs/ONBOARDING_LIVE_COLLAB.md)
-
----
-
-## Source-control status
-
-- Local checkout tip: `3cfa5f0`.
-- The configured `origin/main` has unrelated history, so this checkout is not
-  currently synchronized with GitHub. Do not force-push or merge unrelated
-  histories without an owner decision.
-- Site facts and asset checks pass locally. The token linter still reports
-  `99` hard errors and `1113` warnings.
-
-## Wix CLI Info
-
-This repository is intended to publish the Melodia Wix site at:
-**https://fromage3900.github.io/my-site/wix/index.html**
-
-Do not describe local commits as live on GitHub Pages until the remote
-publication push is verified.
+**Portfolio:** https://fromage3900.github.io/my-site/
