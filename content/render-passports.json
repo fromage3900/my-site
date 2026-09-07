@@ -19,7 +19,7 @@
       "path": "../generated/assets/character/melusina_cam_beauty_nikki_2026-08-13.png",
       "display_name": "Melusina · Cam_Beauty lookdev",
       "evidence": {
-        "status": "accepted",
+        "status": "reject",
         "confidence": "high",
         "visually_proves": [
           "Melusina character design",
@@ -35,8 +35,12 @@
         "does_not_prove": [
           "full cine water-hair",
           "gameplay hair implementation",
-          "a single uniform garment material"
-        ]
+          "a single uniform garment material",
+          "finished hair silhouette",
+          "final recruiter-facing character presentation",
+          "Unreal B2 Cam_Beauty"
+        ],
+        "note": "Known hair-presentation failure: the scalp reads bald because the Flip cache sits below the head. Keep only as diagnostic/history; do not use on recruiter-facing pages, social previews, or Selected Art."
       },
       "asset": {
         "asset_id": "melusina",
@@ -944,6 +948,48 @@
         "status": "metadata_supported",
         "label": "Komikaze · Voronoi Shader (3 Tones)",
         "note": "Material lineage is valid; capture composition is rejected."
+      }
+    },
+    "melusina_stage_beauty_fallback_20260715c01": {
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "display_name": "Melusina · EEVEE stage beauty (temporary fallback)",
+      "evidence": {
+        "status": "supporting",
+        "confidence": "medium",
+        "visually_proves": [
+          "Melusina character presentation",
+          "existing portfolio-stage lookdev"
+        ],
+        "does_not_prove": [
+          "Unreal B2 Cam_Beauty",
+          "gameplay hair implementation",
+          "final 2026 recruiter character hero"
+        ],
+        "note": "Promoted only as a temporary replacement for the known-bald 2026-08-13 plate. Replace with tonight's reviewed UE capture when available."
+      },
+      "asset": {
+        "asset_id": "melusina",
+        "label": "Melusina",
+        "status": "metadata_supported",
+        "passport_href": "../generated/passports/melusina_passport.html",
+        "passport_json": "../generated/passports/melusina_passport.json",
+        "note": "Existing EEVEE stage beauty already used by the Stage/Resume presentation. Temporary recruiter-safe fallback until the new Unreal B2 Cam_Beauty is captured.",
+        "passport_id": "melusina"
+      },
+      "material": {
+        "status": "visual_only",
+        "label": "Multi-zone character lookdev",
+        "observed_surfaces": [
+          "skin/face",
+          "white bodice cloth",
+          "gradient cyan-violet sleeves",
+          "pink/lavender layered skirt",
+          "chain/metal trim",
+          "translucent/emissive wing and hat accents",
+          "graphic music-note panel"
+        ],
+        "note": "Temporary site fallback. Do not infer Unreal runtime shader bindings from this EEVEE plate.",
+        "passport_id": "melusina_multizone_visual"
       }
     }
   },
