@@ -24,6 +24,8 @@ BASE = "https://fromage3900.github.io/my-site"
 MANIFEST = json.loads((WIX / "public-routes.json").read_text(encoding="utf-8"))
 
 CANONICAL = [str(x) for x in MANIFEST.get("canonical", [])]
+TARGETED = [str(x) for x in MANIFEST.get("targeted_evidence", [])]
+
 PUBLIC = sorted(
     set(
         CANONICAL
@@ -131,6 +133,16 @@ def main() -> int:
         for phrase in BANNED_CANONICAL_PHRASES:
             if phrase in lower:
                 fail(errors, f"wix/{route}: recruiter placeholder phrase leaked: {phrase!r}")
+
+    # Targeted evidence should stay out of search/navigation while remaining direct-link accessible.
+    for route in TARGETED:
+        path = WIX / route
+        if not path.is_file():
+            fail(errors, f"missing targeted evidence page wix/{route}")
+            continue
+        robots = (meta_content(path.read_text(encoding="utf-8"), name="robots") or "").lower()
+        if "noindex" not in robots:
+            fail(errors, f"wix/{route}: targeted evidence must be noindex")
 
     # Public/reviewer HTML may discuss work in progress, but rejected pixels must never return.
     for route in PUBLIC:
