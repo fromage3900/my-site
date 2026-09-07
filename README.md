@@ -1,5 +1,7 @@
 # Melodia Melusina — Brennan Shepherd
 
+> **SHOWCASE SOFT FREEZE ACTIVE — 2026-09-07.** Recruiter-facing structure, navigation, styling, and public route scope are frozen. Only approved render promotion, factual/contact/accessibility fixes, social-preview correctness, and critical deployment repairs are in scope until hard freeze. See [docs/PORTFOLIO_SENDOFF_FREEZE_2026-09-07.md](docs/PORTFOLIO_SENDOFF_FREEZE_2026-09-07.md).
+
 **Environment Designer · Technical Artist · Unreal Engine 5.8 · Blender · ZBrush · Procedural Worldbuilding**
 
 **Public portfolio:** https://www.fromageart.xyz/ · **Selected Art:** https://fromage3900.github.io/my-site/wix/curated-art.html · **Resume:** https://fromage3900.github.io/my-site/wix/resume.html
