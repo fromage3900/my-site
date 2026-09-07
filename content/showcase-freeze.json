@@ -1,0 +1,53 @@
+{
+  "schema": "melodia.showcase_freeze.v1",
+  "status": "soft_freeze",
+  "started_at": "2026-09-07T19:10:00-04:00",
+  "base_sha": "e4ea952350ee395cf30291f7fb9f6c4625ff1294",
+  "purpose": "Freeze recruiter-facing presentation while allowing only approved render promotion, proof correction, contact/metadata fixes, and freeze infrastructure.",
+  "hard_freeze_after": [
+    "Melusina UE5.8 B2 hero + portrait accepted",
+    "Sakura Dream canonical beauty accepted",
+    "Kaleido Nave canonical beauty accepted",
+    "Fallen Moon canonical beauty accepted",
+    "desktop/mobile/social QA passes",
+    "Pages deploy green"
+  ],
+  "allowed_exact": [
+    "content/showcase-freeze.json",
+    "docs/PORTFOLIO_SENDOFF_FREEZE_2026-09-07.md",
+    "README.md",
+    "EDITING.md",
+    ".github/workflows/pages.yml",
+    "tools/verify_sendoff_freeze.py",
+    "tools/verify_showcase_polish.py",
+    "content/render-passports.json",
+    "content/site-plates.json",
+    "wix/index.html",
+    "wix/curated-art.html",
+    "wix/resume.html",
+    "wix/hiring-dossier.html",
+    "wix/recruiter-one-sheet.html",
+    "wix/hero-renders.html",
+    "wix/application-hub.html",
+    "wix/melodia-stage-character.html",
+    "wix/sakura-case-study.html",
+    "wix/space-cathedral.html",
+    "wix/pcg-system-impact.html"
+  ],
+  "allowed_prefixes": [
+    "generated/assets/character/",
+    "generated/assets/unreal/",
+    "generated/optimized/curated-art/"
+  ],
+  "blocked_by_default": [
+    "new public pages",
+    "navigation redesign",
+    "new shaders/effects on recruiter path",
+    "global CSS restyling",
+    "new interactive experiments",
+    "copy expansion unrelated to correctness",
+    "route taxonomy changes",
+    "new public dashboards"
+  ],
+  "exception_policy": "A deliberate freeze exception must first update this manifest with the exact path and reason. Do not bypass the gate by weakening verification."
+}
