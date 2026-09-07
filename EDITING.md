@@ -1,5 +1,7 @@
 # Editing Melodia site copy & plates
 
+> **Active recruiter P0:** [P0 Melusina render integration](docs/P0_MELUSINA_RENDER_WEBSITE_INTEGRATION_2026-09-07.md). The art/capture authority lives in the game repo's `Docs/Production/P0_MELUSINA_RENDER_AND_WEBSITE_BREAKDOWN_PLAN_2026-09-07.md`.
+
 **You only need two files for most changes.**
 
 | What | File |
@@ -11,19 +13,17 @@ HTML under `wix/` is a **shell** on those pages (`data-copy` / `data-plate`). Pr
 
 ## Drop in a new render
 
-1. Save PNG under `generated/assets/…` (Melusina stills: `generated/assets/character/`).
-2. Prefer dated names: `melusina_beauty_nikki_YYYYMMDD_nn.png` — **no T-pose keepers** on live heroes.
-3. Assign a slot:
+1. Save approved PNGs under `generated/assets/…` (Melusina stills: `generated/assets/character/`).
+2. Use dated, role-specific names. For the current Unreal P0 prefer `melusina_ue58_b2_<shot>_YYYYMMDD_nn.png`.
+3. **Pixel-review before promotion.** A filename does not authorize a hero role.
+4. Record the image-specific verdict in `content/render-passports.json`.
+5. Assign/update an explicit Melusina slot in `content/site-plates.json` only after the image is accepted.
+6. Audit direct HTML/OG references and every `<picture><source srcset>` family.
+7. Hard-refresh and verify desktop/mobile/social crops.
 
-```bash
-python Tools/assign_plate.py index.hero generated/assets/character/melusina_beauty_eevee_20260715c_01.png
-python Tools/assign_plate.py recruiter.hero generated/assets/character/melusina_beauty_eevee_20260715c_01.png
-python Tools/assign_plate.py list
-```
+**Do not repurpose `index.hero` or `recruiter.hero` for Melusina.** Those generic slots currently carry the reviewed Night Bridge environment study. Use a Melusina-specific slot/reference for the character hero.
 
-4. Refresh the page (hard refresh if cached).
-
-**Never assign** mauve blanks: `melusina_*_001.png` (solid color placeholders). The CLI refuses them.
+**Never assign** mauve blanks: `melusina_*_001.png` (solid color placeholders), or the rejected `melusina_cam_beauty_nikki_2026-08-13.png`.
 
 ## Change text
 
@@ -57,9 +57,17 @@ Verify: `python my-site-clean/tools/_verify_site_facts.py`
 
 ## Beauty retake → site
 
-1. Stage v7 GUI: `Tools/render_melusina_beauty_still.py`
-2. `python Tools/assign_plate.py index.hero <new png>` (and other hero slots)
-3. `python Tools/remount_melusina_plates.py --apply --passport`
+For the active UE5.8 P0, follow [the integration contract](docs/P0_MELUSINA_RENDER_WEBSITE_INTEGRATION_2026-09-07.md):
+
+1. Render/audition in Unreal according to the game-repo P0 plan.
+2. Reject weak frames before copying them into the public asset tree.
+3. Add the approved hero to `content/render-passports.json`.
+4. Promote an explicit Melusina website slot/reference.
+5. Update public HTML + OG references + all responsive `srcset` sources.
+6. Keep the 2026-08-13 bald plate rejected/history-only.
+7. Verify 1440 desktop, 390 mobile and 1200×630 OG before deploy.
+
+The Blender Stage v7 scripts remain useful for fallback/reference renders, but they are not the final Unreal B2 proof.
 
 ## Hair / AudVis image sequence → looping video
 
