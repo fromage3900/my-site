@@ -68,6 +68,8 @@ jobs:
       - name: Validate portfolio (links + JSON)
         shell: pwsh
         run: ./tools/validate_portfolio.ps1
+      - name: Validate recruiter showcase polish
+        run: python tools/verify_showcase_polish.py
 
   deploy-github-pages:
     name: Deploy to GitHub Pages
