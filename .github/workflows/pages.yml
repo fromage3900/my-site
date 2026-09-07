@@ -70,6 +70,8 @@ jobs:
         run: ./tools/validate_portfolio.ps1
       - name: Validate recruiter showcase polish
         run: python tools/verify_showcase_polish.py
+      - name: Validate recruiter sendoff freeze
+        run: python tools/verify_sendoff_freeze.py
 
   deploy-github-pages:
     name: Deploy to GitHub Pages
