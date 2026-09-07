@@ -139,8 +139,16 @@
       "alt": "Melusina Flip water-hair cine EEVEE, frame 240 — not gameplay hair, not Unreal B2 Cam_Beauty"
     },
     "melusina.nikki_cam_beauty": {
-      "path": "../generated/melusina_cam_beauty_nikki_2026-08-13.png",
-      "alt": "Cam_Beauty on live v22, Nikki 900/550/280/140, Review_Queue hidden. Plate reads bald: Flip cache globules sit below the scalp (max Z ≈ 1.015 vs head ≈ 1.442) — existing 1–240 cache, not a new bake. Not full cine water-hair. Unreal B2 Cam_Beauty still pending."
+      "path": "../generated/assets/character/melusina_cam_beauty_nikki_2026-08-13.png",
+      "alt": "Cam_Beauty on live v22, Nikki 900/550/280/140, Review_Queue hidden. Plate reads bald: Flip cache globules sit below the scalp (max Z ≈ 1.015 vs head ≈ 1.442) — existing 1–240 cache, not a new bake. Not full cine water-hair. Unreal B2 Cam_Beauty still pending.",
+      "status": "reject_public_hero",
+      "evidence_note": "Known-bad hair presentation. The plate reads bald; retain only for diagnosis/history and never hydrate it into recruiter-facing slots."
+    },
+    "melusina.recruiter_fallback": {
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "alt": "Melusina — EEVEE stage beauty, temporary recruiter fallback",
+      "status": "temporary_fallback",
+      "evidence_note": "Existing Stage/Resume beauty. Use only until a reviewed Unreal B2 Cam_Beauty with correct hair is captured."
     }
   }
 }
