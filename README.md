@@ -2,6 +2,8 @@
 
 **Environment Designer · Technical Artist · Unreal Engine 5.8 · Blender · ZBrush · Procedural Worldbuilding**
 
+**Public portfolio:** https://www.fromageart.xyz/ · **Selected Art:** https://fromage3900.github.io/my-site/wix/curated-art.html · **Resume:** https://fromage3900.github.io/my-site/wix/resume.html
+
 Melodia Melusina is my ongoing stylized environment-art and technical-art project: a musical fantasy world built around serene environments, procedural systems, expressive materials, character work, and interactive experiments.
 
 I use the project to explore how environment design, look development, procedural tooling, and gameplay systems can share one coherent visual language.
@@ -37,4 +39,4 @@ The project moves between serene fantasy and the surreal: luminous water, ornate
 
 I’m **Brennan Shepherd**, an environment designer and technical artist based in Toronto, Canada. My focus is stylized worldbuilding with a mix of traditional art sensibility and procedural/technical production.
 
-**Portfolio:** https://fromage3900.github.io/my-site/
+**Portfolio:** https://www.fromageart.xyz/
