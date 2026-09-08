@@ -32,7 +32,15 @@
     "wix/melodia-stage-character.html",
     "wix/sakura-case-study.html",
     "wix/space-cathedral.html",
-    "wix/pcg-system-impact.html"
+    "wix/pcg-system-impact.html",
+    "docs/PROFESSOR_INTERACTIVE_POLISH_2026-09-08.md",
+    "wix/melodia-living-worlds.html",
+    "wix/melodia-living-worlds.js",
+    "wix/melodia-living-worlds.css",
+    "wix/realtime-3d-viewer.html",
+    "wix/melodia-3d-viewport.js",
+    "wix/melodia-atelier-lab.html",
+    "wix/melodia-atelier-lab.js"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -49,5 +57,24 @@
     "route taxonomy changes",
     "new public dashboards"
   ],
-  "exception_policy": "A deliberate freeze exception must first update this manifest with the exact path and reason. Do not bypass the gate by weakening verification."
+  "exception_policy": "A deliberate freeze exception must first update this manifest with the exact path and reason. Do not bypass the gate by weakening verification.",
+  "exceptions": [
+    {
+      "id": "professor-interactive-polish-2026-09-08",
+      "reason": "Owner explicitly requested a bounded polish pass on existing Three.js / interactive showcases before professors begin reviewing the portfolio.",
+      "scope": [
+        "robust WebGL fallback/loading",
+        "professor-facing copy accuracy",
+        "accessibility and reduced-motion behavior",
+        "metadata/social-preview correctness",
+        "remove misleading Unreal/Substrate equivalence language"
+      ],
+      "exclusions": [
+        "no new public routes",
+        "no new visual systems",
+        "no global redesign",
+        "no generated replacement artwork"
+      ]
+    }
+  ]
 }
