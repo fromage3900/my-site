@@ -18,7 +18,7 @@ Pre-canonization `main`: `d76aa9e3c4d675686d5ca54772f00c6f07aad18d`
 
 ## Decision
 
-All non-main website branches above are superseded by current `main` and may be normalized to the post-canonization main tip.
+All non-main website branches above are superseded by current `main` and were normalized to the post-canonization main tip.
 
 No unique current website implementation needs to be merged from those refs.
 
