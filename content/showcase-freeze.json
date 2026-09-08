@@ -17,6 +17,9 @@
     "docs/PORTFOLIO_SENDOFF_FREEZE_2026-09-07.md",
     "README.md",
     "EDITING.md",
+    "REPOSITORY_AUTHORITY.md",
+    "docs/BRANCH_CANONIZATION_2026-09-08.md",
+    "docs/CANONICAL_WEBSITE_PIPELINE_2026-09-08.md",
     ".github/workflows/pages.yml",
     "tools/verify_sendoff_freeze.py",
     "tools/verify_showcase_polish.py",
@@ -92,6 +95,21 @@
         "do not change homepage hierarchy",
         "do not redesign navigation",
         "do not alter the gesture-art system beyond integration polish"
+      ]
+    },
+    {
+      "id": "canonical-repository-docs-2026-09-08",
+      "reason": "Owner requested final Git and semester-prep cleanup. The repository authority, branch canonization, and canonical website pipeline docs are freeze infrastructure and must be permitted without weakening recruiter-facing presentation guards.",
+      "scope": [
+        "REPOSITORY_AUTHORITY.md",
+        "docs/BRANCH_CANONIZATION_2026-09-08.md",
+        "docs/CANONICAL_WEBSITE_PIPELINE_2026-09-08.md"
+      ],
+      "exclusions": [
+        "no recruiter-facing layout changes",
+        "no navigation changes",
+        "no new public routes",
+        "no visual-system changes"
       ]
     }
   ]
