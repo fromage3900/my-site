@@ -2,6 +2,9 @@
 
 **Canonical:** `fromage3900/my-site`
 
+**Current website pipeline:** `docs/CANONICAL_WEBSITE_PIPELINE_2026-09-08.md`  
+**Branch decisions:** `docs/BRANCH_CANONIZATION_2026-09-08.md`
+
 This repository owns:
 - public portfolio pages;
 - Three.js / browser presentation;
