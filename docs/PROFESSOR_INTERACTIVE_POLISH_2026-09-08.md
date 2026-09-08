@@ -93,6 +93,18 @@ No hierarchy or route taxonomy was changed.
 
 ---
 
+## 5. Canonical presentation cleanup
+
+The same bounded pass removed a few public-facing presentation problems that were especially distracting in a professor review:
+
+- homepage / render-gallery / application-hub copy no longer advertises unfinished beauty captures as “pending”; existing studies are described positively and accurately as the evidence they actually contain;
+- reviewer language on the render gallery is now audience-neutral rather than recruiter-specific;
+- the material breakdown page foregrounds **Melodia's own hero-surface identity** instead of leading with an “Infinity Nikki–aligned” comparison. Internal asset filenames and production lineage are not rewritten; only the public editorial framing changed.
+
+This is editorial cleanup, not evidence inflation.
+
+---
+
 ## Recommended professor path
 
 For a concise review:
