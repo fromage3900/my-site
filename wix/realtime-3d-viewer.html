@@ -3,12 +3,22 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="melodia-build" content="20260904p1" />
+<meta name="melodia-build" content="20260908p1" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<title>Interactive 3D Asset Studio | Brennan Shepherd</title>
-<meta name="description" content="Interactive WebGL study for inspecting stylized assets, fabric materials, topology, and individual shading channels in the browser." />
+<title>Interactive 3D Asset Study | Brennan Shepherd</title>
+<meta name="description" content="Browser WebGL study for inspecting stylized assets, material response, topology, and shading channels; Unreal Engine renders remain the visual authority." />
+<link rel="canonical" href="https://fromage3900.github.io/my-site/wix/realtime-3d-viewer.html" />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta property="og:title" content="Interactive 3D Asset Study | Brennan Shepherd" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="A browser-side asset and material inspection study from the Melodia technical-art portfolio." />
+<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png" />
+<meta property="og:image:alt" content="Brennan Shepherd — stylized environment and technical art from Melodia" />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/realtime-3d-viewer.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png" />
 <link rel="stylesheet" href="melodia-tokens.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-luxury-type.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-editorial.css?v=20260904p1">
@@ -34,6 +44,11 @@
   .asset-btn.active, .fabric-btn.active, .mode-btn.active { background: linear-gradient(135deg, rgba(201, 168, 106, 0.25), rgba(232, 169, 161, 0.25)); border-color: #c9a86a; color: #fff; font-weight: 600; box-shadow: 0 0 12px rgba(201, 168, 106, 0.2); }
   .tag-badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; background: rgba(0, 0, 0, 0.35); color: #a4adc9; }
   .mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .viewer-authority-note { max-width: 860px; color: #cfd6ec; font-size: 0.82rem; line-height: 1.5; margin: 0 0 12px; }
+  .viewer-authority-note strong { color: #c9a86a; font-weight: 600; }
+  .viewer-unavailable { display:grid; place-items:center; min-height:360px; padding:40px; text-align:center; color:#cfd6ec; }
+  .viewer-unavailable strong { display:block; margin-bottom:8px; color:#fff; font-family:var(--font-display); font-size:1.2rem; }
+  @media (prefers-reduced-motion: reduce) { .asset-btn, .fabric-btn, .mode-btn { transition:none; } }
 </style>
 </head>
 <body>
@@ -52,8 +67,9 @@
   </header>
   <main id="main" class="viewer-3d-main">
     <div style="padding: 0 24px;">
-      <h1 class="atelier-lab-title" style="font-size: 1.8rem; margin: 0;">Interactive 3D Asset Studio</h1>
-      <p style="color: #a4adc9; font-size: 0.95rem; margin: 4px 0 12px;">A browser-side WebGL study for orbiting stylized assets, comparing fabric materials, inspecting topology, and isolating individual shading channels.</p>
+      <h1 class="atelier-lab-title" style="font-size: 1.8rem; margin: 0;">Interactive 3D Asset Study</h1>
+      <p style="color: #a4adc9; font-size: 0.95rem; margin: 4px 0 6px;">A browser-side WebGL study for orbiting stylized assets, comparing material response, inspecting topology, and isolating shading channels.</p>
+      <p class="viewer-authority-note"><strong>Scope:</strong> this viewport is an interactive presentation study, not a 1:1 Unreal renderer. The UE5.8 captures and breakdown pages remain the visual and technical authority.</p>
     </div>
     <div class="viewer-3d-app">
       <aside class="viewer-panel" aria-label="3D Asset Catalog">
@@ -61,11 +77,11 @@
         <div class="group-title">Fabrics &amp; Lookdev</div>
         <button type="button" class="asset-btn active" data-asset="fabric-sphere"><span>Lookdev Sphere</span><span class="tag-badge">4.6k Tris</span></button>
         <button type="button" class="asset-btn" data-asset="fabric-drape"><span>Draped Swatch</span><span class="tag-badge">3.2k Tris</span></button>
-        <div class="group-title">Characters &amp; Garments</div>
+        <div class="group-title">Characters &amp; Pipeline Tests</div>
         <button type="button" class="asset-btn" data-asset="melusina-shirt"><span>Melusina (Updated Shirt)</span><span class="tag-badge">Hero Garment</span></button>
         <button type="button" class="asset-btn" data-asset="melusina-hero"><span>Melusina (Full Rig)</span><span class="tag-badge">Hero Model</span></button>
         <button type="button" class="asset-btn" data-asset="sir-melodious"><span>Sir Melodious</span><span class="tag-badge">Companion</span></button>
-        <button type="button" class="asset-btn" data-asset="zundamon"><span>Zundamon</span><span class="tag-badge">Companion</span></button>
+        <button type="button" class="asset-btn" data-asset="zundamon"><span>Zundamon</span><span class="tag-badge">3rd-party pipeline test</span></button>
 
         <div class="group-title">Sacred Ornaments &amp; Tokens</div>
         <button type="button" class="asset-btn" data-asset="melody-token-water"><span>Water Melody Token</span><span class="tag-badge">High-Poly</span></button>
@@ -79,14 +95,14 @@
       </aside>
       <section id="viewer-viewport" class="viewer-viewport-box" aria-label="3D WebGL Viewport">
         <div class="viewer-hud-overlay">
-          <div class="viewer-hud-pill">✦ WebGL asset study · material inspector</div>
+          <div class="viewer-hud-pill">✦ WebGL asset study · browser material preview</div>
           <div class="viewer-hud-pill" id="viewer-rot-status">Auto-Rotate: ON</div>
         </div>
         <div id="webgl-viewport-container" class="viewer-3d-canvas-container"></div>
         <div class="viewer-telemetry-bar">
           <div class="telemetry-item"><span>Active Asset</span><span id="viewer-asset-name">PBR Fabric Lookdev Sphere</span></div>
           <div class="telemetry-item"><span>Active Fabric / Material</span><span id="viewer-fabric-name">Royal Velvet</span></div>
-          <div class="telemetry-item"><span>Geometry Budget</span><span id="viewer-triangles">4.6k Tris</span></div>
+          <div class="telemetry-item"><span>Geometry</span><span id="viewer-triangles">4.6k Tris</span></div>
           <div class="telemetry-item"><span>Shading Pass</span><span id="viewer-shading-pass">PBR study (ORM)</span></div>
         </div>
       </section>
@@ -94,8 +110,8 @@
         <h2 style="font-size: 1rem; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;"><span>✧</span> Shading &amp; Channels</h2>
         <div class="group-title">Shading Study Mode</div>
         <div class="mode-grid">
-          <button type="button" class="mode-btn active" data-mode="pbr">PBR Beauty</button>
-          <button type="button" class="mode-btn" data-mode="toon">Substrate Toon</button>
+          <button type="button" class="mode-btn active" data-mode="pbr">PBR Preview</button>
+          <button type="button" class="mode-btn" data-mode="toon">Toon Study</button>
           <button type="button" class="mode-btn" data-mode="normal">Normals (RGB)</button>
           <button type="button" class="mode-btn" data-mode="roughness">Roughness (G)</button>
           <button type="button" class="mode-btn" data-mode="metallic">Metallic (B)</button>
@@ -117,7 +133,7 @@
     </div>
   </main>
 </div>
-<script src="melodia-3d-viewport.js?v=20260904p1"></script>
+<script src="melodia-3d-viewport.js?v=20260908p1"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var urlParams = new URLSearchParams(window.location.search);
@@ -174,8 +190,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
-<script src="melodia-site-nav.js?v=20260904p1"></script>
-<script src="melodia-editorial.js?v=20260904p1"></script>
+<script src="melodia-site-nav.js?v=20260908p1"></script>
+<script src="melodia-editorial.js?v=20260908p1"></script>
 <script>if (window.MelodiaEditorial) MelodiaEditorial.init({ page: 'realtime-3d-viewer' });</script>
 </body>
 </html>
