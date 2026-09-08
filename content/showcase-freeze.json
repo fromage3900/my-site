@@ -111,6 +111,24 @@
         "no new public routes",
         "no visual-system changes"
       ]
+    },
+    {
+      "id": "micro-entry-cutscene-2026-09-08",
+      "reason": "Owner explicitly requested restoration of the preserved Ink & Breath opening idea as a sub-second Melodia-style first-visit micro-cutscene on the existing homepage.",
+      "scope": [
+        "wix/index.html only",
+        "first-visit-per-session non-blocking micro-cutscene",
+        "visual language distilled from preserved InkBreathResonance prototype",
+        "reduced-motion and immediate-fallback behavior"
+      ],
+      "exclusions": [
+        "no new public route",
+        "no long-form 21-second ritual",
+        "no audio autoplay",
+        "no navigation or recruiter-copy changes",
+        "no replacement artwork",
+        "no new renderer dependency"
+      ]
     }
   ]
 }
