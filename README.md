@@ -1,5 +1,7 @@
 # Melodia Melusina — Brennan Shepherd
 
+> **Repository boundary — 2026-09-08:** this repository is the canonical portfolio/web authority only. Game/runtime work belongs in `fromage3900/MelodiaMelusinaV2`; TouchDesigner work belongs in the separate `MelodiaTouchDesigner` Git. The old `EnvironmentPortfolio` repository is deprecated historical storage and must not be used as a current source of truth.
+
 > **SHOWCASE SOFT FREEZE ACTIVE — 2026-09-07.** Recruiter-facing structure, navigation, styling, and public route scope are frozen. Only approved render promotion, factual/contact/accessibility fixes, social-preview correctness, and critical deployment repairs are in scope until hard freeze. See [docs/PORTFOLIO_SENDOFF_FREEZE_2026-09-07.md](docs/PORTFOLIO_SENDOFF_FREEZE_2026-09-07.md).
 
 **Environment Designer · Technical Artist · Unreal Engine 5.8 · Blender · ZBrush · Procedural Worldbuilding**
