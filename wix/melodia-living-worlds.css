@@ -382,6 +382,49 @@ body[data-living-scene="horizon-eater"] {
   white-space: nowrap;
 }
 
+.living-sketch-link {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: 6px 12px;
+  margin-top: var(--space-8);
+  padding: 10px 14px;
+  border: 1px solid rgba(201, 168, 106, 0.18);
+  border-radius: var(--radius-lg);
+  background: rgba(10, 14, 28, 0.32);
+  color: var(--primitive-ivory-100);
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.living-sketch-link:hover {
+  border-color: rgba(201, 168, 106, 0.46);
+  background: rgba(28, 20, 38, 0.5);
+}
+
+.living-sketch-link span {
+  color: var(--living-accent);
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.living-sketch-link strong {
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+}
+
+.living-sketch-link small {
+  grid-column: 2;
+  color: var(--primitive-slate-300);
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .living-scene-button small {
   margin-top: 5px;
   color: var(--primitive-slate-300);
