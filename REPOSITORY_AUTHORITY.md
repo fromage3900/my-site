@@ -17,8 +17,10 @@ It does **not** own:
 Use:
 - game/runtime/capstone → `fromage3900/MelodiaMelusinaV2`
 - TouchDesigner/AE → separate `MelodiaTouchDesigner` Git
-- old `EnvironmentPortfolio` → deprecated archive only
+- root `fromage3900/EnvironmentPortfolio` Git repo → deprecated archive only
 
-Historical path strings such as `C:/EnvironmentPortfolio/my-site-clean` may appear in old tooling/docs. They do not make the old umbrella repo authoritative.
+The local filesystem folder `C:/EnvironmentPortfolio/` may remain a valid workspace container for independent nested repositories.
+
+`C:/EnvironmentPortfolio/...` paths may be valid live local paths. The deprecated object is the **root umbrella Git repository**, not the workspace folder.
 
 **One domain, one repo, one authority.**
