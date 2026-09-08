@@ -1,14 +1,15 @@
 /**
- * MELODIA ATELIER LAB & SUBSTRATE SHADER STUDIO
- * Real-time procedural Substrate Toon shader simulation, 4-world atmosphere particles,
- * interactive PCG scattering heatmap engine, TouchDesigner resonance synthesizer,
- * and 360-degree asset turntable inspection.
+ * MELODIA TECHNICAL ART ATELIER
+ * Browser-side studies for stylized shading, atmosphere, procedural spacing,
+ * audio-reactive graphics, and 3D asset inspection. These modules translate ideas
+ * from the Melodia production pipeline; they are not live Unreal/TouchDesigner telemetry.
  */
 
 (function (window, document) {
   'use strict';
 
   // --- Global State ---
+  var reducedMotion = Boolean(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   var state = {
     activeTab: 'shader-lab',
     shader: {
@@ -268,7 +269,7 @@
     // Main Shader Render Loop
     var time = 0;
     function renderShader() {
-      time += 0.02;
+      if (!reducedMotion) time += 0.02;
       var w = canvas.width / (window.devicePixelRatio || 1);
       var h = canvas.height / (window.devicePixelRatio || 1);
       ctx.clearRect(0, 0, w, h);
@@ -352,7 +353,7 @@
         ctx.restore();
       }
 
-      // 4. Anisotropic Specular Highlight Rings (Infinity Nikki / HoYoverse Style)
+      // 4. Anisotropic specular highlight study
       if (state.shader.specularRings > 0.1) {
         ctx.save();
         ctx.beginPath();
@@ -394,7 +395,7 @@
         ctx.restore();
       }
 
-      // 6. Anime Rim Light (Fresnel Glow)
+      // 6. Fresnel rim-light study
       if (state.shader.rimIntensity > 0.05) {
         ctx.save();
         ctx.beginPath();
@@ -488,7 +489,7 @@
   }
 
   // =========================================================================
-  // 2. 4-WORLD ATMOSPHERE & PARTICLE SYSTEM
+  // 2. WORLD ATMOSPHERE & PARTICLE STUDY
   // =========================================================================
   function initWorldAtmosphere() {
     var canvas = document.getElementById('canvas-world-stage');
@@ -555,13 +556,15 @@
 
       // Render & Update Particles
       state.world.particles.forEach(function (p) {
-        // Physics update
-        p.x += p.vx;
-        p.y += p.vy;
-        p.rot += p.vrot;
+        // Ambient motion is paused for reduced-motion visitors.
+        if (!reducedMotion) {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.vrot;
+        }
 
-        // Mouse deflection vortex
-        if (state.world.mousePos.isHover) {
+        // Mouse deflection remains an explicit interaction, not ambient motion.
+        if (!reducedMotion && state.world.mousePos.isHover) {
           var dx = p.x - state.world.mousePos.x;
           var dy = p.y - state.world.mousePos.y;
           var dist = Math.sqrt(dx * dx + dy * dy);
@@ -673,7 +676,7 @@
   }
 
   // =========================================================================
-  // 3. PCG PROCEDURAL SCATTERING & BIOME DENSITY ENGINE
+  // 3. PROCEDURAL SCATTERING & BIOME-DENSITY STUDY
   // =========================================================================
   function initPcgScatter() {
     var canvas = document.getElementById('canvas-pcg-stage');
@@ -832,7 +835,7 @@
   }
 
   // =========================================================================
-  // 4. TOUCHDESIGNER AUDIO RESONANCE SYNTHESIZER
+  // 4. BROWSER AUDIO-RESONANCE STUDY
   // =========================================================================
   function initResonanceSynth() {
     var canvas = document.getElementById('canvas-audio-stage');
@@ -851,7 +854,7 @@
 
     var time = 0;
     function renderResonance() {
-      time += 0.03;
+      if (!reducedMotion) time += 0.03;
       var w = canvas.width / (window.devicePixelRatio || 1);
       var h = canvas.height / (window.devicePixelRatio || 1);
       ctx.clearRect(0, 0, w, h);
@@ -863,7 +866,7 @@
       ctx.fillStyle = '#0A0E22';
       ctx.fillRect(0, 0, w, h);
 
-      // Harmonic Lissajous Orrery Rings (Simulating 4-band TouchDesigner stream)
+      // Harmonic Lissajous orrery rings driven by the browser study's four analysis bands
       var bands = state.audio.simBands;
       var subBass = bands[0];
       var midHarm = bands[1];
@@ -986,7 +989,7 @@
   }
 
   // =========================================================================
-  // 5. REAL-TIME 3D WEBGL ASSET & WARDROBE TURNTABLE
+  // 5. WEBGL ASSET & WARDROBE TURNTABLE STUDY
   // =========================================================================
   var viewer3DInstance = null;
 
