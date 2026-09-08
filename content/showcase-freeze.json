@@ -46,7 +46,18 @@
     "wix/melodia-atelier-lab.js",
     "wix/shader-breakdowns.html",
     "wix/constellation-brush.html",
-    "wix/public-routes.json"
+    "wix/public-routes.json",
+    "wix/melodia-tokens.css",
+    "wix/melodia-luxury-type.css",
+    "wix/melodia-starfield.js",
+    "wix/melodia-starfield.css",
+    "wix/melodia-dream-shaders.css",
+    "wix/melodia-tiling-patterns.css",
+    "wix/melodia-editorial.css",
+    "wix/melodia-editorial-polish.css",
+    "wix/melodia-site-chrome.css",
+    "wix/melodia-mobile.css",
+    "docs/WEB_RENDERER_ARCHITECTURE_2026-09-08.md"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -110,6 +121,26 @@
         "no navigation changes",
         "no new public routes",
         "no visual-system changes"
+      ]
+    },
+    {
+      "id": "recruiter-renderer-polish-2026-09-08",
+      "reason": "Owner explicitly authorized a bounded recruiter-sendoff polish pass for visual consistency, starfield de-grid, typography/palette enforcement, renderer ownership documentation, Living Worlds art direction, and realtime model-viewer presentation.",
+      "scope": [
+        "shared Melodia palette and typography consistency",
+        "remove/demote repeated CSS star tiling and keep procedural sky authoritative",
+        "renderer lifecycle/performance cleanup",
+        "Living Worlds visual/camera/composition polish",
+        "realtime 3D viewer presentation and inspection UX",
+        "document renderer ownership without introducing unnecessary production dependencies"
+      ],
+      "exclusions": [
+        "no new public routes",
+        "no navigation taxonomy redesign",
+        "no factual project-claim expansion",
+        "no replacement artwork generation",
+        "no framework migration",
+        "no broad WebGPU migration during recruiter sendoff"
       ]
     }
   ]
