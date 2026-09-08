@@ -1,6 +1,6 @@
 /**
  * Melodia Living Worlds
- * Three procedural dreamscapes built with Three.js r128 and no external art assets.
+ * Three procedural dreamscapes built with Three.js r128 as an authored browser environment study.
  */
 (function (window, document) {
   'use strict';
@@ -682,7 +682,7 @@
     var fallbackCopy = document.getElementById('living-fallback-copy');
     fallback.hidden = false;
     if (message) fallbackCopy.textContent = message;
-    document.getElementById('living-runtime-copy').textContent = 'Illustrated field note · renderer unavailable';
+    document.getElementById('living-runtime-copy').textContent = 'Static field note · WebGL unavailable';
   }
 
   function bindInterface() {
@@ -793,7 +793,7 @@
     if (now - fpsStarted > 1200) {
       var fps = Math.round(frameCount * 1000 / (now - fpsStarted));
       var ratio = Math.min(window.devicePixelRatio || 1, 1.6).toFixed(1);
-      document.getElementById('living-runtime-copy').textContent = 'WebGL · ' + fps + ' fps · ' + ratio + 'x · three procedural realms';
+      document.getElementById('living-runtime-copy').textContent = 'Interactive WebGL · three authored procedural scenes';
       frameCount = 0;
       fpsStarted = now;
     }
@@ -802,7 +802,7 @@
   function initThree() {
     THREE = window.THREE;
     if (!THREE || !window.WebGLRenderingContext) {
-      showFallback('This browser cannot start the real-time WebGL study. The illustrated field note remains available.');
+      showFallback('This browser cannot start the interactive WebGL study. The static field note remains available.');
       return;
     }
 
@@ -855,11 +855,11 @@
       resize();
       window.addEventListener('resize', resize, { passive: true });
       shell.classList.add('is-ready');
-      document.getElementById('living-runtime-copy').textContent = 'WebGL · waking the landscape';
+      document.getElementById('living-runtime-copy').textContent = 'Interactive WebGL · scene ready';
       animationFrame = window.requestAnimationFrame(animate);
     } catch (error) {
       window.cancelAnimationFrame(animationFrame);
-      showFallback('The real-time renderer encountered an error. The illustrated field note remains available.');
+      showFallback('The interactive renderer encountered an error. The static field note remains available.');
       if (window.console && window.console.error) window.console.error('Melodia Living Worlds:', error);
     }
   }
