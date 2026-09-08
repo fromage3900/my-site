@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Constellation Brush · Melodia Melusina</title>
+<meta name="description" content="A gesture-reading constellation brush for Melodia Melusina: draw starlight, awaken orbital systems, and make a small pentatonic score in the browser."/>
+<meta name="robots" content="noindex,follow"/>
+<meta name="theme-color" content="#04060c"/>
+<style>
+  html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#04060c;}
+  body{font-family:Georgia,'Times New Roman',serif;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;}
+  #c{position:fixed;inset:0;display:block;touch-action:none;}
+  #title{position:fixed;top:calc(14px + env(safe-area-inset-top));left:22px;color:#d8c48d;opacity:.75;font-size:11px;letter-spacing:.5em;pointer-events:none;text-transform:uppercase;}
+  #title small{display:block;letter-spacing:.3em;color:#7f93b3;font-size:9px;margin-top:5px;text-transform:none;opacity:.9;}
+  #hint{position:fixed;left:0;right:0;bottom:calc(18px + env(safe-area-inset-bottom));text-align:center;color:#93a6c4;opacity:.92;font-size:12px;letter-spacing:.13em;line-height:2;pointer-events:none;padding:0 26px;transition:opacity 2.5s;}
+  .btn{position:fixed;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(216,196,141,.4);background:rgba(8,12,22,.45);color:#d8c48d;font-size:15px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);outline:none;}
+  .btn:active{background:rgba(30,36,54,.7);}
+  #soundBtn{bottom:calc(70px + env(safe-area-inset-bottom));}
+  #clearBtn{bottom:calc(18px + env(safe-area-inset-bottom));}
+  #back{position:fixed;top:calc(14px + env(safe-area-inset-top));right:16px;z-index:4;color:#d8c48d;text-decoration:none;font:10px/1.4 Georgia,serif;letter-spacing:.16em;text-transform:uppercase;padding:9px 12px;border:1px solid rgba(216,196,141,.28);border-radius:999px;background:rgba(8,12,22,.42);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+  #back:focus-visible,.btn:focus-visible{outline:2px solid #d8c48d;outline-offset:3px;}
+</style>
+</head>
+<body>
+<a id="back" href="melodia-living-worlds.html" aria-label="Back to Living Worlds">← Living Worlds</a>
+<canvas id="c"></canvas>
+<div id="title">Melodia Melusina<small>constellation brush</small></div>
+<div id="hint">drift slowly &mdash; threads of starlight &nbsp;&middot;&nbsp; move fast &mdash; comets, shards &amp; blooms<br/>draw a circle &mdash; an orbit awakens &nbsp;&middot;&nbsp; turn sharply &mdash; crystal junctions &nbsp;&middot;&nbsp; rest &mdash; a listening star<br/>pinch with two fingers &mdash; tidal stars</div>
+<button class="btn" id="soundBtn" aria-label="Toggle constellation sound" title="Toggle sound">&#9834;</button>
+<button class="btn" id="clearBtn" aria-label="Clear constellation" title="Clear constellation">&#10005;</button>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js" onerror="this.onerror=null;this.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'"></script>
+<script>
+'use strict';
+/* ============================================================
+   MELODIA MELUSINA — a gesture-reading constellation brush
+   ink · pearl · moonlight · water · stars · fine golden geometry
+   ============================================================ */
+const T = () => performance.now() / 1000;
+const rand = (a, b) => a + Math.random() * (b - a);
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const angDiff = (a, b) => { let d = a - b; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; return d; };
+
+/* palette */
+const PEARL = [0.95, 0.92, 0.84], MOON = [0.66, 0.75, 0.90], WATER = [0.40, 0.64, 0.66], GOLD = [0.92, 0.77, 0.42];
+const mixc = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+
+/* ---------- renderer / scene ---------- */
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, powerPreference: 'high-performance' });
+const PR = Math.min(window.devicePixelRatio || 1, 2);
+renderer.setPixelRatio(PR);
+let W = innerWidth, H = innerHeight;
+renderer.setSize(W, H);
+renderer.setClearColor(0x04060c, 1);
+const scene = new THREE.Scene();
+const camera = new THREE.OrthographicCamera(-W / 2, W / 2, H / 2, -H / 2, -50, 50);
+camera.position.z = 10;
+
+const timeUniforms = [];
+const reg = m => { timeUniforms.push(m.uniforms.uTime); return m; };
+const mark = g => { const a = g.attributes; for (const k in a) if (a[k].isDynamic) a[k].needsUpdate = true; };
+
+/* ---------- water / ink / moonlight background ---------- */
+const bgMat = reg(new THREE.ShaderMaterial({
+  uniforms: { uTime: { value: 0 }, uRes: { value: new THREE.Vector2(W, H) } },
+  depthWrite: false, depthTest: false,
+  vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0., 1.); }`,
+  fragmentShader: `
+    precision highp float; varying vec2 vUv; uniform float uTime; uniform vec2 uRes;
+    float caust(vec2 p, float t){
+      float a = sin(p.x*3.1 + t*.34) * sin(p.y*2.7 - t*.27);
+      float b = sin((p.x+p.y)*2.2 + t*.21) * sin((p.x-p.y)*1.9 - t*.16);
+      return pow(abs(a*b), 3.0);
+    }
+    void main(){
+      vec2 p = (vUv - .5) * vec2(uRes.x/uRes.y, 1.) * 4.2;
+      float t = uTime;
+      float c = caust(p, t)*.55 + caust(p*1.9 + 7.3, t*1.27)*.45;
+      vec3 ink = vec3(.014,.022,.048), water = vec3(.045,.125,.155);
+      vec3 col = mix(ink, water, c*.55);
+      float d = distance(vUv, vec2(.3,.74));
+      col += vec3(.05,.07,.11) * exp(-d*3.1) * .7;            /* moonlight pool */
+      float v = smoothstep(1.25, .3, distance(vUv, vec2(.5)));
+      col *= mix(.5, 1., v);                                   /* vignette */
+      gl_FragColor = vec4(col, 1.);
+    }`
+}));
+const bg = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), bgMat);
+bg.frustumCulled = false; bg.renderOrder = -10;
+scene.add(bg);
+
+/* ---------- fine golden geometry overlay ---------- */
+const goldGroup = new THREE.Group();
+const goldMat = new THREE.LineBasicMaterial({ color: 0xc9a86a, transparent: true, opacity: 0.09, blending: THREE.AdditiveBlending, depthWrite: false });
+function circlePts(r, n) { const p = []; for (let i = 0; i <= n; i++) { const a = i / n * Math.PI * 2; p.push(new THREE.Vector3(Math.cos(a) * r, Math.sin(a) * r, 0)); } return p; }
+function polyPts(r, n, rot) { const p = []; for (let i = 0; i <= n; i++) { const a = rot + i / n * Math.PI * 2; p.push(new THREE.Vector3(Math.cos(a) * r, Math.sin(a) * r, 0)); } return p; }
+let mindim = Math.min(W, H);
+[[.46, 128, circlePts], [.30, 6, polyPts], [.17, 4, polyPts]].forEach(([f, n, fn], i) => {
+  const g = new THREE.BufferGeometry().setFromPoints(fn(mindim * f, n, i * 0.3));
+  goldGroup.add(new THREE.Line(g, goldMat));
+});
+scene.add(goldGroup);
+
+/* ============================================================
+   STAR POOL — the persistent constellation
+   ============================================================ */
+const MAXS = 900;
+const sPos = new Float32Array(MAXS * 3), sCol = new Float32Array(MAXS * 3),
+      sSize = new Float32Array(MAXS), sPhase = new Float32Array(MAXS),
+      sBirth = new Float32Array(MAXS), sLife = new Float32Array(MAXS);
+sBirth.fill(-1e9);
+const stars = new Array(MAXS).fill(null);
+const starGeo = new THREE.BufferGeometry();
+starGeo.setAttribute('position', new THREE.BufferAttribute(sPos, 3).setUsage(THREE.DynamicDrawUsage));
+starGeo.setAttribute('aColor', new THREE.BufferAttribute(sCol, 3).setUsage(THREE.DynamicDrawUsage));
+starGeo.setAttribute('aSize', new THREE.BufferAttribute(sSize, 1).setUsage(THREE.DynamicDrawUsage));
+starGeo.setAttribute('aPhase', new THREE.BufferAttribute(sPhase, 1));
+starGeo.setAttribute('aBirth', new THREE.BufferAttribute(sBirth, 1).setUsage(THREE.DynamicDrawUsage));
+starGeo.setAttribute('aLife', new THREE.BufferAttribute(sLife, 1));
+const starMat = reg(new THREE.ShaderMaterial({
+  uniforms: { uTime: { value: 0 }, uPr: { value: PR } },
+  transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
+  vertexShader: `
+    attribute vec3 aColor; attribute float aSize, aPhase, aBirth, aLife;
+    uniform float uTime, uPr; varying vec3 vC; varying float vA;
+    void main(){
+      float age = uTime - aBirth;
+      float tw = .68 + .32 * sin(uTime * (1.1 + fract(aPhase * .13) * 2.6) + aPhase);
+      float env = smoothstep(0., 1.4, age) * smoothstep(aLife, aLife * .5, age);
+      vA = env * tw; vC = aColor;
+      gl_PointSize = aSize * uPr * (.75 + .45 * tw);
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);
+    }`,
+  fragmentShader: `
+    precision mediump float; varying vec3 vC; varying float vA;
+    void main(){
+      vec2 uv = gl_PointCoord - .5; float d = length(uv);
+      float core = smoothstep(.42, 0., d);
+      float halo = exp(-d * 7.) * .55;
+      float sp = (pow(max(0., 1. - abs(uv.x) * 9.), 8.) + pow(max(0., 1. - abs(uv.y) * 9.), 8.)) * smoothstep(.22, 0., d);
+      float a = (core + halo + sp) * vA;
+      if (a < .004) discard;
+      gl_FragColor = vec4(vC * (.6 + .95 * a), a);
+    }`
+}));
+const starPts = new THREE.Points(starGeo, starMat);
+starPts.frustumCulled = false;
+scene.add(starPts);
+
+let sIdx = 0, cxE = 0, cyE = 0, seeded = false;
+function addStar(x, y, size, life, rgb) {
+  const i = sIdx++ % MAXS;
+  stars[i] = { x, y, ph: Math.random() * 100, ws: rand(.5, 1.6), amp: rand(.15, .6), born: T(), life };
+  sPos[i*3] = x; sPos[i*3+1] = y; sPos[i*3+2] = rand(-2, 2);
+  sCol[i*3] = rgb[0]; sCol[i*3+1] = rgb[1]; sCol[i*3+2] = rgb[2];
+  sSize[i] = size; sPhase[i] = Math.random() * 100; sBirth[i] = T(); sLife[i] = life;
+  mark(starGeo);
+  cxE += (x - cxE) * .015; cyE += (y - cyE) * .015;
+  if (seeded) spawnCount++;
+}
+
+/* ============================================================
+   FREE PARTICLES — blooms, comet tails, pinch tides
+   ============================================================ */
+const MAXP = 1600;
+const fPos = new Float32Array(MAXP * 3), fCol = new Float32Array(MAXP * 3),
+      fSize = new Float32Array(MAXP), fBirth = new Float32Array(MAXP),
+      fDur = new Float32Array(MAXP), fVel = new Float32Array(MAXP * 2);
+fBirth.fill(-1e9);
+const parts = new Array(MAXP).fill(null);
+const partGeo = new THREE.BufferGeometry();
+partGeo.setAttribute('position', new THREE.BufferAttribute(fPos, 3).setUsage(THREE.DynamicDrawUsage));
+partGeo.setAttribute('aColor', new THREE.BufferAttribute(fCol, 3).setUsage(THREE.DynamicDrawUsage));
+partGeo.setAttribute('aSize', new THREE.BufferAttribute(fSize, 1).setUsage(THREE.DynamicDrawUsage));
+partGeo.setAttribute('aBirth', new THREE.BufferAttribute(fBirth, 1).setUsage(THREE.DynamicDrawUsage));
+partGeo.setAttribute('aDur', new THREE.BufferAttribute(fDur, 1));
+const partMat = reg(new THREE.ShaderMaterial({
+  uniforms: { uTime: { value: 0 }, uPr: { value: PR } },
+  transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
+  vertexShader: `
+    attribute vec3 aColor; attribute float aSize, aBirth, aDur;
+    uniform float uTime, uPr; varying vec3 vC; varying float vA;
+    void main(){
+      float u = clamp((uTime - aBirth) / aDur, 0., 1.);
+      vA = smoothstep(0., .1, u) * pow(1. - u, 1.9);
+      vC = aColor;
+      gl_PointSize = aSize * uPr * (1. - u * .6);
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);
+    }`,
+  fragmentShader: `
+    precision mediump float; varying vec3 vC; varying float vA;
+    void main(){
+      float d = length(gl_PointCoord - .5);
+      float a = exp(-d * 6.) * vA;
+      if (a < .004) discard;
+      gl_FragColor = vec4(vC, a);
+    }`
+}));
+const partPts = new THREE.Points(partGeo, partMat);
+partPts.frustumCulled = false;
+scene.add(partPts);
+
+let fIdx = 0;
+function spawnPart(x, y, vx, vy, size, dur, rgb) {
+  const i = fIdx++ % MAXP;
+  parts[i] = { born: T(), dur };
+  fPos[i*3] = x; fPos[i*3+1] = y; fPos[i*3+2] = rand(-2, 2);
+  fVel[i*2] = vx; fVel[i*2+1] = vy;
+  fCol[i*3] = rgb[0]; fCol[i*3+1] = rgb[1]; fCol[i*3+2] = rgb[2];
+  fSize[i] = size; fBirth[i] = T(); fDur[i] = dur;
+  mark(partGeo);
+}
+
+/* ============================================================
+   LINE POOL — threads · meaning-lines · crystal hexagrams
+   modes: 0 = fade-out thread, 1 = slow in/out (meaning), 2 = crystal
+   ============================================================ */
+const MAXL = 1000;
+const lPos = new Float32Array(MAXL * 2 * 3), lCol = new Float32Array(MAXL * 2 * 3),
+      lBirth = new Float32Array(MAXL * 2), lDur = new Float32Array(MAXL * 2),
+      lMode = new Float32Array(MAXL * 2);
+lBirth.fill(-1e9);
+const lineGeo = new THREE.BufferGeometry();
+lineGeo.setAttribute('position', new THREE.BufferAttribute(lPos, 3).setUsage(THREE.DynamicDrawUsage));
+lineGeo.setAttribute('aColor', new THREE.BufferAttribute(lCol, 3).setUsage(THREE.DynamicDrawUsage));
+lineGeo.setAttribute('aBirth', new THREE.BufferAttribute(lBirth, 1).setUsage(THREE.DynamicDrawUsage));
+lineGeo.setAttribute('aDur', new THREE.BufferAttribute(lDur, 1).setUsage(THREE.DynamicDrawUsage));
+lineGeo.setAttribute('aMode', new THREE.BufferAttribute(lMode, 1).setUsage(THREE.DynamicDrawUsage));
+const lineMat = reg(new THREE.ShaderMaterial({
+  uniforms: { uTime: { value: 0 } },
+  transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
+  vertexShader: `
+    attribute vec3 aColor; attribute float aBirth, aDur, aMode;
+    uniform float uTime; varying vec3 vC; varying float vA;
+    void main(){
+      float u = clamp((uTime - aBirth) / aDur, 0., 1.); float a;
+      if (aMode < .5)      a = smoothstep(0., .08, u) * pow(1. - u, 1.7);
+      else if (aMode < 1.5) a = pow(sin(3.14159 * u), 2.2);
+      else                  a = smoothstep(0., .05, u) * pow(1. - u, 2.4);
+      vA = a; vC = aColor;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);
+    }`,
+  fragmentShader: `
+    precision mediump float; varying vec3 vC; varying float vA;
+    void main(){ if (vA < .004) discard; gl_FragColor = vec4(vC, vA); }`
+}));
+const lineSegs = new THREE.LineSegments(lineGeo, lineMat);
+lineSegs.frustumCulled = false;
+scene.add(lineSegs);
+
+let lIdx = 0;
+function addSeg(x1, y1, x2, y2, rgb, dur, mode, gain) {
+  const i = lIdx++ % MAXL;
+  const g = gain === undefined ? 1 : gain;
+  const w = i * 6;
+  lPos[w]   = x1; lPos[w+1] = y1; lPos[w+2] = 0;
+  lPos[w+3] = x2; lPos[w+4] = y2; lPos[w+5] = 0;
+  const cw = i * 6;
+  lCol[cw]   = rgb[0]*g; lCol[cw+1] = rgb[1]*g; lCol[cw+2] = rgb[2]*g;
+  lCol[cw+3] = rgb[0]*g; lCol[cw+4] = rgb[1]*g; lCol[cw+5] = rgb[2]*g;
+  const t = T(), a = i * 2;
+  lBirth[a] = t; lBirth[a+1] = t; lDur[a] = dur; lDur[a+1] = dur;
+  lMode[a] = mode; lMode[a+1] = mode;
+  mark(lineGeo);
+}
+function addThread(x1, y1, x2, y2, rgb, dur, gain) { addSeg(x1, y1, x2, y2, rgb, dur || 6, 0, gain === undefined ? .45 : gain); }
+function spawnCrystal(x, y, scale) {
+  const R = scale, rot = Math.random() * Math.PI;
+  const pt = k => [x + Math.cos(rot + k * Math.PI / 3) * R, y + Math.sin(rot + k * Math.PI / 3) * R];
+  const goldish = mixc(GOLD, PEARL, Math.random() * .5);
+  for (const tri of [[0, 2, 4], [1, 3, 5]]) {
+    const P = tri.map(pt);
+    for (let e = 0; e < 3; e++) { const A = P[e], B = P[(e + 1) % 3]; addSeg(A[0], A[1], B[0], B[1], goldish, 5, 2, .9); }
+  }
+  addStar(x, y, rand(8, 12), 9, mixc(GOLD, PEARL, .3));
+}
+
+/* ============================================================
+   SHARD POOL — crystalline splinters for fast gestures
+   ============================================================ */
+const MAXSH = 240;
+const hPos = new Float32Array(MAXSH * 3 * 3), hCol = new Float32Array(MAXSH * 3 * 3),
+      hBirth = new Float32Array(MAXSH * 3), hDur = new Float32Array(MAXSH * 3);
+hBirth.fill(-1e9);
+const shardGeo = new THREE.BufferGeometry();
+shardGeo.setAttribute('position', new THREE.BufferAttribute(hPos, 3).setUsage(THREE.DynamicDrawUsage));
+shardGeo.setAttribute('aColor', new THREE.BufferAttribute(hCol, 3).setUsage(THREE.DynamicDrawUsage));
+shardGeo.setAttribute('aBirth', new THREE.BufferAttribute(hBirth, 1).setUsage(THREE.DynamicDrawUsage));
+shardGeo.setAttribute('aDur', new THREE.BufferAttribute(hDur, 1));
+const shardMat = reg(new THREE.ShaderMaterial({
+  uniforms: { uTime: { value: 0 } },
+  transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+  vertexShader: `
+    attribute vec3 aColor; attribute float aBirth, aDur;
+    uniform float uTime; varying vec3 vC; varying float vA;
+    void main(){
+      float u = clamp((uTime - aBirth) / aDur, 0., 1.);
+      vA = smoothstep(0., .06, u) * pow(1. - u, 1.8); vC = aColor;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);
+    }`,
+  fragmentShader: `
+    precision mediump float; varying vec3 vC; varying float vA;
+    void main(){ if (vA < .004) discard; gl_FragColor = vec4(vC, vA); }`
+}));
+const shardMesh = new THREE.Mesh(shardGeo, shardMat);
+shardMesh.frustumCulled = false;
+scene.add(shardMesh);
+
+let hIdx = 0;
+function spawnShard(x, y, ang, speed) {
+  const i = hIdx++ % MAXSH;
+  const r = rand(5, 12) + Math.min(10, speed * 0.003);
+  const ca = Math.cos(ang), sa = Math.sin(ang);
+  const px = -sa, py = ca;
+  const tip = [x + ca * r * 1.7, y + sa * r * 1.7];
+  const b1 = [x - ca * r * .4 + px * r * .55, y - sa * r * .4 + py * r * .55];
+  const b2 = [x - ca * r * .4 - px * r * .55, y - sa * r * .4 - py * r * .55];
+  const rgb = pick([GOLD, mixc(GOLD, MOON, .5), mixc(PEARL, WATER, .4)]);
+  const w = i * 9, cw = i * 9, verts = [tip, b1, b2];
+  for (let v = 0; v < 3; v++) {
+    hPos[w + v*3] = verts[v][0]; hPos[w + v*3 + 1] = verts[v][1]; hPos[w + v*3 + 2] = 0;
+    hCol[cw + v*3] = rgb[0]; hCol[cw + v*3 + 1] = rgb[1]; hCol[cw + v*3 + 2] = rgb[2];
+    hBirth[i*3 + v] = T(); hDur[i*3 + v] = rand(1.6, 2.8);
+  }
+  mark(shardGeo);
+}
+
+/* ============================================================
+   ORBIT POOL — orbital systems from circular gestures
+   ============================================================ */
+const MAXO = 700;
+const oPos = new Float32Array(MAXO * 3), oCol = new Float32Array(MAXO * 3),
+      oSize = new Float32Array(MAXO), oPhase = new Float32Array(MAXO),
+      oBirth = new Float32Array(MAXO), oDur = new Float32Array(MAXO);
+oBirth.fill(-1e9);
+const orbitGeo = new THREE.BufferGeometry();
+orbitGeo.setAttribute('position', new THREE.BufferAttribute(oPos, 3).setUsage(THREE.DynamicDrawUsage));
+orbitGeo.setAttribute('aColor', new THREE.BufferAttribute(oCol, 3).setUsage(THREE.DynamicDrawUsage));
+orbitGeo.setAttribute('aSize', new THREE.BufferAttribute(oSize, 1));
+orbitGeo.setAttribute('aPhase', new THREE.BufferAttribute(oPhase, 1));
+orbitGeo.setAttribute('aBirth', new THREE.BufferAttribute(oBirth, 1).setUsage(THREE.DynamicDrawUsage));
+orbitGeo.setAttribute('aDur', new THREE.BufferAttribute(oDur, 1));
+const orbitMat = reg(new THREE.ShaderMaterial({
+  uniforms: { uTime: { value: 0 }, uPr: { value: PR } },
+  transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
+  vertexShader: `
+    attribute vec3 aColor; attribute float aSize, aPhase, aBirth, aDur;
+    uniform float uTime, uPr; varying vec3 vC; varying float vA;
+    void main(){
+      float age = uTime - aBirth;
+      float tw = .7 + .3 * sin(uTime * 2.2 + aPhase);
+      float env = smoothstep(0., 1.2, age) * smoothstep(aDur, aDur * .6, age);
+      vA = env * tw; vC = aColor;
+      gl_PointSize = aSize * uPr;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);
+    }`,
+  fragmentShader: `
+    precision mediump float; varying vec3 vC; varying float vA;
+    void main(){
+      float d = length(gl_PointCoord - .5);
+      float a = (smoothstep(.4, 0., d) + exp(-d * 6.) * .5) * vA;
+      if (a < .004) discard;
+      gl_FragColor = vec4(vC, a);
+    }`
+}));
+const orbitPts = new THREE.Points(orbitGeo, orbitMat);
+orbitPts.frustumCulled = false;
+scene.add(orbitPts);
+
+const rings = [];
+let oIdx = 0;
+function spawnOrbit(cx, cy, r, n, speed, squash) {
+  n = Math.max(10, Math.min(44, Math.round(n)));
+  if (oIdx + n > MAXO) oIdx = 0;
+  const slot = oIdx; oIdx += n;
+  const dir = speed >= 0 ? 1 : -1, sp = Math.abs(speed) || .3;
+  const ring = { slot, n, cx, cy, r, sp, squash: squash || rand(.8, .95), dir, born: T(), dur: rand(50, 90), ph0: Math.random() * 6.28 };
+  rings.push(ring);
+  for (let i = 0; i < n; i++) {
+    const j = slot + i;
+    oCol[j*3]   = mixc(GOLD, PEARL, i / n)[0];
+    oCol[j*3+1] = mixc(GOLD, PEARL, i / n)[1];
+    oCol[j*3+2] = mixc(GOLD, PEARL, i / n)[2];
+    oSize[j] = rand(2, 4); oPhase[j] = Math.random() * 100; oBirth[j] = T(); oDur[j] = ring.dur;
+  }
+  mark(orbitGeo);
+  /* faint golden ring + luminous center */
+  const steps = 48;
+  for (let i = 0; i < steps; i++) {
+    const a1 = i / steps * Math.PI * 2, a2 = (i + 1) / steps * Math.PI * 2;
+    addSeg(cx + Math.cos(a1) * r, cy + Math.sin(a1) * r * ring.squash,
+           cx + Math.cos(a2) * r, cy + Math.sin(a2) * r * ring.squash, GOLD, ring.dur * .8, 0, .16);
+  }
+  addStar(cx, cy, rand(9, 13), 14, mixc(GOLD, PEARL, .35));
+}
+
+/* ============================================================
+   SOUND — a hidden pentatonic score (WebAudio, gentle)
+   ============================================================ */
+let AC = null, master = null, soundOn = true;
+function ensureAudio() {
+  if (AC) { if (AC.state === 'suspended') AC.resume(); return; }
+  try {
+    AC = new (window.AudioContext || window.webkitAudioContext)();
+    master = AC.createGain(); master.gain.value = .13; master.connect(AC.destination);
+  } catch (e) {}
+}
+function plink(freq, gain, dur) {
+  if (!AC || !soundOn) return;
+  const t = AC.currentTime;
+  const o = AC.createOscillator(), o2 = AC.createOscillator(), g = AC.createGain();
+  o.type = 'sine'; o.frequency.value = freq;
+  o2.type = 'sine'; o2.frequency.value = freq * 2.001;
+  g.gain.setValueAtTime(0, t);
+  g.gain.linearRampToValueAtTime(gain, t + .015);
+  g.gain.exponentialRampToValueAtTime(.0001, t + (dur || 1.4));
+  o.connect(g); o2.connect(g); g.connect(master);
+  o.start(t); o2.start(t); o.stop(t + dur + .1); o2.stop(t + dur + .1);
+}
+const SCALE = [523.25, 587.33, 659.25, 783.99, 880, 1046.5];
+
+/* ============================================================
+   GESTURE ENGINE — reads the hand, not the trail
+   ============================================================ */
+const trail = [];                    /* recent {x,y,t,p} samples */
+const pointers = new Map();
+let spawnCount = 0;
+let lastMoveT = -1, restDone = false, pointerActive = false;
+let lastThreadT = 0, lastShardT = 0, lastJunctionT = 0, lastOrbitT = 0, lastBloomT = 0;
+let prevDir = null, hasLastStar = false, lastStarX = 0, lastStarY = 0;
+let prevPinch = 0, frame = 0;
+let nextMeaning = T() + 7;
+
+function delicateStar(x, y, pressure, pen) {
+  const s = (pen ? 2.5 + pressure * 7 : rand(3, 6));
+  addStar(x + rand(-2, 2), y + rand(-2, 2), s, rand(25, 60), pick([PEARL, MOON, mixc(PEARL, WATER, .35)]));
+  if (hasLastStar) addThread(lastStarX, lastStarY, x, y, mixc(MOON, PEARL, .5), rand(5, 9), .4);
+  lastStarX = x; lastStarY = y; hasLastStar = true;
+  if (Math.random() < .5) plink(pick(SCALE), .028, 1.8);
+}
+function comet(x, y, ang, speed) {
+  addStar(x, y, rand(9, 14) + Math.min(6, speed * .002), 10, mixc(MOON, PEARL, .4));
+  const n = 8 + (Math.random() * 6 | 0);
+  for (let i = 0; i < n; i++) {
+    const back = ang + Math.PI + rand(-.5, .5), sp = rand(30, 90) + speed * .04;
+    spawnPart(x, y, Math.cos(back) * sp, Math.sin(back) * sp, rand(2, 5), rand(1.2, 2.6), pick([MOON, WATER, PEARL]));
+  }
+  addThread(x - Math.cos(ang) * 26, y - Math.sin(ang) * 26, x, y, MOON, 1.6, .8);
+  plink(pick(SCALE) * 2, .035, 1.1);
+}
+function bloom(x, y, energy) {
+  const n = 12 + (Math.random() * 8 | 0);
+  for (let i = 0; i < n; i++) {
+    const a = Math.random() * 6.283, sp = rand(30, 120) + energy * .03;
+    spawnPart(x, y, Math.cos(a) * sp, Math.sin(a) * sp, rand(2.5, 6), rand(1.6, 3.4),
+              pick([GOLD, PEARL, mixc(MOON, GOLD, .4), WATER]));
+  }
+  addStar(x, y, rand(8, 12), 8, mixc(GOLD, PEARL, .45));
+  plink(pick(SCALE) * 2, .03, 1.6); if (Math.random() < .5) plink(pick(SCALE), .022, 2);
+}
+
+/* algebraic (Kåsa) circle fit over the recent gesture window */
+function fitCircle(win) {
+  let sx = 0, sy = 0, sxx = 0, syy = 0, sxy = 0, sxz = 0, syz = 0, szz = 0;
+  for (const p of win) {
+    const z = p.x * p.x + p.y * p.y;
+    sx += p.x; sy += p.y; sxx += p.x * p.x; syy += p.y * p.y; sxy += p.x * p.y;
+    sxz += p.x * z; syz += p.y * z; szz += z * z;
+  }
+  const n = win.length;
+  /* solve [sxx sxy sx; sxy syy sy; sx sy n] [a;b;c] = [-sxz;-syz;-szz] */
+  const A = [[sxx, sxy, sx], [sxy, syy, sy], [sx, sy, n]], B = [-sxz, -syz, -szz];
+  const det3 = m =>
+    m[0][0]*(m[1][1]*m[2][2]-m[1][2]*m[2][1]) - m[0][1]*(m[1][0]*m[2][2]-m[1][2]*m[2][0]) + m[0][2]*(m[1][0]*m[2][1]-m[1][1]*m[2][0]);
+  const D = det3(A); if (Math.abs(D) < 1e-6) return null;
+  const col = (c) => A.map((row, i) => row.map((v, j) => j === c ? B[i] : v));
+  const a = det3(col(0)) / D, b = det3(col(1)) / D, c = det3(col(2)) / D;
+  const cx = -a / 2, cy = -b / 2, r = Math.sqrt(Math.max(0, (a * a + b * b) / 4 - c));
+  return { cx, cy, r };
+}
+function tryCircle(t) {
+  const win = trail.filter(s => t - s.t < 0.85);
+  if (win.length < 10) return;
+  const f = fitCircle(win);
+  if (!f || f.r < 50 || f.r > mindim * .5) return;
+  let rms = 0;
+  for (const p of win) { const d = Math.hypot(p.x - f.cx, p.y - f.cy) - f.r; rms += d * d; }
+  rms = Math.sqrt(rms / win.length);
+  if (rms > f.r * .22) return;
+  /* coverage: largest angular gap must be small = full loop drawn */
+  const angs = win.map(p => Math.atan2(p.y - f.cy, p.x - f.cx)).sort((x, y) => x - y);
+  let maxGap = 0;
+  for (let i = 0; i < angs.length; i++) {
+    const g = (i + 1 < angs.length ? angs[i + 1] : angs[0] + 2 * Math.PI) - angs[i];
+    if (g > maxGap) maxGap = g;
+  }
+  if (maxGap > 2.2) return;
+  /* gesture chirality sets orbit direction */
+  const p0 = win[0], p1 = win[win.length - 1];
+  const cross = (p1.x - p0.x) * (win[Math.floor(win.length / 2)].y - p0.y) - (p1.y - p0.y) * (win[Math.floor(win.length / 2)].x - p0.x);
+  spawnOrbit(f.cx, f.cy, f.r, f.r / 9, (cross >= 0 ? 1 : -1) * rand(.18, .4), rand(.82, .95));
+  lastOrbitT = t; hasLastStar = false;
+  plink(261.63, .05, 2.6); plink(392, .04, 2.6);
+}
+
+function onMove(e) {
+  const t = T();
+  const x = e.clientX - W / 2, y = H / 2 - e.clientY;
+  let p = pointers.get(e.pointerId);
+  if (!p) { p = { x, y }; pointers.set(e.pointerId, p); }
+  const dx = x - p.x, dy = y - p.y;
+  const dtm = Math.max(1e-3, t - (p.t || t - 1e-3));
+  const speed = Math.hypot(dx, dy) / dtm;
+  const dir = Math.atan2(dy, dx);
+  const pen = e.pointerType === 'pen';
+
+  trail.push({ x, y, t, p: e.pressure || 0 });
+  if (trail.length > 26) trail.shift();
+  lastMoveT = t; restDone = false; pointerActive = true;
+
+  /* --- slow: delicate stars + long threads --- */
+  if (speed < 240 && t - lastThreadT > .07) {
+    lastThreadT = t;
+    delicateStar(x, y, e.pressure || .5, pen);
+  } else if (speed >= 240) hasLastStar = false;
+
+  /* --- fast: comets, shards, stellar blooms --- */
+  if (speed > 950) {
+    if (t - lastShardT > .08) { lastShardT = t; spawnShard(x, y, dir, speed); }
+    comet(x, y, dir, speed);
+    if (Math.random() < .22 && t - lastBloomT > .5) { lastBloomT = t; bloom(x, y, speed); }
+  }
+
+  /* --- sharp direction change: crystalline junction --- */
+  if (prevDir !== null && speed > 140) {
+    const da = angDiff(dir, prevDir);
+    if (Math.abs(da) > 1.85 && t - lastJunctionT > .7) {
+      lastJunctionT = t;
+      spawnCrystal(x, y, rand(16, 30) + Math.min(14, speed * .006));
+      hasLastStar = false;
+      plink(pick(SCALE) * 2, .05, 1.2);
+    }
+  }
+  prevDir = dir;
+
+  /* --- circular gesture: orbital system --- */
+  frame++;
+  if (frame % 3 === 0 && t - lastOrbitT > 1.6) tryCircle(t);
+
+  /* --- multi-touch: tidal pinch stars --- */
+  if (pointers.size >= 2) {
+    const it = pointers.values();
+    const A = it.next().value, B = it.next().value;
+    const d = Math.hypot(A.x - B.x, A.y - B.y), mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2;
+    if (prevPinch > 0) {
+      const dd = d - prevPinch;
+      if (Math.abs(dd) > 14) {
+        addStar(mx + rand(-8, 8), my + rand(-8, 8), 4 + Math.min(10, Math.abs(dd) * .12), 12, pick([GOLD, PEARL]));
+        if (Math.abs(dd) > 50 && t - lastBloomT > .5) { lastBloomT = t; bloom(mx, my, Math.abs(dd) * 5); }
+        if (Math.random() < .3) plink(pick(SCALE), .03, 1.4);
+      }
+    }
+    prevPinch = d;
+  } else prevPinch = 0;
+
+  p.x = x; p.y = y; p.t = t;
+}
+
+canvas.addEventListener('pointerdown', e => {
+  ensureAudio();
+  pointers.set(e.pointerId, { x: e.clientX - W / 2, y: H / 2 - e.clientY, t: T() });
+  trail.length = 0; prevDir = null; hasLastStar = false; restDone = false;
+  lastMoveT = T(); pointerActive = true;
+  hint.style.opacity = 0;
+});
+canvas.addEventListener('pointermove', onMove);
+const endPointer = e => {
+  pointers.delete(e.pointerId);
+  if (pointers.size < 2) prevPinch = 0;
+  if (pointers.size === 0) { pointerActive = false; prevDir = null; }
+};
+canvas.addEventListener('pointerup', endPointer);
+canvas.addEventListener('pointercancel', endPointer);
+
+/* ---------- UI ---------- */
+const hint = document.getElementById('hint');
+setTimeout(() => hint.style.opacity = 0, 14000);
+document.getElementById('soundBtn').addEventListener('click', function () {
+  ensureAudio(); soundOn = !soundOn;
+  this.innerHTML = soundOn ? '&#9834;' : '&#215;';
+});
+document.getElementById('clearBtn').addEventListener('click', () => {
+  sBirth.fill(-1e9); fBirth.fill(-1e9); lBirth.fill(-1e9); hBirth.fill(-1e9); oBirth.fill(-1e9);
+  for (let i = 0; i < MAXS; i++) stars[i] = null;
+  for (let i = 0; i < MAXP; i++) parts[i] = null;
+  rings.length = 0;
+  mark(starGeo); mark(partGeo); mark(lineGeo); mark(shardGeo); mark(orbitGeo);
+  seed(); spawnCount = 0;
+});
+
+/* ============================================================
+   THE HIDDEN SCORE — golden-angle reorganization + serendipity
+   ============================================================ */
+const GA = 2.399963229728653;   /* golden angle */
+function reorganize(t, dt) {
+  const k6 = Math.min(1, dt * 60);
+  for (let i = 0; i < MAXS; i++) {
+    const s = stars[i];
+    if (!s) continue;
+    const age = t - s.born;
+    if (age > s.life) { stars[i] = null; sBirth[i] = -1e9; continue; }
+    if (age > 5) {
+      const f = Math.min(1, (age - 5) / 9) * .0022 * k6;
+      const ang = i * GA + t * .021;                       /* the hidden score rotates slowly */
+      const rad = Math.min(15 * Math.sqrt(i), mindim * .38);
+      s.x += (cxE + Math.cos(ang) * rad - s.x) * f;
+      s.y += (cyE + Math.sin(ang) * rad - s.y) * f;
+    }
+    s.x += Math.sin(t * .7 * s.ws + s.ph) * s.amp * .05 * k6;   /* alive: gentle wander */
+    s.y += Math.cos(t * .6 * s.ws + s.ph * 1.7) * s.amp * .05 * k6;
+    sPos[i * 3] = s.x; sPos[i * 3 + 1] = s.y;
+  }
+  starGeo.attributes.position.needsUpdate = true;
+  starGeo.attributes.aBirth.needsUpdate = true;
+}
+function updateParts(t, dt) {
+  const damp = Math.pow(.92, dt * 60);
+  for (let i = 0; i < MAXP; i++) {
+    const p = parts[i];
+    if (!p) continue;
+    if (t - p.born > p.dur) { parts[i] = null; fBirth[i] = -1e9; continue; }
+    const w = i * 3;
+    fVel[i*2] *= damp; fVel[i*2+1] *= damp;
+    fPos[w] += fVel[i*2] * dt; fPos[w+1] += fVel[i*2+1] * dt;
+  }
+  partGeo.attributes.position.needsUpdate = true;
+  partGeo.attributes.aBirth.needsUpdate = true;
+}
+function updateOrbits(t) {
+  for (let ri = rings.length - 1; ri >= 0; ri--) {
+    const R = rings[ri], age = t - R.born;
+    if (age > R.dur) {
+      for (let i = 0; i < R.n; i++) oBirth[R.slot + i] = -1e9;
+      orbitGeo.attributes.aBirth.needsUpdate = true;
+      rings.splice(ri, 1); continue;
+    }
+    const a0 = R.ph0 + R.dir * R.sp * age;
+    for (let i = 0; i < R.n; i++) {
+      const a = a0 + i / R.n * Math.PI * 2, j = R.slot + i;
+      oPos[j*3]   = R.cx + Math.cos(a) * R.r;
+      oPos[j*3+1] = R.cy + Math.sin(a) * R.r * R.squash;
+    }
+  }
+  orbitGeo.attributes.position.needsUpdate = true;
+  orbitGeo.attributes.aBirth.needsUpdate = true;
+}
+/* occasionally the drawing finds a meaning you didn't put there */
+function serendipity(t) {
+  if (t < nextMeaning) return;
+  nextMeaning = t + rand(5, 10);
+  const alive = [];
+  for (let i = 0; i < MAXS; i++) if (stars[i] && t - stars[i].born > 6) alive.push(i);
+  if (alive.length < 10) return;
+  for (let k = 0; k < 40; k++) {
+    const a = pick(alive), b = pick(alive);
+    if (a === b) continue;
+    const A = stars[a], B = stars[b];
+    const far = Math.hypot(A.x - B.x, A.y - B.y);
+    if (far < mindim * .45) continue;
+    let pa = (a * GA) % 6.28318, pb = (b * GA) % 6.28318;   /* close in the hidden score */
+    let pd = Math.abs(pa - pb); pd = Math.min(pd, 6.28318 - pd);
+    if (pd > .7) continue;
+    addSeg(A.x, A.y, B.x, B.y, GOLD, 9, 1, .55);
+    addStar((A.x + B.x) / 2, (A.y + B.y) / 2, rand(4, 7), 12, GOLD);
+    if (Math.random() < .6) plink(pick(SCALE) * 2, .02, 2.4);
+    break;
+  }
+}
+/* pause: a listening star with a pearl halo */
+function restStar(t) {
+  if (!pointerActive || restDone || t - lastMoveT < .45) return;
+  restDone = true;
+  const s = trail[trail.length - 1];
+  if (!s) return;
+  addStar(s.x, s.y, rand(10, 14), 16, PEARL);
+  const steps = 26, r = rand(22, 34);
+  for (let i = 0; i < steps; i++) {
+    const a1 = i / steps * 6.283, a2 = (i + 1) / steps * 6.283;
+    addSeg(s.x + Math.cos(a1) * r, s.y + Math.sin(a1) * r, s.x + Math.cos(a2) * r, s.y + Math.sin(a2) * r,
+           mixc(PEARL, GOLD, .35), 9, 0, .3);
+  }
+  hasLastStar = false;
+  plink(196, .05, 2.8);
+}
+
+/* ---------- seed an initial constellation so the sky is never empty ---------- */
+function seed() {
+  for (let i = 0; i < 42; i++) {
+    const a = Math.random() * 6.283, r = Math.pow(Math.random(), .6) * mindim * .34;
+    addStar(Math.cos(a) * r + rand(-8, 8), Math.sin(a) * r + rand(-8, 8), rand(2, 7), rand(30, 70),
+            pick([PEARL, MOON, mixc(PEARL, WATER, .3)]));
+  }
+  spawnOrbit(rand(-40, 40), rand(-30, 30), mindim * .21, 24, .24, .86);
+  for (let k = 0; k < 3; k++) {
+    const i1 = (Math.random() * MAXS) | 0, i2 = (Math.random() * MAXS) | 0;
+    if (stars[i1] && stars[i2] && i1 !== i2)
+      addSeg(stars[i1].x, stars[i1].y, stars[i2].x, stars[i2].y, GOLD, 14, 1, .35);
+  }
+}
+
+/* ---------- resize ---------- */
+addEventListener('resize', () => {
+  W = innerWidth; H = innerHeight; mindim = Math.min(W, H);
+  renderer.setSize(W, H);
+  camera.left = -W / 2; camera.right = W / 2; camera.top = H / 2; camera.bottom = -H / 2;
+  camera.updateProjectionMatrix();
+  bgMat.uniforms.uRes.value.set(W, H);
+});
+
+/* ---------- main loop ---------- */
+seed();
+let prevT = T();
+function loop() {
+  requestAnimationFrame(loop);
+  const t = T(), dt = Math.min(.05, Math.max(.001, t - prevT));
+  prevT = t;
+  for (const u of timeUniforms) u.value = t;
+  reorganize(t, dt);
+  updateParts(t, dt);
+  updateOrbits(t);
+  restStar(t);
+  serendipity(t);
+  goldGroup.rotation.z += dt * .012;
+  goldGroup.rotation.x = Math.sin(t * .05) * .04;
+  renderer.render(scene, camera);
+}
+loop();
+</script>
+</body>
+</html>
