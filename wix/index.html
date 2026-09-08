@@ -34,6 +34,16 @@
   }
 }
 </script>
+<script>
+(function () {
+  try {
+    if (window.sessionStorage.getItem('melodia.entryCutscene.v1') === 'seen' ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('melodia-entry-skip');
+    }
+  } catch (e) {}
+})();
+</script>
 <link rel="stylesheet" href="melodia-tokens.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-luxury-type.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-editorial.css?v=20260904p1">
@@ -45,6 +55,169 @@
 <link rel="stylesheet" href="melodia-mobile.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-home-hardening.css?v=20260904p1">
 <style>
+
+/* Ink & Breath micro-cutscene — distilled from the preserved 2026-09-02 opening ritual. */
+html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
+.melodia-entry-cutscene {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 54%, rgba(155,181,255,.08), transparent 30%),
+    #05030a;
+  animation: melodiaEntryVeil .92s cubic-bezier(.22,.72,.2,1) both;
+}
+.melodia-entry-frame {
+  position: relative;
+  width: min(94vw, 1180px);
+  aspect-ratio: 2.35 / 1;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 66% 42%, rgba(255,143,163,.17), transparent 20%),
+    linear-gradient(125deg, #090414 0%, #12122b 52%, #25122c 100%);
+  border-top: 1px solid rgba(255,208,128,.38);
+  border-bottom: 1px solid rgba(155,181,255,.26);
+  box-shadow: 0 0 90px rgba(98,91,170,.18);
+  animation: melodiaEntryFrame .92s cubic-bezier(.16,.8,.26,1) both;
+}
+.melodia-entry-world,
+.melodia-entry-figure {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.melodia-entry-world {
+  opacity: .63;
+  filter: saturate(.78) contrast(1.08) hue-rotate(4deg);
+  transform: scale(1.035);
+  animation: melodiaEntryWorld .92s ease-out both;
+}
+.melodia-entry-figure {
+  left: auto;
+  right: 4%;
+  top: -10%;
+  width: 38%;
+  height: 122%;
+  object-fit: contain;
+  object-position: 70% 50%;
+  opacity: .58;
+  filter: saturate(.8) contrast(1.12) drop-shadow(0 0 28px rgba(200,168,232,.16));
+  mix-blend-mode: screen;
+  animation: melodiaEntryFigure .92s ease-out both;
+}
+.melodia-entry-ink {
+  position: absolute;
+  inset: -30%;
+  z-index: 3;
+  opacity: .9;
+  background:
+    radial-gradient(ellipse at 43% 58%, rgba(5,3,10,.98) 0 16%, rgba(5,3,10,.72) 27%, transparent 53%),
+    radial-gradient(ellipse at 64% 44%, rgba(10,5,20,.8) 0 13%, transparent 43%);
+  filter: blur(3px);
+  transform: scale(1.26) rotate(-4deg);
+  animation: melodiaEntryInk .92s cubic-bezier(.17,.67,.31,1) both;
+}
+.melodia-entry-horizon {
+  position: absolute;
+  z-index: 4;
+  left: 8%;
+  right: 8%;
+  top: 58%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(110,200,227,.35), rgba(255,208,128,.7), rgba(200,168,232,.38), transparent);
+  box-shadow: 0 0 14px rgba(155,181,255,.24);
+  animation: melodiaEntryHorizon .92s ease-out both;
+}
+.melodia-entry-star {
+  position: absolute;
+  z-index: 5;
+  left: 47%;
+  top: 47%;
+  transform: translate(-50%,-50%);
+  color: #ffd080;
+  font-size: clamp(16px, 2vw, 28px);
+  text-shadow:
+    0 0 12px rgba(255,208,128,.8),
+    0 0 32px rgba(200,168,232,.35);
+  animation: melodiaEntryStar .92s cubic-bezier(.2,.85,.2,1) both;
+}
+.melodia-entry-wordmark {
+  position: absolute;
+  z-index: 5;
+  left: 7%;
+  bottom: 9%;
+  color: rgba(255,248,238,.84);
+  font-family: var(--font-brand, "Cinzel", serif);
+  font-size: clamp(.64rem, 1.15vw, .9rem);
+  letter-spacing: .44em;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(155,181,255,.2);
+  animation: melodiaEntryWord .92s ease-out both;
+}
+@keyframes melodiaEntryVeil {
+  0%, 68% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+@keyframes melodiaEntryFrame {
+  0% { opacity: 0; transform: scale(.985); filter: blur(8px); }
+  11% { opacity: 1; filter: blur(0); }
+  61% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.012); }
+}
+@keyframes melodiaEntryWorld {
+  0% { opacity: 0; transform: scale(1.055) translate3d(-.6%,.4%,0); }
+  18%, 62% { opacity: .63; }
+  100% { opacity: 0; transform: scale(1.025) translate3d(.35%,-.2%,0); }
+}
+@keyframes melodiaEntryFigure {
+  0%, 10% { opacity: 0; transform: translate3d(2.4%,1.2%,0); }
+  26%, 61% { opacity: .58; }
+  100% { opacity: 0; transform: translate3d(0,0,0); }
+}
+@keyframes melodiaEntryInk {
+  0% { opacity: 1; transform: scale(1.32) rotate(-5deg); }
+  18% { opacity: .88; }
+  58% { opacity: .2; transform: scale(.9) rotate(-2deg); }
+  100% { opacity: 0; transform: scale(.78) rotate(0); }
+}
+@keyframes melodiaEntryHorizon {
+  0%, 17% { opacity: 0; transform: scaleX(.12); }
+  38%, 66% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(1.05); }
+}
+@keyframes melodiaEntryStar {
+  0%, 19% { opacity: 0; transform: translate(-50%,-50%) scale(.2) rotate(-25deg); }
+  41% { opacity: 1; transform: translate(-50%,-50%) scale(1.2) rotate(8deg); }
+  62% { opacity: .82; transform: translate(-50%,-50%) scale(.92) rotate(0); }
+  100% { opacity: 0; transform: translate(-50%,-50%) scale(1.8); }
+}
+@keyframes melodiaEntryWord {
+  0%, 24% { opacity: 0; transform: translateY(5px); letter-spacing: .62em; }
+  44%, 67% { opacity: .9; transform: translateY(0); letter-spacing: .44em; }
+  100% { opacity: 0; transform: translateY(-2px); }
+}
+@media (max-width: 680px) {
+  .melodia-entry-frame {
+    width: 100vw;
+    aspect-ratio: 1.5 / 1;
+    border-left: 0;
+    border-right: 0;
+  }
+  .melodia-entry-figure { right: -6%; width: 52%; opacity: .5; }
+  .melodia-entry-wordmark { left: 6%; bottom: 8%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .melodia-entry-cutscene { display: none !important; }
+}
+
 .env-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; margin-top: 1.5rem; }
 .env-card { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 16/10; display: flex; align-items: flex-end; text-decoration: none; border: 1px solid var(--color-border-subtle, rgba(201,168,106,.25)); background: var(--color-surface-sunken, #0A0E22); box-shadow: 0 8px 24px rgba(0,0,0,.35); transition: transform .3s ease, border-color .3s ease; }
 .env-card:hover { transform: translateY(-4px); border-color: var(--color-accent-primary, #C9A86A); }
@@ -63,6 +236,16 @@
 </style>
 </head>
 <body>
+<div id="melodia-entry-cutscene" class="melodia-entry-cutscene" aria-hidden="true">
+  <div class="melodia-entry-frame">
+    <img class="melodia-entry-world" src="../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png" alt="" decoding="async" fetchpriority="high" />
+    <img class="melodia-entry-figure" src="../generated/assets/character/melusina_eevee_glam_20260715_02.png" alt="" decoding="async" fetchpriority="high" />
+    <div class="melodia-entry-ink"></div>
+    <div class="melodia-entry-horizon"></div>
+    <div class="melodia-entry-star">✦</div>
+    <div class="melodia-entry-wordmark">Melodia</div>
+  </div>
+</div>
 <a class="skip-link" href="#main">Skip to main content</a>
 <div class="melodia-shell astral-mode" data-mg="full" data-hero="cosmic" data-visual="astral-game" data-theme="dark" data-effects="starfield,holo,magical" data-nav-cta="curated-art.html" data-nav-cta-label="Selected Art">
 <header class="shell-nav constellation-nav" aria-label="Melodia navigation">
@@ -333,6 +516,27 @@
 </footer>
 </div>
 
+<script>
+(function () {
+  var cutscene = document.getElementById('melodia-entry-cutscene');
+  if (!cutscene) return;
+  if (document.documentElement.classList.contains('melodia-entry-skip')) {
+    cutscene.remove();
+    return;
+  }
+  var finished = false;
+  function finishEntryCutscene() {
+    if (finished) return;
+    finished = true;
+    try { window.sessionStorage.setItem('melodia.entryCutscene.v1', 'seen'); } catch (e) {}
+    if (cutscene && cutscene.parentNode) cutscene.parentNode.removeChild(cutscene);
+  }
+  cutscene.addEventListener('animationend', function (event) {
+    if (event.animationName === 'melodiaEntryVeil') finishEntryCutscene();
+  });
+  window.setTimeout(finishEntryCutscene, 1400);
+})();
+</script>
 <script src="wix-embed-bridge.js?v=20260904p1"></script>
 <script src="melodia-magical-girl.js?v=20260904p1"></script>
 <script src="melodia-mahou-flourish.js?v=20260904p1"></script>
