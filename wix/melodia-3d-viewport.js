@@ -1,9 +1,9 @@
 /**
- * MELODIA REAL-TIME 3D ASSET & PBR SHADER VIEWPORT
- * 
- * Hardware-accelerated WebGL 3D viewport for inspecting real geometric meshes,
- * Infinity Nikki-grade PBR fabrics, Substrate Toon shaders, and normal/ORM channels.
- * Zero simulation / zero fake 2D canvas proxies — 100% genuine real-time 3D.
+ * MELODIA INTERACTIVE 3D ASSET STUDY
+ *
+ * Browser WebGL viewport for inspecting geometric assets, approximate material response,
+ * topology, and normal/ORM channels. Unreal Engine captures remain the visual authority;
+ * this module is intentionally a lightweight presentation study rather than UE Substrate.
  */
 
 (function (window, document) {
@@ -278,7 +278,8 @@
     this.currentAssetKey = this.options.initialAsset || 'fabric-sphere';
     this.currentFabricKey = this.options.initialFabric || 'RoyalVelvet';
     this.renderMode = this.options.initialMode || 'pbr';
-    this.isAutoRotate = this.options.autoRotate !== false;
+    this.reducedMotion = Boolean(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    this.isAutoRotate = this.options.autoRotate !== false && !this.reducedMotion;
     this.rotSpeed = 0.005;
 
     this.scene = null;
@@ -305,33 +306,67 @@
     }
   };
 
+  Melodia3DViewer.prototype.showUnavailable = function (message) {
+    if (!this.container) return;
+    this.container.innerHTML =
+      '<div class="viewer-unavailable" role="status">' +
+      '<div><strong>Interactive preview unavailable.</strong>' +
+      '<span>' + (message || 'The browser could not start the WebGL asset study.') + '</span></div>' +
+      '</div>';
+  };
+
   Melodia3DViewer.prototype.loadThreeLibraries = function (callback) {
     var self = this;
-    var scripts = [
-      'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',
-      'https://cdn.jsdelivr.net/npm/fflate@0.8.0/umd/index.js',
-      'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js',
-      'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js',
-      'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js',
-      'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js'
+    var libraries = [
+      [
+        'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',
+        'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js'
+      ],
+      [
+        'https://cdn.jsdelivr.net/npm/fflate@0.8.0/umd/index.js',
+        'https://unpkg.com/fflate@0.8.0/umd/index.js'
+      ],
+      [
+        'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js',
+        'https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js'
+      ],
+      [
+        'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js',
+        'https://unpkg.com/three@0.128.0/examples/js/loaders/OBJLoader.js'
+      ],
+      [
+        'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js',
+        'https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js'
+      ],
+      [
+        'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js',
+        'https://unpkg.com/three@0.128.0/examples/js/loaders/FBXLoader.js'
+      ]
     ];
 
-    var loaded = 0;
-    scripts.forEach(function (src) {
-      var s = document.createElement('script');
-      s.src = src;
-      s.async = false;
-      s.onload = function () {
-        loaded++;
-        if (loaded === scripts.length) {
-          callback();
+    function loadLibrary(index) {
+      if (index >= libraries.length) {
+        callback();
+        return;
+      }
+
+      function trySource(sourceIndex) {
+        if (sourceIndex >= libraries[index].length) {
+          self.showUnavailable('A required 3D library was blocked or unavailable. The rest of the portfolio remains fully accessible.');
+          return;
         }
-      };
-      s.onerror = function () {
-        console.warn('[Melodia 3D] Failed to load external CDN script:', src);
-      };
-      document.head.appendChild(s);
-    });
+        var script = document.createElement('script');
+        script.src = libraries[index][sourceIndex];
+        script.async = false;
+        script.onload = function () { loadLibrary(index + 1); };
+        script.onerror = function () { trySource(sourceIndex + 1); };
+        document.head.appendChild(script);
+      }
+
+      trySource(0);
+    }
+
+    loadLibrary(0);
   };
 
   Melodia3DViewer.prototype.setupScene = function () {
@@ -339,13 +374,23 @@
     var width = this.container.clientWidth || 800;
     var height = this.container.clientHeight || 600;
 
+    if (!window.WebGLRenderingContext) {
+      this.showUnavailable('WebGL is disabled in this browser. Use the rendered case studies for the authoritative project view.');
+      return;
+    }
+
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0x0a0e22);
 
     this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
     this.camera.position.set(0, 1.2, 3.8);
 
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+    try {
+      this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+    } catch (error) {
+      this.showUnavailable('The browser could not create a WebGL context. Use the rendered case studies for the authoritative project view.');
+      return;
+    }
     this.renderer.setSize(width, height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -359,6 +404,10 @@
     this.renderer.domElement.style.width = '100%';
     this.renderer.domElement.style.height = '100%';
     this.renderer.domElement.style.display = 'block';
+    this.renderer.domElement.addEventListener('webglcontextlost', function (event) {
+      event.preventDefault();
+      self.showUnavailable('The WebGL context was lost. The rendered case studies remain available.');
+    });
 
     if (THREE.OrbitControls) {
       this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
@@ -548,7 +597,7 @@
     this.currentMeshGroup = group;
     this.scene.add(group);
 
-    var onMeshReady = function (object3D) {
+    var onMeshReady = function (object3D, isFallback) {
       object3D.traverse(function (child) {
         if (child.isMesh) {
           child.castShadow = true;
@@ -569,7 +618,7 @@
       object3D.position.y = -box.min.y - 1.72;
 
       group.add(object3D);
-      self.updateTelemetry(def);
+      self.updateTelemetry(def, Boolean(isFallback));
     };
 
     if (def.type === 'obj') {
@@ -578,7 +627,7 @@
         objLoader.load(def.path, onMeshReady, null, function (err) {
           var fallbackGeo = new THREE.TorusKnotGeometry(0.8, 0.25, 64, 16);
           var fallbackMesh = new THREE.Mesh(fallbackGeo, self.createMaterialForMode(self.currentFabricKey, self.renderMode));
-          onMeshReady(fallbackMesh);
+          onMeshReady(fallbackMesh, true);
         });
       }
     } else if (def.type === 'glb') {
@@ -589,7 +638,7 @@
         }, null, function (err) {
           var fallbackGeo = new THREE.BoxGeometry(1.5, 1.5, 1.5);
           var fallbackMesh = new THREE.Mesh(fallbackGeo, self.createMaterialForMode(self.currentFabricKey, self.renderMode));
-          onMeshReady(fallbackMesh);
+          onMeshReady(fallbackMesh, true);
         });
       }
     } else if (def.type === 'fbx') {
@@ -600,7 +649,7 @@
         }, null, function (err) {
           var fallbackGeo = new THREE.CylinderGeometry(0.5, 0.5, 1.8, 32);
           var fallbackMesh = new THREE.Mesh(fallbackGeo, self.createMaterialForMode(self.currentFabricKey, self.renderMode));
-          onMeshReady(fallbackMesh);
+          onMeshReady(fallbackMesh, true);
         });
       }
     }
@@ -631,13 +680,13 @@
     this.updateTelemetry(ASSET_CATALOG[this.currentAssetKey] || {});
   };
 
-  Melodia3DViewer.prototype.updateTelemetry = function (def) {
+  Melodia3DViewer.prototype.updateTelemetry = function (def, isFallback) {
     var elTriangles = document.getElementById('viewer-triangles');
     var elAsset = document.getElementById('viewer-asset-name');
     var elFabric = document.getElementById('viewer-fabric-name');
 
-    if (elTriangles) elTriangles.textContent = def.polyCount || '3.5k Tris';
-    if (elAsset) elAsset.textContent = def.name;
+    if (elTriangles) elTriangles.textContent = isFallback ? 'Fallback primitive' : (def.polyCount || 'Not listed');
+    if (elAsset) elAsset.textContent = (def.name || 'Asset') + (isFallback ? ' · source preview unavailable' : '');
     if (elFabric) elFabric.textContent = (FABRIC_SETS[this.currentFabricKey] || {}).name || this.currentFabricKey;
   };
 
@@ -653,6 +702,8 @@
   Melodia3DViewer.prototype.animate = function () {
     var self = this;
     requestAnimationFrame(function () { self.animate(); });
+
+    if (document.hidden) return;
 
     if (this.controls) {
       this.controls.update();
