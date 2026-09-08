@@ -137,7 +137,7 @@ A branch is not current site truth. Before reviving a branch:
 3. extract only genuinely unique work;
 4. never merge an old visual experiment wholesale just to reduce branch count.
 
-The September 8 cleanup normalized the old atmosphere, Living Worlds, validation, repository-authority, and sendoff refs to current `main` after confirming their useful work was already represented.
+The September 8 cleanup normalized the old atmosphere, Living Worlds, validation, repository-authority, sendoff, and canonization refs to current `main` after confirming their useful work was already represented.
 
 ## 8. Cross-repo handoff
 
