@@ -41,7 +41,9 @@
     "wix/melodia-3d-viewport.js",
     "wix/melodia-atelier-lab.html",
     "wix/melodia-atelier-lab.js",
-    "wix/shader-breakdowns.html"
+    "wix/shader-breakdowns.html",
+    "wix/constellation-brush.html",
+    "wix/public-routes.json"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -75,6 +77,21 @@
         "no new visual systems",
         "no global redesign",
         "no generated replacement artwork"
+      ]
+    },
+    {
+      "id": "constellation-brush-live-link-2026-09-08",
+      "reason": "Owner explicitly requested that the uploaded Kimi-polished Constellation Brush experiment be linked to the live website.",
+      "scope": [
+        "publish one noindex supporting experience-lab route",
+        "link it from the existing Living Worlds page",
+        "add minimal accessibility, backlink, metadata, and CDN fallback polish"
+      ],
+      "exclusions": [
+        "do not add it to canonical routes or sitemap",
+        "do not change homepage hierarchy",
+        "do not redesign navigation",
+        "do not alter the gesture-art system beyond integration polish"
       ]
     }
   ]
