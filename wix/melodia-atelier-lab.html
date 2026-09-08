@@ -3,17 +3,20 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="melodia-build" content="20260904p1" />
+<meta name="melodia-build" content="20260908p1" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>Technical Art Atelier | Brennan Shepherd</title>
 <meta name="description" content="Interactive browser studies connecting Melodia’s stylized materials, world atmospheres, procedural logic, audio response, and 3D asset presentation." />
+<link rel="canonical" href="https://fromage3900.github.io/my-site/wix/melodia-atelier-lab.html" />
+<meta name="robots" content="index,follow,max-image-preview:large" />
 <meta property="og:title" content="Technical Art Atelier | Brennan Shepherd" />
 <meta property="og:description" content="Interactive browser studies translating Melodia’s material, procedural, atmosphere, audio, and asset ideas into clear technical-art sketches." />
-<meta property="og:image" content="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" />
+<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png" />
 <meta property="og:url" content="https://fromage3900.github.io/my-site/wix/melodia-atelier-lab.html" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png" />
 <link rel="stylesheet" href="melodia-tokens.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-luxury-type.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-editorial.css?v=20260904p1">
@@ -52,13 +55,13 @@
       <!-- Navigation Tabs -->
       <nav class="atelier-tabs-nav" role="tablist" aria-label="Atelier Studio Modules">
         <button type="button" class="atelier-tab-btn active" data-tab="shader-lab" role="tab" aria-selected="true" aria-controls="panel-shader-lab">
-          <span>✧</span> Substrate Toon Lab
+          <span>✧</span> Stylized Shader Study
         </button>
         <button type="button" class="atelier-tab-btn" data-tab="world-stage" role="tab" aria-selected="false" aria-controls="panel-world-stage">
-          <span>✦</span> 4-World Atmospheres
+          <span>✦</span> World Atmospheres
         </button>
         <button type="button" class="atelier-tab-btn" data-tab="pcg-engine" role="tab" aria-selected="false" aria-controls="panel-pcg-engine">
-          <span>⬡</span> PCG Scatter Engine
+          <span>⬡</span> Procedural Scatter
         </button>
         <button type="button" class="atelier-tab-btn" data-tab="audio-resonance" role="tab" aria-selected="false" aria-controls="panel-audio-resonance">
           <span>♪</span> Resonance Chamber
@@ -68,8 +71,8 @@
         </button>
       </nav>
 
-      <!-- TAB 1: SUBSTRATE TOON SHADER LABORATORY -->
-      <section id="panel-shader-lab" class="atelier-tab-panel active" role="tabpanel" aria-label="Substrate Toon Shader Lab">
+      <!-- TAB 1: STYLIZED SHADER STUDY -->
+      <section id="panel-shader-lab" class="atelier-tab-panel active" role="tabpanel" aria-label="Stylized Shader Study">
         <div class="atelier-stage-grid">
           <!-- Canvas Viewport -->
           <div class="atelier-viewport-card">
@@ -139,7 +142,7 @@
 
             <div class="atelier-slider-group">
               <div class="atelier-slider-header">
-                <span class="atelier-slider-label">Anime Rim Light Intensity</span>
+                <span class="atelier-slider-label">Fresnel Rim Intensity</span>
                 <span class="atelier-slider-val" id="val-rim">0.9</span>
               </div>
               <input type="range" id="slider-rim" class="atelier-range-input" min="0.0" max="1.0" step="0.05" value="0.9" />
@@ -147,7 +150,7 @@
 
             <div class="atelier-slider-group">
               <div class="atelier-slider-header">
-                <span class="atelier-slider-label">SDF Outline Thickness</span>
+                <span class="atelier-slider-label">Outline Thickness</span>
                 <span class="atelier-slider-val" id="val-outline">2.0 px</span>
               </div>
               <input type="range" id="slider-outline" class="atelier-range-input" min="0.0" max="5.0" step="0.2" value="2.0" />
@@ -233,7 +236,7 @@
         </div>
       </section>
 
-      <!-- TAB 3: PCG PROCEDURAL SCATTERING ENGINE -->
+      <!-- TAB 3: PROCEDURAL SCATTER STUDY -->
       <section id="panel-pcg-engine" class="atelier-tab-panel" role="tabpanel" aria-label="PCG Procedural Spacing Study">
         <div class="atelier-stage-grid">
           <!-- Canvas Viewport -->
@@ -462,10 +465,10 @@
   </main>
 </div>
 
-<script src="melodia-3d-viewport.js?v=20260904p1"></script>
-<script src="melodia-atelier-lab.js?v=20260904p1"></script>
-<script src="melodia-site-nav.js?v=20260904p1"></script>
-<script src="melodia-editorial.js?v=20260904p1"></script>
+<script src="melodia-3d-viewport.js?v=20260908p1"></script>
+<script src="melodia-atelier-lab.js?v=20260908p1"></script>
+<script src="melodia-site-nav.js?v=20260908p1"></script>
+<script src="melodia-editorial.js?v=20260908p1"></script>
 <script>if (window.MelodiaEditorial) MelodiaEditorial.init({ page: 'melodia-atelier-lab' });</script>
 </body>
 </html>
