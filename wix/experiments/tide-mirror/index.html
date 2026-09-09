@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tide Mirror — a sea that remembers</title>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #14102e; overflow: hidden; }
+  #sea { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+  #hint {
+    position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    font: 13px/1.4 Georgia, "Times New Roman", serif;
+    color: #cfc4ee; opacity: 0.75; pointer-events: none;
+    letter-spacing: 0.12em; text-align: center; transition: opacity 2s ease;
+    text-shadow: 0 1px 8px rgba(20,16,46,0.8);
+  }
+  #hint.gone { opacity: 0; }
+</style>
+</head>
+<body>
+<canvas id="sea"></canvas>
+<div id="hint">touch the water &mdash; it remembers</div>
+<script>
+"use strict";
+/* TIDE MIRROR
+   A temporal-feedback ocean. Two state textures ping-pong every frame:
+   R = wave height, G = velocity. Every touch is injected as a disturbance
+   and the field never fully forgets — it decays over minutes, not frames. */
+
+const canvas = document.getElementById("sea");
+const hint = document.getElementById("hint");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const gl = canvas.getContext("webgl2", { alpha: false, antialias: false, depth: false, stencil: false });
+if (!gl) {
+  hint.textContent = "this experiment needs WebGL2";
+  throw new Error("WebGL2 unavailable");
+}
+
+const colorFloat = gl.getExtension("EXT_color_buffer_float");
+const internalFormat = colorFloat ? gl.RGBA16F : gl.RGBA8;
+const texType = colorFloat ? gl.HALF_FLOAT : gl.UNSIGNED_BYTE;
+
+/* ---------- shaders ---------- */
+
+const QUAD_VS = `#version 300 es
+layout(location=0) in vec2 aPos;
+out vec2 vUv;
+void main(){ vUv = aPos * 0.5 + 0.5; gl_Position = vec4(aPos, 0.0, 1.0); }`;
+
+/* Simulation: damped wave equation with touch injection + ambient rain. */
+const SIM_FS = `#version 300 es
+precision highp float;
+uniform sampler2D uState;
+uniform vec2 uTexel;
+uniform float uAspect;
+uniform int uFrame;
+uniform vec4 uTouch[8];   /* xy: pos (uv, aspect-corrected), z: strength, w: radius */
+uniform int uTouchCount;
+uniform float uRain;      /* droplets per frame probability */
+in vec2 vUv;
+out vec4 frag;
+
+float H(vec2 uv){ return texture(uState, uv).r; }
+
+float hash(int n){ return fract(sin(float(n) * 127.1) * 43758.5453); }
+
+void main(){
+  vec2 uv = gl_FragCoord.xy * uTexel;
+  vec4 s = texture(uState, uv);
+  float h = s.r, v = s.g;
+
+  float l = H(uv - vec2(uTexel.x, 0.0));
+  float r = H(uv + vec2(uTexel.x, 0.0));
+  float d = H(uv - vec2(0.0, uTexel.y));
+  float u = H(uv + vec2(0.0, uTexel.y));
+  float lap = (l + r + u + d) * 0.25 - h;
+
+  v += lap * 0.55;   /* tension: waves pull back toward neighbours */
+  v *= 0.986;        /* velocity damping — the "memory half-life" */
+  h += v;
+  h *= 0.9997;       /* near-imperceptible height decay = long memory */
+
+  for (int i = 0; i < 8; i++){
+    if (i >= uTouchCount) break;
+    vec2 dv = uv - uTouch[i].xy;
+    dv.x *= uAspect;
+    v += uTouch[i].z * exp(-dot(dv, dv) / (uTouch[i].w * uTouch[i].w));
+  }
+
+  if (hash(uFrame) < uRain){
+    vec2 drop = vec2(hash(uFrame + 1), hash(uFrame + 2));
+    vec2 dv = uv - drop;
+    dv.x *= uAspect;
+    v -= 0.35 * exp(-dot(dv, dv) / 0.0004);
+  }
+
+  frag = vec4(clamp(h, -4.0, 4.0), clamp(v, -4.0, 4.0), 0.0, 1.0);
+}`;
+
+/* Display: painterly palette mapped from height, velocity and local slope. */
+const DRAW_FS = `#version 300 es
+precision highp float;
+uniform sampler2D uState;
+uniform vec2 uTexel;
+uniform vec2 uResolution;
+uniform float uTime;
+in vec2 vUv;
+out vec4 frag;
+
+float H(vec2 uv){ return texture(uState, uv).r; }
+
+void main(){
+  vec2 uv = vUv;
+  float h  = H(uv);
+  float hx = H(uv + vec2(uTexel.x, 0.0)) - H(uv - vec2(uTexel.x, 0.0));
+  float hy = H(uv + vec2(0.0, uTexel.y)) - H(uv - vec2(0.0, uTexel.y));
+  vec3 n = normalize(vec3(-hx, -hy, 0.35));
+  float light = dot(n, normalize(vec3(-0.4, 0.6, 0.7))) * 0.5 + 0.5;
+
+  /* Melodia palette */
+  vec3 deep    = vec3(0.141, 0.106, 0.302);  /* deep blue-violet   */
+  vec3 violet  = vec3(0.298, 0.243, 0.553);  /* pearl lilac shadow */
+  vec3 powder  = vec3(0.662, 0.776, 0.961);  /* powder blue        */
+  vec3 corn    = vec3(0.427, 0.573, 0.906);  /* cornflower         */
+  vec3 pink    = vec3(0.957, 0.761, 0.843);  /* pastel pink        */
+  vec3 gold    = vec3(0.965, 0.894, 0.702);  /* pale warm gold     */
+  vec3 cyan    = vec3(0.553, 0.847, 0.902);  /* aquatic cyan       */
+
+  float t = clamp(h * 0.5 + 0.5, 0.0, 1.0);
+  vec3 col = mix(deep, violet, smoothstep(0.05, 0.45, t));
+  col = mix(col, corn,  smoothstep(0.40, 0.60, t));
+  col = mix(col, powder, smoothstep(0.55, 0.80, t));
+  col = mix(col, pink,  smoothstep(0.78, 0.98, t) * 0.85);
+
+  /* velocity = recent disturbance -> living shimmer: gold flecks on cyan */
+  vec4 s = texture(uState, uv);
+  float agitation = clamp(abs(s.g) * 2.2, 0.0, 1.0);
+  col = mix(col, cyan, agitation * 0.55 * smoothstep(0.35, 0.75, t));
+  col += gold * pow(agitation, 3.0) * 0.6;
+
+  col *= 0.72 + 0.42 * light;
+
+  /* painterly grain */
+  float g = fract(sin(dot(gl_FragCoord.xy + uTime, vec2(12.9898, 78.233))) * 43758.5453);
+  col += (g - 0.5) * 0.018;
+
+  /* vignette */
+  vec2 q = uv - 0.5;
+  col *= 1.0 - dot(q, q) * 0.55;
+
+  frag = vec4(col, 1.0);
+}`;
+
+/* ---------- GL plumbing ---------- */
+
+function compile(type, src){
+  const sh = gl.createShader(type);
+  gl.shaderSource(sh, src);
+  gl.compileShader(sh);
+  if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS))
+    throw new Error(gl.getShaderInfoLog(sh));
+  return sh;
+}
+function program(fs){
+  const p = gl.createProgram();
+  gl.attachShader(p, compile(gl.VERTEX_SHADER, QUAD_VS));
+  gl.attachShader(p, compile(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(p);
+  if (!gl.getProgramParameter(p, gl.LINK_STATUS))
+    throw new Error(gl.getProgramInfoLog(p));
+  return p;
+}
+
+const simProg = program(SIM_FS);
+const drawProg = program(DRAW_FS);
+
+const quad = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+gl.enableVertexAttribArray(0);
+gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+
+const U = (p, n) => gl.getUniformLocation(p, n);
+const simU = {
+  state: U(simProg, "uState"), texel: U(simProg, "uTexel"),
+  aspect: U(simProg, "uAspect"), frame: U(simProg, "uFrame"),
+  touch: U(simProg, "uTouch"), touchCount: U(simProg, "uTouchCount"),
+  rain: U(simProg, "uRain"),
+};
+const drawU = {
+  state: U(drawProg, "uState"), texel: U(drawProg, "uTexel"),
+  resolution: U(drawProg, "uResolution"), time: U(drawProg, "uTime"),
+};
+
+/* Ping-pong state */
+let simW = 0, simH = 0, fbos = null, textures = null, front = 0;
+
+function makeTarget(w, h){
+  const tex = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, tex);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  gl.texImage2D(gl.TEXTURE_2D, 0, internalFormat, w, h, 0, gl.RGBA, texType, null);
+  const fbo = gl.createFramebuffer();
+  gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+  gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, tex, 0);
+  return { tex, fbo };
+}
+
+function resize(){
+  const dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+  const w = Math.max(1, Math.round(canvas.clientWidth * dpr));
+  const h = Math.max(1, Math.round(canvas.clientHeight * dpr));
+  if (canvas.width === w && canvas.height === h && fbos) return;
+  canvas.width = w; canvas.height = h;
+  /* sim runs at ~half resolution for stable, cheap wave propagation */
+  simW = Math.max(64, Math.round(w / 2));
+  simH = Math.max(64, Math.round(h / 2));
+  fbos = []; textures = [];
+  for (let i = 0; i < 2; i++){
+    const t = makeTarget(simW, simH);
+    fbos.push(t.fbo); textures.push(t.tex);
+  }
+  front = 0;
+}
+window.addEventListener("resize", resize);
+resize();
+
+/* ---------- input ---------- */
+
+const pointers = new Map();   /* pointerId -> {x, y, px, py, energy} */
+const touchBuf = new Float32Array(8 * 4);
+let interacted = false;
+
+function toUv(e){
+  const r = canvas.getBoundingClientRect();
+  return [ (e.clientX - r.left) / r.width, 1 - (e.clientY - r.top) / r.height ];
+}
+canvas.addEventListener("pointerdown", e => {
+  canvas.setPointerCapture(e.pointerId);
+  const [x, y] = toUv(e);
+  pointers.set(e.pointerId, { x, y, px: x, py: y, energy: 1.6 });
+  if (!interacted){ interacted = true; hint.classList.add("gone"); }
+});
+canvas.addEventListener("pointermove", e => {
+  const p = pointers.get(e.pointerId);
+  if (!p) return;
+  const [x, y] = toUv(e);
+  const dx = x - p.x, dy = y - p.y;
+  p.px = p.x; p.py = p.y; p.x = x; p.y = y;
+  /* drag speed feeds the wave — fast strokes throw bigger water */
+  p.energy = Math.min(2.6, 0.6 + Math.hypot(dx, dy) * 60);
+});
+const release = e => pointers.delete(e.pointerId);
+canvas.addEventListener("pointerup", release);
+canvas.addEventListener("pointercancel", release);
+
+/* seed a few drops so the first frame is alive */
+function seedDrops(){
+  touchBuf.fill(0);
+  for (let i = 0; i < 5; i++){
+    touchBuf[i*4+0] = 0.2 + Math.random() * 0.6;
+    touchBuf[i*4+1] = 0.2 + Math.random() * 0.6;
+    touchBuf[i*4+2] = -1.2;
+    touchBuf[i*4+3] = 0.03;
+  }
+  return 5;
+}
+
+/* ---------- loop ---------- */
+
+let frame = 0, running = true, seeded = false;
+
+function step(){
+  const back = 1 - front;
+  gl.bindFramebuffer(gl.FRAMEBUFFER, fbos[back]);
+  gl.viewport(0, 0, simW, simH);
+  gl.useProgram(simProg);
+  gl.activeTexture(gl.TEXTURE0);
+  gl.bindTexture(gl.TEXTURE_2D, textures[front]);
+  gl.uniform1i(simU.state, 0);
+  gl.uniform2f(simU.texel, 1 / simW, 1 / simH);
+  gl.uniform1f(simU.aspect, simW / simH);
+  gl.uniform1i(simU.frame, frame * 7 + 1);
+
+  let n = seeded ? 0 : seedDrops();
+  seeded = true;
+  for (const p of pointers.values()){
+    if (n >= 8) break;
+    /* draw the segment from previous to current position for continuous trails */
+    touchBuf[n*4+0] = (p.px + p.x) * 0.5;
+    touchBuf[n*4+1] = (p.py + p.y) * 0.5;
+    touchBuf[n*4+2] = p.energy;
+    touchBuf[n*4+3] = 0.022;
+    n++;
+  }
+  gl.uniform4fv(simU.touch, touchBuf);
+  gl.uniform1i(simU.touchCount, n);
+  gl.uniform1f(simU.rain, interacted ? 0.004 : 0.02);
+  gl.drawArrays(gl.TRIANGLES, 0, 3);
+  front = back;
+}
+
+function render(now){
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  gl.useProgram(drawProg);
+  gl.activeTexture(gl.TEXTURE0);
+  gl.bindTexture(gl.TEXTURE_2D, textures[front]);
+  gl.uniform1i(drawU.state, 0);
+  gl.uniform2f(drawU.texel, 1 / simW, 1 / simH);
+  gl.uniform2f(drawU.resolution, canvas.width, canvas.height);
+  gl.uniform1f(drawU.time, now * 0.001);
+  gl.drawArrays(gl.TRIANGLES, 0, 3);
+}
+
+function loop(now){
+  if (!running) return;
+  step();
+  render(now);
+  frame++;
+  requestAnimationFrame(loop);
+}
+
+document.addEventListener("visibilitychange", () => {
+  if (reducedMotion) return;
+  if (document.hidden){
+    running = false;
+  } else if (!running){
+    running = true;
+    requestAnimationFrame(loop);
+  }
+});
+
+if (reducedMotion){
+  /* one still, already-rippled frame — no motion, no rain */
+  for (let i = 0; i < 40; i++) step();
+  render(0);
+  hint.textContent = "still water (reduced motion)";
+} else {
+  requestAnimationFrame(loop);
+}
+</script>
+</body>
+</html>
