@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" data-page="atmosphere" data-theme="dark">
+<html lang="en" data-page="breathe" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:; img-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<meta name="theme-color" content="#141A30" />
+<meta name="theme-color" content="#090714" />
 <title>Brennan Shepherd — Environment Designer &amp; Technical Artist | Melodia</title>
-<meta name="description" content="Brennan Shepherd is a Toronto-based environment designer and technical artist building stylized, procedural worlds in Unreal Engine 5.8, Blender, ZBrush, and Three.js. Explore Melodia Melusina and selected environment-art work." />
+<meta name="description" content="Brennan Shepherd is a Toronto-based environment designer and technical artist building stylized, procedural worlds in Unreal Engine 5.8, Blender, ZBrush, and Three.js." />
 <meta name="author" content="Brennan Shepherd" />
 <meta name="robots" content="index,follow,max-image-preview:large" />
 <link rel="canonical" href="https://fromage3900.github.io/my-site/" />
@@ -20,79 +20,165 @@
 <meta property="og:url" content="https://fromage3900.github.io/my-site/" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png" />
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://fromage3900.github.io/my-site/#brennan-shepherd",
-      "name": "Brennan Shepherd",
-      "jobTitle": ["Environment Designer", "Technical Artist"],
-      "homeLocation": {"@type": "Place", "name": "Toronto, Ontario, Canada"},
-      "url": "https://fromage3900.github.io/my-site/"
-    },
-    {
-      "@type": "CreativeWork",
-      "@id": "https://fromage3900.github.io/my-site/#melodia-melusina",
-      "name": "Melodia Melusina",
-      "creator": {"@id": "https://fromage3900.github.io/my-site/#brennan-shepherd"},
-      "description": "A stylized environment-art and technical-art project exploring procedural worlds, musical interaction, and surreal fantasy.",
-      "url": "https://fromage3900.github.io/my-site/"
-    }
-  ]
-}
-</script>
-<link rel="stylesheet" href="wix/melodia-tokens.css" />
-<link rel="stylesheet" href="wix/melodia-atmosphere.css" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #090714; }
+  body { font-family: Georgia, 'Times New Roman', serif; }
+
+  #breathe-stage {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(139, 126, 190, .08), transparent 34%),
+      linear-gradient(180deg, #090714 0%, #0c0918 100%);
+    opacity: 1;
+    transition: opacity 1s ease;
+  }
+
+  #breathe-stage.is-leaving { opacity: 0; }
+
+  #breathe-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .breathe-word {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    color: rgba(247, 240, 255, .88);
+    font-size: clamp(1rem, 1.5vw, 1.35rem);
+    font-weight: 400;
+    letter-spacing: .42em;
+    text-transform: lowercase;
+    text-indent: .42em;
+    text-shadow: 0 0 24px rgba(175, 154, 226, .2);
+    animation: breatheWord 3.6s ease-in-out infinite;
+    user-select: none;
+  }
+
+  .skip {
+    position: fixed;
+    right: 20px;
+    bottom: 18px;
+    z-index: 3;
+    border: 0;
+    padding: 8px;
+    color: rgba(235, 228, 245, .34);
+    background: transparent;
+    font: 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .skip:hover, .skip:focus-visible { color: rgba(247, 240, 255, .72); outline: none; }
+
+  @keyframes breatheWord {
+    0%, 100% { opacity: .42; transform: scale(.985); filter: blur(.15px); }
+    50% { opacity: .96; transform: scale(1.015); filter: blur(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .breathe-word { animation: none; opacity: .9; }
+  }
+</style>
 </head>
 <body>
-<div class="atmosphere-shell">
-  <img class="atmosphere-poster" src="wix/living-worlds-poster.svg" alt="" aria-hidden="true" />
-  <div id="atmosphere-canvas" class="atmosphere-canvas" aria-hidden="true"></div>
-  <div class="atmosphere-veil" aria-hidden="true"></div>
-  <div class="atmosphere-grain" aria-hidden="true"></div>
+<main id="breathe-stage" aria-label="Melodia introduction">
+  <div id="breathe-canvas" aria-hidden="true"></div>
+  <p class="breathe-word">breathe</p>
+  <button class="skip" type="button" aria-label="Skip introduction">enter</button>
+</main>
 
-  <header class="atmosphere-header" aria-label="Melodia gateway navigation">
-    <a class="atmosphere-brand" href="wix/index.html"><span class="atmosphere-brand-mark" aria-hidden="true"></span>Melodia</a>
-    <a href="wix/curated-art.html">Selected art ↗</a>
-  </header>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  var destination = 'wix/index.html';
+  var stage = document.getElementById('breathe-stage');
+  var mount = document.getElementById('breathe-canvas');
+  var skip = document.querySelector('.skip');
+  var leaving = false;
 
-  <main class="atmosphere-main">
-    <div class="atmosphere-copy">
-      <p class="atmosphere-kicker">Brennan Shepherd · Melodia / Melusina · field study · 01–03</p>
-      <h1>Atmosphere<br /><em>before spectacle.</em></h1>
-      <p class="atmosphere-lede">A quiet doorway into a stylized environment and technical-art portfolio. Start with the selected work, then enter the interactive Melodia studies if you want to explore the world itself.</p>
-      <div class="atmosphere-actions" aria-label="Primary destinations">
-        <a class="atmosphere-action primary" href="wix/curated-art.html">Open selected work <span aria-hidden="true">&nbsp;↗</span></a>
-        <a class="atmosphere-action" href="wix/index.html">Open full portfolio</a>
-        <a class="atmosphere-action" href="melodia/sanctuary/">Enter Cymatic Sanctuary</a>
-      </div>
-      <div class="atmosphere-meta" aria-label="Field study details">
-        <div class="atmosphere-meta-item">
-          <p class="atmosphere-meta-label">Medium</p>
-          <span class="atmosphere-meta-value">Three.js / WebGL</span>
-        </div>
-        <div class="atmosphere-meta-item">
-          <p class="atmosphere-meta-label">Worlds</p>
-          <span class="atmosphere-meta-value">01 playable encounter</span>
-        </div>
-        <div class="atmosphere-meta-item">
-          <p class="atmosphere-meta-label">Mood</p>
-          <span class="atmosphere-meta-value">Beautiful dread</span>
-        </div>
-      </div>
-    </div>
-  </main>
+  function enterPortfolio() {
+    if (leaving) return;
+    leaving = true;
+    stage.classList.add('is-leaving');
+    window.setTimeout(function () { window.location.href = destination; }, 850);
+  }
 
-  <p class="atmosphere-fallback">The gateway is still beautiful without WebGL. Choose a destination above to continue.</p>
-  <footer class="atmosphere-footer">
-    <span>Brennan Shepherd · Environment design &amp; technical art · Toronto, ON</span>
-    <span>Serene sublime → biological revelation → ontological dread</span>
-  </footer>
-</div>
+  skip.addEventListener('click', enterPortfolio);
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' || event.key === 'Escape' || event.key === ' ') enterPortfolio();
+  });
 
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script defer src="wix/melodia-atmosphere.js"></script>
+  window.setTimeout(enterPortfolio, 3600);
+
+  if (!window.THREE || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.z = 8;
+
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
+  } catch (e) {
+    return;
+  }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x000000, 0);
+  mount.appendChild(renderer.domElement);
+
+  var count = 180;
+  var positions = new Float32Array(count * 3);
+  for (var i = 0; i < count; i++) {
+    var r = 1.4 + Math.random() * 5.4;
+    var a = Math.random() * Math.PI * 2;
+    positions[i * 3] = Math.cos(a) * r;
+    positions[i * 3 + 1] = (Math.random() - .5) * 4.8;
+    positions[i * 3 + 2] = (Math.random() - .5) * 3;
+  }
+
+  var geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  var material = new THREE.PointsMaterial({
+    color: 0xc8b6ef,
+    size: 0.035,
+    transparent: true,
+    opacity: 0.38,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
+  });
+  var particles = new THREE.Points(geometry, material);
+  scene.add(particles);
+
+  var clock = new THREE.Clock();
+  function animate() {
+    if (!renderer || leaving) return;
+    requestAnimationFrame(animate);
+    var t = clock.getElapsedTime();
+    var breath = (Math.sin(t * 1.45) + 1) * 0.5;
+    particles.rotation.z = t * 0.012;
+    particles.rotation.y = Math.sin(t * 0.18) * 0.045;
+    particles.scale.setScalar(0.985 + breath * 0.035);
+    material.opacity = 0.22 + breath * 0.24;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', function () {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+})();
+</script>
 </body>
 </html>
