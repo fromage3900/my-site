@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cloth Dream — silk that hums</title>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #14102e; overflow: hidden; }
+  #silk { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+  #hint {
+    position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    font: 13px/1.4 Georgia, "Times New Roman", serif;
+    color: #cfc4ee; opacity: 0.75; pointer-events: none;
+    letter-spacing: 0.12em; text-align: center; transition: opacity 2s ease;
+    text-shadow: 0 1px 8px rgba(20,16,46,0.8);
+  }
+  #hint.gone { opacity: 0; }
+</style>
+</head>
+<body>
+<canvas id="silk"></canvas>
+<div id="hint">drag the silk &mdash; it hums</div>
+<script>
+"use strict";
+/* CLOTH DREAM
+   A cylindrical silk veil (Melodia skirt silhouette): Verlet cloth, pinned at
+   a floating ring, breathing under curl-like wind, pointer-spring plucking.
+   Identity: Pastel Neon / Soft Anime / Cymatic Fantasy.
+   Palette: #9DF powder, #70E violet, #F8A pink, #C5F lilac, pearl #FFF
+   on deep blue-violet. Fabric carries a procedural music-note diamond mesh. */
+
+const canvas = document.getElementById("silk");
+const hint = document.getElementById("hint");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const gl = canvas.getContext("webgl2", { alpha: false, antialias: true, depth: true });
+if (!gl) { hint.textContent = "this experiment needs WebGL2"; throw new Error("no webgl2"); }
+
+/* ---------- tiny mat4 (column-major) ---------- */
+function perspective(fovY, aspect, near, far){
+  const f = 1 / Math.tan(fovY / 2), nf = 1 / (near - far);
+  return new Float32Array([f/aspect,0,0,0, 0,f,0,0, 0,0,(far+near)*nf,-1, 0,0,2*far*near*nf,0]);
+}
+function lookAt(ex,ey,ez, tx,ty,tz){
+  let fx=tx-ex, fy=ty-ey, fz=tz-ez;
+  let l=Math.hypot(fx,fy,fz); fx/=l; fy/=l; fz/=l;
+  /* s = normalize(cross(f, worldUp)), u = cross(s, f) */
+  let sx=-fz, sy=0, sz=fx;
+  l=Math.hypot(sx,sy,sz); sx/=l; sy/=l; sz/=l;
+  const ux=sy*fz-sz*fy, uy=sz*fx-sx*fz, uz=sx*fy-sy*fx;
+  return new Float32Array([
+    sx,ux,-fx,0,  sy,uy,-fy,0,  sz,uz,-fz,0,
+    -(sx*ex+sy*ey+sz*ez), -(ux*ex+uy*ey+uz*ez), fx*ex+fy*ey+fz*ez, 1
+  ]);
+}
+function mul(a,b){
+  const o=new Float32Array(16);
+  for(let c=0;c<4;c++)for(let r=0;r<4;r++){
+    let s=0;for(let k=0;k<4;k++)s+=a[k*4+r]*b[c*4+k];
+    o[c*4+r]=s;
+  }
+  return o;
+}
+
+/* ---------- cloth ---------- */
+const ROWS=30, COLS=40, N=ROWS*COLS;
+const pos=new Float32Array(N*3), prev=new Float32Array(N*3),
+      nrm=new Float32Array(N*3), uv=new Float32Array(N*2),
+      pinned=new Uint8Array(N);
+const idx=(r,c)=>r*COLS+((c%COLS)+COLS)%COLS;
+
+for(let r=0;r<ROWS;r++){
+  const v=r/(ROWS-1), radius=0.5+0.55*v, y=1.15-2.4*v;
+  for(let c=0;c<COLS;c++){
+    const u=c/COLS, a=u*Math.PI*2, i=idx(r,c)*3;
+    const j=(Math.sin(r*12.9898+c*78.233)*43758.5453%1)*0.012;
+    pos[i]=Math.cos(a)*(radius+j); pos[i+1]=y; pos[i+2]=Math.sin(a)*(radius+j);
+    prev[i]=pos[i]; prev[i+1]=pos[i+1]; prev[i+2]=pos[i+2];
+    uv[idx(r,c)*2]=u; uv[idx(r,c)*2+1]=v;
+    pinned[idx(r,c)]=r===0?1:0;
+  }
+}
+
+const links=[];
+for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+  const a=idx(r,c)*3, b1=idx(r,c+1)*3;
+  links.push(a,b1,Math.hypot(pos[a]-pos[b1],pos[a+1]-pos[b1+1],pos[a+2]-pos[b1+2]));
+  if(r<ROWS-1){
+    const b2=idx(r+1,c)*3;
+    links.push(a,b2,Math.hypot(pos[a]-pos[b2],pos[a+1]-pos[b2+1],pos[a+2]-pos[b2+2]));
+  }
+}
+
+/* ---------- shaders ---------- */
+const VS=`#version 300 es
+layout(location=0) in vec3 aPos;
+layout(location=1) in vec3 aNormal;
+layout(location=2) in vec2 aUv;
+uniform mat4 uMvp;
+out vec3 vNormal; out vec3 vWorld; out vec2 vUv;
+void main(){
+  vNormal=aNormal; vWorld=aPos; vUv=aUv;
+  gl_Position=uMvp*vec4(aPos,1.0);
+}`;
+
+const FS=`#version 300 es
+precision highp float;
+in vec3 vNormal; in vec3 vWorld; in vec2 vUv;
+uniform vec3 uEye; uniform float uTime;
+out vec4 frag;
+
+const vec3 POWDER=vec3(0.60,0.87,1.00);   /* #9DF */
+const vec3 VIOLET=vec3(0.47,0.05,0.93);   /* #70E */
+const vec3 PINK  =vec3(1.00,0.53,0.67);   /* #F8A */
+const vec3 LILAC =vec3(0.80,0.42,1.00);   /* #C5F */
+const vec3 PEARL =vec3(0.96,0.95,1.00);   /* #FFF */
+const vec3 GOLD  =vec3(0.97,0.89,0.70);
+
+float lattice(vec2 p){
+  vec2 q=vec2(p.x+p.y,p.x-p.y);
+  vec2 f=abs(fract(q)-0.5);
+  return smoothstep(0.465,0.5,max(f.x,f.y));
+}
+float noteDot(vec2 p){
+  vec2 q=vec2(p.x+p.y,p.x-p.y);
+  vec2 g=floor(q);
+  vec2 f=abs(fract(q)-0.5)*2.0;
+  float dm=length(f);
+  float sparse=step(0.72,fract(sin(dot(g,vec2(12.9898,78.233)))*43758.5453));
+  return smoothstep(0.28,0.18,dm)*sparse;
+}
+
+void main(){
+  vec3 n=normalize(vNormal);
+  if(!gl_FrontFacing) n=-n;
+  vec3 V=normalize(uEye-vWorld);
+
+  /* silk gradient: powder bodice -> lilac skirt, pink breath at hem */
+  vec3 base=mix(POWDER,LILAC,smoothstep(0.0,0.85,vUv.y));
+  base=mix(base,PINK,smoothstep(0.75,1.0,vUv.y)*0.55);
+  base=mix(base,PEARL,0.18);
+
+  /* music-note diamond mesh */
+  vec2 p=vec2(vUv.x*20.0,vUv.y*11.0);
+  float lat=lattice(p);
+  float dots=noteDot(p);
+  vec3 col=mix(base,PEARL,lat*0.35);
+  col=mix(col,GOLD,dots*0.85);
+
+  /* pastel-neon lighting: gold key, violet rim, pearl fresnel */
+  vec3 L1=normalize(vec3(0.5,0.8,0.4));
+  float diff=max(dot(n,L1),0.0);
+  vec3 L2=normalize(vec3(-0.6,-0.7,-0.3));
+  float fill=max(dot(n,L2),0.0);
+  float fres=pow(1.0-abs(dot(n,V)),2.5);
+
+  col*=0.45+0.65*diff;
+  col+=VIOLET*fill*0.30;
+  col+=PINK*fres*0.55+PEARL*fres*fres*0.35;
+
+  /* iridescent holographic-thread sparkle */
+  float sp=fract(sin(dot(floor(vWorld.xz*40.0)+floor(uTime*3.0),vec2(12.9898,78.233)))*43758.5453);
+  col+=PEARL*step(0.985,sp)*fres*0.8;
+
+  frag=vec4(col,1.0);
+}`;
+
+const BG_FS=`#version 300 es
+precision highp float;
+in vec2 vUv; out vec4 frag;
+void main(){
+  vec3 top=vec3(0.298,0.243,0.553);
+  vec3 bot=vec3(0.141,0.106,0.302);
+  vec3 col=mix(bot,top,vUv.y);
+  vec2 q=vUv-0.5;
+  col*=1.0-dot(q,q)*0.7;
+  vec2 g=floor(vUv*vec2(90.0,160.0));
+  float s=fract(sin(dot(g,vec2(12.9898,78.233)))*43758.5453);
+  col+=vec3(0.9,0.9,1.0)*step(0.994,s)*0.5*(0.5+0.5*sin(s*80.0));
+  frag=vec4(col,1.0);
+}`;
+
+const QUAD_VS=`#version 300 es
+layout(location=0) in vec2 aPos;
+out vec2 vUv;
+void main(){ vUv=aPos*0.5+0.5; gl_Position=vec4(aPos,0.,1.); }`;
+
+function compile(t,s){
+  const sh=gl.createShader(t);
+  gl.shaderSource(sh,s); gl.compileShader(sh);
+  if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(sh));
+  return sh;
+}
+function program(fs,vs){
+  const p=gl.createProgram();
+  gl.attachShader(p,compile(gl.VERTEX_SHADER,vs||VS));
+  gl.attachShader(p,compile(gl.FRAGMENT_SHADER,fs));
+  gl.linkProgram(p);
+  if(!gl.getProgramParameter(p,gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
+  return p;
+}
+
+const clothProg=program(FS), bgProg=program(BG_FS,QUAD_VS);
+const clothU={
+  mvp:gl.getUniformLocation(clothProg,"uMvp"),
+  eye:gl.getUniformLocation(clothProg,"uEye"),
+  time:gl.getUniformLocation(clothProg,"uTime"),
+};
+
+/* geometry */
+const vao=gl.createVertexArray();
+gl.bindVertexArray(vao);
+function attrib(loc,buf,data,dyn){
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+  gl.bufferData(gl.ARRAY_BUFFER,data,dyn?gl.DYNAMIC_DRAW:gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc,loc===2?2:3,gl.FLOAT,false,0,0);
+  return buf;
+}
+const posBuf=attrib(0,gl.createBuffer(),pos,true);
+const nrmBuf=attrib(1,gl.createBuffer(),nrm,true);
+attrib(2,gl.createBuffer(),uv,false);
+
+const indices=new Uint16Array((ROWS-1)*COLS*6);
+{let k=0;
+for(let r=0;r<ROWS-1;r++)for(let c=0;c<COLS;c++){
+  const a=idx(r,c),b=idx(r,c+1),d=idx(r+1,c),e=idx(r+1,c+1);
+  indices[k++]=a;indices[k++]=d;indices[k++]=b;
+  indices[k++]=b;indices[k++]=d;indices[k++]=e;
+}}
+const ibo=gl.createBuffer();
+gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ibo);
+gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,indices,gl.STATIC_DRAW);
+
+const bgVao=gl.createVertexArray();
+gl.bindVertexArray(bgVao);
+{const qb=gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER,qb);
+gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+gl.enableVertexAttribArray(0);
+gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);}
+gl.bindVertexArray(null);
+
+/* ---------- simulation ---------- */
+const pointers=new Map();
+let interacted=false, simTime=0;
+
+function step(dt){
+  simTime+=dt;
+  const damp=0.985, grav=0.0011;
+  for(let i=0;i<N;i++){
+    if(pinned[i])continue;
+    const i3=i*3;
+    const x=pos[i3],y=pos[i3+1],z=pos[i3+2];
+    const vx=(x-prev[i3])*damp, vy=(y-prev[i3+1])*damp, vz=(z-prev[i3+2])*damp;
+    prev[i3]=x;prev[i3+1]=y;prev[i3+2]=z;
+    const w=0.0016;
+    let ax=Math.sin(simTime*0.7+y*1.9+z*1.3)*w;
+    let ay=Math.cos(simTime*0.5+x*2.1)*w*0.4;
+    let az=Math.cos(simTime*0.6+y*1.6+x*1.1)*w;
+    const row=(i/COLS)|0, v=row/(ROWS-1);
+    const rl=Math.hypot(x,z)||1, hem=v*v;
+    const shimmer=0.0013+0.0009*Math.sin(simTime*0.9+Math.atan2(z,x)*3.0+v*4.0);
+    ax+=(x/rl)*shimmer*hem; az+=(z/rl)*shimmer*hem;
+    pos[i3]=x+vx+ax; pos[i3+1]=y+vy+ay-grav; pos[i3+2]=z+vz+az;
+  }
+  /* pointer springs: pull a soft blob toward the ray target */
+  for(const p of pointers.values()){
+    if(p.grab<0||!p.hasRay)continue;
+    const tx=p.tx,ty=p.ty,tz=p.tz;
+    for(let i=COLS;i<N;i++){
+      const i3=i*3;
+      const dx=tx-pos[i3],dy=ty-pos[i3+1],dz=tz-pos[i3+2];
+      const d2=dx*dx+dy*dy+dz*dz;
+      if(d2<0.09){
+        const f=0.32*(1-d2/0.09);
+        pos[i3]+=dx*f;pos[i3+1]+=dy*f;pos[i3+2]+=dz*f;
+      }
+    }
+  }
+  /* distance constraints */
+  for(let it=0;it<3;it++){
+    for(let l=0;l<links.length;l+=3){
+      const a=links[l],b=links[l+1],rest=links[l+2];
+      let dx=pos[b]-pos[a],dy=pos[b+1]-pos[a+1],dz=pos[b+2]-pos[a+2];
+      const d=Math.hypot(dx,dy,dz)||1e-6;
+      const diff=(d-rest)/d*0.5;
+      dx*=diff;dy*=diff;dz*=diff;
+      const pa=(a/3)|0,pb=(b/3)|0;
+      if(pinned[pa]){if(!pinned[pb]){pos[b]-=dx*2;pos[b+1]-=dy*2;pos[b+2]-=dz*2;}}
+      else if(pinned[pb]){pos[a]+=dx*2;pos[a+1]+=dy*2;pos[a+2]+=dz*2;}
+      else{
+        pos[a]+=dx;pos[a+1]+=dy;pos[a+2]+=dz;
+        pos[b]-=dx;pos[b+1]-=dy;pos[b+2]-=dz;
+      }
+    }
+  }
+  /* normals, oriented outward */
+  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+    const i=idx(r,c),i3=i*3;
+    const iu=idx(r,c+1)*3,id=idx(r,c-1)*3;
+    const iv=idx(Math.min(r+1,ROWS-1),c)*3,ivu=idx(Math.max(r-1,0),c)*3;
+    const ux=pos[iu]-pos[id],uy=pos[iu+1]-pos[id+1],uz=pos[iu+2]-pos[id+2];
+    const vx=pos[iv]-pos[ivu],vy=pos[iv+1]-pos[ivu+1],vz=pos[iv+2]-pos[ivu+2];
+    let nx=uy*vz-uz*vy,ny=uz*vx-ux*vz,nz=ux*vy-uy*vx;
+    const l=Math.hypot(nx,ny,nz)||1;
+    nx/=l;ny/=l;nz/=l;
+    if(nx*pos[i3]+nz*pos[i3+2]<0){nx=-nx;ny=-ny;nz=-nz;}
+    nrm[i3]=nx;nrm[i3+1]=ny;nrm[i3+2]=nz;
+  }
+}
+
+/* ---------- camera & rays ---------- */
+let camAngle=0.6;
+const camRadius=3.4, camHeight=0.35;
+let eye=[0,0,3.4],fwd=[0,0,-1],right=[1,0,0],upv=[0,1,0];
+const tanF=Math.tan(Math.PI*0.22);
+
+function updateCamera(){
+  if(!reducedMotion)camAngle+=0.0012;
+  eye=[Math.cos(camAngle)*camRadius,camHeight,Math.sin(camAngle)*camRadius];
+  let fx=-eye[0],fy=-0.15-eye[1],fz=-eye[2];
+  const fl=Math.hypot(fx,fy,fz);fx/=fl;fy/=fl;fz/=fl;
+  fwd=[fx,fy,fz];
+  let sx=-fz,sz=fx;
+  const sl=Math.hypot(sx,sz)||1;sx/=sl;sz/=sl;
+  right=[sx,0,sz];
+  upv=[right[1]*fz-right[2]*fy, right[2]*fx-right[0]*fz, right[0]*fy-right[1]*fx];
+}
+function pointerRay(nx,ny,aspect){
+  const dx=fwd[0]+right[0]*nx*tanF*aspect+upv[0]*ny*tanF;
+  const dy=fwd[1]+right[1]*nx*tanF*aspect+upv[1]*ny*tanF;
+  const dz=fwd[2]+right[2]*nx*tanF*aspect+upv[2]*ny*tanF;
+  const l=Math.hypot(dx,dy,dz);
+  return [dx/l,dy/l,dz/l];
+}
+function toNdc(e){
+  const r=canvas.getBoundingClientRect();
+  return [((e.clientX-r.left)/r.width)*2-1, 1-((e.clientY-r.top)/r.height)*2];
+}
+function pickParticle(origin,dir){
+  let best=-1,bestDepth=0,bestD2=0.09;
+  for(let i=COLS;i<N;i++){
+    const i3=i*3;
+    const px=pos[i3]-origin[0],py=pos[i3+1]-origin[1],pz=pos[i3+2]-origin[2];
+    const t=px*dir[0]+py*dir[1]+pz*dir[2];
+    if(t<0.5||t>8)continue;
+    const qx=px-dir[0]*t,qy=py-dir[1]*t,qz=pz-dir[2]*t;
+    const d2=qx*qx+qy*qy+qz*qz;
+    if(d2<bestD2){bestD2=d2;best=i;bestDepth=t;}
+  }
+  return [best,bestDepth];
+}
+
+canvas.addEventListener("pointerdown",e=>{
+  canvas.setPointerCapture(e.pointerId);
+  const [nx,ny]=toNdc(e);
+  const aspect=canvas.width/canvas.height;
+  const dir=pointerRay(nx,ny,aspect);
+  const [g,depth]=pickParticle(eye,dir);
+  pointers.set(e.pointerId,{nx,ny,grab:g,depth,hasRay:true,tx:0,ty:0,tz:0});
+  if(!interacted){interacted=true;hint.classList.add("gone");}
+});
+canvas.addEventListener("pointermove",e=>{
+  const p=pointers.get(e.pointerId);
+  if(p){const [nx,ny]=toNdc(e);p.nx=nx;p.ny=ny;}
+});
+const release=e=>pointers.delete(e.pointerId);
+canvas.addEventListener("pointerup",release);
+canvas.addEventListener("pointercancel",release);
+
+/* ---------- render ---------- */
+function resize(){
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  const w=Math.max(1,Math.round(canvas.clientWidth*dpr));
+  const h=Math.max(1,Math.round(canvas.clientHeight*dpr));
+  if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
+}
+window.addEventListener("resize",resize);
+
+let running=true;
+
+function render(now){
+  resize();
+  const aspect=canvas.width/canvas.height;
+  updateCamera();
+  for(const p of pointers.values()){
+    const dir=pointerRay(p.nx,p.ny,aspect);
+    p.tx=eye[0]+dir[0]*p.depth;
+    p.ty=eye[1]+dir[1]*p.depth;
+    p.tz=eye[2]+dir[2]*p.depth;
+  }
+  gl.viewport(0,0,canvas.width,canvas.height);
+  gl.clearColor(0.141,0.106,0.302,1);
+  gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+  gl.disable(gl.DEPTH_TEST);
+  gl.useProgram(bgProg);
+  gl.bindVertexArray(bgVao);
+  gl.drawArrays(gl.TRIANGLES,0,3);
+  gl.enable(gl.DEPTH_TEST);
+  gl.disable(gl.CULL_FACE);
+  gl.useProgram(clothProg);
+  gl.uniformMatrix4fv(clothU.mvp,false,
+    mul(perspective(Math.PI*0.44,aspect,0.1,20),lookAt(eye[0],eye[1],eye[2],0,-0.15,0)));
+  gl.uniform3f(clothU.eye,eye[0],eye[1],eye[2]);
+  gl.uniform1f(clothU.time,now*0.001);
+  gl.bindVertexArray(vao);
+  gl.bindBuffer(gl.ARRAY_BUFFER,posBuf);
+  gl.bufferSubData(gl.ARRAY_BUFFER,0,pos);
+  gl.bindBuffer(gl.ARRAY_BUFFER,nrmBuf);
+  gl.bufferSubData(gl.ARRAY_BUFFER,0,nrm);
+  gl.drawElements(gl.TRIANGLES,indices.length,gl.UNSIGNED_SHORT,0);
+}
+
+let last=0;
+function loop(now){
+  if(!running)return;
+  const dt=Math.min((now-last)/1000,0.033)||0.016;
+  last=now;
+  step(dt);
+  render(now);
+  requestAnimationFrame(loop);
+}
+
+document.addEventListener("visibilitychange",()=>{
+  if(reducedMotion)return;
+  if(document.hidden)running=false;
+  else if(!running){running=true;last=performance.now();requestAnimationFrame(loop);}
+});
+
+if(reducedMotion){
+  for(let i=0;i<120;i++)step(0.016);
+  render(0);
+  hint.textContent="still silk (reduced motion)";
+}else{
+  requestAnimationFrame(loop);
+}
+</script>
+</body>
+</html>
