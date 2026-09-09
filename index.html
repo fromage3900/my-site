@@ -108,6 +108,7 @@
   function enterPortfolio() {
     if (leaving) return;
     leaving = true;
+    try { window.sessionStorage.setItem('melodia.entryCutscene.v1', 'seen'); } catch (e) {}
     stage.classList.add('is-leaving');
     window.setTimeout(function () { window.location.href = destination; }, 850);
   }
