@@ -2,6 +2,7 @@
   "date": "2026-09-10",
   "objective": "Prepare up to three truthful buyer-shaped WebGL/technical-art submissions this afternoon.",
   "audit": "CURRENT_STATE_AUDIT_2026-09-10.md",
+  "canonical_state": "CANONICAL_SUBMISSION_STATE_2026-09-10.md",
   "tracker_csv": "APPLICATION_TRACKER_SNAPSHOT.csv",
   "figma_brief": "FIGMA_MINIMAL_POLISH_BRIEF.md",
   "package_brief": "AFTERNOON_SUBMISSION_PACK.md",
@@ -11,11 +12,11 @@
       "title": "$10,000 Procedural Industrial Homepage Loop",
       "owner": ["Brennan"],
       "priority": 1,
-      "status": "FINAL_SOURCE_CANONICAL_SANITY_CHECK_GATED",
-      "preservation": "SOURCE_ON_MY_SITE_MAIN_CAPTURE_PACKAGE_SAFE_IN_MELODIA_PR_176",
+      "status": "FINAL_SOURCE_CANONICAL_EXTERNAL_SANITY_GATED",
+      "preservation": "SOURCE_ON_MY_SITE_MAIN_CURSOR_CAPTURE_ARCHIVE_IN_CLOSED_MELODIA_PR_176",
       "canonical_repo": "fromage3900/my-site",
-      "capture_transfer_repo": "fromage3900/MelodiaMelusinaV2",
-      "capture_transfer_pr": 176,
+      "capture_archive_repo": "fromage3900/MelodiaMelusinaV2",
+      "capture_archive_pr": 176,
       "observed_cursor_capture_evidence": {
         "console_errors": 0,
         "canonical_seed": 1,
@@ -56,27 +57,32 @@
       "submission_state": "SECOND_SEND_STRONG_LOW_COMPETITION_FIT"
     },
     {
-      "id": "A_PRODUCT_GLb",
+      "id": "A_PRODUCT_GLB",
       "title": "$3,000 Web-ready Product Animation / GLB",
-      "owner": ["Kimi", "Brennan"],
+      "owner": ["Brennan"],
       "priority": 3,
-      "status": "AGENT_REPORTED_SOURCE_READY_NOT_REMOTELY_CANONICAL_RUNTIME_GATED",
-      "preservation": "PRODUCT_MOTION_LAB_CANONICAL_KIMI_HANDHELD_NOT_VISIBLE_REMOTE",
+      "status": "AURIGA_SOURCE_CANONICAL_GENERATION_RUNTIME_GATED",
+      "preservation": "AURIGA_BUILDER_CHECKER_AND_BROWSER_LOADER_CANONICAL_ON_MY_SITE_MAIN",
+      "canonical_source": [
+        "../../scripts/build_auriga_meter.py",
+        "../../scripts/check_auriga_meter.py",
+        "../../prototypes/product-motion-lab/src/auriga-meter.js",
+        "../../prototypes/product-motion-lab/package.json"
+      ],
       "required_before_submit": [
-        "Kimi handheld source pushed or merged",
-        "Blender generation succeeds",
-        "Brennan visual pass",
-        "validator passes",
-        "GLB export succeeds",
-        "Product Motion Lab runtime verifies GLB",
-        "deterministic scrub verified",
-        "callout anchors verified",
-        "desktop and mobile captures exported",
-        "real runtime metrics recorded",
-        "listing rechecked current"
+        "run the canonical Blender builder to generate assets/auriga_meter.glb",
+        "perform Brennan visual and silhouette pass on the generated asset",
+        "run check_auriga_meter.py against the exported GLB",
+        "load the generated GLB through the Product Motion Lab browser runtime",
+        "verify deterministic 0 to 1 to 0 scrub",
+        "verify screen hinge and port anchors through the motion range",
+        "export desktop and mobile captures",
+        "record real runtime triangles draw calls DPR FPS and byte size",
+        "recheck listing current"
       ],
       "application_path": "../../DIRECT_LISTING_STRIKES_2026-09-10.md",
-      "submission_state": "THIRD_SEND_BLOCKED_ON_CANONICAL_SOURCE_AND_RUNTIME"
+      "evidence_path": "../../prototypes/product-motion-lab/EVIDENCE.md",
+      "submission_state": "THIRD_SEND_BLOCKED_ONLY_ON_GENERATION_RUNTIME_AND_CAPTURE"
     }
   ],
   "shared_package_files": [
@@ -89,7 +95,8 @@
     "07_REQUIREMENT_MAP.md",
     "08_SOURCE_LINKS.txt"
   ],
-  "industrial_rule": "Current source is canonical on my-site main. PR 176 remains the preserved capture/transfer authority and supersedes PR 175. Do not apply either transfer patch over the newly canonical source without an explicit diff review.",
+  "industrial_rule": "Current industrial source is canonical on my-site main. Melodia PR 176 is a closed audit/capture archive only; do not apply its transfer patch over current main without an explicit diff review.",
+  "product_rule": "Auriga source is canonical. Do not mark the product lane runtime-verified until Blender generates the GLB and browser QA/capture evidence exists.",
   "figma_rule": "Use Figma only after real captures exist. Presentation may improve hierarchy and annotation but may not invent metrics, runtime states, client results, or capabilities.",
   "human_gate": "No submission is sent without Brennan approval.",
   "capstone_boundary": "CAPSTONE_NOW.md remains authoritative; Choral Sheep visual proof remains P0 after submission work."
