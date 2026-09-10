@@ -25,6 +25,7 @@
     "tools/verify_showcase_polish.py",
     "content/render-passports.json",
     "content/site-plates.json",
+    "index.html",
     "wix/index.html",
     "wix/curated-art.html",
     "wix/resume.html",
@@ -51,7 +52,8 @@
   "allowed_prefixes": [
     "generated/assets/character/",
     "generated/assets/unreal/",
-    "generated/optimized/curated-art/"
+    "generated/optimized/curated-art/",
+    "tools/fromage-webgl-kit/"
   ],
   "blocked_by_default": [
     "new public pages",
@@ -128,6 +130,21 @@
         "no navigation or recruiter-copy changes",
         "no replacement artwork",
         "no new renderer dependency"
+      ]
+    },
+    {
+      "id": "root-entry-and-webgl-kit-2026-09-10",
+      "reason": "Owner explicitly requested the current root breathe gateway plus a bounded Three.js/WebGL commercialization and prototype lane. The root gateway remains recruiter-facing and is therefore allowed only as an exact path; the WebGL kit lives outside canonical recruiter routes and may iterate without weakening the protected Wix portfolio surface.",
+      "scope": [
+        "index.html root gateway correctness and recruiter escape link",
+        "tools/fromage-webgl-kit/ internal tooling, prototypes, evidence, and submission packaging",
+        "industrial and product-motion proof work requested on 2026-09-10"
+      ],
+      "exclusions": [
+        "no automatic promotion of WebGL prototypes into canonical recruiter navigation",
+        "no new canonical routes without a separate freeze exception",
+        "no global portfolio redesign",
+        "no weakening of showcase or freeze verification"
       ]
     }
   ]
