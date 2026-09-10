@@ -1,17 +1,69 @@
 {
   "date": "2026-09-10",
   "objective": "Prepare up to three truthful buyer-shaped WebGL/technical-art submissions this afternoon.",
+  "audit": "CURRENT_STATE_AUDIT_2026-09-10.md",
+  "tracker_csv": "APPLICATION_TRACKER_SNAPSHOT.csv",
   "figma_brief": "FIGMA_MINIMAL_POLISH_BRIEF.md",
   "package_brief": "AFTERNOON_SUBMISSION_PACK.md",
   "lanes": [
     {
+      "id": "C_INDUSTRIAL_LOOP",
+      "title": "$10,000 Procedural Industrial Homepage Loop",
+      "owner": ["Cursor", "Brennan"],
+      "priority": 1,
+      "status": "FINAL_TRANSFER_PACK_RUNTIME_VERIFIED_CANONICAL_APPLY_GATED",
+      "preservation": "SAFE_ON_GITHUB_IN_MELODIA_PR_176",
+      "canonical_repo": "fromage3900/my-site",
+      "transfer_repo": "fromage3900/MelodiaMelusinaV2",
+      "transfer_pr": 176,
+      "observed_evidence": {
+        "console_errors": 0,
+        "canonical_seed": 1,
+        "draw_calls": 81,
+        "triangles": 16948,
+        "loop_delta": 0,
+        "full_16s_capture": true,
+        "deterministic_capture_urls": true,
+        "hero_and_viz_stills": true
+      },
+      "required_before_submit": [
+        "apply PR 176 final transfer patch to my-site",
+        "perform one normal local-browser sanity check",
+        "human-review final proposal and attachments",
+        "recheck listing current at click-send"
+      ],
+      "application_path": "../../prototypes/procedural-industrial-loop/APPLICATION_DRAFT_AFTER_QA.md",
+      "evidence_path": "../../prototypes/procedural-industrial-loop/LISTING_10000_EVIDENCE.md",
+      "submission_state": "FIRST_SEND_NEAR_READY"
+    },
+    {
+      "id": "B_FABRIC_CONSULTANT",
+      "title": "Three.js Fabric Technical-Art Consultant",
+      "owner": ["Brennan", "ChatGPT/Kimi packaging"],
+      "priority": 2,
+      "status": "SOURCE_EVIDENCE_PRESENT_QA_PROVENANCE_OWNER_PROOF_GATED",
+      "preservation": "CANONICAL_DOCS_ON_MY_SITE_MAIN",
+      "required_before_submit": [
+        "existing fabric viewer runtime checked",
+        "commercial-safe evidence chosen",
+        "texture/material provenance classified",
+        "genuine CLO or Blender artifact selected",
+        "application evidence links chosen",
+        "listing rechecked current"
+      ],
+      "application_path": "../../fabric/APPLICATION_DRAFT_AFTER_QA.md",
+      "evidence_path": "../../fabric/FABRIC_CONSULTANT_EVIDENCE.md",
+      "submission_state": "SECOND_SEND_STRONG_LOW_COMPETITION_FIT"
+    },
+    {
       "id": "A_PRODUCT_GLb",
       "title": "$3,000 Web-ready Product Animation / GLB",
       "owner": ["Kimi", "Brennan"],
-      "status": "SOURCE_WORKSPACE_READY_RUNTIME_GATED",
-      "priority": 2,
+      "priority": 3,
+      "status": "AGENT_REPORTED_SOURCE_READY_NOT_REMOTELY_CANONICAL_RUNTIME_GATED",
+      "preservation": "PRODUCT_MOTION_LAB_CANONICAL_KIMI_HANDHELD_NOT_VISIBLE_REMOTE",
       "required_before_submit": [
-        "handheld source pushed or merged",
+        "Kimi handheld source pushed or merged",
         "Blender generation succeeds",
         "Brennan visual pass",
         "validator passes",
@@ -23,48 +75,8 @@
         "real runtime metrics recorded",
         "listing rechecked current"
       ],
-      "application_path": "../..//DIRECT_LISTING_STRIKES_2026-09-10.md",
-      "submission_state": "BLOCKED_ON_RUNTIME_AND_CANONICAL_SOURCE"
-    },
-    {
-      "id": "B_FABRIC_CONSULTANT",
-      "title": "Three.js Fabric Technical-Art Consultant",
-      "owner": ["Brennan", "ChatGPT/Kimi packaging"],
-      "status": "SOURCE_EVIDENCE_PRESENT_QA_GATED",
-      "priority": 1,
-      "required_before_submit": [
-        "existing fabric viewer runtime checked",
-        "commercial-safe evidence chosen",
-        "texture/material provenance classified",
-        "genuine CLO or Blender artifact selected",
-        "application evidence links chosen",
-        "listing rechecked current"
-      ],
-      "application_path": "../../fabric/APPLICATION_DRAFT_AFTER_QA.md",
-      "evidence_path": "../../fabric/FABRIC_CONSULTANT_EVIDENCE.md",
-      "submission_state": "NEAREST_TO_READY"
-    },
-    {
-      "id": "C_INDUSTRIAL_LOOP",
-      "title": "$10,000 Procedural Industrial Homepage Loop",
-      "owner": ["Cursor"],
-      "status": "SOURCE_IMPLEMENTED_CURSOR_POLISHING",
-      "priority": 3,
-      "required_before_submit": [
-        "BASE monochrome readability polish complete",
-        "capture mode complete",
-        "browser console clean",
-        "seeds verified",
-        "visualization modes verified",
-        "deterministic scrub verified",
-        "loop endpoint verified",
-        "16-second capture exported",
-        "runtime diagnostics recorded",
-        "listing rechecked current"
-      ],
-      "application_path": "../../prototypes/procedural-industrial-loop/APPLICATION_DRAFT_AFTER_QA.md",
-      "evidence_path": "../../prototypes/procedural-industrial-loop/LISTING_10000_EVIDENCE.md",
-      "submission_state": "BLOCKED_ON_CURSOR_RUNTIME_CAPTURE"
+      "application_path": "../../DIRECT_LISTING_STRIKES_2026-09-10.md",
+      "submission_state": "THIRD_SEND_BLOCKED_ON_CANONICAL_SOURCE_AND_RUNTIME"
     }
   ],
   "shared_package_files": [
@@ -77,6 +89,8 @@
     "07_REQUIREMENT_MAP.md",
     "08_SOURCE_LINKS.txt"
   ],
+  "industrial_rule": "PR 176 supersedes PR 175 for submission purposes. Do not apply both transfer patches.",
   "figma_rule": "Use Figma only after real captures exist. Presentation may improve hierarchy and annotation but may not invent metrics, runtime states, client results, or capabilities.",
-  "human_gate": "No submission is sent without Brennan approval."
+  "human_gate": "No submission is sent without Brennan approval.",
+  "capstone_boundary": "CAPSTONE_NOW.md remains authoritative; Choral Sheep visual proof remains P0 after submission work."
 }
