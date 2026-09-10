@@ -1,10 +1,29 @@
 param(
   [string]$Root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path,
-  [string]$PackagePath = 'G:\EnvironmentPortfolio\BS_GodFile\Saved\Portfolio\portfolio_package.json',
+  [string]$PackagePath = '',
   [switch]$NoAssetCopy
 )
 
 $ErrorActionPreference = 'Stop'
+
+# Resolve the Unreal portfolio package.
+#
+# This was hardcoded to 'G:\EnvironmentPortfolio\BS_GodFile\Saved\Portfolio\portfolio_package.json'.
+# That drive layout no longer exists, so the script threw
+#   "Unreal portfolio package not found: G:\..."
+# on every run, and generated/unreal_portfolio_intake.json could not be regenerated.
+# The stale intake (scene ZenForestTest, generated 2026-07-09) is the direct consequence:
+# downstream, build_unreal_capture_brief.ps1 still emits July Zen-shrine slots for a
+# portfolio that is now Melodia.
+#
+# Precedence: -PackagePath  >  $env:MELODIA_PORTFOLIO_PACKAGE  >  canonical C: checkout.
+if (-not $PackagePath) {
+  if ($env:MELODIA_PORTFOLIO_PACKAGE) {
+    $PackagePath = $env:MELODIA_PORTFOLIO_PACKAGE
+  } else {
+    $PackagePath = 'C:\EnvironmentPortfolio\BS_GodFile\Saved\Portfolio\portfolio_package.json'
+  }
+}
 
 function New-Slug {
   param([string]$Value)
