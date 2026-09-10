@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-10",
+  "status": "CLASSIFICATION_REQUIRED_BEFORE_COMMERCIAL_REUSE",
+  "purpose": "Track whether existing fabric presets/resources may enter reusable commercial proof. UNKNOWN is a blocker for redistribution, not for studying architecture.",
+  "allowed_classes": [
+    "OWNER_AUTHORED",
+    "CC0_OR_COMMERCIAL_REUSE_LICENSED",
+    "THIRD_PARTY_RESTRICTED",
+    "MELODIA_SPECIFIC",
+    "UNKNOWN"
+  ],
+  "commercial_reuse_allowed_classes": [
+    "OWNER_AUTHORED",
+    "CC0_OR_COMMERCIAL_REUSE_LICENSED"
+  ],
+  "presets": [
+    {"name": "Royal Velvet", "classification": "UNKNOWN", "source_or_license": null, "commercial_reuse": false},
+    {"name": "Gilded Brocade", "classification": "UNKNOWN", "source_or_license": null, "commercial_reuse": false},
+    {"name": "Sheer Silk / Chiffon", "classification": "UNKNOWN", "source_or_license": null, "commercial_reuse": false},
+    {"name": "Baroque Lace", "classification": "UNKNOWN", "source_or_license": null, "commercial_reuse": false},
+    {"name": "Gold Embroidery", "classification": "UNKNOWN", "source_or_license": null, "commercial_reuse": false},
+    {"name": "Celestial Weave", "classification": "UNKNOWN", "source_or_license": null, "commercial_reuse": false},
+    {"name": "Melusina Shirt Silk", "classification": "MELODIA_SPECIFIC", "source_or_license": null, "commercial_reuse": false}
+  ],
+  "rules": [
+    "Do not guess provenance.",
+    "Record exact source/license before changing UNKNOWN to reusable.",
+    "Do not move Melodia-specific or restricted textures into the generic WebGL kit.",
+    "When in doubt, create a new owner-authored clean-room material resource instead of redistributing an unclear one."
+  ],
+  "next_single_action": "Audit each preset's referenced texture files and record exact source/license evidence."
+}
