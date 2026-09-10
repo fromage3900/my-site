@@ -27,12 +27,34 @@ Every paid job should leave behind at least one of:
 - a reusable performance benchmark;
 - a reusable visual pattern that contains no client/Melodia IP.
 
-## First reusable primitives
+## Current strike state — 2026-09-10
+
+The active paid-problem experiment is documented in:
+
+- `DIRECT_LISTING_STRIKES_2026-09-10.md` — listing-specific execution briefs;
+- `CUSTOM_ASSET_STRIKE_PACK_2026-09-10.md` — original asset proofs that improve proposal credibility;
+- `LEADS_2026-09-10.md` — scored live-market batch;
+- `FINISH_LATER_2026-09-10.md` — bounded continuation queue.
+
+Current production order:
+
+```text
+A. Product Motion Lab + original handheld asset
+→ B. Existing fabric/CLO pipeline commercialization proof
+→ C. Procedural Industrial System Loop
+→ measured evidence
+→ human-reviewed proposal
+```
+
+Do not invent a fourth prototype until one of the current strikes reaches proposal-ready evidence.
+
+## Reusable primitives
 
 - `src/core/createRuntime.js` — renderer/camera lifecycle, resize, frame loop, cleanup.
 - `src/assets/createGLBLoader.js` — bounded GLB loading wrapper with progress/error handling.
 - `src/game/createStateMachine.js` — tiny deterministic finite-state helper for microgames/interactions.
 - `src/audio/createAudioReactiveBus.js` — opt-in Web Audio FFT bus for music-reactive experiences.
+- `src/animation/createDeterministicTimeline.js` — absolute-time, scrub-safe linear channel sampling for product/industrial motion.
 
 These are intentionally small. Do not grow this into a framework until a paid problem or portfolio proof requires the abstraction.
 
@@ -45,6 +67,26 @@ See [`SERVICES.md`](SERVICES.md):
 3. Branded Browser Microgame
 4. Interactive Music World / Visualizer
 5. Procedural WebGL Environment Prototype
+
+## Current prototype status
+
+### Product Motion Lab
+
+**Status:** SOURCE-SEEDED / RUNTIME VERIFY.
+
+Target: prove web-ready product presentation, deterministic scrubbing, attached callouts, inspection mode, and renderer diagnostics. Kimi/custom-asset work should improve this lane rather than create a parallel product viewer.
+
+### Fabric / material proof
+
+**Status:** EXISTING SYSTEMS PRESENT / COMMERCIAL EXTRACTION REQUIRED.
+
+Do not rebuild from scratch. Existing portfolio code already contains fabric presets, PBR material inspection and material-atlas surfaces. The next step is provenance-safe extraction, CLO-to-web evidence, and only the smallest missing consultant/configurator proof.
+
+### Procedural Industrial System Loop
+
+**Status:** SOURCE IMPLEMENTED / RUNTIME VERIFY.
+
+The source now includes a 16-second deterministic mechanical loop, seeded procedural assemblies, illustrative Structural/Flow/Thermal modes, diagnostics, and the reusable deterministic-timeline helper. Read its local `README.md` before adding features.
 
 ## First revenue gate
 
@@ -70,3 +112,16 @@ The live portfolio already contains:
 - Web Audio and music-reactive experiments.
 
 When extracting a primitive, preserve only generic implementation and remove project-specific naming, paths, palettes, assets and narrative logic.
+
+## Stop condition
+
+If an agent discovers itself writing more planning docs than runtime evidence, stop. The commercial lane only advances through one of these outputs:
+
+```text
+working demo
+measured evidence
+original reusable asset
+qualified lead
+human-approved proposal
+paid result
+```
