@@ -1,15 +1,15 @@
 /* Works on Paper — compose originals; never repaint the artwork. */
-html[data-page="works-on-paper"] { background:#0a0711; color-scheme:dark; }
+html[data-page="works-on-paper"] { background:var(--primitive-ink-800); color-scheme:dark; }
 
 .paper-shell {
-  --paper:#f5eddf;
-  --paper-2:#eee1d4;
-  --paper-ink:#271c30;
-  --paper-muted:#796b7d;
-  --paper-pink:#d995b6;
-  --paper-blue:#78cfd8;
-  --paper-violet:#8f75bc;
-  --paper-gold:#c8a46a;
+  --paper:var(--primitive-paper-300);
+  --paper-2:var(--primitive-paper-400);
+  --paper-ink:var(--primitive-dusk-700);
+  --paper-muted:var(--primitive-mauve-600);
+  --paper-pink:var(--primitive-rose-400);
+  --paper-blue:var(--primitive-aqua-400);
+  --paper-violet:var(--primitive-wisteria-400);
+  --paper-gold:var(--primitive-brass-400);
   overflow:clip;
 }
 
@@ -75,8 +75,8 @@ html[data-page="works-on-paper"] { background:#0a0711; color-scheme:dark; }
 
 .paper-digital,
 .paper-sketchbook { background:var(--paper); color:var(--paper-ink); }
-.paper-gouache { background:#0d0915; color:#f7f0e7; }
-.paper-exit { background:linear-gradient(180deg,#0d0915,#08060e); color:#f7f0e7; }
+.paper-gouache { background:var(--primitive-ink-900); color:var(--primitive-paper-200); }
+.paper-exit { background:linear-gradient(180deg,var(--primitive-ink-900),var(--primitive-ink-950)); color:var(--primitive-paper-200); }
 
 .paper-grid { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:clamp(1rem,2vw,1.8rem); align-items:start; }
 .art-piece { margin:0; min-width:0; }
@@ -127,7 +127,7 @@ body.art-viewer-open .paper-shell .mahou-world-ambience,
 body.art-viewer-open .paper-shell .mahou-living-filigree,
 body.art-viewer-open .paper-shell .mahou-score-shore { opacity:0 !important; }
 body.art-viewer-open { overflow:hidden; }
-.art-viewer { position:fixed; inset:0; z-index:10000; display:grid; place-items:center; background:rgba(3,3,7,.985); color:#fff8ee; }
+.art-viewer { position:fixed; inset:0; z-index:10000; display:grid; place-items:center; background:rgba(3,3,7,.985); color:var(--primitive-paper-50); }
 .art-viewer[hidden] { display:none; }
 .art-viewer-stage { width:100%; height:100%; display:grid; place-items:center; padding:max(56px,env(safe-area-inset-top)) 14px max(72px,env(safe-area-inset-bottom)); }
 .art-viewer-image { display:block; max-width:94vw; max-height:calc(100svh - 150px); width:auto; height:auto; object-fit:contain; user-select:none; -webkit-user-drag:none; }
@@ -135,7 +135,7 @@ body.art-viewer-open { overflow:hidden; }
 .art-viewer-caption strong { display:block; font:500 .9rem/1.2 var(--font-display); }
 .art-viewer-caption span { display:block; margin-top:4px; opacity:.5; font:600 .56rem/1 var(--font-mono); letter-spacing:.12em; text-transform:uppercase; }
 .art-viewer-progress { font:600 .58rem/1 var(--font-mono); letter-spacing:.16em; opacity:.58; }
-.art-viewer-close,.art-viewer-prev,.art-viewer-next { position:fixed; z-index:2; width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.15); background:rgba(8,7,16,.54); color:#fff8ee; cursor:pointer; }
+.art-viewer-close,.art-viewer-prev,.art-viewer-next { position:fixed; z-index:2; width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.15); background:rgba(8,7,16,.54); color:var(--primitive-paper-50); cursor:pointer; }
 .art-viewer-close { top:max(12px,env(safe-area-inset-top)); right:max(12px,env(safe-area-inset-right)); }
 .art-viewer-prev { left:max(12px,env(safe-area-inset-left)); top:50%; translate:0 -50%; }
 .art-viewer-next { right:max(12px,env(safe-area-inset-right)); top:50%; translate:0 -50%; }
@@ -173,11 +173,11 @@ body.art-viewer-open { overflow:hidden; }
 
 /* Pigment Memory render layers */
 :root {
-  --pigment-1:#78cfd8;
-  --pigment-2:#d995b6;
-  --pigment-3:#8f75bc;
-  --pigment-4:#c8a46a;
-  --pigment-5:#291f33;
+  --pigment-1:var(--primitive-aqua-400);
+  --pigment-2:var(--primitive-rose-400);
+  --pigment-3:var(--primitive-wisteria-400);
+  --pigment-4:var(--primitive-brass-400);
+  --pigment-5:var(--primitive-dusk-600);
 }
 
 .pigment-field,
@@ -239,7 +239,7 @@ body.art-viewer-open { overflow:hidden; }
   left:15px; top:0;
   width:5px; height:22px;
   border-radius:999px;
-  background:linear-gradient(90deg,#5b372b,#bb7c55 45%,#4d2b26);
+  background:linear-gradient(90deg,var(--primitive-bronze-700),var(--primitive-copper-500) 45%,var(--primitive-bronze-800));
 }
 
 .brush-ferrule {
@@ -247,7 +247,7 @@ body.art-viewer-open { overflow:hidden; }
   left:12px; top:18px;
   width:11px; height:7px;
   border-radius:2px;
-  background:linear-gradient(90deg,#807b87,#d8d4dc 45%,#716c78);
+  background:linear-gradient(90deg,var(--primitive-mauve-500),var(--primitive-mauve-300) 45%,var(--primitive-mauve-700));
   border:1px solid rgba(30,20,40,.22);
 }
 
@@ -405,7 +405,7 @@ body.paper-contact-sheet .art-piece img {
   width:100%;
   aspect-ratio:4/5;
   object-fit:contain;
-  background:#ede3d6;
+  background:var(--primitive-paper-500);
 }
 body.paper-contact-sheet .art-piece figcaption { color:var(--paper-ink) !important; }
 

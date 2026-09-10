@@ -146,6 +146,24 @@
         "no global portfolio redesign",
         "no weakening of showcase or freeze verification"
       ]
+    },
+    {
+      "id": "palette-token-naming-2026-09-10",
+      "reason": "Owner requested the definitive palette (brief: 'inspired by reverse 1999, nikki and melodia to make the ultimate one'). The colours already live in the six stylesheets below as raw hex literals - they were authored over the life of the project and never named. This exception covers naming them in wix/melodia-tokens.css and swapping each literal for a token that resolves to the SAME hex. Pixel-neutral by construction: no rendered colour changes.",
+      "scope": [
+        "wix/melodia-tokens.css - add ink/paper/dusk/mauve/accent primitives plus semantic aliases",
+        "wix/works-on-paper.css - 28 raw hex literals resolved to tokens",
+        "wix/curated-art.css - 5 raw hex literals resolved to tokens",
+        "wix/melodia-editorial.css - 1 raw hex literal resolved to a token",
+        "wix/melodia-mahou-flourish.css - 1 raw hex literal resolved to a token",
+        "wix/melodia-recruiter-hardening.css - 1 raw hex literal resolved to a token"
+      ],
+      "exclusions": [
+        "no colour value may change - every token resolves to the exact hex it replaces",
+        "no layout, typography, spacing, or component change",
+        "no new public page or route",
+        "no edits to any file outside the six paths listed in scope"
+      ]
     }
   ]
 }

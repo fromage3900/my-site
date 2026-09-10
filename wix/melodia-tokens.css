@@ -66,6 +66,59 @@
   --primitive-game-seafoam:         #8FC9BD;
   --primitive-game-ink:             #3B2A22;
 
+
+  /* ===== PRIMITIVES — INK / PAPER / DUSK / MAUVE / ACCENT (2026-09-10) =====
+     The Ultimate Palette. Every value below ALREADY existed in the stylesheets as a raw
+     hex literal; none of them had a name. Each is byte-identical to the literal it
+     replaces, so introducing this block changes no rendered colour.
+       ink / paper  - the aged editorial ground
+       dusk / mauve - deep surfaces and muted text
+       accents      - rose, aqua, wisteria, brass, copper, bronze
+     Authority: melodia-design-system/PALETTE_ULTIMATE_2026-09-10.md
+     Freeze exception: palette-token-naming-2026-09-10 */
+  --primitive-ink-700:     #0B0914;
+  --primitive-ink-800:     #0A0711;
+  --primitive-ink-850:     #090713;
+  --primitive-ink-900:     #0D0915;
+  --primitive-ink-950:     #08060E;
+  --primitive-ink-1000:    #030307;
+  --primitive-paper-0:     #FFFFFF;
+  --primitive-paper-50:    #FFF8EE;
+  --primitive-paper-100:   #F8EFE2;
+  --primitive-paper-200:   #F7F0E7;
+  --primitive-paper-300:   #F5EDDF;
+  --primitive-paper-400:   #EEE1D4;
+  --primitive-paper-500:   #EDE3D6;
+  --primitive-dusk-600:    #291F33;
+  --primitive-dusk-700:    #271C30;
+  --primitive-dusk-800:    #241B2E;
+  --primitive-dusk-900:    #201929;
+  --primitive-mauve-300:   #D8D4DC;
+  --primitive-mauve-500:   #807B87;
+  --primitive-mauve-600:   #796B7D;
+  --primitive-mauve-700:   #716C78;
+  --primitive-rose-400:    #D995B6;
+  --primitive-aqua-400:    #78CFD8;
+  --primitive-wisteria-400: #8F75BC;
+  --primitive-brass-400:   #C8A46A;
+  --primitive-copper-500:  #BB7C55;
+  --primitive-bronze-700:  #5B372B;
+  --primitive-bronze-800:  #4D2B26;
+
+  /* ===== SEMANTIC ALIASES — the palette in use =====
+  --color-ink:             var(--primitive-ink-900);
+  --color-ink-deep:        var(--primitive-ink-1000);
+  --color-paper:           var(--primitive-paper-300);
+  --color-paper-light:     var(--primitive-paper-50);
+  --color-dusk:            var(--primitive-dusk-800);
+  --color-text-on-paper:   var(--primitive-ink-800);
+  --color-text-on-dusk:    var(--primitive-paper-200);
+  --color-text-muted:      var(--primitive-mauve-600);
+  --color-rule:            var(--primitive-mauve-300);
+  --color-accent-rose:     var(--primitive-rose-400);
+  --color-accent-aqua:     var(--primitive-aqua-400);
+  --color-accent-violet:   var(--primitive-wisteria-400);
+  --color-accent-brass:    var(--primitive-brass-400);
   /* ===== SEMANTIC TOKENS — LIGHT MODE (Ivory Editorial) ===== */
   --color-surface-base:     var(--primitive-ivory-100);
   --color-surface-raised:   var(--primitive-ivory-50);

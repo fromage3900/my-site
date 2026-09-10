@@ -65,17 +65,12 @@ jobs:
           node --check wix/melodia-starfield.js
           node --check wix/curated-art-viewer.js
           node --check wix/pigment-memory.js
-      - name: Token discipline report (advisory)
-        # ADVISORY, NOT BLOCKING.
-        # `npm run verify:all` begins with lint:tokens, so the documented local gate
-        # currently fails - while CI never invoked it, so the two disagreed about what
-        # "green" means. This surfaces that gap without breaking the Pages deploy.
-        # 36 hard errors remain and they are NOT mechanical: sampled raw hexes such as
-        # #090713 / #0a0711 / #f5eddf have no matching entry in wix/melodia-tokens.css,
-        # meaning those colours were never tokenised in the first place. Clearing them
-        # needs a token-system decision, not a sweep. Flip this to blocking (delete
-        # continue-on-error) once the untokenised-colour backlog is empty.
-        continue-on-error: true
+      - name: Token discipline (blocking)
+        # BLOCKING as of 2026-09-10. This ran advisory for one day while the palette
+        # naming pass was in flight; lint:tokens now reports 0 hard errors and exits 0.
+        # 1309 soft warnings remain (raw rgba literals, missing --space-* tokens) but the
+        # linter does not fail on those. Do not re-add continue-on-error: the point of
+        # this step is that CI and `npm run verify:all` agree on what green means.
         run: node tools/lint-tokens.js
       - name: Validate portfolio (links + JSON)
         shell: pwsh
