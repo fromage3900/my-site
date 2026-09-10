@@ -1,0 +1,110 @@
+{
+  "schema": "melodia.treasury_ledger.v1",
+  "created_at": "2026-09-10",
+  "status": "INITIALISED / ZERO ENTRIES",
+  "authority": {
+    "entry_schema": "FIRST_20.md -> section 'Treasury entry'",
+    "pool_model": "Docs/Strategy/PAID_PROBLEM_RADAR_BUILD_NOW_2026-09-10.md (MelodiaMelusinaV2) -> section 'Token treasury model'",
+    "first_gate": "FIRST_20.md -> section 'Definition of success'",
+    "note": "This file exists because the schema was defined in prose and had no artifact anywhere. It records nothing until a real payment occurs. Do not add speculative rows."
+  },
+
+  "pools": {
+    "FREE_POOL": "promotional / student / startup / cloud credits",
+    "EARNED_POOL": "inference budget funded by paid work, products, bounties, or other revenue",
+    "PERSONAL_POOL": "owner's money; never spent autonomously"
+  },
+  "authority_limit": "Agents may recommend spend. They do not receive uncapped financial authority.",
+
+  "entry_schema": [
+    { "field": "GROSS_REVENUE", "note": "as invoiced, in the currency actually received" },
+    { "field": "PLATFORM_FEES", "note": "NO RATE IS DOCUMENTED ANYWHERE. Record the observed fee on the real payout; do not assume a percentage." },
+    { "field": "INFERENCE_COST", "note": "measured spend attributable to the job, not estimated after the fact" },
+    { "field": "HUMAN_HOURS", "note": "actual owner hours. No ceiling is documented -> see open_decisions." },
+    { "field": "NET_REVENUE", "note": "gross minus platform fees minus inference cost" },
+    { "field": "EARNED_POOL_ALLOCATION", "note": "the capped share returned to the token treasury" },
+    { "field": "REUSABLE_ASSET_CREATED", "note": "path to the generic, IP-free artifact left behind in this kit" }
+  ],
+
+  "currency": {
+    "resolved": false,
+    "conflict": "SERVICES.md quotes CAD (fixed project ranges $200-750 / $500-2,000+ / $750-3,000+ / $600-3,000+ / $1,000-5,000+). PAID_PROBLEM_RADAR quotes bare USD tiers ($100-250 / $300-750 / $750-2,500+). DIRECT_LISTING_STRIKES quotes $30-300/hr for the fabric listing.",
+    "rule": "Record the currency actually received on the payment row. Do not convert. Resolve the catalogue conflict before quoting anyone."
+  },
+
+  "first_20_gate": {
+    "authority": "FIRST_20.md -> 'Definition of success'",
+    "all_five_required": true,
+    "conditions": [
+      { "id": "buyer_accepts", "text": "one real prospect or buyer accepts a bounded WebGL deliverable", "met": false },
+      { "id": "payment_received", "text": "payment is actually received", "met": false },
+      { "id": "costs_recorded", "text": "inference/platform costs are recorded", "met": false },
+      { "id": "earned_pool_min", "text": "at least CAD $20 equivalent is designated to EARNED_POOL", "met": false },
+      { "id": "reusable_left", "text": "the job leaves behind one reusable generic primitive, checklist, benchmark, or template", "met": false }
+    ],
+    "completion": "0/5",
+    "note": "As of creation, no payment has been received through this kit and no entry exists below. This gate is not a revenue target; it is a loop-proof target."
+  },
+
+  "entries": [],
+
+  "opportunity_record_schema": {
+    "authority": "PAID_PROBLEM_RADAR -> 'Every opportunity should eventually record'",
+    "fields": [
+      "source",
+      "client_or_sponsor_credibility",
+      "gross_value",
+      "estimated_platform_fees",
+      "estimated_human_hours",
+      "estimated_inference_cost",
+      "probability_of_winning",
+      "delivery_risk",
+      "evidence_already_available",
+      "status_APPLY_WATCH_IGNORE",
+      "actual_result_after_closure"
+    ]
+  },
+
+  "metrics": {
+    "authority": "PAID_PROBLEM_RADAR",
+    "formulas": {
+      "opportunity_ev": "(net payment x estimated win probability) - inference spend - human-time allowance - delivery/revision risk",
+      "token_roic": "revenue attributable to agent-assisted work / paid inference expenditure"
+    },
+    "computed": false,
+    "note": "Both formulas are defined and neither has ever been calculated. First computation is a definition-of-done item."
+  },
+
+  "rules": [
+    "MAKE THE CAPSTONE WORK -> IDENTIFY THE GENERIC PIECE -> SEPARATE PROJECT IP -> PACKAGE THE REUSABLE PROOF -> SELL A BOUNDED SOLUTION -> RETURN A CAPPED SHARE TO TOKEN TREASURY",
+    "The system optimizes for durable useful output per token, not maximum agent activity.",
+    "Freelance gigs are sidecars: they must never displace Choral Sheep P0 or an academic deadline.",
+    "Never package Melodia-specific characters, textures, music, purchased templates, third-party material graphs, or client assets as generic kit inventory."
+  ],
+
+  "stop_conditions": {
+    "authority": "FIRST_20.md -> 'Stop conditions'",
+    "items": [
+      "it starts displacing capstone P0",
+      "three consecutive outreach batches produce no credible leads",
+      "delivery requires unrelated backend/full-stack scope",
+      "a prospect asks for unpaid speculative production beyond a tiny assessment",
+      "legal/IP ownership is unclear",
+      "the reusable-kit work grows faster than actual demand"
+    ]
+  },
+
+  "open_decisions": [
+    "Minimum acceptable effective hourly rate: HUMAN_HOURS is recorded but no ceiling exists, so there is no documented point at which a strike stops being worth it.",
+    "Funnel rule conflict: FIRST_20.md says 'keep at most the top 3'; LEADS_2026-09-10.md marks 7 leads APPLY.",
+    "Whether the UE5 / TouchDesigner / Houdini / 3ds Max offerings (radar-only, no kit proof) are in scope for the first paid job.",
+    "Whether this ledger interacts with the in-game MelodiaTokenWalletSubsystem or must never be conflated with it in reporting.",
+    "Retrospective format and cadence for Opportunity EV / Token ROIC."
+  ],
+
+  "uncertainty": [
+    "No payment, invoice, or payout record exists anywhere in this kit as of creation.",
+    "No platform-fee rate is documented. Any percentage in circulation is an assumption, not a source.",
+    "No currency conversion rate is documented."
+  ]
+}
