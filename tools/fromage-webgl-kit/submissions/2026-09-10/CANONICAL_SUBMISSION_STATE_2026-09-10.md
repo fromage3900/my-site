@@ -12,7 +12,7 @@ This file is the final repo-side handoff for today's three Upwork application la
 
 ## $10k procedural industrial homepage loop
 
-**Repository state: complete and canonical.** The final source, proposal and evidence documentation are on `my-site/main`. Cursor's PR #176 in `MelodiaMelusinaV2` is an audit/capture archive only and is not a source dependency.
+**Repository state: complete and canonical.** The final source, proposal and evidence documentation are on `my-site/main`. Cursor's PR #176 in `MelodiaMelusinaV2` is an audit/capture archive only and is not a source dependency. It should remain closed rather than merged or re-applied over current website source.
 
 Only remaining gates are outside Git: one normal-browser sanity check of current main, open/check the five final attachments, recheck the live listing, human review, submit.
 
