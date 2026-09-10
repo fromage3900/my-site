@@ -1,0 +1,82 @@
+{
+  "date": "2026-09-10",
+  "objective": "Prepare up to three truthful buyer-shaped WebGL/technical-art submissions this afternoon.",
+  "figma_brief": "FIGMA_MINIMAL_POLISH_BRIEF.md",
+  "package_brief": "AFTERNOON_SUBMISSION_PACK.md",
+  "lanes": [
+    {
+      "id": "A_PRODUCT_GLb",
+      "title": "$3,000 Web-ready Product Animation / GLB",
+      "owner": ["Kimi", "Brennan"],
+      "status": "SOURCE_WORKSPACE_READY_RUNTIME_GATED",
+      "priority": 2,
+      "required_before_submit": [
+        "handheld source pushed or merged",
+        "Blender generation succeeds",
+        "Brennan visual pass",
+        "validator passes",
+        "GLB export succeeds",
+        "Product Motion Lab runtime verifies GLB",
+        "deterministic scrub verified",
+        "callout anchors verified",
+        "desktop and mobile captures exported",
+        "real runtime metrics recorded",
+        "listing rechecked current"
+      ],
+      "application_path": "../..//DIRECT_LISTING_STRIKES_2026-09-10.md",
+      "submission_state": "BLOCKED_ON_RUNTIME_AND_CANONICAL_SOURCE"
+    },
+    {
+      "id": "B_FABRIC_CONSULTANT",
+      "title": "Three.js Fabric Technical-Art Consultant",
+      "owner": ["Brennan", "ChatGPT/Kimi packaging"],
+      "status": "SOURCE_EVIDENCE_PRESENT_QA_GATED",
+      "priority": 1,
+      "required_before_submit": [
+        "existing fabric viewer runtime checked",
+        "commercial-safe evidence chosen",
+        "texture/material provenance classified",
+        "genuine CLO or Blender artifact selected",
+        "application evidence links chosen",
+        "listing rechecked current"
+      ],
+      "application_path": "../../fabric/APPLICATION_DRAFT_AFTER_QA.md",
+      "evidence_path": "../../fabric/FABRIC_CONSULTANT_EVIDENCE.md",
+      "submission_state": "NEAREST_TO_READY"
+    },
+    {
+      "id": "C_INDUSTRIAL_LOOP",
+      "title": "$10,000 Procedural Industrial Homepage Loop",
+      "owner": ["Cursor"],
+      "status": "SOURCE_IMPLEMENTED_CURSOR_POLISHING",
+      "priority": 3,
+      "required_before_submit": [
+        "BASE monochrome readability polish complete",
+        "capture mode complete",
+        "browser console clean",
+        "seeds verified",
+        "visualization modes verified",
+        "deterministic scrub verified",
+        "loop endpoint verified",
+        "16-second capture exported",
+        "runtime diagnostics recorded",
+        "listing rechecked current"
+      ],
+      "application_path": "../../prototypes/procedural-industrial-loop/APPLICATION_DRAFT_AFTER_QA.md",
+      "evidence_path": "../../prototypes/procedural-industrial-loop/LISTING_10000_EVIDENCE.md",
+      "submission_state": "BLOCKED_ON_CURSOR_RUNTIME_CAPTURE"
+    }
+  ],
+  "shared_package_files": [
+    "01_COVER.png",
+    "02_PRIMARY_PROOF.png",
+    "03_SECONDARY_PROOF.png",
+    "04_MOBILE_PROOF.png",
+    "05_EVIDENCE.md",
+    "06_APPLICATION_DRAFT.md",
+    "07_REQUIREMENT_MAP.md",
+    "08_SOURCE_LINKS.txt"
+  ],
+  "figma_rule": "Use Figma only after real captures exist. Presentation may improve hierarchy and annotation but may not invent metrics, runtime states, client results, or capabilities.",
+  "human_gate": "No submission is sent without Brennan approval."
+}
