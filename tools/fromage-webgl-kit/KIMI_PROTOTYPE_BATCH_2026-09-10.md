@@ -2,13 +2,14 @@
 
 **Authority:** `LEADS_2026-09-10.md` chooses the market problems; `SERVICES.md` defines what we sell.  
 **Execution rule:** build generic proof, not unpaid client deliverables.  
-**Destination:** `tools/fromage-webgl-kit/prototypes/` only. Do not modify deployed recruiter-facing pages.
+**Destination:** `tools/fromage-webgl-kit/prototypes/` only for new clean-room work. Do not modify deployed recruiter-facing pages unless the owner explicitly promotes a reviewed result later.
 
-## Shared constraints for all three prototypes
+## Shared constraints
 
 - Use Three.js/WebGL with clean, readable source.
 - Reuse the generic kit primitives under `src/` where they fit; improve them only when a genuinely reusable abstraction falls out of the work.
-- No Melodia characters, names, logos, music, textures, or proprietary/project-specific assets.
+- Before building something new, audit whether an equivalent capability already exists in `wix/`, `melodia/`, or existing generated/site tooling.
+- No Melodia characters, names, logos, music, textures, or proprietary/project-specific assets in commercial clean-room outputs.
 - No third-party commercial IP or scraped client assets.
 - Procedural geometry, primitive geometry, CC0 assets, or clearly owned generic assets only.
 - Mobile-width behavior is mandatory.
@@ -17,7 +18,7 @@
 - Fail gracefully when WebGL or an asset is unavailable.
 - No backend, accounts, ecommerce, CMS, analytics, payment, or external API scope.
 - Do not redesign the public portfolio or auto-deploy anything.
-- Finish with a short `EVIDENCE.md`: what works, what was measured, what remains unverified, and exactly which reusable primitive was created or improved.
+- Finish each lane with a short `EVIDENCE.md`: what works, what was measured, what remains unverified, and exactly which reusable primitive was created, extracted, or improved.
 
 ---
 
@@ -25,11 +26,11 @@
 
 **Market proof target:** real-time product animation, product viewer/configurator, scroll-scrubbed GLB delivery.
 
-**Create:** `tools/fromage-webgl-kit/prototypes/product-motion-lab/`
+**Existing destination:** `tools/fromage-webgl-kit/prototypes/product-motion-lab/`
 
 ## Goal
 
-Build a premium but neutral browser demonstration showing that a web-ready 3D product can be loaded, presented, annotated and scrubbed through a deterministic product-use animation without video.
+Turn the already-seeded product-motion source into a premium but neutral browser demonstration showing that a web-ready 3D product can be loaded, presented, annotated and scrubbed through a deterministic product-use animation without video.
 
 ## Required experience
 
@@ -47,7 +48,7 @@ Build a premium but neutral browser demonstration showing that a web-ready 3D pr
 
 Keep animation scrub-safe: the same normalized timeline value must always yield the same visual pose. Avoid time-integrated behavior for the core product motion.
 
-If a GLB is generated outside the browser, keep the source asset and document the export settings. If Kimi cannot generate a useful GLB directly, use original Three.js primitive groups and structure the code as though the root were a product asset; do not block the prototype waiting for DCC work.
+If a GLB is generated outside the browser, keep the source asset and document the export settings. If a useful GLB is not immediately available, use original Three.js primitive groups and structure the code as though the root were a product asset; do not block the prototype waiting for DCC work.
 
 ## Hard stop
 
@@ -63,42 +64,53 @@ Do **not** build purchasing, quoting, user uploads, CRM integration, or a full c
 
 ---
 
-# Prototype B — Fabric Material Lab
+# Prototype B — Existing Fabric Material System Commercialization Pass
 
 **Market proof target:** Three.js technical-art consultancy, PBR fabrics, swatch-to-web material pipelines, knitwear configurators.
 
-**Create:** `tools/fromage-webgl-kit/prototypes/fabric-material-lab/`
+**Status:** **EXISTING CAPABILITY — DO NOT REBUILD FROM SCRATCH.**
+
+Existing related surfaces include:
+
+- `wix/realtime-3d-viewer.html` — live Fantasy Fabric Studies selector / interactive asset study;
+- `wix/melodia-3d-viewport.js` — fabric sphere, fabric presets, texture/material switching and viewer runtime;
+- `wix/melodia-atelier-lab.html` + `wix/melodia-atelier-lab.js` — existing fabric/lookdev turntable integration;
+- `wix/sdf-material-gallery.html` — existing controlled Material Atlas presentation.
 
 ## Goal
 
-Build a focused technical-art demonstration for evaluating textile appearance in the browser. It should look like a useful production tool, not a shader toy.
+Audit, runtime-verify and **extract only the generic, clearly owned commercializable parts** of the existing fabric/material system. Do not make another parallel material lab simply to satisfy this document.
 
-## Required experience
+The desired outcome is either:
 
-1. Original generic cloth/swatch geometry with enough curvature to read roughness, normal and grazing-angle response.
-2. At least four independently-authored textile presets with visibly different response: e.g. velvet-like, satin-like, knit-like and coarse-woven.
-3. Controls for base color, roughness multiplier, normal strength and sheen/specular response appropriate to the chosen Three.js material model.
-4. Live texture/preset switching without recreating the renderer.
-5. A close-up inspection camera and a whole-swatch camera.
-6. A light-rig selector with at least studio softbox and grazing-light inspection modes.
-7. A compact state panel showing the active material parameters.
-8. Export the selected configuration as a local JSON download/string representation if feasible without backend work.
-9. Responsive desktop and phone-width behavior.
+1. the existing system is already sufficient proof and receives an evidence/provenance note only; or
+2. a small clean-room commercial demo is extracted under `tools/fromage-webgl-kit/prototypes/fabric-material-lab/` containing only the reusable pieces we actually need for client work.
 
-## Optional stretch
+## Required pass
 
-Add a generic decal/patch preview using an original procedural image or canvas-generated mark. Do not require arbitrary user upload for the first proof.
+1. Run and inspect the existing fabric sphere / preset workflow before writing replacement code.
+2. Inventory existing preset/material/texture provenance and identify what is safely owner-authored/generic versus Melodia-specific, third-party, uncertain, or unsuitable for resale/client reuse.
+3. Reuse existing generic architecture for material switching, cameras, lighting and inspection rather than recreating it.
+4. Add only commercially useful proof that is genuinely missing, such as direct base-color / roughness / normal / sheen controls, a state readout, lightweight JSON state export, mobile QA or diagnostics.
+5. If a clean-room extraction is necessary, use neutral independently authored preset identities such as velvet-like, satin-like, knit-like and coarse-woven rather than Melodia-specific names or assets.
+6. Preserve the deployed portfolio pages unchanged during this pass.
 
-## Hard stop
+## Hard stops
 
-Do **not** claim physical colorimetry, measured BRDF accuracy, automatic real-swatch capture, or a production swatch digitization pipeline unless those systems are actually implemented and measured.
+- **No duplicate fabric lab architecture.**
+- Do not copy Melodia-specific textures/assets into the commercial kit merely because they are present in the portfolio repo.
+- Do not redistribute third-party or provenance-uncertain textures.
+- Do not claim physical colorimetry, measured BRDF accuracy, automatic real-swatch capture, or production swatch digitization unless actually implemented and measured.
 
 ## Evidence to return
 
-- one comparison capture showing all four presets under identical lighting;
-- one grazing-angle close-up;
-- exported example state;
-- short note separating physically grounded controls from artistic approximations.
+- short inventory of the existing fabric/material capabilities found;
+- what was reused versus newly added;
+- provenance/IP classification for anything promoted into the clean-room kit;
+- one identical-lighting material comparison capture if safe presets are available;
+- one grazing-angle inspection capture;
+- example exported state if that feature is added;
+- explicit statement if **no new prototype was needed** because existing verified proof was sufficient.
 
 ---
 
@@ -145,15 +157,28 @@ No CAD parser, no physics solver, no real engineering analysis, no multi-kilomet
 
 # Completion order
 
-Kimi should execute **A first**, then **B**, then **C**. After each prototype:
+Kimi should execute **A first**. After A reaches its evidence gate:
 
-1. run it locally;
-2. fix obvious console/runtime errors;
-3. write its `EVIDENCE.md`;
-4. stop before starting the next prototype if the first has not reached a clean bounded proof.
+1. audit B as an **existing-system reuse/commercialization pass**, not a new build;
+2. only create a clean-room B extraction if the audit proves one is useful;
+3. then execute C.
+
+After each lane:
+
+1. run the relevant implementation locally;
+2. fix obvious console/runtime errors where in scope;
+3. write/update its `EVIDENCE.md`;
+4. stop before expanding scope if a clean bounded proof already exists.
 
 Do not merge unrelated portfolio/site changes into this batch.
 
 # Definition of batch success
 
-This batch is successful when we have three clean-room URLs or locally reproducible demos that can honestly support a proposal claim of demonstrated WebGL/product/material/procedural capability. The prototypes are evidence generators and reusable kit R&D, not free client work.
+This batch is successful when we have:
+
+- a reproducible Product Motion proof;
+- a verified and provenance-safe Fabric/Material proof, reused from existing work or clean-room extracted only where necessary;
+- a reproducible Procedural Industrial proof;
+- enough evidence to honestly support proposals for WebGL product, material and procedural work.
+
+The prototypes are evidence generators and reusable kit R&D, not free client work.
