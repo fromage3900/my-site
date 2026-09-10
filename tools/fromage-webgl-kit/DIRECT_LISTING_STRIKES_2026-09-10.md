@@ -4,11 +4,15 @@
 
 **Rule:** build proof for the capability the buyer requests; do not recreate unpaid client deliverables, scrape client assets, or contact/apply automatically. Human reviews every proposal.
 
+## Owner capability correction
+
+Brennan has **used CLO 3D**. Treat CLO as a legitimate part of the garment/fabric pipeline and proposal vocabulary. Do not describe the owner as a CLO specialist unless the evidence supports that level of claim; use concrete language about actual CLO work performed and show artifacts/screenshots/source where available.
+
 ## Strike order
 
 1. $3,000 real-time product animation / web-ready GLB assets — highest fit and strongest client history.
-2. $30–$300/hr Three.js technical-artist consultant — fastest path because existing fabric/material systems already cover much of the proof.
-3. $2,000–$5,000 knitwear configurator — viable only after a clean generic configurator proof exists; competition is high.
+2. $30–$300/hr Three.js technical-artist consultant — very high fit because existing fabric/material systems plus owner CLO experience cover much of the requested pipeline.
+3. $2,000–$5,000 knitwear configurator — viable after a clean generic configurator proof exists; CLO can provide a purpose-built original garment asset.
 4. $10,000 procedural industrial homepage loop — high-value fourth strike; heavier proof, so do not let it block the first three.
 
 ---
@@ -92,7 +96,7 @@ First inspect the existing fabric/material systems in `fromage3900/my-site`, esp
 - `wix/sdf-material-gallery.html`;
 - any clearly owned supporting fabric PBR textures and material documentation.
 
-The buyer wants strategic guidance on realistic fabric/garment visuals in Three.js: 3D asset preparation, PBR materials, lighting/rendering, texture maps, and an automated path from fabric swatches to production-ready normal/roughness/displacement/etc. They explicitly describe this as consulting/strategy rather than production.
+The buyer wants strategic guidance on realistic fabric/garment visuals in Three.js: 3D asset preparation, PBR materials, lighting/rendering, texture maps, and an automated path from fabric swatches to production-ready normal/roughness/displacement/etc. They explicitly describe this as consulting/strategy rather than production. Brennan has used **CLO 3D**, so include CLO honestly where it strengthens the garment-creation and validation pipeline.
 
 ### Goal
 
@@ -108,30 +112,31 @@ Turn our **existing** fabric/material work into an honest consultant-facing evid
    - lighting response;
    - texture organization;
    - inspection/turntable behavior.
-3. Separate assets into:
+3. Search the owner's available project/source assets for **actual CLO-authored work** or CLO pipeline evidence that can be safely shown. If no reusable evidence is in the repo, flag `OWNER CAPTURE NEEDED` instead of inventing it.
+4. Separate assets into:
    - clearly owner-authored/reusable;
    - third-party/uncertain provenance;
    - Melodia-specific/noncommercial.
    Do not expose uncertain assets as commercial samples.
-4. Identify the **smallest missing generic proof** needed for this listing. Prefer one addition, not a new application. Examples:
+5. Identify the **smallest missing generic proof** needed for this listing. Prefer one addition, not a new application. Examples:
    - grazing-angle inspection lighting;
    - close-up textile inspection camera;
    - editable roughness/normal/sheen multipliers;
    - concise material-state readout.
-5. If one such addition is justified, implement it in a clean-room commercial demo under `tools/fromage-webgl-kit/prototypes/` without modifying the deployed portfolio.
-6. Write `FABRIC_CONSULTANT_EVIDENCE.md` covering:
+6. If one such addition is justified, implement it in a clean-room commercial demo under `tools/fromage-webgl-kit/prototypes/` without modifying the deployed portfolio.
+7. Write `FABRIC_CONSULTANT_EVIDENCE.md` covering:
    - current capabilities we can demonstrate;
-   - a recommended Three.js fabric lookdev stack;
+   - a recommended CLO → DCC cleanup/retopo as needed → UV/material prep → glTF/GLB → Three.js fabric lookdev stack;
    - swatch capture → tileable base/albedo → normal → roughness → optional height/displacement → color management → validation workflow;
    - what should be measured from physical fabric versus artist-authored;
    - where Three.js approximations differ from measured BRDF/fiber rendering;
    - an automation architecture for batch-producing candidate texture resources without claiming the full pipeline already exists.
-7. Produce one compact consultant-facing diagram/checklist in Markdown for evaluating third-party 3D artists/material work.
-8. Finish with a list of **3 concrete questions we would ask the client before advising their pipeline**.
+8. Produce one compact consultant-facing diagram/checklist in Markdown for evaluating third-party 3D artists/material work.
+9. Finish with **3 concrete questions we would ask the client before advising their pipeline**.
 
 ### Hard stop
 
-Do not claim measured fabric BRDFs, CLO expertise, automated photometric swatch capture, or physically exact reproduction unless repository evidence actually proves it. Do not rebuild the Fabric Material Lab from scratch. Do not contact the client.
+Do not claim measured fabric BRDFs, automated photometric swatch capture, physically exact reproduction, or a higher level of CLO specialization than the owner's real work supports. Do not rebuild the Fabric Material Lab from scratch. Do not contact the client.
 
 ---
 
@@ -150,7 +155,7 @@ Our objective today is **not to clone Knitup or perform their job for free**. Bu
 Reuse:
 - the Fromage WebGL Kit runtime and GLB-loader primitives;
 - safe generic material/fabric logic already in our repo where provenance permits;
-- a completely original procedural garment-like/swatch-like object or an owned/CC0 generic garment asset.
+- preferably **one original garment authored by Brennan in CLO 3D**, exported through a clean web-ready GLB pipeline; otherwise use a completely original procedural/owned generic garment asset and mark CLO capture/export as owner follow-up.
 
 Do not use client assets or copy Knitup branding/UI.
 
@@ -182,6 +187,7 @@ Create `LISTING_KNITWEAR_CONFIGURATOR_EVIDENCE.md` containing:
 - runtime-tested features;
 - desktop + phone-width evidence paths;
 - sample exported JSON;
+- if used, CLO source/export notes and downstream web optimization steps;
 - what would be required to convert the proof into an embeddable production component;
 - what is intentionally absent: ecommerce/order backend, arbitrary uploads, React wrapper if not implemented, and client-specific GLB integration.
 
