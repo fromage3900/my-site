@@ -11,6 +11,14 @@ Earn the first externally funded inference budget by converting existing or near
 
 Do not optimize for a full studio launch, marketplace catalog, or broad personal-brand campaign yet.
 
+## Active ownership right now
+
+To avoid duplicate agent work:
+
+- **Cursor currently owns Lane C visual polish:** BASE monochrome machined readability + clean capture/evidence mode for the Procedural Industrial System Loop.
+- **Do not concurrently edit that visual/capture implementation unless Cursor has finished or a concrete blocker is handed off.**
+- Other agents should prefer Lane A product proof, Lane B CLO/fabric evidence, documentation, proposal preparation, or non-overlapping validation work.
+
 ---
 
 # Lane A — Product Motion Lab / $3k product-animation proof
@@ -48,12 +56,15 @@ Read:
 
 # Lane B — CLO / fabric consultant / knitwear configurator proof
 
-**Current state:** existing fabric/material systems already exist in the portfolio; Brennan has used CLO 3D; duplicate Fabric Lab build is cancelled.
+**Current state:** existing fabric/material systems already exist in the portfolio; Brennan has used CLO 3D; duplicate Fabric Lab build is cancelled. Consultant-facing evidence and CLO→web production docs now exist under `fabric/`.
 
 Read:
 
 - `DIRECT_LISTING_STRIKES_2026-09-10.md` — Strikes 2 and 3;
 - `CUSTOM_ASSET_STRIKE_PACK_2026-09-10.md` — Asset 2;
+- `fabric/FABRIC_CONSULTANT_EVIDENCE.md`;
+- `fabric/CLO_TO_WEB_PIPELINE.md`;
+- `fabric/APPLICATION_DRAFT_AFTER_QA.md`;
 - existing `wix/realtime-3d-viewer.html`;
 - existing `wix/melodia-3d-viewport.js`;
 - existing `wix/melodia-atelier-lab.*`;
@@ -61,12 +72,13 @@ Read:
 
 ## Next actions
 
-1. Make one original simple knit garment in CLO; preserve CLO source.
-2. Export to Blender for cleanup/optimization; preserve web-prep source.
-3. Create a clean GLB and document actual triangle/material/texture budgets.
-4. Audit existing fabric presets/textures for commercial-safe provenance.
-5. Reuse existing generic material logic where safe; do not copy Melodia-specific or uncertain assets into the commercial kit.
-6. Add only the smallest missing consultant/configurator proof, likely one or more of:
+1. Runtime-check the existing fabric/material viewer locally.
+2. Audit existing fabric presets/textures for commercial-safe provenance.
+3. Select or make one original simple knit garment in CLO; preserve CLO source.
+4. Export to Blender for cleanup/optimization; preserve web-prep source.
+5. Create a clean GLB and document actual triangle/material/texture budgets.
+6. Reuse existing generic material logic where safe; do not copy Melodia-specific or uncertain assets into the commercial kit.
+7. Add only the smallest missing consultant/configurator proof, likely one or more of:
    - grazing inspection lighting;
    - close-up camera;
    - editable roughness/normal/sheen values;
@@ -74,9 +86,13 @@ Read:
    - base-color variants;
    - one original chest patch/decal;
    - local JSON state export.
-7. Capture CLO → Blender → GLB → Three.js evidence.
-8. Write consultant/configurator evidence docs using observed results only.
-9. Apply only if must-have requirements can be stated truthfully.
+8. Capture CLO → Blender → GLB → Three.js evidence.
+9. Fill the consultant application draft with actual evidence links/paths.
+10. Recheck the listing and apply only if must-have requirements can be stated truthfully.
+
+## Fast consulting-listing gate
+
+The current fabric technical-artist listing is consulting/strategy rather than production. It does **not** require completing the full knitwear configurator before applying. Once one material viewer is runtime-checked, CLO/Blender evidence is selected, provenance is clean, and the listing is still active, the consultant application can move to human review.
 
 ## Do not add
 
@@ -91,7 +107,7 @@ Read:
 
 # Lane C — Procedural Industrial System Loop / $10k homepage proof
 
-**Current state:** source implemented; shared deterministic timeline extracted; runtime evidence and visual polish remain.
+**Current state:** source implemented; shared deterministic timeline extracted; **Cursor owns current BASE monochrome machined-readability polish and capture-mode work**; runtime evidence and final measured values remain.
 
 Read:
 
@@ -100,25 +116,26 @@ Read:
 - `prototypes/procedural-industrial-loop/LISTING_10000_EVIDENCE.md`;
 - `src/animation/createDeterministicTimeline.js`.
 
-## Next actions
+## Next actions after Cursor handoff
 
-1. Serve the repo over HTTP and open the prototype in a browser.
-2. Clear all uncaught console/runtime errors.
-3. Verify Seeds 01/02/03.
-4. Verify Base/Structural/Flow/Thermal display modes.
-5. Scrub arbitrary timeline times repeatedly and confirm no transform drift.
-6. Verify `0.00s` and `16.00s` are identical and `LOOP Δ` reports `0.000000`.
-7. Verify each active segment moves only one intended mechanical axis.
-8. Test pause/play/reset and reduced-motion behavior.
-9. Test desktop and phone widths.
-10. Record actual renderer diagnostics in `EVIDENCE.md`.
-11. Only then make one visual-polish pass focused on proportion, spacing, silhouette and materials.
-12. Capture the 16-second loop and three visualization modes.
+1. Review Cursor's BASE/capture changes rather than reimplementing them.
+2. Serve the repo over HTTP and open the prototype in a browser.
+3. Clear all uncaught console/runtime errors.
+4. Verify Seeds 01/02/03.
+5. Verify Base/Structural/Flow/Thermal display modes.
+6. Scrub arbitrary timeline times repeatedly and confirm no transform drift.
+7. Verify `0.00s` and `16.00s` are identical and `LOOP Δ` reports `0.000000`.
+8. Verify each active segment moves only one intended mechanical axis.
+9. Test pause/play/reset and reduced-motion behavior.
+10. Test desktop and phone widths.
+11. Record actual renderer diagnostics in `EVIDENCE.md`.
+12. Capture the 16-second loop and three visualization modes using the new capture mode if verified.
 13. If strategically worth it, test a real AV1/VP9 web encode and record actual file size; do not promise `<5 MB` without measurement.
-14. Recheck the listing before drafting the application.
+14. Recheck the listing before finalizing the application.
 
 ## Do not add
 
+- duplicate BASE/capture implementation while Cursor owns it;
 - CAD parser;
 - real FEA/CFD/thermal solver;
 - physics framework;
