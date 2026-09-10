@@ -1,7 +1,7 @@
 /* Recruiter one-sheet hardening — void-legible ink on fashion/paper bands.
    Loaded last on recruiter-one-sheet.html. Tokens only.
    Root cause: melodia-premium-system remaps --ink → --color-text-primary after
-   night-theme, and tokens default to light plum (#241B2E). fashion-mode paints
+   night-theme, and tokens default to light plum (var(--primitive-dusk-800)). fashion-mode paints
    .band.paper as dark navy, so section-head h2s (e.g. #glance-title) vanish. */
 
 html[data-page="recruiter-one-sheet"] {

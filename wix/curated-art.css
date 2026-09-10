@@ -2,13 +2,13 @@
 @import './melodia-tokens.css';
 
 html[data-page="curated-art"] {
-  background: #090713;
+  background: var(--primitive-ink-850);
 }
 
 .curated-art-shell {
   --gallery-paper: rgba(249, 240, 228, .96);
-  --gallery-ink: #201929;
-  --gallery-night: #0b0914;
+  --gallery-ink: var(--primitive-dusk-900);
+  --gallery-night: var(--primitive-ink-700);
   --gallery-line: rgba(221, 199, 155, .25);
   overflow: clip;
 }
@@ -511,7 +511,7 @@ body.art-viewer-open { overflow:hidden; }
   position:fixed; inset:0; z-index:10000;
   display:grid; place-items:center;
   background:rgba(3,3,8,.975);
-  color:#fff8ee;
+  color:var(--primitive-paper-50);
 }
 .art-viewer[hidden] { display:none; }
 .art-viewer-stage {
@@ -544,7 +544,7 @@ body.art-viewer-open { overflow:hidden; }
   position:fixed; z-index:2;
   width:44px; height:44px; border-radius:50%;
   border:1px solid rgba(255,255,255,.15);
-  background:rgba(8,7,16,.54); color:#fff8ee;
+  background:rgba(8,7,16,.54); color:var(--primitive-paper-50);
   backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
   cursor:pointer;
 }

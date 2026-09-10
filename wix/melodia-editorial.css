@@ -112,7 +112,7 @@ img { display: block; max-width: 100%; }
 .melodia-shell .image-card:focus-visible,
 .melodia-shell .portal-card:focus-visible,
 .melodia-shell .nav-cta:focus-visible {
-  outline: 2px solid var(--color-accent-primary, #C9A86A);
+  outline: 2px solid var(--color-accent-primary, var(--primitive-brass-400));
   outline-offset: 3px;
 }
 

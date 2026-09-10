@@ -1581,7 +1581,7 @@ main > section.band,
 .mahou-world-signature.melusina .w2{top:34vh;left:14vw;opacity:.58;transform:rotate(3deg)}
 .mahou-world-signature.melusina .sig-pearl {
   position:absolute; left:38.2vw; top:32vh; width:9px; height:9px; border-radius:50%;
-  background:radial-gradient(circle at 30% 28%,#fff,rgba(150,229,240,.65) 45%,rgba(255,176,218,.12) 72%);
+  background:radial-gradient(circle at 30% 28%,var(--primitive-paper-0),rgba(150,229,240,.65) 45%,rgba(255,176,218,.12) 72%);
   box-shadow:0 0 16px rgba(150,229,240,.18);
 }
 @media(max-width:720px){ .mahou-world-signature{opacity:.18} }
