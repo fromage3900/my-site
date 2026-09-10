@@ -48,6 +48,26 @@ A. Product Motion Lab + original handheld asset
 
 Do not invent a fourth prototype until one of the current strikes reaches proposal-ready evidence.
 
+## Afternoon submission package — 2026-09-10
+
+Submission authority lives under `submissions/2026-09-10/`:
+
+- `AFTERNOON_SUBMISSION_PACK.md` — exact evidence and packaging gate for all three lanes;
+- `FIGMA_MINIMAL_POLISH_BRIEF.md` — shared minimal visual-polish system for covers/evidence sheets;
+- `submission-manifest.json` — machine-readable lane ownership, blockers and ready-to-submit requirements.
+
+If a runtime/capture agent finishes work, update the relevant evidence file and manifest status before adding any new features.
+
+Current owner split:
+
+```text
+Lane A — Product / GLB      Kimi + Brennan visual pass
+Lane B — CLO / Fabric      Brennan + evidence/application packaging
+Lane C — Industrial Loop   Cursor (BASE polish + capture mode)
+```
+
+Figma is a presentation layer only. Use it after real captures exist to normalize hierarchy, annotation, cropping and export; never use it to manufacture metrics, runtime states or client results.
+
 ## Reusable primitives
 
 - `src/core/createRuntime.js` — renderer/camera lifecycle, resize, frame loop, cleanup.
