@@ -23,6 +23,8 @@
     ".github/workflows/pages.yml",
     "tools/verify_sendoff_freeze.py",
     "tools/verify_showcase_polish.py",
+    "tools/figma_mcp.py",
+    "tools/ingest_unreal_portfolio.ps1",
     "content/render-passports.json",
     "content/site-plates.json",
     "index.html",
@@ -47,7 +49,13 @@
     "wix/melodia-atelier-lab.js",
     "wix/shader-breakdowns.html",
     "wix/constellation-brush.html",
-    "wix/public-routes.json"
+    "wix/public-routes.json",
+    "wix/melodia-tokens.css",
+    "wix/works-on-paper.css",
+    "wix/curated-art.css",
+    "wix/melodia-editorial.css",
+    "wix/melodia-mahou-flourish.css",
+    "wix/melodia-recruiter-hardening.css"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -163,6 +171,19 @@
         "no layout, typography, spacing, or component change",
         "no new public page or route",
         "no edits to any file outside the six paths listed in scope"
+      ]
+    },
+    {
+      "id": "internal-tooling-maintenance-2026-09-10",
+      "reason": "Owner requested final repository-health cleanup while the recruiter-facing site remains frozen. These two internal tooling fixes repair broken maintenance paths without changing public presentation.",
+      "scope": [
+        "tools/figma_mcp.py - support the existing async context-manager call path",
+        "tools/ingest_unreal_portfolio.ps1 - replace the dead hard-coded G: package path with explicit/env/canonical resolution"
+      ],
+      "exclusions": [
+        "no public route, layout, copy, style, or visual-system change",
+        "no automatic Unreal portfolio data refresh",
+        "no weakening of validation or freeze verification"
       ]
     }
   ]
