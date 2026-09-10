@@ -60,6 +60,17 @@ class FigmaClient:
     def __init__(self):
         self.client = httpx.AsyncClient(headers=HEADERS, timeout=TIMEOUT)
 
+    # `figma_sync.py` uses `async with FigmaClient() as client:`, but this class
+    # only had close(). Without these two methods the script raised
+    # "TypeError: 'FigmaClient' object does not support the asynchronous context
+    # manager protocol" on entry and never reached the Figma API at all.
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, exc_type, exc, tb):
+        await self.close()
+        return False
+
     async def close(self):
         await self.client.aclose()
 
