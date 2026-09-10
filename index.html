@@ -63,9 +63,9 @@
     user-select: none;
   }
 
-  .skip {
+  .skip,
+  .selected-art {
     position: fixed;
-    right: 20px;
     bottom: 18px;
     z-index: 3;
     border: 0;
@@ -75,9 +75,13 @@
     font: 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     letter-spacing: .16em;
     text-transform: uppercase;
+    text-decoration: none;
     cursor: pointer;
   }
-  .skip:hover, .skip:focus-visible { color: rgba(247, 240, 255, .72); outline: none; }
+  .skip { right: 20px; }
+  .selected-art { left: 20px; }
+  .skip:hover, .skip:focus-visible,
+  .selected-art:hover, .selected-art:focus-visible { color: rgba(247, 240, 255, .72); outline: none; }
 
   @keyframes breatheWord {
     0%, 100% { opacity: .42; transform: scale(.985); filter: blur(.15px); }
@@ -93,6 +97,7 @@
 <main id="breathe-stage" aria-label="Melodia introduction">
   <div id="breathe-canvas" aria-hidden="true"></div>
   <p class="breathe-word">breathe</p>
+  <a class="selected-art" href="wix/curated-art.html">selected art</a>
   <button class="skip" type="button" aria-label="Skip introduction">enter</button>
 </main>
 
