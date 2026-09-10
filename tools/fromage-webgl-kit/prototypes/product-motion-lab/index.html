@@ -12,8 +12,8 @@
     .intro p { color:#b8bec9; }
     .lab { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:16px; align-items:start; }
     .stage { position:relative; min-height:480px; aspect-ratio:16/10; overflow:hidden; border:1px solid #313742; border-radius:18px; background:linear-gradient(#1a1d23,#111318); }
-    .stage canvas { display:block; width:100%; height:100%; }
-    .callout { position:absolute; transform:translate(-50%,-50%); pointer-events:none; padding:5px 9px; border:1px solid rgba(255,255,255,.28); border-radius:999px; background:rgba(13,15,18,.82); font-size:12px; white-space:nowrap; }
+    .stage canvas { position:relative; z-index:1; display:block; width:100%; height:100%; }
+    .callout { position:absolute; z-index:2; transform:translate(-50%,-50%); pointer-events:none; padding:5px 9px; border:1px solid rgba(255,255,255,.28); border-radius:999px; background:rgba(13,15,18,.82); font-size:12px; white-space:nowrap; }
     .panel { border:1px solid #313742; border-radius:16px; padding:16px; background:#171a20; }
     .row { display:grid; gap:6px; margin:0 0 16px; }
     label { font-weight:650; }
