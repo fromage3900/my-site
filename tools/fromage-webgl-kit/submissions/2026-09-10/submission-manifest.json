@@ -9,14 +9,14 @@
     {
       "id": "C_INDUSTRIAL_LOOP",
       "title": "$10,000 Procedural Industrial Homepage Loop",
-      "owner": ["Cursor", "Brennan"],
+      "owner": ["Brennan"],
       "priority": 1,
-      "status": "FINAL_TRANSFER_PACK_RUNTIME_VERIFIED_CANONICAL_APPLY_GATED",
-      "preservation": "SAFE_ON_GITHUB_IN_MELODIA_PR_176",
+      "status": "FINAL_SOURCE_CANONICAL_SANITY_CHECK_GATED",
+      "preservation": "SOURCE_ON_MY_SITE_MAIN_CAPTURE_PACKAGE_SAFE_IN_MELODIA_PR_176",
       "canonical_repo": "fromage3900/my-site",
-      "transfer_repo": "fromage3900/MelodiaMelusinaV2",
-      "transfer_pr": 176,
-      "observed_evidence": {
+      "capture_transfer_repo": "fromage3900/MelodiaMelusinaV2",
+      "capture_transfer_pr": 176,
+      "observed_cursor_capture_evidence": {
         "console_errors": 0,
         "canonical_seed": 1,
         "draw_calls": 81,
@@ -27,14 +27,14 @@
         "hero_and_viz_stills": true
       },
       "required_before_submit": [
-        "apply PR 176 final transfer patch to my-site",
-        "perform one normal local-browser sanity check",
-        "human-review final proposal and attachments",
+        "perform one normal local-browser sanity check of current my-site main",
+        "confirm five final attachments open",
+        "human-review final proposal",
         "recheck listing current at click-send"
       ],
       "application_path": "../../prototypes/procedural-industrial-loop/APPLICATION_DRAFT_AFTER_QA.md",
-      "evidence_path": "../../prototypes/procedural-industrial-loop/LISTING_10000_EVIDENCE.md",
-      "submission_state": "FIRST_SEND_NEAR_READY"
+      "evidence_path": "../../prototypes/procedural-industrial-loop/EVIDENCE.md",
+      "submission_state": "FIRST_SEND_READY_AFTER_SANITY_CHECK"
     },
     {
       "id": "B_FABRIC_CONSULTANT",
@@ -89,7 +89,7 @@
     "07_REQUIREMENT_MAP.md",
     "08_SOURCE_LINKS.txt"
   ],
-  "industrial_rule": "PR 176 supersedes PR 175 for submission purposes. Do not apply both transfer patches.",
+  "industrial_rule": "Current source is canonical on my-site main. PR 176 remains the preserved capture/transfer authority and supersedes PR 175. Do not apply either transfer patch over the newly canonical source without an explicit diff review.",
   "figma_rule": "Use Figma only after real captures exist. Presentation may improve hierarchy and annotation but may not invent metrics, runtime states, client results, or capabilities.",
   "human_gate": "No submission is sent without Brennan approval.",
   "capstone_boundary": "CAPSTONE_NOW.md remains authoritative; Choral Sheep visual proof remains P0 after submission work."
