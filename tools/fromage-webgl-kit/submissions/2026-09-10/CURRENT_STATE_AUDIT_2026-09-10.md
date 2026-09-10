@@ -1,169 +1,89 @@
 # WebGL Submission / Git State Audit — 2026-09-10
 
-**Checked:** 2026-09-10 afternoon (America/Toronto)  
-**Purpose:** distinguish canonical source, safely preserved transfer work, and work that is still only local/agent-reported.
+**Refreshed:** after industrial canonicalization  
+**Purpose:** distinguish canonical source, preserved evidence, and work that is still local/agent-reported.
 
 ## Executive state
 
-Nothing important discovered in this audit appears lost. The remaining problem is **canonicality**, not preservation.
+Nothing important found in today's three application lanes appears lost.
 
-`fromage3900/my-site` remains the authority for the website/WebGL kit. `fromage3900/MelodiaMelusinaV2` remains the authority for the game/capstone and is temporarily carrying Cursor transfer packs because Cursor could not push `my-site`.
+`fromage3900/my-site` remains the authority for the website/WebGL kit. `fromage3900/MelodiaMelusinaV2` remains the game/capstone authority and temporarily preserves Cursor capture/transfer material that could not originally be pushed to the website repo.
 
-The WebGL kit is explicitly allowed by the recruiter-site freeze exception under `tools/fromage-webgl-kit/`; this does not authorize unrelated public-site redesign or new canonical routes.
+The WebGL kit remains inside the explicit recruiter-site freeze exception under `tools/fromage-webgl-kit/`; this does not authorize unrelated public-site redesign.
 
-## Repo health snapshot
+## Lane 1 — $10k procedural industrial homepage loop
 
-### `fromage3900/my-site`
-
-- default branch: `main`
-- audited main head: `ef903b6bef1d21e4b846d566ea52d1ba71fba5a4`
-- remote branches observed: 12
-- open PRs observed: 0
-- latest combined commit status endpoint returned no registered statuses; do not describe latest main as CI-certified solely from GitHub status checks.
-- `tools/fromage-webgl-kit/` is inside an explicit freeze exception.
-
-### `fromage3900/MelodiaMelusinaV2`
-
-- default branch: `main`
-- audited main head: `2f1c3b41b65f8a6236d23fa25bea3deacdbb11ad`
-- remote branches observed: 17
-- open PRs observed during audit: `#176`, `#175`, `#166`, `#145`, `#144`
-- latest combined commit status endpoint returned no registered statuses on the main-head commit.
-- `CAPSTONE_NOW.md` remains the owner queue and keeps Choral Sheep visual proof as P0.
-
-## Submission lane A — $10k industrial homepage loop
-
-**Market state:** live at audit time; $10,000 fixed; 20–50 proposals; 0 interviewing; 0 invites.
+**State:** FINAL SOURCE CANONICAL / ONE NORMAL-BROWSER SANITY CHECK BEFORE SEND.
 
 ### Canonical on `my-site/main`
 
-- base procedural industrial prototype;
-- deterministic timeline helper;
-- evidence/listing/application scaffolding;
-- professional-polish handoff doc.
+- final industrial `app.js` source;
+- polished/capture-ready `index.html`;
+- shared deterministic timeline helper;
+- final proposal at `prototypes/procedural-industrial-loop/APPLICATION_DRAFT_AFTER_QA.md`;
+- refreshed evidence at `prototypes/procedural-industrial-loop/EVIDENCE.md`;
+- canonicalization receipt at `submissions/2026-09-10/INDUSTRIAL_CANONICALIZATION_RECEIPT.md`;
+- refreshed submission manifest and application-tracker CSV.
 
-### Safely preserved, but not yet canonical on `my-site`
+Current canonical source implements the documented final buyer-facing behavior: fixed 28-degree camera, RoomEnvironment reflection response, ACES tone mapping, restrained studio shadows, shared BODY/SHELL/ACCENT/MACHINE/ACTUATOR materials, rounded fabricated housings, sparse manufacturing detail, greyscale BASE, information-only Structural/Flow/Thermal modes, deterministic capture URLs, Seed 01 canonical, diagnostics disclosure, and the unchanged 16-second absolute-time motion law.
 
-Cursor's newest/final work is on:
+### Preserved Cursor evidence
 
-- Melodia branch: `cursor/industrial-final-polish-9850`
-- Melodia PR: `#176`
-- transfer folder: `Docs/Strategy/webgl-kit-industrial-final-2026-09-10/`
+Melodia PR #176 remains the capture/evidence archive for Cursor's exact final build. Its runtime receipt records zero console errors, `LOOP Δ = 0`, 81 draws, 16,948 triangles, full 16-second BASE MP4/WebM, hero and visualization stills, seed captures, and mobile evidence.
 
-The transfer package contains:
+Those measurements belong to Cursor's captured build. Because GitHub's connector could not expand the 4.4 MB transfer patch safely, the current `my-site/main` source was promoted through a fresh bounded implementation of the documented final behavior rather than a bit-for-bit patch import. Therefore run one normal-browser sanity check before assuming identical current-main metrics.
 
-- final `my-site` patch;
-- final application draft;
-- runtime report;
-- embedded evidence media through the patch.
+### PR cleanup
 
-Observed runtime report from the final pass:
-
-- console errors: none recorded;
-- canonical seed: 1;
-- draw calls: 81;
-- triangles: 16,948;
-- loop delta: 0;
-- deterministic capture URLs present;
-- full 16-second BASE MP4 and WebM listed;
-- hero, STRUCTURAL, FLOW, THERMAL, seed, and mobile evidence listed.
-
-Headless FPS values are evidence-environment diagnostics, not buyer-facing performance claims.
-
-### Important duplication
-
-PR `#175` is the older monochrome transfer pack. PR `#176` supersedes it for submission purposes.
-
-**Do not apply both patches.**
+- PR #175 is closed and explicitly marked superseded.
+- PR #176 remains open as preserved capture/transfer authority; do not blindly apply its patch over current `my-site/main`.
 
 ### Next single action
 
-Apply the final PR `#176` transfer patch to `my-site`, perform one normal local-browser sanity check, commit/push the resulting WebGL-kit source to `my-site`, then human-review and submit.
+Run current `my-site/main` in a normal browser, verify the deterministic capture URL and loop boundary, inspect the five evidence attachments, recheck the listing, and submit.
 
-After canonicalization, close/supersede `#175` rather than merging both transfer histories.
+## Lane 2 — Three.js fabric technical-art consultant
 
-## Submission lane B — Three.js fabric technical-art consultant
+**State:** CANONICAL DOCS / RUNTIME + PROVENANCE + OWNER PROOF NEEDED.
 
-**Market state:** live at audit time; $30–$300/hr; fewer than 5 proposals; 0 interviewing.
+Canonical on `my-site/main`:
 
-### Canonical on `my-site/main`
+- `fabric/FABRIC_CONSULTANT_EVIDENCE.md`;
+- `fabric/CLO_TO_WEB_PIPELINE.md`;
+- `fabric/APPLICATION_DRAFT_AFTER_QA.md`;
+- existing `wix/` fabric/material viewer architecture used as source evidence.
 
-`tools/fromage-webgl-kit/fabric/` contains:
+Still required before submission:
 
-- `FABRIC_CONSULTANT_EVIDENCE.md`;
-- `CLO_TO_WEB_PIPELINE.md`;
-- `APPLICATION_DRAFT_AFTER_QA.md`.
+- runtime-check the existing viewer;
+- classify material/texture provenance;
+- select one genuine owner CLO or Blender artifact;
+- choose concise explainable evidence links.
 
-The existing portfolio code also contains the material/fabric viewer architecture being used as source evidence.
+A full knitwear configurator is not required for the consulting listing.
 
-### Not yet present remotely
+## Lane 3 — $3k web-ready product / GLB animation
 
-The later requested deliverables are not currently found on `my-site/main`:
+**State:** PRODUCT MOTION LAB CANONICAL / KIMI HANDHELD WORK NOT REMOTELY VISIBLE.
 
-- `FABRIC_RUNTIME_QA.md`;
-- `FABRIC_SUBMISSION_ASSET_CHECKLIST.md`;
-- `CURSOR_EXTRACTION_REPORT.md`;
-- completed provenance manifest;
-- final owned CLO/Blender evidence artifact.
+Canonical on `my-site/main`:
 
-Do not claim these as completed merely because prompts exist.
+- `prototypes/product-motion-lab/index.html`;
+- `prototypes/product-motion-lab/app.js`;
+- `prototypes/product-motion-lab/EVIDENCE.md`.
 
-### Next single action
+Kimi reported generator, validator, runtime wiring and syntax verification as structurally ready, but no matching remote source/branch was found during the audit. Treat that work as local workspace state until it is pushed.
 
-Runtime-check the existing viewer, classify material/texture provenance, select one genuine owner CLO/Blender artifact, choose explainable evidence links, then submit. A full knitwear configurator is not required for this consulting listing.
+Next: Kimi pushes source → Blender generation → Brennan visual pass → validator/export → GLB browser load → scrub/anchor/mobile evidence → submit.
 
-## Submission lane C — $3k web-ready product / GLB animation
+## Capstone boundary
 
-**Market state:** live at audit time; $3,000 fixed; 20–50 proposals; 0 interviewing; client last viewed recently.
+Melodia `CAPSTONE_NOW.md` remains authoritative. Choral Sheep visual proof remains P0 after today's bounded submission work. Do not turn this into another Git-management session after the applications are handled.
 
-### Canonical on `my-site/main`
-
-`tools/fromage-webgl-kit/prototypes/product-motion-lab/` currently contains only:
-
-- `index.html`;
-- `app.js`;
-- `EVIDENCE.md`.
-
-### Agent-reported but not remotely visible
-
-Kimi reported that the handheld generator, validator, runtime wiring, and syntax verification are structurally ready.
-
-No current `my-site/main` file or new remote Kimi/handheld branch was found containing that work during this audit.
-
-Treat it as **local workspace state**, not Git truth, until pushed.
-
-### Next single action
-
-Push/merge Kimi's source first. Then run the Blender generation, Brennan visual pass, validator/export, GLB browser load, scrub/anchor QA, and measured capture pass before applying.
-
-## Other Melodia work
-
-### PR #166 — laptop studio integration
-
-Safely preserved and mergeable. The PR body reports a clean one-commit integration and Echo Static Gates PASS after removing the obsolete `.assbin` ancestry from the integration range. It is not a blocker for today's applications.
-
-### PR #145 — Resonance Astrolabe R0
-
-Safely preserved. Source-built silhouette milestone exists, but owner hand-scale and gameplay-camera evidence remain the promotion gate. Do not call it live-proven yet.
-
-### PR #144 — Issue #51 save idempotency
-
-Safely preserved and mergeable. Implementation/ownership decisions exist, but full editor restart and packaged-build evidence remain required before merge.
-
-### Choral Sheep P0
-
-Still canonical on `main`. `CAPSTONE_NOW.md` remains clear that the revenue lane is sidecar work and must not displace the Sheep visual proof.
-
-## Artifact safety
-
-The binary `.xlsx` application tracker produced in chat is not stored in Git by the GitHub text connector. A CSV snapshot is stored beside this audit so the submission state is still reproducible from the repository.
-
-Use the downloadable `.xlsx` for interactive tracking; use the repo CSV/this audit for durable Git truth.
-
-## Decision summary
+## Current decision summary
 
 ```text
-INDUSTRIAL: SAFE ON GITHUB / NOT YET CANONICAL IN MY-SITE / FIRST SEND
+INDUSTRIAL: SOURCE CANONICAL ON MY-SITE / CAPTURE SAFE IN PR #176 / FIRST SEND AFTER SANITY CHECK
 FABRIC:     DOCS CANONICAL / RUNTIME + PROVENANCE + OWNER PROOF NEEDED / SECOND SEND
 PRODUCT:    LAB CANONICAL / KIMI BUILD NOT REMOTELY VISIBLE / THIRD SEND
 CAPSTONE:   CANONICAL / CHORAL SHEEP REMAINS P0
@@ -172,8 +92,9 @@ CAPSTONE:   CANONICAL / CHORAL SHEEP REMAINS P0
 ## Do not reopen
 
 - no broad branch cleanup today;
-- no new fourth commercial prototype;
+- no fourth commercial prototype;
 - no public-site redesign;
-- no merge of both industrial transfer PRs;
-- no promotion of local/agent-reported work to `RUNTIME VERIFIED` without evidence;
-- no displacement of Choral Sheep P0 after submission work is finished.
+- do not apply PR #175;
+- do not blindly apply PR #176 over current `my-site/main`;
+- no buyer-facing headless-FPS claim;
+- no promotion of agent-reported work to runtime-verified without evidence.
