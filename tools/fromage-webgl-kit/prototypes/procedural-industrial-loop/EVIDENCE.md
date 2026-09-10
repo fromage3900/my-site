@@ -1,50 +1,34 @@
 # Procedural Industrial System Loop — Evidence
 
-**Status:** SOURCE IMPLEMENTED / RUNTIME VERIFY  
+**Status:** FINAL SOURCE ON `my-site/main` / ONE NORMAL-BROWSER SANITY CHECK BEFORE SEND  
 **Date:** 2026-09-10
 
-This prototype is a clean-room capability proof for procedural/system-driven industrial animation. It is not a reconstruction of any prospective client's CAD, prototype, or proprietary animation.
+This prototype is an independent capability proof for procedural/system-driven industrial animation. It is not a reconstruction of any prospective client's CAD, prototype, branding, or proprietary animation.
 
-## Implemented in source
+## Canonical source now on `my-site/main`
 
-- Three deterministic layout seeds.
-- Neutral light-grey industrial presentation with fixed camera.
-- Procedural station construction from Three.js primitives.
-- Named assembly hierarchy (`PROC_IndustrialSystemRoot`, `STATION_01..03`, actuator/core/manifold parts).
-- 16-second absolute-time loop.
-- Strict piecewise-linear mechanical motion.
-- Only one primary mechanical action advances during each active segment.
-- Mirrored return sequence so the state at the loop boundary returns to the initial pose.
-- Manual timeline scrub.
-- Play/pause/reset controls.
-- `BASE`, `STRUCTURAL`, `FLOW`, and `THERMAL` visualization styles.
-- Visualization styles are explicitly labelled illustrative, not FEA/CFD/thermal simulation.
-- Approximate FPS, DPR, draw calls, triangles, and geometry diagnostics.
-- Named motion-phase diagnostics.
-- Numeric loop-endpoint delta diagnostic (`LOOP Δ`) derived from the shared deterministic timeline.
-- Responsive desktop/mobile layout.
-- `prefers-reduced-motion` starts the experience paused.
+The current source includes:
 
-## Shared deterministic timeline primitive
-
-The motion-law implementation has now been extracted into:
-
-`../../src/animation/createDeterministicTimeline.js`
-
-It accepts a duration plus named channels made of linear segments:
-
-```js
-{
-  stationAOffsetX: [
-    { start: 0, end: 2, from: 0, to: 0.72 },
-    { start: 12, end: 14, from: 0.72, to: 0 }
-  ]
-}
-```
-
-Sampling is absolute-time and clamped. Gaps between segments hold the previous segment's terminal value. The helper also exposes timeline wrapping for deterministic looping.
-
-This is reusable for product animation, industrial choreography, explodes/assemblies, technical callouts, and other scrub-driven Three.js work.
+- Three deterministic layout seeds; Seed 01 is canonical for submission.
+- 16-second absolute-time loop driven by `src/animation/createDeterministicTimeline.js`.
+- Strict piecewise-linear motion with one primary axis active at a time.
+- Explicit hard holds and mirrored return to the authored start state.
+- Fixed 28-degree camera; no cinematic camera motion.
+- Greyscale BASE presentation only.
+- Shared BODY / SHELL / ACCENT / MACHINE / ACTUATOR material families.
+- RoomEnvironment reflection response, ACES tone mapping, restrained studio lighting, and limited soft shadow casting.
+- Rounded fabricated housings plus sparse collars, service trays, feet, brackets/fastener cues.
+- BASE / STRUCTURAL / FLOW / THERMAL modes; color is reserved for information-bearing visualization modes.
+- Structural / Flow / Thermal fields remain illustrative, not FEA/CFD/thermal simulation.
+- Deterministic capture-state query contract, for example:
+  - `?capture=1&seed=1&mode=base&t=4`
+  - `?capture=1&seed=1&mode=structural&t=5.2`
+  - `?capture=1&seed=1&mode=flow&t=5.2`
+  - `?capture=1&seed=1&mode=thermal&t=5.2`
+- Buyer-facing controls for timeline, seed, and visualization mode.
+- Diagnostics moved behind a disclosure; capture mode is chrome-free/full-bleed.
+- Programmatic `window.__industrialLoop` state/setter surface for repeatable capture QA.
+- Safe assembly rebuild removes children through `sceneRoot.remove(...)` rather than mutating the children array directly.
 
 ## Motion schedule
 
@@ -59,55 +43,61 @@ This is reusable for product animation, industrial choreography, explodes/assemb
 14–16  hard hold / loop boundary
 ```
 
-The core pose is derived from absolute timeline time rather than frame-to-frame integration. Scrubbing to the same timestamp should therefore yield the same pose.
+The pose is sampled from absolute timeline time, not accumulated frame-to-frame motion. The shared timeline's source-level endpoint delta is therefore expected to be zero.
 
-The source also computes the summed absolute delta between all timeline channel values at `0s` and `16s`. The intended value is `0.000000`; this remains a runtime verification item until observed in-browser.
+## Preserved observed evidence from Cursor final pass
 
-## Still unverified
+Cursor's exact final capture build is safely preserved in Melodia branch `cursor/industrial-final-polish-9850` / PR #176 because that cloud agent could not push `my-site` directly.
 
-The following require a real browser/runtime pass before any proposal claim:
+Its preserved runtime receipt records:
 
-- browser console is clean;
-- all controls function correctly in Chrome/Safari/Firefox;
-- displayed `LOOP Δ` is actually `0.000000` at runtime;
-- actual FPS/draw-call/triangle values;
-- mobile-width composition on real device or responsive emulator;
-- visual quality of all three seeds;
-- exact loop-boundary appearance under capture;
-- color/readability of solver-inspired visualization styles;
-- GitHub Pages/public serving behavior for this `/tools/` path.
+- no console errors observed;
+- canonical Seed 01;
+- 81 draw calls;
+- 16,948 triangles;
+- `LOOP Δ = 0`;
+- full 16-second BASE MP4 and WebM;
+- BASE hero still;
+- STRUCTURAL / FLOW / THERMAL stills;
+- Seed 01/02/03 captures and 3-up variation;
+- mobile-width capture.
 
-Do not mark these items PASS from source inspection alone.
+These numbers describe Cursor's captured final build. The source has now been promoted into `my-site/main` through a fresh bounded implementation because GitHub's connector could not safely expand the 4.4 MB transfer patch. Run one normal-browser sanity check before treating the `my-site/main` runtime numbers as identical to the preserved receipt.
 
-## Next bounded proof pass
+Headless FPS values are intentionally not promoted as buyer-facing performance claims.
 
-1. Serve the repo through a local HTTP server.
-2. Open `tools/fromage-webgl-kit/prototypes/procedural-industrial-loop/`.
-3. Confirm there are no uncaught console/runtime errors.
-4. Capture one full 16-second loop.
-5. Scrub manually through every segment boundary: 0, 2, 4, 6, 8, 10, 12, 14, 16 seconds.
-6. Verify `0s` and `16s` are visually identical and `LOOP Δ` reports `0.000000`.
-7. Switch Seeds 01/02/03 and confirm stable composition.
-8. Capture BASE + STRUCTURAL + FLOW + THERMAL stills.
-9. Record the runtime diagnostics.
-10. Verify a phone-width layout.
-11. Fix only evidence-blocking defects; do not expand scope.
+## Submission attachment set
 
-## Reusable primitive produced
+Use the preserved final evidence bundle from PR #176:
 
-`src/animation/createDeterministicTimeline.js` is now the reusable generic artifact produced by this strike.
+1. `industrial_loop_base_16s.mp4`
+2. `industrial_base_hero.png`
+3. `industrial_structural.png`
+4. `industrial_flow.png`
+5. `industrial_thermal.png`
 
-The prototype no longer owns its own bespoke interpolation logic. Future Three.js product/industrial work should reuse or deliberately extend this helper only when a real paid problem requires additional motion-law behavior.
+Optional: `industrial_seed_variation.png`.
 
-## Current handoff
+## Remaining gate
+
+Only one bounded runtime confirmation remains before send:
+
+1. Serve current `my-site/main` over HTTP.
+2. Open normal interactive mode and confirm no blocking console errors.
+3. Open `?capture=1&seed=1&mode=base&t=4` and verify deterministic state/camera composition.
+4. Scrub 0 / 2 / 4 / 6 / 8 / 10 / 12 / 14 / 16 seconds and confirm the motion law still reads correctly.
+5. Confirm `window.__industrialLoop.getState().loopDelta` is zero.
+6. Do not expand scope after this check; fix only blockers.
+
+## Handoff
 
 ```text
-STATUS: SOURCE IMPLEMENTED / RUNTIME VERIFY
-LAST VERIFIED: source-level structure only, 2026-09-10
-WHAT CHANGED: deterministic motion extracted into shared timeline helper; industrial app refactored onto it; loop and phase diagnostics added
-WHAT RAN SUCCESSFULLY: not yet browser-verified
-MEASURED VALUES: none yet
-WHAT IS STILL UNVERIFIED: runtime, visual polish, responsive QA, actual diagnostics, capture/export
-NEXT SINGLE ACTION: serve the repo over HTTP and run the industrial prototype in a real browser
-DO NOT REOPEN: motion architecture, real solver work, CAD parsing, broad framework design
+STATUS: FINAL SOURCE CANONICAL / SANITY CHECK GATED
+SOURCE AUTHORITY: fromage3900/my-site main
+PRESERVED CAPTURE AUTHORITY: Melodia PR #176
+CANONICAL SEED: 01
+BUYER-FACING CLAIM: deterministic mechanical motion + restrained information visualization
+DO NOT CLAIM YET: client CAD import, ProRes delivery, <5MB AV1/VP9 delivery, buyer-facing FPS benchmark
+NEXT SINGLE ACTION: one normal-browser sanity check, then human-review attachments/proposal and submit
+DO NOT REOPEN: motion architecture, new machinery, bloom, camera animation, real solver work, CAD parsing
 ```
