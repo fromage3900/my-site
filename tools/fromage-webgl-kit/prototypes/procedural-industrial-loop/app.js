@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { createRuntime } from '../../src/core/createRuntime.js';
+import { createDeterministicTimeline } from '../../src/animation/createDeterministicTimeline.js';
 
 const stage = document.getElementById('stage');
 const timeline = document.getElementById('timeline');
@@ -13,6 +14,35 @@ const modeButtons = [...document.querySelectorAll('.mode')];
 
 const LOOP_SECONDS = 16;
 const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+
+const motionTimeline = createDeterministicTimeline({
+  duration: LOOP_SECONDS,
+  channels: {
+    stationAOffsetX: [
+      { start: 0, end: 2, from: 0, to: 0.72 },
+      { start: 12, end: 14, from: 0.72, to: 0 },
+    ],
+    stationBRotationY: [
+      { start: 2, end: 4, from: 0, to: Math.PI * 0.5 },
+      { start: 10, end: 12, from: Math.PI * 0.5, to: 0 },
+    ],
+    stationCOffsetY: [
+      { start: 4, end: 6, from: 0, to: 0.82 },
+      { start: 8, end: 10, from: 0.82, to: 0 },
+    ],
+  },
+});
+
+const phases = [
+  { start: 0, end: 2, name: 'A_TRANSLATE_OUT' },
+  { start: 2, end: 4, name: 'B_ROTATE_OUT' },
+  { start: 4, end: 6, name: 'C_LIFT_OUT' },
+  { start: 6, end: 8, name: 'HARD_HOLD_A' },
+  { start: 8, end: 10, name: 'C_LIFT_RETURN' },
+  { start: 10, end: 12, name: 'B_ROTATE_RETURN' },
+  { start: 12, end: 14, name: 'A_TRANSLATE_RETURN' },
+  { start: 14, end: 16, name: 'HARD_HOLD_B' },
+];
 
 const runtime = createRuntime({
   THREE,
@@ -33,7 +63,11 @@ const fill = new THREE.DirectionalLight(0xffffff, 1.25);
 fill.position.set(-7, 3, 2);
 runtime.scene.add(hemi, key, fill);
 
-const floorMaterial = new THREE.MeshStandardMaterial({ color: 0xdadad6, roughness: 0.92, metalness: 0.02 });
+const floorMaterial = new THREE.MeshStandardMaterial({
+  color: 0xdadad6,
+  roughness: 0.92,
+  metalness: 0.02,
+});
 const floor = new THREE.Mesh(new THREE.PlaneGeometry(30, 18), floorMaterial);
 floor.rotation.x = -Math.PI / 2;
 floor.position.y = -0.04;
@@ -63,21 +97,13 @@ function mulberry32(seed) {
   };
 }
 
-function lerpLinear(t, start, end, from, to) {
-  if (t <= start) return from;
-  if (t >= end) return to;
-  const u = (t - start) / (end - start);
-  return from + (to - from) * u;
-}
-
 function makeMaterial(name, shade = 0) {
-  const material = new THREE.MeshStandardMaterial({
+  return new THREE.MeshStandardMaterial({
     name,
     color: shade === 0 ? 0xd8d8d4 : shade === 1 ? 0x4a4d4d : 0xb7b8b4,
     roughness: shade === 1 ? 0.48 : 0.68,
     metalness: shade === 1 ? 0.48 : 0.2,
   });
-  return material;
 }
 
 function addPart(parent, geometry, position, scale, name, field, shade = 0) {
@@ -138,11 +164,18 @@ function buildAssembly(seed) {
     createStation(2, spacing, random),
   ];
 
-  const rail = addPart(sceneRoot, new THREE.BoxGeometry(1, 1, 1), [0, 0.05, -1.5], [spacing * 2.9, 0.12, 0.16], 'SYSTEM_RAIL', { structural: 0.66, flow: 0.48, thermal: 0.34 }, 1);
-  rail.rotation.y = 0;
+  addPart(
+    sceneRoot,
+    new THREE.BoxGeometry(1, 1, 1),
+    [0, 0.05, -1.5],
+    [spacing * 2.9, 0.12, 0.16],
+    'SYSTEM_RAIL',
+    { structural: 0.66, flow: 0.48, thermal: 0.34 },
+    1,
+  );
 
-  applyVisualization(currentMode);
   assembly = { stations, spacing };
+  applyVisualization(currentMode);
   applyTimeline(timeSeconds);
 }
 
@@ -186,46 +219,41 @@ function applyVisualization(mode) {
   modeBadge.textContent = `${mode.toUpperCase()} / SEED ${String(currentSeed).padStart(2, '0')}`;
 }
 
-function applyTimeline(t) {
+function getPhaseName(time) {
+  const clamped = Math.min(LOOP_SECONDS - Number.EPSILON, Math.max(0, time));
+  return phases.find((phase) => clamped >= phase.start && clamped < phase.end)?.name ?? 'LOOP_END';
+}
+
+function applyTimeline(time) {
   if (!assembly) return;
+  const sample = motionTimeline.sample(time);
   const [a, b, c] = assembly.stations;
 
-  // Every moving axis is driven from absolute timeline time, never accumulated delta.
-  // 0–2 A moves out; 2–4 B rotates; 4–6 C moves; 6–8 hold.
-  // 8–10 C reverses; 10–12 B reverses; 12–14 A reverses; 14–16 hold.
-  const aX = t < 2 ? lerpLinear(t, 0, 2, 0, 0.72)
-    : t < 12 ? 0.72
-      : t < 14 ? lerpLinear(t, 12, 14, 0.72, 0)
-        : 0;
-
-  const bRot = t < 2 ? 0
-    : t < 4 ? lerpLinear(t, 2, 4, 0, Math.PI * 0.5)
-      : t < 10 ? Math.PI * 0.5
-        : t < 12 ? lerpLinear(t, 10, 12, Math.PI * 0.5, 0)
-          : 0;
-
-  const cY = t < 4 ? 0
-    : t < 6 ? lerpLinear(t, 4, 6, 0, 0.82)
-      : t < 8 ? 0.82
-        : t < 10 ? lerpLinear(t, 8, 10, 0.82, 0)
-          : 0;
-
-  a.moving.position.x = aX;
+  a.moving.position.x = sample.values.stationAOffsetX;
   a.moving.rotation.y = 0;
 
-  b.moving.rotation.y = bRot;
+  b.moving.rotation.y = sample.values.stationBRotationY;
   b.moving.position.x = 0;
 
-  c.moving.position.y = 1.02 + cY;
+  c.moving.position.y = 1.02 + sample.values.stationCOffsetY;
   c.moving.rotation.y = 0;
 
-  timeline.value = t.toFixed(2);
-  timeValue.value = `${t.toFixed(1)}s`;
+  timeline.value = sample.time.toFixed(2);
+  timeValue.value = `${sample.time.toFixed(1)}s`;
 }
 
 function resetTimeline() {
   timeSeconds = 0;
   applyTimeline(timeSeconds);
+}
+
+function endpointDelta() {
+  const start = motionTimeline.sample(0).values;
+  const end = motionTimeline.sample(LOOP_SECONDS).values;
+  return Object.keys(start).reduce(
+    (sum, keyName) => sum + Math.abs((end[keyName] ?? 0) - (start[keyName] ?? 0)),
+    0,
+  );
 }
 
 function updateDiagnostics(delta) {
@@ -242,7 +270,9 @@ function updateDiagnostics(delta) {
   diagnostics.textContent = [
     `MODE     ${currentMode.toUpperCase()}`,
     `SEED     ${String(currentSeed).padStart(2, '0')}`,
+    `PHASE    ${getPhaseName(timeSeconds)}`,
     `TIME     ${timeSeconds.toFixed(2)} / ${LOOP_SECONDS}s`,
+    `LOOP Δ   ${endpointDelta().toFixed(6)}`,
     `FPS ~    ${Math.round(Math.min(999, fpsSmoothed))}`,
     `DPR      ${runtime.renderer.getPixelRatio().toFixed(2)}`,
     `DRAWS    ${info.render.calls}`,
@@ -257,7 +287,7 @@ runtime.onFrame(({ delta }) => {
   lastFrameSeconds = nowSeconds;
 
   if (playing) {
-    timeSeconds = (timeSeconds + realDelta) % LOOP_SECONDS;
+    timeSeconds = motionTimeline.wrap(timeSeconds + realDelta);
     applyTimeline(timeSeconds);
   }
 
@@ -288,7 +318,6 @@ timeline.addEventListener('input', () => {
 seedSelect.addEventListener('change', () => {
   currentSeed = THREE.MathUtils.clamp(Number(seedSelect.value) || 1, 1, 3);
   buildAssembly(currentSeed);
-  modeBadge.textContent = `${currentMode.toUpperCase()} / SEED ${String(currentSeed).padStart(2, '0')}`;
 });
 
 modeButtons.forEach((button) => {
