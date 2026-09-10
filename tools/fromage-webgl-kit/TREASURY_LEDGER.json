@@ -27,9 +27,12 @@
   ],
 
   "currency": {
-    "resolved": false,
-    "conflict": "SERVICES.md quotes CAD (fixed project ranges $200-750 / $500-2,000+ / $750-3,000+ / $600-3,000+ / $1,000-5,000+). PAID_PROBLEM_RADAR quotes bare USD tiers ($100-250 / $300-750 / $750-2,500+). DIRECT_LISTING_STRIKES quotes $30-300/hr for the fabric listing.",
-    "rule": "Record the currency actually received on the payment row. Do not convert. Resolve the catalogue conflict before quoting anyone."
+    "resolved": true,
+    "canonical": "CAD",
+    "decided_on": "2026-09-10",
+    "decision": "Owner ruling: CAD. SERVICES.md (CAD fixed project ranges: $200-750 / $500-2,000+ / $750-3,000+ / $600-3,000+ / $1,000-5,000+) is the canonical rate card.",
+    "note": "PAID_PROBLEM_RADAR quotes bare $ tiers ($100-250 / $300-750 / $750-2,500+) with no currency label; those are to be read as CAD from here on, not as a separate USD catalogue. DIRECT_LISTING_STRIKES quotes $30-300/hr for the fabric listing - that figure comes from the buyer's listing, not this rate card.",
+    "rule": "Record the currency actually received on the payment row. If a buyer pays in another currency, record both the received amount and the CAD equivalent with the rate used."
   },
 
   "first_20_gate": {
