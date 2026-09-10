@@ -17,6 +17,7 @@
       "canonical_repo": "fromage3900/my-site",
       "capture_archive_repo": "fromage3900/MelodiaMelusinaV2",
       "capture_archive_pr": 176,
+      "capture_receipt_path": "../../prototypes/procedural-industrial-loop/INDUSTRIAL_CAPTURE_ARCHIVE_RECEIPT.json",
       "observed_cursor_capture_evidence": {
         "console_errors": 0,
         "canonical_seed": 1,
@@ -29,7 +30,7 @@
       },
       "required_before_submit": [
         "perform one normal local-browser sanity check of current my-site main",
-        "confirm five final attachments open",
+        "confirm five final archived attachments open",
         "human-review final proposal",
         "recheck listing current at click-send"
       ],
@@ -43,7 +44,10 @@
       "owner": ["Brennan", "ChatGPT/Kimi packaging"],
       "priority": 2,
       "status": "SOURCE_EVIDENCE_PRESENT_QA_PROVENANCE_OWNER_PROOF_GATED",
-      "preservation": "CANONICAL_DOCS_ON_MY_SITE_MAIN",
+      "preservation": "CANONICAL_DOCS_AND_GATES_ON_MY_SITE_MAIN",
+      "qa_path": "../../fabric/FABRIC_RUNTIME_QA.md",
+      "asset_checklist_path": "../../fabric/FABRIC_SUBMISSION_ASSET_CHECKLIST.md",
+      "provenance_path": "../../fabric/MATERIAL_PROVENANCE_MANIFEST.json",
       "required_before_submit": [
         "existing fabric viewer runtime checked",
         "commercial-safe evidence chosen",
@@ -62,12 +66,13 @@
       "owner": ["Brennan"],
       "priority": 3,
       "status": "AURIGA_SOURCE_CANONICAL_GENERATION_RUNTIME_GATED",
-      "preservation": "AURIGA_BUILDER_CHECKER_AND_BROWSER_LOADER_CANONICAL_ON_MY_SITE_MAIN",
+      "preservation": "AURIGA_BUILDER_CHECKER_BROWSER_LOADER_AND_HANDOFF_CANONICAL_ON_MY_SITE_MAIN",
       "canonical_source": [
         "../../scripts/build_auriga_meter.py",
         "../../scripts/check_auriga_meter.py",
         "../../prototypes/product-motion-lab/src/auriga-meter.js",
-        "../../prototypes/product-motion-lab/package.json"
+        "../../prototypes/product-motion-lab/package.json",
+        "../../prototypes/product-motion-lab/PRODUCT_RUNTIME_HANDOFF.md"
       ],
       "required_before_submit": [
         "run the canonical Blender builder to generate assets/auriga_meter.glb",
@@ -95,7 +100,9 @@
     "07_REQUIREMENT_MAP.md",
     "08_SOURCE_LINKS.txt"
   ],
-  "industrial_rule": "Current industrial source is canonical on my-site main. Melodia PR 176 is a closed audit/capture archive only; do not apply its transfer patch over current main without an explicit diff review.",
+  "industrial_rule": "Current industrial source is canonical on my-site main. Melodia PR 176 is closed without merge and is capture/archive authority only; do not apply its transfer patch over current main without an explicit diff review.",
+  "binary_media_policy": "Generated industrial PNG/MP4/WebM evidence remains in the closed Cursor capture archive rather than being duplicated into the source repo. Main carries the exact archive pointer, filename inventory and observed-value receipt.",
+  "fabric_rule": "Unknown or Melodia-specific fabric provenance is not commercially reusable. Runtime and owner-proof gates must be observed before submission claims are upgraded.",
   "product_rule": "Auriga source is canonical. Do not mark the product lane runtime-verified until Blender generates the GLB and browser QA/capture evidence exists.",
   "figma_rule": "Use Figma only after real captures exist. Presentation may improve hierarchy and annotation but may not invent metrics, runtime states, client results, or capabilities.",
   "human_gate": "No submission is sent without Brennan approval.",
