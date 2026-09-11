@@ -22,6 +22,7 @@
     button:focus-visible,input:focus-visible { outline:3px solid white; outline-offset:2px; }
     .actions { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
     .diag { margin-top:14px; padding-top:14px; border-top:1px solid #313742; color:#bdc3ce; font:12px/1.5 ui-monospace,monospace; }
+    .asset-status { margin-top:14px; padding:8px 10px; border:1px solid #313742; border-radius:10px; background:#12151a; color:#9fb0c4; font:12px/1.45 ui-monospace,monospace; }
     .scroll-track { margin-top:24px; height:620px; border-top:1px dashed #343944; padding-top:18px; color:#979fac; }
     @media (max-width:780px) { .lab { grid-template-columns:1fr; } .stage { min-height:340px; } .panel { order:-1; } .scroll-track { height:420px; } }
     @media (prefers-reduced-motion: reduce) { .scroll-track { height:120px; } }
@@ -55,6 +56,7 @@
           <button id="wireframe" type="button" aria-pressed="false">Wireframe</button>
           <button id="callouts" type="button" aria-pressed="true">Callouts</button>
         </div>
+        <div id="assetStatus" class="asset-status" aria-live="polite">loading GLB…</div>
         <div id="diagnostics" class="diag" aria-live="polite">Starting renderer…</div>
       </aside>
     </section>

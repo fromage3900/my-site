@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { createRuntime } from '../../src/core/createRuntime.js';
+import { loadAurigaMeter, DEFAULT_AURIGA_URL } from './src/auriga-meter.js';
 
 const stage = document.getElementById('stage');
 const slider = document.getElementById('timeline');
@@ -89,6 +90,38 @@ product.add(anchors.port);
 product.rotation.y = -0.55;
 product.rotation.x = 0.08;
 
+// --- Auriga GLB path ---------------------------------------------------------
+// Until 2026-09-10 this file did not import src/auriga-meter.js at all, so the lane's
+// headline asset (a generated web-ready GLB) was unreachable from the lab page: the
+// procedural shell below was the only thing anyone could ever see.
+//
+// Now: try the real GLB, and step the procedural stand-in aside only on success.
+// On any failure the procedural shell stays and the reason is surfaced, never swallowed.
+let auriga = null;
+
+function setAssetStatus(text) {
+  const el = document.getElementById('assetStatus');
+  if (el) el.textContent = text;
+  else console.info('[product-motion-lab]', text);
+}
+
+setAssetStatus('loading GLB…');
+
+loadAurigaMeter({ scene: runtime.scene, url: DEFAULT_AURIGA_URL })
+  .then((handle) => {
+    auriga = handle;
+    product.visible = false; // procedural stand-in steps aside
+    setAssetStatus(
+      `GLB loaded · ${handle.clips.length} clip(s) · ${handle.duration.toFixed(2)}s · ` +
+      `${handle.materials.length} material(s) · anchors ${Object.keys(handle.anchors).length}/3`,
+    );
+    applyTimeline(timeline);
+  })
+  .catch((err) => {
+    const why = err && err.message ? err.message : String(err);
+    setAssetStatus(`GLB unavailable — procedural fallback in use (${why})`);
+  });
+
 let timeline = 0;
 let playing = false;
 let playStart = 0;
@@ -116,13 +149,19 @@ function applyTimeline(t) {
   button.rotation.x = inspect * Math.PI * 2;
   screen.material.emissive = new THREE.Color(0x19354a);
   screen.material.emissiveIntensity = 0.15 + inspect * 1.1;
+
+  // Drive the real GLB's authored clip when it is loaded. The procedural values above
+  // remain valid for the fallback path, so both branches stay coherent.
+  if (auriga) auriga.applyTimeline(timeline);
 }
 
 function projectCallouts() {
   const rect = stage.getBoundingClientRect();
   const temp = new THREE.Vector3();
+  // Prefer the loaded GLB's own annotation anchors; fall back to the procedural ones.
+  const anchorSet = auriga ? auriga.anchors : anchors;
   for (const el of calloutEls) {
-    const anchor = anchors[el.dataset.anchor];
+    const anchor = anchorSet[el.dataset.anchor];
     if (!anchor || !calloutsVisible) {
       el.hidden = true;
       continue;
@@ -195,6 +234,7 @@ wireframeButton.addEventListener('click', () => {
   const enabled = wireframeButton.getAttribute('aria-pressed') !== 'true';
   wireframeButton.setAttribute('aria-pressed', String(enabled));
   for (const material of materials) material.wireframe = enabled;
+  if (auriga) auriga.setWireframe(enabled);
 });
 
 calloutsButton.addEventListener('click', () => {
