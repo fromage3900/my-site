@@ -1,6 +1,6 @@
 # Product Motion Lab — Evidence
 
-**Status:** SOURCE CANONICAL / BLENDER + RUNTIME VERIFY  
+**Status:** GLB GENERATED + CHECKER PASS / BROWSER RUNTIME STILL OWED  
 **Date:** 2026-09-10
 
 ## Canonical source on `my-site/main`
@@ -13,7 +13,26 @@ The product lane no longer depends on an unpushed agent workspace. The reusable 
 - `package.json` — local ES-module declaration and JS syntax-check command;
 - existing `index.html` / `app.js` — bounded Product Motion Lab shell and procedural fallback proof.
 
-The builder, checker and loader source have been syntax-validated and are committed. This does **not** mean a generated GLB or browser runtime proof already exists.
+The builder, checker and loader source have been syntax-validated and are committed. **As of 2026-09-10 the generated GLB also exists and passes its checker** — see "Generated artifact" below. Browser runtime proof (load, scrub, captures) is still owed.
+
+## Generated artifact — observed 2026-09-10
+
+Produced with Blender 5.2.1 after fixing a real build break: `build_auriga_meter.py` called `obj.animation_data.action.fcurves`, which Blender >= 4.4 removed in favour of slotted actions (`action.layers[*].strips[*].channelbags[*].fcurves`). The build had therefore never once completed. Headless runs also require `--factory-startup` with an isolated `BLENDER_USER_CONFIG`, or a second instance hangs on the shared config.
+
+```text
+assets/auriga_meter.glb            195,920 bytes
+assets/auriga_meter.manifest.json  sidecar
+CHECK_OK
+  anchors          ANCHOR_hinge, ANCHOR_port, ANCHOR_screen   (3/3)
+  animations       3
+  meshes           9
+  nodes            14
+  materials        4
+  triangles_approx 2844
+  generator        Khronos glTF Blender I/O v5.2.40
+```
+
+`app.js` now imports `src/auriga-meter.js` and loads this GLB; before 2026-09-10 it did not, so the asset was unreachable from the page. The page reports load state in `#assetStatus`.
 
 ## Implemented in the existing lab source
 
