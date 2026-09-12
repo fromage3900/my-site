@@ -107,18 +107,59 @@ All 19 entries now carry their measured value. Method note: counts are **file to
 mesh**, which may include LODs or hidden geometry not all rendered at once — that is why they are
 stated as exact integers rather than a "k" figure that implies a render budget.
 
-### Two defects this surfaced, not yet fixed
+### Both defects FIXED — see §7
 
-1. **`violin.obj` and `cello.obj` are 8-triangle stubs** (663 B and 673 B files). They are presented
-   as production instruments. They are placeholders and should be replaced or withdrawn.
-2. **`SM_MelodyToken_Water.fbx` / `SM_MelodyToken_Star.fbx` are ~5M and ~4.3M triangles.** Loading
-   either in a browser is a genuine performance hazard, well outside a sane web budget. Needs
-   decimation before it is shown again.
+1. **`violin.obj` and `cello.obj` were 8-triangle stubs.** Not rough instruments — *the same 8-vertex
+   box three times*, only the object name changed (`Violin_Aoneko`, `Cello_Aoneko`,
+   `Contrabass_Aoneko`; BOOTH placeholder assets, never replaced). Deleted.
+2. **`SM_MelodyToken_Water.fbx` / `SM_MelodyToken_Star.fbx` were ~5M and ~4.3M triangles.** Replaced
+   and decimated — see §7.
 
 ### Also found
 
-`treble-clef` and `violin` exist in the catalog but have **no corresponding button** in
-`realtime-3d-viewer.html`, so they cannot be reached through the UI at all.
+`treble-clef` and `violin` existed in the catalog but had **no corresponding button** in
+`realtime-3d-viewer.html`, so they could not be reached through the UI at all. Buttons added.
+
+---
+
+## 7. Low-poly pass — real candidates found and landed
+
+Every candidate below is a **genuine Melodia asset**, measured in Blender before it was used.
+
+| slot | was | now | source |
+|---|---|---|---|
+| Resonance Violin | 8-tri box | **4,332 tris** | `SM_VIOLIN_BELL_RELIQUARY.fbx` |
+| Cathedral Cello | 8-tri box | **6,784 tris** | `SM_LUTE_PELAGIC_VAULT.fbx` — relabelled **Pelagic Vault Lute**, because it is a lute, not a cello |
+| Water Melody Token | 5,015,040 tris | **192 tris** | `SM_Orn_MelodyToken_Water.obj` (already in-repo, unreferenced) |
+| Star Melody Token | 4,278,450 tris | **6,000 tris** | decimated from source, 713× lighter, 77 MB → 0.17 MB |
+
+The heavier triple-A instruments were measured too and left in place for now —
+`SM_ORGAN_ABYSSAL_CATHEDRAL` (11,024) and `SM_HARPSICHORD_SEA_ABOVE_HERO` (31,082) are within a
+workable web budget and make good future slots.
+
+**Also deleted:** the two heavy source FBX files (87 MB + 77 MB) after confirming zero remaining
+references. **164 MB removed** from the repo.
+
+### The texture gap — five of fourteen assets had no textures
+
+Found by clicking every asset and watching the network. Their FBX files reference sibling `.png`
+files that were never committed, on **live as well as locally**: `prop-fountain` alone wanted **34**
+missing textures, `zundamon` 6, `prop-harp` and `prop-trident` 4 each, `sir-melodious` 2.
+
+The sources existed at `EnvironmentPortfolio/Imports/KitBash3D_Atlantis/Source/Textures 4K/` —
+**471 MB of 4K PNG**, which cannot be shipped to a browser. Downscaled to 512px PNG under the exact
+filenames the loaders request (the extension must stay `.png`):
+
+```
+471 MB of 4K source  ->  49 textures, 12.2 MB shipped
+```
+
+The two `M_Iris_Back_*` files had no exact source; the project's equivalent assets are
+`T_Melusina_IrisBack_BC.png` / `_Emission.png`, which were substituted. Pipeline:
+`tools/fromage-webgl-kit/scripts/verify/downscale_textures.py`.
+
+**Result: 0 failures across all 14 assets**, down from 5.
+
 
 ---
 
