@@ -1,110 +1,91 @@
 # Procedural Industrial System Loop
 
-**Status:** SOURCE IMPLEMENTED / RUNTIME VERIFY REQUIRED  
-**Authority:** `../../KIMI_PROTOTYPE_BATCH_2026-09-10.md` — Prototype C.
+**Status:** ARCHIVED REUSABLE PROOF / NOT AN ACTIVE STRIKE
 
-Clean-room Three.js proof for procedural industrial presentation, deterministic mechanical motion, and solver-inspired visualization styling.
+This clean-room Three.js prototype remains useful evidence for deterministic browser animation, procedural composition, capture discipline and restrained technical presentation. The original high-value Upwork listing that motivated it is no longer active; no proposal/application state is maintained here.
 
-This prototype exists to support the current paid-problem / commercial-proof lane. It is not an engineering simulator and does not use client CAD or client IP.
+## What is proven
 
-## Run locally
+The current browser build was sanity-checked on a real GPU-backed Chrome session.
 
-Serve `my-site` from a local HTTP server; do not open the page through `file://` because ES-module imports require HTTP(S).
-
-Example from repository root:
-
-```bash
-python -m http.server 8080
-```
-
-Then open:
+Observed on the checked build:
 
 ```text
-http://localhost:8080/tools/fromage-webgl-kit/prototypes/procedural-industrial-loop/
+loopDelta      0
+canonical seed 1
+draw calls     110
+triangles      74,030
+geometries     54
+blocking console errors 0
 ```
 
-## What the source intends to prove
+The project contains a deterministic 16-second absolute-time mechanical loop, three seeded layout variants, fixed-camera presentation, capture-state URLs and BASE / STRUCTURAL / FLOW / THERMAL component-coding views.
 
-- deterministic 16-second timeline;
-- absolute-time sampling rather than accumulated transform state;
-- one-axis-at-a-time mechanical motion;
-- constant-speed motion segments with hard holds;
-- exact return to the starting pose at the loop boundary;
-- three deterministic procedural seeds;
-- fixed-camera art-directed composition;
-- restrained base materials;
-- illustrative `STRUCTURAL`, `FLOW`, and `THERMAL` display modes;
-- desktop/mobile responsive presentation;
-- renderer diagnostics.
+**Important truth boundary:** Structural / Flow / Thermal are illustrative per-component colour codings. They are **not** FEA, CFD, thermal simulation, solver output or spatial data fields.
 
-The reusable motion logic lives at:
+## Evidence retained
+
+`evidence/` contains the useful proof artifacts rather than proposal paperwork:
+
+- `industrial_loop_base_16s.mp4` — 16-second H.264 loop;
+- `industrial_base_hero.png`;
+- `industrial_structural.png`;
+- `industrial_flow.png`;
+- `industrial_thermal.png`;
+- `attachment_capture_log.json` — machine-readable capture record.
+
+These artifacts are reusable capability evidence for future procedural/technical-presentation work.
+
+## Runtime design
+
+The motion schedule is intentionally simple and deterministic:
+
+```text
+00–02  Station A translate +X
+02–04  Station B rotate +Y
+04–06  Station C translate +Y
+06–08  hold
+08–10  Station C reverse
+10–12  Station B reverse
+12–14  Station A reverse
+14–16  hold / loop boundary
+```
+
+Pose is sampled from absolute timeline time rather than accumulated frame motion. Reusable timeline logic lives at:
 
 `../../src/animation/createDeterministicTimeline.js`
 
-## Runtime QA gate
+## Run locally
 
-Do not mark this prototype PASS until all of the following have been observed in a real browser session:
+Serve the repo over HTTP, then open:
 
-1. page loads with no uncaught console error;
-2. all three seeds render;
-3. all four visualization modes work;
-4. timeline can scrub to arbitrary times and back without drift;
-5. `0.00s` and `16.00s` are visually identical;
-6. displayed `LOOP Δ` is `0.000000`;
-7. no two independent mechanical actions visibly move during the same active segment;
-8. pause/play/reset remain deterministic;
-9. phone-width layout remains usable;
-10. reduced-motion mode starts paused;
-11. diagnostics report plausible nonzero render stats;
-12. no misleading engineering-simulation claim appears in the UI.
+```text
+/tools/fromage-webgl-kit/prototypes/procedural-industrial-loop/
+```
 
-## Visual polish gate
+Useful deterministic capture form:
 
-Only after runtime QA:
+```text
+?capture=1&seed=1&mode=base&t=4
+```
 
-- judge silhouette/readability at desktop capture size;
-- reduce visual clutter before adding detail;
-- improve proportions of the modular station if it reads as placeholder geometry;
-- keep the camera fixed unless the buyer proof explicitly requires otherwise;
-- preserve the light-grey engineering presentation;
-- use visualization color only to encode state;
-- prefer hierarchy, spacing, rhythm, and material response over decorative detail.
+## Reuse boundary
 
-## Evidence gate
+Good future claims:
 
-Capture:
+- deterministic mechanical browser animation;
+- seeded procedural composition;
+- fixed-camera art direction;
+- repeatable capture/state control;
+- realtime WebGL delivery awareness.
 
-- base-mode hero still;
-- one full 16-second loop;
-- stills of Structural / Flow / Thermal;
-- one image containing Seeds 01 / 02 / 03 or three clearly labelled stills;
-- diagnostics at desktop width;
-- phone-width proof;
-- console-clean proof if practical.
+Do not claim from this proof alone:
 
-Record actual values in `EVIDENCE.md`. Never backfill guessed FPS, triangles, draw calls, encoded file size, or browser results.
+- client CAD import/cleanup;
+- engineering simulation/solver integration;
+- real structural/flow/thermal computation;
+- ProRes delivery;
+- AV1/VP9 byte-budget guarantees;
+- a specific buyer’s production requirements.
 
-## Commercial mapping
-
-See `LISTING_10000_EVIDENCE.md` for the current buyer-facing requirement map.
-
-This clean-room demo may demonstrate:
-
-- following strict motion-law direction;
-- system-driven/procedural animation thinking;
-- constrained industrial art direction;
-- real-time Three.js delivery awareness;
-- deterministic state/timeline control.
-
-It does **not** prove, until separately executed:
-
-- import/cleanup of supplied CAD;
-- Houdini-to-web interchange;
-- ProRes master delivery;
-- 2560×1080 final render delivery;
-- AV1/VP9 encoding below a specified byte budget;
-- real FEA, CFD, thermal, structural, or other engineering computation.
-
-## Scope boundary
-
-Do not turn this proof into a CAD platform, physics simulator, engineering solver, terrain system, or public-site redesign. If runtime proof is clean, the next action is evidence + proposal preparation, not feature expansion.
+Do not expand this prototype unless a qualified paid lead specifically requires a missing capability. Git history preserves the original proposal/strike paperwork if it is ever needed for archaeology.
