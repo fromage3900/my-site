@@ -119,14 +119,14 @@
       polyCount: '334,712 Tris'
     },
     'melusina-hero': {
-      name: 'Melusina (Full Production Rig & Wardrobe)',
+      name: 'Melusina (Full Wardrobe — Static Preview)',
       category: 'Characters & Companions',
       type: 'fbx',
-      path: 'models/SK_Melusina_FullRig_Production.fbx',
+      path: 'models/SK_Melusina_FullRig_Viewer.fbx',
       defaultFabric: 'MelusinaShirt',
       scale: 0.012,
       rotSpeed: 0.005,
-      polyCount: '95,388 Tris'
+      polyCount: '30,230 Tris'
     },
     'sir-melodious': {
       name: 'Sir Melodious (Full Clothed Production)',
