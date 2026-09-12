@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="description" content="Internal editorial product-viewer proof for an original web-ready eyewear/accessory asset." />
+  <title>Accessory Atelier — Web Product Study</title>
+  <link rel="stylesheet" href="../../../wix/melodia-tokens.css" />
+  <link rel="stylesheet" href="../../../wix/melodia-luxury-type.css" />
+  <style>
+    :root {
+      --paper: #f4f1eb;
+      --paper-deep: #ebe5dc;
+      --ink: #171616;
+      --muted: #756f68;
+      --line: rgba(23, 22, 22, 0.14);
+      --line-strong: rgba(23, 22, 22, 0.28);
+      --warm: #9b7856;
+      --glass: rgba(255,255,255,.72);
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--paper); color: var(--ink); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 78% 4%, rgba(218, 203, 185, .48), transparent 28rem),
+        linear-gradient(180deg, #f7f4ef 0%, var(--paper) 62%, #eee8df 100%);
+      color: var(--ink);
+      font-family: var(--font-body, Inter, system-ui, sans-serif);
+    }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    .page { width: min(1500px, 100%); margin: 0 auto; padding: 24px 30px 34px; }
+    .masthead {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .brand-mark { width: 7px; height: 7px; border-radius: 999px; background: var(--ink); }
+    .masthead-meta { color: var(--muted); font: 11px/1.3 var(--font-mono, ui-monospace, monospace); letter-spacing: .08em; text-transform: uppercase; }
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr);
+      gap: clamp(32px, 7vw, 120px);
+      align-items: end;
+      padding: clamp(48px, 8vw, 108px) 0 34px;
+    }
+    .eyebrow { margin: 0 0 12px; color: var(--warm); font: 11px/1.2 var(--font-mono, ui-monospace, monospace); letter-spacing: .18em; text-transform: uppercase; }
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-family: var(--font-display, Georgia, serif);
+      font-size: clamp(52px, 8.6vw, 132px);
+      font-weight: 450;
+      letter-spacing: -.055em;
+      line-height: .86;
+    }
+    .intro-copy { max-width: 520px; margin: 0; color: #57524c; font-size: clamp(15px, 1.5vw, 19px); line-height: 1.65; }
+    .proof-line { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .proof-chip { border: 1px solid var(--line); border-radius: 999px; padding: 7px 10px; background: rgba(255,255,255,.28); color: #4f4a45; font-size: 11px; letter-spacing: .05em; }
+    .atelier {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .stage-shell {
+      position: relative;
+      min-height: 650px;
+      height: min(72vh, 850px);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: #e9e5df;
+      box-shadow: 0 24px 70px rgba(61, 51, 43, .09);
+    }
+    .stage { position: absolute; inset: 0; }
+    .stage canvas { width: 100%; height: 100%; display: block; }
+    .stage-topline {
+      position: absolute;
+      z-index: 4;
+      top: 20px;
+      left: 22px;
+      right: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      pointer-events: none;
+    }
+    .stage-label, .stage-status {
+      padding: 7px 10px;
+      border: 1px solid rgba(23,22,22,.12);
+      border-radius: 999px;
+      background: rgba(249,247,243,.72);
+      backdrop-filter: blur(16px);
+      color: #4d4945;
+      font: 10px/1.2 var(--font-mono, ui-monospace, monospace);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .empty-state {
+      position: absolute;
+      z-index: 3;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 36px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 45%, rgba(255,255,255,.85), rgba(230,225,217,.72));
+    }
+    .empty-state[hidden] { display: none; }
+    .empty-card { max-width: 450px; }
+    .empty-card strong { display: block; margin-bottom: 9px; font-family: var(--font-display, Georgia, serif); font-size: clamp(26px, 4vw, 46px); font-weight: 450; letter-spacing: -.035em; }
+    .empty-card p { margin: 0; color: var(--muted); line-height: 1.6; }
+    .panel {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      padding: 26px 24px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(250,248,244,.7);
+      backdrop-filter: blur(18px);
+    }
+    .panel-head { padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+    .panel-head h2 { margin: 0 0 8px; font-family: var(--font-display, Georgia, serif); font-size: 29px; font-weight: 450; letter-spacing: -.03em; }
+    .panel-head p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .control-group { display: grid; gap: 10px; }
+    .control-title { color: #5f5953; font: 10px/1.2 var(--font-mono, ui-monospace, monospace); letter-spacing: .16em; text-transform: uppercase; }
+    .choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .choice {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255,255,255,.44);
+      padding: 9px 10px;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color .16s ease, background .16s ease, transform .16s ease;
+      font-size: 12px;
+    }
+    .choice:hover { border-color: var(--line-strong); transform: translateY(-1px); }
+    .choice[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #f8f5f0; }
+    .choice:disabled { opacity: .38; cursor: not-allowed; transform: none; }
+    .choice.swatch { display: flex; align-items: center; gap: 8px; }
+    .dot { width: 13px; height: 13px; border-radius: 50%; border: 1px solid rgba(0,0,0,.18); flex: 0 0 auto; }
+    .dot.obsidian { background: #161618; }
+    .dot.tea { background: #76513f; }
+    .dot.sea { background: #b9d4ce; }
+    .dot.pearl { background: #ddd1df; }
+    .diag {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      white-space: pre-line;
+      color: #6a645e;
+      font: 10px/1.6 var(--font-mono, ui-monospace, monospace);
+    }
+    .below {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .6fr);
+      gap: 24px;
+      padding: 28px 0 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    .below h3 { margin: 0 0 8px; font-family: var(--font-display, Georgia, serif); font-size: 24px; font-weight: 450; }
+    .below p { margin: 0; color: var(--muted); line-height: 1.6; }
+    .technical-link { justify-self: end; align-self: center; text-underline-offset: 4px; color: #4e4943; font-size: 13px; }
+    .footer { display: flex; justify-content: space-between; gap: 24px; padding-top: 18px; color: var(--muted); font-size: 11px; }
+    @media (max-width: 980px) {
+      .page { padding: 18px; }
+      .intro { grid-template-columns: 1fr; gap: 22px; padding-top: 54px; }
+      .atelier { grid-template-columns: 1fr; }
+      .stage-shell { min-height: 480px; height: 62vh; }
+      .panel { display: grid; grid-template-columns: 1fr 1fr; }
+      .panel-head, .diag { grid-column: 1 / -1; }
+    }
+    @media (max-width: 620px) {
+      .masthead-meta { display: none; }
+      h1 { font-size: clamp(48px, 18vw, 78px); }
+      .stage-shell { min-height: 390px; height: 55vh; border-radius: 20px; }
+      .panel { grid-template-columns: 1fr; border-radius: 20px; }
+      .panel-head, .diag { grid-column: auto; }
+      .below { grid-template-columns: 1fr; }
+      .technical-link { justify-self: start; }
+      .footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .choice { transition: none; }
+    }
+  </style>
+  <script type="importmap">
+  {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js"}}
+  </script>
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <a class="brand" href="../../../wix/index.html"><span class="brand-mark" aria-hidden="true"></span><span>Brennan Shepherd</span></a>
+      <div class="masthead-meta">Web-ready 3D / product presentation</div>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Accessory Atelier · Original product study</p>
+        <h1 id="page-title">Frame, finish, light.</h1>
+      </div>
+      <div>
+        <p class="intro-copy">A restrained realtime study for premium eyewear and small accessories: original modelling, physically based finish direction, web-ready GLB delivery, responsive orbit presentation, and close-up material inspection.</p>
+        <div class="proof-line" aria-label="Technical proof points">
+          <span class="proof-chip">Blender → GLB</span>
+          <span class="proof-chip">Three.js</span>
+          <span class="proof-chip">PBR finish variants</span>
+          <span class="proof-chip">Responsive WebGL</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="atelier" aria-label="Accessory product viewer">
+      <div class="stage-shell">
+        <div id="stage" class="stage" aria-label="Interactive realtime accessory viewport"></div>
+        <div class="stage-topline">
+          <span class="stage-label">Original eyewear study</span>
+          <span id="stageStatus" class="stage-status" aria-live="polite">Checking asset…</span>
+        </div>
+        <div id="emptyState" class="empty-state">
+          <div class="empty-card">
+            <strong>Viewer shell ready.</strong>
+            <p>The editorial presentation, finish system, camera studies and WebGL runtime are compiled. Drop the authored eyewear GLB into the expected asset slot and this page becomes the final product proof.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel" aria-label="Accessory presentation controls">
+        <div class="panel-head">
+          <p class="eyebrow">Realtime finish study</p>
+          <h2>Editorial eyewear</h2>
+          <p>One authored frame, several finish directions. Variant controls are intentionally material-only so the proof stays bounded.</p>
+        </div>
+
+        <div class="control-group">
+          <span class="control-title">Frame finish</span>
+          <div class="choice-grid">
+            <button class="choice swatch" data-finish="obsidian" type="button" aria-pressed="true"><span class="dot obsidian"></span>Obsidian</button>
+            <button class="choice swatch" data-finish="tea" type="button" aria-pressed="false"><span class="dot tea"></span>Tea acetate</button>
+            <button class="choice swatch" data-finish="sea" type="button" aria-pressed="false"><span class="dot sea"></span>Sea glass</button>
+            <button class="choice swatch" data-finish="pearl" type="button" aria-pressed="false"><span class="dot pearl"></span>Pearl mauve</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-title">Lens</span>
+          <div class="choice-grid">
+            <button class="choice" data-lens="clear" type="button" aria-pressed="true">Clear</button>
+            <button class="choice" data-lens="smoke" type="button" aria-pressed="false">Smoke</button>
+            <button class="choice" data-lens="rose" type="button" aria-pressed="false">Rose</button>
+            <button class="choice" data-lens="cool" type="button" aria-pressed="false">Cool blue</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-title">View</span>
+          <div class="choice-grid">
+            <button class="choice" data-view="hero" type="button" aria-pressed="true">Hero 3/4</button>
+            <button class="choice" data-view="front" type="button" aria-pressed="false">Front</button>
+            <button class="choice" data-view="hinge" type="button" aria-pressed="false">Hinge</button>
+            <button class="choice" data-view="bridge" type="button" aria-pressed="false">Bridge / lens</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-title">Inspection</span>
+          <div class="choice-grid">
+            <button class="choice" data-inspect="beauty" type="button" aria-pressed="true">Beauty</button>
+            <button class="choice" data-inspect="wire" type="button" aria-pressed="false">Wireframe</button>
+            <button class="choice" data-inspect="clay" type="button" aria-pressed="false">Clay</button>
+            <button class="choice" id="rotateToggle" type="button" aria-pressed="true">Auto rotate</button>
+          </div>
+        </div>
+
+        <div id="diagnostics" class="diag" aria-live="polite">Waiting for authored eyewear GLB…</div>
+      </aside>
+    </section>
+
+    <section class="below">
+      <div>
+        <h3>Built on an existing production pipeline.</h3>
+        <p>This presentation reuses the same renderer discipline, GLB delivery patterns, responsive QA thinking, and material-inspection language already developed across the portfolio. The only bespoke art requirement is the accessory itself.</p>
+      </div>
+      <a class="technical-link" href="../../../wix/realtime-3d-viewer.html">Open the technical PBR asset viewer ↗</a>
+    </section>
+
+    <footer class="footer">
+      <span>Original accessory study · no client product or branding reproduced.</span>
+      <span>Internal Treasury proof · noindex until owner review.</span>
+    </footer>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
