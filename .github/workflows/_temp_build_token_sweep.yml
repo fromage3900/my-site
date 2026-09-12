@@ -81,6 +81,10 @@ jobs:
           if old not in hist:
               raise SystemExit('Historical site audit no longer preserves its original build token')
           print(f'OK: {total} replacements across {len(targets)} live/current files; historical audit preserved')
+      - name: Build validation-only art derivatives
+        run: |
+          python -m pip install pillow
+          python tools/build_curated_art_derivatives.py
       - name: Validate portfolio contract
         shell: pwsh
         run: ./tools/validate_portfolio.ps1
