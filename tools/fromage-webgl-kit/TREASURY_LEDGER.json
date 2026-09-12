@@ -4,7 +4,7 @@
   "status": "INITIALISED / ZERO ENTRIES",
   "authority": {
     "entry_schema": "FIRST_20.md -> section 'Treasury entry'",
-    "pool_model": "Docs/Strategy/PAID_PROBLEM_RADAR_BUILD_NOW_2026-09-10.md (MelodiaMelusinaV2) -> section 'Token treasury model'",
+    "pool_model": "strategy/PAID_PROBLEM_RADAR_BUILD_NOW_2026-09-10.md -> section 'Token treasury model' (moved here from MelodiaMelusinaV2 Docs/Strategy on 2026-09-10)",
     "first_gate": "FIRST_20.md -> section 'Definition of success'",
     "note": "This file exists because the schema was defined in prose and had no artifact anywhere. It records nothing until a real payment occurs. Do not add speculative rows."
   },

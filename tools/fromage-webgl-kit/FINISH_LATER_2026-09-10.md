@@ -3,7 +3,7 @@
 **Date:** 2026-09-10  
 **Purpose:** preserve the exact continuation state for later Kimi/Cursor/owner sessions without reopening planning or duplicating work.
 
-This queue is subordinate to `CAPSTONE_NOW.md` in the main Melodia repository. The WebGL revenue lane should remain compact and opportunistic.
+This queue is subordinate to `CURRENT_STATE.md` (owner queue, §4) in the main Melodia repository. The WebGL revenue lane should remain compact and opportunistic.
 
 ## Current commercial objective
 
