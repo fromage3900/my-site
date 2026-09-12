@@ -14,4 +14,10 @@ __pycache__/
 # Raw Blender frame dumps (exceed Pages 1GB limit, not referenced by site)
 generated/assets/character/melusina_glam_audvis_001.png*.png
 generated/assets/**/*[0-9][0-9][0-9][0-9].png
-wix/models/
+
+# NOTE: wix/models/ is deliberately NOT ignored.
+# It was ignored until 2026-09-11, which silently excluded every new model and texture
+# added there. That is exactly why 49 textures referenced by the viewer's FBX files were
+# never committed and five of fourteen assets rendered untextured on the live site.
+# The directory holds the site's real 3D assets, is served by GitHub Pages, and its
+# current size (149 MB) is well inside the 1 GB Pages limit. Do not re-add this rule.

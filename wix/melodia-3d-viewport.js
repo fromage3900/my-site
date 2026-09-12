@@ -71,24 +71,24 @@
       polyCount: '21,558 Tris'
     },
     'violin': {
-      name: 'Resonance Violin',
+      name: 'Resonance Violin (Bell Reliquary)',
       category: 'Interactive Instruments',
-      type: 'obj',
-      path: 'models/violin.obj',
+      type: 'fbx',
+      path: 'models/SM_VIOLIN_BELL_RELIQUARY.fbx',
       defaultFabric: 'GildedBrocade',
-      scale: 2.2,
+      scale: 0.015,
       rotSpeed: 0.006,
-      polyCount: '8 Tris'
+      polyCount: '4,332 Tris'
     },
     'cello': {
-      name: 'Cathedral Cello',
+      name: 'Pelagic Vault Lute',
       category: 'Interactive Instruments',
-      type: 'obj',
-      path: 'models/cello.obj',
+      type: 'fbx',
+      path: 'models/SM_LUTE_PELAGIC_VAULT.fbx',
       defaultFabric: 'GildedBrocade',
-      scale: 1.8,
+      scale: 0.015,
       rotSpeed: 0.006,
-      polyCount: '8 Tris'
+      polyCount: '6,784 Tris'
     },
     'stone-pillar': {
       name: 'Cathedral Stone Pillar',
@@ -149,24 +149,24 @@
       polyCount: '34,820 Tris'
     },
     'melody-token-water': {
-      name: 'Sacred Water Melody Token (Production)',
+      name: 'Sacred Water Melody Token',
       category: 'Sacred Ornaments',
-      type: 'fbx',
-      path: 'models/SM_MelodyToken_Water.fbx',
+      type: 'obj',
+      path: 'models/SM_Orn_MelodyToken_Water.obj',
       defaultFabric: 'GildedBrocade',
-      scale: 0.015,
+      scale: 1.2,
       rotSpeed: 0.006,
-      polyCount: '5,015,040 Tris'
+      polyCount: '192 Tris'
     },
     'melody-token-star': {
-      name: 'Astral Star Melody Token (Production)',
+      name: 'Astral Star Melody Token',
       category: 'Sacred Ornaments',
       type: 'fbx',
-      path: 'models/SM_MelodyToken_Star.fbx',
+      path: 'models/SM_MelodyToken_Star_Web.fbx',
       defaultFabric: 'GoldEmbroidery',
       scale: 0.015,
       rotSpeed: 0.006,
-      polyCount: '4,278,450 Tris'
+      polyCount: '6,000 Tris'
     },
     'prop-harp': {
       name: 'Cathedral Sacred Harp (Production)',
