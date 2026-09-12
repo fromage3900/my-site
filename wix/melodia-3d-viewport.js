@@ -19,7 +19,7 @@
       defaultFabric: 'RoyalVelvet',
       scale: 1.0,
       rotSpeed: 0.005,
-      polyCount: '4.6k Tris'
+      polyCount: '4,608 Tris'
     },
     'fabric-drape': {
       name: 'Haute Couture Draped Swatch',
@@ -29,7 +29,7 @@
       defaultFabric: 'GildedBrocade',
       scale: 1.0,
       rotSpeed: 0.003,
-      polyCount: '3.2k Tris'
+      polyCount: '3,200 Tris'
     },
     'treble-clef': {
       name: 'Melodia Treble Clef Ornament',
@@ -39,7 +39,7 @@
       defaultFabric: 'GoldEmbroidery',
       scale: 1.1,
       rotSpeed: 0.008,
-      polyCount: '2.5k Tris'
+      polyCount: '2,528 Tris'
     },
     'torus-knot': {
       name: 'Harmonic Torus Knot',
@@ -49,7 +49,7 @@
       defaultFabric: 'CelestialWeave',
       scale: 0.85,
       rotSpeed: 0.006,
-      polyCount: '7.6k Tris'
+      polyCount: '7,680 Tris'
     },
     'melody-token': {
       name: 'Sacred Water Melody Token',
@@ -59,7 +59,7 @@
       defaultFabric: 'GildedBrocade',
       scale: 1.2,
       rotSpeed: 0.007,
-      polyCount: '384 Tris'
+      polyCount: '192 Tris'
     },
     'grand-piano': {
       name: 'Atelier Grand Piano',
@@ -68,7 +68,7 @@
       path: 'models/grand_piano.glb',
       scale: 0.015,
       rotSpeed: 0.004,
-      polyCount: '48.2k Tris'
+      polyCount: '21,558 Tris'
     },
     'violin': {
       name: 'Resonance Violin',
@@ -78,7 +78,7 @@
       defaultFabric: 'GildedBrocade',
       scale: 2.2,
       rotSpeed: 0.006,
-      polyCount: '1.2k Tris'
+      polyCount: '8 Tris'
     },
     'cello': {
       name: 'Cathedral Cello',
@@ -88,7 +88,7 @@
       defaultFabric: 'GildedBrocade',
       scale: 1.8,
       rotSpeed: 0.006,
-      polyCount: '1.2k Tris'
+      polyCount: '8 Tris'
     },
     'stone-pillar': {
       name: 'Cathedral Stone Pillar',
@@ -97,7 +97,7 @@
       path: 'models/pillar_stone.glb',
       scale: 1.2,
       rotSpeed: 0.005,
-      polyCount: '850 Tris'
+      polyCount: '124 Tris'
     },
     'fountain': {
       name: 'Grotto Stone Fountain',
@@ -106,17 +106,17 @@
       path: 'models/fountain_round.glb',
       scale: 1.0,
       rotSpeed: 0.004,
-      polyCount: '4.8k Tris'
+      polyCount: '1,002 Tris'
     },
     'melusina-shirt': {
-      name: 'Melusina (Updated Hero Shirt)',
+      name: 'Melusina (Production Wardrobe)',
       category: 'Characters & Companions',
       type: 'fbx',
-      path: 'models/UpdatedShirt.fbx',
+      path: 'models/SK_Melusina_Clothes_Production.fbx',
       defaultFabric: 'MelusinaShirt',
       scale: 0.015,
       rotSpeed: 0.005,
-      polyCount: '14.2k Tris'
+      polyCount: '334,712 Tris'
     },
     'melusina-hero': {
       name: 'Melusina (Full Production Rig & Wardrobe)',
@@ -126,7 +126,7 @@
       defaultFabric: 'MelusinaShirt',
       scale: 0.012,
       rotSpeed: 0.005,
-      polyCount: '79.3k Tris'
+      polyCount: '95,388 Tris'
     },
     'sir-melodious': {
       name: 'Sir Melodious (Full Clothed Production)',
@@ -136,7 +136,7 @@
       defaultFabric: 'GildedBrocade',
       scale: 0.015,
       rotSpeed: 0.006,
-      polyCount: '24.2k Tris'
+      polyCount: '374,656 Tris'
     },
     'zundamon': {
       name: 'Zundamon (Companion NPC)',
@@ -146,7 +146,7 @@
       defaultFabric: 'CelestialWeave',
       scale: 0.015,
       rotSpeed: 0.005,
-      polyCount: '12.4k Tris'
+      polyCount: '34,820 Tris'
     },
     'melody-token-water': {
       name: 'Sacred Water Melody Token (Production)',
@@ -156,7 +156,7 @@
       defaultFabric: 'GildedBrocade',
       scale: 0.015,
       rotSpeed: 0.006,
-      polyCount: '90.4k Tris'
+      polyCount: '5,015,040 Tris'
     },
     'melody-token-star': {
       name: 'Astral Star Melody Token (Production)',
@@ -166,7 +166,7 @@
       defaultFabric: 'GoldEmbroidery',
       scale: 0.015,
       rotSpeed: 0.006,
-      polyCount: '80.6k Tris'
+      polyCount: '4,278,450 Tris'
     },
     'prop-harp': {
       name: 'Cathedral Sacred Harp (Production)',
@@ -176,7 +176,7 @@
       defaultFabric: 'GildedBrocade',
       scale: 0.012,
       rotSpeed: 0.005,
-      polyCount: '24.5k Tris'
+      polyCount: '76,228 Tris'
     },
     'prop-fountain': {
       name: 'Atlantis Classical Fountain (Production)',
@@ -186,7 +186,7 @@
       defaultFabric: 'RoyalVelvet',
       scale: 0.012,
       rotSpeed: 0.004,
-      polyCount: '14.8k Tris'
+      polyCount: '31,332 Tris'
     },
     'prop-trident': {
       name: 'Triton Sacred Trident (Production)',
@@ -196,7 +196,7 @@
       defaultFabric: 'GoldEmbroidery',
       scale: 0.015,
       rotSpeed: 0.006,
-      polyCount: '6.2k Tris'
+      polyCount: '14,448 Tris'
     }
   };
 
@@ -507,6 +507,46 @@
     return this.textureCache[url];
   };
 
+  // Channel isolation for ORM inspection.
+  //
+  // A packed ORM map stores occlusion in R, roughness in G and metalness in B.
+  // Rendering that texture through MeshBasicMaterial - which is what these three modes
+  // used to do - shows all three channels at once and isolates nothing. `metallic` was
+  // worse: a flat grey MeshBasicMaterial with no texture bound at all.
+  //
+  // This samples ONE channel and writes it out as greyscale, so the mode shows what its
+  // label claims.
+  Melodia3DViewer.prototype.createChannelMaterial = function (tex, channel) {
+    var sample = 'texture2D(map, vUv).' + (channel === 'g' || channel === 'b' ? channel : 'r');
+    return new THREE.ShaderMaterial({
+      uniforms: { map: { value: tex } },
+      vertexShader: [
+        'varying vec2 vUv;',
+        'void main() {',
+        '  vUv = uv;',
+        '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);',
+        '}'
+      ].join('\n'),
+      fragmentShader: [
+        'uniform sampler2D map;',
+        'varying vec2 vUv;',
+        'void main() {',
+        '  float v = ' + sample + ';',
+        '  gl_FragColor = vec4(vec3(v), 1.0);',
+        '}'
+      ].join('\n'),
+      side: THREE.DoubleSide
+    });
+  };
+
+  // Flat fallback when a fabric has no ORM map: the mode cannot isolate a channel that
+  // does not exist, so show a neutral value rather than a misleading texture.
+  Melodia3DViewer.prototype.createFlatChannelMaterial = function (value) {
+    return new THREE.MeshBasicMaterial({
+      color: new THREE.Color(value, value, value)
+    });
+  };
+
   Melodia3DViewer.prototype.createMaterialForMode = function (fabricKey, mode) {
     var f = FABRIC_SETS[fabricKey] || FABRIC_SETS['RoyalVelvet'];
     var bcTex = f.bc ? this.getTexture(f.bc) : null;
@@ -528,22 +568,24 @@
           normalScale: new THREE.Vector2(1.0, 1.0)
         });
 
+      // Packed ORM: R = occlusion, G = roughness, B = metalness.
+      // Each mode now isolates exactly one channel. The fallback when a fabric has no ORM
+      // map is a flat neutral value - never another channel's data, which is what the old
+      // `ao` case did by falling back to the base-colour map.
       case 'roughness':
-        return new THREE.MeshBasicMaterial({
-          map: ormTex,
-          color: new THREE.Color(f.roughnessMult, f.roughnessMult, f.roughnessMult)
-        });
+        return ormTex
+          ? this.createChannelMaterial(ormTex, 'g')
+          : this.createFlatChannelMaterial(0.5);
 
       case 'metallic':
-        return new THREE.MeshBasicMaterial({
-          color: new THREE.Color(f.metalMult, f.metalMult, f.metalMult)
-        });
+        return ormTex
+          ? this.createChannelMaterial(ormTex, 'b')
+          : this.createFlatChannelMaterial(0.0);
 
       case 'ao':
-        return new THREE.MeshBasicMaterial({
-          map: ormTex || bcTex,
-          color: 0xcccccc
-        });
+        return ormTex
+          ? this.createChannelMaterial(ormTex, 'r')
+          : this.createFlatChannelMaterial(1.0);
 
       case 'clay':
         return new THREE.MeshStandardMaterial({

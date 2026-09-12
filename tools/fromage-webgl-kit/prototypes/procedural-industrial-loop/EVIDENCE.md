@@ -18,8 +18,8 @@ The current source includes:
 - Shared BODY / SHELL / ACCENT / MACHINE / ACTUATOR material families.
 - RoomEnvironment reflection response, ACES tone mapping, restrained studio lighting, and limited soft shadow casting.
 - Rounded fabricated housings plus sparse collars, service trays, feet, brackets/fastener cues.
-- BASE / STRUCTURAL / FLOW / THERMAL modes; color is reserved for information-bearing visualization modes.
-- Structural / Flow / Thermal fields remain illustrative, not FEA/CFD/thermal simulation.
+- BASE / STRUCTURAL / FLOW / THERMAL modes; colour is assigned per component by the active mode, not sampled from a spatial field.
+- Structural / Flow / Thermal are illustrative component colour treatments — not FEA/CFD/thermal simulation, and not data fields. Each mode is a five-colour palette (`app.js:256-258`); every part is one flat colour per mode. Described as "component coding", never as a "field".
 - Deterministic capture-state query contract, for example:
   - `?capture=1&seed=1&mode=base&t=4`
   - `?capture=1&seed=1&mode=structural&t=5.2`
