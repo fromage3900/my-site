@@ -55,13 +55,15 @@
     "wix/curated-art.css",
     "wix/melodia-editorial.css",
     "wix/melodia-mahou-flourish.css",
-    "wix/melodia-recruiter-hardening.css"
+    "wix/melodia-recruiter-hardening.css",
+    ".gitignore"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
     "generated/assets/unreal/",
     "generated/optimized/curated-art/",
-    "tools/fromage-webgl-kit/"
+    "tools/fromage-webgl-kit/",
+    "wix/models/"
   ],
   "blocked_by_default": [
     "new public pages",
@@ -184,6 +186,22 @@
         "no public route, layout, copy, style, or visual-system change",
         "no automatic Unreal portfolio data refresh",
         "no weakening of validation or freeze verification"
+      ]
+    },
+    {
+      "id": "viewer-asset-integrity-2026-09-11",
+      "reason": "The viewer's FBX files referenced 49 sibling textures and several replacement models that were never committed, so five of fourteen assets rendered untextured on the live site and two token assets carried ~5M triangles. Fixing this requires adding files under wix/models/, which no existing allowlist rule covers.",
+      "scope": [
+        "ship the 49 missing textures the viewer's FBX files already reference (downscaled 471 MB of 4K sources to 12.2 MB at 512px)",
+        "replace two 8-triangle placeholder boxes with real measured Melodia instruments",
+        "replace a 5,015,040-triangle token with the 192-triangle asset already in-repo, and decimate the 4,278,450-triangle star to 6,000",
+        "remove .gitignore's wix/models/ rule, which silently excluded every new asset added there and is the root cause of the missing textures"
+      ],
+      "exclusions": [
+        "no new public routes",
+        "no new visual systems",
+        "no global restyling",
+        "no change to any recruiter-facing copy beyond correcting a false triangle count"
       ]
     }
   ]
