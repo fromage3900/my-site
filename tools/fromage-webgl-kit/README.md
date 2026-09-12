@@ -27,46 +27,55 @@ Every paid job should leave behind at least one of:
 - a reusable performance benchmark;
 - a reusable visual pattern that contains no client/Melodia IP.
 
-## Current strike state — 2026-09-10
+## Current strike state — refreshed 2026-09-11
 
 The active paid-problem experiment is documented in:
 
 - `DIRECT_LISTING_STRIKES_2026-09-10.md` — listing-specific execution briefs;
 - `CUSTOM_ASSET_STRIKE_PACK_2026-09-10.md` — original asset proofs that improve proposal credibility;
 - `LEADS_2026-09-10.md` — scored live-market batch;
-- `FINISH_LATER_2026-09-10.md` — bounded continuation queue.
+- `FINISH_LATER_2026-09-10.md` — bounded continuation queue;
+- `submissions/2026-09-10/` — canonical submission/evidence state for the three current strikes.
 
-Current production order:
-
-```text
-A. Product Motion Lab + original handheld asset
-→ B. Existing fabric/CLO pipeline commercialization proof
-→ C. Procedural Industrial System Loop
-→ measured evidence
-→ human-reviewed proposal
-```
-
-Do not invent a fourth prototype until one of the current strikes reaches proposal-ready evidence.
-
-## Afternoon submission package — 2026-09-10
-
-Submission authority lives under `submissions/2026-09-10/`:
-
-- `AFTERNOON_SUBMISSION_PACK.md` — exact evidence and packaging gate for all three lanes;
-- `FIGMA_MINIMAL_POLISH_BRIEF.md` — shared minimal visual-polish system for covers/evidence sheets;
-- `submission-manifest.json` — machine-readable lane ownership, blockers and ready-to-submit requirements.
-
-If a runtime/capture agent finishes work, update the relevant evidence file and manifest status before adding any new features.
-
-Current owner split:
+The three current strikes remain the only active prototype lanes:
 
 ```text
-Lane A — Product / GLB      Kimi + Brennan visual pass
-Lane B — CLO / Fabric      Brennan + evidence/application packaging
-Lane C — Industrial Loop   Cursor (BASE polish + capture mode)
+A. Product Motion Lab / GLB
+B. Fabric / material consultant proof
+C. Procedural Industrial System Loop
 ```
 
-Figma is a presentation layer only. Use it after real captures exist to normalize hierarchy, annotation, cropping and export; never use it to manufacture metrics, runtime states or client results.
+Do not invent a fourth prototype merely because a new listing category appears. New opportunities should first be attacked by **reusing these proofs and the existing service SKUs**.
+
+## Current interpretation
+
+### Industrial Loop
+
+The prototype is reusable, measured buyer-shaped proof whether or not the original high-value listing is submitted. It demonstrates deterministic browser animation, seeded procedural assembly, capture discipline and technical presentation.
+
+**Owner comfort is a hard gate.** A high-dollar listing is not automatically a good strike. If buyer expectations, claim scope or delivery risk feel unclear, mark the listing **WATCH**, clarify, or decline it. Do not let sunk prototype effort pressure the owner into a commitment.
+
+Do not claim that the current Structural / Flow / Thermal modes are physical simulation fields. They are component-coding presentation modes unless and until real supplied data is mapped.
+
+### Fabric / material proof
+
+The current viewer/debug work supports a strong technical-art/rescue narrative: asset-path repair, packed-ORM channel inspection, texture/provenance QA, measured geometry and browser-safe asset correction. This proof can support fabric consulting, product/configurator work and WebGL rescue without another demo.
+
+### Product Motion Lab
+
+The Auriga GLB exists and is wired into the browser path. Remaining value comes from runtime verification, deterministic scrub/anchor checks, measured diagnostics and captures — not new feature growth.
+
+## Submission package
+
+Submission authority for the current batch lives under `submissions/2026-09-10/`:
+
+- `CANONICAL_SUBMISSION_STATE_2026-09-10.md` — human handoff;
+- `submission-manifest.json` — machine-readable lane ownership, blockers and ready-to-submit requirements;
+- `CURRENT_STATE_AUDIT_2026-09-10.md` — detailed audit;
+- `APPLICATION_TRACKER_SNAPSHOT.csv` — tracker mirror;
+- lane-specific evidence/checklist files.
+
+If a runtime/capture agent finishes work, update the relevant evidence state before adding features. Figma is a presentation layer only: use it after real captures exist to improve hierarchy, annotation and cropping, never to manufacture metrics, runtime states or client results.
 
 ## Reusable primitives
 
@@ -78,7 +87,7 @@ Figma is a presentation layer only. Use it after real captures exist to normaliz
 
 These are intentionally small. Do not grow this into a framework until a paid problem or portfolio proof requires the abstraction.
 
-## Five initial service SKUs
+## Six service SKUs
 
 See [`SERVICES.md`](SERVICES.md):
 
@@ -87,30 +96,25 @@ See [`SERVICES.md`](SERVICES.md):
 3. Branded Browser Microgame
 4. Interactive Music World / Visualizer
 5. Procedural WebGL Environment Prototype
+6. Interactive 3D Product Configurator / Variant System
 
-## Current prototype status
+The same proof stack can also be used to pursue **creative-agency 3D integration**, **bounded industrial/technical visualization**, and **paid WebGL audits/feasibility consulting**. Those are proposal/search categories, not new prototype lanes.
 
-### Product Motion Lab
+## Current commercial order
 
-**Status:** SOURCE-SEEDED / RUNTIME VERIFY.
+```text
+1. Decide SEND / WATCH / DECLINE on the Industrial strike after owner comfort + claim review
+2. Close Fabric evidence/provenance/application gates
+3. Close Product Motion browser runtime + captures
+4. Search configurator / rescue / product-viewer / agency-integration / bounded visualization listings
+5. Reuse existing proof; only build a missing proof when a qualified lead exposes a real gap
+```
 
-Target: prove web-ready product presentation, deterministic scrubbing, attached callouts, inspection mode, and renderer diagnostics. Kimi/custom-asset work should improve this lane rather than create a parallel product viewer.
-
-### Fabric / material proof
-
-**Status:** EXISTING SYSTEMS PRESENT / COMMERCIAL EXTRACTION REQUIRED.
-
-Do not rebuild from scratch. Existing portfolio code already contains fabric presets, PBR material inspection and material-atlas surfaces. The next step is provenance-safe extraction, CLO-to-web evidence, and only the smallest missing consultant/configurator proof.
-
-### Procedural Industrial System Loop
-
-**Status:** SOURCE IMPLEMENTED / RUNTIME VERIFY.
-
-The source now includes a 16-second deterministic mechanical loop, seeded procedural assemblies, illustrative Structural/Flow/Thermal modes, diagnostics, and the reusable deterministic-timeline helper. Read its local `README.md` before adding features.
+The first paid result matters more than maximizing application count.
 
 ## First revenue gate
 
-See [`FIRST_20.md`](FIRST_20.md).
+See [`FIRST_20.md`](FIRST_20.md) and [`TREASURY_LEDGER.json`](TREASURY_LEDGER.json).
 
 The goal is not "launch a startup." The goal is to prove that one existing capability can earn the first **$20 of EARNED_POOL inference budget** with minimal distraction.
 
@@ -122,14 +126,17 @@ Commercial reusable code/assets must be clean-room or clearly owned/licensed for
 
 ## Existing proof worth mining, not blindly copying
 
-The live portfolio already contains:
+The live portfolio / kit already contains:
 
 - GLB/OBJ/FBX loading and asset manifests;
-- PBR material inspection;
-- orbiting 3D viewers;
+- PBR/material inspection and ORM-channel debugging;
+- orbiting 3D viewers and product presentation;
+- deterministic timeline animation;
+- renderer diagnostics and measured asset QA;
 - post-processing/bloom experiments;
 - interactive Three.js scenes and microgame logic;
-- Web Audio and music-reactive experiments.
+- Web Audio and music-reactive experiments;
+- seeded procedural/industrial presentation.
 
 When extracting a primitive, preserve only generic implementation and remove project-specific naming, paths, palettes, assets and narrative logic.
 
@@ -145,3 +152,12 @@ qualified lead
 human-approved proposal
 paid result
 ```
+
+Also stop or downgrade a strike when:
+
+- it begins displacing capstone P0;
+- the buyer's scope is materially broader than the proof supports;
+- a high price is creating pressure to overclaim capability;
+- delivery would require unrelated backend/full-stack ownership;
+- legal/IP provenance is unclear;
+- the owner is not comfortable making the commitment after reviewing the actual listing.
