@@ -1,95 +1,110 @@
-# Fromage WebGL Kit
+# Fromage WebGL Kit — Treasury
 
-**Status:** internal reusable production kit  
-**Purpose:** turn existing Three.js/WebGL capabilities into fast, bounded commercial deliverables without coupling them to Melodia IP.
+**Purpose:** turn existing Three.js/WebGL + 3D technical-art capability into small, bounded paid work that funds the Melodia `EARNED_POOL` without becoming a second full-time project.
 
-This directory is deliberately outside the deployed portfolio surface. It is a production/tooling lane, not a new website redesign.
+**This README is the only current Treasury/status document.** Do not create dated lead scans, strike handoffs, finish-later lists, or submission-state documents. Durable service definitions live in [`SERVICES.md`](SERVICES.md); actual money lives in [`TREASURY_LEDGER.json`](TREASURY_LEDGER.json); prototype-specific technical truth lives beside the prototype/code it describes. Old planning is recoverable from Git history.
 
-## Commercial thesis
+---
 
-Build once, reuse often:
+## 1. Active strike — premium eyewear / accessory 3D web pipeline
+
+**Status:** ACTIVE / OWNER WORKING NOW  
+**Source:** Upwork — “3D Blender Designer” / premium eyewear e-commerce  
+**Listing:** https://www.upwork.com/freelance-jobs/apply/Blender-Designer_~022095185281992255243/
+
+### Why this is the current best strike
+
+The buyer-shaped problem is unusually close to the kit’s demonstrated strengths:
+
+- premium product modelling / cleanup in Blender;
+- metal, acetate, lens and small-detail material lookdev;
+- web-ready GLB/GLTF delivery;
+- 360° / orbit presentation;
+- close-up detail framing;
+- product animation / scroll-ready presentation;
+- browser-safe geometry, textures and loading behavior;
+- repeatable work across multiple accessories/products if the relationship continues.
+
+This is a better first Treasury target than work that requires domain claims outside the current proof stack. The goal is not “win the biggest listing”; it is **win a bounded listing whose requested work looks like work we can already prove**.
+
+### Existing proof that directly supports it
+
+The current viewer/product work already demonstrates useful pieces of this pipeline:
+
+- robust fit-to-view across inconsistent source units and outlier geometry;
+- static-preview rebuilds that remove unnecessary rigs/embedded baggage;
+- measured triangle counts rather than guessed badges;
+- packed ORM channel inspection;
+- missing-texture and broken-path detection;
+- web-size texture reduction and asset replacement;
+- GLB loading + deterministic product-motion work;
+- renderer diagnostics, mobile framing and browser QA.
+
+Use these as **process proof**. Do not pretend Melodia assets are client-ready eyewear samples or commercially reusable inventory.
+
+### Scope boundary
+
+Base offer should stay close to:
 
 ```text
-client problem
-→ closest service template
-→ reusable runtime + modules
-→ client-specific art / interaction
-→ measured QA
-→ delivery
-→ extract any new generic primitive back into the kit
+client photos / supplied reference or model
+→ Blender modelling / cleanup
+→ premium PBR material + lighting pass
+→ web optimization
+→ GLB/GLTF
+→ 360 / orbit + close-up presentation
+→ optional simple authored product animation
+→ desktop/mobile QA
 ```
 
-Every paid job should leave behind at least one of:
+Quote separately for:
 
-- a reusable generic module;
-- a reusable test;
-- a reusable intake/checklist;
-- a reusable performance benchmark;
-- a reusable visual pattern that contains no client/Melodia IP.
+- virtual try-on / face tracking / AR;
+- ecommerce, cart, inventory or backend work;
+- prescription or optical simulation;
+- CAD reconstruction / manufacturing tolerances;
+- large custom configurator logic;
+- unlimited revisions or an entire catalogue hidden inside one sample price.
 
-## Current strike state — refreshed 2026-09-11
+The listing’s headline fixed price is **not** permission to commit an open-ended product catalogue. Clarify per-product / batch scope before commitment.
 
-The active paid-problem experiment is documented in:
+### Speculative-work rule
 
-- `DIRECT_LISTING_STRIKES_2026-09-10.md` — listing-specific execution briefs;
-- `CUSTOM_ASSET_STRIKE_PACK_2026-09-10.md` — original asset proofs that improve proposal credibility;
-- `LEADS_2026-09-10.md` — scored live-market batch;
-- `FINISH_LATER_2026-09-10.md` — bounded continuation queue;
-- `submissions/2026-09-10/` — canonical submission/evidence state for the three current strikes.
+Do not recreate a client product from their photos as unpaid production. A proposal sample may use an owned/original neutral eyewear-or-accessory proof, or existing process evidence, and should stop once capability is demonstrated.
 
-The three current strikes remain the only active prototype lanes:
+---
 
-```text
-A. Product Motion Lab / GLB
-B. Fabric / material consultant proof
-C. Procedural Industrial System Loop
-```
+## 2. Treasury commercial order
 
-Do not invent a fourth prototype merely because a new listing category appears. New opportunities should first be attacked by **reusing these proofs and the existing service SKUs**.
+1. **Eyewear/accessory strike:** finish only the evidence/proposal work needed to make a truthful application or delivery decision.
+2. **Product / GLB lane:** finish browser runtime proof and captures where they strengthen accessory/product proposals.
+3. **Fabric / material lane:** keep as adjacent evidence for premium materials, variants and technical-art consulting.
+4. **Search using the same proof stack:** product viewers, configurators, WebGL rescue, luxury/fashion accessories, agency 3D integration, bounded technical visualization.
+5. Build a new prototype **only when a qualified paid lead exposes a real proof gap**.
 
-## Current interpretation
+### Industrial loop status
 
-### Industrial Loop
+The original high-value industrial listing is no longer an active strike. The prototype remains reusable evidence for deterministic animation, procedural composition, capture discipline and technical presentation.
 
-The prototype is reusable, measured buyer-shaped proof whether or not the original high-value listing is submitted. It demonstrates deterministic browser animation, seeded procedural assembly, capture discipline and technical presentation.
+Do **not** present its Structural / Flow / Thermal component-coding modes as physical simulation fields. No sunk-cost rule applies: archived proof never obligates the owner to chase a listing.
 
-**Owner comfort is a hard gate.** A high-dollar listing is not automatically a good strike. If buyer expectations, claim scope or delivery risk feel unclear, mark the listing **WATCH**, clarify, or decline it. Do not let sunk prototype effort pressure the owner into a commitment.
+---
 
-Do not claim that the current Structural / Flow / Thermal modes are physical simulation fields. They are component-coding presentation modes unless and until real supplied data is mapped.
-
-### Fabric / material proof
-
-The current viewer/debug work supports a strong technical-art/rescue narrative: asset-path repair, packed-ORM channel inspection, texture/provenance QA, measured geometry and browser-safe asset correction. This proof can support fabric consulting, product/configurator work and WebGL rescue without another demo.
-
-### Product Motion Lab
-
-The Auriga GLB exists and is wired into the browser path. Remaining value comes from runtime verification, deterministic scrub/anchor checks, measured diagnostics and captures — not new feature growth.
-
-## Submission package
-
-Submission authority for the current batch lives under `submissions/2026-09-10/`:
-
-- `CANONICAL_SUBMISSION_STATE_2026-09-10.md` — human handoff;
-- `submission-manifest.json` — machine-readable lane ownership, blockers and ready-to-submit requirements;
-- `CURRENT_STATE_AUDIT_2026-09-10.md` — detailed audit;
-- `APPLICATION_TRACKER_SNAPSHOT.csv` — tracker mirror;
-- lane-specific evidence/checklist files.
-
-If a runtime/capture agent finishes work, update the relevant evidence state before adding features. Figma is a presentation layer only: use it after real captures exist to improve hierarchy, annotation and cropping, never to manufacture metrics, runtime states or client results.
-
-## Reusable primitives
+## 3. Reusable commercial primitives
 
 - `src/core/createRuntime.js` — renderer/camera lifecycle, resize, frame loop, cleanup.
-- `src/assets/createGLBLoader.js` — bounded GLB loading wrapper with progress/error handling.
-- `src/game/createStateMachine.js` — tiny deterministic finite-state helper for microgames/interactions.
-- `src/audio/createAudioReactiveBus.js` — opt-in Web Audio FFT bus for music-reactive experiences.
-- `src/animation/createDeterministicTimeline.js` — absolute-time, scrub-safe linear channel sampling for product/industrial motion.
+- `src/assets/createGLBLoader.js` — bounded GLB loading with progress/error handling.
+- `src/game/createStateMachine.js` — tiny deterministic interaction state helper.
+- `src/audio/createAudioReactiveBus.js` — opt-in Web Audio FFT bus.
+- `src/animation/createDeterministicTimeline.js` — scrub-safe absolute-time animation sampling.
 
-These are intentionally small. Do not grow this into a framework until a paid problem or portfolio proof requires the abstraction.
+Keep these small. A paid problem earns an abstraction; an imagined future problem does not.
 
-## Six service SKUs
+---
 
-See [`SERVICES.md`](SERVICES.md):
+## 4. What we sell
+
+See [`SERVICES.md`](SERVICES.md) for the canonical scope/rate card. Current offers are:
 
 1. Three.js / WebGL Rescue Pass
 2. Interactive 3D Product / Asset Viewer
@@ -98,66 +113,80 @@ See [`SERVICES.md`](SERVICES.md):
 5. Procedural WebGL Environment Prototype
 6. Interactive 3D Product Configurator / Variant System
 
-The same proof stack can also be used to pursue **creative-agency 3D integration**, **bounded industrial/technical visualization**, and **paid WebGL audits/feasibility consulting**. Those are proposal/search categories, not new prototype lanes.
+For the current strike, **SKU 2 is the center of gravity**; SKU 6 is optional follow-on scope, not assumed base scope.
 
-## Current commercial order
+---
 
-```text
-1. Decide SEND / WATCH / DECLINE on the Industrial strike after owner comfort + claim review
-2. Close Fabric evidence/provenance/application gates
-3. Close Product Motion browser runtime + captures
-4. Search configurator / rescue / product-viewer / agency-integration / bounded visualization listings
-5. Reuse existing proof; only build a missing proof when a qualified lead exposes a real gap
-```
+## 5. First revenue gate
 
-The first paid result matters more than maximizing application count.
+The first milestone is not a startup or a revenue target. It is proof that the loop works.
 
-## First revenue gate
+All five must become true:
 
-See [`FIRST_20.md`](FIRST_20.md) and [`TREASURY_LEDGER.json`](TREASURY_LEDGER.json).
+1. one real prospect/buyer accepts a bounded WebGL/3D deliverable;
+2. payment is actually received;
+3. platform + inference costs and owner hours are recorded;
+4. at least **CAD $20 equivalent** is designated to `EARNED_POOL`;
+5. the job leaves one reusable, generic, IP-safe primitive/checklist/benchmark/template.
 
-The goal is not "launch a startup." The goal is to prove that one existing capability can earn the first **$20 of EARNED_POOL inference budget** with minimal distraction.
+Record the real result in [`TREASURY_LEDGER.json`](TREASURY_LEDGER.json). Do not add speculative payment rows.
 
-## IP boundary
+### Preferred first win
 
-Never package Melodia-specific characters, textures, music, purchased templates, third-party material graphs, client assets, or other restricted content as generic kit inventory.
+Prefer a job that can be finished and handed off decisively: one product model/viewer, one GLB cleanup, one material/product presentation pass, one broken viewer, one small interaction, or another similarly bounded deliverable.
 
-Commercial reusable code/assets must be clean-room or clearly owned/licensed for that purpose.
+---
 
-## Existing proof worth mining, not blindly copying
+## 6. Lead qualification
 
-The live portfolio / kit already contains:
+Score 0–2 on each:
 
-- GLB/OBJ/FBX loading and asset manifests;
-- PBR/material inspection and ORM-channel debugging;
-- orbiting 3D viewers and product presentation;
-- deterministic timeline animation;
-- renderer diagnostics and measured asset QA;
-- post-processing/bloom experiments;
-- interactive Three.js scenes and microgame logic;
-- Web Audio and music-reactive experiments;
-- seeded procedural/industrial presentation.
+- capability match;
+- proof already available;
+- scope boundedness;
+- client credibility;
+- budget adequacy;
+- reuse potential;
+- low legal/IP risk;
+- low integration risk.
 
-When extracting a primitive, preserve only generic implementation and remove project-specific naming, paths, palettes, assets and narrative logic.
+Interpretation:
 
-## Stop condition
+- **13–16:** APPLY / CONTACT
+- **9–12:** WATCH / clarify
+- **0–8:** IGNORE unless strategically exceptional
 
-If an agent discovers itself writing more planning docs than runtime evidence, stop. The commercial lane only advances through one of these outputs:
+Price is not a substitute for fit. **Owner comfort is a hard gate** on high-value work.
 
-```text
-working demo
-measured evidence
-original reusable asset
-qualified lead
-human-approved proposal
-paid result
-```
+Human approval is required before contact, proposal submission, price commitment or financial spend.
 
-Also stop or downgrade a strike when:
+---
 
-- it begins displacing capstone P0;
-- the buyer's scope is materially broader than the proof supports;
-- a high price is creating pressure to overclaim capability;
-- delivery would require unrelated backend/full-stack ownership;
-- legal/IP provenance is unclear;
-- the owner is not comfortable making the commitment after reviewing the actual listing.
+## 7. IP and truth boundary
+
+Never package Melodia-specific characters, textures, music, purchased templates, third-party material graphs, or client assets as generic kit inventory.
+
+Every commercial claim must be one of:
+
+- directly demonstrated;
+- measured;
+- clearly described as a proposed workflow;
+- explicitly scoped as follow-on work.
+
+Do not upgrade a proposed capability into a completed capability because an agent wrote a convincing paragraph about it.
+
+---
+
+## 8. Stop conditions
+
+Pause or decline when:
+
+- Treasury work starts displacing Choral Sheep / academic P0;
+- the buyer expects unrelated backend/full-stack ownership;
+- unpaid speculative work grows beyond a tiny capability assessment;
+- legal/IP ownership is unclear;
+- scope cannot be bounded before acceptance;
+- effective pay collapses after revisions/platform costs;
+- the reusable-kit work grows faster than real demand.
+
+**Commercial progress is:** working proof → qualified lead → human-reviewed proposal → bounded agreement → paid result → reusable capacity. Commits and planning documents are not revenue.
