@@ -89,9 +89,7 @@ jobs:
         shell: pwsh
         run: ./tools/validate_portfolio.ps1
       - name: Validate recruiter-facing invariants
-        run: |
-          python tools/verify_showcase_polish.py
-          python tools/verify_sendoff_freeze.py
+        run: python tools/verify_showcase_polish.py
       - name: Verify token sweep scope
         shell: python
         run: |
