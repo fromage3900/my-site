@@ -256,7 +256,7 @@
   gap: 0.85rem;
   margin: 0.35rem auto 1.35rem;
   max-width: 28rem;
-  font-family: var(--font-mono, "Azeret Mono", monospace);
+  font-family: var(--font-mono, "IBM Plex Mono", monospace);
   font-size: 0.72rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;

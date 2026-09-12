@@ -1,19 +1,21 @@
 /* Melodia typography SSOT — atelier / cathedral signal
-   Strictly adheres to project documented font stack (F_Melodia_UI composite):
-   Cover support: Cinzel · Display/UI: Syne
-   Kawaii/decorative: Twinkle Star · Body: Bricolage Grotesque
-   UI: Syne (web mapping for F_Melodia_UI) · Technical: Azeret Mono
+   Aligned to the design-system token SSOT (tokens.json → global.fontFamilies):
+   Cover / wordmark: Cinzel · Display: Fraunces
+   Kawaii/decorative: Twinkle Star · Body: Inter
+   Technical / metadata: IBM Plex Mono
+   Updated 2026-09-11: replaced the earlier Fraunces / Inter / IBM Plex Mono
+   mapping, which had drifted away from tokens.json.
 */
-@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Cinzel:wght@400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=Twinkle+Star&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Twinkle+Star&display=swap");
 
 :root {
-  --font-brand: "Cinzel", "Syne", "Avenir Next", "Segoe UI", sans-serif;
-  --font-cover: "Cinzel", "Syne", "Avenir Next", "Segoe UI", sans-serif;
-  --font-display: "Syne", "Avenir Next", "Segoe UI", sans-serif;
-  --font-decorative: "Twinkle Star", "Syne", "Avenir Next", sans-serif;
-  --font-body: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
-  --font-mono: "Azeret Mono", ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
-  --font-lede: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --font-brand: "Cinzel", "Fraunces", "Avenir Next", "Segoe UI", sans-serif;
+  --font-cover: "Cinzel", "Fraunces", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Fraunces", "Avenir Next", "Segoe UI", sans-serif;
+  --font-decorative: "Twinkle Star", "Fraunces", "Avenir Next", sans-serif;
+  --font-body: "Inter", "Avenir Next", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
+  --font-lede: "Inter", "Avenir Next", "Segoe UI", sans-serif;
   --tracking-brand: 0.10em;
   --tracking-display: 0.01em;
   --tracking-body: 0.01em;
@@ -35,8 +37,8 @@
 
 /* Optional denser display for store / kitbash pages */
 html[data-display-font="syne"] {
-  --font-display: "Syne", "Avenir Next", sans-serif;
-  --font-lede: "Bricolage Grotesque", "Avenir Next", sans-serif;
+  --font-display: "Fraunces", "Avenir Next", sans-serif;
+  --font-lede: "Inter", "Avenir Next", sans-serif;
   --tracking-display: 0.04em;
 }
 

@@ -1,9 +1,9 @@
-/* Stage Character hardening — Syne UI, void-legible ink, magical-girl sparkles.
+/* Stage Character hardening — Fraunces UI, void-legible ink, magical-girl sparkles.
    Loaded last on melodia-stage-character.html. Tokens only. */
 
 html[data-page="stage-character"] {
   /* F_Melodia_UI web mapping */
-  --font-home-ui: "Syne", "Avenir Next", "Segoe UI", sans-serif;
+  --font-home-ui: "Fraunces", "Avenir Next", "Segoe UI", sans-serif;
   --font-display: var(--font-home-ui);
   --font-lede: var(--font-home-ui);
 
@@ -40,7 +40,7 @@ html[data-page="stage-character"] {
   color-scheme: dark;
 }
 
-/* ——— Fonts: Syne on chrome + display; kill editorial serif leftovers ——— */
+/* ——— Fonts: Fraunces on chrome + display; kill editorial serif leftovers ——— */
 html[data-page="stage-character"] .brand,
 html[data-page="stage-character"] .shell-nav .nav-links a,
 html[data-page="stage-character"] .shell-nav .nav-cta,

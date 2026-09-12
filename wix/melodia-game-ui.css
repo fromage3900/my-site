@@ -1723,7 +1723,7 @@ body.ios-mode .game-ui-ios-play {
 
 .game-ui-react-board > header h3 {
   margin: 0;
-  font-family: var(--font-display, "Syne", sans-serif);
+  font-family: var(--font-display, "Fraunces", sans-serif);
   font-size: 1.35rem;
   color: var(--game-gold);
 }
@@ -1753,7 +1753,7 @@ body.ios-mode .game-ui-ios-play {
 
 .game-ui-react-strip h4 {
   margin: 0;
-  font-family: var(--font-display, "Syne", sans-serif);
+  font-family: var(--font-display, "Fraunces", sans-serif);
   font-size: 0.95rem;
   color: var(--game-cyan);
 }
@@ -3355,7 +3355,7 @@ body.ios-mode .game-ui-ios-play {
   border-radius: 4px;
 }
 .figma-card-preview h4 {
-  font-family: var(--font-display, "Syne", sans-serif);
+  font-family: var(--font-display, "Fraunces", sans-serif);
   font-size: 0.95rem;
   color: var(--primitive-ivory-50);
   margin-top: 0.6rem;
