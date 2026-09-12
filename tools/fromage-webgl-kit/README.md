@@ -25,22 +25,21 @@ The buyer-shaped problem is unusually close to the kit’s demonstrated strength
 - browser-safe geometry, textures and loading behavior;
 - repeatable work across multiple accessories/products if the relationship continues.
 
-This is a better first Treasury target than work that requires domain claims outside the current proof stack. The goal is not “win the biggest listing”; it is **win a bounded listing whose requested work looks like work we can already prove**.
+The goal is not “win the biggest listing”; it is **win a bounded listing whose requested work looks like work we can already prove**.
 
 ### Existing proof that directly supports it
-
-The current viewer/product work already demonstrates useful pieces of this pipeline:
 
 - robust fit-to-view across inconsistent source units and outlier geometry;
 - static-preview rebuilds that remove unnecessary rigs/embedded baggage;
 - measured triangle counts rather than guessed badges;
-- packed ORM channel inspection;
+- packed ORM channel inspection and material debugging;
 - missing-texture and broken-path detection;
 - web-size texture reduction and asset replacement;
 - GLB loading + deterministic product-motion work;
-- renderer diagnostics, mobile framing and browser QA.
+- renderer diagnostics, mobile framing and browser QA;
+- a **clean-room Fabric Material Lab** using six owner-authored commercial-safe material presets, runtime-verified in a real browser with material controls, grazing-angle inspection, JSON state export and mobile-width QA.
 
-Use these as **process proof**. Do not pretend Melodia assets are client-ready eyewear samples or commercially reusable inventory.
+Use these as **process/proof-stack evidence**. Do not present Melodia-specific assets as client-ready eyewear samples or generic commercial inventory.
 
 ### Scope boundary
 
@@ -78,15 +77,19 @@ Do not recreate a client product from their photos as unpaid production. A propo
 
 1. **Eyewear/accessory strike:** finish only the evidence/proposal work needed to make a truthful application or delivery decision.
 2. **Product / GLB lane:** finish browser runtime proof and captures where they strengthen accessory/product proposals.
-3. **Fabric / material lane:** keep as adjacent evidence for premium materials, variants and technical-art consulting.
+3. **Fabric / material lane:** reuse the runtime-verified clean-room material proof for premium finishes, variants and technical-art consulting.
 4. **Search using the same proof stack:** product viewers, configurators, WebGL rescue, luxury/fashion accessories, agency 3D integration, bounded technical visualization.
 5. Build a new prototype **only when a qualified paid lead exposes a real proof gap**.
 
-### Industrial loop status
+### Proof-stack state
 
-The original high-value industrial listing is no longer an active strike. The prototype remains reusable evidence for deterministic animation, procedural composition, capture discipline and technical presentation.
+- `prototypes/product-motion-lab/` — real generated GLB + browser wiring; final runtime/capture verification remains the useful next evidence step.
+- `prototypes/fabric-material-lab/` — **runtime-verified clean-room proof**, owner-authored material provenance resolved.
+- `prototypes/procedural-industrial-loop/` — archived reusable proof; original listing is dead and creates no obligation to pursue similar work.
 
-Do **not** present its Structural / Flow / Thermal component-coding modes as physical simulation fields. No sunk-cost rule applies: archived proof never obligates the owner to chase a listing.
+### Industrial loop boundary
+
+The prototype remains useful for deterministic animation, procedural composition, capture discipline and technical presentation. Do **not** present its Structural / Flow / Thermal component-coding modes as physical simulation fields.
 
 ---
 
