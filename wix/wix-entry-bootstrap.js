@@ -15,6 +15,6 @@
   var cameFromSite = /^https:\/\/fromage3900\.github\.io(?:\/|$)/i.test(referrer);
 
   if (!cameFromSite) {
-    window.location.replace('index.html?embed=wix&v=20260904p1');
+    window.location.replace('index.html?embed=wix&v=20260912p1');
   }
 })();
