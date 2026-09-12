@@ -1,21 +1,15 @@
 # Fabric Material Lab
 
-**Status:** BUILT — runtime-verified in a real browser. See [`EVIDENCE.md`](./EVIDENCE.md).
-**Authority:** `../../KIMI_PROTOTYPE_BATCH_2026-09-10.md` — Prototype B.
+**Status:** BUILT — runtime-verified in a real browser. See [`EVIDENCE.md`](./EVIDENCE.md).  
+**Treasury authority:** [`../../README.md`](../../README.md)
 
-A clean-room Three.js study of tileable PBR textile response. Six neutral-named presets, direct
-material controls, studio and grazing-angle inspection rigs, exportable material state, and a live
-diagnostics readout.
+A clean-room Three.js study of tileable PBR textile response. Six neutral-named presets, direct material controls, studio and grazing-angle inspection rigs, exportable material state, and a live diagnostics readout.
 
 ## Why this exists
 
-The deployed portfolio viewer cannot serve as a commercial sample: it is built largely from
-third-party assets (KitBash3D Atlantis props, Zundamon) and project-specific ones (Melusina, Sir
-Melodious, Melody Tokens). This lab carries none of that.
+The deployed portfolio viewer cannot serve as a commercial sample: it is built largely from third-party assets (KitBash3D Atlantis props, Zundamon) and project-specific ones (Melusina, Sir Melodious, Melody Tokens). This lab carries none of that.
 
-**Every texture here is procedurally generated and owner-authored** by
-`BS_GodFile/Content/Python/author_fantasy_fabrics.py`. Provenance is recorded in
-`../../fabric/MATERIAL_PROVENANCE_MANIFEST.json`.
+**Every texture here is procedurally generated and owner-authored** by `BS_GodFile/Content/Python/author_fantasy_fabrics.py`. Provenance is recorded in [`../../fabric/MATERIAL_PROVENANCE_MANIFEST.json`](../../fabric/MATERIAL_PROVENANCE_MANIFEST.json).
 
 ## Presets
 
