@@ -24,7 +24,7 @@ Each SKU should be sold from demonstrated capability, with explicit inputs, outp
 
 **Excludes by default:** backend systems, ecommerce integration, broad redesign, custom CMS work.
 
-**Proof to prepare now:** one before/after optimization capture using an owned demo scene.
+**Proof to prepare now:** one before/after optimization capture using an owned demo scene. The current portfolio viewer audit already provides credible raw proof: broken asset paths, incorrect packed-ORM inspection, missing textures, unmeasured/high-poly browser assets, placeholder geometry and production-safe replacement/verification.
 
 ---
 
@@ -45,7 +45,7 @@ Each SKU should be sold from demonstrated capability, with explicit inputs, outp
 - loading/error states;
 - desktop/mobile QA.
 
-**Proof to prepare now:** generic clean-room viewer derived from the existing portfolio asset-study capability.
+**Proof to prepare now:** generic clean-room viewer derived from the existing portfolio asset-study capability and Product Motion Lab.
 
 ---
 
@@ -112,7 +112,66 @@ Each SKU should be sold from demonstrated capability, with explicit inputs, outp
 
 **Optional production sources:** Houdini-generated assets/data, procedural textures, instancing, shader-driven variation.
 
-**Proof to prepare now:** one small seeded environment generator with obvious variation and a stable art-directed composition.
+**Proof to prepare now:** the Procedural Industrial System Loop is buyer-shaped proof for deterministic animation and art-directed system presentation. Do **not** represent its Structural / Flow / Thermal component coding as measured physical fields or CFD/engineering data.
+
+---
+
+## 6. Interactive 3D Product Configurator / Variant System
+
+**Problem:** a client has a product family, garment, furniture/interior system, equipment line or configurable object that needs browser-based option selection rather than a passive viewer.
+
+**Starting price hypothesis:** CAD $1,000–$4,000+ depending on variant count, asset readiness, state export and integration requirements.
+
+**Inputs:** GLB/GLTF assets or source models, option/variant matrix, approved materials/colors, brand direction, target embed surface, required output state.
+
+**Deliverables:**
+
+- responsive Three.js configurator;
+- material/color and/or component visibility variants;
+- camera presets, hotspots or annotations where useful;
+- deterministic option state;
+- optional JSON/state export for handoff to another system;
+- loading/error states and desktop/mobile QA.
+
+**Excludes by default:** ecommerce checkout, payments, account systems, inventory databases, ERP/CMS integration, parametric manufacturing logic and backend pricing engines. Quote those separately or decline.
+
+**Proof already available:** combine the Fabric/material viewer, Product Motion Lab, GLB loader/inspection work and measured asset QA. Do not build a new configurator prototype merely to prove this SKU unless a qualified buyer requires a missing capability.
+
+---
+
+# Adjacent proposal lanes — reuse proof, do not spawn prototypes
+
+These are search/positioning categories that can be attacked with the six SKUs above. They are **not** additional product-development lanes.
+
+### Web 3D Asset & Performance Rescue
+
+Use SKU 1 for jobs involving oversized GLBs, missing textures, material bugs, renderer/camera failures, draw-call/triangle pressure, mobile breakage, asset-path errors, loader failures or scene cleanup. Prefer bounded diagnostic/fix jobs that can produce measured before/after evidence.
+
+### Creative-agency 3D integration
+
+Use SKUs 1–2 when a design/creative studio already owns the brand/site/3D direction and needs technical-art execution: integrate supplied assets, make interactions responsive, stabilize performance, tune lighting/materials and deliver browser QA. Avoid becoming the agency's unrelated full-stack developer.
+
+### Industrial / scientific / equipment visualization
+
+Use SKUs 2, 5 and 6 for deterministic equipment animation, browser inspection, component coding, data-ready scene architecture and interactive technical presentation. Current proof supports **visualization infrastructure**, not claims of CFD, FEA, scientific simulation or physically measured fields. Only take true scientific-data mapping when the supplied data/schema and required interpretation are clearly bounded.
+
+### Paid WebGL audit / feasibility consult
+
+A small paid consultation can precede a build: inspect representative assets/repo, identify browser/performance/material risks, recommend the smallest architecture, and produce a concise action list. This is a low-distraction route to first revenue when a prospect is not yet ready for a full implementation.
+
+---
+
+# Current commercial order
+
+Do not build a fourth demo to chase these categories. Reuse and finish the current proof stack:
+
+1. send or consciously decline the Industrial Loop strike after owner comfort + claim review;
+2. close the Fabric evidence/provenance/application gate;
+3. close Product Motion browser runtime + captures;
+4. search for configurator, WebGL rescue, product-viewer, agency-integration and bounded visualization work using the same evidence;
+5. only add a missing proof when a qualified lead exposes a real gap.
+
+**Industrial strike rule:** a high-value listing is never mandatory. If claim scope, buyer expectations or delivery risk feel unclear, mark it **WATCH** and seek a clarification or lower-risk strike. The prototype remains reusable proof even if that specific application is never sent.
 
 ---
 
@@ -135,4 +194,4 @@ Interpretation:
 - **9–12:** WATCH / clarify scope
 - **0–8:** IGNORE unless strategically exceptional
 
-No automated mass applications. Human review remains mandatory before outreach or commitment.
+A high dollar value does not override poor boundedness or high delivery/claim risk. No automated mass applications. Human review remains mandatory before outreach or commitment.
