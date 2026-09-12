@@ -1,0 +1,119 @@
+name: Temporary build-token sweep
+
+on:
+  push:
+    branches:
+      - sol/site-housekeeping-20260912
+
+permissions:
+  contents: write
+
+jobs:
+  sweep:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sol/site-housekeeping-20260912
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replace shared build token exactly
+        shell: python
+        run: |
+          from pathlib import Path
+          old = '20260904p1'
+          new = '20260912p1'
+          targets = [
+              'wix/README.md',
+              'wix/wix-embed-bridge.js',
+              'wix/resume.html',
+              'wix/wix-entry-bootstrap.js',
+              'wix/credits.html',
+              'wix/world-bible.html',
+              'wix/curated-art.html',
+              'wix/commissions.html',
+              'wix/hero-renders.html',
+              'wix/pipeline.html',
+              'wix/cosmic-orrery.html',
+              'wix/baroque-grotto.html',
+              'wix/geometry-nodes.html',
+              'wix/hiring-dossier.html',
+              'wix/space-cathedral.html',
+              'wix/shader-breakdowns.html',
+              'wix/sakura-case-study.html',
+              'wix/index.html',
+              'wix/recruiter-one-sheet.html',
+              'wix/sdf-material-gallery.html',
+              'wix/render-constellation.html',
+              'wix/surreal-architecture.html',
+              'wix/material-loop-gallery.html',
+              'wix/melodia-living-worlds.html',
+              'wix/application-hub.html',
+              'wix/melodia-stage-character.html',
+              'wix/melodia-editorial.css',
+              'wix/universal-material-impact.html',
+              'wix/realtime-3d-viewer.html',
+              'wix/zbrush-breakdown.html',
+              'wix/melodia-atelier-lab.html',
+              'wix/pcg-system-impact.html',
+              'wix/public-routes.json',
+              'generated/wix_embed_manifest.json',
+              'wix/art-test-readiness.html',
+          ]
+          assert len(targets) == 35 and len(targets) == len(set(targets))
+          total = 0
+          for rel in targets:
+              p = Path(rel)
+              text = p.read_text(encoding='utf-8')
+              count = text.count(old)
+              if count < 1:
+                  raise SystemExit(f'{rel}: expected at least one {old}, found none')
+              text = text.replace(old, new)
+              if old in text:
+                  raise SystemExit(f'{rel}: stale token remained after replacement')
+              p.write_text(text, encoding='utf-8')
+              total += count
+              print(f'{rel}: {count} replacement(s)')
+          hist = Path('docs/SITE_PAGE_AUDIT_2026-09-05.md').read_text(encoding='utf-8')
+          if old not in hist:
+              raise SystemExit('Historical site audit no longer preserves its original build token')
+          print(f'OK: {total} replacements across {len(targets)} live/current files; historical audit preserved')
+      - name: Validate public route contract
+        run: |
+          python scripts/check_public_routes.py
+          python scripts/check_html_errors.py
+          python scripts/check_pages_content_size.py
+      - name: Verify token sweep scope
+        shell: python
+        run: |
+          from pathlib import Path
+          old = '20260904p1'
+          new = '20260912p1'
+          allowed_old = Path('docs/SITE_PAGE_AUDIT_2026-09-05.md')
+          stale = []
+          for root in (Path('wix'), Path('generated')):
+              for p in root.rglob('*'):
+                  if p.is_file():
+                      try:
+                          text = p.read_text(encoding='utf-8')
+                      except UnicodeDecodeError:
+                          continue
+                      if old in text:
+                          stale.append(str(p))
+          if stale:
+              raise SystemExit('Unexpected stale live/current build token: ' + ', '.join(stale))
+          if old not in allowed_old.read_text(encoding='utf-8'):
+              raise SystemExit('Historical audit token was unexpectedly changed')
+          print('Token scope verified; live/current trees contain no stale token.')
+      - name: Commit sweep back to task branch
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add wix generated/wix_embed_manifest.json
+          git diff --cached --quiet && { echo 'No changes to commit'; exit 1; }
+          git commit -m 'chore(site): bump shared build token to 20260912p1'
+          git push origin HEAD:sol/site-housekeeping-20260912
