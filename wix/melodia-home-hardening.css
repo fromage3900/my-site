@@ -2,8 +2,8 @@
    recruiter-safe fallback states when a render is still loading. */
 
 html[data-page="index"] {
-  /* F_Melodia_UI has no web font file; Syne is the documented web mapping. */
-  --font-home-ui: "Syne", "Avenir Next", "Segoe UI", sans-serif;
+  /* F_Melodia_UI has no web font file; Fraunces is the documented web mapping. */
+  --font-home-ui: "Fraunces", "Avenir Next", "Segoe UI", sans-serif;
   --font-display: var(--font-home-ui);
 
   /* Magical-girl sparkle cursor (inline SVG — no cursor PNG in game-ui pack). */
@@ -224,7 +224,7 @@ html[data-page="index"] .band .section-head h2 {
   line-height: 1.08;
 }
 
-/* Figma UI display treatment: Syne replaces the retired editorial serif
+/* Figma UI display treatment: Fraunces replaces the retired editorial serif
    without letting the wider UI face collide with the macro render. */
 html[data-page="index"] .hero .hero-inner h1 {
   font-family: var(--font-home-ui);

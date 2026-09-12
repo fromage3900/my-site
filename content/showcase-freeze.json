@@ -56,7 +56,25 @@
     "wix/melodia-editorial.css",
     "wix/melodia-mahou-flourish.css",
     "wix/melodia-recruiter-hardening.css",
-    ".gitignore"
+    ".gitignore",
+    "wix/cosmic-orrery.html",
+    "wix/dashboards.html",
+    "wix/design-specs.html",
+    "wix/melodia-editorial-ornaments.css",
+    "wix/melodia-editorial-polish.css",
+    "wix/melodia-game-ui.css",
+    "wix/melodia-gameplay-loop.html",
+    "wix/melodia-hero-embed.html",
+    "wix/melodia-home-hardening.css",
+    "wix/melodia-luxury-type.css",
+    "wix/melodia-melusina.html",
+    "wix/melodia-passport-embed.html",
+    "wix/melodia-stage-character-hardening.css",
+    "wix/melodia-stage-character.css",
+    "wix/melusina-model-tooling.html",
+    "wix/nous-research-packet.html",
+    "wix/nvidia-recruiter-sendoff.html",
+    "wix/pipeline.html"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -202,6 +220,22 @@
         "no new visual systems",
         "no global restyling",
         "no change to any recruiter-facing copy beyond correcting a false triangle count"
+      ]
+    },
+    {
+      "id": "typography-token-alignment-2026-09-11",
+      "reason": "Owner instruction: fold the updated fonts and Figma tokens into the site. The live site declared Syne / Bricolage Grotesque / Azeret Mono / Instrument Serif while the design-system token SSOT (tokens.json -> global.fontFamilies) and the Figma plugin already built Fraunces / Inter / IBM Plex Mono. That drift is a correctness defect, not a redesign: the site was contradicting its own declared token source.",
+      "scope": [
+        "point the site's --font-* custom properties at the token SSOT (Fraunces display, Inter body, IBM Plex Mono metadata, Cinzel wordmark)",
+        "replace the stale Google Fonts requests with the matching families",
+        "update fallback font names in per-page and per-widget CSS so they agree with the tokens",
+        "no layout, spacing, colour, copy or structural change of any kind"
+      ],
+      "exclusions": [
+        "no new public routes",
+        "no new visual systems",
+        "no layout or spacing change",
+        "no change to any page's content or copy"
       ]
     }
   ]
