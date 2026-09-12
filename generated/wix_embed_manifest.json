@@ -17,7 +17,7 @@
     "desktop": "Managed by the enabled Wix custom embed `Melodia Desktop Portfolio Frame`; full viewport, fixed inset 0, border 0, body scroll locked.",
     "mobile_tablet": "Existing Wix layout remains active below 1081px.",
     "inner_bridge": "wix/wix-embed-bridge.js marks iframe mode and reports viewport/document metrics to the parent.",
-    "cache_note": "Canonical GitHub Pages routes use build token 20260904p1."
+    "cache_note": "Canonical GitHub Pages routes use build token 20260912p1."
   },
   "recruiter_routes": {
     "application_hub": "https://fromage3900.github.io/my-site/wix/application-hub.html",
@@ -69,7 +69,7 @@
     "custom_embed_id": "f9bb4701-21e2-41b2-a88b-9016bf5abb51",
     "custom_embed_name": "Melodia Desktop Portfolio Frame",
     "breakpoint": "min-width: 1081px",
-    "source": "https://fromage3900.github.io/my-site/wix/index.html?embed=wix&v=20260904p1",
+    "source": "https://fromage3900.github.io/my-site/wix/index.html?embed=wix&v=20260912p1",
     "behavior": "On the Wix home route at desktop widths, BODY_END custom code mounts a fixed 100vw x 100dvh iframe above the manually-sized editor HTML element. Mobile/tablet remain on the normal Wix layout.",
     "reason": "Eliminates desktop letterboxing, manual embed gutter drift, stale container sizing, and double-scroll behavior without replacing the Wix domain shell."
   }

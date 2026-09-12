@@ -44,7 +44,7 @@
       height: height,
       viewportWidth: window.innerWidth,
       viewportHeight: window.innerHeight,
-      build: '20260904p1'
+      build: '20260912p1'
     }, targetOrigin);
   }
 
