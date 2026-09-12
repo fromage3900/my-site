@@ -81,17 +81,18 @@ jobs:
           if old not in hist:
               raise SystemExit('Historical site audit no longer preserves its original build token')
           print(f'OK: {total} replacements across {len(targets)} live/current files; historical audit preserved')
-      - name: Validate public route contract
+      - name: Validate portfolio contract
+        shell: pwsh
+        run: ./tools/validate_portfolio.ps1
+      - name: Validate recruiter-facing invariants
         run: |
-          python scripts/check_public_routes.py
-          python scripts/check_html_errors.py
-          python scripts/check_pages_content_size.py
+          python tools/verify_showcase_polish.py
+          python tools/verify_sendoff_freeze.py
       - name: Verify token sweep scope
         shell: python
         run: |
           from pathlib import Path
           old = '20260904p1'
-          new = '20260912p1'
           allowed_old = Path('docs/SITE_PAGE_AUDIT_2026-09-05.md')
           stale = []
           for root in (Path('wix'), Path('generated')):
