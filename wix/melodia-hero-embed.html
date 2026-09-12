@@ -16,6 +16,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Twinkle+Star&display=swap" rel="stylesheet">
 <style>
+  /* Token SSOT (tokens.json -> global.fontFamilies). These vars were referenced below
+     but never defined, so every var(--font-*) fell back to the browser default. */
+  :root{
+    --font-display:"Fraunces","Avenir Next","Segoe UI",sans-serif;
+    --font-body:"Inter","Avenir Next","Segoe UI",sans-serif;
+    --font-mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",monospace;
+    --font-brand:"Cinzel","Fraunces","Avenir Next","Segoe UI",sans-serif;
+  }
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{height:100%}
   .hero{position:relative;width:100%;min-height:100%;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:6vw 7vw;font-family:var(--font-mono);isolation:isolate}
