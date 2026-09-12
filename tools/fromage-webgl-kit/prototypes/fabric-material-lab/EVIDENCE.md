@@ -1,51 +1,45 @@
 # Fabric Material Lab — Evidence
 
-**Status:** BUILT AND RUNTIME-VERIFIED IN A REAL BROWSER
-**Date:** 2026-09-11
-**Path:** `tools/fromage-webgl-kit/prototypes/fabric-material-lab/`
-**Authority:** `../../KIMI_PROTOTYPE_BATCH_2026-09-10.md` — Prototype B
+**Status:** BUILT AND RUNTIME-VERIFIED IN A REAL BROWSER  
+**Date:** 2026-09-11  
+**Path:** `tools/fromage-webgl-kit/prototypes/fabric-material-lab/`  
+**Treasury authority:** [`../../README.md`](../../README.md)
 
-A clean-room Three.js study of tileable PBR textile response. Six neutral-named presets, direct
-material controls, two inspection lighting rigs, an exportable material state, and a live
-diagnostics readout.
+A clean-room Three.js study of tileable PBR textile response. Six neutral-named presets, direct material controls, two inspection lighting rigs, an exportable material state, and a live diagnostics readout.
 
-**This prototype was necessary**, because the deployed portfolio viewer cannot be used as a
-commercial sample: it is built largely from third-party and project-specific assets (see
-Appendices). This lab carries none of that.
+This prototype exists because the deployed portfolio viewer is not an appropriate clean commercial sample: it contains third-party and project-specific assets. This lab carries none of that.
 
 ---
 
-## 1. What the deployed fabric system already had — inventory
+## 1. Existing system inventory and extraction
 
-Audited before writing any replacement code, as the brief requires.
+The deployed system was audited before this clean-room proof was built.
 
 | Capability | Where | Reused? |
 |---|---|---|
 | Fabric preset switching | `wix/melodia-3d-viewport.js` (`FABRIC_SETS`) | Concept reused; code **not** copied |
-| BC / Normal / packed-ORM map usage | `wix/textures/pbr/` | **Textures reused** — they are owner-authored |
+| BC / Normal / packed-ORM map usage | `wix/textures/pbr/` | **Textures reused** — owner-authored |
 | Roughness / metalness / AO from one ORM | same | **Reused as the convention** |
 | Turntable + orbit inspection | `wix/realtime-3d-viewer.html` | Reimplemented minimally |
 | Channel-isolation shading modes | `wix/melodia-3d-viewport.js` | Not needed here |
 | Turntable atelier surface | `wix/melodia-atelier-lab.*` | Not needed here |
 | Material atlas presentation | `wix/sdf-material-gallery.html` | Not needed here |
 
-**The reusable primitive extracted:** the packed-ORM fabric convention
-(`_BC` sRGB / `_N` tangent / `_ORM` = R-AO, G-roughness, B-metalness, linear), now driven by
-neutral preset identities instead of project-specific ones.
+**Reusable primitive extracted:** the packed-ORM fabric convention (`_BC` sRGB / `_N` tangent / `_ORM` = R-AO, G-roughness, B-metalness, linear), driven by neutral preset identities instead of project-specific ones.
 
 ---
 
-## 2. Provenance — every texture, classified
+## 2. Provenance — every texture classified
 
-Full record: `../../fabric/MATERIAL_PROVENANCE_MANIFEST.json`
+Full record: [`../../fabric/MATERIAL_PROVENANCE_MANIFEST.json`](../../fabric/MATERIAL_PROVENANCE_MANIFEST.json)
 
-All six presets trace to **one generator** in the owner's own repository:
+All six presets trace to one generator in the owner's repository:
 
-```
+```text
 BS_GodFile/Content/Python/author_fantasy_fabrics.py
-  "Procedural synthesis and zero-loss packing of tileable 4K / 2K PBR texture sets"
-  dependencies: numpy + PIL only — no texture library import, no downloaded source
-  preset -> file map: lines 610-615
+  procedural synthesis of tileable 4K / 2K PBR texture sets
+  dependencies: numpy + PIL only — no texture-library import
+  preset → file map: lines 610–615
 ```
 
 | Preset (neutral) | Source texture | Classification |
@@ -57,18 +51,13 @@ BS_GodFile/Content/Python/author_fantasy_fabrics.py
 | Embroidered-like | `T_Fabric_GoldEmbroidery_*` | **OWNER_AUTHORED** |
 | Iridescent-like | `T_Fabric_CelestialWeave_*` | **OWNER_AUTHORED** |
 
-**30 texture files, 9.59 MB, all cleared for commercial reuse.** The manifest's previous
-revision left every preset `UNKNOWN`; that is now resolved *with evidence* rather than
-assumption — the generating script is in the same repository and names these exact files.
-
-Preset **identities were deliberately neutralised** ("velvet-like", not a product name) as the
-brief requires, even though the underlying textures are owned.
+**30 texture files, 9.59 MB, cleared for commercial reuse.** Preset identities are deliberately neutralized even though the underlying textures are owned.
 
 ---
 
-## 3. What was measured — real browser run
+## 3. Measured browser proof
 
-Chrome, `localhost`, 1440×900 then 390×844. Script: `C:/EnvironmentPortfolio/browser-test/verify_fabric_lab.js`.
+Chrome on localhost, 1440×900 then 390×844. Verification harness: `tools/fromage-webgl-kit/scripts/verify/verify_fabric_lab.js`.
 
 ```text
 FPS ~60 · DPR 1.00 · draw calls 1 · triangles 39,000 · textures 8.08 MB (all six sets warm)
@@ -76,110 +65,84 @@ FPS ~60 · DPR 1.00 · draw calls 1 · triangles 39,000 · textures 8.08 MB (all
 
 | Check | Result |
 |---|---|
-| Page initialises, WebGL context starts | PASS |
-| Preset switching (6 presets) | PASS — all six, verified by active label |
+| Page initializes, WebGL context starts | PASS |
+| Preset switching | PASS — all six |
 | Tint control changes material | PASS |
-| Roughness / normal / sheen sliders change state | PASS (`1.8 / 2.1 / 0.4` reflected in export) |
-| Grazing-angle rig engaged | PASS — label reads `lighting: grazing` |
+| Roughness / normal / sheen sliders change state | PASS |
+| Grazing-angle rig | PASS |
 | Wireframe toggle | PASS |
-| Turntable | PASS (disabled under `prefers-reduced-motion`) |
-| Exported state is valid JSON | PASS |
-| Phone width 390 px | PASS — no horizontal overflow (`scrollWidth == innerWidth`) |
+| Turntable | PASS; reduced-motion disables it |
+| Exported state | PASS — valid JSON |
+| Phone width 390 px | PASS — no horizontal overflow |
 | Console errors | **1** — `favicon.ico` only |
-| Graceful fallback when WebGL unavailable | implemented (`#fallback`), not exercised on this machine |
+| WebGL-unavailable fallback | implemented, not exercised on this machine |
 
 ### Captures
 
 | File | Shows |
 |---|---|
 | `01_desktop_default.png` | Velvet-like under studio rig |
-| `02_satin_like.png` | Satin-like — identical lighting, for comparison |
-| `03_grazing_angle.png` | **Grazing-angle inspection** (iridescent-like) |
-| `04_controls_changed.png` | Sliders moved (rough 1.8 / normal 2.1 / sheen 0.4) |
+| `02_satin_like.png` | Satin-like comparison |
+| `03_grazing_angle.png` | Grazing-angle inspection |
+| `04_controls_changed.png` | Material controls changed |
 | `05_wireframe.png` | Wireframe mode |
 | `06_phone_390.png` | 390 px layout |
 
-### The grazing-angle claim, checked rather than asserted
-
-Independent visual inspection of `03_grazing_angle.png`:
-
-> *"the weave texture is clearly visible as a fine diagonal grid… the illumination is skimming
-> across the fabric surface, making the micro-weave and subtle surface relief visible through
-> small highlights and shadows."*
-
-That is the capability the listing asks to see, and it is demonstrated rather than claimed.
-
-**Honest note:** under the *studio* rig the same material reads as smooth and matte — the
-low-frequency fold shading dominates and the micro-weave is not visually resolved. The detail is
-present in the shader and appears the moment the light goes grazing. This is expected behaviour,
-not a defect, but it means a reviewer looking only at a frontal studio capture would not see the
-normal response.
+The grazing-angle capture visibly resolves the micro-weave through near-tangent lighting. Under the studio rig the same detail is much less apparent because low-frequency fold shading dominates; that is an honest limitation of the presentation, not a reason to inflate the claim.
 
 ---
 
 ## 4. Reused vs newly added
 
-**Reused:** the texture library itself (owner-authored), and the packed-ORM convention.
-**Newly added in this prototype:**
+**Reused:** owner-authored texture library and packed-ORM convention.
 
-1. neutral preset identities decoupled from project naming;
-2. direct tint / roughness / normal-strength / sheen controls;
-3. two inspection lighting rigs (studio, grazing);
+**Added here:**
+
+1. neutral preset identities;
+2. tint / roughness / normal-strength / sheen controls;
+3. studio + grazing inspection rigs;
 4. lightweight JSON material-state export;
-5. live diagnostics (FPS, DPR, draw calls, triangles, texture MB);
-6. a procedural draped-cloth panel (150×130 grid) — owned geometry, no imported mesh;
-7. graceful WebGL failure path and `prefers-reduced-motion` handling.
+5. live FPS/DPR/draw-call/triangle/texture diagnostics;
+6. owned procedural draped-cloth geometry;
+7. graceful WebGL failure path and reduced-motion handling.
 
-**No duplicate fabric-lab architecture was created** — nothing under `wix/` was modified by this
-pass, and the deployed portfolio pages are unchanged.
-
----
-
-## 5. Remains unverified / not claimed
-
-- **No physical colorimetry and no measured BRDF.** This is Three.js `MeshPhysicalMaterial`, not
-  a fibre renderer. The presets are artist-authored approximations.
-- **No automatic swatch capture and no production digitization.** Nothing here photographs or
-  scans real fabric.
-- **Sheen is approximate.** `sheenColorMap` is fed from an auxiliary grayscale pass; it is not a
-  fitted sheen lobe.
-- **Not tested on a physical phone**, a low-end GPU, or Safari/iOS. The 390 px check is a
-  viewport emulation, not a device.
-- **No performance measurement under load** — a single 39 k-triangle mesh in one draw call is not
-  a stress test.
-- The grazing-angle rig is a two-light approximation, not a gonioreflectometer.
+Nothing under `wix/` was modified by this proof.
 
 ---
 
-## 6. Proposed client questions (per the brief)
+## 5. Not claimed
 
-1. **What is the delivery target** — a configurator that must run on mid-range phones, or a
-   desktop lookdev review tool? The material budget differs by roughly an order of magnitude and
-   it changes what we author first.
-2. **Which fabrics need to be physically faithful, and which only need to read correctly on
-   screen?** Full measured BRDF capture is expensive; most projects only need two or three
-   hero textiles measured and the rest authored to match.
-3. **Who owns the source texture pipeline** — do you already have swatch photography and a
-   tiling convention, or does the engagement need to establish one before any 3D work starts?
+- No physical colorimetry or measured BRDF.
+- No automatic swatch capture or production digitization.
+- Sheen is an artistic realtime approximation, not a fitted fiber model.
+- No physical-phone, low-end-GPU, Safari or iOS device test.
+- No stress-test performance claim; this is one 39k-triangle mesh in one draw call.
+- Grazing inspection is an authored two-light rig, not a gonioreflectometer.
 
 ---
 
-## Appendix A — assets deliberately NOT used
+## 6. Useful client questions
+
+1. What is the delivery target: mid-range-phone configurator, ecommerce viewer, or desktop lookdev/review tool?
+2. Which materials need close physical fidelity versus simply reading convincingly on screen?
+3. What source material exists already: controlled swatch photography, measurements, manufacturer maps, or only casual references?
+
+---
+
+## Appendix A — assets deliberately excluded
 
 | Asset | Class | Why excluded |
 |---|---|---|
-| KitBash3D Atlantis props + ~47 `KB3D_ATL_*` textures | THIRD_PARTY_RESTRICTED | Licensed third-party pack. Not for redistribution as an original sample. |
-| Zundamon | THIRD_PARTY_RESTRICTED | Third-party character IP. |
-| Melusina, Sir Melodious, Melody Tokens | MELODIA_SPECIFIC | Project characters. Portfolio-only. |
-| `T_Melusina_Shirt_*` | MELODIA_SPECIFIC | Character wardrobe material, not part of the generated fabric library. |
+| KitBash3D Atlantis props / textures | THIRD_PARTY_RESTRICTED | Licensed third-party pack |
+| Zundamon | THIRD_PARTY_RESTRICTED | Third-party character IP |
+| Melusina, Sir Melodious, Melody Tokens | MELODIA_SPECIFIC | Project characters |
+| `T_Melusina_Shirt_*` | MELODIA_SPECIFIC | Character wardrobe material |
 
 ## Appendix B — reproduce
 
 ```bash
-# serve the repo root, then open the prototype
 python -m http.server 8126 --bind 127.0.0.1
 # http://localhost:8126/tools/fromage-webgl-kit/prototypes/fabric-material-lab/
 
-# the verification run that produced section 3
-node C:/EnvironmentPortfolio/browser-test/verify_fabric_lab.js
+node tools/fromage-webgl-kit/scripts/verify/verify_fabric_lab.js
 ```
