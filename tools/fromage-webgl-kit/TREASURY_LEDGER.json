@@ -1,59 +1,68 @@
 {
   "schema": "melodia.treasury_ledger.v1",
   "created_at": "2026-09-10",
-  "status": "INITIALISED / ZERO ENTRIES",
+  "updated_at": "2026-09-11",
+  "status": "PRE_REVENUE / ACTIVE STRIKE: PREMIUM EYEWEAR",
   "authority": {
-    "entry_schema": "FIRST_20.md -> section 'Treasury entry'",
-    "pool_model": "Docs/Strategy/PAID_PROBLEM_RADAR_BUILD_NOW_2026-09-10.md (MelodiaMelusinaV2) -> section 'Token treasury model'",
-    "first_gate": "FIRST_20.md -> section 'Definition of success'",
-    "service_scope": "SERVICES.md",
-    "note": "This file records nothing as earned until a real payment occurs. Do not add speculative revenue rows."
+    "current_strategy": "README.md",
+    "service_catalog": "SERVICES.md",
+    "financial_record": "this file",
+    "note": "README.md is the only current Treasury/status document. Do not create dated handoffs or speculative revenue rows."
   },
-
   "pools": {
     "FREE_POOL": "promotional / student / startup / cloud credits",
     "EARNED_POOL": "inference budget funded by paid work, products, bounties, or other revenue",
     "PERSONAL_POOL": "owner's money; never spent autonomously"
   },
   "authority_limit": "Agents may recommend spend. They do not receive uncapped financial authority.",
-
-  "entry_schema": [
-    { "field": "GROSS_REVENUE", "note": "as invoiced, in the currency actually received" },
-    { "field": "PLATFORM_FEES", "note": "Record the observed fee on the real payout; do not assume a percentage." },
-    { "field": "INFERENCE_COST", "note": "measured spend attributable to the job, not estimated after the fact" },
-    { "field": "HUMAN_HOURS", "note": "actual owner hours. No minimum effective-rate floor is resolved yet -> see open_decisions." },
-    { "field": "NET_REVENUE", "note": "gross minus platform fees minus inference cost" },
-    { "field": "EARNED_POOL_ALLOCATION", "note": "the capped share returned to the token treasury" },
-    { "field": "REUSABLE_ASSET_CREATED", "note": "path to the generic, IP-free artifact left behind in this kit" }
-  ],
-
   "currency": {
-    "resolved": true,
     "canonical": "CAD",
-    "decided_on": "2026-09-10",
-    "decision": "Owner ruling: CAD. SERVICES.md is the canonical rate card; current hypotheses are $200-750 rescue, $500-2,000+ viewer, $750-3,000+ microgame, $600-3,000+ music world, $1,000-5,000+ procedural environment, and $1,000-4,000+ product configurator.",
-    "note": "Buyer listings may quote other currencies or hourly ranges. Those figures belong to the listing, not this rate card.",
-    "rule": "Record the currency actually received on the payment row. If a buyer pays in another currency, record both the received amount and the CAD equivalent with the rate used."
+    "rule": "Record the currency actually received. If paid in another currency, record both received amount and CAD equivalent with the conversion rate used."
   },
-
-  "first_20_gate": {
-    "authority": "FIRST_20.md -> 'Definition of success'",
+  "active_strike": {
+    "source": "Upwork",
+    "title": "3D Blender Designer — premium eyewear e-commerce",
+    "url": "https://www.upwork.com/freelance-jobs/apply/Blender-Designer_~022095185281992255243/",
+    "status": "OWNER_WORKING_NOW",
+    "closest_sku": "Interactive 3D Product / Accessory Viewer",
+    "fit": [
+      "Blender modelling / cleanup",
+      "premium PBR metal / acetate / lens lookdev",
+      "web-ready GLB/GLTF",
+      "360/orbit and close-up presentation",
+      "simple product animation",
+      "browser optimization and QA"
+    ],
+    "guardrails": [
+      "clarify per-product / batch scope before commitment",
+      "do not treat a headline sample price as an unlimited catalogue budget",
+      "do not perform substantial unpaid client-specific production",
+      "virtual try-on, AR, ecommerce, CAD/manufacturing and optical simulation are separate scope"
+    ]
+  },
+  "first_revenue_gate": {
+    "authority": "README.md -> First revenue gate",
     "all_five_required": true,
     "conditions": [
-      { "id": "buyer_accepts", "text": "one real prospect or buyer accepts a bounded WebGL deliverable", "met": false },
+      { "id": "buyer_accepts", "text": "one real prospect or buyer accepts a bounded WebGL/3D deliverable", "met": false },
       { "id": "payment_received", "text": "payment is actually received", "met": false },
-      { "id": "costs_recorded", "text": "inference/platform costs are recorded", "met": false },
+      { "id": "costs_recorded", "text": "platform/inference costs and owner hours are recorded", "met": false },
       { "id": "earned_pool_min", "text": "at least CAD $20 equivalent is designated to EARNED_POOL", "met": false },
-      { "id": "reusable_left", "text": "the job leaves behind one reusable generic primitive, checklist, benchmark, or template", "met": false }
+      { "id": "reusable_left", "text": "the job leaves one reusable generic IP-safe primitive/checklist/benchmark/template", "met": false }
     ],
-    "completion": "0/5",
-    "note": "No payment has been received through this kit yet. This gate is a loop-proof target, not a revenue target."
+    "completion": "0/5"
   },
-
+  "entry_schema": [
+    { "field": "GROSS_REVENUE", "note": "as invoiced, in the currency actually received" },
+    { "field": "PLATFORM_FEES", "note": "record observed fee on the real payout; do not assume a percentage" },
+    { "field": "INFERENCE_COST", "note": "measured paid inference attributable to the job" },
+    { "field": "HUMAN_HOURS", "note": "actual owner hours" },
+    { "field": "NET_REVENUE", "note": "gross minus platform fees minus inference cost" },
+    { "field": "EARNED_POOL_ALLOCATION", "note": "capped share returned to the token treasury" },
+    { "field": "REUSABLE_ASSET_CREATED", "note": "generic, IP-safe artifact left in the kit" }
+  ],
   "entries": [],
-
   "opportunity_record_schema": {
-    "authority": "PAID_PROBLEM_RADAR -> 'Every opportunity should eventually record'",
     "fields": [
       "source",
       "client_or_sponsor_credibility",
@@ -63,71 +72,46 @@
       "estimated_inference_cost",
       "probability_of_winning",
       "delivery_risk",
-      "claim_risk",
       "evidence_already_available",
-      "owner_comfort_SEND_WATCH_DECLINE",
       "status_APPLY_WATCH_IGNORE",
       "actual_result_after_closure"
     ]
   },
-
   "metrics": {
-    "authority": "PAID_PROBLEM_RADAR",
     "formulas": {
       "opportunity_ev": "(net payment x estimated win probability) - inference spend - human-time allowance - delivery/revision risk",
       "token_roic": "revenue attributable to agent-assisted work / paid inference expenditure"
     },
-    "computed": false,
-    "note": "Both formulas are defined and neither has ever been calculated. First computation remains a definition-of-done item."
+    "computed": false
   },
-
-  "scope_decisions": {
-    "first_paid_job_scope": "WebGL / Three.js technical-art work only until the first revenue loop is proven. UE5, TouchDesigner, Houdini and 3ds Max may supply transferable skill/evidence but are not separate first-payment Treasury service lanes yet.",
-    "adjacent_search_categories": [
-      "interactive 3D product configurators / variant systems",
-      "WebGL asset and performance rescue",
-      "creative-agency 3D integration",
-      "bounded industrial / equipment / technical visualization",
-      "paid WebGL audit / feasibility consultation"
-    ],
-    "prototype_rule": "Adjacent categories reuse the current Fabric, Product Motion and Industrial proof stack. Do not create a fourth prototype unless a qualified lead exposes a specific missing capability.",
-    "industrial_rule": "The current Industrial Loop is reusable proof, not an obligation to apply to the original high-value listing. Owner comfort, truthful claim scope and delivery confidence are hard gates. SEND / WATCH / DECLINE are all valid outcomes.",
-    "scientific_claim_rule": "Current Industrial Structural / Flow / Thermal modes are component coding, not CFD/FEA/scientific fields. Do not claim simulation or measured-data capability without real supplied data and bounded implementation evidence."
-  },
-
   "rules": [
-    "MAKE THE CAPSTONE WORK -> IDENTIFY THE GENERIC PIECE -> SEPARATE PROJECT IP -> PACKAGE THE REUSABLE PROOF -> SELL A BOUNDED SOLUTION -> RETURN A CAPPED SHARE TO TOKEN TREASURY",
-    "The system optimizes for durable useful output per token, not maximum agent activity.",
-    "Freelance gigs are sidecars: they must never displace Choral Sheep P0 or an academic deadline.",
-    "Never package Melodia-specific characters, textures, music, purchased templates, third-party material graphs, or client assets as generic kit inventory.",
-    "A high dollar value never overrides poor scope boundedness, high claim risk, high delivery risk, or owner discomfort.",
-    "The first paid result matters more than maximum application count."
+    "MAKE THE CAPSTONE WORK -> IDENTIFY THE GENERIC PIECE -> SEPARATE PROJECT IP -> PACKAGE REUSABLE PROOF -> SELL A BOUNDED SOLUTION -> RETURN A CAPPED SHARE TO EARNED_POOL",
+    "Freelance gigs are sidecars: they must never displace Choral Sheep or an academic deadline.",
+    "WebGL/product/accessory work is the first-payment scope. UE5/TouchDesigner/Houdini/3ds Max services are not needed to prove the first Treasury loop.",
+    "A high-value listing is never mandatory. Owner comfort, truthful fit and bounded delivery are hard gates.",
+    "Never package Melodia-specific characters, textures, music, purchased templates, third-party material graphs or client assets as generic inventory."
   ],
-
-  "stop_conditions": {
-    "authority": "FIRST_20.md plus current Treasury scope decisions",
-    "items": [
-      "it starts displacing capstone P0",
-      "three consecutive outreach batches produce no credible leads",
-      "delivery requires unrelated backend/full-stack scope",
-      "a prospect asks for unpaid speculative production beyond a tiny assessment",
-      "legal/IP ownership is unclear",
-      "the reusable-kit work grows faster than actual demand",
-      "the buyer expects claims or domain expertise the current evidence does not support",
-      "the owner is not comfortable making the commitment after reviewing the real listing"
-    ]
-  },
-
+  "stop_conditions": [
+    "Treasury starts displacing capstone/academic P0",
+    "delivery requires unrelated backend/full-stack ownership",
+    "a prospect asks for substantial unpaid speculative production",
+    "legal/IP ownership is unclear",
+    "scope cannot be bounded before acceptance",
+    "effective pay collapses after revisions/platform costs",
+    "reusable-kit work grows faster than actual demand"
+  ],
+  "resolved_decisions": [
+    "CAD is the canonical rate-card currency.",
+    "README.md replaces dated lead/strike/status documents.",
+    "The original industrial listing is archived proof, not an active strike.",
+    "The first paid-job experiment remains WebGL/product/accessory focused; adjacent DCC/engine services can wait until the loop is proven."
+  ],
   "open_decisions": [
-    "Minimum acceptable effective hourly rate: HUMAN_HOURS is recorded but no floor exists yet.",
-    "Funnel rule conflict: FIRST_20.md says 'keep at most the top 3'; LEADS_2026-09-10.md marks 7 leads APPLY.",
-    "Whether this ledger interacts with the in-game MelodiaTokenWalletSubsystem or must never be conflated with it in reporting.",
-    "Retrospective format and cadence for Opportunity EV / Token ROIC."
+    "Minimum acceptable effective hourly rate after revisions/platform costs.",
+    "Retrospective cadence for Opportunity EV / Token ROIC after real payment data exists."
   ],
-
   "uncertainty": [
-    "No payment, invoice, or payout record exists anywhere in this kit as of this update.",
-    "No platform-fee rate is documented. Any percentage in circulation is an assumption, not a source.",
-    "No currency conversion rate is documented until a real non-CAD payout is recorded."
+    "No payment, invoice or payout exists in this ledger yet.",
+    "No platform fee percentage should be assumed before a real payout is observed."
   ]
 }
