@@ -648,10 +648,85 @@
         }
       });
 
-      var scale = def.scale || 1.0;
-      object3D.scale.set(scale, scale, scale);
+      // ---------------------------------------------------------------------
+      // ROBUST FIT TO VIEW.
+      //
+      // Two separate traps, both real:
+      //
+      // 1. SOURCE UNITS VARY. The original assets are stored in centimetres, while
+      //    re-exports using FBX_SCALE_ALL come through in different units, so a fixed
+      //    per-asset multiplier either cropped a model to a macro fragment or shrank it
+      //    to nothing. Fit on the model's own size instead of trusting units.
+      //
+      // 2. THE RAW BOUNDING BOX IS FRAGILE. A single stray vertex wrecks it. The hero
+      //    FBX carries geometry 17,000+ units from the character's own body, so a fit
+      //    computed from the raw union box normalised the whole figure down to a speck.
+      //    (Its mesh count is 120, of which 94 carry no material - it is a rough export.)
+      //    So measure per-mesh boxes and keep only the ones near the median centre.
+      // ---------------------------------------------------------------------
+      var TARGET_SIZE = 2.2;   // plate radius is 1.78 and the camera sits at z=3.8
 
-      var box = new THREE.Box3().setFromObject(object3D);
+      object3D.scale.set(1, 1, 1);
+      object3D.position.set(0, 0, 0);
+      object3D.updateMatrixWorld(true);
+
+      var boxes = [];
+      object3D.traverse(function (child) {
+        if (!child.isMesh) return;
+        var b = new THREE.Box3().setFromObject(child);
+        if (!isFinite(b.min.x) || !isFinite(b.max.x)) return;
+        var c = b.getCenter(new THREE.Vector3());
+        var s = b.getSize(new THREE.Vector3());
+        if (!isFinite(c.x) || !isFinite(s.x)) return;
+        boxes.push({ box: b, center: c, size: s });
+      });
+
+      var box;
+      if (boxes.length === 0) {
+        box = new THREE.Box3().setFromObject(object3D);
+      } else {
+        // median centre - resistant to a few far-flung pieces
+        var sortedX = boxes.map(function (e) { return e.center.x; }).sort(function (a, b) { return a - b; });
+        var sortedY = boxes.map(function (e) { return e.center.y; }).sort(function (a, b) { return a - b; });
+        var sortedZ = boxes.map(function (e) { return e.center.z; }).sort(function (a, b) { return a - b; });
+        var mid = function (a) { return a[Math.floor(a.length / 2)]; };
+        var med = new THREE.Vector3(mid(sortedX), mid(sortedY), mid(sortedZ));
+
+        // median distance from that centre, then keep anything within 6x it
+        var dists = boxes.map(function (e) { return e.center.distanceTo(med); })
+          .sort(function (a, b) { return a - b; });
+        var medDist = dists[Math.floor(dists.length / 2)];
+        var limit = Math.max(medDist * 6, 1e-6);
+
+        var kept = boxes.filter(function (e) { return e.center.distanceTo(med) <= limit; });
+        if (kept.length === 0) kept = boxes;
+
+        box = new THREE.Box3();
+        kept.forEach(function (e) { box.union(e.box); });
+      }
+
+      var size = box.getSize(new THREE.Vector3());
+      var largest = Math.max(size.x, size.y, size.z);
+
+      if (largest > 1e-6) {
+        var fit = TARGET_SIZE / largest;
+        object3D.scale.set(fit, fit, fit);
+        object3D.updateMatrixWorld(true);
+
+        // recompute from the SAME robust set so the recentre is not thrown by outliers
+        box = new THREE.Box3();
+        var placed = false;
+        object3D.traverse(function (child) {
+          if (!child.isMesh) return;
+          var b = new THREE.Box3().setFromObject(child);
+          if (!isFinite(b.min.x)) return;
+          var d = b.getCenter(new THREE.Vector3()).distanceTo(med.clone().multiplyScalar(fit));
+          if (d > limit * fit * 6) return;
+          if (!placed) { box.copy(b); placed = true; } else { box.union(b); }
+        });
+        if (!placed) box.setFromObject(object3D);
+      }
+
       var center = box.getCenter(new THREE.Vector3());
 
       // Center horizontally and ground bottom neatly on top of the lowered plate (y = -1.72)
