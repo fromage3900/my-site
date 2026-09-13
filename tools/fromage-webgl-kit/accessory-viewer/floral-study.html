@@ -61,11 +61,24 @@ a{color:inherit}.sheet{max-width:1720px;margin:auto;padding:0 28px 50px;overflow
   <aside class="rail"><span class="micro">Realtime object / interactive study / 001</span></aside>
   <div class="stage-shell"><div id="stage" class="stage" aria-label="Interactive realtime accessory viewport"></div><div class="stage-meta micro"><span>Object 001 / Optical</span><span id="stageStatus">Checking asset</span></div><p class="stage-note">Original frame / realtime finish</p><div id="emptyState" class="empty-state"><div><strong>Object pending.</strong><p>Awaiting authored eyewear GLB.</p></div></div></div>
   <aside class="panel">
-    <div><span class="micro">Surface / 01</span><h2>Finish.</h2></div>
+    <div><span class="micro quiet">Object 001 / 008</span><h2>Atelier.</h2><p>Eight silhouettes, two finishes each. Original eyewear, realtime WebGL.</p></div>
+    <div class="control-group">
+      <label class="control-title" for="heroSelector"><b>00</b>Silhouette</label>
+      <select id="heroSelector" class="choice" style="width:100%;font:500 10px var(--sans);padding:9px 11px">
+        <option value="aviator-tortoise">Aviator · Tortoise</option>
+        <option value="aviator-metal">Aviator · Champagne</option>
+        <option value="cateye-tortoise">Cat-Eye · Tortoise</option>
+        <option value="cateye-metal">Cat-Eye · Champagne</option>
+        <option value="panto-tortoise">Panto · Tortoise</option>
+        <option value="panto-metal">Panto · Champagne</option>
+        <option value="rect-tortoise">Rectangular · Tortoise</option>
+        <option value="rect-metal">Rectangular · Champagne</option>
+      </select>
+    </div>
     <div><span class="control-title micro">Frame</span><div class="choice-grid"><button class="choice" data-finish="obsidian" aria-pressed="true"><i class="dot obsidian"></i>Obsidian</button><button class="choice" data-finish="tea" aria-pressed="false"><i class="dot tea"></i>Tea acetate</button><button class="choice" data-finish="sea" aria-pressed="false"><i class="dot sea"></i>Sea glass</button><button class="choice" data-finish="pearl" aria-pressed="false"><i class="dot pearl"></i>Pearl</button></div></div>
     <div><span class="control-title micro">Lens</span><div class="choice-grid"><button class="choice" data-lens="clear" aria-pressed="true">Clear</button><button class="choice" data-lens="smoke" aria-pressed="false">Smoke</button><button class="choice" data-lens="rose" aria-pressed="false">Rose</button><button class="choice" data-lens="cool" aria-pressed="false">Cool</button></div></div>
     <div><span class="control-title micro">View</span><div class="choice-grid"><button class="choice" data-view="hero" aria-pressed="true">Hero</button><button class="choice" data-view="front" aria-pressed="false">Front</button><button class="choice" data-view="hinge" aria-pressed="false">Hinge</button><button class="choice" data-view="bridge" aria-pressed="false">Bridge</button></div></div>
-    <details class="inspection"><summary class="micro quiet">Inspection tools</summary><div class="choice-grid"><button class="choice" data-inspect="beauty" aria-pressed="true">Beauty</button><button class="choice" data-inspect="wire" aria-pressed="false">Wireframe</button><button class="choice" data-inspect="clay" aria-pressed="false">Clay</button><button class="choice" id="rotateToggle" aria-pressed="true">Rotate</button></div></details>
+    <details class="inspection"><summary class="micro quiet">Inspection tools</summary><div class="choice-grid"><button class="choice" data-inspect="beauty" aria-pressed="true">Beauty</button><button class="choice" data-inspect="wire" aria-pressed="false">Wireframe</button><button class="choice" data-inspect="clay" aria-pressed="false">Clay</button><button class="choice" id="rotateToggle" aria-pressed="true">Rotate</button></details>
     <details class="technical-proof"><summary class="micro quiet">Technical proof</summary><div id="diagnostics" class="diag">Waiting for authored eyewear GLB…</div></details>
   </aside>
 </section>

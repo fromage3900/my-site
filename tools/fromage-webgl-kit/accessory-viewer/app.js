@@ -3,7 +3,17 @@ import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.186.0/exampl
 import { createRuntime } from '../src/core/createRuntime.js';
 import { createGLBLoader } from '../src/assets/createGLBLoader.js';
 
-const MODEL_URL = '../../../wix/models/accessory-eyewear-hero.glb';
+const HEROES = {
+  'rect-tortoise': { label: 'Rectangular · Tortoise', url: '../../wix/models/eyewear-heroes/rect-tortoise.glb' },
+  'rect-metal': { label: 'Rectangular · Champagne', url: '../../wix/models/eyewear-heroes/rect-metal.glb' },
+  'panto-tortoise': { label: 'Panto · Tortoise', url: '../../wix/models/eyewear-heroes/panto-tortoise.glb' },
+  'panto-metal': { label: 'Panto · Champagne', url: '../../wix/models/eyewear-heroes/panto-metal.glb' },
+  'cateye-tortoise': { label: 'Cat-Eye · Tortoise', url: '../../wix/models/eyewear-heroes/cateye-tortoise.glb' },
+  'cateye-metal': { label: 'Cat-Eye · Champagne', url: '../../wix/models/eyewear-heroes/cateye-metal.glb' },
+  'aviator-tortoise': { label: 'Aviator · Tortoise', url: '../../wix/models/eyewear-heroes/aviator-tortoise.glb' },
+  'aviator-metal': { label: 'Aviator · Champagne', url: '../../wix/models/eyewear-heroes/aviator-metal.glb' },
+};
+const DEFAULT_HERO = 'aviator-tortoise';
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const stage = document.getElementById('stage');
@@ -11,6 +21,7 @@ const emptyState = document.getElementById('emptyState');
 const stageStatus = document.getElementById('stageStatus');
 const diagnostics = document.getElementById('diagnostics');
 const controlButtons = [...document.querySelectorAll('.choice')];
+const heroSelector = document.getElementById('heroSelector');
 
 controlButtons.forEach((button) => { button.disabled = true; });
 
@@ -61,34 +72,10 @@ runtime.scene.add(floor);
 const loader = createGLBLoader({ GLTFLoader: (await import('https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/loaders/GLTFLoader.js')).GLTFLoader });
 
 const FINISHES = {
-  obsidian: {
-    frame: 0x151518,
-    frameRoughness: 0.18,
-    frameTransmission: 0.0,
-    metal: 0xd4d2ce,
-    metalRoughness: 0.2,
-  },
-  tea: {
-    frame: 0x74503d,
-    frameRoughness: 0.22,
-    frameTransmission: 0.08,
-    metal: 0xc8a66c,
-    metalRoughness: 0.24,
-  },
-  sea: {
-    frame: 0xb7d3cd,
-    frameRoughness: 0.16,
-    frameTransmission: 0.2,
-    metal: 0xd9ddd9,
-    metalRoughness: 0.21,
-  },
-  pearl: {
-    frame: 0xdccfdd,
-    frameRoughness: 0.17,
-    frameTransmission: 0.06,
-    metal: 0xd5c2a3,
-    metalRoughness: 0.23,
-  },
+  obsidian: { frame: 0x151518, frameRoughness: 0.18, frameTransmission: 0.0, metal: 0xd4d2ce, metalRoughness: 0.2 },
+  tea: { frame: 0x74503d, frameRoughness: 0.22, frameTransmission: 0.08, metal: 0xc8a66c, metalRoughness: 0.24 },
+  sea: { frame: 0xb7d3cd, frameRoughness: 0.16, frameTransmission: 0.2, metal: 0xd9ddd9, metalRoughness: 0.21 },
+  pearl: { frame: 0xdccfdd, frameRoughness: 0.17, frameTransmission: 0.06, metal: 0xd5c2a3, metalRoughness: 0.23 },
 };
 
 const LENSES = {
@@ -118,9 +105,10 @@ let modelBytes = null;
 let frameCounter = 0;
 let fpsWindowStart = performance.now();
 let fps = 0;
+let currentHero = DEFAULT_HERO;
 
 function setStatus(text) {
-  stageStatus.textContent = text;
+  if (stageStatus) stageStatus.textContent = text;
 }
 
 function readableBytes(bytes) {
@@ -148,11 +136,20 @@ function copyUsefulMaps(target, source) {
 function classifyMesh(mesh) {
   const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
   const token = `${mesh.name || ''} ${materials.map((m) => m?.name || '').join(' ')}`.toLowerCase();
-
-  if (/lens|glass/.test(token)) return 'lens';
-  if (/metal|hinge|screw|hardware|nose[-_ ]?pad|pin/.test(token)) return 'metal';
+  if (/lens/.test(token)) return 'lens';
+  if (/metal|hinge|screw|temple|frame|hardware|nose[-_ ]?pad|pin/.test(token)) return 'metal';
   if (/logo|engrave|detail|mark|inlay/.test(token)) return 'detail';
   return 'frame';
+}
+
+function disposeRoot() {
+  if (!root) return;
+  runtime.scene.remove(root);
+  root.traverse((obj) => {
+    if (obj.geometry?.dispose) obj.geometry.dispose();
+  });
+  root = null;
+  meshes = [];
 }
 
 function disposeGeneratedMaterials() {
@@ -166,46 +163,27 @@ function makeBeautyMaterials() {
   const lens = LENSES[currentLens];
 
   const frameMaterial = new THREE.MeshPhysicalMaterial({
-    color: finish.frame,
-    roughness: finish.frameRoughness,
-    metalness: 0.02,
-    clearcoat: 1,
-    clearcoatRoughness: 0.09,
-    transmission: finish.frameTransmission,
-    thickness: 0.16,
-    ior: 1.48,
+    color: finish.frame, roughness: finish.frameRoughness, metalness: 0.02,
+    clearcoat: 1, clearcoatRoughness: 0.09, transmission: finish.frameTransmission,
+    thickness: 0.16, ior: 1.48,
   });
   const metalMaterial = new THREE.MeshStandardMaterial({
-    color: finish.metal,
-    roughness: finish.metalRoughness,
-    metalness: 1,
+    color: finish.metal, roughness: finish.metalRoughness, metalness: 1,
   });
   const lensMaterial = new THREE.MeshPhysicalMaterial({
-    color: lens.color,
-    roughness: 0.08,
-    metalness: 0,
-    transmission: lens.transmission,
-    thickness: 0.12,
-    ior: 1.5,
-    transparent: true,
-    opacity: lens.opacity,
-    clearcoat: 0.55,
-    clearcoatRoughness: 0.05,
-    depthWrite: false,
+    color: lens.color, roughness: 0.08, metalness: 0, transmission: lens.transmission,
+    thickness: 0.12, ior: 1.5, transparent: true, opacity: lens.opacity,
+    clearcoat: 0.55, clearcoatRoughness: 0.05, depthWrite: false,
   });
   const detailMaterial = new THREE.MeshStandardMaterial({
-    color: finish.metal,
-    roughness: Math.min(0.34, finish.metalRoughness + 0.06),
-    metalness: 0.92,
+    color: finish.metal, roughness: Math.min(0.34, finish.metalRoughness + 0.06), metalness: 0.92,
   });
   materialPool.push(frameMaterial, metalMaterial, lensMaterial, detailMaterial);
-
   return { frameMaterial, metalMaterial, lensMaterial, detailMaterial };
 }
 
 function applyMaterials() {
   if (!root) return;
-
   if (inspection === 'wire') {
     disposeGeneratedMaterials();
     const wire = new THREE.MeshBasicMaterial({ color: 0x252525, wireframe: true });
@@ -213,7 +191,6 @@ function applyMaterials() {
     meshes.forEach((mesh) => { mesh.material = wire; });
     return;
   }
-
   if (inspection === 'clay') {
     disposeGeneratedMaterials();
     const clay = new THREE.MeshStandardMaterial({ color: 0xd5d0c9, roughness: 0.66, metalness: 0.02 });
@@ -221,30 +198,16 @@ function applyMaterials() {
     meshes.forEach((mesh) => { mesh.material = clay; });
     return;
   }
-
   const { frameMaterial, metalMaterial, lensMaterial, detailMaterial } = makeBeautyMaterials();
-
   meshes.forEach((mesh) => {
     const source = sourceMaterial(mesh);
     switch (mesh.userData.accessoryRole) {
-      case 'lens':
-        mesh.material = copyUsefulMaps(lensMaterial.clone(), source);
-        materialPool.push(mesh.material);
-        break;
-      case 'metal':
-        mesh.material = copyUsefulMaps(metalMaterial.clone(), source);
-        materialPool.push(mesh.material);
-        break;
-      case 'detail':
-        mesh.material = copyUsefulMaps(detailMaterial.clone(), source);
-        materialPool.push(mesh.material);
-        break;
-      case 'frame':
-      default:
-        mesh.material = copyUsefulMaps(frameMaterial.clone(), source);
-        materialPool.push(mesh.material);
-        break;
+      case 'lens': mesh.material = copyUsefulMaps(lensMaterial.clone(), source); break;
+      case 'metal': mesh.material = copyUsefulMaps(metalMaterial.clone(), source); break;
+      case 'detail': mesh.material = copyUsefulMaps(detailMaterial.clone(), source); break;
+      default: mesh.material = copyUsefulMaps(frameMaterial.clone(), source); break;
     }
+    materialPool.push(mesh.material);
   });
 }
 
@@ -254,11 +217,9 @@ function fitProduct(object) {
   const size = box.getSize(new THREE.Vector3());
   const largest = Math.max(size.x, size.y, size.z);
   if (!Number.isFinite(largest) || largest <= 1e-6) return;
-
   const scale = 2.75 / largest;
   object.scale.setScalar(scale);
   object.updateMatrixWorld(true);
-
   box = new THREE.Box3().setFromObject(object);
   const center = box.getCenter(new THREE.Vector3());
   object.position.sub(center);
@@ -269,10 +230,8 @@ function fitProduct(object) {
 
 function setPressed(selector, value) {
   document.querySelectorAll(selector).forEach((button) => {
-    const active = button.dataset.finish === value
-      || button.dataset.lens === value
-      || button.dataset.view === value
-      || button.dataset.inspect === value;
+    const active = button.dataset.finish === value || button.dataset.lens === value
+      || button.dataset.view === value || button.dataset.inspect === value;
     button.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
 }
@@ -301,48 +260,39 @@ function recordSourceMaterials(object) {
   });
 }
 
-async function getModelBytes() {
+async function getModelBytes(url) {
   try {
-    const response = await fetch(MODEL_URL, { method: 'HEAD', cache: 'no-store' });
+    const response = await fetch(url, { method: 'HEAD', cache: 'no-store' });
     if (!response.ok) return null;
     const bytes = Number(response.headers.get('content-length'));
     return Number.isFinite(bytes) && bytes > 0 ? bytes : null;
-  } catch {
-    return null;
-  }
+  } catch { return null; }
 }
 
-async function loadProduct() {
-  setStatus('Loading original asset…');
-  modelBytes = await getModelBytes();
+async function loadHero(heroKey) {
+  const hero = HEROES[heroKey] || HEROES[DEFAULT_HERO];
+  setStatus(`Loading ${hero.label}…`);
+  disposeRoot();
+  disposeGeneratedMaterials();
+  modelBytes = await getModelBytes(hero.url);
 
   try {
-    const gltf = await loader.load(MODEL_URL, {
-      onProgress: ({ ratio }) => {
-        if (ratio !== null) setStatus(`Loading ${Math.round(ratio * 100)}%`);
-      },
-    });
-
+    const gltf = await loader.load(hero.url);
     root = gltf.scene;
-    root.name = 'accessory-eyewear-hero';
+    root.name = `hero-${heroKey}`;
     recordSourceMaterials(root);
     fitProduct(root);
     runtime.scene.add(root);
     applyMaterials();
-
     emptyState.hidden = true;
-    setStatus('Realtime asset loaded');
+    setStatus(`${hero.label} · realtime asset loaded`);
     activateControls();
     setView('hero');
+    currentHero = heroKey;
   } catch (error) {
-    console.info('[accessory-viewer] Authored eyewear asset not present yet:', error?.message || error);
+    console.info('[accessory-viewer] Hero asset unavailable:', error?.message || error);
     setStatus('Asset slot ready');
-    diagnostics.textContent = [
-      'PRESENTATION SHELL READY',
-      'Expected: wix/models/accessory-eyewear-hero.glb',
-      'Authoring contract: separate/name FRAME, METAL/HINGE, LENS/GLASS, DETAIL/LOGO parts.',
-      'No fallback product is shown: capability proof must use the owner-authored asset.',
-    ].join('\n');
+    diagnostics.textContent = `Expected: ${hero.url}`;
   }
 }
 
@@ -384,24 +334,24 @@ controls.addEventListener('start', () => {
   document.getElementById('rotateToggle').setAttribute('aria-pressed', 'false');
 });
 
+if (heroSelector) {
+  heroSelector.addEventListener('change', () => loadHero(heroSelector.value));
+}
+
 runtime.onFrame(({ now, delta }) => {
   controls.update();
-
   const smoothing = reducedMotion ? 1 : 1 - Math.pow(0.0008, delta);
   runtime.camera.position.lerp(cameraGoal, smoothing);
   controls.target.lerp(targetGoal, smoothing);
-
   if (root && autoRotate && inspection === 'beauty') {
     root.rotation.y += delta * 0.12;
   }
-
   frameCounter += 1;
   if (now - fpsWindowStart >= 700) {
     fps = Math.round((frameCounter * 1000) / (now - fpsWindowStart));
     frameCounter = 0;
     fpsWindowStart = now;
   }
-
   if (root) {
     const info = runtime.renderer.info.render;
     const roleCounts = meshes.reduce((acc, mesh) => {
@@ -410,6 +360,7 @@ runtime.onFrame(({ now, delta }) => {
       return acc;
     }, {});
     diagnostics.textContent = [
+      `Hero: ${HEROES[currentHero]?.label || currentHero}`,
       `GLB ${readableBytes(modelBytes)}`,
       `FPS ~${fps || '…'} · DPR ${runtime.renderer.getPixelRatio().toFixed(2)}`,
       `Draw calls ${info.calls} · Triangles ${info.triangles.toLocaleString()}`,
@@ -419,4 +370,4 @@ runtime.onFrame(({ now, delta }) => {
   }
 });
 
-loadProduct();
+loadHero(DEFAULT_HERO);
