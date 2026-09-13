@@ -375,7 +375,9 @@ document.querySelectorAll('[data-inspect]').forEach((button) => {
 });
 
 document.getElementById('rotateToggle').addEventListener('click', (event) => {
-  autoRotate = !autoRotate && !reducedMotion;
+  // Reduced motion only sets the DEFAULT (off); an explicit toggle press is
+  // consent, so it must be able to re-enable rotation.
+  autoRotate = !autoRotate;
   event.currentTarget.setAttribute('aria-pressed', autoRotate ? 'true' : 'false');
 });
 
