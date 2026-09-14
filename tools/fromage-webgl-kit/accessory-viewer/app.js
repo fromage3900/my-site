@@ -79,7 +79,7 @@ const FINISHES = {
 };
 
 const LENSES = {
-  clear: { color: 0xe9f1f2, transmission: 0.9, opacity: 0.4 },
+  clear: { color: 0xe9f1f2, transmission: 0.82, opacity: 0.42 },
   smoke: { color: 0x667078, transmission: 0.66, opacity: 0.55 },
   rose: { color: 0xc98f99, transmission: 0.72, opacity: 0.5 },
   cool: { color: 0x8facbf, transmission: 0.72, opacity: 0.48 },
@@ -171,9 +171,9 @@ function makeBeautyMaterials() {
     color: finish.metal, roughness: finish.metalRoughness, metalness: 1,
   });
   const lensMaterial = new THREE.MeshPhysicalMaterial({
-    color: lens.color, roughness: 0.08, metalness: 0, transmission: lens.transmission,
-    thickness: 0.12, ior: 1.5, transparent: true, opacity: lens.opacity,
-    clearcoat: 0.55, clearcoatRoughness: 0.05, depthWrite: false,
+    color: lens.color, roughness: 0.06, metalness: 0, transmission: lens.transmission,
+    thickness: 0.14, ior: 1.5, transparent: true, opacity: lens.opacity,
+    clearcoat: 0.65, clearcoatRoughness: 0.04, depthWrite: false, envMapIntensity: 1.15,
   });
   const detailMaterial = new THREE.MeshStandardMaterial({
     color: finish.metal, roughness: Math.min(0.34, finish.metalRoughness + 0.06), metalness: 0.92,
