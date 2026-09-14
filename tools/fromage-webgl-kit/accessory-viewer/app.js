@@ -325,7 +325,8 @@ document.querySelectorAll('[data-inspect]').forEach((button) => {
 });
 
 document.getElementById('rotateToggle').addEventListener('click', (event) => {
-  autoRotate = !autoRotate && !reducedMotion;
+  // Reduced motion controls the initial default; an explicit press is user consent.
+  autoRotate = !autoRotate;
   event.currentTarget.setAttribute('aria-pressed', autoRotate ? 'true' : 'false');
 });
 
