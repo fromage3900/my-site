@@ -19,8 +19,8 @@ These are the pages expected to share one current typography/navigation/editoria
 - application-hub.html
 - pipeline.html
 
-The current shared build is **20260904p1**. Canonical pages carry
-`<meta name="melodia-build" content="20260904p1">` and cache-bust local CSS/JS with the
+The current shared build is **20260912p1**. Canonical pages carry
+`<meta name="melodia-build" content="20260912p1">` and cache-bust local CSS/JS with the
 same version.
 
 ## Secondary public case studies
@@ -51,7 +51,7 @@ As of 2026-09-04, the published Wix site has an enabled BODY_END custom embed:
 - **Name:** `Melodia Desktop Portfolio Frame`
 - **ID:** `f9bb4701-21e2-41b2-a88b-9016bf5abb51`
 - **Breakpoint:** `min-width: 1081px`
-- **Source:** `index.html?embed=wix&v=20260904p1`
+- **Source:** `index.html?embed=wix&v=20260912p1`
 
 On the Wix home route at desktop widths, this mounts the portfolio as a fixed,
 borderless `100vw × 100dvh` iframe and locks the underlying Wix page scroll. This
