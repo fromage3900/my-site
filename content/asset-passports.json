@@ -1,0 +1,224 @@
+{
+  "schema": "melodia-asset-passport-registry/v1",
+  "authored_at": "2026-09-05",
+  "rule": "Never infer production metrics from pixels. Generated passports remain authoritative where they exist; authored passports only fill identity/lineage gaps using intake metadata.",
+  "passports": {
+    "melusina": {
+      "label": "Melusina",
+      "category": "Character / stage lookdev",
+      "authority": "generated_passport",
+      "generated_json": "../generated/passports/melusina_passport.json",
+      "generated_html": "../generated/passports/melusina_passport.html",
+      "evidence_roles": [
+        "beauty lookdev",
+        "concept design",
+        "sculpt/form"
+      ],
+      "caveat": "A given plate may not prove water-hair or final gameplay material bindings."
+    },
+    "rose_window": {
+      "label": "Rose Window 8-Petal",
+      "category": "Prop / ornament",
+      "authority": "generated_passport",
+      "generated_json": "../generated/passports/rose_window_passport.json",
+      "generated_html": "../generated/passports/rose_window_passport.html",
+      "metrics": {
+        "triangles": 15712,
+        "meshes": 1,
+        "materials": 1,
+        "textures": 0
+      },
+      "engine": "Blender EEVEE"
+    },
+    "cross": {
+      "label": "Melusina Vow Cross",
+      "category": "Prop / cross",
+      "authority": "generated_passport",
+      "generated_json": "../generated/passports/cross_passport.json",
+      "generated_html": "../generated/passports/cross_passport.html",
+      "metrics": {
+        "triangles": 1952,
+        "meshes": 1,
+        "materials": 1,
+        "textures": 1
+      },
+      "engine": "Blender EEVEE"
+    },
+    "violin": {
+      "label": "Melodia Violin",
+      "category": "Prop / instrument",
+      "authority": "blender_intake",
+      "source": "generated/blender_portfolio_intake.json",
+      "intake_wave": 4,
+      "engine": "Blender EEVEE",
+      "metrics_status": "not published in current intake",
+      "evidence_views": [
+        "front",
+        "beauty 34",
+        "macro",
+        "three quarter"
+      ]
+    },
+    "lissajous": {
+      "label": "Lissajous Curve Sculpture",
+      "category": "Signature / procedural sculpture",
+      "authority": "blender_intake",
+      "source": "generated/blender_portfolio_intake.json",
+      "intake_wave": 2,
+      "engine": "Blender EEVEE",
+      "metrics_status": "not published in current intake",
+      "evidence_views": [
+        "macro"
+      ],
+      "rejected_views": [
+        "beauty 34",
+        "three quarter"
+      ]
+    },
+    "gazebo1": {
+      "label": "Melusina Gazebo Variant",
+      "category": "Signature / architecture study",
+      "authority": "blender_intake",
+      "source": "generated/blender_portfolio_intake.json",
+      "intake_wave": 3,
+      "engine": "Blender EEVEE",
+      "metrics_status": "not published in current intake",
+      "evidence_views": [
+        "beauty 34",
+        "three quarter"
+      ],
+      "evidence_quality": "lookdev/diagnostic"
+    },
+    "environment_terrain_capture": {
+      "label": "Environment Terrain / Scatter Study",
+      "category": "Environment study",
+      "authority": "render_evidence_only",
+      "metrics_status": "unverified",
+      "caveat": "The current 182314 plate does not visually establish a canonical world identity."
+    },
+    "sakura_material_study": {
+      "label": "Sakura Material Study",
+      "category": "Environment material study",
+      "authority": "unreal_intake",
+      "source": "generated/unreal_portfolio_intake.json",
+      "engine": "Unreal Engine",
+      "metrics_status": "render-level metrics not assigned"
+    },
+    "hero_level_environment_studies": {
+      "label": "Hero Level Environment Studies",
+      "category": "Environment / Unreal render studies",
+      "authority": "portfolio_render_catalog",
+      "source": "generated/portfolio_render_catalog.json",
+      "metrics_status": "render-level geometry/material metrics not published",
+      "evidence_views": [
+        {
+          "id": "night_bridge_study_190653",
+          "capture": "2026-07-08 19:06",
+          "path": "../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png"
+        },
+        {
+          "id": "crater_terrain_study_055343",
+          "capture": "2026-06-25 05:54",
+          "path": "../generated/assets/unreal/hero-hero-level-20260625-055343-1920x1080.png"
+        },
+        {
+          "id": "violet_scatter_study_181046",
+          "capture": "2026-07-09 18:10",
+          "path": "../generated/assets/unreal/hero-hero-level-cam-hero-materials-20260709-181046-1920x1080.png"
+        },
+        {
+          "id": "dusk_terrain_study_190109",
+          "capture": "2026-06-27 19:01",
+          "path": "../generated/assets/unreal/hero-hero-level-20260627-190109-1920x1080.png"
+        }
+      ],
+      "caveat": "Catalog identifies these as Hero-group environment renders but does not establish a canonical Melodia world name for any individual frame."
+    },
+    "rosette": {
+      "label": "Rosette Medallion",
+      "category": "Prop / ornament",
+      "authority": "generated_passport",
+      "generated_json": "../generated/passports/rosette_passport.json",
+      "generated_html": "../generated/passports/rosette_passport.html",
+      "metrics": {
+        "triangles": 12840,
+        "meshes": 1,
+        "materials": 1,
+        "textures": 0
+      },
+      "engine": "Blender EEVEE"
+    },
+    "quatrefoil": {
+      "label": "Quatrefoil Arch",
+      "category": "Prop / ornament",
+      "authority": "generated_passport",
+      "generated_json": "../generated/passports/quatrefoil_passport.json",
+      "generated_html": "../generated/passports/quatrefoil_passport.html",
+      "metrics": {
+        "triangles": 10008,
+        "meshes": 1,
+        "materials": 1,
+        "textures": 0
+      },
+      "engine": "Blender EEVEE"
+    },
+    "torus_knot": {
+      "label": "Torus Knot",
+      "category": "Prop / ornament",
+      "authority": "generated_passport",
+      "generated_json": "../generated/passports/torus_knot_passport.json",
+      "generated_html": "../generated/passports/torus_knot_passport.html",
+      "metrics": {
+        "triangles": 7560,
+        "meshes": 1,
+        "materials": 1,
+        "textures": 0
+      },
+      "engine": "Blender EEVEE"
+    },
+    "spiral_stair": {
+      "label": "Spiral Staircase",
+      "category": "Prop / ornament",
+      "authority": "generated_passport",
+      "generated_json": "../generated/passports/spiral_stair_passport.json",
+      "generated_html": "../generated/passports/spiral_stair_passport.html",
+      "metrics": {
+        "triangles": 13608,
+        "meshes": 1,
+        "materials": 1,
+        "textures": 0
+      },
+      "engine": "Blender EEVEE"
+    },
+    "zenlantern": {
+      "label": "Zen Lantern",
+      "category": "Prop / props",
+      "authority": "generated_passport",
+      "generated_json": "../generated/passports/zenlantern_passport.json",
+      "generated_html": "../generated/passports/zenlantern_passport.html",
+      "metrics": {
+        "triangles": 8277956,
+        "meshes": 6,
+        "materials": 1,
+        "textures": 0
+      },
+      "engine": "Blender EEVEE",
+      "verification_note": "Generated passport reports 8,277,956 triangles. Preserve as generated metadata, but re-verify on source asset before making this count a prominent public claim."
+    },
+    "magical_wand": {
+      "label": "Stylized Magical Wand",
+      "category": "Prop / props",
+      "authority": "generated_passport",
+      "generated_json": "../generated/passports/magical_wand_passport.json",
+      "generated_html": "../generated/passports/magical_wand_passport.html",
+      "metrics": {
+        "triangles": 3456,
+        "meshes": 1,
+        "materials": 1,
+        "textures": 0
+      },
+      "engine": "Blender EEVEE",
+      "public_render_status": "current beauty_34 capture rejected after pixel review"
+    }
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "schema": "melodia.showcase_freeze.v1",
+  "status": "soft_freeze",
+  "started_at": "2026-09-07T19:10:00-04:00",
+  "base_sha": "e4ea952350ee395cf30291f7fb9f6c4625ff1294",
+  "purpose": "Freeze recruiter-facing presentation while allowing only approved render promotion, proof correction, contact/metadata fixes, and freeze infrastructure.",
+  "hard_freeze_after": [
+    "Melusina UE5.8 B2 hero + portrait accepted",
+    "Sakura Dream canonical beauty accepted",
+    "Kaleido Nave canonical beauty accepted",
+    "Fallen Moon canonical beauty accepted",
+    "desktop/mobile/social QA passes",
+    "Pages deploy green"
+  ],
+  "allowed_exact": [
+    "content/showcase-freeze.json",
+    "docs/PORTFOLIO_SENDOFF_FREEZE_2026-09-07.md",
+    "README.md",
+    "EDITING.md",
+    "REPOSITORY_AUTHORITY.md",
+    "docs/BRANCH_CANONIZATION_2026-09-08.md",
+    "docs/CANONICAL_WEBSITE_PIPELINE_2026-09-08.md",
+    ".github/workflows/pages.yml",
+    "tools/verify_sendoff_freeze.py",
+    "tools/verify_showcase_polish.py",
+    "tools/figma_mcp.py",
+    "tools/ingest_unreal_portfolio.ps1",
+    "content/render-passports.json",
+    "content/site-plates.json",
+    "index.html",
+    "wix/index.html",
+    "wix/curated-art.html",
+    "wix/resume.html",
+    "wix/hiring-dossier.html",
+    "wix/recruiter-one-sheet.html",
+    "wix/hero-renders.html",
+    "wix/application-hub.html",
+    "wix/melodia-stage-character.html",
+    "wix/sakura-case-study.html",
+    "wix/space-cathedral.html",
+    "wix/pcg-system-impact.html",
+    "docs/PROFESSOR_INTERACTIVE_POLISH_2026-09-08.md",
+    "wix/melodia-living-worlds.html",
+    "wix/melodia-living-worlds.js",
+    "wix/melodia-living-worlds.css",
+    "wix/realtime-3d-viewer.html",
+    "wix/melodia-3d-viewport.js",
+    "wix/melodia-atelier-lab.html",
+    "wix/melodia-atelier-lab.js",
+    "wix/shader-breakdowns.html",
+    "wix/constellation-brush.html",
+    "wix/public-routes.json",
+    "wix/melodia-tokens.css",
+    "wix/works-on-paper.css",
+    "wix/curated-art.css",
+    "wix/melodia-editorial.css",
+    "wix/melodia-mahou-flourish.css",
+    "wix/melodia-recruiter-hardening.css",
+    ".gitignore",
+    "wix/cosmic-orrery.html",
+    "wix/dashboards.html",
+    "wix/design-specs.html",
+    "wix/melodia-editorial-ornaments.css",
+    "wix/melodia-editorial-polish.css",
+    "wix/melodia-game-ui.css",
+    "wix/melodia-gameplay-loop.html",
+    "wix/melodia-hero-embed.html",
+    "wix/melodia-home-hardening.css",
+    "wix/melodia-luxury-type.css",
+    "wix/melodia-melusina.html",
+    "wix/melodia-passport-embed.html",
+    "wix/melodia-stage-character-hardening.css",
+    "wix/melodia-stage-character.css",
+    "wix/melusina-model-tooling.html",
+    "wix/nous-research-packet.html",
+    "wix/nvidia-recruiter-sendoff.html",
+    "wix/pipeline.html"
+  ],
+  "allowed_prefixes": [
+    "generated/assets/character/",
+    "generated/assets/unreal/",
+    "generated/optimized/curated-art/",
+    "tools/fromage-webgl-kit/",
+    "wix/models/"
+  ],
+  "blocked_by_default": [
+    "new public pages",
+    "navigation redesign",
+    "new shaders/effects on recruiter path",
+    "global CSS restyling",
+    "new interactive experiments",
+    "copy expansion unrelated to correctness",
+    "route taxonomy changes",
+    "new public dashboards"
+  ],
+  "exception_policy": "A deliberate freeze exception must first update this manifest with the exact path and reason. Do not bypass the gate by weakening verification.",
+  "exceptions": [
+    {
+      "id": "professor-interactive-polish-2026-09-08",
+      "reason": "Owner explicitly requested a bounded polish pass on existing Three.js / interactive showcases before professors begin reviewing the portfolio.",
+      "scope": [
+        "robust WebGL fallback/loading",
+        "professor-facing copy accuracy",
+        "accessibility and reduced-motion behavior",
+        "metadata/social-preview correctness",
+        "remove misleading Unreal/Substrate equivalence language"
+      ],
+      "exclusions": [
+        "no new public routes",
+        "no new visual systems",
+        "no global redesign",
+        "no generated replacement artwork"
+      ]
+    },
+    {
+      "id": "constellation-brush-live-link-2026-09-08",
+      "reason": "Owner explicitly requested that the uploaded Kimi-polished Constellation Brush experiment be linked to the live website.",
+      "scope": [
+        "publish one noindex supporting experience-lab route",
+        "link it from the existing Living Worlds page",
+        "add minimal accessibility, backlink, metadata, and CDN fallback polish"
+      ],
+      "exclusions": [
+        "do not add it to canonical routes or sitemap",
+        "do not change homepage hierarchy",
+        "do not redesign navigation",
+        "do not alter the gesture-art system beyond integration polish"
+      ]
+    },
+    {
+      "id": "canonical-repository-docs-2026-09-08",
+      "reason": "Owner requested final Git and semester-prep cleanup. The repository authority, branch canonization, and canonical website pipeline docs are freeze infrastructure and must be permitted without weakening recruiter-facing presentation guards.",
+      "scope": [
+        "REPOSITORY_AUTHORITY.md",
+        "docs/BRANCH_CANONIZATION_2026-09-08.md",
+        "docs/CANONICAL_WEBSITE_PIPELINE_2026-09-08.md"
+      ],
+      "exclusions": [
+        "no recruiter-facing layout changes",
+        "no navigation changes",
+        "no new public routes",
+        "no visual-system changes"
+      ]
+    },
+    {
+      "id": "micro-entry-cutscene-2026-09-08",
+      "reason": "Owner explicitly requested restoration of the preserved Ink & Breath opening idea as a sub-second Melodia-style first-visit micro-cutscene on the existing homepage.",
+      "scope": [
+        "wix/index.html only",
+        "first-visit-per-session non-blocking micro-cutscene",
+        "visual language distilled from preserved InkBreathResonance prototype",
+        "reduced-motion and immediate-fallback behavior"
+      ],
+      "exclusions": [
+        "no new public route",
+        "no long-form 21-second ritual",
+        "no audio autoplay",
+        "no navigation or recruiter-copy changes",
+        "no replacement artwork",
+        "no new renderer dependency"
+      ]
+    },
+    {
+      "id": "root-entry-and-webgl-kit-2026-09-10",
+      "reason": "Owner explicitly requested the current root breathe gateway plus a bounded Three.js/WebGL commercialization and prototype lane. The root gateway remains recruiter-facing and is therefore allowed only as an exact path; the WebGL kit lives outside canonical recruiter routes and may iterate without weakening the protected Wix portfolio surface.",
+      "scope": [
+        "index.html root gateway correctness and recruiter escape link",
+        "tools/fromage-webgl-kit/ internal tooling, prototypes, evidence, and submission packaging",
+        "industrial and product-motion proof work requested on 2026-09-10"
+      ],
+      "exclusions": [
+        "no automatic promotion of WebGL prototypes into canonical recruiter navigation",
+        "no new canonical routes without a separate freeze exception",
+        "no global portfolio redesign",
+        "no weakening of showcase or freeze verification"
+      ]
+    },
+    {
+      "id": "palette-token-naming-2026-09-10",
+      "reason": "Owner requested the definitive palette (brief: 'inspired by reverse 1999, nikki and melodia to make the ultimate one'). The colours already live in the six stylesheets below as raw hex literals - they were authored over the life of the project and never named. This exception covers naming them in wix/melodia-tokens.css and swapping each literal for a token that resolves to the SAME hex. Pixel-neutral by construction: no rendered colour changes.",
+      "scope": [
+        "wix/melodia-tokens.css - add ink/paper/dusk/mauve/accent primitives plus semantic aliases",
+        "wix/works-on-paper.css - 28 raw hex literals resolved to tokens",
+        "wix/curated-art.css - 5 raw hex literals resolved to tokens",
+        "wix/melodia-editorial.css - 1 raw hex literal resolved to a token",
+        "wix/melodia-mahou-flourish.css - 1 raw hex literal resolved to a token",
+        "wix/melodia-recruiter-hardening.css - 1 raw hex literal resolved to a token"
+      ],
+      "exclusions": [
+        "no colour value may change - every token resolves to the exact hex it replaces",
+        "no layout, typography, spacing, or component change",
+        "no new public page or route",
+        "no edits to any file outside the six paths listed in scope"
+      ]
+    },
+    {
+      "id": "internal-tooling-maintenance-2026-09-10",
+      "reason": "Owner requested final repository-health cleanup while the recruiter-facing site remains frozen. These two internal tooling fixes repair broken maintenance paths without changing public presentation.",
+      "scope": [
+        "tools/figma_mcp.py - support the existing async context-manager call path",
+        "tools/ingest_unreal_portfolio.ps1 - replace the dead hard-coded G: package path with explicit/env/canonical resolution"
+      ],
+      "exclusions": [
+        "no public route, layout, copy, style, or visual-system change",
+        "no automatic Unreal portfolio data refresh",
+        "no weakening of validation or freeze verification"
+      ]
+    },
+    {
+      "id": "viewer-asset-integrity-2026-09-11",
+      "reason": "The viewer's FBX files referenced 49 sibling textures and several replacement models that were never committed, so five of fourteen assets rendered untextured on the live site and two token assets carried ~5M triangles. Fixing this requires adding files under wix/models/, which no existing allowlist rule covers.",
+      "scope": [
+        "ship the 49 missing textures the viewer's FBX files already reference (downscaled 471 MB of 4K sources to 12.2 MB at 512px)",
+        "replace two 8-triangle placeholder boxes with real measured Melodia instruments",
+        "replace a 5,015,040-triangle token with the 192-triangle asset already in-repo, and decimate the 4,278,450-triangle star to 6,000",
+        "remove .gitignore's wix/models/ rule, which silently excluded every new asset added there and is the root cause of the missing textures"
+      ],
+      "exclusions": [
+        "no new public routes",
+        "no new visual systems",
+        "no global restyling",
+        "no change to any recruiter-facing copy beyond correcting a false triangle count"
+      ]
+    },
+    {
+      "id": "typography-token-alignment-2026-09-11",
+      "reason": "Owner instruction: fold the updated fonts and Figma tokens into the site. The live site declared Syne / Bricolage Grotesque / Azeret Mono / Instrument Serif while the design-system token SSOT (tokens.json -> global.fontFamilies) and the Figma plugin already built Fraunces / Inter / IBM Plex Mono. That drift is a correctness defect, not a redesign: the site was contradicting its own declared token source.",
+      "scope": [
+        "point the site's --font-* custom properties at the token SSOT (Fraunces display, Inter body, IBM Plex Mono metadata, Cinzel wordmark)",
+        "replace the stale Google Fonts requests with the matching families",
+        "update fallback font names in per-page and per-widget CSS so they agree with the tokens",
+        "no layout, spacing, colour, copy or structural change of any kind"
+      ],
+      "exclusions": [
+        "no new public routes",
+        "no new visual systems",
+        "no layout or spacing change",
+        "no change to any page's content or copy"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,324 @@
+{
+  "schema": "melodia.trace.v1",
+  "captured_at": "2026-08-19T09:37:22Z",
+  "count": 30,
+  "events": [
+    {
+      "event": "gate",
+      "id": "jump_windup",
+      "status": "pass",
+      "date": "2026-08-07",
+      "session": "session-c79b0b27",
+      "note": "IsJumpWindingUp() OR'd into bRuntimeIsInAir in MelodiaLocomotionAnimInstance.cpp via C++ data bridge",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "sprint_speed",
+      "status": "pass",
+      "date": "2026-08-07",
+      "session": "session-c79b0b27",
+      "note": "SprintSpeedMultiplier 1.5->1.7, sprint=714 uu/s",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "hair_emissive",
+      "status": "pass",
+      "date": "2026-08-07",
+      "session": "session-c79b0b27",
+      "note": "MagicalIntensity 0.15->0.08, CausticIntensity 0.08->0.04, WaterOpacity 0.72->0.60, MPC GlobalEmissiveBoost=1.0",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "material_slots",
+      "status": "pass",
+      "date": "2026-08-07",
+      "session": "session-c79b0b27",
+      "note": "9 SK_Melusina slots reassigned to correct MIs",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "tp_melusina",
+      "status": "pass",
+      "date": "2026-08-07",
+      "session": "session-c79b0b27",
+      "note": "Warm-violet diffuse ramp applied via struct import_text",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "waterfx",
+      "status": "pass",
+      "date": "2026-08-07",
+      "session": "session-c79b0b27",
+      "note": "Melusina_WaterFX created, WaterSplash/Sheet emitters, MPC proximity live",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "water_hair_material",
+      "status": "pass",
+      "date": "2026-08-07",
+      "session": "session-c79b0b27",
+      "note": "nikki_subtle preset added, subtle_drip applied",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "material_switches",
+      "status": "pass",
+      "date": "2026-08-07",
+      "session": "session-c79b0b27",
+      "note": "Gloves bUseSeparateRoughnessMap/MetallicMap=True, frontpanel textures fixed",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "save_system",
+      "status": "pass",
+      "date": "2026-08-07",
+      "session": "session-c79b0b27",
+      "note": "Slot names unified to MelodiaJRPGSlot0, chain verified",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "graph_reachability",
+      "status": "pass",
+      "date": "2026-08-07",
+      "session": "session-c79b0b27",
+      "note": "BP_MelodiaJRPGGameInstance: 0 dead islands, 0 editor-only classes",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "pie_smoke",
+      "status": "pass",
+      "date": "2026-08-07",
+      "session": "session-c79b0b27",
+      "note": "KaleidoNave PIE smoke: 0 errors, 98 samples, stable teardown",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "gameplay_smoke",
+      "status": "pass",
+      "date": "2026-08-07",
+      "session": "session-c79b0b27",
+      "note": "GMM gameplay smoke: all 5 checks pass, damage ordering correct, SP/ult system working",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "battle_encounter",
+      "status": "pass",
+      "date": "2026-08-19",
+      "session": "session-f964e200",
+      "note": "Owner 2026-08-19: BP_BattleController::Show infinite-loop claim is stale and closed. Supersedes 2026-08-18 FAIL rows. See Docs/ASSET_MISMATCH_AUDIT_2026-08-18.md \u00a73.2.",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "runtime",
+      "status": "pass",
+      "date": "2026-08-13",
+      "session": "owner-realkey-20260813",
+      "note": "Owner-verified REAL keyboard input through BP_BattleUI::OnKeyDown, 2026-08-13. Supersedes the 2026-08-12 18:57 row (session pie_smoke_1_145605), whose note cited only 'Restoration wired in CompleteBattle & PIE smoke' and therefore did not meet the real-input evidence standard in AGENTS.md. Owner statement is ground truth per _AGENT_WORKING_AGREEMENT.md rule 4.",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "static_gates",
+      "status": "fail",
+      "date": "2026-08-14",
+      "session": "session-894e8f57",
+      "note": "2026-08-14 rerun: live static chain timed out at 120s after Monolith/editor stopped responding; offline verify_baseline independently failed with 2 material drifts (M_Master_Simple_Universal 32305->33784 bytes, 25->26 nodes; M_Master_Toon_Landscape_HeightBlend 427468->450364 bytes, 290->304 nodes). Latest log also contains MODAL_OPEN and read-only save warnings. No clean claim.",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "inject",
+      "status": "pass",
+      "date": "2026-08-14",
+      "session": "session-894e8f57",
+      "note": "Live t3d_safe_wire transaction committed on /Game/MelodiaIntegration/Tests/BP_T3DSafeWireProbe; validate, inject, compile clean, assert matched:true, save, and re-export passed. Manifest: Saved/T3D/Game_MelodiaIntegration_Tests_BP_T3DSafeWireProbe_20260814T045103Z/manifest.json",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "blueprint_compile",
+      "status": "pass",
+      "date": "2026-08-14",
+      "session": "session-894e8f57",
+      "note": "Live t3d_safe_wire probe compiled clean with 0 errors and 0 warnings; asset /Game/MelodiaIntegration/Tests/BP_T3DSafeWireProbe",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "save_load",
+      "status": "pass",
+      "date": "2026-08-14",
+      "session": "owner-verified-20260814",
+      "note": "Owner-verified 2026-08-14: canonical save/load works and the slot surfaces on the main menu, confirmed after a closed-editor C++ rebuild. Owner statement is ground truth per _AGENT_WORKING_AGREEMENT.md rule 4.",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "package_build",
+      "status": "pass",
+      "date": "2026-08-14",
+      "session": "session-894e8f57",
+      "note": "UE 5.8 BuildCookRun rebuilt after explicit /Game/Melodia/UI cook rule: exit 0; build, cook, IoStore, stage, pak, archive all passed.",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "package_launch",
+      "status": "pass",
+      "date": "2026-08-14",
+      "session": "session-894e8f57",
+      "note": "UE 5.8 packaged Gauntlet passed outside editor: mounted 2782-package IoStore, loaded MelodiaMainMenu, and added WBP_MainMenu to viewport on map cycles.",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "repeat_consume",
+      "status": "pass",
+      "date": "2026-08-14",
+      "session": "session-894e8f57",
+      "note": "Live authored Priestess Quill first occurrence plus canonical SaveToSlot checkpoint ResumeScript replay; social stat and quest intent remained exactly once after reload.",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "battle_integration_map",
+      "status": "pass",
+      "date": "2026-08-19",
+      "session": "session-f964e200",
+      "note": "Owner 2026-08-19: same close as battle_encounter. Show-loop FAIL rows are historical, not current standing.",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "gate",
+      "id": "gate_ledger",
+      "status": "pass",
+      "date": "2026-08-18",
+      "session": "session-da2b594c",
+      "note": "test pipeline run",
+      "source": "Saved/gate_ledger.json",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "run",
+      "id": "harness_self_eval",
+      "model": "none",
+      "file": "math_run_2026-08-19.json",
+      "sha256": "5ff00fc5573d4d0db630bc366702f0967b5fb07395776535035254c64ec106ae",
+      "passed": 32,
+      "total": 32,
+      "status": "completed",
+      "captured_at": "2026-08-19T05:08:55-04:00",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "run",
+      "id": "harness_self_eval",
+      "model": "none",
+      "file": "math_run_latest.json",
+      "sha256": "5ff00fc5573d4d0db630bc366702f0967b5fb07395776535035254c64ec106ae",
+      "passed": 32,
+      "total": 32,
+      "status": "completed",
+      "captured_at": "2026-08-19T05:08:55-04:00",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "run",
+      "id": "skipped",
+      "model": "muse-glimmer",
+      "file": "math_run_muse-glimmer_skipped.json",
+      "sha256": "1013b64f87f62355fd8780723bde5409eb50968678c9674aa9e97a7b6e8afd23",
+      "passed": null,
+      "total": null,
+      "status": "skipped",
+      "captured_at": "2026-08-19T01:32:31-04:00",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "run",
+      "id": "model_via_qsharp",
+      "model": "qsharp-simulator + classical-baseline",
+      "file": "math_run_qsharp_2026-08-19.json",
+      "sha256": "c52a06036382f4e70232631bcc2be265dcf99925857a3394774484e95fc25e1c",
+      "passed": 7,
+      "total": 7,
+      "status": "completed",
+      "captured_at": "2026-08-19T05:29:38",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "run",
+      "id": "model_via_hermes_harness",
+      "model": "qwen2.5-coder:7b",
+      "file": "math_run_qwen2.5-coder_7b_2026-08-19.json",
+      "sha256": "27bb0f5581bdcd04c5a37de9b494faf5f644cde7f9070ce0492d8b3c2f92756f",
+      "passed": 21,
+      "total": 24,
+      "status": "completed",
+      "captured_at": "2026-08-19T01:45:34-04:00",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "run",
+      "id": "in_progress",
+      "model": "qwen3.8-27b",
+      "file": "math_run_qwen3.8-27b_in_progress.json",
+      "sha256": "94b92cd4f182ba8100bcc21b79f13e43837a3aef69140bf370b9e34dd0d15680",
+      "passed": null,
+      "total": null,
+      "status": "in_progress",
+      "captured_at": "2026-08-19T04:54:34-04:00",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    },
+    {
+      "event": "lane",
+      "id": "guardrails",
+      "file": "guardrails_2026-08-19.json",
+      "sha256": "0e732c8c6aaf52a33d77eeff84878b89967100d82eb4383591d7595ed41630d3",
+      "stats": {
+        "blocked": 6,
+        "pass_rate": 100.0,
+        "passed": 4,
+        "recovery": 4,
+        "rewritten": 0
+      },
+      "nemo": "held",
+      "pinned_at": "2026-08-19T09:37:22Z"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+/* MelodiaStarfield — unified depth-parallax canvas sky */
+
+.melodia-shell > .melodia-starfield-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.62;
+}
+
+.melodia-shell[data-starfield-intensity="cosmic"] > .melodia-starfield-canvas {
+  opacity: 0.72;
+}
+
+.melodia-shell[data-starfield-intensity="subtle"] > .melodia-starfield-canvas {
+  opacity: 0.44;
+}
+
+.melodia-shell.starfield-reduced > .melodia-starfield-canvas {
+  opacity: 0.36;
+}
+
+.melodia-shell.mg-wish-mode > .melodia-starfield-canvas {
+  opacity: 0.68;
+}
+
+@media (max-width: 680px) {
+  .melodia-shell > .melodia-starfield-canvas {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .melodia-shell > .melodia-starfield-canvas {
+    opacity: 0.4;
+  }
+}
+
+
+/* Scroll-composed starfield breathing.
+   JS modulates particle alpha; these classes add a tiny spatial cue to the canvas itself. */
+.melodia-shell > .melodia-starfield-canvas {
+  transition: filter 1.1s ease, opacity 1.1s ease;
+  will-change: filter;
+}
+
+:root[data-starfield-space="bloom"] .melodia-shell > .melodia-starfield-canvas {
+  filter: saturate(1.08) brightness(1.08);
+}
+
+:root[data-starfield-space="crescendo"] .melodia-shell > .melodia-starfield-canvas {
+  filter: saturate(1.16) brightness(1.12);
+}
+
+:root[data-starfield-space="drift"] .melodia-shell > .melodia-starfield-canvas {
+  filter: saturate(.94) brightness(.92);
+}
+
+:root[data-starfield-space="hush"] .melodia-shell > .melodia-starfield-canvas {
+  filter: saturate(.72) brightness(.76);
+}
+
+:root[data-starfield-space="void"] .melodia-shell > .melodia-starfield-canvas {
+  filter: saturate(.42) brightness(.54);
+}
+
+@media (max-width: 680px) {
+  :root[data-starfield-space="void"] .melodia-shell > .melodia-starfield-canvas {
+    filter: saturate(.34) brightness(.46);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .melodia-shell > .melodia-starfield-canvas {
+    transition: none;
+  }
+}

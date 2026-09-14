@@ -1,0 +1,102 @@
+{
+  "build": "20260904p1",
+  "canonical": [
+    "index.html",
+    "curated-art.html",
+    "world-bible.html",
+    "melodia-living-worlds.html",
+    "resume.html",
+    "hero-renders.html",
+    "zbrush-breakdown.html",
+    "shader-breakdowns.html",
+    "cosmic-orrery.html",
+    "application-hub.html",
+    "pipeline.html"
+  ],
+  "secondary_case_studies": [
+    "sakura-case-study.html",
+    "space-cathedral.html",
+    "pcg-system-impact.html",
+    "melodia-stage-character.html"
+  ],
+  "internal_not_navigation": [
+    "dashboards.html",
+    "project_health.html",
+    "agent-dashboard-t3d.html",
+    "metrics_dashboard.html",
+    "loop_monitor.html",
+    "live_dashboard.html",
+    "t3d-catalog.html",
+    "production-roadmap.html"
+  ],
+  "component_examples": [
+    "melodia-hero-embed.html",
+    "melodia-passport-embed.html",
+    "melodia-project-card.html",
+    "melodia-breakdown-card.html",
+    "melodia-gallery-grid.html",
+    "melodia-section-header.html",
+    "melodia-smooth-scroll.html",
+    "melodia-navigation-constellation.html",
+    "melodia-rhythm-hero.html"
+  ],
+  "retired_redirects": [
+    "capture-brief.html",
+    "asset-scouting.html",
+    "social-kit.html"
+  ],
+  "public_supporting": [
+    "art-test-readiness.html",
+    "baroque-grotto.html",
+    "commissions.html",
+    "credits.html",
+    "design-specs.html",
+    "geometry-nodes.html",
+    "hiring-dossier.html",
+    "material-loop-gallery.html",
+    "melodia-atelier-lab.html",
+    "melodia-gameplay-loop.html",
+    "melodia-melusina.html",
+    "melodia-stage-character.html",
+    "ornament-kitbash.html",
+    "pcg-system-impact.html",
+    "realtime-3d-viewer.html",
+    "recruiter-one-sheet.html",
+    "render-constellation.html",
+    "sakura-case-study.html",
+    "sdf-material-gallery.html",
+    "space-cathedral.html",
+    "surreal-architecture.html",
+    "touchdesigner-architecture.html",
+    "universal-material-impact.html"
+  ],
+  "targeted_evidence": [
+    "melusina-model-tooling.html",
+    "nous-research-packet.html",
+    "nvidia-recruiter-sendoff.html"
+  ],
+  "experience_labs": [
+    "mahou-particle-garden.html",
+    "constellation-brush.html"
+  ],
+  "reviewer_priority_supporting": [
+    "pcg-system-impact.html",
+    "material-loop-gallery.html",
+    "universal-material-impact.html",
+    "recruiter-one-sheet.html",
+    "hiring-dossier.html",
+    "melodia-stage-character.html",
+    "sakura-case-study.html",
+    "space-cathedral.html",
+    "baroque-grotto.html",
+    "geometry-nodes.html",
+    "credits.html",
+    "commissions.html",
+    "art-test-readiness.html",
+    "surreal-architecture.html",
+    "sdf-material-gallery.html",
+    "render-constellation.html",
+    "realtime-3d-viewer.html",
+    "melodia-atelier-lab.html"
+  ]
+}

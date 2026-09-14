@@ -1,0 +1,857 @@
+/* Selected Art — intentionally quieter than the technical portfolio. */
+@import './melodia-tokens.css';
+
+html[data-page="curated-art"] {
+  background: var(--primitive-ink-850);
+}
+
+.curated-art-shell {
+  --gallery-paper: rgba(249, 240, 228, .96);
+  --gallery-ink: var(--primitive-dusk-900);
+  --gallery-night: var(--primitive-ink-700);
+  --gallery-line: rgba(221, 199, 155, .25);
+  overflow: clip;
+}
+
+.curated-art-shell > .melodia-starfield-canvas {
+  opacity: .34;
+}
+
+.curated-art-shell .mahou-world-ambience {
+  opacity: .45;
+}
+
+.curated-art-shell .mahou-flourish-stage {
+  opacity: .42;
+}
+
+.curated-art-hero {
+  min-height: min(92svh, 980px);
+  display: grid;
+  grid-template-columns: minmax(0, .618fr) minmax(0, 1fr);
+  align-items: end;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(8,6,18,.97) 0 32%, rgba(8,6,18,.62) 50%, rgba(8,6,18,.1) 75%, rgba(8,6,18,.22)),
+    radial-gradient(circle at 30% 65%, rgba(231,201,206,.08), transparent 40%);
+}
+
+.curated-hero-image {
+  position: absolute;
+  inset: 0 0 0 32%;
+  overflow: hidden;
+}
+
+.curated-hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8,6,18,.08), transparent 46%, rgba(8,6,18,.42)),
+    linear-gradient(90deg, rgba(8,6,18,.9), transparent 35%);
+}
+
+.curated-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 61.8% 38.2%;
+  filter: none;
+  transform: scale(1.015);
+}
+
+.curated-art-hero .hero-inner {
+  position: relative;
+  z-index: 4;
+  grid-column: 1 / 2;
+  padding: clamp(7rem, 14vh, 10rem) clamp(1.5rem, 5vw, 5rem) clamp(4rem, 9vh, 7rem);
+  max-width: 44rem;
+}
+
+.curated-art-hero h1 {
+  max-width: 10ch;
+  text-wrap: balance;
+}
+
+.curated-art-hero .lede {
+  max-width: 34rem;
+}
+
+.curated-art-shell .band {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(5.5rem, 11vw, 10rem) 0;
+}
+
+.curated-art-shell .band > .inner {
+  width: min(100% - 2rem, 1280px);
+  margin: 0 auto;
+}
+
+.curated-intro,
+.curated-objects {
+  background: var(--gallery-paper);
+  color: var(--gallery-ink);
+}
+
+.curated-worlds,
+.curated-studies,
+.curated-exit {
+  background: rgba(9,7,19,.86);
+  color: var(--primitive-ivory-50);
+}
+
+.curated-art-shell .section-head {
+  margin-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+
+.curated-art-shell .section-head h2 {
+  max-width: 13ch;
+  font-size: clamp(2rem, 5vw, 4.4rem);
+  letter-spacing: -.035em;
+  line-height: .98;
+}
+
+.curated-art-shell .section-head .human-lede {
+  max-width: 32rem;
+}
+
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 2.2vw, 2rem);
+  align-items: start;
+}
+
+.art-piece {
+  margin: 0;
+  min-width: 0;
+}
+
+.art-piece a {
+  display: block;
+  overflow: hidden;
+  background: rgba(10,8,18,.08);
+  text-decoration: none;
+}
+
+.art-piece img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  transition: transform 1.618s cubic-bezier(.18,.72,.18,1);
+}
+
+.art-piece a:hover img,
+.art-piece a:focus-visible img {
+  transform: scale(1.018);
+  filter: none;
+}
+
+.art-piece figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-top: 12px;
+  font-size: .72rem;
+  letter-spacing: .06em;
+}
+
+.art-piece figcaption span {
+  font-family: var(--font-display);
+  font-size: .92rem;
+  letter-spacing: -.01em;
+}
+
+.art-piece figcaption small {
+  opacity: .54;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  text-align: right;
+}
+
+.art-grid-opening .art-hero-piece {
+  grid-column: 1 / span 7;
+}
+
+.art-grid-opening .art-hero-piece img {
+  aspect-ratio: 4 / 5;
+  object-position: 50% 38%;
+}
+
+.art-grid-opening .art-landscape-piece {
+  grid-column: 8 / -1;
+  margin-top: 13rem;
+}
+
+.art-grid-opening .art-landscape-piece img {
+  aspect-ratio: 16 / 10;
+}
+
+.art-grid-opening .art-portrait-piece {
+  grid-column: 9 / -1;
+  margin-top: 2rem;
+}
+
+.art-grid-opening .art-portrait-piece img {
+  aspect-ratio: 1 / 1.22;
+  object-position: 50% 35%;
+}
+
+.art-grid-worlds .world-a {
+  grid-column: 1 / span 9;
+}
+
+.art-grid-worlds .world-a img {
+  aspect-ratio: 16 / 9;
+}
+
+.art-grid-worlds .world-b {
+  grid-column: 7 / -1;
+  margin-top: 5.5rem;
+}
+
+.art-grid-worlds .world-c {
+  grid-column: 2 / span 5;
+  margin-top: 2rem;
+}
+
+.art-grid-worlds .world-b img,
+.art-grid-worlds .world-c img {
+  aspect-ratio: 16 / 10;
+}
+
+.art-grid-objects .object-tall {
+  grid-column: 1 / span 4;
+}
+
+.art-grid-objects .object-tall img {
+  aspect-ratio: 4 / 5;
+}
+
+.art-grid-objects .object-wide {
+  grid-column: 5 / -1;
+  margin-top: 5.5rem;
+}
+
+.art-grid-objects .object-wide img {
+  aspect-ratio: 16 / 9;
+}
+
+.art-grid-objects .object-small:nth-of-type(3) {
+  grid-column: 2 / span 3;
+  margin-top: 3rem;
+}
+
+.art-grid-objects .object-small:nth-of-type(4) {
+  grid-column: 5 / span 4;
+  margin-top: 8rem;
+}
+
+.art-grid-objects .object-small:nth-of-type(5) {
+  grid-column: 9 / span 3;
+  margin-top: 2rem;
+}
+
+.art-grid-objects .object-small img {
+  aspect-ratio: 1;
+}
+
+.art-grid-studies {
+  align-items: end;
+}
+
+.art-grid-studies .study-sketch {
+  grid-column: 1 / span 3;
+}
+
+.art-grid-studies .study-sculpt {
+  grid-column: 5 / span 4;
+  margin-top: 5rem;
+}
+
+.art-grid-studies .study-token {
+  grid-column: 10 / -1;
+  margin-top: 10rem;
+}
+
+.art-grid-studies img {
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  padding: 1rem;
+  background: rgba(255,255,255,.035);
+}
+
+.curated-exit {
+  min-height: 62svh;
+  display: grid;
+  align-items: center;
+}
+
+.curated-exit-copy {
+  width: min(100%, 760px);
+  margin-left: auto;
+  padding: clamp(2rem, 5vw, 5rem) 0;
+}
+
+.curated-exit h2 {
+  margin: .35rem 0 1rem;
+  max-width: 12ch;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: .95;
+  letter-spacing: -.045em;
+}
+
+.curated-exit .human-lede {
+  max-width: 38rem;
+}
+
+.curated-art-shell .mahou-hidden-rose-window {
+  opacity: 0;
+}
+
+.curated-art-shell .mahou-hidden-rose-window.is-revealed {
+  opacity: .09;
+}
+
+@media (max-width: 820px) {
+  .curated-art-hero {
+    min-height: 90svh;
+    display: block;
+  }
+
+  .curated-hero-image {
+    inset: 0;
+  }
+
+  .curated-hero-image::after {
+    background:
+      linear-gradient(180deg, rgba(8,6,18,.12) 12%, rgba(8,6,18,.38) 48%, rgba(8,6,18,.95) 82%),
+      linear-gradient(90deg, rgba(8,6,18,.36), transparent 65%);
+  }
+
+  .curated-hero-image img {
+    object-position: 61.8% 28%;
+  }
+
+  .curated-art-hero .hero-inner {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 8rem 1.25rem max(2rem, env(safe-area-inset-bottom));
+  }
+
+  .curated-art-shell .band {
+    padding: clamp(5rem, 14vh, 8rem) 0;
+  }
+
+  .art-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .art-grid-opening .art-hero-piece,
+  .art-grid-worlds .world-a,
+  .art-grid-objects .object-wide {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+
+  .art-grid-opening .art-landscape-piece {
+    grid-column: 2 / -1;
+    margin-top: 4rem;
+  }
+
+  .art-grid-opening .art-portrait-piece {
+    grid-column: 1 / span 5;
+    margin-top: 2.5rem;
+  }
+
+  .art-grid-worlds .world-b {
+    grid-column: 2 / -1;
+    margin-top: 4rem;
+  }
+
+  .art-grid-worlds .world-c {
+    grid-column: 1 / span 6;
+    margin-top: 2rem;
+  }
+
+  .art-grid-objects .object-tall {
+    grid-column: 1 / span 6;
+  }
+
+  .art-grid-objects .object-small:nth-of-type(3) {
+    grid-column: 3 / -1;
+    margin-top: 3rem;
+  }
+
+  .art-grid-objects .object-small:nth-of-type(4) {
+    grid-column: 1 / span 6;
+    margin-top: 3rem;
+  }
+
+  .art-grid-objects .object-small:nth-of-type(5) {
+    grid-column: 3 / -1;
+    margin-top: 3rem;
+  }
+
+  .art-grid-studies .study-sketch {
+    grid-column: 1 / span 5;
+  }
+
+  .art-grid-studies .study-sculpt {
+    grid-column: 3 / -1;
+    margin-top: 3rem;
+  }
+
+  .art-grid-studies .study-token {
+    grid-column: 1 / span 5;
+    margin-top: 3rem;
+  }
+
+  .art-piece img {
+    min-height: 220px;
+  }
+
+  .art-piece figcaption {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .25rem;
+  }
+
+  .art-piece figcaption small {
+    text-align: left;
+  }
+
+  .curated-exit-copy {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .curated-art-shell > .melodia-starfield-canvas {
+    opacity: .24;
+  }
+
+  .curated-art-shell .mahou-world-ambience {
+    opacity: .28;
+  }
+
+  .curated-art-shell .band > .inner {
+    width: min(100% - 1.5rem, 1280px);
+  }
+
+  .art-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .art-grid-opening .art-hero-piece,
+  .art-grid-worlds .world-a,
+  .art-grid-objects .object-wide {
+    grid-column: 1 / -1;
+  }
+
+  .art-grid-opening .art-landscape-piece,
+  .art-grid-worlds .world-b {
+    grid-column: 2 / -1;
+  }
+
+  .art-grid-opening .art-portrait-piece,
+  .art-grid-worlds .world-c,
+  .art-grid-objects .object-tall,
+  .art-grid-objects .object-small:nth-of-type(4),
+  .art-grid-studies .study-sketch,
+  .art-grid-studies .study-token {
+    grid-column: 1 / span 4;
+  }
+
+  .art-grid-objects .object-small:nth-of-type(3),
+  .art-grid-objects .object-small:nth-of-type(5),
+  .art-grid-studies .study-sculpt {
+    grid-column: 2 / -1;
+  }
+
+  .art-piece img {
+    min-height: 180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art-piece img {
+    transition: none;
+  }
+}
+
+
+/* Gallery viewer + silence zones */
+.art-picture { display:block; width:100%; height:100%; }
+body.art-silence-active .curated-art-shell > .melodia-starfield-canvas,
+body.art-viewer-open .curated-art-shell > .melodia-starfield-canvas {
+  opacity:.045 !important;
+}
+body.art-silence-active .curated-art-shell .mahou-world-ambience,
+body.art-silence-active .curated-art-shell .mahou-living-filigree,
+body.art-silence-active .curated-art-shell .mahou-dream-creature,
+body.art-viewer-open .curated-art-shell .mahou-world-ambience,
+body.art-viewer-open .curated-art-shell .mahou-living-filigree,
+body.art-viewer-open .curated-art-shell .mahou-dream-creature,
+body.art-viewer-open .curated-art-shell .mahou-score-shore {
+  opacity:0 !important;
+  transition:opacity .618s ease !important;
+}
+body.art-viewer-open { overflow:hidden; }
+
+.art-viewer {
+  position:fixed; inset:0; z-index:10000;
+  display:grid; place-items:center;
+  background:rgba(3,3,8,.975);
+  color:var(--primitive-paper-50);
+}
+.art-viewer[hidden] { display:none; }
+.art-viewer-stage {
+  width:100%; height:100%;
+  display:grid; place-items:center;
+  padding:max(56px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(70px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));
+}
+.art-viewer-image {
+  display:block;
+  max-width:min(94vw,1600px);
+  max-height:calc(100svh - 150px);
+  width:auto; height:auto;
+  object-fit:contain;
+  user-select:none; -webkit-user-drag:none;
+  box-shadow:0 24px 90px rgba(0,0,0,.38);
+}
+.art-viewer-meta {
+  position:fixed; left:max(18px,env(safe-area-inset-left)); right:max(18px,env(safe-area-inset-right));
+  bottom:max(18px,env(safe-area-inset-bottom));
+  display:grid; grid-template-columns:1fr auto; gap:16px; align-items:end;
+  pointer-events:none;
+}
+.art-viewer-caption { min-width:0; }
+.art-viewer-caption strong { display:block; font:500 .9rem/1.2 var(--font-display); }
+.art-viewer-caption span { display:block; margin-top:4px; opacity:.5; font:600 .56rem/1 var(--font-mono); letter-spacing:.12em; text-transform:uppercase; }
+.art-viewer-progress { font:600 .58rem/1 var(--font-mono); letter-spacing:.16em; opacity:.58; }
+.art-viewer-close,
+.art-viewer-prev,
+.art-viewer-next {
+  position:fixed; z-index:2;
+  width:44px; height:44px; border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(8,7,16,.54); color:var(--primitive-paper-50);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  cursor:pointer;
+}
+.art-viewer-close { top:max(12px,env(safe-area-inset-top)); right:max(12px,env(safe-area-inset-right)); }
+.art-viewer-prev { left:max(12px,env(safe-area-inset-left)); top:50%; translate:0 -50%; }
+.art-viewer-next { right:max(12px,env(safe-area-inset-right)); top:50%; translate:0 -50%; }
+@media(max-width:720px){
+  .art-viewer-prev,.art-viewer-next { top:auto; bottom:max(72px,calc(env(safe-area-inset-bottom) + 54px)); }
+  .art-viewer-image { max-width:100%; max-height:calc(100svh - 150px); }
+}
+@media(prefers-reduced-motion:reduce){
+  body.art-silence-active .curated-art-shell > .melodia-starfield-canvas,
+  body.art-viewer-open .curated-art-shell > .melodia-starfield-canvas { transition:none !important; }
+}
+
+
+/* Artwork fidelity: gallery chrome may move around the work, but never recolor it. */
+.curated-art-shell .art-piece img,
+.curated-art-shell .curated-hero-image img,
+.curated-art-shell .art-viewer-image {
+  filter: none !important;
+}
+
+@media (max-width: 520px) {
+  .curated-art-hero h1 {
+    line-height: 1.02;
+  }
+
+  .curated-art-hero .lede {
+    font-size: 1rem;
+    line-height: 1.62;
+    max-width: 32ch;
+  }
+
+  .art-piece figcaption small {
+    font-size: .64rem;
+  }
+}
+
+
+/* Phi moodboard composition — Fibonacci spans, phyllotactic stagger, DOM-order safe. */
+.curated-art-shell {
+  --phi: 1.618;
+  --phi-seed: clamp(.72rem, 1.18vw, 1.18rem);
+  --phi-gap: calc(var(--phi-seed) * 2);
+}
+
+.curated-art-shell .band {
+  padding-block: calc(var(--phi-seed) * 8) calc(var(--phi-seed) * 13);
+}
+
+.curated-art-shell .section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+  gap: calc(var(--phi-seed) * 3);
+  align-items: end;
+  margin-bottom: calc(var(--phi-seed) * 5);
+}
+
+.curated-art-shell .section-head > p {
+  justify-self: end;
+  max-width: 34rem;
+}
+
+.art-grid {
+  grid-template-columns: repeat(13, minmax(0, 1fr));
+  column-gap: var(--phi-gap);
+  row-gap: calc(var(--phi-seed) * 3);
+}
+
+/* 8 : 5 opening split — the first golden rectangle. */
+.art-grid-opening .art-hero-piece {
+  grid-column: 1 / span 8;
+}
+.art-grid-opening .art-hero-piece img {
+  aspect-ratio: 1 / 1.618;
+  object-position: 50% 38%;
+}
+.art-grid-opening .art-landscape-piece {
+  grid-column: 9 / span 5;
+  margin-top: calc(var(--phi-seed) * 8);
+}
+.art-grid-opening .art-landscape-piece img {
+  aspect-ratio: 1.618 / 1;
+}
+
+/* Worlds alternate 8/5 and 5/8 weights instead of four equal cards. */
+.art-grid-worlds .world-a {
+  grid-column: 1 / span 8;
+}
+.art-grid-worlds .world-a img {
+  aspect-ratio: 1.618 / 1;
+}
+.art-grid-worlds .world-b {
+  grid-column: 9 / span 5;
+  margin-top: calc(var(--phi-seed) * 5);
+}
+.art-grid-worlds .world-b img {
+  aspect-ratio: 1 / 1.18;
+}
+.art-grid-worlds .world-c {
+  grid-column: 2 / span 5;
+  margin-top: calc(var(--phi-seed) * 3);
+}
+.art-grid-worlds .world-c img {
+  aspect-ratio: 1.618 / 1;
+}
+
+/* Object board: one 5-column pin beside an 8-column anchor, then 3/5/3 detail beats. */
+.art-grid-objects .object-tall {
+  grid-column: 1 / span 5;
+}
+.art-grid-objects .object-tall img {
+  aspect-ratio: 4 / 5;
+}
+.art-grid-objects .object-wide {
+  grid-column: 6 / span 8;
+  margin-top: calc(var(--phi-seed) * 5);
+}
+.art-grid-objects .object-wide img {
+  aspect-ratio: 1.618 / 1;
+}
+.art-grid-objects .object-small:nth-of-type(3) {
+  grid-column: 2 / span 3;
+  margin-top: calc(var(--phi-seed) * 3);
+}
+.art-grid-objects .object-small:nth-of-type(4) {
+  grid-column: 5 / span 5;
+  margin-top: calc(var(--phi-seed) * 8);
+}
+.art-grid-objects .object-small:nth-of-type(5) {
+  grid-column: 10 / span 3;
+  margin-top: calc(var(--phi-seed) * 2);
+}
+.art-grid-objects .object-small:nth-of-type(3) img,
+.art-grid-objects .object-small:nth-of-type(5) img {
+  aspect-ratio: 1;
+}
+.art-grid-objects .object-small:nth-of-type(4) img {
+  aspect-ratio: 4 / 5;
+}
+
+/* Studies behave like pinned paper fragments, not a closing two-card row. */
+.art-grid-studies {
+  align-items: start;
+}
+.art-grid-studies .study-sketch {
+  grid-column: 1 / span 5;
+}
+.art-grid-studies .study-sculpt {
+  grid-column: 7 / span 5;
+  margin-top: calc(var(--phi-seed) * 5);
+}
+.art-grid-studies img {
+  aspect-ratio: 4 / 5;
+}
+
+.art-piece figcaption {
+  padding-top: calc(var(--phi-seed) * .8);
+}
+
+@media (max-width: 820px) {
+  .curated-art-shell .section-head {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 5fr);
+    gap: calc(var(--phi-seed) * 2);
+  }
+  .art-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+  .art-grid-opening .art-hero-piece,
+  .art-grid-worlds .world-a,
+  .art-grid-objects .object-wide {
+    grid-column: 1 / span 8;
+    margin-top: 0;
+  }
+  .art-grid-opening .art-landscape-piece,
+  .art-grid-worlds .world-b {
+    grid-column: 4 / span 5;
+    margin-top: calc(var(--phi-seed) * 5);
+  }
+  .art-grid-worlds .world-c,
+  .art-grid-objects .object-tall,
+  .art-grid-studies .study-sketch {
+    grid-column: 1 / span 5;
+  }
+  .art-grid-objects .object-small:nth-of-type(3) {
+    grid-column: 2 / span 3;
+  }
+  .art-grid-objects .object-small:nth-of-type(4) {
+    grid-column: 4 / span 5;
+    margin-top: calc(var(--phi-seed) * 5);
+  }
+  .art-grid-objects .object-small:nth-of-type(5) {
+    grid-column: 1 / span 3;
+  }
+  .art-grid-studies .study-sculpt {
+    grid-column: 4 / span 5;
+  }
+}
+
+@media (max-width: 520px) {
+  .curated-art-shell .section-head {
+    display: block;
+  }
+  .curated-art-shell .section-head > p {
+    margin-top: calc(var(--phi-seed) * 2);
+  }
+  .art-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    row-gap: calc(var(--phi-seed) * 2);
+  }
+  .art-grid-opening .art-hero-piece,
+  .art-grid-worlds .world-a,
+  .art-grid-objects .object-wide {
+    grid-column: 1 / span 5;
+  }
+  .art-grid-opening .art-landscape-piece,
+  .art-grid-worlds .world-b,
+  .art-grid-objects .object-tall,
+  .art-grid-studies .study-sculpt {
+    grid-column: 2 / span 4;
+  }
+  .art-grid-worlds .world-c,
+  .art-grid-studies .study-sketch,
+  .art-grid-objects .object-small:nth-of-type(4) {
+    grid-column: 1 / span 4;
+  }
+  .art-grid-objects .object-small:nth-of-type(3),
+  .art-grid-objects .object-small:nth-of-type(5) {
+    grid-column: 3 / span 3;
+  }
+}
+
+
+/* Pixel-reviewed render passport annotations. */
+.render-passport-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .42rem;
+  padding-top: .72rem;
+  border-top: 1px solid color-mix(in srgb, currentColor 11%, transparent);
+  margin-top: .68rem;
+}
+
+.render-passport-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .38rem;
+  padding: .34rem .48rem;
+  border: 1px solid color-mix(in srgb, currentColor 13%, transparent);
+  background: color-mix(in srgb, currentColor 3.5%, transparent);
+  color: inherit;
+  text-decoration: none;
+  font: 500 .56rem/1.25 var(--font-mono);
+  letter-spacing: .055em;
+  border-radius: 999px;
+}
+
+.render-passport-chip strong {
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.render-passport-label {
+  opacity: .48;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+.render-passport-chip.asset-passport[href]:hover,
+.render-passport-chip.asset-passport[href]:focus-visible {
+  border-color: color-mix(in srgb, var(--primitive-gold-500) 58%, currentColor);
+}
+
+.render-passport-chip.material-metadata_supported,
+.render-passport-chip.material-family_supported {
+  border-color: color-mix(in srgb, var(--primitive-gold-500) 34%, transparent);
+}
+
+.render-passport-chip.material-visual_only {
+  border-style: dashed;
+  opacity: .82;
+}
+
+.render-passport-chip.material-not_applicable {
+  opacity: .58;
+}
+
+.render-passport-chip.evidence-accepted {
+  border-color: color-mix(in srgb, var(--primitive-gold-300) 32%, transparent);
+}
+
+.render-passport-chip.evidence-supporting {
+  border-style: dashed;
+  opacity: .76;
+}
+
+[data-evidence-status="supporting"] figcaption small::after {
+  content: " · study";
+}
+
+@media (max-width: 520px) {
+  .render-passport-strip {
+    gap: .35rem;
+  }
+  .render-passport-chip {
+    padding: .31rem .44rem;
+    font-size: .54rem;
+  }
+}

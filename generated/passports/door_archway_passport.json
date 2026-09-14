@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Door Archway",
+  "category": "Prop / ornament",
+  "version": "wave5",
+  "asset_id": "door_archway",
+  "rows": [
+    [
+      "Triangles",
+      "4,616"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Komikaze \u00b7 Voronoi Shader (3 Tones)"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "beauty_34"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-15T05:53:46.642736+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

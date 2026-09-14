@@ -1,0 +1,526 @@
+/* ==========================================================================
+   MELODIA ATELIER LAB & SUBSTRATE SHADER STUDIO
+   Interactive Lookbook Studio, Real-time Substrate Toon Laboratory,
+   PCG Procedural Scatter Visualizer, and TouchDesigner Resonance Chamber.
+   ========================================================================== */
+
+@import "melodia-tokens.css";
+
+/* --- Lab Shell & Layout --- */
+.atelier-lab-shell {
+  min-height: 100vh;
+  background-color: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.atelier-lab-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 5rem;
+  width: 100%;
+}
+
+/* --- Hero & Section Headers --- */
+.atelier-lab-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.atelier-lab-kicker {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.atelier-lab-title {
+  font-family: var(--font-display, serif);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin: 0 0 1rem;
+}
+
+.atelier-lab-subtitle {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* --- Navigation & Studio Tabs --- */
+.atelier-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.atelier-tab-btn {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  padding: 0.65rem 1.25rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-base);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.atelier-tab-btn:hover {
+  border-color: var(--color-accent-primary);
+  color: var(--color-text-primary);
+  transform: translateY(-1px);
+}
+
+.atelier-tab-btn.active {
+  background-color: var(--color-accent-primary);
+  color: var(--color-surface-inverse);
+  border-color: var(--color-accent-primary);
+  font-weight: 600;
+  box-shadow: 0 4px 14px var(--color-border-subtle);
+}
+
+/* --- Tab Panels --- */
+.atelier-tab-panel {
+  display: none;
+  animation: atelierFadeIn 0.35s ease forwards;
+}
+
+.atelier-tab-panel.active {
+  display: block;
+}
+
+@keyframes atelierFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Studio Grid Layouts --- */
+.atelier-stage-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .atelier-stage-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Viewport & Canvas Stages --- */
+.atelier-viewport-card {
+  background-color: var(--color-surface-base);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 12px 36px var(--color-surface-inverse);
+}
+
+.atelier-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: var(--color-surface-inverse);
+  cursor: grab;
+}
+
+.atelier-canvas-wrapper:active {
+  cursor: grabbing;
+}
+
+.atelier-main-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.atelier-overlay-hud {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.atelier-hud-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.65rem;
+  border-radius: 3px;
+  background-color: var(--color-surface-inverse);
+  color: var(--color-accent-primary);
+  border: 1px solid var(--color-border-subtle);
+  backdrop-filter: blur(8px);
+}
+
+.atelier-hud-controls {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  pointer-events: auto;
+}
+
+.atelier-icon-btn {
+  background-color: var(--color-surface-base);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-primary);
+  border-radius: 4px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.atelier-icon-btn:hover {
+  border-color: var(--color-accent-primary);
+  color: var(--color-accent-primary);
+}
+
+/* --- Control Panels --- */
+.atelier-control-card {
+  background-color: var(--color-surface-base);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+  padding: 1.75rem;
+  box-shadow: 0 8px 24px var(--color-surface-sunken);
+}
+
+.atelier-section-subtitle {
+  font-family: var(--font-display, serif);
+  font-size: 1.35rem;
+  color: var(--color-text-primary);
+  margin: 0 0 0.5rem;
+  font-weight: 400;
+}
+
+.atelier-section-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0 0 1.5rem;
+}
+
+/* --- Preset Chips --- */
+.atelier-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.atelier-preset-chip {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  padding: 0.45rem 0.85rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-sunken);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.atelier-preset-chip:hover {
+  border-color: var(--color-accent-primary);
+  color: var(--color-text-primary);
+}
+
+.atelier-preset-chip.active {
+  background-color: var(--color-accent-primary);
+  color: var(--color-surface-inverse);
+  border-color: var(--color-accent-primary);
+  font-weight: 600;
+}
+
+/* --- Slider Controls --- */
+.atelier-slider-group {
+  margin-bottom: 1.2rem;
+}
+
+.atelier-slider-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  margin-bottom: 0.4rem;
+}
+
+.atelier-slider-label {
+  font-family: var(--font-mono, monospace);
+  color: var(--color-text-primary);
+}
+
+.atelier-slider-val {
+  font-family: var(--font-mono, monospace);
+  color: var(--color-accent-primary);
+  font-weight: 500;
+}
+
+.atelier-range-input {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--color-surface-sunken);
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.atelier-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-accent-primary);
+  cursor: pointer;
+  border: 2px solid var(--color-surface-base);
+  box-shadow: 0 2px 6px var(--color-surface-inverse);
+  transition: transform 0.15s ease;
+}
+
+.atelier-range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* --- Metric Telemetry Badges --- */
+.atelier-telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.atelier-telemetry-item {
+  background-color: var(--color-surface-sunken);
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-border-subtle);
+  text-align: center;
+}
+
+.atelier-telemetry-label {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 0.25rem;
+}
+
+.atelier-telemetry-value {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-accent);
+}
+
+/* --- 4-World Atmosphere Switcher Cards --- */
+.atelier-worlds-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .atelier-worlds-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.atelier-world-card {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-sunken);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.75rem;
+}
+
+.atelier-world-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.atelier-world-card:hover img {
+  transform: scale(1.08);
+}
+
+.atelier-world-card.active {
+  border-color: var(--color-accent-primary);
+  box-shadow: 0 0 0 2px var(--color-accent-primary);
+}
+
+.atelier-world-card-overlay {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.atelier-world-card-name {
+  font-family: var(--font-display, serif);
+  font-size: 0.95rem;
+  color: var(--primitive-ivory-50);
+  margin: 0;
+  text-shadow: 0 2px 8px var(--primitive-plum-900);
+}
+
+.atelier-world-card-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.62rem;
+  color: var(--color-accent-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* --- PCG Scatter Paint Canvas --- */
+.atelier-pcg-paint-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.atelier-toggle-btn {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-sunken);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.atelier-toggle-btn.active {
+  background-color: var(--color-accent-secondary);
+  color: var(--primitive-ivory-50);
+  border-color: var(--color-accent-secondary);
+}
+
+/* --- Audio Resonance Synth Controls --- */
+.atelier-audio-pads {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.atelier-audio-pad-btn {
+  background-color: var(--color-surface-sunken);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 6px;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.atelier-audio-pad-btn:hover {
+  border-color: var(--color-accent-primary);
+  background-color: var(--color-surface-base);
+  transform: translateY(-2px);
+}
+
+.atelier-audio-pad-btn.playing {
+  background-color: var(--color-accent-primary);
+  color: var(--color-surface-inverse);
+  border-color: var(--color-accent-primary);
+  transform: scale(0.97);
+}
+
+.atelier-pad-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.atelier-pad-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  display: block;
+}
+
+/* --- Editorial Footnote Banner --- */
+.atelier-footer-callout {
+  margin-top: 4rem;
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: var(--color-surface-base);
+  border: 1px solid var(--color-border-subtle);
+  text-align: center;
+}
+
+.atelier-footer-callout h3 {
+  font-family: var(--font-display, serif);
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.atelier-footer-callout p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+.atelier-btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

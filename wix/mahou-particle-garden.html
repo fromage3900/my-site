@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#080614" />
+<title>Mahou Particle Garden — Melodia Web Lab</title>
+<meta name="description" content="A PixiJS magical-girl particle garden for Melodia: petals, pearls, notes, ribbons, touch physics, and rare sigil assemblies." />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:; img-src 'self' data: blob: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https:;" />
+<style>
+:root{
+  color-scheme:dark;
+  --ink:#080614;
+  --ink-2:#100b20;
+  --paper:#fff9ef;
+  --rose:#ff88cc;
+  --gold:#ffe6a0;
+  --cyan:#79d8e8;
+  --violet:#bca4ff;
+  --glass:rgba(17,10,35,.58);
+  --hair:rgba(255,255,255,.14);
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{
+  background:
+    radial-gradient(circle at 20% 15%,rgba(255,136,204,.12),transparent 34%),
+    radial-gradient(circle at 83% 78%,rgba(121,216,232,.10),transparent 36%),
+    radial-gradient(circle at 52% 50%,rgba(188,164,255,.08),transparent 48%),
+    linear-gradient(160deg,#080614 0%,#0d0819 42%,#07131b 100%);
+}
+#garden{position:fixed;inset:0;z-index:1}
+#garden canvas{display:block;width:100%;height:100%;touch-action:none}
+.veil{
+  position:fixed;inset:0;z-index:2;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(8,6,20,.46) 0%,transparent 20%,transparent 76%,rgba(8,6,20,.66) 100%),
+    radial-gradient(ellipse at center,transparent 45%,rgba(4,2,12,.28) 100%);
+}
+.grain{
+  position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.12;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+}
+.ui{position:fixed;inset:0;z-index:5;pointer-events:none;color:var(--paper)}
+.topbar{position:absolute;left:max(18px,env(safe-area-inset-left));right:max(18px,env(safe-area-inset-right));top:max(18px,env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pill,.button{
+  pointer-events:auto;border:1px solid var(--hair);background:var(--glass);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  color:var(--paper);text-decoration:none;border-radius:999px;padding:10px 14px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  box-shadow:0 12px 44px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.05);
+}
+.button{cursor:pointer;font:inherit}
+.button:hover,.pill:hover{border-color:rgba(255,230,160,.48);box-shadow:0 12px 44px rgba(0,0,0,.25),0 0 24px rgba(255,136,204,.10)}
+.hero{position:absolute;left:max(22px,env(safe-area-inset-left));bottom:max(24px,env(safe-area-inset-bottom));max-width:min(620px,calc(100vw - 44px));text-shadow:0 2px 24px rgba(0,0,0,.8)}
+.kicker{margin:0 0 10px;color:var(--gold);font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,6vw,74px);font-weight:400;line-height:.95;letter-spacing:-.035em}
+.lede{max-width:540px;margin:14px 0 0;color:rgba(255,249,239,.72);font-size:clamp(13px,1.7vw,16px);line-height:1.6}
+.controls{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px;pointer-events:auto}
+.button.primary{border-color:rgba(255,230,160,.42);background:linear-gradient(135deg,rgba(255,136,204,.18),rgba(121,216,232,.12)),var(--glass)}
+.status{position:absolute;right:max(20px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));text-align:right;font-size:11px;line-height:1.55;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,249,239,.46)}
+.status strong{color:rgba(255,230,160,.78);font-weight:600}
+.sigil-caption{
+  position:fixed;left:50%;top:50%;z-index:4;transform:translate(-50%,-50%) scale(.92);
+  color:rgba(255,249,239,.9);font-family:Georgia,serif;font-style:italic;font-size:clamp(16px,2vw,24px);
+  opacity:0;pointer-events:none;text-shadow:0 0 28px rgba(255,136,204,.42);transition:opacity .7s ease,transform .7s ease;
+}
+.sigil-caption.show{opacity:.82;transform:translate(-50%,-50%) scale(1)}
+.loading{position:fixed;inset:0;z-index:20;display:grid;place-items:center;background:#080614;color:rgba(255,249,239,.7);font-size:12px;letter-spacing:.18em;text-transform:uppercase;transition:opacity .6s ease}
+.loading.hide{opacity:0;pointer-events:none}
+.error{display:none;position:fixed;inset:0;z-index:30;padding:28px;place-items:center;text-align:center;background:#080614;color:var(--paper)}
+.error.show{display:grid}
+@media(max-width:720px){
+  .hero{bottom:max(18px,env(safe-area-inset-bottom))}
+  .status{display:none}
+  .topbar{align-items:flex-start}
+  .pill,.button{font-size:10px;padding:9px 12px}
+  .lede{max-width:88vw}
+}
+@media(prefers-reduced-motion:reduce){
+  .grain{opacity:.06}
+  .sigil-caption{transition:none}
+}
+</style>
+</head>
+<body>
+<div id="garden" aria-hidden="true"></div>
+<div class="veil"></div>
+<div class="grain"></div>
+<div class="sigil-caption" id="sigil-caption">the garden remembers a shape</div>
+
+<div class="ui">
+  <div class="topbar">
+    <a class="pill" href="application-hub.html">← Melodia Hub</a>
+    <span class="pill">PixiJS · Web Lab 01</span>
+  </div>
+  <section class="hero" aria-labelledby="title">
+    <p class="kicker">Mahou Particle Garden</p>
+    <h1 id="title">Touch the little weather.</h1>
+    <p class="lede">Petals, pearls, notes, stars and ribbon fragments drift as a tiny magical ecosystem. Move to attract them. Tap to scatter them. Occasionally, they remember the shape of a sigil.</p>
+    <div class="controls">
+      <button class="button primary" id="wake" type="button">Wake the sigil ✦</button>
+      <button class="button" id="calm" type="button">Calm garden</button>
+    </div>
+  </section>
+  <div class="status">
+    <div><strong id="count">0</strong> motes</div>
+    <div>move · attract</div>
+    <div>tap · repel</div>
+  </div>
+</div>
+
+<div class="loading" id="loading">growing the garden…</div>
+<div class="error" id="error"><div><h2>The garden could not wake.</h2><p>PixiJS failed to load in this browser. The rest of the portfolio is unaffected.</p></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/pixi.js@8.16.0/dist/pixi.min.js"></script>
+<script>
+(async function(){
+  'use strict';
+
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const coarse = matchMedia('(pointer: coarse)').matches;
+  const host = document.getElementById('garden');
+  const loading = document.getElementById('loading');
+  const error = document.getElementById('error');
+  const caption = document.getElementById('sigil-caption');
+
+  if (!window.PIXI) {
+    loading.classList.add('hide');
+    error.classList.add('show');
+    return;
+  }
+
+  const app = new PIXI.Application();
+  try {
+    await app.init({
+      resizeTo: window,
+      preference: 'webgl',
+      backgroundAlpha: 0,
+      antialias: true,
+      autoDensity: true,
+      resolution: Math.min(window.devicePixelRatio || 1, 2)
+    });
+  } catch (e) {
+    loading.classList.add('hide');
+    error.classList.add('show');
+    return;
+  }
+
+  host.appendChild(app.canvas);
+  loading.classList.add('hide');
+  setTimeout(function(){ loading.remove(); }, 700);
+
+  const layerBack = new PIXI.Container();
+  const layerMain = new PIXI.Container();
+  const layerGlow = new PIXI.Container();
+  app.stage.addChild(layerBack, layerMain, layerGlow);
+
+  function canvasTexture(size, draw) {
+    const c = document.createElement('canvas');
+    c.width = c.height = size;
+    const x = c.getContext('2d');
+    draw(x, size);
+    return PIXI.Texture.from(c);
+  }
+
+  function glow(x, cx, cy, r, color) {
+    const g = x.createRadialGradient(cx, cy, 0, cx, cy, r);
+    g.addColorStop(0, color);
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    return g;
+  }
+
+  const textures = {
+    pearl: canvasTexture(64, function(x,s){
+      x.fillStyle = glow(x,s/2,s/2,25,'rgba(255,249,230,.94)');
+      x.beginPath(); x.arc(s/2,s/2,25,0,Math.PI*2); x.fill();
+      x.fillStyle = glow(x,25,23,16,'rgba(121,216,232,.55)');
+      x.beginPath(); x.arc(s/2,s/2,21,0,Math.PI*2); x.fill();
+      x.strokeStyle='rgba(255,230,160,.55)'; x.lineWidth=1.4; x.stroke();
+    }),
+    star: canvasTexture(72, function(x,s){
+      x.translate(s/2,s/2);
+      x.shadowBlur=16; x.shadowColor='rgba(255,136,204,.8)';
+      x.fillStyle='rgba(255,238,178,.98)';
+      x.beginPath();
+      for(let i=0;i<16;i++){
+        const a=-Math.PI/2+i*Math.PI/8, r=i%2===0?25:7;
+        const px=Math.cos(a)*r, py=Math.sin(a)*r;
+        i?x.lineTo(px,py):x.moveTo(px,py);
+      }
+      x.closePath(); x.fill();
+    }),
+    petal: canvasTexture(72, function(x,s){
+      x.translate(s/2,s/2); x.rotate(-.6);
+      const g=x.createLinearGradient(-20,-24,20,24);
+      g.addColorStop(0,'rgba(255,255,255,.92)');
+      g.addColorStop(.48,'rgba(255,136,204,.86)');
+      g.addColorStop(1,'rgba(188,164,255,.18)');
+      x.fillStyle=g; x.shadowBlur=10; x.shadowColor='rgba(255,136,204,.32)';
+      x.beginPath(); x.ellipse(0,0,13,28,.15,0,Math.PI*2); x.fill();
+      x.strokeStyle='rgba(255,240,230,.5)'; x.lineWidth=1; x.stroke();
+    }),
+    note: canvasTexture(80, function(x,s){
+      x.textAlign='center'; x.textBaseline='middle';
+      x.font='42px Georgia'; x.fillStyle='rgba(121,216,232,.95)';
+      x.shadowBlur=14; x.shadowColor='rgba(121,216,232,.6)';
+      x.fillText(Math.random()>.5?'♪':'♫',s/2,s/2+2);
+    }),
+    ribbon: canvasTexture(96, function(x,s){
+      x.lineCap='round'; x.lineWidth=6;
+      const g=x.createLinearGradient(12,20,84,76);
+      g.addColorStop(0,'rgba(255,136,204,.1)');
+      g.addColorStop(.35,'rgba(255,136,204,.9)');
+      g.addColorStop(.68,'rgba(255,230,160,.8)');
+      g.addColorStop(1,'rgba(121,216,232,.08)');
+      x.strokeStyle=g; x.shadowBlur=10; x.shadowColor='rgba(255,136,204,.28)';
+      x.beginPath(); x.moveTo(8,58); x.bezierCurveTo(28,12,63,82,88,32); x.stroke();
+    }),
+    dust: canvasTexture(48, function(x,s){
+      x.fillStyle=glow(x,s/2,s/2,20,'rgba(188,164,255,.68)');
+      x.fillRect(0,0,s,s);
+    })
+  };
+
+  const kinds = [
+    ['dust',.34], ['petal',.22], ['pearl',.15], ['star',.12], ['note',.09], ['ribbon',.08]
+  ];
+  function chooseKind(){
+    let r=Math.random(), a=0;
+    for(const k of kinds){a+=k[1]; if(r<=a) return k[0];}
+    return 'dust';
+  }
+
+  const particles=[];
+  const baseCount = coarse ? 280 : 520;
+  const count = reduceMotion ? Math.min(baseCount, 150) : baseCount;
+  document.getElementById('count').textContent = count;
+
+  function resetParticle(p, randomize){
+    const w=app.screen.width, h=app.screen.height;
+    if(randomize){p.x=Math.random()*w; p.y=Math.random()*h;}
+    p.homeX=p.x; p.homeY=p.y;
+  }
+
+  for(let i=0;i<count;i++){
+    const kind=chooseKind();
+    const s=new PIXI.Sprite(textures[kind]);
+    s.anchor.set(.5);
+    const scale = kind==='dust' ? .18+Math.random()*.34 :
+                  kind==='ribbon' ? .22+Math.random()*.28 :
+                  .18+Math.random()*.34;
+    s.scale.set(scale);
+    s.alpha = kind==='dust' ? .22+Math.random()*.42 : .34+Math.random()*.58;
+    if(kind==='star' || kind==='note' || kind==='dust') s.blendMode='add';
+    s.x=Math.random()*app.screen.width;
+    s.y=Math.random()*app.screen.height;
+    s.rotation=Math.random()*Math.PI*2;
+    (kind==='dust'?layerBack:(kind==='star'||kind==='note'?layerGlow:layerMain)).addChild(s);
+    particles.push({
+      s,kind,
+      vx:(Math.random()-.5)*.24,
+      vy:(Math.random()-.5)*.24,
+      drift:.12+Math.random()*.38,
+      phase:Math.random()*Math.PI*2,
+      spin:(Math.random()-.5)*.004,
+      target:null
+    });
+    resetParticle(s,true);
+  }
+
+  const pointer={x:app.screen.width/2,y:app.screen.height/2,active:false,last:0};
+  let repulseUntil=0;
+  let calmUntil=0;
+  let sigilUntil=0;
+  let nextRare=performance.now()+12000;
+  let hasInteracted=false;
+
+  function updatePointer(e){
+    const rect=app.canvas.getBoundingClientRect();
+    pointer.x=(e.clientX-rect.left)*(app.screen.width/rect.width);
+    pointer.y=(e.clientY-rect.top)*(app.screen.height/rect.height);
+    pointer.active=true;
+    pointer.last=performance.now();
+    hasInteracted=true;
+  }
+  app.canvas.addEventListener('pointermove',updatePointer,{passive:true});
+  app.canvas.addEventListener('pointerdown',function(e){
+    updatePointer(e);
+    repulseUntil=performance.now()+520;
+  },{passive:true});
+  app.canvas.addEventListener('pointerleave',function(){pointer.active=false;},{passive:true});
+
+  function sigilPoints(n){
+    const pts=[];
+    const cx=app.screen.width*.5, cy=app.screen.height*.46;
+    const r=Math.min(app.screen.width,app.screen.height)*.18;
+    for(let i=0;i<n;i++){
+      let x,y;
+      if(i<n*.46){
+        const a=(i/(n*.46))*Math.PI*2-Math.PI/2;
+        const rr=i%5===0?r*.78:r;
+        x=cx+Math.cos(a)*rr; y=cy+Math.sin(a)*rr;
+      }else if(i<n*.74){
+        const j=(i-n*.46)/(n*.28);
+        const a=j*Math.PI*2;
+        const rr=r*.54;
+        x=cx+Math.cos(a)*rr; y=cy+Math.sin(a)*rr;
+      }else{
+        const j=(i-n*.74)/(n*.26);
+        const a=j*Math.PI*2-Math.PI/2;
+        const rr=(j%1<.5?r*.2:r*.34);
+        x=cx+Math.cos(a*4)*rr;
+        y=cy+Math.sin(a*4)*rr;
+      }
+      pts.push({x,y});
+    }
+    return pts;
+  }
+
+  function wakeSigil(){
+    if(reduceMotion) return;
+    const amount=Math.min(particles.length,220);
+    const pts=sigilPoints(amount);
+    for(let i=0;i<particles.length;i++) particles[i].target=i<amount?pts[i]:null;
+    sigilUntil=performance.now()+4200;
+    nextRare=performance.now()+22000+Math.random()*12000;
+    caption.classList.add('show');
+    setTimeout(function(){caption.classList.remove('show');},2800);
+  }
+
+  function releaseSigil(){
+    for(const p of particles) p.target=null;
+  }
+
+  document.getElementById('wake').addEventListener('click',function(){
+    hasInteracted=true; wakeSigil();
+  });
+  document.getElementById('calm').addEventListener('click',function(){
+    calmUntil=performance.now()+3600;
+    releaseSigil();
+  });
+
+  window.addEventListener('resize',function(){
+    for(const p of particles){
+      p.s.x=Math.max(0,Math.min(app.screen.width,p.s.x));
+      p.s.y=Math.max(0,Math.min(app.screen.height,p.s.y));
+    }
+  });
+
+  let sigilWasActive=false;
+
+  app.ticker.add(function(ticker){
+    const now=performance.now();
+    const dt=Math.min(2.2,ticker.deltaTime);
+    const w=app.screen.width, h=app.screen.height;
+
+    if(hasInteracted && now>nextRare && now>sigilUntil) wakeSigil();
+    const sigilActive=now<sigilUntil;
+    if(sigilWasActive && !sigilActive) releaseSigil();
+    sigilWasActive=sigilActive;
+
+    if(reduceMotion){
+      for(let i=0;i<particles.length;i++){
+        const p=particles[i];
+        p.s.alpha=.22+(i%7)*.07;
+      }
+      return;
+    }
+
+    const pointerLive=pointer.active && now-pointer.last<2600;
+    const repelling=now<repulseUntil;
+    const calming=now<calmUntil;
+
+    for(let i=0;i<particles.length;i++){
+      const p=particles[i], s=p.s;
+      const wave=Math.sin(now*.00035*p.drift+p.phase);
+
+      if(p.target && sigilActive){
+        const dx=p.target.x-s.x, dy=p.target.y-s.y;
+        p.vx+=dx*.0065*dt;
+        p.vy+=dy*.0065*dt;
+        p.vx*=.91; p.vy*=.91;
+      }else{
+        p.vx+=Math.cos(p.phase+now*.00018)*.0035*dt;
+        p.vy+=Math.sin(p.phase*1.31+now*.00014)*.0035*dt;
+
+        if(pointerLive && !calming){
+          const dx=pointer.x-s.x, dy=pointer.y-s.y;
+          const d2=dx*dx+dy*dy;
+          const radius=repelling?230:190;
+          if(d2<radius*radius && d2>8){
+            const d=Math.sqrt(d2);
+            const strength=(1-d/radius)*(repelling?-.16:.025);
+            p.vx+=(dx/d)*strength*dt;
+            p.vy+=(dy/d)*strength*dt;
+          }
+        }
+        if(calming){p.vx*=.965; p.vy*=.965;}
+      }
+
+      const max=sigilActive?3.2:1.15;
+      const speed=Math.hypot(p.vx,p.vy);
+      if(speed>max){p.vx=p.vx/speed*max; p.vy=p.vy/speed*max;}
+
+      s.x+=p.vx*dt;
+      s.y+=p.vy*dt + wave*.028*dt;
+      s.rotation+=p.spin*dt + (p.kind==='petal'?wave*.0007:0);
+
+      const pad=70;
+      if(s.x<-pad)s.x=w+pad;
+      else if(s.x>w+pad)s.x=-pad;
+      if(s.y<-pad)s.y=h+pad;
+      else if(s.y>h+pad)s.y=-pad;
+
+      if(p.kind==='dust') s.alpha=.18+(wave+1)*.14;
+      if(p.kind==='star') s.alpha=.36+(wave+1)*.24;
+    }
+  });
+})();
+</script>
+</body>
+</html>

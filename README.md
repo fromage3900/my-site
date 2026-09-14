@@ -1,45 +1,46 @@
-# Git Integration & Wix CLI <img align="left" src="https://user-images.githubusercontent.com/89579857/185785022-cab37bf5-26be-4f11-85f0-1fac63c07d3b.png">
+# Melodia Melusina — Brennan Shepherd
 
-This repo is part of Git Integration & Wix CLI, a set of tools that allows you to write, test, and publish code for your Wix site locally on your computer. 
+> **Repository boundary — 2026-09-08:** this repository is the canonical portfolio/web authority only. Game/runtime work belongs in `fromage3900/MelodiaMelusinaV2`; TouchDesigner work belongs in the separate `MelodiaTouchDesigner` Git. The old **root `EnvironmentPortfolio` Git repository** is deprecated historical storage and must not be used as a current source of truth. The local `C:/EnvironmentPortfolio/` folder may remain the parent workspace containing independent nested repos.
 
-Connect your site to GitHub, develop in your favorite IDE, test your code in real time, and publish your site from the command line.
+> **SHOWCASE SOFT FREEZE ACTIVE — 2026-09-07.** Recruiter-facing structure, navigation, styling, and public route scope are frozen. Only approved render promotion, factual/contact/accessibility fixes, social-preview correctness, and critical deployment repairs are in scope until hard freeze. See [docs/PORTFOLIO_SENDOFF_FREEZE_2026-09-07.md](docs/PORTFOLIO_SENDOFF_FREEZE_2026-09-07.md).
 
-## Set up this repository in your IDE
-This repo is connected to a Wix site. That site tracks this repo's default branch. Any code committed and pushed to that branch from your local IDE appears on the site.
+**Environment Designer · Technical Artist · Unreal Engine 5.8 · Blender · ZBrush · Procedural Worldbuilding**
 
-Before getting started, make sure you have the following things installed:
-* [Git](https://git-scm.com/download)
-* [Node](https://nodejs.org/en/download/), version 14.8 or later.
-* [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://yarnpkg.com/getting-started/install)
-* An SSH key [added to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+**Public portfolio:** https://www.fromageart.xyz/ · **Selected Art:** https://fromage3900.github.io/my-site/wix/curated-art.html · **Resume:** https://fromage3900.github.io/my-site/wix/resume.html
 
-To set up your local environment and start coding locally, do the following:
+Melodia Melusina is my ongoing stylized environment-art and technical-art project: a musical fantasy world built around serene environments, procedural systems, expressive materials, character work, and interactive experiments.
 
-1. Open your terminal and navigate to where you want to store the repo.
-1. Clone the repo by running `git clone <your-repository-url>`.
-1. Navigate to the repo's directory by running `cd <directory-name>`.
-1. Install the repo's dependencies by running `npm install` or `yarn install`.
-1. Install the Wix CLI by running `npm install -g @wix/cli` or `yarn global add @wix/cli`.  
-   Once you've installed the CLI globally, you can use it with any Wix site's repo.
+I use the project to explore how environment design, look development, procedural tooling, and gameplay systems can share one coherent visual language.
 
-For more information, see [Setting up Git Integration & Wix CLI](https://support.wix.com/en/article/velo-setting-up-git-integration-wix-cli-beta).
+## Recruiter entry points
 
-## Write Velo code in your IDE
-Once your repo is set up, you can write code in it as you would in any other non-Wix project. The repo's file structure matches the [public](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#public), [backend](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#backend), and [page code](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#page-code) sections in Editor X.
+- **[Selected Art](https://fromage3900.github.io/my-site/wix/curated-art.html)** — curated visual work and detail studies
+- **[Portfolio](https://fromage3900.github.io/my-site/wix/index.html)** — main environment and technical-art presentation
+- **[Living Worlds](https://fromage3900.github.io/my-site/wix/melodia-living-worlds.html)** — interactive Three.js world studies
+- **[Technical Practice](https://fromage3900.github.io/my-site/wix/geometry-nodes.html)** — procedural and Geometry Nodes work
+- **[Melusina](https://fromage3900.github.io/my-site/wix/melodia-stage-character.html)** — character and presentation studies
+- **[Resume](https://fromage3900.github.io/my-site/wix/resume.html)** — experience and tools
 
-Learn more about [this repo's file structure](https://support.wix.com/en/article/velo-understanding-your-sites-github-repository-beta).
+## Practice
 
-## Test your code with the Local Editor
-The Local Editor allows you test changes made to your site in real time. The code in your local IDE is synced with the Local Editor, so you can test your changes before committing them to your repo. You can also change the site design in the Local Editor and sync it with your IDE.
+My current work centers on:
 
-Start the Local Editor by navigating to this repo's directory in your terminal and running `wix dev`.
+- Stylized environment design and worldbuilding
+- Unreal Engine 5.8 lighting, materials, shaders, PCG, and runtime systems
+- Blender procedural modeling and Geometry Nodes
+- ZBrush sculpting and asset development
+- Technical-art tooling and pipeline automation
+- Musical and rhythm-driven interaction
+- WebGL / Three.js experiments for interactive presentation
 
-For more information, see [Working with the Local Editor](https://support.wix.com/en/article/velo-working-with-the-local-editor-beta).
+## Melodia
 
-## Preview and publish with the Wix CLI
-The Wix CLI is a tool that allows you to work with your site locally from your computer's terminal. You can use it to build a preview version of your site and publish it. You can also use the CLI to install [approved npm packages](https://support.wix.com/en/article/velo-working-with-npm-packages) to your site.
+Melodia is built as a single artistic universe rather than a collection of disconnected portfolio pieces. Environments, instruments, characters, materials, and procedural tools are developed together so that the technical systems support the same visual and musical identity.
 
-Learn more about [working with the Wix CLI](https://support.wix.com/en/article/velo-working-with-the-wix-cli-beta).
+The project moves between serene fantasy and the surreal: luminous water, ornate instruments, dreamlike architecture, hand-shaped detail, procedural growth, and environments designed to feel alive.
 
-## Invite contributors to work with you
-Git Integration & Wix CLI extends Editor X's [concurrent editing](https://support.wix.com/en/article/editor-x-about-concurrent-editing) capabilities. Invite other developers as collaborators on your [site](https://support.wix.com/en/article/inviting-people-to-contribute-to-your-site) and your [GitHub repo](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository). Multiple developers can work on a site's code at once.
+## About
+
+I’m **Brennan Shepherd**, an environment designer and technical artist based in Toronto, Canada. My focus is stylized worldbuilding with a mix of traditional art sensibility and procedural/technical production.
+
+**Portfolio:** https://www.fromageart.xyz/

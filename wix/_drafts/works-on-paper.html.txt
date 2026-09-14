@@ -1,0 +1,178 @@
+<!--
+UNPUBLISHED DRAFT.
+The live route is intentionally withheld until the nine original WebP assets are committed at:
+generated/assets/works-on-paper/
+Do not rename source artwork files without updating this page.
+-->
+<!DOCTYPE html>
+<html lang="en" data-page="works-on-paper" data-mahou-music="off">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:; img-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<title>Before the World Became 3D | Brennan Shepherd</title>
+<meta name="description" content="Traditional gouache paintings, sketchbook studies, and digital illustration by Brennan Shepherd." />
+<meta property="og:title" content="Before the World Became 3D — Brennan Shepherd" />
+<meta property="og:description" content="Gouache paintings, sketchbook studies, and digital illustration — the hand underneath the 3D worlds." />
+<meta property="og:image" content="../generated/assets/works-on-paper/IMG_5721.webp" />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/works-on-paper.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="melodia-tokens.css">
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-mobile.css">
+<link rel="stylesheet" href="melodia-magical-girl.css">
+<link rel="stylesheet" href="melodia-mahou-flourish.css">
+<link rel="stylesheet" href="works-on-paper.css">
+</head>
+<body>
+<div class="melodia-shell paper-shell" data-mg="soft" data-visual="works-on-paper" data-effects="starfield,magical" data-starfield-intensity="subtle" data-nav-cta="curated-art.html" data-nav-cta-label="Selected Art">
+<header class="shell-nav constellation-nav" aria-label="Portfolio navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
+  <nav class="nav-links" aria-label="Sections"></nav>
+  <a class="nav-cta button-premium" href="curated-art.html">Selected Art</a>
+</header>
+
+<main id="main">
+<section class="paper-hero" aria-labelledby="paper-title" data-phi-lock="off" data-art-silence="true">
+  <div class="paper-hero-copy">
+    <p class="kicker magazine-kicker">Traditional art · illustration · gouache</p>
+    <h1 id="paper-title">Before the World Became 3D.</h1>
+    <p class="paper-hero-lede">Paintings, sketchbooks, character images, and small studies made before—and alongside—the Unreal worlds. The traditional work here is gouache.</p>
+    <p class="paper-note">The photographs are part of the record. Easels, tables, grass, tape, phone UI and all: the website composes the originals; it does not repaint them.</p>
+    <div class="hero-actions">
+      <a class="button primary button-premium-primary" href="#digital">Digital illustration</a>
+      <a class="button button-premium" href="#gouache">Gouache</a>
+      <a class="button button-premium" href="#sketchbook">Sketchbook</a>
+    </div>
+  </div>
+  <figure class="paper-hero-art art-piece">
+    <a href="../generated/assets/works-on-paper/IMG_5721.webp">
+      <img src="../generated/assets/works-on-paper/IMG_5721.webp" alt="Gouache painting of a blue-haired figure raising a radiant star above a dark dress and ocean landscape" fetchpriority="high" decoding="async" />
+    </a>
+    <figcaption><span>Ocean figure</span><small>Gouache · canvas</small></figcaption>
+  </figure>
+</section>
+
+<section id="digital" class="paper-section paper-digital" aria-labelledby="digital-title" data-art-silence="true" data-phi-lock="off">
+  <div class="paper-inner">
+    <header class="paper-section-head">
+      <div><p class="eyebrow">01 · Digital illustration</p><h2 id="digital-title">Color before topology.</h2></div>
+      <p>Character, atmosphere and palette experiments that already contain the cyan–pink–violet language that keeps resurfacing in Melodia.</p>
+    </header>
+
+    <div class="paper-grid digital-grid">
+      <figure class="art-piece digital-vertical">
+        <a href="../generated/assets/works-on-paper/IMG_5370.webp">
+          <img src="../generated/assets/works-on-paper/IMG_5370.webp" alt="Digital illustration titled Haru Urara showing a figure walking into a lavender and peach sky over teal grass" loading="lazy" decoding="async" />
+        </a>
+        <figcaption><span>Haru Urara</span><small>Digital illustration</small></figcaption>
+      </figure>
+      <figure class="art-piece digital-wide">
+        <a href="../generated/assets/works-on-paper/IMG_5378.webp">
+          <img src="../generated/assets/works-on-paper/IMG_5378.webp" alt="Digital character illustration with two stylized figures against swirling purple, black and green patterns" loading="lazy" decoding="async" />
+        </a>
+        <figcaption><span>Character study</span><small>Digital illustration</small></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="gouache" class="paper-section paper-gouache" aria-labelledby="gouache-title" data-art-silence="true" data-phi-lock="off">
+  <div class="paper-inner">
+    <header class="paper-section-head">
+      <div><p class="eyebrow">02 · Works in gouache</p><h2 id="gouache-title">Paint still leaves fingerprints.</h2></div>
+      <p>These stay physical. I want the scale of the canvas, the watercolor-paper edge, and the places they were photographed to remain visible.</p>
+    </header>
+
+    <div class="paper-grid gouache-grid">
+      <figure class="art-piece gouache-star">
+        <a href="../generated/assets/works-on-paper/IMG_5721.webp">
+          <img src="../generated/assets/works-on-paper/IMG_5721.webp" alt="Large gouache canvas of a blue-haired figure raising a luminous star over a night ocean" loading="lazy" decoding="async" />
+        </a>
+        <figcaption><span>Ocean figure · star</span><small>Gouache · canvas</small></figcaption>
+      </figure>
+
+      <figure class="art-piece gouache-cats">
+        <a href="../generated/assets/works-on-paper/IMG_3981.webp">
+          <img src="../generated/assets/works-on-paper/IMG_3981.webp" alt="Gouache painting of two cats in a saturated pink, cyan and violet interior" loading="lazy" decoding="async" />
+        </a>
+        <figcaption><span>Two cats</span><small>Gouache · canvas</small></figcaption>
+      </figure>
+
+      <figure class="art-piece gouache-bird documentary">
+        <a href="../generated/assets/works-on-paper/IMG_6244.webp">
+          <img src="../generated/assets/works-on-paper/IMG_6244.webp" alt="Phone archive photograph of a blue jay gouache painting held outdoors" loading="lazy" decoding="async" />
+        </a>
+        <figcaption><span>Blue jay study</span><small>Gouache · photographed archive</small></figcaption>
+      </figure>
+
+      <figure class="art-piece gouache-portrait">
+        <a href="../generated/assets/works-on-paper/IMG_5476-1.webp">
+          <img src="../generated/assets/works-on-paper/IMG_5476-1.webp" alt="Small gouache portrait of a blue-haired character on watercolor paper, photographed on a paint-covered table" loading="lazy" decoding="async" />
+        </a>
+        <figcaption><span>Blue-haired portrait</span><small>Gouache · paper</small></figcaption>
+      </figure>
+
+      <figure class="art-piece gouache-dance">
+        <a href="../generated/assets/works-on-paper/IMG_3899.webp">
+          <img src="../generated/assets/works-on-paper/IMG_3899.webp" alt="Gouache canvas of a blue-haired figure in a black dress standing in a blue landscape, photographed on an easel" loading="lazy" decoding="async" />
+        </a>
+        <figcaption><span>Ocean figure · study</span><small>Gouache · canvas</small></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="sketchbook" class="paper-section paper-sketchbook" aria-labelledby="sketchbook-title" data-art-silence="true" data-phi-lock="off">
+  <div class="paper-inner">
+    <header class="paper-section-head">
+      <div><p class="eyebrow">03 · Sketchbook</p><h2 id="sketchbook-title">Small paintings, close enough to touch.</h2></div>
+      <p>These are presented more like pages than portfolio plates: intimate, imperfect, and surrounded by the evidence of making them.</p>
+    </header>
+
+    <div class="paper-grid sketch-grid">
+      <figure class="art-piece sketch-blue">
+        <a href="../generated/assets/works-on-paper/IMG_3515.webp">
+          <img src="../generated/assets/works-on-paper/IMG_3515.webp" alt="Gouache sketchbook painting of a blue-haired character with a large pink bow holding a small plush" loading="lazy" decoding="async" />
+        </a>
+        <figcaption><span>Bow character study</span><small>Gouache · sketchbook</small></figcaption>
+      </figure>
+
+      <figure class="art-piece sketch-pink">
+        <a href="../generated/assets/works-on-paper/IMG_3471.webp">
+          <img src="../generated/assets/works-on-paper/IMG_3471.webp" alt="Gouache sketchbook character painting in pink, red and gold photographed in grass with decorative charms" loading="lazy" decoding="async" />
+        </a>
+        <figcaption><span>Pink character study</span><small>Gouache · sketchbook</small></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="paper-section paper-exit" data-phi-lock="off">
+  <div class="paper-inner paper-exit-inner">
+    <p class="eyebrow">From hand to world</p>
+    <h2>The palette survived the software.</h2>
+    <p>The repeated things—blue water, violet shadow, pink light, stars, ribbons, strange girls at the edge of an enormous sky—eventually became part of the visual grammar of Melodia.</p>
+    <div class="hero-actions">
+      <a class="button primary button-premium-primary" href="curated-art.html">VIEW · Selected Art</a>
+      <a class="button button-premium" href="sakura-case-study.html">PROCESS · Sakura Dream</a>
+      <a class="button button-premium" href="melodia-living-worlds.html">ENTER ✦ · Melodia</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer"><div class="inner"><span>Brennan Shepherd / Works on Paper</span><span>Gouache · illustration · sketchbook</span></div></footer>
+</div>
+<script src="pigment-memory.js"></script>\n<script src="curated-art-viewer.js"></script>
+<script src="melodia-magical-girl.js"></script>
+<script src="melodia-mahou-flourish.js"></script>
+<script src="melodia-starfield.js"></script>
+<script src="melodia-site-nav.js"></script>
+<script src="melodia-editorial.js"></script>
+<script>if (window.MelodiaEditorial) MelodiaEditorial.init({ page: 'works-on-paper' });</script>
+</body>
+</html>

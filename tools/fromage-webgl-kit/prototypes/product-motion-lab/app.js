@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { createRuntime } from '../../src/core/createRuntime.js';
-import { loadAurigaMeter } from './src/auriga-meter.js';
+import { loadAurigaMeter, DEFAULT_AURIGA_URL } from './src/auriga-meter.js';
 
 const stage = document.getElementById('stage');
 const slider = document.getElementById('timeline');
@@ -39,9 +39,89 @@ floor.rotation.x = -Math.PI / 2;
 floor.position.y = -1.05;
 runtime.scene.add(floor);
 
-let activeProduct = null;
-let anchors = {};
-let materials = [];
+const product = new THREE.Group();
+product.name = 'generic-product-root';
+runtime.scene.add(product);
+
+const shellMat = new THREE.MeshStandardMaterial({ color: 0xced4dc, metalness: 0.55, roughness: 0.28 });
+const darkMat = new THREE.MeshStandardMaterial({ color: 0x11151a, metalness: 0.15, roughness: 0.34 });
+const glassMat = new THREE.MeshPhysicalMaterial({ color: 0x8fb4d9, roughness: 0.12, metalness: 0.05, transmission: 0.35, thickness: 0.2 });
+const accentMat = new THREE.MeshStandardMaterial({ color: 0x7f91ae, metalness: 0.7, roughness: 0.22 });
+const materials = [shellMat, darkMat, glassMat, accentMat];
+
+const base = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.52, 1.55, 2, 1, 2), shellMat);
+base.position.y = -0.35;
+base.name = 'base';
+product.add(base);
+
+const top = new THREE.Group();
+top.position.set(0, -0.06, -0.6);
+top.name = 'lid-assembly';
+product.add(top);
+
+const lid = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.22, 1.38, 2, 1, 2), shellMat);
+lid.position.set(0, 0, 0.61);
+top.add(lid);
+
+const screen = new THREE.Mesh(new THREE.BoxGeometry(1.28, 0.05, 0.72), glassMat);
+screen.position.set(0, 0.14, 0.62);
+top.add(screen);
+
+const port = new THREE.Mesh(new THREE.BoxGeometry(0.48, 0.16, 0.12), darkMat);
+port.position.set(1.26, -0.3, 0.15);
+product.add(port);
+
+const button = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.08, 32), accentMat);
+button.rotation.z = Math.PI / 2;
+button.position.set(-1.28, -0.2, 0.18);
+product.add(button);
+
+const anchors = {
+  screen: new THREE.Object3D(),
+  hinge: new THREE.Object3D(),
+  port: new THREE.Object3D(),
+};
+anchors.screen.position.set(0, 0.28, 0.62);
+anchors.hinge.position.set(0, 0.04, 0.02);
+anchors.port.position.set(1.34, -0.18, 0.18);
+top.add(anchors.screen, anchors.hinge);
+product.add(anchors.port);
+
+product.rotation.y = -0.55;
+product.rotation.x = 0.08;
+
+// --- Auriga GLB path ---------------------------------------------------------
+// Until 2026-09-10 this file did not import src/auriga-meter.js at all, so the lane's
+// headline asset (a generated web-ready GLB) was unreachable from the lab page: the
+// procedural shell below was the only thing anyone could ever see.
+//
+// Now: try the real GLB, and step the procedural stand-in aside only on success.
+// On any failure the procedural shell stays and the reason is surfaced, never swallowed.
+let auriga = null;
+
+function setAssetStatus(text) {
+  const el = document.getElementById('assetStatus');
+  if (el) el.textContent = text;
+  else console.info('[product-motion-lab]', text);
+}
+
+setAssetStatus('loading GLB…');
+
+loadAurigaMeter({ scene: runtime.scene, url: DEFAULT_AURIGA_URL })
+  .then((handle) => {
+    auriga = handle;
+    product.visible = false; // procedural stand-in steps aside
+    setAssetStatus(
+      `GLB loaded · ${handle.clips.length} clip(s) · ${handle.duration.toFixed(2)}s · ` +
+      `${handle.materials.length} material(s) · anchors ${Object.keys(handle.anchors).length}/3`,
+    );
+    applyTimeline(timeline);
+  })
+  .catch((err) => {
+    const why = err && err.message ? err.message : String(err);
+    setAssetStatus(`GLB unavailable — procedural fallback in use (${why})`);
+  });
+
 let timeline = 0;
 let playing = false;
 let playStart = 0;
@@ -49,134 +129,67 @@ let calloutsVisible = true;
 let frameCounter = 0;
 let fpsWindowStart = performance.now();
 let fps = 0;
-let assetSource = 'Baked GLB (assets/auriga_meter.glb)';
 
 function clamp01(v) { return Math.min(1, Math.max(0, v)); }
-
-// Initialize GLB Asset
-try {
-  const auriga = await loadAurigaMeter({ scene: runtime.scene });
-  activeProduct = auriga;
-  anchors = auriga.anchors;
-  materials = auriga.materials;
-  auriga.root.position.set(0, 0, 0);
-} catch (err) {
-  console.warn('Could not load auriga_meter.glb, using procedural fallback:', err);
-  assetSource = 'Procedural Fallback';
-  const product = new THREE.Group();
-  product.name = 'generic-product-root';
-  runtime.scene.add(product);
-
-  const shellMat = new THREE.MeshStandardMaterial({ color: 0xced4dc, metalness: 0.55, roughness: 0.28 });
-  const darkMat = new THREE.MeshStandardMaterial({ color: 0x11151a, metalness: 0.15, roughness: 0.34 });
-  const glassMat = new THREE.MeshPhysicalMaterial({ color: 0x8fb4d9, roughness: 0.12, metalness: 0.05, transmission: 0.35, thickness: 0.2 });
-  const accentMat = new THREE.MeshStandardMaterial({ color: 0x7f91ae, metalness: 0.7, roughness: 0.22 });
-  materials = [shellMat, darkMat, glassMat, accentMat];
-
-  const base = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.52, 1.55, 2, 1, 2), shellMat);
-  base.position.y = -0.35;
-  product.add(base);
-
-  const top = new THREE.Group();
-  top.position.set(0, -0.06, -0.6);
-  product.add(top);
-
-  const lid = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.22, 1.38, 2, 1, 2), shellMat);
-  lid.position.set(0, 0, 0.61);
-  top.add(lid);
-
-  const screen = new THREE.Mesh(new THREE.BoxGeometry(1.28, 0.05, 0.72), glassMat);
-  screen.position.set(0, 0.14, 0.62);
-  top.add(screen);
-
-  const port = new THREE.Mesh(new THREE.BoxGeometry(0.48, 0.16, 0.12), darkMat);
-  port.position.set(1.26, -0.3, 0.15);
-  product.add(port);
-
-  const button = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.08, 32), accentMat);
-  button.rotation.z = Math.PI / 2;
-  button.position.set(-1.28, -0.2, 0.18);
-  product.add(button);
-
-  anchors = {
-    screen: new THREE.Object3D(),
-    hinge: new THREE.Object3D(),
-    port: new THREE.Object3D(),
-  };
-  anchors.screen.position.set(0, 0.28, 0.62);
-  anchors.hinge.position.set(0, 0.04, 0.02);
-  anchors.port.position.set(1.34, -0.18, 0.18);
-  top.add(anchors.screen, anchors.hinge);
-  product.add(anchors.port);
-
-  activeProduct = {
-    root: product,
-    materials,
-    applyTimeline(t) {
-      product.rotation.y = -0.55 + t * 0.45;
-      top.rotation.x = -t * 1.05;
-      button.rotation.x = t * Math.PI * 2;
-      return t;
-    },
-    setWireframe(enabled) {
-      for (const m of materials) m.wireframe = enabled;
-    }
-  };
-}
+function segment(t, a, b) { return clamp01((t - a) / Math.max(0.0001, b - a)); }
 
 function applyTimeline(t) {
   timeline = clamp01(t);
   slider.value = timeline.toFixed(3);
+  valueOut.value = timeline.toFixed(2);
   valueOut.textContent = timeline.toFixed(2);
-  if (activeProduct) {
-    activeProduct.applyTimeline(timeline);
-  }
+
+  const intro = segment(timeline, 0.0, 0.28);
+  const open = segment(timeline, 0.28, 0.62);
+  const inspect = segment(timeline, 0.62, 1.0);
+
+  product.rotation.y = -0.55 + intro * 0.9 + inspect * 0.25;
+  product.position.y = Math.sin(intro * Math.PI) * 0.12;
+  top.rotation.x = -open * 1.05;
+  button.rotation.x = inspect * Math.PI * 2;
+  screen.material.emissive = new THREE.Color(0x19354a);
+  screen.material.emissiveIntensity = 0.15 + inspect * 1.1;
+
+  // Drive the real GLB's authored clip when it is loaded. The procedural values above
+  // remain valid for the fallback path, so both branches stay coherent.
+  if (auriga) auriga.applyTimeline(timeline);
 }
 
-const tempVec = new THREE.Vector3();
 function projectCallouts() {
-  if (!calloutsVisible) {
-    for (const el of calloutEls) el.style.opacity = '0';
-    return;
-  }
   const rect = stage.getBoundingClientRect();
+  const temp = new THREE.Vector3();
+  // Prefer the loaded GLB's own annotation anchors; fall back to the procedural ones.
+  const anchorSet = auriga ? auriga.anchors : anchors;
   for (const el of calloutEls) {
-    const key = el.dataset.anchor;
-    const anchor = anchors[key];
-    if (!anchor) {
-      el.style.opacity = '0';
+    const anchor = anchorSet[el.dataset.anchor];
+    if (!anchor || !calloutsVisible) {
+      el.hidden = true;
       continue;
     }
-    anchor.getWorldPosition(tempVec);
-    tempVec.project(runtime.camera);
-    if (tempVec.z > 1) {
-      el.style.opacity = '0';
-      continue;
-    }
-    const x = (tempVec.x * 0.5 + 0.5) * rect.width;
-    const y = (-tempVec.y * 0.5 + 0.5) * rect.height;
-    el.style.left = `${Math.round(x)}px`;
-    el.style.top = `${Math.round(y)}px`;
-    el.style.opacity = '1';
+    anchor.getWorldPosition(temp);
+    temp.project(runtime.camera);
+    const visible = temp.z > -1 && temp.z < 1;
+    el.hidden = !visible;
+    if (!visible) continue;
+    el.style.left = `${(temp.x * 0.5 + 0.5) * rect.width}px`;
+    el.style.top = `${(-temp.y * 0.5 + 0.5) * rect.height}px`;
   }
 }
 
 function updateDiagnostics(now) {
-  frameCounter++;
-  if (now - fpsWindowStart >= 500) {
+  frameCounter += 1;
+  if (now - fpsWindowStart >= 600) {
     fps = Math.round((frameCounter * 1000) / (now - fpsWindowStart));
     frameCounter = 0;
     fpsWindowStart = now;
   }
   const info = runtime.renderer.info.render;
   diagnostics.textContent = [
-    `ASSET     ${assetSource}`,
-    `FPS       ${fps || 60}`,
-    `DPR       ${runtime.renderer.getPixelRatio().toFixed(2)}`,
-    `DRAWS     ${info.calls}`,
-    `TRIS      ${info.triangles.toLocaleString()}`,
-    `TIMELINE  ${timeline.toFixed(3)}`,
-    `BYTES     195.9 KB (Optimized GLB)`,
+    `FPS ~${fps || '…'}`,
+    `DPR ${runtime.renderer.getPixelRatio().toFixed(2)}`,
+    `Draw calls ${info.calls}`,
+    `Triangles ${info.triangles.toLocaleString()}`,
+    `Timeline ${timeline.toFixed(3)}`,
   ].join('\n');
 }
 
@@ -220,9 +233,8 @@ resetButton.addEventListener('click', () => {
 wireframeButton.addEventListener('click', () => {
   const enabled = wireframeButton.getAttribute('aria-pressed') !== 'true';
   wireframeButton.setAttribute('aria-pressed', String(enabled));
-  if (activeProduct && activeProduct.setWireframe) {
-    activeProduct.setWireframe(enabled);
-  }
+  for (const material of materials) material.wireframe = enabled;
+  if (auriga) auriga.setWireframe(enabled);
 });
 
 calloutsButton.addEventListener('click', () => {
@@ -247,17 +259,3 @@ if (!reducedMotion) {
 }
 
 applyTimeline(0);
-
-window.__productLab = {
-  getState() {
-    return {
-      source: assetSource,
-      timeline,
-      fps,
-      draws: runtime.renderer.info.render.calls,
-      tris: runtime.renderer.info.render.triangles,
-      anchors: Object.keys(anchors),
-    };
-  },
-  setTime(t) { applyTimeline(t); },
-};

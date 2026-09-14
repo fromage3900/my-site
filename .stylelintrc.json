@@ -1,0 +1,7 @@
+{
+  "customSyntax": "postcss-scss",
+  "rules": {
+    "no-duplicate-selectors": true,
+    "declaration-block-no-duplicate-properties": true
+  }
+}

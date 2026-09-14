@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "notes": "Named plate slots — edit with Tools/assign_plate.py or by hand. Paths relative to my-site-clean/wix/. Jewelry plate killed (was content-dup of beauty). glam_03 removed (bit-identical to beauty). Melusina back deferred until Cam_Back. Wireframe greys from 2026-07-15. 2026-09-05 pixel review: legacy Sakura horizon slots are retained only as placeholders and explicitly rejected as public hero evidence; see content/render-passports.json. 2026-09-05 follow-up: generic hero slots now use reviewed Night Bridge evidence; Sakura-specific slots use the reviewed surface-family study instead of the rejected blue horizon.",
+  "slots": {
+    "index.hero": {
+      "path": "../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png",
+      "alt": "Night Bridge environment study — reviewed Hero Level plate",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Pixel-reviewed environment composition. Generic Hero Level study; no canonical world identity claimed."
+    },
+    "recruiter.hero": {
+      "path": "../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png",
+      "alt": "Night Bridge environment study — reviewed Hero Level plate",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Pixel-reviewed environment composition. Generic Hero Level study; no canonical world identity claimed."
+    },
+    "hub.melusina": {
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "alt": "Melusina"
+    },
+    "hub.melusina_secondary": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715c_05.png",
+      "alt": "Melusina glam portrait"
+    },
+    "stage.beauty": {
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "alt": "Hero beauty · EEVEE glam"
+    },
+    "stage.front": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715c_02.png",
+      "alt": "Glam bust · EEVEE"
+    },
+    "stage.wire_front": {
+      "path": "../generated/assets/character/melusina_front_wireframe_grey_20260715.png",
+      "alt": "Melusina front · grey wireframe"
+    },
+    "stage.wire_34": {
+      "path": "../generated/assets/character/melusina_34_wireframe_grey_20260715.png",
+      "alt": "Melusina three-quarter · grey wireframe"
+    },
+    "stage.silhouette": {
+      "path": "../generated/assets/character/melusina_34_wireframe_grey_20260715.png",
+      "alt": "Melusina topology stand-in (true silhouette / back plate still pending)"
+    },
+    "melusina.glam_01": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715c_01.png",
+      "alt": "Melusina glam full · EEVEE"
+    },
+    "melusina.glam_02": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715c_02.png",
+      "alt": "Melusina glam bust · EEVEE"
+    },
+    "melusina.glam_04": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715c_04.png",
+      "alt": "Melusina glam close · EEVEE"
+    },
+    "melusina.glam_05": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715c_05.png",
+      "alt": "Melusina glam three-quarter · EEVEE"
+    },
+    "melusina.glam_macro": {
+      "path": "../generated/assets/character/melusina_eevee_glam_20260715_02.png",
+      "alt": "Melusina — glam macro · EEVEE hair + face detail"
+    },
+    "sakura.hero": {
+      "path": "../generated/assets/portfolio-scan/sakura-surfaces-grid.png",
+      "alt": "L_SakuraDream surface-family study — world beauty capture pending",
+      "status": "supporting_material_study",
+      "evidence_note": "Pixel-reviewed material-family evidence only. Does not prove the full Sakura Dream world or shrine route."
+    },
+    "kitbash.hero": {
+      "path": "../generated/assets/ornaments/vault_ribs_komikaze_beauty_34.png",
+      "alt": "Ornamental kitbash preview"
+    },
+    "hub.sakura": {
+      "path": "../generated/assets/portfolio-scan/sakura-surfaces-grid.png",
+      "alt": "L_SakuraDream surface-family study — world beauty capture pending",
+      "status": "supporting_material_study",
+      "evidence_note": "Pixel-reviewed material-family evidence only. Does not prove the full Sakura Dream world or shrine route."
+    },
+    "resume.hero": {
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "alt": "Melusina — EEVEE glam beauty, Melodia Portfolio Stage"
+    },
+    "cross.hero": {
+      "path": "../generated/assets/cross/cross_komikaze_beauty_34.png",
+      "alt": "Melusina Vow Cross — EEVEE glam beauty"
+    },
+    "zenlantern.hero": {
+      "path": "../generated/assets/props/zenlantern_komikaze_beauty_34.png",
+      "alt": "Zen Lantern — EEVEE glam beauty"
+    },
+    "zenlantern.front": {
+      "path": "../generated/assets/props/zenlantern_komikaze_front.png",
+      "alt": "Zen Lantern — EEVEE glam front"
+    },
+    "zenlantern.back": {
+      "path": "../generated/assets/props/zenlantern_komikaze_back.png",
+      "alt": "Zen Lantern — EEVEE glam back"
+    },
+    "cross.back": {
+      "path": "../generated/assets/cross/cross_komikaze_back.png",
+      "alt": "Melusina Vow Cross — back"
+    },
+    "melody.heart": {
+      "path": "../generated/assets/sculpt/sculpt_melodytoken_heart_01.png",
+      "alt": "Melody Token · heart clay"
+    },
+    "melody.star": {
+      "path": "../generated/assets/sculpt/sculpt_melodytoken_star.png",
+      "alt": "Melody Token · star gem clay"
+    },
+    "melody.swirl": {
+      "path": "../generated/assets/sculpt/sculpt_melodytoken_swirl.png",
+      "alt": "Melody Token · swirl clay"
+    },
+    "melody.water": {
+      "path": "../generated/assets/sculpt/sculpt_melodytoken_water.png",
+      "alt": "Melody Token · water citrus clay"
+    },
+    "melody.star_glam": {
+      "path": "../generated/assets/ornaments/melody_token_star_komikaze_beauty_34.png",
+      "alt": "Melody Token · star EEVEE ice glam"
+    },
+    "melody.swirl_glam": {
+      "path": "../generated/assets/ornaments/melody_token_swirl_komikaze_beauty_34.png",
+      "alt": "Melody Token · swirl EEVEE ice glam"
+    },
+    "melody.water_glam": {
+      "path": "../generated/assets/ornaments/melody_token_water_komikaze_beauty_34.png",
+      "alt": "Melody Token · water EEVEE ice glam"
+    },
+    "melusina.flip_01": {
+      "path": "../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_01.png",
+      "alt": "Melusina Flip water-hair cine EEVEE, frame 96 — not gameplay hair, not Unreal B2 Cam_Beauty"
+    },
+    "melusina.flip_02": {
+      "path": "../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_02.png",
+      "alt": "Melusina Flip water-hair cine EEVEE, frame 240 — not gameplay hair, not Unreal B2 Cam_Beauty"
+    },
+    "melusina.nikki_cam_beauty": {
+      "path": "../generated/assets/character/melusina_cam_beauty_nikki_2026-08-13.png",
+      "alt": "Cam_Beauty on live v22, Nikki 900/550/280/140, Review_Queue hidden. Plate reads bald: Flip cache globules sit below the scalp (max Z ≈ 1.015 vs head ≈ 1.442) — existing 1–240 cache, not a new bake. Not full cine water-hair. Unreal B2 Cam_Beauty still pending.",
+      "status": "reject_public_hero",
+      "evidence_note": "Known-bad hair presentation. The plate reads bald; retain only for diagnosis/history and never hydrate it into recruiter-facing slots."
+    },
+    "melusina.recruiter_fallback": {
+      "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
+      "alt": "Melusina — EEVEE stage beauty, temporary recruiter fallback",
+      "status": "temporary_fallback",
+      "evidence_note": "Existing Stage/Resume beauty. Use only until a reviewed Unreal B2 Cam_Beauty with correct hair is captured."
+    }
+  }
+}

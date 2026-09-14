@@ -1,0 +1,47 @@
+{
+  "theme": "dark",
+  "project": "Rosette Medallion",
+  "category": "Prop / ornament",
+  "version": "wave5",
+  "asset_id": "rosette",
+  "rows": [
+    [
+      "Triangles",
+      "12,840"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "Shader",
+      "Komikaze \u00b7 Voronoi Shader (3 Tones)"
+    ],
+    [
+      "Software",
+      "Blender \u00b7 Melodia Portfolio Stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "three_quarter"
+    ],
+    [
+      "Date",
+      "2026-07"
+    ]
+  ],
+  "generated_at": "2026-07-15T05:52:16.237962+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

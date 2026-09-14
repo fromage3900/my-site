@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="robots" content="noindex,nofollow" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>Melodia Gallery Grid</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="melodia-luxury-type.css">
 <style>
   :root {
-    --surface-base: #141A30;
-    --surface-raised: #1C2340;
-    --surface-sunken: #241B2E;
-    --text-primary: #ECEAF4;
-    --text-secondary: #A9A7C0;
-    --gold: #C9A86A;
-    --gold-soft: #DDC79B;
+    --surface-base: var(--primitive-astral-900);
+    --surface-raised: var(--primitive-astral-700);
+    --surface-sunken: var(--primitive-plum-800);
+    --text-primary: var(--primitive-ivory-50);
+    --text-secondary: var(--primitive-slate-300);
+    --gold: var(--primitive-gold-500);
+    --gold-soft: var(--primitive-gold-300);
     --border-default: rgba(201, 168, 106, 0.2);
     --border-gold: rgba(201, 168, 106, 0.4);
   }
@@ -23,7 +25,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body), system-ui, sans-serif;
     background: var(--surface-base);
     color: var(--text-primary);
     width: 100%;
@@ -41,7 +43,7 @@
   }
 
   .gallery-title {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: clamp(28px, 5vw, 42px);
     font-weight: 300;
     color: var(--text-primary);
@@ -49,7 +51,7 @@
   }
 
   .gallery-subtitle {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -119,7 +121,7 @@
   }
 
   .gallery-item-title {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 16px;
     font-weight: 400;
     color: var(--text-primary);
@@ -127,7 +129,7 @@
   }
 
   .gallery-item-category {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -148,7 +150,7 @@
   }
 
   .empty-state-text {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -217,7 +219,7 @@
       galleryItem.style.animationDelay = `${index * 0.1}s`;
 
       const image = item.image || '';
-      const placeholder = item.placeholder || `linear-gradient(135deg, #1C2340 0%, #3C5C9E 100%)`;
+      const placeholder = item.placeholder || `linear-gradient(135deg, #1C2340 0%, var(--primitive-astral-500) 100%)`;
 
       galleryItem.innerHTML = `
         <img class="gallery-image" src="${image}" alt="${item.title}" onerror="this.style.background='${placeholder}'">

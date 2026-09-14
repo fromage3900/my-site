@@ -1,5 +1,5 @@
 ﻿{
-    "generated_at":  "2026-07-03T13:05:31.8635483Z",
+    "generated_at":  "2026-07-09T21:18:28.5206571Z",
     "source_intake":  "generated/unreal_portfolio_intake.json",
     "scene":  "ZenForestTest",
     "genome":  "ZEN_SHRINE_AXIS",
@@ -10,20 +10,19 @@
                        "Haiden"
                    ],
     "current_readiness":  {
-                              "label":  "render_ready_needs_breakdowns",
-                              "score":  82,
+                              "label":  "portfolio_ready",
+                              "score":  88,
                               "next_needs":  [
-                                                 "Capture shader and Niagara breakdown plates into renders.breakdown.",
                                                  "Capture PCG or procedural dressing proof into renders.pcg.",
                                                  "Promote strongest shader families into dedicated material breakdown cards."
                                              ]
                           },
     "current_counts":  {
-                           "renders_total":  8,
-                           "renders_web_ready":  8,
-                           "hero":  4,
+                           "renders_total":  70,
+                           "renders_web_ready":  70,
+                           "hero":  9,
                            "materials":  4,
-                           "breakdown":  0,
+                           "breakdown":  1,
                            "pcg":  0,
                            "material_instances":  30,
                            "shader_families":  3,
@@ -42,14 +41,14 @@
                                },
     "capture_slots":  [
                           {
-                              "id":  "shader-graph-meshblend-master",
+                              "id":  "universal-master-substrate-graph",
                               "priority":  1,
                               "destination_group":  "renders.breakdown",
                               "target_page":  "wix/shader-breakdowns.html",
-                              "title":  "Universal Master MeshBlend graph plate",
-                              "capture":  "Annotated Material Editor screenshot or beauty-plus-graph pair for M_Master_Toon_Universal with MeshBlend controls visible.",
-                              "proves":  "Layered stylized environment materials can be explained as a production system, not just a beauty render.",
-                              "preferred_filename":  "breakdown_shader_meshblend_master_1920x1080.png"
+                              "title":  "Universal Master Substrate graph plate",
+                              "capture":  "Annotated Material Editor screenshot for M_Master_Toon_Universal - layer stack, Nikki modulators, and Substrate toon BSDF tail visible.",
+                              "proves":  "Stylized environment materials are one production system with readable instance scope, not ad-hoc one-offs.",
+                              "preferred_filename":  "breakdown_shader_universal_master_substrate_1920x1080.png"
                           },
                           {
                               "id":  "space-cathedral-celestial-nebula",

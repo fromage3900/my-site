@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-page="universal-material-impact">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="melodia-build" content="20260904p1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Universal Material Impact | Brennan Shepherd</title>
+  <meta name="description" content="In-scene proof of a shared stylized material system across Melodia environments: hero plates, material families, and art-directed variation from one reusable master." />
+  <link rel="stylesheet" href="melodia-luxury-type.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-editorial.css?v=20260904p1">
+  <link rel="stylesheet" href="melodia-fashion-editorial.css?v=20260904p1">
+<link rel="stylesheet" href="melodia-premium-system.css?v=20260904p1">  <style>
+    .impact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .impact-card{border:1px solid rgba(201,168,106,.35);background:rgba(16,23,54,.82);overflow:hidden}
+    .impact-card .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,rgba(18,24,45,.14),rgba(200,164,94,.10));display:grid;place-items:center;color:rgba(236,234,244,.62);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+    .impact-card img{width:100%;height:100%;object-fit:contain;display:block;background:var(--primitive-astral-900)}
+    .impact-card .body{padding:16px 18px}
+    .impact-card .body p{color:rgba(236,234,244,.72);line-height:1.6}
+    .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+    .pillrow span{display:inline-flex;align-items:center;padding:7px 9px;border:1px solid rgba(201,168,106,.35);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--primitive-iris-300);background:rgba(16,23,54,.55)}
+    @media(max-width:980px){.impact-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="melodia-shell fashion-mode" data-mg="chrome" data-hero="editorial" data-effects="starfield,holo">
+  <header class="shell-nav" aria-label="Portfolio navigation">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="hero-renders.html">Renders</a>
+      <a href="shader-breakdowns.html">Shaders</a>
+      <a href="geometry-nodes.html">Geometry</a>
+      <a href="render-constellation.html">Intake</a>
+    </nav>
+    <a class="nav-cta" href="commissions.html">Request Work</a>
+  </header>
+  <main>
+    <section class="hero hero-proof" aria-labelledby="page-title">
+      <div class="hero-media" aria-hidden="true">
+        <img id="leadImg" src="../generated/assets/unreal/hero-hero-level-20260625-055343-1920x1080.png" alt="Universal material impact hero plate" />
+      </div>
+      <div class="hero-inner">
+        <p class="kicker magazine-kicker">Shared material language · in-scene proof</p>
+        <h1 id="page-title">One material spine, many worlds.</h1>
+        <p class="lede">The universal master carries the same stylized lighting logic across different environments while leaving room for art-directed roughness, color, ornament, and iridescence. The point is not the graph by itself; it is the consistency it creates in finished scenes.</p>
+        <div class="button-row">
+          <a class="button primary button-premium-primary" href="shader-breakdowns.html">Shader breakdowns</a>
+          <a class="button button-premium" href="world-bible.html">See the worlds</a>
+          <a class="button button-premium" href="../generated/technical/universal-master.html">Technical master</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="band paper">
+      <div class="inner">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Impact Plates</p>
+            <h2>Beauty first, proof beside it.</h2>
+          </div>
+          <p>Finished hero and material plates are paired here so the shared shader language can be judged in context rather than as an isolated node graph.</p>
+        </div>
+        <div class="impact-grid" id="impactGrid"></div>
+      </div>
+    </section>
+
+    <section class="band deep">
+      <div class="inner">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">System logic</p>
+            <h2>Reusable controls, art-directed outcomes.</h2>
+          </div>
+          <p>The same master is deliberately not a one-click look. It standardizes the technical spine, then exposes the controls that let each world keep its own material identity.</p>
+        </div>
+        <div class="card-grid two">
+          <article class="card">
+            <span>Shared controls</span>
+            <div>
+              <h3>One lighting and layering language.</h3>
+              <p>Common toon response, layered masks, roughness behavior, and optional stylized effects reduce duplicated shader logic across the project.</p>
+            </div>
+          </article>
+          <article class="card">
+            <span>World variation</span>
+            <div>
+              <h3>Families stay visually distinct.</h3>
+              <p>Zen, showcase, baroque, cosmic, and SDF-driven materials branch through authored parameters rather than separate disconnected shader stacks.</p>
+            </div>
+          </article>
+        </div>
+        <p style="margin-top:1rem"><a class="button button-premium" href="../generated/materials_config.json">Inspect material configuration</a></p>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="inner"><span>Brennan Shepherd / Environment & Technical Artist</span><span>Universal material system · in-scene evidence</span></div></footer>
+
+  <script>
+    const INTAKE_URL = '../generated/unreal_portfolio_intake.json';
+    function esc(value){return String(value == null ? '' : value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
+    function byPriorityDesc(a,b){return (b.priority||0)-(a.priority||0);}
+
+    function renderCard(card, label){
+      const title = esc(card.filename || label || 'Plate');
+      const caption = esc(card.caption || '');
+      const web = esc(card.web_path || '');
+      const media = web ? `<img src="${web}" alt="${title}" />` : `<div class="thumb">Missing plate</div>`;
+      return `
+        <article class="impact-card">
+          <div class="thumb">${media}</div>
+          <div class="body">
+            <div class="pillrow">
+              <span>${esc(card.group || 'plate')}</span>
+            </div>
+            <h3>${title}</h3>
+            <p>${caption || 'In-scene proof slot.'}</p>
+          </div>
+        </article>
+      `;
+    }
+
+    function materialScore(card){
+      if (!card || !card.web_path) return -1;
+      if (card.status === 'deprecated') return -1;
+      if ((card.id || '').includes('families-review')) return -1;
+      let score = card.priority || 0;
+      if ((card.id || '').includes('showcase')) score += 40;
+      if (card.width && card.height) score += 10;
+      return score;
+    }
+
+    async function main(){
+      const res = await fetch(INTAKE_URL, { cache: 'no-store' });
+      const intake = await res.json();
+      const cards = Array.isArray(intake.render_cards) ? intake.render_cards : [];
+      const heroes = cards.filter(c=>c.group==='hero' && c.web_path && c.status !== 'deprecated').sort(byPriorityDesc);
+      if (heroes[0] && heroes[0].web_path){
+        const img = document.getElementById('leadImg');
+        img.src = heroes[0].web_path;
+        img.alt = heroes[0].filename || 'Hero plate';
+      }
+
+      const materials = cards
+        .filter(c=>c.group==='materials' && c.web_path && materialScore(c) >= 0)
+        .sort((a,b)=>materialScore(b)-materialScore(a));
+      const breakdowns = cards.filter(c=>c.group==='breakdown' && c.web_path).sort(byPriorityDesc);
+
+      const grid = document.getElementById('impactGrid');
+      const entries = [];
+      if (heroes[0]) entries.push(renderCard(heroes[0], 'Hero plate'));
+      if (materials[0]) entries.push(renderCard(materials[0], 'Materials grid'));
+      if (materials[1]) entries.push(renderCard(materials[1], 'Materials grid'));
+      if (breakdowns[0]) entries.push(renderCard(breakdowns[0], 'Breakdown plate'));
+
+      if (!entries.length){
+        grid.innerHTML = '<p>Material plates are temporarily unavailable here. <a href="shader-breakdowns.html">Open the shader breakdowns</a> for the finished material overview.</p>';
+        return;
+      }
+      grid.innerHTML = entries.join('');
+    }
+    main().catch((err)=>{
+      const grid = document.getElementById('impactGrid');
+      if (grid) grid.innerHTML = '<p>The material plate feed is temporarily unavailable. <a href="shader-breakdowns.html">Open the shader breakdowns</a> instead.</p>';
+      console.error(err);
+    });
+  </script>
+</div>
+<script src="melodia-planetarium.js?v=20260904p1"></script>
+<script src="melodia-cosmic-instruments.js?v=20260904p1"></script>
+<script src="melodia-magical-girl.js?v=20260904p1"></script>
+<script src="melodia-starfield.js?v=20260904p1"></script>
+<script src="melodia-dream-shaders.js?v=20260904p1"></script>
+<script src="melodia-site-nav.js?v=20260904p1"></script>
+<script src="melodia-editorial.js?v=20260904p1"></script>
+<script>MelodiaEditorial.init({ page: 'universal-material-impact' });</script>
+</body>
+</html>
+

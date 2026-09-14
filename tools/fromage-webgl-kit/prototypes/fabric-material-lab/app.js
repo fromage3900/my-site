@@ -1,390 +1,328 @@
+// Fabric Material Lab — clean-room Three.js textile study.
+//
+// Every texture used here is procedurally generated and owner-authored
+// (BS_GodFile/Content/Python/author_fantasy_fabrics.py). Preset identities are
+// deliberately neutral — "velvet-like", not a brand or product name — so nothing
+// in this demo carries third-party or project-specific IP. See
+// ../../fabric/MATERIAL_PROVENANCE_MANIFEST.json for the classification.
+
 import * as THREE from 'three';
-import { RoomEnvironment } from 'https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/environments/RoomEnvironment.js';
-import { createRuntime } from '../../src/core/createRuntime.js';
 
-const stage = document.getElementById('stage');
-const presetSelect = document.getElementById('presetSelect');
-const texelDensity = document.getElementById('texelDensity');
-const texelVal = document.getElementById('texelVal');
-const sheenRoughness = document.getElementById('sheenRoughness');
-const sheenVal = document.getElementById('sheenVal');
-const filmThickness = document.getElementById('filmThickness');
-const filmVal = document.getElementById('filmVal');
-const rimOrbit = document.getElementById('rimOrbit');
-const rimVal = document.getElementById('rimVal');
-const turntableBtn = document.getElementById('turntableBtn');
-const resetViewBtn = document.getElementById('resetViewBtn');
-const modeBadge = document.getElementById('modeBadge');
-const diagnostics = document.getElementById('diagnostics');
-const aovButtons = [...document.querySelectorAll('.aov-btn')];
+// ---------------------------------------------------------------------------
+// Presets. Neutral identities mapped onto owner-authored generated texture sets.
+// ---------------------------------------------------------------------------
+const DIR = './assets/textiles/';
+const TEX = DIR + 'T_Fabric_';
+const PRESETS = [
+  { id: 'velvet-like',      label: 'Velvet-like',      kind: 'pile / dual-sheen', base: 'RoyalVelvet',    sheen: 'T_Fabric_RoyalVelvet_Sheen.png',    rough: 0.85, metal: 0.02 },
+  { id: 'satin-like',       label: 'Satin-like',       kind: 'fine weave',        base: 'SheerSilk',      sheen: 'T_Fabric_SheerSilk_Sheen.png',      rough: 0.42, metal: 0.05 },
+  { id: 'brocade-like',     label: 'Brocade-like',     kind: 'raised jacquard',   base: 'GildedBrocade',  sheen: null,                                rough: 0.55, metal: 0.35 },
+  { id: 'lace-like',        label: 'Lace-like',        kind: 'openwork tracery',  base: 'BaroqueLace',    sheen: null,                                rough: 0.70, metal: 0.04 },
+  { id: 'embroidered-like', label: 'Embroidered-like', kind: 'raised bullion',    base: 'GoldEmbroidery', sheen: null,                                rough: 0.48, metal: 0.55 },
+  { id: 'iridescent-like',  label: 'Iridescent-like',  kind: 'view-shift weave',  base: 'CelestialWeave', sheen: null,                                rough: 0.38, metal: 0.25 },
+];
 
-// Generate procedural micro-weave texture
-function createWeaveTexture(type = 'twill') {
-  const canvas = document.createElement('canvas');
-  canvas.width = 256;
-  canvas.height = 256;
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = '#808080';
-  ctx.fillRect(0, 0, 256, 256);
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const imgData = ctx.getImageData(0, 0, 256, 256);
-  const data = imgData.data;
+const canvas = document.getElementById('c');
+const diagEl = document.getElementById('diag');
+const stateEl = document.getElementById('state');
+const pPreset = document.getElementById('p-preset');
+const pLight = document.getElementById('p-light');
 
-  for (let y = 0; y < 256; y++) {
-    for (let x = 0; x < 256; x++) {
-      const idx = (y * 256 + x) * 4;
-      let pattern = 0;
-      if (type === 'twill') {
-        pattern = Math.sin((x + y * 2) * 0.4) * 0.5 + Math.cos((x - y) * 0.4) * 0.5;
-      } else if (type === 'brocade') {
-        pattern = Math.sin(x * 0.15) * Math.cos(y * 0.15) * 0.8 + Math.sin((x + y) * 0.3) * 0.2;
-      } else {
-        pattern = Math.sin(x * 0.3) * 0.5 + Math.cos(y * 0.3) * 0.5;
-      }
-      const val = 128 + Math.floor(pattern * 45);
-      data[idx] = val;
-      data[idx + 1] = val;
-      data[idx + 2] = 255; // normal Z dominant
-      data[idx + 3] = 255;
-    }
-  }
-  ctx.putImageData(imgData, 0, 0);
-
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.wrapS = THREE.RepeatWrapping;
-  texture.wrapT = THREE.RepeatWrapping;
-  return texture;
-}
-
-const normalTextures = {
-  twill: createWeaveTexture('twill'),
-  brocade: createWeaveTexture('brocade'),
-  satin: createWeaveTexture('satin'),
+// ---- state -----------------------------------------------------------------
+const state = {
+  preset: PRESETS[0].id,
+  tint: '#ffffff',
+  roughnessScale: 1,
+  normalScale: 1,
+  sheenScale: 1,
+  grazing: false,
+  wireframe: false,
+  turntable: !reduceMotion,
 };
 
-// Preset definitions
-const PRESETS = {
-  organza: {
-    name: 'IRIDESCENT ORGANZA',
-    color: 0xf6eff7,
-    roughness: 0.18,
-    metalness: 0.05,
-    sheen: 1.0,
-    sheenColor: 0x93d5ed,
-    sheenRoughness: 0.28,
-    clearcoat: 0.4,
-    clearcoatRoughness: 0.15,
-    transmission: 0.35,
-    ior: 1.48,
-    texel: 8.0,
-    weave: 'satin',
-    film: 520,
-  },
-  satin: {
-    name: 'ANISOTROPIC SATIN SILK',
-    color: 0xe6ded1,
-    roughness: 0.22,
-    metalness: 0.12,
-    sheen: 1.0,
-    sheenColor: 0xffeed9,
-    sheenRoughness: 0.22,
-    clearcoat: 0.2,
-    clearcoatRoughness: 0.25,
-    transmission: 0.0,
-    ior: 1.5,
-    texel: 6.0,
-    weave: 'twill',
-    film: 450,
-  },
-  brocade: {
-    name: 'ROSE-GOLD PETAL BROCADE',
-    color: 0xdfb4a4,
-    roughness: 0.38,
-    metalness: 0.65,
-    sheen: 0.85,
-    sheenColor: 0xffd1b8,
-    sheenRoughness: 0.35,
-    clearcoat: 0.0,
-    clearcoatRoughness: 0.0,
-    transmission: 0.0,
-    ior: 1.55,
-    texel: 4.0,
-    weave: 'brocade',
-    film: 610,
-  },
-  cymatic_wool: {
-    name: 'CHORAL SHEEP CYMATIC WOOL',
-    color: 0xf5f3ee,
-    roughness: 0.88,
-    metalness: 0.0,
-    sheen: 0.95,
-    sheenColor: 0xfffcf7,
-    sheenRoughness: 0.75,
-    clearcoat: 0.0,
-    clearcoatRoughness: 0.0,
-    transmission: 0.0,
-    ior: 1.46,
-    texel: 10.0,
-    weave: 'twill',
-    film: 380,
-  },
-  velvet: {
-    name: 'DEEP PLUM CATHEDRAL VELVET',
-    color: 0x3d1b28,
-    roughness: 0.92,
-    metalness: 0.0,
-    sheen: 1.0,
-    sheenColor: 0xa84a72,
-    sheenRoughness: 0.48,
-    clearcoat: 0.0,
-    clearcoatRoughness: 0.0,
-    transmission: 0.0,
-    ior: 1.52,
-    texel: 5.0,
-    weave: 'twill',
-    film: 680,
-  },
-};
+let renderer, scene, camera, mesh, material, group;
+let roughTex = null, normTex = null, bcTex = null, sheenTex = null;
+let frames = 0, lastFpsAt = performance.now(), fps = 0;
+let loadedBytes = 0;
 
-// Initialize runtime
-const runtime = createRuntime({
-  container: stage,
-  antialias: true,
-  toneMapping: THREE.ACESFilmicToneMapping,
-  toneMappingExposure: 1.05,
-});
+// ---- graceful failure ------------------------------------------------------
+function fail(msg) {
+  const f = document.getElementById('fallback');
+  f.style.display = 'grid';
+  f.textContent = msg;
+  diagEl.textContent = 'WebGL unavailable';
+}
 
-const pmremGenerator = new THREE.PMREMGenerator(runtime.renderer);
-runtime.scene.environment = pmremGenerator.fromScene(new RoomEnvironment()).texture;
-
-runtime.camera.position.set(0, 0.4, 2.6);
-runtime.camera.lookAt(0, -0.05, 0);
-
-// Key lights
-const keyLight = new THREE.DirectionalLight(0xfffbf5, 1.4);
-keyLight.position.set(1.8, 2.4, 1.8);
-runtime.scene.add(keyLight);
-
-const fillLight = new THREE.DirectionalLight(0xdce7f2, 0.6);
-fillLight.position.set(-2.0, 1.2, 0.8);
-runtime.scene.add(fillLight);
-
-// Orbiting grazing rim light
-const rimLight = new THREE.DirectionalLight(0xffeed6, 2.2);
-rimLight.position.set(0, 0.2, -2.2);
-runtime.scene.add(rimLight);
-
-// Build 3D undulating fabric drape geometry
-function createDrapedClothGeometry() {
-  const geom = new THREE.PlaneGeometry(2.4, 2.4, 140, 140);
-  const pos = geom.attributes.position;
-  
-  for (let i = 0; i < pos.count; i++) {
-    const x = pos.getX(i);
-    const y = pos.getY(i);
-    
-    // Catenary drape folds + gravity droop
-    const fold1 = Math.sin(x * 3.4 + y * 0.8) * 0.18;
-    const fold2 = Math.cos(x * 7.2 - y * 1.4) * 0.06;
-    const fold3 = Math.sin(x * 12.0) * 0.015;
-    const droop = Math.cos(x * 1.2) * 0.12 - (y * y * 0.06);
-    
-    const z = fold1 + fold2 + fold3 + droop;
-    pos.setZ(i, z);
+// ---- geometry: a draped cloth panel (procedural, owned) ---------------------
+function makeCloth() {
+  const g = new THREE.PlaneGeometry(2.6, 2.2, 150, 130);
+  const p = g.attributes.position;
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i), y = p.getY(i);
+    // two sine folds plus a subtle edge curl - deterministic, no noise library
+    const fold = Math.sin(x * 3.1) * 0.085 + Math.sin(x * 7.3 + y * 1.4) * 0.028;
+    const curl = Math.pow(Math.abs(x) / 1.3, 3) * 0.16;
+    const sag = Math.cos(y * 1.15) * 0.05;
+    p.setZ(i, fold + curl - sag);
   }
-  geom.computeVertexNormals();
-  return geom;
+  g.computeVertexNormals();
+  return g;
 }
 
-const clothGeometry = createDrapedClothGeometry();
-
-// PBR Material
-let activePresetKey = 'organza';
-let currentAOV = 'beauty';
-let autoOrbitRim = false;
-let rimAngleDeg = 45;
-
-const clothMaterial = new THREE.MeshPhysicalMaterial();
-const clothMesh = new THREE.Mesh(clothGeometry, clothMaterial);
-clothMesh.rotation.x = -Math.PI * 0.22;
-clothMesh.rotation.z = Math.PI * 0.04;
-runtime.scene.add(clothMesh);
-
-// AOV Alternative Materials
-const normalAOVMaterial = new THREE.MeshNormalMaterial({ wireframe: false });
-const wireframeMaterial = new THREE.MeshBasicMaterial({ color: 0x1f2226, wireframe: true });
-const sheenAOVMaterial = new THREE.MeshBasicMaterial({ color: 0x93d5ed });
-
-function updateMaterialFromPreset(key) {
-  const p = PRESETS[key];
-  if (!p) return;
-  activePresetKey = key;
-  
-  clothMaterial.color.setHex(p.color);
-  clothMaterial.roughness = p.roughness;
-  clothMaterial.metalness = p.metalness;
-  clothMaterial.sheen = p.sheen;
-  clothMaterial.sheenColor.setHex(p.sheenColor);
-  clothMaterial.sheenRoughness = p.sheenRoughness;
-  clothMaterial.clearcoat = p.clearcoat;
-  clothMaterial.clearcoatRoughness = p.clearcoatRoughness;
-  clothMaterial.transmission = p.transmission;
-  clothMaterial.ior = p.ior;
-  
-  const normTex = normalTextures[p.weave];
-  normTex.repeat.set(p.texel, p.texel);
-  clothMaterial.normalMap = normTex;
-  clothMaterial.normalScale.set(0.4, 0.4);
-  clothMaterial.needsUpdate = true;
-  
-  texelDensity.value = p.texel;
-  texelVal.value = `${p.texel}x`;
-  sheenRoughness.value = p.sheenRoughness;
-  sheenVal.value = p.sheenRoughness.toFixed(2);
-  filmThickness.value = p.film;
-  filmVal.value = `${p.film} nm`;
-  
-  presetSelect.value = key;
-  modeBadge.textContent = `PRESET: ${p.name}`;
-}
-
-function updateAOV(aov) {
-  currentAOV = aov;
-  aovButtons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.aov === aov)));
-  
-  if (aov === 'normals') {
-    clothMesh.material = normalAOVMaterial;
-  } else if (aov === 'wireframe') {
-    clothMesh.material = wireframeMaterial;
-  } else if (aov === 'sheen') {
-    sheenAOVMaterial.color.copy(clothMaterial.sheenColor);
-    clothMesh.material = sheenAOVMaterial;
+// ---- lighting rigs ---------------------------------------------------------
+function buildLights(grazing) {
+  const grp = new THREE.Group();
+  if (grazing) {
+    // near-tangent light: the rig that reveals roughness and normal response
+    const k = new THREE.DirectionalLight(0xffffff, 3.4);
+    k.position.set(-3.4, 0.42, 1.5);
+    grp.add(k);
+    grp.add(new THREE.AmbientLight(0xffffff, 0.16));
+    const rim = new THREE.DirectionalLight(0x9fb6ff, 0.7);
+    rim.position.set(3, 0.2, -2.4);
+    grp.add(rim);
   } else {
-    clothMesh.material = clothMaterial;
+    const k = new THREE.DirectionalLight(0xffffff, 2.1);
+    k.position.set(2.6, 3.6, 3.2);
+    grp.add(k);
+    const fill = new THREE.DirectionalLight(0xbfd0ff, 0.75);
+    fill.position.set(-3.2, 1.2, 1.6);
+    grp.add(fill);
+    grp.add(new THREE.AmbientLight(0xffffff, 0.28));
   }
+  return grp;
 }
 
-function updateRimLightPosition(deg) {
-  rimAngleDeg = deg % 360;
-  const rad = (rimAngleDeg * Math.PI) / 180;
-  const radius = 2.4;
-  rimLight.position.set(Math.sin(rad) * radius, 0.35, Math.cos(rad) * radius);
-  rimOrbit.value = Math.round(rimAngleDeg);
-  rimVal.value = `${Math.round(rimAngleDeg)}°`;
+// ---- texture loading -------------------------------------------------------
+function loadTex(url, colorSpace, repeat) {
+  return new Promise((resolve) => {
+    if (!url) return resolve(null);
+    new THREE.TextureLoader().load(
+      url,
+      (t) => {
+        t.wrapS = t.wrapT = THREE.RepeatWrapping;
+        t.repeat.set(repeat, repeat);
+        t.anisotropy = 4;
+        if (colorSpace) t.colorSpace = colorSpace;
+        fetch(url, { method: 'HEAD' }).then((r) => {
+          const n = Number(r.headers.get('content-length') || 0);
+          loadedBytes += n;
+        }).catch(() => {});
+        resolve(t);
+      },
+      undefined,
+      () => resolve(null),
+    );
+  });
 }
 
-// Event Listeners
-presetSelect.addEventListener('change', (e) => updateMaterialFromPreset(e.target.value));
+async function applyPreset(id) {
+  const def = PRESETS.find((p) => p.id === id) || PRESETS[0];
+  state.preset = def.id;
+  pPreset.textContent = def.label;
 
-aovButtons.forEach((btn) => {
-  btn.addEventListener('click', () => updateAOV(btn.dataset.aov));
-});
+  // dispose previous
+  [roughTex, normTex, bcTex, sheenTex].forEach((t) => t && t.dispose());
 
-texelDensity.addEventListener('input', (e) => {
-  const val = Number(e.target.value);
-  texelVal.value = `${val.toFixed(1)}x`;
-  if (clothMaterial.normalMap) {
-    clothMaterial.normalMap.repeat.set(val, val);
+  const rep = def.base === 'BaroqueLace' ? 2.2 : 1.6;
+  [bcTex, normTex, roughTex, sheenTex] = await Promise.all([
+    loadTex(`${TEX}${def.base}_BC.png`, THREE.SRGBColorSpace, rep),
+    loadTex(`${TEX}${def.base}_N.png`, THREE.NoColorSpace, rep),
+    loadTex(`${TEX}${def.base}_ORM.png`, THREE.NoColorSpace, rep),
+    loadTex(def.sheen ? DIR + def.sheen : null, THREE.NoColorSpace, rep),
+  ]);
+
+  if (!material) {
+    material = new THREE.MeshPhysicalMaterial({ side: THREE.DoubleSide, clearcoat: 0.35, clearcoatRoughness: 0.42 });
+    mesh = new THREE.Mesh(makeCloth(), material);
+    mesh.rotation.x = -0.18;
+    group.add(mesh);
   }
-});
 
-sheenRoughness.addEventListener('input', (e) => {
-  const val = Number(e.target.value);
-  sheenVal.value = val.toFixed(2);
-  clothMaterial.sheenRoughness = val;
-});
+  material.map = bcTex;
+  material.normalMap = normTex;
+  material.roughnessMap = roughTex;
+  material.metalnessMap = roughTex;
+  material.aoMap = roughTex;
+  material.baseRoughness = def.rough;
+  material.baseMetalness = def.metal;
 
-filmThickness.addEventListener('input', (e) => {
-  const val = Number(e.target.value);
-  filmVal.value = `${val} nm`;
-  // Thin film interference phase shift color calculation
-  const phase = (val - 200) / 600;
-  const r = 0.5 + 0.5 * Math.cos(2 * Math.PI * (phase + 0.0));
-  const g = 0.5 + 0.5 * Math.cos(2 * Math.PI * (phase + 0.33));
-  const b = 0.5 + 0.5 * Math.cos(2 * Math.PI * (phase + 0.67));
-  clothMaterial.sheenColor.setRGB(r, g, b);
-});
-
-rimOrbit.addEventListener('input', (e) => {
-  updateRimLightPosition(Number(e.target.value));
-});
-
-turntableBtn.addEventListener('click', () => {
-  autoOrbitRim = !autoOrbitRim;
-  turntableBtn.setAttribute('aria-pressed', String(autoOrbitRim));
-  turntableBtn.textContent = autoOrbitRim ? 'Stop Rim Orbit' : 'Auto-Orbit Rim';
-});
-
-resetViewBtn.addEventListener('click', () => {
-  runtime.camera.position.set(0, 0.4, 2.6);
-  runtime.camera.lookAt(0, -0.05, 0);
-  clothMesh.rotation.set(-Math.PI * 0.22, 0, Math.PI * 0.04);
-});
-
-// Drag to rotate cloth
-let isDragging = false;
-let prevMouseX = 0;
-let prevMouseY = 0;
-
-stage.addEventListener('pointerdown', (e) => {
-  isDragging = true;
-  prevMouseX = e.clientX;
-  prevMouseY = e.clientY;
-});
-
-window.addEventListener('pointermove', (e) => {
-  if (!isDragging) return;
-  const dx = e.clientX - prevMouseX;
-  const dy = e.clientY - prevMouseY;
-  clothMesh.rotation.y += dx * 0.008;
-  clothMesh.rotation.x += dy * 0.008;
-  prevMouseX = e.clientX;
-  prevMouseY = e.clientY;
-});
-
-window.addEventListener('pointerup', () => { isDragging = false; });
-
-// Runtime Loop
-let fpsSmoothed = 60;
-let diagAcc = 0;
-
-runtime.onFrame(({ delta }) => {
-  if (autoOrbitRim) {
-    updateRimLightPosition(rimAngleDeg + delta * 35);
+  if (sheenTex && material.sheen !== undefined) {
+    material.sheenColorMap = sheenTex;
+    material.sheen = 0.6;
+    material.sheenRoughness = 0.35;
+  } else if (material.sheen !== undefined) {
+    material.sheenColorMap = null;
+    material.sheen = def.base === 'RoyalVelvet' ? 0.45 : 0.0;
   }
-  
-  if (delta > 0) fpsSmoothed += ((1 / delta) - fpsSmoothed) * 0.08;
-  diagAcc += delta;
-  if (diagAcc >= 0.35) {
-    diagAcc = 0;
-    const info = runtime.renderer.info.render;
-    diagnostics.textContent = [
-      `PRESET    ${PRESETS[activePresetKey].name}`,
-      `AOV MODE  ${currentAOV.toUpperCase()}`,
-      `FPS       ${Math.round(fpsSmoothed)}`,
-      `DRAWS     ${info.calls}`,
-      `TRIS      ${info.triangles}`,
-      `TEXEL     ${texelDensity.value}x repeat`,
-      `SHEEN R   ${clothMaterial.sheenRoughness.toFixed(2)}`,
-      `RIM ANGLE ${Math.round(rimAngleDeg)}°`,
-    ].join('\n');
-  }
-});
+  refreshMaterial();
+}
 
-// Initial setup
-updateMaterialFromPreset('organza');
-updateRimLightPosition(45);
-
-window.__fabricLab = {
-  getPreset() { return activePresetKey; },
-  setPreset(k) { updateMaterialFromPreset(k); },
-  setAOV(aov) { updateAOV(aov); },
-  getState() {
-    return {
-      preset: activePresetKey,
-      aov: currentAOV,
-      draws: runtime.renderer.info.render.calls,
-      tris: runtime.renderer.info.render.triangles,
-    };
+function refreshMaterial() {
+  if (!material) return;
+  material.color = new THREE.Color(state.tint);
+  material.roughness = THREE.MathUtils.clamp((material.baseRoughness || 0.6) * state.roughnessScale, 0.02, 1);
+  material.metalness = THREE.MathUtils.clamp(material.baseMetalness || 0.05, 0, 1);
+  const ns = new THREE.Vector2(state.normalScale, state.normalScale);
+  material.normalScale = ns;
+  if (material.sheen !== undefined && material.sheen > 0) {
+    material.sheen = THREE.MathUtils.clamp(material.sheen * state.sheenScale, 0, 1);
   }
-};
+  material.wireframe = state.wireframe;
+  material.needsUpdate = true;
+  renderState();
+}
+
+function renderState() {
+  const def = PRESETS.find((p) => p.id === state.preset);
+  stateEl.textContent = JSON.stringify({
+    preset: state.preset,
+    textileKind: def ? def.kind : null,
+    tint: state.tint,
+    roughnessScale: Number(state.roughnessScale.toFixed(2)),
+    normalScale: Number(state.normalScale.toFixed(2)),
+    sheenScale: Number(state.sheenScale.toFixed(2)),
+    grazingInspection: state.grazing,
+    wireframe: state.wireframe,
+    source: 'owner-authored procedural textures',
+  }, null, 1);
+}
+
+// ---- boot ------------------------------------------------------------------
+function init() {
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+  } catch (e) {
+    return fail('WebGL could not start on this device.');
+  }
+  if (!renderer.getContext()) return fail('WebGL could not start on this device.');
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0c0d12);
+
+  camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+  camera.position.set(0, 0.25, 4.4);
+  camera.lookAt(0, 0, 0);
+
+  group = new THREE.Group();
+  scene.add(group);
+  scene.add(buildLights(state.grazing));
+
+  // preset buttons
+  const host = document.getElementById('presets');
+  PRESETS.forEach((p) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'preset';
+    b.setAttribute('aria-pressed', String(p.id === state.preset));
+    b.innerHTML = `<span>${p.label}</span><span class="kind">${p.kind}</span>`;
+    b.addEventListener('click', () => {
+      host.querySelectorAll('.preset').forEach((x) => x.setAttribute('aria-pressed', 'false'));
+      b.setAttribute('aria-pressed', 'true');
+      applyPreset(p.id);
+    });
+    host.appendChild(b);
+  });
+
+  // controls
+  const bindRange = (id, key, outId, fmt) => {
+    const el = document.getElementById(id);
+    const out = document.getElementById(outId);
+    el.addEventListener('input', () => {
+      state[key] = parseFloat(el.value);
+      out.textContent = fmt(state[key]);
+      refreshMaterial();
+    });
+  };
+  bindRange('rough', 'roughnessScale', 'v-rough', (v) => v.toFixed(2) + '×');
+  bindRange('normal', 'normalScale', 'v-normal', (v) => v.toFixed(2) + '×');
+  bindRange('sheen', 'sheenScale', 'v-sheen', (v) => v.toFixed(2) + '×');
+
+  const tint = document.getElementById('tint');
+  tint.addEventListener('input', () => {
+    state.tint = tint.value;
+    document.getElementById('v-tint').textContent = tint.value;
+    refreshMaterial();
+  });
+
+  const toggle = (id, key, onAfter) => {
+    const b = document.getElementById(id);
+    b.addEventListener('click', () => {
+      state[key] = !state[key];
+      b.setAttribute('aria-pressed', String(state[key]));
+      if (onAfter) onAfter();
+    });
+  };
+  toggle('b-wire', 'wireframe', refreshMaterial);
+  toggle('b-spin', 'turntable');
+  toggle('b-light', 'grazing', () => {
+    scene.remove(scene.children.find((o) => o.isGroup && o !== group));
+    scene.add(buildLights(state.grazing));
+    pLight.textContent = 'lighting: ' + (state.grazing ? 'grazing' : 'studio');
+  });
+
+  document.getElementById('b-reset').addEventListener('click', () => {
+    tint.value = '#ffffff';
+    document.getElementById('v-tint').textContent = '#ffffff';
+    ['rough', 'normal', 'sheen'].forEach((k, i) => {
+      const el = document.getElementById(k);
+      el.value = '1';
+      document.getElementById(['v-rough', 'v-normal', 'v-sheen'][i]).textContent = '1.00×';
+    });
+    state.tint = '#ffffff';
+    state.roughnessScale = state.normalScale = state.sheenScale = 1;
+    state.grazing = false; state.wireframe = false;
+    document.getElementById('b-light').setAttribute('aria-pressed', 'false');
+    document.getElementById('b-wire').setAttribute('aria-pressed', 'false');
+    refreshMaterial();
+  });
+
+  document.getElementById('b-copy').addEventListener('click', () => {
+    navigator.clipboard && navigator.clipboard.writeText(stateEl.textContent);
+  });
+
+  if (reduceMotion) document.getElementById('b-spin').setAttribute('aria-pressed', 'false');
+
+  // resize + render loop
+  const resize = () => {
+    const r = canvas.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    renderer.setSize(r.width, r.height, false);
+    camera.aspect = r.width / r.height;
+    camera.updateProjectionMatrix();
+  };
+  window.addEventListener('resize', resize);
+  resize();
+
+  let t = 0;
+  const tick = () => {
+    requestAnimationFrame(tick);
+    if (state.turntable) { t += 0.004; group.rotation.y = t; }
+    renderer.render(scene, camera);
+
+    frames++;
+    const now = performance.now();
+    if (now - lastFpsAt >= 500) {
+      fps = Math.round((frames * 1000) / (now - lastFpsAt));
+      frames = 0; lastFpsAt = now;
+      const info = renderer.info;
+      diagEl.innerHTML =
+        `FPS ~<b>${fps}</b> · DPR <b>${(renderer.getPixelRatio()).toFixed(2)}</b> · ` +
+        `draw calls <b>${info.render.calls}</b> · triangles <b>${info.render.triangles.toLocaleString()}</b>` +
+        (loadedBytes ? ` · textures <b>${(loadedBytes / 1048576).toFixed(2)} MB</b>` : '');
+    }
+  };
+  tick();
+
+  applyPreset(state.preset);
+  renderState();
+}
+
+init();

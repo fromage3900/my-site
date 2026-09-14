@@ -1,124 +1,135 @@
-# Fromage WebGL Kit — Initial Service SKUs
+# Fromage WebGL Kit — Service Catalog
 
-These are bounded commercial offers, not promises to accept arbitrary web-development scope.
+These are bounded commercial offers. They are not permission to accept arbitrary web-development scope.
 
-Each SKU should be sold from demonstrated capability, with explicit inputs, outputs, exclusions and QA evidence.
-
-## 1. Three.js / WebGL Rescue Pass
-
-**Problem:** an existing 3D web scene is slow, broken, oversized, visually inconsistent, or hard to maintain.
-
-**Starting price hypothesis:** CAD $200–$750 for a bounded rescue; quote separately for major rewrites.
-
-**Inputs:** repository/build, target browser/device, known failure, representative assets.
-
-**Deliverables:**
-
-- diagnosis of the dominant problem;
-- smallest decisive fix;
-- before/after performance or behavior evidence;
-- concise handoff notes;
-- optional follow-on estimate.
-
-**Typical work:** GLB loading, renderer/camera bugs, material setup, texture weight, draw calls, DPR caps, resize handling, mobile controls, interaction bugs, simple LOD/compression integration.
-
-**Excludes by default:** backend systems, ecommerce integration, broad redesign, custom CMS work.
-
-**Proof to prepare now:** one before/after optimization capture using an owned demo scene.
+**Canonical currency:** CAD.  
+**Rule:** sell demonstrated capability with explicit inputs, outputs, exclusions and QA evidence.  
+**Current best-fit market:** premium products/accessories, product viewers, configurators, WebGL rescue and bounded realtime 3D presentation.
 
 ---
 
-## 2. Interactive 3D Product / Asset Viewer
+## 1. Three.js / WebGL Rescue Pass
 
-**Problem:** a client has a model/product/artifact but no polished browser presentation.
+**Problem:** an existing 3D web scene is slow, broken, oversized, visually inconsistent or hard to maintain.
 
-**Starting price hypothesis:** CAD $500–$2,000+ depending on assets and interaction.
+**Starting range:** CAD $200–$750 for a bounded rescue; major rewrites quoted separately.
 
-**Inputs:** GLB/GLTF preferred, brand direction, desired callouts/interactions, target embed/deployment surface.
+**Typical deliverables:** diagnosis, smallest decisive fix, before/after evidence, concise handoff.
 
-**Deliverables:**
+**Typical work:** GLB loading, renderer/camera bugs, missing assets, material setup, texture weight, draw calls, DPR caps, resize handling, mobile controls, interaction bugs, simple compression/LOD integration.
 
-- responsive Three.js viewer;
-- orbit/presentation camera;
-- environment/lighting/material tuning;
-- optional hotspots, exploded views, material variants or annotations;
+**Excludes by default:** backend systems, ecommerce, CMS work, broad redesign.
+
+---
+
+## 2. Interactive 3D Product / Accessory Viewer
+
+**Problem:** a client has a product, accessory, artifact or model but no polished browser presentation.
+
+**Starting range:** CAD $500–$2,000+ depending on asset preparation and interaction.
+
+**Strong examples:** eyewear, jewellery, watches, fashion accessories, consumer devices, hero portfolio products.
+
+**Inputs:** client photos/reference and/or model, brand direction, target embed/deployment surface.
+
+**Deliverables can include:**
+
+- Blender modelling/cleanup where quoted;
+- web-ready GLB/GLTF;
+- art-directed PBR material + lighting pass;
+- responsive orbit/presentation camera;
+- close-up/detail framing;
+- hotspots/annotations;
+- simple product animation;
 - loading/error states;
-- desktop/mobile QA.
+- desktop/mobile QA;
+- measured geometry/texture/runtime notes.
 
-**Proof to prepare now:** generic clean-room viewer derived from the existing portfolio asset-study capability.
+**Not assumed:** virtual try-on/AR, CAD/manufacturing reconstruction, ecommerce/backend, unlimited catalogue conversion.
+
+This is the current Treasury center-of-gravity offer.
 
 ---
 
 ## 3. Branded Browser Microgame
 
-**Problem:** an artist, musician, event, small brand or indie project wants a tiny playable web activation rather than a static landing page.
+**Problem:** an artist, musician, event or small brand wants a tiny playable web activation instead of a static landing page.
 
-**Starting price hypothesis:** CAD $750–$3,000+ for a deliberately small game.
+**Starting range:** CAD $750–$3,000+.
 
-**Inputs:** visual identity, supplied/approved assets, one core mechanic, target campaign/action.
-
-**Deliverables:**
-
-- one polished core loop;
-- keyboard + touch controls where appropriate;
-- start/restart/end states;
-- score, collection, traversal or timing mechanic;
-- lightweight audio hooks;
-- responsive deployment build.
+**Deliverables:** one polished core loop, keyboard/touch where appropriate, start/restart/end states, lightweight audio hooks, responsive build.
 
 **Scope rule:** one memorable mechanic beats five unfinished systems.
-
-**Proof to prepare now:** one clean-room microgame template using placeholder/owned assets, separate from Melodia narrative/IP.
 
 ---
 
 ## 4. Interactive Music World / Visualizer
 
-**Problem:** music has artwork/video but no interactive realtime world for a release, performance, portfolio or campaign.
+**Problem:** a release/performance/campaign needs an interactive realtime world rather than only artwork/video.
 
-**Starting price hypothesis:** CAD $600–$3,000+ depending on interaction, supplied assets and music rights.
+**Starting range:** CAD $600–$3,000+.
 
-**Inputs:** licensed track/audio, artwork/style references, logo/type, optional 3D assets.
+**Deliverables:** browser reactive scene, FFT/authored response, optional interaction layer, camera choreography, mobile fallback, autoplay-safe audio UX.
 
-**Deliverables:**
-
-- browser-based reactive scene;
-- FFT-driven or authored musical response;
-- one optional interaction/gameplay layer;
-- camera choreography / presentation mode;
-- desktop/mobile fallback behavior;
-- clear audio-start UX respecting browser autoplay restrictions.
-
-**Proof to prepare now:** generic audio-reactive scene using owned/public-domain demonstration audio only.
+**Excludes by default:** music licensing procurement and unrelated event-platform/backend work.
 
 ---
 
 ## 5. Procedural WebGL Environment Prototype
 
-**Problem:** a client needs a stylized/system-driven 3D environment, generative scene, experiential homepage or prototype without hand-authoring every element.
+**Problem:** a client needs a stylized/system-driven 3D environment, generative scene or experiential homepage without hand-authoring every element.
 
-**Starting price hypothesis:** CAD $1,000–$5,000+ depending on asset generation and interaction.
+**Starting range:** CAD $1,000–$5,000+.
 
-**Inputs:** concept/reference, target mood, performance target, desired procedural controls, supplied assets if any.
-
-**Deliverables:**
-
-- procedural scene grammar;
-- deterministic seeded variation where useful;
-- camera/presentation controls;
-- optimized reusable assets/materials;
-- documented parameters;
-- browser QA and performance notes.
+**Deliverables:** procedural scene grammar, deterministic seeded variation where useful, presentation controls, optimized reusable assets/materials, documented parameters, browser QA.
 
 **Optional production sources:** Houdini-generated assets/data, procedural textures, instancing, shader-driven variation.
 
-**Proof to prepare now:** one small seeded environment generator with obvious variation and a stable art-directed composition.
+**Truth rule:** illustrative visualization is not physical simulation unless real data/simulation is actually integrated and verified.
 
 ---
 
-# Qualification matrix
+## 6. Interactive 3D Product Configurator / Variant System
 
-Before pursuing a lead, score 0–2 on each dimension:
+**Problem:** a product needs controlled browser customization rather than only a turntable.
+
+**Starting range:** CAD $1,000–$4,000+ depending on number of options, assets and host integration.
+
+**Deliverables can include:**
+
+- orbit/zoom product presentation;
+- color/material/finish variants;
+- component visibility/options;
+- decals/marks from approved assets;
+- hotspots/annotations;
+- deterministic option state;
+- JSON state export;
+- responsive desktop/mobile behavior;
+- measured performance notes.
+
+**Excludes by default:** ecommerce/cart/order backend, inventory, arbitrary user uploads, AR try-on, host-specific business logic.
+
+For eyewear/accessory work, this is a **follow-on SKU**, not something silently bundled into the base product-viewer price.
+
+---
+
+## Adjacent proposal categories — no new prototype required
+
+The same proof stack can support:
+
+- creative-agency Three.js integration;
+- premium/luxury product pipeline consulting;
+- GLB/asset optimization audits;
+- paid WebGL feasibility/review sessions;
+- bounded industrial/technical 3D presentation.
+
+These are search/proposal categories, not separate R&D lanes.
+
+---
+
+## Qualification matrix
+
+Score 0–2 on each:
 
 - capability match;
 - proof already available;
@@ -129,10 +140,8 @@ Before pursuing a lead, score 0–2 on each dimension:
 - low legal/IP risk;
 - low integration risk.
 
-Interpretation:
+**13–16:** APPLY / CONTACT  
+**9–12:** WATCH / clarify  
+**0–8:** IGNORE unless strategically exceptional
 
-- **13–16:** APPLY / CONTACT
-- **9–12:** WATCH / clarify scope
-- **0–8:** IGNORE unless strategically exceptional
-
-No automated mass applications. Human review remains mandatory before outreach or commitment.
+Human review is mandatory before outreach, commitment or pricing. A high budget does not override poor fit, unclear claims or owner discomfort.

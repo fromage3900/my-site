@@ -104,10 +104,47 @@ def cylinder(name: str, radius: float, depth: float, location: tuple[float, floa
     return obj
 
 
+def _iter_fcurves(action):
+    """Yield the fcurves of an Action across Blender versions.
+
+    Blender <= 4.3 exposed ``Action.fcurves`` directly.  Blender >= 4.4 replaced that
+    with *slotted actions*: the curves live under
+    ``action.layers[*].strips[*].channelbags[*].fcurves`` and ``Action.fcurves`` no
+    longer exists.
+
+    This script called ``action.fcurves`` unguarded, so on Blender 5.x it died with
+    ``AttributeError: 'Action' object has no attribute 'fcurves'`` before the GLB was
+    ever exported - which is why ``assets/auriga_meter.glb`` did not exist.
+    """
+    legacy = getattr(action, "fcurves", None)
+    if legacy is not None:
+        for fc in legacy:
+            yield fc
+        return
+
+    for layer in getattr(action, "layers", None) or []:
+        for strip in getattr(layer, "strips", None) or []:
+            bags = list(getattr(strip, "channelbags", None) or [])
+            if not bags:
+                # older 4.4-era builds expose channelbag(slot_id) instead of the collection
+                getter = getattr(strip, "channelbag", None)
+                if getter is not None:
+                    for slot in getattr(action, "slots", None) or []:
+                        try:
+                            bag = getter(slot)
+                        except Exception:
+                            bag = None
+                        if bag is not None:
+                            bags.append(bag)
+            for bag in bags:
+                for fc in getattr(bag, "fcurves", None) or []:
+                    yield fc
+
+
 def linearize_action(obj) -> None:
     if not obj.animation_data or not obj.animation_data.action:
         return
-    for curve in obj.animation_data.action.fcurves:
+    for curve in _iter_fcurves(obj.animation_data.action):
         for point in curve.keyframe_points:
             point.interpolation = "LINEAR"
 

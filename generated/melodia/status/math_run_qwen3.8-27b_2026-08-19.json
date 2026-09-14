@@ -1,0 +1,346 @@
+{
+  "schema": "melodia.math_run.v1",
+  "kind": "model_via_hermes_harness",
+  "harness": "hermes (deploy/hermes_mcp.py + deploy/melodia_mcp_server.py)",
+  "model": "qwen3.8-27b",
+  "backend": "ollama (qwen3.8-27b) cpu",
+  "note": "Scores a model choosing Hermes MCP tools. Not a Nous Hermes 3 weight pull.",
+  "captured_at": "2026-08-19T08:48:56-04:00",
+  "editor_contacted": true,
+  "passed": 21,
+  "total": 32,
+  "scored": 32,
+  "held": 0,
+  "failed": 11,
+  "tca_pct": 81.2,
+  "arg_pct": 65.6,
+  "exec_pct": 65.6,
+  "ter_ratio": 3.1835,
+  "ter_target": 0.2,
+  "ter_meets_target": false,
+  "tokens_unconstrained": 12002,
+  "tokens_constrained": 38208,
+  "ter_samples": 32,
+  "tasks": [
+    {
+      "id": "notify_battle_allow",
+      "gold_tool": "melodia_quill_validate_notification",
+      "chosen_tool": "melodia_quill_validate_notification",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "notify_hack_deny",
+      "gold_tool": "melodia_quill_validate_notification",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "notify_stat_allow",
+      "gold_tool": "melodia_quill_validate_notification",
+      "chosen_tool": "melodia_quill_validate_notification",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "quill_list_has_scripts",
+      "gold_tool": "melodia_quill_list_scripts",
+      "chosen_tool": "melodia_quill_list_scripts",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "narrative_record_schema",
+      "gold_tool": "melodia_narrative_get_record",
+      "chosen_tool": "melodia_narrative_get_record",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "allowlist_schema",
+      "gold_tool": "melodia_config_get_allowlist",
+      "chosen_tool": "melodia_config_get_allowlist",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "fixtures_list",
+      "gold_tool": "melodia_bp_list_fixtures",
+      "chosen_tool": "melodia_bp_list_fixtures",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "fixture_unknown_invalid",
+      "gold_tool": "melodia_bp_validate_fixture",
+      "chosen_tool": "melodia_bp_validate_fixture",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "template_world_challenge",
+      "gold_tool": "melodia_bp_get_template",
+      "chosen_tool": "melodia_bp_get_template",
+      "tool_match": true,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "melodia_bp_get_template() got an unexpected keyword argument 'id'"
+    },
+    {
+      "id": "template_missing_errors",
+      "gold_tool": "melodia_bp_get_template",
+      "chosen_tool": "melodia_bp_get_template",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "subsystems_listed",
+      "gold_tool": "melodia_system_list_subsystems",
+      "chosen_tool": "melodia_system_list_subsystems",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "health_schema",
+      "gold_tool": "melodia_system_health",
+      "chosen_tool": "melodia_system_health",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "idempotency_audit",
+      "gold_tool": "melodia_narrative_audit_idempotency",
+      "chosen_tool": "melodia_narrative_audit_idempotency",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "p0_route_five_fixtures",
+      "gold_tool": "melodia_bp_validate_p0_route",
+      "chosen_tool": "melodia_bp_validate_p0_route",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "golden_preflight_ready_flag",
+      "gold_tool": "melodia_system_golden_run_preflight",
+      "chosen_tool": "melodia_system_golden_run_preflight",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "persona_stats_schema",
+      "gold_tool": "melodia_persona_get_stats",
+      "chosen_tool": "melodia_persona_get_stats",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "audio_list_schema",
+      "gold_tool": "melodia_audio_list_assets",
+      "chosen_tool": "melodia_audio_list_assets",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "audio_rhythm_catalog",
+      "gold_tool": "melodia_audio_get_rhythm_catalog",
+      "chosen_tool": "melodia_audio_get_rhythm_catalog",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "audio_metasound_offline",
+      "gold_tool": "melodia_audio_validate_metasound",
+      "chosen_tool": "melodia_audio_validate_metasound",
+      "tool_match": true,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "melodia_audio_validate_metasound() got an unexpected keyword argument 'asset_path'"
+    },
+    {
+      "id": "ui_list_schema",
+      "gold_tool": "melodia_ui_list_widgets",
+      "chosen_tool": "melodia_ui_list_widgets",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "ui_battle_hud",
+      "gold_tool": "melodia_ui_get_battle_hud",
+      "chosen_tool": "melodia_ui_get_battle_hud",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "compile_feedback_offline",
+      "gold_tool": "melodia_system_compile_feedback",
+      "chosen_tool": "melodia_system_compile_feedback",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "animation_sm_editor",
+      "gold_tool": "melodia_animation_validate_state_machine",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "ui_validate_widget_offline",
+      "gold_tool": "melodia_ui_validate_widget",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "economy_get_state",
+      "gold_tool": "melodia_economy_get_state",
+      "chosen_tool": "melodia_economy_get_state",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "economy_grief_hook",
+      "gold_tool": "melodia_economy_activate_grief_hook",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "economy_cast_healing_song",
+      "gold_tool": "melodia_economy_cast_skill",
+      "chosen_tool": "melodia_economy_cast_skill",
+      "tool_match": true,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "melodia_economy_cast_skill() got an unexpected keyword argument 'skill'"
+    },
+    {
+      "id": "economy_cast_mana_song",
+      "gold_tool": "melodia_economy_cast_skill",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "hud_economy_state",
+      "gold_tool": "melodia_ui_get_economy_hud",
+      "chosen_tool": "melodia_ui_get_economy_hud",
+      "tool_match": true,
+      "args_match": true,
+      "exec_ok": true,
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "id": "encounter_start_p0",
+      "gold_tool": "melodia_encounter_start",
+      "chosen_tool": "melodia_encounter_start",
+      "tool_match": true,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "melodia_encounter_start() got an unexpected keyword argument 'id'"
+    },
+    {
+      "id": "encounter_resolve_p0",
+      "gold_tool": "melodia_encounter_resolve",
+      "chosen_tool": null,
+      "tool_match": false,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "unparsed"
+    },
+    {
+      "id": "quest_p0_status",
+      "gold_tool": "melodia_quest_check_p0",
+      "chosen_tool": "melodia_quest_check_p0",
+      "tool_match": true,
+      "args_match": false,
+      "exec_ok": false,
+      "status": "fail",
+      "detail": "melodia_quest_check_p0() missing 1 required positional argument: 'quest_id'"
+    }
+  ]
+}

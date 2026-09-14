@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="robots" content="noindex,nofollow" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>Melodia Project Card</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="melodia-luxury-type.css">
 <style>
   :root {
-    --surface-base: #F7F4EF;
-    --surface-raised: #FCFBF8;
-    --surface-sunken: #EFEAE1;
-    --text-primary: #241B2E;
-    --text-secondary: #6E6080;
-    --gold: #B08D4F;
-    --gold-soft: #C9A86A;
-    --lavender: #9F94C6;
-    --border-default: #E3DACE;
+    --surface-base: var(--primitive-ivory-100);
+    --surface-raised: var(--primitive-ivory-50);
+    --surface-sunken: var(--primitive-ivory-200);
+    --text-primary: var(--primitive-plum-800);
+    --text-secondary: var(--primitive-plum-500);
+    --gold: var(--primitive-gold-500);
+    --gold-soft: var(--primitive-gold-500);
+    --lavender: var(--primitive-lavender-500);
+    --border-default: var(--primitive-ivory-300);
     --border-gold: rgba(176, 141, 79, 0.3);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body), system-ui, sans-serif;
     background: var(--surface-base);
     color: var(--text-primary);
     width: 100%;
@@ -53,11 +55,10 @@
     position: relative;
     width: 100%;
     height: 280px;
-    background: linear-gradient(135deg, #241B2E 0%, #3C5C9E 100%);
+    background: linear-gradient(135deg, var(--primitive-plum-800) 0%, var(--primitive-astral-500) 100%);
     overflow: hidden;
   }
-
-  .hero-image {
+.hero-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -78,15 +79,15 @@
   }
 
   .project-title {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 24px;
     font-weight: 400;
-    color: #ECEAF4;
+    color: var(--primitive-ivory-50);
     margin-bottom: 4px;
   }
 
   .project-category {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -123,7 +124,7 @@
   }
 
   .passport-title {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -139,7 +140,7 @@
   }
 
   .passport-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -147,7 +148,7 @@
   }
 
   .passport-value {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 12px;
     color: var(--text-primary);
     font-weight: 500;
@@ -168,7 +169,7 @@
   }
 
   .performance-title {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -188,7 +189,7 @@
   }
 
   .metric-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -196,14 +197,14 @@
   }
 
   .metric-value {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 14px;
     color: var(--text-primary);
     font-weight: 500;
   }
 
-  .metric-value.tbd {
-    color: #A85751;
+  .metric-value.pending {
+    color: var(--primitive-status-error);
     font-style: italic;
     font-size: 12px;
   }
@@ -216,7 +217,7 @@
     background: transparent;
     border: 1px solid var(--gold);
     border-radius: 4px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -238,7 +239,7 @@
     padding: 6px 12px;
     background: rgba(201, 168, 106, 0.9);
     border-radius: 12px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -350,7 +351,7 @@
     document.getElementById('heroImage').src = config.image;
   } else {
     // Placeholder gradient
-    document.getElementById('heroImage').style.background = 'linear-gradient(135deg, #241B2E 0%, #3C5C9E 100%)';
+    document.getElementById('heroImage').style.background = 'linear-gradient(135deg, var(--primitive-plum-800) 0%, var(--primitive-astral-500) 100%)';
   }
 
   // Render passport rows
@@ -384,7 +385,7 @@
     item.className = 'metric-item';
     item.innerHTML = `
       <span class="metric-label">${metric.label}</span>
-      <span class="metric-value ${value === null || value === undefined ? 'tbd' : ''}">${value !== null && value !== undefined ? value.toLocaleString() : 'TBD'}</span>
+      <span class="metric-value ${value === null || value === undefined ? 'pending' : ''}">${value !== null && value !== undefined ? value.toLocaleString() : 'TBD'}</span>
     `;
     performanceContainer.appendChild(item);
   });

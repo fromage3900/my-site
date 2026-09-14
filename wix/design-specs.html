@@ -1,1 +1,275 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Design Specifications | Brennan Shepherd</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,650;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="portfolio-pages.css"></head><body><header class="shell-nav" aria-label="Portfolio navigation"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a><nav class="nav-links" aria-label="Sections"><a href="index.html">Home</a><a href="hero-renders.html">Renders</a><a href="shader-breakdowns.html">Shaders</a><a href="geometry-nodes.html">Geometry</a><a href="infold-application.html">Infold Fit</a><a href="commissions.html">Commissions</a></nav><a class="nav-cta" href="infold-application.html">Infold Fit</a></header><main><section class="hero" aria-labelledby="page-title"><div class="hero-media" aria-hidden="true"><img src="../generated/assets/project-name-hero.png" alt="Design specification hero image" /></div><div class="hero-inner"><p class="kicker">Portfolio design specifications</p><h1 id="page-title">A system for fantasy portfolio pages.</h1><p class="lede">Design tokens, layout rules, page templates, and publishing contracts for the Infold-focused portfolio system.</p><div class="button-row"><a class="button primary" href="../generated/deployment_manifest.json">Deployment manifest</a><a class="button" href="../generated/design-system-manifest.json">Design-system manifest</a></div></div></section><section class="band paper"><div class="inner"><div class="section-head"><div><p class="eyebrow">Design Rules</p><h2>Editorial artbook energy, portfolio clarity.</h2></div><p>The system avoids generic portfolio grids by using Melodia editorial pacing, celestial accents, near-sharp frames, and recruiter-readable guide pages.</p></div><div class="card-grid"><article class="card"><span>Color</span><div><h3>Melodia fantasy palette.</h3><p>Ivory paper, midnight plum, astral night, champagne gold, lavender, iris, and restrained sakura accents.</p></div></article><article class="card"><span>Typography</span><div><h3>Editorial plus technical.</h3><p>Fraunces for editorial headlines, Cinzel for engraved caps and wordmark moments, Inter for body copy, and IBM Plex Mono for metadata/system labels.</p></div></article><article class="card"><span>Layout</span><div><h3>Portal and guide structure.</h3><p>Hero, chapter openers, world pillars, render plates, technical breakdowns, appendices, and dedicated deep-dive pages.</p></div></article></div></div></section><section class="band deep"><div class="inner"><div class="section-head"><div><p class="eyebrow">Publishing Contract</p><h2>What must be true before applying.</h2></div><p>These are the practical checks for each update.</p></div><div class="table-list"><div class="table-row"><span>Check 01</span><div><h3>Public URL</h3><p>GitHub Pages must serve the root URL and all Wix page routes.</p></div><b>Required</b></div><div class="table-row"><span>Check 02</span><div><h3>Route inventory</h3><p>Deployment manifest should list homepage, renders, shaders, geometry, commissions, case study, and specs.</p></div><b>Required</b></div><div class="table-row"><span>Check 03</span><div><h3>Asset proof</h3><p>Hero images, render configs, and technical sheets must resolve locally before pushing.</p></div><b>Required</b></div></div></div></section></main><footer class="footer"><div class="inner"><span>Brennan Shepherd / Environment & Technical Artist</span><span>GitHub Pages + Wix iframe portfolio</span></div></footer></body></html>
+<!DOCTYPE html>
+<html lang="en" data-page="design-specs">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<title>Design Specifications | Melodia P0 First Dream Matrix</title>
+<meta name="description" content="Melodia P0 First Dream technical design specifications — 12 P0 Foundation Gates, UMelodiaJRPGPostBattleLibrary C++ bindings, property reflection fixes, and binary save persistence." />
+<meta property="og:title" content="Melodia — Design Specifications & P0 Gates Matrix" />
+<meta property="og:description" content="Technical specifications matrix for all 12 P0 Foundation Gates, C++ subsystem reflection patches, and canonical save persistence in UE 5.8." />
+<meta property="og:image" content="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/design-specs.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="melodia-tokens.css">
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-game-ui.css">
+<link rel="stylesheet" href="melodia-components.css">
+<link rel="stylesheet" href="melodia-mobile.css">
+<style>
+.spec-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.8rem; }
+.spec-table th { text-align: left; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-tertiary, var(--primitive-slate-300)); padding: 0.75rem 0.85rem; border-bottom: 1px solid rgba(201,168,106,0.3); background: rgba(20,26,48,0.9); }
+.spec-table td { padding: 0.75rem 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--color-text-secondary, var(--primitive-slate-300)); line-height: 1.5; }
+.spec-table tr:hover td { background: rgba(201,168,106,0.05); }
+.table-container { overflow-x: auto; max-width: 100%; border-radius: 6px; }
+.grid-3-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+.passport-card { padding: 1.5rem; background: rgba(20,26,48,0.85); border: 1px solid rgba(201,168,106,0.3); border-radius: 6px; }
+.passport-head { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent-primary, var(--primitive-gold-500)); margin-bottom: 0.75rem; }
+.passport-title { font-family: var(--font-display, "Fraunces", sans-serif); font-size: 1.15rem; color: var(--color-text-primary, #ECEAF4); margin-bottom: 0.5rem; }
+.passport-card p { font-size: 0.8rem; color: var(--color-text-secondary, var(--primitive-slate-300)); line-height: 1.5; margin-bottom: 1rem; }
+.passport-row { display: flex; justify-content: space-between; font-size: 0.75rem; padding: 0.35rem 0; border-top: 1px solid rgba(255,255,255,0.05); color: var(--color-text-tertiary, var(--primitive-slate-300)); }
+.passport-row code { font-family: var(--font-mono); color: var(--color-accent-primary, var(--primitive-gold-500)); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="melodia-shell fashion-mode" data-mg="soft" data-hero="editorial">
+  <header class="shell-nav constellation-nav" aria-label="Melodia Navigation">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="index.html">Overview</a>
+      <a href="melodia-gameplay-loop.html">JRPG Loop</a>
+      <a href="design-specs.html" class="active">P0 Gates</a>
+      <a href="pipeline.html">Echo Pipeline</a>
+      <a href="application-hub.html">Architecture Hub</a>
+    </nav>
+    <a class="nav-cta button-premium" href="melodia-gameplay-loop.html">JRPG Loop Specs</a>
+  </header>
+
+  <main id="main" class="editorial-container">
+    <section class="hero has-editorial-frame" aria-labelledby="page-title">
+      <div class="hero-inner">
+        <p class="kicker magazine-kicker">P0 First Dream Verification Matrix</p>
+        <div class="editorial-rhythm-divider sheet" data-divider="astral" aria-hidden="true"><span class="glyph">♪ · ♥ · ♪</span></div>
+        <h1 id="page-title">Technical Design &amp; C++ Specifications</h1>
+        <p class="lede">Authoritative technical specifications and C++ architectural foundation governing the Persona-lite JRPG vertical slice. Enforcing 12 P0 verification gates across runtime battle viewports, input debouncing, narrative event handling, and binary save persistence.</p>
+        <div class="hero-actions">
+          <a class="button button-premium-primary" href="#gates-matrix">12 P0 Gates Matrix</a>
+          <a class="button button-premium" href="#cpp-architecture">C++ Subsystem Bindings</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: 12 P0 Gates Matrix Table -->
+    <section id="gates-matrix" class="band paper fashion-band ivory" data-surface="ivory">
+      <div class="inner">
+        <div class="viz-rule" data-divider="diamond"><span class="glyph">✦ p0 gates</span></div>
+        <div class="section-head">
+          <div>
+            <p class="eyebrow magazine-kicker">System Integrity</p>
+            <h2>The 12 P0 Foundation Verification Gates</h2>
+          </div>
+          <p>Binary validation criteria governing the JRPG vertical slice architecture across input parity, combat transitions, narrative fallbacks, and standalone deployment packaging.</p>
+        </div>
+
+        <div class="game-ui-frame table-container">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Gate #</th>
+                <th>Gate Name</th>
+                <th>Technical Specification &amp; Behavior</th>
+                <th>Verification Criteria</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="spec-badge">P0-01</span></td>
+                <td><strong>Battle Widget Identification</strong></td>
+                <td>Instantiate tactical combat viewport interface at runtime on battle initialization at viewport z-order 10.</td>
+                <td>Battle UI widget is visible and focusable upon combat start in PIE.</td>
+              </tr>
+              <tr>
+                <td><span class="spec-badge">P0-02</span></td>
+                <td><strong>Input Parity &amp; Debouncing</strong></td>
+                <td>Enforce 150ms input debouncing in <code>UMelodiaInputContextSubsystem</code> across Mouse, Keyboard, and Gamepad for <code>Attack</code>, <code>Skill</code>, <code>Item</code>, <code>Flee</code>.</td>
+                <td>Single keypress triggers exactly one combat action without duplicate triggers.</td>
+              </tr>
+              <tr>
+                <td><span class="spec-badge">P0-03</span></td>
+                <td><strong>Result Matrix Pass</strong></td>
+                <td>Bind <code>OnBattleOver</code> delegate in <code>MelodiaExternalJRPGBridgeSubsystem</code> to transition <code>Victory</code>, <code>Defeat</code>, <code>Fled</code>, <code>Unavailable</code> back to exploration.</td>
+                <td>Each terminal combat result resumes or aborts Quill narrative interpreter exactly once.</td>
+              </tr>
+              <tr>
+                <td><span class="spec-badge">P0-04</span></td>
+                <td><strong>Save/Load Restart Persistence</strong></td>
+                <td>Serialize canonical game state slot using binary <code>USaveGame</code> architecture.</td>
+                <td>Game state persists accurately across full application process restarts.</td>
+              </tr>
+              <tr>
+                <td><span class="spec-badge">P0-05</span></td>
+                <td><strong>Flag &amp; Reward Restore Idempotency</strong></td>
+                <td>Enforce idempotent flag validation in <code>UMelodiaGameStateSubsystem</code> prior to granting items or XP upon level reload.</td>
+                <td>Rewards and narrative flags do not duplicate upon level reload or save loading.</td>
+              </tr>
+              <tr>
+                <td><span class="spec-badge">P0-06</span></td>
+                <td><strong>Quill Unavailable Load</strong></td>
+                <td>Implement null-check fallback in <code>QuillScriptInterpreter</code> to bypass missing dialogue files and default to free exploration.</td>
+                <td>Canonical JRPG slot loads cleanly when Quill assets are missing/unavailable.</td>
+              </tr>
+              <tr>
+                <td><span class="spec-badge">P0-07</span></td>
+                <td><strong>Safe Script Rerouting</strong></td>
+                <td>Route missing or corrupted dialogue script branches to the default safe sanctuary fallback anchor.</td>
+                <td>Invalid narrative nodes recover safely without wiping current player progress.</td>
+              </tr>
+              <tr>
+                <td><span class="spec-badge">P0-08</span></td>
+                <td><strong>Interpreter Invalidation Handling</strong></td>
+                <td>Latch <code>bIsTerminating</code> flag during level transitions and flush pending script delegates while retaining pending results.</td>
+                <td>Mid-dialogue level transition flushes cleanly without stale pointer crashes.</td>
+              </tr>
+              <tr>
+                <td><span class="spec-badge">P0-09</span></td>
+                <td><strong>Mid-Battle Save Disabling</strong></td>
+                <td>Enforce <code>bCanSave = false</code> in <code>USaveGameSubsystem</code> upon entering <code>EBSBattleState::InBattle</code>.</td>
+                <td>Manual saving is disabled/hidden during active turn-based combat encounters.</td>
+              </tr>
+              <tr>
+                <td><span class="spec-badge">P0-10</span></td>
+                <td><strong>Main Menu Wiring</strong></td>
+                <td>Wire <code>New Game</code>, <code>Continue</code>, <code>Load</code> in <code>WBP_MainMenu</code> directly to <code>UMelodiaTravelSubsystem</code> and canonical <code>BP_MelodiaJRPGGameInstance</code>.</td>
+                <td>Main Menu buttons route cleanly to gameplay levels and canonical save slots.</td>
+              </tr>
+              <tr>
+                <td><span class="spec-badge">P0-11</span></td>
+                <td><strong>Room Shell Validator Repair</strong></td>
+                <td>Verify spawn anchor component on morning sanctuary player start actor.</td>
+                <td>Level validator confirms spawn anchor presence during initial load.</td>
+              </tr>
+              <tr>
+                <td><span class="spec-badge">P0-12</span></td>
+                <td><strong>Packaged Route Launch</strong></td>
+                <td>Include Morning Sanctuary, Dreamstate Traversal, and Kaleido Nave in standalone map cooking package.</td>
+                <td>Executable launches and runs standalone outside Unreal Editor without black screens.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: C++ Systems Architecture & Reflection Patch Cards -->
+    <section id="cpp-architecture" class="band astral fashion-band">
+      <div class="inner">
+        <div class="viz-rule" data-divider="astral"><span class="glyph">✦ c++ bindings</span></div>
+        <div class="section-head">
+          <div>
+            <p class="eyebrow magazine-kicker">Core Engine Subsystems</p>
+            <h2>C++ Architecture &amp; Property Reflection</h2>
+          </div>
+          <p>Engine bindings, property reflection architecture, and canonical save state management.</p>
+        </div>
+
+        <div class="grid-3-col">
+          <article class="passport-card component-card">
+            <div class="passport-head"><span>C++ Subsystem</span><span>Post-Battle Library</span></div>
+            <h3 class="passport-title">UMelodiaJRPGPostBattleLibrary</h3>
+            <p>Static library managing party state cleanup post-combat. Implements <code>RestorePartyAfterBattle</code> to recalculate character stats, restore HP/MP, and clear temporary combat debuffs.</p>
+            <div class="passport-row"><span>Method</span><code>RestorePartyAfterBattle()</code></div>
+            <div class="passport-row"><span>Target Class</span><code>AMelodiaPartyState</code></div>
+          </article>
+
+          <article class="passport-card component-card">
+            <div class="passport-head"><span>C++ Subsystem</span><span>Party State</span></div>
+            <h3 class="passport-title">Vitality &amp; Mana Subsystem</h3>
+            <p>Standardized property reflection architecture across Blueprint and C++ bindings for party Magic Points and Health Points, ensuring strict serialization fidelity across combat rounds.</p>
+            <div class="passport-row"><span>Attribute</span><code>currentMP / currentHP</code></div>
+            <div class="passport-row"><span>Reflection Scope</span><code>AMelodiaPartyState</code></div>
+          </article>
+
+          <article class="passport-card component-card">
+            <div class="passport-head"><span>State Persistence</span><span>USaveGameSubsystem</span></div>
+            <h3 class="passport-title">Save Game Architecture</h3>
+            <p>Manages canonical binary game state via <code>USaveGameSubsystem</code>. Prevents corrupt state saving by strictly disabling manual save requests (<code>bCanSave = false</code>) during active battle states.</p>
+            <div class="passport-row"><span>Storage Type</span><code>Binary USaveGame</code></div>
+            <div class="passport-row"><span>Combat Lock</span><code>bCanSave = false</code></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Figma Design System Swatches & Code Connect -->
+    <section id="figma-swatches" class="band paper fashion-band ivory" data-surface="ivory">
+      <div class="inner">
+        <div class="viz-rule" data-divider="diamond"><span class="glyph">✦ figma foundations</span></div>
+        <div class="section-head">
+          <div>
+            <p class="eyebrow magazine-kicker">Visual Token SSOT</p>
+            <h2>Figma Foundations Swatch Boards &amp; Code Connect</h2>
+          </div>
+          <p>Visual palette matrices exported directly from Figma SSOT boards, mapping primitive color tokens to UMG Widget and CSS web implementations.</p>
+        </div>
+
+        <div class="figma-swatch-grid">
+          <div class="figma-swatch-card">
+            <h4 style="font-family:var(--font-display);font-size:1rem;color:var(--primitive-plum-900);margin-bottom:0.5rem">Gold Primitives Board</h4>
+            <img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_Foundations_Gold_Row.png" alt="Gold Foundations Swatch Board" loading="lazy">
+          </div>
+          <div class="figma-swatch-card">
+            <h4 style="font-family:var(--font-display);font-size:1rem;color:var(--primitive-plum-900);margin-bottom:0.5rem">Ivory Primitives Board</h4>
+            <img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_Foundations_Ivory_Row.png" alt="Ivory Foundations Swatch Board" loading="lazy">
+          </div>
+          <div class="figma-swatch-card">
+            <h4 style="font-family:var(--font-display);font-size:1rem;color:var(--primitive-plum-900);margin-bottom:0.5rem">Plum Primitives Board</h4>
+            <img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_Foundations_Plum_Row.png" alt="Plum Foundations Swatch Board" loading="lazy">
+          </div>
+          <div class="figma-swatch-card">
+            <h4 style="font-family:var(--font-display);font-size:1rem;color:var(--primitive-plum-900);margin-bottom:0.5rem">Iridescent Spectrum Board</h4>
+            <img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_Foundations_Iri_Row.png" alt="Iri Foundations Swatch Board" loading="lazy">
+          </div>
+        </div>
+
+        <!-- UMG vs CSS Code Connect Matrix -->
+        <h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--primitive-plum-900);margin-top:2rem">Code Connect: UMG Widget Blueprint &amp; CSS Mapping</h3>
+        <div class="figma-card-showcase">
+          <div class="figma-card-preview">
+            <img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_row_Code_Connect_UMG.png" alt="Code Connect UMG Mapping" loading="lazy">
+            <h4>UE 5.8 UMG Widget Mapping</h4>
+            <p>Direct binding of Figma tokens to UMG Widget Blueprint slate brushes and text styles.</p>
+          </div>
+          <div class="figma-card-preview">
+            <img src="../generated/assets/melodia-game-ui/figma_complete/T_Melodia_Figma_row_Code_Connect_CSS.png" alt="Code Connect CSS Mapping" loading="lazy">
+            <h4>Web CSS Custom Property Mapping</h4>
+            <p>1-to-1 reflection of design tokens in <code>melodia-tokens.css</code> for web execution.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="inner">
+      <span>MELODIA — P0 First Dream Design Specifications</span>
+      <span>Unreal Engine 5.8 C++ Architecture</span>
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase">
+        <a href="index.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">Overview</a>
+        <a href="melodia-gameplay-loop.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">JRPG Loop</a>
+        <a href="design-specs.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">P0 Gates</a>
+        <a href="pipeline.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">Pipeline</a>
+        <a href="application-hub.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">Architecture Hub</a>
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="melodia-starfield.js"></script>
+<script src="melodia-site-nav.js"></script>
+<script src="melodia-editorial.js"></script>
+<script>MelodiaEditorial.init({ page: 'design-specs' });</script>
+</body>
+</html>
