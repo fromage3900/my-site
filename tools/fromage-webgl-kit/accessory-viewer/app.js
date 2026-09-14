@@ -4,14 +4,14 @@ import { createRuntime } from '../src/core/createRuntime.js';
 import { createGLBLoader } from '../src/assets/createGLBLoader.js';
 
 const HEROES = {
-  'rect-tortoise': { label: 'Rectangular · Tortoise', url: '../../wix/models/eyewear-heroes/rect-tortoise.glb' },
-  'rect-metal': { label: 'Rectangular · Champagne', url: '../../wix/models/eyewear-heroes/rect-metal.glb' },
-  'panto-tortoise': { label: 'Panto · Tortoise', url: '../../wix/models/eyewear-heroes/panto-tortoise.glb' },
-  'panto-metal': { label: 'Panto · Champagne', url: '../../wix/models/eyewear-heroes/panto-metal.glb' },
-  'cateye-tortoise': { label: 'Cat-Eye · Tortoise', url: '../../wix/models/eyewear-heroes/cateye-tortoise.glb' },
-  'cateye-metal': { label: 'Cat-Eye · Champagne', url: '../../wix/models/eyewear-heroes/cateye-metal.glb' },
-  'aviator-tortoise': { label: 'Aviator · Tortoise', url: '../../wix/models/eyewear-heroes/aviator-tortoise.glb' },
-  'aviator-metal': { label: 'Aviator · Champagne', url: '../../wix/models/eyewear-heroes/aviator-metal.glb' },
+  'rect-tortoise': { label: 'Rectangular · Tortoise', url: '../../../wix/models/eyewear-heroes/rect-tortoise.glb' },
+  'rect-metal': { label: 'Rectangular · Champagne', url: '../../../wix/models/eyewear-heroes/rect-metal.glb' },
+  'panto-tortoise': { label: 'Panto · Tortoise', url: '../../../wix/models/eyewear-heroes/panto-tortoise.glb' },
+  'panto-metal': { label: 'Panto · Champagne', url: '../../../wix/models/eyewear-heroes/panto-metal.glb' },
+  'cateye-tortoise': { label: 'Cat-Eye · Tortoise', url: '../../../wix/models/eyewear-heroes/cateye-tortoise.glb' },
+  'cateye-metal': { label: 'Cat-Eye · Champagne', url: '../../../wix/models/eyewear-heroes/cateye-metal.glb' },
+  'aviator-tortoise': { label: 'Aviator · Tortoise', url: '../../../wix/models/eyewear-heroes/aviator-tortoise.glb' },
+  'aviator-metal': { label: 'Aviator · Champagne', url: '../../../wix/models/eyewear-heroes/aviator-metal.glb' },
 };
 const DEFAULT_HERO = 'aviator-tortoise';
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
