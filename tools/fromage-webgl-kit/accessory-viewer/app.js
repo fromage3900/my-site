@@ -14,7 +14,7 @@ const HEROES = {
   'aviator-metal': { label: 'Aviator · Champagne', url: '../../../wix/models/eyewear-heroes/aviator-metal.glb' },
 };
 const DEFAULT_HERO = 'aviator-tortoise';
-const FIGMA_SOURCE_URL = 'https://www.figma.com/design/sZM806XhCn3HrNlpsEjkaL';
+const FIGMA_SOURCE_URL = 'https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled?node-id=177-119';
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const urlState = new URLSearchParams(location.search);
 
