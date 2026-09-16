@@ -14,7 +14,9 @@ const HEROES = {
   'aviator-metal': { label: 'Aviator · Champagne', url: '../../../wix/models/eyewear-heroes/aviator-metal.glb' },
 };
 const DEFAULT_HERO = 'aviator-tortoise';
+const FIGMA_SOURCE_URL = 'https://www.figma.com/design/sZM806XhCn3HrNlpsEjkaL';
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const urlState = new URLSearchParams(location.search);
 
 const stage = document.getElementById('stage');
 const emptyState = document.getElementById('emptyState');
@@ -22,8 +24,13 @@ const stageStatus = document.getElementById('stageStatus');
 const diagnostics = document.getElementById('diagnostics');
 const controlButtons = [...document.querySelectorAll('.choice')];
 const heroSelector = document.getElementById('heroSelector');
+const rotateToggle = document.getElementById('rotateToggle');
 
 controlButtons.forEach((button) => { button.disabled = true; });
+if (stageStatus) {
+  stageStatus.setAttribute('role', 'status');
+  stageStatus.setAttribute('aria-live', 'polite');
+}
 
 const runtime = createRuntime({
   THREE,
@@ -37,6 +44,7 @@ runtime.renderer.toneMapping = THREE.ACESFilmicToneMapping;
 runtime.renderer.toneMappingExposure = 1.08;
 runtime.renderer.shadowMap.enabled = true;
 runtime.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+runtime.renderer.domElement.setAttribute('aria-label', 'Interactive 3D eyewear preview. Drag to orbit; use the Atelier controls for exact views and materials.');
 
 const controls = new OrbitControls(runtime.camera, runtime.renderer.domElement);
 controls.enableDamping = true;
@@ -92,20 +100,28 @@ const VIEWS = {
   bridge: { camera: [1.15, 0.6, 3.85], target: [0, 0.02, 0] },
 };
 
+const initialHero = HEROES[urlState.get('hero')] ? urlState.get('hero') : DEFAULT_HERO;
+const initialFinish = FINISHES[urlState.get('finish')] ? urlState.get('finish') : 'obsidian';
+const initialLens = LENSES[urlState.get('lens')] ? urlState.get('lens') : 'clear';
+const initialView = VIEWS[urlState.get('view')] ? urlState.get('view') : 'hero';
+const initialInspection = ['beauty', 'wire', 'clay'].includes(urlState.get('inspect')) ? urlState.get('inspect') : 'beauty';
+const rotateParam = urlState.get('rotate');
+
 let root = null;
 let meshes = [];
-let currentFinish = 'obsidian';
-let currentLens = 'clear';
-let inspection = 'beauty';
-let autoRotate = !reducedMotion;
-let cameraGoal = new THREE.Vector3(...VIEWS.hero.camera);
-let targetGoal = new THREE.Vector3(...VIEWS.hero.target);
+let currentFinish = initialFinish;
+let currentLens = initialLens;
+let inspection = initialInspection;
+let autoRotate = rotateParam === null ? !reducedMotion : rotateParam !== '0';
+let cameraGoal = new THREE.Vector3(...VIEWS[initialView].camera);
+let targetGoal = new THREE.Vector3(...VIEWS[initialView].target);
 let materialPool = [];
 let modelBytes = null;
 let frameCounter = 0;
 let fpsWindowStart = performance.now();
 let fps = 0;
-let currentHero = DEFAULT_HERO;
+let currentHero = initialHero;
+let currentView = initialView;
 
 function setStatus(text) {
   if (stageStatus) stageStatus.textContent = text;
@@ -224,7 +240,6 @@ function fitProduct(object) {
   const center = box.getCenter(new THREE.Vector3());
   object.position.sub(center);
   object.position.y += 0.02;
-  // FIX 2026-09-14: glasses faced +Y (up) not -Z (forward) — rotate -90deg on X so lenses face camera
   object.rotation.set(-Math.PI / 2 - 0.04, -0.16, 0);
   object.updateMatrixWorld(true);
 }
@@ -237,16 +252,87 @@ function setPressed(selector, value) {
   });
 }
 
-function setView(name) {
-  const view = VIEWS[name] || VIEWS.hero;
+function setRotateState(enabled) {
+  autoRotate = enabled;
+  rotateToggle?.setAttribute('aria-pressed', autoRotate ? 'true' : 'false');
+}
+
+function syncStateToUrl() {
+  const params = new URLSearchParams(location.search);
+  params.set('hero', currentHero);
+  params.set('finish', currentFinish);
+  params.set('lens', currentLens);
+  params.set('view', currentView);
+  params.set('inspect', inspection);
+  params.set('rotate', autoRotate ? '1' : '0');
+  history.replaceState(null, '', `${location.pathname}?${params.toString()}${location.hash}`);
+}
+
+function setView(name, { userInitiated = false } = {}) {
+  const resolvedName = VIEWS[name] ? name : 'hero';
+  const view = VIEWS[resolvedName];
+  currentView = resolvedName;
   cameraGoal.set(...view.camera);
   targetGoal.set(...view.target);
-  setPressed('[data-view]', name);
+  setPressed('[data-view]', resolvedName);
+  if (userInitiated) setRotateState(false);
+  syncStateToUrl();
 }
 
 function activateControls() {
   controlButtons.forEach((button) => { button.disabled = false; });
-  document.getElementById('rotateToggle').setAttribute('aria-pressed', autoRotate ? 'true' : 'false');
+  setPressed('[data-finish]', currentFinish);
+  setPressed('[data-lens]', currentLens);
+  setPressed('[data-inspect]', inspection);
+  setPressed('[data-view]', currentView);
+  setRotateState(autoRotate);
+}
+
+function mountDesignSourceLinks() {
+  const panelIntro = document.querySelector('.panel > div:first-child');
+  if (!panelIntro || panelIntro.querySelector('[data-design-source]')) return;
+
+  const links = document.createElement('p');
+  links.dataset.designSource = 'true';
+  links.className = 'micro quiet';
+  links.style.display = 'flex';
+  links.style.gap = '12px';
+  links.style.flexWrap = 'wrap';
+  links.style.margin = '12px 0 0';
+
+  const figmaLink = document.createElement('a');
+  figmaLink.href = FIGMA_SOURCE_URL;
+  figmaLink.target = '_blank';
+  figmaLink.rel = 'noreferrer';
+  figmaLink.textContent = 'Figma source ↗';
+
+  const shareLink = document.createElement('button');
+  shareLink.type = 'button';
+  shareLink.textContent = 'Copy state link';
+  shareLink.className = 'micro quiet';
+  shareLink.style.border = '0';
+  shareLink.style.padding = '0';
+  shareLink.style.background = 'transparent';
+  shareLink.style.cursor = 'pointer';
+  shareLink.style.font = 'inherit';
+  shareLink.style.letterSpacing = 'inherit';
+  shareLink.style.textTransform = 'inherit';
+  shareLink.style.color = 'inherit';
+  shareLink.addEventListener('click', async () => {
+    syncStateToUrl();
+    try {
+      await navigator.clipboard.writeText(location.href);
+      const previous = shareLink.textContent;
+      shareLink.textContent = 'Link copied';
+      setTimeout(() => { shareLink.textContent = previous; }, 1200);
+    } catch {
+      shareLink.textContent = 'Copy unavailable';
+      setTimeout(() => { shareLink.textContent = 'Copy state link'; }, 1200);
+    }
+  });
+
+  links.append(figmaLink, shareLink);
+  panelIntro.appendChild(links);
 }
 
 function recordSourceMaterials(object) {
@@ -271,7 +357,10 @@ async function getModelBytes(url) {
 }
 
 async function loadHero(heroKey) {
-  const hero = HEROES[heroKey] || HEROES[DEFAULT_HERO];
+  const resolvedKey = HEROES[heroKey] ? heroKey : DEFAULT_HERO;
+  const hero = HEROES[resolvedKey];
+  currentHero = resolvedKey;
+  if (heroSelector) heroSelector.value = resolvedKey;
   setStatus(`Loading ${hero.label}…`);
   disposeRoot();
   disposeGeneratedMaterials();
@@ -280,7 +369,7 @@ async function loadHero(heroKey) {
   try {
     const gltf = await loader.load(hero.url);
     root = gltf.scene;
-    root.name = `hero-${heroKey}`;
+    root.name = `hero-${resolvedKey}`;
     recordSourceMaterials(root);
     fitProduct(root);
     runtime.scene.add(root);
@@ -288,8 +377,8 @@ async function loadHero(heroKey) {
     emptyState.hidden = true;
     setStatus(`${hero.label} · realtime asset loaded`);
     activateControls();
-    setView('hero');
-    currentHero = heroKey;
+    setView(currentView, { userInitiated: false });
+    syncStateToUrl();
   } catch (error) {
     console.info('[accessory-viewer] Hero asset unavailable:', error?.message || error);
     setStatus('Asset slot ready');
@@ -302,6 +391,7 @@ document.querySelectorAll('[data-finish]').forEach((button) => {
     currentFinish = button.dataset.finish;
     setPressed('[data-finish]', currentFinish);
     if (inspection === 'beauty') applyMaterials();
+    syncStateToUrl();
   });
 });
 
@@ -310,35 +400,47 @@ document.querySelectorAll('[data-lens]').forEach((button) => {
     currentLens = button.dataset.lens;
     setPressed('[data-lens]', currentLens);
     if (inspection === 'beauty') applyMaterials();
+    syncStateToUrl();
   });
 });
 
 document.querySelectorAll('[data-view]').forEach((button) => {
-  button.addEventListener('click', () => setView(button.dataset.view));
+  button.addEventListener('click', () => setView(button.dataset.view, { userInitiated: true }));
 });
 
 document.querySelectorAll('[data-inspect]').forEach((button) => {
   button.addEventListener('click', () => {
     inspection = button.dataset.inspect;
     setPressed('[data-inspect]', inspection);
+    if (inspection !== 'beauty') setRotateState(false);
     applyMaterials();
+    syncStateToUrl();
   });
 });
 
-document.getElementById('rotateToggle').addEventListener('click', (event) => {
+rotateToggle?.addEventListener('click', (event) => {
   // Reduced motion controls the initial default; an explicit press is user consent.
-  autoRotate = !autoRotate;
+  setRotateState(!autoRotate);
   event.currentTarget.setAttribute('aria-pressed', autoRotate ? 'true' : 'false');
+  syncStateToUrl();
 });
 
 controls.addEventListener('start', () => {
-  autoRotate = false;
-  document.getElementById('rotateToggle').setAttribute('aria-pressed', 'false');
+  setRotateState(false);
+  syncStateToUrl();
 });
 
 if (heroSelector) {
+  heroSelector.value = currentHero;
   heroSelector.addEventListener('change', () => loadHero(heroSelector.value));
 }
+
+mountDesignSourceLinks();
+setPressed('[data-finish]', currentFinish);
+setPressed('[data-lens]', currentLens);
+setPressed('[data-inspect]', inspection);
+setPressed('[data-view]', currentView);
+setRotateState(autoRotate);
 
 runtime.onFrame(({ now, delta }) => {
   controls.update();
@@ -368,8 +470,9 @@ runtime.onFrame(({ now, delta }) => {
       `Draw calls ${info.calls} · Triangles ${info.triangles.toLocaleString()}`,
       `Meshes ${meshes.length} · frame ${roleCounts.frame || 0} · metal ${roleCounts.metal || 0} · lens ${roleCounts.lens || 0}`,
       `Finish ${currentFinish} · Lens ${currentLens} · ${inspection}`,
+      `View ${currentView} · Rotate ${autoRotate ? 'on' : 'off'}`,
     ].join('\n');
   }
 });
 
-loadHero(DEFAULT_HERO);
+loadHero(currentHero);
