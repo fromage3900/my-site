@@ -1,0 +1,283 @@
+/* P0 painterly surface pass
+   Visual authority: Melodia Grandmaster
+   - Accessory Atelier: node 177:119
+   - P0 Painterly Surface Kit: node 180:23
+   - P0 Subject Treatment Matrix: node 182:23
+
+   Scope: surface treatment only. Runtime / Three.js behavior remains in app.js.
+*/
+
+:root {
+  --p0-lavender: rgba(200, 188, 225, 0.34);
+  --p0-lavender-soft: rgba(216, 206, 235, 0.22);
+  --p0-rose: rgba(203, 168, 162, 0.24);
+  --p0-seafoam: rgba(191, 211, 204, 0.26);
+  --p0-seafoam-soft: rgba(155, 186, 199, 0.16);
+  --p0-gold: rgba(222, 209, 173, 0.32);
+  --p0-plum: rgba(104, 64, 87, 0.17);
+  --p0-paper-line: rgba(104, 64, 87, 0.18);
+  --p0-paper-light: rgba(255, 250, 241, 0.52);
+}
+
+html,
+body {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255,255,255,.38), transparent 28%),
+    radial-gradient(circle at 78% 88%, rgba(222,209,173,.10), transparent 34%),
+    var(--paper);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: .055;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(48,34,40,.55) 0 .45px, transparent .65px),
+    radial-gradient(circle at 72% 66%, rgba(104,64,87,.38) 0 .4px, transparent .6px),
+    linear-gradient(104deg, transparent 0 47%, rgba(116,88,74,.17) 48%, transparent 49% 100%);
+  background-size: 5px 5px, 7px 7px, 29px 31px;
+}
+
+.sheet {
+  position: relative;
+  isolation: isolate;
+}
+
+.mast,
+.hero,
+.archive,
+.catalogue,
+.credit,
+.rail,
+.inspection,
+.technical-proof {
+  border-color: var(--p0-paper-line) !important;
+  border-style: solid !important;
+}
+
+.hero {
+  overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(.25px);
+}
+
+.hero::before {
+  width: 49%;
+  height: 29%;
+  right: 9%;
+  top: 17%;
+  border-radius: 46% 54% 58% 42% / 54% 41% 59% 46%;
+  background:
+    radial-gradient(ellipse at 44% 48%, var(--p0-lavender) 0 46%, transparent 69%),
+    radial-gradient(ellipse at 65% 55%, var(--p0-lavender-soft) 0 34%, transparent 70%);
+  transform: rotate(-3deg);
+  opacity: .78;
+}
+
+.hero::after {
+  width: 31%;
+  height: 18%;
+  left: 5%;
+  bottom: 7%;
+  border-radius: 52% 48% 44% 56% / 49% 58% 42% 51%;
+  background: radial-gradient(ellipse, var(--p0-gold) 0 37%, rgba(222,209,173,.10) 55%, transparent 72%);
+  opacity: .52;
+}
+
+.hero > * {
+  position: relative;
+}
+
+.product-grid {
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 20% 31%, rgba(203,168,162,.12), transparent 31%),
+    radial-gradient(ellipse at 80% 68%, rgba(191,211,204,.18), transparent 34%),
+    radial-gradient(ellipse at 57% 49%, rgba(222,209,173,.12), transparent 37%);
+}
+
+.stage-shell {
+  isolation: isolate;
+  background:
+    linear-gradient(145deg, rgba(236,231,224,.96), rgba(232,226,218,.96) 45%, rgba(237,233,232,.96));
+  box-shadow:
+    inset 0 0 0 1px rgba(104,64,87,.08),
+    0 24px 58px rgba(104,64,87,.055);
+}
+
+.stage-shell::before {
+  content: "";
+  position: absolute;
+  inset: 8% 7% 9%;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 52% 48%, rgba(255,251,233,.82) 0 11%, rgba(222,209,173,.28) 25%, rgba(203,168,162,.12) 42%, transparent 66%),
+    radial-gradient(ellipse at 51% 47%, rgba(191,211,204,.20) 0 25%, transparent 56%),
+    radial-gradient(ellipse at 48% 53%, rgba(200,188,225,.16) 0 19%, transparent 55%);
+  filter: blur(12px);
+  opacity: .82;
+}
+
+.stage-shell::after {
+  background:
+    radial-gradient(ellipse at 50% 50%, transparent 54%, rgba(104,64,87,.055) 84%, rgba(104,64,87,.095) 100%),
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.16) 0 .55px, transparent .75px);
+  background-size: auto, 6px 6px;
+  mix-blend-mode: multiply;
+  opacity: .76;
+}
+
+.stage canvas {
+  position: relative;
+  z-index: 2;
+}
+
+.stage-meta,
+.stage-note,
+.empty-state {
+  position: absolute;
+  z-index: 4;
+}
+
+.stage-note {
+  color: rgba(104,64,87,.78);
+}
+
+.panel {
+  position: relative;
+  padding: 18px 14px 16px 0;
+  background:
+    radial-gradient(ellipse at 85% 12%, rgba(200,188,225,.14), transparent 44%),
+    radial-gradient(ellipse at 18% 88%, rgba(191,211,204,.14), transparent 42%);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 14px;
+  top: -2px;
+  height: 3px;
+  pointer-events: none;
+  opacity: .52;
+  background: linear-gradient(90deg, rgba(104,64,87,.72), rgba(183,127,131,.35) 38%, rgba(104,64,87,.52) 63%, transparent 100%);
+  clip-path: polygon(0 42%, 11% 34%, 19% 52%, 31% 39%, 42% 47%, 58% 31%, 70% 49%, 83% 37%, 100% 44%, 100% 62%, 83% 55%, 70% 68%, 58% 48%, 42% 64%, 31% 53%, 19% 67%, 11% 49%, 0 58%);
+}
+
+.choice {
+  position: relative;
+  border-style: solid;
+  border-color: rgba(104,64,87,.20);
+  background:
+    linear-gradient(160deg, rgba(255,252,246,.68), rgba(245,240,232,.48));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+  transition: background .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.choice:hover:not(:disabled) {
+  border-color: rgba(104,64,87,.42);
+  background:
+    radial-gradient(ellipse at 22% 40%, rgba(200,188,225,.14), transparent 50%),
+    rgba(255,252,246,.72);
+}
+
+.choice[aria-pressed="true"] {
+  background:
+    radial-gradient(ellipse at 18% 22%, rgba(255,255,255,.13), transparent 36%),
+    linear-gradient(150deg, rgba(104,64,87,.96), rgba(135,84,92,.92));
+  border-color: rgba(104,64,87,.72);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.10),
+    0 4px 10px rgba(104,64,87,.10);
+}
+
+select.choice {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(104,64,87,.64) 50%),
+    linear-gradient(135deg, rgba(104,64,87,.64) 50%, transparent 50%),
+    linear-gradient(160deg, rgba(255,252,246,.74), rgba(245,240,232,.52));
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%,
+    0 0;
+  background-size: 4px 4px, 4px 4px, 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.archive {
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 10% 40%, rgba(155,186,199,.15), transparent 27%),
+    radial-gradient(ellipse at 78% 35%, rgba(120,143,109,.13), transparent 28%),
+    radial-gradient(ellipse at 62% 82%, rgba(183,127,131,.11), transparent 27%),
+    radial-gradient(ellipse at 24% 20%, rgba(200,188,225,.12), transparent 25%);
+}
+
+.archive::before {
+  content: "";
+  position: absolute;
+  width: 34%;
+  height: 14%;
+  left: 1%;
+  top: 18%;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50% 44% 56% 48% / 61% 45% 55% 39%;
+  background:
+    radial-gradient(ellipse at 38% 50%, rgba(203,168,162,.24) 0 35%, transparent 66%),
+    radial-gradient(ellipse at 70% 50%, rgba(222,209,173,.22) 0 30%, transparent 68%);
+  transform: rotate(2deg);
+}
+
+.archive-head,
+.phi-board {
+  position: relative;
+  z-index: 1;
+}
+
+.orbit {
+  border-color: rgba(183,127,131,.26);
+}
+
+.phyllo {
+  opacity: .17;
+}
+
+.catalogue {
+  background:
+    radial-gradient(ellipse at 18% 38%, rgba(180,125,99,.09), transparent 30%),
+    radial-gradient(ellipse at 78% 65%, rgba(222,209,173,.18), transparent 32%),
+    radial-gradient(ellipse at 49% 42%, rgba(191,211,204,.07), transparent 29%);
+}
+
+@media (max-width: 900px) {
+  .hero::before { width: 54%; right: 2%; }
+  .stage-shell::before { inset: 10% 4% 10%; }
+}
+
+@media (max-width: 620px) {
+  body::before { opacity: .04; }
+  .hero::before { width: 72%; height: 24%; right: -18%; top: 14%; opacity: .58; }
+  .hero::after { width: 48%; left: -9%; opacity: .4; }
+  .stage-shell::before { filter: blur(8px); opacity: .66; }
+  .panel { padding-right: 0; }
+  .panel::before { right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .choice { transition: none; }
+}
