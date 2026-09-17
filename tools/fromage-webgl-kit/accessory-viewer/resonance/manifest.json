@@ -1,0 +1,29 @@
+{
+  "schema": "melodia.resonance-motion.v1",
+  "authority": {
+    "visual": "Melodia Grandmaster / P0 painterly + resonance motion language",
+    "approvalReference": "Choral Sheep P0 hero"
+  },
+  "intensity": {
+    "web": 0.15,
+    "reel": 0.70,
+    "tdLive": 1.0
+  },
+  "layers": [
+    {"id":"core","file":"resonance-core.svg","role":"focal resonance / Chladni bloom","web":"static glow + breath","reel":"reveal + hit bloom","audio":"low-mid energy"},
+    {"id":"aperture","file":"resonance-aperture.svg","role":"petal/cymatic iris","web":"8-12deg state settle","reel":"open/close transition","audio":"none"},
+    {"id":"astrolabe","file":"astrolabe-arc.svg","role":"partial orbital structure","web":"slow counter-rotation","reel":"assembly/parallax","audio":"none"},
+    {"id":"orbit","file":"chromatic-orbit.svg","role":"12 chromatic note nodes","web":"slow rotation + silhouette impulse","reel":"populate/rotate/resolve","audio":"beat impulse only"},
+    {"id":"medallion","file":"note-medallion.svg","role":"individual note/state marker","web":"optional state cue","reel":"sequential population","audio":"none"},
+    {"id":"filigree","file":"filigree-frame.svg","role":"foreground floral-musical edge","web":"mostly static","reel":"foreground wipe","audio":"none"}
+  ],
+  "reelTimingSeconds": {
+    "coreReveal": [0.00, 0.35],
+    "apertureAssembly": [0.35, 0.85],
+    "orbitPopulation": [0.85, 1.40],
+    "heroHold": [1.40, 2.40],
+    "musicalHit": [2.40, 2.80],
+    "openTransition": [2.80, 3.30]
+  },
+  "rule": "Animate hierarchy, not noise: core -> aperture -> arcs -> orbit -> medallions -> filigree. Only core intensity, orbit impulse, and cymatic bloom respond directly to audio."
+}
