@@ -4,7 +4,8 @@
    - P0 Painterly Surface Kit: node 180:23
    - P0 Subject Treatment Matrix: node 182:23
 
-   Scope: surface treatment only. Runtime / Three.js behavior remains in app.js.
+   Scope: surface treatment + low-energy resonance ornament only.
+   Runtime / Three.js behavior remains in app.js.
 */
 
 :root {
@@ -116,27 +117,60 @@ body::before {
     0 24px 58px rgba(104,64,87,.055);
 }
 
+/* Low-energy website translation of melodia.resonance-motion.v1.
+   Both ornament layers sit behind the Three.js canvas (z1 vs canvas z2).
+   This keeps the glasses as the clearest object on screen. */
 .stage-shell::before {
   content: "";
   position: absolute;
   inset: 8% 7% 9%;
   pointer-events: none;
   z-index: 1;
-  background:
-    radial-gradient(ellipse at 52% 48%, rgba(255,251,233,.82) 0 11%, rgba(222,209,173,.28) 25%, rgba(203,168,162,.12) 42%, transparent 66%),
-    radial-gradient(ellipse at 51% 47%, rgba(191,211,204,.20) 0 25%, transparent 56%),
-    radial-gradient(ellipse at 48% 53%, rgba(200,188,225,.16) 0 19%, transparent 55%);
-  filter: blur(12px);
-  opacity: .82;
+  background-image:
+    url("./resonance/resonance-core.svg"),
+    url("./resonance/resonance-aperture.svg"),
+    url("./resonance/astrolabe-arc.svg"),
+    radial-gradient(ellipse at 52% 48%, rgba(255,251,233,.68) 0 11%, rgba(222,209,173,.22) 25%, rgba(203,168,162,.10) 42%, transparent 66%),
+    radial-gradient(ellipse at 51% 47%, rgba(191,211,204,.16) 0 25%, transparent 56%),
+    radial-gradient(ellipse at 48% 53%, rgba(200,188,225,.14) 0 19%, transparent 55%);
+  background-repeat: no-repeat;
+  background-position: center, center, center, center, center, center;
+  background-size: 36% auto, 58% auto, 68% auto, auto, auto, auto;
+  opacity: .46;
+  transform-origin: 50% 50%;
+  animation: p0-resonance-counter 92s linear infinite;
+  will-change: transform;
 }
 
 .stage-shell::after {
-  background:
-    radial-gradient(ellipse at 50% 50%, transparent 54%, rgba(104,64,87,.055) 84%, rgba(104,64,87,.095) 100%),
-    radial-gradient(circle at 15% 20%, rgba(255,255,255,.16) 0 .55px, transparent .75px);
-  background-size: auto, 6px 6px;
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    url("./resonance/chromatic-orbit.svg"),
+    radial-gradient(ellipse at 50% 50%, transparent 54%, rgba(104,64,87,.045) 84%, rgba(104,64,87,.085) 100%),
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.14) 0 .55px, transparent .75px);
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-position: center, center, 0 0;
+  background-size: 72% auto, auto, 6px 6px;
   mix-blend-mode: multiply;
-  opacity: .76;
+  opacity: .30;
+  transform-origin: 50% 50%;
+  animation: p0-resonance-orbit 68s linear infinite;
+  will-change: transform;
+}
+
+@keyframes p0-resonance-orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes p0-resonance-counter {
+  from { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(-180deg) scale(1.012); }
+  to { transform: rotate(-360deg) scale(1); }
 }
 
 .stage canvas {
@@ -203,6 +237,25 @@ body::before {
     0 4px 10px rgba(104,64,87,.10);
 }
 
+/* Material-state tint is deliberately restrained. It is a design-language echo,
+   not a second material renderer. */
+.product-grid:has([data-finish="sea"][aria-pressed="true"]) .stage-shell::before {
+  opacity: .52;
+  filter: hue-rotate(12deg) saturate(.92);
+}
+.product-grid:has([data-finish="pearl"][aria-pressed="true"]) .stage-shell::before {
+  opacity: .58;
+  filter: brightness(1.08) saturate(.82);
+}
+.product-grid:has([data-lens="rose"][aria-pressed="true"]) .stage-shell::after {
+  opacity: .35;
+  filter: sepia(.08) saturate(1.06);
+}
+.product-grid:has([data-lens="cool"][aria-pressed="true"]) .stage-shell::after {
+  opacity: .34;
+  filter: hue-rotate(14deg) saturate(.92);
+}
+
 select.choice {
   appearance: none;
   background-image:
@@ -266,18 +319,22 @@ select.choice {
 
 @media (max-width: 900px) {
   .hero::before { width: 54%; right: 2%; }
-  .stage-shell::before { inset: 10% 4% 10%; }
+  .stage-shell::before { inset: 10% 4% 10%; background-size: 34% auto, 56% auto, 66% auto, auto, auto, auto; opacity: .40; }
+  .stage-shell::after { background-size: 78% auto, auto, 6px 6px; opacity: .25; }
 }
 
 @media (max-width: 620px) {
   body::before { opacity: .04; }
   .hero::before { width: 72%; height: 24%; right: -18%; top: 14%; opacity: .58; }
   .hero::after { width: 48%; left: -9%; opacity: .4; }
-  .stage-shell::before { filter: blur(8px); opacity: .66; }
+  .stage-shell::before { opacity: .30; }
+  .stage-shell::after { background-size: 92% auto, auto, 6px 6px; opacity: .20; }
   .panel { padding-right: 0; }
   .panel::before { right: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .choice { transition: none; }
+  .stage-shell::before,
+  .stage-shell::after { animation: none; transform: none; }
 }
