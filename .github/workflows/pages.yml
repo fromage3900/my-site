@@ -136,3 +136,60 @@ jobs:
         run: npm ci
       - name: Deploy to Wix
         run: npx wix deploy --site-id $WIX_SITE_ID
+
+  visual-qa-snapshots:
+    name: Capture visual QA snapshots
+    needs: validate
+    if: needs.validate.outputs.is_latest == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build responsive art derivatives
+        run: |
+          python -m pip install pillow
+          python tools/build_curated_art_derivatives.py
+      - name: Capture recruiter surfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome-stable || command -v google-chrome || command -v chromium-browser || command -v chromium || true)"
+          if [ -z "$CHROME" ]; then
+            echo "No Chrome/Chromium binary available on runner"
+            exit 1
+          fi
+
+          mkdir -p visual-qa
+          python -m http.server 4173 --bind 127.0.0.1 >/tmp/melodia-visual-qa-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" >/dev/null 2>&1 || true' EXIT
+          sleep 1
+
+          capture() {
+            local width="$1"
+            local height="$2"
+            local output="$3"
+            local route="$4"
+            "$CHROME"               --headless=new               --no-sandbox               --disable-dev-shm-usage               --hide-scrollbars               --window-size="$width,$height"               --virtual-time-budget=5000               --screenshot="$PWD/visual-qa/$output"               "http://127.0.0.1:4173/$route"
+          }
+
+          capture 390 844 homepage-390.png wix/index.html
+          capture 430 932 homepage-430.png wix/index.html
+          capture 1440 1100 homepage-1440.png wix/index.html
+
+          capture 390 1800 selected-art-390.png wix/curated-art.html
+          capture 1440 1500 selected-art-1440.png wix/curated-art.html
+
+          capture 390 1200 artifact-ui-390.png wix/application-hub.html#artifact-ui
+          capture 1440 1100 artifact-ui-1440.png wix/application-hub.html#artifact-ui
+      - name: Upload visual QA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-qa-snapshots-${{ github.sha }}
+          path: visual-qa/*.png
+          if-no-files-found: error
+          retention-days: 3
