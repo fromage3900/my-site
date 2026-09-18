@@ -8,6 +8,15 @@
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <script src="wix-entry-bootstrap.js?v=20260904p1"></script>
+<script>
+(function () {
+  try {
+    if (new URLSearchParams(window.location.search).get('capture') === 'artifact') {
+      document.documentElement.classList.add('artifact-capture');
+    }
+  } catch (e) {}
+})();
+</script>
 <title>Melodia World, Interface &amp; Pipeline Architecture Hub</title>
 <meta name="description" content="Melodia World, Interface &amp; Pipeline Architecture Hub — stylized environment routes, Figma-authored diegetic UI, rhythm systems, and real-time DCC integration for Unreal Engine 5.8." />
 <link rel="canonical" href="https://fromage3900.github.io/my-site/wix/application-hub.html" />
@@ -259,6 +268,30 @@
 }
 @media(prefers-reduced-motion:reduce){
   .artifact-ui-band *{animation:none!important}
+}
+
+/* Deterministic QA-only isolation for the Figma v3 artifact section. */
+html.artifact-capture,
+html.artifact-capture body {
+  min-height: 100%;
+  background: var(--primitive-ink-950,#08060E) !important;
+}
+html.artifact-capture .shell-nav,
+html.artifact-capture #main > section:not(#artifact-ui),
+html.artifact-capture .footer {
+  display: none !important;
+}
+html.artifact-capture #main {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+html.artifact-capture #artifact-ui {
+  display: block !important;
+  min-height: 100svh;
+  margin: 0 !important;
+  padding: clamp(2rem,5vw,4.5rem) 0 !important;
 }
 </style>
 </head>

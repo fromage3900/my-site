@@ -863,3 +863,35 @@ body.art-viewer-open { overflow:hidden; }
   color: var(--primitive-ivory-50) !important;
   -webkit-text-fill-color: currentColor !important;
 }
+
+
+/* 2026-09-18 desktop hero QA.
+   Keep the strong portrait art-direction on mobile, but on wide screens give the
+   text enough room to finish whole words and bias the portrait crop back toward
+   Melusina rather than the empty sky field. */
+@media (min-width: 821px) {
+  .curated-art-hero {
+    grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr);
+  }
+
+  .curated-hero-image {
+    inset: 0 0 0 36%;
+  }
+
+  .curated-hero-image img {
+    object-position: 28% 38%;
+  }
+
+  .curated-art-hero .hero-inner {
+    padding-right: clamp(1.25rem, 3vw, 3rem);
+    max-width: 48rem;
+  }
+
+  .curated-art-hero h1 {
+    max-width: 10.5ch;
+    font-size: clamp(3.8rem, 5.8vw, 6.2rem);
+    line-height: .94;
+    text-wrap: balance;
+    overflow-wrap: normal;
+  }
+}
