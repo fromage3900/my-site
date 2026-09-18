@@ -18,7 +18,6 @@
     "paths:wix": "python tools/normalize-paths.py wix",
     "paths:github": "python tools/normalize-paths.py github",
     "verify:manifest": "python tools/verify_deployment_manifest.py",
-    "verify:all": "npm run lint:tokens && python tools/_verify_site_facts.py && python tools/validate_assets.py",
-    "wix": "wix"
+    "verify:all": "npm run lint:tokens && python tools/_verify_site_facts.py && python tools/validate_assets.py"
   }
 }
