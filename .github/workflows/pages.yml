@@ -153,6 +153,60 @@ jobs:
         run: |
           python -m pip install pillow
           python tools/build_curated_art_derivatives.py
+      - name: Build current render comparison boards
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageOps, ImageDraw, ImageFont
+
+          out = Path("visual-qa")
+          out.mkdir(exist_ok=True)
+          root = Path("public/melodia/melusina-morning-vfx/2026-09-17/heroes")
+          renders = [
+              ("TD01 Siren Harp / Bow", root / "11_TD_01_hero_02_siren_harp_bow_master.png"),
+              ("TD02 Choral Sheep Anime Pasture", root / "11_TD_02_hero_01_choral_sheep_anime_pasture.png"),
+              ("TD03 Water Sanctuary", root / "11_TD_03_hero_03_melusina_water_sanctuary_master.png"),
+              ("TD04 Escher Sanctuary", root / "11_TD_04_hero_04_escher_sanctuary_master.png"),
+              ("TD05 Choral Sheep Pasture", root / "11_TD_05_hero_01_choral_sheep_pasture_master.png"),
+              ("TD06 Siren Harp / Bow PBR", root / "11_TD_06_hero_02_siren_harp_bow_pbr_tracked.png"),
+          ]
+
+          font = ImageFont.load_default()
+          bg = (10, 14, 34)
+          paper = (255, 248, 238)
+          gold = (201, 168, 106)
+
+          def label(draw, xy, text):
+              x, y = xy
+              draw.rectangle((x, y, x + 470, y + 25), fill=bg)
+              draw.text((x + 8, y + 6), text, font=font, fill=paper)
+
+          # Original 16:9 masters — no crop.
+          sheet = Image.new("RGB", (1440, 640), bg)
+          draw = ImageDraw.Draw(sheet)
+          for idx, (name, path) in enumerate(renders):
+              im = Image.open(path).convert("RGB")
+              thumb = ImageOps.contain(im, (460, 270))
+              col, row = idx % 3, idx // 3
+              x, y = col * 480 + 10, row * 320 + 10
+              sheet.paste(thumb, (x, y + 28))
+              label(draw, (x, y), name)
+          sheet.save(out / "td-master-contact-sheet.png", quality=95)
+
+          # Portrait-cover simulation for the Selected Art / mobile hero.
+          crop_sheet = Image.new("RGB", (840, 1120), bg)
+          draw = ImageDraw.Draw(crop_sheet)
+          for idx, (name, path) in enumerate(renders):
+              im = Image.open(path).convert("RGB")
+              crop = ImageOps.fit(im, (260, 500), method=Image.Resampling.LANCZOS, centering=(0.5, 0.45))
+              col, row = idx % 3, idx // 3
+              x, y = col * 280 + 10, row * 560 + 10
+              crop_sheet.paste(crop, (x, y + 28))
+              draw.rectangle((x, y, x + 260, y + 25), fill=bg)
+              draw.text((x + 6, y + 6), name, font=font, fill=paper)
+          crop_sheet.save(out / "td-mobile-center-crops.png", quality=95)
+          PY
       - name: Capture recruiter surfaces
         shell: bash
         run: |
