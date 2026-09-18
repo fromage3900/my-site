@@ -1893,3 +1893,26 @@ html[data-page="index"] .table-list {
     grid-column: 2 / span 4;
   }
 }
+
+
+/* 2026-09-17 visual hierarchy promotion.
+   The current Melusina Morning master is already 16:9, so preserve the frame
+   instead of inheriting the aggressive crop tuned for the July Night Bridge plate. */
+html[data-page="index"] .hero[data-hero-current="melusina-morning-20260917"] .hero-bg-secondary,
+html[data-page="index"] .hero[data-hero-current="melusina-morning-20260917"] .hero-bg-video {
+  display: none !important;
+}
+
+html[data-page="index"] .hero[data-hero-current="melusina-morning-20260917"] .hero-bg-plate--primary {
+  object-position: 50% 50%;
+  transform: scale(1.02);
+  transform-origin: 50% 50%;
+  filter: saturate(1.03) contrast(1.02) brightness(1);
+}
+
+@media (max-width: 833px) {
+  html[data-page="index"] .hero[data-hero-current="melusina-morning-20260917"] .hero-bg-plate--primary {
+    object-position: 50% 45%;
+    transform: scale(1.04);
+  }
+}

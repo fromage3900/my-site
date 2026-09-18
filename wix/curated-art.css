@@ -855,3 +855,116 @@ body.art-viewer-open { overflow:hidden; }
     font-size: .54rem;
   }
 }
+
+
+/* 2026-09-17 selected-art promotion.
+   The opening six mirrors the already-approved art-first application edit:
+   environment mood first, then prop/world identity and authored foundations. */
+.curated-art-hero[data-hero-current="melusina-morning-20260917"] .curated-hero-image img {
+  object-position: 50% 50%;
+  transform: scale(1.01);
+}
+
+.art-grid-opening-six .art-piece img {
+  min-height: 0;
+  object-fit: cover;
+}
+
+.art-grid-opening-six .opening-primary {
+  grid-column: 1 / span 8;
+}
+
+.art-grid-opening-six .opening-primary img {
+  aspect-ratio: 16 / 9;
+}
+
+.art-grid-opening-six .opening-secondary {
+  grid-column: 9 / -1;
+  margin-top: 6rem;
+}
+
+.art-grid-opening-six .opening-secondary img {
+  aspect-ratio: 16 / 10;
+}
+
+.art-grid-opening-six .opening-third {
+  grid-column: 2 / span 5;
+  margin-top: 2rem;
+}
+
+.art-grid-opening-six .opening-third img {
+  aspect-ratio: 16 / 10;
+}
+
+.art-grid-opening-six .opening-fourth {
+  grid-column: 7 / -1;
+  margin-top: 5rem;
+}
+
+.art-grid-opening-six .opening-fourth img {
+  aspect-ratio: 16 / 9;
+}
+
+.art-grid-opening-six .opening-fifth {
+  grid-column: 1 / span 4;
+  margin-top: 3rem;
+}
+
+.art-grid-opening-six .opening-fifth img {
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  padding: 1rem;
+  background: rgba(10,8,18,.035);
+}
+
+.art-grid-opening-six .opening-sixth {
+  grid-column: 6 / -1;
+  margin-top: 7rem;
+}
+
+.art-grid-opening-six .opening-sixth img {
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  padding: 1rem;
+  background: rgba(10,8,18,.035);
+}
+
+.curated-current-cta {
+  margin: clamp(2.5rem,5vw,4.5rem) 0 0;
+}
+
+@media (max-width: 820px) {
+  .curated-art-hero[data-hero-current="melusina-morning-20260917"] .curated-hero-image img {
+    object-position: 50% 45%;
+  }
+
+  .art-grid-opening-six .opening-primary,
+  .art-grid-opening-six .opening-fourth,
+  .art-grid-opening-six .opening-sixth {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+
+  .art-grid-opening-six .opening-secondary,
+  .art-grid-opening-six .opening-third,
+  .art-grid-opening-six .opening-fifth {
+    grid-column: 2 / -1;
+    margin-top: 2.5rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .art-grid-opening-six .opening-primary,
+  .art-grid-opening-six .opening-secondary,
+  .art-grid-opening-six .opening-third,
+  .art-grid-opening-six .opening-fourth,
+  .art-grid-opening-six .opening-fifth,
+  .art-grid-opening-six .opening-sixth {
+    grid-column: 1 / -1;
+    margin-top: 1.5rem;
+  }
+
+  .art-grid-opening-six .opening-primary {
+    margin-top: 0;
+  }
+}
