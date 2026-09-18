@@ -174,7 +174,18 @@ jobs:
             local height="$2"
             local output="$3"
             local route="$4"
-            "$CHROME"               --headless=new               --no-sandbox               --disable-dev-shm-usage               --hide-scrollbars               --window-size="$width,$height"               --virtual-time-budget=5000               --screenshot="$PWD/visual-qa/$output"               "http://127.0.0.1:4173/$route"
+            local target="$PWD/visual-qa/$output"
+            set +e
+            timeout 25s "$CHROME" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --disable-background-networking --disable-default-apps --disable-extensions --disable-sync --hide-scrollbars --mute-audio --window-size="$width,$height" --screenshot="$target" "http://127.0.0.1:4173/$route"
+            local code=$?
+            set -e
+            if [ ! -s "$target" ]; then
+              echo "Screenshot failed for $route ($width x $height), exit=$code"
+              return "$code"
+            fi
+            if [ "$code" -ne 0 ] && [ "$code" -ne 124 ]; then
+              return "$code"
+            fi
           }
 
           capture 390 844 homepage-390.png wix/index.html?capture=1
