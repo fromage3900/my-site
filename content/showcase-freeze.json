@@ -81,7 +81,9 @@
     "generated/assets/unreal/",
     "generated/optimized/curated-art/",
     "tools/fromage-webgl-kit/",
-    "wix/models/"
+    "wix/models/",
+    "generated/assets/figma/atelier-figma-pack-2026-09-14/",
+    "public/melodia/melusina-morning-vfx/2026-09-17/"
   ],
   "blocked_by_default": [
     "new public pages",
@@ -236,6 +238,22 @@
         "no new visual systems",
         "no layout or spacing change",
         "no change to any page's content or copy"
+      ]
+    },
+    {
+      "id": "melusina-morning-figma-v3-promotion-2026-09-17",
+      "reason": "Owner explicitly requested a website audit, integration of the updated Figma Compendium artifact direction, and promotion of the staged 2026-09-17 Melusina Morning render set into the existing recruiter-facing hierarchy.",
+      "scope": [
+        "generated/assets/figma/atelier-figma-pack-2026-09-14/ — preserve the already-generated Figma handoff pack as bounded design evidence",
+        "public/melodia/melusina-morning-vfx/2026-09-17/ — staged current render masters, manifest, and readmes promoted by the recruiter-facing pages",
+        "existing allowlisted recruiter pages and CSS may reference these assets without creating new public routes"
+      ],
+      "exclusions": [
+        "no new public routes",
+        "no navigation redesign",
+        "no global restyling",
+        "no unrelated asset-bank promotion",
+        "no weakening of token, link, polish, or freeze validation"
       ]
     }
   ]
