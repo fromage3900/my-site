@@ -1898,3 +1898,14 @@ html[data-page="index"] .shell-nav .nav-cta {
   -webkit-background-clip: border-box !important;
   text-shadow: none !important;
 }
+
+
+/* Specificity follow-up: melodia-magical-girl.css styles the anchor with a more
+   specific important rule, so match the real DOM shape rather than fighting it
+   with a generic .nav-cta selector. */
+html[data-page="index"] .melodia-shell .shell-nav > a.nav-cta.button-premium {
+  color: var(--primitive-ivory-50) !important;
+  -webkit-text-fill-color: var(--primitive-ivory-50) !important;
+  background-clip: border-box !important;
+  -webkit-background-clip: border-box !important;
+}

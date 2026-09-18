@@ -895,3 +895,16 @@ body.art-viewer-open { overflow:hidden; }
     overflow-wrap: normal;
   }
 }
+
+
+/* Paper-section QA: global night-theme prose was too pale against the ivory
+   Selected Art bands. Keep the airy edit, but restore readable body contrast. */
+.curated-art-shell .curated-intro .section-head .human-lede,
+.curated-art-shell .curated-objects .section-head .human-lede {
+  color: color-mix(in srgb, var(--gallery-ink) 76%, transparent) !important;
+}
+
+.curated-art-shell .curated-intro .section-head .eyebrow,
+.curated-art-shell .curated-objects .section-head .eyebrow {
+  color: color-mix(in srgb, var(--gallery-ink) 58%, var(--primitive-sakura-300)) !important;
+}
