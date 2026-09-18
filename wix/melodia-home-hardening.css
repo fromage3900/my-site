@@ -1886,3 +1886,15 @@ html[data-page="index"] .table-list {
     grid-column: 2 / span 4;
   }
 }
+
+
+/* 2026-09-18 direct screenshot QA: the homepage nav CTA inherited a transparent
+   text-fill from the iridescent type system. Keep the border treatment, but force
+   actual glyph paint at desktop and mobile sizes. */
+html[data-page="index"] .shell-nav .nav-cta {
+  color: var(--color-text-primary) !important;
+  -webkit-text-fill-color: currentColor !important;
+  background-clip: border-box !important;
+  -webkit-background-clip: border-box !important;
+  text-shadow: none !important;
+}
