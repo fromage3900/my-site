@@ -177,9 +177,9 @@ jobs:
             "$CHROME"               --headless=new               --no-sandbox               --disable-dev-shm-usage               --hide-scrollbars               --window-size="$width,$height"               --virtual-time-budget=5000               --screenshot="$PWD/visual-qa/$output"               "http://127.0.0.1:4173/$route"
           }
 
-          capture 390 844 homepage-390.png wix/index.html
-          capture 430 932 homepage-430.png wix/index.html
-          capture 1440 1100 homepage-1440.png wix/index.html
+          capture 390 844 homepage-390.png wix/index.html?capture=1
+          capture 430 932 homepage-430.png wix/index.html?capture=1
+          capture 1440 1100 homepage-1440.png wix/index.html?capture=1
 
           capture 390 1800 selected-art-390.png wix/curated-art.html
           capture 1440 1500 selected-art-1440.png wix/curated-art.html
