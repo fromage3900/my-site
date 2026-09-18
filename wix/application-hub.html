@@ -6,14 +6,15 @@
 <meta name="melodia-build" content="20260904p1" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-<meta name="referrer" content="strict-origin-when-cross-origin" />\n<script src="wix-entry-bootstrap.js?v=20260904p1"></script>
-<title>Melodia World &amp; Pipeline Architecture Hub</title>
-<meta name="description" content="Melodia World &amp; Pipeline Architecture Hub — Dual-Track JRPG Level Routes (Morning Sanctuary, Dreamstate Traversal, Kaleido Nave) and Echo DCC Bridge Integration." />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<script src="wix-entry-bootstrap.js?v=20260904p1"></script>
+<title>Melodia World, Interface &amp; Pipeline Architecture Hub</title>
+<meta name="description" content="Melodia World, Interface &amp; Pipeline Architecture Hub — stylized environment routes, Figma-authored diegetic UI, rhythm systems, and real-time DCC integration for Unreal Engine 5.8." />
 <link rel="canonical" href="https://fromage3900.github.io/my-site/wix/application-hub.html" />
 <meta name="robots" content="index,follow,max-image-preview:large" />
-<meta property="og:title" content="Melodia World &amp; Pipeline Architecture Hub" />
+<meta property="og:title" content="Melodia World, Interface &amp; Pipeline Architecture Hub" />
 <meta property="og:type" content="website" />
-<meta property="og:description" content="Explore level routing architecture, QuillScript narrative gating, Harmonix rhythm highway, and real-time Echo DCC automation bridge for Unreal Engine 5.8." />
+<meta property="og:description" content="Stylized environment routes, Figma-authored diegetic UI, rhythm systems, and real-time DCC integration for Unreal Engine 5.8." />
 <meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png" />
 <meta property="og:image:alt" content="Brennan Shepherd — stylized environment and technical art from Melodia" />
 <meta property="og:url" content="https://fromage3900.github.io/my-site/wix/application-hub.html" />
@@ -28,6 +29,238 @@
 <link rel="stylesheet" href="melodia-components.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-mobile.css?v=20260904p1">
 <link rel="stylesheet" href="application-hub.css?v=20260904p1">
+<style>
+/* Figma v3 artifact study — bounded site port.
+   Structure/motion grammar: Figma frames 26:2 + 17:2.
+   Public-site colors/type remain bound to the web token SSOT. */
+.artifact-ui-band{
+  --artifact-void:var(--primitive-ink-950,#08060E);
+  --artifact-deep:var(--primitive-astral-900,#141A30);
+  --artifact-ink:var(--primitive-plum-900,#1C1426);
+  --artifact-pearl:var(--primitive-paper-50,#FFF8EE);
+  --artifact-gold:var(--color-accent-primary,#C9A86A);
+  --artifact-lavender:var(--primitive-lavender-300,#C2BAE0);
+  --artifact-cyan:var(--primitive-aqua-400,#78CFD8);
+  --artifact-mist:var(--primitive-slate-200,#D5D8DE);
+  position:relative;
+  overflow:hidden;
+}
+.artifact-ui-band .inner{position:relative;z-index:1}
+.artifact-principle-chip{
+  display:inline-flex;
+  gap:.65rem;
+  align-items:center;
+  margin-top:.75rem;
+  padding:.55rem .85rem;
+  border:1px solid color-mix(in srgb,var(--artifact-gold) 62%,transparent);
+  border-radius:999px;
+  font-family:var(--font-mono);
+  font-size:.64rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--artifact-gold);
+  background:color-mix(in srgb,var(--artifact-deep) 86%,transparent);
+}
+.artifact-principle-chip i{width:4px;height:4px;border-radius:50%;background:var(--artifact-cyan);box-shadow:0 0 10px color-mix(in srgb,var(--artifact-cyan) 72%,transparent)}
+.artifact-state-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(12px,2vw,22px);
+  margin-top:1.6rem;
+}
+.artifact-state-card{
+  position:relative;
+  min-width:0;
+  padding:1rem;
+  border:1px solid color-mix(in srgb,var(--artifact-gold) 46%,transparent);
+  border-radius:22px;
+  background:linear-gradient(155deg,color-mix(in srgb,var(--artifact-deep) 95%,black),color-mix(in srgb,var(--artifact-ink) 92%,black));
+  box-shadow:0 18px 34px rgba(0,0,0,.24);
+  overflow:hidden;
+}
+.artifact-state-card[data-state="bloom"]{border-color:color-mix(in srgb,var(--artifact-lavender) 60%,transparent)}
+.artifact-state-card[data-state="open"]{border-color:color-mix(in srgb,var(--artifact-cyan) 55%,transparent)}
+.artifact-state-kicker{
+  margin:0;
+  font-family:var(--font-mono);
+  font-size:.64rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--artifact-gold);
+}
+.artifact-state-card[data-state="bloom"] .artifact-state-kicker{color:var(--artifact-lavender)}
+.artifact-state-card[data-state="open"] .artifact-state-kicker{color:var(--artifact-cyan)}
+.artifact-state-title{
+  margin:.35rem 0 .15rem;
+  font-family:var(--font-display);
+  font-size:clamp(1.15rem,2vw,1.55rem);
+  font-weight:600;
+  color:var(--artifact-pearl);
+}
+.artifact-state-copy{
+  min-height:2.7em;
+  margin:0;
+  font-size:.78rem;
+  line-height:1.55;
+  color:var(--artifact-mist);
+}
+.artifact-stage{
+  position:relative;
+  width:min(100%,330px);
+  aspect-ratio:1/1;
+  margin:1rem auto .8rem;
+  overflow:hidden;
+  border:1px solid color-mix(in srgb,var(--artifact-gold) 42%,transparent);
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 50% 48%,color-mix(in srgb,var(--artifact-cyan) 12%,transparent),transparent 34%),
+    var(--artifact-void);
+  isolation:isolate;
+}
+.artifact-stage::after{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid color-mix(in srgb,var(--artifact-mist) 18%,transparent);
+  border-radius:18px;
+  pointer-events:none;
+  z-index:12;
+}
+.artifact-chassis,.artifact-well,.artifact-wing{position:absolute;z-index:1;pointer-events:none}
+.artifact-chassis{
+  inset:11%;
+  border:1px solid var(--artifact-gold);
+  border-radius:30px;
+  background:var(--artifact-pearl);
+  box-shadow:0 14px 28px rgba(0,0,0,.38);
+}
+.artifact-well{
+  inset:17%;
+  border:1px solid color-mix(in srgb,var(--artifact-gold) 82%,transparent);
+  border-radius:24px;
+  background:var(--artifact-deep);
+}
+.artifact-wing{
+  top:19%;
+  bottom:19%;
+  width:42%;
+  border:1px solid var(--artifact-gold);
+  border-radius:28px;
+  background:var(--artifact-pearl);
+  box-shadow:0 10px 20px rgba(0,0,0,.28);
+}
+.artifact-wing.left{left:8%;transform:rotate(15deg)}
+.artifact-wing.right{right:8%;transform:rotate(-15deg)}
+.artifact-layer{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:74%;
+  height:74%;
+  object-fit:contain;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:4;
+}
+.artifact-layer.filigree{width:88%;height:88%;opacity:.5;z-index:2}
+.artifact-layer.astrolabe{width:80%;height:80%;opacity:.82;z-index:3}
+.artifact-layer.orbit{width:78%;height:78%;z-index:5}
+.artifact-layer.aperture{width:69%;height:69%;z-index:6}
+.artifact-layer.core{width:46%;height:46%;z-index:8;filter:drop-shadow(0 0 14px color-mix(in srgb,var(--artifact-gold) 32%,transparent))}
+.artifact-layer.medallion{width:24%;height:24%;z-index:7;opacity:.2}
+.artifact-stage.is-closed .artifact-layer.filigree{opacity:.22}
+.artifact-stage.is-closed .artifact-layer.aperture{width:47%;height:47%;transform:translate(-50%,-50%) rotate(10deg)}
+.artifact-stage.is-closed .artifact-layer.core{width:31%;height:31%}
+.artifact-stage.is-closed .artifact-layer.astrolabe,
+.artifact-stage.is-closed .artifact-layer.orbit,
+.artifact-stage.is-closed .artifact-layer.medallion{display:none}
+.artifact-stage.is-bloom .artifact-chassis,
+.artifact-stage.is-bloom .artifact-well{display:none}
+.artifact-stage.is-bloom .artifact-layer.orbit{opacity:.35}
+.artifact-stage.is-bloom .artifact-layer.aperture{width:72%;height:72%}
+.artifact-stage.is-open .artifact-chassis,
+.artifact-stage.is-open .artifact-well{display:none}
+.artifact-stage.is-open .artifact-layer.filigree{opacity:.32}
+.artifact-stage.is-open .artifact-layer.core{width:38%;height:38%}
+.artifact-stage.is-open .artifact-layer.medallion{opacity:.14}
+.artifact-state-foot{
+  margin:0;
+  text-align:center;
+  font-family:var(--font-mono);
+  font-size:.58rem;
+  line-height:1.5;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--artifact-mist);
+}
+.artifact-motion-wrap{
+  margin-top:1.4rem;
+  padding:1rem;
+  border:1px solid color-mix(in srgb,var(--artifact-cyan) 34%,transparent);
+  border-radius:18px;
+  background:color-mix(in srgb,var(--artifact-deep) 74%,transparent);
+}
+.artifact-motion-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:1rem;
+  margin-bottom:.8rem;
+}
+.artifact-motion-head strong{font-family:var(--font-display);font-size:1.15rem;color:var(--artifact-pearl)}
+.artifact-motion-head span{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--artifact-cyan)}
+.artifact-motion-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.artifact-motion-beat{
+  min-width:0;
+  padding:.72rem .75rem;
+  border:1px solid color-mix(in srgb,var(--artifact-mist) 18%,transparent);
+  border-radius:12px;
+  background:color-mix(in srgb,var(--artifact-ink) 82%,transparent);
+}
+.artifact-motion-beat b{
+  display:block;
+  margin-bottom:.25rem;
+  font-family:var(--font-mono);
+  font-size:.64rem;
+  letter-spacing:.12em;
+  color:var(--artifact-gold);
+}
+.artifact-motion-beat:nth-child(2) b{color:var(--artifact-cyan)}
+.artifact-motion-beat:nth-child(3) b{color:var(--artifact-lavender)}
+.artifact-motion-beat:nth-child(4) b{color:var(--artifact-pearl)}
+.artifact-motion-beat span{display:block;font-size:.72rem;line-height:1.45;color:var(--artifact-mist)}
+.artifact-motion-beat small{display:block;margin-top:.3rem;font-family:var(--font-mono);font-size:.56rem;color:var(--color-text-tertiary)}
+.artifact-source-note{
+  margin:.85rem 0 0;
+  font-family:var(--font-mono);
+  font-size:.58rem;
+  line-height:1.65;
+  letter-spacing:.05em;
+  color:var(--color-text-tertiary);
+}
+.artifact-stage.is-bloom .artifact-layer.core,
+.artifact-stage.is-open .artifact-layer.core{animation:artifactCoreBreath 3.2s ease-in-out infinite}
+.artifact-stage.is-open .artifact-layer.orbit{animation:artifactOrbit 20s linear infinite}
+.artifact-stage.is-open .artifact-layer.astrolabe{animation:artifactCounterOrbit 28s linear infinite}
+.artifact-stage.is-bloom .artifact-layer.aperture{animation:artifactBloomSettle 6.4s ease-in-out infinite alternate}
+@keyframes artifactCoreBreath{0%,100%{scale:.97;opacity:.86}50%{scale:1.035;opacity:1}}
+@keyframes artifactOrbit{to{rotate:360deg}}
+@keyframes artifactCounterOrbit{to{rotate:-360deg}}
+@keyframes artifactBloomSettle{0%{rotate:-5deg}100%{rotate:7deg}}
+@media(max-width:900px){
+  .artifact-state-grid{grid-template-columns:1fr}
+  .artifact-state-copy{min-height:0}
+  .artifact-motion-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:540px){
+  .artifact-motion-grid{grid-template-columns:1fr}
+  .artifact-motion-head{display:block}
+  .artifact-motion-head span{display:block;margin-top:.3rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .artifact-ui-band *{animation:none!important}
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -62,6 +295,7 @@
       <a class="button primary button-premium-primary" href="../melodia/sanctuary/">Play Cymatic Sanctuary</a>
       <a class="button button-premium" href="../melodia/">Three.js Web Lab</a>
       <a class="button button-premium" href="melodia-gameplay-loop.html">Gameplay Loop</a>
+      <a class="button button-premium" href="#artifact-ui">Artifact UI</a>
       <a class="button button-premium" href="pipeline.html">Echo Pipeline Specs</a>
     </div>
   </div>
@@ -98,6 +332,84 @@
         <img src="../generated/assets/cross/cross_hero_beauty_34.png" alt="Melodia browser laboratory ornamental preview" loading="lazy" />
         <div class="viz-door-meta"><b>LAB</b><strong>All Web Experiments</strong></div>
       </a>
+    </div>
+  </div>
+</section>
+
+<section class="band astral fashion-band artifact-ui-band" id="artifact-ui" aria-labelledby="artifact-ui-title">
+  <div class="inner">
+    <div class="viz-rule" data-divider="astral" aria-hidden="true"><span class="glyph">✦ interface artifact</span></div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow magazine-kicker">Figma v3 · Diegetic Interface Lookdev</p>
+        <h2 id="artifact-ui-title">The interface becomes an object.</h2>
+      </div>
+      <p class="human-lede">The Compendium moves from a flat menu toward a physical field instrument: closed relic → mechanical bloom → living resonance UI. The web port keeps the public token system intact while translating the newest Figma artifact and motion grammar.</p>
+    </div>
+
+    <div class="artifact-principle-chip" aria-label="Artifact design principles">
+      <span>Weight</span><i aria-hidden="true"></i><span>Occlusion</span><i aria-hidden="true"></i><span>Choreography</span>
+    </div>
+
+    <div class="artifact-state-grid">
+      <article class="artifact-state-card" data-state="closed" data-figma-node="26:10">
+        <p class="artifact-state-kicker">State 01 · Closed Artifact</p>
+        <h3 class="artifact-state-title">A precious field instrument at rest.</h3>
+        <p class="artifact-state-copy">Ivory chassis, deep inset, folded resonance petals and a restrained central core establish physical weight before navigation appears.</p>
+        <div class="artifact-stage is-closed" role="img" aria-label="Closed artifact state">
+          <span class="artifact-chassis" aria-hidden="true"></span>
+          <span class="artifact-well" aria-hidden="true"></span>
+          <img class="artifact-layer filigree" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/filigree-frame.svg" alt="" />
+          <img class="artifact-layer aperture" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/resonance-aperture.svg" alt="" />
+          <img class="artifact-layer core" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/resonance-core.svg" alt="" />
+        </div>
+        <p class="artifact-state-foot">Ivory enamel · cobalt well · gold latch</p>
+      </article>
+
+      <article class="artifact-state-card" data-state="bloom" data-figma-node="26:16">
+        <p class="artifact-state-kicker">State 02 · Latch Release / Unfold</p>
+        <h3 class="artifact-state-title">Mechanisms separate; inner structure emerges.</h3>
+        <p class="artifact-state-copy">Chassis wings release first, then the aperture, astrolabe and core become legible as distinct mechanical layers instead of one decorative animation.</p>
+        <div class="artifact-stage is-bloom" role="img" aria-label="Mechanical bloom transformation state">
+          <span class="artifact-wing left" aria-hidden="true"></span>
+          <span class="artifact-wing right" aria-hidden="true"></span>
+          <img class="artifact-layer filigree" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/filigree-frame.svg" alt="" />
+          <img class="artifact-layer astrolabe" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/astrolabe-arc.svg" alt="" />
+          <img class="artifact-layer orbit" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/chromatic-orbit.svg" alt="" />
+          <img class="artifact-layer aperture" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/resonance-aperture.svg" alt="" />
+          <img class="artifact-layer core" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/resonance-core.svg" alt="" />
+        </div>
+        <p class="artifact-state-foot">Hinges release · petals occlude · rings counter-rotate</p>
+      </article>
+
+      <article class="artifact-state-card" data-state="open" data-figma-node="29:46">
+        <p class="artifact-state-kicker">State 03 · Open Resonance UI</p>
+        <h3 class="artifact-state-title">Navigation becomes a celestial machine.</h3>
+        <p class="artifact-state-copy">Radial categories move to the periphery while the resonance core remains dominant, preserving a single focal hierarchy even when the interface is fully alive.</p>
+        <div class="artifact-stage is-open" role="img" aria-label="Open resonance navigation state">
+          <img class="artifact-layer filigree" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/filigree-frame.svg" alt="" />
+          <img class="artifact-layer astrolabe" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/astrolabe-arc.svg" alt="" />
+          <img class="artifact-layer orbit" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/chromatic-orbit.svg" alt="" />
+          <img class="artifact-layer aperture" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/resonance-aperture.svg" alt="" />
+          <img class="artifact-layer medallion" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/note-medallion.svg" alt="" />
+          <img class="artifact-layer core" src="../tools/fromage-webgl-kit/accessory-viewer/resonance/resonance-core.svg" alt="" />
+        </div>
+        <p class="artifact-state-foot">Radial categories · resonance core · peripheral orbits</p>
+      </article>
+    </div>
+
+    <div class="artifact-motion-wrap" aria-labelledby="artifact-motion-title">
+      <div class="artifact-motion-head">
+        <strong id="artifact-motion-title">Dimensional, radial, musical.</strong>
+        <span>Figma Motion · 3.2 s reference loop</span>
+      </div>
+      <div class="artifact-motion-grid">
+        <div class="artifact-motion-beat"><b>01 · Assemble</b><span>Layers converge; physical hierarchy arrives first.</span><small>0–240 ms</small></div>
+        <div class="artifact-motion-beat"><b>02 · Bloom</b><span>Core scales and glows after the structure is readable.</span><small>180–520 ms</small></div>
+        <div class="artifact-motion-beat"><b>03 · Orbit</b><span>Radial pieces counter-rotate with restrained depth.</span><small>420–900 ms</small></div>
+        <div class="artifact-motion-beat"><b>04 · Resolve</b><span>Tooltip and navigation settle into a quiet resting state.</span><small>760–1200 ms</small></div>
+      </div>
+      <p class="artifact-source-note">Motion rule: hierarchy first — position → scale → glow → particles. Never animate every layer at once. Source frames: Figma 17:2 (motion authoring kit) and 26:2 (Magical Artifact v3). The implementation uses durable repo-owned resonance SVGs rather than expiring Figma CDN assets and maps the visual language onto the website token SSOT.</p>
     </div>
   </div>
 </section>
