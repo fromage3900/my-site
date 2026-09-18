@@ -41,10 +41,16 @@ https://www.fromageart.xyz/
 
 The Wix custom domain is the stable public shell around the GitHub Pages portfolio.
 
-Current embedded-entry contract:
-- stable Wix iframe source: `wix/application-hub.html`;
-- external iframe first-contact bootstrap redirects to the art-first `wix/index.html`;
+Current embedded-entry contract (updated 2026-09-18):
+- Wix custom embed ID: `f9bb4701-21e2-41b2-a88b-9016bf5abb51`;
+- embed name: `Melodia Live Portfolio Frame`;
+- the Wix home route now mounts the GitHub Pages art-first entry at **all viewport widths** rather than using a separate stale Wix mobile/tablet fallback;
+- live source: `https://fromage3900.github.io/my-site/wix/index.html?embed=wix&v=20260918p1`;
+- the iframe is fixed full-viewport, borderless, and locks the underlying Wix shell scroll;
+- because the iframe points at GitHub Pages, normal portfolio edits become visible on `fromageart.xyz` when the Pages deploy succeeds; a Wix Studio republish is not required for those embedded portfolio files;
 - direct GitHub Pages routes retain their own metadata and remain usable independently.
+
+The Wix CLI publish job remains useful for actual Wix-project / shell changes when `WIX_CLI_API_KEY` is configured, but it is **not** the freshness gate for the embedded portfolio content.
 
 ## 3. Authoring / publishing flow
 
@@ -63,7 +69,9 @@ commit to my-site/main
   ↓
 GitHub Pages
   ↓
-Wix shell / fromageart.xyz
+Wix live full-viewport embed (all breakpoints)
+  ↓
+fromageart.xyz
 ```
 
 Primary validation hooks already in the repo include:
