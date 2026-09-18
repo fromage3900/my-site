@@ -37,7 +37,9 @@
 <script>
 (function () {
   try {
-    if (window.sessionStorage.getItem('melodia.entryCutscene.v1') === 'seen' ||
+    const capture = new URLSearchParams(window.location.search).get('capture') === '1';
+    if (capture ||
+        window.sessionStorage.getItem('melodia.entryCutscene.v1') === 'seen' ||
         window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.documentElement.classList.add('melodia-entry-skip');
     }
