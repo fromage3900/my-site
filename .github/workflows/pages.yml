@@ -249,8 +249,8 @@ jobs:
           capture 390 1800 selected-art-390.png wix/curated-art.html
           capture 1440 1500 selected-art-1440.png wix/curated-art.html
 
-          capture 390 1200 artifact-ui-390.png wix/application-hub.html#artifact-ui
-          capture 1440 1100 artifact-ui-1440.png wix/application-hub.html#artifact-ui
+          capture 390 1200 artifact-ui-390.png wix/application-hub.html?capture=artifact
+          capture 1440 1100 artifact-ui-1440.png wix/application-hub.html?capture=artifact
       - name: Upload visual QA artifact
         uses: actions/upload-artifact@v4
         with:
