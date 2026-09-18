@@ -402,14 +402,7 @@ html[data-page="index"] .hero-copy-layer {
 
 @media (max-width: 833px) {
   html[data-page="index"] .hero-macro-plate {
-    top: 16%;
-    right: -8%;
-    z-index: 2;
-    width: 49vw;
-    height: 50vh;
-    opacity: 0.28;
-    box-shadow: none;
-    transform: rotate(2deg);
+    display: none;
   }
 }
 
@@ -549,7 +542,7 @@ html[data-page="index"] .band .section-head > p {
   html[data-page="index"] .shell-nav .nav-cta {
     padding-inline: var(--space-8);
     letter-spacing: 0.08em;
-    color: var(--color-text-inverse) !important;
+    color: var(--color-text-primary) !important;
     text-overflow: clip;
   }
 
@@ -1891,28 +1884,5 @@ html[data-page="index"] .table-list {
   }
   html[data-page="index"] .env-grid .env-card:nth-child(4) {
     grid-column: 2 / span 4;
-  }
-}
-
-
-/* 2026-09-17 visual hierarchy promotion.
-   The current Melusina Morning master is already 16:9, so preserve the frame
-   instead of inheriting the aggressive crop tuned for the July Night Bridge plate. */
-html[data-page="index"] .hero[data-hero-current="melusina-morning-20260917"] .hero-bg-secondary,
-html[data-page="index"] .hero[data-hero-current="melusina-morning-20260917"] .hero-bg-video {
-  display: none !important;
-}
-
-html[data-page="index"] .hero[data-hero-current="melusina-morning-20260917"] .hero-bg-plate--primary {
-  object-position: 50% 50%;
-  transform: scale(1.02);
-  transform-origin: 50% 50%;
-  filter: saturate(1.03) contrast(1.02) brightness(1);
-}
-
-@media (max-width: 833px) {
-  html[data-page="index"] .hero[data-hero-current="melusina-morning-20260917"] .hero-bg-plate--primary {
-    object-position: 50% 45%;
-    transform: scale(1.04);
   }
 }
