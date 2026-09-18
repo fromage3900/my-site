@@ -43,7 +43,7 @@ jobs:
             echo "wix_enabled=true" >> "$GITHUB_OUTPUT"
           else
             echo "wix_enabled=false" >> "$GITHUB_OUTPUT"
-            echo "Wix publish skipped: repository secret WIX_CLI_API_KEY is not configured."
+            echo "Optional Wix project publish skipped: WIX_CLI_API_KEY is not configured. The public portfolio iframe still updates from the successful GitHub Pages deploy."
           fi
         env:
           WIX_API_KEY: ${{ secrets.WIX_CLI_API_KEY }}
@@ -111,7 +111,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
   deploy-wix:
-    name: Deploy to Wix
+    name: Publish Wix project (optional)
     needs: validate
     if: needs.validate.outputs.wix_enabled == 'true' && needs.validate.outputs.is_latest == 'true'
     runs-on: ubuntu-latest
