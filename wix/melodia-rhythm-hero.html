@@ -4,7 +4,7 @@
 <meta name="robots" content="noindex,nofollow" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Melodia — Rhythm Staff</title>
+<title>Melodia Rhythm Staff — Browser Study</title>
 <script>p5.disableFriendlyErrors = true;</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/addons/p5.sound.min.js"></script>
@@ -43,21 +43,7 @@ let audioOn = false;
 let oscPool = [];
 let staffY = [];
 let starsFade = 0;
-let progress = 0.5;   // 0..1, driven by real gate_ledger via sync_status.json
-let progressLabel = "";
-
-// Pull the honest, ledger-backed progress so the art breathes with the real
-// project state. Falls back to a calm mid-value if offline.
-fetch('https://fromage3900.github.io/my-site/public/melodia/status/sync_status.json')
-  .then(r => r.ok ? r.json() : Promise.reject(r.status))
-  .then(d => {
-    const closed = d.gates_closed || 0, total = d.gates_total || 1;
-    progress = total ? closed / total : 0.5;
-    progressLabel = `${closed}/${total} gates closed`;
-  })
-  .catch(() => { progress = 0.5; progressLabel = "ledger offline"; });
-
-function setup() {
+let progress = 0.5;\nlet progressLabel = "rhythm study";\n\nfunction setup() {
   createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
   randomSeed(SEED); noiseSeed(SEED);
@@ -104,13 +90,13 @@ function draw() {
   drawStaffGlow();
   drawStaff();
 
-  // subtle progress readout (top-left), tied to the real ledger
+  // visual study label — deliberately decoupled from project-status telemetry
   push();
   noStroke();
   fill(PAL.gold[0], PAL.gold[1], PAL.gold[2], 220);
   textFont('Inter'); textSize(12); textStyle(BOLD);
   textAlign(LEFT, TOP);
-  text('MELUSINA · ' + progressLabel, 18, 16);
+  text('MELODIA · RHYTHM STUDY', 18, 16);
   // slim progress underline
   const bw = 160;
   fill(PAL.gold[0], PAL.gold[1], PAL.gold[2], 60); rect(18, 36, bw, 3, 2);
