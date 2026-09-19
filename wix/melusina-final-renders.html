@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Melodia Melusina — Final Lookdev Renders & Technical Breakdown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,650;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0e0c12;
+  --bg-surface: #17141f;
+  --bg-card: #201b2b;
+  --accent-gold: #d9b26e;
+  --accent-lilac: #9d7fc4;
+  --accent-rose: #e8b4c8;
+  --accent-yellow: #f7e042;
+  --accent-cyan: #00f5d4;
+  --accent-crimson: #e61937;
+  --text-main: #f3eef8;
+  --text-muted: #a69bb5;
+  --border-subtle: rgba(217, 178, 110, 0.2);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  padding: 0;
+}
+
+header.hero {
+  position: relative;
+  padding: 5rem 2rem 3rem;
+  background: radial-gradient(circle at 50% 20%, rgba(157, 127, 196, 0.18), transparent 70%),
+              linear-gradient(180deg, #181324 0%, var(--bg-deep) 100%);
+  text-align: center;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-yellow);
+  margin-bottom: 0.8rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.03em;
+  margin-bottom: 1rem;
+}
+
+.lede {
+  font-size: 1.15rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: var(--text-muted);
+}
+
+.palette-ribbon {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.swatch {
+  width: 32px;
+  height: 16px;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  padding: 0.6rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: var(--accent-gold);
+  color: var(--bg-deep);
+  border-color: var(--accent-gold);
+  font-weight: 600;
+}
+
+/* Gallery Grid */
+.gallery-container {
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 6rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.render-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.render-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-gold);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+.card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.render-card:hover .card-media img {
+  transform: scale(1.02);
+}
+
+.media-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 12, 18, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.render-card:hover .media-overlay {
+  opacity: 1;
+}
+
+.zoom-btn {
+  background: var(--accent-gold);
+  color: var(--bg-deep);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.group-pill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+}
+.group-hero { background: rgba(247, 224, 66, 0.15); color: var(--accent-yellow); }
+.group-character { background: rgba(232, 180, 200, 0.15); color: var(--accent-rose); }
+.group-materials { background: rgba(157, 127, 196, 0.15); color: var(--accent-lilac); }
+.group-breakdown { background: rgba(0, 245, 212, 0.15); color: var(--accent-cyan); }
+.group-pcg { background: rgba(217, 178, 110, 0.15); color: var(--accent-gold); }
+
+.res-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+
+.caption {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.badge {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #c9bfdb;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+}
+
+footer {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+    <p class="kicker">Unreal Engine 5.8 · TouchDesigner Hub · Infold/Nikki Visual Bar</p>
+    <h1>Melodia Melusina // Lookdev Renders</h1>
+    <p class="lede">Final production render assembly for tonight's portfolio release: Substrate Toon character lookdev, fairy-tale atmospheric environments, procedural shader breakdowns, and TouchDesigner AOV inspection matrices.</p>
+    
+    <div class="palette-ribbon">
+        <div class="swatch" style="background:#352D40;" title="Deep Violet BG #352D40"></div>
+        <div class="swatch" style="background:#9D7FC4;" title="Warm Lilac #9D7FC4"></div>
+        <div class="swatch" style="background:#E8B4C8;" title="Soft Rose #E8B4C8"></div>
+        <div class="swatch" style="background:#D9B26E;" title="Golden Gilt #D9B26E"></div>
+        <div class="swatch" style="background:#F7E042;" title="Acid Yellow #F7E042"></div>
+        <div class="swatch" style="background:#E61937;" title="Persona Crimson #E61937"></div>
+        <div class="swatch" style="background:#00F5D4;" title="Electric Cyan #00F5D4"></div>
+    </div>
+
+    <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterGroup('all', this)">All Plates (40)</button>
+        <button class="filter-btn" onclick="filterGroup('hero', this)">Hero Atmosphere</button>
+        <button class="filter-btn" onclick="filterGroup('character', this)">Melusina Character</button>
+        <button class="filter-btn" onclick="filterGroup('materials', this)">Shader & Materials</button>
+        <button class="filter-btn" onclick="filterGroup('breakdown', this)">TouchDesigner Breakdowns</button>
+        <button class="filter-btn" onclick="filterGroup('pcg', this)">PCG Route Proof</button>
+    </div>
+</header>
+
+<main class="gallery-container">
+    <div class="grid" id="render-grid">
+        
+        <article class="render-card" data-group="hero">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/hero-sakura-dream-master-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/hero-sakura-dream-master-1920x1080.png" alt="Sakura Dream Shrine (Master Beauty)" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/hero-sakura-dream-master-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-hero">HERO</span>
+                    <span class="res-tag">16:9 · 2599.0 KB</span>
+                </div>
+                <h3>Sakura Dream Shrine (Master Beauty)</h3>
+                <p class="caption">Primary stylized environment hero plate: Sakura Dream shrine axis, blossom atmosphere, and warm fantasy lighting.</p>
+                <div class="tag-row"><span class="badge">Unreal Engine 5.8</span><span class="badge">Infinity Nikki Bar</span><span class="badge">Substrate Toon</span><span class="badge">Environment Hero</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="breakdown">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/td-lookdev-beauty-master-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/td-lookdev-beauty-master-1920x1080.png" alt="TouchDesigner Lookdev Master (Nikki x ATLUS)" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/td-lookdev-beauty-master-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-breakdown">BREAKDOWN</span>
+                    <span class="res-tag">16:9 · 2407.4 KB</span>
+                </div>
+                <h3>TouchDesigner Lookdev Master (Nikki x ATLUS)</h3>
+                <p class="caption">Realtime TouchDesigner lookdev master plate: stepped cel ramp, Ben-Day screen-tone halftone, ATLUS graphic HUD, and palette ribbon.</p>
+                <div class="tag-row"><span class="badge">TouchDesigner Hub</span><span class="badge">ATLUS HUD</span><span class="badge">Stepped Cel</span><span class="badge">Realtime Breakdown</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="hero">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/hero-melusina-lookdev-4k-4096x2160.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/hero-melusina-lookdev-4k-4096x2160.png" alt="Melusina Character Lookdev (4K DCI)" loading="lazy" width="4096" height="2160">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/hero-melusina-lookdev-4k-4096x2160.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (4096x2160)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-hero">HERO</span>
+                    <span class="res-tag">256:135 (4K DCI) · 5719.2 KB</span>
+                </div>
+                <h3>Melusina Character Lookdev (4K DCI)</h3>
+                <p class="caption">4K DCI master lookdev render of Melusina in full Nikki-grade wardrobe: Shorewake dress, iridescent organza, and porcelain skin.</p>
+                <div class="tag-row"><span class="badge">Character Lookdev</span><span class="badge">4K DCI</span><span class="badge">Infinity Nikki</span><span class="badge">Substrate Toon</span><span class="badge">Melusina</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="breakdown">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/td-lookdev-ab-wipe-comparison-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/td-lookdev-ab-wipe-comparison-1920x1080.png" alt="Realtime A/B Wipe Comparison Slider" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/td-lookdev-ab-wipe-comparison-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-breakdown">BREAKDOWN</span>
+                    <span class="res-tag">16:9 · 2470.0 KB</span>
+                </div>
+                <h3>Realtime A/B Wipe Comparison Slider</h3>
+                <p class="caption">Interactive split-screen A/B wipe comparing raw UE5 render against stylized Nikki x ATLUS lookdev with acid-yellow divider.</p>
+                <div class="tag-row"><span class="badge">A/B Split Wipe</span><span class="badge">Raw vs Stylized</span><span class="badge">Realtime Comparison</span><span class="badge">TouchDesigner</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="hero">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/hero-melusina-water-sanctuary-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/hero-melusina-water-sanctuary-1920x1080.png" alt="Melusina Water Sanctuary (Master Beauty)" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/hero-melusina-water-sanctuary-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-hero">HERO</span>
+                    <span class="res-tag">16:9 · 1537.5 KB</span>
+                </div>
+                <h3>Melusina Water Sanctuary (Master Beauty)</h3>
+                <p class="caption">Master beauty render of Melusina in the liquid water sanctuary with real-time caustics, optical dispersion, and live hand-tracked conduction.</p>
+                <div class="tag-row"><span class="badge">Water Sanctuary</span><span class="badge">Melusina</span><span class="badge">TouchDesigner</span><span class="badge">Caustics</span><span class="badge">Hero Beauty</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="materials">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/mat-nikki-surface-polish-2048x2048.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/mat-nikki-surface-polish-2048x2048.png" alt="Nikki-Style Surface Polish Plate" loading="lazy" width="2048" height="2048">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/mat-nikki-surface-polish-2048x2048.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (2048x2048)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-materials">MATERIALS</span>
+                    <span class="res-tag">1:1 · 282.9 KB</span>
+                </div>
+                <h3>Nikki-Style Surface Polish Plate</h3>
+                <p class="caption">Infold/Nikki surface direction breakdown: iridescence, satin sheen, sparkle masks, petal gloss, and soft pastel grading.</p>
+                <div class="tag-row"><span class="badge">Nikki Surface</span><span class="badge">Iridescence</span><span class="badge">Satin Sheen</span><span class="badge">Sparkle Mask</span><span class="badge">Infold Adjacent</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="hero">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/hero-touchdesigner-concert-stage-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/hero-touchdesigner-concert-stage-1920x1080.png" alt="TouchDesigner Concert Stage (Hero Live Beauty)" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/hero-touchdesigner-concert-stage-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-hero">HERO</span>
+                    <span class="res-tag">16:9 · 1324.0 KB</span>
+                </div>
+                <h3>TouchDesigner Concert Stage (Hero Live Beauty)</h3>
+                <p class="caption">Live interactive concert stage: purple volumetric dome, stage LED grid floor, Choral Sheep companion and Siren Harp-Bow with live performer integration.</p>
+                <div class="tag-row"><span class="badge">TouchDesigner</span><span class="badge">Interactive Stage</span><span class="badge">Choral Sheep</span><span class="badge">Siren Harp-Bow</span><span class="badge">Realtime Performance</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="hero">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/hero-zen-sanctuary-forest-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/hero-zen-sanctuary-forest-1920x1080.png" alt="Zen Sanctuary Forest Vista" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/hero-zen-sanctuary-forest-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-hero">HERO</span>
+                    <span class="res-tag">16:9 · 3188.5 KB</span>
+                </div>
+                <h3>Zen Sanctuary Forest Vista</h3>
+                <p class="caption">Wide-angle environment establishing plate: Zen Sanctuary forest canopy, volumetric light rays, and mossy stone lanterns.</p>
+                <div class="tag-row"><span class="badge">Environment Vista</span><span class="badge">Volumetric Fog</span><span class="badge">Zen Forest</span><span class="badge">Atmospheric Lighting</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="materials">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/mat-water-grand-master-grid-1680x946.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/mat-water-grand-master-grid-1680x946.png" alt="Grand Water Master V9 Portfolio Grid" loading="lazy" width="1680" height="946">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/mat-water-grand-master-grid-1680x946.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1680x946)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-materials">MATERIALS</span>
+                    <span class="res-tag">1680:946 · 298.6 KB</span>
+                </div>
+                <h3>Grand Water Master V9 Portfolio Grid</h3>
+                <p class="caption">Comprehensive water shader suite: Calm Pond, Biolum Grotto, Cinematic Hero, River Clear, and Underwater Post-process.</p>
+                <div class="tag-row"><span class="badge">Water Master</span><span class="badge">Dynamic Caustics</span><span class="badge">Shoreline Foam</span><span class="badge">Bioluminescence</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="breakdown">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/td-lookdev-quad-split-matrix-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/td-lookdev-quad-split-matrix-1920x1080.png" alt="Multi-AOV 2x2 Inspection Matrix" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/td-lookdev-quad-split-matrix-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-breakdown">BREAKDOWN</span>
+                    <span class="res-tag">16:9 · 1533.1 KB</span>
+                </div>
+                <h3>Multi-AOV 2x2 Inspection Matrix</h3>
+                <p class="caption">4-way synchronized pass inspection matrix: [1] Master Lookdev, [2] World Normals, [3] BaseColor Albedo, [4] Cel/Halftone Penumbra.</p>
+                <div class="tag-row"><span class="badge">2x2 Quad Split</span><span class="badge">AOV Matrix</span><span class="badge">World Normal</span><span class="badge">Halftone Penumbra</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="character">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/hero-choral-sheep-anime-pasture-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/hero-choral-sheep-anime-pasture-1920x1080.png" alt="Choral Sheep Ghibli Pasture Master" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/hero-choral-sheep-anime-pasture-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-character">CHARACTER</span>
+                    <span class="res-tag">16:9 · 1659.2 KB</span>
+                </div>
+                <h3>Choral Sheep Ghibli Pasture Master</h3>
+                <p class="caption">Choral sheep companion in instanced Ghibli grassy field with Vogel spiral Bokeh depth of field and pearlescent wool shading.</p>
+                <div class="tag-row"><span class="badge">Choral Sheep</span><span class="badge">Ghibli Pasture</span><span class="badge">Instanced Grass</span><span class="badge">Bokeh DoF</span><span class="badge">Companion</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="character">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/char-melusina-turntable-showcase-2048x2048.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/char-melusina-turntable-showcase-2048x2048.png" alt="Melusina Showcase Turntable Plate" loading="lazy" width="2048" height="2048">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/char-melusina-turntable-showcase-2048x2048.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (2048x2048)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-character">CHARACTER</span>
+                    <span class="res-tag">1:1 · 1913.8 KB</span>
+                </div>
+                <h3>Melusina Showcase Turntable Plate</h3>
+                <p class="caption">Full-body turntable review plate: Melusina in Shorewake dress, custom lace ruffles, boots, and ribbon bow tie.</p>
+                <div class="tag-row"><span class="badge">Character Turntable</span><span class="badge">Costume Design</span><span class="badge">Substance Painter</span><span class="badge">Blender 5.2</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="character">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/char-choral-sheep-hero-stage-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/char-choral-sheep-hero-stage-1920x1080.png" alt="Choral Sheep Hero Companion (Wool Master Stage)" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/char-choral-sheep-hero-stage-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-character">CHARACTER</span>
+                    <span class="res-tag">16:9 · 1209.8 KB</span>
+                </div>
+                <h3>Choral Sheep Hero Companion (Wool Master Stage)</h3>
+                <p class="caption">Stage portrait of the retopologized Choral Sheep companion: pearlescent wool master shader, sculpted wool spirals, chest heart emblem, and lilac rim sheen.</p>
+                <div class="tag-row"><span class="badge">Choral Sheep</span><span class="badge">Companion</span><span class="badge">Wool Master</span><span class="badge">TouchDesigner</span><span class="badge">Substrate Toon</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="breakdown">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/td-breakdown-cel-shaded-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/td-breakdown-cel-shaded-1920x1080.png" alt="Melusina Realtime Cel Shading Engine" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/td-breakdown-cel-shaded-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-breakdown">BREAKDOWN</span>
+                    <span class="res-tag">16:9 · 223.2 KB</span>
+                </div>
+                <h3>Melusina Realtime Cel Shading Engine</h3>
+                <p class="caption">TouchDesigner GLSL cel shader output on 4K Melusina model with 3-tier ramp lighting, 45-degree Ben-Day halftone penumbra, and pinkish rim kicker.</p>
+                <div class="tag-row"><span class="badge">Cel Shading</span><span class="badge">GLSL MAT</span><span class="badge">Ben-Day Halftone</span><span class="badge">Rim Kicker</span><span class="badge">ATLUS Lookdev</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="materials">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/mat-grid-showcase-families-2048x2048.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/mat-grid-showcase-families-2048x2048.png" alt="Material Families 16-Sphere Showcase" loading="lazy" width="1024" height="1024">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/mat-grid-showcase-families-2048x2048.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1024x1024)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-materials">MATERIALS</span>
+                    <span class="res-tag">1:1 · 657.6 KB</span>
+                </div>
+                <h3>Material Families 16-Sphere Showcase</h3>
+                <p class="caption">Material family turntable review: Zen shrine materials, Baroque gilded ornaments, celestial nebula, and soft skin instances.</p>
+                <div class="tag-row"><span class="badge">Material Grid</span><span class="badge">16-Sphere</span><span class="badge">Zen Family</span><span class="badge">Baroque Family</span><span class="badge">Showcase</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="hero">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/hero-concert-stage-clean-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/hero-concert-stage-clean-1920x1080.png" alt="TouchDesigner Concert Stage Environment Base" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/hero-concert-stage-clean-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-hero">HERO</span>
+                    <span class="res-tag">16:9 · 613.2 KB</span>
+                </div>
+                <h3>TouchDesigner Concert Stage Environment Base</h3>
+                <p class="caption">Pristine concert stage plate showcasing the volumetric purple dome, stage spotlights, and companion staging setup.</p>
+                <div class="tag-row"><span class="badge">Stage Environment</span><span class="badge">Volumetric Lighting</span><span class="badge">TouchDesigner</span><span class="badge">Clean Plate</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="hero">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/hero-sea-above-night-skiff-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/hero-sea-above-night-skiff-1920x1080.png" alt="Sea Above Night Skiff Hero" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/hero-sea-above-night-skiff-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-hero">HERO</span>
+                    <span class="res-tag">16:9 · 1182.9 KB</span>
+                </div>
+                <h3>Sea Above Night Skiff Hero</h3>
+                <p class="caption">Sea Above night skiff hero plate: bioluminescent water surface, celestial starmap sky, and glowing lantern skiff.</p>
+                <div class="tag-row"><span class="badge">Sea Above</span><span class="badge">Night Skiff</span><span class="badge">Bioluminescence</span><span class="badge">Celestial Starmap</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="breakdown">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/td-lookdev-cel-halftone-solo-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/td-lookdev-cel-halftone-solo-1920x1080.png" alt="Stepped Cel & Ben-Day Halftone Dot Solo" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/td-lookdev-cel-halftone-solo-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-breakdown">BREAKDOWN</span>
+                    <span class="res-tag">16:9 · 2301.1 KB</span>
+                </div>
+                <h3>Stepped Cel & Ben-Day Halftone Dot Solo</h3>
+                <p class="caption">Solo pass isolating the 3-step quantized cel ramp and procedural 45-degree Ben-Day halftone screen-tone in shadow transitions.</p>
+                <div class="tag-row"><span class="badge">Cel Ramp</span><span class="badge">Ben-Day Dot</span><span class="badge">Halftone Penumbra</span><span class="badge">Pass Solo</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="materials">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/prop-siren-harp-bow-hero-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/prop-siren-harp-bow-hero-1920x1080.png" alt="Siren Harp-Bow Instrument (Hero Stage Lit)" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/prop-siren-harp-bow-hero-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-materials">MATERIALS</span>
+                    <span class="res-tag">16:9 · 2043.6 KB</span>
+                </div>
+                <h3>Siren Harp-Bow Instrument (Hero Stage Lit)</h3>
+                <p class="caption">Stage portrait of the Siren Harp-Bow musical weapon: rose-gold soundbox, resonant strings, tuning pegs, and pedestal docking.</p>
+                <div class="tag-row"><span class="badge">Siren Harp-Bow</span><span class="badge">Hero Prop</span><span class="badge">Musical Weapon</span><span class="badge">TouchDesigner</span><span class="badge">Live Tracking</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="hero">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/hero-escher-sanctuary-master-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/hero-escher-sanctuary-master-1920x1080.png" alt="Surreal Escher Sanctuary Stage" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/hero-escher-sanctuary-master-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-hero">HERO</span>
+                    <span class="res-tag">16:9 · 1324.0 KB</span>
+                </div>
+                <h3>Surreal Escher Sanctuary Stage</h3>
+                <p class="caption">Surreal architectural sanctuary with impossible geometry, starry night backdrop, and live performer integration.</p>
+                <div class="tag-row"><span class="badge">Escher Sanctuary</span><span class="badge">Surreal Architecture</span><span class="badge">Impossible Geometry</span><span class="badge">Starry Sky</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="materials">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/mat-celestial-nebula-starmap-1080x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/mat-celestial-nebula-starmap-1080x1080.png" alt="MI_Show_CelestialNebula (NASA Starmap)" loading="lazy" width="1080" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/mat-celestial-nebula-starmap-1080x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1080x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-materials">MATERIALS</span>
+                    <span class="res-tag">1:1 · 49.5 KB</span>
+                </div>
+                <h3>MI_Show_CelestialNebula (NASA Starmap)</h3>
+                <p class="caption">NASA starmap shader: real celestial constellation coordinates, parallax nebula layers, and dynamic galaxy glow.</p>
+                <div class="tag-row"><span class="badge">Celestial Starmap</span><span class="badge">NASA Source</span><span class="badge">Parallax Nebula</span><span class="badge">NightShift</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="breakdown">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/vfx-arrow-launch-water-globules-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/vfx-arrow-launch-water-globules-1920x1080.png" alt="Arrow Launch & Fluid Water Globules" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/vfx-arrow-launch-water-globules-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-breakdown">BREAKDOWN</span>
+                    <span class="res-tag">16:9 · 1494.3 KB</span>
+                </div>
+                <h3>Arrow Launch & Fluid Water Globules</h3>
+                <p class="caption">Dynamic fluid FX pass: aerodynamic arrow launch leaving iridescent coalescing water globules following hand tracking gestures.</p>
+                <div class="tag-row"><span class="badge">Water Globules</span><span class="badge">Arrow Launch</span><span class="badge">Houdini FLIP</span><span class="badge">Realtime VFX</span><span class="badge">TouchDesigner</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="breakdown">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/td-breakdown-water-normals-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/td-breakdown-water-normals-1920x1080.png" alt="GPU Fluid Water Surface & Normal Map" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/td-breakdown-water-normals-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-breakdown">BREAKDOWN</span>
+                    <span class="res-tag">16:9 · 614.7 KB</span>
+                </div>
+                <h3>GPU Fluid Water Surface & Normal Map</h3>
+                <p class="caption">Water VFX Layer A normal map and displacement surface driven by performer hand velocity and audio FFT bands.</p>
+                <div class="tag-row"><span class="badge">Water Normals</span><span class="badge">GPU Fluid</span><span class="badge">Displacement</span><span class="badge">Audio Reactive</span><span class="badge">TouchDesigner</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="hero">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/hero-nikki-motif-atmosphere-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/hero-nikki-motif-atmosphere-1920x1080.png" alt="Nikki Motif Macro Atmosphere" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/hero-nikki-motif-atmosphere-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-hero">HERO</span>
+                    <span class="res-tag">16:9 · 1825.0 KB</span>
+                </div>
+                <h3>Nikki Motif Macro Atmosphere</h3>
+                <p class="caption">Fashion-fantasy atmospheric framing: celestial motifs, floating stardust particles, and pastel caustic refractions.</p>
+                <div class="tag-row"><span class="badge">Fashion Fantasy</span><span class="badge">Nikki Motif</span><span class="badge">Caustic Refractions</span><span class="badge">Macro Lighting</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="breakdown">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/td-lookdev-thinfilm-sheen-solo-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/td-lookdev-thinfilm-sheen-solo-1920x1080.png" alt="Thin-Film Iridescent Organza Sheen Solo" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/td-lookdev-thinfilm-sheen-solo-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-breakdown">BREAKDOWN</span>
+                    <span class="res-tag">16:9 · 212.0 KB</span>
+                </div>
+                <h3>Thin-Film Iridescent Organza Sheen Solo</h3>
+                <p class="caption">Solo pass isolating the Airy thin-film optical interference rainbow spectrum and anisotropic satin sheen.</p>
+                <div class="tag-row"><span class="badge">Thin Film</span><span class="badge">Airy Formula</span><span class="badge">Iridescent Sheen</span><span class="badge">Organza</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="character">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/char-melusina-accessories-kit-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/char-melusina-accessories-kit-1920x1080.png" alt="Melusina Accessories & Filigree Kit" loading="lazy" width="1100" height="1500">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/char-melusina-accessories-kit-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1100x1500)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-character">CHARACTER</span>
+                    <span class="res-tag">1100:1500 · 2019.7 KB</span>
+                </div>
+                <h3>Melusina Accessories & Filigree Kit</h3>
+                <p class="caption">Substrate Toon accessory inspection: gilded hairpins, musical clef brooches, and pearl tassels.</p>
+                <div class="tag-row"><span class="badge">Accessories</span><span class="badge">Gilded Filigree</span><span class="badge">Substrate Toon</span><span class="badge">Model Inspection</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="materials">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/mat-cherry-blossom-petal-1080x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/mat-cherry-blossom-petal-1080x1080.png" alt="MI_Show_CherryBlossom (Sakura Petal)" loading="lazy" width="1080" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/mat-cherry-blossom-petal-1080x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1080x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-materials">MATERIALS</span>
+                    <span class="res-tag">1:1 · 49.5 KB</span>
+                </div>
+                <h3>MI_Show_CherryBlossom (Sakura Petal)</h3>
+                <p class="caption">Sakura petal translucent material: two-sided subsurface scattering, micro-roughness gloss, and wind flutter response.</p>
+                <div class="tag-row"><span class="badge">Cherry Blossom</span><span class="badge">Two-Sided SSS</span><span class="badge">Wind Reactivity</span><span class="badge">Petal Gloss</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="breakdown">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/td-lookdev-crystal-dispersion-solo-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/td-lookdev-crystal-dispersion-solo-1920x1080.png" alt="Cauchy Refractive Dispersion Solo" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/td-lookdev-crystal-dispersion-solo-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-breakdown">BREAKDOWN</span>
+                    <span class="res-tag">16:9 · 3026.1 KB</span>
+                </div>
+                <h3>Cauchy Refractive Dispersion Solo</h3>
+                <p class="caption">Solo pass isolating Cauchy refractive chromatic dispersion, diamond facet micro-sparkles, and starburst glints.</p>
+                <div class="tag-row"><span class="badge">Cauchy Dispersion</span><span class="badge">Refractive Rays</span><span class="badge">Facet Sparkles</span><span class="badge">Starburst</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="breakdown">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/vfx-choral-sheep-wool-master-beauty-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/vfx-choral-sheep-wool-master-beauty-1920x1080.png" alt="Choral Sheep Wool Master Lookdev" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/vfx-choral-sheep-wool-master-beauty-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-breakdown">BREAKDOWN</span>
+                    <span class="res-tag">16:9 · 799.6 KB</span>
+                </div>
+                <h3>Choral Sheep Wool Master Lookdev</h3>
+                <p class="caption">Material and acoustic lookdev plate: pearlescent wool coat, sculpted micro-relief, and Chladni acoustic cymatic resonance.</p>
+                <div class="tag-row"><span class="badge">Wool Master</span><span class="badge">Chladni Resonance</span><span class="badge">Cymatics</span><span class="badge">Lookdev</span><span class="badge">TouchDesigner</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="hero">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/hero-baroque-liquid-cathedral-1280x720.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/hero-baroque-liquid-cathedral-1280x720.png" alt="Baroque Liquid Cathedral" loading="lazy" width="1280" height="720">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/hero-baroque-liquid-cathedral-1280x720.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1280x720)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-hero">HERO</span>
+                    <span class="res-tag">16:9 · 1677.9 KB</span>
+                </div>
+                <h3>Baroque Liquid Cathedral</h3>
+                <p class="caption">Surreal architectural plate: Baroque Liquid Cathedral arches emerging from subterranean crystal waters.</p>
+                <div class="tag-row"><span class="badge">Liquid Cathedral</span><span class="badge">Baroque Architecture</span><span class="badge">Surreal World</span><span class="badge">Crystal Water</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="materials">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/mat-nikki-hero-sakura-dream-1080x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/mat-nikki-hero-sakura-dream-1080x1080.png" alt="MI_NikkiHero_SakuraDream (Fashion Finish)" loading="lazy" width="1080" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/mat-nikki-hero-sakura-dream-1080x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1080x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-materials">MATERIALS</span>
+                    <span class="res-tag">1:1 · 49.5 KB</span>
+                </div>
+                <h3>MI_NikkiHero_SakuraDream (Fashion Finish)</h3>
+                <p class="caption">Sakura Dream signature material instance: delicate rose-gold silk with procedural petal brocade stamping.</p>
+                <div class="tag-row"><span class="badge">Sakura Dream</span><span class="badge">Rose Gold Silk</span><span class="badge">Brocade Stamp</span><span class="badge">Fashion Finish</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="breakdown">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/td-lookdev-sobel-ink-solo-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/td-lookdev-sobel-ink-solo-1920x1080.png" alt="Sobel Normal/Depth Ink Contours Solo" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/td-lookdev-sobel-ink-solo-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-breakdown">BREAKDOWN</span>
+                    <span class="res-tag">16:9 · 17.8 KB</span>
+                </div>
+                <h3>Sobel Normal/Depth Ink Contours Solo</h3>
+                <p class="caption">Solo pass isolating 3x3 Sobel normal and depth discontinuity convolution for dynamic comic ink line weighting.</p>
+                <div class="tag-row"><span class="badge">Sobel Filter</span><span class="badge">Ink Contour</span><span class="badge">Comic Line Weight</span><span class="badge">Pass Solo</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="materials">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/mat-nikki-hero-space-cathedral-1080x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/mat-nikki-hero-space-cathedral-1080x1080.png" alt="MI_NikkiHero_SpaceCathedral" loading="lazy" width="1080" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/mat-nikki-hero-space-cathedral-1080x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1080x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-materials">MATERIALS</span>
+                    <span class="res-tag">1:1 · 49.5 KB</span>
+                </div>
+                <h3>MI_NikkiHero_SpaceCathedral</h3>
+                <p class="caption">Space Cathedral signature material instance: deep plum velvet with constellation gold-leaf embroidery.</p>
+                <div class="tag-row"><span class="badge">Space Cathedral</span><span class="badge">Plum Velvet</span><span class="badge">Gold Leaf Embroidery</span><span class="badge">NightShift</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="breakdown">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/td-lookdev-falsecolor-zebra-1920x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/td-lookdev-falsecolor-zebra-1920x1080.png" alt="False Color Luminance (IRE Calibration)" loading="lazy" width="1920" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/td-lookdev-falsecolor-zebra-1920x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1920x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-breakdown">BREAKDOWN</span>
+                    <span class="res-tag">16:9 · 89.9 KB</span>
+                </div>
+                <h3>False Color Luminance (IRE Calibration)</h3>
+                <p class="caption">False color luminance calibration plate (IRE scale): sub-blacks (navy), shadows (cyan), skin (pink), highlights (yellow), clipping (red).</p>
+                <div class="tag-row"><span class="badge">False Color</span><span class="badge">IRE Calibration</span><span class="badge">Exposure Zebra</span><span class="badge">Tech Art Tool</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="character">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/char-shorewake-dress-48mat-preview.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/char-shorewake-dress-48mat-preview.png" alt="Shorewake Dress 48-MAT Assembly" loading="lazy" width="1280" height="1280">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/char-shorewake-dress-48mat-preview.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1280x1280)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-character">CHARACTER</span>
+                    <span class="res-tag">1:1 · 377.9 KB</span>
+                </div>
+                <h3>Shorewake Dress 48-MAT Assembly</h3>
+                <p class="caption">Modular garment assembly breakdown: 48-material Shorewake Dress showing layered skirt panels, shawl, and lace trims.</p>
+                <div class="tag-row"><span class="badge">Modular Garment</span><span class="badge">Shorewake Dress</span><span class="badge">48-MAT</span><span class="badge">Lace Trims</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="materials">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/mat-nikki-hero-cosmic-orrery-1080x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/mat-nikki-hero-cosmic-orrery-1080x1080.png" alt="MI_NikkiHero_CosmicOrrery" loading="lazy" width="1080" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/mat-nikki-hero-cosmic-orrery-1080x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1080x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-materials">MATERIALS</span>
+                    <span class="res-tag">1:1 · 49.5 KB</span>
+                </div>
+                <h3>MI_NikkiHero_CosmicOrrery</h3>
+                <p class="caption">Cosmic Orrery astronomical plate: brass planetary gears, refractive celestial glass, and spectral dispersion.</p>
+                <div class="tag-row"><span class="badge">Cosmic Orrery</span><span class="badge">Astronomical Gear</span><span class="badge">Celestial Glass</span><span class="badge">Dispersion</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="hero">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/hero-floating-islands-dreamscape-1024x1024.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/hero-floating-islands-dreamscape-1024x1024.png" alt="Floating Islands Dreamscape" loading="lazy" width="1024" height="1024">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/hero-floating-islands-dreamscape-1024x1024.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1024x1024)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-hero">HERO</span>
+                    <span class="res-tag">1:1 · 595.8 KB</span>
+                </div>
+                <h3>Floating Islands Dreamscape</h3>
+                <p class="caption">Surreal floating islands concept: gravity-defying rock spires, ethereal cloud layer, and glowing flora.</p>
+                <div class="tag-row"><span class="badge">Floating Islands</span><span class="badge">Genshin Shader</span><span class="badge">Stylized Clouds</span><span class="badge">Dreamscape</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="materials">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/mat-show-skin-soft-porcelain-1080x1080.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/mat-show-skin-soft-porcelain-1080x1080.png" alt="MI_Show_SkinSoft (Subsurface Porcelain)" loading="lazy" width="1080" height="1080">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/mat-show-skin-soft-porcelain-1080x1080.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (1080x1080)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-materials">MATERIALS</span>
+                    <span class="res-tag">1:1 · 49.5 KB</span>
+                </div>
+                <h3>MI_Show_SkinSoft (Subsurface Porcelain)</h3>
+                <p class="caption">Anime porcelain skin shader: soft subsurface scattering profile, warm cheek blush penumbra, and peach fuzz specular.</p>
+                <div class="tag-row"><span class="badge">Porcelain Skin</span><span class="badge">Subsurface Scattering</span><span class="badge">Anime Lookdev</span><span class="badge">Blush Penumbra</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="pcg">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/pcg-sea-above-density-heatmap-512x512.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/pcg-sea-above-density-heatmap-512x512.png" alt="Sea Above PCG Density & Exclusion Heatmap" loading="lazy" width="512" height="512">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/pcg-sea-above-density-heatmap-512x512.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (512x512)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-pcg">PCG</span>
+                    <span class="res-tag">1:1 · 4.2 KB</span>
+                </div>
+                <h3>Sea Above PCG Density & Exclusion Heatmap</h3>
+                <p class="caption">Procedural Content Generation heatmap: kelp and reef scatter density with player traversal exclusion zones.</p>
+                <div class="tag-row"><span class="badge">PCG Graph</span><span class="badge">Density Heatmap</span><span class="badge">Exclusion Zone</span><span class="badge">Technical Art</span></div>
+            </div>
+        </article>
+        
+        <article class="render-card" data-group="pcg">
+            <div class="card-media">
+                <picture>
+                    <source srcset="../generated/assets/unreal/pcg-zen-shrine-axis-route-proof-512x512.webp" type="image/webp">
+                    <img src="../generated/assets/unreal/pcg-zen-shrine-axis-route-proof-512x512.png" alt="ZEN_SHRINE_AXIS Route Alignment Proof" loading="lazy" width="512" height="512">
+                </picture>
+                <div class="media-overlay">
+                    <a href="../generated/assets/unreal/pcg-zen-shrine-axis-route-proof-512x512.png" target="_blank" class="zoom-btn" title="View Full Resolution">⤢ Full Res (512x512)</a>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-meta">
+                    <span class="group-pill group-pcg">PCG</span>
+                    <span class="res-tag">1:1 · 1.7 KB</span>
+                </div>
+                <h3>ZEN_SHRINE_AXIS Route Alignment Proof</h3>
+                <p class="caption">Procedural alignment verification for Torii, Sando, Kairo, and Haiden modular shrine assembly without clipping.</p>
+                <div class="tag-row"><span class="badge">ZEN_SHRINE_AXIS</span><span class="badge">Route Proof</span><span class="badge">Spline Generation</span><span class="badge">Technical Proof</span></div>
+            </div>
+        </article>
+        
+    </div>
+</main>
+
+<footer>
+    <p><strong>Brennan Shepherd</strong> · Environment & Technical Artist · Melodia Melusina Project</p>
+    <p style="margin-top: 0.5rem; opacity: 0.6;">Assembled autonomously for website deployment tonight · Unreal Engine 5.8 & TouchDesigner Live Rig</p>
+</footer>
+
+<script>
+function filterGroup(group, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    const cards = document.querySelectorAll('.render-card');
+    cards.forEach(card => {
+        if (group === 'all' || card.getAttribute('data-group') === group) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
+
+</body>
+</html>
