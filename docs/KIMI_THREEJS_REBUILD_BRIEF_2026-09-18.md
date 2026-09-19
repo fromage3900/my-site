@@ -1,6 +1,73 @@
 # Kimi brief — Three.js toy rebuild pass
 Date: 2026-09-18
 
+## Open these first
+
+Repo:
+https://github.com/fromage3900/my-site
+
+Working branch:
+https://github.com/fromage3900/my-site/tree/audit/recruiter-truth-polish-2026-09-18
+
+Live cleanup PR:
+https://github.com/fromage3900/my-site/pull/47
+
+This brief:
+https://github.com/fromage3900/my-site/blob/audit/recruiter-truth-polish-2026-09-18/docs/KIMI_THREEJS_REBUILD_BRIEF_2026-09-18.md
+
+September hero bank:
+https://github.com/fromage3900/my-site/tree/audit/recruiter-truth-polish-2026-09-18/public/melodia/melusina-morning-vfx/2026-09-17/heroes
+
+Strongest existing reference implementation — Accessory Atelier:
+https://github.com/fromage3900/my-site/blob/audit/recruiter-truth-polish-2026-09-18/tools/fromage-webgl-kit/accessory-viewer/index.html
+
+Floral Study:
+https://github.com/fromage3900/my-site/blob/audit/recruiter-truth-polish-2026-09-18/tools/fromage-webgl-kit/accessory-viewer/floral-study.html
+
+Product Motion Lab:
+https://github.com/fromage3900/my-site/blob/audit/recruiter-truth-polish-2026-09-18/tools/fromage-webgl-kit/prototypes/product-motion-lab/index.html
+
+Fabric Material Lab:
+https://github.com/fromage3900/my-site/blob/audit/recruiter-truth-polish-2026-09-18/tools/fromage-webgl-kit/prototypes/fabric-material-lab/index.html
+
+Constellation Brush:
+https://github.com/fromage3900/my-site/blob/audit/recruiter-truth-polish-2026-09-18/wix/constellation-brush.html
+
+Living Worlds:
+https://github.com/fromage3900/my-site/blob/audit/recruiter-truth-polish-2026-09-18/wix/melodia-living-worlds.html
+
+Cosmic Orrery:
+https://github.com/fromage3900/my-site/blob/audit/recruiter-truth-polish-2026-09-18/wix/cosmic-orrery.html
+
+Resonance Motion Study:
+https://github.com/fromage3900/my-site/blob/audit/recruiter-truth-polish-2026-09-18/tools/fromage-webgl-kit/accessory-viewer/resonance-motion-study.html
+
+## Project context Kimi needs before touching anything
+
+This is Brennan Shepherd's final-year 3D Animation portfolio and the public face of **Melodia Melusina**, a stylized rhythm-JRPG / technical-art project in Unreal Engine 5.8.
+
+The site has accumulated a lot of older experiments, agent-written prose, old renders, technical dashboards, and browser toys. The current cleanup is NOT about adding more systems. It is about making the website feel like one artist made it in September 2026.
+
+Brennan's strongest current lane is:
+- stylized environment art;
+- technical art;
+- procedural worldbuilding;
+- Unreal Engine 5.8;
+- Houdini / Hython;
+- PCG / PCGEx;
+- materials / shaders;
+- TouchDesigner audio-reactive visuals;
+- character / wardrobe lookdev;
+- strange musical interactive work.
+
+The visual identity is romantic fantasy + magical-girl + artbook editorial + cosmic diagrams. It should feel authored, soft, strange, musical, and visually intentional.
+
+The recruiter-facing rule is:
+
+**ART FIRST. TECHNICAL PROOF SECOND.**
+
+The browser toys should never read like generic WebGL tutorials or SaaS configurators.
+
 ## Goal
 Rebuild the weakest browser toys so they feel authored for Brennan Shepherd's September 2026 portfolio rather than inherited WebGL demos.
 
