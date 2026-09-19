@@ -74,7 +74,12 @@
     "wix/melusina-model-tooling.html",
     "wix/nous-research-packet.html",
     "wix/nvidia-recruiter-sendoff.html",
-    "wix/pipeline.html"
+    "wix/pipeline.html",
+    "wix/melusina-final-renders.html",
+    "wix/render-constellation.html",
+    "generated/renders_config.json",
+    "generated/assets/latest-hero.png",
+    "generated/assets/l-sakurapath-hero.png"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -83,7 +88,9 @@
     "tools/fromage-webgl-kit/",
     "wix/models/",
     "generated/assets/figma/atelier-figma-pack-2026-09-14/",
-    "public/melodia/melusina-morning-vfx/2026-09-17/"
+    "public/melodia/melusina-morning-vfx/2026-09-17/",
+    "public/melodia/melusina-morning-vfx/",
+    "generated/assets/figma/"
   ],
   "blocked_by_default": [
     "new public pages",
@@ -244,8 +251,8 @@
       "id": "melusina-morning-figma-v3-promotion-2026-09-17",
       "reason": "Owner explicitly requested a website audit, integration of the updated Figma Compendium artifact direction, and promotion of the staged 2026-09-17 Melusina Morning render set into the existing recruiter-facing hierarchy.",
       "scope": [
-        "generated/assets/figma/atelier-figma-pack-2026-09-14/ — preserve the already-generated Figma handoff pack as bounded design evidence",
-        "public/melodia/melusina-morning-vfx/2026-09-17/ — staged current render masters, manifest, and readmes promoted by the recruiter-facing pages",
+        "generated/assets/figma/atelier-figma-pack-2026-09-14/ \u2014 preserve the already-generated Figma handoff pack as bounded design evidence",
+        "public/melodia/melusina-morning-vfx/2026-09-17/ \u2014 staged current render masters, manifest, and readmes promoted by the recruiter-facing pages",
         "existing allowlisted recruiter pages and CSS may reference these assets without creating new public routes"
       ],
       "exclusions": [
@@ -254,6 +261,21 @@
         "no global restyling",
         "no unrelated asset-bank promotion",
         "no weakening of token, link, polish, or freeze validation"
+      ]
+    },
+    {
+      "id": "melodia-melusina-final-renders-2026-09-18",
+      "reason": "Owner requested upload of final 40 curated TouchDesigner and Unreal Engine lookdev renders to the website tonight.",
+      "scope": [
+        "wix/melusina-final-renders.html - dedicated 40-plate filterable lookdev showcase gallery",
+        "wix/hero-renders.html & wix/shader-breakdowns.html - wired to the 40 final render plates",
+        "wix/render-constellation.html & generated/renders_config.json - updated with 40 curated assets",
+        "generated/assets/unreal/ - 40 lossless PNGs, WebP derivatives, and 800px thumbnails",
+        "public/melodia/melusina-morning-vfx/ - staged hero plates and verify manifest"
+      ],
+      "exclusions": [
+        "no breaking changes to core recruiter routes",
+        "zero broken links or references"
       ]
     }
   ]
