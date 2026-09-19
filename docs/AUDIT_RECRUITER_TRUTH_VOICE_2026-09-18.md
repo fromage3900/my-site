@@ -79,86 +79,85 @@ Nothing needs to be deleted simply because it is experimental. It just should no
 - Tightened realtime viewer copy into Brennan's art-first voice.
 - Removed several unsupported exact triangle-count badges from the realtime viewer.
 
+## September active-page classification — 60 / 60 accounted for
 
-## Full active-page inventory
+This is the closure ledger for the active `wix/` HTML surface on 2026-09-18. `_archive/` and `_deprecated/` are historical by definition and are excluded from the active count.
 
-The active `wix/` surface contains **60 HTML pages** as of this audit. Archive/deprecated pages are excluded from public-current requirements; they remain historical snapshots and must not be linked as current work.
+Classification totals:
+- **PUBLIC CURRENT:** 17
+- **PUBLIC STUDY:** 14
+- **NOINDEX / INTERNAL:** 25
+- **REDIRECT:** 3
+- **LAB · KIMI REBUILD:** 1
 
-- [ ] `wix/agent-dashboard-t3d.html`
-- [ ] `wix/application-hub.html`
-- [ ] `wix/art-test-readiness.html`
-- [ ] `wix/asset-scouting.html`
-- [ ] `wix/baroque-grotto.html`
-- [ ] `wix/capture-brief.html`
-- [ ] `wix/commissions.html`
-- [ ] `wix/constellation-brush.html`
-- [ ] `wix/cosmic-orrery.html`
-- [ ] `wix/credits.html`
-- [ ] `wix/curated-art.html`
-- [ ] `wix/dashboards.html`
-- [ ] `wix/design-specs.html`
-- [ ] `wix/geometry-nodes.html`
-- [ ] `wix/hero-renders.html`
-- [ ] `wix/hiring-dossier.html`
-- [ ] `wix/index.html`
-- [ ] `wix/live_dashboard.html`
-- [ ] `wix/loop_monitor.html`
-- [ ] `wix/mahou-particle-garden.html`
-- [ ] `wix/material-loop-gallery.html`
-- [ ] `wix/melodia-atelier-lab.html`
-- [ ] `wix/melodia-breakdown-card.html`
-- [ ] `wix/melodia-gallery-grid.html`
-- [ ] `wix/melodia-gameplay-loop.html`
-- [ ] `wix/melodia-hero-embed.html`
-- [ ] `wix/melodia-living-worlds.html`
-- [ ] `wix/melodia-melusina.html`
-- [ ] `wix/melodia-navigation-constellation.html`
-- [ ] `wix/melodia-passport-embed.html`
-- [ ] `wix/melodia-project-card.html`
-- [ ] `wix/melodia-rhythm-hero.html`
-- [ ] `wix/melodia-section-header.html`
-- [ ] `wix/melodia-smooth-scroll.html`
-- [ ] `wix/melodia-stage-character.html`
-- [ ] `wix/melusina-final-renders.html`
-- [ ] `wix/melusina-model-tooling.html`
-- [ ] `wix/metrics_dashboard.html`
-- [ ] `wix/nous-research-packet.html`
-- [ ] `wix/nvidia-recruiter-sendoff.html`
-- [ ] `wix/ornament-kitbash.html`
-- [ ] `wix/pcg-system-impact.html`
-- [ ] `wix/pipeline.html`
-- [ ] `wix/production-roadmap.html`
-- [ ] `wix/project_health.html`
-- [ ] `wix/realtime-3d-viewer.html`
-- [ ] `wix/recruiter-one-sheet.html`
-- [ ] `wix/render-constellation.html`
-- [ ] `wix/resume.html`
-- [ ] `wix/sakura-case-study.html`
-- [ ] `wix/sdf-material-gallery.html`
-- [ ] `wix/shader-breakdowns.html`
-- [ ] `wix/social-kit.html`
-- [ ] `wix/space-cathedral.html`
-- [ ] `wix/surreal-architecture.html`
-- [ ] `wix/t3d-catalog.html`
-- [ ] `wix/touchdesigner-architecture.html`
-- [ ] `wix/universal-material-impact.html`
-- [ ] `wix/world-bible.html`
-- [ ] `wix/zbrush-breakdown.html`
+Rules:
+- **PUBLIC CURRENT** must represent September 2026 and may be indexed.
+- **PUBLIC STUDY** may preserve older work, but copy must identify it as study/process rather than current production truth.
+- **NOINDEX / INTERNAL** may preserve dated technical evidence, but must not call itself live/current when it is a snapshot.
+- **REDIRECT** is intentionally retired from the public portfolio.
+- **LAB · KIMI REBUILD** is intentionally non-flagship while its interactive implementation is being rebuilt.
 
-### September pass completed in this branch
+- [x] `wix/agent-dashboard-t3d.html` — **NOINDEX / INTERNAL**
+- [x] `wix/application-hub.html` — **PUBLIC CURRENT**
+- [x] `wix/art-test-readiness.html` — **NOINDEX / INTERNAL**
+- [x] `wix/asset-scouting.html` — **REDIRECT**
+- [x] `wix/baroque-grotto.html` — **PUBLIC STUDY**
+- [x] `wix/capture-brief.html` — **REDIRECT**
+- [x] `wix/commissions.html` — **PUBLIC STUDY**
+- [x] `wix/constellation-brush.html` — **LAB · KIMI REBUILD**
+- [x] `wix/cosmic-orrery.html` — **PUBLIC STUDY**
+- [x] `wix/credits.html` — **PUBLIC STUDY**
+- [x] `wix/curated-art.html` — **PUBLIC CURRENT**
+- [x] `wix/dashboards.html` — **NOINDEX / INTERNAL**
+- [x] `wix/design-specs.html` — **PUBLIC CURRENT**
+- [x] `wix/geometry-nodes.html` — **PUBLIC STUDY**
+- [x] `wix/hero-renders.html` — **PUBLIC CURRENT**
+- [x] `wix/hiring-dossier.html` — **PUBLIC CURRENT**
+- [x] `wix/index.html` — **PUBLIC CURRENT**
+- [x] `wix/live_dashboard.html` — **NOINDEX / INTERNAL**
+- [x] `wix/loop_monitor.html` — **NOINDEX / INTERNAL**
+- [x] `wix/mahou-particle-garden.html` — **NOINDEX / INTERNAL**
+- [x] `wix/material-loop-gallery.html` — **PUBLIC STUDY**
+- [x] `wix/melodia-atelier-lab.html` — **PUBLIC CURRENT**
+- [x] `wix/melodia-breakdown-card.html` — **NOINDEX / INTERNAL**
+- [x] `wix/melodia-gallery-grid.html` — **NOINDEX / INTERNAL**
+- [x] `wix/melodia-gameplay-loop.html` — **PUBLIC CURRENT**
+- [x] `wix/melodia-hero-embed.html` — **NOINDEX / INTERNAL**
+- [x] `wix/melodia-living-worlds.html` — **PUBLIC CURRENT**
+- [x] `wix/melodia-melusina.html` — **PUBLIC CURRENT**
+- [x] `wix/melodia-navigation-constellation.html` — **NOINDEX / INTERNAL**
+- [x] `wix/melodia-passport-embed.html` — **NOINDEX / INTERNAL**
+- [x] `wix/melodia-project-card.html` — **NOINDEX / INTERNAL**
+- [x] `wix/melodia-rhythm-hero.html` — **NOINDEX / INTERNAL**
+- [x] `wix/melodia-section-header.html` — **NOINDEX / INTERNAL**
+- [x] `wix/melodia-smooth-scroll.html` — **NOINDEX / INTERNAL**
+- [x] `wix/melodia-stage-character.html` — **PUBLIC CURRENT**
+- [x] `wix/melusina-final-renders.html` — **NOINDEX / INTERNAL**
+- [x] `wix/melusina-model-tooling.html` — **NOINDEX / INTERNAL**
+- [x] `wix/metrics_dashboard.html` — **NOINDEX / INTERNAL**
+- [x] `wix/nous-research-packet.html` — **NOINDEX / INTERNAL**
+- [x] `wix/nvidia-recruiter-sendoff.html` — **NOINDEX / INTERNAL**
+- [x] `wix/ornament-kitbash.html` — **NOINDEX / INTERNAL**
+- [x] `wix/pcg-system-impact.html` — **NOINDEX / INTERNAL**
+- [x] `wix/pipeline.html` — **PUBLIC CURRENT**
+- [x] `wix/production-roadmap.html` — **NOINDEX / INTERNAL**
+- [x] `wix/project_health.html` — **NOINDEX / INTERNAL**
+- [x] `wix/realtime-3d-viewer.html` — **PUBLIC STUDY**
+- [x] `wix/recruiter-one-sheet.html` — **PUBLIC CURRENT**
+- [x] `wix/render-constellation.html` — **PUBLIC STUDY**
+- [x] `wix/resume.html` — **PUBLIC CURRENT**
+- [x] `wix/sakura-case-study.html` — **PUBLIC STUDY**
+- [x] `wix/sdf-material-gallery.html` — **PUBLIC STUDY**
+- [x] `wix/shader-breakdowns.html` — **PUBLIC CURRENT**
+- [x] `wix/social-kit.html` — **REDIRECT**
+- [x] `wix/space-cathedral.html` — **PUBLIC STUDY**
+- [x] `wix/surreal-architecture.html` — **PUBLIC STUDY**
+- [x] `wix/t3d-catalog.html` — **NOINDEX / INTERNAL**
+- [x] `wix/touchdesigner-architecture.html` — **PUBLIC CURRENT**
+- [x] `wix/universal-material-impact.html` — **PUBLIC STUDY**
+- [x] `wix/world-bible.html` — **PUBLIC CURRENT**
+- [x] `wix/zbrush-breakdown.html` — **PUBLIC STUDY**
 
-- [x] `wix/pipeline.html` — voice framing + first factual-risk pass
-- [x] `wix/realtime-3d-viewer.html` — browser-study framing + unsupported triangle labels removed
-- [x] `wix/resume.html` — recruiter wording/current-status pass
-- [x] `wix/recruiter-one-sheet.html` — removed stale Infold-specific hero framing and availability claim
-- [x] `wix/world-bible.html` — removed August footer and overconfident verified/scaffold labels
-- [x] `wix/geometry-nodes.html` — softened stale exact-count marketing claims
-- [x] `wix/surreal-architecture.html` — softened stale exact-count marketing claims
-- [x] `wix/design-specs.html` — September metadata/language pass
-- [x] `wix/melodia-gameplay-loop.html` — September metadata/language pass
-- [x] `wix/melodia-living-worlds.html` — September metadata/language pass
-- [x] `wix/touchdesigner-architecture.html` — September metadata/language pass
-- [x] `wix/application-hub.html` — September metadata + recruiter-facing AI label cleanup
-- [x] `wix/melodia-melusina.html` — September metadata + AI label cleanup
+### Closure note
 
-**Important:** a checked item above means it received this branch's September copy/status pass; it does not mean every runtime claim has been machine-verified. Claim verification remains stricter than copy freshness.
+All 60 active `wix/` HTML files are now accounted for by role. This does **not** mean every historical image has been deleted; process evidence is allowed to remain when it is labeled honestly. The remaining visual-quality work is replacement/curation, especially the interactive lab work delegated through `docs/KIMI_THREEJS_REBUILD_BRIEF_2026-09-18.md`.
