@@ -78,3 +78,87 @@ Nothing needs to be deleted simply because it is experimental. It just should no
 - Replaced the false-sounding "enterprise live-ops" paragraph with the actual GitHub/evidence workflow.
 - Tightened realtime viewer copy into Brennan's art-first voice.
 - Removed several unsupported exact triangle-count badges from the realtime viewer.
+
+
+## Full active-page inventory
+
+The active `wix/` surface contains **60 HTML pages** as of this audit. Archive/deprecated pages are excluded from public-current requirements; they remain historical snapshots and must not be linked as current work.
+
+- [ ] `wix/agent-dashboard-t3d.html`
+- [ ] `wix/application-hub.html`
+- [ ] `wix/art-test-readiness.html`
+- [ ] `wix/asset-scouting.html`
+- [ ] `wix/baroque-grotto.html`
+- [ ] `wix/capture-brief.html`
+- [ ] `wix/commissions.html`
+- [ ] `wix/constellation-brush.html`
+- [ ] `wix/cosmic-orrery.html`
+- [ ] `wix/credits.html`
+- [ ] `wix/curated-art.html`
+- [ ] `wix/dashboards.html`
+- [ ] `wix/design-specs.html`
+- [ ] `wix/geometry-nodes.html`
+- [ ] `wix/hero-renders.html`
+- [ ] `wix/hiring-dossier.html`
+- [ ] `wix/index.html`
+- [ ] `wix/live_dashboard.html`
+- [ ] `wix/loop_monitor.html`
+- [ ] `wix/mahou-particle-garden.html`
+- [ ] `wix/material-loop-gallery.html`
+- [ ] `wix/melodia-atelier-lab.html`
+- [ ] `wix/melodia-breakdown-card.html`
+- [ ] `wix/melodia-gallery-grid.html`
+- [ ] `wix/melodia-gameplay-loop.html`
+- [ ] `wix/melodia-hero-embed.html`
+- [ ] `wix/melodia-living-worlds.html`
+- [ ] `wix/melodia-melusina.html`
+- [ ] `wix/melodia-navigation-constellation.html`
+- [ ] `wix/melodia-passport-embed.html`
+- [ ] `wix/melodia-project-card.html`
+- [ ] `wix/melodia-rhythm-hero.html`
+- [ ] `wix/melodia-section-header.html`
+- [ ] `wix/melodia-smooth-scroll.html`
+- [ ] `wix/melodia-stage-character.html`
+- [ ] `wix/melusina-final-renders.html`
+- [ ] `wix/melusina-model-tooling.html`
+- [ ] `wix/metrics_dashboard.html`
+- [ ] `wix/nous-research-packet.html`
+- [ ] `wix/nvidia-recruiter-sendoff.html`
+- [ ] `wix/ornament-kitbash.html`
+- [ ] `wix/pcg-system-impact.html`
+- [ ] `wix/pipeline.html`
+- [ ] `wix/production-roadmap.html`
+- [ ] `wix/project_health.html`
+- [ ] `wix/realtime-3d-viewer.html`
+- [ ] `wix/recruiter-one-sheet.html`
+- [ ] `wix/render-constellation.html`
+- [ ] `wix/resume.html`
+- [ ] `wix/sakura-case-study.html`
+- [ ] `wix/sdf-material-gallery.html`
+- [ ] `wix/shader-breakdowns.html`
+- [ ] `wix/social-kit.html`
+- [ ] `wix/space-cathedral.html`
+- [ ] `wix/surreal-architecture.html`
+- [ ] `wix/t3d-catalog.html`
+- [ ] `wix/touchdesigner-architecture.html`
+- [ ] `wix/universal-material-impact.html`
+- [ ] `wix/world-bible.html`
+- [ ] `wix/zbrush-breakdown.html`
+
+### September pass completed in this branch
+
+- [x] `wix/pipeline.html` — voice framing + first factual-risk pass
+- [x] `wix/realtime-3d-viewer.html` — browser-study framing + unsupported triangle labels removed
+- [x] `wix/resume.html` — recruiter wording/current-status pass
+- [x] `wix/recruiter-one-sheet.html` — removed stale Infold-specific hero framing and availability claim
+- [x] `wix/world-bible.html` — removed August footer and overconfident verified/scaffold labels
+- [x] `wix/geometry-nodes.html` — softened stale exact-count marketing claims
+- [x] `wix/surreal-architecture.html` — softened stale exact-count marketing claims
+- [x] `wix/design-specs.html` — September metadata/language pass
+- [x] `wix/melodia-gameplay-loop.html` — September metadata/language pass
+- [x] `wix/melodia-living-worlds.html` — September metadata/language pass
+- [x] `wix/touchdesigner-architecture.html` — September metadata/language pass
+- [x] `wix/application-hub.html` — September metadata + recruiter-facing AI label cleanup
+- [x] `wix/melodia-melusina.html` — September metadata + AI label cleanup
+
+**Important:** a checked item above means it received this branch's September copy/status pass; it does not mean every runtime claim has been machine-verified. Claim verification remains stricter than copy freshness.
