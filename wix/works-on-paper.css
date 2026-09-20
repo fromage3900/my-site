@@ -40,7 +40,7 @@ html[data-page="works-on-paper"] { background:var(--primitive-ink-800); color-sc
   letter-spacing:-.055em;
 }
 .paper-hero-lede { max-width:35rem; font-size:clamp(1rem,1.45vw,1.25rem); line-height:1.65; color:rgba(247,240,231,.82); }
-.paper-note { max-width:34rem; margin-top:1rem; font:500 .68rem/1.7 var(--font-mono,monospace); letter-spacing:.06em; color:rgba(247,240,231,.48); }
+.paper-note { max-width:34rem; margin-top:1rem; font:500 .78rem/1.7 var(--font-mono,monospace); letter-spacing:.06em; color:rgba(247,240,231,.74); }
 
 .paper-hero-art { margin:0; justify-self:end; width:min(100%,660px); }
 .paper-hero-art a { display:block; text-decoration:none; }
