@@ -150,7 +150,8 @@
       el.classList.add('mg-ribbon-card');
     });
 
-    if (!prefersReducedMotion() && (tier === 'full' || tier === 'soft')) {
+    var precisePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 681px)').matches;
+    if (!prefersReducedMotion() && precisePointer && (tier === 'full' || tier === 'soft')) {
       var onMove = function (e) {
         var mx = (e.clientX / window.innerWidth - 0.5) * 14;
         var my = (e.clientY / window.innerHeight - 0.5) * 10;
