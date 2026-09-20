@@ -223,8 +223,8 @@ html[data-page="index"] .band .section-head h2 {
   line-height: 1.08;
 }
 
-/* Figma UI display treatment: Fraunces replaces the retired editorial serif
-   without letting the wider UI face collide with the macro render. */
+/* Figma UI display treatment: the interface face stays compact here
+   so the hero type does not collide with the macro render. */
 html[data-page="index"] .hero .hero-inner h1 {
   font-family: var(--font-home-ui);
   font-weight: 600;
