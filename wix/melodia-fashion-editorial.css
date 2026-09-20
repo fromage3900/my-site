@@ -14,7 +14,7 @@
   background:
     radial-gradient(circle at 8% 12%, rgba(201, 160, 168, 0.10), transparent 22%),
     radial-gradient(circle at 92% 8%, rgba(212, 184, 122, 0.08), transparent 26%),
-    radial-gradient(circle at 50% 80%, rgba(102, 217, 255, 0.06), transparent 40%),
+    radial-gradient(circle at 50% 80%, var(--effect-cyan-faint), transparent 40%),
     linear-gradient(180deg, var(--night-void, var(--primitive-plum-900)) 0%, var(--night-astral, var(--primitive-astral-900)) 48%, var(--night-ink, var(--primitive-astral-900)) 100%);
 }
 
@@ -155,7 +155,7 @@
   display: inline-block;
   padding: 6px 10px;
   border: 1px solid rgba(200, 164, 94, 0.4);
-  background: linear-gradient(180deg, rgba(16, 23, 54, 0.92), rgba(7, 9, 18, 0.88));
+  background: linear-gradient(180deg, var(--effect-astral-panel), rgba(7, 9, 18, 0.88));
   color: rgba(236, 234, 244, 0.88);
   font-family: var(--font-mono);
   font-size: 0.62rem;
