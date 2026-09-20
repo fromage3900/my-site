@@ -51,8 +51,6 @@
 <link rel="stylesheet" href="melodia-editorial.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-magical-girl.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-mahou-flourish.css?v=20260904p1">
-<link rel="stylesheet" href="melodia-photobooth.css?v=20260904p1">
-<link rel="stylesheet" href="melodia-zbrush-studio.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-components.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-mobile.css?v=20260904p1">
 <link rel="stylesheet" href="melodia-home-hardening.css?v=20260904p1">
@@ -331,188 +329,84 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
       <div class="game-ui-filigree-divider is-baroque" aria-hidden="true"></div>
       <h1 id="hero-title">Surreal worlds built as one musical universe.</h1>
       <p class="lede">Brennan Shepherd is an environment &amp; technical artist building stylized fantasy worlds in Unreal Engine 5.8. Melodia brings together environment composition, materials, foliage, procedural systems, and character-driven visual design.</p>
-      <div class="hero-actions" aria-label="Primary destinations">
-        <a class="button primary button-premium-primary" href="curated-art.html">VIEW · Selected Art</a>
-        <a class="button button-premium" href="#canonical-worlds">WORLD · Four Worlds</a>
-        <a class="button button-premium" href="melodia-living-worlds.html">INTERACT ✦ · Living Worlds</a>
-        <a class="button button-premium" href="#technical-practice">SYSTEM · Technical Practice</a>
-      </div>
+      <p class="home-foyer-cue" aria-hidden="true">Choose a path ↓</p>
     </div>
   </div>
 </section>
 
-<section id="selected-art-preview" class="band astral void-panel home-art-preview" data-surface="void" aria-labelledby="selected-art-title" data-art-silence="true">
+<section id="portfolio-foyer" class="band astral home-foyer-band" data-surface="void" aria-labelledby="foyer-title">
   <div class="inner">
-    <div class="section-head">
+    <div class="section-head home-foyer-head">
       <div>
-        <p class="eyebrow magazine-kicker">Selected Art</p>
-        <h2 id="selected-art-title">Start with the images.</h2>
+        <p class="eyebrow magazine-kicker">Portfolio paths</p>
+        <h2 id="foyer-title">Six ways into the work.</h2>
       </div>
-      <p>Five fragments arranged as a small visual overture: one portrait, one nocturnal environment, then ornament and instrument details. The full board continues without turning into an asset browser.</p>
+      <p>No maze, no asset browser. Pick the part of the practice you want to see and go straight there.</p>
     </div>
-    <div class="home-art-preview-grid">
-      <a class="home-art-plate major" href="curated-art.html"><picture class="home-art-picture"><img data-art-optimize src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="Melusina character beauty portrait" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, 61.8vw" /></picture><span>Melusina</span></a>
-      <a class="home-art-plate wide" href="curated-art.html"><img src="../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png" alt="Night environment with dark tree, arched bridge, luminous architectural edges and cyan-magenta terrain" loading="lazy" decoding="async" /><span>Night Bridge Study</span></a>
-      <a class="home-art-plate detail" href="curated-art.html"><img src="../generated/assets/ornaments/rose_window_komikaze_front.png" alt="Eight-petal radial rose-window ornament in a stylized three-tone surface" loading="lazy" decoding="async" /><span>Rose Window</span></a>
-      <a class="home-art-plate pin-a" href="curated-art.html"><img src="../generated/assets/props/violin_komikaze_front.png" alt="Front view of an ornamental violin with long strings and pale rose ivory filigree" loading="lazy" decoding="async" /><span>Melodia Violin</span></a>
-      <a class="home-art-plate pin-b" href="curated-art.html"><picture class="home-art-picture"><source type="image/webp" srcset="../generated/optimized/curated-art/cross_hero_macro_filigree-480.webp 480w, ../generated/optimized/curated-art/cross_hero_macro_filigree-800.webp 800w, ../generated/optimized/curated-art/cross_hero_macro_filigree-1280.webp 1280w" sizes="(max-width: 720px) 58vw, 23.6vw" /><img data-art-optimize src="../generated/assets/cross/cross_hero_macro_filigree.png" alt="Macro filigree detail from the Vow Cross" loading="lazy" decoding="async" sizes="(max-width: 720px) 58vw, 23.6vw" /></picture><span>Vow Cross · macro</span></a>
-    </div>
-    <p class="home-art-preview-cta"><a class="button primary button-premium-primary" href="curated-art.html">Open Selected Art →</a></p>
+
+    <nav class="home-foyer-grid" aria-label="Portfolio destinations">
+      <a class="home-foyer-card is-primary" href="curated-art.html">
+        <img src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="" loading="lazy" decoding="async" />
+        <span class="home-foyer-scrim" aria-hidden="true"></span>
+        <span class="home-foyer-copy">
+          <span class="home-foyer-kicker">01 · Start here</span>
+          <strong>Portfolio</strong>
+          <span>Selected environments, characters, props, materials, and finished images.</span>
+        </span>
+      </a>
+
+      <a class="home-foyer-card is-primary" href="world-bible.html">
+        <img src="../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png" alt="" loading="lazy" decoding="async" />
+        <span class="home-foyer-scrim" aria-hidden="true"></span>
+        <span class="home-foyer-copy">
+          <span class="home-foyer-kicker">02 · Environment art</span>
+          <strong>Worlds</strong>
+          <span>The four Melodia worlds, their visual language, atmosphere, and production logic.</span>
+        </span>
+      </a>
+
+      <a class="home-foyer-card" href="melodia-living-worlds.html">
+        <img src="../generated/assets/unreal/hero-hero-level-cam-hero-establishing-20260709-182124-1920x1080.png" alt="" loading="lazy" decoding="async" />
+        <span class="home-foyer-scrim" aria-hidden="true"></span>
+        <span class="home-foyer-copy">
+          <span class="home-foyer-kicker">03 · Browser + realtime</span>
+          <strong>Interactive</strong>
+          <span>Living-world experiments, realtime presentation, and playful browser studies.</span>
+        </span>
+      </a>
+
+      <a class="home-foyer-card" href="pipeline.html">
+        <img src="../generated/assets/portfolio-scan/sakura-surfaces-grid.png" alt="" loading="lazy" decoding="async" />
+        <span class="home-foyer-scrim" aria-hidden="true"></span>
+        <span class="home-foyer-copy">
+          <span class="home-foyer-kicker">04 · Systems</span>
+          <strong>Technical Art</strong>
+          <span>Unreal, Houdini, Python, procedural worldbuilding, shaders, and production tooling.</span>
+        </span>
+      </a>
+
+      <a class="home-foyer-card" href="melodia-stage-character.html">
+        <img src="../generated/assets/character/melusina_eevee_glam_20260715_02.png" alt="" loading="lazy" decoding="async" />
+        <span class="home-foyer-scrim" aria-hidden="true"></span>
+        <span class="home-foyer-copy">
+          <span class="home-foyer-kicker">05 · Character craft</span>
+          <strong>Character &amp; Sculpt</strong>
+          <span>Melusina lookdev, modeling, sculpting, presentation, and character-stage work.</span>
+        </span>
+      </a>
+
+      <a class="home-foyer-card is-quiet" href="resume.html">
+        <span class="home-foyer-quiet-mark" aria-hidden="true">✦</span>
+        <span class="home-foyer-copy">
+          <span class="home-foyer-kicker">06 · Practice</span>
+          <strong>About</strong>
+          <span>Resume, tools, role focus, and how the environment / technical art practice fits together.</span>
+        </span>
+      </a>
+    </nav>
   </div>
 </section>
 
-<div class="editorial-rule lookbook-section-rule" aria-hidden="true"><span class="diamond"></span></div>
-
-<!-- Section: 4 Canonical Worlds (SSOT) -->
-<section id="canonical-worlds" class="band astral void-panel" data-surface="void" aria-labelledby="worlds-title">
-  <div class="inner">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow magazine-kicker">Environment Art</p>
-        <h2 id="worlds-title">Four worlds, one visual language.</h2>
-      </div>
-      <p>Four distinct environments carry the Melodia portfolio, each with its own mood, traversal read, material language, and production breakdown.</p>
-    </div>
-    
-    <div class="env-grid">
-      <!-- 1. L_MelusinaMorning -->
-      <a class="env-card" href="melodia-stage-character.html">
-        <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
-        <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
-        <img src="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png" alt="L_MelusinaMorning — Character Atelier" loading="lazy" />
-        <div class="overlay">
-          <span class="env-name">L_MelusinaMorning</span>
-          <span class="env-tag">Opening Atelier &amp; Morning Chamber · Character Stage</span>
-        </div>
-      </a>
-
-      <!-- 2. L_SakuraDream -->
-      <a class="env-card" href="sakura-case-study.html">
-        <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
-        <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
-        <img src="../generated/assets/portfolio-scan/sakura-surfaces-grid.png" alt="L_SakuraDream material-family study with four preview spheres" loading="lazy" />
-        <div class="overlay">
-          <span class="env-name">L_SakuraDream</span>
-          <span class="env-tag">Surface-family study · material and atmosphere direction</span>
-        </div>
-      </a>
-
-      <!-- 3. L_KaleidoNave -->
-      <a class="env-card" href="space-cathedral.html">
-        <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
-        <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
-        <img src="../generated/assets/ornaments/rose_window_komikaze_front.png" alt="Kaleido Nave ornamental language study using an eight-petal rose window" loading="lazy" />
-        <div class="overlay">
-          <span class="env-name">L_KaleidoNave</span>
-          <span class="env-tag">Rose-window study · architectural and ornament language</span>
-        </div>
-      </a>
-
-      <!-- 4. L_FallenMoon — level plate (not Cosmic Orrery terrain) -->
-      <a class="env-card" href="pcg-system-impact.html">
-        <span class="game-ui-gothic-corner tl" aria-hidden="true"></span>
-        <span class="game-ui-gothic-corner br" aria-hidden="true"></span>
-        <img src="../generated/assets/unreal/hero-hero-level-20260625-055343-1920x1080.png" alt="Broad crater terrain study used as supporting form evidence for L_FallenMoon" loading="lazy" />
-        <div class="overlay">
-          <span class="env-name">L_FallenMoon</span>
-          <span class="env-tag">Crater terrain-form study · supporting environment evidence</span>
-        </div>
-      </a>
-    </div>
-
-    <p class="pillar-case-strip" style="margin-top:1.35rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary,#A9A7C0);line-height:1.7">
-      Pillar case studies ·
-      <a href="sakura-case-study.html" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">Sakura Dream</a>
-      · <a href="space-cathedral.html" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">Space Cathedral</a>
-      · <a href="cosmic-orrery.html" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">Cosmic Orrery</a>
-      · <a href="application-hub.html" style="color:var(--color-accent-primary,#C9A86A);text-decoration:none">All environments</a>
-    </p>
-  </div>
-</section>
-
-<div class="editorial-rule lookbook-section-rule" aria-hidden="true"><span class="diamond"></span></div>
-
-<!-- Section: Melusina Photobooth / fashion-game photo mode -->
-<section id="melodia-experience" class="band astral void-panel" data-surface="void" aria-labelledby="photobooth-title" data-art-silence="false">
-  <div class="inner">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow magazine-kicker">Interactive Stage</p>
-        <h2 id="photobooth-title">Melusina Photobooth &amp; Photo-Spot Studio</h2>
-      </div>
-      <p>A fashion-game-inspired photo mode for exploring focal lengths, atmosphere LUTs, character poses, and camera-driven presentation.</p>
-    </div>
-
-    <!-- Photobooth Mount -->
-    <div id="melusina-photobooth-mount"></div>
-  </div>
-</section>
-
-<div class="editorial-rule lookbook-section-rule" aria-hidden="true"><span class="diamond"></span></div>
-
-<!-- Section: ZBrush High-Poly Sculpt & Geometry Studio -->
-<section id="zbrush-studio" class="band astral void-panel" data-surface="void" aria-labelledby="zbrush-title">
-  <div class="inner">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow magazine-kicker">3D Modeling &amp; Sculpting</p>
-        <h2 id="zbrush-title">ZBrush High-Poly Sculpt &amp; Retopology Studio</h2>
-      </div>
-      <p>Interactive high-poly asset inspector displaying high-density sculpt passes, DynaMesh booleans, QuadRemesher topology flow, and game-ready low-poly optimizations.</p>
-    </div>
-
-    <!-- ZBrush Mount -->
-    <div id="zbrush-studio-mount"></div>
-  </div>
-</section>
-
-<div class="editorial-rule lookbook-section-rule" aria-hidden="true"><span class="diamond"></span></div>
-
-<!-- Recruiter Fast-Skim Contact Strip -->
-<section id="technical-practice" class="band astral void-panel" data-surface="void" aria-labelledby="contact-title">
-  <div class="inner">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Under the surface</p>
-        <h2 id="contact-title">Four ways into the machinery.</h2>
-      </div>
-      <p>The technical depth is still here, but it is discovered through four focused studies rather than a wall of operational pages.</p>
-    </div>
-
-    <div class="table-list">
-      <a class="table-row" href="pcg-system-impact.html" style="text-decoration:none;color:inherit;">
-        <span>World systems</span>
-        <div><h3>Fallen Moon — Procedural World Systems</h3><p>Six procedural systems shaping composition, traversal-safe placement, and the world’s live instance field.</p></div>
-        <b>Open →</b>
-      </a>
-      <a class="table-row" href="sdf-material-gallery.html" style="text-decoration:none;color:inherit;">
-        <span>Materials</span>
-        <div><h3>Material Atlas</h3><p>Cosmic, ornamental, iridescent, and stylized surface families compared under one controlled light.</p></div>
-        <b>Open →</b>
-      </a>
-      <a class="table-row" href="application-hub.html#artifact-ui" style="text-decoration:none;color:inherit;">
-        <span>Interface</span>
-        <div><h3>Compendium Artifact UI</h3><p>Figma-authored diegetic interface lookdev: a closed field relic unfolds into a radial resonance instrument, with a production motion grammar underneath.</p></div>
-        <b>Open →</b>
-      </a>
-      <a class="table-row" href="melodia-atelier-lab.html" style="text-decoration:none;color:inherit;">
-        <span>Browser lab</span>
-        <div><h3>Technical Art Atelier</h3><p>Interactive studies in shaders, atmosphere, procedural spacing, audio response, and asset presentation.</p></div>
-        <b>Enter →</b>
-      </a>
-      <a class="table-row" href="resume.html" style="text-decoration:none;color:inherit;">
-        <span>About</span>
-        <div><h3>Resume &amp; practice</h3><p>Environment art, technical art, Unreal, Blender, ZBrush, Python, procedural systems, and production context.</p></div>
-        <b>Open →</b>
-      </a>
-      <div class="table-row">
-        <span>Email</span>
-        <div><h3><a href="mailto:brennan.shepherd3900@gmail.com" style="color:inherit;">brennan.shepherd3900@gmail.com</a></h3><p>Toronto / GTA and remote Canada.</p></div>
-        <b>Contact</b>
-      </div>
-    </div>
-  </div>
-</section>
 </main>
 
 <footer class="footer">
@@ -601,14 +495,10 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
 <script src="melodia-starfield.js?v=20260904p1"></script>
 <script src="melodia-dream-shaders.js?v=20260904p1"></script>
 <script src="melodia-site-nav.js?v=20260904p1"></script>
-<script src="melodia-photobooth.js?v=20260904p1"></script>
-<script src="melodia-zbrush-studio.js?v=20260904p1"></script>
 <script src="melodia-editorial.js?v=20260904p1"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   MelodiaEditorial.init({ page: 'index' });
-  if (window.MelodiaPhotobooth) MelodiaPhotobooth.init('#melusina-photobooth-mount');
-  if (window.MelodiaZBrushStudio) MelodiaZBrushStudio.init('#zbrush-studio-mount');
 });
 </script>
 </body>
