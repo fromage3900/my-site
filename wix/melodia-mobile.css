@@ -17,7 +17,7 @@
     padding: 8px;
     border: 1px solid var(--line, rgba(201, 168, 106, 0.32));
     border-radius: 3px;
-    background: rgba(7, 9, 18, 0.92);
+    background: var(--effect-void-panel);
     backdrop-filter: blur(16px);
     box-shadow: 0 16px 48px rgba(34, 26, 42, 0.14);
     max-height: min(70vh, 420px);
@@ -47,7 +47,7 @@
     padding: 0;
     border: 1px solid var(--line, rgba(201, 168, 106, 0.32));
     border-radius: 2px;
-    background: rgba(7, 9, 18, 0.55);
+    background: var(--effect-void-dense);
     color: rgba(236, 234, 244, 0.86);
     cursor: pointer;
     font-family: var(--font-mono, var(--font-mono));
