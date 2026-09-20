@@ -132,8 +132,9 @@ const TYPOGRAPHY_SHARED_FILES = new Set([
   'melodia-game-ui.css',
   'melodia-editorial-polish.css',
 ]);
-const LEGACY_FAMILY_REGEX = /\b(?:Cinzel|Fraunces)\b/;
+const LEGACY_FAMILY_REGEX = /\b(?:Cinzel|Fraunces|Syne|Bricolage Grotesque|Instrument Serif|Azeret Mono)\b/i;
 const DIRECT_INTER_REGEX = /(?:["']Inter["']|font-family\s*:\s*Inter\b|family=Inter(?=[:&"']))/i;
+const LEGACY_DISPLAY_SWITCH_REGEX = /data-display-font=["']syne["']/i;
 
 for (const rel of PUBLIC_HTML) {
   const full = path.join(WIX_DIR, rel);
@@ -144,6 +145,9 @@ for (const rel of PUBLIC_HTML) {
   }
   if (DIRECT_INTER_REGEX.test(content)) {
     HARD_ERRORS.push(`${rel} — direct Inter font declaration; use --font-body / Space Grotesk`);
+  }
+  if (LEGACY_DISPLAY_SWITCH_REGEX.test(content)) {
+    HARD_ERRORS.push(`${rel} — stale data-display-font="syne" switch; use "interface"`);
   }
 }
 
