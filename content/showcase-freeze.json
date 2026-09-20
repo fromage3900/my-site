@@ -113,7 +113,14 @@
     "wix/portfolio-pages.css",
     "wix/universal-material-impact.html",
     "wix/world-bible.html",
-    "wix/zbrush-breakdown.html"
+    "wix/zbrush-breakdown.html",
+    "melodia/captures/2026-09-20/south_fix.jpg",
+    "melodia/captures/2026-09-20/walk_deck_meadow.jpg",
+    "melodia/captures/2026-09-20/waterline_dolly.jpg",
+    "melodia/captures/2026-09-20/website_oblique.jpg",
+    "melodia/captures/2026-09-20/website_south.jpg",
+    "melodia/captures/2026-09-20/website_top.jpg",
+    "melodia/index.html"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -420,6 +427,19 @@
         "no artwork replacement outside homepage card selection",
         "no design-system or typography-family change",
         "no weakening of validation or visual-QA gates"
+      ]
+    },
+    {
+      "id": "field-captures-morning-bloom-2026-09-20",
+      "reason": "Already-landed Melodia field-capture commit added six web-compressed morning rainbow-bloom gallery frames and its gallery index. The recruiter freeze gate correctly blocked them because the commit did not include an explicit exception.",
+      "scope": [
+        "allow the six 2026-09-20 field-capture JPGs already committed under melodia/captures/2026-09-20",
+        "allow melodia/index.html changes that expose those captures in the Melodia gallery"
+      ],
+      "exclusions": [
+        "no blanket allowance for future melodia/captures files",
+        "no changes to public portfolio route hierarchy",
+        "no weakening of recruiter-freeze validation"
       ]
     }
   ]
