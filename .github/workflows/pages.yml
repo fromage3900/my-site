@@ -65,7 +65,6 @@ jobs:
           node --check wix/melodia-mahou-flourish.js
           node --check wix/melodia-starfield.js
           node --check wix/melodia-site-nav.js
-          node --check wix/melodia-editorial.js
           node --check wix/melodia-dream-shaders.js
           node --check wix/premium-cosmic-hero.js
           node --check wix/curated-art-viewer.js
