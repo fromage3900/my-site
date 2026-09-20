@@ -403,6 +403,24 @@
         "no change to typography families established by the Figma reconciliation",
         "no weakening of token, asset, link, showcase, visual-QA or recruiter-freeze validation"
       ]
+    },
+    {
+      "id": "home-six-door-foyer-2026-09-19",
+      "reason": "Owner wants the homepage reduced to five or six clear clickable destinations instead of acting as a second sitemap. This pass converts the landing page into a six-door portfolio foyer.",
+      "scope": [
+        "reduce homepage main-content links to exactly six destinations",
+        "use Portfolio, Worlds, Interactive, Technical Art, Character & Sculpt, and About as the six doors",
+        "remove homepage photobooth, ZBrush widget, technical table, world-card cluster, and selected-art fragment cluster",
+        "remove homepage-only photobooth/ZBrush script and stylesheet loads",
+        "keep global navigation, hero art direction, typography system, and destination pages intact"
+      ],
+      "exclusions": [
+        "no route deletion",
+        "no removal of content from destination pages",
+        "no artwork replacement outside homepage card selection",
+        "no design-system or typography-family change",
+        "no weakening of validation or visual-QA gates"
+      ]
     }
   ]
 }
