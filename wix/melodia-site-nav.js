@@ -43,8 +43,7 @@
     function isManagedVideo(video) {
       if (!video || video.nodeName !== 'VIDEO' || video.hasAttribute('data-runtime-unmanaged')) return false;
       return video.hasAttribute('data-melodia-autoplay') ||
-        video.hasAttribute('autoplay') ||
-        (video.loop && video.muted);
+        video.hasAttribute('autoplay');
     }
 
     function shouldPosterOnly(video) {
