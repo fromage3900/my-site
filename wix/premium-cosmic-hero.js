@@ -157,7 +157,8 @@ function initPremiumHero() {
   if (!hero || !hero.querySelector('[class*="parallax-layer-"]')) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (reduceMotion.matches) return;
+  const lowPower = window.MelodiaRuntime && window.MelodiaRuntime.quality === 'low';
+  if (reduceMotion.matches || lowPower) return;
 
   if (premiumHeroInstance) premiumHeroInstance.destroy();
   populateConstellationLines(hero);

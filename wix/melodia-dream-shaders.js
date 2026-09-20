@@ -254,7 +254,11 @@
     };
 
     setVars(0.42, 0.38);
-    window.addEventListener('pointermove', onMove, { passive: true });
+    const precisePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const lowPower = global.MelodiaRuntime && global.MelodiaRuntime.quality === 'low';
+    if (precisePointer && !lowPower) {
+      window.addEventListener('pointermove', onMove, { passive: true });
+    }
   }
 
   function initDreamShaders() {

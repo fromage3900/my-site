@@ -84,7 +84,10 @@
     "wix/melodia-magical-girl.js",
     "wix/melodia-mahou-flourish.js",
     "wix/melodia-starfield.js",
-    "wix/premium-cosmic-hero.js"
+    "wix/premium-cosmic-hero.js",
+    "wix/melodia-site-nav.js",
+    "wix/melodia-editorial.js",
+    "wix/melodia-dream-shaders.js"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -298,6 +301,25 @@
         "no new visual systems or effects",
         "no portfolio copy, artwork, hierarchy, navigation, colour, typography, or layout changes",
         "no weakening of freeze, link, or polish verification"
+      ]
+    },
+    {
+      "id": "runtime-containment-2026-09-19",
+      "reason": "Owner requested the next runtime-stability phase after the P0 crash fixes deployed green: contain gallery/image decode cost, cap concurrent loop playback, and centralize device-quality decisions without changing portfolio content or visual direction.",
+      "scope": [
+        "wix/melodia-site-nav.js - shared MelodiaRuntime governor for media visibility, quality tiers, DPR/FPS/particle budgets, and dynamically injected loop media",
+        "wix/melodia-starfield.js - consume the shared runtime budget instead of independently choosing frame/DPR/particle cost",
+        "wix/melusina-final-renders.html - render existing thumbnail derivatives in-grid while retaining full-resolution links",
+        "wix/shader-breakdowns.html - defer the existing material-loop videos and contain offscreen material cards",
+        "wix/melodia-editorial.js and wix/melodia-editorial.css - defer dynamically generated loop media, async-decode archive images, contain dense cards, and gate pointer work",
+        "wix/melodia-dream-shaders.js and wix/premium-cosmic-hero.js - suppress decorative pointer/parallax work on low-power devices",
+        ".github/workflows/pages.yml - extend existing JavaScript syntax validation to runtime-critical shared modules"
+      ],
+      "exclusions": [
+        "no new public routes",
+        "no artwork, copy, hierarchy, navigation, typography, colour, or visual-redesign changes",
+        "no deletion of portfolio work; full-resolution assets remain accessible",
+        "no weakening of freeze, asset, link, token, or showcase validation"
       ]
     }
   ]

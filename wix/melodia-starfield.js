@@ -25,7 +25,12 @@
 
   const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)');
   const isMobile = () => window.matchMedia('(max-width: 680px)').matches;
-  const frameInterval = () => isMobile() ? 1000 / 30 : 1000 / 60;
+  const runtimeBudget = () => global.MelodiaRuntime && global.MelodiaRuntime.budget ? global.MelodiaRuntime.budget() : null;
+  const frameInterval = () => {
+    const runtime = runtimeBudget();
+    const fps = runtime ? runtime.targetFps : (isMobile() ? 30 : 60);
+    return 1000 / fps;
+  };
 
   function iqPalette(t, cycles) {
     const twoPi = 6.28318530718;
@@ -96,10 +101,10 @@
   }
 
   function starCountForIntensity() {
-    const mobile = isMobile();
-    if (intensity === 'cosmic') return mobile ? 220 : 900;
-    if (intensity === 'subtle') return mobile ? 120 : 520;
-    return mobile ? 180 : 760;
+    const runtime = runtimeBudget();
+    const scale = runtime ? runtime.particleScale : (isMobile() ? 0.24 : 1);
+    const base = intensity === 'cosmic' ? 900 : intensity === 'subtle' ? 520 : 760;
+    return Math.max(110, Math.round(base * scale));
   }
 
   function makeStars() {
@@ -151,7 +156,8 @@
 
   function resize() {
     if (!canvas) return;
-    dpr = Math.min(window.devicePixelRatio || 1, isMobile() ? 1.25 : 1.75);
+    const runtime = runtimeBudget();
+    dpr = Math.min(window.devicePixelRatio || 1, runtime ? runtime.maxDpr : (isMobile() ? 1.25 : 1.75));
     w = window.innerWidth;
     h = window.innerHeight;
     canvas.width = Math.max(1, Math.floor(w * dpr));

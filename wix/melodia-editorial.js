@@ -70,20 +70,24 @@
     };
 
     window.addEventListener('scroll', requestScroll, { passive: true });
-    window.addEventListener(
-      'pointermove',
-      (event) => {
-        const nx = event.clientX / window.innerWidth;
-        const ny = event.clientY / window.innerHeight;
-        const x = (nx - 0.5) * 28;
-        const y = (ny - 0.5) * 28;
-        root.style.setProperty('--mouse-x', `${x}px`);
-        root.style.setProperty('--mouse-y', `${y}px`);
-        root.style.setProperty('--dream-mouse-x', String(Math.max(0, Math.min(1, nx))));
-        root.style.setProperty('--dream-mouse-y', String(Math.max(0, Math.min(1, ny))));
-      },
-      { passive: true }
-    );
+    const precisePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const lowPower = global.MelodiaRuntime && global.MelodiaRuntime.quality === 'low';
+    if (precisePointer && !lowPower) {
+      window.addEventListener(
+        'pointermove',
+        (event) => {
+          const nx = event.clientX / window.innerWidth;
+          const ny = event.clientY / window.innerHeight;
+          const x = (nx - 0.5) * 28;
+          const y = (ny - 0.5) * 28;
+          root.style.setProperty('--mouse-x', `${x}px`);
+          root.style.setProperty('--mouse-y', `${y}px`);
+          root.style.setProperty('--dream-mouse-x', String(Math.max(0, Math.min(1, nx))));
+          root.style.setProperty('--dream-mouse-y', String(Math.max(0, Math.min(1, ny))));
+        },
+        { passive: true }
+      );
+    }
     updateScroll();
   }
 
@@ -723,7 +727,7 @@
                 const thumbClass =
                   card.group === 'materials' ? 'intake-thumb material-thumb' : 'intake-thumb';
                 const media = card.web_path
-                  ? `<img src="${esc(card.web_path)}" alt="${esc(card.filename)}" loading="lazy" />`
+                  ? `<img src="${esc(card.web_path)}" alt="${esc(card.filename)}" loading="lazy" decoding="async" fetchpriority="low" />`
                   : `<span>${esc(card.status)}</span>`;
                 const statusPill = isPublicConstellation ? '' : `<span class="intake-pill">${esc(card.status)}</span>`;
                 return `<article class="intake-card premium-card"><div class="${thumbClass}">${media}</div><div class="intake-card-body"><span class="intake-pill">${esc(card.group)}</span>${statusPill}<h3>${esc(card.filename)}</h3><p>${esc(card.caption)}</p></div></article>`;
@@ -853,9 +857,9 @@
     const caption = esc(item.caption || 'UDS day/night landscape loop');
     const webm = esc(item.webm_path || '');
     if (prefersReducedMotion() || !webm) {
-      return `<a class="image-card fashion-frame landscape-loop-card holo-plate" href="${poster}"><img src="${poster}" alt="${label} terrain" loading="lazy" /><div><span class="meta-label">Day / night</span><h3>${label}</h3><p>${caption}</p></div></a>`;
+      return `<a class="image-card fashion-frame landscape-loop-card holo-plate" href="${poster}"><img src="${poster}" alt="${label} terrain" loading="lazy" decoding="async" /><div><span class="meta-label">Day / night</span><h3>${label}</h3><p>${caption}</p></div></a>`;
     }
-    return `<figure class="image-card fashion-frame landscape-loop-card holo-plate"><video autoplay loop muted playsinline poster="${poster}" src="${webm}"></video><div><span class="meta-label">Day / night loop</span><h3>${label}</h3><p>${caption}</p></div></figure>`;
+    return `<figure class="image-card fashion-frame landscape-loop-card holo-plate"><video loop muted playsinline preload="none" data-melodia-autoplay="true" poster="${poster}" src="${webm}"></video><div><span class="meta-label">Day / night loop</span><h3>${label}</h3><p>${caption}</p></div></figure>`;
   }
 
   async function hydrateLandscapeLoops(mountId) {
@@ -893,7 +897,7 @@
       if (heroMount) {
         if (hero) {
           const poster = hero.poster ? ` poster="${esc(hero.poster)}"` : '';
-          heroMount.innerHTML = `<figure class="image-card premium-card material-proof-frame loop-hero-card" data-pillar="sakura"><video autoplay loop muted playsinline${poster} src="${esc(hero.webm_path)}"></video><div><h3>${esc(hero.id)}</h3><p>${esc(hero.backdrop || 'Melodia_VoidGradient')} · ${esc(hero.preview_mesh || 'sphere')} · ${esc(String(hero.duration_sec || '4'))}s loop</p></div></figure>`;
+          heroMount.innerHTML = `<figure class="image-card premium-card material-proof-frame loop-hero-card" data-pillar="sakura"><video loop muted playsinline preload="none" data-melodia-autoplay="true"${poster} src="${esc(hero.webm_path)}"></video><div><h3>${esc(hero.id)}</h3><p>${esc(hero.backdrop || 'Melodia_VoidGradient')} · ${esc(hero.preview_mesh || 'sphere')} · ${esc(String(hero.duration_sec || '4'))}s loop</p></div></figure>`;
         } else {
           heroMount.innerHTML = '';
         }
@@ -922,7 +926,7 @@
               .map((item) => {
                 const src = item.webm_path;
                 const poster = item.poster ? ` poster="${esc(item.poster)}"` : '';
-                return `<figure class="image-card premium-card material-proof-frame mi-loop-tile"><video autoplay loop muted playsinline${poster} src="${esc(src)}"></video><div><h3>${esc(item.id)}</h3><p>${esc(item.backdrop || 'Melodia_VoidGradient')} · ${esc(item.preview_mesh || '')}</p></div></figure>`;
+                return `<figure class="image-card premium-card material-proof-frame mi-loop-tile"><video loop muted playsinline preload="none" data-melodia-autoplay="true"${poster} src="${esc(src)}"></video><div><h3>${esc(item.id)}</h3><p>${esc(item.backdrop || 'Melodia_VoidGradient')} · ${esc(item.preview_mesh || '')}</p></div></figure>`;
               })
               .join('');
             return `<section class="mi-group"><div class="section-head"><div><p class="eyebrow">${esc(label)}</p><h2>${esc(label)}</h2></div><p>${esc(caption)}</p></div><div class="image-grid mi-grid">${tiles}</div></section>`;
