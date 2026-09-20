@@ -22,15 +22,15 @@
   width: 74px;
   height: 74px;
   border-radius: 50%;
-  border: 1px solid rgba(201, 168, 106, 0.28);
+  border: 1px solid var(--effect-brass-subtle);
   background:
-    radial-gradient(circle at 40% 30%, rgba(255, 255, 255, 0.06), transparent 55%),
+    radial-gradient(circle at 40% 30%, var(--effect-pearl-faint), transparent 55%),
     radial-gradient(circle at 50% 50%, rgba(102, 217, 255, 0.05), transparent 62%),
     rgba(7, 9, 18, 0.58);
   backdrop-filter: blur(14px);
   box-shadow:
-    0 14px 42px rgba(7, 9, 18, 0.42),
-    inset 0 0 0 1px rgba(102, 217, 255, 0.08),
+    0 14px 42px var(--effect-void-glass),
+    inset 0 0 0 1px var(--effect-cyan-whisper),
     0 0 18px rgba(204, 153, 255, 0.06);
   overflow: hidden;
   position: relative;
@@ -55,7 +55,7 @@
 }
 
 .instrument .click:focus-visible {
-  outline: 2px solid rgba(201, 168, 106, 0.55);
+  outline: 2px solid var(--effect-brass-strong);
   outline-offset: 3px;
 }
 
