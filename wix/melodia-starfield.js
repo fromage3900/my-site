@@ -21,9 +21,11 @@
   let negativeSpaceZones = [];
   let compositionSections = [];
   let compositionRaf = 0;
+  let lastFrameTime = 0;
 
   const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)');
   const isMobile = () => window.matchMedia('(max-width: 680px)').matches;
+  const frameInterval = () => isMobile() ? 1000 / 30 : 1000 / 60;
 
   function iqPalette(t, cycles) {
     const twoPi = 6.28318530718;
@@ -95,9 +97,9 @@
 
   function starCountForIntensity() {
     const mobile = isMobile();
-    if (intensity === 'cosmic') return mobile ? 620 : 1080;
-    if (intensity === 'subtle') return mobile ? 380 : 640;
-    return mobile ? 520 : 920;
+    if (intensity === 'cosmic') return mobile ? 220 : 900;
+    if (intensity === 'subtle') return mobile ? 120 : 520;
+    return mobile ? 180 : 760;
   }
 
   function makeStars() {
@@ -149,7 +151,7 @@
 
   function resize() {
     if (!canvas) return;
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    dpr = Math.min(window.devicePixelRatio || 1, isMobile() ? 1.25 : 1.75);
     w = window.innerWidth;
     h = window.innerHeight;
     canvas.width = Math.max(1, Math.floor(w * dpr));
@@ -300,7 +302,9 @@
   }
 
   function drawThinFilmBands(t) {
-    if (!ctx) return;
+    // Spectral thin-film sampling is one of the most expensive decorative passes.
+    // Keep it for desktop, but skip it on phones where the starfield must stay cheap.
+    if (!ctx || isMobile()) return;
     const time = t * 0.001;
     const cosTheta = 0.58 + mouseNY * 0.28 + Math.abs(mouseNX - 0.5) * 0.08;
     const bandCount = reduceMotion().matches ? 2 : intensity === 'cosmic' ? 5 : 4;
@@ -476,12 +480,19 @@
   }
 
   function startLoop() {
+    if (rafId) return;
     if (reduceMotion().matches) {
       drawFrame(performance.now());
       return;
     }
+
+    lastFrameTime = 0;
     const tick = (t) => {
-      drawFrame(t);
+      if (!rafId) return;
+      if (!document.hidden && (!lastFrameTime || t - lastFrameTime >= frameInterval())) {
+        lastFrameTime = t;
+        drawFrame(t);
+      }
       rafId = window.requestAnimationFrame(tick);
     };
     rafId = window.requestAnimationFrame(tick);
@@ -490,6 +501,12 @@
   function stopLoop() {
     if (rafId) window.cancelAnimationFrame(rafId);
     rafId = 0;
+    lastFrameTime = 0;
+  }
+
+  function handleVisibilityChange() {
+    if (document.hidden) stopLoop();
+    else startLoop();
   }
 
   function init(options) {
@@ -517,6 +534,8 @@
     window.addEventListener('pointermove', (e) => {
       spawnCursorSparkle(e.clientX, e.clientY);
     }, { passive: true });
+    document.addEventListener('visibilitychange', handleVisibilityChange, { passive: true });
+    window.addEventListener('pagehide', stopLoop, { passive: true });
   }
 
   function setIntensity(next) {
@@ -527,6 +546,7 @@
   global.MelodiaStarfield = {
     init,
     setIntensity,
+    startLoop,
     stopLoop,
     updateScrollComposition,
     negativeSpaceFactor

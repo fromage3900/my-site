@@ -17,6 +17,8 @@
   var haze;
   var pointer = { x: 0, y: 0, targetX: 0, targetY: 0 };
   var reducedMotion = false;
+  var rafId = 0;
+  var running = false;
 
   function seededRandom(seed) {
     var value = seed >>> 0;
@@ -133,8 +135,11 @@
   }
 
   function animate() {
-    window.requestAnimationFrame(animate);
-    if (document.hidden) return;
+    if (!running || document.hidden || !renderer) {
+      rafId = 0;
+      return;
+    }
+
     var delta = Math.min(clock.getDelta(), 0.05);
     var time = clock.elapsedTime;
     if (!reducedMotion) {
@@ -153,6 +158,31 @@
     camera.position.y += ((pointer.y * 0.16 + 0.18) - camera.position.y) * 0.025;
     camera.lookAt(0.35, 0.05, -5.2);
     renderer.render(scene, camera);
+
+    if (reducedMotion) {
+      running = false;
+      rafId = 0;
+      return;
+    }
+    rafId = window.requestAnimationFrame(animate);
+  }
+
+  function startAnimation() {
+    if (running || !renderer || document.hidden) return;
+    running = true;
+    clock.getDelta();
+    rafId = window.requestAnimationFrame(animate);
+  }
+
+  function stopAnimation() {
+    running = false;
+    if (rafId) window.cancelAnimationFrame(rafId);
+    rafId = 0;
+  }
+
+  function handleVisibilityChange() {
+    if (document.hidden) stopAnimation();
+    else startAnimation();
   }
 
   function boot() {
@@ -166,11 +196,16 @@
 
     try {
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.45));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth <= 680 ? 1.25 : 1.45));
       renderer.outputEncoding = THREE.sRGBEncoding;
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 0.92;
       mount.appendChild(renderer.domElement);
+      renderer.domElement.addEventListener('webglcontextlost', function (event) {
+        event.preventDefault();
+        stopAnimation();
+        markUnavailable();
+      });
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(45, 1, 0.1, 80);
       camera.position.set(0, 0.18, 10);
@@ -223,8 +258,10 @@
         pointer.targetY = -((event.clientY - rect.top) / rect.height * 2 - 1);
       }, { passive: true });
       document.querySelector('.atmosphere-shell').classList.add('is-ready');
+      document.addEventListener('visibilitychange', handleVisibilityChange, { passive: true });
+      window.addEventListener('pagehide', stopAnimation, { passive: true });
       resize();
-      animate();
+      startAnimation();
     } catch (error) {
       markUnavailable();
       if (window.console && window.console.error) window.console.error('Melodia atmosphere:', error);

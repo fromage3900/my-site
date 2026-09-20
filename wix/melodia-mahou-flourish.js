@@ -18,6 +18,10 @@
     return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
+  function prefersCheapPointerEffects() {
+    return window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 681px)').matches;
+  }
+
   function createSigilSvg() {
     // 24 radial rune tick marks around the outer perimeter
     var ticks = Array.from({ length: 24 }, function (_, i) {
@@ -170,7 +174,7 @@
   }
 
   function initPointerTrails() {
-    if (prefersReducedMotion()) return;
+    if (prefersReducedMotion() || !prefersCheapPointerEffects()) return;
 
     var handleMove = function (e) {
       var now = performance.now();
