@@ -514,7 +514,7 @@ html[data-page="stage-character"] .viz-rule {
 
 html[data-page="stage-character"] .viz-rule .glyph {
   font-family: var(--font-home-ui);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: color-mix(
