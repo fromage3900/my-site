@@ -853,9 +853,9 @@
     const caption = esc(item.caption || 'UDS day/night landscape loop');
     const webm = esc(item.webm_path || '');
     if (prefersReducedMotion() || !webm) {
-      return `<a class="image-card fashion-frame landscape-loop-card holo-plate" href="${poster}"><img src="${poster}" alt="${label} terrain" loading="lazy" /><div><span class="meta-label">Day / night</span><h3>${label}</h3><p>${caption}</p></div></a>`;
+      return `<a class="image-card fashion-frame landscape-loop-card holo-plate" href="${poster}"><img src="${poster}" alt="${label} terrain" loading="lazy" decoding="async" /><div><span class="meta-label">Day / night</span><h3>${label}</h3><p>${caption}</p></div></a>`;
     }
-    return `<figure class="image-card fashion-frame landscape-loop-card holo-plate"><video autoplay loop muted playsinline poster="${poster}" src="${webm}"></video><div><span class="meta-label">Day / night loop</span><h3>${label}</h3><p>${caption}</p></div></figure>`;
+    return `<figure class="image-card fashion-frame landscape-loop-card holo-plate"><video loop muted playsinline preload="none" data-melodia-autoplay="true" poster="${poster}" src="${webm}"></video><div><span class="meta-label">Day / night loop</span><h3>${label}</h3><p>${caption}</p></div></figure>`;
   }
 
   async function hydrateLandscapeLoops(mountId) {
@@ -893,7 +893,7 @@
       if (heroMount) {
         if (hero) {
           const poster = hero.poster ? ` poster="${esc(hero.poster)}"` : '';
-          heroMount.innerHTML = `<figure class="image-card premium-card material-proof-frame loop-hero-card" data-pillar="sakura"><video autoplay loop muted playsinline${poster} src="${esc(hero.webm_path)}"></video><div><h3>${esc(hero.id)}</h3><p>${esc(hero.backdrop || 'Melodia_VoidGradient')} · ${esc(hero.preview_mesh || 'sphere')} · ${esc(String(hero.duration_sec || '4'))}s loop</p></div></figure>`;
+          heroMount.innerHTML = `<figure class="image-card premium-card material-proof-frame loop-hero-card" data-pillar="sakura"><video loop muted playsinline preload="none" data-melodia-autoplay="true"${poster} src="${esc(hero.webm_path)}"></video><div><h3>${esc(hero.id)}</h3><p>${esc(hero.backdrop || 'Melodia_VoidGradient')} · ${esc(hero.preview_mesh || 'sphere')} · ${esc(String(hero.duration_sec || '4'))}s loop</p></div></figure>`;
         } else {
           heroMount.innerHTML = '';
         }
@@ -922,7 +922,7 @@
               .map((item) => {
                 const src = item.webm_path;
                 const poster = item.poster ? ` poster="${esc(item.poster)}"` : '';
-                return `<figure class="image-card premium-card material-proof-frame mi-loop-tile"><video autoplay loop muted playsinline${poster} src="${esc(src)}"></video><div><h3>${esc(item.id)}</h3><p>${esc(item.backdrop || 'Melodia_VoidGradient')} · ${esc(item.preview_mesh || '')}</p></div></figure>`;
+                return `<figure class="image-card premium-card material-proof-frame mi-loop-tile"><video loop muted playsinline preload="none" data-melodia-autoplay="true"${poster} src="${esc(src)}"></video><div><h3>${esc(item.id)}</h3><p>${esc(item.backdrop || 'Melodia_VoidGradient')} · ${esc(item.preview_mesh || '')}</p></div></figure>`;
               })
               .join('');
             return `<section class="mi-group"><div class="section-head"><div><p class="eyebrow">${esc(label)}</p><h2>${esc(label)}</h2></div><p>${esc(caption)}</p></div><div class="image-grid mi-grid">${tiles}</div></section>`;
