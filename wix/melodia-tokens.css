@@ -105,7 +105,7 @@
   --primitive-bronze-700:  #5B372B;
   --primitive-bronze-800:  #4D2B26;
 
-  /* ===== SEMANTIC ALIASES — the palette in use =====
+  /* ===== SEMANTIC ALIASES — the palette in use ===== */
   --color-ink:             var(--primitive-ink-900);
   --color-ink-deep:        var(--primitive-ink-1000);
   --color-paper:           var(--primitive-paper-300);
@@ -119,6 +119,7 @@
   --color-accent-aqua:     var(--primitive-aqua-400);
   --color-accent-violet:   var(--primitive-wisteria-400);
   --color-accent-brass:    var(--primitive-brass-400);
+
   /* ===== SEMANTIC TOKENS — LIGHT MODE (Ivory Editorial) ===== */
   --color-surface-base:     var(--primitive-ivory-100);
   --color-surface-raised:   var(--primitive-ivory-50);
@@ -262,17 +263,17 @@
   --radius-lg:   8px;
   --radius-pill: 999px;
 
-  /* ===== TYPOGRAPHY (from tokens.json global.fontFamilies) ===== */
-  /* Updated 2026-09-11: this block now matches the token SSOT exactly —
-     Fraunces / Inter / IBM Plex Mono, with Cinzel for the wordmark only. */
-  --font-display:       "Fraunces", "Avenir Next", "Segoe UI", sans-serif;
-  --font-display-fallback: "Avenir Next", "Segoe UI", sans-serif;
-  --font-cover:         "Cinzel", "Fraunces", "Avenir Next", "Segoe UI", sans-serif;
-  --font-decorative:    "Twinkle Star", "Fraunces", "Avenir Next", sans-serif;
-  --font-body:          "Inter", "Avenir Next", "Segoe UI", sans-serif;
+  /* ===== TYPOGRAPHY — FIGMA-ALIGNED WEB ROLES =====
+     Main portfolio: Space Grotesk + Crimson Text + IBM Plex Mono.
+     Accessory Atelier owns its Times + Jost campaign/product exception locally. */
+  --font-display:       "Crimson Text", Georgia, "Times New Roman", serif;
+  --font-display-fallback: Georgia, "Times New Roman", serif;
+  --font-cover:         "Crimson Text", Georgia, "Times New Roman", serif;
+  --font-decorative:    "Twinkle Star", "Crimson Text", Georgia, serif;
+  --font-body:          "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
   --font-body-fallback: "Avenir Next", "Segoe UI", sans-serif;
   --font-mono:          "IBM Plex Mono", ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
-  --font-brand:         "Cinzel", "Fraunces", "Avenir Next", "Segoe UI", sans-serif;
+  --font-brand:         "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
 
   /* Type scale (matches tokens.json global.type) */
   --text-display-xl:    clamp(48px, 8vw, 72px) / 1.05 var(--font-display);
