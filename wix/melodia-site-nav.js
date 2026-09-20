@@ -241,9 +241,9 @@
     if (!nav) {
       nav = document.createElement('nav');
       nav.className = 'nav-links';
-      nav.setAttribute('aria-label', 'Primary navigation');
       header.appendChild(nav);
     }
+    nav.setAttribute('aria-label', 'Primary navigation');
 
     nav.innerHTML = LINKS.map(function (item) {
       return linkHtml(item, item.keys.indexOf(key) !== -1, constellation);
