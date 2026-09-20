@@ -245,7 +245,7 @@ button {
 
 .atmosphere-meta-item {
   padding-top: var(--space-12, 12px);
-  border-top: 1px solid rgba(201, 168, 106, 0.28);
+  border-top: 1px solid var(--effect-brass-subtle);
 }
 
 .atmosphere-meta-value {
