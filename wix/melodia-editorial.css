@@ -927,3 +927,15 @@ em { color: var(--gold); font-style: italic; }
   .hero-inner, .band { padding-left: 18px; padding-right: 18px; }
   .path-row { grid-template-columns: 1fr; }
 }
+
+
+/* Runtime containment for dense portfolio grids. */
+.image-grid > .image-card,
+.intake-card,
+.intake-signal,
+.intake-family,
+.mi-loop-tile,
+.material-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 420px;
+}
