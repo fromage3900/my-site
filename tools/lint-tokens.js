@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Melodia Token Linter
- * Validates CSS token discipline against tokens.json SSOT
+ * Validates CSS token discipline and live typography against the Figma-aligned web SSOT
  */
 
 const fs = require('fs');
@@ -106,6 +106,57 @@ for (const cssFile of cssFiles) {
       }
     }
   });
+}
+
+
+/* Typography guard: the public portfolio migrated to the current Figma UI roles
+   (Space Grotesk + Crimson Text + IBM Plex Mono). Accessory Atelier is a separate
+   product/campaign subsystem outside wix/ and intentionally keeps Times + Jost. */
+const PUBLIC_ROUTES_PATH = path.join(WIX_DIR, 'public-routes.json');
+const publicRoutes = JSON.parse(fs.readFileSync(PUBLIC_ROUTES_PATH, 'utf-8'));
+const PUBLIC_HTML = new Set([
+  ...(publicRoutes.canonical || []),
+  ...(publicRoutes.secondary_case_studies || []),
+  ...(publicRoutes.public_supporting || []),
+  ...(publicRoutes.targeted_evidence || []),
+  ...(publicRoutes.experience_labs || []),
+  ...(publicRoutes.component_examples || []),
+  'melusina-final-renders.html',
+]);
+const TYPOGRAPHY_SHARED_FILES = new Set([
+  'melodia-luxury-type.css',
+  'melodia-tokens.css',
+  'melodia-home-hardening.css',
+  'melodia-stage-character.css',
+  'melodia-stage-character-hardening.css',
+  'melodia-game-ui.css',
+  'melodia-editorial-polish.css',
+]);
+const LEGACY_FAMILY_REGEX = /\b(?:Cinzel|Fraunces)\b/;
+const DIRECT_INTER_REGEX = /(?:["']Inter["']|font-family\s*:\s*Inter\b|family=Inter(?=[:&"']))/i;
+
+for (const rel of PUBLIC_HTML) {
+  const full = path.join(WIX_DIR, rel);
+  if (!fs.existsSync(full)) continue;
+  const content = fs.readFileSync(full, 'utf-8');
+  if (LEGACY_FAMILY_REGEX.test(content)) {
+    HARD_ERRORS.push(`${rel} — legacy Cinzel/Fraunces reference; use Figma-aligned font roles`);
+  }
+  if (DIRECT_INTER_REGEX.test(content)) {
+    HARD_ERRORS.push(`${rel} — direct Inter font declaration; use --font-body / Space Grotesk`);
+  }
+}
+
+for (const rel of TYPOGRAPHY_SHARED_FILES) {
+  const full = path.join(WIX_DIR, rel);
+  if (!fs.existsSync(full)) continue;
+  const content = fs.readFileSync(full, 'utf-8');
+  if (LEGACY_FAMILY_REGEX.test(content)) {
+    HARD_ERRORS.push(`${rel} — legacy Cinzel/Fraunces reference in shared typography CSS`);
+  }
+  if (DIRECT_INTER_REGEX.test(content)) {
+    HARD_ERRORS.push(`${rel} — direct Inter font declaration in shared typography CSS`);
+  }
 }
 
 // 4. Verify Nikki pillar accents exist in CSS
