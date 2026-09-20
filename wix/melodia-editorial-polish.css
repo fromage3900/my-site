@@ -267,7 +267,7 @@
 .pp-title,
 .passport-title,
 .stage-passport-fallback .pp-title {
-  font-family: var(--font-display, "Fraunces", sans-serif);
+  font-family: var(--font-display, "Crimson Text", Georgia, serif);
   font-weight: 500;
   line-height: 1.12;
   letter-spacing: 0.01em;

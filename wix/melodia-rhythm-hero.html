@@ -13,11 +13,12 @@
   canvas { display: block; }
   .hint {
     position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
-    font-family: 'Inter', system-ui, sans-serif; font-size: 12px; letter-spacing: .04em;
+    font-family: var(--font-body); font-size: 12px; letter-spacing: .04em;
     color: #94a3b8; opacity: .7; pointer-events: none; text-align: center;
   }
   .hint b { color: #C9A86A; font-weight: 600; }
 </style>
+<link rel="stylesheet" href="melodia-luxury-type.css">
 </head>
 <body>
 <div class="hint">click to let music in &middot; move to steer the playhead &middot; press <b>S</b> to save a banner</div>
@@ -108,7 +109,7 @@ function draw() {
   push();
   noStroke();
   fill(PAL.gold[0], PAL.gold[1], PAL.gold[2], 220);
-  textFont('Inter'); textSize(12); textStyle(BOLD);
+  textFont('Space Grotesk'); textSize(12); textStyle(BOLD);
   textAlign(LEFT, TOP);
   text('MELUSINA · ' + progressLabel, 18, 16);
   // slim progress underline

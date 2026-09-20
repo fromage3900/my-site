@@ -1,10 +1,10 @@
-/* Stage Character hardening — Fraunces UI, void-legible ink, magical-girl sparkles.
+/* Stage Character hardening — Figma-aligned type, void-legible ink, magical-girl sparkles.
    Loaded last on melodia-stage-character.html. Tokens only. */
 
 html[data-page="stage-character"] {
-  /* F_Melodia_UI web mapping */
-  --font-home-ui: "Fraunces", "Avenir Next", "Segoe UI", sans-serif;
-  --font-display: var(--font-home-ui);
+  /* Figma-aligned role mapping */
+  --font-home-ui: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Crimson Text", Georgia, "Times New Roman", serif;
   --font-lede: var(--font-home-ui);
 
   /* Force astral-night ink on the void shell even when OS prefers light.
@@ -40,7 +40,7 @@ html[data-page="stage-character"] {
   color-scheme: dark;
 }
 
-/* ——— Fonts: Fraunces on chrome + display; kill editorial serif leftovers ——— */
+/* ——— Fonts: Space Grotesk interface + Crimson Text editorial display ——— */
 html[data-page="stage-character"] .brand,
 html[data-page="stage-character"] .shell-nav .nav-links a,
 html[data-page="stage-character"] .shell-nav .nav-cta,
@@ -48,17 +48,21 @@ html[data-page="stage-character"] .shell-nav .nav-toggle,
 html[data-page="stage-character"] .button,
 html[data-page="stage-character"] .button-premium,
 html[data-page="stage-character"] .btn,
+html[data-page="stage-character"] .lede,
+html[data-page="stage-character"] .human-lede {
+  font-family: var(--font-home-ui);
+  font-style: normal;
+}
+
 html[data-page="stage-character"] h1,
 html[data-page="stage-character"] h2,
 html[data-page="stage-character"] h3,
-html[data-page="stage-character"] .lede,
-html[data-page="stage-character"] .human-lede,
 html[data-page="stage-character"] .passport-title,
 html[data-page="stage-character"] .viz-process-step strong,
 html[data-page="stage-character"] .viz-door-meta strong,
 html[data-page="stage-character"] .stage-hair-loop figcaption strong,
 html[data-page="stage-character"] .stage-hair-postcard figcaption strong {
-  font-family: var(--font-home-ui);
+  font-family: var(--font-display);
   font-style: normal;
 }
 
@@ -71,8 +75,8 @@ html[data-page="stage-character"] .human-lede {
 html[data-page="stage-character"] h1,
 html[data-page="stage-character"] .hero .hero-inner h1,
 html[data-page="stage-character"] .band .section-head h2 {
-  font-family: var(--font-home-ui) !important;
-  font-weight: 700;
+  font-family: var(--font-display) !important;
+  font-weight: 600;
   font-style: normal;
   letter-spacing: -0.02em;
 }
