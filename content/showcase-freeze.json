@@ -91,7 +91,9 @@
     "tools/lint-tokens.js",
     "wix/baroque-grotto.html",
     "wix/mahou-particle-garden.html",
-    "wix/melodia-rhythm-hero.html"
+    "wix/melodia-rhythm-hero.html",
+    "wix/ornament-kitbash.html",
+    "wix/surreal-architecture.html"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -336,7 +338,8 @@
         "preserve Accessory Atelier as an intentional Times + Jost + IBM Plex Mono campaign/product subsystem",
         "remove public/shared Cinzel/Fraunces fallbacks and stale Inter declarations",
         "repair the malformed semantic-alias comment in melodia-tokens.css",
-        "add a blocking token-linter guard against legacy font drift on public routes and shared typography CSS"
+        "add a blocking token-linter guard against legacy font drift on public routes and shared typography CSS",
+        "rename the stale Syne-named display switch to the semantic \"interface\" display lane without changing its visual role"
       ],
       "exclusions": [
         "no artwork, copy hierarchy, route, navigation, palette, layout, or interaction redesign",
