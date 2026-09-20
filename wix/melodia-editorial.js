@@ -70,20 +70,24 @@
     };
 
     window.addEventListener('scroll', requestScroll, { passive: true });
-    window.addEventListener(
-      'pointermove',
-      (event) => {
-        const nx = event.clientX / window.innerWidth;
-        const ny = event.clientY / window.innerHeight;
-        const x = (nx - 0.5) * 28;
-        const y = (ny - 0.5) * 28;
-        root.style.setProperty('--mouse-x', `${x}px`);
-        root.style.setProperty('--mouse-y', `${y}px`);
-        root.style.setProperty('--dream-mouse-x', String(Math.max(0, Math.min(1, nx))));
-        root.style.setProperty('--dream-mouse-y', String(Math.max(0, Math.min(1, ny))));
-      },
-      { passive: true }
-    );
+    const precisePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const lowPower = global.MelodiaRuntime && global.MelodiaRuntime.quality === 'low';
+    if (precisePointer && !lowPower) {
+      window.addEventListener(
+        'pointermove',
+        (event) => {
+          const nx = event.clientX / window.innerWidth;
+          const ny = event.clientY / window.innerHeight;
+          const x = (nx - 0.5) * 28;
+          const y = (ny - 0.5) * 28;
+          root.style.setProperty('--mouse-x', `${x}px`);
+          root.style.setProperty('--mouse-y', `${y}px`);
+          root.style.setProperty('--dream-mouse-x', String(Math.max(0, Math.min(1, nx))));
+          root.style.setProperty('--dream-mouse-y', String(Math.max(0, Math.min(1, ny))));
+        },
+        { passive: true }
+      );
+    }
     updateScroll();
   }
 
@@ -723,7 +727,7 @@
                 const thumbClass =
                   card.group === 'materials' ? 'intake-thumb material-thumb' : 'intake-thumb';
                 const media = card.web_path
-                  ? `<img src="${esc(card.web_path)}" alt="${esc(card.filename)}" loading="lazy" />`
+                  ? `<img src="${esc(card.web_path)}" alt="${esc(card.filename)}" loading="lazy" decoding="async" fetchpriority="low" />`
                   : `<span>${esc(card.status)}</span>`;
                 const statusPill = isPublicConstellation ? '' : `<span class="intake-pill">${esc(card.status)}</span>`;
                 return `<article class="intake-card premium-card"><div class="${thumbClass}">${media}</div><div class="intake-card-body"><span class="intake-pill">${esc(card.group)}</span>${statusPill}<h3>${esc(card.filename)}</h3><p>${esc(card.caption)}</p></div></article>`;
