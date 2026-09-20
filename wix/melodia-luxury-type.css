@@ -35,9 +35,8 @@
   font-weight: 400;
 }
 
-/* Legacy attribute retained for route compatibility; visual authority is now the
-   Figma-aligned Space Grotesk lane rather than a separate display family. */
-html[data-display-font="syne"] {
+/* Optional denser interface-display lane for shop / kitbash surfaces. */
+html[data-display-font="interface"] {
   --font-display: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
   --font-lede: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
   --tracking-display: 0.02em;
