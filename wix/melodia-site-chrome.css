@@ -154,3 +154,78 @@
 .shell-nav .nav-more-menu a:focus-visible {
   background: rgba(255,255,255,.055);
 }
+
+
+/* Readability + navigation clarity pass */
+.shell-nav .nav-links {
+  gap: clamp(10px, 1.5vw, 22px);
+  font-size: 0.82rem;
+  letter-spacing: 0.045em;
+  color: rgba(246, 243, 250, 0.96);
+}
+.shell-nav .nav-links > a,
+.shell-nav .nav-more summary {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.035em;
+  text-transform: none;
+}
+.shell-nav .nav-links > a:hover,
+.shell-nav .nav-links > a:focus-visible,
+.shell-nav .nav-more summary:hover,
+.shell-nav .nav-more summary:focus-visible {
+  color: var(--primitive-ivory-50);
+  background: var(--effect-pearl-faint);
+}
+.shell-nav .nav-links a.is-active,
+.shell-nav .nav-more.is-active summary {
+  color: var(--primitive-paper-0);
+  background: var(--effect-brass-faint);
+  box-shadow: inset 0 0 0 1px var(--effect-brass-subtle);
+}
+.shell-nav .nav-more summary {
+  gap: .45rem;
+}
+.shell-nav .nav-more-icon {
+  font-size: .78em;
+  opacity: .9;
+}
+.shell-nav .nav-more-menu {
+  width: min(320px, 82vw);
+  padding: 10px;
+}
+.shell-nav .nav-more-menu a {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: rgba(246, 243, 250, 0.94);
+}
+.shell-nav .nav-more-menu a.is-active {
+  color: var(--primitive-paper-0);
+  background: var(--effect-brass-faint);
+}
+.melodia-shell .section-head > p,
+.melodia-shell .section-head .human-lede,
+.melodia-shell .body-copy,
+.melodia-shell .image-card p,
+.melodia-shell .table-row p,
+.melodia-shell .guide-card p,
+.melodia-shell .alignment-card p,
+.melodia-shell .stack-card p,
+.melodia-shell .axis-card p {
+  font-size: clamp(0.98rem, 0.95rem + 0.12vw, 1.06rem);
+  line-height: 1.68;
+}

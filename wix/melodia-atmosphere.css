@@ -116,7 +116,7 @@ button {
 .atmosphere-header a {
   color: var(--primitive-ivory-50);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   letter-spacing: 0.16em;
   text-decoration: none;
   text-transform: uppercase;
@@ -337,7 +337,7 @@ button {
   }
 
   .atmosphere-meta-value {
-    font-size: 0.68rem;
+    font-size: 0.78rem;
   }
 
   .atmosphere-footer {

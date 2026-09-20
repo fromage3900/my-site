@@ -105,7 +105,15 @@
     "wix/melodia-night-theme.css",
     "wix/melodia-planetarium.css",
     "wix/melodia-premium-system.css",
-    "wix/melodia-visual-breakdown.css"
+    "wix/melodia-visual-breakdown.css",
+    "wix/geometry-pipelines.css",
+    "wix/material-loop-gallery.html",
+    "wix/melodia-atelier-lab.css",
+    "wix/melodia-site-chrome.css",
+    "wix/portfolio-pages.css",
+    "wix/universal-material-impact.html",
+    "wix/world-bible.html",
+    "wix/zbrush-breakdown.html"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -374,6 +382,26 @@
         "no palette redesign or opacity retuning",
         "no layout, navigation, content hierarchy, artwork or interaction changes",
         "no weakening of token, asset, link, showcase or recruiter-freeze validation"
+      ]
+    },
+    {
+      "id": "readability-navigation-2026-09-19",
+      "reason": "Owner reported that remaining text was illegible and the public site felt hard to navigate. This pass improves shared navigation language, active-state clarity, mobile navigation sizing, and recruiter-facing text contrast/size without changing portfolio structure or artwork.",
+      "scope": [
+        "rename primary navigation destinations to plain-language Portfolio, Worlds, Interactive, About and Breakdowns",
+        "strengthen current-route, hover and focus states in shared navigation",
+        "raise desktop and mobile navigation text size and reduce excessive tracking",
+        "raise shared body-copy, caption, metadata and recruiter-facing microcopy size floors",
+        "increase muted-text contrast on dark reading surfaces",
+        "replace animated iridescent utility labels on ivory reading surfaces with stable high-contrast text",
+        "raise sub-12px technical labels on public recruiter-facing modules while preserving intentionally compact in-game HUD mockup text"
+      ],
+      "exclusions": [
+        "no artwork replacement or palette redesign",
+        "no route removal or information-architecture deletion",
+        "no major layout redesign",
+        "no change to typography families established by the Figma reconciliation",
+        "no weakening of token, asset, link, showcase, visual-QA or recruiter-freeze validation"
       ]
     }
   ]

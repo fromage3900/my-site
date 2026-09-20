@@ -147,20 +147,13 @@
 .melodia-shell .band.paper[data-surface="ivory"] .eyebrow,
 .melodia-shell .band.paper[data-surface="ivory"] .magazine-kicker,
 .melodia-shell .band.cloud[data-surface="ivory"] .eyebrow {
-  /* Keep iridescent clip — do not force solid ivory-gold (kills Figma type motion) */
-  background: linear-gradient(
-    100deg,
-    var(--ivory-gold, var(--primitive-gold-500)) 0%,
-    var(--iri-cyan, var(--primitive-astral-300)) 42%,
-    var(--iri-purple, var(--primitive-iris-500)) 70%,
-    var(--ivory-gold, var(--primitive-gold-500)) 100%
-  ) !important;
-  background-size: 220% 220% !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  animation: dream-iri-softmg 2.4s ease-in-out infinite !important;
-  filter: drop-shadow(0 0 8px rgba(201, 168, 106, 0.35));
+  /* Reading surfaces favor stable contrast over animated iridescent clipping. */
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  color: var(--primitive-plum-600) !important;
+  animation: none !important;
+  filter: none;
 }
 
 .melodia-shell .band.ivory .viz-rule .glyph,
@@ -259,7 +252,7 @@
   justify-content: space-between;
   gap: 12px;
   font-family: var(--font-mono, "IBM Plex Mono", monospace);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }

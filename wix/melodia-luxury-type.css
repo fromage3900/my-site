@@ -124,7 +124,6 @@ h3 {
 .world-meta,
 .button,
 .nav-cta,
-.shell-nav .nav-links a,
 .footer,
 .table-row span,
 .table-row b {
@@ -146,12 +145,26 @@ h3 {
 .kicker,
 .eyebrow,
 .magazine-kicker {
-  font-size: 0.74rem;
-  letter-spacing: 0.11em;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 p,
 li {
   text-wrap: pretty;
+}
+
+.shell-nav .nav-links a,
+.shell-nav .nav-more summary {
+  font-family: var(--font-body);
+  letter-spacing: 0.035em;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+.meta-label,
+figcaption,
+.file-note {
+  font-size: max(0.78rem, 12.5px);
+  line-height: 1.5;
 }

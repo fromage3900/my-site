@@ -418,7 +418,7 @@
 
 .atelier-world-card-tag {
   font-family: var(--font-mono, monospace);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   color: var(--color-accent-primary);
   letter-spacing: 0.08em;
   text-transform: uppercase;

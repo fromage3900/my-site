@@ -8,10 +8,10 @@
 
   var LINKS = [
     { href: 'index.html', label: 'Home', keys: ['index', ''] },
-    { href: 'curated-art.html', label: 'Art', keys: ['curated-art'] },
+    { href: 'curated-art.html', label: 'Portfolio', keys: ['curated-art'] },
     { href: 'world-bible.html', label: 'Worlds', keys: ['world-bible', 'sakura-case-study', 'space-cathedral', 'pcg-system-impact', 'melodia-stage-character'] },
-    { href: 'melodia-living-worlds.html', label: 'Melodia', keys: ['melodia-living-worlds', 'melodia-gameplay-loop', 'melodia-rhythm-hero'] },
-    { href: 'resume.html', label: 'About', keys: ['resume', 'recruiter-one-sheet'] },
+    { href: 'melodia-living-worlds.html', label: 'Interactive', keys: ['melodia-living-worlds', 'melodia-gameplay-loop', 'melodia-rhythm-hero', 'realtime-3d-viewer', 'constellation-brush', 'mahou-particle-garden'] },
+    { href: 'resume.html', label: 'About', keys: ['resume', 'recruiter-one-sheet', 'hiring-dossier', 'credits'] },
   ];
 
   var moreHandlersBound = false;
@@ -137,12 +137,12 @@
   }
 
   var MORE_LINKS = [
-    { href: 'hero-renders.html', label: 'Render archive', keys: ['hero-renders'] },
-    { href: 'zbrush-breakdown.html', label: 'Sculpt breakdown', keys: ['zbrush-breakdown'] },
-    { href: 'shader-breakdowns.html', label: 'Shader breakdowns', keys: ['shader-breakdowns'] },
+    { href: 'hero-renders.html', label: 'Render Gallery', keys: ['hero-renders'] },
+    { href: 'zbrush-breakdown.html', label: 'ZBrush / Sculpt', keys: ['zbrush-breakdown'] },
+    { href: 'shader-breakdowns.html', label: 'Shaders', keys: ['shader-breakdowns'] },
     { href: 'cosmic-orrery.html', label: 'Cosmic Orrery', keys: ['cosmic-orrery'] },
     { href: 'sdf-material-gallery.html', label: 'Material Atlas', keys: ['sdf-material-gallery'] },
-    { href: 'melodia-atelier-lab.html', label: 'Technical Art Atelier', keys: ['melodia-atelier-lab'] },
+    { href: 'melodia-atelier-lab.html', label: 'Technical Art Lab', keys: ['melodia-atelier-lab'] },
   ];
 
   function pageKey() {
@@ -191,7 +191,7 @@
     var star = constellation ? '<span class="nav-star" aria-hidden="true"></span>' : '';
     return (
       '<details class="nav-more' + (active ? ' is-active' : '') + '">' +
-        '<summary>' + star + 'More <span aria-hidden="true">✦</span></summary>' +
+        '<summary>' + star + '<span class="nav-more-label">Breakdowns</span> <span class="nav-more-icon" aria-hidden="true">▾</span></summary>' +
         '<div class="nav-more-menu">' +
           MORE_LINKS.map(function (item) {
             return linkHtml(item, item.keys.indexOf(key) !== -1, constellation);
@@ -241,9 +241,9 @@
     if (!nav) {
       nav = document.createElement('nav');
       nav.className = 'nav-links';
-      nav.setAttribute('aria-label', 'Sections');
       header.appendChild(nav);
     }
+    nav.setAttribute('aria-label', 'Primary navigation');
 
     nav.innerHTML = LINKS.map(function (item) {
       return linkHtml(item, item.keys.indexOf(key) !== -1, constellation);

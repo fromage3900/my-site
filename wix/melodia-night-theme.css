@@ -6,7 +6,7 @@
   --night-astral: var(--primitive-astral-900);
   --night-plum: var(--primitive-plum-900);
   --night-lavender: rgba(236, 234, 244, 0.92);
-  --night-muted: rgba(236, 234, 244, 0.66);
+  --night-muted: rgba(236, 234, 244, 0.80);
   --night-line: var(--effect-brass-subtle);
   --night-soft-line: rgba(233, 229, 242, 0.10);
 
@@ -93,7 +93,7 @@ body {
 }
 
 .shell-nav .nav-links a {
-  color: rgba(236, 234, 244, 0.82);
+  color: rgba(246, 243, 250, 0.96);
 }
 
 .brand {
@@ -102,7 +102,7 @@ body {
 
 .footer {
   background: linear-gradient(180deg, rgba(7, 9, 18, 0.96), rgba(7, 9, 18, 1)) !important;
-  color: rgba(236, 234, 244, 0.62) !important;
+  color: rgba(236, 234, 244, 0.80) !important;
 }
 
 /* Make sparkle + aurora read better over night */
@@ -112,7 +112,7 @@ body {
 /* Keep readable contrast on buttons */
 .button,
 .button-premium {
-  color: rgba(236, 234, 244, 0.88);
+  color: rgba(246, 243, 250, 0.96);
 }
 
 .button.primary,

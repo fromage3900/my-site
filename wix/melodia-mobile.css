@@ -267,3 +267,39 @@
     letter-spacing: .1em;
   }
 }
+
+
+/* Mobile navigation: recruiter-readable hierarchy */
+@media (max-width: 1080px) {
+  .shell-nav .nav-links {
+    max-height: min(78vh, 560px);
+    padding: 10px;
+  }
+  .shell-nav .nav-links > a,
+  .shell-nav .nav-more summary {
+    min-height: 48px;
+    padding: 13px 14px;
+    font-family: var(--font-body);
+    font-size: 0.96rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: rgba(246,243,250,.98);
+  }
+  .shell-nav .nav-more-menu {
+    padding: 4px 8px 10px 16px;
+  }
+  .shell-nav .nav-more-menu a {
+    min-height: 44px;
+    padding: 11px 12px;
+    font-size: 0.88rem;
+    color: rgba(246,243,250,.9);
+  }
+  .nav-toggle {
+    padding-inline: 12px;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+}

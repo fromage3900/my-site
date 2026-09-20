@@ -6,7 +6,7 @@
   gap: 1rem;
   margin: 0 0 1.75rem;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: rgba(212, 184, 122, 0.9);
@@ -126,7 +126,7 @@
 
 .viz-plate .viz-caption span {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(236, 234, 244, 0.55);
@@ -154,7 +154,7 @@
   display: inline-flex;
   margin-top: 1.1rem;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--iri-gold, var(--primitive-gold-100));
@@ -249,7 +249,7 @@
   display: inline-block;
   margin-bottom: 0.65rem;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   letter-spacing: 0.18em;
   color: rgba(102, 217, 255, 0.9);
 }
@@ -377,7 +377,7 @@
 .technical-appendix summary {
   cursor: pointer;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(236, 234, 244, 0.55);

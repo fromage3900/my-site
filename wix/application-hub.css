@@ -323,10 +323,10 @@
   margin: 0;
   text-align: center;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(236, 234, 244, 0.62);
+  color: rgba(236, 234, 244, 0.82);
   pointer-events: none;
 }
 
@@ -431,7 +431,7 @@
   border: 1px solid var(--border-gold);
   background: rgba(16, 23, 54, 0.55);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   letter-spacing: 0.05em;
   color: rgba(233, 229, 242, 0.72);
   line-height: 1.4;
@@ -442,7 +442,7 @@
   color: var(--gold-soft);
   font-weight: 500;
   margin-bottom: 3px;
-  font-size: 0.68rem;
+  font-size: 0.78rem;
 }
 
 .breakdown-passports {
@@ -597,7 +597,7 @@
   text-align: center;
   color: rgba(233, 229, 242, 0.62);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }

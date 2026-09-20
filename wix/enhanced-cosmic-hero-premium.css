@@ -891,7 +891,7 @@ h3 {
   gap: 12px;
   margin-bottom: 10px;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--primitive-gold-300);
@@ -920,7 +920,7 @@ h3 {
   margin-top: 4px;
   margin-bottom: 2px;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--primitive-lavender-100);
@@ -942,7 +942,7 @@ h3 {
   padding: 8px 0;
   border-top: 1px solid var(--effect-pearl-faint);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   font-variant-numeric: tabular-nums;
 }
 
@@ -967,7 +967,7 @@ h3 {
   display: inline-block;
   margin-top: 10px;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--primitive-gold-500);
@@ -1001,7 +1001,7 @@ h3 {
   gap: 8px;
   padding: 8px 14px;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(236, 234, 242, 0.78);
@@ -1118,7 +1118,7 @@ h3 {
 
 .sig-role {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(233, 229, 242, 0.55);
