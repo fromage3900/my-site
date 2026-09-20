@@ -1,5 +1,6 @@
-/* Melodia Design Tokens — Single Source of Truth for Web
-   Generated from tokens.json (Figma SSOT). Do not edit manually — run token sync.
+/* Melodia Design Tokens — Figma-aligned Single Source of Truth for Web
+   External/generated token snapshots may lag the current Grandmaster UI; this tracked
+   web file is authoritative for deployed role mappings until token sync is reconciled.
    All CSS files must @import this FIRST before any other styles. */
 
 :root {
