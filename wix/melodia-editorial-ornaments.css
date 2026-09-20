@@ -3,7 +3,7 @@
 :root {
   --frame-inset: clamp(14px, 4.5%, 52px);
   --frame-opacity: 0.11;
-  --ornament-gold: rgba(201, 168, 106, 0.55);
+  --ornament-gold: var(--effect-brass-strong);
   --ornament-pearl: rgba(233, 229, 242, 0.42);
 }
 
@@ -190,8 +190,8 @@
   background: linear-gradient(
     90deg,
     transparent,
-    var(--motif-accent, rgba(201, 168, 106, 0.55)) 20%,
-    var(--motif-accent, rgba(201, 168, 106, 0.55)) 80%,
+    var(--motif-accent, var(--effect-brass-strong)) 20%,
+    var(--motif-accent, var(--effect-brass-strong)) 80%,
     transparent
   );
   opacity: 0.72;
@@ -238,7 +238,7 @@
   padding: 6px 0 18px;
   font-size: 0.55rem;
   letter-spacing: 1.2em;
-  color: var(--motif-accent, rgba(201, 168, 106, 0.55));
+  color: var(--motif-accent, var(--effect-brass-strong));
   opacity: 0.06;
   user-select: none;
   pointer-events: none;
@@ -273,7 +273,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 110, 180, 0.45),
+    var(--effect-sakura-mid),
     rgba(255, 230, 102, 0.55),
     rgba(102, 217, 255, 0.4),
     transparent
@@ -297,10 +297,10 @@
       90deg,
       transparent,
       transparent 6px,
-      rgba(102, 217, 255, 0.22) 6px,
-      rgba(102, 217, 255, 0.22) 7px
+      var(--effect-cyan-line) 6px,
+      var(--effect-cyan-line) 7px
     ),
-    linear-gradient(90deg, transparent, rgba(255, 230, 102, 0.35), transparent);
+    linear-gradient(90deg, transparent, var(--effect-starlight-soft), transparent);
 }
 
 .melodia-shell[data-mg="full"] .editorial-rhythm-divider .glyph,

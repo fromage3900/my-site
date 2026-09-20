@@ -77,7 +77,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 22% 12%, rgba(102, 217, 255, 0.08), transparent 34%),
+    radial-gradient(circle at 22% 12%, var(--effect-cyan-whisper), transparent 34%),
     radial-gradient(circle at 82% 18%, rgba(204, 153, 255, 0.08), transparent 36%),
     linear-gradient(180deg, var(--ivory), var(--primitive-astral-900));
   color: var(--ink);
@@ -128,7 +128,7 @@ img { display: block; max-width: 100%; }
   background:
     radial-gradient(circle at 12% 16%, rgba(232, 201, 184, 0.08), transparent 28%),
     radial-gradient(circle at 78% 22%, rgba(155, 143, 196, 0.10), transparent 32%),
-    radial-gradient(circle at 50% 80%, rgba(102, 217, 255, 0.06), transparent 40%),
+    radial-gradient(circle at 50% 80%, var(--effect-cyan-faint), transparent 40%),
     linear-gradient(180deg, var(--ivory) 0%, var(--primitive-astral-900) 50%, var(--primitive-astral-900) 100%);
 }
 
@@ -168,10 +168,10 @@ img { display: block; max-width: 100%; }
   border: 1px solid var(--line);
   border-radius: 3px;
   /* Opaque enough that hero orrery never ghosts through the banner */
-  background: rgba(7, 9, 18, 0.94);
+  background: var(--effect-void-opaque);
   isolation: isolate;
   backdrop-filter: blur(12px) saturate(1.05);
-  box-shadow: 0 20px 60px rgba(7, 9, 18, 0.42);
+  box-shadow: 0 20px 60px var(--effect-void-glass);
 }
 
 .brand {
@@ -223,7 +223,7 @@ img { display: block; max-width: 100%; }
   text-transform: uppercase;
 }
 
-.button { background: rgba(255, 255, 255, 0.08); }
+.button { background: var(--effect-pearl-subtle); }
 .button.primary { background: var(--gold); border-color: var(--gold); color: var(--void); }
 .button.dark { background: var(--astral); color: var(--lavender); }
 
@@ -343,7 +343,7 @@ img { display: block; max-width: 100%; }
   mix-blend-mode: screen;
   background:
     url("../generated/assets/melodia-game-ui/T_Melodia_IriOverlay.png") center / cover no-repeat,
-    linear-gradient(128deg, rgba(102, 217, 255, 0.08), rgba(255, 110, 180, 0.1), rgba(255, 230, 102, 0.06));
+    linear-gradient(128deg, var(--effect-cyan-whisper), rgba(255, 110, 180, 0.1), rgba(255, 230, 102, 0.06));
   animation: mg-ribbon-shimmer 10s ease-in-out infinite;
 }
 
@@ -426,7 +426,7 @@ img { display: block; max-width: 100%; }
 .melodia-orrery .orbit.meridian,
 .orrery-mount .orbit.meridian {
   fill: none;
-  stroke: rgba(102, 217, 255, 0.22);
+  stroke: var(--effect-cyan-line);
   stroke-width: 0.55;
   stroke-dasharray: 4 7;
 }
@@ -595,13 +595,13 @@ em { color: var(--gold); font-style: italic; }
 .inner { width: min(100%, var(--max)); margin: 0 auto; }
 .paper {
   background:
-    linear-gradient(180deg, rgba(16, 23, 54, 0.92), rgba(7, 9, 18, 0.94));
+    linear-gradient(180deg, var(--effect-astral-panel), var(--effect-void-opaque));
   color: var(--ink);
 }
 .cloud {
   background:
-    linear-gradient(180deg, rgba(16, 23, 54, 0.88), rgba(7, 9, 18, 0.92)),
-    radial-gradient(circle at 18% 26%, rgba(102, 217, 255, 0.06), transparent 40%);
+    linear-gradient(180deg, var(--effect-astral-dense), var(--effect-void-panel)),
+    radial-gradient(circle at 18% 26%, var(--effect-cyan-faint), transparent 40%);
   color: var(--ink);
 }
 .astral { background: linear-gradient(135deg, var(--astral), var(--plum)); color: var(--lavender); }
@@ -674,7 +674,7 @@ em { color: var(--gold); font-style: italic; }
   max-width: 520px;
   padding: 16px 18px;
   border: 1px solid rgba(200, 164, 94, 0.38);
-  background: rgba(16, 23, 54, 0.88);
+  background: var(--effect-astral-dense);
   color: var(--ink);
   backdrop-filter: blur(12px);
 }
@@ -816,7 +816,7 @@ em { color: var(--gold); font-style: italic; }
   padding: 26px 24px 24px;
   border: 1px solid rgba(200, 164, 94, 0.42);
   background:
-    linear-gradient(145deg, rgba(16, 23, 54, 0.92), rgba(7, 9, 18, 0.88)),
+    linear-gradient(145deg, var(--effect-astral-panel), rgba(7, 9, 18, 0.88)),
     var(--pattern-hearts-svg);
   background-position: center;
   background-size: auto, 160px 160px;
@@ -906,7 +906,7 @@ em { color: var(--gold); font-style: italic; }
 }
 
 .astral .portal-card p { color: rgba(233, 229, 242, 0.72); }
-.astral .portal-card .portal-open { background: rgba(255, 255, 255, 0.06); }
+.astral .portal-card .portal-open { background: var(--effect-pearl-faint); }
 
 .one-sheet-tagline {
   margin: 18px 0 0;

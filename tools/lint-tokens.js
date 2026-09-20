@@ -54,11 +54,11 @@ extractPrimitives(tokensJson.primitives || {});
 
 // 2. Parse melodia-tokens.css for CSS custom properties
 const cssText = fs.readFileSync(TOKENS_CSS, 'utf-8');
-const cssTokenRegex = /--([a-z-]+):\s*#?([a-fA-F0-9]+|rgba?\([^)]+\))/g;
-const cssTokens = new Map();
+const cssTokenRegex = /--([a-z0-9-]+)\s*:/gi;
+const cssTokens = new Set();
 let match;
 while ((match = cssTokenRegex.exec(cssText)) !== null) {
-  cssTokens.set(match[1], match[2]);
+  cssTokens.add(match[1]);
 }
 
 // 3. Scan all CSS files for raw hex usage (excluding melodia-tokens.css)

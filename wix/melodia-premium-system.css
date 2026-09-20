@@ -180,7 +180,7 @@
   font-family: var(--font-display);
   font-weight: 500;
   letter-spacing: 0;
-  text-shadow: 0 0 30px rgba(201, 168, 106, 0.2);
+  text-shadow: 0 0 30px var(--effect-brass-low);
 }
 
 .premium-lede {
@@ -236,7 +236,7 @@
 }
 
 .premium-glow-crystal {
-  box-shadow: 0 0 0 1px rgba(102, 217, 255, 0.35);
+  box-shadow: 0 0 0 1px var(--effect-cyan-soft);
 }
 
 .premium-glow-platinum {

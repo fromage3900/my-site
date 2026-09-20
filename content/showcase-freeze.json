@@ -93,7 +93,19 @@
     "wix/mahou-particle-garden.html",
     "wix/melodia-rhythm-hero.html",
     "wix/ornament-kitbash.html",
-    "wix/surreal-architecture.html"
+    "wix/surreal-architecture.html",
+    "wix/application-hub.css",
+    "wix/enhanced-cosmic-hero-premium.css",
+    "wix/melodia-atmosphere.css",
+    "wix/melodia-cosmic-instruments.css",
+    "wix/melodia-dream-shaders.css",
+    "wix/melodia-fashion-editorial.css",
+    "wix/melodia-magical-girl.css",
+    "wix/melodia-mobile.css",
+    "wix/melodia-night-theme.css",
+    "wix/melodia-planetarium.css",
+    "wix/melodia-premium-system.css",
+    "wix/melodia-visual-breakdown.css"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -346,6 +358,22 @@
         "no archive/generated-artifact cleanup",
         "no forced unification of the Accessory Atelier Figma subsystem",
         "no weakening of recruiter freeze or validation"
+      ]
+    },
+    {
+      "id": "token-system-cleanup-2026-09-19",
+      "reason": "Owner requested the post-typography design-system cleanup: repair numeric custom-property parsing and consolidate repeated translucent chrome colors into shared semantic effect tokens without changing rendered values.",
+      "scope": [
+        "fix token linter parsing so numeric names such as --space-16 and non-color custom properties are recognized",
+        "add shared pearl, void, astral, cyan, sakura, brass and starlight effect-alpha tokens",
+        "replace byte-identical repeated RGBA literals in shared live CSS with those effect tokens",
+        "preserve current palette, opacity, layout, typography, motion and interaction behavior"
+      ],
+      "exclusions": [
+        "no forced tokenization of page-specific art-direction colors",
+        "no palette redesign or opacity retuning",
+        "no layout, navigation, content hierarchy, artwork or interaction changes",
+        "no weakening of token, asset, link, showcase or recruiter-freeze validation"
       ]
     }
   ]

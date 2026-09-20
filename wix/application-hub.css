@@ -48,9 +48,9 @@
 }
 
 .planetarium-disclosure {
-  border: 1px solid var(--border-gold, rgba(201, 168, 106, 0.28));
+  border: 1px solid var(--border-gold, var(--effect-brass-subtle));
   padding: 1rem 1.25rem 1.25rem;
-  background: rgba(7, 9, 18, 0.35);
+  background: var(--effect-void-soft);
 }
 
 .planetarium-disclosure > summary {
@@ -67,7 +67,7 @@
 
 .planetarium-disclosure[open] > summary {
   margin-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--effect-pearl-subtle);
   padding-bottom: 0.85rem;
 }
 
@@ -75,7 +75,7 @@
 .band.cloud {
   /* Keep night dossier — no ivory/cream paper bleed */
   background:
-    linear-gradient(180deg, rgba(16, 23, 54, 0.92), rgba(10, 14, 28, 0.96));
+    linear-gradient(180deg, var(--effect-astral-panel), rgba(10, 14, 28, 0.96));
   color: var(--ink);
 }
 
@@ -86,9 +86,9 @@
   align-content: start;
   border: 1px solid var(--border-gold);
   background:
-    linear-gradient(rgba(16, 23, 54, 0.92), rgba(7, 9, 18, 0.95)),
+    linear-gradient(var(--effect-astral-panel), rgba(7, 9, 18, 0.95)),
     radial-gradient(circle at 88% 12%, rgba(255, 110, 180, 0.08), transparent 40%);
-  box-shadow: 0 20px 70px rgba(7, 9, 18, 0.35);
+  box-shadow: 0 20px 70px var(--effect-void-soft);
 }
 
 .panel-head {
@@ -157,7 +157,7 @@
   top: 18px;
   right: 14px;
   writing-mode: vertical-rl;
-  color: rgba(201, 168, 106, 0.2);
+  color: var(--effect-brass-low);
   font-family: var(--font-brand);
   font-size: 2.65rem;
   line-height: 1;
@@ -207,7 +207,7 @@
   font-size: 0.66rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  text-shadow: 0 0 16px rgba(255, 230, 102, 0.18);
+  text-shadow: 0 0 16px var(--effect-starlight-faint);
 }
 
 .romaji {
@@ -250,7 +250,7 @@
   overflow: hidden;
   border: 1px solid var(--border-gold);
   background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(13, 18, 36, 0.92)),
+    linear-gradient(145deg, var(--effect-pearl-faint), rgba(13, 18, 36, 0.92)),
     radial-gradient(circle at 30% 20%, rgba(255, 110, 180, 0.18), transparent 34%),
     radial-gradient(circle at 72% 72%, rgba(102, 217, 255, 0.16), transparent 32%);
   touch-action: none;
@@ -394,7 +394,7 @@
   overflow: hidden;
   border: 1px solid var(--border-gold);
   padding: 18px;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--effect-pearl-whisper);
 }
 
 .concept strong {
@@ -465,7 +465,7 @@
 }
 
 .passport-card.light {
-  background: linear-gradient(180deg, rgba(16, 23, 54, 0.94), rgba(7, 9, 18, 0.92));
+  background: linear-gradient(180deg, rgba(16, 23, 54, 0.94), var(--effect-void-panel));
   color: var(--lavender);
 }
 
@@ -528,7 +528,7 @@
   justify-content: space-between;
   gap: 18px;
   padding: 7px 0;
-  border-bottom: 1px solid rgba(201, 168, 106, 0.18);
+  border-bottom: 1px solid var(--effect-brass-faint);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
@@ -625,7 +625,7 @@
 .zunda-card { display: none; }
 
 .passport-card.light {
-  background: linear-gradient(180deg, rgba(16, 23, 54, 0.96), rgba(7, 9, 18, 0.94));
+  background: linear-gradient(180deg, rgba(16, 23, 54, 0.96), var(--effect-void-opaque));
   color: var(--lavender);
 }
 
@@ -763,7 +763,7 @@
 
 .world-card:nth-child(1) {
   background:
-    linear-gradient(rgba(16, 23, 54, 0.88), rgba(7, 9, 18, 0.92)),
+    linear-gradient(var(--effect-astral-dense), var(--effect-void-panel)),
     var(--pattern-hearts-svg);
   background-size: auto, 160px 160px;
 }

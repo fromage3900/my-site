@@ -289,6 +289,46 @@
   --text-label-tech:    clamp(11px, 1.5vw, 12px) / 1.33 var(--font-mono);
   --text-metadata:      clamp(10px, 1.2vw, 11px) / 1.27 var(--font-mono);
 
+  /* ===== EFFECT / ALPHA TOKENS — FIGMA-ALIGNED SHARED CHROME =====
+     Byte-identical aliases for recurring legacy RGBA literals. These centralize
+     glass, border, haze and glow strengths without changing rendered color. */
+  --effect-pearl-whisper: rgba(255, 255, 255, 0.04);
+  --effect-pearl-faint:   rgba(255, 255, 255, 0.06);
+  --effect-pearl-subtle:  rgba(255, 255, 255, 0.08);
+
+  --effect-void-soft:     rgba(7, 9, 18, 0.35);
+  --effect-void-glass:    rgba(7, 9, 18, 0.42);
+  --effect-void-dense:    rgba(7, 9, 18, 0.55);
+  --effect-void-panel:    rgba(7, 9, 18, 0.92);
+  --effect-void-opaque:   rgba(7, 9, 18, 0.94);
+
+  --effect-astral-dense:  rgba(16, 23, 54, 0.88);
+  --effect-astral-panel:  rgba(16, 23, 54, 0.92);
+
+  --effect-cyan-faint:    rgba(102, 217, 255, 0.06);
+  --effect-cyan-whisper:  rgba(102, 217, 255, 0.08);
+  --effect-cyan-low:      rgba(102, 217, 255, 0.12);
+  --effect-cyan-mid:      rgba(102, 217, 255, 0.20);
+  --effect-cyan-line:     rgba(102, 217, 255, 0.22);
+  --effect-cyan-border:   rgba(102, 217, 255, 0.28);
+  --effect-cyan-soft:     rgba(102, 217, 255, 0.35);
+  --effect-cyan-strong:   rgba(102, 217, 255, 0.55);
+
+  --effect-sakura-soft:   rgba(255, 110, 180, 0.35);
+  --effect-sakura-mid:    rgba(255, 110, 180, 0.45);
+  --effect-sakura-strong: rgba(255, 110, 180, 0.55);
+
+  --effect-brass-faint:   rgba(201, 168, 106, 0.18);
+  --effect-brass-low:     rgba(201, 168, 106, 0.20);
+  --effect-brass-subtle:  rgba(201, 168, 106, 0.28);
+  --effect-brass-strong:  rgba(201, 168, 106, 0.55);
+
+  --effect-starlight-whisper: rgba(255, 230, 102, 0.12);
+  --effect-starlight-faint:   rgba(255, 230, 102, 0.18);
+  --effect-starlight-border:  rgba(255, 230, 102, 0.28);
+  --effect-starlight-soft:    rgba(255, 230, 102, 0.35);
+  --effect-starlight-mid:     rgba(255, 230, 102, 0.40);
+
   /* ===== ELEVATION / SHADOWS ===== */
   --shadow-sm: 0 1px 2px rgba(36, 27, 46, 0.06);
   --shadow-md: 0 8px 24px rgba(36, 27, 46, 0.10);

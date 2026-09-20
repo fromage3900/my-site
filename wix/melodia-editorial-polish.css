@@ -191,7 +191,7 @@
 .melodia-shell .band.paper[data-surface="ivory"] .premium-card,
 .melodia-shell .band.paper[data-surface="ivory"] .guide-card,
 .melodia-shell .band.cloud[data-surface="ivory"] .guide-card {
-  border-color: rgba(201, 168, 106, 0.55) !important;
+  border-color: var(--effect-brass-strong) !important;
   background:
     linear-gradient(145deg, rgba(255, 248, 238, 0.82) 0%, rgba(255, 255, 255, 0.62) 55%, rgba(243, 230, 200, 0.5) 100%) !important;
   color: var(--ivory-ink);
@@ -281,7 +281,7 @@
   align-items: baseline;
   gap: 12px 16px;
   padding: 0.5rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--effect-pearl-subtle);
   font-family: var(--font-mono, "IBM Plex Mono", monospace);
   font-size: 0.72rem;
 }
