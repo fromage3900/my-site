@@ -288,10 +288,10 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
     />
     <video
       class="hero-video hero-bg-video"
-      autoplay
       loop
       muted
       playsinline
+      preload="none"
       poster="../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png"
       src="../generated/assets/landscape-loops/WP_SakuraDream.webm"
     ></video>
@@ -306,10 +306,10 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
       fetchpriority="high"
     />
     <video
-      autoplay
       loop
       muted
       playsinline
+      preload="none"
       aria-hidden="true"
       poster="../generated/assets/character/melusina_eevee_glam_20260715_02.png"
     >
@@ -542,6 +542,57 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
     if (event.animationName === 'melodiaEntryVeil') finishEntryCutscene();
   });
   window.setTimeout(finishEntryCutscene, 1400);
+})();
+</script>
+<script>
+(function () {
+  var hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  var videos = Array.prototype.slice.call(hero.querySelectorAll('video'));
+  if (!videos.length) return;
+
+  var mobile = window.matchMedia && window.matchMedia('(max-width: 680px)').matches;
+  var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var heroVisible = false;
+
+  function pauseVideos() {
+    videos.forEach(function (video) {
+      video.pause();
+      if (mobile || reducedMotion) video.preload = 'none';
+    });
+  }
+
+  function syncVideos() {
+    if (document.hidden || mobile || reducedMotion || !heroVisible) {
+      pauseVideos();
+      return;
+    }
+
+    videos.forEach(function (video) {
+      video.preload = 'metadata';
+      var playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(function () {});
+    });
+  }
+
+  pauseVideos();
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        heroVisible = entry.isIntersecting && entry.intersectionRatio >= 0.15;
+        syncVideos();
+      });
+    }, { threshold: [0, 0.15, 0.5] });
+    observer.observe(hero);
+  } else {
+    heroVisible = true;
+    syncVideos();
+  }
+
+  document.addEventListener('visibilitychange', syncVideos, { passive: true });
+  window.addEventListener('pagehide', pauseVideos, { passive: true });
 })();
 </script>
 <script src="wix-embed-bridge.js?v=20260904p1"></script>
