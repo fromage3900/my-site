@@ -13,6 +13,11 @@ class PremiumParallax {
     this.depthFactors = [0.05, 0.12, 0.2, 0.28, 0.38, 0.48, 0.58, 0.68];
     this.smoothing = 0.08;
     this.initialized = false;
+    this.rafId = 0;
+    this.handleMouseMove = (e) => this.onMouseMove(e);
+    this.handleMouseLeave = () => this.onMouseLeave();
+    this.handleTouchMove = (e) => this.onTouchMove(e);
+    this.handleTouchEnd = () => this.onMouseLeave();
     this.init();
   }
 
@@ -27,10 +32,10 @@ class PremiumParallax {
       });
     });
 
-    this.container.addEventListener('mousemove', (e) => this.onMouseMove(e));
-    this.container.addEventListener('mouseleave', () => this.onMouseLeave());
-    this.container.addEventListener('touchmove', (e) => this.onTouchMove(e), { passive: true });
-    this.container.addEventListener('touchend', () => this.onMouseLeave());
+    this.container.addEventListener('mousemove', this.handleMouseMove);
+    this.container.addEventListener('mouseleave', this.handleMouseLeave);
+    this.container.addEventListener('touchmove', this.handleTouchMove, { passive: true });
+    this.container.addEventListener('touchend', this.handleTouchEnd);
 
     this.initialized = true;
     this.animate();
@@ -67,17 +72,25 @@ class PremiumParallax {
       layer.element.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
     });
 
-    requestAnimationFrame(() => this.animate());
+    this.rafId = requestAnimationFrame(() => this.animate());
   }
 
   destroy() {
     this.initialized = false;
+    if (this.rafId) cancelAnimationFrame(this.rafId);
+    this.rafId = 0;
+    this.container.removeEventListener('mousemove', this.handleMouseMove);
+    this.container.removeEventListener('mouseleave', this.handleMouseLeave);
+    this.container.removeEventListener('touchmove', this.handleTouchMove);
+    this.container.removeEventListener('touchend', this.handleTouchEnd);
   }
 }
 
 class PremiumMaterials {
   constructor() {
     this.materials = [];
+    this.rafId = 0;
+    this.running = true;
     this.init();
   }
 
@@ -85,6 +98,7 @@ class PremiumMaterials {
     document.querySelectorAll('.material-gold-iridescent, .material-crystal, .material-premium').forEach((element) => {
       this.materials.push({
         element,
+        phaseOffset: Math.random() * 2,
         type: element.classList.contains('material-gold-iridescent')
           ? 'gold'
           : element.classList.contains('material-crystal')
@@ -96,9 +110,10 @@ class PremiumMaterials {
   }
 
   animateMaterials() {
-    const time = Date.now() / 1000;
+    if (!this.running) return;
+    const time = performance.now() / 1000;
     this.materials.forEach((material) => {
-      const phase = (time + Math.random() * 2) % 6;
+      const phase = (time + material.phaseOffset) % 6;
       if (material.type === 'gold') {
         material.element.style.backgroundPosition = `${(phase / 6) * 100}% 50%`;
       } else if (material.type === 'crystal') {
@@ -108,7 +123,14 @@ class PremiumMaterials {
         material.element.style.backgroundPosition = `calc(50% + ${shimmerOffset}px) 50%`;
       }
     });
-    requestAnimationFrame(() => this.animateMaterials());
+    this.rafId = requestAnimationFrame(() => this.animateMaterials());
+  }
+
+  destroy() {
+    this.running = false;
+    if (this.rafId) cancelAnimationFrame(this.rafId);
+    this.rafId = 0;
+    this.materials.length = 0;
   }
 }
 
@@ -144,6 +166,7 @@ function initPremiumHero() {
     materials: new PremiumMaterials(),
     destroy() {
       if (this.parallax) this.parallax.destroy();
+      if (this.materials) this.materials.destroy();
     },
   };
 }
