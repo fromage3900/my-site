@@ -87,7 +87,11 @@
     "wix/premium-cosmic-hero.js",
     "wix/melodia-site-nav.js",
     "wix/melodia-editorial.js",
-    "wix/melodia-dream-shaders.js"
+    "wix/melodia-dream-shaders.js",
+    "tools/lint-tokens.js",
+    "wix/baroque-grotto.html",
+    "wix/mahou-particle-garden.html",
+    "wix/melodia-rhythm-hero.html"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -320,6 +324,25 @@
         "no artwork, copy, hierarchy, navigation, typography, colour, or visual-redesign changes",
         "no deletion of portfolio work; full-resolution assets remain accessible",
         "no weakening of freeze, asset, link, token, or showcase validation"
+      ]
+    },
+    {
+      "id": "figma-typography-reconcile-2026-09-19",
+      "reason": "Owner rejected the stale Cinzel/Fraunces web mapping and requested the public website be reconciled to the current Figma UI. This supersedes the deployed-web font-role portion of typography-token-alignment-2026-09-11 while preserving that entry as history.",
+      "scope": [
+        "set public Melodia brand/navigation/body roles to Space Grotesk",
+        "set editorial display/hero roles to Crimson Text",
+        "retain IBM Plex Mono for genuinely technical metadata and Twinkle Star only for rare flourish moments",
+        "preserve Accessory Atelier as an intentional Times + Jost + IBM Plex Mono campaign/product subsystem",
+        "remove public/shared Cinzel/Fraunces fallbacks and stale Inter declarations",
+        "repair the malformed semantic-alias comment in melodia-tokens.css",
+        "add a blocking token-linter guard against legacy font drift on public routes and shared typography CSS"
+      ],
+      "exclusions": [
+        "no artwork, copy hierarchy, route, navigation, palette, layout, or interaction redesign",
+        "no archive/generated-artifact cleanup",
+        "no forced unification of the Accessory Atelier Figma subsystem",
+        "no weakening of recruiter freeze or validation"
       ]
     }
   ]
