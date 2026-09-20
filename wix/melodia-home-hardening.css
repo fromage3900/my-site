@@ -1908,3 +1908,10 @@ html[data-page="index"] .melodia-shell .shell-nav > a.nav-cta.button-premium {
   background-clip: border-box !important;
   -webkit-background-clip: border-box !important;
 }
+
+html[data-page="index"] .pillar-case-strip {
+  font-size: 0.82rem !important;
+  letter-spacing: 0.055em !important;
+  line-height: 1.65 !important;
+  color: rgba(236, 234, 244, 0.9) !important;
+}
