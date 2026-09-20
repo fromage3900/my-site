@@ -79,7 +79,12 @@
     "wix/render-constellation.html",
     "generated/renders_config.json",
     "generated/assets/latest-hero.png",
-    "generated/assets/l-sakurapath-hero.png"
+    "generated/assets/l-sakurapath-hero.png",
+    "wix/melodia-atmosphere.js",
+    "wix/melodia-magical-girl.js",
+    "wix/melodia-mahou-flourish.js",
+    "wix/melodia-starfield.js",
+    "wix/premium-cosmic-hero.js"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -251,8 +256,8 @@
       "id": "melusina-morning-figma-v3-promotion-2026-09-17",
       "reason": "Owner explicitly requested a website audit, integration of the updated Figma Compendium artifact direction, and promotion of the staged 2026-09-17 Melusina Morning render set into the existing recruiter-facing hierarchy.",
       "scope": [
-        "generated/assets/figma/atelier-figma-pack-2026-09-14/ \u2014 preserve the already-generated Figma handoff pack as bounded design evidence",
-        "public/melodia/melusina-morning-vfx/2026-09-17/ \u2014 staged current render masters, manifest, and readmes promoted by the recruiter-facing pages",
+        "generated/assets/figma/atelier-figma-pack-2026-09-14/ — preserve the already-generated Figma handoff pack as bounded design evidence",
+        "public/melodia/melusina-morning-vfx/2026-09-17/ — staged current render masters, manifest, and readmes promoted by the recruiter-facing pages",
         "existing allowlisted recruiter pages and CSS may reference these assets without creating new public routes"
       ],
       "exclusions": [
@@ -276,6 +281,23 @@
       "exclusions": [
         "no breaking changes to core recruiter routes",
         "zero broken links or references"
+      ]
+    },
+    {
+      "id": "runtime-stability-2026-09-19",
+      "reason": "Owner explicitly requested an immediate runtime-stability pass after repeated website crashes, lag, and mobile instability. This exception is limited to reducing CPU/GPU/memory pressure in existing effects without changing the portfolio's design, copy, routes, or artwork.",
+      "scope": [
+        "wix/index.html - pause/lazy-play existing hero videos and keep static posters on mobile/reduced-motion",
+        "wix/melodia-starfield.js - mobile frame/DPR/particle budget, visibility pause, and removal of the expensive mobile thin-film pass",
+        "wix/melodia-atmosphere.js - animation lifecycle, mobile DPR cap, visibility pause, and WebGL context-loss guard",
+        "wix/premium-cosmic-hero.js - cancel orphaned animation frames/listeners and remove per-frame random churn",
+        "wix/melodia-mahou-flourish.js and wix/melodia-magical-girl.js - disable pointer-heavy decoration on coarse/mobile input"
+      ],
+      "exclusions": [
+        "no new public routes",
+        "no new visual systems or effects",
+        "no portfolio copy, artwork, hierarchy, navigation, colour, typography, or layout changes",
+        "no weakening of freeze, link, or polish verification"
       ]
     }
   ]
