@@ -30,6 +30,30 @@ Do not add or redesign:
 
 The point of the freeze is to stop polishing the *container* and finish the *proof*.
 
+## Showcase-day exception — 2026-09-22
+
+Today's site work is intentionally narrower than a normal polish pass because new Choral Sheep bakes/renders are being prepared for the portfolio showcase.
+
+Allowed today:
+
+- promote newly approved Choral Sheep / Melodia renders and their responsive derivatives;
+- replace stale homepage/OG/social-preview imagery when a demonstrably stronger approved render exists;
+- fix illegible text, accessibility failures, broken links, contact errors, stale factual claims, and critical deployment/runtime defects;
+- verify the existing six-path homepage foyer, shared navigation, mobile/tablet readability, reduced motion, and recruiter-first load behavior;
+- update the exact case-study/gallery slot that receives tonight's approved sheep work.
+
+Park today unless it directly blocks the showcase:
+
+- navigation or homepage information-architecture redesign;
+- global font/palette redesign;
+- new Three.js/WebGL toys;
+- new public routes, labs, dashboards, or portfolio categories;
+- broad copy rewrites;
+- speculative technical-system claims;
+- refactors whose benefit is not visible in tonight's recruiter-facing output.
+
+**Success condition for today:** the public portfolio opens cleanly, the first screen is readable and current, the strongest approved showcase renders are easy to reach, and nothing in the site steals time from producing those renders.
+
 ## Remaining visual promotion queue
 
 1. Melusina UE5.8 B2 full-body hero.
