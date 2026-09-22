@@ -120,7 +120,16 @@
     "melodia/captures/2026-09-20/website_oblique.jpg",
     "melodia/captures/2026-09-20/website_south.jpg",
     "melodia/captures/2026-09-20/website_top.jpg",
-    "melodia/index.html"
+    "melodia/index.html",
+    "generated/wix_embed_manifest.json",
+    "wix/README.md",
+    "wix/art-test-readiness.html",
+    "wix/commissions.html",
+    "wix/credits.html",
+    "wix/geometry-nodes.html",
+    "wix/sdf-material-gallery.html",
+    "wix/wix-embed-bridge.js",
+    "wix/wix-entry-bootstrap.js"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -440,6 +449,24 @@
         "no blanket allowance for future melodia/captures files",
         "no changes to public portfolio route hierarchy",
         "no weakening of recruiter-freeze validation"
+      ]
+    },
+    {
+      "id": "figma-wix-sync-2026-09-21",
+      "reason": "Owner explicitly requested verification against the current Figma authority and synchronization of the canonical my-site deployment through the existing Wix/fromageart.xyz shell. The shared 20260921p1 cache-token sweep touched nine live/support files that were not yet enumerated by the recruiter freeze.",
+      "scope": [
+        "refresh the existing shared website build/cache token to 20260921p1 without changing visual design",
+        "keep the Wix shell pointed at the canonical GitHub Pages wix/index.html implementation",
+        "allow the generated Wix embed manifest and shared embed/bootstrap support files to remain token-synchronized",
+        "allow existing supporting recruiter/technical pages touched only by the shared token refresh"
+      ],
+      "exclusions": [
+        "no new public routes",
+        "no navigation redesign",
+        "no new visual systems, shaders, or experiments",
+        "no Figma CDN runtime dependencies",
+        "no artwork or recruiter-copy replacement in this exception",
+        "no weakening of token, link, polish, or freeze validation"
       ]
     }
   ]
