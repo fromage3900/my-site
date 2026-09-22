@@ -20,7 +20,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 WIX = ROOT / "wix"
-BASE = "https://fromage3900.github.io/my-site"
+PAGES_BASE = "https://fromage3900.github.io/my-site"
+PUBLIC_HOME = "https://www.fromageart.xyz/"
 MANIFEST = json.loads((WIX / "public-routes.json").read_text(encoding="utf-8"))
 
 CANONICAL = [str(x) for x in MANIFEST.get("canonical", [])]
@@ -100,7 +101,7 @@ def main() -> int:
 
         html = path.read_text(encoding="utf-8")
         lower = html.lower()
-        expected = f"{BASE}/wix/{route}"
+        expected = PUBLIC_HOME if route == "index.html" else f"{PAGES_BASE}/wix/{route}"
 
         if canonical_href(html) != expected:
             fail(errors, f"wix/{route}: canonical must be {expected}")
