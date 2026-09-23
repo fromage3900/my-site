@@ -12,6 +12,10 @@ const HEROES = {
   'cateye-metal': { label: 'Cat-Eye · Champagne', url: '../../../wix/models/eyewear-heroes/cateye-metal.glb' },
   'aviator-tortoise': { label: 'Aviator · Tortoise', url: '../../../wix/models/eyewear-heroes/aviator-tortoise.glb' },
   'aviator-metal': { label: 'Aviator · Champagne', url: '../../../wix/models/eyewear-heroes/aviator-metal.glb' },
+  'angel-wings': { label: 'Angel Wings', url: '../../../wix/models/melusina-fx/FX_AngelWings_Carrier.glb' },
+  'clockwork-outer': { label: 'Clockwork Ring · Outer', url: '../../../wix/models/melusina-fx/FX_ClockworkRing_Outer.glb' },
+  'clockwork-mid': { label: 'Clockwork Ring · Mid', url: '../../../wix/models/melusina-fx/FX_ClockworkRing_Mid.glb' },
+  'clockwork-inner': { label: 'Clockwork Ring · Inner', url: '../../../wix/models/melusina-fx/FX_ClockworkRing_Inner.glb' },
 };
 const DEFAULT_HERO = 'aviator-tortoise';
 const FIGMA_SOURCE_URL = 'https://www.figma.com/design/Yx8ud7n39NdWZvnNvo4Xlf/Untitled?node-id=177-119';
