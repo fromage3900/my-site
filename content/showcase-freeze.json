@@ -140,7 +140,8 @@
     "generated/assets/figma/atelier-figma-pack-2026-09-14/",
     "public/melodia/melusina-morning-vfx/2026-09-17/",
     "public/melodia/melusina-morning-vfx/",
-    "generated/assets/figma/"
+    "generated/assets/figma/",
+    "wix/assets/melodia-ui/showcase-2026-09-23/"
   ],
   "blocked_by_default": [
     "new public pages",
@@ -301,8 +302,8 @@
       "id": "melusina-morning-figma-v3-promotion-2026-09-17",
       "reason": "Owner explicitly requested a website audit, integration of the updated Figma Compendium artifact direction, and promotion of the staged 2026-09-17 Melusina Morning render set into the existing recruiter-facing hierarchy.",
       "scope": [
-        "generated/assets/figma/atelier-figma-pack-2026-09-14/ \u2014 preserve the already-generated Figma handoff pack as bounded design evidence",
-        "public/melodia/melusina-morning-vfx/2026-09-17/ \u2014 staged current render masters, manifest, and readmes promoted by the recruiter-facing pages",
+        "generated/assets/figma/atelier-figma-pack-2026-09-14/ — preserve the already-generated Figma handoff pack as bounded design evidence",
+        "public/melodia/melusina-morning-vfx/2026-09-17/ — staged current render masters, manifest, and readmes promoted by the recruiter-facing pages",
         "existing allowlisted recruiter pages and CSS may reference these assets without creating new public routes"
       ],
       "exclusions": [
@@ -482,6 +483,25 @@
         "no new public routes",
         "no navigation or global typography redesign",
         "no weakening of recruiter freeze, asset, token, or manifest validation"
+      ]
+    },
+    {
+      "id": "melodia-ui-showcase-kinetic-2026-09-23",
+      "reason": "Owner requested Melodia UI lookdev assets staged tonight for fromageart.xyz portfolio showcase under a kinetic JRPG UI energy lens (Melodia SoftMG / Magical Artifact / rhythm highway / design tokens). Soft freeze remains; this exception only allows approved render promotion of Melodia-original UI stills into Pages-served wix/assets and wiring on the existing Melodia Melusina page.",
+      "scope": [
+        "wix/assets/melodia-ui/showcase-2026-09-23/ — six public hero stills (PNG+WebP) for SoftMG / rhythm highway / Magical Artifact / Magical Orrery / tokens palette",
+        "generated/assets/portfolio/melodia-ui-showcase-2026-09-23/ — staging pack MANIFEST.md + LENS.md + plate folders 01/02/04 only (never 05_lens Persona refs)",
+        "wix/melodia-melusina.html — wire the six public heroes into existing Melodia Melusina gallery / case section (no new route)",
+        "content/site-plates.json — optional keys melodia.ui.* pointing at wix/assets paths",
+        "content/render-passports.json — optional accepted passport entries for the six plates",
+        "content/showcase-freeze.json — this exception record"
+      ],
+      "exclusions": [
+        "do not publish 05_lens/_reference_lens_NOT_PUBLIC or any third-party game UI screenshots",
+        "no new public routes or navigation redesign",
+        "no Persona / third-party IP wording in recruiter captions",
+        "no merge without owner explicit ship-it",
+        "no weakening of recruiter freeze, asset, token, or showcase validation"
       ]
     }
   ]
