@@ -70,7 +70,8 @@
     },
     "kitbash.hero": {
       "path": "../generated/assets/ornaments/vault_ribs_komikaze_beauty_34.png",
-      "alt": "Ornamental kitbash preview"
+      "alt": "Ornamental kitbash preview",
+      "evidence_note": "Secondary to TouchDesigner Triple-AAA / Choral Sheep lookdev plates (2026-09-23)."
     },
     "hub.sakura": {
       "path": "../generated/assets/portfolio-scan/sakura-surfaces-grid.png",
@@ -185,6 +186,42 @@
       "alt": "Melodia design tokens — Champagne Gold #C9A86A SoftMG / Magical Artifact vocabulary",
       "status": "lookdev_pending_passport",
       "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Passport pending visual QA."
+    },
+    "touchdesigner.choral_sheep_beauty": {
+      "path": "assets/touchdesigner/aaa_01_sheep_beauty_1080p.webp",
+      "alt": "Choral Sheep Sanctuary — TouchDesigner lookdev beauty pass (not Unreal gameplay)",
+      "status": "accepted_td_lookdev",
+      "evidence_note": "Triple-AAA TouchDesigner lookdev / Choral Sheep. Procedural anime pasture + PBR fleece. Not Unreal gameplay footage."
+    },
+    "touchdesigner.choral_sheep_halftone": {
+      "path": "assets/touchdesigner/aaa_01_sheep_halftone_1080p.webp",
+      "alt": "Choral Sheep — TouchDesigner Atlus Ben-Day halftone lookdev (not Unreal gameplay)",
+      "status": "accepted_td_lookdev",
+      "evidence_note": "TouchDesigner lookdev inspection pass. Not Unreal gameplay."
+    },
+    "touchdesigner.water_beauty": {
+      "path": "assets/touchdesigner/aaa_02_water_beauty_1080p.webp",
+      "alt": "Melusina Water Sanctuary — TouchDesigner lookdev beauty pass (not Unreal gameplay)",
+      "status": "accepted_td_lookdev",
+      "evidence_note": "TouchDesigner FLIP/caustic lookdev. Not Unreal gameplay."
+    },
+    "touchdesigner.universe_foundry_beauty": {
+      "path": "assets/touchdesigner/aaa_03_universe_foundry_beauty_1080p.webp",
+      "alt": "Universe Foundry Faraway Mother — TouchDesigner lookdev beauty pass (not Unreal gameplay)",
+      "status": "accepted_td_lookdev",
+      "evidence_note": "TouchDesigner live GPU lookdev / Chladni resonance. Not Unreal gameplay."
+    },
+    "touchdesigner.escher_sanctuary_beauty": {
+      "path": "assets/touchdesigner/aaa_05_escher_sanctuary_beauty_1080p.webp",
+      "alt": "Escher Sanctuary — TouchDesigner lookdev beauty pass (not Unreal gameplay)",
+      "status": "accepted_td_lookdev",
+      "evidence_note": "TouchDesigner recursive architecture lookdev. Not Unreal gameplay."
+    },
+    "touchdesigner.contact_sheet_hero": {
+      "path": "assets/touchdesigner/contact_sheet_02_hero_beauty_showcase.png",
+      "alt": "TouchDesigner Triple-AAA hero beauty contact sheet — lookdev showcase (not Unreal gameplay)",
+      "status": "accepted_td_lookdev",
+      "evidence_note": "AAA suite contact sheet for recruiter TD lookdev promotion. Komikaze ornament plates remain secondary."
     }
   }
 }
