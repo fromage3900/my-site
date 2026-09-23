@@ -301,8 +301,8 @@
       "id": "melusina-morning-figma-v3-promotion-2026-09-17",
       "reason": "Owner explicitly requested a website audit, integration of the updated Figma Compendium artifact direction, and promotion of the staged 2026-09-17 Melusina Morning render set into the existing recruiter-facing hierarchy.",
       "scope": [
-        "generated/assets/figma/atelier-figma-pack-2026-09-14/ — preserve the already-generated Figma handoff pack as bounded design evidence",
-        "public/melodia/melusina-morning-vfx/2026-09-17/ — staged current render masters, manifest, and readmes promoted by the recruiter-facing pages",
+        "generated/assets/figma/atelier-figma-pack-2026-09-14/ \u2014 preserve the already-generated Figma handoff pack as bounded design evidence",
+        "public/melodia/melusina-morning-vfx/2026-09-17/ \u2014 staged current render masters, manifest, and readmes promoted by the recruiter-facing pages",
         "existing allowlisted recruiter pages and CSS may reference these assets without creating new public routes"
       ],
       "exclusions": [
@@ -467,6 +467,21 @@
         "no Figma CDN runtime dependencies",
         "no artwork or recruiter-copy replacement in this exception",
         "no weakening of token, link, polish, or freeze validation"
+      ]
+    },
+    {
+      "id": "touchdesigner-aaa-hero-suite-2026-09-23",
+      "reason": "Owner requested updated Triple-AAA TouchDesigner render suite adhering to Infinity Nikki x Atlus aesthetic synthesis, Grandmaster Figma AAA Systems Board, and melodia-render-evidence/v1 schema.",
+      "scope": [
+        "allow 2026-09-23 TouchDesigner Triple-AAA hero renders, 4-pass inspection cards, and 60 FPS GPU motion loops under melodia/captures/2026-09-23 and wix/assets/touchdesigner",
+        "allow melodia/index.html updates linking to the new TouchDesigner captures",
+        "allow wix/touchdesigner-architecture.html updates displaying the 4-pass inspection suite and GPU video loops",
+        "allow content/render-passports.json additions cataloguing the approved TouchDesigner plates"
+      ],
+      "exclusions": [
+        "no new public routes",
+        "no navigation or global typography redesign",
+        "no weakening of recruiter freeze, asset, token, or manifest validation"
       ]
     }
   ]

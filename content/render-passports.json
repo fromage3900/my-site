@@ -17,7 +17,7 @@
   "entries": {
     "melusina_cam_beauty_20260813": {
       "path": "../generated/assets/character/melusina_cam_beauty_nikki_2026-08-13.png",
-      "display_name": "Melusina · Cam_Beauty lookdev",
+      "display_name": "Melusina \u00b7 Cam_Beauty lookdev",
       "evidence": {
         "status": "reject",
         "confidence": "high",
@@ -203,7 +203,7 @@
     },
     "rose_window_front": {
       "path": "../generated/assets/ornaments/rose_window_komikaze_front.png",
-      "display_name": "Rose Window 8-Petal · front",
+      "display_name": "Rose Window 8-Petal \u00b7 front",
       "evidence": {
         "status": "accepted",
         "confidence": "high",
@@ -227,7 +227,7 @@
       },
       "material": {
         "status": "metadata_supported",
-        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "label": "Komikaze \u00b7 Voronoi Shader (3 Tones)",
         "shader": "Voronoi Shader (3 Tones)",
         "engine": "Blender EEVEE",
         "note": "This is the defensible material assignment for the front plate.",
@@ -236,7 +236,7 @@
     },
     "gazebo_variant_beauty": {
       "path": "../generated/assets/signature/gazebo1_komikaze_beauty_34.png",
-      "display_name": "Melusina Gazebo Variant · beauty ¾",
+      "display_name": "Melusina Gazebo Variant \u00b7 beauty \u00be",
       "evidence": {
         "status": "reject",
         "confidence": "high",
@@ -260,7 +260,7 @@
       },
       "material": {
         "status": "metadata_supported",
-        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "label": "Komikaze \u00b7 Voronoi Shader (3 Tones)",
         "shader": "Voronoi Shader (3 Tones)",
         "engine": "Blender EEVEE",
         "note": "Shader assignment is metadata-backed, but the crop is not strong enough for public hero use.",
@@ -269,7 +269,7 @@
     },
     "violin_front": {
       "path": "../generated/assets/props/violin_komikaze_front.png",
-      "display_name": "Melodia Violin · front",
+      "display_name": "Melodia Violin \u00b7 front",
       "evidence": {
         "status": "accepted",
         "confidence": "high",
@@ -293,7 +293,7 @@
       },
       "material": {
         "status": "metadata_supported",
-        "label": "Komikaze · The Wall (Custom Texture)",
+        "label": "Komikaze \u00b7 The Wall (Custom Texture)",
         "shader": "The Wall (Custom Texture)",
         "engine": "Blender EEVEE",
         "observed_surfaces": [
@@ -305,7 +305,7 @@
     },
     "vow_cross_macro_filigree": {
       "path": "../generated/assets/cross/cross_hero_macro_filigree.png",
-      "display_name": "Melusina Vow Cross · filigree macro",
+      "display_name": "Melusina Vow Cross \u00b7 filigree macro",
       "evidence": {
         "status": "accepted",
         "confidence": "high for surface; medium for exact render lineage",
@@ -332,13 +332,13 @@
       "material": {
         "status": "visual_only",
         "label": "Pale pearlescent relief / filigree",
-        "related_shader": "Komikaze · The Wall (Custom Texture)",
+        "related_shader": "Komikaze \u00b7 The Wall (Custom Texture)",
         "note": "The Komikaze cross series is metadata-linked to The Wall; this separate hero-macro filename is not explicitly wired to that shader in the current intake, so the exact assignment remains conservative."
       }
     },
     "vow_cross_beauty": {
       "path": "../generated/assets/cross/cross_hero_beauty_34.png",
-      "display_name": "Melusina Vow Cross · hero beauty",
+      "display_name": "Melusina Vow Cross \u00b7 hero beauty",
       "evidence": {
         "status": "accepted",
         "confidence": "high",
@@ -363,13 +363,13 @@
       "material": {
         "status": "visual_only",
         "label": "Pale pearlescent relief",
-        "related_shader": "Komikaze · The Wall (Custom Texture)",
+        "related_shader": "Komikaze \u00b7 The Wall (Custom Texture)",
         "note": "Use the generated cross passport for asset metrics; treat the surface description on this hero plate as visual evidence unless lineage is added to intake."
       }
     },
     "lissajous_macro": {
       "path": "../generated/assets/signature/lissajous_komikaze_macro.png",
-      "display_name": "Lissajous Curve Sculpture · macro",
+      "display_name": "Lissajous Curve Sculpture \u00b7 macro",
       "evidence": {
         "status": "accepted",
         "confidence": "high",
@@ -391,7 +391,7 @@
       },
       "material": {
         "status": "metadata_supported",
-        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "label": "Komikaze \u00b7 Voronoi Shader (3 Tones)",
         "shader": "Voronoi Shader (3 Tones)",
         "engine": "Blender EEVEE",
         "note": "The macro is strongest as geometry/form evidence; material proof is secondary.",
@@ -400,7 +400,7 @@
     },
     "melusina_design_sketch": {
       "path": "../generated/assets/character/melusina_design_sketch.png",
-      "display_name": "Melusina · design sketch",
+      "display_name": "Melusina \u00b7 design sketch",
       "evidence": {
         "status": "accepted",
         "confidence": "high",
@@ -419,7 +419,7 @@
       },
       "asset": {
         "asset_id": "melusina",
-        "label": "Melusina · concept/design evidence",
+        "label": "Melusina \u00b7 concept/design evidence",
         "status": "metadata_supported",
         "passport_href": "../generated/passports/melusina_passport.html",
         "passport_json": "../generated/passports/melusina_passport.json",
@@ -427,14 +427,14 @@
       },
       "material": {
         "status": "not_applicable",
-        "label": "Concept drawing · no production material passport",
+        "label": "Concept drawing \u00b7 no production material passport",
         "note": "Do not infer final material assignments from concept colors.",
         "passport_id": "concept_color_reference"
       }
     },
     "melusina_sculpt_profile": {
       "path": "../generated/assets/sculpt/sculpt_melusina_profile.png",
-      "display_name": "Melusina · sculpt profile study",
+      "display_name": "Melusina \u00b7 sculpt profile study",
       "evidence": {
         "status": "accepted",
         "confidence": "high",
@@ -454,7 +454,7 @@
       },
       "asset": {
         "asset_id": "melusina",
-        "label": "Melusina · sculpt/form evidence",
+        "label": "Melusina \u00b7 sculpt/form evidence",
         "status": "metadata_supported",
         "passport_href": "../generated/passports/melusina_passport.html",
         "passport_json": "../generated/passports/melusina_passport.json",
@@ -626,7 +626,7 @@
       "material": {
         "passport_id": "night_bridge_visual",
         "status": "visual_only",
-        "label": "Night Bridge · Neon Stylized Environment",
+        "label": "Night Bridge \u00b7 Neon Stylized Environment",
         "note": "Pixel-reviewed appearance only; exact Unreal shader bindings are not encoded for this plate."
       }
     },
@@ -659,7 +659,7 @@
       "material": {
         "passport_id": "crater_terrain_visual",
         "status": "visual_only",
-        "label": "Crater Terrain · Neutral Sculpted Surface",
+        "label": "Crater Terrain \u00b7 Neutral Sculpted Surface",
         "note": "Terrain-form and lighting evidence; exact production material binding is unverified."
       }
     },
@@ -690,7 +690,7 @@
       "material": {
         "passport_id": "violet_scatter_visual",
         "status": "visual_only",
-        "label": "Violet Scatter · Stylized Terrain Study",
+        "label": "Violet Scatter \u00b7 Stylized Terrain Study",
         "note": "Visual look study only; exact Unreal shader bindings are unverified."
       }
     },
@@ -722,13 +722,13 @@
       "material": {
         "passport_id": "dusk_terrain_visual",
         "status": "visual_only",
-        "label": "Dusk Terrain · Atmospheric Study",
+        "label": "Dusk Terrain \u00b7 Atmospheric Study",
         "note": "Atmosphere/composition evidence only."
       }
     },
     "rosette_three_quarter": {
       "path": "../generated/assets/ornaments/rosette_komikaze_three_quarter.png",
-      "display_name": "Rosette Medallion · three-quarter",
+      "display_name": "Rosette Medallion \u00b7 three-quarter",
       "evidence": {
         "status": "accepted",
         "confidence": "high",
@@ -753,14 +753,14 @@
       "material": {
         "passport_id": "komikaze_voronoi_3tone",
         "status": "metadata_supported",
-        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "label": "Komikaze \u00b7 Voronoi Shader (3 Tones)",
         "shader": "Voronoi Shader (3 Tones)",
         "engine": "Blender EEVEE"
       }
     },
     "quatrefoil_front_reviewed": {
       "path": "../generated/assets/ornaments/quatrefoil_komikaze_front.png",
-      "display_name": "Quatrefoil Arch · front",
+      "display_name": "Quatrefoil Arch \u00b7 front",
       "evidence": {
         "status": "accepted",
         "confidence": "high",
@@ -785,14 +785,14 @@
       "material": {
         "passport_id": "komikaze_voronoi_3tone",
         "status": "metadata_supported",
-        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "label": "Komikaze \u00b7 Voronoi Shader (3 Tones)",
         "shader": "Voronoi Shader (3 Tones)",
         "engine": "Blender EEVEE"
       }
     },
     "torus_knot_three_quarter_reviewed": {
       "path": "../generated/assets/ornaments/torus_knot_komikaze_three_quarter.png",
-      "display_name": "Torus Knot · three-quarter",
+      "display_name": "Torus Knot \u00b7 three-quarter",
       "evidence": {
         "status": "accepted",
         "confidence": "high",
@@ -817,14 +817,14 @@
       "material": {
         "passport_id": "komikaze_voronoi_3tone",
         "status": "metadata_supported",
-        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "label": "Komikaze \u00b7 Voronoi Shader (3 Tones)",
         "shader": "Voronoi Shader (3 Tones)",
         "engine": "Blender EEVEE"
       }
     },
     "spiral_stair_low_angle_reviewed": {
       "path": "../generated/assets/ornaments/spiral_stair_komikaze_low_angle.png",
-      "display_name": "Spiral Staircase · low angle",
+      "display_name": "Spiral Staircase \u00b7 low angle",
       "evidence": {
         "status": "supporting",
         "confidence": "high",
@@ -850,14 +850,14 @@
       "material": {
         "passport_id": "komikaze_voronoi_3tone",
         "status": "metadata_supported",
-        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "label": "Komikaze \u00b7 Voronoi Shader (3 Tones)",
         "shader": "Voronoi Shader (3 Tones)",
         "engine": "Blender EEVEE"
       }
     },
     "zenlantern_front_reviewed": {
       "path": "../generated/assets/props/zenlantern_komikaze_front.png",
-      "display_name": "Zen Lantern · front",
+      "display_name": "Zen Lantern \u00b7 front",
       "evidence": {
         "status": "accepted",
         "confidence": "high",
@@ -885,7 +885,7 @@
       "material": {
         "passport_id": "komikaze_voronoi_3tone",
         "status": "metadata_supported",
-        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "label": "Komikaze \u00b7 Voronoi Shader (3 Tones)",
         "shader": "Voronoi Shader (3 Tones)",
         "engine": "Blender EEVEE"
       }
@@ -916,13 +916,13 @@
       "material": {
         "passport_id": "komikaze_voronoi_3tone",
         "status": "metadata_supported",
-        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "label": "Komikaze \u00b7 Voronoi Shader (3 Tones)",
         "note": "The shader assignment is metadata-backed, but this particular capture is too distant to visually demonstrate it."
       }
     },
     "rejected_gazebo_variant_three_quarter": {
       "path": "../generated/assets/signature/gazebo1_komikaze_three_quarter.png",
-      "display_name": "Rejected Melusina Gazebo Variant · three-quarter",
+      "display_name": "Rejected Melusina Gazebo Variant \u00b7 three-quarter",
       "evidence": {
         "status": "reject",
         "confidence": "high",
@@ -946,13 +946,13 @@
       "material": {
         "passport_id": "komikaze_voronoi_3tone",
         "status": "metadata_supported",
-        "label": "Komikaze · Voronoi Shader (3 Tones)",
+        "label": "Komikaze \u00b7 Voronoi Shader (3 Tones)",
         "note": "Material lineage is valid; capture composition is rejected."
       }
     },
     "melusina_stage_beauty_fallback_20260715c01": {
       "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
-      "display_name": "Melusina · EEVEE stage beauty (temporary fallback)",
+      "display_name": "Melusina \u00b7 EEVEE stage beauty (temporary fallback)",
       "evidence": {
         "status": "supporting",
         "confidence": "medium",
@@ -990,6 +990,205 @@
         ],
         "note": "Temporary site fallback. Do not infer Unreal runtime shader bindings from this EEVEE plate.",
         "passport_id": "melusina_multizone_visual"
+      }
+    },
+    "td_aaa_01_sheep_beauty": {
+      "path": "../wix/assets/touchdesigner/aaa_01_sheep_beauty_1080p.png",
+      "display_name": "Choral Sheep Sanctuary \u2014 Triple-AAA Beauty Master",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "procedural anime grass instancing",
+          "PBR fleece embroidery",
+          "sky_meadow anime clouds and atmosphere",
+          "GRADE_10_NIKKI_ATLUS_LUT color grading",
+          "full 1920x1080 native resolution"
+        ],
+        "does_not_prove": [
+          "live player character controls",
+          "Unreal engine runtime PCG"
+        ],
+        "note": "Verified Triple-AAA beauty pass cooked live in TouchDesigner lookdev compositor."
+      },
+      "asset": {
+        "asset_id": "choral_sheep",
+        "label": "Choral Sheep Flock",
+        "status": "metadata_supported",
+        "passport_id": "choral_sheep"
+      },
+      "material": {
+        "status": "metadata_supported",
+        "label": "Anime PBR Fleece & Procedural Grass",
+        "observed_surfaces": [
+          "fleece wool",
+          "grass blades",
+          "celestial sky"
+        ]
+      }
+    },
+    "td_aaa_01_sheep_halftone": {
+      "path": "../wix/assets/touchdesigner/aaa_01_sheep_halftone_1080p.png",
+      "display_name": "Choral Sheep Sanctuary \u2014 Atlus Ben-Day Halftone Penumbra",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "45-degree rotated Ben-Day halftone screentone lattices",
+          "stepped cel shadow penumbra",
+          "Atlus graphic cel lookdev"
+        ],
+        "does_not_prove": [
+          "final composite albedo"
+        ],
+        "note": "Figma AAA Systems Board Pass 3 inspection proof."
+      },
+      "asset": {
+        "asset_id": "choral_sheep",
+        "label": "Choral Sheep Flock",
+        "status": "metadata_supported",
+        "passport_id": "choral_sheep"
+      },
+      "material": {
+        "status": "metadata_supported",
+        "label": "Ben-Day Screentone Shading",
+        "observed_surfaces": [
+          "shadow terminator",
+          "halftone lattice"
+        ]
+      }
+    },
+    "td_aaa_02_water_beauty": {
+      "path": "../wix/assets/touchdesigner/aaa_02_water_beauty_1080p.png",
+      "display_name": "Melusina Water Sanctuary \u2014 Triple-AAA Beauty Master",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "FLIP fluid caustic dispersion",
+          "cel-shaded Melusina character lookdev",
+          "1080p celestial starry horizon fill",
+          "PASS_10_CAUSTIC_DISPERSION prismatic split"
+        ],
+        "does_not_prove": [
+          "Unreal B2 Cam_Beauty",
+          "gameplay hair physics"
+        ],
+        "note": "Calibrated TouchDesigner beauty master with celestial fill eliminating black void."
+      },
+      "asset": {
+        "asset_id": "water_sanctuary",
+        "label": "Water Sanctuary & Melusina",
+        "status": "metadata_supported",
+        "passport_id": "water_sanctuary"
+      },
+      "material": {
+        "status": "metadata_supported",
+        "label": "Water Caustics & Cel Lookdev",
+        "observed_surfaces": [
+          "fluid caustics",
+          "water droplets",
+          "cel skin"
+        ]
+      }
+    },
+    "td_aaa_03_universe_foundry_beauty": {
+      "path": "../wix/assets/touchdesigner/aaa_03_universe_foundry_beauty_1080p.png",
+      "display_name": "Universe Foundry Faraway Mother \u2014 Resonance Seam Master",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "Chladni (3,5) standing wave resonance excitation",
+          "amethyst and teal phase flow",
+          "pearl heart gate resolution surge",
+          "canonical Hython static field substrate"
+        ],
+        "does_not_prove": [
+          "Unreal Niagara runtime particle simulation"
+        ],
+        "note": "Phase E live visual instrument master cooked directly on TouchDesigner GPU."
+      },
+      "asset": {
+        "asset_id": "faraway_mother_field",
+        "label": "Faraway Mother Resonance Field",
+        "status": "metadata_supported",
+        "passport_id": "faraway_mother_field"
+      },
+      "material": {
+        "status": "metadata_supported",
+        "label": "4-Channel World Field Shader",
+        "observed_surfaces": [
+          "resonance nodes",
+          "tension delta",
+          "phase flow",
+          "active corridor"
+        ]
+      }
+    },
+    "td_aaa_03_universe_foundry_telemetry": {
+      "path": "../wix/assets/touchdesigner/aaa_03_universe_foundry_telemetry_1080p.png",
+      "display_name": "Universe Foundry \u2014 4-Quadrant Diagnostic Telemetry",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "[TL] VisualResonance Chladni standing nodes",
+          "[TR] VisualTensionDelta harmonic interference ripple",
+          "[BL] VisualPhaseFlow beat phase shimmer",
+          "[BR] ActiveMask heart gate corridor coverage"
+        ],
+        "does_not_prove": [
+          "final graded beauty pass"
+        ],
+        "note": "Figma AAA Systems Board Pass 4: 4-Channel Technical Contract Verification."
+      },
+      "asset": {
+        "asset_id": "faraway_mother_field",
+        "label": "Faraway Mother Resonance Field",
+        "status": "metadata_supported",
+        "passport_id": "faraway_mother_field"
+      },
+      "material": {
+        "status": "metadata_supported",
+        "label": "4-Quadrant Contract Split",
+        "observed_surfaces": [
+          "quadrant grid",
+          "telemetry text"
+        ]
+      }
+    },
+    "td_aaa_05_escher_sanctuary_beauty": {
+      "path": "../wix/assets/touchdesigner/aaa_05_escher_sanctuary_beauty_1080p.png",
+      "display_name": "Escher Sanctuary \u2014 Astral Celestial Rings & Recursive Stairs",
+      "evidence": {
+        "status": "accepted",
+        "confidence": "high",
+        "visually_proves": [
+          "Penrose impossible stairs",
+          "sky_starry_night celestial orrery rings and anime stars",
+          "Nikki halation bloom",
+          "native 1920x1080 custom output"
+        ],
+        "does_not_prove": [
+          "interactive first-person walk"
+        ],
+        "note": "Connected sky_starry_night dome into over_sanctuary_final, eliminating proxy downscale."
+      },
+      "asset": {
+        "asset_id": "escher_sanctuary",
+        "label": "Escher Sanctuary",
+        "status": "metadata_supported",
+        "passport_id": "escher_sanctuary"
+      },
+      "material": {
+        "status": "metadata_supported",
+        "label": "PBR Escher Architectural Tessellation",
+        "observed_surfaces": [
+          "impossible stairs",
+          "celestial rings",
+          "starfield"
+        ]
       }
     }
   },
