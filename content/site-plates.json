@@ -149,6 +149,42 @@
       "alt": "Melusina — EEVEE stage beauty, temporary recruiter fallback",
       "status": "temporary_fallback",
       "evidence_note": "Existing Stage/Resume beauty. Use only until a reviewed Unreal B2 Cam_Beauty with correct hair is captured."
+    },
+    "melodia.ui.rhythm_battle": {
+      "path": "assets/melodia-ui/showcase-2026-09-23/01_battle_rhythm_refined.webp",
+      "alt": "Melodia UI lookdev — SoftMG battle rhythm HUD",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Passport pending visual QA."
+    },
+    "melodia.ui.softmg_kit": {
+      "path": "assets/melodia-ui/showcase-2026-09-23/02_softmg_kit.webp",
+      "alt": "Melodia SoftMG rhythm kit — parchment, seals, highway",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Passport pending visual QA."
+    },
+    "melodia.ui.note_highway": {
+      "path": "assets/melodia-ui/showcase-2026-09-23/03_note_highway.webp",
+      "alt": "Melodia note highway — SoftMG lane rhythm feedback",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Passport pending visual QA."
+    },
+    "melodia.ui.magical_artifact_theme": {
+      "path": "assets/melodia-ui/showcase-2026-09-23/04_magical_girl_theme_ui_hero.webp",
+      "alt": "Melodia Magical Artifact — Magical Girl Theme UI board",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Full strip: 04_magical_girl_theme_ui.webp. Passport pending visual QA."
+    },
+    "melodia.ui.magical_orrery": {
+      "path": "assets/melodia-ui/showcase-2026-09-23/05_magical_orrery.webp",
+      "alt": "Melodia Magical Orrery — menu artifact lookdev",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Passport pending visual QA."
+    },
+    "melodia.ui.tokens_palette": {
+      "path": "assets/melodia-ui/showcase-2026-09-23/06_tokens_palette_board.webp",
+      "alt": "Melodia design tokens — Champagne Gold #C9A86A SoftMG / Magical Artifact vocabulary",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Passport pending visual QA."
     }
   }
 }
