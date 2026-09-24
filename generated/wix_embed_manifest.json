@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-04T00:00:00Z",
   "public_domain": "https://www.fromageart.xyz/",
-  "primary_iframe_source": "https://fromage3900.github.io/my-site/wix/application-hub.html",
+  "primary_iframe_source": "https://fromage3900.github.io/my-site/wix/index.html?embed=wix&v=20260921p1",
   "fallback_iframe_source": "https://fromage3900.github.io/my-site/wix/index.html",
   "github_pages_root": "https://fromage3900.github.io/my-site/",
   "deploy_flow": [
@@ -11,7 +11,7 @@
     "Push main",
     "GitHub Actions validates and deploys GitHub Pages",
     "If Wix credentials are available, the workflow also deploys Wix",
-    "Wix keeps the stable application-hub iframe URL; the embedded entry bootstrap routes first contact to wix/index.html"
+    "application-hub.html remains compatibility-only; the desktop shell enters art-first wix/index.html?embed=wix&v=20260921p1 (see desktop_shell.source / primary_iframe_source)"
   ],
   "embed_settings": {
     "desktop": "Managed by the enabled Wix custom embed `Melodia Desktop Portfolio Frame`; full viewport, fixed inset 0, border 0, body scroll locked.",
@@ -57,13 +57,13 @@
   "custom_domain_seo": {
     "recommended_title": "Brennan Shepherd | Environment Design & Stylized Technical Art",
     "recommended_description": "Portfolio for Brennan Shepherd, an environment designer focused on stylized shaders, Unreal integration, retopology, look development, and editorial fantasy worlds.",
-    "wix_home_embed": "https://fromage3900.github.io/my-site/wix/application-hub.html",
+    "wix_home_embed": "https://fromage3900.github.io/my-site/wix/index.html?embed=wix&v=20260921p1",
     "fallback_home_embed": "https://fromage3900.github.io/my-site/wix/index.html",
     "note": "Wix owns top-level fromageart.xyz SEO and domain routing. Desktop first contact is rendered by the enabled full-viewport Melodia custom embed; direct GitHub Pages routes retain their own metadata.",
     "embedded_home_target": "https://fromage3900.github.io/my-site/wix/index.html"
   },
   "embedded_entry_target": "https://fromage3900.github.io/my-site/wix/index.html",
-  "embed_entry_behavior": "application-hub.html is the stable Wix iframe URL; when entered from the external Wix shell it bootstraps to the art-first wix/index.html. Direct and in-site Architecture Hub visits remain technical.",
+  "embed_entry_behavior": "application-hub.html is compatibility-only. The live desktop shell enters art-first wix/index.html?embed=wix&v=20260921p1. Direct and in-site Architecture Hub visits remain technical.",
   "desktop_shell": {
     "mode": "Wix Custom Embed full-viewport overlay",
     "custom_embed_id": "f9bb4701-21e2-41b2-a88b-9016bf5abb51",
