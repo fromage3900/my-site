@@ -68,15 +68,15 @@
   <main id="main" class="viewer-3d-main">
     <div style="padding: 0 24px;">
       <h1 class="atelier-lab-title" style="font-size: 1.8rem; margin: 0;">Interactive 3D Asset Study</h1>
-      <p style="color: #a4adc9; font-size: 0.95rem; margin: 4px 0 6px;">A browser-side WebGL study for orbiting stylized assets, comparing material response, inspecting topology, and isolating shading channels.</p>
-      <p class="viewer-authority-note"><strong>Scope:</strong> this viewport is an interactive presentation study, not a 1:1 Unreal renderer. The UE5.8 captures and breakdown pages remain the visual and technical authority.</p>
+      <p style="color: #a4adc9; font-size: 0.95rem; margin: 4px 0 6px;">A small WebGL workbench for turning the assets around, checking material response, and looking at the same work from a less flattering angle.</p>
+      <p class="viewer-authority-note"><strong>Worth knowing:</strong> this is a browser presentation tool, not Unreal in disguise. Final lookdev lives in UE5.8; this viewer is for inspection and play.</p>
     </div>
     <div class="viewer-3d-app">
       <aside class="viewer-panel" aria-label="3D Asset Catalog">
-        <h2 style="font-size: 1rem; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;"><span>◈</span> 3D Asset Library</h2>
+        <h2 style="font-size: 1rem; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;"><span>◈</span> Things to inspect</h2>
         <div class="group-title">Fabrics &amp; Lookdev</div>
-        <button type="button" class="asset-btn active" data-asset="fabric-sphere"><span>Lookdev Sphere</span><span class="tag-badge">4.6k Tris</span></button>
-        <button type="button" class="asset-btn" data-asset="fabric-drape"><span>Draped Swatch</span><span class="tag-badge">3.2k Tris</span></button>
+        <button type="button" class="asset-btn active" data-asset="fabric-sphere"><span>Lookdev Sphere</span><span class="tag-badge">Lookdev</span></button>
+        <button type="button" class="asset-btn" data-asset="fabric-drape"><span>Draped Swatch</span><span class="tag-badge">Drape</span></button>
         <div class="group-title">Characters &amp; Pipeline Tests</div>
         <button type="button" class="asset-btn" data-asset="melusina-shirt"><span>Melusina (Production Wardrobe)</span><span class="tag-badge">Hero Garment</span></button>
         <button type="button" class="asset-btn" data-asset="melusina-hero"><span>Melusina (Full Wardrobe)</span><span class="tag-badge">Hero Model</span></button>
@@ -84,12 +84,12 @@
         <button type="button" class="asset-btn" data-asset="zundamon"><span>Zundamon</span><span class="tag-badge">3rd-party pipeline test</span></button>
 
         <div class="group-title">Sacred Ornaments &amp; Tokens</div>
-        <button type="button" class="asset-btn" data-asset="melody-token-water"><span>Water Melody Token</span><span class="tag-badge">192 Tris</span></button>
+        <button type="button" class="asset-btn" data-asset="melody-token-water"><span>Water Melody Token</span><span class="tag-badge">Token</span></button>
         <button type="button" class="asset-btn" data-asset="melody-token-star"><span>Star Melody Token</span><span class="tag-badge">Low-Poly</span></button>
 
         <div class="group-title">Instruments &amp; Atlantis Props</div>
-        <button type="button" class="asset-btn" data-asset="violin"><span>Resonance Violin</span><span class="tag-badge">4.3k Tris</span></button>
-        <button type="button" class="asset-btn" data-asset="cello"><span>Pelagic Vault Lute</span><span class="tag-badge">6.8k Tris</span></button>
+        <button type="button" class="asset-btn" data-asset="violin"><span>Resonance Violin</span><span class="tag-badge">Instrument</span></button>
+        <button type="button" class="asset-btn" data-asset="cello"><span>Pelagic Vault Lute</span><span class="tag-badge">Instrument</span></button>
         <button type="button" class="asset-btn" data-asset="prop-harp"><span>Cathedral Harp</span><span class="tag-badge">Instrument</span></button>
         <button type="button" class="asset-btn" data-asset="grand-piano"><span>Grand Piano</span><span class="tag-badge">Instrument</span></button>
         <button type="button" class="asset-btn" data-asset="prop-fountain"><span>Atlantis Fountain</span><span class="tag-badge">Architecture</span></button>
@@ -97,7 +97,7 @@
       </aside>
       <section id="viewer-viewport" class="viewer-viewport-box" aria-label="3D WebGL Viewport">
         <div class="viewer-hud-overlay">
-          <div class="viewer-hud-pill">✦ WebGL asset study · browser material preview</div>
+          <div class="viewer-hud-pill">✦ WebGL study · drag to inspect</div>
           <div class="viewer-hud-pill" id="viewer-rot-status">Auto-Rotate: ON</div>
         </div>
         <div id="webgl-viewport-container" class="viewer-3d-canvas-container"></div>
@@ -109,7 +109,7 @@
         </div>
       </section>
       <aside class="viewer-panel" aria-label="Shading &amp; Material Controls">
-        <h2 style="font-size: 1rem; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;"><span>✧</span> Shading &amp; Channels</h2>
+        <h2 style="font-size: 1rem; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;"><span>✧</span> Lookdev views</h2>
         <div class="group-title">Shading Study Mode</div>
         <div class="mode-grid">
           <button type="button" class="mode-btn active" data-mode="pbr">PBR Preview</button>
@@ -121,7 +121,7 @@
           <button type="button" class="mode-btn" data-mode="wireframe">Wireframe</button>
           <button type="button" class="mode-btn" data-mode="clay">Clay MatCap</button>
         </div>
-        <div class="group-title">Fantasy Fabric Studies</div>
+        <div class="group-title">Material studies</div>
         <button type="button" class="fabric-btn active" data-fabric="RoyalVelvet"><span>Royal Velvet</span><span class="tag-badge">Dual-Sheen</span></button>
         <button type="button" class="fabric-btn" data-fabric="GildedBrocade"><span>Gilded Brocade</span><span class="tag-badge">Gold Jacquard</span></button>
         <button type="button" class="fabric-btn" data-fabric="SheerSilk"><span>Sheer Silk</span><span class="tag-badge">Anisotropic</span></button>
