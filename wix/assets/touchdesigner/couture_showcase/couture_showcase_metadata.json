@@ -1,0 +1,110 @@
+[
+  {
+    "filename": "nikki_01_standard_atelier.png",
+    "title": "Standard Atelier Lookdev Master",
+    "mean": 0.4797385334968567,
+    "std": 0.00805805716663599,
+    "bytes": 18412,
+    "sha256": "e3ffb1798b07",
+    "status": "NON-BLANK (PASS)"
+  },
+  {
+    "filename": "nikki_02_couture_master.png",
+    "title": "Infinity Nikki Haute Couture Master",
+    "mean": 0.8575154542922974,
+    "std": 0.049237173050642014,
+    "bytes": 936530,
+    "sha256": "6581defb46f8",
+    "status": "NON-BLANK (PASS)"
+  },
+  {
+    "filename": "nikki_03_solo_iridescent_velvet.png",
+    "title": "Solo: Iridescent Velvet Sheen & Pearl Shift",
+    "mean": 0.0007882057689130306,
+    "std": 0.014843146316707134,
+    "bytes": 18181,
+    "sha256": "6d5e4adaf31b",
+    "status": "NON-BLANK (PASS)"
+  },
+  {
+    "filename": "nikki_04_solo_manga_screentone_bayer.png",
+    "title": "Solo: 8x8 Bayer Manga Screentone Dither",
+    "mean": 0.47826799750328064,
+    "std": 0.05249423906207085,
+    "bytes": 68951,
+    "sha256": "58ed39db5a5a",
+    "status": "NON-BLANK (PASS)"
+  },
+  {
+    "filename": "nikki_05_solo_manga_crosshatch.png",
+    "title": "Solo: Shojo Manga Pen-and-Ink Crosshatch",
+    "mean": 0.4796089828014374,
+    "std": 0.15541531145572662,
+    "bytes": 84618,
+    "sha256": "ed4f51c1f1aa",
+    "status": "NON-BLANK (PASS)"
+  },
+  {
+    "filename": "nikki_06_solo_cmyk_rosette.png",
+    "title": "Solo: CMYK Rosette Misaligned Offset Print",
+    "mean": 0.3799320161342621,
+    "std": 0.08088069409132004,
+    "bytes": 3115266,
+    "sha256": "7b8edc1f5253",
+    "status": "NON-BLANK (PASS)"
+  },
+  {
+    "filename": "nikki_07_solo_organza_chiffon.png",
+    "title": "Solo: Translucent Organza Chiffon SSS Glow",
+    "mean": 0.0036379415541887283,
+    "std": 0.04883179813623428,
+    "bytes": 45560,
+    "sha256": "6f341b9dfb01",
+    "status": "NON-BLANK (PASS)"
+  },
+  {
+    "filename": "nikki_08_solo_astral_constellation.png",
+    "title": "Solo: Sacred Geometry Astral Constellations",
+    "mean": 0.016073713079094887,
+    "std": 0.04415811970829964,
+    "bytes": 1233887,
+    "sha256": "e832c89a48d9",
+    "status": "NON-BLANK (PASS)"
+  },
+  {
+    "filename": "nikki_09_solo_miracle_resonance.png",
+    "title": "Solo: Miracle Outfit Resonance Liquid Wavefront",
+    "mean": 0.07792861014604568,
+    "std": 0.20852713286876678,
+    "bytes": 380670,
+    "sha256": "cfea6787450c",
+    "status": "NON-BLANK (PASS)"
+  },
+  {
+    "filename": "nikki_10_director_quad_scope.png",
+    "title": "Director's 4-Way Couture Lookdev Scope",
+    "mean": 0.5464614033699036,
+    "std": 0.22321215271949768,
+    "bytes": 823855,
+    "sha256": "52eba97cd95e",
+    "status": "NON-BLANK (PASS)"
+  },
+  {
+    "filename": "nikki_11_solo_false_color.png",
+    "title": "Solo: 6-Zone Thermal False Color Dynamic Range",
+    "mean": 0.3687888979911804,
+    "std": 0.2489137202501297,
+    "bytes": 1436959,
+    "sha256": "24fdf0ff9837",
+    "status": "NON-BLANK (PASS)"
+  },
+  {
+    "filename": "nikki_12_ab_split_comparison.png",
+    "title": "A/B Wipe: Haute Couture vs Raw 3D Stage",
+    "mean": 0.8575204014778137,
+    "std": 0.049221355468034744,
+    "bytes": 936606,
+    "sha256": "86c406e4cc89",
+    "status": "NON-BLANK (PASS)"
+  }
+]
