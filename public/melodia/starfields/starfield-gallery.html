@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melodia — Celestial Starfield Exhibition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-void: #090B0E;
+            --bg-card: #12151C;
+            --bg-card-hover: #181D26;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(90, 160, 255, 0.35);
+            --text-primary: #F0F4FC;
+            --text-secondary: #8E9BB0;
+            --accent-cyan: #4EE2C0;
+            --accent-blue: #3E8BFF;
+            --accent-magenta: #E056FD;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg-void);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, sans-serif;
+            padding: 48px 32px;
+            line-height: 1.5;
+        }
+        .header {
+            max-width: 1400px;
+            margin: 0 auto 40px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 24px;
+        }
+        .title-group h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #A0B8E0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .title-group p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+        .master-strip {
+            max-width: 1400px;
+            margin: 0 auto 48px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+        }
+        .master-strip img {
+            width: 100%;
+            display: block;
+        }
+        .gallery-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        .starfield-card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+            transition: all 0.28s ease;
+        }
+        .starfield-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-glow);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(30, 80, 160, 0.2);
+        }
+        .image-wrapper {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: #000;
+        }
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .starfield-card:hover .image-wrapper img {
+            transform: scale(1.04);
+        }
+        .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(10, 15, 25, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--accent-cyan);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+        .card-info {
+            padding: 16px;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .card-tag {
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        .card-subtitle {
+            color: var(--accent-blue);
+            font-size: 13px;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 12px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title-group">
+            <h1>Melodia Celestial Starfield Exhibition</h1>
+            <p>Procedural 3-tier parallax, melting liquid nebulae, and cosmic architectural oculus</p>
+        </div>
+        <div class="meta">
+            <span style="color: var(--accent-cyan); font-weight: 600; font-size: 13px;">8 Master Variants • 4K Responsive Ready</span>
+        </div>
+    </div>
+
+    <!-- Master Contact Sheet Banner -->
+    <div class="master-strip">
+        <picture>
+            <source srcset="STARFIELD_VARIANTS_contact_sheet.webp" type="image/webp">
+            <img src="STARFIELD_VARIANTS_contact_sheet.jpg" alt="Melodia Starfield Contact Sheet Matrix">
+        </picture>
+    </div>
+
+    <!-- Responsive Grid -->
+    <div class="gallery-grid">
+        
+        <div class="starfield-card" data-variant="01">
+            <div class="image-wrapper">
+                <span class="badge">SF01</span>
+                <picture>
+                    <source srcset="responsive/sf01_deep_cosmic_void_beauty_1080p_1080p.webp 1x, responsive/sf01_deep_cosmic_void_beauty_1080p_4k.webp 2x" type="image/webp">
+                    <img src="responsive/sf01_deep_cosmic_void_beauty_1080p_1080p.jpg" alt="Deep Cosmic Void" loading="lazy">
+                </picture>
+            </div>
+            <div class="card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Deep Cosmic Void</h3>
+                    <span class="card-tag">PROCEDURAL SF</span>
+                </div>
+                <p class="card-subtitle">Sapphire & Obsidian Infinity</p>
+                <p class="card-desc">Deep space obsidian, midnight navy, and electric cyan starlight</p>
+            </div>
+        </div>
+        
+        <div class="starfield-card" data-variant="02">
+            <div class="image-wrapper">
+                <span class="badge">SF02</span>
+                <picture>
+                    <source srcset="responsive/sf02_melting_liquid_nebula_beauty_1080p_1080p.webp 1x, responsive/sf02_melting_liquid_nebula_beauty_1080p_4k.webp 2x" type="image/webp">
+                    <img src="responsive/sf02_melting_liquid_nebula_beauty_1080p_1080p.jpg" alt="Melting Liquid Nebula" loading="lazy">
+                </picture>
+            </div>
+            <div class="card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Melting Liquid Nebula</h3>
+                    <span class="card-tag">PROCEDURAL SF</span>
+                </div>
+                <p class="card-subtitle">Magenta & Ultraviolet Flow</p>
+                <p class="card-desc">Domain-warped magenta filaments, ultraviolet clouds, and cyan highlights</p>
+            </div>
+        </div>
+        
+        <div class="starfield-card" data-variant="03">
+            <div class="image-wrapper">
+                <span class="badge">SF03</span>
+                <picture>
+                    <source srcset="responsive/sf03_astral_penrose_oculus_beauty_1080p_1080p.webp 1x, responsive/sf03_astral_penrose_oculus_beauty_1080p_4k.webp 2x" type="image/webp">
+                    <img src="responsive/sf03_astral_penrose_oculus_beauty_1080p_1080p.jpg" alt="Astral Penrose Oculus" loading="lazy">
+                </picture>
+            </div>
+            <div class="card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Astral Penrose Oculus</h3>
+                    <span class="card-tag">SCENE COMPOSITE</span>
+                </div>
+                <p class="card-subtitle">Escher Sanctuary & Celestial Halation</p>
+                <p class="card-desc">Impossible Penrose staircase architecture overlooking a deep celestial starfield</p>
+            </div>
+        </div>
+        
+        <div class="starfield-card" data-variant="04">
+            <div class="image-wrapper">
+                <span class="badge">SF04</span>
+                <picture>
+                    <source srcset="responsive/sf04_emerald_aurora_veil_beauty_1080p_1080p.webp 1x, responsive/sf04_emerald_aurora_veil_beauty_1080p_4k.webp 2x" type="image/webp">
+                    <img src="responsive/sf04_emerald_aurora_veil_beauty_1080p_1080p.jpg" alt="Emerald Aurora Veil" loading="lazy">
+                </picture>
+            </div>
+            <div class="card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Emerald Aurora Veil</h3>
+                    <span class="card-tag">PROCEDURAL SF</span>
+                </div>
+                <p class="card-subtitle">Bioluminescent Teal & Malachite</p>
+                <p class="card-desc">Ethereal ionized gas curtains with diamond twinkling star clusters</p>
+            </div>
+        </div>
+        
+        <div class="starfield-card" data-variant="05">
+            <div class="image-wrapper">
+                <span class="badge">SF05</span>
+                <picture>
+                    <source srcset="responsive/sf05_golden_solar_nursery_beauty_1080p_1080p.webp 1x, responsive/sf05_golden_solar_nursery_beauty_1080p_4k.webp 2x" type="image/webp">
+                    <img src="responsive/sf05_golden_solar_nursery_beauty_1080p_1080p.jpg" alt="Golden Solar Nursery" loading="lazy">
+                </picture>
+            </div>
+            <div class="card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Golden Solar Nursery</h3>
+                    <span class="card-tag">PROCEDURAL SF</span>
+                </div>
+                <p class="card-subtitle">Amber, Honey & Stellar Dust</p>
+                <p class="card-desc">Warm amber/gold stellar core, solar flare diffraction spikes, and cosmic dust</p>
+            </div>
+        </div>
+        
+        <div class="starfield-card" data-variant="06">
+            <div class="image-wrapper">
+                <span class="badge">SF06</span>
+                <picture>
+                    <source srcset="responsive/sf06_supernova_crimson_burst_beauty_1080p_1080p.webp 1x, responsive/sf06_supernova_crimson_burst_beauty_1080p_4k.webp 2x" type="image/webp">
+                    <img src="responsive/sf06_supernova_crimson_burst_beauty_1080p_1080p.jpg" alt="Supernova Crimson Burst" loading="lazy">
+                </picture>
+            </div>
+            <div class="card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Supernova Crimson Burst</h3>
+                    <span class="card-tag">PROCEDURAL SF</span>
+                </div>
+                <p class="card-subtitle">Deep Crimson & Plasma Orange</p>
+                <p class="card-desc">High-energy stellar eruption with incandescent plasma and hot-white core</p>
+            </div>
+        </div>
+        
+        <div class="starfield-card" data-variant="07">
+            <div class="image-wrapper">
+                <span class="badge">SF07</span>
+                <picture>
+                    <source srcset="responsive/sf07_haute_couture_velvet_stars_beauty_1080p_1080p.webp 1x, responsive/sf07_haute_couture_velvet_stars_beauty_1080p_4k.webp 2x" type="image/webp">
+                    <img src="responsive/sf07_haute_couture_velvet_stars_beauty_1080p_1080p.jpg" alt="Haute Couture Velvet Stars" loading="lazy">
+                </picture>
+            </div>
+            <div class="card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Haute Couture Velvet Stars</h3>
+                    <span class="card-tag">PROCEDURAL SF</span>
+                </div>
+                <p class="card-subtitle">Iridescent Velvet & Champagne Starlight</p>
+                <p class="card-desc">Deep midnight violet velvet sheen with 4-point champagne starlight glints</p>
+            </div>
+        </div>
+        
+        <div class="starfield-card" data-variant="08">
+            <div class="image-wrapper">
+                <span class="badge">SF08</span>
+                <picture>
+                    <source srcset="responsive/sf08_cygnus_diamond_cluster_beauty_1080p_1080p.webp 1x, responsive/sf08_cygnus_diamond_cluster_beauty_1080p_4k.webp 2x" type="image/webp">
+                    <img src="responsive/sf08_cygnus_diamond_cluster_beauty_1080p_1080p.jpg" alt="Cygnus Diamond Cluster" loading="lazy">
+                </picture>
+            </div>
+            <div class="card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Cygnus Diamond Cluster</h3>
+                    <span class="card-tag">PROCEDURAL SF</span>
+                </div>
+                <p class="card-subtitle">Sapphire & Platinum Starlight</p>
+                <p class="card-desc">Prismatic sapphire, electric cyan gas, and platinum diamond dust</p>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
