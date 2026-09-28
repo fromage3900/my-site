@@ -146,7 +146,8 @@
     "wix/assets/melodia-ui/showcase-2026-09-23/",
     "melodia/captures/2026-09-23/",
     "wix/assets/touchdesigner/",
-    "melodia/hair-uv-base-20260922/"
+    "melodia/hair-uv-base-20260922/",
+    "wix/assets/melodia-mi-craft-2026-09-24/"
   ],
   "blocked_by_default": [
     "new public pages",
@@ -523,6 +524,27 @@
         "no EEVEE replacement",
         "no inventing melusina_ue58_b2_* plates",
         "no weakening of freeze verification"
+      ]
+    },
+    {
+      "id": "mi-craft-pearl-cymatics-melusina-2026-09-24",
+      "reason": "Owner requested adjacent MI craft strips for PearlWoven / SurrealFabric-adjacent fabric lookdev, Cymatics BaseColors, and Melusina MI cloth contact on Stage — review-only, not Melusina hero swap, not Nikki sphere invention.",
+      "scope": [
+        "wix/assets/melodia-mi-craft-2026-09-24/ — PearlWoven BaseColors + Flipbook Frame00, Cymatics BCs, Melusina outfit contact / ScaleShimmer / haired grip gate (webp+png)",
+        "wix/design-specs.html — adjacent Technical Art viz-door strips for PearlWoven + Cymatics (no new route)",
+        "wix/melodia-stage-character.html — adjacent Melusina MI cloth-contact strip beside existing EEVEE lookdev (no hero swap)",
+        "content/site-plates.json — systems.pearlwoven.* / systems.cymatics.* / stage.mi.* lookdev slots",
+        "content/showcase-freeze.json — this exception record + allowlist prefix"
+      ],
+      "exclusions": [
+        "do not promote Melusina into index.hero or recruiter.hero",
+        "do not use bald melusina_cam_beauty_nikki plate",
+        "do not claim SurrealFabric flipbook atlas (dirs empty; Frame00 PearlFlipbook only)",
+        "do not invent Nikki Materials sphere plates",
+        "do not regress Melusina page EEVEE + Magical Artifact menu story (PR #65)",
+        "no new public routes or navigation redesign",
+        "no merge without owner explicit ship-it",
+        "no weakening of recruiter freeze, asset, token, or showcase validation"
       ]
     }
   ]
