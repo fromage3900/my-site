@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { createRuntime } from '../../src/core/createRuntime.js';
-import { loadAurigaMeter, DEFAULT_AURIGA_URL } from './src/auriga-meter.js';
+import { loadAurigaMeter, loadEyewearStudy, DEFAULT_AURIGA_URL, DEFAULT_EYEWEAR_URL } from './src/auriga-meter.js';
 
 const stage = document.getElementById('stage');
 const slider = document.getElementById('timeline');
@@ -107,13 +107,35 @@ function setAssetStatus(text) {
 
 setAssetStatus('loading GLB…');
 
-loadAurigaMeter({ scene: runtime.scene, url: DEFAULT_AURIGA_URL })
+// ?asset=eyewear loads the original eyewear study (lens/hinge/bridge anchors)
+// instead of the Auriga meter. Callout labels follow the active asset.
+const assetChoice = new URLSearchParams(location.search).get('asset');
+const useEyewear = assetChoice === 'eyewear';
+if (useEyewear) {
+  const labelByAnchor = { screen: 'Lens', hinge: 'Hinge', port: 'Bridge' };
+  const anchorBySlot = { screen: 'lens', hinge: 'hinge', port: 'bridge' };
+  for (const el of calloutEls) {
+    el.textContent = labelByAnchor[el.dataset.anchor] || el.textContent;
+    el.dataset.anchorSlot = anchorBySlot[el.dataset.anchor] || el.dataset.anchor;
+  }
+}
+
+const loadActiveAsset = useEyewear ? loadEyewearStudy : loadAurigaMeter;
+const activeAssetUrl = useEyewear ? DEFAULT_EYEWEAR_URL : DEFAULT_AURIGA_URL;
+
+loadActiveAsset({ scene: runtime.scene, url: activeAssetUrl })
   .then((handle) => {
     auriga = handle;
+    if (useEyewear) {
+      // Remap generic callout slots to the eyewear anchor names.
+      const remapped = {};
+      for (const el of calloutEls) remapped[el.dataset.anchor] = handle.anchors[el.dataset.anchorSlot || el.dataset.anchor];
+      auriga = { ...handle, anchors: remapped };
+    }
     product.visible = false; // procedural stand-in steps aside
     setAssetStatus(
       `GLB loaded · ${handle.clips.length} clip(s) · ${handle.duration.toFixed(2)}s · ` +
-      `${handle.materials.length} material(s) · anchors ${Object.keys(handle.anchors).length}/3`,
+      `${handle.materials.length} material(s) · anchors ${Object.keys(auriga.anchors).filter((k) => auriga.anchors[k]).length}/3`,
     );
     applyTimeline(timeline);
   })

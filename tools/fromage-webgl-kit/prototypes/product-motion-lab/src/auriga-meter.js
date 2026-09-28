@@ -13,29 +13,31 @@ function collectMaterials(root) {
   return [...materials];
 }
 
-function collectAnchors(root) {
+function collectAnchors(root, required) {
   const anchors = {};
-  for (const key of ['screen', 'hinge', 'port']) {
+  for (const key of required) {
     const object = root.getObjectByName(`ANCHOR_${key}`);
     if (object) anchors[key] = object;
   }
   return anchors;
 }
 
-export async function loadAurigaMeter({ scene, url = DEFAULT_AURIGA_URL, manager, onProgress } = {}) {
-  if (!scene) throw new TypeError('loadAurigaMeter requires a THREE.Scene or THREE.Group in { scene }.');
+export async function loadProductGlb({ scene, url, requiredAnchors = ['screen', 'hinge', 'port'], rootName = 'product-glb-runtime-root', scale = 1, manager, onProgress } = {}) {
+  if (!scene) throw new TypeError('loadProductGlb requires a THREE.Scene or THREE.Group in { scene }.');
+  if (!url) throw new TypeError('loadProductGlb requires a GLB { url }.');
 
   const loader = new GLTFLoader(manager);
   const gltf = await loader.loadAsync(url, onProgress);
   const root = gltf.scene;
-  root.name = root.name || 'auriga-meter-runtime-root';
+  root.name = root.name || rootName;
+  if (scale !== 1) root.scale.setScalar(scale);
   scene.add(root);
 
-  const anchors = collectAnchors(root);
-  const missingAnchors = ['screen', 'hinge', 'port'].filter((name) => !anchors[name]);
+  const anchors = collectAnchors(root, requiredAnchors);
+  const missingAnchors = requiredAnchors.filter((name) => !anchors[name]);
   if (missingAnchors.length) {
     scene.remove(root);
-    throw new Error(`Auriga Meter missing annotation anchors: ${missingAnchors.join(', ')}`);
+    throw new Error(`${url} missing annotation anchors: ${missingAnchors.join(', ')}`);
   }
 
   const mixer = new THREE.AnimationMixer(root);
@@ -89,4 +91,16 @@ export async function loadAurigaMeter({ scene, url = DEFAULT_AURIGA_URL, manager
 
   applyTimeline(0);
   return { root, anchors, clips, mixer, duration, materials, applyTimeline, setWireframe, dispose };
+}
+
+export async function loadAurigaMeter({ scene, url = DEFAULT_AURIGA_URL, manager, onProgress } = {}) {
+  return loadProductGlb({ scene, url, rootName: 'auriga-meter-runtime-root', manager, onProgress });
+}
+
+export const DEFAULT_EYEWEAR_URL = './assets/eyewear_study.glb';
+export const EYEWEAR_ANCHORS = ['lens', 'hinge', 'bridge'];
+
+export async function loadEyewearStudy({ scene, url = DEFAULT_EYEWEAR_URL, manager, onProgress } = {}) {
+  // Eyewear is authored in meters (~0.15 wide); scale to the lab's staging.
+  return loadProductGlb({ scene, url, requiredAnchors: EYEWEAR_ANCHORS, rootName: 'eyewear-study-runtime-root', scale: 12, manager, onProgress });
 }
