@@ -63,10 +63,10 @@
       "alt": "Melusina — glam macro · EEVEE hair + face detail"
     },
     "sakura.hero": {
-      "path": "../generated/assets/portfolio-scan/sakura-surfaces-grid.png",
-      "alt": "L_SakuraDream surface-family study — world beauty capture pending",
-      "status": "supporting_material_study",
-      "evidence_note": "Pixel-reviewed material-family evidence only. Does not prove the full Sakura Dream world or shrine route."
+      "path": "../generated/assets/unreal/hero-sakura-dream-petal-cantata.png",
+      "alt": "Sakura Dream — Petal Cantata and celestial flora lookdev study",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Dreamlike cherry petal cascade and stylized toon garden flora composition under twilight atmosphere."
     },
     "kitbash.hero": {
       "path": "../generated/assets/ornaments/vault_ribs_komikaze_beauty_34.png",
@@ -222,6 +222,30 @@
       "alt": "TouchDesigner Triple-AAA hero beauty contact sheet — lookdev showcase (not Unreal gameplay)",
       "status": "accepted_td_lookdev",
       "evidence_note": "AAA suite contact sheet for recruiter TD lookdev promotion. Komikaze ornament plates remain secondary."
+    },
+    "cosmic.hero": {
+      "path": "../generated/assets/unreal/hero-cosmic-orrery-celestial.png",
+      "alt": "Cosmic Orrery — Celestial constellation and glowing nebula resonance study",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Harmonic starfield charts and volumetric nebula filaments framing Melusina's sanctuary."
+    },
+    "morning.glitter_trails": {
+      "path": "../generated/assets/unreal/hero-melusina-morning-fairy-dust.png",
+      "alt": "Melusina Morning — Fairy dust trails and chromatic meadow bloom",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Dawn-kissed flower islands draped in sparkling fairy trails and soft pastel mist."
+    },
+    "zenforest.ambient_vortex": {
+      "path": "../generated/assets/unreal/hero-zen-forest-ambient-vortex.png",
+      "alt": "Zen Forest — Tranquil forest canopy and atmospheric petal drift",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Atmospheric forest glade capturing gentle wind motes and peaceful cedar shrines."
+    },
+    "vfx.contact_sheet": {
+      "path": "../generated/assets/unreal/contact-sheet-vfx-niagara-systems.png",
+      "alt": "Melodia Visual Systems — Master multi-panel lookbook contact sheet",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Multi-panel editorial contact sheet presenting unified visual effects, particle systems, and surface styling across all showcase realms."
     }
   }
 }

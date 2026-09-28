@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melodia — Stylized Visual Worlds & Atmosphere Lookbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090b10;
+      --surface: #121622;
+      --surface-border: #1e2538;
+      --text-primary: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --sakura: #f472b6;
+      --gold: #fbbf24;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.6;
+      padding: 3rem 1.5rem;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .brand-eyebrow {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      background: linear-gradient(135deg, #ffffff 40%, var(--sakura) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    .subhead {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .master-sheet-section {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 4rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .master-sheet-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--surface-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .master-sheet-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+    }
+    .sheet-badge {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      letter-spacing: 0.08em;
+    }
+    .master-sheet-media img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+      gap: 2.5rem;
+    }
+    .showcase-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .showcase-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px var(--accent-glow);
+    }
+    .card-media {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #000;
+    }
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .showcase-card:hover .card-media img {
+      transform: scale(1.03);
+    }
+    .media-overlay {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .badge {
+      background: rgba(18, 22, 34, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+    }
+    .card-body {
+      padding: 1.75rem 2rem;
+    }
+    .card-body h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .card-caption {
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    .card-note {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    footer {
+      margin-top: 5rem;
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--surface-border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand-eyebrow">Melodia Portfolio · Visual Worlds Lookbook</div>
+      <h1>Atmospheric Realms & Stylized Flora</h1>
+      <p class="subhead">A curated lookbook capturing twilight petal cantatas, celestial starlight resonance, dawn meadow blossoms, and tranquil cedar groves.</p>
+    </header>
+
+    <!-- Master Contact Sheet -->
+    <section class="master-sheet-section">
+      <div class="master-sheet-header">
+        <h2>Visual Systems Master Contact Sheet</h2>
+        <span class="sheet-badge">Master Quadrant</span>
+      </div>
+      <div class="master-sheet-media">
+        <img src="contact-sheet-vfx-niagara-systems.webp" alt="Melodia Visual Systems — Master multi-panel lookbook contact sheet" />
+      </div>
+    </section>
+
+    <!-- Showcase Grid -->
+    <main class="grid">
+      
+        <article class="showcase-card">
+          <div class="card-media">
+            <img src="hero-sakura-dream-petal-cantata.webp" alt="Sakura Dream — Petal Cantata and celestial flora lookdev study" loading="lazy" />
+            <div class="media-overlay">
+              <span class="badge">Artbook Verified</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Sakura Dream — Petal Cantata</h3>
+            <p class="card-caption">Delicate cherry blossom cascades gently sweeping through ancestral garden pavilions.</p>
+            <p class="card-note">Dreamlike cherry petal cascade and stylized toon garden flora composition under twilight atmosphere.</p>
+          </div>
+        </article>
+        
+
+        <article class="showcase-card">
+          <div class="card-media">
+            <img src="hero-cosmic-orrery-celestial.webp" alt="Cosmic Orrery — Celestial constellation and glowing nebula resonance study" loading="lazy" />
+            <div class="media-overlay">
+              <span class="badge">Artbook Verified</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Cosmic Orrery — Celestial Resonance</h3>
+            <p class="card-caption">Gleaming astral constellations guiding nocturnal voyages across the celestial sea.</p>
+            <p class="card-note">Harmonic starfield charts and volumetric nebula filaments framing Melusina's sanctuary.</p>
+          </div>
+        </article>
+        
+
+        <article class="showcase-card">
+          <div class="card-media">
+            <img src="hero-melusina-morning-fairy-dust.webp" alt="Melusina Morning — Fairy dust trails and chromatic meadow bloom" loading="lazy" />
+            <div class="media-overlay">
+              <span class="badge">Artbook Verified</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Melusina Morning — Fairy Dust Trails</h3>
+            <p class="card-caption">Morning dew and sparkling fairy fines woven along curving garden walkways.</p>
+            <p class="card-note">Dawn-kissed flower islands draped in sparkling fairy trails and soft pastel mist.</p>
+          </div>
+        </article>
+        
+
+        <article class="showcase-card">
+          <div class="card-media">
+            <img src="hero-zen-forest-ambient-vortex.webp" alt="Zen Forest — Tranquil forest canopy and atmospheric petal drift" loading="lazy" />
+            <div class="media-overlay">
+              <span class="badge">Artbook Verified</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Zen Forest — Tranquil Canopy</h3>
+            <p class="card-caption">Whispering cedar groves bathed in warm afternoon sunlight and floating motes.</p>
+            <p class="card-note">Atmospheric forest glade capturing gentle wind motes and peaceful cedar shrines.</p>
+          </div>
+        </article>
+        
+    </main>
+
+    <footer>
+      <p>Melodia Artbook & Visual Systems · High-Fidelity Stylized Fantasy Worldbuilding · 2026</p>
+    </footer>
+  </div>
+</body>
+</html>
