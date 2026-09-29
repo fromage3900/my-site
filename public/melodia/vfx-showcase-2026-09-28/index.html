@@ -3,274 +3,780 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Melodia — Stylized Visual Worlds & Atmosphere Lookbook</title>
+  <title>Melodia — Hybrid TD×UE Visual Systems Lookbook</title>
+  <meta name="description" content="A curated lookbook of hybrid TouchDesigner × Unreal Engine 5 renders — animated material studies, atmospheric particle systems, and stylized fantasy worlds captured through the Melodia real-time pipeline.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090b10;
-      --surface: #121622;
-      --surface-border: #1e2538;
-      --text-primary: #f8fafc;
-      --text-muted: #94a3b8;
+      --bg: #06080d;
+      --surface: rgba(18, 22, 34, 0.65);
+      --surface-solid: #121622;
+      --surface-border: rgba(255, 255, 255, 0.06);
+      --surface-border-hover: rgba(255, 255, 255, 0.14);
+      --text-primary: #f0f2f8;
+      --text-muted: #8b9ab8;
+      --text-dim: #5a6a88;
       --accent: #38bdf8;
-      --accent-glow: rgba(56, 189, 248, 0.15);
+      --accent-soft: rgba(56, 189, 248, 0.08);
+      --accent-glow: rgba(56, 189, 248, 0.18);
       --sakura: #f472b6;
+      --sakura-soft: rgba(244, 114, 182, 0.1);
       --gold: #fbbf24;
+      --cosmic: #a78bfa;
+      --cosmic-soft: rgba(167, 139, 250, 0.1);
+      --zen: #34d399;
+      --zen-soft: rgba(52, 211, 153, 0.1);
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       background-color: var(--bg);
       color: var(--text-primary);
       font-family: 'Outfit', sans-serif;
-      line-height: 1.6;
-      padding: 3rem 1.5rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    header {
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ─── Hero Header ─── */
+    .hero-header {
       text-align: center;
-      margin-bottom: 4rem;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+    }
+    .hero-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(56, 189, 248, 0.04) 0%, transparent 70%),
+                  radial-gradient(ellipse 60% 50% at 30% 80%, rgba(244, 114, 182, 0.03) 0%, transparent 60%);
+      pointer-events: none;
     }
     .brand-eyebrow {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.35em;
       color: var(--accent);
-      margin-bottom: 0.75rem;
+      margin-bottom: 1.25rem;
+      font-weight: 500;
     }
     h1 {
       font-family: 'Cinzel', serif;
-      font-size: 2.75rem;
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
       font-weight: 700;
-      letter-spacing: 0.05em;
-      background: linear-gradient(135deg, #ffffff 40%, var(--sakura) 100%);
+      letter-spacing: 0.04em;
+      background: linear-gradient(135deg, #ffffff 30%, var(--sakura) 70%, var(--cosmic) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
+      background-clip: text;
+      margin-bottom: 1.25rem;
+      line-height: 1.2;
     }
     .subhead {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto;
+      font-weight: 300;
+      line-height: 1.7;
     }
-    .master-sheet-section {
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 4rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
-    .master-sheet-header {
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid var(--surface-border);
-      display: flex;
-      justify-content: space-between;
+    .pipeline-tag {
+      display: inline-flex;
       align-items: center;
-    }
-    .master-sheet-header h2 {
-      font-family: 'Cinzel', serif;
-      font-size: 1.35rem;
+      gap: 0.5rem;
+      margin-top: 1.75rem;
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--surface-border);
+      border-radius: 100px;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
       letter-spacing: 0.04em;
     }
-    .sheet-badge {
-      background: rgba(56, 189, 248, 0.1);
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      padding: 0.35rem 0.85rem;
-      border-radius: 6px;
-      letter-spacing: 0.08em;
+    .pipeline-tag .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--zen);
+      box-shadow: 0 0 8px var(--zen);
     }
-    .master-sheet-media img {
-      width: 100%;
-      height: auto;
-      display: block;
+
+    /* ─── Section Titles ─── */
+    .section-header {
+      text-align: center;
+      margin: 5rem 0 3rem;
     }
-    .grid {
+    .section-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+    .section-header .section-sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ─── Motion Loops Grid ─── */
+    .loops-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
     }
-    .showcase-card {
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      border-radius: 14px;
+    .loop-card {
+      position: relative;
+      border-radius: 16px;
       overflow: hidden;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      background: var(--surface-solid);
+      border: 1px solid var(--surface-border);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.4s ease,
+                  box-shadow 0.4s ease;
     }
-    .showcase-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 30px var(--accent-glow);
+    .loop-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--surface-border-hover);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--surface-border-hover);
     }
-    .card-media {
+    .loop-media {
       position: relative;
       aspect-ratio: 16 / 9;
       overflow: hidden;
       background: #000;
     }
-    .card-media img {
-      width: 100%;
-      height: 100%;
+    .loop-media video {
+      width: 100%; height: 100%;
       object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      display: block;
     }
-    .showcase-card:hover .card-media img {
-      transform: scale(1.03);
-    }
-    .media-overlay {
+    .loop-overlay {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6, 8, 13, 0.85) 0%, transparent 50%);
+      pointer-events: none;
     }
-    .badge {
-      background: rgba(18, 22, 34, 0.85);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+    .loop-badge {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: rgba(6, 8, 13, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: #fff;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+    }
+    .loop-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.5rem 1.75rem;
+      z-index: 2;
+    }
+    .loop-info h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.35rem;
+      color: #fff;
+    }
+    .loop-info p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    .loop-accent {
+      height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+      margin-bottom: 0.75rem;
+      width: 40px;
+      opacity: 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .loop-card:hover .loop-accent {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+    .loop-card.accent-sakura:hover .loop-accent { background: var(--sakura); }
+    .loop-card.accent-cosmic:hover .loop-accent { background: var(--cosmic); }
+    .loop-card.accent-zen:hover .loop-accent { background: var(--zen); }
+    .loop-card.accent-gold:hover .loop-accent { background: var(--gold); }
+
+    /* ─── Hero Plates Grid ─── */
+    .plates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 2rem;
+    }
+    .plate-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--surface-solid);
+      border: 1px solid var(--surface-border);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.35s ease,
+                  box-shadow 0.35s ease;
+    }
+    .plate-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--surface-border-hover);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+    }
+    .plate-media {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #000;
+    }
+    .plate-media img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .plate-card:hover .plate-media img {
+      transform: scale(1.04);
+    }
+    .plate-body {
+      padding: 1.5rem 1.75rem;
+    }
+    .plate-body h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+      color: #fff;
+    }
+    .plate-caption {
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .plate-note {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.55;
+    }
+    .plate-badge {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: rgba(6, 8, 13, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── TD Lookdev Contact Strip ─── */
+    .contact-strip {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+    .contact-strip-header {
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--surface-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .contact-strip-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+    .strip-badge {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.25);
       font-size: 0.7rem;
       font-weight: 600;
       text-transform: uppercase;
       padding: 0.3rem 0.75rem;
-      border-radius: 4px;
-      letter-spacing: 0.06em;
+      border-radius: 6px;
+      letter-spacing: 0.08em;
     }
-    .card-body {
-      padding: 1.75rem 2rem;
+    .contact-strip-media img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
-    .card-body h3 {
-      font-family: 'Cinzel', serif;
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      color: #fff;
+
+    /* ─── Material Sphere Grid ─── */
+    .sphere-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
-    .card-caption {
-      color: var(--accent);
-      font-size: 0.95rem;
-      font-weight: 500;
-      margin-bottom: 0.75rem;
+    .sphere-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface-solid);
+      border: 1px solid var(--surface-border);
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
-    .card-note {
+    .sphere-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--surface-border-hover);
+    }
+    .sphere-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+    .sphere-label {
+      padding: 0.85rem 1rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-    footer {
-      margin-top: 5rem;
+      font-weight: 400;
       text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid var(--surface-border);
-      color: var(--text-muted);
-      font-size: 0.85rem;
     }
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-      h1 {
-        font-size: 2rem;
-      }
+
+    /* ─── Pipeline Diagram ─── */
+    .pipeline-section {
+      margin: 5rem 0;
+      padding: 3rem 2.5rem;
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+    }
+    .pipeline-section h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .pipeline-flow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .pipeline-node {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      padding: 0.6rem 1.1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+    .pipeline-node.ue { border-color: rgba(56, 189, 248, 0.3); color: var(--accent); }
+    .pipeline-node.td { border-color: rgba(167, 139, 250, 0.3); color: var(--cosmic); }
+    .pipeline-node.out { border-color: rgba(52, 211, 153, 0.3); color: var(--zen); }
+    .pipeline-arrow {
+      color: var(--text-dim);
+      font-size: 1.1rem;
+    }
+    .pipeline-desc {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 300;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      margin-top: 6rem;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-top: 1px solid var(--surface-border);
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+    }
+
+    /* ─── Scroll Animations ─── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .loops-grid { grid-template-columns: 1fr; }
+      .plates-grid { grid-template-columns: 1fr; }
+      .pipeline-flow { flex-direction: column; gap: 0.3rem; }
+      .pipeline-arrow { transform: rotate(90deg); }
+    }
+    @media (max-width: 600px) {
+      .hero-header { padding: 4rem 1rem 2.5rem; }
+      .container { padding: 0 1rem; }
+      .sphere-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
+
+  <!-- Hero Header -->
+  <header class="hero-header">
+    <div class="brand-eyebrow">Melodia Portfolio · Hybrid Visual Systems Lookbook</div>
+    <h1>Atmospheric Realms & Animated Material Worlds</h1>
+    <p class="subhead">A curated lookbook of real-time hybrid renders — Unreal Engine 5 beauty passes composited through TouchDesigner's Nikki bloom, LUT grading, and audio-reactive particle overlays. Every loop plays live.</p>
+    <div class="pipeline-tag">
+      <span class="dot"></span>
+      TouchDesigner × Unreal Engine 5 · Spout Bridge · Real-Time Pipeline
+    </div>
+  </header>
+
   <div class="container">
-    <header>
-      <div class="brand-eyebrow">Melodia Portfolio · Visual Worlds Lookbook</div>
-      <h1>Atmospheric Realms & Stylized Flora</h1>
-      <p class="subhead">A curated lookbook capturing twilight petal cantatas, celestial starlight resonance, dawn meadow blossoms, and tranquil cedar groves.</p>
-    </header>
 
-    <!-- Master Contact Sheet -->
-    <section class="master-sheet-section">
-      <div class="master-sheet-header">
-        <h2>Visual Systems Master Contact Sheet</h2>
-        <span class="sheet-badge">Master Quadrant</span>
+    <!-- ═══════════ MOTION LOOPS ═══════════ -->
+    <div class="section-header fade-in">
+      <h2>Animated Material Studies</h2>
+      <p class="section-sub">Live 60 FPS looping renders demonstrating dynamic shader behaviour — fluid displacement, cosmic filaments, iridescent glints, and volumetric wind draping.</p>
+    </div>
+
+    <div class="loops-grid">
+
+      <div class="loop-card accent-cosmic fade-in" id="loop-gemstone-master">
+        <div class="loop-media">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="../assets/material-loops/MI_Gemstone_CelestialDiamond.webm" type="video/webm">
+            <source src="../assets/material-loops/MI_Gemstone_CelestialDiamond.mp4" type="video/mp4">
+          </video>
+          <div class="loop-overlay"></div>
+          <span class="loop-badge">Substrate · Gemstone Master</span>
+          <div class="loop-info">
+            <div class="loop-accent"></div>
+            <h3>Celestial Diamond & Regalia</h3>
+            <p>Physical Abbe chromatic dispersion, 3-slice Voronoi internal crystal facets, Beer-Lambert volumetric depth extinction, and Nikki star glints — Gemstone Master architecture.</p>
+          </div>
+        </div>
       </div>
-      <div class="master-sheet-media">
-        <img src="contact-sheet-vfx-niagara-systems.webp" alt="Melodia Visual Systems — Master multi-panel lookbook contact sheet" />
+
+      <div class="loop-card accent-sakura fade-in" id="loop-melusina-waves">
+        <div class="loop-media">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="../loops/v03_melusina_waves_loop_4s.webm" type="video/webm">
+            <source src="../loops/v03_melusina_waves_loop_4s.mp4" type="video/mp4">
+          </video>
+          <div class="loop-overlay"></div>
+          <span class="loop-badge">4s · 60 FPS Loop</span>
+          <div class="loop-info">
+            <div class="loop-accent"></div>
+            <h3>Melusina Waves</h3>
+            <p>Animated water normal displacement, Gerstner waves, caustic refraction, and dynamic specular reflection — Stylized Water Master pipeline.</p>
+          </div>
+        </div>
       </div>
-    </section>
 
-    <!-- Showcase Grid -->
-    <main class="grid">
-      
-        <article class="showcase-card">
-          <div class="card-media">
-            <img src="hero-sakura-dream-petal-cantata.webp" alt="Sakura Dream — Petal Cantata and celestial flora lookdev study" loading="lazy" />
-            <div class="media-overlay">
-              <span class="badge">Artbook Verified</span>
-            </div>
+      <div class="loop-card accent-cosmic fade-in" id="loop-astral-penrose">
+        <div class="loop-media">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="../loops/v04_astral_penrose_loop_4s.webm" type="video/webm">
+            <source src="../loops/v04_astral_penrose_loop_4s.mp4" type="video/mp4">
+          </video>
+          <div class="loop-overlay"></div>
+          <span class="loop-badge">4s · 60 FPS Loop</span>
+          <div class="loop-info">
+            <div class="loop-accent"></div>
+            <h3>Astral Penrose</h3>
+            <p>Glowing cosmic filaments, halation bloom, and drifting starfield motes — SDF-driven constellation emission with TD postfx chain.</p>
           </div>
-          <div class="card-body">
-            <h3>Sakura Dream — Petal Cantata</h3>
-            <p class="card-caption">Delicate cherry blossom cascades gently sweeping through ancestral garden pavilions.</p>
-            <p class="card-note">Dreamlike cherry petal cascade and stylized toon garden flora composition under twilight atmosphere.</p>
-          </div>
-        </article>
-        
+        </div>
+      </div>
 
-        <article class="showcase-card">
-          <div class="card-media">
-            <img src="hero-cosmic-orrery-celestial.webp" alt="Cosmic Orrery — Celestial constellation and glowing nebula resonance study" loading="lazy" />
-            <div class="media-overlay">
-              <span class="badge">Artbook Verified</span>
-            </div>
+      <div class="loop-card fade-in" id="loop-infinity-nikki">
+        <div class="loop-media">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="../loops/v05_infinity_nikki_loop_4s.webm" type="video/webm">
+            <source src="../loops/v05_infinity_nikki_loop_4s.mp4" type="video/mp4">
+          </video>
+          <div class="loop-overlay"></div>
+          <span class="loop-badge">4s · 60 FPS Loop</span>
+          <div class="loop-info">
+            <div class="loop-accent"></div>
+            <h3>Infinity Nikki</h3>
+            <p>Iridescent fabric sheen, sparkling glint pulses, and soft cel-diffuse bloom — Universal Toon Master with BeatPulse audio reactivity.</p>
           </div>
-          <div class="card-body">
-            <h3>Cosmic Orrery — Celestial Resonance</h3>
-            <p class="card-caption">Gleaming astral constellations guiding nocturnal voyages across the celestial sea.</p>
-            <p class="card-note">Harmonic starfield charts and volumetric nebula filaments framing Melusina's sanctuary.</p>
-          </div>
-        </article>
-        
+        </div>
+      </div>
 
-        <article class="showcase-card">
-          <div class="card-media">
-            <img src="hero-melusina-morning-fairy-dust.webp" alt="Melusina Morning — Fairy dust trails and chromatic meadow bloom" loading="lazy" />
-            <div class="media-overlay">
-              <span class="badge">Artbook Verified</span>
-            </div>
+      <div class="loop-card accent-zen fade-in" id="loop-pastoral-dawn">
+        <div class="loop-media">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="../loops/v01_pastoral_dawn_loop_4s.webm" type="video/webm">
+            <source src="../loops/v01_pastoral_dawn_loop_4s.mp4" type="video/mp4">
+          </video>
+          <div class="loop-overlay"></div>
+          <span class="loop-badge">4s · 60 FPS Loop</span>
+          <div class="loop-info">
+            <div class="loop-accent"></div>
+            <h3>Pastoral Dawn</h3>
+            <p>Wind-draped grass animation and dawn volumetric atmosphere — PCG meadow with Niagara fairy motes and TD vignette grade.</p>
           </div>
-          <div class="card-body">
-            <h3>Melusina Morning — Fairy Dust Trails</h3>
-            <p class="card-caption">Morning dew and sparkling fairy fines woven along curving garden walkways.</p>
-            <p class="card-note">Dawn-kissed flower islands draped in sparkling fairy trails and soft pastel mist.</p>
-          </div>
-        </article>
-        
+        </div>
+      </div>
 
-        <article class="showcase-card">
-          <div class="card-media">
-            <img src="hero-zen-forest-ambient-vortex.webp" alt="Zen Forest — Tranquil forest canopy and atmospheric petal drift" loading="lazy" />
-            <div class="media-overlay">
-              <span class="badge">Artbook Verified</span>
-            </div>
+      <div class="loop-card accent-sakura fade-in" id="loop-siren-symphony">
+        <div class="loop-media">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="../loops/v02_siren_symphony_loop_4s.webm" type="video/webm">
+            <source src="../loops/v02_siren_symphony_loop_4s.mp4" type="video/mp4">
+          </video>
+          <div class="loop-overlay"></div>
+          <span class="loop-badge">4s · 60 FPS Loop</span>
+          <div class="loop-info">
+            <div class="loop-accent"></div>
+            <h3>Siren Symphony</h3>
+            <p>Harmonic light diffusion and chromatic aberration — vocal analysis CHOPs driving real-time emissive pulsation through the Spout bridge.</p>
           </div>
-          <div class="card-body">
-            <h3>Zen Forest — Tranquil Canopy</h3>
-            <p class="card-caption">Whispering cedar groves bathed in warm afternoon sunlight and floating motes.</p>
-            <p class="card-note">Atmospheric forest glade capturing gentle wind motes and peaceful cedar shrines.</p>
-          </div>
-        </article>
-        
-    </main>
+        </div>
+      </div>
 
-    <footer>
-      <p>Melodia Artbook & Visual Systems · High-Fidelity Stylized Fantasy Worldbuilding · 2026</p>
-    </footer>
+      <div class="loop-card accent-cosmic fade-in" id="loop-manga-screentone">
+        <div class="loop-media">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="../loops/v06_manga_screentone_loop_4s.webm" type="video/webm">
+            <source src="../loops/v06_manga_screentone_loop_4s.mp4" type="video/mp4">
+          </video>
+          <div class="loop-overlay"></div>
+          <span class="loop-badge">4s · 60 FPS Loop</span>
+          <div class="loop-info">
+            <div class="loop-accent"></div>
+            <h3>Manga Screentone</h3>
+            <p>Ben-Day dot halftone shader with animated density cycling — Atlus-inspired GLSL screentone pass composited through TD postfx.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="loop-card accent-gold fade-in" id="loop-blue-noise">
+        <div class="loop-media">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="../loops/v07_blue_noise_anime_loop_4s.webm" type="video/webm">
+            <source src="../loops/v07_blue_noise_anime_loop_4s.mp4" type="video/mp4">
+          </video>
+          <div class="loop-overlay"></div>
+          <span class="loop-badge">4s · 60 FPS Loop</span>
+          <div class="loop-info">
+            <div class="loop-accent"></div>
+            <h3>Blue Noise Anime</h3>
+            <p>Stochastic blue-noise dithering with anime edge detection — Sobel ink outlines and toon-shading light wraps with temporal stability.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="loop-card fade-in" id="loop-director-quad">
+        <div class="loop-media">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="../loops/v08_director_quad_scope_loop_4s.webm" type="video/webm">
+            <source src="../loops/v08_director_quad_scope_loop_4s.mp4" type="video/mp4">
+          </video>
+          <div class="loop-overlay"></div>
+          <span class="loop-badge">4s · 60 FPS Loop</span>
+          <div class="loop-info">
+            <div class="loop-accent"></div>
+            <h3>Director Quad Scope</h3>
+            <p>Multi-view composite — simultaneous beauty, albedo, normal, and depth passes in a unified quadrant scope for pipeline QA and lookdev review.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══════════ HERO BEAUTY PLATES ═══════════ -->
+    <div class="section-header fade-in">
+      <h2>Cinematic Environment Plates</h2>
+      <p class="section-sub">Full-resolution UE5 beauty captures — each world rendered through calibrated ACES and stylized cel-toon lighting with zero editor chrome.</p>
+    </div>
+
+    <div class="plates-grid">
+
+      <article class="plate-card fade-in" id="plate-sakura-dream">
+        <div class="plate-media">
+          <img src="hero-sakura-dream-petal-cantata.webp" alt="Sakura Dream — cherry blossom shrine with petal cascade and twilight atmosphere" loading="lazy">
+          <span class="plate-badge" style="color: var(--sakura);">Sakura Dream</span>
+        </div>
+        <div class="plate-body">
+          <h3>Sakura Dream — Petal Cantata</h3>
+          <p class="plate-caption" style="color: var(--sakura);">Cherry blossom cascades through ancestral garden pavilions</p>
+          <p class="plate-note">Dreamlike petal vortex and stylized toon garden flora composition under twilight atmosphere. Real-time petal dynamics paired with Substrate toon materials.</p>
+        </div>
+      </article>
+
+      <article class="plate-card fade-in" id="plate-cosmic-orrery">
+        <div class="plate-media">
+          <img src="hero-cosmic-orrery-celestial.webp" alt="Cosmic Orrery — celestial constellation ribbon with glowing nebula filaments" loading="lazy">
+          <span class="plate-badge" style="color: var(--cosmic);">Cosmic Orrery</span>
+        </div>
+        <div class="plate-body">
+          <h3>Cosmic Orrery — Celestial Resonance</h3>
+          <p class="plate-caption" style="color: var(--cosmic);">Astral constellations guiding nocturnal voyages across the celestial sea</p>
+          <p class="plate-note">Harmonic starfield charts and volumetric nebula filaments. Dynamic constellation ribbons paired with SDF-driven cosmic instances.</p>
+        </div>
+      </article>
+
+      <article class="plate-card fade-in" id="plate-melusina-morning">
+        <div class="plate-media">
+          <img src="hero-melusina-morning-fairy-dust.webp" alt="Melusina Morning — dawn meadow with fairy dust trails and chromatic bloom" loading="lazy">
+          <span class="plate-badge" style="color: var(--gold);">Melusina Morning</span>
+        </div>
+        <div class="plate-body">
+          <h3>Melusina Morning — Fairy Dust Trails</h3>
+          <p class="plate-caption" style="color: var(--gold);">Dawn dew and sparkling fairy fines along curving garden walkways</p>
+          <p class="plate-note">Dawn-kissed flower islands draped in sparkling fairy trails and soft pastel mist. Sparkling motes with procedural flipbook subUV animation.</p>
+        </div>
+      </article>
+
+      <article class="plate-card fade-in" id="plate-zen-sanctuary">
+        <div class="plate-media">
+          <img src="hero-zen-sanctuary-forest.webp" alt="Zen Sanctuary Forest — deep cedar groves with volumetric light and ambient motes" loading="lazy">
+          <span class="plate-badge" style="color: var(--zen);">Zen Sanctuary</span>
+        </div>
+        <div class="plate-body">
+          <h3>Zen Sanctuary — Tranquil Canopy</h3>
+          <p class="plate-caption" style="color: var(--zen);">Whispering cedar groves bathed in warm afternoon sunlight</p>
+          <p class="plate-note">Atmospheric forest glade with gentle wind motes and peaceful cedar shrines. PCG placement with World Partition streaming and ambient vortex particle dynamics.</p>
+        </div>
+      </article>
+
+      <article class="plate-card fade-in" id="plate-night-bridge">
+        <div class="plate-media">
+          <img src="hero-night-bridge-1920x1080.png" alt="Night Bridge — hero-level environment study with cinematic lighting and atmospheric haze" loading="lazy">
+          <span class="plate-badge" style="color: var(--accent);">Night Bridge</span>
+        </div>
+        <div class="plate-body">
+          <h3>Night Bridge — Hero Establishing</h3>
+          <p class="plate-caption" style="color: var(--accent);">Cinematic bridge vista with volumetric moonlight and atmospheric depth</p>
+          <p class="plate-note">Full hero-level composition with reviewed cinematic camera setup. Multi-biome World Partition environment showcasing atmosphere and lighting craft.</p>
+        </div>
+      </article>
+
+      <article class="plate-card fade-in" id="plate-melusina-lookdev">
+        <div class="plate-media">
+          <img src="hero-melusina-lookdev-4k.webp" alt="Melusina Lookdev — 4K environment beauty with water displacement and fairy atmosphere" loading="lazy">
+          <span class="plate-badge" style="color: var(--sakura);">Melusina 4K</span>
+        </div>
+        <div class="plate-body">
+          <h3>Melusina — 4K Lookdev Beauty</h3>
+          <p class="plate-caption" style="color: var(--sakura);">Fluid water displacement, caustic refraction, and fairy atmosphere at 4096×2160</p>
+          <p class="plate-note">Ultra-high resolution lookdev capture — Stylized Water Master with Gerstner waves, dynamic caustics, and Melusina fairy sanctuary environment.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ═══════════ TD LOOKDEV SPHERES ═══════════ -->
+    <div class="section-header fade-in">
+      <h2>TouchDesigner Material Sphere Presets</h2>
+      <p class="section-sub">TD GLSL toon-satin and iridescent crystal shader lookdev — each sphere preset rendered through the TD shader lab with dual-light camera rig.</p>
+    </div>
+
+    <div class="sphere-grid fade-in">
+      <div class="sphere-card">
+        <img src="../lookdev/td_preset_0_nikki.png" alt="Nikki toon shader preset" loading="lazy">
+        <div class="sphere-label">Nikki — Cel Toon</div>
+      </div>
+      <div class="sphere-card">
+        <img src="../lookdev/td_preset_1_madoka.png" alt="Madoka barrier shader preset" loading="lazy">
+        <div class="sphere-label">Madoka — Barrier Glow</div>
+      </div>
+      <div class="sphere-card">
+        <img src="../lookdev/td_preset_2_celestial.png" alt="Celestial nebula shader preset" loading="lazy">
+        <div class="sphere-label">Celestial — Nebula Haze</div>
+      </div>
+      <div class="sphere-card">
+        <img src="../lookdev/td_preset_3_itto.png" alt="Itto carved stone shader preset" loading="lazy">
+        <div class="sphere-label">Itto — Carved Stone</div>
+      </div>
+      <div class="sphere-card">
+        <img src="../lookdev/td_preset_4_sakura.png" alt="Sakura dream shader preset" loading="lazy">
+        <div class="sphere-label">Sakura — Dream Bloom</div>
+      </div>
+    </div>
+
+    <!-- ═══════════ MATERIAL FAMILIES GRID ═══════════ -->
+    <div class="contact-strip fade-in">
+      <div class="contact-strip-header">
+        <h2>UE5 Material Family Showcase Grid</h2>
+        <span class="strip-badge">2048×2048 · Grid Review</span>
+      </div>
+      <div class="contact-strip-media">
+        <img src="mat-grid-showcase-families.webp" alt="Material families grid — standardized sphere lookdev across all master material families" loading="lazy">
+      </div>
+    </div>
+
+    <!-- ═══════════ PIPELINE ARCHITECTURE ═══════════ -->
+    <div class="pipeline-section fade-in">
+      <h2>Hybrid Render Pipeline Architecture</h2>
+      <div class="pipeline-flow">
+        <span class="pipeline-node ue">UE5 Niagara + Materials</span>
+        <span class="pipeline-arrow">→</span>
+        <span class="pipeline-node ue">SceneCapture / Cam</span>
+        <span class="pipeline-arrow">→</span>
+        <span class="pipeline-node td">Spout Bridge</span>
+        <span class="pipeline-arrow">→</span>
+        <span class="pipeline-node td">TD PostFX Chain</span>
+        <span class="pipeline-arrow">→</span>
+        <span class="pipeline-node td">Nikki Bloom + LUT + Vignette</span>
+        <span class="pipeline-arrow">→</span>
+        <span class="pipeline-node td">Audio-Reactive Overlay</span>
+        <span class="pipeline-arrow">→</span>
+        <span class="pipeline-node out">MovieFileOut / Spout</span>
+      </div>
+      <p class="pipeline-desc">
+        Each render flows through the full Melodia real-time pipeline: Unreal Engine 5 beauty passes are streamed via Spout (syphonspoutoutTOP: <em>TD_Portfolio_Output</em>) into TouchDesigner's postfx chain — a 3-pass Gaussian bloom, Nikki LUT colour grade, radial vignette, and nebula background composite. Audio CHOPs (5-band spectral analysis) drive Melusina ring transforms and BeatPulse particle emission. Final composite outputs to both moviefileoutTOP for offline capture and spoutout1 for live preview.
+      </p>
+    </div>
+
   </div>
+
+  <footer>
+    <p>Melodia Artbook & Visual Systems · Hybrid TD×UE Real-Time Pipeline · High-Fidelity Stylized Fantasy Worldbuilding · 2026</p>
+  </footer>
+
+  <!-- Scroll-triggered fade-in -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+  </script>
+
 </body>
 </html>
