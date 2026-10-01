@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melodia · Infinity Nikki Lookdev Suite</title>
+    <style>
+        :root {
+            --bg-deep: #0a0b10;
+            --bg-card: rgba(22, 24, 34, 0.85);
+            --accent-pink: #fbcfe8;
+            --accent-glow: #e0e7ff;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-soft: rgba(255, 255, 255, 0.08);
+            --pill-bg: rgba(255, 255, 255, 0.05);
+            --pill-hover: rgba(255, 255, 255, 0.15);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            padding: 40px 24px;
+            line-height: 1.5;
+        }
+        .header {
+            max-width: 1400px;
+            margin: 0 auto 48px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-pink) 60%, var(--accent-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .grid-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+        .lookbook-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-soft);
+            border-radius: 16px;
+            padding: 28px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        .card-header {
+            margin-bottom: 20px;
+        }
+        .world-tag {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--accent-pink);
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+        .camera-meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .viewport-stage {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-soft);
+        }
+        .main-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.2s ease-in-out;
+        }
+        .stage-overlay {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+        }
+        .pass-badge {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            color: var(--accent-pink);
+            backdrop-filter: blur(8px);
+        }
+        .strip-preview {
+            margin: 16px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-soft);
+        }
+        .strip-preview img {
+            width: 100%;
+            display: block;
+        }
+        .controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+        .pass-pill {
+            background: var(--pill-bg);
+            border: 1px solid var(--border-soft);
+            color: var(--text-secondary);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .pass-pill:hover {
+            background: var(--pill-hover);
+            color: var(--text-primary);
+        }
+        .pass-pill.active {
+            background: rgba(251, 207, 232, 0.15);
+            border-color: var(--accent-pink);
+            color: var(--accent-pink);
+        }
+        .matrix-btn {
+            margin-left: auto;
+            border-color: rgba(224, 231, 255, 0.3);
+            color: var(--accent-glow);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Melodia · Haute Couture Lookdev Suite</h1>
+        <p>Multi-camera real-time shader inspection across canonical worlds. 9-pass Haute Couture pipeline featuring anime cel diffuse, velvet sheen, and starlight glints.</p>
+    </div>
+
+    <div class="grid-container">
+        
+        <div class="lookbook-card" id="card_melusina_morning_CAM_Hero_01_Meadow">
+            <div class="card-header">
+                <span class="world-tag">MELUSINA MORNING</span>
+                <h2>Melusina Morning · Hero 01 Meadow</h2>
+                <p class="camera-meta">Render Camera: CAM_Hero_01_Meadow · 1080p 16:9 Cinema · Haute Couture Pipeline</p>
+            </div>
+            
+            <div class="viewport-stage">
+                <img id="img_melusina_morning_CAM_Hero_01_Meadow" class="main-preview" src="CAM_Hero_01_Meadow/00_master_beauty.png" alt="Melusina Morning · Hero 01 Meadow" />
+                <div class="stage-overlay">
+                    <span id="badge_melusina_morning_CAM_Hero_01_Meadow" class="pass-badge">Master Final Beauty</span>
+                </div>
+            </div>
+            
+            <div class="strip-preview">
+                <img src="CAM_Hero_01_Meadow/comparison_strip_1x9.jpg" alt="Panoramic 9-Pass Comparison Strip" />
+            </div>
+            
+            <div class="controls-row">
+                <button class="pass-pill active" onclick='switchPlate("melusina_morning_CAM_Hero_01_Meadow", "CAM_Hero_01_Meadow/00_master_beauty.png", "Master Final Beauty")'>Master Beauty</button>
+                <button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_01_Meadow", "CAM_Hero_01_Meadow/01_cel_diffuse.png", "Anime Cel Diffuse")'>Anime Cel Diffuse</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_01_Meadow", "CAM_Hero_01_Meadow/02_iridescent_velvet.png", "Iridescent Velvet Sheen")'>Iridescent Velvet Sheen</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_01_Meadow", "CAM_Hero_01_Meadow/03_manga_screentone.png", "Manga Blue-Noise Dither")'>Manga Blue-Noise Dither</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_01_Meadow", "CAM_Hero_01_Meadow/04_starlight_glints.png", "Starlight Anamorphic Glints")'>Starlight Anamorphic Glints</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_01_Meadow", "CAM_Hero_01_Meadow/05_fairy_dust.png", "Floating Fairy Dust Motes")'>Floating Fairy Dust Motes</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_01_Meadow", "CAM_Hero_01_Meadow/06_organza_chiffon.png", "Organza Chiffon SSS Glow")'>Organza Chiffon SSS Glow</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_01_Meadow", "CAM_Hero_01_Meadow/07_astral_constellations.png", "Astral Celestial Filaments")'>Astral Celestial Filaments</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_01_Meadow", "CAM_Hero_01_Meadow/08_miracle_resonance.png", "Miracle Outfit Resonance")'>Miracle Outfit Resonance</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_01_Meadow", "CAM_Hero_01_Meadow/09_director_quad_scope.png", "Director 4-Way Quad Scope")'>Director 4-Way Quad Scope</button>
+                <button class="pass-pill matrix-btn" onclick='switchPlate("melusina_morning_CAM_Hero_01_Meadow", "CAM_Hero_01_Meadow/contact_matrix_3x3.png", "3x3 Inspection Matrix")'>3x3 Matrix</button>
+            </div>
+        </div>
+        
+        <div class="lookbook-card" id="card_melusina_morning_CAM_Hero_04_House">
+            <div class="card-header">
+                <span class="world-tag">MELUSINA MORNING</span>
+                <h2>Melusina Morning · Hero 04 House</h2>
+                <p class="camera-meta">Render Camera: CAM_Hero_04_House · 1080p 16:9 Cinema · Haute Couture Pipeline</p>
+            </div>
+            
+            <div class="viewport-stage">
+                <img id="img_melusina_morning_CAM_Hero_04_House" class="main-preview" src="CAM_Hero_04_House/00_master_beauty.png" alt="Melusina Morning · Hero 04 House" />
+                <div class="stage-overlay">
+                    <span id="badge_melusina_morning_CAM_Hero_04_House" class="pass-badge">Master Final Beauty</span>
+                </div>
+            </div>
+            
+            <div class="strip-preview">
+                <img src="CAM_Hero_04_House/comparison_strip_1x9.jpg" alt="Panoramic 9-Pass Comparison Strip" />
+            </div>
+            
+            <div class="controls-row">
+                <button class="pass-pill active" onclick='switchPlate("melusina_morning_CAM_Hero_04_House", "CAM_Hero_04_House/00_master_beauty.png", "Master Final Beauty")'>Master Beauty</button>
+                <button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_04_House", "CAM_Hero_04_House/01_cel_diffuse.png", "Anime Cel Diffuse")'>Anime Cel Diffuse</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_04_House", "CAM_Hero_04_House/02_iridescent_velvet.png", "Iridescent Velvet Sheen")'>Iridescent Velvet Sheen</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_04_House", "CAM_Hero_04_House/03_manga_screentone.png", "Manga Blue-Noise Dither")'>Manga Blue-Noise Dither</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_04_House", "CAM_Hero_04_House/04_starlight_glints.png", "Starlight Anamorphic Glints")'>Starlight Anamorphic Glints</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_04_House", "CAM_Hero_04_House/05_fairy_dust.png", "Floating Fairy Dust Motes")'>Floating Fairy Dust Motes</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_04_House", "CAM_Hero_04_House/06_organza_chiffon.png", "Organza Chiffon SSS Glow")'>Organza Chiffon SSS Glow</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_04_House", "CAM_Hero_04_House/07_astral_constellations.png", "Astral Celestial Filaments")'>Astral Celestial Filaments</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_04_House", "CAM_Hero_04_House/08_miracle_resonance.png", "Miracle Outfit Resonance")'>Miracle Outfit Resonance</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_04_House", "CAM_Hero_04_House/09_director_quad_scope.png", "Director 4-Way Quad Scope")'>Director 4-Way Quad Scope</button>
+                <button class="pass-pill matrix-btn" onclick='switchPlate("melusina_morning_CAM_Hero_04_House", "CAM_Hero_04_House/contact_matrix_3x3.png", "3x3 Inspection Matrix")'>3x3 Matrix</button>
+            </div>
+        </div>
+        
+        <div class="lookbook-card" id="card_melusina_morning_CAM_Hero_Melusina_Portrait">
+            <div class="card-header">
+                <span class="world-tag">MELUSINA MORNING</span>
+                <h2>Melusina Morning · Hero Melusina Portrait</h2>
+                <p class="camera-meta">Render Camera: CAM_Hero_Melusina_Portrait · 1080p 16:9 Cinema · Haute Couture Pipeline</p>
+            </div>
+            
+            <div class="viewport-stage">
+                <img id="img_melusina_morning_CAM_Hero_Melusina_Portrait" class="main-preview" src="CAM_Hero_Melusina_Portrait/00_master_beauty.png" alt="Melusina Morning · Hero Melusina Portrait" />
+                <div class="stage-overlay">
+                    <span id="badge_melusina_morning_CAM_Hero_Melusina_Portrait" class="pass-badge">Master Final Beauty</span>
+                </div>
+            </div>
+            
+            <div class="strip-preview">
+                <img src="CAM_Hero_Melusina_Portrait/comparison_strip_1x9.jpg" alt="Panoramic 9-Pass Comparison Strip" />
+            </div>
+            
+            <div class="controls-row">
+                <button class="pass-pill active" onclick='switchPlate("melusina_morning_CAM_Hero_Melusina_Portrait", "CAM_Hero_Melusina_Portrait/00_master_beauty.png", "Master Final Beauty")'>Master Beauty</button>
+                <button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_Melusina_Portrait", "CAM_Hero_Melusina_Portrait/01_cel_diffuse.png", "Anime Cel Diffuse")'>Anime Cel Diffuse</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_Melusina_Portrait", "CAM_Hero_Melusina_Portrait/02_iridescent_velvet.png", "Iridescent Velvet Sheen")'>Iridescent Velvet Sheen</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_Melusina_Portrait", "CAM_Hero_Melusina_Portrait/03_manga_screentone.png", "Manga Blue-Noise Dither")'>Manga Blue-Noise Dither</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_Melusina_Portrait", "CAM_Hero_Melusina_Portrait/04_starlight_glints.png", "Starlight Anamorphic Glints")'>Starlight Anamorphic Glints</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_Melusina_Portrait", "CAM_Hero_Melusina_Portrait/05_fairy_dust.png", "Floating Fairy Dust Motes")'>Floating Fairy Dust Motes</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_Melusina_Portrait", "CAM_Hero_Melusina_Portrait/06_organza_chiffon.png", "Organza Chiffon SSS Glow")'>Organza Chiffon SSS Glow</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_Melusina_Portrait", "CAM_Hero_Melusina_Portrait/07_astral_constellations.png", "Astral Celestial Filaments")'>Astral Celestial Filaments</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_Melusina_Portrait", "CAM_Hero_Melusina_Portrait/08_miracle_resonance.png", "Miracle Outfit Resonance")'>Miracle Outfit Resonance</button><button class='pass-pill' onclick='switchPlate("melusina_morning_CAM_Hero_Melusina_Portrait", "CAM_Hero_Melusina_Portrait/09_director_quad_scope.png", "Director 4-Way Quad Scope")'>Director 4-Way Quad Scope</button>
+                <button class="pass-pill matrix-btn" onclick='switchPlate("melusina_morning_CAM_Hero_Melusina_Portrait", "CAM_Hero_Melusina_Portrait/contact_matrix_3x3.png", "3x3 Inspection Matrix")'>3x3 Matrix</button>
+            </div>
+        </div>
+        
+        <div class="lookbook-card" id="card_melusina_morning_RENDERCAM_FLOATING_ISLANDS">
+            <div class="card-header">
+                <span class="world-tag">MELUSINA MORNING</span>
+                <h2>Melusina Morning · RENDERFLOATING ISLANDS</h2>
+                <p class="camera-meta">Render Camera: RENDERCAM_FLOATING_ISLANDS · 1080p 16:9 Cinema · Haute Couture Pipeline</p>
+            </div>
+            
+            <div class="viewport-stage">
+                <img id="img_melusina_morning_RENDERCAM_FLOATING_ISLANDS" class="main-preview" src="RENDERCAM_FLOATING_ISLANDS/00_master_beauty.png" alt="Melusina Morning · RENDERFLOATING ISLANDS" />
+                <div class="stage-overlay">
+                    <span id="badge_melusina_morning_RENDERCAM_FLOATING_ISLANDS" class="pass-badge">Master Final Beauty</span>
+                </div>
+            </div>
+            
+            <div class="strip-preview">
+                <img src="RENDERCAM_FLOATING_ISLANDS/comparison_strip_1x9.jpg" alt="Panoramic 9-Pass Comparison Strip" />
+            </div>
+            
+            <div class="controls-row">
+                <button class="pass-pill active" onclick='switchPlate("melusina_morning_RENDERCAM_FLOATING_ISLANDS", "RENDERCAM_FLOATING_ISLANDS/00_master_beauty.png", "Master Final Beauty")'>Master Beauty</button>
+                <button class='pass-pill' onclick='switchPlate("melusina_morning_RENDERCAM_FLOATING_ISLANDS", "RENDERCAM_FLOATING_ISLANDS/01_cel_diffuse.png", "Anime Cel Diffuse")'>Anime Cel Diffuse</button><button class='pass-pill' onclick='switchPlate("melusina_morning_RENDERCAM_FLOATING_ISLANDS", "RENDERCAM_FLOATING_ISLANDS/02_iridescent_velvet.png", "Iridescent Velvet Sheen")'>Iridescent Velvet Sheen</button><button class='pass-pill' onclick='switchPlate("melusina_morning_RENDERCAM_FLOATING_ISLANDS", "RENDERCAM_FLOATING_ISLANDS/03_manga_screentone.png", "Manga Blue-Noise Dither")'>Manga Blue-Noise Dither</button><button class='pass-pill' onclick='switchPlate("melusina_morning_RENDERCAM_FLOATING_ISLANDS", "RENDERCAM_FLOATING_ISLANDS/04_starlight_glints.png", "Starlight Anamorphic Glints")'>Starlight Anamorphic Glints</button><button class='pass-pill' onclick='switchPlate("melusina_morning_RENDERCAM_FLOATING_ISLANDS", "RENDERCAM_FLOATING_ISLANDS/05_fairy_dust.png", "Floating Fairy Dust Motes")'>Floating Fairy Dust Motes</button><button class='pass-pill' onclick='switchPlate("melusina_morning_RENDERCAM_FLOATING_ISLANDS", "RENDERCAM_FLOATING_ISLANDS/06_organza_chiffon.png", "Organza Chiffon SSS Glow")'>Organza Chiffon SSS Glow</button><button class='pass-pill' onclick='switchPlate("melusina_morning_RENDERCAM_FLOATING_ISLANDS", "RENDERCAM_FLOATING_ISLANDS/07_astral_constellations.png", "Astral Celestial Filaments")'>Astral Celestial Filaments</button><button class='pass-pill' onclick='switchPlate("melusina_morning_RENDERCAM_FLOATING_ISLANDS", "RENDERCAM_FLOATING_ISLANDS/08_miracle_resonance.png", "Miracle Outfit Resonance")'>Miracle Outfit Resonance</button><button class='pass-pill' onclick='switchPlate("melusina_morning_RENDERCAM_FLOATING_ISLANDS", "RENDERCAM_FLOATING_ISLANDS/09_director_quad_scope.png", "Director 4-Way Quad Scope")'>Director 4-Way Quad Scope</button>
+                <button class="pass-pill matrix-btn" onclick='switchPlate("melusina_morning_RENDERCAM_FLOATING_ISLANDS", "RENDERCAM_FLOATING_ISLANDS/contact_matrix_3x3.png", "3x3 Inspection Matrix")'>3x3 Matrix</button>
+            </div>
+        </div>
+        
+        <div class="lookbook-card" id="card_fallen_moon_CAM_FallenMoon_Portfolio">
+            <div class="card-header">
+                <span class="world-tag">FALLEN MOON</span>
+                <h2>Fallen Moon · FallenMoon Portfolio</h2>
+                <p class="camera-meta">Render Camera: CAM_FallenMoon_Portfolio · 1080p 16:9 Cinema · Haute Couture Pipeline</p>
+            </div>
+            
+            <div class="viewport-stage">
+                <img id="img_fallen_moon_CAM_FallenMoon_Portfolio" class="main-preview" src="CAM_FallenMoon_Portfolio/00_master_beauty.png" alt="Fallen Moon · FallenMoon Portfolio" />
+                <div class="stage-overlay">
+                    <span id="badge_fallen_moon_CAM_FallenMoon_Portfolio" class="pass-badge">Master Final Beauty</span>
+                </div>
+            </div>
+            
+            <div class="strip-preview">
+                <img src="CAM_FallenMoon_Portfolio/comparison_strip_1x9.jpg" alt="Panoramic 9-Pass Comparison Strip" />
+            </div>
+            
+            <div class="controls-row">
+                <button class="pass-pill active" onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio", "CAM_FallenMoon_Portfolio/00_master_beauty.png", "Master Final Beauty")'>Master Beauty</button>
+                <button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio", "CAM_FallenMoon_Portfolio/01_cel_diffuse.png", "Anime Cel Diffuse")'>Anime Cel Diffuse</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio", "CAM_FallenMoon_Portfolio/02_iridescent_velvet.png", "Iridescent Velvet Sheen")'>Iridescent Velvet Sheen</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio", "CAM_FallenMoon_Portfolio/03_manga_screentone.png", "Manga Blue-Noise Dither")'>Manga Blue-Noise Dither</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio", "CAM_FallenMoon_Portfolio/04_starlight_glints.png", "Starlight Anamorphic Glints")'>Starlight Anamorphic Glints</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio", "CAM_FallenMoon_Portfolio/05_fairy_dust.png", "Floating Fairy Dust Motes")'>Floating Fairy Dust Motes</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio", "CAM_FallenMoon_Portfolio/06_organza_chiffon.png", "Organza Chiffon SSS Glow")'>Organza Chiffon SSS Glow</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio", "CAM_FallenMoon_Portfolio/07_astral_constellations.png", "Astral Celestial Filaments")'>Astral Celestial Filaments</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio", "CAM_FallenMoon_Portfolio/08_miracle_resonance.png", "Miracle Outfit Resonance")'>Miracle Outfit Resonance</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio", "CAM_FallenMoon_Portfolio/09_director_quad_scope.png", "Director 4-Way Quad Scope")'>Director 4-Way Quad Scope</button>
+                <button class="pass-pill matrix-btn" onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio", "CAM_FallenMoon_Portfolio/contact_matrix_3x3.png", "3x3 Inspection Matrix")'>3x3 Matrix</button>
+            </div>
+        </div>
+        
+        <div class="lookbook-card" id="card_fallen_moon_CAM_FallenMoon_Portfolio_A">
+            <div class="card-header">
+                <span class="world-tag">FALLEN MOON</span>
+                <h2>Fallen Moon · FallenMoon Portfolio A</h2>
+                <p class="camera-meta">Render Camera: CAM_FallenMoon_Portfolio_A · 1080p 16:9 Cinema · Haute Couture Pipeline</p>
+            </div>
+            
+            <div class="viewport-stage">
+                <img id="img_fallen_moon_CAM_FallenMoon_Portfolio_A" class="main-preview" src="CAM_FallenMoon_Portfolio_A/00_master_beauty.png" alt="Fallen Moon · FallenMoon Portfolio A" />
+                <div class="stage-overlay">
+                    <span id="badge_fallen_moon_CAM_FallenMoon_Portfolio_A" class="pass-badge">Master Final Beauty</span>
+                </div>
+            </div>
+            
+            <div class="strip-preview">
+                <img src="CAM_FallenMoon_Portfolio_A/comparison_strip_1x9.jpg" alt="Panoramic 9-Pass Comparison Strip" />
+            </div>
+            
+            <div class="controls-row">
+                <button class="pass-pill active" onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_A", "CAM_FallenMoon_Portfolio_A/00_master_beauty.png", "Master Final Beauty")'>Master Beauty</button>
+                <button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_A", "CAM_FallenMoon_Portfolio_A/01_cel_diffuse.png", "Anime Cel Diffuse")'>Anime Cel Diffuse</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_A", "CAM_FallenMoon_Portfolio_A/02_iridescent_velvet.png", "Iridescent Velvet Sheen")'>Iridescent Velvet Sheen</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_A", "CAM_FallenMoon_Portfolio_A/03_manga_screentone.png", "Manga Blue-Noise Dither")'>Manga Blue-Noise Dither</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_A", "CAM_FallenMoon_Portfolio_A/04_starlight_glints.png", "Starlight Anamorphic Glints")'>Starlight Anamorphic Glints</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_A", "CAM_FallenMoon_Portfolio_A/05_fairy_dust.png", "Floating Fairy Dust Motes")'>Floating Fairy Dust Motes</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_A", "CAM_FallenMoon_Portfolio_A/06_organza_chiffon.png", "Organza Chiffon SSS Glow")'>Organza Chiffon SSS Glow</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_A", "CAM_FallenMoon_Portfolio_A/07_astral_constellations.png", "Astral Celestial Filaments")'>Astral Celestial Filaments</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_A", "CAM_FallenMoon_Portfolio_A/08_miracle_resonance.png", "Miracle Outfit Resonance")'>Miracle Outfit Resonance</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_A", "CAM_FallenMoon_Portfolio_A/09_director_quad_scope.png", "Director 4-Way Quad Scope")'>Director 4-Way Quad Scope</button>
+                <button class="pass-pill matrix-btn" onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_A", "CAM_FallenMoon_Portfolio_A/contact_matrix_3x3.png", "3x3 Inspection Matrix")'>3x3 Matrix</button>
+            </div>
+        </div>
+        
+        <div class="lookbook-card" id="card_fallen_moon_CAM_FallenMoon_Portfolio_C">
+            <div class="card-header">
+                <span class="world-tag">FALLEN MOON</span>
+                <h2>Fallen Moon · FallenMoon Portfolio C</h2>
+                <p class="camera-meta">Render Camera: CAM_FallenMoon_Portfolio_C · 1080p 16:9 Cinema · Haute Couture Pipeline</p>
+            </div>
+            
+            <div class="viewport-stage">
+                <img id="img_fallen_moon_CAM_FallenMoon_Portfolio_C" class="main-preview" src="CAM_FallenMoon_Portfolio_C/00_master_beauty.png" alt="Fallen Moon · FallenMoon Portfolio C" />
+                <div class="stage-overlay">
+                    <span id="badge_fallen_moon_CAM_FallenMoon_Portfolio_C" class="pass-badge">Master Final Beauty</span>
+                </div>
+            </div>
+            
+            <div class="strip-preview">
+                <img src="CAM_FallenMoon_Portfolio_C/comparison_strip_1x9.jpg" alt="Panoramic 9-Pass Comparison Strip" />
+            </div>
+            
+            <div class="controls-row">
+                <button class="pass-pill active" onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_C", "CAM_FallenMoon_Portfolio_C/00_master_beauty.png", "Master Final Beauty")'>Master Beauty</button>
+                <button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_C", "CAM_FallenMoon_Portfolio_C/01_cel_diffuse.png", "Anime Cel Diffuse")'>Anime Cel Diffuse</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_C", "CAM_FallenMoon_Portfolio_C/02_iridescent_velvet.png", "Iridescent Velvet Sheen")'>Iridescent Velvet Sheen</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_C", "CAM_FallenMoon_Portfolio_C/03_manga_screentone.png", "Manga Blue-Noise Dither")'>Manga Blue-Noise Dither</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_C", "CAM_FallenMoon_Portfolio_C/04_starlight_glints.png", "Starlight Anamorphic Glints")'>Starlight Anamorphic Glints</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_C", "CAM_FallenMoon_Portfolio_C/05_fairy_dust.png", "Floating Fairy Dust Motes")'>Floating Fairy Dust Motes</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_C", "CAM_FallenMoon_Portfolio_C/06_organza_chiffon.png", "Organza Chiffon SSS Glow")'>Organza Chiffon SSS Glow</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_C", "CAM_FallenMoon_Portfolio_C/07_astral_constellations.png", "Astral Celestial Filaments")'>Astral Celestial Filaments</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_C", "CAM_FallenMoon_Portfolio_C/08_miracle_resonance.png", "Miracle Outfit Resonance")'>Miracle Outfit Resonance</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_C", "CAM_FallenMoon_Portfolio_C/09_director_quad_scope.png", "Director 4-Way Quad Scope")'>Director 4-Way Quad Scope</button>
+                <button class="pass-pill matrix-btn" onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_C", "CAM_FallenMoon_Portfolio_C/contact_matrix_3x3.png", "3x3 Inspection Matrix")'>3x3 Matrix</button>
+            </div>
+        </div>
+        
+        <div class="lookbook-card" id="card_fallen_moon_CAM_FallenMoon_Portfolio_D">
+            <div class="card-header">
+                <span class="world-tag">FALLEN MOON</span>
+                <h2>Fallen Moon · FallenMoon Portfolio D</h2>
+                <p class="camera-meta">Render Camera: CAM_FallenMoon_Portfolio_D · 1080p 16:9 Cinema · Haute Couture Pipeline</p>
+            </div>
+            
+            <div class="viewport-stage">
+                <img id="img_fallen_moon_CAM_FallenMoon_Portfolio_D" class="main-preview" src="CAM_FallenMoon_Portfolio_D/00_master_beauty.png" alt="Fallen Moon · FallenMoon Portfolio D" />
+                <div class="stage-overlay">
+                    <span id="badge_fallen_moon_CAM_FallenMoon_Portfolio_D" class="pass-badge">Master Final Beauty</span>
+                </div>
+            </div>
+            
+            <div class="strip-preview">
+                <img src="CAM_FallenMoon_Portfolio_D/comparison_strip_1x9.jpg" alt="Panoramic 9-Pass Comparison Strip" />
+            </div>
+            
+            <div class="controls-row">
+                <button class="pass-pill active" onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_D", "CAM_FallenMoon_Portfolio_D/00_master_beauty.png", "Master Final Beauty")'>Master Beauty</button>
+                <button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_D", "CAM_FallenMoon_Portfolio_D/01_cel_diffuse.png", "Anime Cel Diffuse")'>Anime Cel Diffuse</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_D", "CAM_FallenMoon_Portfolio_D/02_iridescent_velvet.png", "Iridescent Velvet Sheen")'>Iridescent Velvet Sheen</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_D", "CAM_FallenMoon_Portfolio_D/03_manga_screentone.png", "Manga Blue-Noise Dither")'>Manga Blue-Noise Dither</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_D", "CAM_FallenMoon_Portfolio_D/04_starlight_glints.png", "Starlight Anamorphic Glints")'>Starlight Anamorphic Glints</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_D", "CAM_FallenMoon_Portfolio_D/05_fairy_dust.png", "Floating Fairy Dust Motes")'>Floating Fairy Dust Motes</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_D", "CAM_FallenMoon_Portfolio_D/06_organza_chiffon.png", "Organza Chiffon SSS Glow")'>Organza Chiffon SSS Glow</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_D", "CAM_FallenMoon_Portfolio_D/07_astral_constellations.png", "Astral Celestial Filaments")'>Astral Celestial Filaments</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_D", "CAM_FallenMoon_Portfolio_D/08_miracle_resonance.png", "Miracle Outfit Resonance")'>Miracle Outfit Resonance</button><button class='pass-pill' onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_D", "CAM_FallenMoon_Portfolio_D/09_director_quad_scope.png", "Director 4-Way Quad Scope")'>Director 4-Way Quad Scope</button>
+                <button class="pass-pill matrix-btn" onclick='switchPlate("fallen_moon_CAM_FallenMoon_Portfolio_D", "CAM_FallenMoon_Portfolio_D/contact_matrix_3x3.png", "3x3 Inspection Matrix")'>3x3 Matrix</button>
+            </div>
+        </div>
+        
+        <div class="lookbook-card" id="card_kaleido_nave_CAM_Kaleido_Hero">
+            <div class="card-header">
+                <span class="world-tag">KALEIDO NAVE</span>
+                <h2>Kaleido Nave · Kaleido Hero</h2>
+                <p class="camera-meta">Render Camera: CAM_Kaleido_Hero · 1080p 16:9 Cinema · Haute Couture Pipeline</p>
+            </div>
+            
+            <div class="viewport-stage">
+                <img id="img_kaleido_nave_CAM_Kaleido_Hero" class="main-preview" src="CAM_Kaleido_Hero/00_master_beauty.png" alt="Kaleido Nave · Kaleido Hero" />
+                <div class="stage-overlay">
+                    <span id="badge_kaleido_nave_CAM_Kaleido_Hero" class="pass-badge">Master Final Beauty</span>
+                </div>
+            </div>
+            
+            <div class="strip-preview">
+                <img src="CAM_Kaleido_Hero/comparison_strip_1x9.jpg" alt="Panoramic 9-Pass Comparison Strip" />
+            </div>
+            
+            <div class="controls-row">
+                <button class="pass-pill active" onclick='switchPlate("kaleido_nave_CAM_Kaleido_Hero", "CAM_Kaleido_Hero/00_master_beauty.png", "Master Final Beauty")'>Master Beauty</button>
+                <button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Hero", "CAM_Kaleido_Hero/01_cel_diffuse.png", "Anime Cel Diffuse")'>Anime Cel Diffuse</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Hero", "CAM_Kaleido_Hero/02_iridescent_velvet.png", "Iridescent Velvet Sheen")'>Iridescent Velvet Sheen</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Hero", "CAM_Kaleido_Hero/03_manga_screentone.png", "Manga Blue-Noise Dither")'>Manga Blue-Noise Dither</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Hero", "CAM_Kaleido_Hero/04_starlight_glints.png", "Starlight Anamorphic Glints")'>Starlight Anamorphic Glints</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Hero", "CAM_Kaleido_Hero/05_fairy_dust.png", "Floating Fairy Dust Motes")'>Floating Fairy Dust Motes</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Hero", "CAM_Kaleido_Hero/06_organza_chiffon.png", "Organza Chiffon SSS Glow")'>Organza Chiffon SSS Glow</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Hero", "CAM_Kaleido_Hero/07_astral_constellations.png", "Astral Celestial Filaments")'>Astral Celestial Filaments</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Hero", "CAM_Kaleido_Hero/08_miracle_resonance.png", "Miracle Outfit Resonance")'>Miracle Outfit Resonance</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Hero", "CAM_Kaleido_Hero/09_director_quad_scope.png", "Director 4-Way Quad Scope")'>Director 4-Way Quad Scope</button>
+                <button class="pass-pill matrix-btn" onclick='switchPlate("kaleido_nave_CAM_Kaleido_Hero", "CAM_Kaleido_Hero/contact_matrix_3x3.png", "3x3 Inspection Matrix")'>3x3 Matrix</button>
+            </div>
+        </div>
+        
+        <div class="lookbook-card" id="card_kaleido_nave_CAM_Kaleido_Colonnade">
+            <div class="card-header">
+                <span class="world-tag">KALEIDO NAVE</span>
+                <h2>Kaleido Nave · Kaleido Colonnade</h2>
+                <p class="camera-meta">Render Camera: CAM_Kaleido_Colonnade · 1080p 16:9 Cinema · Haute Couture Pipeline</p>
+            </div>
+            
+            <div class="viewport-stage">
+                <img id="img_kaleido_nave_CAM_Kaleido_Colonnade" class="main-preview" src="CAM_Kaleido_Colonnade/00_master_beauty.png" alt="Kaleido Nave · Kaleido Colonnade" />
+                <div class="stage-overlay">
+                    <span id="badge_kaleido_nave_CAM_Kaleido_Colonnade" class="pass-badge">Master Final Beauty</span>
+                </div>
+            </div>
+            
+            <div class="strip-preview">
+                <img src="CAM_Kaleido_Colonnade/comparison_strip_1x9.jpg" alt="Panoramic 9-Pass Comparison Strip" />
+            </div>
+            
+            <div class="controls-row">
+                <button class="pass-pill active" onclick='switchPlate("kaleido_nave_CAM_Kaleido_Colonnade", "CAM_Kaleido_Colonnade/00_master_beauty.png", "Master Final Beauty")'>Master Beauty</button>
+                <button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Colonnade", "CAM_Kaleido_Colonnade/01_cel_diffuse.png", "Anime Cel Diffuse")'>Anime Cel Diffuse</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Colonnade", "CAM_Kaleido_Colonnade/02_iridescent_velvet.png", "Iridescent Velvet Sheen")'>Iridescent Velvet Sheen</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Colonnade", "CAM_Kaleido_Colonnade/03_manga_screentone.png", "Manga Blue-Noise Dither")'>Manga Blue-Noise Dither</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Colonnade", "CAM_Kaleido_Colonnade/04_starlight_glints.png", "Starlight Anamorphic Glints")'>Starlight Anamorphic Glints</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Colonnade", "CAM_Kaleido_Colonnade/05_fairy_dust.png", "Floating Fairy Dust Motes")'>Floating Fairy Dust Motes</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Colonnade", "CAM_Kaleido_Colonnade/06_organza_chiffon.png", "Organza Chiffon SSS Glow")'>Organza Chiffon SSS Glow</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Colonnade", "CAM_Kaleido_Colonnade/07_astral_constellations.png", "Astral Celestial Filaments")'>Astral Celestial Filaments</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Colonnade", "CAM_Kaleido_Colonnade/08_miracle_resonance.png", "Miracle Outfit Resonance")'>Miracle Outfit Resonance</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Colonnade", "CAM_Kaleido_Colonnade/09_director_quad_scope.png", "Director 4-Way Quad Scope")'>Director 4-Way Quad Scope</button>
+                <button class="pass-pill matrix-btn" onclick='switchPlate("kaleido_nave_CAM_Kaleido_Colonnade", "CAM_Kaleido_Colonnade/contact_matrix_3x3.png", "3x3 Inspection Matrix")'>3x3 Matrix</button>
+            </div>
+        </div>
+        
+        <div class="lookbook-card" id="card_kaleido_nave_CAM_Kaleido_Axis">
+            <div class="card-header">
+                <span class="world-tag">KALEIDO NAVE</span>
+                <h2>Kaleido Nave · Kaleido Axis</h2>
+                <p class="camera-meta">Render Camera: CAM_Kaleido_Axis · 1080p 16:9 Cinema · Haute Couture Pipeline</p>
+            </div>
+            
+            <div class="viewport-stage">
+                <img id="img_kaleido_nave_CAM_Kaleido_Axis" class="main-preview" src="CAM_Kaleido_Axis/00_master_beauty.png" alt="Kaleido Nave · Kaleido Axis" />
+                <div class="stage-overlay">
+                    <span id="badge_kaleido_nave_CAM_Kaleido_Axis" class="pass-badge">Master Final Beauty</span>
+                </div>
+            </div>
+            
+            <div class="strip-preview">
+                <img src="CAM_Kaleido_Axis/comparison_strip_1x9.jpg" alt="Panoramic 9-Pass Comparison Strip" />
+            </div>
+            
+            <div class="controls-row">
+                <button class="pass-pill active" onclick='switchPlate("kaleido_nave_CAM_Kaleido_Axis", "CAM_Kaleido_Axis/00_master_beauty.png", "Master Final Beauty")'>Master Beauty</button>
+                <button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Axis", "CAM_Kaleido_Axis/01_cel_diffuse.png", "Anime Cel Diffuse")'>Anime Cel Diffuse</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Axis", "CAM_Kaleido_Axis/02_iridescent_velvet.png", "Iridescent Velvet Sheen")'>Iridescent Velvet Sheen</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Axis", "CAM_Kaleido_Axis/03_manga_screentone.png", "Manga Blue-Noise Dither")'>Manga Blue-Noise Dither</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Axis", "CAM_Kaleido_Axis/04_starlight_glints.png", "Starlight Anamorphic Glints")'>Starlight Anamorphic Glints</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Axis", "CAM_Kaleido_Axis/05_fairy_dust.png", "Floating Fairy Dust Motes")'>Floating Fairy Dust Motes</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Axis", "CAM_Kaleido_Axis/06_organza_chiffon.png", "Organza Chiffon SSS Glow")'>Organza Chiffon SSS Glow</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Axis", "CAM_Kaleido_Axis/07_astral_constellations.png", "Astral Celestial Filaments")'>Astral Celestial Filaments</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Axis", "CAM_Kaleido_Axis/08_miracle_resonance.png", "Miracle Outfit Resonance")'>Miracle Outfit Resonance</button><button class='pass-pill' onclick='switchPlate("kaleido_nave_CAM_Kaleido_Axis", "CAM_Kaleido_Axis/09_director_quad_scope.png", "Director 4-Way Quad Scope")'>Director 4-Way Quad Scope</button>
+                <button class="pass-pill matrix-btn" onclick='switchPlate("kaleido_nave_CAM_Kaleido_Axis", "CAM_Kaleido_Axis/contact_matrix_3x3.png", "3x3 Inspection Matrix")'>3x3 Matrix</button>
+            </div>
+        </div>
+        
+        <div class="lookbook-card" id="card_infinite_score_CAM_InfiniteScore_Portfolio">
+            <div class="card-header">
+                <span class="world-tag">INFINITE SCORE</span>
+                <h2>Infinite Score · InfiniteScore Portfolio</h2>
+                <p class="camera-meta">Render Camera: CAM_InfiniteScore_Portfolio · 1080p 16:9 Cinema · Haute Couture Pipeline</p>
+            </div>
+            
+            <div class="viewport-stage">
+                <img id="img_infinite_score_CAM_InfiniteScore_Portfolio" class="main-preview" src="CAM_InfiniteScore_Portfolio/00_master_beauty.png" alt="Infinite Score · InfiniteScore Portfolio" />
+                <div class="stage-overlay">
+                    <span id="badge_infinite_score_CAM_InfiniteScore_Portfolio" class="pass-badge">Master Final Beauty</span>
+                </div>
+            </div>
+            
+            <div class="strip-preview">
+                <img src="CAM_InfiniteScore_Portfolio/comparison_strip_1x9.jpg" alt="Panoramic 9-Pass Comparison Strip" />
+            </div>
+            
+            <div class="controls-row">
+                <button class="pass-pill active" onclick='switchPlate("infinite_score_CAM_InfiniteScore_Portfolio", "CAM_InfiniteScore_Portfolio/00_master_beauty.png", "Master Final Beauty")'>Master Beauty</button>
+                <button class='pass-pill' onclick='switchPlate("infinite_score_CAM_InfiniteScore_Portfolio", "CAM_InfiniteScore_Portfolio/01_cel_diffuse.png", "Anime Cel Diffuse")'>Anime Cel Diffuse</button><button class='pass-pill' onclick='switchPlate("infinite_score_CAM_InfiniteScore_Portfolio", "CAM_InfiniteScore_Portfolio/02_iridescent_velvet.png", "Iridescent Velvet Sheen")'>Iridescent Velvet Sheen</button><button class='pass-pill' onclick='switchPlate("infinite_score_CAM_InfiniteScore_Portfolio", "CAM_InfiniteScore_Portfolio/03_manga_screentone.png", "Manga Blue-Noise Dither")'>Manga Blue-Noise Dither</button><button class='pass-pill' onclick='switchPlate("infinite_score_CAM_InfiniteScore_Portfolio", "CAM_InfiniteScore_Portfolio/04_starlight_glints.png", "Starlight Anamorphic Glints")'>Starlight Anamorphic Glints</button><button class='pass-pill' onclick='switchPlate("infinite_score_CAM_InfiniteScore_Portfolio", "CAM_InfiniteScore_Portfolio/05_fairy_dust.png", "Floating Fairy Dust Motes")'>Floating Fairy Dust Motes</button><button class='pass-pill' onclick='switchPlate("infinite_score_CAM_InfiniteScore_Portfolio", "CAM_InfiniteScore_Portfolio/06_organza_chiffon.png", "Organza Chiffon SSS Glow")'>Organza Chiffon SSS Glow</button><button class='pass-pill' onclick='switchPlate("infinite_score_CAM_InfiniteScore_Portfolio", "CAM_InfiniteScore_Portfolio/07_astral_constellations.png", "Astral Celestial Filaments")'>Astral Celestial Filaments</button><button class='pass-pill' onclick='switchPlate("infinite_score_CAM_InfiniteScore_Portfolio", "CAM_InfiniteScore_Portfolio/08_miracle_resonance.png", "Miracle Outfit Resonance")'>Miracle Outfit Resonance</button><button class='pass-pill' onclick='switchPlate("infinite_score_CAM_InfiniteScore_Portfolio", "CAM_InfiniteScore_Portfolio/09_director_quad_scope.png", "Director 4-Way Quad Scope")'>Director 4-Way Quad Scope</button>
+                <button class="pass-pill matrix-btn" onclick='switchPlate("infinite_score_CAM_InfiniteScore_Portfolio", "CAM_InfiniteScore_Portfolio/contact_matrix_3x3.png", "3x3 Inspection Matrix")'>3x3 Matrix</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        function switchPlate(cardId, imgUrl, badgeLabel) {
+            const img = document.getElementById('img_' + cardId);
+            const badge = document.getElementById('badge_' + cardId);
+            const card = document.getElementById('card_' + cardId);
+            
+            if (img && badge) {
+                img.style.opacity = '0.7';
+                img.src = imgUrl;
+                img.onload = () => { img.style.opacity = '1'; };
+                badge.innerText = badgeLabel;
+            }
+            
+            if (card) {
+                const pills = card.querySelectorAll('.pass-pill');
+                pills.forEach(p => {
+                    if (p.innerText.toLowerCase() === badgeLabel.toLowerCase() || 
+                       (badgeLabel.includes("Matrix") && p.innerText.includes("Matrix"))) {
+                        p.classList.add('active');
+                    } else {
+                        p.classList.remove('active');
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
