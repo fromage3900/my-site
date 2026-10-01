@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "notes": "Named plate slots \u2014 edit with Tools/assign_plate.py or by hand. Paths relative to my-site-clean/wix/. Jewelry plate killed (was content-dup of beauty). glam_03 removed (bit-identical to beauty). Melusina back deferred until Cam_Back. Wireframe greys from 2026-07-15. 2026-09-05 pixel review: legacy Sakura horizon slots are retained only as placeholders and explicitly rejected as public hero evidence; see content/render-passports.json. 2026-09-05 follow-up: generic hero slots now use reviewed Night Bridge evidence; Sakura-specific slots use the reviewed surface-family study instead of the rejected blue horizon.",
+  "notes": "Named plate slots — edit with Tools/assign_plate.py or by hand. Paths relative to my-site-clean/wix/. Jewelry plate killed (was content-dup of beauty). glam_03 removed (bit-identical to beauty). Melusina back deferred until Cam_Back. Wireframe greys from 2026-07-15. 2026-09-05 pixel review: legacy Sakura horizon slots are retained only as placeholders and explicitly rejected as public hero evidence; see content/render-passports.json. 2026-09-05 follow-up: generic hero slots now use reviewed Night Bridge evidence; Sakura-specific slots use the reviewed surface-family study instead of the rejected blue horizon.",
   "slots": {
     "index.hero": {
-      "path": "../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png",
-      "alt": "Night Bridge environment study \u2014 reviewed Hero Level plate",
+      "path": "../generated/assets/unreal/hero-melusina-morning-1920x1080.webp",
+      "alt": "Melusina Morning — reviewed premium realtime lookdev hero",
       "status": "reviewed_environment_study",
-      "evidence_note": "Pixel-reviewed environment composition. Generic Hero Level study; no canonical world identity claimed."
+      "evidence_note": "Reviewed environment beauty from the September 30 realtime lookdev suite; promoted for recruiter-facing presentation. This is a visual lookdev study, not a gameplay claim."
     },
     "recruiter.hero": {
-      "path": "../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png",
-      "alt": "Night Bridge environment study \u2014 reviewed Hero Level plate",
+      "path": "../generated/assets/unreal/hero-melusina-morning-1920x1080.webp",
+      "alt": "Melusina Morning — reviewed premium realtime lookdev hero",
       "status": "reviewed_environment_study",
-      "evidence_note": "Pixel-reviewed environment composition. Generic Hero Level study; no canonical world identity claimed."
+      "evidence_note": "Reviewed environment beauty from the September 30 realtime lookdev suite; promoted for recruiter-facing presentation. This is a visual lookdev study, not a gameplay claim."
     },
     "hub.melusina": {
       "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
@@ -24,19 +24,19 @@
     },
     "stage.beauty": {
       "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
-      "alt": "Hero beauty \u00b7 EEVEE glam"
+      "alt": "Hero beauty · EEVEE glam"
     },
     "stage.front": {
       "path": "../generated/assets/character/melusina_eevee_glam_20260715c_02.png",
-      "alt": "Glam bust \u00b7 EEVEE"
+      "alt": "Glam bust · EEVEE"
     },
     "stage.wire_front": {
       "path": "../generated/assets/character/melusina_front_wireframe_grey_20260715.png",
-      "alt": "Melusina front \u00b7 grey wireframe"
+      "alt": "Melusina front · grey wireframe"
     },
     "stage.wire_34": {
       "path": "../generated/assets/character/melusina_34_wireframe_grey_20260715.png",
-      "alt": "Melusina three-quarter \u00b7 grey wireframe"
+      "alt": "Melusina three-quarter · grey wireframe"
     },
     "stage.silhouette": {
       "path": "../generated/assets/character/melusina_34_wireframe_grey_20260715.png",
@@ -44,27 +44,27 @@
     },
     "melusina.glam_01": {
       "path": "../generated/assets/character/melusina_eevee_glam_20260715c_01.png",
-      "alt": "Melusina glam full \u00b7 EEVEE"
+      "alt": "Melusina glam full · EEVEE"
     },
     "melusina.glam_02": {
       "path": "../generated/assets/character/melusina_eevee_glam_20260715c_02.png",
-      "alt": "Melusina glam bust \u00b7 EEVEE"
+      "alt": "Melusina glam bust · EEVEE"
     },
     "melusina.glam_04": {
       "path": "../generated/assets/character/melusina_eevee_glam_20260715c_04.png",
-      "alt": "Melusina glam close \u00b7 EEVEE"
+      "alt": "Melusina glam close · EEVEE"
     },
     "melusina.glam_05": {
       "path": "../generated/assets/character/melusina_eevee_glam_20260715c_05.png",
-      "alt": "Melusina glam three-quarter \u00b7 EEVEE"
+      "alt": "Melusina glam three-quarter · EEVEE"
     },
     "melusina.glam_macro": {
       "path": "../generated/assets/character/melusina_eevee_glam_20260715_02.png",
-      "alt": "Melusina \u2014 glam macro \u00b7 EEVEE hair + face detail"
+      "alt": "Melusina — glam macro · EEVEE hair + face detail"
     },
     "sakura.hero": {
       "path": "../generated/assets/unreal/hero-sakura-dream-petal-cantata.png",
-      "alt": "Sakura Dream \u2014 Petal Cantata and celestial flora lookdev study",
+      "alt": "Sakura Dream — Petal Cantata and celestial flora lookdev study",
       "status": "reviewed_environment_study",
       "evidence_note": "Dreamlike cherry petal cascade and stylized toon garden flora composition under twilight atmosphere."
     },
@@ -75,175 +75,175 @@
     },
     "hub.sakura": {
       "path": "../generated/assets/portfolio-scan/sakura-surfaces-grid.png",
-      "alt": "L_SakuraDream surface-family study \u2014 world beauty capture pending",
+      "alt": "L_SakuraDream surface-family study — world beauty capture pending",
       "status": "supporting_material_study",
       "evidence_note": "Pixel-reviewed material-family evidence only. Does not prove the full Sakura Dream world or shrine route."
     },
     "resume.hero": {
       "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
-      "alt": "Melusina \u2014 EEVEE glam beauty, Melodia Portfolio Stage"
+      "alt": "Melusina — EEVEE glam beauty, Melodia Portfolio Stage"
     },
     "cross.hero": {
       "path": "../generated/assets/cross/cross_komikaze_beauty_34.png",
-      "alt": "Melusina Vow Cross \u2014 EEVEE glam beauty"
+      "alt": "Melusina Vow Cross — EEVEE glam beauty"
     },
     "zenlantern.hero": {
       "path": "../generated/assets/props/zenlantern_komikaze_beauty_34.png",
-      "alt": "Zen Lantern \u2014 EEVEE glam beauty"
+      "alt": "Zen Lantern — EEVEE glam beauty"
     },
     "zenlantern.front": {
       "path": "../generated/assets/props/zenlantern_komikaze_front.png",
-      "alt": "Zen Lantern \u2014 EEVEE glam front"
+      "alt": "Zen Lantern — EEVEE glam front"
     },
     "zenlantern.back": {
       "path": "../generated/assets/props/zenlantern_komikaze_back.png",
-      "alt": "Zen Lantern \u2014 EEVEE glam back"
+      "alt": "Zen Lantern — EEVEE glam back"
     },
     "cross.back": {
       "path": "../generated/assets/cross/cross_komikaze_back.png",
-      "alt": "Melusina Vow Cross \u2014 back"
+      "alt": "Melusina Vow Cross — back"
     },
     "melody.heart": {
       "path": "../generated/assets/sculpt/sculpt_melodytoken_heart_01.png",
-      "alt": "Melody Token \u00b7 heart clay"
+      "alt": "Melody Token · heart clay"
     },
     "melody.star": {
       "path": "../generated/assets/sculpt/sculpt_melodytoken_star.png",
-      "alt": "Melody Token \u00b7 star gem clay"
+      "alt": "Melody Token · star gem clay"
     },
     "melody.swirl": {
       "path": "../generated/assets/sculpt/sculpt_melodytoken_swirl.png",
-      "alt": "Melody Token \u00b7 swirl clay"
+      "alt": "Melody Token · swirl clay"
     },
     "melody.water": {
       "path": "../generated/assets/sculpt/sculpt_melodytoken_water.png",
-      "alt": "Melody Token \u00b7 water citrus clay"
+      "alt": "Melody Token · water citrus clay"
     },
     "melody.star_glam": {
       "path": "../generated/assets/ornaments/melody_token_star_komikaze_beauty_34.png",
-      "alt": "Melody Token \u00b7 star EEVEE ice glam"
+      "alt": "Melody Token · star EEVEE ice glam"
     },
     "melody.swirl_glam": {
       "path": "../generated/assets/ornaments/melody_token_swirl_komikaze_beauty_34.png",
-      "alt": "Melody Token \u00b7 swirl EEVEE ice glam"
+      "alt": "Melody Token · swirl EEVEE ice glam"
     },
     "melody.water_glam": {
       "path": "../generated/assets/ornaments/melody_token_water_komikaze_beauty_34.png",
-      "alt": "Melody Token \u00b7 water EEVEE ice glam"
+      "alt": "Melody Token · water EEVEE ice glam"
     },
     "melusina.flip_01": {
       "path": "../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_01.png",
-      "alt": "Melusina Flip water-hair cine EEVEE, frame 96 \u2014 not gameplay hair, not Unreal B2 Cam_Beauty"
+      "alt": "Melusina Flip water-hair cine EEVEE, frame 96 — not gameplay hair, not Unreal B2 Cam_Beauty"
     },
     "melusina.flip_02": {
       "path": "../generated/assets/character/melusina_flip_hair_eevee_glam_20260813_02.png",
-      "alt": "Melusina Flip water-hair cine EEVEE, frame 240 \u2014 not gameplay hair, not Unreal B2 Cam_Beauty"
+      "alt": "Melusina Flip water-hair cine EEVEE, frame 240 — not gameplay hair, not Unreal B2 Cam_Beauty"
     },
     "melusina.nikki_cam_beauty": {
       "path": "../generated/assets/character/melusina_cam_beauty_nikki_2026-08-13.png",
-      "alt": "Cam_Beauty on live v22, Nikki 900/550/280/140, Review_Queue hidden. Plate reads bald: Flip cache globules sit below the scalp (max Z \u2248 1.015 vs head \u2248 1.442) \u2014 existing 1\u2013240 cache, not a new bake. Not full cine water-hair. Unreal B2 Cam_Beauty still pending.",
+      "alt": "Cam_Beauty on live v22, Nikki 900/550/280/140, Review_Queue hidden. Plate reads bald: Flip cache globules sit below the scalp (max Z ≈ 1.015 vs head ≈ 1.442) — existing 1–240 cache, not a new bake. Not full cine water-hair. Unreal B2 Cam_Beauty still pending.",
       "status": "reject_public_hero",
       "evidence_note": "Known-bad hair presentation. The plate reads bald; retain only for diagnosis/history and never hydrate it into recruiter-facing slots."
     },
     "melusina.recruiter_fallback": {
       "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
-      "alt": "Melusina \u2014 EEVEE stage beauty, temporary recruiter fallback",
+      "alt": "Melusina — EEVEE stage beauty, temporary recruiter fallback",
       "status": "temporary_fallback",
       "evidence_note": "Existing Stage/Resume beauty. Use only until a reviewed Unreal B2 Cam_Beauty with correct hair is captured."
     },
     "melodia.ui.rhythm_battle": {
       "path": "assets/melodia-ui/showcase-2026-09-23/01_battle_rhythm_refined.webp",
-      "alt": "Melodia UI lookdev \u2014 SoftMG battle rhythm HUD",
+      "alt": "Melodia UI lookdev — SoftMG battle rhythm HUD",
       "status": "lookdev_pending_passport",
       "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Passport pending visual QA."
     },
     "melodia.ui.softmg_kit": {
       "path": "assets/melodia-ui/showcase-2026-09-23/02_softmg_kit.webp",
-      "alt": "Melodia SoftMG rhythm kit \u2014 parchment, seals, highway",
+      "alt": "Melodia SoftMG rhythm kit — parchment, seals, highway",
       "status": "lookdev_pending_passport",
       "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Passport pending visual QA."
     },
     "melodia.ui.note_highway": {
       "path": "assets/melodia-ui/showcase-2026-09-23/03_note_highway.webp",
-      "alt": "Melodia note highway \u2014 SoftMG lane rhythm feedback",
+      "alt": "Melodia note highway — SoftMG lane rhythm feedback",
       "status": "lookdev_pending_passport",
       "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Passport pending visual QA."
     },
     "melodia.ui.magical_artifact_theme": {
       "path": "assets/melodia-ui/showcase-2026-09-23/04_magical_girl_theme_ui_hero.webp",
-      "alt": "Melodia Magical Artifact \u2014 Magical Girl Theme UI board (adjacent menu lookdev)",
+      "alt": "Melodia Magical Artifact — Magical Girl Theme UI board (adjacent menu lookdev)",
       "status": "lookdev_pending_passport",
-      "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Adjacent MENU LOOKDEV on melodia-melusina.html \u2014 does not replace EEVEE character lead (hub.melusina / stage.beauty / foyer Character). Full strip: 04_magical_girl_theme_ui.webp. Passport pending visual QA."
+      "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Adjacent MENU LOOKDEV on melodia-melusina.html — does not replace EEVEE character lead (hub.melusina / stage.beauty / foyer Character). Full strip: 04_magical_girl_theme_ui.webp. Passport pending visual QA."
     },
     "melodia.ui.magical_orrery": {
       "path": "assets/melodia-ui/showcase-2026-09-23/05_magical_orrery.webp",
-      "alt": "Melodia Magical Orrery \u2014 adjacent menu artifact lookdev",
+      "alt": "Melodia Magical Orrery — adjacent menu artifact lookdev",
       "status": "lookdev_pending_passport",
       "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Adjacent MENU LOOKDEV proof beside EEVEE character lead. Passport pending visual QA."
     },
     "melodia.ui.tokens_palette": {
       "path": "assets/melodia-ui/showcase-2026-09-23/06_tokens_palette_board.webp",
-      "alt": "Melodia design tokens \u2014 Champagne Gold #C9A86A Magical Artifact menu vocabulary",
+      "alt": "Melodia design tokens — Champagne Gold #C9A86A Magical Artifact menu vocabulary",
       "status": "lookdev_pending_passport",
       "evidence_note": "Freeze exception melodia-ui-showcase-kinetic-2026-09-23. Adjacent MENU LOOKDEV Champagne Gold #C9A86A vocabulary; character heroes remain EEVEE. Passport pending visual QA."
     },
     "touchdesigner.choral_sheep_beauty": {
       "path": "assets/touchdesigner/aaa_01_sheep_beauty_1080p.webp",
-      "alt": "Choral Sheep Sanctuary \u2014 TouchDesigner lookdev beauty pass (not Unreal gameplay)",
+      "alt": "Choral Sheep Sanctuary — TouchDesigner lookdev beauty pass (not Unreal gameplay)",
       "status": "accepted_td_lookdev",
       "evidence_note": "Triple-AAA TouchDesigner lookdev / Choral Sheep. Procedural anime pasture + PBR fleece. Not Unreal gameplay footage."
     },
     "touchdesigner.choral_sheep_halftone": {
       "path": "assets/touchdesigner/aaa_01_sheep_halftone_1080p.webp",
-      "alt": "Choral Sheep \u2014 TouchDesigner Atlus Ben-Day halftone lookdev (not Unreal gameplay)",
+      "alt": "Choral Sheep — TouchDesigner Atlus Ben-Day halftone lookdev (not Unreal gameplay)",
       "status": "accepted_td_lookdev",
       "evidence_note": "TouchDesigner lookdev inspection pass. Not Unreal gameplay."
     },
     "touchdesigner.water_beauty": {
       "path": "assets/touchdesigner/aaa_02_water_beauty_1080p.webp",
-      "alt": "Melusina Water Sanctuary \u2014 TouchDesigner lookdev beauty pass (not Unreal gameplay)",
+      "alt": "Melusina Water Sanctuary — TouchDesigner lookdev beauty pass (not Unreal gameplay)",
       "status": "accepted_td_lookdev",
       "evidence_note": "TouchDesigner FLIP/caustic lookdev. Not Unreal gameplay."
     },
     "touchdesigner.universe_foundry_beauty": {
       "path": "assets/touchdesigner/aaa_03_universe_foundry_beauty_1080p.webp",
-      "alt": "Universe Foundry Faraway Mother \u2014 TouchDesigner lookdev beauty pass (not Unreal gameplay)",
+      "alt": "Universe Foundry Faraway Mother — TouchDesigner lookdev beauty pass (not Unreal gameplay)",
       "status": "accepted_td_lookdev",
       "evidence_note": "TouchDesigner live GPU lookdev / Chladni resonance. Not Unreal gameplay."
     },
     "touchdesigner.escher_sanctuary_beauty": {
       "path": "assets/touchdesigner/aaa_05_escher_sanctuary_beauty_1080p.webp",
-      "alt": "Escher Sanctuary \u2014 TouchDesigner lookdev beauty pass (not Unreal gameplay)",
+      "alt": "Escher Sanctuary — TouchDesigner lookdev beauty pass (not Unreal gameplay)",
       "status": "accepted_td_lookdev",
       "evidence_note": "TouchDesigner recursive architecture lookdev. Not Unreal gameplay."
     },
     "touchdesigner.contact_sheet_hero": {
       "path": "assets/touchdesigner/contact_sheet_02_hero_beauty_showcase.png",
-      "alt": "TouchDesigner Triple-AAA hero beauty contact sheet \u2014 lookdev showcase (not Unreal gameplay)",
+      "alt": "TouchDesigner Triple-AAA hero beauty contact sheet — lookdev showcase (not Unreal gameplay)",
       "status": "accepted_td_lookdev",
       "evidence_note": "AAA suite contact sheet for recruiter TD lookdev promotion. Komikaze ornament plates remain secondary."
     },
     "cosmic.hero": {
       "path": "../generated/assets/unreal/hero-cosmic-orrery-celestial.png",
-      "alt": "Cosmic Orrery \u2014 Celestial constellation and glowing nebula resonance study",
+      "alt": "Cosmic Orrery — Celestial constellation and glowing nebula resonance study",
       "status": "reviewed_environment_study",
       "evidence_note": "Harmonic starfield charts and volumetric nebula filaments framing Melusina's sanctuary."
     },
     "morning.glitter_trails": {
       "path": "../generated/assets/unreal/hero-melusina-morning-fairy-dust.png",
-      "alt": "Melusina Morning \u2014 Fairy dust trails and chromatic meadow bloom",
+      "alt": "Melusina Morning — Fairy dust trails and chromatic meadow bloom",
       "status": "reviewed_environment_study",
       "evidence_note": "Dawn-kissed flower islands draped in sparkling fairy trails and soft pastel mist."
     },
     "zenforest.ambient_vortex": {
       "path": "../generated/assets/unreal/hero-zen-forest-ambient-vortex.png",
-      "alt": "Zen Forest \u2014 Tranquil forest canopy and atmospheric petal drift",
+      "alt": "Zen Forest — Tranquil forest canopy and atmospheric petal drift",
       "status": "reviewed_environment_study",
       "evidence_note": "Atmospheric forest glade capturing gentle wind motes and peaceful cedar shrines."
     },
     "vfx.contact_sheet": {
       "path": "../generated/assets/unreal/contact-sheet-vfx-niagara-systems.png",
-      "alt": "Melodia Visual Systems \u2014 Master multi-panel lookbook contact sheet",
+      "alt": "Melodia Visual Systems — Master multi-panel lookbook contact sheet",
       "status": "reviewed_environment_study",
       "evidence_note": "Multi-panel editorial contact sheet presenting unified visual effects, particle systems, and surface styling across all showcase realms."
     },
@@ -267,49 +267,49 @@
     },
     "morning.nikki_matrix": {
       "path": "../generated/assets/unreal/nikki9-melusina-morning-matrix.webp",
-      "alt": "Melusina Morning \u2014 9-Pass Haute Couture Inspection Matrix",
+      "alt": "Melusina Morning — 9-Pass Haute Couture Inspection Matrix",
       "status": "reviewed_environment_study",
       "evidence_note": "Complete 9-pass inspection grid encompassing anime cel diffuse, blue-noise screentone, velvet sheen, and starlight glints."
     },
     "fallenmoon.nikki_matrix": {
       "path": "../generated/assets/unreal/nikki9-fallen-moon-matrix.webp",
-      "alt": "Fallen Moon \u2014 9-Pass Haute Couture Inspection Matrix",
+      "alt": "Fallen Moon — 9-Pass Haute Couture Inspection Matrix",
       "status": "reviewed_environment_study",
       "evidence_note": "Complete 9-pass inspection grid encompassing anime cel diffuse, blue-noise screentone, velvet sheen, and starlight glints."
     },
     "kaleido.nikki_matrix": {
       "path": "../generated/assets/unreal/nikki9-kaleido-nave-matrix.webp",
-      "alt": "Kaleido Nave \u2014 9-Pass Haute Couture Inspection Matrix",
+      "alt": "Kaleido Nave — 9-Pass Haute Couture Inspection Matrix",
       "status": "reviewed_environment_study",
       "evidence_note": "Complete 9-pass inspection grid encompassing anime cel diffuse, blue-noise screentone, velvet sheen, and starlight glints."
     },
     "infinitescore.nikki_matrix": {
       "path": "../generated/assets/unreal/nikki9-infinite-score-matrix.webp",
-      "alt": "Infinite Score \u2014 9-Pass Haute Couture Inspection Matrix",
+      "alt": "Infinite Score — 9-Pass Haute Couture Inspection Matrix",
       "status": "reviewed_environment_study",
       "evidence_note": "Complete 9-pass inspection grid encompassing anime cel diffuse, blue-noise screentone, velvet sheen, and starlight glints."
     },
     "morning.nikki_hero": {
       "path": "../generated/assets/unreal/nikki9-melusina-morning-hero.webp",
-      "alt": "Melusina Morning \u2014 Pastoral Meadow Cantata & Dawn Soliloquy",
+      "alt": "Melusina Morning — Pastoral Meadow Cantata & Dawn Soliloquy",
       "status": "reviewed_environment_study",
       "evidence_note": "Haute Couture lookdev study showcasing volumetric mist, velvet peach-fuzz sheen, and cel lighting in Melusina Morning."
     },
     "fallenmoon.nikki_hero": {
       "path": "../generated/assets/unreal/nikki9-fallen-moon-hero.webp",
-      "alt": "Fallen Moon \u2014 Crystalline Lunar Basin & Twilight Desolation",
+      "alt": "Fallen Moon — Crystalline Lunar Basin & Twilight Desolation",
       "status": "reviewed_environment_study",
       "evidence_note": "Haute Couture lookdev study showcasing volumetric mist, velvet peach-fuzz sheen, and cel lighting in Fallen Moon."
     },
     "kaleido.nikki_hero": {
       "path": "../generated/assets/unreal/nikki9-kaleido-nave-hero.webp",
-      "alt": "Kaleido Nave \u2014 Starlight Cathedral & Prismatic Colonnade",
+      "alt": "Kaleido Nave — Starlight Cathedral & Prismatic Colonnade",
       "status": "reviewed_environment_study",
       "evidence_note": "Haute Couture lookdev study showcasing volumetric mist, velvet peach-fuzz sheen, and cel lighting in Kaleido Nave."
     },
     "infinitescore.nikki_hero": {
       "path": "../generated/assets/unreal/nikki9-infinite-score-hero.webp",
-      "alt": "Infinite Score \u2014 Cosmic Harmonics & Orchestral Starlight Vistas",
+      "alt": "Infinite Score — Cosmic Harmonics & Orchestral Starlight Vistas",
       "status": "reviewed_environment_study",
       "evidence_note": "Haute Couture lookdev study showcasing volumetric mist, velvet peach-fuzz sheen, and cel lighting in Infinite Score."
     }
@@ -318,7 +318,7 @@
     {
       "id": "melusina_morning",
       "slot": "morning.hero_cantata",
-      "title": "Melusina Morning \u2014 Meadow Cantata",
+      "title": "Melusina Morning — Meadow Cantata",
       "editorial_alt": "Pastoral meadow bathed in soft morning light with gentle floral breezes",
       "editorial_note": "Early dawn mist settling across undulating wildflower meadows and crystal pavilions.",
       "caption": "Dawn-kissed flower islands framed in soft pastel light and serene morning calm.",
@@ -329,7 +329,7 @@
     {
       "id": "kaleido_nave",
       "slot": "cathedral.hero_nave",
-      "title": "Kaleido Nave \u2014 Starlight Cathedral",
+      "title": "Kaleido Nave — Starlight Cathedral",
       "editorial_alt": "Luminous crystal nave with refractive prismatic reflections and astral arches",
       "editorial_note": "Monumental cathedral interior illuminated by shifting prismatic caustics and celestial halation.",
       "caption": "Vaulted crystal ceilings casting radiant chromatic caustics across mirrored marble sanctuary floors.",
@@ -340,7 +340,7 @@
     {
       "id": "zen_forest",
       "slot": "zenforest.hero_canopy",
-      "title": "Zen Forest \u2014 Tranquil Shaded Canopy",
+      "title": "Zen Forest — Tranquil Shaded Canopy",
       "editorial_alt": "Ancient cedar forest pathway framed by mossy stone lanterns and drifting sakura petals",
       "editorial_note": "Quiet forest grove capturing atmospheric god rays and tranquil bamboo groves.",
       "caption": "Peaceful forest sanctum where soft ambient breezes guide drifting cherry petals through ancient cedar groves.",
