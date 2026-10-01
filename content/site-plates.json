@@ -3,13 +3,13 @@
   "notes": "Named plate slots \u2014 edit with Tools/assign_plate.py or by hand. Paths relative to my-site-clean/wix/. Jewelry plate killed (was content-dup of beauty). glam_03 removed (bit-identical to beauty). Melusina back deferred until Cam_Back. Wireframe greys from 2026-07-15. 2026-09-05 pixel review: legacy Sakura horizon slots are retained only as placeholders and explicitly rejected as public hero evidence; see content/render-passports.json. 2026-09-05 follow-up: generic hero slots now use reviewed Night Bridge evidence; Sakura-specific slots use the reviewed surface-family study instead of the rejected blue horizon.",
   "slots": {
     "index.hero": {
-      "path": "../generated/assets/unreal/hero-melusina-morning-1920x1080.webp",
+      "path": "../generated/assets/unreal/hero-melusina-morning.webp",
       "alt": "Melusina Morning \u2014 reviewed premium realtime lookdev hero",
       "status": "reviewed_environment_study",
       "evidence_note": "Reviewed environment beauty from the September 30 realtime lookdev suite; promoted for recruiter-facing presentation. This is a visual lookdev study, not a gameplay claim."
     },
     "recruiter.hero": {
-      "path": "../generated/assets/unreal/hero-melusina-morning-1920x1080.webp",
+      "path": "../generated/assets/unreal/hero-melusina-morning.webp",
       "alt": "Melusina Morning \u2014 reviewed premium realtime lookdev hero",
       "status": "reviewed_environment_study",
       "evidence_note": "Reviewed environment beauty from the September 30 realtime lookdev suite; promoted for recruiter-facing presentation. This is a visual lookdev study, not a gameplay claim."
@@ -248,7 +248,7 @@
       "evidence_note": "Multi-panel editorial contact sheet presenting unified visual effects, particle systems, and surface styling across all showcase realms."
     },
     "morning.hero_cantata": {
-      "path": "../generated/assets/unreal/hero-melusina-morning-1920x1080.webp",
+      "path": "../generated/assets/unreal/hero-melusina-morning.webp",
       "alt": "Pastoral meadow bathed in soft morning light with gentle floral breezes",
       "status": "reviewed_environment_study",
       "evidence_note": "Early dawn mist settling across undulating wildflower meadows and crystal pavilions."
