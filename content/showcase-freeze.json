@@ -131,7 +131,50 @@
     "wix/wix-embed-bridge.js",
     "wix/wix-entry-bootstrap.js",
     "wix/touchdesigner-architecture.html",
-    "docs/IPAD_CURSOR_CLOUD_AGENTS.md"
+    "docs/IPAD_CURSOR_CLOUD_AGENTS.md",
+    "public/melodia/ALL_VARIANTS_master_contact_sheet_2x4.jpg",
+    "public/melodia/ALL_VARIANTS_master_strip.jpg",
+    "public/melodia/test_capture.png",
+    "public/melodia/test_v01.png",
+    "public/melodia/v01_pastoral_dawn_beauty_1080p.png",
+    "public/melodia/v01_pastoral_dawn_contact_strip.jpg",
+    "public/melodia/v01_pastoral_dawn_fleece_embroidery_1080p.png",
+    "public/melodia/v01_pastoral_dawn_pastoral_substrate_1080p.png",
+    "public/melodia/v02_siren_symphony_beauty_1080p.png",
+    "public/melodia/v02_siren_symphony_bow_pbr_model_1080p.png",
+    "public/melodia/v02_siren_symphony_contact_strip.jpg",
+    "public/melodia/v02_siren_symphony_kinematic_stage_1080p.png",
+    "public/melodia/v03_melusina_waves_beauty_1080p.png",
+    "public/melodia/v03_melusina_waves_caustic_dispersion_1080p.png",
+    "public/melodia/v03_melusina_waves_contact_strip.jpg",
+    "public/melodia/v03_melusina_waves_fluid_normals_1080p.png",
+    "public/melodia/v03_melusina_waves_fluid_refraction_1080p.png",
+    "public/melodia/v04_astral_penrose_beauty_1080p.png",
+    "public/melodia/v04_astral_penrose_celestial_halation_1080p.png",
+    "public/melodia/v04_astral_penrose_contact_strip.jpg",
+    "public/melodia/v04_astral_penrose_penrose_geometry_1080p.png",
+    "public/melodia/v05_infinity_nikki_beauty_1080p.png",
+    "public/melodia/v05_infinity_nikki_cel_diffuse_1080p.png",
+    "public/melodia/v05_infinity_nikki_contact_strip.jpg",
+    "public/melodia/v05_infinity_nikki_nikki_bloom_1080p.png",
+    "public/melodia/v06_manga_screentone_beauty_1080p.png",
+    "public/melodia/v06_manga_screentone_cel_shading_stage_1080p.png",
+    "public/melodia/v06_manga_screentone_contact_strip.jpg",
+    "public/melodia/v06_manga_screentone_halftone_mask_1080p.png",
+    "public/melodia/v06_manga_screentone_pre_dither_grade_1080p.png",
+    "public/melodia/v07_blue_noise_anime_beauty_1080p.png",
+    "public/melodia/v07_blue_noise_anime_cel_diffuse_base_1080p.png",
+    "public/melodia/v07_blue_noise_anime_cel_shading_stage_1080p.png",
+    "public/melodia/v07_blue_noise_anime_contact_strip.jpg",
+    "public/melodia/v07_blue_noise_anime_crosshatch_mask_1080p.png",
+    "public/melodia/v07_blue_noise_anime_rim_edge_light_1080p.png",
+    "public/melodia/v08_director_quad_scope_beauty_1080p.png",
+    "public/melodia/v08_director_quad_scope_contact_strip.jpg",
+    "public/melodia/v08_director_quad_scope_depth_buffer_1080p.png",
+    "public/melodia/v08_director_quad_scope_false_color_scope_1080p.png",
+    "public/melodia/v08_director_quad_scope_raw_stage_base_1080p.png",
+    "public/melodia/v08_director_quad_scope_stage_base_pass_1080p.png",
+    "generated/mi_preview_manifest.json"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -146,7 +189,14 @@
     "wix/assets/melodia-ui/showcase-2026-09-23/",
     "melodia/captures/2026-09-23/",
     "wix/assets/touchdesigner/",
-    "melodia/hair-uv-base-20260922/"
+    "melodia/hair-uv-base-20260922/",
+    "melodia/captures/2026-09-26/",
+    "public/melodia/starfields/",
+    "public/melodia/responsive/",
+    "public/melodia/lookdev/",
+    "public/melodia/loops/",
+    "public/melodia/nikki9-suite/",
+    "public/melodia/vfx-showcase-2026-09-28/"
   ],
   "blocked_by_default": [
     "new public pages",
@@ -523,6 +573,46 @@
         "no EEVEE replacement",
         "no inventing melusina_ue58_b2_* plates",
         "no weakening of freeze verification"
+      ]
+    },
+    {
+      "id": "pages-unblock-landed-main-2026-09-30",
+      "reason": "Paths already landed on main 9/26–9/28 (0181e5a, c8f15ab, ec53471, 129984e, c1daab2); freeze not updated, blocking Pages. verify_sendoff_freeze has failed every Pages deploy since 6169b6c with 498 added paths outside the allowlist. Allowlisting exactly those already-shipped paths unblocks Pages; base_sha stays e4ea952 as in the 2026-09-23 unblock.",
+      "scope": [
+        "melodia/captures/2026-09-26/ — 254 files already on main (h1–h8 beauty, clay, halftone and telemetry ladders, nikki_* couture, h5 mp4/webm); every tracked file under this prefix landed in 0181e5a/c8f15ab/ec53471",
+        "public/melodia/starfields/ — 84 files already on main (129984e); every tracked file under this prefix",
+        "public/melodia/responsive/ — 64 files already on main (129984e/c1daab2); every tracked file under this prefix",
+        "public/melodia/lookdev/ — 31 files already on main (129984e); every tracked file under this prefix",
+        "public/melodia/loops/ — 25 files already on main (129984e/c1daab2); every tracked file under this prefix",
+        "public/melodia/ root — 40 exact paths (v01–v08 variant plates and contact strips, ALL_VARIANTS master sheets, test_capture.png, test_v01.png) already on main (129984e/c1daab2); listed in allowed_exact, not as a public/melodia/ prefix",
+        "content/showcase-freeze.json — this exception record"
+      ],
+      "exclusions": [
+        "no wildcard or public/melodia/ root prefix; only the exact paths and fully-landed directory prefixes above",
+        "no allowance for future or not-yet-landed paths",
+        "no base_sha change",
+        "no new public routes, navigation redesign, or recruiter-page wiring in this exception",
+        "no merge without owner explicit ship-it",
+        "no weakening of recruiter freeze, asset, token, or showcase validation"
+      ]
+    },
+    {
+      "id": "showcase-unblock-nikki9-vfx-morning-2026-10-01",
+      "reason": "Ingest overnight TouchDesigner Nikki9 Haute Couture multi-camera plates, verified visual effects showcase plates, and Melusina Morning Render2026 beauty and calibration captures for owner portfolio review and visual curation against the Sep 26/28 baseline.",
+      "scope": [
+        "public/melodia/nikki9-suite/ — TouchDesigner Nikki9 Haute Couture multi-camera suite, interactive gallery, and 1x9 comparison strips across 12 camera perspectives",
+        "public/melodia/vfx-showcase-2026-09-28/ — verified visual effects showcase plates, responsive WebP variants, and Niagara particle system contact sheets",
+        "public/melodia/melusina-morning-vfx/2026-09-30/ — Render2026 early dawn beauty baselines, time-of-day solar calibrations, and cinematic angle studies",
+        "public/melodia/lookdev/ — material and lookdev studio preview contact sheets (Water V9 master grid and audit review)",
+        "public/melodia/ root exact paths — pre-dither and cel-diffuse stage passes for v06 and v07 variants",
+        "generated/mi_preview_manifest.json — material preview studio staging manifest",
+        "content/showcase-freeze.json — this exception record"
+      ],
+      "exclusions": [
+        "no new public recruiter routes or navigation changes",
+        "no weakening of recruiter freeze or validation gates",
+        "no unvetted third-party runtime assets",
+        "strict adherence to zero-slop lookbook presentation"
       ]
     }
   ]

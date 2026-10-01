@@ -1,6 +1,7 @@
 {
-  "generated_at": "2026-07-14T12:41:36.901355+00:00",
+  "generated_at": "2026-09-29T02:55:30.587308+00:00",
   "generated_by": "mi_preview_manifest.py",
+  "studio_display_name": "Material Render Studio",
   "level": "/Game/EnvSandbox/_Template/L_MaterialPreview_Studio",
   "doctrine": "melodia_void_nikki_lens",
   "nikki_priority": [
@@ -18,7 +19,7 @@
   "frame_rate": 30,
   "loop_frames": 120,
   "resolution": 1080,
-  "count": 44,
+  "count": 59,
   "entries": [
     {
       "id": "MI_NikkiHero_CosmicOrrery",
@@ -250,6 +251,258 @@
       "source": "trimsheet_instances",
       "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_ZenTrim_FlowersLots",
       "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_ZenTrim_FlowersLots"
+    },
+    {
+      "id": "GlitterCrystal",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Glitter/GlitterCrystal.GlitterCrystal",
+      "profile": "TP_Gemstone",
+      "preview_mesh": "sphere",
+      "backdrop": "Melodia_VoidGradient",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "glitter_family",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_GlitterCrystal",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/GlitterCrystal"
+    },
+    {
+      "id": "GlitterGold",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Glitter/GlitterGold.GlitterGold",
+      "profile": "TP_Gemstone",
+      "preview_mesh": "sphere",
+      "backdrop": "Melodia_VoidGradient",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "glitter_family",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_GlitterGold",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/GlitterGold"
+    },
+    {
+      "id": "GlitterHolographic",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Glitter/GlitterHolographic.GlitterHolographic",
+      "profile": "TP_Gemstone",
+      "preview_mesh": "sphere",
+      "backdrop": "Melodia_VoidGradient",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "glitter_family",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_GlitterHolographic",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/GlitterHolographic"
+    },
+    {
+      "id": "GlitterIridescent",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Glitter/GlitterIridescent.GlitterIridescent",
+      "profile": "TP_Gemstone",
+      "preview_mesh": "sphere",
+      "backdrop": "Melodia_VoidGradient",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "glitter_family",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_GlitterIridescent",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/GlitterIridescent"
+    },
+    {
+      "id": "GlitterRainbow",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Glitter/GlitterRainbow.GlitterRainbow",
+      "profile": "TP_Gemstone",
+      "preview_mesh": "sphere",
+      "backdrop": "Melodia_VoidGradient",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "glitter_family",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_GlitterRainbow",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/GlitterRainbow"
+    },
+    {
+      "id": "MI_Copernicus_CrystalCathedral",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Copernicus/MI_Copernicus_CrystalCathedral.MI_Copernicus_CrystalCathedral",
+      "profile": "TP_Gemstone",
+      "preview_mesh": "sphere",
+      "backdrop": "Melodia_VoidGradient",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "cymatics_family",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Copernicus_CrystalCathedral",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Copernicus_CrystalCathedral"
+    },
+    {
+      "id": "MI_Gemstone_Aquamarine_Circlet",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Gemstone/MI_Gemstone_Aquamarine_Circlet.MI_Gemstone_Aquamarine_Circlet",
+      "profile": "TP_Gemstone",
+      "preview_mesh": "sphere",
+      "backdrop": "Melodia_VoidGradient",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "gemstone_master",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Gemstone_Aquamarine_Circlet",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Gemstone_Aquamarine_Circlet"
+    },
+    {
+      "id": "MI_Gemstone_CelestialDiamond",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Gemstone/MI_Gemstone_CelestialDiamond.MI_Gemstone_CelestialDiamond",
+      "profile": "TP_Gemstone",
+      "preview_mesh": "sphere",
+      "backdrop": "Cosmic_DeepField",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "gemstone_master",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Gemstone_CelestialDiamond",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Gemstone_CelestialDiamond"
+    },
+    {
+      "id": "MI_Gemstone_RosyQuartz_Chladni",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Gemstone/MI_Gemstone_RosyQuartz_Chladni.MI_Gemstone_RosyQuartz_Chladni",
+      "profile": "TP_Gemstone",
+      "preview_mesh": "sphere",
+      "backdrop": "Melodia_VoidGradient",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "gemstone_master",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Gemstone_RosyQuartz_Chladni",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Gemstone_RosyQuartz_Chladni"
+    },
+    {
+      "id": "MI_Gemstone_VoidOrchid_Earrings",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Gemstone/MI_Gemstone_VoidOrchid_Earrings.MI_Gemstone_VoidOrchid_Earrings",
+      "profile": "TP_Gemstone",
+      "preview_mesh": "sphere",
+      "backdrop": "Melodia_VoidGradient",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "gemstone_master",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Gemstone_VoidOrchid_Earrings",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Gemstone_VoidOrchid_Earrings"
+    },
+    {
+      "id": "MI_HeroGem_Cymatic",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Copernicus/MI_HeroGem_Cymatic.MI_HeroGem_Cymatic",
+      "profile": "TP_Gemstone",
+      "preview_mesh": "sphere",
+      "backdrop": "Melodia_VoidGradient",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "cymatics_family",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_HeroGem_Cymatic",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_HeroGem_Cymatic"
+    },
+    {
+      "id": "MI_MelodiaSapphireGlass",
+      "asset_path": "/Game/Melodia/Cymatics/MelodiaSapphireGlass/MI_MelodiaSapphireGlass.MI_MelodiaSapphireGlass",
+      "profile": "TP_Gemstone",
+      "preview_mesh": "sphere",
+      "backdrop": "Melodia_VoidGradient",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "cymatics_family",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_MelodiaSapphireGlass",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_MelodiaSapphireGlass"
     },
     {
       "id": "MI_SDF_Altar_GoldFiligree",
@@ -859,6 +1112,69 @@
       "source": "trimsheet_instances",
       "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Universal_TrimsheetBlend",
       "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Universal_TrimsheetBlend"
+    },
+    {
+      "id": "MI_Water_v10_BiolumGrotto",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Water/v10/MI_Water_v10_BiolumGrotto.MI_Water_v10_BiolumGrotto",
+      "profile": "WaterV10",
+      "preview_mesh": "plane_horizontal",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.0
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "water_v10_material_family",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Water_v10_BiolumGrotto",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Water_v10_BiolumGrotto"
+    },
+    {
+      "id": "MI_Water_v10_CalmPond",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Water/v10/MI_Water_v10_CalmPond.MI_Water_v10_CalmPond",
+      "profile": "WaterV10",
+      "preview_mesh": "plane_horizontal",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.0
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "water_v10_material_family",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Water_v10_CalmPond",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Water_v10_CalmPond"
+    },
+    {
+      "id": "MI_Water_v10_HeroFLIP",
+      "asset_path": "/Game/EnvSandbox/Materials/Instances/Water/v10/MI_Water_v10_HeroFLIP.MI_Water_v10_HeroFLIP",
+      "profile": "WaterV10",
+      "preview_mesh": "plane_horizontal",
+      "backdrop": "Studio_Neutral",
+      "orbit_speed": 1.0,
+      "mesh_scale": [
+        1.55,
+        1.55,
+        1.0
+      ],
+      "uv_tiling": [
+        1.0,
+        1.0
+      ],
+      "priority": "catalog",
+      "source": "water_v10_material_family",
+      "sequence_path": "/Game/EnvSandbox/MRQ/Sequences/MI_Loops/SEQ_MI_Water_v10_HeroFLIP",
+      "output_dir": "Saved/Portfolio/Renders/MaterialLoops/MI_Water_v10_HeroFLIP"
     },
     {
       "id": "MI_ZenTrim_ColourShift",

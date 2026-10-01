@@ -1,0 +1,140 @@
+﻿{
+    "studio_name":  "Material Render Studio",
+    "addendum":  "Water v9",
+    "scope":  "8 requested Water v9 assets only",
+    "asset_count":  8,
+    "successful":  8,
+    "failed":  0,
+    "flag_counts":  [
+                        {
+                            "flag":  "none",
+                            "count":  6
+                        },
+                        {
+                            "flag":  "context_required",
+                            "count":  2
+                        }
+                    ],
+    "assets":  [
+                   {
+                       "package_path":  "/Game/EnvSandbox/Materials/Masters/M_Water_Master_Grand_v9",
+                       "object_path":  "/Game/EnvSandbox/Materials/Masters/M_Water_Master_Grand_v9.M_Water_Master_Grand_v9",
+                       "class":  "Material",
+                       "parent_path":  null,
+                       "source_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Screenshots\\Monolith\\MaterialRenderStudio\\WaterV9\\raw\\WaterV9_SourceGrid.png",
+                       "portfolio_grid":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_PortfolioGrid.png",
+                       "individual_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_Individual\\EnvSandbox_Materials_Masters_M_Water_Master_Grand_v9.M_Water_Master_Grand_v9.png",
+                       "status":  "succeeded",
+                       "flag":  "none",
+                       "note":  "",
+                       "sample_mean":  161.17,
+                       "sample_variance":  1695
+                   },
+                   {
+                       "package_path":  "/Game/EnvSandbox/Materials/Masters/M_Water_Underwater_Post_v9",
+                       "object_path":  "/Game/EnvSandbox/Materials/Masters/M_Water_Underwater_Post_v9.M_Water_Underwater_Post_v9",
+                       "class":  "Material",
+                       "parent_path":  null,
+                       "source_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Screenshots\\Monolith\\MaterialRenderStudio\\WaterV9\\raw\\WaterV9_SourceGrid.png",
+                       "portfolio_grid":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_PortfolioGrid.png",
+                       "individual_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_Individual\\EnvSandbox_Materials_Masters_M_Water_Underwater_Post_v9.M_Water_Underwater_Post_v9.png",
+                       "status":  "succeeded",
+                       "flag":  "context_required",
+                       "note":  "Underwater post-process material is not fully represented by a lit sphere preview.",
+                       "sample_mean":  106.56,
+                       "sample_variance":  8189
+                   },
+                   {
+                       "package_path":  "/Game/EnvSandbox/Materials/Instances/Water/v9/MI_WaterV9_CalmPond",
+                       "object_path":  "/Game/EnvSandbox/Materials/Instances/Water/v9/MI_WaterV9_CalmPond.MI_WaterV9_CalmPond",
+                       "class":  "MaterialInstanceConstant",
+                       "parent_path":  "/Game/EnvSandbox/Materials/Masters/M_Water_Master_Grand_v9.M_Water_Master_Grand_v9",
+                       "source_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Screenshots\\Monolith\\MaterialRenderStudio\\WaterV9\\raw\\WaterV9_SourceGrid.png",
+                       "portfolio_grid":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_PortfolioGrid.png",
+                       "individual_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_Individual\\EnvSandbox_Materials_Instances_Water_v9_MI_WaterV9_CalmPond.MI_WaterV9_CalmPond.png",
+                       "status":  "succeeded",
+                       "flag":  "none",
+                       "note":  "Water surface material should receive a second context pass on the intended water geometry.",
+                       "sample_mean":  144.83,
+                       "sample_variance":  1987
+                   },
+                   {
+                       "package_path":  "/Game/EnvSandbox/Materials/Instances/Water/v9/MI_WaterV9_BiolumGrotto",
+                       "object_path":  "/Game/EnvSandbox/Materials/Instances/Water/v9/MI_WaterV9_BiolumGrotto.MI_WaterV9_BiolumGrotto",
+                       "class":  "MaterialInstanceConstant",
+                       "parent_path":  "/Game/EnvSandbox/Materials/Masters/M_Water_Master_Grand_v9.M_Water_Master_Grand_v9",
+                       "source_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Screenshots\\Monolith\\MaterialRenderStudio\\WaterV9\\raw\\WaterV9_SourceGrid.png",
+                       "portfolio_grid":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_PortfolioGrid.png",
+                       "individual_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_Individual\\EnvSandbox_Materials_Instances_Water_v9_MI_WaterV9_BiolumGrotto.MI_WaterV9_BiolumGrotto.png",
+                       "status":  "succeeded",
+                       "flag":  "none",
+                       "note":  "",
+                       "sample_mean":  108.58,
+                       "sample_variance":  1515
+                   },
+                   {
+                       "package_path":  "/Game/EnvSandbox/Materials/Instances/Water/v9/MI_WaterV9_RiverClear",
+                       "object_path":  "/Game/EnvSandbox/Materials/Instances/Water/v9/MI_WaterV9_RiverClear.MI_WaterV9_RiverClear",
+                       "class":  "MaterialInstanceConstant",
+                       "parent_path":  "/Game/EnvSandbox/Materials/Masters/M_Water_Master_Grand_v9.M_Water_Master_Grand_v9",
+                       "source_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Screenshots\\Monolith\\MaterialRenderStudio\\WaterV9\\raw\\WaterV9_SourceGrid.png",
+                       "portfolio_grid":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_PortfolioGrid.png",
+                       "individual_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_Individual\\EnvSandbox_Materials_Instances_Water_v9_MI_WaterV9_RiverClear.MI_WaterV9_RiverClear.png",
+                       "status":  "succeeded",
+                       "flag":  "none",
+                       "note":  "Water surface material should receive a second context pass on the intended water geometry.",
+                       "sample_mean":  135.44,
+                       "sample_variance":  1114
+                   },
+                   {
+                       "package_path":  "/Game/EnvSandbox/Materials/Instances/Water/v9/MI_WaterV9_OceanPreview",
+                       "object_path":  "/Game/EnvSandbox/Materials/Instances/Water/v9/MI_WaterV9_OceanPreview.MI_WaterV9_OceanPreview",
+                       "class":  "MaterialInstanceConstant",
+                       "parent_path":  "/Game/EnvSandbox/Materials/Masters/M_Water_Master_Grand_v9.M_Water_Master_Grand_v9",
+                       "source_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Screenshots\\Monolith\\MaterialRenderStudio\\WaterV9\\raw\\WaterV9_SourceGrid.png",
+                       "portfolio_grid":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_PortfolioGrid.png",
+                       "individual_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_Individual\\EnvSandbox_Materials_Instances_Water_v9_MI_WaterV9_OceanPreview.MI_WaterV9_OceanPreview.png",
+                       "status":  "succeeded",
+                       "flag":  "none",
+                       "note":  "Water surface material should receive a second context pass on the intended water geometry.",
+                       "sample_mean":  156.57,
+                       "sample_variance":  1216
+                   },
+                   {
+                       "package_path":  "/Game/EnvSandbox/Materials/Instances/Water/v9/MI_WaterV9_CinematicHero",
+                       "object_path":  "/Game/EnvSandbox/Materials/Instances/Water/v9/MI_WaterV9_CinematicHero.MI_WaterV9_CinematicHero",
+                       "class":  "MaterialInstanceConstant",
+                       "parent_path":  "/Game/EnvSandbox/Materials/Masters/M_Water_Master_Grand_v9.M_Water_Master_Grand_v9",
+                       "source_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Screenshots\\Monolith\\MaterialRenderStudio\\WaterV9\\raw\\WaterV9_SourceGrid.png",
+                       "portfolio_grid":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_PortfolioGrid.png",
+                       "individual_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_Individual\\EnvSandbox_Materials_Instances_Water_v9_MI_WaterV9_CinematicHero.MI_WaterV9_CinematicHero.png",
+                       "status":  "succeeded",
+                       "flag":  "none",
+                       "note":  "",
+                       "sample_mean":  119.99,
+                       "sample_variance":  7589
+                   },
+                   {
+                       "package_path":  "/Game/EnvSandbox/Materials/Instances/Water/v9/MI_Water_Underwater_Post_Default",
+                       "object_path":  "/Game/EnvSandbox/Materials/Instances/Water/v9/MI_Water_Underwater_Post_Default.MI_Water_Underwater_Post_Default",
+                       "class":  "MaterialInstanceConstant",
+                       "parent_path":  "/Game/EnvSandbox/Materials/Masters/M_Water_Underwater_Post_v9.M_Water_Underwater_Post_v9",
+                       "source_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Screenshots\\Monolith\\MaterialRenderStudio\\WaterV9\\raw\\WaterV9_SourceGrid.png",
+                       "portfolio_grid":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_PortfolioGrid.png",
+                       "individual_render":  "C:\\EnvironmentPortfolio\\BS_GodFile\\Saved\\Portfolio\\MaterialRenderStudio\\WaterV9_Individual\\EnvSandbox_Materials_Instances_Water_v9_MI_Water_Underwater_Post_Default.MI_Water_Underwater_Post_Default.png",
+                       "status":  "succeeded",
+                       "flag":  "context_required",
+                       "note":  "Underwater post-process material is not fully represented by a lit sphere preview.",
+                       "sample_mean":  23.27,
+                       "sample_variance":  59
+                   }
+               ],
+    "review_notes":  [
+                         "The source capture succeeded for every requested asset.",
+                         "All eight assets loaded through Unreal Python readback; the five surface instances resolve to M_Water_Master_Grand_v9 and the underwater post instance resolves to M_Water_Underwater_Post_v9.",
+                         "The typed validate_material action returned 0 issues for both v9 master materials but could not load the base material for the six instances; this is recorded as a tool-readback limitation, not a render failure.",
+                         "Underwater post materials are context-required and should not be judged as ordinary lit surface spheres.",
+                         "Water surface instances should receive a future intended-mesh context capture if native map-camera capture becomes available.",
+                         "No baseline assets were rerendered."
+                     ]
+}
