@@ -1,0 +1,281 @@
+/* Melodia Cozy Bow — bounded website embellishment from Bow HUD v4 FINAL CANON.
+   Freeze exception: bow-hud-cozy-website-polish-2026-10-02. */
+
+:root {
+  --cozy-bow-pearl: #FFF8EE;
+  --cozy-bow-rose: #FF93B5;
+  --cozy-bow-cyan: #86E4FF;
+  --cozy-bow-gold: #F2D08B;
+  --cozy-bow-lavender: #CDBCFF;
+  --cozy-bow-corner: url("../generated/assets/figma/bow-hud-v4/storybook-corner.svg");
+  --cozy-bow-divider: url("../generated/assets/figma/bow-hud-v4/shell-star-divider.svg");
+  --cozy-bow-pearl-joint: url("../generated/assets/figma/bow-hud-v4/pearl-joint.svg");
+  --cozy-bow-feather: url("../generated/assets/figma/bow-hud-v4/feather-tick.svg");
+  --cozy-bow-glint: url("../generated/assets/figma/bow-hud-v4/edge-glint.svg");
+  --cozy-bow-outer: url("../generated/assets/figma/bow-hud-v4/outer-filigree.svg");
+  --cozy-bow-inner: url("../generated/assets/figma/bow-hud-v4/inner-score.svg");
+  --cozy-bow-core: url("../generated/assets/figma/bow-hud-v4/core-star.svg");
+}
+
+/* Shared jewel hardware — deliberately sparse. */
+html[data-page="index"] .home-foyer-card,
+html[data-page="melodia-melusina"] .viz-door,
+html[data-page="melodia-melusina"] .viz-hero-plate {
+  box-shadow: 0 18px 48px rgba(2,3,10,.24), inset 0 1px 0 rgba(255,248,238,.045);
+}
+
+html[data-page="index"] .home-foyer-card::before,
+html[data-page="melodia-melusina"] .viz-door::before,
+html[data-page="melodia-melusina"] .viz-hero-plate::before {
+  content:"";
+  position:absolute;
+  z-index:3;
+  width:118px;
+  aspect-ratio:180/132;
+  top:9px;
+  right:9px;
+  background:var(--cozy-bow-corner) right top/contain no-repeat;
+  opacity:.24;
+  pointer-events:none;
+  filter:drop-shadow(0 2px 8px rgba(242,208,139,.09));
+  transition:opacity 234ms ease, transform 234ms cubic-bezier(.2,.8,.2,1);
+}
+
+html[data-page="index"] .home-foyer-card:nth-child(even)::before,
+html[data-page="melodia-melusina"] .viz-door:nth-child(even)::before {
+  right:auto;
+  left:9px;
+  transform:scaleX(-1);
+}
+
+html[data-page="index"] .home-foyer-card::after,
+html[data-page="melodia-melusina"] .viz-door::after {
+  content:"";
+  position:absolute;
+  z-index:4;
+  width:52px;
+  height:14px;
+  right:17px;
+  bottom:17px;
+  background:var(--cozy-bow-glint) center/contain no-repeat;
+  opacity:0;
+  pointer-events:none;
+  transform:translateX(-4px) scale(.92);
+  transition:opacity 117ms ease, transform 234ms cubic-bezier(.2,.8,.2,1);
+}
+
+html[data-page="index"] .home-foyer-card:hover::before,
+html[data-page="index"] .home-foyer-card:focus-visible::before,
+html[data-page="melodia-melusina"] .viz-door:hover::before,
+html[data-page="melodia-melusina"] .viz-door:focus-visible::before { opacity:.48; }
+
+html[data-page="index"] .home-foyer-card:hover::after,
+html[data-page="index"] .home-foyer-card:focus-visible::after,
+html[data-page="melodia-melusina"] .viz-door:hover::after,
+html[data-page="melodia-melusina"] .viz-door:focus-visible::after {
+  opacity:.74;
+  transform:translateX(0) scale(1);
+}
+
+/* Homepage: storybook warmth, never a literal gameplay HUD. */
+html[data-page="index"] .hero-inner { position:relative; }
+
+html[data-page="index"] .hero-inner::before {
+  content:"";
+  position:absolute;
+  width:74px;
+  height:28px;
+  left:min(2vw,20px);
+  top:-28px;
+  background:var(--cozy-bow-feather) center/contain no-repeat;
+  opacity:.38;
+  transform:rotate(-7deg);
+  filter:drop-shadow(0 0 12px rgba(134,228,255,.08));
+  pointer-events:none;
+}
+
+html[data-page="index"] .game-ui-filigree-divider.is-baroque {
+  width:min(430px,68vw);
+  height:42px;
+  margin:.35rem 0 .45rem;
+  background:var(--cozy-bow-divider) left center/contain no-repeat;
+  opacity:.48;
+  filter:drop-shadow(0 1px 8px rgba(242,208,139,.08)) drop-shadow(0 0 16px rgba(134,228,255,.055));
+}
+
+html[data-page="index"] .home-foyer-head {
+  position:relative;
+  padding-bottom:2.35rem;
+}
+
+html[data-page="index"] .home-foyer-head::after {
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:.2rem;
+  width:min(620px,74vw);
+  height:50px;
+  background:var(--cozy-bow-divider) left center/contain no-repeat;
+  opacity:.26;
+  pointer-events:none;
+}
+
+html[data-page="index"] .home-foyer-card {
+  border-color:color-mix(in srgb,var(--cozy-bow-gold) 24%,var(--primitive-lavender-300));
+  background:
+    radial-gradient(circle at 82% 10%,rgba(255,147,181,.09),transparent 29%),
+    radial-gradient(circle at 12% 92%,rgba(134,228,255,.065),transparent 30%),
+    linear-gradient(145deg,rgba(20,18,43,.97),rgba(28,20,38,.98));
+}
+
+html[data-page="index"] .home-foyer-card.is-primary::before { width:150px; opacity:.32; }
+
+html[data-page="index"] .home-foyer-card:hover,
+html[data-page="index"] .home-foyer-card:focus-visible {
+  border-color:color-mix(in srgb,var(--cozy-bow-gold) 72%,var(--cozy-bow-pearl));
+  box-shadow:0 22px 58px rgba(2,3,10,.30),0 0 0 1px rgba(255,248,238,.028),0 0 28px rgba(255,147,181,.045);
+}
+
+html[data-page="index"] .home-foyer-copy { position:relative; }
+
+html[data-page="index"] .home-foyer-copy::before {
+  content:"";
+  width:18px;
+  height:18px;
+  background:var(--cozy-bow-pearl-joint) center/contain no-repeat;
+  opacity:.7;
+  margin-bottom:.15rem;
+}
+
+html[data-page="index"] .home-foyer-card:nth-child(3n) .home-foyer-copy::before { transform:rotate(18deg); }
+html[data-page="index"] .home-foyer-card:nth-child(3n + 2) .home-foyer-copy::before { opacity:.5; transform:translateX(5px) rotate(-12deg); }
+html[data-page="index"] .home-foyer-kicker { color:color-mix(in srgb,var(--cozy-bow-gold) 78%,var(--cozy-bow-pearl)); }
+
+/* Melusina: the artifact vocabulary may read more explicitly here. */
+html[data-page="melodia-melusina"] .game-hero-band > .inner,
+html[data-page="melodia-melusina"] #magical-artifact > .inner { position:relative; }
+
+html[data-page="melodia-melusina"] .game-hero-band > .inner::after {
+  content:"";
+  position:absolute;
+  right:clamp(-2rem,-2vw,-.5rem);
+  top:1rem;
+  width:clamp(190px,25vw,300px);
+  aspect-ratio:1;
+  background:
+    var(--cozy-bow-core) center/22% no-repeat,
+    var(--cozy-bow-inner) center/61% no-repeat,
+    var(--cozy-bow-outer) center/82% no-repeat;
+  opacity:.085;
+  filter:drop-shadow(0 0 28px rgba(134,228,255,.08));
+  pointer-events:none;
+  transform:rotate(-7deg);
+}
+
+html[data-page="melodia-melusina"] .editorial-rhythm-divider {
+  min-height:45px;
+  display:flex;
+  align-items:center;
+  background:var(--cozy-bow-divider) left center/min(520px,72vw) auto no-repeat;
+  opacity:.72;
+}
+
+html[data-page="melodia-melusina"] .editorial-rhythm-divider .glyph { opacity:.28; margin-left:.55rem; }
+
+html[data-page="melodia-melusina"] .viz-hero-plate,
+html[data-page="melodia-melusina"] .viz-door {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  border-color:color-mix(in srgb,var(--cozy-bow-gold) 30%,var(--cozy-bow-lavender));
+}
+
+html[data-page="melodia-melusina"] .viz-hero-plate::before { width:138px; opacity:.38; }
+
+html[data-page="melodia-melusina"] #magical-artifact {
+  position:relative;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(255,147,181,.08),transparent 25%),
+    radial-gradient(circle at 18% 72%,rgba(134,228,255,.07),transparent 24%),
+    var(--color-paper,var(--primitive-paper-300));
+}
+
+html[data-page="melodia-melusina"] #magical-artifact .section-head {
+  position:relative;
+  padding-right:clamp(0px,14vw,150px);
+}
+
+html[data-page="melodia-melusina"] #magical-artifact .section-head::after {
+  content:"";
+  position:absolute;
+  right:0;
+  top:50%;
+  width:clamp(90px,11vw,140px);
+  aspect-ratio:1;
+  transform:translateY(-50%) rotate(9deg);
+  background:
+    var(--cozy-bow-core) center/24% no-repeat,
+    var(--cozy-bow-inner) center/70% no-repeat;
+  opacity:.13;
+  pointer-events:none;
+}
+
+html[data-page="melodia-melusina"] .viz-rule { position:relative; padding-left:76px; }
+
+html[data-page="melodia-melusina"] .viz-rule::before {
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  width:58px;
+  height:22px;
+  transform:translateY(-50%) rotate(-5deg);
+  background:var(--cozy-bow-feather) center/contain no-repeat;
+  opacity:.55;
+}
+
+html[data-page="melodia-melusina"] #magical-artifact .viz-door:nth-child(2) {
+  box-shadow:0 24px 60px rgba(2,3,10,.28),0 0 34px rgba(242,208,139,.06),inset 0 1px 0 rgba(255,248,238,.06);
+}
+
+html[data-page="melodia-melusina"] #magical-artifact .viz-door:nth-child(2) .viz-door-meta::before {
+  content:"";
+  display:inline-block;
+  width:18px;
+  height:18px;
+  margin:0 .4rem -.25rem 0;
+  background:var(--cozy-bow-pearl-joint) center/contain no-repeat;
+  opacity:.78;
+}
+
+html[data-page="melodia-melusina"] .button-premium {
+  transition:transform 117ms ease,border-color 234ms ease,box-shadow 234ms ease,background-color 234ms ease;
+}
+
+html[data-page="melodia-melusina"] .button-premium:hover,
+html[data-page="melodia-melusina"] .button-premium:focus-visible {
+  box-shadow:0 10px 30px rgba(2,3,10,.16),inset 0 1px 0 rgba(255,248,238,.06);
+}
+
+@media (hover:none),(pointer:coarse) {
+  html[data-page="index"] .home-foyer-card::after,
+  html[data-page="melodia-melusina"] .viz-door::after { display:none; }
+  html[data-page="index"] .home-foyer-card::before,
+  html[data-page="melodia-melusina"] .viz-door::before { opacity:.22; }
+}
+
+@media (max-width:720px) {
+  html[data-page="index"] .hero-inner::before { width:58px; top:-20px; }
+  html[data-page="index"] .home-foyer-card::before { width:96px; }
+  html[data-page="melodia-melusina"] .game-hero-band > .inner::after { width:160px; opacity:.06; }
+  html[data-page="melodia-melusina"] #magical-artifact .section-head { padding-right:0; }
+  html[data-page="melodia-melusina"] #magical-artifact .section-head::after { display:none; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  html[data-page="index"] .home-foyer-card::before,
+  html[data-page="index"] .home-foyer-card::after,
+  html[data-page="melodia-melusina"] .viz-door::before,
+  html[data-page="melodia-melusina"] .viz-door::after,
+  html[data-page="melodia-melusina"] .button-premium { transition:none !important; }
+}
