@@ -1,14 +1,13 @@
 {
   "schema": "melodia.material_loops_manifest.v2",
-  "generated_at": "2026-10-02T19:50:04.907553+00:00",
+  "generated_at": "2026-10-02T20:05:40.173223+00:00",
   "total_cataloged": 25,
   "web_ready_count": 25,
   "categories": [
     "Gemstone & Cymatics",
     "Procedural SDF & Raymarch",
     "Glitter & Prismatic Crystal",
-    "Cosmic & Nebula Void",
-    "Haute Couture & Element Heroes"
+    "Cosmic & Nebula Void"
   ],
   "entries": [
     {
@@ -324,12 +323,12 @@
       "loop_frames": 120
     },
     {
-      "id": "MI_Show_NikkiHero",
-      "category": "Haute Couture & Element Heroes",
+      "id": "celestial_nebula_nasa_sphere",
+      "category": "Cosmic & Nebula Void",
       "has_webm": true,
       "has_mp4": false,
       "has_poster": false,
-      "webm_path": "../generated/assets/material-loops/MI_Show_NikkiHero.webm",
+      "webm_path": "../generated/assets/material-loops/celestial_nebula_nasa_sphere.webm",
       "mp4_path": null,
       "poster": null,
       "status": "web_ready",

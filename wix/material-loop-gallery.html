@@ -35,6 +35,73 @@
 .material-tech-note { max-width: 760px; margin-top: 1rem; border-top: 1px solid var(--color-border-subtle); padding-top: .9rem; color: var(--color-text-secondary); }
 .material-tech-note summary { cursor: pointer; font-family: var(--font-mono); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--color-accent-primary); }
 .material-tech-note p { margin: .7rem 0 0; font-size: .88rem; line-height: 1.6; }
+.contact-sheet-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 24px;
+}
+.contact-sheet-card {
+  background: rgba(12, 16, 28, 0.7);
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.12));
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.contact-sheet-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent-primary, #e2c08d);
+}
+.contact-sheet-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+.contact-sheet-meta {
+  padding: 20px;
+}
+.contact-sheet-meta .cs-badge {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary, #e2c08d);
+  background: rgba(226, 192, 141, 0.12);
+  padding: 3px 8px;
+  border-radius: 2px;
+  margin-bottom: 8px;
+}
+.contact-sheet-meta h3 {
+  font-size: 1.15rem;
+  margin: 0 0 6px;
+}
+.contact-sheet-meta h3 a {
+  color: var(--color-text-primary, #f5f2eb);
+  text-decoration: none;
+}
+.contact-sheet-meta .cs-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-accent-primary, #e2c08d);
+  margin: 0 0 8px;
+}
+.contact-sheet-meta .cs-desc {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary, #b3b7c2);
+  margin: 0 0 14px;
+}
+.contact-sheet-meta .cs-link {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-primary, #e2c08d);
+  text-decoration: none;
+}
+@media (max-width: 860px) {
+  .contact-sheet-grid { grid-template-columns: 1fr; }
+}
 @media (max-width: 1080px) { .mi-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 680px) { .mi-grid { grid-template-columns: 1fr; } }
 </style>
@@ -67,6 +134,20 @@
       <summary>Pipeline note</summary>
       <p>The finished loops are published from <code>L_MaterialPreview_Studio</code> through <code>Tools\publish_material_loops.ps1</code>. <a href="../generated/material_loops_manifest.json">Open the generated manifest</a> for capture metadata.</p>
     </details>
+  </div>
+</section>
+
+<section class="band paper fashion-band" id="contact-sheets-section">
+  <div class="inner">
+    <div class="editorial-rule"><span class="diamond" aria-hidden="true"></span><span>Master Contact Sheets</span><span class="diamond" aria-hidden="true"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Lookdev Multi-Pass Evaluation</p>
+        <h2>Curated Material Contact Sheets</h2>
+      </div>
+      <p>High-resolution inspection sheets organizing 25 real-time material instances across specialized shader families, verified for roughness separation, subsurface dispersion, and post-process integration.</p>
+    </div>
+    <div id="miContactSheets" class="contact-sheet-grid" aria-live="polite"></div>
   </div>
 </section>
 

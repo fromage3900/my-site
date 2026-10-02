@@ -881,7 +881,8 @@
   async function hydrateMaterialLoopGallery() {
     const mount = document.getElementById('miLoopGallery');
     const heroMount = document.getElementById('miLoopHero');
-    if (!mount && !heroMount) return;
+    const contactSheetsMount = document.getElementById('miContactSheets');
+    if (!mount && !heroMount && !contactSheetsMount) return;
 
     try {
       const [loopsRes, catalogRes] = await Promise.all([
@@ -894,6 +895,70 @@
       const ready = entries.filter((e) => e.webm_path && e.status === 'web_ready');
       const hero = ready.find((e) => e.priority === 'hero' || e.id === 'MI_ZenTrim_FlowersLots') || ready[0];
 
+      if (contactSheetsMount) {
+        const contactSheets = [
+          {
+            id: 'grandmaster',
+            title: 'Grandmaster 25-Tile Master Sheet',
+            subtitle: '5×5 Complete Material Systems Overview',
+            preview: '../generated/assets/material-loops/contact_sheets/contact_sheet_grandmaster_all_materials.webp',
+            full: '../generated/assets/material-loops/contact_sheets/contact_sheet_grandmaster_all_materials.png',
+            count: '25 Materials',
+            desc: '4K comprehensive inspection grid verifying chromatic dispersion, subsurface scatter, and post-process alignment across all systems.'
+          },
+          {
+            id: 'gemstones',
+            title: 'Gemstones & Cymatic Crystals',
+            subtitle: 'Hero Refraction, Internal Caustics & Prisms',
+            preview: '../generated/assets/material-loops/contact_sheets/contact_sheet_gemstones.webp',
+            full: '../generated/assets/material-loops/contact_sheets/contact_sheet_gemstones.png',
+            count: '6 Hero Instances',
+            desc: 'Celestial Diamond, Aquamarine Circlet, Void Orchid, Rosy Quartz Chladni, Cymatic Hero Gem, and Sapphire Glass.'
+          },
+          {
+            id: 'sdf_procedural',
+            title: 'Procedural SDF, Water & Substrates',
+            subtitle: 'Raymarched Cards & Gerstner Caustics',
+            preview: '../generated/assets/material-loops/contact_sheets/contact_sheet_sdf_procedural.webp',
+            full: '../generated/assets/material-loops/contact_sheets/contact_sheet_sdf_procedural.png',
+            count: '6 Systems',
+            desc: 'Crystal Cathedral, Melusina ocean caustics/refraction, dawn substrate, and fleece embroidery sheen.'
+          },
+          {
+            id: 'glitter_prismatic',
+            title: 'Prismatic Glitter & Micro-Crystals',
+            subtitle: 'Multi-Tone Holographic Sparkle Response',
+            preview: '../generated/assets/material-loops/contact_sheets/contact_sheet_glitter_prismatic.webp',
+            full: '../generated/assets/material-loops/contact_sheets/contact_sheet_glitter_prismatic.png',
+            count: '6 Formulations',
+            desc: 'Crystal, Gold, Holographic, Iridescent, Rainbow, and Star Glint particle core response.'
+          },
+          {
+            id: 'cosmic_nebula',
+            title: 'Cosmic Nebula & Surreal Fabric',
+            subtitle: 'Starlight Filaments & Volumetric Depths',
+            preview: '../generated/assets/material-loops/contact_sheets/contact_sheet_cosmic_nebula.webp',
+            full: '../generated/assets/material-loops/contact_sheets/contact_sheet_cosmic_nebula.png',
+            count: '6 Shaders',
+            desc: 'Astral Penrose, Kinematic Horizon, Surreal Fabric, Constellation Ribbon, and Cosmic Nebula drift.'
+          }
+        ];
+        contactSheetsMount.innerHTML = contactSheets.map(cs => `
+          <figure class="image-card premium-card contact-sheet-card">
+            <a href="${esc(cs.full)}" target="_blank" rel="noopener" title="Inspect lossless 4K PNG">
+              <img src="${esc(cs.preview)}" alt="${esc(cs.title)}" loading="lazy" />
+            </a>
+            <div class="contact-sheet-meta">
+              <div class="cs-badge">${esc(cs.count)}</div>
+              <h3><a href="${esc(cs.full)}" target="_blank" rel="noopener">${esc(cs.title)}</a></h3>
+              <p class="cs-subtitle">${esc(cs.subtitle)}</p>
+              <p class="cs-desc">${esc(cs.desc)}</p>
+              <a class="button button-subtle cs-link" href="${esc(cs.full)}" target="_blank" rel="noopener">Inspect Full Resolution (PNG) →</a>
+            </div>
+          </figure>
+        `).join('');
+      }
+
       if (heroMount) {
         if (hero) {
           const poster = hero.poster ? ` poster="${esc(hero.poster)}"` : '';
@@ -904,20 +969,19 @@
       }
 
       if (mount) {
-
         const groups = {
-          hero: ready.filter((e) => e.priority === 'hero'),
-          cosmic: ready.filter((e) => /^MI_Cosmic_|celestial_nebula/i.test(e.id)),
-          trimsheet: ready.filter((e) => /ZenTrim|ClothTrim/i.test(e.id)),
-          sdf: ready.filter((e) => /^MI_SDF_/i.test(e.id)),
-          showcase: ready.filter((e) => /^MI_Show_/i.test(e.id)),
+          gemstone: ready.filter((e) => e.category === 'Gemstone & Cymatics' || /Gemstone|HeroGem|MelodiaSapphireGlass/i.test(e.id)),
+          glitter: ready.filter((e) => e.category === 'Glitter & Prismatic Crystal' || /^Glitter/i.test(e.id)),
+          sdf: ready.filter((e) => e.category === 'Procedural SDF & Raymarch' || /^MI_SDF_/i.test(e.id)),
+          couture: ready.filter((e) => e.category === 'Haute Couture & Element Heroes' || /ZenTrim|ClothTrim|Copernicus|Water/i.test(e.id)),
+          cosmic: ready.filter((e) => e.category === 'Cosmic & Nebula Void' || /^MI_Cosmic_|celestial_nebula/i.test(e.id)),
         };
         const order = [
-          ['Hero loops', groups.hero, 'Validation captures on Melodia void/iri gradient — no UE headquarters sky.'],
-          ['Cosmic loops', groups.cosmic, 'NightShift cosmic family — void-padded interim until MRQ orbit recapture.'],
-          ['Trimsheet loops', groups.trimsheet, 'Vertical swatch staging for layer A/B trimsheet reads.'],
-          ['SDF loops', groups.sdf, 'Orbital sphere captures for stylized SDF band materials.'],
-          ['Showcase loops', groups.showcase, 'Starter MI_Show_* presets on the universal master.'],
+          ['Gemstone & Cymatic Crystals', groups.gemstone, 'Faceted internal caustics, dual-layer chromatic dispersion, and harmonic resonance gemstones.'],
+          ['Prismatic Glitter & Micro-Crystals', groups.glitter, 'Layered multi-frequency micro-facet glints with holographic and rainbow sheen modulations.'],
+          ['Procedural SDF & Raymarched Surfaces', groups.sdf, 'Mathematical distance field raymarching for non-repeating volumetric crystal and floral filigree.'],
+          ['Haute Couture & Element Heroes', groups.couture, 'Delicate fabric trimsheets, velvet peach-fuzz sheen, and fluid normal refraction.'],
+          ['Cosmic Nebula & Void Shaders', groups.cosmic, 'Multi-layer celestial starfield and parallax nebula structures for otherworldly horizons.'],
         ];
         let html = order
           .filter(([, items]) => items.length > 0)
@@ -942,6 +1006,7 @@
         '<p class="body-copy">The material-loop feed is temporarily unavailable. <a href="shader-breakdowns.html">Open the shader breakdowns</a> instead.</p>';
       if (mount) mount.innerHTML = fallback;
       if (heroMount) heroMount.innerHTML = fallback;
+      if (contactSheetsMount) contactSheetsMount.innerHTML = fallback;
     }
   }
 
