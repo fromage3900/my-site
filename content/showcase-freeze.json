@@ -174,7 +174,8 @@
     "public/melodia/v08_director_quad_scope_false_color_scope_1080p.png",
     "public/melodia/v08_director_quad_scope_raw_stage_base_1080p.png",
     "public/melodia/v08_director_quad_scope_stage_base_pass_1080p.png",
-    "generated/mi_preview_manifest.json"
+    "generated/mi_preview_manifest.json",
+    "wix/melodia-cozy-bow.css"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -613,6 +614,26 @@
         "no weakening of recruiter freeze or validation gates",
         "no unvetted third-party runtime assets",
         "strict adherence to zero-slop lookbook presentation"
+      ]
+    },
+    {
+      "id": "bow-hud-cozy-website-polish-2026-10-02",
+      "reason": "Owner explicitly requested a bounded final cozy website pass that reuses original Bow HUD v4 Figma atoms as lightweight decorative chrome on the existing homepage and Melusina case-study route.",
+      "scope": [
+        "generated/assets/figma/bow-hud-v4/ — original Figma-authored Bow HUD v4 SVG atoms used only as decorative web chrome",
+        "wix/melodia-cozy-bow.css — scoped homepage + Melusina embellishment layer with reduced-motion and coarse-pointer guards",
+        "wix/index.html — add one scoped stylesheet; preserve the six-door foyer, hero hierarchy, copy, navigation and renderer stack",
+        "wix/melodia-melusina.html — add one scoped stylesheet; preserve the character/menu factual hierarchy and route structure",
+        "content/showcase-freeze.json — record this exact exception"
+      ],
+      "exclusions": [
+        "no new public routes or navigation redesign",
+        "no new Three.js/WebGL/shader system",
+        "no homepage reticle or gameplay HUD overlay",
+        "no new recruiter claims, copy expansion, artwork replacement, or route taxonomy change",
+        "no third-party game UI assets or third-party IP wording",
+        "no animation required for meaning; reduced-motion stays static",
+        "no merge to main until owner explicitly approves the reviewed branch"
       ]
     }
   ]
