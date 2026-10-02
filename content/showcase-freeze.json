@@ -196,7 +196,10 @@
     "public/melodia/lookdev/",
     "public/melodia/loops/",
     "public/melodia/nikki9-suite/",
-    "public/melodia/vfx-showcase-2026-09-28/"
+    "public/melodia/vfx-showcase-2026-09-28/",
+    "generated/assets/material-loops/",
+    "generated/material_loops_manifest.json",
+    "public/melodia/turnarounds/"
   ],
   "blocked_by_default": [
     "new public pages",
@@ -612,6 +615,21 @@
         "no new public recruiter routes or navigation changes",
         "no weakening of recruiter freeze or validation gates",
         "no unvetted third-party runtime assets",
+        "strict adherence to zero-slop lookbook presentation"
+      ]
+    },
+    {
+      "id": "tonight-render-showcase-unblock-2026-10-02",
+      "reason": "Ingest verified 10 Nikki Priority material loops, Melusina Quantum turntable orbits, and TouchDesigner Haute Couture inspection suites for tonight's render showcase.",
+      "scope": [
+        "generated/assets/material-loops/ — 1080p VP9/H.264 video loops and WebP poster cards for the 10 Nikki Priority hero material instances",
+        "generated/material_loops_manifest.json — manifest tracking video loop metadata and parameters",
+        "public/melodia/turnarounds/ — 12-frame turntable orbit loops of GB_Morning_ResonanceGem and SparkleZone_Meadow",
+        "content/showcase-freeze.json — this exception record"
+      ],
+      "exclusions": [
+        "no new public recruiter routes or navigation changes",
+        "no weakening of recruiter freeze or validation gates",
         "strict adherence to zero-slop lookbook presentation"
       ]
     }
