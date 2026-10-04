@@ -1190,6 +1190,26 @@
           "starfield"
         ]
       }
+    },
+    "nikki9_melusina_morning_hero_20260930": {
+      "path": "../generated/assets/unreal/nikki9-melusina-morning-hero.webp",
+      "display_name": "Melusina Morning · nine-pass realtime lookdev hero",
+      "evidence": {
+        "status": "supporting",
+        "confidence": "high",
+        "visually_proves": [
+          "Melusina Morning environment lookdev",
+          "nine-pass realtime surface and lighting treatment",
+          "volumetric mist and stylized cel-light response",
+          "current recruiter-facing world preview"
+        ],
+        "does_not_prove": [
+          "packaged gameplay",
+          "final Unreal B2 character beauty",
+          "final shipping environment"
+        ],
+        "note": "Reviewed environment study promoted for current recruiter-facing world thumbnails; remains supporting evidence rather than packaged-gameplay proof."
+      }
     }
   },
   "registries": {
