@@ -1,8 +1,17 @@
 # Portfolio Sendoff Freeze — 2026-09-07
 
-**State:** SOFT FREEZE ACTIVE  
+**State:** LIFTED 2026-10-03 (was: SOFT FREEZE ACTIVE)  
 **Started:** 2026-09-07 19:10 America/Toronto  
-**Authority:** `content/showcase-freeze.json`
+**Lifted:** 2026-10-03 by owner instruction  
+**Authority:** `content/showcase-freeze.json` (`status: lifted`)
+
+> **This contract is retained for provenance only and no longer governs changes.**
+> The owner lifted the freeze on 2026-10-03 so the eight deployed TouchDesigner/Spout renders
+> (`v01`–`v08`, all 8-gate QA certified) could be published. Those renders were fully present on
+> the site and serving HTTP 200, but were wired only as `content/site-plates.json` slots that no
+> HTML page referenced, so finished work was invisible to visitors. Everything below describes the
+> policy that applied *while* the freeze was active. Re-arm the freeze by restoring
+> `status: soft_freeze` (or `hard_freeze`) with a new `base_sha` in the manifest.
 
 The recruiter-facing portfolio is now in a **soft freeze**. The public surface is considered compositionally and structurally finished. From this point until hard freeze, changes are limited to:
 

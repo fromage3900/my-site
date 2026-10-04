@@ -1,6 +1,10 @@
 # Editing Melodia site copy & plates
 
-> **SHOWCASE SOFT FREEZE ACTIVE — 2026-09-07.** Before editing recruiter-facing pages, read [the sendoff freeze contract](docs/PORTFOLIO_SENDOFF_FREEZE_2026-09-07.md) and `content/showcase-freeze.json`. Do not add new public pages/effects/layout systems during freeze. Approved render promotion and critical correctness fixes remain allowed.
+> **SHOWCASE FREEZE LIFTED — 2026-10-03.** The 2026-09-07 soft freeze is no longer active;
+> `content/showcase-freeze.json` now has `status: lifted`. The freeze contract in
+> `docs/PORTFOLIO_SENDOFF_FREEZE_2026-09-07.md` is kept for provenance only. New pages, layout
+> work, and render promotion are permitted again. `tools/verify_sendoff_freeze.py` still runs in
+> CI but no longer gates. Re-arm by restoring `status` to `soft_freeze` with a new `base_sha`.
 
 
 > **Active recruiter P0:** [P0 Melusina render integration](docs/P0_MELUSINA_RENDER_WEBSITE_INTEGRATION_2026-09-07.md). The art/capture authority lives in the game repo's `Docs/Production/P0_MELUSINA_RENDER_AND_WEBSITE_BREAKDOWN_PLAN_2026-09-07.md`.

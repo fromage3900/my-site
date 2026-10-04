@@ -69,7 +69,8 @@
     "space-cathedral.html",
     "surreal-architecture.html",
     "touchdesigner-architecture.html",
-    "universal-material-impact.html"
+    "universal-material-impact.html",
+    "touchdesigner-showreel.html"
   ],
   "targeted_evidence": [
     "melusina-model-tooling.html",
@@ -98,6 +99,7 @@
     "sdf-material-gallery.html",
     "render-constellation.html",
     "realtime-3d-viewer.html",
-    "melodia-atelier-lab.html"
+    "melodia-atelier-lab.html",
+    "touchdesigner-showreel.html"
   ]
 }

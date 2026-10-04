@@ -1,6 +1,6 @@
 {
   "schema": "melodia.showcase_freeze.v1",
-  "status": "soft_freeze",
+  "status": "lifted",
   "started_at": "2026-09-07T19:10:00-04:00",
   "base_sha": "e4ea952350ee395cf30291f7fb9f6c4625ff1294",
   "purpose": "Freeze recruiter-facing presentation while allowing only approved render promotion, proof correction, contact/metadata fixes, and freeze infrastructure.",
@@ -650,5 +650,10 @@
         "no change to any page's robots directive"
       ]
     }
-  ]
+  ],
+  "lifted_at": "2026-10-03T21:05:00-04:00",
+  "lifted_by": "owner",
+  "lift_reason": "Owner instruction 2026-10-03: 'kill the freeze, and yeah publish'. The eight 8-gate QA-certified TouchDesigner/Spout renders (v01-v08) were fully deployed and serving but wired only as site-plates.json slots that no HTML page referenced, so finished work was invisible. Freeze lifted to publish them.",
+  "previous_status": "soft_freeze",
+  "note": "Freeze lifted. verify_sendoff_freeze.py now reports inactive and no longer gates changes; the verifier remains in CI as a no-op guard. Re-arm by setting status to soft_freeze/hard_freeze with a new base_sha."
 }
