@@ -127,7 +127,7 @@
       name: 'Melusina Morning',
       tag: 'World 01 · L_MelusinaMorning',
       lut: '#E2F7F2',
-      heroSrc: '../generated/assets/character/melusina_beauty_eevee_20260715c_01.png',
+      heroSrc: '../generated/assets/unreal/nikki9-melusina-morning-hero.webp',
       particleType: 'dew',
       color: [160, 230, 215],
       ambientDesc: 'Morning coastal dew, lapis lazuli water caustics, and ivory ornamental filigree.'
