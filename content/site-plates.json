@@ -16,7 +16,9 @@
     },
     "hub.melusina": {
       "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
-      "alt": "Melusina"
+      "alt": "Melusina — Blender EEVEE cinematic character beauty",
+      "status": "reviewed_eevee_cinematic_lookdev",
+      "evidence_note": "Intentional offline/cutscene character presentation. UE5 runtime character proof is tracked separately."
     },
     "hub.melusina_secondary": {
       "path": "../generated/assets/character/melusina_eevee_glam_20260715c_05.png",
@@ -24,7 +26,9 @@
     },
     "stage.beauty": {
       "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
-      "alt": "Hero beauty · EEVEE glam"
+      "alt": "Hero beauty · Blender EEVEE cinematic lookdev",
+      "status": "reviewed_eevee_cinematic_lookdev",
+      "evidence_note": "Primary authored cinematic/offline beauty lane for cutscenes, portraits, and non-runtime presentation; not a UE5 gameplay capture."
     },
     "stage.front": {
       "path": "../generated/assets/character/melusina_eevee_glam_20260715c_02.png",
