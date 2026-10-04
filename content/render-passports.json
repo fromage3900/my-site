@@ -952,20 +952,21 @@
     },
     "melusina_stage_beauty_fallback_20260715c01": {
       "path": "../generated/assets/character/melusina_beauty_eevee_20260715c_01.png",
-      "display_name": "Melusina \u00b7 EEVEE stage beauty (temporary fallback)",
+      "display_name": "Melusina \u00b7 EEVEE cinematic / offline beauty",
       "evidence": {
         "status": "supporting",
-        "confidence": "medium",
+        "confidence": "high",
         "visually_proves": [
           "Melusina character presentation",
-          "existing portfolio-stage lookdev"
+          "Blender EEVEE cinematic / offline character lookdev",
+          "authored beauty-frame lighting and material presentation"
         ],
         "does_not_prove": [
-          "Unreal B2 Cam_Beauty",
+          "Unreal runtime character shading",
           "gameplay hair implementation",
-          "final 2026 recruiter character hero"
+          "packaged gameplay"
         ],
-        "note": "Promoted only as a temporary replacement for the known-bald 2026-08-13 plate. Replace with tonight's reviewed UE capture when available."
+        "note": "Intentional Blender EEVEE cinematic/offline beauty for cutscenes, portraits, and non-runtime character presentation. Keep separate from UE5 runtime proof."
       },
       "asset": {
         "asset_id": "melusina",
@@ -973,7 +974,7 @@
         "status": "metadata_supported",
         "passport_href": "../generated/passports/melusina_passport.html",
         "passport_json": "../generated/passports/melusina_passport.json",
-        "note": "Existing EEVEE stage beauty already used by the Stage/Resume presentation. Temporary recruiter-safe fallback until the new Unreal B2 Cam_Beauty is captured.",
+        "note": "Reviewed EEVEE beauty used intentionally for cinematic/offline character presentation. UE5 runtime character proof remains a separate lane.",
         "passport_id": "melusina"
       },
       "material": {
@@ -988,7 +989,7 @@
           "translucent/emissive wing and hat accents",
           "graphic music-note panel"
         ],
-        "note": "Temporary site fallback. Do not infer Unreal runtime shader bindings from this EEVEE plate.",
+        "note": "Intentional EEVEE cinematic/lookdev surface presentation. Do not infer Unreal runtime shader bindings from this offline plate.",
         "passport_id": "melusina_multizone_visual"
       }
     },
