@@ -174,7 +174,8 @@
     "public/melodia/v08_director_quad_scope_false_color_scope_1080p.png",
     "public/melodia/v08_director_quad_scope_raw_stage_base_1080p.png",
     "public/melodia/v08_director_quad_scope_stage_base_pass_1080p.png",
-    "generated/mi_preview_manifest.json"
+    "generated/mi_preview_manifest.json",
+    "sitemap.xml"
   ],
   "allowed_prefixes": [
     "generated/assets/character/",
@@ -631,6 +632,22 @@
         "no new public recruiter routes or navigation changes",
         "no weakening of recruiter freeze or validation gates",
         "strict adherence to zero-slop lookbook presentation"
+      ]
+    },
+    {
+      "id": "sitemap-indexable-route-coverage-2026-10-03",
+      "reason": "Owner confirmed fromageart.xyz is the real front door and approved a webfront audit. Factual SEO correctness fix: sitemap.xml listed only 11 of 41 indexable public routes, so recruiter-facing pages (including recruiter-one-sheet, hiring-dossier, sakura-case-study) were absent from the sitemap. Pages were selected from the existing wix/public-routes.json authority, verified live (HTTP 200) and verified free of the deliberate noindex directive before inclusion.",
+      "scope": [
+        "add 23 verified-live indexable routes to sitemap.xml",
+        "exclude routes marked internal_not_navigation, component_examples, or retired_redirects in wix/public-routes.json",
+        "respect per-page robots noindex directives (nous-research-packet, nvidia-recruiter-sendoff, melusina-model-tooling stay unlisted)"
+      ],
+      "exclusions": [
+        "no new pages created",
+        "no navigation or layout changes",
+        "no copy, artwork, or typography changes",
+        "no change to canonical or og metadata",
+        "no change to any page's robots directive"
       ]
     }
   ]
