@@ -376,6 +376,94 @@
       "alt": "Sparkle Meadow — 360-degree orbital turntable sweep",
       "status": "reviewed_turntable_study",
       "evidence_note": "Curated orbital turntable loop highlighting particle dispersion and grazing-angle floral bloom."
+    },
+    "morning.hero_pastoral": {
+      "path": "../generated/assets/unreal/hero-melusina-morning-pastoral-meadow.webp",
+      "alt": "Pastoral meadow bathed in dawn mist with gentle wildflower breezes and distant floating peaks",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Soft dawn sunlight illuminating sweeping wildflower carpet, procedural blossom drifts, and floating mountain archipelago."
+    },
+    "morning.canopy_sanctuary": {
+      "path": "../generated/assets/unreal/hero-melusina-morning-canopy-sanctuary.webp",
+      "alt": "Architectural interior view of carved wooden canopy bed framed by open garden terrace",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Intimate architectural framing capturing warm interior lacquer and cascading terrace light."
+    },
+    "morning.regalia_portrait": {
+      "path": "../generated/assets/unreal/hero-melusina-morning-regalia-portrait.webp",
+      "alt": "Hero character portrait framed by delicate stardust halos and soft pastel cel lighting",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Haute couture character lookdev featuring iridescent velvet sheen, pearlescent embroidery, and celestial stardust halo."
+    },
+    "kaleido.hero_prismatic": {
+      "path": "../generated/assets/unreal/hero-kaleido-nave-prismatic-colonnade.webp",
+      "alt": "Monumental crystal colonnade with refractive prismatic caustics and mirrored sanctuary reflections",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Cathedral nave composition featuring faceted crystal columns, celestial reflection planes, and luminous floating islands."
+    },
+    "kaleido.crystal_sanctuary": {
+      "path": "../generated/assets/unreal/hero-kaleido-nave-crystal-sanctuary.webp",
+      "alt": "Wide perspective along crystal nave axis framing celestial horizon and prismatic colonnade",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Atmospheric vista balancing solemn cathedral geometry with organic flower scatter and deep reflective sea."
+    },
+    "sakura.ink_shrine": {
+      "path": "../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp",
+      "alt": "Delicate cherry blossom garden with clean calligraphic inking and soft watercolor shading",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Stylized inkline contour shading paired with soft watercolor foliage washes and floating petal motes."
+    },
+    "sakura.wide_canopy": {
+      "path": "../generated/assets/unreal/hero-sakura-dream-blossom-canopy.webp",
+      "alt": "Panoramic garden landscape capturing blooming cherry trees, curved stone bridges, and twilight mountains",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Wide landscape composition featuring dense blossom canopies, procedural petal drifts, and soft rim illumination."
+    },
+    "fallenmoon.lunar_archipelago": {
+      "path": "../generated/assets/unreal/hero-fallen-moon-lunar-archipelago.webp",
+      "alt": "Floating lunar island archipelago in deep midnight purple space with glowing crystalline pools",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Atmospheric lunar landscape featuring floating crater islands, pale celestial grass, and delicate starlight particles."
+    },
+    "fallenmoon.twilight_crater": {
+      "path": "../generated/assets/unreal/hero-fallen-moon-twilight-crater.webp",
+      "alt": "Crystalline crater terrace with reflective pools and volumetric lunar mist",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Low-angle terrace perspective highlighting mineral reflections and ethereal atmospheric haze."
+    },
+    "vfx.convergence_contact_sheet": {
+      "path": "../generated/assets/unreal/contact-sheet-ui-niagara-convergence.webp",
+      "alt": "Comprehensive six-panel lookbook contact sheet demonstrating unified UI, Slate brushes, and Niagara particle systems",
+      "status": "reviewed_environment_study",
+      "evidence_note": "Editorial audit matrix validating harmonious styling across Overworld HUD, Bow HUD, Start Menu, Cosmic Orrery, Click Sparkles, and Quill Cursor."
+    },
+    "video.systems_showcase": {
+      "path": "../public/melodia/videos/melodia-runtime-systems-showcase.mp4",
+      "webm_path": "../public/melodia/videos/melodia-runtime-systems-showcase.webm",
+      "alt": "High-definition motion showcase compiling interactive HUD, radial orrery, glassmorphic menus, and starlight particles",
+      "status": "verified_runtime_motion_capture",
+      "evidence_note": "Continuous 1080p motion showcase presenting full UI and particle runtime integration with bespoke typography and verified 16:9 margins."
+    },
+    "video.overworld_motion": {
+      "path": "../public/melodia/videos/overworld-ui-motion-verified.mp4",
+      "webm_path": "../public/melodia/videos/overworld-ui-motion-verified.webm",
+      "alt": "Direct 55-frame gameplay capture demonstrating active HUD repainting and continuous locomotion camera tracking",
+      "status": "verified_runtime_motion_capture",
+      "evidence_note": "Verified zero-freeze gameplay motion capture proving real-time slate rendering and exploration view continuity."
+    },
+    "video.niagara_sparkle_loop": {
+      "path": "../public/melodia/videos/niagara-sparkle-flipbook-loop.mp4",
+      "webm_path": "../public/melodia/videos/niagara-sparkle-flipbook-loop.webm",
+      "alt": "Seamless 64-frame particle burst motion loop demonstrating radial sparkle expansion without billboard fallbacks",
+      "status": "verified_runtime_motion_capture",
+      "evidence_note": "Continuous looping particle burst proving non-square sprite boundaries and smooth alpha falloff."
+    },
+    "video.water_globule_loop": {
+      "path": "../public/melodia/videos/niagara-water-globule-loop.mp4",
+      "webm_path": "../public/melodia/videos/niagara-water-globule-loop.webm",
+      "alt": "Seamless fluid particle cluster burst loop capturing viscous droplet surface tension and dispersion",
+      "status": "verified_runtime_motion_capture",
+      "evidence_note": "Continuous fluid motion loop capturing dynamic droplet cluster expansion and natural hydrodynamic dissipation."
     }
   },
   "plates": [
