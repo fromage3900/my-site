@@ -376,6 +376,66 @@
       "alt": "Sparkle Meadow — 360-degree orbital turntable sweep",
       "status": "reviewed_turntable_study",
       "evidence_note": "Curated orbital turntable loop highlighting particle dispersion and grazing-angle floral bloom."
+    },
+    "systems.pearlwoven.blush": {
+      "path": "assets/melodia-mi-craft-2026-09-24/pearlwoven_blush_basecolor.webp",
+      "alt": "PearlWoven Blush BaseColor — fabric lookdev / SurrealFabric-adjacent",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Re-cut of #66 on main (2026-10-10). PearlWoven fabric lookdev BaseColor; not SurrealFabric flipbook atlas."
+    },
+    "systems.pearlwoven.dusk": {
+      "path": "assets/melodia-mi-craft-2026-09-24/pearlwoven_dusk_basecolor.webp",
+      "alt": "PearlWoven Dusk BaseColor — fabric lookdev / SurrealFabric-adjacent",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Re-cut of #66 on main (2026-10-10). PearlWoven fabric lookdev."
+    },
+    "systems.pearlwoven.moon": {
+      "path": "assets/melodia-mi-craft-2026-09-24/pearlwoven_moon_basecolor.webp",
+      "alt": "PearlWoven Moon BaseColor — fabric lookdev / SurrealFabric-adjacent",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Re-cut of #66 on main (2026-10-10). PearlWoven fabric lookdev."
+    },
+    "systems.pearlwoven.cosmic_nebula": {
+      "path": "assets/melodia-mi-craft-2026-09-24/pearlwoven_cosmic_nebula_basecolor.webp",
+      "alt": "PearlWoven Cosmic Nebula BaseColor — fabric lookdev",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Re-cut of #66 on main (2026-10-10). PearlWoven_Cosmic family."
+    },
+    "systems.pearlwoven.silk_blush": {
+      "path": "assets/melodia-mi-craft-2026-09-24/pearlwoven_silk_blush_basecolor.webp",
+      "alt": "PearlWoven Silk Blush BaseColor — fabric lookdev",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Re-cut of #66 on main (2026-10-10). PearlWoven_Silk family."
+    },
+    "systems.pearlwoven.flipbook_frame00": {
+      "path": "assets/melodia-mi-craft-2026-09-24/pearlflipbook_frame00_basecolor.webp",
+      "alt": "PearlFlipbook Frame00 BaseColor — PearlWoven flipbook frame only (no SurrealFabric atlas)",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Re-cut of #66 on main (2026-10-10). Frame00 only; SurrealFabric_Flipbooks dirs empty."
+    },
+    "systems.cymatics.harmonic_lattice": {
+      "path": "assets/melodia-mi-craft-2026-09-24/cymatic_harmonic_lattice_bc.webp",
+      "alt": "T_Cymatic_HarmonicLattice_BC — cymatics lookdev",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Re-cut of #66 on main (2026-10-10). Not curated Pearl 05_/09_ duplicates."
+    },
+    "systems.cymatics.chladni_resonant_modal": {
+      "path": "assets/melodia-mi-craft-2026-09-24/chladni_resonant_modal_bc.webp",
+      "alt": "T_Chladni_ResonantModal_BC — Chladni resonant modal lookdev",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Re-cut of #66 on main (2026-10-10). Cymatics / Chladni lookdev."
+    },
+    "stage.mi.outfit_texture_atlas": {
+      "path": "assets/melodia-mi-craft-2026-09-24/melusina_canonical_outfit_contact_sheet.webp",
+      "alt": "Melusina outfit packed texture atlas — texture maps tiled channel by channel (material inputs, not a rendered outfit)",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Re-cut of #66 on main (2026-10-10). Packed texture atlas (328x1200), captioned honestly as an atlas rather than an outfit contact sheet. Adjacent Stage craft; does not replace stage.beauty / hub.melusina / index.hero / recruiter.hero."
+    },
+    "stage.mi.dress_scale_shimmer": {
+      "path": "assets/melodia-mi-craft-2026-09-24/melusina_dress_shorewake_scale_shimmer.webp",
+      "alt": "T_DressShorewake_ScaleShimmer — Melusina dress material lookdev",
+      "status": "lookdev_pending_passport",
+      "evidence_note": "Re-cut of #66 on main (2026-10-10). Shorewake dress ScaleShimmer MI plate."
     }
   },
   "plates": [
