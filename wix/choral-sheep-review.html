@@ -62,10 +62,21 @@
     .questions{counter-reset:q;list-style:none;margin:0;padding:0;border-top:1px solid var(--gold)}
     .questions li{counter-increment:q;display:flex;align-items:baseline;gap:20px;padding:19px 0;border-bottom:1px solid var(--line);font-size:clamp(17px,2vw,23px);font-family:Georgia,serif;line-height:1.28}
     .questions li:before{content:"0" counter(q);font:600 10px Arial,sans-serif;letter-spacing:.1em;color:var(--gold)}
+    .sketchbook-intro{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:end;margin-bottom:26px}
+    .sketchbook-intro p{max-width:520px;color:var(--muted);font-size:13px;margin:0}
+    .sketchbook-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .sketchbook-grid figure{background:#fffcf9;border:1px solid var(--line);padding:16px;min-width:0}
+    .sketchbook-grid a{display:block;background:#fff;overflow:hidden}
+    .sketchbook-grid img{width:100%;height:clamp(220px,28vw,390px);object-fit:contain;background:#fff}
+    .sketchbook-grid figcaption{display:flex;gap:16px;justify-content:space-between;align-items:baseline;padding:15px 0 2px}
+    .sketchbook-grid figcaption strong{font:400 24px Georgia,serif}
+    .sketchbook-grid figcaption span{font:600 10px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .sketchbook-foot{display:flex;justify-content:space-between;gap:18px;align-items:center;margin:17px 0 0;color:var(--muted);font-size:12px}
+    .sketchbook-foot a{text-decoration:none;border-bottom:1px solid var(--gold);color:var(--wine)}
     .footer{border-top:1px solid var(--line);margin-top:70px;padding-top:22px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px;color:var(--muted)}
     .footer a{text-decoration:none;border-bottom:1px solid var(--gold)}
-    @media(max-width:790px){.intro,.afterword,.mentor{grid-template-columns:1fr}.intro{gap:28px;padding-top:65px}.side{justify-self:start}.gallery{gap:33px}.gallery-pair{gap:16px}nav{gap:13px}.plate figcaption{display:block}.plate figcaption p{padding-top:7px;text-align:left}.intro h1{font-size:clamp(64px,12vw,106px)}}
-    @media(max-width:590px){.top nav{display:none}.intro h1{font-size:clamp(63px,13vw,83px)}.gallery-pair{grid-template-columns:1fr;gap:33px}.intro{padding-top:50px}.lead-plate .image-shell{border-radius:42% 42% 4px 4px / 8% 8% 4px 4px}.plate h3{font-size:25px}.discipline{grid-template-columns:1fr;gap:5px}.evidence-head{display:block}.footer{margin-top:46px}}
+    @media(max-width:790px){.intro,.afterword,.mentor,.sketchbook-intro{grid-template-columns:1fr}.intro{gap:28px;padding-top:65px}.side{justify-self:start}.gallery{gap:33px}.gallery-pair{gap:16px}nav{gap:13px}.plate figcaption{display:block}.plate figcaption p{padding-top:7px;text-align:left}.intro h1{font-size:clamp(64px,12vw,106px)}}
+    @media(max-width:590px){.top nav{display:none}.intro h1{font-size:clamp(63px,13vw,83px)}.gallery-pair,.sketchbook-grid{grid-template-columns:1fr;gap:24px}.intro{padding-top:50px}.lead-plate .image-shell{border-radius:42% 42% 4px 4px / 8% 8% 4px 4px}.plate h3{font-size:25px}.discipline{grid-template-columns:1fr;gap:5px}.evidence-head{display:block}.footer{margin-top:46px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
     @media print{body{background:white}.wrap{max-width:none;padding:0 14px}.top nav,.keywords,.evidence video,.evidence details summary{display:none}.intro{padding:15px 0 12px}.intro h1{font-size:56px}.side{display:none}.gallery{gap:14px}.image-shell img{max-height:300px;object-fit:contain}.gallery-pair{grid-template-columns:1fr 1fr}.divider{margin:25px 0}.evidence{padding:10px}.mentor{grid-template-columns:1fr 1fr}.footer{margin-top:30px}}
   </style>
@@ -125,6 +136,18 @@
           <a href="../public/melodia/videos/melodia-runtime-systems-showcase.mp4">Open recorded proof video</a>
         </video>
       </details>
+    </section>
+    <div class="divider" role="presentation"></div>
+    <section id="sketchbook" aria-label="Sketchbook and visual roots">
+      <div class="sketchbook-intro">
+        <div><span class="micro">03 / Sketchbook &amp; visual roots</span><h2>Before<br>the shaders.</h2></div>
+        <p>Drawn character studies and handmade-looking graphic marks from the existing portfolio. Small reminders of the visual language behind the procedural worlds.</p>
+      </div>
+      <div class="sketchbook-grid">
+        <figure><a href="../generated/assets/character/melusina_design_sketch.png" target="_blank" rel="noopener" aria-label="Open Melusina design sketch full size"><img src="../generated/assets/character/melusina_design_sketch.png" alt="Monochrome Melusina character design sketch with pale blue washes, wide sleeves and a top hat" loading="lazy" decoding="async"></a><figcaption><strong>Melusina</strong><span>Character sketch</span></figcaption></figure>
+        <figure><a href="../generated/assets/character/fromage_art_cockatiel_mark.png" target="_blank" rel="noopener" aria-label="Open cockatiel sketch full size"><img src="../generated/assets/character/fromage_art_cockatiel_mark.png" alt="Expressive black ink drawing of a cockatiel inside a rough brushstroke border" loading="lazy" decoding="async"></a><figcaption><strong>Cockatiel</strong><span>Ink-style identity study</span></figcaption></figure>
+      </div>
+      <div class="sketchbook-foot"><span>Existing drawings · Source work from the portfolio</span><a href="curated-art.html">More selected art ↗</a></div>
     </section>
     <div class="divider" role="presentation"></div>
     <section id="conversation" class="mentor">
