@@ -1,0 +1,35 @@
+name: Resonant Wilds Cloud Intake
+
+on:
+  pull_request:
+    paths:
+      - 'resonant-wilds/**'
+      - '.github/workflows/resonant-wilds-cloud-intake.yml'
+  workflow_dispatch:
+
+jobs:
+  zero-dependency-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check WebGL browser module syntax
+        run: |
+          for file in resonant-wilds/js/*.js; do node --check "$file"; done
+          node --check resonant-wilds/sw.js
+          node --check resonant-wilds/vendor/examples/jsm/loaders/GLTFLoader.js
+          node --check resonant-wilds/vendor/examples/jsm/utils/BufferGeometryUtils.js
+      - name: Verify shaders, GLB metadata and offline dependencies
+        run: |
+          node resonant-wilds/tools/check_shader_lab.mjs
+          node resonant-wilds/tools/check_cloud_intake.mjs
+      - name: Smoke static asset delivery
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/resonant-wilds-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          sleep 2
+          curl --fail --silent --show-error -I http://127.0.0.1:8765/resonant-wilds/index.html
+          curl --fail --silent --show-error -I http://127.0.0.1:8765/resonant-wilds/assets/models/resonance-shrine.glb
+          curl --fail --silent --show-error -I http://127.0.0.1:8765/resonant-wilds/js/asset-loader.js
+          curl --fail --silent --show-error -I http://127.0.0.1:8765/resonant-wilds/sw.js
