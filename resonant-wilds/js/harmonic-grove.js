@@ -94,7 +94,19 @@ export async function loadHarmonicGrove() {
     if (prefab.parts.length) prefabs.set(name, prefab);
   }
   if (prefabs.size < 30) throw new Error('Harmonic Grove GLB incomplete: ' + prefabs.size + '/37 anchors');
-  return { prefabs, variants(type) {
+  return { prefabs, spawn(name) {
+    const def = prefabs.get(name);
+    if (!def) return null;
+    const group = new THREE.Group();
+    group.name = 'GLB_' + name;
+    for (const part of def.parts) {
+      const mesh = new THREE.Mesh(part.geo, part.mat);
+      mesh.matrix.copy(part.m);
+      mesh.matrixAutoUpdate = false;
+      group.add(mesh);
+    }
+    return group;
+  }, variants(type) {
     return (GROVE_TYPES[type] || []).filter(name => prefabs.has(name));
   }, decorative(biome) {
     return (GROVE_DECOR[biome] || GROVE_NAMES).filter(name => prefabs.has(name));
