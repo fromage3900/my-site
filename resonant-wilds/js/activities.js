@@ -6,8 +6,10 @@ import { BIOMES, HUB, WORLD_SEED, RIFT_POOL, BURDENS, ELITE_AFFIXES, RIFT_STYLE,
 import { Enemy } from './entities.js';
 import { mulberry32, pick, clamp } from './util.js';
 import { makeBeam } from './fx.js';
+import { environmentMaterial } from './cel.js';
+import { createDeterministicTimeline } from './heritage-timeline.js';
 
-const L = (hex, o = {}) => new THREE.MeshLambertMaterial({ color: hex, flatShading: true, ...o });
+const L = (hex, o = {}) => environmentMaterial(hex, { flatShading: true, ...o });
 
 export class Activities {
   constructor(game) {
@@ -18,6 +20,22 @@ export class Activities {
     this.eventAt = 110;
     this.event = null;
     this._acc = 0;
+    // Reuse the website's pure timeline sampler for the existing GLB shrine.
+    // No new WebGL renderer, render loop, shader pass or audio clock.
+    this.shrineReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.shrineTimeline = createDeterministicTimeline({
+      duration: 8,
+      channels: {
+        yaw: [
+          { start: 0, end: 4, from: -0.07, to: 0.07 },
+          { start: 4, end: 8, from: 0.07, to: -0.07 },
+        ],
+        rise: [
+          { start: 0, end: 4, from: -0.06, to: 0.06 },
+          { start: 4, end: 8, from: 0.06, to: -0.06 },
+        ],
+      },
+    });
     this.generate();
   }
 
@@ -122,6 +140,13 @@ export class Activities {
     } else return;
     p.mesh = grp;
     g.world.root.add(grp);
+    // Authored shrine is default; ?shrine=procedural retains the original fallback.
+    // The renderer, save data, spawn locations, and shrine interaction remain unchanged.
+    if (p.type === 'shrine' && new URLSearchParams(window.location.search).get('shrine') !== 'procedural') {
+      import('./asset-loader.js')
+        .then(({ attachShrineVisual }) => attachShrineVisual(grp, p))
+        .catch((err) => console.warn('Resonant Wilds: procedural shrine retained', err));
+    }
   }
 
   // Dress existing interactive POIs using optional authored GLBs.
@@ -179,6 +204,14 @@ export class Activities {
     const g = this.g, P = g.player;
     if (this.rift) return this.updateRift(dt);
     for (const p of this.pois) {
+      // Original website timeline, sampled inside the game's own Three.js frame.
+      // Optional GLB only; procedural shrines and all POI hitboxes stay unchanged.
+      if (p.type === 'shrine' && p.assetVisual && !this.shrineReducedMotion) {
+        const phase = this.shrineTimeline.wrap(g.time + Math.abs(p.x) * 0.03);
+        const pose = this.shrineTimeline.sample(phase).values;
+        p.assetVisual.rotation.y = pose.yaw;
+        p.assetVisual.position.y = pose.rise;
+      }
       if (p.spin) {
         p.spin.rotation.y += dt * 1.5;
         p.spin.position.y = (p.type === 'pylon' ? 3 : p.type === 'sheet' ? 1.4 : p.type === 'rift' ? 2.6 : 2) + Math.sin(g.time * 2 + p.x) * 0.15;

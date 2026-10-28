@@ -62,9 +62,10 @@ jobs:
                   assert any(n.get('name') == 'ASSET_' + name for n in document.get('nodes', [])), f'Pivot/root missing: {p}'
               count += len(names)
           assert count == 100, f'Expected 100 total prefab names, got {count}'
-          standalone = list(models.glob('*.glb'))
-          assert len(standalone) == 64, f'Expected 1 master + 63 standalone GLBs: {len(standalone)}'
-          print(f'PASS: {count} prefabs across 64 GLB files')
+          standalone = {p.name for p in models.glob('*.glb')}
+          assert len(standalone) == 65, f'Expected 1 master + 63 grove GLBs + shrine GLB: {len(standalone)}'
+          assert 'resonance-shrine.glb' in standalone, 'Optional Higgsfield shrine GLB absent'
+          print(f'PASS: {count} grove prefabs + 1 optional shrine across {len(standalone)} GLB files')
           PY
       - name: Check Three.js module syntax
         shell: bash
@@ -86,7 +87,7 @@ jobs:
           sw = Path('resonant-wilds/sw.js').read_text()
           assert 'type="importmap"' in html and './js/asset-gallery.js' in html
           assert 'loadHarmonicGrove' in js and 'GROVE_KIT03_NAMES' in js
-          assert 'resonant-wilds-v3-glb100' in sw
+          assert 'resonant-wilds-v9-100-npr-heritage' in sw
           print('PASS: standalone review gallery, import map and PWA version')
           PY
       - name: Smoke test actual game with streamed GLBs in Chromium
