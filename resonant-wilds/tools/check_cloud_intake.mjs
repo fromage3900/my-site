@@ -43,7 +43,7 @@ assert.ok(model.byteLength < 1024 * 1024, 'P0 GLB must fit 1 MiB');
 const manifest = JSON.parse(file('manifest.json'));
 for (const icon of manifest.icons) assert.ok(exists(icon.src), 'missing PWA icon ' + icon.src);
 const sw = file('sw.js');
-assert.match(sw, /resonant-wilds-v8/);
+assert.match(sw, /resonant-wilds-v9-100-npr-heritage/);
 assert.ok(!exists('js/painterly.js'), 'retired Kuwahara shader must be deleted');
 assert.doesNotMatch(file('js/game.js'), /painterly|PainterlyFilter|WebGLRenderTarget/);
 assert.doesNotMatch(tuner, /game\.painterly|PainterlyFilter|uAnisotropy|uEdgeProtect|key: 'strength'|key: 'radius'|key: 'anisotropy'|key: 'scale'/);
