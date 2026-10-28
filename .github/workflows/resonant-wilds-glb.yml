@@ -89,6 +89,34 @@ jobs:
           assert 'resonant-wilds-v3-glb100' in sw
           print('PASS: standalone review gallery, import map and PWA version')
           PY
+      - name: Smoke test actual game with streamed GLBs in Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome-stable || command -v google-chrome || command -v chromium || true)"
+          test -n "$CHROME" || { echo "Chrome missing"; exit 1; }
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/rw-smoke-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" >/dev/null 2>&1 || true' EXIT
+          sleep 2
+          timeout 95s "$CHROME" --headless=new --no-sandbox \
+            --disable-dev-shm-usage --disable-background-networking \
+            --disable-default-apps --disable-extensions --disable-sync \
+            --enable-unsafe-swiftshader --use-gl=angle --use-angle=swiftshader \
+            --virtual-time-budget=65000 --window-size=900,700 \
+            --dump-dom 'http://127.0.0.1:4173/resonant-wilds/tools/qa_glb_browser.html' \
+            > /tmp/rw-browser-dom.html 2> /tmp/rw-browser-chrome.log || {
+              tail -50 /tmp/rw-browser-chrome.log
+              tail -30 /tmp/rw-browser-dom.html
+              exit 1
+            }
+          if ! grep -q 'data-result="pass"' /tmp/rw-browser-dom.html; then
+            echo 'Browser startup/full-GLB load did not pass'
+            grep -E 'data-result=|Game loading:|GLBs|Timeout' /tmp/rw-browser-dom.html | tail -15 || true
+            tail -40 /tmp/rw-browser-chrome.log
+            exit 1
+          fi
+          echo "PASS: Chromium launched the real game and loaded all 100 prefabs"
       - name: Verify offline asset intake and import map
         shell: bash
         run: |
