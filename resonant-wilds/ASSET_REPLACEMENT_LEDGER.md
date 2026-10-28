@@ -1,57 +1,46 @@
-# Resonant Wilds | Cloud Asset Replacement Ledger
+# Resonant Wilds — Asset & Presentation Convergence Ledger
 
-**Authoritative gameplay:** `fromage3900/MelodiaMelusinaV2/Prototypes/Web/MelodiaResonantWilds/`.
+**Authoritative gameplay source:** `fromage3900/MelodiaMelusinaV2/Prototypes/Web/MelodiaResonantWilds/`.
 **Published web mirror:** `fromage3900/my-site/resonant-wilds/`.
-**Rule:** maintain gameplay saves, collision/POI rules, and rhythm clock; replace presentation only.
-**Branch status:** experiment, not yet merged or browser approved.
+**Current review:** PR #89, `feat/resonant-wilds-complete-convergence-20261028`, restoring #83, #84, #88 on the deployed 100-GLB main. The public site remains on the previous release until approval.
 
-## Procedural artwork inventory
+## Implemented and integrated
 
-| Source | Procedural asset | Preferred replacement | Status |
-| --- | --- | --- | --- |
-| `js/activities.js:buildMesh` | Music-Key Shrine (four stelae + knot) | `assets/models/resonance-shrine.glb` | **staged; opt-in `?shrine=glb`; fallback retained** |
-| `js/player.js` + `js/entities.js` | Melusina primitive character | recovered `js/chibi.js` (temporary) / later authored GLB | **staged; opt-in `?avatar=chibi`** |
-| `js/entities.js` | Choral Sheep | low-poly sheep GLB with existing runtime object as fallback | not created |
-| `js/entities.js` | Melody Slime + bosses | authored variant GLBs with existing collider/gameplay | not created |
-| `js/world.js:_buildPropLibrary` | `sakura` | stylized instanced tree | not created |
-| `js/world.js:_buildPropLibrary` | `flower` | flower/grass tufts, shared mesh | not created |
-| `js/world.js:_buildPropLibrary` | `rock` | bevelled stone variants | not created |
-| `js/world.js:_buildPropLibrary` | `lantern` | enamel-and-gold lantern | not created |
-| `js/world.js:_buildPropLibrary` | `bell` | animated musical bellflowers | not created |
-| `js/world.js:_buildPropLibrary` | `note` | luminous musical sculpture | not created |
-| `js/world.js:_buildPropLibrary` | `pillar` | cathedral column variants | not created |
-| `js/world.js:_buildPropLibrary` | `reed` | water reed clump | not created |
-| `js/world.js:_buildPropLibrary` | `lily` | water lily | not created |
-| `js/world.js:_buildPropLibrary` | `stalagmite` | cave formations | not created |
-| `js/world.js:_buildPropLibrary` | `mushroom` | glowing mushroom | not created |
-| `js/world.js:_buildPropLibrary` | `crystal` | coloured crystals | not created |
-| `js/world.js:_buildPropLibrary` | `spire` | landmark crystal spire | not created |
-| `js/world.js:_buildPropLibrary` | `pine` | aurora pine | not created |
-| `js/world.js:_buildPropLibrary` | `icespike` | icicle/ice spike | not created |
-| `js/activities.js:buildMesh` | pylon, chest, lost sheet, Rift gate, boss altar | individual GLBs, each with source fallback | not created |
-| `js/world.js:_buildHub/_buildLandmarks` | houses, obelisk, scenic setpieces | curated GLB kits, maintain occlusion behaviour | not created |
+| Feature | Current implementation | Validation / remaining QA |
+| --- | --- | --- |
+| 100 authored flora and environment prefabs | `harmonic-grove-37.glb` (37) + 63 individual GLBs (Kits 02/03) | Full binary/root/mesh checks; browser boot previously confirmed |
+| Trees, flowers, rock, bell, reeds, mushrooms, crystals, lily, spire, pine | `js/harmonic-grove.js` maps all 15 existing chunk-prop categories, with compatibility fallback | Instancing and category masks remain gameplay-owned |
+| Shorewake village scenic assets | Authored fountain, lyre gate and signs placed via `world._dressHubWithGrove` | Preserve scene landmark and POI coordinates |
+| Music-Key Shrine | Original four-column gameplay POI plus a separate Higgsfield Resonance Shrine GLB | New GLB is default on PR #89, `?shrine=procedural` restores legacy; touch/performance QA required |
+| Pylons and chests | Authored tuning plinth and lyre-lock dressing; existing animated crystal/lid remains authoritative | Idempotence regression and visual size QA |
+| Melusina | Code-built animated chibi in `js/chibi.js`, with visual pose adapter in `player.js` | Default on PR #89; `?avatar=original` restores procedural comparison; not an externally sourced GLB |
+| Hard RGB cel shading | `js/cel.js`: three color bands, configurable shadow cutoff/hardness/depth, selective ink | Default on PR #89; `?npr=v1` or `?render=legacy` for comparison; **no Kuwahara filter** |
+| Cymatics and caustics | Existing world uniforms, GLSL Chladni and caustic masks | `?chladni=0&caustics=0` for baseline |
+| Website design heritage | Four original SVGs plus a single-scene deterministic shrine timeline | No duplicate renderer or audio loop; respects reduced motion |
+| PWA | Network-first core JS/CSS/HTML, 100-GLB precache base, 63 optional models cached on demand, icons and heritage | Cache v9; offline install and real mobile QA pending |
 
-Terrain chunks and water are **shader/geometry systems**, not first-order GLB replacement candidates.
-The 15 `world.props` families use `InstancedMesh`. Future imported foliage should be baked into compatible shared geometry/material components and instanced per chunk, not loaded or duplicated per plant.
+## Not yet a finished gameplay replacement
 
-## Model intake P0
+- `PICK_*` pickups and `INT_*` switches/locks are **visual prefabs only** unless explicitly wired to a canonical interaction; model availability is not new game functionality.
+- Choral Sheep, Melody Slime, bosses and enemy hitboxes retain their existing runtime representations.
+- Procedural world terrain, combat, save data, beats and Rift behavior remain authoritative.
+- Some large bridges, gates, landmarks and 100-kit props are available in `kit.spawn(name)` and the standalone asset gallery, but **are not automatically placed in the world**.
+- The 100-GLB pack's high-level art assets do not replace the ongoing UE capstone work.
 
-- Source: Higgsfield 3D Jutsu, `Resonant Wilds — Resonance Shrine GLB P0`, revision 1.
-- Game GLB: 15 meshes, 5 materials, approx. 2,396 triangles, 165,224 bytes.
-- Y-up via glTF export, ground contact at y=0, bounding box 1.34 x 1.34 x 2.26 metres.
-- Model exported with authoring camera/lights stripped (scene root only).
-- Official `three.js r170` `GLTFLoader.js` and `BufferGeometryUtils.js` vendored under `vendor/examples/jsm/`; reuse existing Three.js MIT licence.
-- `js/asset-loader.js` preserves authored colours/maps/emissive and applies shared cel material.
-- No runtime lighting, audio, collision or save change. Loading is opt-in, cached by one promise, cloned into POIs; procedural visuals are retained on failure.
-- Visual comparison: `?shrine=glb`, `?avatar=chibi`, and both simultaneously; leave URL clean for the original.
-- The chibi is code-built, not a GLB. It comes from the earlier isolated `claude/open-world-three-js-game-icm254` branch; the original procedural Melusina remains default.
+## Source provenance
 
-## Required before merge
+Higgsfield 3D Jutsu:
+- Original Grove Kit 01: https://higgsfield.ai/3d-jutsu/3456ae12-564a-4a28-9b31-a209f6c3075f
+- Grove Kit 02: https://higgsfield.ai/3d-jutsu/68b5c901-a530-4e1a-9a5d-e650e1af9b54
+- Grove Kit 03: https://higgsfield.ai/3d-jutsu/fb5bc68e-3e7f-42c4-b54e-d5e98aeb4d45
+- Resonance Shrine P0: https://higgsfield.ai/3d-jutsu/001768a3-4235-49d3-af86-8cb33dfe16e1
 
-1. Run `node --check` for changed files and `node tools/check_cloud_intake.mjs`.
-2. Desktop WebGL compilation with shader flags; verify every POI group keeps its fallback.
-3. Test `?shrine=glb&avatar=chibi` with movement, attack, dodge, wardrobe, rift travel and shrine dialogue.
-4. Check Safari touch and 40+ fps target relative to original, especially chibi draw calls.
-5. Check offline PWA: install, first visit, update from cache v1, and page reload with query parameters; icons and dynamic imports resolve.
-6. Confirm the published site's GH Pages deploy and service-worker update **only after merge**. Never assume CI replaces browser QA.
-7. Review the old Daily Rift, leaderboard and UE music-export branch separately; backend server is not suitable for static GH Pages without a maintained host.
+Four SVGs and the deterministic timeline are sourced from the project's owned website code; full provenance in `HERITAGE_INTAKE.md`.
+
+## Release gate
+
+1. GLB 100 + separate shrine verifier: green.
+2. No-dependency source/GLB/PWA checks: green.
+3. Headless WebGL gameplay, chibi, NPR modes, GLB shrine, mobile viewport and tuner: verify green on current commit.
+4. Desktop and iPhone art review: scale, shadow density, draw calls, touch and thermal/memory pressure.
+5. Merge only after tests and explicit production approval; static GH Pages has no multiplayer leaderboard backend.
