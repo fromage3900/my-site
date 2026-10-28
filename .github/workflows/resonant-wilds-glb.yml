@@ -34,6 +34,38 @@ jobs:
           assert data.get('meshes'), 'Missing kit meshes'
           print(f'PASS GLB: {len(raw)} bytes, {len(anchors)} asset anchors, {len(data["meshes"])} meshes, {len(data.get("materials",[]))} materials')
           PY
+      - name: Validate all 100 Harmonic Grove prefabs and standalone GLBs
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, re, struct
+          from pathlib import Path
+          models = Path('resonant-wilds/assets/models')
+          source = Path('resonant-wilds/js/harmonic-grove.js').read_text()
+          count = 37
+          for kit, expected in [(2, 32), (3, 31)]:
+              pattern = r'export const GROVE_KIT0' + str(kit) + r'_NAMES = Object.freeze\\(\\[([\\s\\S]*?)\\]\\);'
+              match = re.search(pattern, source)
+              assert match, f'Missing Kit {kit} manifest'
+              names = re.findall(r'"([A-Z]+_[^"]+)"', match.group(1))
+              assert len(names) == expected and len(set(names)) == expected, f'Kit {kit}: {len(names)} names'
+              for name in names:
+                  p = models / (name.lower() + '.glb')
+                  raw = p.read_bytes()
+                  assert raw[:4] == b'glTF', f'Bad GLB signature: {p}'
+                  version, declared_size = struct.unpack_from('<II', raw, 4)
+                  assert version == 2 and declared_size == len(raw), f'Corrupt GLB header: {p}'
+                  json_len, chunk_type = struct.unpack_from('<II', raw, 12)
+                  assert chunk_type == 0x4e4f534a, f'Missing JSON chunk: {p}'
+                  document = json.loads(raw[20:20 + json_len])
+                  assert document.get('meshes'), f'Empty GLB: {p}'
+                  assert any(n.get('name') == 'ASSET_' + name for n in document.get('nodes', [])), f'Pivot/root missing: {p}'
+              count += len(names)
+          assert count == 100, f'Expected 100 total prefab names, got {count}'
+          standalone = list(models.glob('*.glb'))
+          assert len(standalone) == 64, f'Expected 1 master + 63 standalone GLBs: {len(standalone)}'
+          print(f'PASS: {count} prefabs across 64 GLB files')
+          PY
       - name: Check Three.js module syntax
         shell: bash
         run: |
