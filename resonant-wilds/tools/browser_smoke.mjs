@@ -11,14 +11,13 @@ const browser = await chromium.launch({
     '--use-angle=swiftshader', '--enable-unsafe-swiftshader'],
 });
 const variants = [
-  { name: 'desktop-default', query: '', chibi: false, shrine: false, mobile: false },
-  { name: 'desktop-chibi-shrine', query: '?avatar=chibi&shrine=glb', chibi: true, shrine: true, mobile: false },
-  { name: 'mobile-baseline', query: '?chladni=0&caustics=0', chibi: false, shrine: false, mobile: true },
-  { name: 'desktop-legacy-render', query: '?render=legacy', chibi: false, shrine: false, mobile: false, legacy: true },
-  { name: 'desktop-npr-v2', query: '?npr=v2&avatar=chibi&shrine=glb', chibi: true, shrine: true, mobile: false, npr: true },
-  // Old shared URLs must remain playable; the retired filter flag is ignored.
-  { name: 'retired-kuwahara-flag', query: '?npr=v2&kuwahara=1&avatar=chibi&shrine=glb', chibi: true, shrine: true, mobile: false, npr: true, retired: true },
-  { name: 'mobile-npr-v2', query: '?npr=v2', chibi: false, shrine: false, mobile: true, npr: true },
+  { name: 'desktop-default', query: '', chibi: true, shrine: true, mobile: false, npr: true },
+  { name: 'desktop-explicit-new-look', query: '?avatar=chibi&shrine=glb&npr=v2', chibi: true, shrine: true, mobile: false, npr: true },
+  { name: 'mobile-baseline', query: '?chladni=0&caustics=0', chibi: true, shrine: true, mobile: true, npr: true },
+  { name: 'desktop-legacy-render', query: '?render=legacy&avatar=original&shrine=procedural', chibi: false, shrine: false, mobile: false, legacy: true },
+  { name: 'desktop-v1-fallback', query: '?npr=v1&avatar=original&shrine=procedural', chibi: false, shrine: false, mobile: false },
+  { name: 'retired-kuwahara-flag', query: '?kuwahara=1', chibi: true, shrine: true, mobile: false, npr: true, retired: true },
+  { name: 'mobile-npr-v2', query: '?npr=v2', chibi: true, shrine: true, mobile: true, npr: true },
   { name: 'desktop-live-tuner', query: '?npr=v2&avatar=chibi&shrine=glb&tune=1&look=soft', chibi: true, shrine: true, mobile: false, npr: true, tune: true },
 ];
 try {

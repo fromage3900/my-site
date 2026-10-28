@@ -1,4 +1,4 @@
-# Resonant Wilds — cel-shading NPR V2
+> **Convergence release:** Hard RGB cel shading is now the default; `?npr=v1` and `?render=legacy` restore the comparison looks. Chibi and authored shrine are default visuals; `?avatar=original&shrine=procedural` provides fallback QA.\n\n# Resonant Wilds — cel-shading NPR V2
 
 ## Rendering decision (2026-10-28)
 

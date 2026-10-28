@@ -14,9 +14,9 @@ const _c = new THREE.Color();
 export class Player {
   constructor(game) {
     this.g = game;
-    // Opt-in visual-only comparison; do not migrate saves or alter combat values.
-    this.m = new URLSearchParams(window.location.search).get('avatar') === 'chibi'
-      ? buildChibi() : buildMelusina();
+    // Default to the authored chibi; use ?avatar=original to compare legacy visuals.
+    this.m = new URLSearchParams(window.location.search).get('avatar') === 'original'
+      ? buildMelusina() : buildChibi();
     game.scene.add(this.m.group, this.m.shadow);
     this.pos = new THREE.Vector3(0, 2.2, 8);
     this.vel = new THREE.Vector3();

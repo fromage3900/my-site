@@ -1,10 +1,10 @@
 // Melodia Resonant Wilds — material-directed NPR V2, Three.js r170.
-// Original v1 stays default; V2 opt-in with ?npr=v2. No fork of three.js.
+// V2 is the default hard-RGB-band look. Use ?npr=v1 or ?render=legacy to compare older shading.
 import * as THREE from 'three';
 
 const flags = new URLSearchParams(window.location.search);
 export const legacyRender = flags.get('render') === 'legacy';
-export const nprV2 = !legacyRender && flags.get('npr') === 'v2';
+export const nprV2 = !legacyRender && flags.get('npr') !== 'v1';
 
 let gradient;
 const ramps = new Map();

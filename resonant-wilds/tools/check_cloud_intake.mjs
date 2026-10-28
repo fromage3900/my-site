@@ -11,9 +11,9 @@ const js = ['js/player.js', 'js/chibi.js', 'js/activities.js',
   'vendor/examples/jsm/loaders/GLTFLoader.js',
   'vendor/examples/jsm/utils/BufferGeometryUtils.js'];
 for (const p of js) assert.ok(exists(p), 'missing: ' + p);
-assert.match(file('js/player.js'), /get\('avatar'\) === 'chibi'/);
+assert.match(file('js/player.js'), /get\('avatar'\) === 'original'/);
 assert.match(file('js/player.js'), /if \(m\.pose\)/);
-assert.match(file('js/activities.js'), /get\('shrine'\) === 'glb'/);
+assert.match(file('js/activities.js'), /get\('shrine'\) !== 'procedural'/);
 assert.match(file('js/asset-loader.js'), /GLTFLoader/);
 assert.match(file('js/asset-loader.js'), /procedural/);
 const ornaments = ['chromatic-orbit', 'note-medallion', 'filigree-frame', 'resonance-core'];

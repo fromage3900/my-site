@@ -140,9 +140,9 @@ export class Activities {
     } else return;
     p.mesh = grp;
     g.world.root.add(grp);
-    // Asset replacement is opt-in; the procedural shrine remains a complete fallback.
+    // Authored shrine is default; ?shrine=procedural retains the original fallback.
     // The renderer, save data, spawn locations, and shrine interaction remain unchanged.
-    if (p.type === 'shrine' && new URLSearchParams(window.location.search).get('shrine') === 'glb') {
+    if (p.type === 'shrine' && new URLSearchParams(window.location.search).get('shrine') !== 'procedural') {
       import('./asset-loader.js')
         .then(({ attachShrineVisual }) => attachShrineVisual(grp, p))
         .catch((err) => console.warn('Resonant Wilds: procedural shrine retained', err));
