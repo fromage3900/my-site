@@ -44,7 +44,7 @@ assert.ok(model.byteLength < 1024 * 1024, 'P0 GLB must fit 1 MiB');
 const manifest = JSON.parse(file('manifest.json'));
 for (const icon of manifest.icons) assert.ok(exists(icon.src), 'missing PWA icon ' + icon.src);
 const sw = file('sw.js');
-assert.match(sw, /resonant-wilds-v5/);
+assert.match(sw, /resonant-wilds-v6/);
 for (const path of sw.matchAll(/'\.\/([^']+)'/g)) {
   const p = path[1];
   if (p) assert.ok(exists(p), 'missing offline dependency ' + p);
