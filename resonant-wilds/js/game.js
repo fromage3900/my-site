@@ -108,8 +108,11 @@ export class Game {
           if (!count) return;
           this.world.installHarmonicGrove(kit);
           this.activities.installHarmonicGrove(kit);
-          if (this.started && !this.world.inRift) {
-            this.world.update(this.player.pos.x, this.player.pos.z, 8);
+          // Refresh the full visible chunk ring even when optional models
+          // finish before the title screen is dismissed. Otherwise a fast
+          // cache hit could leave the start view with no terrain until frame().
+          if (!this.world.inRift) {
+            this.world.warm(this.player.pos.x, this.player.pos.z);
           }
           console.info('[Resonant Wilds] Kits 02–03 GLBs loaded:', count, 'extras');
         }).catch((err) => console.warn('[Resonant Wilds] Optional grove expansion failed:', err));
