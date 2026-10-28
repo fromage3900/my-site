@@ -66,7 +66,8 @@ assert.equal(boss.spin.key, 'orb');
 const hub = {
   hubGroup: makeGroup(0),
   fontStaticBase: makeObject(), fontStaticWater: makeObject(),
-  height() { return 2.2; },
+  // Simulate arrival during a Rift, where World.height() returns 0.
+  height() { return 0; },
 };
 dressHub.call(hub, base);
 assert.equal(hub.hubGroup.children.length, 0, 'No extra models until downloaded');
@@ -76,6 +77,7 @@ assert.equal(hub.hubGroup.children.length, 5, 'Exactly five curated hub props');
 assert.equal(hub.fontStaticBase.visible, false);
 assert.equal(hub.fontStaticWater.visible, false);
 assert.equal(hub._hubGroveProps.get('ARC_lyre_gate').position.z, -39);
+assert.equal(hub._hubGroveProps.get('ARC_lyre_gate').position.y, 2.23, 'Hub props stay on shorewake ground during Rift');
 dressHub.call(hub, full);
 assert.equal(hub.hubGroup.children.length, 5, 'Hub placement is idempotent');
 
