@@ -74,6 +74,10 @@ jobs:
           for f in resonant-wilds/js/harmonic-grove.js resonant-wilds/js/world.js resonant-wilds/js/game.js resonant-wilds/js/activities.js resonant-wilds/js/asset-gallery.js resonant-wilds/sw.js resonant-wilds/vendor/loaders/GLTFLoader.js resonant-wilds/vendor/utils/BufferGeometryUtils.js; do
             node --input-type=module --check < "$f"
           done
+      - name: Test independent SFX/music volume and ambient routing
+        run: |
+          node --check resonant-wilds/js/audio.js
+          node resonant-wilds/tools/test_audio_routing.mjs
       - name: Check optional prefab landmarks preserve gameplay state
         shell: bash
         run: node resonant-wilds/tools/test_grove_landmark_dressing.mjs
@@ -87,7 +91,7 @@ jobs:
           sw = Path('resonant-wilds/sw.js').read_text()
           assert 'type="importmap"' in html and './js/asset-gallery.js' in html
           assert 'loadHarmonicGrove' in js and 'GROVE_KIT03_NAMES' in js
-          assert 'resonant-wilds-v9-100-npr-heritage' in sw
+          assert 'resonant-wilds-v10-ethereal-sfx-20261028' in sw
           print('PASS: standalone review gallery, import map and PWA version')
           PY
       - name: Smoke test actual game with streamed GLBs in Chromium

@@ -190,7 +190,16 @@ export class Game {
     const d = this.world.dominantBiome(this.player.pos.x, this.player.pos.z);
     if (d.r < HUB.radius + 20) return { ...HUB, motif: [0, 4, 7, 9, 7, 4] };
     const b = d.biome;
-    return { id: b.id, bpm: b.bpm, meter: b.meter, key: b.key, mode: b.mode, prog: b.prog, style: b.style, motif: b.motif };
+    // The five live website regions use the canonical ethereal score's matching
+    // ambience beds until the eight-region world expansion is explicitly synced.
+    const ambience = {
+      sakura_terrace: 'petal',
+      liquid_cathedral: 'nave',
+      fugue_grotto: 'grotto',
+      cadence_crystal_ridge: 'crystal',
+      aurora_glacier: 'glacier',
+    }[b.id] || b.ambience || 'hub';
+    return { id: b.id, bpm: b.bpm, meter: b.meter, key: b.key, mode: b.mode, prog: b.prog, style: b.style, motif: b.motif, ambience };
   }
 
   musicIntensity() {
