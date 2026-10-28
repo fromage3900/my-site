@@ -4,6 +4,7 @@
 import * as THREE from 'three';
 import { AudioEngine } from './audio.js';
 import { World, WATER } from './world.js';
+import { loadHarmonicGrove } from './harmonic-grove.js';
 import { Particles, Decals, Overlay, makeBeam } from './fx.js';
 import { Player, Sheep } from './player.js';
 import { Enemy } from './entities.js';
@@ -91,6 +92,18 @@ export class Game {
 
   // ------------------------------------------------------------ boot
   async warm(progress) {
+    progress('Unpacking Harmonic Grove GLB scenery…');
+    try {
+      const kit = await Promise.race([
+        loadHarmonicGrove(),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('GLB loading timed out')), 9000))
+      ]);
+      this.world.installHarmonicGrove(kit);
+      this.activities.installHarmonicGrove(kit);
+      console.info('[Resonant Wilds] Authored GLB kit:', kit.prefabs.size, 'variants loaded');
+    } catch (err) {
+      console.warn('[Resonant Wilds] GLB pack unavailable; retaining geometry recovery visuals:', err);
+    }
     progress('Raising the five biomes…');
     await new Promise((r) => setTimeout(r, 20));
     this.world.warm(this.player.pos.x, this.player.pos.z);

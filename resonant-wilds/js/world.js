@@ -42,6 +42,7 @@ export class World {
     this.chunks = new Map();
     this.queue = [];
     this.chimes = [];
+    this.groveKit = null;
 
     this.uniforms = {
       uTime: { value: 0 },
@@ -59,6 +60,16 @@ export class World {
     this._buildHub();
     this._buildLandmarks();
     this._buildRift();
+  }
+
+  // Load the real GLB scenery once, before warm() streams chunks.
+  // The old primitives remain purely as a recovery path for absent/missing models.
+  installHarmonicGrove(kit) {
+    this.groveKit = kit;
+    for (const chunk of this.chunks.values()) this._disposeChunk(chunk);
+    this.chunks.clear();
+    this.queue.length = 0;
+    this.chimes.length = 0;
   }
 
   // ------------------------------------------------------------------ sampling
@@ -332,25 +343,62 @@ export class World {
           let blocked = false;
           for (const p of pois) if ((p.x - x) ** 2 + (p.z - z) ** 2 < 49) { blocked = true; break; }
           if (blocked) continue;
+          const kitNames = this.groveKit ? this.groveKit.variants(type) : [];
+          const picked = kitNames.length ? kitNames[Math.floor(rng() * kitNames.length)] : null;
+          const visual = picked ? this.groveKit.prefabs.get(picked) : def;
+          const bucketKey = picked ? 'kit:' + picked : type;
           const s = type === 'flower' ? 0.7 + rng() * 0.8 : 0.75 + rng() * 0.6;
+          // Authored meshes are metre-scale, while several old primitives were giant.
+          const scaleMultiplier = picked ? ({
+            pillar: 3.6, spire: 7.0, icespike: 3.3,
+            stalagmite: 2.5, crystal: 2.1, note: 2.2, lantern: 1.25
+          }[type] || 1) : 1;
           const y = def.water === 'on' ? WATER : h - 0.05;
           tmpE.set(type === 'rock' ? rng() * 0.5 : 0, rng() * Math.PI * 2, type === 'rock' ? rng() * 0.4 : 0);
           tmpQ.setFromEuler(tmpE);
           tmpP.set(x, y, z);
-          tmpS.set(s, s * (type === 'crystal' ? 0.7 + rng() * 0.9 : 1), s);
+          tmpS.set(s * scaleMultiplier,
+            s * scaleMultiplier * (type === 'crystal' ? 0.7 + rng() * 0.9 : 1),
+            s * scaleMultiplier);
           tmpM.compose(tmpP, tmpQ, tmpS);
           let colorHex = null;
-          if (def.palette) colorHex = def.palette[Math.floor(rng() * def.palette.length)];
-          if (def.rockTint) colorHex = '#' + b.pal.rock.clone().multiplyScalar(0.9 + rng() * 0.25).getHexString();
-          if (!buckets.has(type)) buckets.set(type, []);
-          buckets.get(type).push({ m: tmpM.clone(), c: colorHex });
+          if (!picked && def.palette) colorHex = def.palette[Math.floor(rng() * def.palette.length)];
+          if (!picked && def.rockTint) colorHex = '#' + b.pal.rock.clone().multiplyScalar(0.9 + rng() * 0.25).getHexString();
+          if (!buckets.has(bucketKey)) buckets.set(bucketKey, []);
+          buckets.get(bucketKey).push({ m: tmpM.clone(), c: colorHex, def: visual });
           if (def.chime) chimes.push({ x, z, y: y + 1.25, i: Math.floor(rng() * 8), last: 0 });
         }
       }
     }
+    // Additional authored foliage, fungi, stepping stones, ruins and chimes.
+    // Three eligible placements per streamed chunk; anchored to terrain and
+    // excluded from interactions / combat / collision logic.
+    if (this.groveKit) {
+      const catalog = this.groveKit.decorative(center.biome.id);
+      for (let i = 0; i < 3 && catalog.length; i++) {
+        const name = catalog[(Math.abs(cx * 17 + cz * 37) + i * 5) % catalog.length];
+        const def = this.groveKit.prefabs.get(name);
+        if (!def) continue;
+        const x = x0 + rng() * CHUNK;
+        const z = z0 + rng() * CHUNK;
+        const h = this.sample(x, z);
+        if (this.hub > 0.01 || this.r > WORLD_RADIUS - 40 || h < 0.35) continue;
+        const nx = this.sample(x + 1, z), nz = this.sample(x, z + 1);
+        if (Math.abs(nx - h) > 0.6 || Math.abs(nz - h) > 0.6) continue;
+        if (pois.some(p => (p.x - x) ** 2 + (p.z - z) ** 2 < 49)) continue;
+        const isArchitecture = name.startsWith('ARC_');
+        const scale = isArchitecture ? 1.25 : (0.8 + 0.7 * rng());
+        tmpE.set(0, rng() * Math.PI * 2, 0);
+        tmpQ.setFromEuler(tmpE);
+        tmpM.compose(new THREE.Vector3(x, h - 0.03, z), tmpQ, new THREE.Vector3(scale, scale, scale));
+        const key = 'kit:' + name;
+        if (!buckets.has(key)) buckets.set(key, []);
+        buckets.get(key).push({ m: tmpM.clone(), c: null, def });
+      }
+    }
     const pm = new THREE.Matrix4(), cc = new THREE.Color();
     for (const [type, list] of buckets) {
-      const def = this.props[type];
+      const def = list[0].def || this.props[type];
       def.parts.forEach((part, pi) => {
         const im = new THREE.InstancedMesh(part.geo, part.mat, list.length);
         list.forEach((it, k) => {

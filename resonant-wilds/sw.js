@@ -1,5 +1,5 @@
 // Minimal service worker for Resonant Wilds PWA
-const CACHE = 'resonant-wilds-v1';
+const CACHE = 'resonant-wilds-v2-glb37';
 const ASSETS = [
   './',
   './index.html',
@@ -10,6 +10,10 @@ const ASSETS = [
   './js/audio.js',
   './js/rhythm.js',
   './js/world.js',
+  './js/harmonic-grove.js',
+  './assets/models/harmonic-grove-37.glb',
+  './vendor/loaders/GLTFLoader.js',
+  './vendor/utils/BufferGeometryUtils.js',
   './js/entities.js',
   './js/combat.js',
   './js/loot.js',

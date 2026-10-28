@@ -124,6 +124,38 @@ export class Activities {
     g.world.root.add(grp);
   }
 
+  // Replace static landmark primitives with authored GLB scenery.
+  // Keep animated cores (pylon crystals, shrine clefs, boss orbs) and hitboxes.
+  installHarmonicGrove(kit) {
+    for (const p of this.pois) {
+      if (!p.mesh) continue;
+      if (p.type === 'shrine') {
+        for (let i = 0; i < 4; i++) {
+          const primitive = p.mesh.children[i];
+          if (primitive) primitive.visible = false;
+          const col = kit.spawn(i % 2 ? 'ARC_pearl_column' : 'ARC_column_pillar_small');
+          if (!col) continue;
+          const a = i * Math.PI / 2;
+          col.position.set(Math.cos(a) * 2.6, 0, Math.sin(a) * 2.6);
+          col.rotation.y = -a;
+          col.scale.setScalar(1.15);
+          p.mesh.add(col);
+        }
+      } else if (p.type === 'pylon') {
+        // Existing animated crystal is a gameplay state display; dress its base.
+        const plinth = kit.spawn('ARC_round_resonance_step');
+        if (plinth) { plinth.scale.setScalar(2.1); p.mesh.add(plinth); }
+      } else if (p.type === 'boss') {
+        const altar = kit.spawn('ARC_round_resonance_step');
+        if (altar) {
+          if (p.mesh.children[0]) p.mesh.children[0].visible = false;
+          altar.scale.setScalar(2.6);
+          p.mesh.add(altar);
+        }
+      }
+    }
+  }
+
   // ------------------------------------------------------------ per frame
   update(dt) {
     const g = this.g, P = g.player;

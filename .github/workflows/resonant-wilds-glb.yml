@@ -1,0 +1,57 @@
+name: Resonant Wilds GLB integration gates
+on:
+  push:
+    branches: [main, rw-harmonic-grove-glb]
+    paths:
+      - 'resonant-wilds/**'
+      - '.github/workflows/resonant-wilds-glb.yml'
+  pull_request:
+    paths:
+      - 'resonant-wilds/**'
+permissions:
+  contents: read
+jobs:
+  check-glb-and-boot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check authored GLB binary and all 37 root anchors
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, struct
+          from pathlib import Path
+          p = Path('resonant-wilds/assets/models/harmonic-grove-37.glb')
+          raw = p.read_bytes()
+          assert raw[:4] == b'glTF', 'Not a GLB file'
+          version, total = struct.unpack_from('<II', raw, 4)
+          assert version == 2 and total == len(raw)
+          length, chunk_type = struct.unpack_from('<II', raw, 12)
+          assert chunk_type == 0x4E4F534A, 'Missing GLB JSON chunk'
+          data = json.loads(raw[20:20+length])
+          anchors = [n.get('name', '') for n in data.get('nodes',[]) if n.get('name','').startswith('ASSET_')]
+          assert len(set(anchors)) == 37, f'Expected 37 unique roots, got {len(set(anchors))}: {anchors}'
+          assert data.get('meshes'), 'Missing kit meshes'
+          print(f'PASS GLB: {len(raw)} bytes, {len(anchors)} asset anchors, {len(data["meshes"])} meshes, {len(data.get("materials",[]))} materials')
+          PY
+      - name: Check Three.js module syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          for f in resonant-wilds/js/harmonic-grove.js resonant-wilds/js/world.js resonant-wilds/js/game.js resonant-wilds/js/activities.js resonant-wilds/vendor/loaders/GLTFLoader.js resonant-wilds/vendor/utils/BufferGeometryUtils.js; do
+            node --input-type=module --check < "$f"
+          done
+      - name: Verify offline asset intake and import map
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          sw=Path('resonant-wilds/sw.js').read_text()
+          html=Path('resonant-wilds/index.html').read_text()
+          kit=Path('resonant-wilds/js/harmonic-grove.js').read_text()
+          assert 'harmonic-grove-37.glb' in sw and 'GLTFLoader.js' in sw
+          assert 'three.module.min.js' in html
+          assert "from '../vendor/loaders/GLTFLoader.js'" in kit
+          assert "import { loadHarmonicGrove } from './harmonic-grove.js'" in Path('resonant-wilds/js/game.js').read_text()
+          print('PASS static wiring')
+          PY
