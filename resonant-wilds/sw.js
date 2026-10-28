@@ -1,5 +1,6 @@
-// Minimal service worker for Resonant Wilds PWA
-const CACHE = 'resonant-wilds-v3-glb100';
+// Resonant Wilds PWA cache v9. Keep the 100-prefab grove plus NPR, chibi and heritage fresh.
+// The browser game remains playable online even if optional preview assets fail.
+const CACHE = 'resonant-wilds-v9-100-npr-heritage';
 const ASSETS = [
   './',
   './index.html',
@@ -25,36 +26,63 @@ const ASSETS = [
   './js/fx.js',
   './js/util.js',
   './js/generated/ue_data.js',
-  './vendor/three.module.min.js'
+  './vendor/three.module.min.js',
+  './icon-192.png',
+  './icon-512.png',
+  './js/cel.js',
+  './js/npr-tuner.js',
+  './js/chibi.js',
+  './js/heritage-timeline.js',
+  './js/asset-loader.js',
+  './vendor/examples/jsm/loaders/GLTFLoader.js',
+  './vendor/examples/jsm/utils/BufferGeometryUtils.js',
+  './assets/models/resonance-shrine.glb',
+  './assets/heritage/chromatic-orbit.svg',
+  './assets/heritage/note-medallion.svg',
+  './assets/heritage/filigree-frame.svg',
+  './assets/heritage/resonance-core.svg',
 ];
 
-self.addEventListener('install', (e) => {
-  e.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting())
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE)
+      .then((cache) => cache.addAll(ASSETS))
+      .then(() => self.skipWaiting())
   );
 });
 
-self.addEventListener('activate', (e) => {
-  e.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
-    ).then(() => self.clients.claim())
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys()
+      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))))
+      .then(() => self.clients.claim())
   );
 });
 
-self.addEventListener('fetch', (e) => {
-  if (e.request.method !== 'GET') return;
-  e.respondWith(caches.match(e.request).then(async (hit) => {
-    if (hit) return hit;
-    const response = await fetch(e.request);
-    // The 63 optional GLBs are cached on demand, rather than making SW
-    // installation depend on all of them succeeding over mobile networks.
-    const url = new URL(e.request.url);
-    if (response.ok && url.origin === self.location.origin &&
-        url.pathname.includes('/assets/models/') && url.pathname.endsWith('.glb')) {
-      const copy = response.clone();
-      e.waitUntil(caches.open(CACHE).then((cache) => cache.put(e.request, copy)).catch(() => {}));
+self.addEventListener('fetch', (event) => {
+  const req = event.request;
+  if (req.method !== 'GET') return;
+  const url = new URL(req.url);
+  const scope = new URL('./', self.registration.scope);
+  if (url.origin !== scope.origin || !url.pathname.startsWith(scope.pathname)) return;
+  const freshFirst = req.mode === 'navigate' || /\.(?:js|css|json|html)$/i.test(url.pathname);
+  event.respondWith(caches.open(CACHE).then(async (cache) => {
+    if (freshFirst) {
+      try {
+        const res = await fetch(req);
+        if (res.ok) await cache.put(req, res.clone());
+        return res;
+      } catch (err) {
+        // The cached index is still a valid fallback when navigating offline with flags.
+        return (await cache.match(req)) ||
+          (req.mode === 'navigate' ? await cache.match('./index.html') : null) ||
+          Response.error();
+      }
     }
-    return response;
+    const hit = await cache.match(req);
+    if (hit) return hit;
+    const res = await fetch(req);
+    if (res.ok) await cache.put(req, res.clone());
+    return res;
   }));
 });
