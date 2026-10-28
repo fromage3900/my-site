@@ -18,6 +18,14 @@ This folder contains a **100-prefab** environment and gameplay-visual library ma
 
 Large gates, bridges, pickups, switches, and wayfinding structures **must not be randomly scattered**: place them deliberately and keep gameplay ownership in `activities.js`, `loot.js`, and the canonical game state.
 
+## Asset gallery
+
+Open `resonant-wilds/asset-gallery.html` through a local HTTP server to inspect the entire collection in Three.js. Filter by family or name, drag to rotate, zoom, and compare the rendered silhouettes and material palette. The gallery loads Kit 01 first, then requests the remaining 63 GLBs asynchronously.
+
+Shorewake Village has a curated fountain, lyre gateway, and musical wayfinding props. Existing shrines, pylons and treasure chests gain visual attachments when their models are ready. These placements do not create new gameplay interactions; the original animated elements remain authoritative.
+
+The PWA cache version is `resonant-wilds-v3-glb100`. Optional standalone GLBs cache lazily as they are requested, rather than blocking offline-app installation.
+
 ## QA and deployment
 
 Pull-request CI validates all 100 prefab roots, GLB magic and declared byte lengths, non-empty mesh content, and JS module syntax. Browser QA is still required for materials, draw-call density, geometry clipping, audio gesture start, and landscape iPhone Safari.
