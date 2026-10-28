@@ -1,6 +1,6 @@
 // Resonant Wilds PWA cache v9. Keep the 100-prefab grove plus NPR, chibi and heritage fresh.
 // The browser game remains playable online even if optional preview assets fail.
-const CACHE = 'resonant-wilds-v9-100-npr-heritage';
+const CACHE = 'resonant-wilds-v10-ethereal-sfx-20261028';;
 const ASSETS = [
   './',
   './index.html',
