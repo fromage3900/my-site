@@ -107,6 +107,7 @@ export class Game {
         void kit.whenExtrasReady.then((count) => {
           if (!count) return;
           this.world.installHarmonicGrove(kit);
+          this.activities.installHarmonicGrove(kit);
           if (this.started && !this.world.inRift) {
             this.world.update(this.player.pos.x, this.player.pos.z, 8);
           }
