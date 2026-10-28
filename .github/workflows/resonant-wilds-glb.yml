@@ -52,6 +52,6 @@ jobs:
           assert 'harmonic-grove-37.glb' in sw and 'GLTFLoader.js' in sw
           assert 'three.module.min.js' in html
           assert "from '../vendor/loaders/GLTFLoader.js'" in kit
-          assert "import { loadHarmonicGrove } from './harmonic-grove.js'" in Path('resonant-wilds/js/game.js').read_text()
+          assert "await import('./harmonic-grove.js')" in Path('resonant-wilds/js/game.js').read_text()
           print('PASS static wiring')
           PY
