@@ -5,18 +5,11 @@
 import * as THREE from 'three';
 import { ELEMENT_STYLE, ENEMY_BY_ID, ELITE_AFFIXES, RULES } from './design.js';
 import { clamp, lerp, angleDiff } from './util.js';
+import { celMaterial, registerInkMaterial } from './cel.js';
 
-let _grad = null;
-export function toonGradient() {
-  if (_grad) return _grad;
-  const data = new Uint8Array([90, 170, 255]);
-  _grad = new THREE.DataTexture(data, 3, 1, THREE.RedFormat);
-  _grad.minFilter = _grad.magFilter = THREE.NearestFilter;
-  _grad.needsUpdate = true;
-  return _grad;
-}
-export const toon = (color, o = {}) => new THREE.MeshToonMaterial({ color, gradientMap: toonGradient(), ...o });
-const outlineMat = new THREE.MeshBasicMaterial({ color: '#2a1f3a', side: THREE.BackSide });
+export { toonGradient } from './cel.js';
+export const toon = (color, o = {}) => celMaterial(color, o);
+const outlineMat = registerInkMaterial(new THREE.MeshBasicMaterial({ color: '#2a1f3a', side: THREE.BackSide }));
 
 function withOutline(mesh, s = 1.07) {
   const o = new THREE.Mesh(mesh.geometry, outlineMat);
