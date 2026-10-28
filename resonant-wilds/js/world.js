@@ -82,7 +82,8 @@ export class World {
       if (this._hubGroveProps.has(name)) return this._hubGroveProps.get(name);
       const model = kit.spawn(name);
       if (!model) return null;
-      model.position.set(x, this.height(x, z) + 0.03, z);
+      // Hub ground is fixed at y=2.2; height() returns zero while inside a Rift.
+      model.position.set(x, 2.23, z);
       model.rotation.y = ry;
       model.scale.setScalar(scale);
       model.name = 'RW_HUB_' + name;
