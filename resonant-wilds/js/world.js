@@ -66,10 +66,41 @@ export class World {
   // The old primitives remain purely as a recovery path for absent/missing models.
   installHarmonicGrove(kit) {
     this.groveKit = kit;
+    this._dressHubWithGrove(kit);
     for (const chunk of this.chunks.values()) this._disposeChunk(chunk);
     this.chunks.clear();
     this.queue.length = 0;
     this.chimes.length = 0;
+  }
+
+  // Art-directed hub dressing: world-scale landmarks are never randomly
+  // scattered into terrain chunks or used as collision / interaction sources.
+  _dressHubWithGrove(kit) {
+    if (!this.hubGroup) return;
+    if (!this._hubGroveProps) this._hubGroveProps = new Map();
+    const place = (name, x, z, scale = 1, ry = 0) => {
+      if (this._hubGroveProps.has(name)) return this._hubGroveProps.get(name);
+      const model = kit.spawn(name);
+      if (!model) return null;
+      // Hub ground is fixed at y=2.2; height() returns zero while inside a Rift.
+      model.position.set(x, 2.23, z);
+      model.rotation.y = ry;
+      model.scale.setScalar(scale);
+      model.name = 'RW_HUB_' + name;
+      this.hubGroup.add(model);
+      this._hubGroveProps.set(name, model);
+      return model;
+    };
+    // Keep the original font's gameplay coordinate at (0,13).
+    const fountain = place('PRP_dream_fountain', 0, 13, 1.48);
+    if (fountain) {
+      if (this.fontStaticBase) this.fontStaticBase.visible = false;
+      if (this.fontStaticWater) this.fontStaticWater.visible = false;
+    }
+    place('WAY_harmonic_arrow', 8, -22, 1.2, -Math.PI / 3);
+    place('WAY_songwheel', -8, -22, 1.15);
+    place('PRP_celestial_signpost', 20, 0, 1.05);
+    place('ARC_lyre_gate', 0, -39, 1.6);
   }
 
   // ------------------------------------------------------------------ sampling
@@ -512,8 +543,8 @@ export class World {
     add(new THREE.BoxGeometry(0.2, 3, 0.2), L('#6b4a3a'), -9.6, h + 1.5, -9);
     for (let i = 0; i < 4; i++) add(new THREE.PlaneGeometry(0.6, 0.7), L('#fff6e0', { side: THREE.DoubleSide }), -12 + i * 0.66, h + 2.2 + (i % 2) * 0.2, -8.88);
     this.fontPos = new THREE.Vector3(0, h, 13);
-    add(new THREE.CylinderGeometry(1.6, 1.2, 1, 10), L('#e0e8f0'), 0, h + 0.5, 13);
-    add(new THREE.CylinderGeometry(1.35, 1.35, 0.1, 16), L('#8fe0ff', { emissive: '#5fc6ff', emissiveIntensity: 0.6 }), 0, h + 1.02, 13);
+    this.fontStaticBase = add(new THREE.CylinderGeometry(1.6, 1.2, 1, 10), L('#e0e8f0'), 0, h + 0.5, 13);
+    this.fontStaticWater = add(new THREE.CylinderGeometry(1.35, 1.35, 0.1, 16), L('#8fe0ff', { emissive: '#5fc6ff', emissiveIntensity: 0.6 }), 0, h + 1.02, 13);
     // Lanterns around the plaza edge.
     for (let i = 0; i < 12; i++) {
       const a = (i / 12) * Math.PI * 2;

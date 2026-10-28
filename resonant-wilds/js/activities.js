@@ -124,34 +124,52 @@ export class Activities {
     g.world.root.add(grp);
   }
 
-  // Replace static landmark primitives with authored GLB scenery.
-  // Keep animated cores (pylon crystals, shrine clefs, boss orbs) and hitboxes.
+  // Dress existing interactive POIs using optional authored GLBs.
+  // Safe to call again after additional kit GLBs stream: visual keys prevent
+  // duplicate attachments and no gameplay ownership or hitboxes are changed.
   installHarmonicGrove(kit) {
     for (const p of this.pois) {
       if (!p.mesh) continue;
+      if (!p._groveVisuals) p._groveVisuals = new Map();
+      const attach = (key, prefabName, scale = 1, position = null) => {
+        if (p._groveVisuals.has(key)) return p._groveVisuals.get(key);
+        const model = kit.spawn(prefabName);
+        if (!model) return null;
+        model.name = 'RW_VIS_' + key;
+        model.scale.setScalar(scale);
+        if (position) model.position.set(...position);
+        p.mesh.add(model);
+        p._groveVisuals.set(key, model);
+        return model;
+      };
       if (p.type === 'shrine') {
         for (let i = 0; i < 4; i++) {
-          const primitive = p.mesh.children[i];
-          if (primitive) primitive.visible = false;
-          const col = kit.spawn(i % 2 ? 'ARC_pearl_column' : 'ARC_column_pillar_small');
-          if (!col) continue;
-          const a = i * Math.PI / 2;
-          col.position.set(Math.cos(a) * 2.6, 0, Math.sin(a) * 2.6);
-          col.rotation.y = -a;
-          col.scale.setScalar(1.15);
-          p.mesh.add(col);
+          const column = attach('shrine_column_' + i,
+            i % 2 ? 'ARC_pearl_column' : 'ARC_column_pillar_small', 1.15);
+          if (!column) continue;
+          const angle = i * Math.PI / 2;
+          column.position.set(Math.cos(angle) * 2.6, 0, Math.sin(angle) * 2.6);
+          column.rotation.y = -angle;
+          // Only hide a primitive after its GLB replacement exists.
+          if (p.mesh.children[i]) p.mesh.children[i].visible = false;
         }
+        // The animated music clef remains visible above this resonance bowl.
+        attach('shrine_echo_bowl', 'INT_echo_bowl', 0.9);
       } else if (p.type === 'pylon') {
-        // Existing animated crystal is a gameplay state display; dress its base.
-        const plinth = kit.spawn('ARC_round_resonance_step');
-        if (plinth) { plinth.scale.setScalar(2.1); p.mesh.add(plinth); }
-      } else if (p.type === 'boss') {
-        const altar = kit.spawn('ARC_round_resonance_step');
-        if (altar) {
+        // First-pass plinth keeps the old model visible until its new base arrives.
+        const old = attach('pylon_base_fallback', 'ARC_round_resonance_step', 2.1);
+        const upgraded = attach('pylon_tuning_plinth', 'INT_tuning_plinth', 1.35);
+        if (upgraded) {
           if (p.mesh.children[0]) p.mesh.children[0].visible = false;
-          altar.scale.setScalar(2.6);
-          p.mesh.add(altar);
+          if (old) old.visible = false;
         }
+        // p.spin is the active animated crystal; never replace or hide it.
+      } else if (p.type === 'boss') {
+        const altar = attach('boss_altar', 'ARC_round_resonance_step', 2.6);
+        if (altar && p.mesh.children[0]) p.mesh.children[0].visible = false;
+      } else if (p.type === 'chest') {
+        // Decorative clasp only: original lid/body own opening and loot state.
+        attach('chest_clasp', 'INT_lyre_lock', 0.37, [0, 0.05, -0.48]);
       }
     }
   }

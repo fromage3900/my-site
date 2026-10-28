@@ -101,7 +101,23 @@ export class Game {
       ]);
       this.world.installHarmonicGrove(kit);
       this.activities.installHarmonicGrove(kit);
-      console.info('[Resonant Wilds] Authored GLB kit:', kit.prefabs.size, 'variants loaded');
+      // Kits 02–03 stream after the playable base is ready. Its visual-only
+      // arrival re-dresses terrain chunks; gameplay, save state and POIs remain.
+      if (kit.whenExtrasReady) {
+        void kit.whenExtrasReady.then((count) => {
+          if (!count) return;
+          this.world.installHarmonicGrove(kit);
+          this.activities.installHarmonicGrove(kit);
+          // Refresh the full visible chunk ring even when optional models
+          // finish before the title screen is dismissed. Otherwise a fast
+          // cache hit could leave the start view with no terrain until frame().
+          if (!this.world.inRift) {
+            this.world.warm(this.player.pos.x, this.player.pos.z);
+          }
+          console.info('[Resonant Wilds] Kits 02–03 GLBs loaded:', count, 'extras');
+        }).catch((err) => console.warn('[Resonant Wilds] Optional grove expansion failed:', err));
+      }
+      console.info('[Resonant Wilds] Authored GLB kit:', kit.prefabs.size, 'base variants loaded');
     } catch (err) {
       console.warn('[Resonant Wilds] GLB pack unavailable; retaining geometry recovery visuals:', err);
     }
