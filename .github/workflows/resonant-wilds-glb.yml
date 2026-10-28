@@ -44,10 +44,10 @@ jobs:
           source = Path('resonant-wilds/js/harmonic-grove.js').read_text()
           count = 37
           for kit, expected in [(2, 32), (3, 31)]:
-              pattern = r'export const GROVE_KIT0' + str(kit) + r'_NAMES = Object.freeze\\(\\[([\\s\\S]*?)\\]\\);'
-              match = re.search(pattern, source)
-              assert match, f'Missing Kit {kit} manifest'
-              names = re.findall(r'"([A-Z]+_[^"]+)"', match.group(1))
+              marker = f'export const GROVE_KIT0{kit}_NAMES = Object.freeze(['
+              assert marker in source, f'Missing Kit {kit} manifest'
+              body = source.split(marker, 1)[1].split(']);', 1)[0]
+              names = re.findall(r'"([A-Z]+_[^"]+)"', body)
               assert len(names) == expected and len(set(names)) == expected, f'Kit {kit}: {len(names)} names'
               for name in names:
                   p = models / (name.lower() + '.glb')
