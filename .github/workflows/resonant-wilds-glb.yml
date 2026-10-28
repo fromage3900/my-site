@@ -73,6 +73,9 @@ jobs:
           for f in resonant-wilds/js/harmonic-grove.js resonant-wilds/js/world.js resonant-wilds/js/game.js resonant-wilds/js/activities.js resonant-wilds/vendor/loaders/GLTFLoader.js resonant-wilds/vendor/utils/BufferGeometryUtils.js; do
             node --input-type=module --check < "$f"
           done
+      - name: Check optional prefab landmarks preserve gameplay state
+        shell: bash
+        run: node resonant-wilds/tools/test_grove_landmark_dressing.mjs
       - name: Verify offline asset intake and import map
         shell: bash
         run: |
