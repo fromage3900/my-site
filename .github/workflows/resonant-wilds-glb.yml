@@ -91,7 +91,7 @@ jobs:
           sw = Path('resonant-wilds/sw.js').read_text()
           assert 'type="importmap"' in html and './js/asset-gallery.js' in html
           assert 'loadHarmonicGrove' in js and 'GROVE_KIT03_NAMES' in js
-          assert 'resonant-wilds-v9-100-npr-heritage' in sw
+          assert 'resonant-wilds-v10-ethereal-sfx-20261028' in sw
           print('PASS: standalone review gallery, import map and PWA version')
           PY
       - name: Smoke test actual game with streamed GLBs in Chromium
