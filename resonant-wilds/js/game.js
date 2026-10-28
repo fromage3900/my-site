@@ -4,7 +4,6 @@
 import * as THREE from 'three';
 import { AudioEngine } from './audio.js';
 import { World, WATER } from './world.js';
-import { loadHarmonicGrove } from './harmonic-grove.js';
 import { Particles, Decals, Overlay, makeBeam } from './fx.js';
 import { Player, Sheep } from './player.js';
 import { Enemy } from './entities.js';
@@ -94,6 +93,8 @@ export class Game {
   async warm(progress) {
     progress('Unpacking Harmonic Grove GLB scenery…');
     try {
+      // Dynamic import isolates optional GLB loader failures from core gameplay boot.
+      const { loadHarmonicGrove } = await import('./harmonic-grove.js');
       const kit = await Promise.race([
         loadHarmonicGrove(),
         new Promise((_, reject) => setTimeout(() => reject(new Error('GLB loading timed out')), 9000))
