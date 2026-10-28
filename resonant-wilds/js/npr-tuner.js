@@ -1,11 +1,11 @@
 // Resonant Wilds NPR live look tuner. Loaded ONLY when ?tune=1.
 // No new framework, no gameplay/save changes. Preset links are fully shareable.
-import { nprV2, setNPRInkOpacity, setNPRShadowTint } from './cel.js';
+import { nprV2, setNPRInkOpacity, setNPRShadowTint, setNPRBands } from './cel.js';
 
 const PRESETS = Object.freeze({
-  soft:      { strength: 0.36, radius: 2, anisotropy: 1.50, edgeProtect: 3.30, shadow: 0.60, ink: 0.66, scale: 0.50 },
-  storybook: { strength: 0.53, radius: 2, anisotropy: 1.85, edgeProtect: 2.80, shadow: 0.82, ink: 0.85, scale: 0.50 },
-  dream:     { strength: 0.70, radius: 3, anisotropy: 2.65, edgeProtect: 3.70, shadow: 0.98, ink: 0.96, scale: 0.50 },
+  soft:      { strength: 0.36, radius: 2, anisotropy: 1.50, edgeProtect: 3.30, shadow: 0.60, ink: 0.66, hardness: 0.82, threshold: 0.48, depth: 0.55, scale: 0.50 },
+  storybook: { strength: 0.53, radius: 2, anisotropy: 1.85, edgeProtect: 2.80, shadow: 0.82, ink: 0.85, hardness: 0.98, threshold: 0.49, depth: 0.39, scale: 0.50 },
+  dream:     { strength: 0.70, radius: 3, anisotropy: 2.65, edgeProtect: 3.70, shadow: 0.98, ink: 0.96, hardness: 1.0, threshold: 0.54, depth: 0.26, scale: 0.50 },
 });
 const FIELDS = [
   { key: 'strength', query: 'paint', label: 'Painterly strength', min: 0, max: 1, step: 0.01 },
@@ -13,6 +13,9 @@ const FIELDS = [
   { key: 'anisotropy', query: 'anis', label: 'Stroke direction', min: 1, max: 3.2, step: 0.05 },
   { key: 'edgeProtect', query: 'edge', label: 'Edge preservation', min: 1, max: 4.5, step: 0.1 },
   { key: 'shadow', query: 'shadow', label: 'Shadow colour', min: 0, max: 1, step: 0.01 },
+  { key: 'hardness', query: 'hard', label: 'Band hardness', min: 0, max: 1, step: 0.01 },
+  { key: 'threshold', query: 'cut', label: 'Shadow cutoff', min: 0.28, max: 0.70, step: 0.01 },
+  { key: 'depth', query: 'dark', label: 'Shadow darkness', min: 0.15, max: 1, step: 0.01 },
   { key: 'ink', query: 'ink', label: 'Ink opacity', min: 0, max: 1, step: 0.01 },
   { key: 'scale', query: 'scale', label: 'Render resolution', min: 0.25, max: 0.75, step: 0.05 },
 ];
@@ -136,6 +139,9 @@ export function attachShaderTuner(game) {
     Object.assign(state, actual);
     state.shadow = setNPRShadowTint(state.shadow);
     state.ink = setNPRInkOpacity(state.ink);
+    Object.assign(state, setNPRBands({
+      hardness: state.hardness, threshold: state.threshold, depth: state.depth,
+    }));
     look = selected;
     for (const field of FIELDS) {
       inputs[field.key].value = String(state[field.key]);

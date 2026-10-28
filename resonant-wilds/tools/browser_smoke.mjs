@@ -52,6 +52,24 @@ try {
     assert.equal(before.chibi, test.chibi, test.name + ': incorrect avatar selection');
     assert.equal(before.legacyTerrain, !!test.legacy, test.name + ': wrong environment shading');
     assert.equal(before.painterly, !!test.painterly, test.name + ': wrong painterly state');
+    if (test.npr) {
+      const uniforms = await page.evaluate(() => {
+        const sh = window.__melodia.world.terrainMat.userData.melodiaNPRShader;
+        return sh ? {
+          hardness: sh.uniforms.uBandHardness?.value,
+          depth: sh.uniforms.uBandShadowDepth?.value,
+          shaderContainsRGB: sh.fragmentShader.includes('shadowRGB'),
+          preservedWorldRipple: sh.fragmentShader.includes('rwChladni'),
+        } : null;
+      });
+      assert.ok(uniforms, test.name + ': RGB toon shader did not compile');
+      assert.ok(uniforms.shaderContainsRGB && uniforms.preservedWorldRipple,
+        test.name + ': toon bands and world ripple shader hooks must compose');
+      if (!test.tune) {
+        assert.equal(uniforms.hardness, 0.98, test.name + ': hard bands not default');
+        assert.equal(uniforms.depth, 0.39, test.name + ': dark band not default');
+      }
+    }
     if (test.npr) assert.equal(before.paletteSize, 12, test.name + ': missing RGB NPR gradient');
     else if (!test.legacy) assert.equal(before.paletteSize, 3, test.name + ': v1 gradient regression');
     if (test.legacy) {
@@ -72,7 +90,8 @@ try {
         const lab = window.__melodiaShaderTuner;
         lab.apply({
           strength: 0.41, radius: 3, anisotropy: 2.6,
-          edgeProtect: 3.5, shadow: 0.62, ink: 0.73, scale: 0.45,
+          edgeProtect: 3.5, shadow: 0.62, ink: 0.73,
+          hardness: 0.99, threshold: 0.53, depth: 0.31, scale: 0.45,
         }, 'custom');
         const u = window.__melodia.painterly.material.uniforms;
         return {
@@ -82,6 +101,11 @@ try {
           tint: lab.state().shadow, ink: lab.state().ink,
           url: location.search,
           sliders: lab.panel.shadowRoot.querySelectorAll('input[type=range]').length,
+          band: {
+            hardness: window.__melodia.world.terrainMat.userData.melodiaNPRShader.uniforms.uBandHardness.value,
+            threshold: window.__melodia.world.terrainMat.userData.melodiaNPRShader.uniforms.uBandThreshold.value,
+            depth: window.__melodia.world.terrainMat.userData.melodiaNPRShader.uniforms.uBandShadowDepth.value,
+          },
         };
       });
       assert.equal(tuning.strength, 0.41);
@@ -91,14 +115,21 @@ try {
       assert.equal(tuning.scale, 0.45);
       assert.equal(tuning.tint, 0.62);
       assert.equal(tuning.ink, 0.73);
-      assert.equal(tuning.sliders, 7);
+      assert.equal(tuning.sliders, 10);
+      assert.equal(tuning.band.hardness, 0.99);
+      assert.equal(tuning.band.threshold, 0.53);
+      assert.equal(tuning.band.depth, 0.31);
       assert.match(tuning.url, /paint=0.41/);
       assert.match(tuning.url, /ink=0.73/);
+      assert.match(tuning.url, /hard=0.99/);
+      assert.match(tuning.url, /dark=0.31/);
       await page.reload({ waitUntil: 'domcontentloaded' });
       await page.waitForFunction(() => !!window.__melodiaShaderTuner?.enabled && !document.querySelector('#play').disabled, null, { timeout: 90000 });
       const persisted = await page.evaluate(() => window.__melodiaShaderTuner.state());
       assert.equal(persisted.strength, 0.41, 'reload retained strength');
       assert.equal(persisted.ink, 0.73, 'reload retained ink');
+      assert.equal(persisted.hardness, 0.99, 'reload retained hard band');
+      assert.equal(persisted.depth, 0.31, 'reload retained deep shadow');
     }
     await page.locator('#play').click();
     await page.waitForFunction(() => window.__melodia.started &&

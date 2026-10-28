@@ -66,3 +66,14 @@ Preset links: `&look=soft` (watercolour), `&look=storybook` (balanced), `&look=d
 This panel loads only with `tune=1`. Mobile opens it collapsed and caps its rendering scale at 0.5. The original `?npr=v2&kuwahara=1` viewer receives no panel and no added browser interaction. A zero painterly-strength setting bypasses the postprocess render target entirely.
 
 Tuning acceptance: cloud Chromium validates seven uniforms/controls, shareable URL and reload persistence. This does not prove the filter is visually ideal or that mobile sustained FPS is sufficient.
+
+## Hard RGB shadow bands — revision 3
+
+The first coloured-ramp prototype was not truly RGB: Three.js r170's built-in `getGradientIrradiance` samples `gradientMap.r` only. This revision installs a source-compatible `onBeforeCompile` hook in NPR V2, replacing just that chunk with an **RGB shadow / mid / light ramp** using 3 discrete samples, adjustable cutoffs and tightly controlled transition feathering. It also reduces the hemisphere indirect-light contribution, which previously flattened the cel contrast. World resonance hooks are composed instead of overwritten; Chladni/caustics/ripples still work.
+
+The live tuner now includes:
+- `hard` Band hardness (0–1; 0.98 default)
+- `cut` Shadow cutoff (0.28–0.70; 0.49 default)
+- `dark` Shadow darkness (0.15–1; 0.39 default)
+
+Storybook is now harder by default; Soft Wash stays softer and Dream is the starkest. The Kuwahara pass reduces its blend locally around high-contrast edges to protect these bands from being repainted into gradients. This is still a controlled WebGL preview (no change to legacy renderer or gameplay).

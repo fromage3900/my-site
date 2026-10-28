@@ -74,7 +74,11 @@ void main() {
   float p2 = 1.0/pow(dot(v2,lum)+0.0005, uEdgeProtect);
   float p3 = 1.0/pow(dot(v3,lum)+0.0005, uEdgeProtect);
   vec3 painted = (p0*m0+p1*m1+p2*m2+p3*m3)/max(p0+p1+p2+p3,0.0001);
-  gl_FragColor = vec4(mix(original, painted, clamp(uStrength,0.0,1.0)), 1.0);
+  // The softened image must not swallow high-contrast cel shadow boundaries.
+  float edgeEnergy = sqrt(max(a+c, 0.0));
+  float edgeMask = smoothstep(0.045, 0.22, edgeEnergy);
+  float paintBlend = clamp(uStrength, 0.0, 1.0) * (1.0 - 0.88 * edgeMask);
+  gl_FragColor = vec4(mix(original, painted, paintBlend), 1.0);
   #include <colorspace_fragment>
 }`;
 
