@@ -1,5 +1,5 @@
 // Minimal service worker for Resonant Wilds PWA
-const CACHE = 'resonant-wilds-v2-glb37';
+const CACHE = 'resonant-wilds-v3-glb100';
 const ASSETS = [
   './',
   './index.html',
@@ -44,7 +44,17 @@ self.addEventListener('activate', (e) => {
 
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
-  e.respondWith(
-    caches.match(e.request).then((hit) => hit || fetch(e.request))
-  );
+  e.respondWith(caches.match(e.request).then(async (hit) => {
+    if (hit) return hit;
+    const response = await fetch(e.request);
+    // The 63 optional GLBs are cached on demand, rather than making SW
+    // installation depend on all of them succeeding over mobile networks.
+    const url = new URL(e.request.url);
+    if (response.ok && url.origin === self.location.origin &&
+        url.pathname.includes('/assets/models/') && url.pathname.endsWith('.glb')) {
+      const copy = response.clone();
+      e.waitUntil(caches.open(CACHE).then((cache) => cache.put(e.request, copy)).catch(() => {}));
+    }
+    return response;
+  }));
 });
