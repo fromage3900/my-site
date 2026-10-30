@@ -50,6 +50,7 @@
     "art-test-readiness.html",
     "baroque-grotto.html",
     "commissions.html",
+    "contact-sheets.html",
     "credits.html",
     "design-specs.html",
     "geometry-nodes.html",
@@ -69,8 +70,8 @@
     "space-cathedral.html",
     "surreal-architecture.html",
     "touchdesigner-architecture.html",
-    "universal-material-impact.html",
-    "touchdesigner-showreel.html"
+    "touchdesigner-showreel.html",
+    "universal-material-impact.html"
   ],
   "targeted_evidence": [
     "melusina-model-tooling.html",

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" data-page="contact-sheets">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="melodia-build" content="20260921p1" />
+<link rel="canonical" href="https://fromage3900.github.io/my-site/wix/contact-sheets.html" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<title>Architectural Contact Sheets | Brennan Shepherd</title>
+<meta name="description" content="Multi-angle orthographic, isometric clay wireframes, and live staging contact sheets for Faraway Mother's ten handcrafted procedural world-building architectures." />
+<link rel="stylesheet" href="melodia-luxury-type.css">
+<link rel="stylesheet" href="melodia-editorial.css">
+<link rel="stylesheet" href="melodia-fashion-editorial.css">
+<link rel="stylesheet" href="melodia-premium-system.css">
+<link rel="stylesheet" href="enhanced-cosmic-hero-premium.css">
+
+<style>
+/* Editorial Lookbook Contact Sheets System */
+.cs-hero-section {
+  padding-top: clamp(80px, 12vw, 140px);
+  padding-bottom: clamp(32px, 5vw, 64px);
+}
+.cs-header-wrap {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 54rem;
+}
+.cs-header-wrap h1 {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: #f8fafc;
+}
+.cs-header-wrap p.lede {
+  font-family: var(--font-lede, "Cormorant Garamond", serif);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-style: italic;
+  color: rgba(226, 232, 240, 0.85);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Biome Filter Navigation */
+.cs-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 2.5rem 0 1.5rem;
+}
+.cs-filter-pill {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #cbd5e1;
+  padding: 0.45rem 1.15rem;
+  border-radius: 999px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.cs-filter-pill:hover,
+.cs-filter-pill.active {
+  background: rgba(216, 180, 254, 0.2);
+  border-color: #d8b4fe;
+  color: #fdf4ff;
+  box-shadow: 0 0 18px rgba(216, 180, 254, 0.25);
+}
+
+/* Master Overview Banner */
+.cs-master-banner {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(216, 180, 254, 0.28);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 3.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+.cs-master-media {
+  position: relative;
+  width: 100%;
+  max-height: 520px;
+  overflow: hidden;
+  cursor: zoom-in;
+  background: #090d16;
+}
+.cs-master-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cs-master-media:hover img {
+  transform: scale(1.02);
+}
+.cs-master-details {
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  background: rgba(10, 15, 29, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Grid of Individual HDA Contact Sheets */
+.cs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+  gap: 2.25rem;
+  margin-top: 2rem;
+}
+.cs-card {
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.cs-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(216, 180, 254, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+}
+.cs-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #0d121f;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.cs-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.cs-card:hover .cs-card-media img {
+  transform: scale(1.035);
+}
+.cs-badge-row {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  display: flex;
+  gap: 0.45rem;
+  z-index: 2;
+}
+.cs-badge {
+  background: rgba(10, 15, 29, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #bae6fd;
+}
+.cs-badge-sparkle {
+  color: #fde047;
+  border-color: rgba(253, 224, 71, 0.3);
+}
+
+.cs-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.85rem;
+}
+.cs-card-content h3 {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin: 0;
+  color: #f1f5f9;
+}
+.cs-card-content p.caption {
+  font-family: var(--font-lede, "Cormorant Garamond", serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  margin: 0;
+  color: rgba(226, 232, 240, 0.78);
+}
+.cs-meta-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem 0.85rem;
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.cs-meta-item {
+  display: flex;
+  flex-direction: column;
+}
+.cs-meta-key {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.7);
+}
+.cs-meta-val {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  color: #e2e8f0;
+}
+
+/* Lightbox Modal */
+.cs-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 6, 12, 0.94);
+  backdrop-filter: blur(14px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.cs-lightbox.open {
+  display: flex;
+}
+.cs-lightbox-img {
+  max-width: 94vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.cs-lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.cs-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: rotate(90deg);
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+<header class="header">
+  <div class="inner nav-inner">
+    <a href="index.html" class="logo">Brennan Shepherd</a>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="index.html">Home</a>
+      <a href="hero-renders.html">Renders</a>
+      <a href="contact-sheets.html" class="active">Contact Sheets</a>
+      <a href="shader-breakdowns.html">Shaders</a>
+      <a href="recruiter-one-sheet.html">One-Sheet</a>
+      <a href="resume.html">Resume</a>
+    </nav>
+  </div>
+</header>
+
+<main class="main" id="mainContent">
+
+<!-- Section: Hero & Rationale -->
+<section class="band cs-hero-section">
+  <div class="inner">
+    <div class="editorial-rule"><span class="diamond" aria-hidden="true"></span><span>Procedural Lookbook Collection</span><span class="diamond" aria-hidden="true"></span></div>
+    <div class="cs-header-wrap">
+      <p class="eyebrow magazine-kicker">Faraway Mother · World-Building Suite</p>
+      <h1>Haute-Couture Architectural Contact Sheets</h1>
+      <p class="lede">
+        Ten handcrafted procedural structures engineered to close out the tensile landscape across WeaveRidge, LaceCanopy, FrillValley, and ResonantSeamWay. Each plate captures four orthographic and isometric projections, metric envelopes, and HoYoverse/Infinity Nikki micro-facet sparkle attributes.
+      </p>
+    </div>
+
+    <!-- Biome Filtering Controls -->
+    <div class="cs-filter-bar" role="tablist" aria-label="Biome Filtering">
+      <button class="cs-filter-pill active" data-filter="all">All 10 Architectures</button>
+      <button class="cs-filter-pill" data-filter="WeaveRidge">WeaveRidge (Tensile Crests)</button>
+      <button class="cs-filter-pill" data-filter="FrillValley">FrillValley (Karst Outcrops)</button>
+      <button class="cs-filter-pill" data-filter="ResonantSeamWay">ResonantSeamWay (Acoustic Corridors)</button>
+      <button class="cs-filter-pill" data-filter="LaceCanopy">LaceCanopy (Veil Portals)</button>
+    </div>
+
+    <!-- Master Composite Plate -->
+    <div class="cs-master-banner">
+      <div class="cs-master-media" onclick="openLightbox('contact-sheets/Faraway_10_HDA_Master_Contact_Sheet.png')">
+        <img src="contact-sheets/Faraway_10_HDA_Master_Contact_Sheet.png" alt="Faraway Mother 10-HDA Master Composite Contact Sheet showing all 4 projections across all 10 architectures" loading="eager" />
+      </div>
+      <div class="cs-master-details">
+        <div>
+          <h2 style="font-family:var(--font-display);font-size:1.35rem;margin:0 0 0.35rem;color:#f8fafc;">Master 10-Architecture Composite Plate</h2>
+          <p style="margin:0;color:rgba(226,232,240,0.7);font-size:0.9rem;">40 simultaneous views: Front (X/Y), Side (Z/Y), Top (X/Z), and 3D Axonometric Wire. Click plate to open 100% full-resolution inspector.</p>
+        </div>
+        <div style="display:flex;gap:1.25rem;">
+          <div class="cs-meta-item"><span class="cs-meta-key">Resolution</span><span class="cs-meta-val">1280 × 3200 px</span></div>
+          <div class="cs-meta-item"><span class="cs-meta-key">Total Primitives</span><span class="cs-meta-val">10,724 prims</span></div>
+          <div class="cs-meta-item"><span class="cs-meta-key">Shading Integration</span><span class="cs-meta-val">Nikki Sparkle & Sheen</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live In-Engine Staging Overview -->
+    <div class="cs-master-banner" style="border-color:rgba(186,230,253,0.3);">
+      <div class="cs-master-media" onclick="openLightbox('contact-sheets/viewport_staged_overview.png')">
+        <img src="contact-sheets/viewport_staged_overview.png" alt="Live in-engine viewport capture of Faraway Mother blockout level with staged architectures" loading="lazy" />
+      </div>
+      <div class="cs-master-details">
+        <div>
+          <h2 style="font-family:var(--font-display);font-size:1.35rem;margin:0 0 0.35rem;color:#f8fafc;">Live In-Engine Architectural Staging</h2>
+          <p style="margin:0;color:rgba(226,232,240,0.7);font-size:0.9rem;">Curated placement pass verified in the live level across all four biomes, paired with PCG point collection tables for world generation.</p>
+        </div>
+        <div style="display:flex;gap:1.25rem;">
+          <div class="cs-meta-item"><span class="cs-meta-key">Environment Map</span><span class="cs-meta-val">Faraway Mother Sanctuary</span></div>
+          <div class="cs-meta-item"><span class="cs-meta-key">Staged Fixtures</span><span class="cs-meta-val">10 Active Actors</span></div>
+          <div class="cs-meta-item"><span class="cs-meta-key">Point Collection</span><span class="cs-meta-val">FarawayPCG_Points</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 Individual HDA Contact Sheet Cards -->
+    <div class="cs-grid" id="hdaGrid">
+
+      <!-- 01: Shoulder Fold -->
+      <article class="cs-card" data-biome="WeaveRidge">
+        <div class="cs-card-media" onclick="openLightbox('contact-sheets/HDA_Faraway_ShoulderFold_multiview.png')">
+          <div class="cs-badge-row">
+            <span class="cs-badge">WeaveRidge</span>
+            <span class="cs-badge cs-badge-sparkle">Sparkle 0.85</span>
+          </div>
+          <img src="contact-sheets/HDA_Faraway_ShoulderFold_multiview.png" alt="Shoulder Fold multi-view contact sheet" loading="lazy" />
+        </div>
+        <div class="cs-card-content">
+          <h3>Shoulder Fold · Bedrock Terraces</h3>
+          <p class="caption">Monumental draped anatomical shoulder landform and stepped terrace buttress for mountain climbing routes.</p>
+          <div class="cs-meta-table">
+            <div class="cs-meta-item"><span class="cs-meta-key">Metric Span</span><span class="cs-meta-val">33.3 × 20.4 × 15.4 m</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Beauty / Proxy</span><span class="cs-meta-val">1350 / 1350 prims</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Material Family</span><span class="cs-meta-val">Veil & Cradle MIs</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Interactive Preview</span><span class="cs-meta-val">246 prims (-82%)</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02: Silk Vine -->
+      <article class="cs-card" data-biome="WeaveRidge">
+        <div class="cs-card-media" onclick="openLightbox('contact-sheets/HDA_Faraway_SilkVine_multiview.png')">
+          <div class="cs-badge-row">
+            <span class="cs-badge">WeaveRidge</span>
+            <span class="cs-badge cs-badge-sparkle">Sparkle 0.90</span>
+          </div>
+          <img src="contact-sheets/HDA_Faraway_SilkVine_multiview.png" alt="Silk Vine multi-view contact sheet" loading="lazy" />
+        </div>
+        <div class="cs-card-content">
+          <h3>Silk Vine · Catenary Suspension</h3>
+          <p class="caption">High-tension catenary suspension cable with axial twist coils and wind-reactive hanging veil streamers.</p>
+          <div class="cs-meta-table">
+            <div class="cs-meta-item"><span class="cs-meta-key">Metric Span</span><span class="cs-meta-val">25.0 × 6.1 × 1.2 m</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Beauty / Proxy</span><span class="cs-meta-val">404 / 12 prims</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Material Family</span><span class="cs-meta-val">Gilded Loom & Veil</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Interactive Preview</span><span class="cs-meta-val">76 prims (-81%)</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03: Frill Rock -->
+      <article class="cs-card" data-biome="FrillValley">
+        <div class="cs-card-media" onclick="openLightbox('contact-sheets/HDA_Faraway_FrillRock_multiview.png')">
+          <div class="cs-badge-row">
+            <span class="cs-badge">FrillValley</span>
+            <span class="cs-badge cs-badge-sparkle">Sparkle 0.80</span>
+          </div>
+          <img src="contact-sheets/HDA_Faraway_FrillRock_multiview.png" alt="Frill Rock multi-view contact sheet" loading="lazy" />
+        </div>
+        <div class="cs-card-content">
+          <h3>Frill Rock · Layered Karst Spires</h3>
+          <p class="caption">Stratified pleated limestone karst pinnacle with scalloped petticoat flounces and flat walkable observation caps.</p>
+          <div class="cs-meta-table">
+            <div class="cs-meta-item"><span class="cs-meta-key">Metric Span</span><span class="cs-meta-val">7.7 × 13.0 × 7.7 m</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Beauty / Proxy</span><span class="cs-meta-val">1194 / 1194 prims</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Material Family</span><span class="cs-meta-val">Mantle & Cradle MIs</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Interactive Preview</span><span class="cs-meta-val">214 prims (-82%)</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04: Brocade Rosette -->
+      <article class="cs-card" data-biome="FrillValley">
+        <div class="cs-card-media" onclick="openLightbox('contact-sheets/HDA_Faraway_BrocadeRosette_multiview.png')">
+          <div class="cs-badge-row">
+            <span class="cs-badge">FrillValley</span>
+            <span class="cs-badge cs-badge-sparkle">Sparkle 1.00</span>
+          </div>
+          <img src="contact-sheets/HDA_Faraway_BrocadeRosette_multiview.png" alt="Brocade Rosette multi-view contact sheet" loading="lazy" />
+        </div>
+        <div class="cs-card-content">
+          <h3>Brocade Rosette · Botanical Plinth</h3>
+          <p class="caption">Monumental architectural floral blossom featuring logarithmic phyllotaxis petals and an emissive stamen dome.</p>
+          <div class="cs-meta-table">
+            <div class="cs-meta-item"><span class="cs-meta-key">Metric Span</span><span class="cs-meta-val">8.0 × 3.3 × 8.0 m</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Beauty / Proxy</span><span class="cs-meta-val">76 / 16 prims</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Material Family</span><span class="cs-meta-val">Ornament & Gilded Loom</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Interactive Preview</span><span class="cs-meta-val">52 prims (-32%)</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05: Hair Cascade -->
+      <article class="cs-card" data-biome="ResonantSeamWay">
+        <div class="cs-card-media" onclick="openLightbox('contact-sheets/HDA_Faraway_HairCascade_multiview.png')">
+          <div class="cs-badge-row">
+            <span class="cs-badge">ResonantSeamWay</span>
+            <span class="cs-badge cs-badge-sparkle">Sparkle 0.90</span>
+          </div>
+          <img src="contact-sheets/HDA_Faraway_HairCascade_multiview.png" alt="Hair Cascade multi-view contact sheet" loading="lazy" />
+        </div>
+        <div class="cs-card-content">
+          <h3>Hair Cascade · Hero Fluted Falls</h3>
+          <p class="caption">Monumental amphitheater cliff cascade sculpted like gathered tresses of hair channeling stepped silk water chutes.</p>
+          <div class="cs-meta-table">
+            <div class="cs-meta-item"><span class="cs-meta-key">Metric Span</span><span class="cs-meta-val">17.6 × 30.0 × 6.0 m</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Beauty / Proxy</span><span class="cs-meta-val">1286 / 1286 prims</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Material Family</span><span class="cs-meta-val">Ocean Hero & Mantle</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Interactive Preview</span><span class="cs-meta-val">230 prims (-82%)</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 06: Spillway Lip -->
+      <article class="cs-card" data-biome="FrillValley">
+        <div class="cs-card-media" onclick="openLightbox('contact-sheets/HDA_Faraway_SpillwayLip_multiview.png')">
+          <div class="cs-badge-row">
+            <span class="cs-badge">MotherfoldBasin</span>
+            <span class="cs-badge cs-badge-sparkle">Sparkle 0.90</span>
+          </div>
+          <img src="contact-sheets/HDA_Faraway_SpillwayLip_multiview.png" alt="Spillway Lip multi-view contact sheet" loading="lazy" />
+        </div>
+        <div class="cs-card-content">
+          <h3>Spillway Lip · Hydraulic Basin Weir</h3>
+          <p class="caption">Broad-crested masonry weir holding back turquoise lake waters, with crenellated overflow teeth and discharge apron.</p>
+          <div class="cs-meta-table">
+            <div class="cs-meta-item"><span class="cs-meta-key">Metric Span</span><span class="cs-meta-val">19.8 × 7.5 × 7.0 m</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Beauty / Proxy</span><span class="cs-meta-val">732 / 732 prims</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Material Family</span><span class="cs-meta-val">Ocean Hero & Cradle</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Interactive Preview</span><span class="cs-meta-val">140 prims (-81%)</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 07: Bobbin Stele -->
+      <article class="cs-card" data-biome="ResonantSeamWay">
+        <div class="cs-card-media" onclick="openLightbox('contact-sheets/HDA_Faraway_BobbinStele_multiview.png')">
+          <div class="cs-badge-row">
+            <span class="cs-badge">ResonantSeamWay</span>
+            <span class="cs-badge cs-badge-sparkle">Sparkle 0.80</span>
+          </div>
+          <img src="contact-sheets/HDA_Faraway_BobbinStele_multiview.png" alt="Bobbin Stele multi-view contact sheet" loading="lazy" />
+        </div>
+        <div class="cs-card-content">
+          <h3>Bobbin Stele · Resonant Pylon</h3>
+          <p class="caption">Monumental spindle stele marking seam boundaries. Turned silhouette with cord groove, acorn finial, and plinth.</p>
+          <div class="cs-meta-table">
+            <div class="cs-meta-item"><span class="cs-meta-key">Metric Span</span><span class="cs-meta-val">2.0 × 8.9 × 2.0 m</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Beauty / Proxy</span><span class="cs-meta-val">798 / 798 prims</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Material Family</span><span class="cs-meta-val">Mantle & Gilded Loom</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Interactive Preview</span><span class="cs-meta-val">186 prims (-77%)</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 08: Lantern Bollard -->
+      <article class="cs-card" data-biome="ResonantSeamWay">
+        <div class="cs-card-media" onclick="openLightbox('contact-sheets/HDA_Faraway_LanternBollard_multiview.png')">
+          <div class="cs-badge-row">
+            <span class="cs-badge">ResonantSeamWay</span>
+            <span class="cs-badge cs-badge-sparkle">Sparkle 1.00</span>
+          </div>
+          <img src="contact-sheets/HDA_Faraway_LanternBollard_multiview.png" alt="Lantern Bollard multi-view contact sheet" loading="lazy" />
+        </div>
+        <div class="cs-card-content">
+          <h3>Lantern Bollard · Filigree Beacon</h3>
+          <p class="caption">Canal walkway pathway illumination bollard with mooring ring, pierced filigree lantern cage, and floating gem core.</p>
+          <div class="cs-meta-table">
+            <div class="cs-meta-item"><span class="cs-meta-key">Metric Span</span><span class="cs-meta-val">1.3 × 3.8 × 1.3 m</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Beauty / Proxy</span><span class="cs-meta-val">36 / 14 prims</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Material Family</span><span class="cs-meta-val">Gilded Loom & Core</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Interactive Preview</span><span class="cs-meta-val">36 prims (Exact)</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 09: Ribbon Stair -->
+      <article class="cs-card" data-biome="ResonantSeamWay">
+        <div class="cs-card-media" onclick="openLightbox('contact-sheets/HDA_Faraway_RibbonStair_multiview.png')">
+          <div class="cs-badge-row">
+            <span class="cs-badge">ResonantSeamWay</span>
+            <span class="cs-badge cs-badge-sparkle">Sparkle 0.90</span>
+          </div>
+          <img src="contact-sheets/HDA_Faraway_RibbonStair_multiview.png" alt="Ribbon Stair multi-view contact sheet" loading="lazy" />
+        </div>
+        <div class="cs-card-content">
+          <h3>Ribbon Stair · Transit Flight</h3>
+          <p class="caption">Arched ribbon flight of stairs with curved cantilevered treads, arched underside spandrel, and continuous balustrade.</p>
+          <div class="cs-meta-table">
+            <div class="cs-meta-item"><span class="cs-meta-key">Metric Span</span><span class="cs-meta-val">10.1 × 7.0 × 3.0 m</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Beauty / Proxy</span><span class="cs-meta-val">202 / 198 prims</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Material Family</span><span class="cs-meta-val">Cradle & Gilded Loom</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Interactive Preview</span><span class="cs-meta-val">202 prims (Exact)</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 10: Veil Curtain -->
+      <article class="cs-card" data-biome="LaceCanopy">
+        <div class="cs-card-media" onclick="openLightbox('contact-sheets/HDA_Faraway_VeilCurtain_multiview.png')">
+          <div class="cs-badge-row">
+            <span class="cs-badge">LaceCanopy</span>
+            <span class="cs-badge cs-badge-sparkle">Sparkle 0.95</span>
+          </div>
+          <img src="contact-sheets/HDA_Faraway_VeilCurtain_multiview.png" alt="Veil Curtain multi-view contact sheet" loading="lazy" />
+        </div>
+        <div class="cs-card-content">
+          <h3>Veil Curtain · Draped Gateway</h3>
+          <p class="caption">Suspended grand translucent silk/lace curtain veil with sinusoidal drape folds, parted center opening, and hem flounce.</p>
+          <div class="cs-meta-table">
+            <div class="cs-meta-item"><span class="cs-meta-key">Metric Span</span><span class="cs-meta-val">15.4 × 16.5 × 1.2 m</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Beauty / Proxy</span><span class="cs-meta-val">2646 / 6 prims</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Material Family</span><span class="cs-meta-val">Veil & Ornament MIs</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-key">Interactive Preview</span><span class="cs-meta-val">390 prims (-85%)</span></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal Container -->
+<div class="cs-lightbox" id="csLightbox" onclick="closeLightbox(event)">
+  <button class="cs-lightbox-close" onclick="closeLightbox(event)">&times;</button>
+  <img class="cs-lightbox-img" id="csLightboxImg" src="" alt="Enlarged contact sheet inspection view" />
+</div>
+
+</main>
+
+<footer class="footer">
+  <div class="inner">
+    <span>Brennan Shepherd / Environment &amp; Technical Artist</span>
+    <span>Haute-Couture Architectural Contact Sheets</span>
+  </div>
+</footer>
+</div>
+
+<script>
+// Interactive Lightbox
+function openLightbox(src) {
+  const lb = document.getElementById('csLightbox');
+  const img = document.getElementById('csLightboxImg');
+  img.src = src;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e) {
+  if (e.target.id === 'csLightbox' || e.target.classList.contains('cs-lightbox-close')) {
+    const lb = document.getElementById('csLightbox');
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+// Biome Filtering
+document.querySelectorAll('.cs-filter-pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cs-filter-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.getAttribute('data-filter');
+    document.querySelectorAll('.cs-card').forEach(card => {
+      if (filter === 'all' || card.getAttribute('data-biome') === filter) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// ESC key to close lightbox
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const lb = document.getElementById('csLightbox');
+    if (lb.classList.contains('open')) {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+});
+</script>
+
+<script src="melodia-site-nav.js"></script>
+<script src="melodia-editorial.js"></script>
+</body>
+</html>
