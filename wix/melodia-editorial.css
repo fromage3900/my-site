@@ -1,4 +1,4 @@
-@import url("melodia-tokens.css?v=20260921p1");
+﻿@import url("melodia-tokens.css?v=20260921p1");
 @import url("melodia-site-chrome.css?v=20260921p1");
 @import url("melodia-starfield.css?v=20260921p1");
 @import url("melodia-editorial-ornaments.css?v=20260921p1");
@@ -74,16 +74,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background:
-    radial-gradient(circle at 22% 12%, var(--effect-cyan-whisper), transparent 34%),
-    radial-gradient(circle at 82% 18%, rgba(204, 153, 255, 0.08), transparent 36%),
-    linear-gradient(180deg, var(--ivory), var(--primitive-astral-900));
-  color: var(--ink);
-  font-family: var(--font-body);
-  letter-spacing: var(--tracking-body, 0);
-}
+body {\n  margin: 0;\n  background:\n    radial-gradient(circle at 22% 12%, var(--effect-cyan-whisper), transparent 34%),\n    radial-gradient(circle at 78% 18%, var(--effect-gold-whisper), transparent 38%),\n    radial-gradient(circle at 50% 84%, var(--effect-iris-whisper), transparent 42%),\n    linear-gradient(180deg, var(--color-surface-base) 0%, var(--color-surface-sunken) 48%, var(--color-surface-inverse) 100%);\n  color: var(--color-text-primary);\n  font-family: 'Times New Roman', Times, Georgia, serif;\n  line-height: 1.7;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-rendering: optimizeLegibility;\n}
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 
@@ -142,7 +133,7 @@ img { display: block; max-width: 100%; }
   background: none;
 }
 
-/* portfolioframe.png retired — squished PNG decor removed site-wide */
+/* portfolioframe.png retired â€” squished PNG decor removed site-wide */
 .melodia-shell::after {
   content: none;
   display: none;
@@ -252,7 +243,7 @@ img { display: block; max-width: 100%; }
   transform: translate3d(0, calc(var(--scroll-shift) * 0.08), 0) scale(1.05);
 }
 
-/* Swatch / proof heroes — keep material plates readable */
+/* Swatch / proof heroes â€” keep material plates readable */
 .hero.hero-proof .hero-media img,
 .hero.hero-proof .parallax-layer-7 img {
   object-fit: contain;
@@ -324,7 +315,7 @@ img { display: block; max-width: 100%; }
   z-index: 1;
 }
 
-/* Recruiter iridescence overlay — Figma IriShaderOverlay texture */
+/* Recruiter iridescence overlay â€” Figma IriShaderOverlay texture */
 .band.astral.iri-recruiter-surface,
 .planetarium-mini-band,
 .band-constellation-accent {
@@ -835,7 +826,7 @@ em { color: var(--gold); font-style: italic; }
 }
 
 .portal-card::after {
-  content: "✦";
+  content: "âœ¦";
   position: absolute;
   top: 16px;
   right: 18px;
@@ -939,3 +930,4 @@ em { color: var(--gold); font-style: italic; }
   content-visibility: auto;
   contain-intrinsic-size: auto 420px;
 }
+

@@ -1,4 +1,4 @@
-/* Melodia typography SSOT — Figma-aligned editorial interface
+﻿/* Melodia typography SSOT â€” Figma-aligned editorial interface
    Main portfolio:
    Brand / navigation / body: Space Grotesk
    Editorial display: Crimson Text
@@ -9,21 +9,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Twinkle+Star&display=swap");
 
 :root {
-  --font-brand: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
-  --font-cover: "Crimson Text", Georgia, "Times New Roman", serif;
-  --font-display: "Crimson Text", Georgia, "Times New Roman", serif;
+  --font-brand: 'Times New Roman', Times, Georgia, serif;
+  --font-cover: 'Times New Roman', Times, Georgia, serif;
+  --font-display: 'Times New Roman', Times, Georgia, serif;
   --font-decorative: "Twinkle Star", "Crimson Text", Georgia, serif;
-  --font-body: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body: 'Times New Roman', Times, Georgia, serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
-  --font-lede: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  --font-lede: 'Times New Roman', Times, Georgia, serif;
   --tracking-brand: 0.08em;
   --tracking-display: 0.005em;
   --tracking-body: 0;
   --tracking-mono: 0.055em;
 }
 
-/* Kawaii flourish moments — mirrored from UE role (rank letters, ULT names,
-   menu wordmark). Star-dot terminals tie to the ✸ eight-point brand mark.
+/* Kawaii flourish moments â€” mirrored from UE role (rank letters, ULT names,
+   menu wordmark). Star-dot terminals tie to the âœ¸ eight-point brand mark.
    Use sparingly: one flourish per view. */
 .decorative,
 .rank-letter,
@@ -38,7 +38,7 @@
 /* Optional denser interface-display lane for shop / kitbash surfaces. */
 html[data-display-font="interface"] {
   --font-display: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
-  --font-lede: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  --font-lede: 'Times New Roman', Times, Georgia, serif;
   --tracking-display: 0.02em;
 }
 
@@ -141,7 +141,7 @@ h3 {
 
 
 
-/* Editorial label hierarchy — keep utility text quiet and deliberate. */
+/* Editorial label hierarchy â€” keep utility text quiet and deliberate. */
 .kicker,
 .eyebrow,
 .magazine-kicker {
@@ -168,3 +168,4 @@ figcaption,
   font-size: max(0.78rem, 12.5px);
   line-height: 1.5;
 }
+
