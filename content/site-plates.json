@@ -584,6 +584,30 @@
       "title": "NearShelf Chladni Bloom & Basin Ecology",
       "status": "reviewed_capstone_master",
       "evidence_note": "Native procedural flora distribution following standing-wave nodal lines across continuous mountain terrain."
+    },
+    "faraway.plate_09_lookdev": {
+      "path": "../generated/assets/unreal/faraway_plate_09_infold_lookdev_convergence.webp",
+      "thumb": "../generated/assets/unreal/faraway_plate_09_infold_lookdev_convergence_thumb.webp",
+      "alt": "Faraway Mother Plate IX \u2014 Infinity Nikki Lookdev: Volumetric God Rays, Twilight Candela, and Dream Niagara Ecology",
+      "title": "Plate IX \u2014 Infinity Nikki Lookdev & Atmospheric Convergence",
+      "status": "reviewed_capstone_master",
+      "evidence_note": "Master atmospheric lookdev featuring Mie forward scattering god rays, 26 twilight lanterns, velvet fabric sheen, and Niagara mote ecology."
+    },
+    "faraway.hero_nikki_godrays": {
+      "path": "../generated/assets/unreal/faraway_hero_nikki_godrays.webp",
+      "thumb": "../generated/assets/unreal/faraway_hero_nikki_godrays_thumb.webp",
+      "alt": "Faraway Mother \u2014 Canonical Heart Gate bathed in volumetric god rays, iridescent waterfall silks, and twilight atmosphere",
+      "title": "The Celestial Heart Gate & Volumetric God Rays",
+      "status": "reviewed_capstone_master",
+      "evidence_note": "Mie forward scattering light shafts stream through acoustic halo ribs overlooking the infinite basin horizon."
+    },
+    "faraway.hero_village_twilight": {
+      "path": "../generated/assets/unreal/faraway_hero_village_twilight.webp",
+      "thumb": "../generated/assets/unreal/faraway_hero_village_twilight_thumb.webp",
+      "alt": "Faraway Mother \u2014 Artisan village orchard illuminated by 26 warm candela lanterns with volumetric halos and sakura petal motes",
+      "title": "Artisan Orchard Court & Twilight Illumination",
+      "status": "reviewed_capstone_master",
+      "evidence_note": "Twilight atmosphere with warm 2,700K point sources illuminating stepped terraces, cobblestones, and reading nooks."
     }
   },
   "plates": [
