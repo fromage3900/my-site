@@ -119,7 +119,7 @@
               <tr>
                 <td><span class="spec-badge">P0-06</span></td>
                 <td><strong>Quill Unavailable Load</strong></td>
-                <td>Implement null-check fallback in <code>QuillScriptInterpreter</code> to bypass missing dialogue files and default to free exploration.</td>
+                <td>Implement null-check fallback in narrative dialogue interpreter to bypass missing dialogue files and default to free exploration.</td>
                 <td>Canonical JRPG slot loads cleanly when Quill assets are missing/unavailable.</td>
               </tr>
               <tr>
@@ -143,7 +143,7 @@
               <tr>
                 <td><span class="spec-badge">P0-10</span></td>
                 <td><strong>Main Menu Wiring</strong></td>
-                <td>Wire <code>New Game</code>, <code>Continue</code>, <code>Load</code> in <code>WBP_MainMenu</code> directly to <code>UMelodiaTravelSubsystem</code> and canonical <code>BP_MelodiaJRPGGameInstance</code>.</td>
+                <td>Wire <code>New Game</code>, <code>Continue</code>, <code>Load</code> in main menu travel controller and session game state.</td>
                 <td>Main Menu buttons route cleanly to gameplay levels and canonical save slots.</td>
               </tr>
               <tr>
