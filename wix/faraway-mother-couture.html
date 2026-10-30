@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" data-page="faraway-mother-couture" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Faraway Mother — Couture Architecture &amp; Procedural World | Brennan Shepherd</title>
+<meta name="description" content="Faraway Mother: Couture-Cymatic procedural architecture, Cathedral V2, Heart Gate, and massive world PCG in Unreal Engine 5.8 for Bryce Hallett capstone review." />
+<link rel="stylesheet" href="melodia-tokens.css?v=20261030">
+<link rel="stylesheet" href="melodia-luxury-type.css?v=20261030">
+<link rel="stylesheet" href="melodia-editorial.css?v=20261030">
+<link rel="stylesheet" href="melodia-fashion-editorial.css?v=20261030">
+<link rel="stylesheet" href="melodia-premium-system.css?v=20261030">
+<link rel="stylesheet" href="enhanced-cosmic-hero-premium.css?v=20261030">
+
+<style>
+  :root {
+    --fm-gold: #d4af5f;
+    --fm-plum: #2a1646;
+    --fm-dark: #0e0d14;
+    --fm-card: #16151f;
+    --fm-border: #2d2a3c;
+  }
+  body {
+    background: var(--fm-dark);
+    color: #e2e8f0;
+    font-family: var(--font-body, system-ui, sans-serif);
+  }
+  .fm-hero {
+    position: relative;
+    padding: 6rem 1.5rem 3.5rem;
+    text-align: center;
+    background: radial-gradient(circle at 50% 20%, rgba(212, 175, 95, 0.08), transparent 70%),
+                linear-gradient(180deg, #151320 0%, var(--fm-dark) 100%);
+    border-bottom: 1px solid var(--fm-border);
+  }
+  .fm-hero .kicker {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fm-gold);
+    margin-bottom: 0.75rem;
+  }
+  .fm-hero h1 {
+    font-family: var(--font-display, Georgia, serif);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 400;
+    margin: 0 0 1rem;
+    color: #ffffff;
+    line-height: 1.15;
+  }
+  .fm-hero .lede {
+    max-width: 820px;
+    margin: 0 auto 1.5rem;
+    font-size: 1.15rem;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+  .stat-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem 3rem;
+    margin: 2rem auto 0;
+    max-width: 1100px;
+  }
+  .stat-pill {
+    text-align: left;
+    border-left: 2px solid var(--fm-gold);
+    padding-left: 0.75rem;
+  }
+  .stat-pill .val {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: var(--font-mono, monospace);
+  }
+  .stat-pill .lbl {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #94a3b8;
+  }
+  .carousel-wrap {
+    position: relative;
+    max-width: 1400px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+  }
+  .plate-frame {
+    background: var(--fm-card);
+    border: 1px solid var(--fm-border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0 0 2rem;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+  }
+  .plate-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+  .plate-frame figcaption {
+    padding: 1.25rem 1.5rem;
+    background: rgba(22, 21, 31, 0.95);
+    border-top: 1px solid var(--fm-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .plate-badge {
+    font-family: var(--font-display, Georgia, serif);
+    font-size: 1.1rem;
+    color: var(--fm-gold);
+  }
+  .plate-note {
+    font-size: 0.88rem;
+    color: #cbd5e1;
+    margin: 0;
+  }
+  .curated-vistas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem;
+  }
+  .vista-card {
+    background: var(--fm-card);
+    border: 1px solid var(--fm-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .vista-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 175, 95, 0.5);
+  }
+  .vista-media-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+  .vista-media-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .vista-badge {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.85rem;
+    background: rgba(14, 13, 20, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(212, 175, 95, 0.3);
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--fm-gold);
+  }
+  .vista-details {
+    padding: 1.25rem 1.4rem;
+  }
+  .vista-details h3 {
+    font-family: var(--font-display, Georgia, serif);
+    font-size: 1.15rem;
+    margin: 0 0 0.4rem;
+    color: #ffffff;
+  }
+  .vista-caption {
+    font-size: 0.88rem;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .tech-ledger {
+    max-width: 1400px;
+    margin: 4rem auto;
+    padding: 2rem 2.5rem;
+    background: var(--fm-card);
+    border: 1px solid var(--fm-border);
+    border-radius: 14px;
+  }
+  .tech-ledger h2 {
+    font-family: var(--font-display, Georgia, serif);
+    color: var(--fm-gold);
+    font-size: 1.8rem;
+    margin-top: 0;
+  }
+  .tech-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+  }
+  .tech-table th {
+    text-align: left;
+    padding: 0.85rem 1rem;
+    border-bottom: 2px solid var(--fm-border);
+    color: var(--fm-gold);
+    font-family: var(--font-mono, monospace);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+  }
+  .tech-table td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid rgba(45, 42, 60, 0.6);
+    color: #cbd5e1;
+  }
+  .tech-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .badge-pass {
+    color: #4ade80;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  @media (max-width: 768px) {
+    .curated-vistas-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="melodia-shell fashion-mode">
+<header class="shell-nav" aria-label="Portfolio navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="index.html">Home</a>
+    <a href="hero-renders.html">Hero Renders</a>
+    <a href="surreal-architecture.html">Surreal Architecture</a>
+    <a href="melusina-case-study.html">Melusina Stage</a>
+    <a href="application-hub.html">Application Hub</a>
+  </nav>
+</header>
+
+<main id="main">
+<section class="fm-hero">
+  <p class="kicker">Capstone Mentorship Review · Bryce Hallett</p>
+  <h1>Faraway Mother — Couture-Cymatic Architecture</h1>
+  <p class="lede">A monumental procedural world bridging acoustic Chladni eigenmodes, turned lathe balustrades, and massive procedural ecosystems in Unreal Engine 5.8.</p>
+  
+  <div class="stat-strip">
+    <div class="stat-pill"><div class="val">1,638,000+</div><div class="lbl">Procedural Polygons</div></div>
+    <div class="stat-pill"><div class="val">77,392</div><div class="lbl">Live World Instances</div></div>
+    <div class="stat-pill"><div class="val">1,116 / 1,116</div><div class="lbl">Floor &amp; Stair Ray Hits</div></div>
+    <div class="stat-pill"><div class="val">20</div><div class="lbl">UE5 Material Instances</div></div>
+  </div>
+</section>
+
+<section class="carousel-wrap">
+  <div class="section-head" style="margin-bottom: 2rem;">
+    <p class="eyebrow magazine-kicker" style="color: var(--fm-gold);">Master Editorial Contact Sheets (2400 × 1600)</p>
+    <h2 style="font-family: var(--font-display, Georgia, serif); color: #ffffff;">The Eight Portfolio Plates</h2>
+    <p style="color: #94a3b8; max-width: 780px;">Complete architectural and procedural telemetry formatted as editorial portfolio plates for capstone review.</p>
+  </div>
+
+  
+        <div class="carousel-slide" data-slide-id="faraway_plate_08">
+          <figure class="plate-frame">
+            <img src="../generated/assets/unreal/faraway_plate_08_capstone_master_showcase.webp" alt="Faraway Mother Plate VIII — Capstone Master Showcase: Couture Megastructures and Procedural World Ecosystem" loading="lazy" />
+            <figcaption>
+              <div class="plate-badge">Plate VIII — Capstone Master Showcase</div>
+              <p class="plate-note">Comprehensive capstone review presentation uniting Cathedral V2, Heart Gate, Dressed Village, and Chladni Flora Ecology.</p>
+            </figcaption>
+          </figure>
+        </div>
+        
+
+        <div class="carousel-slide" data-slide-id="faraway_plate_01">
+          <figure class="plate-frame">
+            <img src="../generated/assets/unreal/faraway_plate_01_cop_and_materials.webp" alt="Faraway Mother Plate I — Chladni Eigenmode COP Texture Foundry and 20 UE5 Material Instances" loading="lazy" />
+            <figcaption>
+              <div class="plate-badge">Plate I — Chladni COP Foundry & Material Suite</div>
+              <p class="plate-note">Acoustic eigenmode bakes, 16-bit displacement relief, and 20 live Unreal Engine 5 material instances.</p>
+            </figcaption>
+          </figure>
+        </div>
+        
+
+        <div class="carousel-slide" data-slide-id="faraway_plate_02">
+          <figure class="plate-frame">
+            <img src="../generated/assets/unreal/faraway_plate_02_couture_walk.webp" alt="Faraway Mother Plate II — The Couture Walk: Pointed Promenade, Balustrades and Sanctuary Court" loading="lazy" />
+            <figcaption>
+              <div class="plate-badge">Plate II — The Couture Walk</div>
+              <p class="plate-note">84m pointed promenade, 28m bridge, turned lathe balustrades, and circular sanctuary court.</p>
+            </figcaption>
+          </figure>
+        </div>
+        
+
+        <div class="carousel-slide" data-slide-id="faraway_plate_03">
+          <figure class="plate-frame">
+            <img src="../generated/assets/unreal/faraway_plate_03_village_foundations.webp" alt="Faraway Mother Plate III — Village Foundations, Stepped Avenue Terraces, and Sloped Balustrades" loading="lazy" />
+            <figcaption>
+              <div class="plate-badge">Plate III — Village Foundations & Stepped Terraces</div>
+              <p class="plate-note">24 residential plots, stepped collector avenues, zero seam-gap bridge approach, and 100% floor support.</p>
+            </figcaption>
+          </figure>
+        </div>
+        
+
+        <div class="carousel-slide" data-slide-id="faraway_plate_04">
+          <figure class="plate-frame">
+            <img src="../generated/assets/unreal/faraway_plate_04_village_house_family.webp" alt="Faraway Mother Plate IV — Village House Family: Cottage, Atelier, and Greenhouse Archetypes" loading="lazy" />
+            <figcaption>
+              <div class="plate-badge">Plate IV — Village House Family</div>
+              <p class="plate-note">Three residential archetypes converging onto the shared exterior CAD decorator kit.</p>
+            </figcaption>
+          </figure>
+        </div>
+        
+
+        <div class="carousel-slide" data-slide-id="faraway_plate_05">
+          <figure class="plate-frame">
+            <img src="../generated/assets/unreal/faraway_plate_05_cathedral_v2.webp" alt="Faraway Mother Plate V — Cathedral V2 Megastructure: 1.21M Polygons, Ribbed Nave, and Salons" loading="lazy" />
+            <figcaption>
+              <div class="plate-badge">Plate V — Cathedral V2 Megastructure</div>
+              <p class="plate-note">1.21M visual polygons, 5-bay nave, twin western spires, 4 intimate salons, and spiral balustrades.</p>
+            </figcaption>
+          </figure>
+        </div>
+        
+
+        <div class="carousel-slide" data-slide-id="faraway_plate_06">
+          <figure class="plate-frame">
+            <img src="../generated/assets/unreal/faraway_plate_06_massive_pcg_and_chladni_ecology.webp" alt="Faraway Mother Plate VI — Massive World PCG and Chladni Flora Ecology: 77,392 Live Instances" loading="lazy" />
+            <figcaption>
+              <div class="plate-badge">Plate VI — Massive World PCG & Chladni Ecology</div>
+              <p class="plate-note">77,392 live instances across NearShelf meadow, sakura groves, quartz bridges, and dressed village courts.</p>
+            </figcaption>
+          </figure>
+        </div>
+        
+
+        <div class="carousel-slide" data-slide-id="faraway_plate_07">
+          <figure class="plate-frame">
+            <img src="../generated/assets/unreal/faraway_plate_07_heart_gate_and_world_reveal.webp" alt="Faraway Mother Plate VII — The Heart Gate, Acoustic Halo Ribs, and HeroSilk Waterfall Ribbons" loading="lazy" />
+            <figcaption>
+              <div class="plate-badge">Plate VII — The Heart Gate & Couture-Silk Horizon</div>
+              <p class="plate-note">Canonical visual gate convergence, gemstone node joints, bobbin lace, and 5 cascading silk spans.</p>
+            </figcaption>
+          </figure>
+        </div>
+        
+</section>
+
+<section style="background: rgba(18, 17, 26, 0.6); padding: 4rem 0; border-top: 1px solid var(--fm-border); border-bottom: 1px solid var(--fm-border);">
+  <div style="max-width: 1400px; margin: 0 auto; padding: 0 1.5rem;">
+    <div class="section-head">
+      <p class="eyebrow magazine-kicker" style="color: var(--fm-gold);">Unreal Engine 5.8 Live Viewport Captures</p>
+      <h2 style="font-family: var(--font-display, Georgia, serif); color: #ffffff;">Hero Perspectives &amp; Environmental Vistas</h2>
+      <p style="color: #94a3b8; max-width: 780px;">High-resolution viewport captures from canonical camera positions throughout the Faraway Mother realm.</p>
+    </div>
+
+    <div class="curated-vistas-grid">
+      
+        <article class="vista-card">
+          <div class="vista-media-frame">
+            <span class="vista-badge">Canonical Monolith · Unreal Engine 5.8</span>
+            <img src="../generated/assets/unreal/faraway_hero_heart_gate.webp" alt="Faraway Mother — Canonical Heart Gate overlooking the infinite cloud horizon" loading="lazy" />
+          </div>
+          <div class="vista-details">
+            <h3>The Faraway Heart Gate — Hero View</h3>
+            <p class="vista-caption">Monumental acoustic archway cradling turned halo ribs and prismatic gemstone nodes at the basin precipice.</p>
+          </div>
+        </article>
+        
+
+        <article class="vista-card">
+          <div class="vista-media-frame">
+            <span class="vista-badge">Grand Approach · Perspective</span>
+            <img src="../generated/assets/unreal/faraway_heart_gate_approach.webp" alt="Faraway Mother — Ascending approach to the Heart Gate portal and silk ribbons" loading="lazy" />
+          </div>
+          <div class="vista-details">
+            <h3>Heart Gate — Southern Cloister Approach</h3>
+            <p class="vista-caption">Dramatic low-angle view tracing the ascending stone cloister toward the illuminated portal.</p>
+          </div>
+        </article>
+        
+
+        <article class="vista-card">
+          <div class="vista-media-frame">
+            <span class="vista-badge">Regional Vista · 8km Scale</span>
+            <img src="../generated/assets/unreal/faraway_heart_gate_overview.webp" alt="Faraway Mother — 8km basin overview revealing Heart Gate alignment and floating crystals" loading="lazy" />
+          </div>
+          <div class="vista-details">
+            <h3>Motherfold Basin & Horizon Bands Overview</h3>
+            <p class="vista-caption">High-altitude panoramic perspective revealing Gate alignment with continuous landscape and floating horizon crystals.</p>
+          </div>
+        </article>
+        
+
+        <article class="vista-card">
+          <div class="vista-media-frame">
+            <span class="vista-badge">Megastructure Interior · 1.21M Polys</span>
+            <img src="../generated/assets/unreal/faraway_cathedral_nave.webp" alt="Faraway Mother — Cathedral V2 interior vaulted nave with gilt Chladni rose medallions" loading="lazy" />
+          </div>
+          <div class="vista-details">
+            <h3>Cathedral V2 Nave — Ribbed Vaults & Gilt Tracery</h3>
+            <p class="vista-caption">Pointed-arch ribbed vaulting with Chladni acoustic floor medallions and gilded clerestory balustrades.</p>
+          </div>
+        </article>
+        
+
+        <article class="vista-card">
+          <div class="vista-media-frame">
+            <span class="vista-badge">Living Village · 100% Floor Support</span>
+            <img src="../generated/assets/unreal/faraway_village_orchard_dressed.webp" alt="Faraway Mother — Artisan Village Orchard Court with reading nooks, lanterns and hedges" loading="lazy" />
+          </div>
+          <div class="vista-details">
+            <h3>Orchard Court — Dressed Ensembles & Gameplay Beats</h3>
+            <p class="vista-caption">Artisan village square with reading nooks, garden benches, and lanterns snapped cleanly to stepped terrace foundations.</p>
+          </div>
+        </article>
+        
+
+        <article class="vista-card">
+          <div class="vista-media-frame">
+            <span class="vista-badge">Stepped Terraces · 972 Stair Rays</span>
+            <img src="../generated/assets/unreal/faraway_village_avenue_dressed.webp" alt="Faraway Mother — Stepped village avenue with sloped balustrades and zero seam-gap bridge" loading="lazy" />
+          </div>
+          <div class="vista-details">
+            <h3>Village Main Avenue & Retaining Balustrades</h3>
+            <p class="vista-caption">Stepped stone avenue connecting Orchard, Satin, and Glasshouse courts to the western cathedral approach.</p>
+          </div>
+        </article>
+        
+
+        <article class="vista-card">
+          <div class="vista-media-frame">
+            <span class="vista-badge">Procedural Flora · 77,392 Instances</span>
+            <img src="../generated/assets/unreal/faraway_nearshelf_chladni_bloom.webp" alt="Faraway Mother — Flowering mountain meadow following Chladni eigenmode resonance contours" loading="lazy" />
+          </div>
+          <div class="vista-details">
+            <h3>NearShelf Chladni Bloom & Basin Ecology</h3>
+            <p class="vista-caption">Native procedural flora distribution following standing-wave nodal lines across continuous mountain terrain.</p>
+          </div>
+        </article>
+        
+    </div>
+  </div>
+</section>
+
+<section class="tech-ledger">
+  <h2>Capstone System Verification &amp; Technical Telemetry</h2>
+  <p style="color: #94a3b8;">Deterministic telemetry verified live across geometry generators, collision meshes, material instances, and procedural scatter graphs.</p>
+  
+  <table class="tech-table">
+    <thead>
+      <tr>
+        <th>Subsystem</th>
+        <th>Visual Polygons / Scale</th>
+        <th>Raycast / Collision Verification</th>
+        <th>Material Instance Binding</th>
+        <th>Live Runtime Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Cathedral V2 Megastructure</strong></td>
+        <td>1,213,158 Visual Polygons</td>
+        <td>1,462 / 1,462 Floor &amp; Stair Rays (0 failures)</td>
+        <td>9 Couture MIs (Tracery, Gems, Lace, Structure)</td>
+        <td><span class="badge-pass">PASS · 100% SUPPORT</span></td>
+      </tr>
+      <tr>
+        <td><strong>The Couture Walk</strong></td>
+        <td>275,900 Visual Polygons</td>
+        <td>450 / 450 Horizontal Promenade Rays</td>
+        <td>MI_Couture_structure, tracery, ribbons</td>
+        <td><span class="badge-pass">PASS · 100% SUPPORT</span></td>
+      </tr>
+      <tr>
+        <td><strong>Village Foundations &amp; Stairs</strong></td>
+        <td>148,886 Visual Polygons</td>
+        <td>972 Stair Rays + 144 Arrival Rays</td>
+        <td>MI_Village_foundations, roads, terrain, courts</td>
+        <td><span class="badge-pass">PASS · 100% SUPPORT</span></td>
+      </tr>
+      <tr>
+        <td><strong>Village House Family</strong></td>
+        <td>76,941 Visual Polygons (3 Archetypes)</td>
+        <td>Sampled ground footprint (0 portal hits)</td>
+        <td>Rusticated quoins, eave valances, rosettes</td>
+        <td><span class="badge-pass">PASS · CLEAN PORTALS</span></td>
+      </tr>
+      <tr>
+        <td><strong>The Faraway Heart Gate</strong></td>
+        <td>6 Canonical Meshes + 5 Silks</td>
+        <td>Keyhole aperture clearance verified</td>
+        <td>MI_FarawayGate_StoneStrata, SilkWind, Gems</td>
+        <td><span class="badge-pass">PASS · VISUAL HERO</span></td>
+      </tr>
+      <tr>
+        <td><strong>Procedural World PCG</strong></td>
+        <td>77,392 Live Instances across 187 ISMs</td>
+        <td>Continuous landscape projection</td>
+        <td>Flora clusters, sakura canopies, quartz clusters</td>
+        <td><span class="badge-pass">PASS · ZERO COLLISION</span></td>
+      </tr>
+      <tr>
+        <td><strong>Gameplay Beat Reservations</strong></td>
+        <td>3 Orchard Narrative Encounters</td>
+        <td>5m clearance radius keepout</td>
+        <td>Protected from procedural scatter</td>
+        <td><span class="badge-pass">PASS · ZERO INTRUSION</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+</main>
+
+<footer class="shell-footer" style="padding: 3rem 1.5rem; text-align: center; border-top: 1px solid var(--fm-border); font-size: 0.85rem; color: #64748b;">
+  <p>Brennan Shepherd · Environment &amp; Technical Art Portfolio · Melodia World-Building</p>
+</footer>
+</div>
+</body>
+</html>

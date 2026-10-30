@@ -212,32 +212,58 @@
     }
   }
 
-  /* ===== EXPLICIT DARK MODE CLASS (for forced dark) ===== */
-  .dark,
-  [data-theme="dark"] {
-    --color-surface-base:     var(--primitive-astral-900);
-    --color-surface-raised:   var(--primitive-astral-700);
-    --color-surface-sunken:   var(--primitive-plum-900);
-    --color-surface-inverse:  var(--primitive-ivory-100);
+   /* ===== EXPLICIT DARK MODE CLASS (for forced dark) ===== */
+   .dark,
+   [data-theme="dark"] {
+     --color-surface-base:     var(--primitive-astral-900);
+     --color-surface-raised:   var(--primitive-astral-700);
+     --color-surface-sunken:   var(--primitive-plum-900);
+     --color-surface-inverse:  var(--primitive-ivory-100);
 
-    --color-text-primary:     var(--primitive-ivory-50);
-    --color-text-secondary:   var(--primitive-slate-300);
-    --color-text-tertiary:    var(--primitive-slate-400);
-    --color-text-inverse:     var(--primitive-astral-900);
-    --color-text-accent:      var(--primitive-gold-300);
+     --color-text-primary:     var(--primitive-ivory-50);
+     --color-text-secondary:   var(--primitive-slate-300);
+     --color-text-tertiary:    var(--primitive-slate-400);
+     --color-text-inverse:     var(--primitive-astral-900);
+     --color-text-accent:      var(--primitive-gold-300);
 
-    --color-border-subtle:    var(--primitive-astral-700);
-    --color-border-default:   var(--primitive-astral-500);
-    --color-border-strong:    var(--primitive-iris-500);
+     --color-border-subtle:    var(--primitive-astral-700);
+     --color-border-default:   var(--primitive-astral-500);
+     --color-border-strong:    var(--primitive-iris-500);
 
-    --color-accent-primary:   var(--primitive-gold-500);
-    --color-accent-secondary: var(--primitive-lavender-300);
-    --color-accent-tertiary:  var(--primitive-sakura-300);
-    --color-accent-astral:    var(--primitive-astral-300);
-    --color-accent-iris:      var(--primitive-iris-300);
+     --color-accent-primary:   var(--primitive-gold-500);
+     --color-accent-secondary: var(--primitive-lavender-300);
+     --color-accent-tertiary:  var(--primitive-sakura-300);
+     --color-accent-astral:    var(--primitive-astral-300);
+     --color-accent-iris:      var(--primitive-iris-300);
 
-    --color-rule-gold:        var(--primitive-gold-500);
-  }
+     --color-rule-gold:        var(--primitive-gold-500);
+   }
+
+   /* ===== EXPLICIT LIGHT MODE CLASS (for hybrid sections on dark pages) ===== */
+   [data-theme="light"] {
+     --color-surface-base:     var(--primitive-ivory-100);
+     --color-surface-raised:   var(--primitive-ivory-50);
+     --color-surface-sunken:   var(--primitive-ivory-200);
+     --color-surface-inverse:  var(--primitive-plum-800);
+
+     --color-text-primary:     var(--primitive-plum-800);
+     --color-text-secondary:   var(--primitive-slate-500);
+     --color-text-tertiary:    var(--primitive-slate-400);
+     --color-text-inverse:     var(--primitive-ivory-50);
+     --color-text-accent:      var(--primitive-gold-700);
+
+     --color-border-subtle:    var(--primitive-ivory-300);
+     --color-border-default:   var(--primitive-slate-200);
+     --color-border-strong:    var(--primitive-slate-300);
+
+     --color-accent-primary:   var(--primitive-gold-500);
+     --color-accent-secondary: var(--primitive-lavender-500);
+     --color-accent-tertiary:  var(--primitive-sakura-300);
+     --color-accent-astral:    var(--primitive-astral-500);
+     --color-accent-iris:      var(--primitive-iris-500);
+
+     --color-rule-gold:        var(--primitive-gold-500);
+   }
 
   /* ===== SPACING SCALE (8pt base) ===== */
   --space-4:   4px;
@@ -257,24 +283,24 @@
   --space-clamp-lg:   clamp(48px, 6vw, 96px);
   --space-clamp-xl:   clamp(96px, 8vw, 128px);
 
-  /* ===== RADIUS SCALE ===== */
-  --radius-none: 0;
-  --radius-sm:   2px;
-  --radius-md:   4px;
-  --radius-lg:   8px;
-  --radius-pill: 999px;
+   /* ===== RADIUS SCALE — sharp corners (human-made, architectural) ===== */
+   --radius-none: 0;
+   --radius-sm:   0;
+   --radius-md:   0;
+   --radius-lg:   0;
+   --radius-pill: 0;
 
-  /* ===== TYPOGRAPHY — FIGMA-ALIGNED WEB ROLES =====
-     Main portfolio: Space Grotesk + Crimson Text + IBM Plex Mono.
-     Accessory Atelier owns its Times + Jost campaign/product exception locally. */
-  --font-display:       "Crimson Text", Georgia, "Times New Roman", serif;
-  --font-display-fallback: Georgia, "Times New Roman", serif;
-  --font-cover:         "Crimson Text", Georgia, "Times New Roman", serif;
-  --font-decorative:    "Twinkle Star", "Crimson Text", Georgia, serif;
-  --font-body:          "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
-  --font-body-fallback: "Avenir Next", "Segoe UI", sans-serif;
-  --font-mono:          "IBM Plex Mono", ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
-  --font-brand:         "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+   /* ===== TYPOGRAPHY — FIGMA-ALIGNED WEB ROLES =====
+      Main portfolio: Times New Roman (display) + Jost (UI/body) + JetBrains Mono (readouts).
+      Accessory Atelier owns its Times + Jost campaign/product exception locally. */
+   --font-display:       "Times New Roman", Times, Georgia, serif;
+   --font-display-fallback: Georgia, "Times New Roman", serif;
+   --font-cover:         "Times New Roman", Times, Georgia, serif;
+   --font-decorative:    "Times New Roman", Times, Georgia, serif;
+   --font-body:          "Jost", "Avenir Next", "Segoe UI", sans-serif;
+   --font-body-fallback: "Avenir Next", "Segoe UI", sans-serif;
+   --font-mono:          "JetBrains Mono", ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
+   --font-brand:         "Jost", "Avenir Next", "Segoe UI", sans-serif;
 
   /* Type scale (matches tokens.json global.type) */
   --text-display-xl:    clamp(48px, 8vw, 72px) / 1.05 var(--font-display);
@@ -414,6 +440,9 @@
   --dream-mouse-y: 0.5;
   --dream-fresnel: 0.35;
 }
+
+/* ===== SHARP CORNERS — no rounded edges anywhere ===== */
+*, *::before, *::after { border-radius: 0 !important; }
 
 /* ===== FOCUS VISIBLE POLYFILL ===== */
 :focus:not(:focus-visible) { outline: none; }

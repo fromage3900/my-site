@@ -14,11 +14,11 @@
 <meta property="og:title" content="Brennan Shepherd — Environment &amp; Technical Art | Melodia" />
 <meta property="og:type" content="website" />
 <meta property="og:description" content="Stylized environment and technical art across surreal worlds, character work, procedural systems, shaders, and interactive Melodia experiments." />
-<meta property="og:image" content="https://fromage3900.github.io/my-site/public/melodia/nikki9-suite/nikki9-melusina-morning-hero-1920x1080.png" />
+<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/variant_2_sakura_dawn.webp" />
 <meta property="og:image:alt" content="Brennan Shepherd — stylized environment and technical art from Melodia" />
 <meta property="og:url" content="https://www.fromageart.xyz/" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://fromage3900.github.io/my-site/public/melodia/nikki9-suite/nikki9-melusina-morning-hero-1920x1080.png" />
+<meta name="twitter:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/variant_2_sakura_dawn.webp" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -155,7 +155,7 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
   left: 7%;
   bottom: 9%;
   color: rgba(255,248,238,.84);
-  font-family: var(--font-brand, "Space Grotesk", sans-serif);
+  font-family: var(--font-brand, "Jost", sans-serif);
   font-size: clamp(.64rem, 1.15vw, .9rem);
   letter-spacing: .44em;
   text-transform: uppercase;
@@ -219,7 +219,7 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
 }
 
 .env-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; margin-top: 1.5rem; }
-.env-card { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 16/10; display: flex; align-items: flex-end; text-decoration: none; border: 1px solid var(--color-border-subtle, rgba(201,168,106,.25)); background: var(--color-surface-sunken, #0A0E22); box-shadow: 0 8px 24px rgba(0,0,0,.35); transition: transform .3s ease, border-color .3s ease; }
+.env-card { position: relative; overflow: hidden; aspect-ratio: 16/10; display: flex; align-items: flex-end; text-decoration: none; border: 1px solid var(--color-border-subtle, rgba(201,168,106,.25)); background: var(--color-surface-sunken, #0A0E22); box-shadow: 0 8px 24px rgba(0,0,0,.35); transition: transform .3s ease, border-color .3s ease; }
 .env-card:hover { transform: translateY(-4px); border-color: var(--color-accent-primary, #C9A86A); }
 .env-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 .env-card:hover img { transform: scale(1.05); }
@@ -234,11 +234,110 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
   .env-card img { transition: none; }
 }
 </style>
+
+<style id="td-hero-lookdev-styles">
+/* TouchDesigner Hero LookDev Switcher */
+.td-lookdev-switcher {
+  margin-top: 1.5rem;
+  margin-bottom: 1.25rem;
+  padding: 0.85rem 1.15rem;
+  background: rgba(15, 18, 30, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(160, 185, 240, 0.22);
+  border-radius: 14px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  max-width: 820px;
+  animation: tdFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes tdFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.td-switcher-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  flex-wrap: wrap;
+}
+
+.td-switcher-badge {
+  color: #a5b4fc;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: var(--font-mono, monospace);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.td-switcher-desc {
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 0.78rem;
+  transition: color 0.3s ease;
+}
+
+.td-switcher-pills {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.2rem;
+  scrollbar-width: none;
+}
+.td-switcher-pills::-webkit-scrollbar { display: none; }
+
+.td-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.td-pill:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.td-pill.is-active {
+  background: rgba(99, 102, 241, 0.28);
+  border-color: rgba(165, 180, 252, 0.75);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.td-pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+  flex-shrink: 0;
+}
+</style>
+
 </head>
 <body>
 <div id="melodia-entry-cutscene" class="melodia-entry-cutscene" aria-hidden="true">
   <div class="melodia-entry-frame">
-    <img class="melodia-entry-world" src="../generated/assets/unreal/nikki9-melusina-morning-hero.webp" alt="" decoding="async" fetchpriority="high" />
+    <img class="melodia-entry-world" src="../generated/assets/unreal/variant_2_sakura_dawn.webp" alt="" decoding="async" fetchpriority="high" />
     <img class="melodia-entry-figure" src="../generated/assets/character/melusina_eevee_glam_20260715_02.png" alt="" decoding="async" fetchpriority="high" />
     <div class="melodia-entry-ink"></div>
     <div class="melodia-entry-horizon"></div>
@@ -269,7 +368,7 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
   <div class="parallax-layer-6 hero-bg-secondary" aria-hidden="true" data-hero-bg-slot="secondary">
     <img
       class="hero-bg-plate hero-bg-plate--secondary"
-      src="../generated/assets/unreal/nikki9-kaleido-nave-hero.webp"
+      src="../generated/assets/unreal/variant_2_sakura_dawn.webp"
       alt=""
       decoding="async"
       loading="eager"
@@ -279,7 +378,7 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
   <div class="parallax-layer-7 hero-bg-primary" aria-hidden="true" data-hero-bg-slot="primary">
     <img
       class="hero-poster hero-bg-plate hero-bg-plate--primary"
-      src="../generated/assets/unreal/nikki9-melusina-morning-hero.webp"
+      src="../generated/assets/unreal/variant_1_celestial_twilight.webp"
       alt=""
       decoding="async"
       fetchpriority="high"
@@ -290,7 +389,7 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
       muted
       playsinline
       preload="none"
-      poster="../generated/assets/unreal/nikki9-melusina-morning-hero.webp"
+      poster="../generated/assets/unreal/variant_2_sakura_dawn.webp"
       src="../generated/assets/landscape-loops/WP_SakuraDream.webm"
       style="opacity:.16;mix-blend-mode:screen"
     ></video>
@@ -326,43 +425,93 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
   </div>
   <div class="parallax-layer-8 hero-copy-layer">
     <div class="hero-inner">
-      <p class="kicker magazine-kicker premium-kicker">Environment art · characters · procedural worlds</p>
+      <p class="kicker magazine-kicker premium-kicker">Environment art, characters, and the worlds they live in</p>
       <div class="game-ui-filigree-divider is-baroque" aria-hidden="true"></div>
-      <h1 id="hero-title">Surreal worlds built as one musical universe.</h1>
-      <p class="lede">Brennan Shepherd is an environment &amp; technical artist building stylized fantasy worlds in Unreal Engine 5.8. Melodia brings together environment composition, materials, foliage, procedural systems, and character-driven visual design.</p>
+      <h1 id="hero-title">I build worlds that feel like songs.</h1>
+      <p class="lede">Brennan Shepherd — environment and technical artist in Toronto. I make stylized fantasy worlds in Unreal Engine 5.8: environments, materials, foliage, procedural systems, and the characters that inhabit them. Melodia is where all of it lives.</p>
+      <!-- TouchDesigner River Sanctuary Live LookDev Variations -->
+      <div class="td-lookdev-switcher" role="region" aria-label="TouchDesigner LookDev Variations">
+        <div class="td-switcher-meta">
+          <span class="td-switcher-badge">✦ TouchDesigner Live LookDev · 4590×960</span>
+          <span class="td-switcher-desc" id="td-switcher-desc">Sacred Indigo Nocturne · Kira Star Sparkles · Pale Cyan Mist</span>
+        </div>
+        <div class="td-switcher-pills" role="tablist" aria-label="Aesthetic Presets">
+          <button type="button" class="td-pill is-active" role="tab" aria-selected="true" data-variant="variant_1_celestial_twilight" data-desc="Sacred Indigo Nocturne · Kira Star Sparkles · Pale Cyan Mist">
+            <span class="td-pill-dot" style="background:#818cf8;color:#818cf8"></span>
+            <span class="td-pill-name">Celestial Twilight</span>
+          </button>
+          <button type="button" class="td-pill" role="tab" aria-selected="false" data-variant="variant_2_sakura_dawn" data-desc="Golden Apricot Sunrise · Rose-Gold Caustics · Cherry Blossom Blush">
+            <span class="td-pill-dot" style="background:#fb7185;color:#fb7185"></span>
+            <span class="td-pill-name">Sakura Dawn</span>
+          </button>
+          <button type="button" class="td-pill" role="tab" aria-selected="false" data-variant="variant_3_bioluminescent_midnight" data-desc="Obsidian Deep Abyss · Electric Cyan Waves · Radiant Neon Petals">
+            <span class="td-pill-dot" style="background:#22d3ee;color:#22d3ee"></span>
+            <span class="td-pill-name">Bioluminescent Midnight</span>
+          </button>
+          <button type="button" class="td-pill" role="tab" aria-selected="false" data-variant="variant_4_atlus_graphic_cel" data-desc="Persona Ben-Day Halftone · Crimson Lotus · Comic Ink Contrast">
+            <span class="td-pill-dot" style="background:#f43f5e;color:#f43f5e"></span>
+            <span class="td-pill-name">Atlus Graphic Novel</span>
+          </button>
+          <button type="button" class="td-pill" role="tab" aria-selected="false" data-variant="variant_5_ghibli_summer_noon" data-desc="Pristine Cerulean Sky · Mountain Spring Emerald · Pure White Water Lilies">
+            <span class="td-pill-dot" style="background:#34d399;color:#34d399"></span>
+            <span class="td-pill-name">Ghibli Summer</span>
+          </button>
+        </div>
+      </div>
       <p class="home-foyer-cue" aria-hidden="true">Choose a path ↓</p>
     </div>
   </div>
 </section>
+
+<div class="game-ui-filigree-divider is-baroque" aria-hidden="true" style="margin:0 auto;max-width:1180px"></div>
 
 <section id="portfolio-foyer" class="band astral home-foyer-band" data-surface="void" aria-labelledby="foyer-title">
   <div class="inner">
     <div class="section-head home-foyer-head">
       <div>
         <p class="eyebrow magazine-kicker">Portfolio paths</p>
-        <h2 id="foyer-title">Seven ways into the work.</h2>
+        <h2 id="foyer-title">Seven doors in.</h2>
       </div>
-      <p>No maze, no asset browser. Pick the part of the practice you want to see and go straight there.</p>
+      <p>No maze. Pick the part of the practice you want to see.</p>
     </div>
 
     <nav class="home-foyer-grid" aria-label="Portfolio destinations">
+      <a class="home-foyer-card is-primary" href="faraway-mother-couture.html" style="border: 1px solid rgba(212, 175, 95, 0.6); grid-column: 1 / -1;">
+        <img src="../generated/assets/unreal/faraway_plate_08_capstone_master_showcase_1920.webp" alt="Faraway Mother — Capstone Master Showcase" loading="eager" decoding="async" />
+        <span class="home-foyer-scrim" aria-hidden="true"></span>
+        <span class="home-foyer-copy">
+          <span class="home-foyer-kicker" style="color: #d4af5f;">✦ Capstone Mentorship Showcase · Bryce Hallett Review</span>
+          <strong>Faraway Mother — Couture-Cymatic World Architecture</strong>
+          <span>1.63M+ Procedural Polygons, Cathedral V2 Megastructure, Heart Gate, and 77,392 Live Instances in Unreal Engine 5.8.</span>
+        </span>
+      </a>
       <a class="home-foyer-card is-primary" href="curated-art.html">
-        <img src="../generated/assets/unreal/nikki9-melusina-morning-hero.webp" alt="" loading="lazy" decoding="async" />
+        <img src="../generated/assets/unreal/variant_2_sakura_dawn.webp" alt="" loading="lazy" decoding="async" />
         <span class="home-foyer-scrim" aria-hidden="true"></span>
         <span class="home-foyer-copy">
           <span class="home-foyer-kicker">01 · Start here</span>
           <strong>Portfolio</strong>
-          <span>Selected environments, characters, props, materials, and finished images.</span>
+          <span>The finished work — environments, characters, props, materials.</span>
         </span>
       </a>
 
-      <a class="home-foyer-card is-primary" href="world-bible.html">
+      <a class="home-foyer-card is-primary" href="application-hub.html">
         <img src="../generated/assets/unreal/nikki9-kaleido-nave-hero.webp" alt="" loading="lazy" decoding="async" />
         <span class="home-foyer-scrim" aria-hidden="true"></span>
         <span class="home-foyer-copy">
           <span class="home-foyer-kicker">02 · Environment art</span>
           <strong>Worlds</strong>
-          <span>The four Melodia worlds, their visual language, atmosphere, and production logic.</span>
+          <span>The four Melodia worlds and the visual language behind them.</span>
+        </span>
+      </a>
+
+      <a class="home-foyer-card" href="melusina-case-study.html">
+        <img src="../generated/assets/unreal/char-melusina-turntable-showcase-2048x2048.webp" alt="" loading="lazy" decoding="async" />
+        <span class="home-foyer-scrim" aria-hidden="true"></span>
+        <span class="home-foyer-copy">
+          <span class="home-foyer-kicker">08 · Character</span>
+          <strong>Melusina</strong>
+          <span>Character lookdev: Shorewake dress, iridescent organza, porcelain skin, and the TD hub behind it.</span>
         </span>
       </a>
 
@@ -372,7 +521,7 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
         <span class="home-foyer-copy">
           <span class="home-foyer-kicker">03 · Browser + realtime</span>
           <strong>Interactive</strong>
-          <span>Living-world experiments, realtime presentation, and playful browser studies.</span>
+          <span>Living-world experiments and playful browser studies.</span>
         </span>
       </a>
 
@@ -382,7 +531,7 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
         <span class="home-foyer-copy">
           <span class="home-foyer-kicker">04 · Systems</span>
           <strong>Technical Art</strong>
-          <span>Unreal, Houdini, Python, procedural worldbuilding, shaders, and production tooling.</span>
+          <span>Unreal, Houdini, Python, shaders, and the tools I build.</span>
         </span>
       </a>
 
@@ -392,7 +541,7 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
         <span class="home-foyer-copy">
           <span class="home-foyer-kicker">05 · Character craft</span>
           <strong>Character &amp; Sculpt</strong>
-          <span>Melusina EEVEE stage beauty — modeling, sculpt, and adjacent Magical Artifact menu lookdev.</span>
+          <span>Melusina — modeling, sculpt, and lookdev.</span>
         </span>
       </a>
 
@@ -402,7 +551,7 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
         <span class="home-foyer-copy">
           <span class="home-foyer-kicker">06 · Realtime image systems</span>
           <strong>Real-Time Showreel</strong>
-          <span>Eight Unreal, Spout, and TouchDesigner visual passes — from pastoral light to anime screentone and director scopes.</span>
+          <span>Eight realtime passes, from pastoral light to anime screentone.</span>
         </span>
       </a>
 
@@ -411,7 +560,7 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
         <span class="home-foyer-copy">
           <span class="home-foyer-kicker">07 · Practice</span>
           <strong>About</strong>
-          <span>Resume, tools, role focus, and how the environment / technical art practice fits together.</span>
+          <span>Resume, tools, and how the practice fits together.</span>
         </span>
       </a>
     </nav>
@@ -513,5 +662,51 @@ document.addEventListener('DOMContentLoaded', function () {
   MelodiaEditorial.init({ page: 'index' });
 });
 </script>
+
+<script id="td-hero-lookdev-script">
+(function() {
+  const pills = document.querySelectorAll('.td-switcher-pills .td-pill');
+  const primaryImg = document.querySelector('[data-hero-bg-slot="primary"] img');
+  const primaryVideo = document.querySelector('[data-hero-bg-slot="primary"] video');
+  const descEl = document.getElementById('td-switcher-desc');
+  if (!pills.length || !primaryImg) return;
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const variant = pill.getAttribute('data-variant');
+      const desc = pill.getAttribute('data-desc');
+      
+      pills.forEach(p => {
+        p.classList.remove('is-active');
+        p.setAttribute('aria-selected', 'false');
+      });
+      pill.classList.add('is-active');
+      pill.setAttribute('aria-selected', 'true');
+      
+      if (descEl) {
+        descEl.style.opacity = '0';
+        setTimeout(() => {
+          descEl.textContent = desc;
+          descEl.style.opacity = '1';
+        }, 150);
+      }
+      
+      const newSrc = `../generated/assets/unreal/${variant}.webp`;
+      
+      primaryImg.style.transition = 'opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s ease';
+      primaryImg.style.opacity = '0.5';
+      
+      const preload = new Image();
+      preload.src = newSrc;
+      preload.onload = () => {
+        primaryImg.src = newSrc;
+        if (primaryVideo) primaryVideo.poster = newSrc;
+        primaryImg.style.opacity = '1';
+      };
+    });
+  });
+})();
+</script>
+
 </body>
 </html>

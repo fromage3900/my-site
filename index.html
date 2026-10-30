@@ -115,7 +115,7 @@
     leaving = true;
     try { window.sessionStorage.setItem('melodia.entryCutscene.v1', 'seen'); } catch (e) {}
     stage.classList.add('is-leaving');
-    window.setTimeout(function () { window.location.href = destination; }, 850);
+    window.setTimeout(function () { window.location.href = destination; }, 400);
   }
 
   skip.addEventListener('click', enterPortfolio);
@@ -123,7 +123,7 @@
     if (event.key === 'Enter' || event.key === 'Escape' || event.key === ' ') enterPortfolio();
   });
 
-  window.setTimeout(enterPortfolio, 3600);
+  window.setTimeout(enterPortfolio, 1500);
 
   if (!window.THREE || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 

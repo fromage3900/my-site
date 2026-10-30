@@ -49,6 +49,133 @@
   </div>
 </section>
 
+<section class="band sx-feature" id="river-sanctuary-lookdev" style="background: radial-gradient(circle at top, rgba(30, 27, 75, 0.45) 0%, rgba(10, 10, 20, 0.95) 100%); border-top: 1px solid rgba(165, 180, 252, 0.15); border-bottom: 1px solid rgba(165, 180, 252, 0.15); padding: 4.5rem 0;">
+  <div class="inner">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow magazine-kicker">Realtime LookDev Showcase · 4590×960 Master</p>
+        <h2>River Sanctuary: Procedural Flow &amp; 5 Aesthetic Variations</h2>
+      </div>
+      <p>Continuous procedural drift instancing along the 876-point river centerline with real-time LookDev compositing in TouchDesigner. Locked at 60.0 FPS.</p>
+    </div>
+
+    <!-- Master Hero Preview -->
+    <div class="river-sanctuary-preview-card" style="position: relative; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6); margin-bottom: 2.5rem; background: #080a12;">
+      <img id="rs-master-plate" src="assets/touchdesigner/variant_1_celestial_twilight.webp" alt="River Sanctuary Celestial Twilight Master" style="width: 100%; aspect-ratio: 4590/960; object-fit: cover; display: block; transition: opacity 0.4s ease, filter 0.4s ease;" />
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem 2rem; background: linear-gradient(to top, rgba(10, 10, 20, 0.92) 0%, rgba(10, 10, 20, 0.6) 60%, transparent 100%); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span style="display: inline-block; padding: 0.25rem 0.65rem; border-radius: 999px; background: rgba(99, 102, 241, 0.35); border: 1px solid rgba(165, 180, 252, 0.5); font-size: 0.72rem; font-family: monospace; text-transform: uppercase; color: #c7d2fe; margin-bottom: 0.4rem;">Live Master Plate</span>
+          <h3 id="rs-master-title" style="margin: 0; font-size: 1.35rem; color: #ffffff; font-weight: 600;">Celestial Twilight Sanctuary</h3>
+          <p id="rs-master-desc" style="margin: 0.25rem 0 0; color: #cbd5e1; font-size: 0.88rem;">Sacred Indigo Nocturne · Kira Star Sparkles · Pale Cyan Mist</p>
+        </div>
+        <div style="font-family: monospace; font-size: 0.78rem; color: #94a3b8; text-align: right;">
+          <div>Res: 4590 × 960 (native)</div>
+          <div>FPS: 60.0 locked · 0 cook errors</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 Interactive Variation Selectors -->
+    <div class="rs-variants-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 3rem;">
+      
+      <div class="rs-variant-btn is-active" data-id="variant_1_celestial_twilight" data-title="Celestial Twilight Sanctuary" data-desc="Sacred Indigo Nocturne · Kira Star Sparkles · Pale Cyan Mist" style="cursor: pointer; border-radius: 12px; overflow: hidden; border: 2px solid #818cf8; background: rgba(255, 255, 255, 0.04); transition: transform 0.2s ease, border-color 0.2s ease;">
+        <img src="assets/touchdesigner/variant_1_celestial_twilight_thumb.webp" alt="Celestial Twilight" style="width: 100%; aspect-ratio: 960/201; object-fit: cover; display: block;" />
+        <div style="padding: 0.75rem 1rem;">
+          <strong style="display: block; font-size: 0.9rem; color: #ffffff;">1. Celestial Twilight</strong>
+          <span style="font-size: 0.75rem; color: #94a3b8;">Canon Sacred Night</span>
+        </div>
+      </div>
+
+      <div class="rs-variant-btn" data-id="variant_2_sakura_dawn" data-title="Sakura Dawn Gold" data-desc="Golden Apricot Sunrise · Rose-Gold Caustics · Cherry Blossom Blush" style="cursor: pointer; border-radius: 12px; overflow: hidden; border: 2px solid transparent; background: rgba(255, 255, 255, 0.04); transition: transform 0.2s ease, border-color 0.2s ease;">
+        <img src="assets/touchdesigner/variant_2_sakura_dawn_thumb.webp" alt="Sakura Dawn Gold" style="width: 100%; aspect-ratio: 960/201; object-fit: cover; display: block;" />
+        <div style="padding: 0.75rem 1rem;">
+          <strong style="display: block; font-size: 0.9rem; color: #ffffff;">2. Sakura Dawn Gold</strong>
+          <span style="font-size: 0.75rem; color: #94a3b8;">Apricot Sunrise</span>
+        </div>
+      </div>
+
+      <div class="rs-variant-btn" data-id="variant_3_bioluminescent_midnight" data-title="Bioluminescent Midnight" data-desc="Obsidian Deep Abyss · Electric Cyan Waves · Radiant Neon Petals" style="cursor: pointer; border-radius: 12px; overflow: hidden; border: 2px solid transparent; background: rgba(255, 255, 255, 0.04); transition: transform 0.2s ease, border-color 0.2s ease;">
+        <img src="assets/touchdesigner/variant_3_bioluminescent_midnight_thumb.webp" alt="Bioluminescent Midnight" style="width: 100%; aspect-ratio: 960/201; object-fit: cover; display: block;" />
+        <div style="padding: 0.75rem 1rem;">
+          <strong style="display: block; font-size: 0.9rem; color: #ffffff;">3. Bioluminescent</strong>
+          <span style="font-size: 0.75rem; color: #94a3b8;">Deep Neon Chroma</span>
+        </div>
+      </div>
+
+      <div class="rs-variant-btn" data-id="variant_4_atlus_graphic_cel" data-title="Atlus Graphic Novel" data-desc="Persona Ben-Day Halftone · Crimson Lotus · Comic Ink Contrast" style="cursor: pointer; border-radius: 12px; overflow: hidden; border: 2px solid transparent; background: rgba(255, 255, 255, 0.04); transition: transform 0.2s ease, border-color 0.2s ease;">
+        <img src="assets/touchdesigner/variant_4_atlus_graphic_cel_thumb.webp" alt="Atlus Graphic Novel" style="width: 100%; aspect-ratio: 960/201; object-fit: cover; display: block;" />
+        <div style="padding: 0.75rem 1rem;">
+          <strong style="display: block; font-size: 0.9rem; color: #ffffff;">4. Atlus Graphic Cel</strong>
+          <span style="font-size: 0.75rem; color: #94a3b8;">Persona Pop Halftone</span>
+        </div>
+      </div>
+
+      <div class="rs-variant-btn" data-id="variant_5_ghibli_summer_noon" data-title="Ghibli Summer Noon" data-desc="Pristine Cerulean Sky · Mountain Spring Emerald · Pure White Water Lilies" style="cursor: pointer; border-radius: 12px; overflow: hidden; border: 2px solid transparent; background: rgba(255, 255, 255, 0.04); transition: transform 0.2s ease, border-color 0.2s ease;">
+        <img src="assets/touchdesigner/variant_5_ghibli_summer_noon_thumb.webp" alt="Ghibli Summer Noon" style="width: 100%; aspect-ratio: 960/201; object-fit: cover; display: block;" />
+        <div style="padding: 0.75rem 1rem;">
+          <strong style="display: block; font-size: 0.9rem; color: #ffffff;">5. Ghibli Summer</strong>
+          <span style="font-size: 0.75rem; color: #94a3b8;">Mountain Spring Azure</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Technical Architecture Cards -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.5rem;">
+        <h4 style="color: #a5b4fc; margin-top: 0; font-size: 1.05rem;">01 · Procedural Curve Drift</h4>
+        <p style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.6; margin: 0;">24 lily pads and 16 lotus blossoms sampled along 876 centerline points. Instances calculate continuous parameter $u(t) = (u_0 + v \cdot t) mod 1.0$, normal cross-channel offsets, tangent yaw rotation, and water ripple bobbing with smooth edge fade.</p>
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.5rem;">
+        <h4 style="color: #a5b4fc; margin-top: 0; font-size: 1.05rem;">02 · Multi-Pass LookDev Grading</h4>
+        <p style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.6; margin: 0;">Real-time LookDev compositing pipeline featuring Kira 8-ray cross sparkles (<code style="color:#f472b6;">PASS_22</code>), starlight anamorphic horizontal glints (<code style="color:#f472b6;">PASS_16</code>), FLIP caustics dispersion (<code style="color:#f472b6;">PASS_10</code>), and Ben-Day halftone penumbra (<code style="color:#f472b6;">PASS_04</code>).</p>
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.5rem;">
+        <h4 style="color: #a5b4fc; margin-top: 0; font-size: 1.05rem;">03 · High-Performance SSOT</h4>
+        <p style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.6; margin: 0;">GPU instancing maintains locked 60.0 FPS at native 4590×960 resolution. Externalized via Embody to version-controlled TDN format with Envoy MCP live network orchestration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  const btns = document.querySelectorAll('.rs-variant-btn');
+  const masterImg = document.getElementById('rs-master-plate');
+  const titleEl = document.getElementById('rs-master-title');
+  const descEl = document.getElementById('rs-master-desc');
+  if (!btns.length || !masterImg) return;
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => {
+        b.style.borderColor = 'transparent';
+        b.style.transform = 'none';
+      });
+      btn.style.borderColor = '#818cf8';
+      btn.style.transform = 'translateY(-2px)';
+
+      const id = btn.getAttribute('data-id');
+      const title = btn.getAttribute('data-title');
+      const desc = btn.getAttribute('data-desc');
+
+      if (titleEl) titleEl.textContent = title;
+      if (descEl) descEl.textContent = desc;
+
+      masterImg.style.opacity = '0.4';
+      const newSrc = `assets/touchdesigner/${id}.webp`;
+      const pre = new Image();
+      pre.src = newSrc;
+      pre.onload = () => {
+        masterImg.src = newSrc;
+        masterImg.style.opacity = '1';
+      };
+    });
+  });
+})();
+</script>
+
+
 <section class="band paper">
   <div class="inner">
     <div class="section-head">
