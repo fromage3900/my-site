@@ -110,18 +110,25 @@ h3 {
   letter-spacing: 0.04em;
 }
 
+/* Editorial labels and controls are serif; only data and file readouts stay mono. */
 .kicker,
 .eyebrow,
-.meta,
 .pill,
 .magazine-kicker,
+.button,
+.nav-cta,
+.footer {
+  font-family: var(--font-body);
+  letter-spacing: 0.045em;
+  font-size: max(0.8rem, var(--tracking-mono-size, 0.8rem));
+  line-height: 1.5;
+}
+
+.meta,
 .file-note,
 .route-line span,
 .pillar-status,
 .world-meta,
-.button,
-.nav-cta,
-.footer,
 .table-row span,
 .table-row b {
   font-family: var(--font-mono);
