@@ -1,22 +1,18 @@
-﻿/* Melodia typography SSOT â€” Figma-aligned editorial interface
-   Main portfolio:
-   Brand / navigation / body: Space Grotesk
-   Editorial display: Crimson Text
-   Technical / metadata: IBM Plex Mono
-   Magical flourish: Twinkle Star (rare, non-structural)
-   Accessory Atelier is an intentional exception and owns its Times + Jost stack locally.
-*/
-@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Twinkle+Star&display=swap");
+/* Melodia portfolio typography: Times New Roman is the primary typeface.
+   Brand, navigation, headings, body and editorial labels share the same serif family.
+   Monospace is reserved for technical evidence; CJK text uses script-specific fonts.
+   Do not reintroduce page-specific Space Grotesk/Crimson Text font switches. */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap");
 
 :root {
   --font-brand: 'Times New Roman', Times, Georgia, serif;
   --font-cover: 'Times New Roman', Times, Georgia, serif;
   --font-display: 'Times New Roman', Times, Georgia, serif;
-  --font-decorative: "Twinkle Star", "Crimson Text", Georgia, serif;
+  --font-decorative: 'Times New Roman', Times, Georgia, serif;
   --font-body: 'Times New Roman', Times, Georgia, serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
   --font-lede: 'Times New Roman', Times, Georgia, serif;
-  --tracking-brand: 0.08em;
+  --tracking-brand: 0.055em;
   --tracking-display: 0.005em;
   --tracking-body: 0;
   --tracking-mono: 0.055em;
@@ -31,15 +27,16 @@
 .henshin-wordmark,
 .game-ui-floating-grade.is-flourish {
   font-family: var(--font-decorative);
+  font-style: italic;
   letter-spacing: var(--tracking-display);
   font-weight: 400;
 }
 
-/* Optional denser interface-display lane for shop / kitbash surfaces. */
+/* Interface pages use the same serif typeface with slightly tighter tracking. */
 html[data-display-font="interface"] {
-  --font-display: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: 'Times New Roman', Times, Georgia, serif;
   --font-lede: 'Times New Roman', Times, Georgia, serif;
-  --tracking-display: 0.02em;
+  --tracking-display: 0.005em;
 }
 
 body,
@@ -113,18 +110,25 @@ h3 {
   letter-spacing: 0.04em;
 }
 
+/* Editorial labels and controls are serif; only data and file readouts stay mono. */
 .kicker,
 .eyebrow,
-.meta,
 .pill,
 .magazine-kicker,
+.button,
+.nav-cta,
+.footer {
+  font-family: var(--font-body);
+  letter-spacing: 0.045em;
+  font-size: max(0.8rem, var(--tracking-mono-size, 0.8rem));
+  line-height: 1.5;
+}
+
+.meta,
 .file-note,
 .route-line span,
 .pillar-status,
 .world-meta,
-.button,
-.nav-cta,
-.footer,
 .table-row span,
 .table-row b {
   font-family: var(--font-mono);

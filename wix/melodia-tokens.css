@@ -291,16 +291,16 @@
    --radius-pill: 0;
 
    /* ===== TYPOGRAPHY — FIGMA-ALIGNED WEB ROLES =====
-      Main portfolio: Times New Roman (display) + Jost (UI/body) + JetBrains Mono (readouts).
-      Accessory Atelier owns its Times + Jost campaign/product exception locally. */
+      Main portfolio: Times New Roman for display, body, brand and navigation.
+      Monospace remains reserved for technical data and code. */
    --font-display:       "Times New Roman", Times, Georgia, serif;
-   --font-display-fallback: Georgia, "Times New Roman", serif;
+   --font-display-fallback: "Times New Roman", Times, Georgia, serif;
    --font-cover:         "Times New Roman", Times, Georgia, serif;
    --font-decorative:    "Times New Roman", Times, Georgia, serif;
-   --font-body:          "Jost", "Avenir Next", "Segoe UI", sans-serif;
-   --font-body-fallback: "Avenir Next", "Segoe UI", sans-serif;
+   --font-body:          "Times New Roman", Times, Georgia, serif;
+   --font-body-fallback: "Times New Roman", Times, Georgia, serif;
    --font-mono:          "JetBrains Mono", ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
-   --font-brand:         "Jost", "Avenir Next", "Segoe UI", sans-serif;
+   --font-brand:         "Times New Roman", Times, Georgia, serif;
 
   /* Type scale (matches tokens.json global.type) */
   --text-display-xl:    clamp(48px, 8vw, 72px) / 1.05 var(--font-display);

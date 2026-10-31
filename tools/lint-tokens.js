@@ -109,9 +109,8 @@ for (const cssFile of cssFiles) {
 }
 
 
-/* Typography guard: the public portfolio migrated to the current Figma UI roles
-   (Space Grotesk + Crimson Text + IBM Plex Mono). Accessory Atelier is a separate
-   product/campaign subsystem outside wix/ and intentionally keeps Times + Jost. */
+/* Typography guard: public portfolio uses Times New Roman for prose and display.
+   Monospace remains reserved for code and technical readouts. */
 const PUBLIC_ROUTES_PATH = path.join(WIX_DIR, 'public-routes.json');
 const publicRoutes = JSON.parse(fs.readFileSync(PUBLIC_ROUTES_PATH, 'utf-8'));
 const PUBLIC_HTML = new Set([
@@ -136,6 +135,20 @@ const LEGACY_FAMILY_REGEX = /\b(?:Cinzel|Fraunces|Syne|Bricolage Grotesque|Instr
 const DIRECT_INTER_REGEX = /(?:["']Inter["']|font-family\s*:\s*Inter\b|family=Inter(?=[:&"']))/i;
 const LEGACY_DISPLAY_SWITCH_REGEX = /data-display-font=["']syne["']/i;
 
+ 
+// Guard the main font roles against accidental overrides in future design passes.
+for (const role of ['display', 'body', 'brand']) {
+  const rule = cssText.split('\n').find(line => line.trim().startsWith('--font-' + role + ':'));
+  if (!rule || !rule.includes('"Times New Roman"')) {
+    HARD_ERRORS.push('melodia-tokens.css — --font-' + role + ' must use Times New Roman');
+  }
+}
+const luxuryCss = fs.readFileSync(path.join(WIX_DIR, 'melodia-luxury-type.css'), 'utf-8');
+if (luxuryCss.includes('--font-display: "Space Grotesk"') ||
+    luxuryCss.includes('--font-display: "Crimson Text"')) {
+  HARD_ERRORS.push('melodia-luxury-type.css — outdated display font override');
+}
+
 for (const rel of PUBLIC_HTML) {
   const full = path.join(WIX_DIR, rel);
   if (!fs.existsSync(full)) continue;
@@ -144,7 +157,7 @@ for (const rel of PUBLIC_HTML) {
     HARD_ERRORS.push(`${rel} — legacy Cinzel/Fraunces reference; use Figma-aligned font roles`);
   }
   if (DIRECT_INTER_REGEX.test(content)) {
-    HARD_ERRORS.push(`${rel} — direct Inter font declaration; use --font-body / Space Grotesk`);
+    HARD_ERRORS.push(`${rel} — direct Inter font declaration; use --font-body (Times New Roman)`);
   }
   if (LEGACY_DISPLAY_SWITCH_REGEX.test(content)) {
     HARD_ERRORS.push(`${rel} — stale data-display-font="syne" switch; use "interface"`);
