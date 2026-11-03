@@ -1,4 +1,4 @@
-﻿{
+{
   "global": {
     "brand": "Brennan Shepherd",
     "home_title": "Brennan Shepherd | Environment & Stylized Art",
@@ -1315,8 +1315,8 @@
   },
   "projects": {
     "faraway_mother": {
-      "title": "Faraway Mother â€” Couture-Cymatic World Architecture",
-      "subtitle": "Capstone Mentorship Showcase Â· Unreal Engine 5.8 & Procedural CAD Pipeline",
+      "title": "Faraway Mother — Couture-Cymatic World Architecture",
+      "subtitle": "Capstone Mentorship Showcase · Unreal Engine 5.8 & Procedural CAD Pipeline",
       "lead": "A living fashion-fantasy world bridging acoustic Chladni eigenmodes, turned lathe balustrades, and massive procedural ecosystems in Unreal Engine 5.8.",
       "description": "Spanning 1.63M+ procedural CAD polygons across the pointed-arch Cathedral V2, the canonical Heart Gate, and stepped artisan village terraces, Faraway Mother unites classical French architectural tailoring with real-time procedural ecology.",
       "metrics": {
@@ -1328,4 +1328,3 @@
     }
   }
 }
-
