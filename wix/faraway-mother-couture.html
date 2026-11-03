@@ -109,6 +109,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
   .plate-badge {
     font-family: var(--font-display, Georgia, serif);
@@ -193,35 +195,6 @@
     font-size: 1.8rem;
     margin-top: 0;
   }
-  .tech-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
-  }
-  .tech-table th {
-    text-align: left;
-    padding: 0.85rem 1rem;
-    border-bottom: 2px solid var(--fm-border);
-    color: var(--fm-gold);
-    font-family: var(--font-mono, monospace);
-    font-size: 0.78rem;
-    text-transform: uppercase;
-  }
-  .tech-table td {
-    padding: 0.9rem 1rem;
-    border-bottom: 1px solid rgba(45, 42, 60, 0.6);
-    color: #cbd5e1;
-  }
-  .tech-table tr:hover td {
-    background: rgba(255, 255, 255, 0.02);
-  }
-  .badge-pass {
-    color: #4ade80;
-    font-family: var(--font-mono, monospace);
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
   @media (max-width: 768px) {
     .curated-vistas-grid {
       grid-template-columns: 1fr;
@@ -256,36 +229,33 @@
   </div>
 </section>
 
+<!-- Lookdev Verification: Before vs After -->
+<section style="background: rgba(14, 13, 20, 0.9); padding: 3.5rem 0; border-top: 1px solid var(--fm-border); border-bottom: 1px solid var(--fm-border);">
+  <div style="max-width: 1400px; margin: 0 auto; padding: 0 1.5rem;">
+    <div class="section-head" style="margin-bottom: 2rem;">
+      <p class="eyebrow magazine-kicker" style="color: var(--fm-gold);">Lookdev Verification · Before vs After</p>
+      <h2 style="font-family: var(--font-display, Georgia, serif); color: #ffffff;">Lookdev Convergence Verification</h2>
+      <p style="color: #94a3b8; max-width: 820px;">Direct technical comparison proving the transition from flat alabaster clay to rich PBR toon textures, 2,700K twilight candela pools, and volumetric illumination.</p>
+    </div>
+    <figure class="plate-frame" style="box-shadow: 0 16px 40px rgba(0,0,0,0.6);">
+      <img src="../generated/assets/unreal/faraway_before_after_comparison.webp" alt="Faraway Mother Before vs After Lookdev Convergence Comparison" loading="lazy" />
+      <figcaption>
+        <div class="plate-badge">Side-by-Side Proof · Cathedral Nave &amp; Village Orchard</div>
+        <p class="plate-note">Left: Flat Alabaster &middot; Right: PBR Toon Textures, Warm Fill Lights &amp; Volumetric Lighting</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 9-Plate Carousel -->
 <section class="carousel-wrap">
   <div class="section-head" style="margin-bottom: 2rem;">
     <p class="eyebrow magazine-kicker" style="color: var(--fm-gold);">Master Editorial Contact Sheets (2400 × 1600)</p>
-    <h2 style="font-family: var(--font-display, Georgia, serif); color: #ffffff;">The Eight Portfolio Plates</h2>
+    <h2 style="font-family: var(--font-display, Georgia, serif); color: #ffffff;">The Nine Portfolio Plates</h2>
     <p style="color: #94a3b8; max-width: 780px;">Complete architectural and procedural telemetry formatted as editorial portfolio plates for capstone review.</p>
   </div>
 
   
-        <div class="carousel-slide" data-slide-id="faraway_plate_09">
-          <figure class="plate-frame">
-            <img src="../generated/assets/unreal/faraway_plate_09_infold_lookdev_convergence.webp" alt="Faraway Mother Plate IX — Infinity Nikki Lookdev: Volumetric God Rays, Twilight Candela, and Dream Niagara Ecology" loading="lazy" />
-            <figcaption>
-              <div class="plate-badge">Plate IX — Infinity Nikki Lookdev & Atmospheric Convergence</div>
-              <p class="plate-note">Master atmospheric lookdev featuring Mie forward scattering god rays, 26 twilight lanterns, velvet fabric sheen, and Niagara mote ecology.</p>
-            </figcaption>
-          </figure>
-        </div>
-        
-
-        <div class="carousel-slide" data-slide-id="faraway_plate_08">
-          <figure class="plate-frame">
-            <img src="../generated/assets/unreal/faraway_plate_08_capstone_master_showcase.webp" alt="Faraway Mother Plate VIII — Capstone Master Showcase: Couture Megastructures and Procedural World Ecosystem" loading="lazy" />
-            <figcaption>
-              <div class="plate-badge">Plate VIII — Capstone Master Showcase</div>
-              <p class="plate-note">Comprehensive capstone review presentation uniting Cathedral V2, Heart Gate, Dressed Village, and Chladni Flora Ecology.</p>
-            </figcaption>
-          </figure>
-        </div>
-        
-
         <div class="carousel-slide" data-slide-id="faraway_plate_01">
           <figure class="plate-frame">
             <img src="../generated/assets/unreal/faraway_plate_01_cop_and_materials.webp" alt="Faraway Mother Plate I — Chladni Eigenmode COP Texture Foundry and 20 UE5 Material Instances" loading="lazy" />
@@ -362,8 +332,31 @@
           </figure>
         </div>
         
+
+        <div class="carousel-slide" data-slide-id="faraway_plate_08">
+          <figure class="plate-frame">
+            <img src="../generated/assets/unreal/faraway_plate_08_capstone_master_showcase.webp" alt="Faraway Mother Plate VIII — Capstone Master Showcase: Couture Megastructures and Procedural World Ecosystem" loading="lazy" />
+            <figcaption>
+              <div class="plate-badge">Plate VIII — Capstone Master Showcase</div>
+              <p class="plate-note">Comprehensive capstone review presentation uniting Cathedral V2, Heart Gate, Dressed Village, and Chladni Flora Ecology.</p>
+            </figcaption>
+          </figure>
+        </div>
+        
+
+        <div class="carousel-slide" data-slide-id="faraway_plate_09">
+          <figure class="plate-frame">
+            <img src="../generated/assets/unreal/faraway_plate_09_infold_lookdev_convergence.webp" alt="Faraway Mother Plate IX — Infinity Nikki Lookdev: Volumetric God Rays, Twilight Candela, and Dream Niagara Ecology" loading="lazy" />
+            <figcaption>
+              <div class="plate-badge">Plate IX — Infinity Nikki Lookdev & Master Atmospheric Convergence</div>
+              <p class="plate-note">Master atmospheric lookdev featuring Mie forward scattering god rays, 26 twilight lanterns, velvet fabric sheen, and Niagara mote ecology.</p>
+            </figcaption>
+          </figure>
+        </div>
+        
 </section>
 
+<!-- Hero Perspectives & Environmental Vistas -->
 <section style="background: rgba(18, 17, 26, 0.6); padding: 4rem 0; border-top: 1px solid var(--fm-border); border-bottom: 1px solid var(--fm-border);">
   <div style="max-width: 1400px; margin: 0 auto; padding: 0 1.5rem;">
     <div class="section-head">
@@ -400,12 +393,12 @@
 
         <article class="vista-card">
           <div class="vista-media-frame">
-            <span class="vista-badge">Canonical Monolith · Unreal Engine 5.8</span>
-            <img src="../generated/assets/unreal/faraway_hero_heart_gate.webp" alt="Faraway Mother — Canonical Heart Gate overlooking the infinite cloud horizon" loading="lazy" />
+            <span class="vista-badge">Sacral Megastructure · Gilt Tracery</span>
+            <img src="../generated/assets/unreal/faraway_cathedral_nave.webp" alt="Faraway Mother — Cathedral V2 interior vaulted nave with gilt Chladni rose medallions and 14,000 lm fill" loading="lazy" />
           </div>
           <div class="vista-details">
-            <h3>The Faraway Heart Gate — Hero View</h3>
-            <p class="vista-caption">Monumental acoustic archway cradling turned halo ribs and prismatic gemstone nodes at the basin precipice.</p>
+            <h3>Cathedral V2 Nave — Golden Ribbed Vaults</h3>
+            <p class="vista-caption">Pointed-arch ribbed vaulting with Chladni acoustic floor medallions, gilded clerestory balustrades, and warm sacral illumination.</p>
           </div>
         </article>
         
@@ -417,7 +410,43 @@
           </div>
           <div class="vista-details">
             <h3>Heart Gate — Southern Cloister Approach</h3>
-            <p class="vista-caption">Dramatic low-angle view tracing the ascending stone cloister toward the illuminated portal.</p>
+            <p class="vista-caption">Dramatic low-angle view tracing the ascending stone cloister toward the illuminated portal with bobbin lace valences.</p>
+          </div>
+        </article>
+        
+
+        <article class="vista-card">
+          <div class="vista-media-frame">
+            <span class="vista-badge">Sanctuary Garden · Court</span>
+            <img src="../generated/assets/unreal/faraway_cathedral_court.webp" alt="Faraway Mother — Cathedral Court with cymatic flagstone, tracery arches, and garden furnishings" loading="lazy" />
+          </div>
+          <div class="vista-details">
+            <h3>Cathedral Court & Garden Cloister</h3>
+            <p class="vista-caption">Gilded pointed arches enclosing tranquil stone courts with flagstone paving and floral hedges.</p>
+          </div>
+        </article>
+        
+
+        <article class="vista-card">
+          <div class="vista-media-frame">
+            <span class="vista-badge">Stepped Terraces · Turned Balusters</span>
+            <img src="../generated/assets/unreal/faraway_village_avenue_dressed.webp" alt="Faraway Mother — Stepped village avenue with turned balustrades and cobblestones" loading="lazy" />
+          </div>
+          <div class="vista-details">
+            <h3>Village Main Avenue & Retaining Balustrades</h3>
+            <p class="vista-caption">Grand cobblestone avenue connecting Orchard, Satin, and Glasshouse courts to the western cathedral approach.</p>
+          </div>
+        </article>
+        
+
+        <article class="vista-card">
+          <div class="vista-media-frame">
+            <span class="vista-badge">Couture Detail · Balustrades</span>
+            <img src="../generated/assets/unreal/faraway_water_balustrade.webp" alt="Faraway Mother — Turned quatrefoil balustrade overlooking basin waters with iridescent fabric sheen" loading="lazy" />
+          </div>
+          <div class="vista-details">
+            <h3>Quatrefoil Water Balustrade Detail</h3>
+            <p class="vista-caption">Close architectural lookdev on pierced quatrefoil balustrades with iridescent silk swags and water reflection.</p>
           </div>
         </article>
         
@@ -433,58 +462,11 @@
           </div>
         </article>
         
-
-        <article class="vista-card">
-          <div class="vista-media-frame">
-            <span class="vista-badge">Megastructure Interior · 1.21M Polys</span>
-            <img src="../generated/assets/unreal/faraway_cathedral_nave.webp" alt="Faraway Mother — Cathedral V2 interior vaulted nave with gilt Chladni rose medallions" loading="lazy" />
-          </div>
-          <div class="vista-details">
-            <h3>Cathedral V2 Nave — Ribbed Vaults & Gilt Tracery</h3>
-            <p class="vista-caption">Pointed-arch ribbed vaulting with Chladni acoustic floor medallions and gilded clerestory balustrades.</p>
-          </div>
-        </article>
-        
-
-        <article class="vista-card">
-          <div class="vista-media-frame">
-            <span class="vista-badge">Living Village · 100% Floor Support</span>
-            <img src="../generated/assets/unreal/faraway_village_orchard_dressed.webp" alt="Faraway Mother — Artisan Village Orchard Court with reading nooks, lanterns and hedges" loading="lazy" />
-          </div>
-          <div class="vista-details">
-            <h3>Orchard Court — Dressed Ensembles & Gameplay Beats</h3>
-            <p class="vista-caption">Artisan village square with reading nooks, garden benches, and lanterns snapped cleanly to stepped terrace foundations.</p>
-          </div>
-        </article>
-        
-
-        <article class="vista-card">
-          <div class="vista-media-frame">
-            <span class="vista-badge">Stepped Terraces · 972 Stair Rays</span>
-            <img src="../generated/assets/unreal/faraway_village_avenue_dressed.webp" alt="Faraway Mother — Stepped village avenue with sloped balustrades and zero seam-gap bridge" loading="lazy" />
-          </div>
-          <div class="vista-details">
-            <h3>Village Main Avenue & Retaining Balustrades</h3>
-            <p class="vista-caption">Stepped stone avenue connecting Orchard, Satin, and Glasshouse courts to the western cathedral approach.</p>
-          </div>
-        </article>
-        
-
-        <article class="vista-card">
-          <div class="vista-media-frame">
-            <span class="vista-badge">Procedural Flora · 77,392 Instances</span>
-            <img src="../generated/assets/unreal/faraway_nearshelf_chladni_bloom.webp" alt="Faraway Mother — Flowering mountain meadow following Chladni eigenmode resonance contours" loading="lazy" />
-          </div>
-          <div class="vista-details">
-            <h3>NearShelf Chladni Bloom & Basin Ecology</h3>
-            <p class="vista-caption">Native procedural flora distribution following standing-wave nodal lines across continuous mountain terrain.</p>
-          </div>
-        </article>
-        
     </div>
   </div>
 </section>
 
+<!-- System Verification Ledger -->
 <section class="tech-ledger">
   <h2>System Verification</h2>
   <p style="color: #94a3b8;">Key metrics verified live across geometry, materials, and procedural scatter.</p>

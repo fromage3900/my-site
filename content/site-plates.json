@@ -543,7 +543,7 @@
       "alt": "Faraway Mother — Ascending approach to the Heart Gate portal and silk ribbons",
       "title": "Heart Gate — Southern Cloister Approach",
       "status": "reviewed_capstone_master",
-      "evidence_note": "Dramatic low-angle view tracing the ascending stone cloister toward the illuminated portal."
+      "evidence_note": "Dramatic low-angle view tracing the ascending stone cloister toward the illuminated portal with bobbin lace valences."
     },
     "faraway.heart_gate_overview": {
       "path": "../generated/assets/unreal/faraway_heart_gate_overview.webp",
@@ -556,10 +556,10 @@
     "faraway.cathedral_nave": {
       "path": "../generated/assets/unreal/faraway_cathedral_nave.webp",
       "thumb": "../generated/assets/unreal/faraway_cathedral_nave_thumb.webp",
-      "alt": "Faraway Mother — Cathedral V2 interior vaulted nave with gilt Chladni rose medallions",
-      "title": "Cathedral V2 Nave — Ribbed Vaults & Gilt Tracery",
+      "alt": "Faraway Mother — Cathedral V2 interior vaulted nave with gilt Chladni rose medallions and 14,000 lm fill",
+      "title": "Cathedral V2 Nave — Golden Ribbed Vaults",
       "status": "reviewed_capstone_master",
-      "evidence_note": "Pointed-arch ribbed vaulting with Chladni acoustic floor medallions and gilded clerestory balustrades."
+      "evidence_note": "Pointed-arch ribbed vaulting with Chladni acoustic floor medallions, gilded clerestory balustrades, and warm sacral illumination."
     },
     "faraway.village_orchard": {
       "path": "../generated/assets/unreal/faraway_village_orchard_dressed.webp",
@@ -572,10 +572,10 @@
     "faraway.village_overview": {
       "path": "../generated/assets/unreal/faraway_village_avenue_dressed.webp",
       "thumb": "../generated/assets/unreal/faraway_village_avenue_dressed_thumb.webp",
-      "alt": "Faraway Mother — Stepped village avenue with sloped balustrades and zero seam-gap bridge",
+      "alt": "Faraway Mother — Stepped village avenue with turned balustrades and cobblestones",
       "title": "Village Main Avenue & Retaining Balustrades",
       "status": "reviewed_capstone_master",
-      "evidence_note": "Stepped stone avenue connecting Orchard, Satin, and Glasshouse courts to the western cathedral approach."
+      "evidence_note": "Grand cobblestone avenue connecting Orchard, Satin, and Glasshouse courts to the western cathedral approach."
     },
     "faraway.nearshelf_bloom": {
       "path": "../generated/assets/unreal/faraway_nearshelf_chladni_bloom.webp",
@@ -589,7 +589,7 @@
       "path": "../generated/assets/unreal/faraway_plate_09_infold_lookdev_convergence.webp",
       "thumb": "../generated/assets/unreal/faraway_plate_09_infold_lookdev_convergence_thumb.webp",
       "alt": "Faraway Mother Plate IX — Infinity Nikki Lookdev: Volumetric God Rays, Twilight Candela, and Dream Niagara Ecology",
-      "title": "Plate IX — Infinity Nikki Lookdev & Atmospheric Convergence",
+      "title": "Plate IX — Infinity Nikki Lookdev & Master Atmospheric Convergence",
       "status": "reviewed_capstone_master",
       "evidence_note": "Master atmospheric lookdev featuring Mie forward scattering god rays, 26 twilight lanterns, velvet fabric sheen, and Niagara mote ecology."
     },
@@ -608,6 +608,30 @@
       "title": "Artisan Orchard Court & Twilight Illumination",
       "status": "reviewed_capstone_master",
       "evidence_note": "Twilight atmosphere with warm 2,700K point sources illuminating stepped terraces, cobblestones, and reading nooks."
+    },
+    "faraway.before_after_comparison": {
+      "path": "../generated/assets/unreal/faraway_before_after_comparison.webp",
+      "thumb": "../generated/assets/unreal/faraway_before_after_comparison_thumb.webp",
+      "alt": "Faraway Mother — Side-by-side comparison of flat alabaster blockout vs PBR pastel toon materials and twilight illumination",
+      "title": "Before vs After Lookdev Convergence",
+      "status": "reviewed_capstone_master",
+      "evidence_note": "Direct comparison showcasing Cathedral Nave and Village Orchard Court before and after PBR texture binding, toon pastel ramps, and candela lighting."
+    },
+    "faraway.cathedral_court": {
+      "path": "../generated/assets/unreal/faraway_cathedral_court.webp",
+      "thumb": "../generated/assets/unreal/faraway_cathedral_court_thumb.webp",
+      "alt": "Faraway Mother — Cathedral Court with cymatic flagstone, tracery arches, and garden furnishings",
+      "title": "Cathedral Court & Garden Cloister",
+      "status": "reviewed_capstone_master",
+      "evidence_note": "Gilded pointed arches enclosing tranquil stone courts with flagstone paving and floral hedges."
+    },
+    "faraway.water_balustrade": {
+      "path": "../generated/assets/unreal/faraway_water_balustrade.webp",
+      "thumb": "../generated/assets/unreal/faraway_water_balustrade_thumb.webp",
+      "alt": "Faraway Mother — Turned quatrefoil balustrade overlooking basin waters with iridescent fabric sheen",
+      "title": "Quatrefoil Water Balustrade Detail",
+      "status": "reviewed_capstone_master",
+      "evidence_note": "Close architectural lookdev on pierced quatrefoil balustrades with iridescent silk swags and water reflection."
     }
   },
   "plates": [
