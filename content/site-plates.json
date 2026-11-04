@@ -615,7 +615,7 @@
       "alt": "Faraway Mother — Side-by-side comparison of flat alabaster blockout vs PBR pastel toon materials and twilight illumination",
       "title": "Before vs After Lookdev Convergence",
       "status": "reviewed_capstone_master",
-      "evidence_note": "Direct comparison showcasing Cathedral Nave and Village Orchard Court before and after PBR texture binding, toon pastel ramps, and candela lighting."
+      "evidence_note": "Direct comparison showcasing Cathedral Nave and Village Orchard Court before and after redundant SkyLight purge, top UDS tuning, and PBR texture binding."
     },
     "faraway.cathedral_court": {
       "path": "../generated/assets/unreal/faraway_cathedral_court.webp",
