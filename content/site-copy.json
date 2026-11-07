@@ -96,7 +96,7 @@
             "accent": "gold"
           },
           {
-            "step": "âœ§ Mood",
+            "step": "✧ Mood",
             "title": "Sakura Case Study",
             "body": "~3 minutes on the shrine path, the look, and why the route matters.",
             "href": "sakura-case-study.html",
@@ -504,7 +504,7 @@
             "accent": "gold"
           },
           {
-            "step": "âœ§ Mood",
+            "step": "✧ Mood",
             "title": "Sakura Case Study",
             "body": "~3 minutes on the shrine path, the look, and why the route matters.",
             "href": "sakura-case-study.html",
@@ -729,7 +729,7 @@
           {
             "id": "phase-rhythm",
             "title": "Rhythm execution — Cherry Storm",
-            "bpm": "â™© = 120",
+            "bpm": "♫ = 120",
             "song": "Cherry Storm — Movement III"
           },
           {
@@ -834,17 +834,17 @@
         "grade_pop": [
           {
             "grade": "PERFECT",
-            "window": "Â±90ms",
+            "window": "±90ms",
             "class": "perfect is-luxury is-flourish"
           },
           {
             "grade": "GREAT",
-            "window": "Â±120ms",
+            "window": "±120ms",
             "class": "great is-luxury is-flourish"
           },
           {
             "grade": "GOOD",
-            "window": "Â±160ms",
+            "window": "±160ms",
             "class": "good is-luxury is-flourish"
           },
           {
@@ -864,7 +864,7 @@
         },
         "mobile_preview": {
           "title": "Cherry Storm",
-          "bpm": "â™© = 120"
+          "bpm": "♫ = 120"
         },
         "figma_link": {
           "spec": "Design specs · Game UI",
@@ -1155,8 +1155,8 @@
       },
       "next_capture": {
         "eyebrow": "What to capture next",
-        "headline": "Minimum proof for “PCG systemâ€ credibility.",
-        "lede": "These filenames match the capture brief. The goal: one plate that reads “procedural logicâ€ and one that reads “final beauty.â€",
+        "headline": "Minimum proof for “PCG system” credibility.",
+        "lede": "These filenames match the capture brief. The goal: one plate that reads “procedural logic” and one that reads “final beauty.”",
         "cards": [
           {
             "tag": "renders.pcg",
@@ -1166,7 +1166,7 @@
           {
             "tag": "PCG heatmap",
             "title": "Exclusion heatmap",
-            "body": "Shows route-safe exclusion zones and the “whyâ€ behind your dressing density."
+            "body": "Shows route-safe exclusion zones and the “why” behind your dressing density."
           }
         ]
       }
@@ -1300,7 +1300,7 @@
     },
     "fallen_moon": {
       "title": "Fallen Moon — The Resonant Ice Caldera",
-      "regional_anchor": "JÃ¶kulsÃ¡rlÃ³n Glacier Lagoon & SkeiÃ°arÃ¡rsandur Volcanic Outwash Plains (VatnajÃ¶kull, Iceland) + Callanish Megaliths (Isle of Lewis)",
+      "regional_anchor": "Jökulsárlón Glacier Lagoon & Skeiðarársandur Volcanic Outwash Plains (Vatnajökull, Iceland) + Callanish Megaliths (Isle of Lewis)",
       "architecture": "Neolithic cyclopean dry-stacked basalt astronomical cairns, megalithic post-and-lintel alignments, and weathered Arctic driftwood lintels anchored with square-headed iron bolts.",
       "geology_flora": "Expansive black basaltic sand (sandur), obsidian gravel fields, fractured glacial ice lagoons, and spongy woolly fringe-moss carpets (Racomitrium lanuginosum).",
       "acoustic_utility": "Infrasonic Singing Sands & Cryo-Acoustic Ticking — Wind shear over fine basaltic tephra generates natural singing sand low-frequency drones, while micro-thermal contraction of the peridot meteorite generates crystalline rhythmic pulses."
