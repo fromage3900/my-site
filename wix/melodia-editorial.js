@@ -1265,7 +1265,10 @@
 
   async function init(options) {
     const pageKey = (options && options.page) || document.documentElement.getAttribute('data-page') || '';
-    await ensureDreamShadersScript();
+    // Art-first Studio pages do not lazy-load the atmospheric shader runtime.
+    if (!document.documentElement.hasAttribute('data-studio-quiet')) {
+      await ensureDreamShadersScript();
+    }
     ensureEditorialPolishCss();
     ensureA11yLandmarks();
     initParallax();
