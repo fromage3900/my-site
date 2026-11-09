@@ -1,0 +1,129 @@
+{
+  "asset_id": "lanternpost_sculpt",
+  "label": "Lantern Post - hand sculpt",
+  "source": "C:\\EnvironmentPortfolio\\BS_GodFile\\RawArt\\ZBrush_IMM_Pack\\MEL_lantern_post_hero.obj",
+  "generated_at": "2026-11-09T20:04:46.489595+00:00",
+  "geometry": {
+    "verts": 1706,
+    "tris": 3392,
+    "polys": 1696,
+    "uv_layers": 0,
+    "materials": [
+      "Material.034"
+    ]
+  },
+  "dimensions_m": [
+    0.21685107052326202,
+    0.22021636366844177,
+    1.600000023841858
+  ],
+  "normalization": {
+    "dims_m_raw": [
+      0.4301,
+      0.4367,
+      3.1731
+    ],
+    "scale_applied": 0.504241
+  },
+  "islands": [
+    {
+      "count": 290,
+      "min_z": 0.0102,
+      "max_z": 0.2298,
+      "size": [
+        0.4301,
+        0.4367,
+        0.2196
+      ]
+    },
+    {
+      "count": 290,
+      "min_z": 0.1083,
+      "max_z": 2.4417,
+      "size": [
+        0.1213,
+        0.1266,
+        2.3333
+      ]
+    },
+    {
+      "count": 770,
+      "min_z": 2.6409,
+      "max_z": 2.8091,
+      "size": [
+        0.3406,
+        0.3325,
+        0.1682
+      ]
+    },
+    {
+      "count": 98,
+      "min_z": 2.7531,
+      "max_z": 3.0469,
+      "size": [
+        0.3167,
+        0.3167,
+        0.2938
+      ]
+    },
+    {
+      "count": 258,
+      "min_z": 3.1852,
+      "max_z": 3.3433,
+      "size": [
+        0.1944,
+        0.1966,
+        0.1581
+      ]
+    }
+  ],
+  "assembly_offsets": [
+    0.0,
+    0.12147,
+    -0.07778,
+    -0.02178,
+    -0.16005
+  ],
+  "renders": [
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\sculpt\\lanternpost_sculpt_beauty_34.png",
+      "ok": true,
+      "bytes": 2616297,
+      "shot": "beauty_34"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\sculpt\\lanternpost_sculpt_front.png",
+      "ok": true,
+      "bytes": 2613791,
+      "shot": "front"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\sculpt\\lanternpost_sculpt_profile.png",
+      "ok": true,
+      "bytes": 2619625,
+      "shot": "profile"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\sculpt\\lanternpost_sculpt_macro.png",
+      "ok": true,
+      "bytes": 2594561,
+      "shot": "macro"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\sculpt\\lanternpost_sculpt_low_angle.png",
+      "ok": true,
+      "bytes": 2646634,
+      "shot": "low_angle"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\sculpt\\lanternpost_sculpt_wireframe.png",
+      "ok": true,
+      "bytes": 2700704,
+      "shot": "wireframe"
+    }
+  ],
+  "notes": [
+    "Hermetic stage: no dependency on the Melodia Portfolio Stage.",
+    "Clay shading only - a raw sculpt export carries no UVs or PBR set."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "theme": "dark",
+  "project": "Melusina Vow Cross - textured game mesh",
+  "category": "Prop / sculpt",
+  "version": "wave1",
+  "asset_id": "cross_pbr",
+  "rows": [
+    [
+      "Triangles",
+      "1,952"
+    ],
+    [
+      "Vertices",
+      "976"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "3"
+    ],
+    [
+      "UV",
+      "Yes"
+    ],
+    [
+      "Dimensions",
+      "0.56 x 1.15 x 1.60 m"
+    ],
+    [
+      "Shader",
+      "PBR set (base / normal / roughness)"
+    ],
+    [
+      "Software",
+      "Blender 5.2.1 · hermetic prop stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "beauty_34"
+    ],
+    [
+      "Date",
+      "2026-11"
+    ]
+  ],
+  "generated_at": "2026-11-09T20:10:14.497452+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

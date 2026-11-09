@@ -1,0 +1,59 @@
+{
+  "theme": "dark",
+  "project": "Melusina Vow Cross - hand sculpt",
+  "category": "Prop / sculpt",
+  "version": "wave1",
+  "asset_id": "cross_sculpt",
+  "rows": [
+    [
+      "Triangles",
+      "12,672"
+    ],
+    [
+      "Vertices",
+      "6,350"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "UV",
+      "No - raw sculpt"
+    ],
+    [
+      "Dimensions",
+      "1.41 x 1.60 x 1.25 m"
+    ],
+    [
+      "Shader",
+      "Melodia Hero Clay (procedural)"
+    ],
+    [
+      "Software",
+      "Blender 5.2.1 · hermetic prop stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "beauty_34"
+    ],
+    [
+      "Date",
+      "2026-11"
+    ]
+  ],
+  "generated_at": "2026-11-09T20:05:47.828606+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

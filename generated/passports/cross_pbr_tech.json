@@ -1,0 +1,83 @@
+{
+  "asset_id": "cross_pbr",
+  "label": "Melusina Vow Cross - textured game mesh",
+  "source": "C:\\EnvironmentPortfolio\\BS_GodFile\\Imports\\Meshes\\StylizedCrossProp\\StylizedCrossProp_FBX.fbx",
+  "generated_at": "2026-11-09T20:10:14.498030+00:00",
+  "geometry": {
+    "verts": 976,
+    "tris": 1952,
+    "polys": 922,
+    "uv_layers": 1,
+    "materials": [
+      "Material.003"
+    ]
+  },
+  "dimensions_m": [
+    0.5642111301422119,
+    1.1495699882507324,
+    1.600000023841858
+  ],
+  "normalization": {
+    "dims_m_raw": [
+      2.0042,
+      4.0836,
+      5.6836
+    ],
+    "scale_applied": 0.281511
+  },
+  "islands": [
+    {
+      "count": 976,
+      "min_z": -3.1502,
+      "max_z": 2.5335,
+      "size": [
+        2.0042,
+        4.0836,
+        5.6836
+      ]
+    }
+  ],
+  "assembly_offsets": [],
+  "renders": [
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\props\\cross_pbr_beauty_34.png",
+      "ok": true,
+      "bytes": 3113951,
+      "shot": "beauty_34"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\props\\cross_pbr_front.png",
+      "ok": true,
+      "bytes": 2970661,
+      "shot": "front"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\props\\cross_pbr_profile.png",
+      "ok": true,
+      "bytes": 3128587,
+      "shot": "profile"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\props\\cross_pbr_macro.png",
+      "ok": true,
+      "bytes": 3034224,
+      "shot": "macro"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\props\\cross_pbr_low_angle.png",
+      "ok": true,
+      "bytes": 3131993,
+      "shot": "low_angle"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\props\\cross_pbr_wireframe.png",
+      "ok": true,
+      "bytes": 3292623,
+      "shot": "wireframe"
+    }
+  ],
+  "notes": [
+    "Hermetic stage: no dependency on the Melodia Portfolio Stage.",
+    "Clay shading only - a raw sculpt export carries no UVs or PBR set."
+  ]
+}

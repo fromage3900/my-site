@@ -1,0 +1,143 @@
+{
+  "asset_id": "cross_sculpt",
+  "label": "Melusina Vow Cross - hand sculpt",
+  "source": "C:\\EnvironmentPortfolio\\BS_GodFile\\RawArt\\ZBrush_IMM_Pack\\MEL_filigree_finial_cross_hero.obj",
+  "generated_at": "2026-11-09T20:05:47.829335+00:00",
+  "geometry": {
+    "verts": 6350,
+    "tris": 12672,
+    "polys": 6336,
+    "uv_layers": 0,
+    "materials": [
+      "Material.020"
+    ]
+  },
+  "dimensions_m": [
+    1.4099278450012207,
+    1.5999999046325684,
+    1.2457129955291748
+  ],
+  "normalization": {
+    "dims_m_raw": [
+      2.2254,
+      2.5254,
+      1.9662
+    ],
+    "scale_applied": 0.633574
+  },
+  "islands": [
+    {
+      "count": 1922,
+      "min_z": -0.9831,
+      "max_z": 0.9831,
+      "size": [
+        1.8998,
+        1.8998,
+        1.9662
+      ]
+    },
+    {
+      "count": 1058,
+      "min_z": -0.9632,
+      "max_z": 0.9632,
+      "size": [
+        1.8254,
+        1.8254,
+        1.9264
+      ]
+    },
+    {
+      "count": 1058,
+      "min_z": -0.9632,
+      "max_z": 0.9632,
+      "size": [
+        1.8254,
+        1.8254,
+        1.9264
+      ]
+    },
+    {
+      "count": 1058,
+      "min_z": -0.9632,
+      "max_z": 0.9632,
+      "size": [
+        1.8254,
+        1.8254,
+        1.9264
+      ]
+    },
+    {
+      "count": 1058,
+      "min_z": -0.9632,
+      "max_z": 0.9632,
+      "size": [
+        1.8254,
+        1.8254,
+        1.9264
+      ]
+    },
+    {
+      "count": 98,
+      "min_z": -0.021,
+      "max_z": 0.021,
+      "size": [
+        0.3358,
+        0.042,
+        0.042
+      ]
+    },
+    {
+      "count": 98,
+      "min_z": -0.021,
+      "max_z": 0.021,
+      "size": [
+        0.042,
+        0.5877,
+        0.042
+      ]
+    }
+  ],
+  "assembly_offsets": [],
+  "renders": [
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\sculpt\\cross_sculpt_beauty_34.png",
+      "ok": true,
+      "bytes": 2702262,
+      "shot": "beauty_34"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\sculpt\\cross_sculpt_front.png",
+      "ok": true,
+      "bytes": 2641527,
+      "shot": "front"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\sculpt\\cross_sculpt_profile.png",
+      "ok": true,
+      "bytes": 2676922,
+      "shot": "profile"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\sculpt\\cross_sculpt_macro.png",
+      "ok": true,
+      "bytes": 2643432,
+      "shot": "macro"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\sculpt\\cross_sculpt_low_angle.png",
+      "ok": true,
+      "bytes": 2767161,
+      "shot": "low_angle"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\sculpt\\cross_sculpt_wireframe.png",
+      "ok": true,
+      "bytes": 4219020,
+      "shot": "wireframe"
+    }
+  ],
+  "notes": [
+    "Hermetic stage: no dependency on the Melodia Portfolio Stage.",
+    "Clay shading only - a raw sculpt export carries no UVs or PBR set."
+  ]
+}

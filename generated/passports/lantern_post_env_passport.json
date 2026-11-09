@@ -1,0 +1,59 @@
+{
+  "theme": "dark",
+  "project": "Lantern Post - environment silhouette",
+  "category": "Prop / sculpt",
+  "version": "wave1",
+  "asset_id": "lantern_post_env",
+  "rows": [
+    [
+      "Triangles",
+      "1,184"
+    ],
+    [
+      "Vertices",
+      "600"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "UV",
+      "No - raw sculpt"
+    ],
+    [
+      "Dimensions",
+      "0.47 x 0.10 x 1.60 m"
+    ],
+    [
+      "Shader",
+      "Melodia Hero Clay (procedural)"
+    ],
+    [
+      "Software",
+      "Blender 5.2.1 · hermetic prop stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "beauty_34"
+    ],
+    [
+      "Date",
+      "2026-11"
+    ]
+  ],
+  "generated_at": "2026-11-09T20:09:04.710818+00:00",
+  "schema": "melodia-asset-passport/v1"
+}

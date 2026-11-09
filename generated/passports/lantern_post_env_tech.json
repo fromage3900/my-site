@@ -1,0 +1,113 @@
+{
+  "asset_id": "lantern_post_env",
+  "label": "Lantern Post - environment silhouette",
+  "source": "C:\\EnvironmentPortfolio\\BS_GodFile\\RawArt\\ZBrush_IMM_Pack\\MEL_env_lantern_post_hero.obj",
+  "generated_at": "2026-11-09T20:09:04.711599+00:00",
+  "geometry": {
+    "verts": 600,
+    "tris": 1184,
+    "polys": 592,
+    "uv_layers": 0,
+    "materials": [
+      "Material.017"
+    ]
+  },
+  "dimensions_m": [
+    0.4655669033527374,
+    0.10479602962732315,
+    1.600000023841858
+  ],
+  "normalization": {
+    "dims_m_raw": [
+      0.7459,
+      0.1679,
+      2.5635
+    ],
+    "scale_applied": 0.624154
+  },
+  "islands": [
+    {
+      "count": 242,
+      "min_z": 0.1156,
+      "max_z": 2.2844,
+      "size": [
+        0.106,
+        0.1044,
+        2.1689
+      ]
+    },
+    {
+      "count": 98,
+      "min_z": 2.3451,
+      "max_z": 2.5549,
+      "size": [
+        0.2099,
+        0.1679,
+        0.2099
+      ]
+    },
+    {
+      "count": 98,
+      "min_z": 2.409,
+      "max_z": 2.451,
+      "size": [
+        0.5037,
+        0.042,
+        0.042
+      ]
+    },
+    {
+      "count": 162,
+      "min_z": 2.6218,
+      "max_z": 2.679,
+      "size": [
+        0.1319,
+        0.1345,
+        0.0573
+      ]
+    }
+  ],
+  "assembly_offsets": [],
+  "renders": [
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\props\\lantern_post_env_beauty_34.png",
+      "ok": true,
+      "bytes": 2588070,
+      "shot": "beauty_34"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\props\\lantern_post_env_front.png",
+      "ok": true,
+      "bytes": 2586540,
+      "shot": "front"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\props\\lantern_post_env_profile.png",
+      "ok": true,
+      "bytes": 2589119,
+      "shot": "profile"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\props\\lantern_post_env_macro.png",
+      "ok": true,
+      "bytes": 2554807,
+      "shot": "macro"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\props\\lantern_post_env_low_angle.png",
+      "ok": true,
+      "bytes": 2613501,
+      "shot": "low_angle"
+    },
+    {
+      "path": "C:\\Users\\froma\\my-site\\generated\\assets\\props\\lantern_post_env_wireframe.png",
+      "ok": true,
+      "bytes": 2653932,
+      "shot": "wireframe"
+    }
+  ],
+  "notes": [
+    "Hermetic stage: no dependency on the Melodia Portfolio Stage.",
+    "Clay shading only - a raw sculpt export carries no UVs or PBR set."
+  ]
+}

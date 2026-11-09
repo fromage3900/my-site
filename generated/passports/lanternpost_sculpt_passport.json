@@ -1,0 +1,59 @@
+{
+  "theme": "dark",
+  "project": "Lantern Post - hand sculpt",
+  "category": "Prop / sculpt",
+  "version": "wave1",
+  "asset_id": "lanternpost_sculpt",
+  "rows": [
+    [
+      "Triangles",
+      "3,392"
+    ],
+    [
+      "Vertices",
+      "1,706"
+    ],
+    [
+      "Meshes",
+      "1"
+    ],
+    [
+      "Materials",
+      "1"
+    ],
+    [
+      "Textures",
+      "0"
+    ],
+    [
+      "UV",
+      "No - raw sculpt"
+    ],
+    [
+      "Dimensions",
+      "0.22 x 0.22 x 1.60 m"
+    ],
+    [
+      "Shader",
+      "Melodia Hero Clay (procedural)"
+    ],
+    [
+      "Software",
+      "Blender 5.2.1 · hermetic prop stage"
+    ],
+    [
+      "Engine",
+      "Blender EEVEE"
+    ],
+    [
+      "Capture",
+      "beauty_34"
+    ],
+    [
+      "Date",
+      "2026-11"
+    ]
+  ],
+  "generated_at": "2026-11-09T20:04:46.488674+00:00",
+  "schema": "melodia-asset-passport/v1"
+}
