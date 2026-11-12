@@ -1,0 +1,80 @@
+name: Melodia Reel Review Contact Sheet
+on:
+  push:
+    branches:
+      - review/melodia-reel-2026-11-12
+    paths:
+      - .github/workflows/melodia-reel-review.yml
+permissions:
+  contents: read
+jobs:
+  contact-sheet:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            public/melodia/loops/*.mp4
+            public/melodia/videos/*.mp4
+            wix/assets/touchdesigner/hero_05*.mp4
+      - name: Verify video streams and make storyboard
+        shell: bash
+        run: |
+          python -m pip install --quiet pillow
+          python - <<'PY'
+          import json, subprocess, os
+          from PIL import Image, ImageDraw, ImageChops, ImageStat
+          from pathlib import Path
+          paths=[
+            ('Pastoral Dawn','public/melodia/loops/v01_pastoral_dawn_loop_6s.mp4'),
+            ('Siren Symphony','public/melodia/loops/v02_siren_symphony_loop_4s.mp4'),
+            ('Melusina Waves','public/melodia/loops/v03_melusina_waves_loop_8s.mp4'),
+            ('Astral Penrose','public/melodia/loops/v04_astral_penrose_loop_8s.mp4'),
+            ('Couture Nikki','public/melodia/loops/v05_infinity_nikki_loop_6s.mp4'),
+            ('Manga Screentone','public/melodia/loops/v06_manga_screentone_loop_4s.mp4'),
+            ('Blue Noise Anime','public/melodia/loops/v07_blue_noise_anime_loop_4s.mp4'),
+            ('Director Quad Scope','public/melodia/loops/v08_director_quad_scope_loop_4s.mp4'),
+            ('Runtime Systems','public/melodia/videos/melodia-runtime-systems-showcase.mp4'),
+            ('Overworld UI','public/melodia/videos/overworld-ui-motion-verified.mp4'),
+            ('Universe Foundry','wix/assets/touchdesigner/hero_05_universe_foundry_loop.mp4'),
+            ('Foundry Quad','wix/assets/touchdesigner/hero_05b_universe_foundry_4quad_loop.mp4'),
+            ('Niagara Sparkle','public/melodia/videos/niagara-sparkle-flipbook-loop.mp4'),
+            ('Niagara Water','public/melodia/videos/niagara-water-globule-loop.mp4')
+          ]
+          out=Path('reel-review');out.mkdir(exist_ok=True)
+          panel=Image.new('RGB',(1688,888),(245,241,246))
+          d=ImageDraw.Draw(panel);report=[]
+          for i,(name,path) in enumerate(paths):
+            x=(i%4)*422;y=(i//4)*222
+            try:
+              info=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration:stream=width,height,r_frame_rate','-of','json',path],text=True))
+              dur=float(info.get('format',{}).get('duration','0'))
+              stream=next((s for s in info.get('streams',[]) if 'width' in s),{})
+              frames=[]
+              for j,at in enumerate([.26,.73]):
+                ss=max(0,min(dur-.12,dur*at))
+                fn=out/f'{i:02d}_{j}.jpg'
+                subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-ss',str(ss),'-i',path,'-frames:v','1','-vf','scale=208:176:force_original_aspect_ratio=increase,crop=208:176','-y',str(fn)],check=True)
+                frames.append(Image.open(fn).convert('RGB'))
+              score=round(ImageStat.Stat(ImageChops.difference(frames[0].resize((80,60)),frames[1].resize((80,60)))).mean[0],2)
+              for j,im in enumerate(frames):panel.paste(im,(x+2+j*209,y+2))
+              d.rectangle((x+2,y+178,x+420,y+220),fill=(35,28,48))
+              d.text((x+10,y+184),f'{i+1:02d}  {name}',fill=(250,249,250))
+              d.text((x+10,y+201),f'{dur:.1f}s | {stream.get("width",0)}x{stream.get("height",0)} | delta {score}',fill=(210,213,220))
+              report.append({'id':i+1,'name':name,'path':path,'duration':dur,'resolution':f'{stream.get("width",0)}x{stream.get("height",0)}','change_score':score})
+            except Exception as e:
+              report.append({'id':i+1,'name':name,'path':path,'error':str(e)})
+              d.text((x+10,y+90),f'{name}: ERROR',fill=(110,20,30))
+          panel.save(out/'contact-sheet.jpg',quality=58,optimize=True)
+          (out/'probe-report.json').write_text(json.dumps(report,indent=2))
+          print('PROBE_REPORT:',json.dumps(report))
+          print('SHEET_BASE64:'+__import__('base64').b64encode((out/'contact-sheet.jpg').read_bytes()).decode('ascii'))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: melodia-contact-sheet-review
+          path: reel-review/contact-sheet.jpg
+          retention-days: 7
