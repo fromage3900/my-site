@@ -1,0 +1,13 @@
+{
+  "schema": "fromage.assets_catalogue.v1",
+  "status": "no_products_published",
+  "note": "Product records are added only once verified (real files, real license, real thumbnail). Empty on purpose: never invent listings.",
+  "categories": [
+    { "id": "environments", "label": "Environments" },
+    { "id": "ornaments", "label": "Ornaments" },
+    { "id": "props", "label": "Props" },
+    { "id": "materials", "label": "Materials" },
+    { "id": "kits", "label": "Kits" }
+  ],
+  "products": []
+}

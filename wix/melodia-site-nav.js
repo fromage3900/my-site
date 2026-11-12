@@ -11,6 +11,7 @@
     { href: 'curated-art.html', label: 'Portfolio', keys: ['curated-art'] },
     { href: 'world-bible.html', label: 'Worlds', keys: ['world-bible', 'sakura-case-study', 'space-cathedral', 'pcg-system-impact', 'melodia-stage-character'] },
     { href: 'melodia-living-worlds.html', label: 'Interactive', keys: ['melodia-living-worlds', 'melodia-gameplay-loop', 'melodia-rhythm-hero', 'realtime-3d-viewer', 'constellation-brush', 'mahou-particle-garden'] },
+    { href: 'assets.html', label: 'Assets', keys: ['assets'] },
     { href: 'resume.html', label: 'About', keys: ['resume', 'recruiter-one-sheet', 'hiring-dossier', 'credits'] },
   ];
 
