@@ -1,0 +1,36 @@
+{
+  "schema": "fromage.assets_catalogue.v1",
+  "status": "no_products_published",
+  "note": "Only verified, complete product records marked published with an HTTPS purchase/download URL are publicly listed. Never invent products, file contents, prices or licenses.",
+  "categories": [
+    {
+      "id": "environments",
+      "label": "Environments"
+    },
+    {
+      "id": "ornaments",
+      "label": "Ornaments"
+    },
+    {
+      "id": "props",
+      "label": "Props"
+    },
+    {
+      "id": "materials",
+      "label": "Materials"
+    },
+    {
+      "id": "kits",
+      "label": "Kits"
+    },
+    {
+      "id": "botanicals",
+      "label": "Botanicals"
+    },
+    {
+      "id": "sculpting",
+      "label": "Sculpting Alphas"
+    }
+  ],
+  "products": []
+}

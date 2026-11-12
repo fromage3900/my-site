@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-page="assets">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<title>Assets | FROMΔGE</title>
+<meta name="description" content="FROMΔGE asset catalogue: environment-art tools and kits, filterable by category and search. Items appear once verified and released." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://fromage3900.github.io/my-site/wix/assets.html" />
+<meta property="og:title" content="Assets | FROMΔGE" />
+<meta property="og:description" content="Environment-art tools and kits, filterable by category and search." />
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/assets.html" />
+<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/l-sakurapath-hero.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://fromage3900.github.io/my-site/generated/assets/l-sakurapath-hero.png" />
+<link rel="stylesheet" href="melodia-luxury-type.css?v=20260921p1">
+<link rel="stylesheet" href="melodia-editorial.css?v=20260921p1">
+<link rel="stylesheet" href="melodia-premium-system.css?v=20260921p1">
+<link rel="stylesheet" href="melodia-assets-catalogue.css?v=20260912a1">
+</head>
+<body>
+<div class="melodia-shell fashion-mode assets-page">
+<header class="shell-nav" aria-label="Portfolio navigation">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>FROMΔGE</span></a>
+  <nav class="nav-links" aria-label="Sections"><a href="index.html">Home</a><a href="curated-art.html">Portfolio</a><a href="assets.html" aria-current="page">Assets</a><a href="resume.html">About</a></nav>
+  <a class="nav-cta" href="application-hub.html">Portfolio hub</a>
+</header>
+<main id="main">
+<section class="assets-hero" aria-labelledby="assets-title">
+  <p class="assets-kicker">Asset catalogue</p>
+  <h1 id="assets-title">Environment-art tools, kits and props.</h1>
+  <p class="assets-lede">Finished, verified pieces for real-time environments. Every listing shows its software, formats and license before you open it.</p>
+</section>
+
+<section class="assets-catalogue" data-assets-root aria-label="Asset catalogue">
+  <div class="assets-empty-catalogue" data-assets-empty-catalogue hidden>
+    <h2>No products published yet</h2>
+    <p>The catalogue is open, but nothing is listed for sale or download yet. Assets appear here once they are finished, checked and released.</p>
+  </div>
+
+  <div class="assets-toolbar">
+    <div class="assets-filters" role="group" aria-label="Filter by category" data-assets-filters></div>
+    <form class="assets-search" role="search" onsubmit="return false">
+      <label for="assets-search-input">Search assets</label>
+      <input id="assets-search-input" type="search" name="q" autocomplete="off" placeholder="Search by name, software or format" data-assets-search />
+    </form>
+  </div>
+
+  <p class="assets-summary" aria-live="polite" data-assets-summary></p>
+  <p class="assets-no-results" data-assets-no-results hidden>No assets match that search. Try another category or term.</p>
+  <p class="assets-error" data-assets-error hidden>The catalogue could not be loaded. Refresh the page to try again.</p>
+  <div class="assets-grid" data-assets-grid></div>
+</section>
+</main>
+<footer class="footer"><div class="inner"><span>Brennan Shepherd / Environment &amp; Technical Artist</span><span><a href="credits.html" style="color:inherit;opacity:0.85">Credits</a></span></div></footer>
+</div>
+<script src="melodia-site-nav.js?v=20260921p1"></script>
+<script src="melodia-assets-catalogue.js?v=20260912a1"></script>
+</body>
+</html>
