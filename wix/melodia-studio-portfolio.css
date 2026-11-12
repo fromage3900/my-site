@@ -1,0 +1,168 @@
+/* Melodia Studio portfolio edition — 2026-11-06.
+   Based on the canonical Studio/Compendium layout: ivory vellum,
+   restrained brass keylines, plum folio captions and real artwork first.
+   No new WebGL renderers. Keep Times New Roman as the portfolio font. */
+:root {
+  --studio-vellum: #f8f2ec;
+  --studio-leaf: #fff9f3;
+  --studio-ink: #182238;
+  --studio-brass: #d2b489;
+  --studio-plum: #89576c;
+  --studio-water: #a4e9f7;
+}
+html[data-page="index"] .home-foyer-head h2,
+html[data-page="hero-renders"] .section-head h2,
+html[data-page="touchdesigner-architecture"] .section-head h2,
+html[data-page="curated-art"] .section-head h2 {
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-style: normal;
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+}
+html[data-page="index"] .home-foyer-card {
+  border-radius: 3px !important;
+  box-shadow: none !important;
+}
+html[data-page="index"] .home-foyer-card:hover,
+html[data-page="index"] .home-foyer-card:focus-visible {
+  transform: none !important;
+  border-color: var(--studio-brass) !important;
+  box-shadow: 0 0 0 2px rgba(210,180,137,.16) !important;
+}
+html[data-page="index"] .home-foyer-card:hover img,
+html[data-page="index"] .home-foyer-card:focus-visible img {
+  transform: none !important;
+}
+html[data-page="index"] .home-foyer-kicker,
+html[data-page="hero-renders"] .studio-kicker,
+html[data-page="hero-renders"] .vista-badge,
+html[data-page="touchdesigner-architecture"] .rs-variants-grid button {
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  letter-spacing: .06em;
+}
+html[data-page="hero-renders"] .vista-card {
+  background: var(--studio-leaf);
+  border: 1px solid var(--studio-brass);
+  border-radius: 3px;
+  box-shadow: none;
+}
+html[data-page="hero-renders"] .vista-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--studio-plum);
+}
+html[data-page="hero-renders"] .vista-card:hover .vista-media-frame img {
+  transform: none;
+}
+html[data-page="hero-renders"] .vista-details h3 {
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: 1.45rem;
+  color: var(--studio-ink);
+  font-weight: 600;
+}
+html[data-page="hero-renders"] .vista-caption { color: #51475b; }
+html[data-page="hero-renders"] .vista-note { color: #675b6b; }
+html[data-page="hero-renders"] .vista-badge {
+  background: rgba(255,249,243,.96);
+  border: 1px solid var(--studio-brass);
+  border-radius: 2px;
+  color: var(--studio-plum);
+  backdrop-filter: none;
+}
+html[data-page="hero-renders"] .studio-river-feature {
+  background: var(--studio-vellum);
+  color: var(--studio-ink);
+  border-block: 1px solid var(--studio-brass);
+  padding: clamp(2rem, 5vw, 4rem) 0;
+}
+html[data-page="hero-renders"] .studio-river-feature .inner {
+  max-width: 1400px;
+}
+.studio-river-feature .studio-feature-head {
+  max-width: 76ch;
+  margin-bottom: 1.3rem;
+}
+.studio-river-feature .studio-kicker {
+  color: var(--studio-plum);
+  font-size: .78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.studio-river-feature .studio-feature-head h2 {
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  color: var(--studio-ink);
+  font-size: clamp(2rem, 4.8vw, 4rem);
+  line-height: 1.08;
+  margin: .55rem 0 .75rem;
+  font-weight: 600;
+}
+.studio-river-feature .studio-feature-head p {
+  color: #554b59;
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.55;
+  margin: 0;
+}
+.studio-river-feature .studio-river-plate {
+  margin: 0;
+  background: var(--studio-leaf);
+  border: 1px solid var(--studio-brass);
+  padding: clamp(7px, .85vw, 13px);
+}
+.studio-river-feature .studio-river-plate img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4590 / 960;
+  object-fit: cover;
+}
+.studio-river-feature .studio-river-plate figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem 1.5rem;
+  flex-wrap: wrap;
+  padding: .85rem .7rem .25rem;
+  color: var(--studio-plum);
+  font-size: .82rem;
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+}
+.studio-river-feature .studio-river-plate a { color: var(--studio-plum); text-decoration: underline; }
+.studio-river-feature .studio-process-note {
+  border-left: 2px solid var(--studio-brass);
+  margin: 1.3rem 0 0;
+  padding-left: 1rem;
+  color: #554b59;
+  max-width: 85ch;
+  line-height: 1.65;
+}
+html[data-page="touchdesigner-architecture"] .river-sanctuary-preview-card,
+html[data-page="touchdesigner-architecture"] .rs-variants-grid button,
+html[data-page="touchdesigner-architecture"] .rs-variants-grid > * {
+  border-radius: 3px !important;
+  box-shadow: none !important;
+}
+html[data-page="hero-renders"] .section-orrery,
+html[data-page="hero-renders"] .cosmic-instruments,
+html[data-page="hero-renders"] #ambient-starfield,
+html[data-page="curated-art"] .cosmic-instruments,
+html[data-page="curated-art"] #ambient-starfield,
+html[data-page="touchdesigner-architecture"] #ambient-starfield,
+html[data-studio-quiet="true"] .dream-aurora-layer,
+html[data-studio-quiet="true"] .dream-sparkle-layer,
+html[data-studio-quiet="true"] .mahou-flourish-stage {
+  display: none !important;
+}
+@media (max-width: 700px) {
+  .studio-river-feature .studio-river-plate img {
+    aspect-ratio: 16 / 8;
+    object-position: center;
+  }
+  .studio-river-feature .studio-river-plate figcaption {
+    font-size: .72rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-page="hero-renders"] .vista-card,
+  html[data-page="hero-renders"] .vista-media-frame img,
+  html[data-page="index"] .home-foyer-card img { transition: none; }
+}
