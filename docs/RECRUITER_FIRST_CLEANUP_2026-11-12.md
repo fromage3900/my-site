@@ -26,3 +26,6 @@ Existing Unreal environment images remain the visual source of truth. Browser ap
 
 ## Rendered screenshot review correction
 Initial Chrome screenshots showed that `faraway_plate_08_capstone_master_showcase_1920.webp` is a multi-panel infographic, not a clean beauty. It was removed from every hero/social slot (but retained in the Faraway dossier where that board is relevant). The art-first entrance now uses the individually reviewed Sakura Dream ink-shrine beauty as an **earlier** environment study, while the Faraway feature and World Bible use the actual Faraway Heart Gate environment render. A direct CSS image background avoids the old parallax layers occluding the visual. The homepage claims no fresh playable Faraway capture from the older beauty image.
+
+## Screenshot QA round two
+The branch-only GitHub Actions screenshot job completed successfully and the updated desktop and 390px mobile captures confirmed real imagery now appears across Home, Selected Art, World Bible, and the recruiter one-sheet. Final adjustments shorten the mobile homepage brand to avoid clipping, restore ivory heading contrast on Selected Art, and improve the recruiter resume-link contrast. These checks are *local Chrome renders*, not a verification of the external Wix wrapper or all browsers.
