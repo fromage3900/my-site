@@ -241,6 +241,14 @@ export class UI {
     const ms = Math.round(err);
     el.innerHTML = `<span style="color:${col}">${grade.toUpperCase()}</span><small>${Math.abs(ms) < 12 ? 'on the beat' : ms < 0 ? `early ${-ms}ms` : `late ${ms}ms`}</small>`;
     el.classList.add('show');
+    // Canon sprite portrait reacts to scored input without touching player or combat state.
+    const portrait = $('portrait');
+    if (portrait) {
+      portrait.classList.toggle('melusina-perfect', grade === 'Perfect');
+      portrait.classList.toggle('melusina-miss', grade === 'Miss');
+      clearTimeout(this._portraitFx);
+      this._portraitFx = setTimeout(() => portrait.classList.remove('melusina-perfect', 'melusina-miss'), 430);
+    }
     clearTimeout(this._gf);
     this._gf = setTimeout(() => el.classList.remove('show'), 380);
   }
@@ -631,7 +639,12 @@ export class UI {
     </div>`;
     body.innerHTML = `<div class="cols">
       <div>
-        <div class="card"><h3>Wardrobe · GS ${L.gearScore()}</h3><div class="equip">${eqHtml}</div>
+        <div class="card">
+          <div class="melusina-wardrobe-preview" aria-label="Melusina pixel-art character preview">
+            <div class="melusina-wardrobe-stage"><span class="melusina-sprite-window" aria-hidden="true"><img class="melusina-sprite-track" src="./assets/sprites/melusina-canon-front-4.png" alt="" decoding="async" /></span></div>
+            <div class="melusina-wardrobe-caption"><strong>Melusina</strong><span>Canon pixel walk cycle</span><small>Character reference · gear stats and 3D appearance remain authoritative</small></div>
+          </div>
+          <h3>Wardrobe · GS ${L.gearScore()}</h3><div class="equip">${eqHtml}</div>
           <div class="stats" style="margin-top:8px">
             <span>Attack</span><span>${S.attack}</span><span>Max HP</span><span>${S.maxHp}</span>
             <span>Poise</span><span>${S.armor}</span><span>Crit</span><span>${Math.round(S.crit * 100)}% · ×${S.critDmg.toFixed(2)}</span>

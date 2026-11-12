@@ -1,0 +1,22 @@
+// Canon Melusina 4-frame sprite integration gate. Does not test physical iOS hardware.
+import { readFileSync, statSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import assert from 'node:assert/strict';
+const root = dirname(dirname(fileURLToPath(import.meta.url)));
+const file = join(root, 'assets/sprites/melusina-canon-front-4.png');
+const png = readFileSync(file);
+assert.deepEqual([...png.subarray(0,8)], [137,80,78,71,13,10,26,10], 'PNG signature');
+assert.equal(png.readUInt32BE(16), 320, 'exactly four 80px-wide front-facing frames');
+assert.equal(png.readUInt32BE(20), 80, '80px height');
+assert.ok(statSync(file).size < 20000, 'phone-first atlas budget: <20KB');
+const read = (p) => readFileSync(join(root,p), 'utf8');
+const html=read('index.html'), css=read('style.css'), ui=read('js/ui.js'), sw=read('sw.js');
+assert.match(html, /id="portrait"[\\s\\S]*?melusina-sprite-track/);
+assert.match(ui, /melusina-wardrobe-preview/);
+assert.match(ui, /melusina-perfect/);
+assert.match(css, /steps\\(4, end\\)/);
+assert.match(css, /prefers-reduced-motion/);
+assert.match(sw, /assets\\/sprites\\/melusina-canon-front-4\\.png/);
+assert.match(sw, /resonant-wilds-v16-20261112-melusina-sprite-ui/);
+console.log('PASS: canon Melusina atlas + HUD/wardrobe wiring + four-frame CSS + offline and reduced-motion support');
