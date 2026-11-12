@@ -11,7 +11,6 @@ These are the pages expected to share one current typography/navigation/editoria
 - curated-art.html
 - world-bible.html
 - melodia-living-worlds.html
-- resume.html
 - hero-renders.html
 - zbrush-breakdown.html
 - shader-breakdowns.html
@@ -32,6 +31,10 @@ same version.
 - `mahou-particle-garden.html` and `constellation-brush.html` stay unindexed labs.
 - Root Three.js entry toy is removed, recoverable through Git history.
 - Published Wix mobile behavior must be checked on a real browser before merging.
+
+## Standalone résumé (still public and top-level in navigation)
+
+- resume.html — current November 12 pearl-editorial résumé from main; intentionally self-contained and not bound to the legacy `melodia-build` stack.
 
 ## Secondary public case studies
 

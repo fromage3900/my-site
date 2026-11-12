@@ -29,3 +29,6 @@ Initial Chrome screenshots showed that `faraway_plate_08_capstone_master_showcas
 
 ## Screenshot QA round two
 The branch-only GitHub Actions screenshot job completed successfully and the updated desktop and 390px mobile captures confirmed real imagery now appears across Home, Selected Art, World Bible, and the recruiter one-sheet. Final adjustments shorten the mobile homepage brand to avoid clipping, restore ivory heading contrast on Selected Art, and improve the recruiter resume-link contrast. These checks are *local Chrome renders*, not a verification of the external Wix wrapper or all browsers.
+
+## Concurrent main change reconciled
+Main acquired a new standalone pearl-editorial résumé on November 12, 2026 (`b5250d0dfd70`). The merge commit incorporates that exact current résumé instead of overwriting its latest work. Its public link and search indexing remain intact, but it is moved out of the old shared-build `canonical` contract because the self-contained design correctly does not load those legacy scripts. All other main files remain in the branch merge. Review and re-run branch validators following this resolution.

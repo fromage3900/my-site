@@ -1,56 +1,365 @@
 <!DOCTYPE html>
-<html lang="en" data-page="resume">
+<html lang="en" data-page="resume" data-theme="pearl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="melodia-build" content="20260921p1" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
-<meta http-equiv="X-Content-Type-Options" content="nosniff" />
-<meta name="referrer" content="strict-origin-when-cross-origin" />
-<title>Resume | Brennan Shepherd</title>
-<meta name="description" content="Recruiter-ready web resume for Brennan Shepherd, a final-year environment and technical artist focused on stylized fantasy worldbuilding, Unreal Engine 5, procedural environment systems, materials, foliage, and look development." />
-<link rel="canonical" href="https://fromage3900.github.io/my-site/wix/resume.html" />
-<meta name="robots" content="index,follow,max-image-preview:large" />
-<meta property="og:title" content="Resume — Brennan Shepherd" />
-<meta property="og:type" content="profile" />
-<meta property="og:description" content="Environment designer — stylized shaders, Unreal integration, retopology, and look development." />
-<meta property="og:image" content="https://fromage3900.github.io/my-site/wix/assets/touchdesigner/aaa_02_water_beauty_1080p.png" />
-<meta property="og:image:alt" content="Brennan Shepherd — stylized environment and technical art from Melodia" />
-<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/resume.html" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://fromage3900.github.io/my-site/wix/assets/touchdesigner/aaa_02_water_beauty_1080p.png" />
-<link rel="stylesheet" href="melodia-luxury-type.css?v=20260921p1">
-<link rel="stylesheet" href="portfolio-luxury-bridge.css?v=20260921p1">
-<link rel="stylesheet" href="melodia-editorial.css?v=20260921p1">
-<link rel="stylesheet" href="melodia-fashion-editorial.css?v=20260921p1">
-<link rel="stylesheet" href="melodia-premium-system.css?v=20260921p1">
-<link rel="stylesheet" href="portfolio-pages.css?v=20260921p1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fbf8f6">
+<meta name="description" content="Brennan Shepherd — environment and technical artist in Toronto. Unreal Engine 5.8, Houdini, procedural worldbuilding, shaders, ZBrush and stylized fantasy environments.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Brennan Shepherd — Environment &amp; Technical Artist | Résumé</title>
+<link rel="canonical" href="https://fromage3900.github.io/my-site/wix/resume.html">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Brennan Shepherd — Environment &amp; Technical Artist">
+<meta property="og:description" content="Romantic fantasy worlds, built as reusable systems. Résumé, selected projects and production toolkit.">
+<meta property="og:url" content="https://fromage3900.github.io/my-site/wix/resume.html">
+<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/faraway_hero_heart_gate_1920.webp">
 <style>
-@media print{
-  .shell-nav,.resume-print,.button-row,.melodia-orbit,.melodia-orrery,.melodia-starfield{display:none!important}
-  html,body,.melodia-shell{background:#fff!important;color:#111!important}
-  .hero,.band,.paper,.ivory,.deep{background:#fff!important;color:#111!important;box-shadow:none!important}
-  .hero-media{display:none!important}
-  a{color:#111!important;text-decoration:none!important}
-  .card,.premium-card,.table-row,.guide-card{break-inside:avoid;box-shadow:none!important}
-  main{max-width:900px;margin:0 auto}
+:root {
+  color-scheme:light;
+  --paper:#fffdfb; --cream:#faf7f6; --ink:#29273d; --plum:#36274d; --mute:#676277;
+  --lav:#e6dcfa; --rose:#f4dce7; --aqua:#cbe9e9; --gold:#af8e5c; --rule:#ded4d4;
+  --serif:"Times New Roman",Times,Georgia,serif;
+  --sans:Arial,Helvetica,sans-serif;
 }
-.resume-note{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--color-text-accent)}.skill-cloud{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.skill-cloud span{padding:8px 10px;border:1px solid var(--color-border-subtle);font-family:var(--font-mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent-iris);background:var(--color-surface-inverse)}.deep .skill-cloud span{color:var(--color-text-accent);background:var(--color-surface-sunken)}</style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:
+  radial-gradient(circle at 1% 4%,rgba(197,168,237,.19),transparent 26%),
+  radial-gradient(circle at 99% 42%,rgba(148,221,230,.16),transparent 31%),
+  linear-gradient(180deg,#fffdfb 0%,#f8f3f5 68%,#fffdfb 100%);
+  font-family:var(--serif);font-size:17px;line-height:1.52;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.17;z-index:-1;background-image:radial-gradient(#c9b6b2 .5px,transparent .5px);background-size:11px 11px}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid #7952ae;outline-offset:4px}
+img{display:block;max-width:100%}
+button{font:inherit;cursor:pointer}
+#page{width:min(1220px,calc(100% - 76px));margin:0 auto}
+.skip{position:absolute;left:8px;top:-60px;background:var(--plum);color:white;padding:8px 14px;z-index:20}
+.skip:focus{top:8px}
+.masthead{padding:25px 0 21px;display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--rule);font-family:var(--sans);font-size:10px;letter-spacing:.17em;text-transform:uppercase}
+.signature{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--plum)}
+.signature-mark{display:grid;place-items:center;width:30px;height:30px;border:1px solid var(--gold);border-radius:50%;font-family:var(--serif);font-size:19px;color:var(--gold);font-weight:400}
+.menu{display:flex;flex-wrap:wrap;align-items:center;gap:24px}
+.menu a:hover,.text-link:hover{color:#885f9f}
+.mini-print{border:1px solid #bb9d78;background:transparent;padding:9px 12px;font:inherit;letter-spacing:inherit;text-transform:uppercase;color:var(--plum)}
+.mini-print:hover{background:var(--lav)}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(330px,.95fr);gap:5%;align-items:center;padding:68px 0 66px}
+.hero-copy{position:relative;padding:28px 0 12px}
+.eyebrow{margin:0 0 20px;font:700 10px/1.4 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#866c8f}
+.folio-label{display:flex;align-items:center;gap:15px}
+.folio-label::after{content:"";width:66px;border-top:1px solid #c4a87d}
+.hero h1{font-weight:400;font-size:clamp(70px,7.7vw,124px);letter-spacing:-.074em;line-height:.82;margin:0 0 28px;color:#2c243d}
+.hero h1 em{display:block;font-weight:400;color:#866a9a;font-style:italic;letter-spacing:-.08em;padding-left:.38em}
+.role{font:700 12px/1.7 var(--sans);text-transform:uppercase;letter-spacing:.17em;color:#574763;margin-bottom:19px}
+.lede{font-size:clamp(18px,1.7vw,22px);line-height:1.52;max-width:34ch;margin:0 0 27px;color:#524859}
+.actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.cta{display:inline-flex;align-items:center;justify-content:center;min-height:43px;padding:12px 18px;border:1px solid #b9a0b8;font:700 10px var(--sans);letter-spacing:.13em;text-transform:uppercase;transition:background .2s,transform .2s}
+.cta.primary{background:#382849;color:#fff;border-color:#382849}
+.cta:hover{transform:translateY(-2px);background:#e9dce9;color:#28233a}
+.cta.primary:hover{background:#58406d;color:white}
+.hero-note{font:10px/1.6 var(--sans);text-transform:uppercase;letter-spacing:.13em;color:#847787;margin-top:30px}
+.hero-art{position:relative;min-width:0}
+.hero-art::before{content:"";position:absolute;left:9%;right:-3%;top:-6%;bottom:8%;border:1px solid #c8a96f;z-index:0}
+.hero-art::after{content:"✧";position:absolute;right:-22px;top:-37px;color:#b18abb;font-size:50px;z-index:2;text-shadow:0 0 1px white}
+.art-window{position:relative;z-index:1;padding:12px;background:#f2e9f1;border:1px solid #d6c5d5;box-shadow:0 24px 60px rgba(80,49,91,.12)}
+.art-window img{width:100%;height:clamp(370px,39vw,520px);object-fit:cover;object-position:center}
+.art-window:after{content:"";position:absolute;inset:22px;border:1px solid rgba(255,251,244,.48);pointer-events:none}
+.frame-stamp{position:absolute;z-index:3;left:-30px;bottom:18px;width:118px;height:118px;background:#fdf6ef;border:1px solid #b59a6d;border-radius:50%;display:flex;flex-direction:column;justify-content:center;align-items:center;transform:rotate(-15deg);box-shadow:0 6px 22px #3827471c;color:#705b70;text-align:center}
+.frame-stamp span{font-size:25px;color:#a37db5;line-height:1}
+.frame-stamp strong{font:700 9px/1.6 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+.photo-caption{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font:9px/1.45 var(--sans);text-transform:uppercase;letter-spacing:.15em;color:#766b75}
+.orbit-motif{position:absolute;right:-20px;bottom:-20px;pointer-events:none;opacity:.75;color:#b18abb;font-size:26px}
+.ticker{border-top:1px solid #cdbda8;border-bottom:1px solid #cdbda8;background:linear-gradient(90deg,rgba(233,216,249,.65),rgba(255,246,246,.75),rgba(204,241,239,.62));padding:15px 20px;text-align:center;font:700 10px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#60546a}
+.ticker span{margin:0 18px;color:#a57db6}
+.section{padding:57px 0;border-bottom:1px solid var(--rule)}
+.section-top{display:grid;grid-template-columns:250px 1fr;gap:30px;margin-bottom:27px}
+.index{font:700 10px var(--sans);letter-spacing:.17em;text-transform:uppercase;color:#977aa0}
+.section-top h2{font-weight:400;font-size:clamp(33px,4.5vw,52px);line-height:1.08;letter-spacing:-.045em;margin:0}
+.section-top h2 em{font-weight:400;color:#9472aa}
+.section-intro{grid-column:2;margin:0;color:#665c68;max-width:68ch}
+.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.project{background:#fffcfb;border:1px solid #e2d8d4;overflow:hidden;display:flex;flex-direction:column}
+.project picture,.project .diagram{display:block;width:100%;aspect-ratio:16/10;overflow:hidden;background:#f1e9ef}
+.project picture img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.project:hover picture img{transform:scale(1.03)}
+.diagram{position:relative;padding:14px;background:linear-gradient(120deg,#eae5f2,#d6eef0)!important;display:grid!important;place-items:center}
+.diagram svg{width:92%;height:92%}
+.project-body{padding:23px 23px 22px;display:flex;flex-direction:column;flex:1}
+.project-num{font:700 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#8f6b94;margin:0 0 10px}
+.project h3{font-size:25px;font-weight:400;line-height:1.04;letter-spacing:-.03em;margin:0 0 11px}
+.project p{font-size:15px;color:#645b68;line-height:1.5;margin:0 0 17px}
+.project a{font:700 10px var(--sans);text-transform:uppercase;letter-spacing:.12em;color:#6a4976;margin-top:auto;border-bottom:1px solid #c3aeca;align-self:flex-start;padding-bottom:4px}
+.project a:hover{color:#30263f}
+.detail-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px}
+.section-kicker{font:700 10px var(--sans);text-transform:uppercase;letter-spacing:.17em;color:#937794;margin:0 0 10px}
+.detail-grid h3{font-weight:400;font-size:31px;letter-spacing:-.025em;margin:0 0 10px}
+.detail-grid p{margin:0 0 18px;color:#655f6a;font-size:16px}
+.clean-list{list-style:none;margin:0;padding:0}
+.clean-list li{padding:12px 0;border-top:1px solid #e0d8d5;font-size:16px}
+.clean-list li strong{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5a4b60;margin-bottom:4px}
+.tagset{display:flex;flex-wrap:wrap;gap:8px}
+.tagset span{background:#fbf5f7;border:1px solid #e2d3dd;padding:8px 11px;font:700 10px/1.25 var(--sans);text-transform:uppercase;letter-spacing:.085em;color:#61526d}
+.tagset span:nth-child(3n){background:#eef7f5;border-color:#d2e8e4}
+.tagset span:nth-child(4n){background:#f6f0ff;border-color:#e3d7f6}
+.timeline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}
+.entry{padding-top:15px;border-top:1px solid #cdbbae}
+.entry-meta{font:700 10px var(--sans);text-transform:uppercase;letter-spacing:.14em;color:#9a7891}
+.entry h3{font-size:24px;line-height:1.1;font-weight:400;margin:12px 0}
+.entry p{font-size:15px;color:#655c68;margin:0}
+.contact{padding:64px 0 76px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
+.contact h2{font-size:clamp(38px,5vw,65px);font-weight:400;line-height:1;letter-spacing:-.05em;margin:0 0 14px}
+.contact p{margin:0;color:#6d6174}
+.contact .actions{justify-content:flex-end}
+.footer{padding:17px 0 28px;border-top:1px solid #c9bbba;display:flex;justify-content:space-between;gap:20px;font:9px var(--sans);text-transform:uppercase;letter-spacing:.17em;color:#8b7d88}
+@media(max-width:850px){
+ #page{width:min(100% - 38px,660px)}
+ .masthead{align-items:flex-start}
+ .menu{gap:14px}
+ .hero{grid-template-columns:1fr;gap:38px;padding:38px 0 65px}
+ .hero h1{font-size:clamp(67px,13vw,105px)}
+ .hero-art{max-width:590px;width:calc(100% - 13px);margin-left:8px}
+ .hero-art::before{right:-8px}
+ .art-window img{height:350px}
+ .project-grid{grid-template-columns:1fr}
+ .project{display:grid;grid-template-columns:42% 1fr}
+ .project picture,.project .diagram{aspect-ratio:auto;min-height:240px;height:100%}
+ .section-top{grid-template-columns:1fr;gap:7px}
+ .section-intro{grid-column:1}
+ .detail-grid{grid-template-columns:1fr;gap:27px}
+ .contact{grid-template-columns:1fr}
+ .contact .actions{justify-content:flex-start}
+}
+@media(max-width:550px){
+ .menu{gap:12px}.menu a:nth-child(2){display:none}
+ .masthead{font-size:9px}
+ .hero h1{font-size:clamp(61px,16vw,85px)}
+ .frame-stamp{width:92px;height:92px;left:-15px;bottom:13px}
+ .art-window img{height:280px}
+ .ticker{line-height:1.9}.ticker span{margin:0 5px}
+ .project{display:flex}
+ .project picture,.project .diagram{aspect-ratio:16/10;min-height:unset}
+ .timeline{grid-template-columns:1fr}
+ .photo-caption{font-size:8px}
+ .contact{padding:45px 0}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cta,.project picture img{transition:none}}
+@page{size:letter;margin:12mm 13mm}
+@media print{
+ html,body{background:#fff!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ body{font-size:10.5pt;line-height:1.32;color:#111}
+ body::before{display:none}
+ #page{width:100%;max-width:none}
+ .masthead{padding:0 0 7pt;border-bottom:1pt solid #888;font-size:7pt}
+ .signature-mark,.menu,.skip,.hero-art,.ticker,.actions,.project picture,.project .diagram,.photo-caption,.orbit-motif{display:none!important}
+ .masthead .signature{font-size:8pt}
+ .hero{display:block;padding:17pt 0 13pt}
+ .hero-copy{padding:0}
+ .eyebrow{font-size:7pt;margin:0 0 4pt}
+ .hero h1{font-size:35pt;letter-spacing:-.04em;margin:0 0 9pt;line-height:1}
+ .hero h1 em{display:inline;padding:0;margin-left:7pt;color:#111}
+ .role{font-size:8pt;margin-bottom:5pt}
+ .lede{font-size:10pt;max-width:none;margin:0}
+ .hero-note{display:none}
+ .section{padding:12pt 0;border-color:#aaa}
+ .section-top{display:block;margin-bottom:8pt}
+ .section-top h2{font-size:17pt}
+ .section-intro{font-size:9.4pt;max-width:none;margin:4pt 0 0}
+ .index{font-size:7pt}
+ .project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8pt}
+ .project{display:block;border:1px solid #ccc;break-inside:avoid}
+ .project-body{padding:8pt}
+ .project-num{font-size:6.5pt;margin-bottom:4pt}
+ .project h3{font-size:12pt;margin:0 0 4pt}
+ .project p{font-size:8pt;line-height:1.35;margin:0}
+ .project a{display:none}
+ .detail-grid{grid-template-columns:1fr 1fr;gap:20pt}
+ .detail-grid h3{font-size:13pt}
+ .detail-grid p{font-size:9pt;margin-bottom:6pt}
+ .section-kicker{font-size:7pt}
+ .clean-list li{padding:4pt 0;font-size:9pt}
+ .clean-list li strong{font-size:7pt;margin-bottom:2pt}
+ .tagset{gap:4pt}
+ .tagset span{padding:3pt 5pt;font-size:7pt;background:#fff!important;border:1px solid #ccc}
+ .timeline{grid-template-columns:1fr 1fr;gap:14pt}
+ .entry{padding-top:6pt}
+ .entry h3{font-size:12pt;margin:4pt 0}
+ .entry p{font-size:8.5pt}
+ .entry-meta{font-size:7pt}
+ .contact{padding:10pt 0 2pt;display:block}
+ .contact h2{font-size:16pt;margin:0 0 2pt}
+ .contact p{font-size:8.4pt}
+ .footer{font-size:7pt;padding:4pt 0}
+ a[href]::after{content:none!important}
+ .section,.project,.entry,.contact{break-inside:avoid}
+}
+</style>
 </head>
 <body>
-<div class="melodia-shell fashion-mode" data-mg="off" data-hero="editorial" data-effects="none" data-nav-cta="curated-art.html" data-nav-cta-label="Selected Art">
-<header class="shell-nav" aria-label="Portfolio navigation"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Brennan Shepherd</a><nav class="nav-links" aria-label="Sections"></nav><a class="nav-cta button-premium" href="curated-art.html">Selected Art</a></header>
-<main>
-<section class="hero has-editorial-frame" aria-labelledby="page-title"><div class="hero-media" aria-hidden="true"><img data-plate="resume.hero" src="../generated/assets/unreal/variant_2_sakura_dawn.webp" alt="Melusina Morning — reviewed nine-pass realtime environment lookdev" /></div><div class="hero-inner"><p class="kicker magazine-kicker premium-kicker">Web resume / application packet</p><h1 id="page-title">Brennan Shepherd</h1><p class="lede">Environment and technical artist. I build romantic, stylized fantasy worlds in Unreal Engine 5.8 — spaces, materials, foliage, atmosphere, and the procedural systems that hold them together.</p><div class="button-row"><a class="button primary button-premium-primary" href="curated-art.html">Selected Art</a><a class="button button-premium" href="mailto:brennan.shepherd3900@gmail.com">Email</a><a class="button button-premium" href="https://www.linkedin.com/in/brennan-shepherd-3b6111307/" target="_blank" rel="noopener">LinkedIn</a><a class="button button-premium" href="https://github.com/fromage3900/MelodiaMelusinaV2" target="_blank" rel="noopener">GitHub</a><button class="button button-premium resume-print" type="button" onclick="window.print()">Print / Save PDF</button></div></div></section>
-<section class="band paper ivory" data-surface="ivory"><div class="inner"><div class="section-head"><div><p class="eyebrow">Profile</p><h2>Stylized environment art with systems underneath.</h2></div><p>I'm a final-year Humber 3D Animation student and a 2D/3D artist working toward environment and technical art roles in games. My lane is romantic, stylized fantasy worldbuilding: readable spaces, atmosphere and materials, backed by reusable UE5, Houdini, PCG, Python, and shader workflows.</p></div><div class="card-grid"><article class="card premium-card"><span>Target Roles</span><div><h3>Environment Artist / Technical Artist</h3><p>Best fit for stylized environment art, look development, material systems, and game-ready world presentation.</p></div></article><article class="card premium-card"><span>Education</span><div><h3>Humber 3D Animation</h3><p>Final-year student with a broad 2D/3D foundation across modeling, animation, rendering, texturing, and presentation.</p></div></article><article class="card premium-card"><span>Portfolio Hook</span><div><h3>Wonder with repeatable craft</h3><p>Fantasy worlds presented with artbook polish while keeping shader, PCG, geometry, and render-intake proof close by.</p></div></article></div></div></section>
-<section class="band deep"><div class="inner"><div class="section-head"><div><p class="eyebrow">Core Skills</p><h2>Tools and production strengths.</h2></div><p>The resume stays role-focused: broad enough to show pipeline literacy, specific enough to back an industry-facing environment application.</p></div><div class="skill-cloud"><span>Unreal Engine 5.8</span><span>Environment Art</span><span>Stylized Shaders</span><span>Look Development</span><span>Houdini</span><span>PCG / PCGEx</span><span>SpeedTree</span><span>Python</span><span>Blender</span><span>Maya</span><span>3ds Max</span><span>ZBrush</span><span>Substance Painter</span><span>Photoshop</span><span>After Effects</span><span>Geometry Nodes</span><span>2D + 3D Art</span></div></div></section>
-<section class="band paper"><div class="inner"><div class="section-head"><div><p class="eyebrow">Experience</p><h2>Visual communication and production context.</h2></div><p>Early work matters here — it shows I can document, communicate with an audience, and turn assets into clear public-facing presentation.</p></div><div class="table-list"><div class="table-row"><span>Education</span><div><h3>Humber College / 3D Animation</h3><p>Final-year study focused on 3D art foundations, animation, modeling, texturing, rendering, and pipeline literacy.</p></div><b>Current</b></div><div class="table-row"><span>Contract</span><div><h3>Trinity Youth Theatre / Visual Communications</h3><p>Photography, social media support, local event documentation, community polling, and visual communication for public-facing channels.</p></div><b>2023</b></div><div class="table-row"><span>Portfolio</span><div><h3>Melodia Environment System</h3><p>GitHub Pages and Wix-embedded portfolio system with Unreal intake, shader breakdowns, world bible, and production roadmap.</p></div><b>Live</b></div></div></div></section>
-<section class="band cloud ivory" data-surface="ivory"><div class="inner"><div class="section-head"><div><p class="eyebrow">Best Proof Links</p><h2>Open these with the resume.</h2></div><p>The resume is paired with proof pages so recruiters can move from candidate summary to real work quickly.</p></div><div class="guide-list"><a class="guide-card premium-card" href="recruiter-one-sheet.html#infold-six"><span>01 / Art edit</span><div><strong>Six-image application edit</strong><p>The fastest visual read: current Melusina Morning environments, prop/world integration, hand-drawn design, and stylized surface work.</p></div><b>Open</b></a><a class="guide-card premium-card" href="curated-art.html"><span>02 / Selected art</span><div><strong>Selected Art</strong><p>A narrow art-first edit across environments, character design, sculpture, ornament, and props.</p></div><b>Open</b></a><a class="guide-card premium-card" href="hero-renders.html#melusina-morning-20260917"><span>03 / Worlds</span><div><strong>Melusina Morning</strong><p>Archived environment studies and selected captures, with current work linked from the Environment Art page.</p></div><b>Open</b></a><a class="guide-card premium-card" href="pcg-system-impact.html"><span>04 / Procedural</span><div><strong>PCG Worldbuilding</strong><p>Procedural terrain, scattering, and reusable environment-system proof.</p></div><b>Open</b></a><a class="guide-card premium-card" href="shader-breakdowns.html"><span>05 / Materials</span><div><strong>Shader Breakdowns</strong><p>Unreal material systems, stylized lookdev, and controlled technical proof.</p></div><b>Open</b></a><a class="guide-card premium-card" href="application-hub.html"><span>06 / Pipeline</span><div><strong>World &amp; Pipeline Hub</strong><p>Deeper Unreal, procedural, gameplay, and DCC integration for technical reviewers.</p></div><b>Open</b></a></div></div></section>
-</main>
-<footer class="footer"><div class="inner"><span>Resume / Brennan Shepherd</span><span>Environment design and stylized technical art</span></div></footer>
+<a class="skip" href="#main">Skip to résumé content</a>
+<div id="page">
+  <header class="masthead">
+    <a class="signature" href="index.html" aria-label="Brennan Shepherd portfolio home"><span class="signature-mark" aria-hidden="true">✧</span><span>Brennan Shepherd / Melodia</span></a>
+    <nav class="menu" aria-label="Page navigation">
+      <a href="#selected-work">Selected work</a>
+      <a href="#practice">Practice</a>
+      <a href="#background">Background</a>
+      <button type="button" class="mini-print" onclick="window.print()">Save PDF ↗</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow folio-label">Artist dossier · Vol. 01 / 2026</p>
+        <h1 id="page-title">Brennan <em>Shepherd.</em></h1>
+        <div class="role">Environment Artist <span aria-hidden="true">✦</span> Technical Artist <span aria-hidden="true">✦</span> Toronto, Canada</div>
+        <p class="lede">Romantic, serene fantasy worlds — built with the craft of an artist and the systems thinking of a technical director.</p>
+        <div class="actions">
+          <a class="cta primary" href="curated-art.html">Selected artwork <span aria-hidden="true">&nbsp;↗</span></a>
+          <a class="cta" href="mailto:brennan.shepherd3900@gmail.com">Get in touch <span aria-hidden="true">&nbsp;↗</span></a>
+          <a class="cta" href="https://www.linkedin.com/in/brennan-shepherd-3b6111307/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">&nbsp;↗</span></a>
+        </div>
+        <p class="hero-note">Unreal Engine 5.8 / Houdini / Blender / ZBrush / procedural worldbuilding</p>
+      </div>
+      <div class="hero-art">
+        <figure class="art-window" style="margin:0">
+          <img src="../generated/assets/unreal/faraway_hero_heart_gate.webp" alt="Faraway Mother: monumental Heart Gate environment artwork from the Melodia capstone" width="900" height="1000" fetchpriority="high">
+        </figure>
+        <div class="frame-stamp" aria-hidden="true"><span>✧</span><strong>Worlds of<br>Melodia<br>2026</strong></div>
+        <div class="photo-caption"><span>01 / Faraway Mother — Heart Gate</span><span>In-development environment study</span></div>
+        <span class="orbit-motif" aria-hidden="true">✳</span>
+      </div>
+    </section>
+    <div class="ticker" aria-label="Creative specialties">Worldbuilding <span aria-hidden="true">✦</span> Procedural craft <span aria-hidden="true">✦</span> Stylized realtime art <span aria-hidden="true">✦</span> Technical design</div>
+
+    <section class="section" id="selected-work" aria-labelledby="projects-title">
+      <div class="section-top">
+        <div class="index">01 / Selected practice</div>
+        <h2 id="projects-title">Built to <em>feel</em> alive.</h2>
+        <p class="section-intro">My independent capstone, <i>Melodia Melusina</i>, is a rhythm-adventure world in development. These are three current directions within it: procedural architecture, monumental environmental art, and reusable realtime systems.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project">
+          <div class="diagram" role="img" aria-label="Illustrative diagram of a street network generating modular building forms, representing the Poitou procedural workflow">
+            <svg viewBox="0 0 400 245" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs><pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M 22 0 L 0 0 0 22" fill="none" stroke="#8f8da5" stroke-opacity=".25" stroke-width="1"/></pattern></defs>
+              <rect width="400" height="245" fill="url(#grid)"/>
+              <path d="M0 145Q120 98 200 135T400 88M40 0Q68 110 146 245M290 0Q276 132 350 245" fill="none" stroke="#bb9a9c" stroke-width="14" stroke-opacity=".55"/>
+              <path d="M0 145Q120 98 200 135T400 88M40 0Q68 110 146 245M290 0Q276 132 350 245" fill="none" stroke="#fff9f0" stroke-width="4" stroke-dasharray="5 7"/>
+              <g fill="#f9f6fb" stroke="#6c5976" stroke-width="2">
+                <path d="M94 52 l30 -12 29 17 -31 13z M94 52 v35 l28 16 V70z M122 70 l31 -13 v33 l-31 13z"/>
+                <path d="M198 160 l41 -23 28 16 -41 23z M198 160 v35 l28 17 v-36z M226 176 l41 -23 v36 l-41 23z"/>
+                <path d="M284 46 l32 -18 23 14 -32 17z M284 46 v38 l23 13 V59z M307 59 l32 -17 v38 l-32 17z"/>
+              </g>
+              <g stroke="#b28bd3" fill="none" stroke-width="1.5" stroke-dasharray="4 5"><circle cx="118" cy="72" r="45"/><circle cx="231" cy="174" r="54"/><circle cx="311" cy="62" r="41"/></g>
+              <g font-family="Arial,sans-serif" font-size="9" letter-spacing="2" fill="#594a75"><text x="12" y="229">POITOU / SYSTEM STUDY</text><text x="256" y="229">MAP → MODULE → WORLD</text></g>
+            </svg>
+          </div>
+          <div class="project-body">
+            <p class="project-num">01 · Architecture / In progress</p>
+            <h3>Poitou <i>— a village generator</i></h3>
+            <p>Map-informed housing studies, modular buildings, procedural room shells and terrain workflows developed through Houdini and Unreal. Illustration above shows the workflow concept, not a gameplay capture.</p>
+            <a href="geometry-nodes.html">Explore procedural practice ↗</a>
+          </div>
+        </article>
+        <article class="project">
+          <picture><img src="../generated/assets/unreal/faraway_heart_gate_approach.webp" alt="Faraway Mother, a textile-inspired monumental environment and Heart Gate study" loading="lazy" width="680" height="425"></picture>
+          <div class="project-body">
+            <p class="project-num">02 · World art / In progress</p>
+            <h3>Faraway Mother <i>— the Heart Gate</i></h3>
+            <p>A surreal cloth-inspired world of monumental structures, sculptural detailing and Chladni-based material exploration, with procedural placement and environment assembly.</p>
+            <a href="faraway-mother-couture.html">View world case study ↗</a>
+          </div>
+        </article>
+        <article class="project">
+          <picture><img src="../generated/assets/unreal/hero-melusina-morning.webp" alt="Melodia stylized realtime environment look-development artwork" loading="lazy" width="680" height="425"></picture>
+          <div class="project-body">
+            <p class="project-num">03 · Realtime art / Ongoing</p>
+            <h3>Unreal world <i>systems</i></h3>
+            <p>Stylized shaders, atmosphere, landscape dressing and procedural world assembly. Production focus: repeatable controls, readable compositions and clear technical breakdowns.</p>
+            <a href="pcg-system-impact.html">Explore PCG proof ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="practice" aria-labelledby="practice-title">
+      <div class="section-top">
+        <div class="index">02 / Craft &amp; capabilities</div>
+        <h2 id="practice-title">Art direction, <em>with an engine room.</em></h2>
+      </div>
+      <div class="detail-grid">
+        <div>
+          <p class="section-kicker">Selected technical practice</p>
+          <h3>From sculpt to playable space.</h3>
+          <p>I work between authored assets and reusable tools: modeling, UVs, texturing, stylized materials, procedural assembly, lighting, and iteration inside the game engine.</p>
+          <ul class="clean-list">
+            <li><strong>Environment production</strong>Modular architecture, terrain, props, environmental storytelling, composition and dressing.</li>
+            <li><strong>Procedural systems</strong>Houdini HDAs, Blender Geometry Nodes, Unreal PCG, Python tooling and repeatable asset generation.</li>
+            <li><strong>Look development</strong>Stylized PBR, hard-banded toon shading, sculptural surfaces, lighting, material experimentation and shader breakdowns.</li>
+          </ul>
+        </div>
+        <div>
+          <p class="section-kicker">Toolkit / hands-on</p>
+          <h3>The production palette.</h3>
+          <div class="tagset" aria-label="Software and techniques">
+            <span>Unreal Engine 5.8</span><span>Houdini</span><span>Blender</span><span>Geometry Nodes</span>
+            <span>Unreal PCG</span><span>Python</span><span>ZBrush</span><span>Substance Painter</span>
+            <span>Substance Sampler</span><span>Photoshop</span><span>Maya</span><span>Stylized PBR</span>
+            <span>Shader lookdev</span><span>Git / Version control</span>
+          </div>
+          <p style="font-size:13px;margin-top:20px">Selected technical evidence: <a class="text-link" style="text-decoration:underline;text-underline-offset:3px" href="shader-breakdowns.html">material &amp; shader studies</a> · <a class="text-link" style="text-decoration:underline;text-underline-offset:3px" href="application-hub.html">world &amp; pipeline hub</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="background" aria-labelledby="background-title">
+      <div class="section-top">
+        <div class="index">03 / Background</div>
+        <h2 id="background-title">A practice in <em>progress.</em></h2>
+      </div>
+      <div class="timeline">
+        <article class="entry">
+          <p class="entry-meta">Education / Current</p>
+          <h3>Humber College <i>— 3D Animation</i></h3>
+          <p>Final-year student in Toronto. Coursework and capstone practice across modeling, animation, texturing, rendering and game-art pipelines.</p>
+        </article>
+        <article class="entry">
+          <p class="entry-meta">Independent project / Ongoing</p>
+          <h3>Melodia Melusina <i>— Environment &amp; technical art</i></h3>
+          <p>Art direction, environment construction and procedural workflows for an independently developed fantasy rhythm-adventure prototype. In production; not a commercially shipped title.</p>
+        </article>
+        <article class="entry">
+          <p class="entry-meta">Contract / 2023</p>
+          <h3>Trinity Youth Theatre <i>— Visual communications</i></h3>
+          <p>Photography, event documentation, social media support and visual communication for public-facing community activities.</p>
+        </article>
+        <article class="entry">
+          <p class="entry-meta">Work samples / Public</p>
+          <h3>Case studies &amp; production evidence</h3>
+          <p>Art-first galleries and technical documentation linking environment images with material workflows, procedural graphs and implementation notes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" aria-labelledby="contact-title">
+      <div>
+        <p class="eyebrow">04 / Contact · Toronto, Ontario</p>
+        <h2 id="contact-title">Let's make <em>something wonderful.</em></h2>
+        <p>brennan.shepherd3900@gmail.com · fromageart.xyz</p>
+      </div>
+      <div class="actions">
+        <a class="cta primary" href="mailto:brennan.shepherd3900@gmail.com">Email Brennan ↗</a>
+        <a class="cta" href="https://www.artstation.com/fromage3900" target="_blank" rel="noopener noreferrer">ArtStation ↗</a>
+        <a class="cta" href="https://github.com/fromage3900/MelodiaMelusinaV2" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <span>Brennan Shepherd / Environment &amp; technical art</span>
+    <span>Melodia · Portfolio dossier · November 2026</span>
+  </footer>
 </div>
-<script src="melodia-site-nav.js?v=20260921p1"></script>
-<script src="melodia-editorial.js?v=20260921p1"></script>
-<script>MelodiaEditorial.init({ page: 'resume' });</script>
 </body>
 </html>
