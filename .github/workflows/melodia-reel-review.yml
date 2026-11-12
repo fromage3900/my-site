@@ -19,6 +19,18 @@ jobs:
           sparse-checkout: |
             public/melodia/loops/*.mp4
             public/melodia/videos/*.mp4
+            generated/assets/unreal/faraway_hero_heart_gate.webp
+            generated/assets/unreal/faraway_heart_gate_approach.webp
+            generated/assets/unreal/faraway_cathedral_nave.webp
+            generated/assets/unreal/faraway_cathedral_court.webp
+            generated/assets/unreal/faraway_hero_village_twilight.webp
+            generated/assets/unreal/hero-sea-above-night-skiff-1920x1080.webp
+            generated/assets/unreal/hero-kaleido-nave.webp
+            generated/assets/unreal/hero-melusina-morning.webp
+            generated/assets/unreal/hero-sakura-dream-master-1920x1080.webp
+            generated/assets/unreal/nikki9-kaleido-nave-hero.webp
+            generated/assets/unreal/faraway_hero_nikki_godrays.webp
+            generated/assets/unreal/variant_3_bioluminescent_midnight.webp
             wix/assets/touchdesigner/hero_05*.mp4
       - name: Verify video streams and make storyboard
         shell: bash
@@ -74,8 +86,51 @@ jobs:
           print('PROBE_REPORT:',json.dumps(report))
           print('SHEET_BASE64:'+__import__('base64').b64encode((out/'contact-sheet.jpg').read_bytes()).decode('ascii'))
           PY
+      - name: Inspect environment plates before selecting the reel edit
+        shell: bash
+        run: |
+          python - <<'PY'
+          import base64,json
+          from pathlib import Path
+          from PIL import Image,ImageOps,ImageDraw
+          base=Path('generated/assets/unreal')
+          names=[
+            ('Faraway / Heart Gate','faraway_hero_heart_gate.webp'),
+            ('Heart Gate approach','faraway_heart_gate_approach.webp'),
+            ('Cathedral nave','faraway_cathedral_nave.webp'),
+            ('Cathedral court','faraway_cathedral_court.webp'),
+            ('Faraway village','faraway_hero_village_twilight.webp'),
+            ('Sea Above / skiff','hero-sea-above-night-skiff-1920x1080.webp'),
+            ('Kaleido Nave','hero-kaleido-nave.webp'),
+            ('Melusina Morning','hero-melusina-morning.webp'),
+            ('Sakura Dream','hero-sakura-dream-master-1920x1080.webp'),
+            ('Nave lookdev','nikki9-kaleido-nave-hero.webp'),
+            ('Faraway godrays','faraway_hero_nikki_godrays.webp'),
+            ('Bioluminescent night','variant_3_bioluminescent_midnight.webp'),
+          ]
+          im=Image.new('RGB',(4*374,3*238),(250,246,247))
+          d=ImageDraw.Draw(im)
+          report=[]
+          for i,(title,name) in enumerate(names):
+            p=base/name;x=(i%4)*374;y=(i//4)*238
+            if p.exists():
+              raw=Image.open(p).convert('RGB')
+              photo=ImageOps.fit(raw,(370,211),method=Image.Resampling.LANCZOS,centering=(.5,.5))
+              im.paste(photo,(x+2,y+2))
+              report.append({'name':name,'resolution':raw.size})
+            else:report.append({'name':name,'missing':True})
+            d.rectangle((x+2,y+214,x+372,y+237),fill=(37,27,48))
+            d.text((x+11,y+219),f'{i+1:02d} / {title}',fill=(248,240,248))
+          path=Path('reel-review/environment-plates.jpg')
+          path.parent.mkdir(exist_ok=True)
+          im.save(path,quality=60,optimize=True)
+          print('PLATES_REPORT:',json.dumps(report))
+          print('PLATES_BASE64:'+base64.b64encode(path.read_bytes()).decode('ascii'))
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: melodia-contact-sheet-review
-          path: reel-review/contact-sheet.jpg
+          path: |
+            reel-review/contact-sheet.jpg
+            reel-review/environment-plates.jpg
           retention-days: 7
