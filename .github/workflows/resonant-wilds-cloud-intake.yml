@@ -19,10 +19,21 @@ jobs:
           node --check resonant-wilds/sw.js
           node --check resonant-wilds/vendor/examples/jsm/loaders/GLTFLoader.js
           node --check resonant-wilds/vendor/examples/jsm/utils/BufferGeometryUtils.js
+          for file in resonant-wilds/vendor/postprocessing/*.js resonant-wilds/vendor/shaders/*.js; do node --check "$file"; done
       - name: Verify shaders, GLB metadata and offline dependencies
         run: |
           node resonant-wilds/tools/check_shader_lab.mjs
           node resonant-wilds/tools/check_cloud_intake.mjs
+          node resonant-wilds/tools/check_bellflower.mjs
+          node resonant-wilds/tools/check_flowerbeds.mjs
+          node resonant-wilds/tools/check_grove_kit.mjs
+          node resonant-wilds/tools/check_ethereal_expansion.mjs
+          node resonant-wilds/tools/check_world_stack.mjs
+          node resonant-wilds/tools/check_grove_integration.mjs
+          node resonant-wilds/tools/check_resonant_botany.mjs
+          node resonant-wilds/tools/check_flower_landscape.mjs
+          node resonant-wilds/tools/check_floraison_pov.mjs
+          node resonant-wilds/tools/check_release_staging.mjs
       - name: Smoke static asset delivery
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/resonant-wilds-server.log 2>&1 &
@@ -32,6 +43,8 @@ jobs:
           curl --fail --silent --show-error -I http://127.0.0.1:8765/resonant-wilds/index.html
           curl --fail --silent --show-error -I http://127.0.0.1:8765/resonant-wilds/assets/models/resonance-shrine.glb
           curl --fail --silent --show-error -I http://127.0.0.1:8765/resonant-wilds/js/asset-loader.js
+          curl --fail --silent --show-error -I http://127.0.0.1:8765/resonant-wilds/js/grove.js
+          curl --fail --silent --show-error -I http://127.0.0.1:8765/resonant-wilds/assets/models/harmonic-grove-37.glb
           curl --fail --silent --show-error -I http://127.0.0.1:8765/resonant-wilds/sw.js
   headless-webgl:
     needs: zero-dependency-smoke
@@ -46,12 +59,21 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright@1.56.1
           npx playwright install --with-deps chromium
-      - name: Start site and test three WebGL states
+      - name: Start site and test seventeen WebGL states
         env:
           GAME_URL: http://127.0.0.1:8765/resonant-wilds/
+          RW_SCREENSHOT_DIR: /tmp/rw-flowerbed-review
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/resonant-wilds-browser.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           sleep 2
+          mkdir -p /tmp/rw-flowerbed-review
           node resonant-wilds/tools/browser_smoke.mjs
+      - name: Upload Petal Cantata, Grove and NPR comparison captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rw-petal-cantata-flowerbeds
+          path: /tmp/rw-flowerbed-review/*.png
+          if-no-files-found: warn

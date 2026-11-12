@@ -12,9 +12,15 @@ import { Loot } from './loot.js';
 import { Rhythm } from './rhythm.js';
 import { Progress, saveProfile, loadProfile, wipeProfile } from './progress.js';
 import { Activities } from './activities.js';
+import { Echo } from './echo.js';
 import { UI } from './ui.js';
+import { PostFX } from './postfx.js';
+import { EncoreSystem } from './encore.js';
+import { toysEnabled, ChladniSand, MegaGown } from './playground.js';
+import { FloraisonPOV } from './floraison-pov.js';
 import { BIOMES, HUB, DIFFICULTY, RARITIES, SKILL_BY_ID, SHARD_BY_ELEMENT, ELEMENT_STYLE, MODIFIERS, RULES, xpToNext } from './design.js';
 import { clamp, lerp } from './util.js';
+import { flagDaycycle, flagPostfx } from './flags.js';
 
 const _c = new THREE.Color();
 const isTouch = matchMedia('(pointer: coarse)').matches;
@@ -26,7 +32,7 @@ export class Game {
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: !isTouch, powerPreference: 'high-performance' });
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color('#f3e6dc');
-    this.scene.fog = new THREE.Fog('#f3e6dc', 75, 175);
+    this.scene.fog = new THREE.Fog('#f3e6dc', 90, 280);
     this.camera = new THREE.PerspectiveCamera(42, 1, 0.5, 400);
     this.hemi = new THREE.HemisphereLight('#ffffff', '#8f7fa3', 1.5);
     this.sun = new THREE.DirectionalLight('#fff1e6', 1.7);
@@ -66,13 +72,25 @@ export class Game {
     this.loot = new Loot(this);
     this.player = new Player(this);
     this.player.recalc();
+    this.floraisonPOV = new FloraisonPOV(this);
     this.biomes = BIOMES;
     this.progress = new Progress(this);
     this.rhythm = new Rhythm(this);
     this.combat = new Combat(this);
     this.sheep = new Sheep(this);
     this.activities = new Activities(this);
+    this.echo = new Echo(this);
     this.ui = new UI(this);
+    // Nikki-by-default OutlinePass/bloom; ?lite=1 or ?postfx=0 for low-end.
+    this.postfx = flagPostfx ? new PostFX(this) : null;
+    this.daycycleEnabled = flagDaycycle;
+    this.encoreSys = new EncoreSystem(this);
+    this._outlineInteract = null;
+    this._keyModulation = false;
+    // Playground toys (sand / mega gown). Sheep weapon lives on Sheep itself.
+    this.toys = toysEnabled();
+    this.sand = this.toys ? new ChladniSand(this) : null;
+    this.megaGown = this.toys ? new MegaGown(this) : null;
 
     this.firstRunGear();
     const sp = this.profile.spawn;
@@ -91,38 +109,19 @@ export class Game {
 
   // ------------------------------------------------------------ boot
   async warm(progress) {
-    progress('Unpacking Harmonic Grove GLB scenery…');
-    try {
-      // Dynamic import isolates optional GLB loader failures from core gameplay boot.
-      const { loadHarmonicGrove } = await import('./harmonic-grove.js');
-      const kit = await Promise.race([
-        loadHarmonicGrove(),
-        new Promise((_, reject) => setTimeout(() => reject(new Error('GLB loading timed out')), 9000))
-      ]);
-      this.world.installHarmonicGrove(kit);
-      this.activities.installHarmonicGrove(kit);
-      // Kits 02–03 stream after the playable base is ready. Its visual-only
-      // arrival re-dresses terrain chunks; gameplay, save state and POIs remain.
-      if (kit.whenExtrasReady) {
-        void kit.whenExtrasReady.then((count) => {
-          if (!count) return;
-          this.world.installHarmonicGrove(kit);
-          this.activities.installHarmonicGrove(kit);
-          // Refresh the full visible chunk ring even when optional models
-          // finish before the title screen is dismissed. Otherwise a fast
-          // cache hit could leave the start view with no terrain until frame().
-          if (!this.world.inRift) {
-            this.world.warm(this.player.pos.x, this.player.pos.z);
-          }
-          console.info('[Resonant Wilds] Kits 02–03 GLBs loaded:', count, 'extras');
-        }).catch((err) => console.warn('[Resonant Wilds] Optional grove expansion failed:', err));
-      }
-      console.info('[Resonant Wilds] Authored GLB kit:', kit.prefabs.size, 'base variants loaded');
-    } catch (err) {
-      console.warn('[Resonant Wilds] GLB pack unavailable; retaining geometry recovery visuals:', err);
-    }
-    progress('Raising the five biomes…');
+    progress('Raising the eight biomes…');
     await new Promise((r) => setTimeout(r, 20));
+    const groveMode = new URLSearchParams(location.search).get('grove');
+    if (groveMode === 'glb' || groveMode === 'full') {
+      progress('Cultivating Harmonic Grove…');
+      try {
+        const { installGroveProps } = await import('./grove.js');
+        await installGroveProps(this.world, { full: groveMode === 'full' });
+      } catch (e) {
+        this.world.groveStatus = 'fallback';
+        console.warn('Harmonic Grove unavailable; procedural vegetation retained', e);
+      }
+    }
     this.world.warm(this.player.pos.x, this.player.pos.z);
     progress('Drawing the map…');
     await new Promise((r) => setTimeout(r, 20));
@@ -140,6 +139,9 @@ export class Game {
     this.zoneId = null;
     this.clock = performance.now();
     this.ui.banner('Resonant Wilds', `${this.zoneName()} · every action lands on the beat`);
+    if (this.toys) {
+      setTimeout(() => this.ui.toast('Toys on — V sheep charge · G mega gown · Perfect detonates sand', 'lavender'), 900);
+    }
     requestAnimationFrame(() => this.frame());
   }
 
@@ -190,16 +192,10 @@ export class Game {
     const d = this.world.dominantBiome(this.player.pos.x, this.player.pos.z);
     if (d.r < HUB.radius + 20) return { ...HUB, motif: [0, 4, 7, 9, 7, 4] };
     const b = d.biome;
-    // The five live website regions use the canonical ethereal score's matching
-    // ambience beds until the eight-region world expansion is explicitly synced.
-    const ambience = {
-      sakura_terrace: 'petal',
-      liquid_cathedral: 'nave',
-      fugue_grotto: 'grotto',
-      cadence_crystal_ridge: 'crystal',
-      aurora_glacier: 'glacier',
-    }[b.id] || b.ambience || 'hub';
-    return { id: b.id, bpm: b.bpm, meter: b.meter, key: b.key, mode: b.mode, prog: b.prog, style: b.style, motif: b.motif, ambience };
+    return {
+      id: b.id, bpm: b.bpm, meter: b.meter, key: b.key, mode: b.mode, prog: b.prog,
+      style: b.style, motif: b.motif, ambience: b.ambience,
+    };
   }
 
   musicIntensity() {
@@ -247,11 +243,20 @@ export class Game {
     if (gr.grade === 'Perfect') {
       this.player.sp = Math.min(this.player.stats.spMax, this.player.sp + 1);
       this.player.addBuff('Crescendo_Minor', this.audio.meter * MODIFIERS.Crescendo_Minor.duration_turns);
+      this.activities.goalEvent('perfect', 1);
     } else if (gr.grade === 'Great' && Math.random() < this.player.stats.harmony) {
       this.player.sp = Math.min(this.player.stats.spMax, this.player.sp + 1);
+    } else if (gr.grade === 'Miss') {
+      this.activities.goalEvent('miss', 1);
     }
     this.autoAttackBeat = gr.beat ? gr.beat.index : this.beatIndex;
     this.rhythm.register(gr, hits);
+    if (gr.grade === 'Perfect') {
+      this.encoreSys.notePerfect(hits, 1.0, this.player.stats.basicElement);
+      this.encoreSys.onPerfect();
+    }
+    if (gr.grade === 'Miss') this.combat.missPressure();
+    else if (gr.grade === 'Perfect' && hits) this.combat.perfectJuice(gr);
   }
 
   // Holding attack auto-fires on each beat at a flat ×1.0 — tapping on the
@@ -279,6 +284,15 @@ export class Game {
     this.cooldowns[i] = this.time + total;
     const hits = this.combat.cast(sk, gr);
     this.rhythm.register(gr, hits);
+    if (gr.grade === 'Perfect') {
+      this.encoreSys.notePerfect(hits, sk.coef || 1.4, sk.element);
+      this.encoreSys.onPerfect();
+      this.activities.goalEvent('perfect', 1, { skill: true });
+    } else if (gr.grade === 'Miss') {
+      this.activities.goalEvent('miss', 1);
+    }
+    if (gr.grade === 'Miss') this.combat.missPressure();
+    else if (gr.grade === 'Perfect' && hits) this.combat.perfectJuice(gr);
   }
 
   dodge(perfMs) {
@@ -289,13 +303,22 @@ export class Game {
     const mv = this.ui.move();
     const ang = mv.x || mv.z ? Math.atan2(mv.x, mv.z) : P.facing;
     P.dodgeFrom = { x: P.pos.x, z: P.pos.z };
-    P.startDash(ang, 5.5, 0.22, gr.grade !== 'Miss');
+    const perfectish = gr.grade === 'Perfect' || gr.grade === 'Great';
+    P.startDash(ang, perfectish ? 6.4 : 5.5, perfectish ? 0.26 : 0.22, gr.grade !== 'Miss');
     P.lastDodgeTime = this.time;
     P.lastDodgeGrade = gr.grade;
     this.dodgeReadyAt = this.time + (gr.grade === 'Perfect' && P.stats.arias.has('SwiftTempo') ? 0.25 : this.dodgeCd);
     this.audio.dodge();
     this.ui.gradeFlash(gr.grade, gr.err);
-    for (let k = 0; k < 8; k++) this.particles.emit(P.pos.x, P.pos.y + 0.8, P.pos.z, _c.set('#ffffff'), { speed: 2, life: 0.4, size: 0.7 });
+    const spark = perfectish ? 16 : 8;
+    const col = gr.grade === 'Perfect' ? '#ffd978' : gr.grade === 'Great' ? '#c9b6ef' : '#ffffff';
+    for (let k = 0; k < spark; k++) {
+      this.particles.emit(P.pos.x, P.pos.y + 0.8, P.pos.z, _c.set(col), {
+        dir: { x: Math.sin(ang + Math.PI), y: 0.15, z: Math.cos(ang + Math.PI) },
+        speed: perfectish ? 5 + Math.random() * 4 : 2, life: 0.4, size: perfectish ? 0.9 : 0.7, kind: perfectish ? 3 : 0,
+      });
+    }
+    if (perfectish) this.decals.spawn('ring', P.pos.x, P.pos.z, { r: 1.6, inner: 1.2, flash: true, dur: 0.28, color: col });
   }
 
   perfectDodge(src) {
@@ -304,33 +327,29 @@ export class Game {
     P.lastDodgeGrade = null;
     const great = g === 'Perfect' || g === 'Great';
     this.overlay.text(P.pos.x, P.pos.y + 3, P.pos.z, great ? 'PERFECT DODGE' : 'DODGE', great ? '#ffd978' : '#c9b6ef', great ? 22 : 16, { life: 0.9 });
-    P.invulnUntil = Math.max(P.invulnUntil, this.time + 0.3);
+    P.invulnUntil = Math.max(P.invulnUntil, this.time + (great ? 0.55 : 0.3));
     if (!great) return;
     P.nextCrit = true;
+    P.heal(P.stats.maxHp * 0.04, true);
     R.encore = Math.min(R.encoreMax, R.encore + RULES.ultimate.gain_perfect);
     R.crescendo = Math.min(RULES.crescendo.max, R.crescendo + RULES.crescendo.gain.perfect);
     if (src && !src.dead) src.slowUntil = this.time + this.audio.spb * 2;
     if (P.stats.arias.has('TempoShift')) for (let i = 0; i < 4; i++) this.cooldowns[i] -= 4 * this.audio.spb;
     this.world.pulse(P.pos.x, P.pos.z, 1.5, true);
+    this.particles.burst(P.pos.x, P.pos.y + 1.2, P.pos.z, _c.set('#ffd978'), 28, { speed: 9, life: 0.55, kind: 3, size: 0.9 });
+    this.shake(0.22);
     this.audio.grade('Perfect');
   }
 
-  encore() {
+  /** Cast the selected Encore variant (cycle with Alt+T / long-press when empty). */
+  encore(cycleOnly = false) {
     if (!this.started || this.paused || this.player.dead) return;
-    const R = this.rhythm, P = this.player;
-    if (R.encore < R.encoreMax || R.encoreActive) return;
-    R.encore = 0;
-    R.encoreUntil = this.beatIndex + this.audio.meter * 2;
-    P.invulnUntil = this.time + 0.6;
-    const p = { x: P.pos.x, z: P.pos.z, r: 9 };
-    this.combat.hitAll(this.combat.enemiesIn('circle', p), RULES.ultimate.damage_mult * 1.2, { mult: RULES.rhythm.max_combat_multiplier, element: P.stats.basicElement, tough: 3 });
-    this.combat.flash('circle', p.x, p.z, p, '#ffd978');
-    this.world.pulse(P.pos.x, P.pos.z, 2.5, true);
-    this.particles.burst(P.pos.x, P.pos.y + 1, P.pos.z, _c.set('#ffd978'), 60, { speed: 14, life: 1, kind: 2, size: 1.2 });
-    this.shake(0.7);
-    this.audio.encore();
-    this.audio.setIntensity(2);
-    this.ui.banner('ENCORE!', 'Every action is Perfect for two bars');
+    if (cycleOnly || (this.rhythm.encore < this.rhythm.encoreMax && !this.encoreSys.active)) {
+      this.encoreSys.cycle(1);
+      return;
+    }
+    if (this.encoreSys.active || this.rhythm.encoreActive) return;
+    this.encoreSys.cast();
   }
 
   skyboundStrike() {
@@ -349,22 +368,42 @@ export class Game {
     const P = this.player;
     const r = this.activities.rift;
     if (r) return r.exit && Math.hypot(P.pos.x, P.pos.z - 6) < 3.5 ? { label: 'Leave the Rift ◎', fn: () => this.activities.exitRift() } : null;
-    let best = null, bd = 4;
+    let best = null, bd = 4.5;
     for (const p of this.activities.pois) {
-      if (!['forge', 'board', 'font', 'rift', 'boss', 'shrine', 'pylon'].includes(p.type)) continue;
+      if (!['forge', 'board', 'font', 'rift', 'boss', 'shrine', 'pylon', 'overlook', 'photo', 'chime', 'musicgate', 'cleanse', 'ariagate', 'destination'].includes(p.type)) continue;
       const d = Math.hypot(p.x - P.pos.x, p.z - P.pos.z);
       if (d < bd) { bd = d; best = p; }
     }
+    this._outlineInteract = best && best.mesh && !best.open && !best.cleared && !best.autoDone && !best.dewTaken ? best : null;
     if (!best) return null;
     const p = best;
     switch (p.type) {
-      case 'forge': return { label: 'Forge ⚒', fn: () => this.ui.open('forge') };
-      case 'board': return { label: 'Bounties 📜', fn: () => this.ui.open('bounties') };
+      case 'forge': return { label: 'Synthesis ⟡', fn: () => this.ui.open('forge') };
+      case 'board': return { label: 'Daily Recital · Bounties 📜', fn: () => this.ui.open('bounties') };
       case 'font': return { label: 'Blessing Font ✧', fn: () => this.ui.open('blessings') };
       case 'rift': return { label: 'Enter Rift ◎', fn: () => { this.ui.riftPortal = p; this.ui.open('rift'); } };
       case 'boss': return p.alive && !p.alive.dead ? null : { label: `Summon ${p.name} ♛`, fn: () => this.activities.summonBoss(p) };
       case 'shrine': return this.activities.shrine ? null : { label: 'Play the shrine 𝄞', fn: () => this.activities.startShrine(p) };
       case 'pylon': return this.profile.pylons.includes(p.id) ? { label: 'Fast travel ◆', fn: () => this.ui.open('map') } : null;
+      case 'overlook': return { label: 'Take in the vista ♪', fn: () => this.activities.viewOverlook(p) };
+      case 'photo': return { label: p.challenge && !p.autoDone ? 'Frame the whim ✧' : 'Whim Frame ✧', fn: () => this.activities.snapPhoto(p) };
+      case 'chime': return { label: 'Ring the chimes ♪', fn: () => this.activities.ringChimes(p) };
+      case 'musicgate': return p.open ? null : { label: 'Answer the bridge 𝄞', fn: () => this.activities.openMusicGate(p) };
+      case 'cleanse': return p.cleared ? null : { label: 'Ask Sheep to Harmonize ♪', fn: () => this.activities.cleanseSpot(p) };
+      case 'ariagate': {
+        if (p.open) return null;
+        const abName = p.abilityOutfit && this.activities._abilityFor(p)?.name;
+        return { label: abName ? `Ability Outfit · ${abName} ✧` : 'Wardrobe gate ✧', fn: () => this.activities.tryAriaGate(p) };
+      }
+      case 'destination': {
+        if (p.needsPurify && !p.purified) return { label: 'Ask Sheep to Harmonize ♪', fn: () => { this.sheep.pos.set(p.x + 1.2, p.y, p.z + 1.2); this.sheep.harmonize(true); } };
+        if (p.dewTaken) return { label: p.name, fn: () => this.activities.revealDestination(p) };
+        if (p.needsFloat && !this.activities._wearsAbilityFor(p)) {
+          const ab = this.activities._abilityFor(p);
+          return { label: ab ? `Ability Outfit · ${ab.name}` : 'Equip float outfit ✧', fn: () => this.activities.tryFloatDestination(p) };
+        }
+        return { label: `Collect Resonance Dew ✧`, fn: () => this.activities.collectDew(p) };
+      }
     }
     return null;
   }
@@ -405,7 +444,8 @@ export class Game {
     if (e.elite || e.boss) return true;
     let n = 0;
     for (const o of this.enemies) if (!o.dead && !o.elite && !o.boss && o.strikes.length) n++;
-    return n < (this.activities.rift ? 4 : 3);
+    // Allow denser pressure so packs feel like they fight back, while keeping telegraphs readable.
+    return n < (this.activities.rift ? 5 : 4);
   }
 
   spawnAdds(boss, n) {
@@ -710,16 +750,22 @@ export class Game {
     this.baseRatio = q === 'low' ? 1 : q === 'high' ? Math.min(dpr, 2) : Math.min(dpr, isTouch ? 1.5 : 2);
     this._fps.scale = 1;
     this.renderer.setPixelRatio(this.baseRatio);
+    if (this.postfx) {
+      this.postfx.setEnabled(q !== 'low');
+      this.postfx.resize();
+    }
   }
 
   resize() {
     const w = innerWidth, h = innerHeight;
     this.renderer.setSize(w, h, false);
     this.camera.aspect = w / h;
-    this.camera.fov = w < h ? 62 : 40;
+    this.camera.fov = this.floraisonPOV?.enabled ? (w < h ? 76 : 68) : (w < h ? 62 : 40);
+    this.camera.near = this.floraisonPOV?.enabled ? 0.12 : 0.5;
     this.camera.updateProjectionMatrix();
     this.overlay.resize();
     this.particles.mat.uniforms.uScale.value = (h * this.renderer.getPixelRatio()) / (2 * Math.tan((this.camera.fov * Math.PI) / 360));
+    if (this.postfx) this.postfx.resize();
   }
 
   adaptQuality(dt) {
@@ -733,6 +779,7 @@ export class Game {
     else if (fps > 57 && f.scale < 1) f.scale = Math.min(1, f.scale + 0.1);
     else return;
     this.renderer.setPixelRatio(Math.max(0.75, this.baseRatio * f.scale));
+    if (this.postfx) this.postfx.setEnabled(f.scale > 0.7);
     this.resize();
   }
 
@@ -754,10 +801,12 @@ export class Game {
       if (!P.dead && Math.hypot(P.pos.x - h.x, P.pos.z - h.z) < h.r) this.hurtPlayer(h.dmg, null);
       this.hazards.splice(i, 1);
     }
+    if (!P.dead) this.encoreSys.onBeat(beat);
     if (beat.inBar === 0) {
       this.rhythm.onBar(beat);
       if (beat.bar % 2 === 0 && !P.dead) P.sp = Math.min(P.stats.spMax, P.sp + 1);
-      if (this.rhythm.encoreActive && !P.dead) {
+      // Legacy gold ring only when no specialised Encore verb is driving beats.
+      if (this.rhythm.encoreActive && !this.encoreSys.active && !P.dead) {
         const p = { x: P.pos.x, z: P.pos.z, r: 7 };
         this.combat.hitAll(this.combat.enemiesIn('circle', p), 1.2, { mult: RULES.rhythm.max_combat_multiplier, element: P.stats.basicElement, tough: 2 });
         this.combat.flash('ring', p.x, p.z, { r: 7, inner: 5.8 }, '#ffd978');
@@ -789,13 +838,22 @@ export class Game {
     const bars = [];
     for (const e of this.enemies) {
       if (e.dead || e.boss) continue;
-      if (e.hp < e.maxHp || e.elite) {
-        bars.push({ x: e.pos.x, y: e.pos.y + 1.9 * e.scale + 0.3, z: e.pos.z, w: e.elite ? 64 : 38, h: e.elite ? 6 : 4, frac: e.hp / e.maxHp, color: e.elite ? '#ff9a4a' : '#ff6b81', tough: e.maxTough ? e.tough / e.maxTough : undefined, broken: e.broken, name: e.elite ? e.name : null, nameColor: '#ffb27a' });
+      if (e.hp < e.maxHp || e.elite || e.aggro || e.strikes.length) {
+        bars.push({
+          x: e.pos.x, y: e.pos.y + 1.9 * e.scale + 0.3, z: e.pos.z,
+          w: e.elite ? 64 : 42, h: e.elite ? 6 : 5, frac: e.hp / e.maxHp,
+          color: e.elite ? '#ff9a4a' : e.strikes.length ? '#ff5470' : '#ff6b81',
+          tough: e.maxTough ? e.tough / e.maxTough : undefined, broken: e.broken,
+          name: e.elite ? e.name : (e.strikes.length ? '♪' : null),
+          nameColor: e.elite ? '#ffb27a' : '#ffb3c1',
+        });
       }
     }
     this.overlay.draw(dt, bars, labels);
     this.ui.update(dt);
-    this.renderer.render(this.scene, this.camera);
+    // Compositors are alternative opt-in render paths; never double-render.
+    if (this.postfx) this.postfx.render();
+    else this.renderer.render(this.scene, this.camera);
   }
 
   simulate(dt) {
@@ -805,6 +863,9 @@ export class Game {
     const speedBurden = this.activities.burdenScale('speed');
     P.update(dt, mv.x * speedBurden, mv.z * speedBurden);
     this.sheep.update(dt);
+    this.encoreSys.update(dt);
+    this.sand?.update(dt);
+    this.megaGown?.update(dt);
     // Enemies + separation.
     const E = this.enemies;
     for (let i = E.length - 1; i >= 0; i--) {
@@ -872,12 +933,31 @@ export class Game {
     if (!this.inCombat && !P.dead && P.hp < P.stats.maxHp) P.hp = Math.min(P.stats.maxHp, P.hp + P.stats.maxHp * (this.safeZone ? 0.12 : 0.03) * dt);
     // Palette follows the biome you stand in.
     this.world.palette(P.pos.x, P.pos.z, this.pal);
+    let targetFog = this.pal.fog, targetLight = this.pal.light;
+    if (this.daycycleEnabled) {
+      const tod = (this.time % 420) / 420;
+      const dusk = Math.sin(tod * Math.PI * 2) * 0.5 + 0.5;
+      if (!this._todFog) {
+        this._todFog = new THREE.Color(); this._todLight = new THREE.Color();
+        this._todDuskFog = new THREE.Color('#c4a8d8'); this._todDuskLight = new THREE.Color('#ffb07a');
+      }
+      this._todFog.copy(this.pal.fog).lerp(this._todDuskFog, dusk * 0.35);
+      this._todLight.copy(this.pal.light).lerp(this._todDuskLight, dusk * 0.4);
+      targetFog = this._todFog; targetLight = this._todLight;
+      this.sun.intensity = lerp(1.7, 1.15, dusk);
+      this.hemi.intensity = lerp(1.5, 1.05, dusk);
+    }
     const k = Math.min(1, dt * 1.5);
-    this.scene.fog.color.lerp(this.pal.fog, k);
-    this.scene.background.lerp(this.pal.fog, k);
+    this.scene.fog.color.lerp(targetFog, k);
+    this.scene.background.lerp(targetFog, k);
     this.world.water.material.color.lerp(this.pal.water, k);
-    this.sun.color.lerp(this.pal.light, k);
-    if (this.world.inRift) { this.scene.fog.near = 45; this.scene.fog.far = 110; } else { this.scene.fog.near = 75; this.scene.fog.far = 175; }
+    this.sun.color.lerp(targetLight, k);
+    if (this.world.inRift) { this.scene.fog.near = 45; this.scene.fog.far = 110; }
+    else if (this.daycycleEnabled) {
+      const fighting = this.inCombat ? 1 : 0;
+      this.scene.fog.near = lerp(70, 55, fighting);
+      this.scene.fog.far = lerp(190, 145, fighting);
+    } else { this.scene.fog.near = 90; this.scene.fog.far = 280; }
     this.ui.tutorialTick(dt);
     this.profile.stats.playSeconds += dt;
     this._save += dt;
@@ -885,6 +965,7 @@ export class Game {
   }
 
   updateCamera(dt) {
+    if (this.floraisonPOV?.update(dt)) return;
     const P = this.player;
     const portrait = innerWidth < innerHeight;
     const lead = 0.35;

@@ -77,6 +77,31 @@ export class Combat {
     this.g.decals.spawn(shape, x, z, { ...params, flash: true, dur: 0.35, color });
   }
 
+  /** Perfect-on-hit juice: highway pulse + sparkles (readability, not a new system). */
+  perfectJuice(gr) {
+    const g = this.g, P = g.player;
+    const col = g.encoreSys?.accentColor?.() || '#ffd978';
+    g.world.pulse(P.pos.x, P.pos.z, 1.15 + Math.min(0.8, g.rhythm.combo * 0.02), true);
+    g.particles.burst(P.pos.x, P.pos.y + 1.1, P.pos.z, _col.set(col), 14, { speed: 7, life: 0.4, kind: 3, size: 0.7, gravity: -1 });
+    g.ui.beatSpark?.(col);
+    P.heal(P.stats.maxHp * 0.02, true);
+  }
+
+  /** Miss raises pack pressure — next windups land sooner. */
+  missPressure() {
+    const g = this.g, P = g.player;
+    let n = 0;
+    for (const e of g.enemies) {
+      if (e.dead || !e.aggro) continue;
+      if (Math.hypot(e.pos.x - P.pos.x, e.pos.z - P.pos.z) > 22) continue;
+      e.nextAttackBeat = Math.min(e.nextAttackBeat, g.beatIndex + 1);
+      e.attackEvery = Math.max(2, e.attackEvery - 1);
+      e._missBoostUntil = g.beatIndex + g.audio.meter * 2;
+      n++;
+    }
+    if (n) g.overlay.text(P.pos.x, P.pos.y + 2.6, P.pos.z, 'tempo slips…', '#ff8aa0', 13, { life: 0.7 });
+  }
+
   // ------------------------------------------------------------ damage
   damage(e, coef, o = {}) {
     if (!e || e.dead) return 0;
@@ -100,6 +125,7 @@ export class Combat {
       let td = (o.tough ?? 1) * 6 * (o.mult ?? 1) * (1 + S.break);
       if (em > 1) td *= 1.5;
       if (o.downbeat && S.arias.has('DownbeatBreak')) td *= 3;
+      if (o.perfect && g.encoreSys?.perfectBreakActive()) td = Math.max(td, e.tough + 1);
       e.tough -= td;
       if (e.tough <= 0) this.breakEnemy(e);
     }
@@ -113,8 +139,10 @@ export class Combat {
     const col = crit ? '#ffd978' : em > 1 ? '#ffffff' : ELEMENT_STYLE[o.element]?.color || '#ffffff';
     g.overlay.text(e.pos.x, e.pos.y + 1.4 * e.scale + 0.4, e.pos.z, crit ? dmg + '!' : String(dmg), col, crit ? 26 : em > 1 ? 21 : 17);
     if (em > 1 && Math.random() < 0.3) g.overlay.text(e.pos.x, e.pos.y + 1.9 * e.scale + 0.8, e.pos.z, 'WEAK', '#ffffff', 12, { life: 0.6 });
-    _col.set(ELEMENT_STYLE[o.element]?.color || '#ffffff');
-    g.particles.burst(e.pos.x, e.pos.y + 0.8 * e.scale, e.pos.z, _col, crit ? 9 : 5, { speed: 6, life: 0.45, size: 0.5 });
+    _col.set(o.perfect ? '#ffd978' : ELEMENT_STYLE[o.element]?.color || '#ffffff');
+    const sparks = o.perfect ? (crit ? 18 : 12) : crit ? 9 : 5;
+    g.particles.burst(e.pos.x, e.pos.y + 0.8 * e.scale, e.pos.z, _col, sparks, { speed: o.perfect ? 9 : 6, life: 0.45, size: o.perfect ? 0.75 : 0.5, kind: o.perfect ? 3 : 0 });
+    if (o.perfect) g.decals.spawn('ring', e.pos.x, e.pos.z, { r: 1.4 * e.scale, inner: 1.0 * e.scale, flash: true, dur: 0.22, color: '#ffd978' });
     g.audio.hit(crit);
     if (o.perfect && S.arias.has('EchoingBeat') && !o.echo) {
       this.queue.push({ beat: g.beatIndex + 1, fn: () => this.damage(e, coef * 0.5, { ...o, echo: true, perfect: false }) });
@@ -135,6 +163,8 @@ export class Combat {
     g.world.pulse(e.pos.x, e.pos.z, 1.6, true);
     g.shake(0.5);
     g.audio.kill(true);
+    g.encoreSys?.noteBreak?.();
+    if (this.g.activities.rift?.guardian === e) this.g.activities.goalEvent('break', 1, { guardian: true });
   }
 
   hitAll(list, coef, o) {
@@ -190,12 +220,28 @@ export class Combat {
     const t = this.autoTarget(skill.kind === 'projectile' || skill.kind === 'meteor' || skill.kind === 'bolts' ? 18 : 11);
     if (t && skill.kind !== 'heal' && skill.kind !== 'shield') P.faceTo(t.pos.x, t.pos.z);
     const o = { mult: gr.mult, element: skill.element, skill: true, perfect: gr.grade === 'Perfect', downbeat: gr.downbeat, tough: skill.tough ?? 1 };
-    const c = skill.power;
     const color = ELEMENT_STYLE[skill.element].color;
     const fwdX = Math.sin(P.facing), fwdZ = Math.cos(P.facing);
     const aimX = t ? t.pos.x : P.pos.x + fwdX * 6, aimZ = t ? t.pos.z : P.pos.z + fwdZ * 6;
     g.audio.skill(skill);
-    P.swing(3);
+    if (P.castAnim) P.castAnim(skill.kind); else P.swing(3);
+    let coefMul = 1;
+    if (skill.consumeEcho) coefMul *= this.g.echo.consumeActiveForSkill();
+    if (skill.motifScale) {
+      const n = Object.values(this.g.profile.motifs || {}).reduce((a, b) => a + b, 0);
+      coefMul *= 1 + Math.min(1.2, n * 0.06);
+    }
+    if (skill.oshiScale) {
+      const oshi = this.g.profile.oshiAria;
+      const has = oshi && [...(P.stats.arias || [])].includes(oshi);
+      coefMul *= has ? 1.55 : 0.7;
+    }
+    if (skill.downbeatBreak && gr.downbeat) o.tough = (o.tough || 1) * 2.2;
+    let c = skill.power * coefMul;
+    // Playground: Perfect (and Chladni Burst) detonates settled Chladni sand.
+    if (g.sand && (o.perfect || skill.kind === 'chladni')) {
+      g.sand.explode(skill.kind === 'chladni' ? (o.perfect ? 1.6 : 1.1) : 1);
+    }
     let hits = 0;
     switch (skill.kind) {
       case 'strike': {
@@ -240,6 +286,37 @@ export class Combat {
         hits = this.hitAll(this.enemiesIn('circle', p), c * skill.coef, o);
         this.flash('ring', p.x, p.z, { r, inner: r - 1.4 }, color);
         g.world.pulse(p.x, p.z, 1.8, true);
+        break;
+      }
+      case 'chladni': {
+        const r = this.area(skill.radius);
+        const p = { x: P.pos.x, z: P.pos.z, r };
+        hits = this.hitAll(this.enemiesIn('circle', p), c * skill.coef, o);
+        // Floor + Burst share one (n,m); Perfect hops the plate mode first.
+        const mode = o.perfect ? g.world.hopMode(true) : g.world.getMode();
+        const samples = g.world.chladniSamples(p.x, p.z, r, o.perfect ? 56 : 40);
+        this.flash('ring', p.x, p.z, { r, inner: r * 0.35 }, color);
+        this.flash('circle', p.x, p.z, { r: r * 0.45 }, color);
+        for (const s of samples.nodal) {
+          g.particles.emit(s.x, P.pos.y + 0.45, s.z, _col.set(color), { speed: 1.6, life: 0.6, gravity: 0.35, kind: 1, size: 0.65 });
+        }
+        if (o.perfect) {
+          for (const s of samples.antinode) {
+            g.particles.emit(s.x, P.pos.y + 0.7, s.z, _col.set('#ffe7a8'), { speed: 3.2, life: 0.5, gravity: 0.5, kind: 3, size: 0.85 });
+          }
+        }
+        // Light radial scaffolding keyed to max(n,m) so spokes still read as a figure.
+        const spokes = Math.max(skill.spokes || 8, 2 * Math.max(mode.n, mode.m));
+        for (let k = 0; k < spokes; k++) {
+          const ang = (k / spokes) * Math.PI * 2;
+          for (let s = 1; s <= 4; s++) {
+            const x = P.pos.x + Math.sin(ang) * (r * s / 4);
+            const z = P.pos.z + Math.cos(ang) * (r * s / 4);
+            g.particles.emit(x, P.pos.y + 0.5, z, _col.set(color), { speed: 2, life: 0.45, gravity: 0.35, kind: 1, size: 0.55 });
+          }
+        }
+        g.world.pulse(p.x, p.z, o.perfect ? 2.0 : 1.6, true);
+        g.shake(o.perfect ? 0.32 : 0.25);
         break;
       }
       case 'nova': {
@@ -324,6 +401,18 @@ export class Combat {
         P.startDash(P.facing, skill.dist, 0.2, true);
         if (skill.buff) P.addBuff(skill.buff, g.audio.meter * 2 * MODIFIERS[skill.buff].duration_turns);
         this.flash('rect', p.x, p.z, p, color);
+        if (skill.afterimage) {
+          const ax = P.pos.x, az = P.pos.z, af = P.facing;
+          this.queue.push({
+            beat: g.beatIndex + 1,
+            fn: () => {
+              const p2 = { x: ax, z: az, len: 5, width: this.area(2.2), angle: af };
+              this.hitAll(this.enemiesIn('rect', p2), c * skill.coef * 0.85, o);
+              this.flash('rect', ax, az, p2, color);
+              g.particles.burst(ax, g.world.height(ax, az) + 1, az, _col.set(color), 14, { speed: 7, life: 0.5 });
+            },
+          });
+        }
         break;
       }
       case 'heal': {
@@ -420,16 +509,22 @@ export class Combat {
   resolveEnemyStrike(e, s) {
     const g = this.g, P = g.player;
     const p = s.params;
-    if (s.kind === 'bolt') { this.enemyShoot(e, s.nx, s.nz); return; }
+    if (s.kind === 'bolt') {
+      this.enemyShoot(e, s.nx, s.nz);
+      g.particles.burst(e.pos.x, e.pos.y + 0.9 * e.scale, e.pos.z, _col.set(ELEMENT_STYLE[e.element].color), 8, { speed: 5, life: 0.35 });
+      return;
+    }
     if (s.kind === 'lunge') {
       const tx = e.pos.x + s.nx * 6.5, tz = e.pos.z + s.nz * 6.5;
       e.hop = null;
       e.dash = { fx: e.pos.x, fz: e.pos.z, tx, tz, t: 0, dur: 0.16 };
     }
-    g.particles.burst(p.x, g.world.height(p.x, p.z) + 0.3, p.z, _col.set('#ff8aa0'), s.shape === 'circle' ? 10 : 6, { speed: 6, life: 0.4 });
-    if (e.boss || e.elite) g.shake(e.boss ? 0.35 : 0.15);
-    const inside = Combat.inShape(P.pos.x, P.pos.z, 0.35, s.shape, p);
-    const dodgedFrom = P.dodgeFrom && g.time - P.lastDodgeTime < 0.5 && Combat.inShape(P.dodgeFrom.x, P.dodgeFrom.z, 0.35, s.shape, p);
+    g.particles.burst(p.x, g.world.height(p.x, p.z) + 0.3, p.z, _col.set('#ff8aa0'), s.shape === 'circle' ? 16 : 10, { speed: 7, life: 0.45, size: s.shape === 'circle' ? (p.r || 2) * 0.6 : 1.2 });
+    this.flash(s.shape, p.x, p.z, p, '#ff8aa0');
+    g.world.pulse(p.x, p.z, e.boss ? 1.4 : 0.7);
+    g.shake(e.boss ? 0.35 : e.elite ? 0.18 : 0.1);
+    const inside = Combat.inShape(P.pos.x, P.pos.z, 0.4, s.shape, p);
+    const dodgedFrom = P.dodgeFrom && g.time - P.lastDodgeTime < 0.5 && Combat.inShape(P.dodgeFrom.x, P.dodgeFrom.z, 0.4, s.shape, p);
     if ((inside || dodgedFrom) && P.lastDodgeGrade && P.lastDodgeGrade !== 'Miss' && g.time - P.lastDodgeTime < 0.5) {
       g.perfectDodge(e);
       return;

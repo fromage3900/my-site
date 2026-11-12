@@ -1,19 +1,24 @@
 // Open world: chunk-streamed terrain around the player (the OpenWorldJS idea
-// of player-centred tiles, rebuilt for phones as small CPU chunks), five
-// biomes from the Gaea setups arranged around Shorewake Village, props,
-// landmarks, water and the rift arena.
+// of player-centred tiles, rebuilt for phones as small CPU chunks), eight
+// biomes arranged around Shorewake Village, props, landmarks, water and the
+// rift arena.
 
 import * as THREE from 'three';
 import { Simplex2, mulberry32, clamp, lerp, smoothstep, angleDiff } from './util.js';
 import { BIOMES, HUB, WORLD_RADIUS, WORLD_SEED, RIFT_STYLE } from './design.js';
+import { propWorkflowMul, approachIdentity, OW_RULES } from './openworld.js';
 import { environmentMaterial, legacyRender } from './cel.js';
+import { flagWorldexp, flagNikkiLook } from './flags.js';
+import { installBellflowers, animateBellflowers } from './bellflower.js';
+import { createFlowerbedParts } from './flowerbeds.js';
+import { flowerLandscapeEnabled, installFlowerLandscapeChunk } from './flower-landscape.js';
 
 export const CHUNK = 64;
 const SEG = 28;
 const VIEW = 2;
 export const WATER = 0;
-const BIOME_R = 390;
-const SIGMA = 0.28;
+const BIOME_R = 780;
+const SIGMA = 0.22;
 export const RIFT_RADIUS = 34;
 
 const _c1 = new THREE.Color(), _c2 = new THREE.Color(), _c3 = new THREE.Color();
@@ -43,8 +48,10 @@ export class World {
     this.chunks = new Map();
     this.queue = [];
     this.chimes = [];
-    this.groveKit = null;
 
+    // Musical plate modes — Faraway canon (3,5) is the default rung.
+    this.modeLadder = [[1, 2], [2, 3], [3, 4], [3, 5], [4, 5], [5, 7], [2, 5], [4, 7]];
+    this.modeIndex = 3;
     this.uniforms = {
       uTime: { value: 0 },
       uRipple: { value: new THREE.Vector4(0, 0, -99, 0) },
@@ -55,61 +62,32 @@ export class World {
       uChladni: { value: 0.65 },
       uCaustics: { value: 0.55 },
       uIsRift: { value: 0 },
+      uModeN: { value: 3 },
+      uModeM: { value: 5 },
+      uPhase: { value: 0 },
+      uSharpness: { value: 1 },
+      uCeremony: { value: 0 },
     };
-    // Compare new effects with ?chladni=0 and/or ?caustics=0.
+    // Compare new effects with ?chladni=0 and/or ?caustics=0. Pin modes with ?mode=3,5.
     const shaderFlags = new URLSearchParams(window.location.search);
     if (shaderFlags.get('chladni') === '0') this.uniforms.uChladni.value = 0;
     if (shaderFlags.get('caustics') === '0') this.uniforms.uCaustics.value = 0;
     if (legacyRender) { this.uniforms.uChladni.value = 0; this.uniforms.uCaustics.value = 0; }
+    const modeQ = shaderFlags.get('mode');
+    if (modeQ) {
+      const parts = modeQ.split(/[,x/]/).map(Number).filter((v) => Number.isFinite(v) && v > 0);
+      if (parts.length >= 2) this.setMode(parts[0], parts[1]);
+    }
     this.terrainMat = environmentMaterial('#ffffff', { vertexColors: true });
     this._resonate(this.terrainMat);
     this._buildIndex();
     this._buildPropLibrary();
+    this.botanyEnabled = flowerLandscapeEnabled(window.location.search);
+    this.botanyDense = new URLSearchParams(window.location.search).get('botany') === 'dense';
     this._buildWater();
     this._buildHub();
     this._buildLandmarks();
     this._buildRift();
-  }
-
-  // Load the real GLB scenery once, before warm() streams chunks.
-  // The old primitives remain purely as a recovery path for absent/missing models.
-  installHarmonicGrove(kit) {
-    this.groveKit = kit;
-    this._dressHubWithGrove(kit);
-    for (const chunk of this.chunks.values()) this._disposeChunk(chunk);
-    this.chunks.clear();
-    this.queue.length = 0;
-    this.chimes.length = 0;
-  }
-
-  // Art-directed hub dressing: world-scale landmarks are never randomly
-  // scattered into terrain chunks or used as collision / interaction sources.
-  _dressHubWithGrove(kit) {
-    if (!this.hubGroup) return;
-    if (!this._hubGroveProps) this._hubGroveProps = new Map();
-    const place = (name, x, z, scale = 1, ry = 0) => {
-      if (this._hubGroveProps.has(name)) return this._hubGroveProps.get(name);
-      const model = kit.spawn(name);
-      if (!model) return null;
-      // Hub ground is fixed at y=2.2; height() returns zero while inside a Rift.
-      model.position.set(x, 2.23, z);
-      model.rotation.y = ry;
-      model.scale.setScalar(scale);
-      model.name = 'RW_HUB_' + name;
-      this.hubGroup.add(model);
-      this._hubGroveProps.set(name, model);
-      return model;
-    };
-    // Keep the original font's gameplay coordinate at (0,13).
-    const fountain = place('PRP_dream_fountain', 0, 13, 1.48);
-    if (fountain) {
-      if (this.fontStaticBase) this.fontStaticBase.visible = false;
-      if (this.fontStaticWater) this.fontStaticWater.visible = false;
-    }
-    place('WAY_harmonic_arrow', 8, -22, 1.2, -Math.PI / 3);
-    place('WAY_songwheel', -8, -22, 1.15);
-    place('PRP_celestial_signpost', 20, 0, 1.05);
-    place('ARC_lyre_gate', 0, -39, 1.6);
   }
 
   // ------------------------------------------------------------------ sampling
@@ -154,7 +132,7 @@ export class World {
   // Level of the zone at a point: rises through each biome with distance.
   zoneLevel(x, z) {
     const d = this.dominantBiome(x, z);
-    const t = clamp((d.r - 90) / 520, 0, 1);
+    const t = clamp((d.r - 90) / 1040, 0, 1);
     return Math.round(lerp(d.biome.levels[0], d.biome.levels[1], t));
   }
 
@@ -180,15 +158,33 @@ export class World {
         h = this._rivers(h, x, z, 0.03 + 0.06 * b.flow);
         return lerp(h, -0.6, 1 - smoothstep(26, 44, dc));
       }
+      case 'choir_marsh': {
+        let h = 1.1 + (N.fbm(x * 0.0032 + 11, z * 0.0032 - 8, 4) * 0.5 + 0.5) * b.amp * 0.45;
+        h = this._rivers(h, x, z, 0.04 + 0.08 * b.flow, -1.1);
+        const pool = N.noise(x * 0.0055 - 19, z * 0.0055 + 41);
+        if (pool < -0.28) h = lerp(h, -0.85, smoothstep(-0.28, -0.55, pool));
+        return h;
+      }
       case 'fugue_grotto': {
         const g = Math.abs(N.noise(x * 0.0075 + 100, z * 0.0075));
         return 1.2 + smoothstep(0.05, 0.3, g) * b.amp * 0.75 + N.fbm(x * 0.02, z * 0.02, 2) * 1.1;
+      }
+      case 'glass_orchard': {
+        let h = 2.0 + (N.fbm(x * 0.004 + 3, z * 0.004 - 9, 4) * 0.5 + 0.5) * b.amp * 0.65;
+        const swell = 1 - smoothstep(0, 220, dc);
+        h += swell * b.amp * 0.25;
+        return this._rivers(h, x, z, 0.025 + 0.04 * b.flow);
       }
       case 'cadence_crystal_ridge': {
         const rg = 1 - Math.abs(N.fbm(x * 0.0055 - 50, z * 0.0055 + 20, 3));
         let h = 2.6 + rg * rg * b.amp * 0.8;
         if (b.radial) h += b.amp * 0.5 * (1 - smoothstep(0, 200, dc));
         return lerp(h, 3 + b.amp * 0.5, 1 - smoothstep(16, 30, dc));
+      }
+      case 'starlit_moor': {
+        let h = 2.2 + (N.fbm(x * 0.0028 + 22, z * 0.0028 - 17, 4) * 0.5 + 0.5) * b.amp * 0.4;
+        if (b.radial) h += b.amp * 0.2 * (1 - smoothstep(0, 260, dc));
+        return this._rivers(h, x, z, 0.018 + 0.03 * b.flow);
       }
       case 'aurora_glacier': {
         let h = 2.6 + (N.fbm(x * 0.003 + 7, z * 0.003 - 3, 5) * 0.5 + 0.5) * b.amp * 0.55;
@@ -217,7 +213,9 @@ export class World {
       const b = BIOMES[i], p = b.pal;
       _c1.copy(p.grass).lerp(p.grass2, smoothstep(0.55, 0.85, n) * 0.7);
       if (b.id === 'aurora_glacier') _c1.lerp(p.snow, 0.5 + 0.4 * n2);
+      if (b.id === 'starlit_moor') _c1.lerp(p.rock, 0.25 + 0.2 * n2);
       if (b.id === 'cadence_crystal_ridge' && h > 18) _c1.lerp(p.snow, smoothstep(18, 26, h));
+      if (b.id === 'glass_orchard' && h > 14) _c1.lerp(p.snow, smoothstep(14, 22, h) * 0.45);
       _c1.lerp(p.rock, rock);
       if (h < 0.7) _c1.lerp(p.sand, smoothstep(0.7, 0.1, h));
       out.r += _c1.r * w; out.g += _c1.g * w; out.b += _c1.b * w;
@@ -226,15 +224,24 @@ export class World {
       const p = this.hubPal;
       _c2.copy(p.grass).lerp(p.grass2, n * 0.4);
       const r = this.r;
-      if (r < 30) {
+      if (r < 36) {
         // Plaza: a stave of five rings, like a score laid in the stone.
-        const ring = Math.abs(((r % 5) + 5) % 5 - 2.5) < 0.25 && r > 8 && r < 28 ? 0.25 : 0;
+        const ring = Math.abs(((r % 5) + 5) % 5 - 2.5) < 0.28 && r > 8 && r < 34 ? 0.32 : 0;
+        const spoke = (() => {
+          for (const b of BIOMES) {
+            const d = Math.abs(angleDiff(Math.atan2(z, x), b.angle));
+            if (d < 0.08 && r > 28 && r < 95) return 0.22;
+          }
+          return 0;
+        })();
         _c3.copy(p.sand).multiplyScalar(1 - ring);
-        _c2.lerp(_c3, 1 - smoothstep(27, 30, r));
+        _c2.lerp(_c3, 1 - smoothstep(33, 36, r));
+        if (spoke) _c2.lerp(p.sand, spoke);
       }
       out.lerp(_c2, this.hub);
     }
-    const v = 0.93 + n2 * 0.1;
+    // Slight biome-tint punch so transitions read from the camera.
+    const v = 0.9 + n2 * 0.14;
     out.multiplyScalar(v);
     return out;
   }
@@ -288,6 +295,8 @@ export class World {
     group.add(mesh);
     const chimes = [];
     this._buildProps(cx, cz, group, chimes);
+    // Artist-only floral landscape uses the same chunk lifecycle as canonical Grove.
+    if (this.botanyEnabled) installFlowerLandscapeChunk(this, cx, cz, group, CHUNK, this.botanyDense);
     this.root.add(group);
     return { cx, cz, group, geo, chimes };
   }
@@ -348,7 +357,22 @@ export class World {
       spire: { parts: [M(new THREE.OctahedronGeometry(1, 0), L('#ffffff', { emissive: '#8a6cff', emissiveIntensity: 0.4 }), 7, 1.4, 8, 1.4)] },
       pine: { parts: [M(new THREE.CylinderGeometry(0.15, 0.2, 1.2, 5), L('#6b5044'), 0.6), M(new THREE.ConeGeometry(1.5, 4.2, 7), L('#4f7f78'), 3.0), M(new THREE.ConeGeometry(0.7, 1.4, 7), L('#ffffff'), 4.6)] },
       icespike: { parts: [M(new THREE.ConeGeometry(0.6, 3.6, 5), L('#bfe9ff', { emissive: '#4aa8d8', emissiveIntensity: 0.25 }), 1.8)] },
+      willow: { parts: [M(new THREE.CylinderGeometry(0.18, 0.32, 4.2, 6), L('#5a6e58'), 2.1), M(new THREE.IcosahedronGeometry(2.4, 0), white, 5.0)], tint: 1, palette: ['#8fbfa8', '#a8d4bc', '#7eaa96'] },
+      mistorb: { parts: [M(new THREE.SphereGeometry(0.55, 10, 8), glow('#b8e8e0'), 1.4)], tint: 0, palette: ['#b8e8e0', '#d0f0ff', '#e8d8ff'] },
+      glassleaf: { parts: [M(new THREE.CylinderGeometry(0.12, 0.2, 2.8, 5), L('#8aa8a0'), 1.4), M(new THREE.OctahedronGeometry(1.6, 0), L('#ffffff', { emissive: '#7fd8c8', emissiveIntensity: 0.4 }), 3.6)], tint: 0, palette: ['#c8fff0', '#a8e8ff', '#e0fff8'] },
+      starbloom: { parts: [M(new THREE.ConeGeometry(0.35, 0.9, 6), glow('#c8d8ff'), 0.55)], tint: 0, palette: ['#c8d8ff', '#ffe8b0', '#e8c8ff', '#b0fff0'] },
+      grass: { parts: [M(new THREE.ConeGeometry(0.18, 0.7, 4), white, 0.32)], tint: 0, palette: ['#8fd48a', '#a7d98f', '#6fba7a', '#c5e89a'] },
+      bush: { parts: [M(new THREE.IcosahedronGeometry(0.85, 0), white, 0.55, 1.2, 0.75, 1.1)], tint: 0, palette: ['#6fba7a', '#89c98f', '#5a9e72', '#a7d98f', '#c9b8ea'] },
     };
+    // Small authored flower clusters; the original cone flowers remain one URL flag away.
+    this.flowerbedsEnabled = new URLSearchParams(window.location.search).get('flowerbeds') !== '0';
+    this.worldExpansionEnabled = flagWorldexp;
+    this.groveStatus = 'off';
+    this.groveCounts = {};
+    this.groveVariants = null;
+    this.groveCatalogSize = 0;
+    this.groveActiveVariants = 0;
+    if (this.flowerbedsEnabled) this.props.flower.parts = createFlowerbedParts(M, L);
     // Note sculpture pieces are offset sideways (head / stem / flag).
     const np = this.props.note;
     np.parts.forEach((p, i) => p.m.setPosition(np.offsetX[i], p.m.elements[13], 0));
@@ -358,89 +382,76 @@ export class World {
     const rng = mulberry32((cx * 73856093) ^ (cz * 19349663) ^ WORLD_SEED);
     const x0 = cx * CHUNK, z0 = cz * CHUNK;
     const center = this.dominantBiome(x0 + CHUNK / 2, z0 + CHUNK / 2);
-    if (center.r < HUB.radius + 10 || center.r > WORLD_RADIUS - 30) return;
+    // Preserve the existing hub/terrain scatter unless the authored world expansion is selected.
+    const expanded = this.worldExpansionEnabled;
+    if (center.r < (expanded ? HUB.radius - 8 : HUB.radius + 10) || center.r > WORLD_RADIUS - 30) return;
     const buckets = new Map();
     const tmpQ = new THREE.Quaternion(), tmpE = new THREE.Euler(), tmpS = new THREE.Vector3(), tmpP = new THREE.Vector3(), tmpM = new THREE.Matrix4();
     const pois = this.game.poiNear ? this.game.poiNear(x0 + CHUNK / 2, z0 + CHUNK / 2, CHUNK) : [];
+    const fringe = expanded && center.r < HUB.radius + 28;
     for (let bi = 0; bi < BIOMES.length; bi++) {
       this.sample(x0 + CHUNK / 2, z0 + CHUNK / 2);
       const bw = this.W[bi];
-      if (bw < 0.1) continue;
+      if (bw < 0.08) continue;
       const b = BIOMES[bi];
       for (const [type, count] of b.props) {
         const def = this.props[type];
-        const tries = Math.floor(count * bw + rng());
+        if (!def) continue;
+        // Hub fringe only gets soft ground cover / lanterns so roads stay readable.
+        if (fringe && type !== 'flower' && type !== 'grass' && type !== 'bush' && type !== 'lantern' && type !== 'rock') continue;
+        // Anime OW workflow: denser near-player / approach-corridor dressing, softer far field.
+        const px = this.game.player?.pos?.x ?? 0, pz = this.game.player?.pos?.z ?? 0;
+        const sampleX = x0 + CHUNK / 2, sampleZ = z0 + CHUNK / 2;
+        const wfMul = expanded ? propWorkflowMul(b, sampleX, sampleZ, type, { x: px, z: pz }) : 1;
+        const density = expanded ? (fringe ? 0.55 : 1.15) * wfMul : 1;
+        const tries = expanded ? Math.min(OW_RULES.mobile.chunkPropBudget, Math.floor(count * bw * density + rng())) : Math.floor(count * bw + rng());
         for (let t = 0; t < tries; t++) {
           const x = x0 + rng() * CHUNK, z = z0 + rng() * CHUNK;
           const h = this.sample(x, z);
-          if (this.hub > 0.01 || this.r > WORLD_RADIUS - 40) continue;
-          if (rng() > this.W[bi] * 1.4) continue;
+          if (this.r < (expanded ? HUB.radius - 4 : HUB.radius + 10) || this.r > WORLD_RADIUS - 40) continue;
+          if (!expanded && this.hub > 0.01) continue;
+          if (this.hub > 0.55 && type !== 'flower' && type !== 'grass' && type !== 'lantern') continue;
+          // Approach corridors push biome identity props (Genshin gate → region blend).
+          const idBoost = expanded ? approachIdentity(b, x, z) : 0;
+          if (rng() > (expanded ? this.W[bi] * (fringe ? 1.1 : 1.45 + idBoost * 0.5) : this.W[bi] * 1.4)) continue;
           if (def.water === 'on') { if (h > -0.15) continue; }
           else if (def.water === 'shore') { if (h < -0.3 || h > 1.0) continue; }
           else if (h < 0.35) continue;
           const hx = this.sample(x + 1.5, z), hz = this.sample(x, z + 1.5);
-          if (!def.water && (Math.abs(hx - h) > 1.6 || Math.abs(hz - h) > 1.6) && type !== 'rock' && type !== 'crystal') continue;
+          if (!def.water && (Math.abs(hx - h) > 1.6 || Math.abs(hz - h) > 1.6) && type !== 'rock' && type !== 'crystal' && type !== 'grass') continue;
           let blocked = false;
-          for (const p of pois) if ((p.x - x) ** 2 + (p.z - z) ** 2 < 49) { blocked = true; break; }
+          for (const p of pois) if ((p.x - x) ** 2 + (p.z - z) ** 2 < 36) { blocked = true; break; }
           if (blocked) continue;
-          const kitNames = this.groveKit ? this.groveKit.variants(type) : [];
-          const picked = kitNames.length ? kitNames[Math.floor(rng() * kitNames.length)] : null;
-          const visual = picked ? this.groveKit.prefabs.get(picked) : def;
-          const bucketKey = picked ? 'kit:' + picked : type;
-          const s = type === 'flower' ? 0.7 + rng() * 0.8 : 0.75 + rng() * 0.6;
-          // Authored meshes are metre-scale, while several old primitives were giant.
-          const scaleMultiplier = picked ? ({
-            pillar: 3.6, spire: 7.0, icespike: 3.3,
-            stalagmite: 2.5, crystal: 2.1, note: 2.2, lantern: 1.25
-          }[type] || 1) : 1;
+          const s = type === 'flower' || type === 'grass' ? 0.65 + rng() * 0.9 : 0.75 + rng() * 0.7;
           const y = def.water === 'on' ? WATER : h - 0.05;
           tmpE.set(type === 'rock' ? rng() * 0.5 : 0, rng() * Math.PI * 2, type === 'rock' ? rng() * 0.4 : 0);
           tmpQ.setFromEuler(tmpE);
           tmpP.set(x, y, z);
-          tmpS.set(s * scaleMultiplier,
-            s * scaleMultiplier * (type === 'crystal' ? 0.7 + rng() * 0.9 : 1),
-            s * scaleMultiplier);
+          tmpS.set(s, s * (type === 'crystal' ? 0.7 + rng() * 0.9 : 1), s);
           tmpM.compose(tmpP, tmpQ, tmpS);
           let colorHex = null;
-          if (!picked && def.palette) colorHex = def.palette[Math.floor(rng() * def.palette.length)];
-          if (!picked && def.rockTint) colorHex = '#' + b.pal.rock.clone().multiplyScalar(0.9 + rng() * 0.25).getHexString();
-          if (!buckets.has(bucketKey)) buckets.set(bucketKey, []);
-          buckets.get(bucketKey).push({ m: tmpM.clone(), c: colorHex, def: visual });
+          if (def.palette) colorHex = def.palette[Math.floor(rng() * def.palette.length)];
+          if (def.rockTint) colorHex = '#' + b.pal.rock.clone().multiplyScalar(0.9 + rng() * 0.25).getHexString();
+          // Stable placement and RNG: vary only the *appearance* of each
+          // already-approved prop, never its location or biome keepout.
+          const options = this.groveVariants?.[type];
+          const hash = (Math.imul(Math.floor(x * 11), 73856093) ^
+            Math.imul(Math.floor(z * 11), 19349663) ^ Math.imul(bi + 1, 83492791)) >>> 0;
+          const variantIndex = options?.length ? hash % options.length : -1;
+          const bucketKey = variantIndex >= 0 ? type + ':' + variantIndex : type;
+          if (!buckets.has(bucketKey)) buckets.set(bucketKey, {
+            type, def: variantIndex >= 0 ? options[variantIndex] : def, items: [],
+          });
+          buckets.get(bucketKey).items.push({ m: tmpM.clone(), c: colorHex });
           if (def.chime) chimes.push({ x, z, y: y + 1.25, i: Math.floor(rng() * 8), last: 0 });
         }
       }
     }
-    // Additional authored foliage, fungi, stepping stones, ruins and chimes.
-    // Three eligible placements per streamed chunk; anchored to terrain and
-    // excluded from interactions / combat / collision logic.
-    if (this.groveKit) {
-      const catalog = this.groveKit.decorative(center.biome.id);
-      for (let i = 0; i < 3 && catalog.length; i++) {
-        const name = catalog[(Math.abs(cx * 17 + cz * 37) + i * 5) % catalog.length];
-        const def = this.groveKit.prefabs.get(name);
-        if (!def) continue;
-        const x = x0 + rng() * CHUNK;
-        const z = z0 + rng() * CHUNK;
-        const h = this.sample(x, z);
-        if (this.hub > 0.01 || this.r > WORLD_RADIUS - 40 || h < 0.35) continue;
-        const nx = this.sample(x + 1, z), nz = this.sample(x, z + 1);
-        if (Math.abs(nx - h) > 0.6 || Math.abs(nz - h) > 0.6) continue;
-        if (pois.some(p => (p.x - x) ** 2 + (p.z - z) ** 2 < 49)) continue;
-        const isArchitecture = name.startsWith('ARC_');
-        const scale = isArchitecture ? 1.25 : (0.8 + 0.7 * rng());
-        tmpE.set(0, rng() * Math.PI * 2, 0);
-        tmpQ.setFromEuler(tmpE);
-        tmpM.compose(new THREE.Vector3(x, h - 0.03, z), tmpQ, new THREE.Vector3(scale, scale, scale));
-        const key = 'kit:' + name;
-        if (!buckets.has(key)) buckets.set(key, []);
-        buckets.get(key).push({ m: tmpM.clone(), c: null, def });
-      }
-    }
     const pm = new THREE.Matrix4(), cc = new THREE.Color();
-    for (const [type, list] of buckets) {
-      const def = list[0].def || this.props[type];
+    for (const { type, def, items: list } of buckets.values()) {
       def.parts.forEach((part, pi) => {
         const im = new THREE.InstancedMesh(part.geo, part.mat, list.length);
+        if (type === 'flower') im.name = this.flowerbedsEnabled ? `RW_Flowerbed_${pi}` : `RW_FlowerOriginal_${pi}`;
         list.forEach((it, k) => {
           pm.multiplyMatrices(it.m, part.m);
           im.setMatrixAt(k, pm);
@@ -459,11 +470,10 @@ export class World {
   // Beat ripples and a Crescendo glow painted into any Lambert/Phong material.
   _resonate(mat) {
     const U = this.uniforms;
-    // Compose with the RGB-band toon shader rather than overwriting it.
-    // Without this chain, terrain and Rift materials silently lose NPR V2 bands.
     const previousShaderHook = mat.onBeforeCompile;
-    mat.onBeforeCompile = (sh) => {
-      previousShaderHook.call(mat, sh);
+    mat.onBeforeCompile = (sh, renderer) => {
+      // Compose the material RGB-band shader with existing Chladni.
+      previousShaderHook.call(mat, sh, renderer);
       Object.assign(sh.uniforms, U);
       sh.vertexShader = sh.vertexShader
         .replace('#include <common>', '#include <common>\nvarying vec3 vWP;')
@@ -471,12 +481,19 @@ export class World {
       sh.fragmentShader = sh.fragmentShader
         .replace('#include <common>', `#include <common>
           varying vec3 vWP; uniform float uTime; uniform vec4 uRipple; uniform vec4 uRipple2; uniform vec3 uPlayer; uniform float uCres; uniform vec3 uRingColor; uniform float uChladni; uniform float uCaustics; uniform float uIsRift;
+          uniform float uModeN; uniform float uModeM; uniform float uPhase; uniform float uSharpness; uniform float uCeremony;
           float ripple(vec4 r){ float age = uTime - r.z; if(age < 0.0 || age > 1.2) return 0.0; float d = distance(vWP.xz, r.xy); float rad = age * 30.0; return exp(-pow((d - rad) / 1.4, 2.0)) * r.w * (1.0 - age / 1.2); }
+          // Rectangular Chladni plate: a cos(nπx)cos(mπy) − b cos(mπx)cos(nπy).
+          float rwChladniField(vec2 p) {
+            vec2 q = (p - uPlayer.xz) * 0.18;
+            float n = max(uModeN, 1.0), m = max(uModeM, 1.0);
+            float a = cos(n * 3.14159265 * q.x + uPhase) * cos(m * 3.14159265 * q.y);
+            float b = cos(m * 3.14159265 * q.x) * cos(n * 3.14159265 * q.y + uPhase * 0.7);
+            return a - b;
+          }
           float rwChladni(vec2 p) {
-            vec2 q = (p - uPlayer.xz) * 0.24;
-            float a = sin(q.x * 2.0) * sin(q.y * 3.0);
-            float b = sin(q.x * 3.0) * sin(q.y * 2.0);
-            return 1.0 - smoothstep(0.018, 0.09, abs(a - b));
+            float edge = mix(0.07, 0.022, clamp(uSharpness, 0.0, 1.5));
+            return 1.0 - smoothstep(edge * 0.22, edge, abs(rwChladniField(p)));
           }
           float rwCaustic(vec2 p, float t) {
             vec2 q = p * 0.73;
@@ -488,19 +505,105 @@ export class World {
           float pd = distance(vWP.xz, uPlayer.xz);
           float glow = exp(-pow(pd / (3.0 + uCres * 5.0), 2.0)) * (0.06 + uCres * 0.22);
           float musicalZone = 1.0 - smoothstep(7.0, 18.0, pd);
-          float scoreLines = rwChladni(vWP.xz) * musicalZone * (0.15 + uCres * 0.85) * uChladni;
-          // Caustics affect shallow terrain, not the rift floor.
+          float field = rwChladniField(vWP.xz);
+          float scoreLines = rwChladni(vWP.xz) * musicalZone * (0.15 + uCres * 0.85 + uCeremony * 0.55) * uChladni;
+          // Caustics affect shallow terrain, not the rift floor; antinodes brighten the lace.
           float shore = 1.0 - smoothstep(0.0, 2.2, abs(vWP.y));
-          float causticLight = rwCaustic(vWP.xz, uTime) * shore * uCaustics * (1.0 - uIsRift);
+          float antinode = smoothstep(0.0, 0.55, abs(field));
+          float causticLight = rwCaustic(vWP.xz, uTime) * shore * uCaustics * (1.0 - uIsRift)
+            * mix(0.55, 1.18, antinode * uChladni);
           totalEmissiveRadiance += uRingColor * (ripple(uRipple) * 0.45 + ripple(uRipple2) * 0.7 + glow + scoreLines * 0.38);
-          totalEmissiveRadiance += vec3(0.28, 0.70, 0.90) * causticLight * 0.3;`);
+          totalEmissiveRadiance += vec3(0.28, 0.70, 0.90) * causticLight * 0.3;
+          totalEmissiveRadiance += uRingColor * scoreLines * uCeremony * 0.22;`);
     };
-    mat.customProgramCacheKey = () => 'resonate-cel-v1';
+    // Preserve hard-cel compose key from #571, bump for plate-mode uniforms.
+    mat.customProgramCacheKey = () => 'resonate-cel-hard-v2-modes';
   }
 
   pulse(x, z, strength = 1, big = false) {
     const u = big ? this.uniforms.uRipple2 : this.uniforms.uRipple;
     u.value.set(x, z, this.uniforms.uTime.value, strength);
+  }
+
+  getMode() {
+    return { n: this.uniforms.uModeN.value, m: this.uniforms.uModeM.value, index: this.modeIndex };
+  }
+
+  setMode(n, m) {
+    const nn = Math.max(1, Math.round(n));
+    const mm = Math.max(1, Math.round(m));
+    this.uniforms.uModeN.value = nn;
+    this.uniforms.uModeM.value = mm;
+    const idx = this.modeLadder.findIndex(([a, b]) => a === nn && b === mm);
+    if (idx >= 0) this.modeIndex = idx;
+    return this.getMode();
+  }
+
+  /** Perfect casts advance the plate mode; Good/Miss leave the floor figure alone. */
+  hopMode(perfect = true) {
+    if (!perfect) return this.getMode();
+    this.modeIndex = (this.modeIndex + 1) % this.modeLadder.length;
+    const [n, m] = this.modeLadder[this.modeIndex];
+    this.uniforms.uSharpness.value = Math.min(1.45, (this.uniforms.uSharpness.value || 1) + 0.06);
+    return this.setMode(n, m);
+  }
+
+  /**
+   * Sample the same rectangular plate field the floor shader uses.
+   * Returns nodal (sand-line) and antinode points for combat / ceremony VFX.
+   */
+  chladniSamples(cx, cz, radius, count = 40) {
+    const n = this.uniforms.uModeN.value;
+    const m = this.uniforms.uModeM.value;
+    const phase = this.uniforms.uPhase.value;
+    const scale = 0.18;
+    const PI = Math.PI;
+    const fieldAt = (x, z) => {
+      const qx = (x - cx) * scale;
+      const qz = (z - cz) * scale;
+      const a = Math.cos(n * PI * qx + phase) * Math.cos(m * PI * qz);
+      const b = Math.cos(m * PI * qx) * Math.cos(n * PI * qz + phase * 0.7);
+      return a - b;
+    };
+    const nodal = [];
+    const antinode = [];
+    const steps = 26;
+    for (let i = 0; i < steps; i++) {
+      for (let j = 0; j < steps; j++) {
+        const x = cx + ((i / (steps - 1)) - 0.5) * 2 * radius;
+        const z = cz + ((j / (steps - 1)) - 0.5) * 2 * radius;
+        if (Math.hypot(x - cx, z - cz) > radius) continue;
+        const f = fieldAt(x, z);
+        const af = Math.abs(f);
+        if (af < 0.085) nodal.push({ x, z, f });
+        else if (af > 0.55) antinode.push({ x, z, f });
+      }
+    }
+    const thin = (arr, k) => {
+      if (arr.length <= k) return arr;
+      const out = [];
+      for (let i = 0; i < k; i++) out.push(arr[Math.floor((i + 0.5) * arr.length / k)]);
+      return out;
+    };
+    return { nodal: thin(nodal, count), antinode: thin(antinode, Math.max(8, count >> 1)), n, m };
+  }
+
+  /** Recital ceremony: brief nodal bloom + optional mode hop / miss damp. */
+  ceremonyFigure(kind = 'goal', x, z) {
+    const px = x ?? this.uniforms.uPlayer.value.x;
+    const pz = z ?? this.uniforms.uPlayer.value.z;
+    const boost = kind === 'inherit' ? 1 : kind === 'bank' ? 0.85 : kind === 'miss' ? 0.4 : 0.7;
+    this._ceremonyUntil = this.uniforms.uTime.value + 0.55;
+    this._ceremonyBoost = boost;
+    if (kind === 'miss') {
+      this._ceremonyModeRestore = this.getMode();
+      this.setMode(1, 2);
+      this.uniforms.uSharpness.value = 0.55;
+    } else if (kind === 'inherit') {
+      this.hopMode(true);
+    }
+    this.pulse(px, pz, 1.4 + boost, true);
+    return this.chladniSamples(px, pz, 6.5, 36);
   }
 
   // ------------------------------------------------------------------ water
@@ -525,15 +628,27 @@ export class World {
             objectNormal = normalize(vec3(-dx, 1.0, -dz)); }`);
       sh.fragmentShader = sh.fragmentShader
         .replace('#include <common>', `#include <common>
-          varying vec3 vWP; uniform float uTime; uniform vec4 uRipple; uniform vec4 uRipple2; uniform vec3 uRingColor; uniform float uCaustics;
-          float ripple(vec4 r){ float age = uTime - r.z; if(age < 0.0 || age > 1.2) return 0.0; float d = distance(vWP.xz, r.xy); float rad = age * 30.0; return exp(-pow((d - rad) / 1.4, 2.0)) * r.w * (1.0 - age / 1.2); }`)
+          varying vec3 vWP; uniform float uTime; uniform vec4 uRipple; uniform vec4 uRipple2; uniform vec3 uPlayer; uniform vec3 uRingColor; uniform float uCaustics; uniform float uChladni;
+          uniform float uModeN; uniform float uModeM; uniform float uPhase; uniform float uCeremony;
+          float ripple(vec4 r){ float age = uTime - r.z; if(age < 0.0 || age > 1.2) return 0.0; float d = distance(vWP.xz, r.xy); float rad = age * 30.0; return exp(-pow((d - rad) / 1.4, 2.0)) * r.w * (1.0 - age / 1.2); }
+          float rwChladniField(vec2 p) {
+            vec2 q = (p - uPlayer.xz) * 0.18;
+            float n = max(uModeN, 1.0), m = max(uModeM, 1.0);
+            float a = cos(n * 3.14159265 * q.x + uPhase) * cos(m * 3.14159265 * q.y);
+            float b = cos(m * 3.14159265 * q.x) * cos(n * 3.14159265 * q.y + uPhase * 0.7);
+            return a - b;
+          }`)
         .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
           float sparkle = pow(max(0.0, sin(vWP.x * 1.7 + uTime * 2.0) * sin(vWP.z * 1.3 - uTime * 1.6)), 12.0) * 0.35;
           float waterCaustic = pow(max(0.0, 0.5 + 0.5 * sin(vWP.x * 0.78 + uTime * 0.9) * sin(vWP.z * 0.93 - uTime * 0.64)), 6.0);
+          float nearPlayer = 1.0 - smoothstep(6.0, 16.0, distance(vWP.xz, uPlayer.xz));
+          float antinode = smoothstep(0.0, 0.55, abs(rwChladniField(vWP.xz)));
+          float lace = mix(1.0, 0.62 + 0.7 * antinode, nearPlayer * uChladni);
           totalEmissiveRadiance += uRingColor * (ripple(uRipple) * 0.5 + ripple(uRipple2) * 0.7) + vec3(sparkle);
-          totalEmissiveRadiance += vec3(0.3, 0.65, 0.95) * waterCaustic * uCaustics * 0.38;`);
+          totalEmissiveRadiance += vec3(0.3, 0.65, 0.95) * waterCaustic * uCaustics * 0.38 * lace;
+          totalEmissiveRadiance += uRingColor * nearPlayer * antinode * uCeremony * 0.18;`);
     };
-    mat.customProgramCacheKey = () => 'water-caustics-v1';
+    mat.customProgramCacheKey = () => 'water-caustics-v2-modes';
     this.water = new THREE.Mesh(geo, mat);
     this.water.position.y = WATER;
     this.water.renderOrder = 2;
@@ -576,13 +691,57 @@ export class World {
     add(new THREE.BoxGeometry(0.2, 3, 0.2), L('#6b4a3a'), -9.6, h + 1.5, -9);
     for (let i = 0; i < 4; i++) add(new THREE.PlaneGeometry(0.6, 0.7), L('#fff6e0', { side: THREE.DoubleSide }), -12 + i * 0.66, h + 2.2 + (i % 2) * 0.2, -8.88);
     this.fontPos = new THREE.Vector3(0, h, 13);
-    this.fontStaticBase = add(new THREE.CylinderGeometry(1.6, 1.2, 1, 10), L('#e0e8f0'), 0, h + 0.5, 13);
-    this.fontStaticWater = add(new THREE.CylinderGeometry(1.35, 1.35, 0.1, 16), L('#8fe0ff', { emissive: '#5fc6ff', emissiveIntensity: 0.6 }), 0, h + 1.02, 13);
-    // Lanterns around the plaza edge.
+    add(new THREE.CylinderGeometry(1.6, 1.2, 1, 10), L('#e0e8f0'), 0, h + 0.5, 13);
+    add(new THREE.CylinderGeometry(1.35, 1.35, 0.1, 16), L('#8fe0ff', { emissive: '#5fc6ff', emissiveIntensity: 0.6 }), 0, h + 1.02, 13);
+    // Plaza lantern ring: every 3rd site can promote to a beat-reactive Bellflower.
+    const bellflowerSites = [];
     for (let i = 0; i < 12; i++) {
-      const a = (i / 12) * Math.PI * 2;
-      add(new THREE.CylinderGeometry(0.08, 0.08, 2.4, 5), L('#6b4a3a'), Math.cos(a) * 31, h + 1.2, Math.sin(a) * 31);
-      add(new THREE.BoxGeometry(0.5, 0.6, 0.5), L('#fff', { emissive: '#ffcf7a', emissiveIntensity: 0.7 }), Math.cos(a) * 31, h + 2.6, Math.sin(a) * 31);
+      const a = (i / 12) * Math.PI * 2, x = Math.cos(a) * 31, z = Math.sin(a) * 31;
+      const stem = add(new THREE.CylinderGeometry(0.08, 0.08, 2.4, 5), L('#6b4a3a'), x, h + 1.2, z);
+      const light = add(new THREE.BoxGeometry(0.5, 0.6, 0.5), L('#fff', { emissive: '#ffcf7a', emissiveIntensity: 0.7 }), x, h + 2.6, z);
+      if (i % 3 === 0) bellflowerSites.push({ index: i, x, z, angle: a, stem, light });
+    }
+    this.bellflowerLanterns = installBellflowers(g, bellflowerSites, h);
+    // Market stalls + garden rings so the hub reads as a lived-in village.
+    const stall = [[-8, 6, '#f3b6cf'], [8, 6, '#9fd4e6'], [-6, -18, '#c8b6ef'], [6, -18, '#ffd98a']];
+    for (const [x, z, cloth] of stall) {
+      add(new THREE.BoxGeometry(3.2, 0.15, 2.2), L('#8a6a5a'), x, h + 1.55, z);
+      add(new THREE.BoxGeometry(3.4, 0.08, 2.4), L(cloth, { emissive: cloth, emissiveIntensity: 0.15 }), x, h + 2.55, z);
+      add(new THREE.CylinderGeometry(0.08, 0.08, 2.4, 5), L('#6b4a3a'), x - 1.4, h + 1.2, z - 0.9);
+      add(new THREE.CylinderGeometry(0.08, 0.08, 2.4, 5), L('#6b4a3a'), x + 1.4, h + 1.2, z - 0.9);
+      add(new THREE.CylinderGeometry(0.08, 0.08, 2.4, 5), L('#6b4a3a'), x - 1.4, h + 1.2, z + 0.9);
+      add(new THREE.CylinderGeometry(0.08, 0.08, 2.4, 5), L('#6b4a3a'), x + 1.4, h + 1.2, z + 0.9);
+    }
+    for (let ring = 0; ring < 3; ring++) {
+      const rr = 18 + ring * 4.5;
+      for (let i = 0; i < 10 + ring * 4; i++) {
+        const a = (i / (10 + ring * 4)) * Math.PI * 2 + ring * 0.2;
+        const fx = Math.cos(a) * rr, fz = Math.sin(a) * rr;
+        if (Math.abs(fx) < 6 && fz > -4 && fz < 16) continue;
+        add(new THREE.ConeGeometry(0.22, 0.55, 5), L(['#ffd1e3', '#d8c3ff', '#fff1a8', '#9fe6ff'][i % 4]), fx, h + 0.28, fz);
+      }
+    }
+    // Radiating music-roads toward each biome — stone ribbons with note markers.
+    const roadMat = L('#e8dccb');
+    const noteMat = L('#ffd978', { emissive: '#d9a84a', emissiveIntensity: 0.45 });
+    for (const b of BIOMES) {
+      const ax = Math.cos(b.angle), az = Math.sin(b.angle);
+      for (let s = 0; s < 14; s++) {
+        const r = 34 + s * 5.2;
+        const x = ax * r, z = az * r;
+        const slab = add(new THREE.BoxGeometry(3.6 - s * 0.05, 0.12, 4.6), roadMat, x, h + 0.04, z, Math.atan2(ax, az));
+        slab.position.y = this.sample(x, z) + 0.08;
+        if (s % 3 === 0) {
+          const n = add(new THREE.SphereGeometry(0.35, 8, 6), noteMat, x + ax * 1.6, h + 0.5, z + az * 1.6);
+          n.position.y = this.sample(x + ax * 1.6, z + az * 1.6) + 0.55;
+        }
+      }
+      // Gate arch at the safe-zone edge.
+      const gx = ax * (HUB.radius + 2), gz = az * (HUB.radius + 2);
+      const gy = this.sample(gx, gz);
+      add(new THREE.BoxGeometry(0.7, 5.2, 0.7), L('#f4ecff'), gx + az * 3.2, gy + 2.6, gz - ax * 3.2);
+      add(new THREE.BoxGeometry(0.7, 5.2, 0.7), L('#f4ecff'), gx - az * 3.2, gy + 2.6, gz + ax * 3.2);
+      add(new THREE.BoxGeometry(7.2, 0.7, 0.7), L('#ffd978', { emissive: '#d9a84a', emissiveIntensity: 0.35 }), gx, gy + 5.4, gz, Math.atan2(ax, az));
     }
     this.hubGroup = g;
     this.root.add(g);
@@ -628,6 +787,26 @@ export class World {
           const a = (i / 8) * Math.PI * 2, px = Math.cos(a) * 9, pz = Math.sin(a) * 9;
           add(new THREE.OctahedronGeometry(1.4, 0), L('#ffffff', { emissive: i % 2 ? '#62c8ff' : '#e38bff', emissiveIntensity: 0.5 }), px, gy(px, pz) + 4, pz, [1, 3, 1], [0.2, a, 0.2]);
         }
+      } else if (b.id === 'choir_marsh') {
+        for (let i = 0; i < 8; i++) {
+          const a = (i / 8) * Math.PI * 2, px = Math.cos(a) * 18, pz = Math.sin(a) * 18;
+          add(new THREE.CylinderGeometry(0.35, 0.55, 7 + (i % 3), 6), L('#5a7a68'), px, gy(px, pz) + 4, pz);
+          add(new THREE.IcosahedronGeometry(2.2, 0), L('#8fbfa8'), px, gy(px, pz) + 9, pz);
+        }
+        add(new THREE.SphereGeometry(2.4, 16, 12), L('#ffffff', { emissive: '#9fe8d8', emissiveIntensity: 0.55 }), 0, y + 5, 0);
+      } else if (b.id === 'glass_orchard') {
+        for (let i = 0; i < 7; i++) {
+          const a = (i / 7) * Math.PI * 2, px = Math.cos(a) * 14, pz = Math.sin(a) * 14;
+          add(new THREE.CylinderGeometry(0.25, 0.4, 8, 6), L('#8aa8a0'), px, gy(px, pz) + 4, pz);
+          add(new THREE.OctahedronGeometry(2.2, 0), L('#ffffff', { emissive: '#7fd8c8', emissiveIntensity: 0.45 }), px, gy(px, pz) + 10, pz);
+        }
+        add(new THREE.OctahedronGeometry(3.4, 0), L('#ffffff', { emissive: '#a8fff0', emissiveIntensity: 0.65 }), 0, y + 14, 0, [1, 1.6, 1]);
+      } else if (b.id === 'starlit_moor') {
+        for (let i = 0; i < 16; i++) {
+          const a = (i / 16) * Math.PI * 2, rr = 8 + (i % 4) * 5, px = Math.cos(a) * rr, pz = Math.sin(a) * rr;
+          add(new THREE.SphereGeometry(0.35 + (i % 3) * 0.15, 8, 6), L('#ffffff', { emissive: i % 2 ? '#c8d8ff' : '#ffe8b0', emissiveIntensity: 0.85 }), px, gy(px, pz) + 1.2 + (i % 5) * 0.4, pz);
+        }
+        add(new THREE.TorusGeometry(10, 0.35, 8, 32), L('#ffffff', { emissive: '#90a8ff', emissiveIntensity: 0.5 }), 0, y + 16, 0, [1, 0.35, 1], [Math.PI / 2, 0, 0]);
       } else if (b.id === 'aurora_glacier') {
         for (let i = 0; i < 11; i++) {
           const hgt = 6 + Math.sin(i * 0.7) * 3 + (5 - Math.abs(i - 5)) * 1.6;
@@ -637,6 +816,9 @@ export class World {
         aur.position.set(0, y + 30, -30);
         g.add(aur);
       }
+      // Nikki silhouette pass — taller landmarks readable from hub roads.
+      const ls = flagNikkiLook ? (OW_RULES.landmarkScale || 1.35) : 1;
+      g.scale.set(ls, ls, ls);
       g.userData.mats = [];
       g.traverse((o) => { if (o.material && !g.userData.mats.includes(o.material)) g.userData.mats.push(o.material); });
       this.landmarks.push(g);
@@ -706,6 +888,20 @@ export class World {
     U.uTime.value = t;
     U.uPlayer.value.copy(player);
     U.uCres.value = crescendo;
+    U.uPhase.value = t * 0.28 + beatPhase * Math.PI;
+    if (this._ceremonyUntil != null) {
+      const rem = this._ceremonyUntil - t;
+      if (rem <= 0) {
+        U.uCeremony.value = 0;
+        if (this._ceremonyModeRestore) {
+          this.setMode(this._ceremonyModeRestore.n, this._ceremonyModeRestore.m);
+          this._ceremonyModeRestore = null;
+        }
+        this._ceremonyUntil = null;
+      } else {
+        U.uCeremony.value = (this._ceremonyBoost || 0.7) * (rem / 0.55);
+      }
+    }
     if (!this.inRift) {
       const s = 300 / 60;
       this.water.position.x = Math.round(player.x / s) * s;
@@ -713,6 +909,7 @@ export class World {
     }
     if (this.pendulum) this.pendulum.rotation.z = Math.sin(beatPhase * Math.PI) * 0.45 * (this._pendDir || 1);
     if (this.forgeFire) this.forgeFire.scale.setScalar(0.85 + Math.sin(t * 9) * 0.12);
+    animateBellflowers(this.bellflowerLanterns, beatPhase, crescendo);
     // Landmarks go translucent when Melusina is under them so the camera never loses her.
     for (const lm of this.landmarks) {
       const near = Math.hypot(lm.position.x - player.x, lm.position.z - player.z) < 48;
