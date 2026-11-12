@@ -53,8 +53,9 @@ require("application-hub.html" not in manifest["canonical"], "Architecture Hub a
 require("cosmic-orrery.html" not in manifest["canonical"], "Cosmic Orrery accidentally made primary")
 
 for filename in [
-    "faraway_plate_08_capstone_master_showcase_1920.webp",
-    "faraway_plate_09_infold_lookdev_convergence.webp",
+    "hero-sakura-dream-ink-shrine.webp",
+    "faraway_hero_heart_gate.webp",
+
     "faraway_cathedral_nave.webp",
     "nikki9-kaleido-nave-hero.webp",
     "nikki9-melusina-morning-matrix.webp",

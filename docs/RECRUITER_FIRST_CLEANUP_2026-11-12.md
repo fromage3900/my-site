@@ -23,3 +23,6 @@ Existing Unreal environment images remain the visual source of truth. Browser ap
 - [ ] Hero legibility/crop, four navigation cards, contact links, metadata and keyboard focus verified.
 - [ ] Reduced-motion and Living Worlds WebGL-fallback test verified.
 - [ ] Review commit, then merge only after owner approval and QA; live deploy remains separate.
+
+## Rendered screenshot review correction
+Initial Chrome screenshots showed that `faraway_plate_08_capstone_master_showcase_1920.webp` is a multi-panel infographic, not a clean beauty. It was removed from every hero/social slot (but retained in the Faraway dossier where that board is relevant). The art-first entrance now uses the individually reviewed Sakura Dream ink-shrine beauty as an **earlier** environment study, while the Faraway feature and World Bible use the actual Faraway Heart Gate environment render. A direct CSS image background avoids the old parallax layers occluding the visual. The homepage claims no fresh playable Faraway capture from the older beauty image.
