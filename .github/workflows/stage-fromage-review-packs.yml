@@ -21,6 +21,7 @@ jobs:
           filter: blob:none
           sparse-checkout: |
             generated/products
+            wix/textures/pbr
             tools/build_fromage_review_packs.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
@@ -29,7 +30,7 @@ jobs:
           python-version: '3.11'
       - name: Assemble ZIPs, verify PNG headers and record checksums
         run: |
-          python tools/build_fromage_review_packs.py --output-dir staged_packs --packs obs-overlays twitch-emotes postcards
+          python tools/build_fromage_review_packs.py --output-dir staged_packs --packs obs-overlays twitch-emotes postcards fantasy-fabrics
       - name: Attach internal-review ZIPs without publishing
         uses: actions/upload-artifact@v4
         with:
