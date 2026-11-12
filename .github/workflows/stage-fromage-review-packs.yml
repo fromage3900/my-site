@@ -1,0 +1,39 @@
+name: Stage FROMAGE asset packs for private review
+
+on:
+  push:
+    branches:
+      - feat/product-pack-staging-20261112
+    paths:
+      - 'tools/build_fromage_review_packs.py'
+      - 'docs/FROMAGE_EXISTING_ASSET_PACK_AUDIT_2026-11-12.md'
+      - '.github/workflows/stage-fromage-review-packs.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  stage-review-packs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            generated/products
+            tools/build_fromage_review_packs.py
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Assemble ZIPs, verify PNG headers and record checksums
+        run: |
+          python tools/build_fromage_review_packs.py --output-dir staged_packs --packs obs-overlays twitch-emotes postcards
+      - name: Attach internal-review ZIPs without publishing
+        uses: actions/upload-artifact@v4
+        with:
+          name: FROMAGE-INTERNAL-REVIEW-PACKS
+          path: staged_packs/
+          if-no-files-found: error
+          retention-days: 7
