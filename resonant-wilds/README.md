@@ -14,11 +14,11 @@ Serve the repo root (ES modules need http, not `file://`):
 python -m http.server 8080
 ```
 
-Open `http://127.0.0.1:8080/Prototypes/Web/MelodiaResonantWilds/` on a phone (same Wi-Fi, use the PC's IP) or a desktop browser. Landscape is best on phones. Headphones help. If taps feel late, use **Settings → Calibrate**. Bluetooth audio usually needs +150–250 ms.
+Open `http://127.0.0.1:8080/resonant-wilds/` on a phone (same Wi-Fi, use the PC's IP) or a desktop browser. Landscape is best on phones. Headphones help. If taps feel late, use **Settings → Calibrate**. Bluetooth audio usually needs +150–250 ms.
 
 **Nikki by default:** bare URL turns on world expansion, dense dressing, landmark scale, daycycle, and OutlinePass/bloom. Low-end escape: `?lite=1` (or `?worldexp=0`, `?postfx=0`, `?dressing=sparse`). Map shows per-biome region % (Dew + fashion frames + Reveal overlook) with a **Ping nearest Dew** compass lock.
 
-Live GH Pages (after owner `tools/sync_to_mysite.sh`): `https://fromage3900.github.io/my-site/resonant-wilds/` — confirm SW `resonant-wilds-v15-*-floraison-release`. Safari 10-step itinerary + PASS gate live in `CURRENT_STATE.md`.
+GitHub Pages release URL (after successful deployment from `my-site/main`): `https://fromage3900.github.io/my-site/resonant-wilds/` — confirm SW `resonant-wilds-v15-*-floraison-release`. Real-device Safari touch, audio, performance and offline QA remain acceptance gates; CI alone does not prove them.
 
 No build step. three.js r170 is vendored in `vendor/` (MIT, licence alongside).
 
@@ -139,11 +139,7 @@ Inspect the live recipe in the browser console: `window.__rwOpenWorld`.
 | Biomes: name, seed 3900, terrain recipe (terrace strength, flow, lakes, radial gradient, height range), musical binding | `Docs/WorldGen/GAEA_SETUP_*.json` |
 | Choral Sheep **Harmonize**, Wardrobe slots, music-as-key shrines | the proven UE seams in `CURRENT_STATE.md` |
 
-Regenerate after changing any of those files:
-
-```powershell
-python Prototypes/Web/MelodiaResonantWilds/tools/export_ue_data.py
-```
+Regenerate UE-derived data in the canonical `MelodiaMelusinaV2` repository before syncing another website release. This website mirror does not contain the UE source JSON inputs; do not run the exporter from here.
 
 `js/design.js` holds only what the ARPG adds on top: how each skill is delivered, biome tempos and palettes, loot tables, bounties.
 
