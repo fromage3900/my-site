@@ -9,8 +9,6 @@
     "hero-renders.html",
     "zbrush-breakdown.html",
     "shader-breakdowns.html",
-    "cosmic-orrery.html",
-    "application-hub.html",
     "pipeline.html"
   ],
   "secondary_case_studies": [
@@ -72,7 +70,9 @@
     "touchdesigner-architecture.html",
     "touchdesigner-showreel.html",
     "universal-material-impact.html",
-    "faraway-mother-couture.html"
+    "faraway-mother-couture.html",
+    "cosmic-orrery.html",
+    "application-hub.html"
   ],
   "targeted_evidence": [
     "melusina-model-tooling.html",

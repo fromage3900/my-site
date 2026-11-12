@@ -15,13 +15,23 @@ These are the pages expected to share one current typography/navigation/editoria
 - hero-renders.html
 - zbrush-breakdown.html
 - shader-breakdowns.html
-- cosmic-orrery.html
-- application-hub.html
 - pipeline.html
 
 The current shared build is **20260921p1**. Canonical pages carry
 `<meta name="melodia-build" content="20260921p1">` and cache-bust local CSS/JS with the
 same version.
+
+## Recruiter-first route policy (November 2026)
+
+- Home has four main destinations: Selected Work, Environments, Technical Art, About.
+- Faraway Mother is the featured environment case study, indexed in the sitemap.
+- `melodia-living-worlds.html` is the sole optional browser study in shared navigation.
+- `cosmic-orrery.html`, `application-hub.html`, `render-constellation.html`,
+  `realtime-3d-viewer.html`, and `melodia-atelier-lab.html` are noindex and
+  out of public navigation. Their source files and direct URLs remain available.
+- `mahou-particle-garden.html` and `constellation-brush.html` stay unindexed labs.
+- Root Three.js entry toy is removed, recoverable through Git history.
+- Published Wix mobile behavior must be checked on a real browser before merging.
 
 ## Secondary public case studies
 
