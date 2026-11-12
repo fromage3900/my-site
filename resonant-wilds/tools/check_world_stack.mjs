@@ -30,7 +30,7 @@ assert.match(ui, /Ping nearest Dew/);
 assert.match(smoke, /desktop-worldexp-postfx/);
 assert.match(smoke, /desktop-lite/);
 assert.match(smoke, /destinations >= 16/);
-assert.match(sw, /resonant-wilds-v15-20261029-floraison-release/);
+assert.match(sw, /resonant-wilds-v16-20261112-melusina-sprite-ui/);
 assert.match(sw, /js\/flags\.js/);
 assert.match(sw, /js\/playground\.js/);
 assert.match(sw, /js\/grove-catalog\.js/);
