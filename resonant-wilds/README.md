@@ -14,7 +14,11 @@ Serve the repo root (ES modules need http, not `file://`):
 python -m http.server 8080
 ```
 
-Open `http://127.0.0.1:8080/Prototypes/Web/MelodiaResonantWilds/` on a phone (same Wi-Fi, use the PC's IP) or a desktop browser. Landscape is best on phones. Headphones help. If taps feel late, use **Settings → Calibrate**. Bluetooth audio usually needs +150–250 ms.
+Open `http://127.0.0.1:8080/resonant-wilds/` on a phone (same Wi-Fi, use the PC's IP) or a desktop browser. Landscape is best on phones. Headphones help. If taps feel late, use **Settings → Calibrate**. Bluetooth audio usually needs +150–250 ms.
+
+**Nikki by default:** bare URL turns on world expansion, dense dressing, landmark scale, daycycle, and OutlinePass/bloom. Low-end escape: `?lite=1` (or `?worldexp=0`, `?postfx=0`, `?dressing=sparse`). Map shows per-biome region % (Dew + fashion frames + Reveal overlook) with a **Ping nearest Dew** compass lock.
+
+GitHub Pages release URL (after successful deployment from `my-site/main`): `https://fromage3900.github.io/my-site/resonant-wilds/` — confirm SW `resonant-wilds-v15-*-floraison-release`. Real-device Safari touch, audio, performance and offline QA remain acceptance gates; CI alone does not prove them.
 
 No build step. three.js r170 is vendored in `vendor/` (MIT, licence alongside).
 
@@ -27,20 +31,67 @@ No build step. three.js r170 is vendored in `vendor/` (MIT, licence alongside).
 | Four skill buttons | Q E R F or 1–4 | Skills (cost Harmony ◆, cooldowns in beats) |
 | ⤳ | Shift / right click | Dodge. On the landing beat it becomes a **Perfect Dodge** |
 | ENCORE | T / C | Ultimate: ×3 burst, then two bars of guaranteed Perfects |
-| Gold pill | X / Enter | Interact (forge, bounties, font, rift, shrine, Maestro, pylon) |
-| Menu row | I K M B | Wardrobe · Skills · Map (fast travel) · Bounties |
+| Gold pill | X / Enter | Interact (forge, Daily Recital / bounties, font, rift, shrine, Maestro, pylon) |
+| Sheep | H (tap / double-tap / hold) | Harmonize · sniff Dew/blots · concert mode |
+| Menu row | I K M B | Wardrobe · Skills · Map (fast travel) · Daily Recital / Bounties |
+
+## 🗺 Open-world workflow (mobile anime research → live rules)
+
+`js/openworld.js` encodes production patterns from **Infinity Nikki**, **Genshin Impact**, **Wuthering Waves** and **Zenless Zone Zero**, then drives the existing World / Activities generators (no second world authority).
+
+| Research pattern | Resonant Wilds rule |
+|---|---|
+| Nikki Impression → Creation → Production | Per-biome impression card → gate/vista/landmark graph → dressed POIs |
+| Nikki “details all the time” | Near / mid / far dressing layers denser at the player’s feet |
+| Genshin gate → reveal → landmark | Hub gate arches → Reveal overlooks (~140 m) → biome core landmark |
+| Genshin exploration density | Budgeted camps / chests / shrines / sheets / chimes / whim frames per biome |
+| Nikki outfit → puzzle → space | Phrase Bridges, Aria Veils (Wardrobe), sheep Harmonize cleanses, Whim Frame angle challenges |
+| Nikki Ability Outfit → space | Mist Float (Shoes) / Prism Veil (Gown) / Nightbell Glide (Shoes) — one unlock ceremony per ethereal biome |
+| Nikki named subareas (Florawish-style) | 16 authored micro-destinations (2 per biome) + Resonance Dew; fashion photo frames in Mist/Glass/Starlit; float/purify gates |
+| Nikki “details all the time” look | Denser near dressing, taller landmarks, selective UnrealBloomPass, soft TOD tint, gown sway |
+| ZZZ signature hub district | Shorewake keeps forge / board / font / rift within a short walk |
+| WuWa TOD / atmosphere maintainability | Soft sun/fog TOD cycle + biome palette swaps; workflow keeps prop budgets phone-safe |
+| three.js OutlinePass + Bloom | Vendored r170 EffectComposer; outlines threats; bloom on emissives (off on `low` quality) |
+
+Inspect the live recipe in the browser console: `window.__rwOpenWorld`.
 
 ## 🔁 The loop
 
 - **Rhythm language.** Taps are graded against the beat you actually hear, using Web Audio output latency plus a calibration offset. Grades are PERFECT / GREAT / GOOD / MISS. On-beat hits build a combo and a **Crescendo** meter shown as dynamics (pp → p → mf → f → ff), which raises crit and move speed. They also fill **Encore** and refund **Harmony**. Slimes hop on the beat. Their attacks are telegraphs that land on a counted beat (elites and bosses count "3, 2, 1" aloud).
-- **Open world.** Five biomes from the Gaea world-gen setups sit around Shorewake Village, each with its own tempo, meter, key and style:
-  - Petal Cantata: waltz, 3/4
-  - Liquid Cathedral: organ, 4/4
+- **Encore variants** (one gauge, ten ultimates — cycle with hold / Alt+T / `[` `]`):
+  1. **Crescendo Cascade** — beat-locked radial waves; Perfects extend
+  2. **Subject & Answer** — mark 3 foes, then mirror your phrase
+  3. **Break Cadenza** — shatter toughness; Perfects guarantee BREAK
+  4. **Encore Reprise** — replay the last four Perfect hits as ghost notes
+  5. **Choral Duet** — Melusina + Sheep Harmonize (heal / cleanse / Tide)
+  6. **Aria Veil Step** — float on the beat, land as a shockwave
+  7. **Wardrobe Overture** — all Aria passives for eight beats
+  8. **Key Modulation** — local key flips; Phrase Bridges accept Good
+  9. **Resonance Dew Bloom** — spend Dew for a cymatic blast + map ping
+  10. **Rift Recital** — mid-Rift Echo Phrase bank + buff
+  Each cast has a tuned SFX stinger, bloom pulse (when `?postfx=1`), and ring/particle juice. Cycle shows a **one-beat preview**; biome-favored Encores get +12% power; fashion skins (gown/shoes) recolor trails only; end-of-cast toast replays the highlight.
+- **Shorewake Daily Recital** (hub board): three UTC-day tasks (destinations, Perfects, Encore casts, Whim frames, Harmonize, bridges). Claim all for Golden Notes + **Daily Overture Trail**.
+- **Maestro Encore exams:** each biome Maestro telegraphs a counter Encore; cast it during the fight to unlock that Encore's **concert trail** (fashion-only).
+- **Phrasebook:** answer a shrine at ≥70% to ink that biome — Phrase Bridges there then accept Good+.
+- **Sheep concert mode:** hold **H** (~0.35s) to toggle a beat-ring metronome that auto-Harmonizes nearby blots. Double-tap H still sniffs for Dew/blots.
+- **Playground toys** (default on; `?toys=0` off):
+  1. **Chladni sand** — grains settle on floor nodal lines; **Perfect** (or Chladni Burst) detonates them
+  2. **Sheep weapon** — **V** charge+bounce, **Shift+V** toggle; downbeat fires a choir-beam
+  3. **Mega gown** — **G** toggles a ~40 m couture skirt with wind + soft enemy shove (pairs well with `?avatar=mixamo`)
+- **Fashion photo setpieces** (Mist Choir / Glass Orchard / Starlit Moor destinations): Whim Frames that need the matching Encore selected for a gold photo.
+- **Mixamo hero (opt-in):** `?avatar=mixamo` loads `assets/models/mixamo-hero.glb` (Three.js Mixamo Soldier) with Idle/Walk/Run mixer; procedural Melusina stays the default fallback. Also `?avatar=chibi`.
+- **Dew sets & destinations:** first visit grants a 90s motif buff; Dew milestones at 3 / 6 / 10 (Encore charge → Harmony+buff → full Encore + extra Perfect beat); float destinations reveal a **secret ledge** after Dew. Double-tap **H** (Sheep Harmonize) out of combat sniffs toward Dew/blots; Whim Frames can sheep-photobomb.
+- **Open world.** Eight biomes sit around Shorewake Village on a **2×** map (radius 1400). Each has its own tempo, meter, key, ethereal score style, and a continuous **region ambience** bed:
+  - Petal Cantata: soft waltz, 3/4
+  - Liquid Cathedral: choral nave, 4/4
+  - Mist Choir (Choir Marsh): choir pads, 4/4
   - Fugue Grotto: subject and answer, 4/4
-  - Cadence Cathedral: toccata, 4/4
-  - Aurora Glacier: glacial, 4/4
+  - Glass Orchard: crystalline bells, 4/4
+  - Cadence Cathedral: glass toccata, 4/4
+  - Starlit Moor: high-bell drone, 4/4
+  - Aurora Glacier: glacial shimmer, 4/4
 
-  The score changes on the next bar line when you cross a border.
+  The score changes on the next bar line when you cross a border; ambience crossfades immediately. Explore mixes are pad-led; combat still lifts drums without leaving the ethereal identity.
 - **Things to do:**
   - Slime camps, which respawn
   - Elite Chorus events
@@ -48,17 +99,34 @@ No build step. three.js r170 is vendored in `vendor/` (MIT, licence alongside).
   - Lost Sheet Music, which teaches skills
   - Pylons for fast travel
   - Music-key shrines: call and response, where you answer the shrine's phrase on the next bar
+  - **Vista overlooks** (auto-reveal banners) and **Whim Frames** / **chime clusters** from the OW density budget
+  - **Phrase Bridges** (answer Great/Perfect on the beat), **Dissonant Blots** (Sheep Harmonize cleanse), **Aria Veils** (equip shoes or an Opus Aria)
+  - **Ability Outfits** (Nikki equip→space): Mist Float / Prism Veil / Nightbell Glide — first open banners an unlock; Wardrobe lists locked/ready state
+  - **Named destinations** (16 across all 8 biomes — Petal Tea Terrace, Mist Choir Reedwalk, Prism Picnic Glade, Starlit Moongate, …) with **Resonance Dew** collectibles; float ledges need Ability Outfit / Wardrobe, purify caves need Harmonize
+  - Whim Frame **angle challenges** — face the landmark prompt before framing
   - Biome **Maestros** (world bosses) with toughness **BREAK**
-  - **Resonance Rifts**: tiered, infinite and timed, with DT_Burdens at tier 3+
+  - **Resonance Rifts** (Recitals): tiered, infinite and timed, with DT_Burdens at tier 3+
   - The **Movement** chain: one per biome, which gives new players a direction
-- **Gear.** Items fill the Wardrobe slots (instrument, headpiece, gown, gloves, shoes, charm). There are five rarities, Common → Opus. Opus items carry an **Aria** from DT_Artifacts and the authored rhythm-skill DataAssets. The **Forge** hones gear +1…+15 with falling odds and banked pity. Salvage turns spare gear into gold and shards, and gear score gates what you can take on.
+- **Gear.** Items fill the Wardrobe slots (instrument, headpiece, gown, gloves, shoes, charm) with SVG icons. Five rarities, Common → Opus. Opus items carry an **Aria** from DT_Artifacts and the authored rhythm-skill DataAssets. Gear score gates what you can take on.
+- **Harmonic Synthesis (Atelier / cymatics).** Salvage always yields **Motifs** (element materials) plus gold/shards. At the Forge, spend Motifs into Chladni **cymatic loops** to raise Synthesis Quality and transfer Motifs as traits. **Temper** (hone +1…+15 with pity) is the follow-up step. Opus Aria = Super Trait slot.
+- **Echo Lineage (Uma inheritance).** Clearing a Rift banks a residual Phrase. The next Recital shows pass chance (Arias + Blessings as Score Supports, plus pity). Inherited Motifs buff that run only — re-clear to breed a stronger Echo.
 - **Retention hooks:**
-  - Bounties (3 claimed = Chorus Cache)
+  - Daily Recital board + Bounties (3 claimed = Chorus Cache)
   - Blessings bought with Golden Notes (DT_Blessings)
-  - Shrine attunement: +1% damage each
+  - Shrine attunement: +1% damage each · Phrasebook softens biome bridges
   - Exploration fog on the map
   - An idle reward from your Choral Sheep when you return
-  - Everything saves to `localStorage`
+  - Staged **Rift Clear** reward reveal
+  - Concert trails from Maestro exams / Daily Recital
+- **Cooler loops + Recital polish:**
+  - Beat-synced Harmonic Synthesis (ring pulses + Motif chords)
+  - Echo **Phrase Pedigree** card on clear / wardrobe
+  - Recital **micro-goals** (3 per Rift) + **Blessings** that spice the banked Phrase
+  - Motif **morph reveal** on salvage / synthesize / Chorus Cache packs
+  - **Oshi Aria** pin (boosts Echo pass chance + Devotion Cadence)
+  - Six web-native skills: Chladni Burst, Phrase Recall, Resonant Weave, Devotion Cadence, Downbeat Break, Afterimage — with Melusina cast poses
+  - Ceremony flash + fanfare on goal / bank / inherit / miss
+  - Everything saves to `localStorage` (`melodia_resonant_wilds_v2`, migrates from v1)
 
 ## 🧬 What comes from UE
 
@@ -71,16 +139,14 @@ No build step. three.js r170 is vendored in `vendor/` (MIT, licence alongside).
 | Biomes: name, seed 3900, terrain recipe (terrace strength, flow, lakes, radial gradient, height range), musical binding | `Docs/WorldGen/GAEA_SETUP_*.json` |
 | Choral Sheep **Harmonize**, Wardrobe slots, music-as-key shrines | the proven UE seams in `CURRENT_STATE.md` |
 
-Regenerate after changing any of those files:
-
-```powershell
-python Prototypes/Web/MelodiaResonantWilds/tools/export_ue_data.py
-```
+Regenerate UE-derived data in the canonical `MelodiaMelusinaV2` repository before syncing another website release. This website mirror does not contain the UE source JSON inputs; do not run the exporter from here.
 
 `js/design.js` holds only what the ARPG adds on top: how each skill is delivered, biome tempos and palettes, loot tables, bounties.
 
 ## 🗂 Files
 
-`js/audio.js` beat clock and procedural score · `js/rhythm.js` judging, combo, Crescendo, Encore · `js/world.js` streamed terrain, biomes, props, landmarks, water, rift arena · `js/entities.js` Melusina, sheep, slimes, boss phrases · `js/combat.js` damage, skills, projectiles · `js/loot.js` items, forge · `js/activities.js` camps, shrines, bosses, events, rifts · `js/progress.js` save, XP, bounties, exploration · `js/ui.js` HUD, touch controls, panels · `js/game.js` loop.
+`js/openworld.js` anime OW workflow recipe (gates, vistas, density, dressing layers, destinations) · `js/encore.js` ten Encore ultimate variants · `js/audio.js` beat clock, procedural score, Encore stingers · `js/rhythm.js` judging, combo, Crescendo, Encore · `js/world.js` streamed terrain, biomes, props, landmarks, water, rift arena · `js/entities.js` Melusina, sheep, slimes, boss phrases · `js/combat.js` damage, skills, projectiles · `js/loot.js` items, Motifs, Harmonic Synthesis, temper · `js/echo.js` Echo Lineage · `js/activities.js` camps, shrines, bosses, events, rifts, overlooks, destinations · `js/progress.js` save, XP, bounties, exploration · `js/ui.js` HUD, touch controls, panels, rift reward reveal · `js/postfx.js` OutlinePass + selective bloom · `js/game.js` loop · `assets/icons/` SVG icon pack + `manifest.json`.
+
+UI frames live in Figma: [Resonant Wilds Web UI](https://www.figma.com/design/Vin9X81mAyJ4GQIjGBmzcI).
 
 Terrain follows the idea in [OpenWorldJS](https://github.com/obecerra3/OpenWorldJS): tiles centred on the player and streamed from a noise heightmap with biomes. Here the tiles are small CPU chunks with analytic normals, so they are cheap on phones. Beat ripples and the Crescendo glow are injected into the terrain and water shaders.

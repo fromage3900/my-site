@@ -8,9 +8,16 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="description" content="Melodia — Resonant Wilds: a mobile open-world rhythm ARPG built on Melodia Melusina's UE rules, skills and enemy data." />
   <title>Melodia — Resonant Wilds</title>
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+  <link rel="apple-touch-icon" href="icon-512.png" />
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
-  <script type="importmap">{ "imports": { "three": "./vendor/three.module.min.js" } }</script>
+  <script type="importmap">{
+    "imports": {
+      "three": "./vendor/three.module.min.js",
+      "three/addons/": "./vendor/"
+    }
+  }</script>
 </head>
 <body>
   <canvas id="game"></canvas>
@@ -43,10 +50,12 @@
         <button data-panel="bounties" title="Bounties (B)">📜<i id="bountydot"></i></button>
         <button data-panel="settings" title="Settings">⚙</button>
       </div>
+      <button id="btnFloraisonPOV" class="hidden" type="button" aria-pressed="false" title="Flower-height first-person camera">✿ Flower POV (P)</button>
       <div id="tracker"></div>
     </div>
 
     <div id="objective"></div>
+    <div id="recgoals" class="hidden"></div>
     <div id="riftbar" class="hidden"><div class="label"><span id="riftlabel">Rift</span><span id="rifttime"></span></div><div class="bar"><div id="riftfill"></div></div></div>
     <div id="bossbar" class="hidden"><div id="bossname"></div><div class="bar"><div id="bossfill"></div></div><div class="tbar"><div id="bosstough"></div></div></div>
 
@@ -68,6 +77,7 @@
 
     <div id="toasts"></div>
     <div id="banner"><div id="bannerTitle"></div><div id="bannerSub"></div></div>
+    <div id="ceremonyflash" class="hidden" aria-hidden="true"></div>
     <div id="hint" class="hidden"></div>
   </div>
 
@@ -90,6 +100,27 @@
       <div class="deathtitle">The melody fades…</div>
       <div class="deathsub">Melusina will return at an attuned pylon. Nothing is lost.</div>
       <button id="respawn" class="primary">Rise again ♪</button>
+    </div>
+  </div>
+
+
+  <div id="motifmorph" class="hidden">
+    <div class="morphstage">
+      <div class="morphfrom"><img id="mmFrom" alt=""/></div>
+      <div class="morphflash" id="mmFlash"></div>
+      <div class="morphto" id="mmTo"></div>
+      <div class="morphlabel" id="mmLabel"></div>
+    </div>
+  </div>
+
+  <div id="riftreward" class="hidden">
+    <div class="rewardbox">
+      <div class="rewardkicker" id="rrKicker">RIFT CLEARED</div>
+      <div class="rewardtitle" id="rrTitle">Resonance Remains</div>
+      <div class="rewardsub" id="rrSub"></div>
+      <div class="rewardrow" id="rrRow"></div>
+      <div class="rewardlineage" id="rrLineage"></div>
+      <button class="primary" id="rrContinue">Inherit into next Recital →</button>
     </div>
   </div>
 

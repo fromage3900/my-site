@@ -1,7 +1,10 @@
 // HUD, touch controls, keyboard, and menu panels.
 
-import { SLOTS, SLOT_BY_ID, RARITIES, SKILLS, SKILL_BY_ID, ELEMENT_STYLE, ARIA_BY_ID, BIOMES, BLESSINGS, DIFFICULTY, xpToNext, HONE_MAX, honeChance, TUTORIAL, WORLD_RADIUS, RULES } from './design.js';
+import * as THREE from 'three';
+import { SLOTS, SLOT_BY_ID, RARITIES, SKILLS, SKILL_BY_ID, ELEMENT_STYLE, ARIA_BY_ID, BIOMES, BLESSINGS, DIFFICULTY, xpToNext, HONE_MAX, honeChance, TUTORIAL, WORLD_RADIUS, RULES, MOTIF_BY_ID, AFFIX_BY_KEY } from './design.js';
+import { ABILITY_OUTFITS } from './openworld.js';
 import { fmt, clamp } from './util.js';
+import { povMoveVector } from './floraison-pov.js';
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -22,6 +25,7 @@ export class UI {
     this.sel = null;
     this.loadSel = 0;
     this.forgeSel = null;
+    this.synthSlots = [];
     this._t = 0;
     this._mm = 0;
     this.metroN = 0;
@@ -75,23 +79,72 @@ export class UI {
     press($('btnAttack'), (t) => g.attack(t), 'attackHeld');
     document.querySelectorAll('.skill').forEach((b) => press(b, (t) => g.skill(+b.dataset.i, t)));
     press($('btnDodge'), (t) => g.dodge(t));
-    press($('btnEncore'), () => g.encore());
+    {
+      const enc = $('btnEncore');
+      let holdTimer = null, cycled = false;
+      const clearHold = () => { if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; } };
+      enc.addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        cycled = false;
+        clearHold();
+        holdTimer = setTimeout(() => { cycled = true; g.encore(true); }, 380);
+      });
+      enc.addEventListener('pointerup', (e) => {
+        e.preventDefault();
+        clearHold();
+        if (!cycled) g.encore(false);
+      });
+      enc.addEventListener('pointercancel', clearHold);
+      enc.addEventListener('pointerleave', clearHold);
+    }
     press($('shrinetap'), (t) => g.activities.shrineTap(t));
     $('btnInteract').addEventListener('pointerdown', (e) => { e.preventDefault(); g.interact(); });
     document.querySelectorAll('#menu button').forEach((b) => b.addEventListener('click', () => this.open(b.dataset.panel)));
     $('mapwrap').addEventListener('click', () => this.open('map'));
     $('closepanel').addEventListener('click', () => this.close());
     $('respawn').addEventListener('click', () => g.respawn());
+    const povButton = $('btnFloraisonPOV');
+    if (povButton && g.world.botanyEnabled) {
+      povButton.classList.remove('hidden');
+      povButton.addEventListener('click', () => { if (g.started) g.floraisonPOV.toggle(); });
+      this.syncFloraisonPOV();
+    }
 
     const canvas = $('game');
     canvas.addEventListener('pointerdown', (e) => {
+      // Free canvas becomes look surface in Floraison POV; gameplay HUD retains
+      // its normal click/joystick and combat ownership.
+      if (g.floraisonPOV?.enabled) {
+        if (g.paused || (e.pointerType === 'mouse' && e.button !== 0)) return;
+        this.povDrag = { id: e.pointerId, x: e.clientX, y: e.clientY };
+        canvas.setPointerCapture(e.pointerId);
+        e.preventDefault();
+        return;
+      }
       if (e.pointerType !== 'mouse' || g.paused) return;
       g.aimAt(e.clientX, e.clientY);
       if (e.button === 0) { this.attackHeld = true; g.attack(stamp(e)); }
       else if (e.button === 2) g.dodge(stamp(e));
     });
-    canvas.addEventListener('pointerup', (e) => { if (e.pointerType === 'mouse' && e.button === 0) this.attackHeld = false; });
-    canvas.addEventListener('pointermove', (e) => { if (e.pointerType === 'mouse' && this.attackHeld) g.aimAt(e.clientX, e.clientY); });
+    canvas.addEventListener('pointerup', (e) => {
+      if (this.povDrag?.id === e.pointerId) this.povDrag = null;
+      if (e.pointerType === 'mouse' && e.button === 0) this.attackHeld = false;
+    });
+    canvas.addEventListener('pointercancel', (e) => {
+      if (this.povDrag?.id === e.pointerId) this.povDrag = null;
+    });
+    canvas.addEventListener('pointermove', (e) => {
+      if (g.floraisonPOV?.enabled) {
+        const drag = this.povDrag;
+        if (drag && drag.id === e.pointerId) {
+          g.floraisonPOV.look(e.clientX - drag.x, e.clientY - drag.y);
+          drag.x = e.clientX; drag.y = e.clientY;
+          e.preventDefault();
+        }
+        return;
+      }
+      if (e.pointerType === 'mouse' && this.attackHeld) g.aimAt(e.clientX, e.clientY);
+    });
     window.addEventListener('contextmenu', (e) => e.preventDefault());
   }
 
@@ -109,7 +162,23 @@ export class UI {
       if (c === 'Space' || c === 'KeyJ') { e.preventDefault(); this.attackHeld = true; if (g.activities.shrine) g.activities.shrineTap(t); else g.attack(t); }
       else if (c in skillKeys) g.skill(skillKeys[c], t);
       else if (c === 'ShiftLeft' || c === 'ShiftRight' || c === 'KeyL') g.dodge(t);
-      else if (c === 'KeyT' || c === 'KeyC') g.encore();
+      else if (c === 'KeyT' || c === 'KeyC') {
+        if (e.altKey || e.shiftKey) g.encore(true);
+        else g.encore(false);
+      }
+      else if (c === 'BracketLeft') g.encore(true);
+      else if (c === 'BracketRight') { g.encoreSys.cycle(-1); }
+      else if (c === 'KeyH') {
+        g.sheep.setConcertHold(true);
+        g.sheep.harmonize(false);
+      }
+      else if (c === 'KeyV') {
+        // Playground sheep weapon: V = charge; Shift+V toggles mode.
+        if (e.shiftKey) g.sheep.toggleWeapon();
+        else g.sheep.startCharge();
+      }
+      else if (c === 'KeyG' && g.megaGown) g.megaGown.toggle();
+      else if (c === 'KeyP' && g.world.botanyEnabled && g.started) g.floraisonPOV.toggle();
       else if (c === 'KeyX' || c === 'Enter') g.interact();
       else if (c === 'KeyI') this.open('wardrobe');
       else if (c === 'KeyK') this.open('skills');
@@ -119,6 +188,7 @@ export class UI {
     window.addEventListener('keyup', (e) => {
       this.keys.delete(e.code);
       if (e.code === 'Space' || e.code === 'KeyJ') this.attackHeld = false;
+      if (e.code === 'KeyH') g.sheep.setConcertHold(false);
     });
     window.addEventListener('blur', () => { this.keys.clear(); this.attackHeld = false; });
   }
@@ -134,10 +204,19 @@ export class UI {
     const d = Math.hypot(x, z);
     if (d > 1) { x /= d; z /= d; }
     if (d < 0.15) return { x: 0, z: 0 };
-    return { x, z };
+    return this.g.floraisonPOV?.enabled ? povMoveVector(x, z, this.g.floraisonPOV.yaw) : { x, z };
   }
 
   // ================================================================ HUD
+  syncFloraisonPOV() {
+    const button = $('btnFloraisonPOV');
+    if (!button) return;
+    const active = !!this.g.floraisonPOV?.enabled;
+    button.textContent = active ? '✿ Exit POV (P)' : '✿ Flower POV (P)';
+    button.setAttribute('aria-pressed', String(active));
+    button.title = active ? 'Return to the regular camera' : 'Walk through the flowers at eye level';
+  }
+
   show() { $('hud').classList.remove('hidden'); }
 
   buildMetro(meter) {
@@ -166,6 +245,19 @@ export class UI {
     this._gf = setTimeout(() => el.classList.remove('show'), 380);
   }
 
+  /** Highway pulse when a Perfect lands — tint follows selected Encore / fashion. */
+  beatSpark(color = null) {
+    const ring = $('approach');
+    if (!ring) return;
+    const col = color || this.g.encoreSys?.accentColor?.() || '#ffd978';
+    ring.style.borderColor = col;
+    ring.style.opacity = '1';
+    ring.animate?.(
+      [{ transform: 'scale(1.05)', borderWidth: '3px' }, { transform: 'scale(1.55)', borderWidth: '1px' }],
+      { duration: 220, easing: 'ease-out' },
+    );
+  }
+
   dynamicsUp(d) {
     const el = $('dynmark');
     el.animate([{ transform: 'scale(2)' }, { transform: 'scale(1)' }], { duration: 400, easing: 'ease-out' });
@@ -192,6 +284,30 @@ export class UI {
     this._bn = setTimeout(() => b.classList.remove('show'), 2800);
   }
 
+  /** Full-screen Recital ceremony flash: goal | bank | inherit | miss */
+  ceremonyFlash(kind = 'goal') {
+    const el = $('ceremonyflash');
+    if (el) {
+      el.className = `on ${kind}`;
+      el.classList.remove('hidden');
+      clearTimeout(this._cf);
+      this._cf = setTimeout(() => {
+        el.classList.add('hidden');
+        el.className = 'hidden';
+      }, 520);
+    }
+    // Ground nodal bloom (same plate modes as the floor shader).
+    const pos = this.g?.player?.pos;
+    const samples = this.g?.world?.ceremonyFigure?.(kind, pos?.x, pos?.z);
+    if (samples?.nodal?.length && this.g?.particles) {
+      const col = kind === 'miss' ? '#6a5a88' : kind === 'inherit' ? '#c690ff' : kind === 'bank' ? '#7fd0e4' : '#ffe7a8';
+      const c = new THREE.Color(col);
+      for (const s of samples.nodal.slice(0, 28)) {
+        this.g.particles.emit(s.x, (pos?.y ?? 0) + 0.5, s.z, c, { speed: 2.4, life: 0.7, gravity: 0.45, kind: 3, size: 0.75 });
+      }
+    }
+  }
+
   hint(text) {
     const h = $('hint');
     if (!text) { h.classList.add('hidden'); return; }
@@ -213,14 +329,16 @@ export class UI {
     // Combo + dynamics
     $('dynmark').textContent = R.dyn.mark;
     $('cresfill').style.width = R.crescendo + '%';
-    $('combo').innerHTML = R.combo >= 3 ? `${R.combo}<small>${R.encoreActive ? 'ENCORE' : 'COMBO ×' + R.multiplier('Good').toFixed(2)}</small>` : '';
+    const encLive = g.encoreSys?.active ? (g.encoreSys.variant?.short || 'ENCORE') : R.encoreActive ? 'ENCORE' : null;
+    $('combo').innerHTML = R.combo >= 3 ? `${R.combo}<small>${encLive || ('COMBO ×' + R.multiplier('Good').toFixed(2))}</small>` : '';
     // Approach ring: closes exactly as the next beat becomes audible.
     const spb = g.audio.spb;
     const toNext = clamp(1 - g.beatPhase, 0, 1);
     const ring = $('approach');
     ring.style.transform = `scale(${1 + toNext * 0.9})`;
     ring.style.opacity = (0.35 + (1 - toNext) * 0.65).toFixed(2);
-    ring.style.borderColor = toNext < 0.12 || toNext > 0.9 ? '#ffd978' : '#82d2db';
+    const encCol = g.encoreSys?.accentColor?.() || '#ffd978';
+    ring.style.borderColor = toNext < 0.12 || toNext > 0.9 ? encCol : '#82d2db';
     // Skills
     for (let i = 0; i < 4; i++) {
       const b = document.querySelector(`.skill[data-i="${i}"]`);
@@ -243,7 +361,19 @@ export class UI {
     const dl = Math.max(0, g.dodgeReadyAt - g.time);
     $('btnDodge').querySelector('.cd').style.setProperty('--cd', dl > 0 ? (dl / g.dodgeCd).toFixed(3) : 0);
     $('encfill').style.height = (R.encore / R.encoreMax) * 100 + '%';
-    $('btnEncore').classList.toggle('ready', R.encore >= R.encoreMax);
+    const encBtn = $('btnEncore');
+    encBtn.classList.toggle('ready', R.encore >= R.encoreMax);
+    const ev = g.encoreSys?.variant;
+    if (ev) {
+      const label = encBtn.querySelector('span');
+      if (label && label.dataset.id !== ev.id) {
+        label.dataset.id = ev.id;
+        label.textContent = ev.short;
+        label.title = `${ev.name} — ${ev.blurb} (hold / Alt+T to cycle)`;
+        encBtn.style.borderColor = ev.color;
+      }
+      if (g.encoreSys.active) encBtn.classList.add('ready');
+    }
     // Interact
     const it = g.nearestInteract();
     const ib = $('btnInteract');
@@ -264,6 +394,22 @@ export class UI {
       $('rifttime').textContent = rift.done ? 'Cleared' : `${Math.floor(left / 60)}:${String(Math.floor(left % 60)).padStart(2, '0')}`;
       $('rifttime').style.color = left < 30 ? '#ff8a9a' : '';
       $('riftfill').style.width = rift.progress + '%';
+    }
+    const rg = $('recgoals');
+    if (rg) {
+      if (rift?.goals?.length && !rift.done) {
+        rg.classList.remove('hidden');
+        const bless = rift.blessing
+          ? `<div class="bless">✦ ${esc(rift.blessing.name)} · ${esc(rift.blessing.desc)}</div>`
+          : '';
+        const echo = rift.inherit?.passed
+          ? `<div class="echo-on">Echo Motifs active</div>`
+          : '';
+        rg.innerHTML = `<b>Recital goals</b>${bless}${echo}` + rift.goals.map((x) => {
+          const pct = Math.min(100, (x.prog / x.n) * 100);
+          return `<div class="g ${x.done ? 'done' : ''}">${x.done ? '✓ ' : ''}${esc(x.text)} <i><em style="width:${pct}%"></em></i></div>`;
+        }).join('');
+      } else rg.classList.add('hidden');
     }
     this._t += dt;
     if (this._t > 0.4) {
@@ -368,6 +514,13 @@ export class UI {
       case 'forge': glyph('⚒', '#ffcf7a', 18); break;
       case 'board': glyph('📜', '#fff', 16); break;
       case 'font': glyph('✧', '#8fe0ff', 18); break;
+      case 'overlook': glyph('⌂', (pr.vistas || []).includes(p.id) ? '#ffd978' : '#f6f0f8', 18); break;
+      case 'photo': glyph('▭', '#c8b6ef', 16); break;
+      case 'chime': glyph('♫', '#9fe6ff', 16); break;
+      case 'musicgate': glyph('═', p.open ? '#62c8ff' : '#9fe6ff', 16); break;
+      case 'cleanse': glyph('◎', p.cleared ? '#8fd8ff' : '#c690ff', 16); break;
+      case 'ariagate': glyph('◈', p.open ? '#ffd978' : '#e8dff8', 16); break;
+      case 'destination': glyph('◇', (pr.dews || []).includes(p.id) ? '#ffd978' : '#9fe6ff', 18); break;
     }
   }
 
@@ -392,7 +545,7 @@ export class UI {
   render() {
     const base = ['wardrobe', 'skills', 'map', 'bounties', 'settings'];
     const ctx = ['forge', 'blessings', 'rift'].includes(this.panel) ? [this.panel] : [];
-    const names = { wardrobe: '👗 Wardrobe', skills: '♫ Skills', map: '🗺 Map', bounties: '📜 Bounties', settings: '⚙ Settings', forge: '⚒ Forge', blessings: '✧ Blessings', rift: '◎ Rift' };
+    const names = { wardrobe: '👗 Wardrobe', skills: '♫ Skills', map: '🗺 Map', bounties: '📜 Bounties', settings: '⚙ Settings', forge: '⟡ Synthesis', blessings: '✧ Blessings', rift: '◎ Rift' };
     $('tabs').innerHTML = [...ctx, ...base].map((t) => `<button data-t="${t}" class="${t === this.panel ? 'on' : ''}">${names[t]}</button>`).join('');
     $('tabs').querySelectorAll('button').forEach((b) => b.addEventListener('click', () => { this.panel = b.dataset.t; this.render(); }));
     const body = $('panelbody');
@@ -400,12 +553,25 @@ export class UI {
     this['render_' + this.panel](body);
   }
 
+  iconSrc(key) {
+    if (!key) return null;
+    return `assets/icons/${key}.svg`;
+  }
+
+  itemIconHtml(it) {
+    const key = it.icon || this.g.loot.iconKey(it);
+    const src = this.iconSrc(key);
+    const fb = SLOT_BY_ID[it.slot]?.icon || '♪';
+    if (!src) return `<span class="ico-fallback">${fb}</span>`;
+    return `<img class="ico" src="${src}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ico-fallback',textContent:'${fb}'}))" />`;
+  }
+
   itemBox(it, attrs = '') {
     const R = RARITIES[it.rarity];
     const eq = this.g.profile.equipment[it.slot];
     const better = !Object.values(this.g.profile.equipment).includes(it) && this.g.loot.score(it) > this.g.loot.score(eq);
     return `<div class="slotbox ${this.sel === it ? 'sel' : ''}" style="border-color:${R.color};box-shadow:inset 0 0 12px ${R.color}33" ${attrs}>
-      ${SLOT_BY_ID[it.slot].icon}<span class="lv">${it.ilvl}</span>${it.up ? `<span class="up">+${it.up}</span>` : ''}
+      ${this.itemIconHtml(it)}<span class="lv">${it.ilvl}</span>${it.up ? `<span class="up">+${it.up}</span>` : ''}${it.quality ? `<span class="up" style="left:4px;right:auto;color:#9fe4ff">Q${it.quality}</span>` : ''}
       ${better ? '<span class="better">▲</span>' : ''}${it.isNew ? '<span class="newb"></span>' : ''}${it.locked ? '<span class="lock">🔒</span>' : ''}</div>`;
   }
 
@@ -422,23 +588,47 @@ export class UI {
     return `<div class="item-name" style="color:${R.color}">${esc(it.name)}${it.up ? ' +' + it.up : ''}</div>
       <div class="item-sub">${R.name} ${SLOT_BY_ID[it.slot].name} · iLvl ${it.ilvl}${equipped ? ' · Equipped' : ''}</div>
       <div class="item-lines">${L.lines(it).map((l) => `<div>${esc(l)}</div>`).join('')}</div>
-      ${it.aria ? `<div class="item-aria">Aria — ${esc(ARIA_BY_ID[it.aria].name)}: ${esc(ARIA_BY_ID[it.aria].desc)}</div>` : ''}
+      ${it.aria ? `<div class="item-aria">Aria — ${esc(ARIA_BY_ID[it.aria].name)}: ${esc(ARIA_BY_ID[it.aria].desc)}
+        <span class="oshi-pin ${g.profile.oshiAria === it.aria ? 'on' : ''}" data-a="oshi" title="Pin as oshi Aria">${g.profile.oshiAria === it.aria ? '★ oshi' : '☆ pin oshi'}</span></div>` : ''}
       ${cmp}
       <div class="btns">
         ${equipped ? '' : '<button class="btn gold" data-a="equip">Equip</button>'}
-        ${equipped ? '' : `<button class="btn" data-a="salvage" ${it.locked ? 'disabled' : ''}>Salvage (+${sv.gold}● +${sv.shards}◆)</button>`}
+        ${equipped ? '' : `<button class="btn" data-a="salvage" ${it.locked ? 'disabled' : ''}>Salvage → Motifs (+${sv.gold}● +${sv.shards}◆)</button>`}
         <button class="btn" data-a="lock">${it.locked ? 'Unlock' : 'Lock'}</button>
       </div>`;
+  }
+
+  motifChip(m, opts = {}) {
+    const src = this.iconSrc(`motif_${m.element.toLowerCase()}`);
+    const cls = ['motifchip', opts.on ? 'on' : '', opts.dim ? 'dim' : ''].filter(Boolean).join(' ');
+    const attrs = opts.attrs || '';
+    return `<span class="${cls}" ${attrs}><img src="${src}" alt=""/>${esc(m.name)} ×${m.n}</span>`;
   }
 
   render_wardrobe(body) {
     const g = this.g, pr = g.profile, S = g.player.stats, L = g.loot;
     const eqHtml = SLOTS.map((s) => {
       const it = pr.equipment[s.id];
-      return it ? this.itemBox(it, `data-eq="${s.id}"`) : `<div class="slotbox empty">${s.icon}</div>`;
+      return it ? this.itemBox(it, `data-eq="${s.id}"`) : `<div class="slotbox empty"><img class="ico" src="assets/icons/slot_${s.id}.svg" alt="" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ico-fallback',textContent:'${s.icon}'}))"/></div>`;
     }).join('');
     const W = g.rhythm.windows();
     const inv = pr.inventory.slice().sort((a, b) => b.rarity - a.rarity || b.ilvl - a.ilvl);
+    const motifs = L.motifInventory();
+    const echo = pr.echoLineage?.phrase;
+    // Nikki Ability Outfit catalogue — ethereal biome traversal identities.
+    const unlocked = new Set(pr.abilityOutfits || []);
+    const outfits = Object.values(ABILITY_OUTFITS);
+    const abilityHtml = `<div class="pedigree" style="margin-top:8px"><div class="title">Ability Outfits</div>
+      ${outfits.map((ab) => {
+        const on = unlocked.has(ab.id);
+        const wearing = !!pr.equipment?.[ab.slot];
+        const state = on ? (wearing ? 'ready' : 'unlocked') : 'locked';
+        const tip = on
+          ? (wearing ? `${ab.name} equipped — space opens` : `Unlocked · equip ${ab.slotLabel} to use`)
+          : `Locked · ${ab.slotLabel} opens ${ab.name}`;
+        return `<div style="opacity:${on ? 1 : 0.55};margin:4px 0"><span style="color:${ab.color}">✦</span> ${esc(ab.name)} · ${esc(ab.slotLabel)} <span class="muted">(${state})</span><div class="muted" style="font-size:12px">${esc(tip)}</div></div>`;
+      }).join('')}
+    </div>`;
     body.innerHTML = `<div class="cols">
       <div>
         <div class="card"><h3>Wardrobe · GS ${L.gearScore()}</h3><div class="equip">${eqHtml}</div>
@@ -448,17 +638,25 @@ export class UI {
             <span>Perfect window</span><span>±${Math.round(W.perfect)}ms</span><span>Damage</span><span>+${Math.round(S.dmg * 100)}%</span>
             <span>Basic attack</span><span>${S.family === 'melee' ? 'Melee' : 'Ranged'} · ${S.basicElement}</span><span>Arias</span><span>${[...S.arias].map((a) => ARIA_BY_ID[a].name).join(', ') || '—'}</span>
           </div>
+          ${abilityHtml}
+          ${echo ? `<div class="pedigree"><div class="title">Echo Pedigree</div>${esc(g.echo.pedigreeHtml())}<div style="margin-top:4px;opacity:.85">Next pass ${Math.round(g.echo.passChance() * 100)}%${pr.oshiAria ? ` · oshi ${esc(ARIA_BY_ID[pr.oshiAria]?.name || pr.oshiAria)}` : ''}</div></div>` : ''}
         </div>
-        <div class="card" id="detail" style="margin-top:10px">${this.sel ? this.itemDetail(this.sel) : '<div class="muted">Tap an item to inspect it. ▲ marks an upgrade. Opus items carry an Aria — a unique power from the Melodia artifact and skill tables.</div>'}</div>
+        <div class="card" id="detail" style="margin-top:10px">${this.sel ? this.itemDetail(this.sel) : '<div class="muted">Tap an item to inspect it. ▲ marks an upgrade. Salvage yields Motifs for Harmonic Synthesis. Opus items carry an Aria.</div>'}</div>
       </div>
-      <div class="card"><h3>Bag ${pr.inventory.length}/${L.INV_MAX}</h3>
-        <div class="btns" style="margin:0 0 8px">
-          <button class="btn gold" data-a="best">Equip best</button>
-          <button class="btn" data-a="s0">Salvage Common</button>
-          <button class="btn" data-a="s1">Salvage ≤ Tuned</button>
-          <button class="btn" data-a="auto">Auto-salvage: ${pr.settings.autoSalvage ? 'On' : 'Off'}</button>
+      <div>
+        <div class="card"><h3>Bag ${pr.inventory.length}/${L.INV_MAX}</h3>
+          <div class="btns" style="margin:0 0 8px">
+            <button class="btn gold" data-a="best">Equip best</button>
+            <button class="btn" data-a="s0">Salvage Common → Motifs</button>
+            <button class="btn" data-a="s1">Salvage ≤ Tuned</button>
+            <button class="btn" data-a="auto">Auto-salvage: ${pr.settings.autoSalvage ? 'On' : 'Off'}</button>
+          </div>
+          <div class="grid">${inv.map((it) => this.itemBox(it, `data-uid="${it.uid}"`)).join('') || '<div class="muted">Empty. Defeat slimes, open chests and clear rifts.</div>'}</div>
         </div>
-        <div class="grid">${inv.map((it) => this.itemBox(it, `data-uid="${it.uid}"`)).join('') || '<div class="muted">Empty. Defeat slimes, open chests and clear rifts.</div>'}</div>
+        <div class="card" style="margin-top:10px"><h3>Motifs</h3>
+          <div class="muted">Atelier-style materials from salvage. Spend them at the Forge (Harmonic Synthesis).</div>
+          <div class="motifbag">${motifs.map((m) => this.motifChip(m)).join('') || '<div class="muted">No Motifs yet — salvage spare gear.</div>'}</div>
+        </div>
       </div></div>`;
     body.querySelectorAll('[data-uid]').forEach((el) => el.addEventListener('click', () => {
       const it = pr.inventory.find((i) => i.uid === +el.dataset.uid);
@@ -471,8 +669,17 @@ export class UI {
       else if (a === 'salvage' && this.sel) { L.salvage(this.sel); this.sel = null; }
       else if (a === 'lock' && this.sel) this.sel.locked = !this.sel.locked;
       else if (a === 'best') { const n = L.equipBest(); this.toast(n ? `Equipped ${n} upgrade${n > 1 ? 's' : ''}` : 'Already wearing your best'); }
-      else if (a === 's0' || a === 's1') { const r = L.salvageWhere((it) => it.rarity <= (a === 's0' ? 0 : 1) && L.score(it) <= L.score(pr.equipment[it.slot])); this.toast(`Salvaged ${r.n}: +${r.gold} gold, +${r.shards} shards`); }
+      else if (a === 's0' || a === 's1') {
+        const r = L.salvageWhere((it) => it.rarity <= (a === 's0' ? 0 : 1) && L.score(it) <= L.score(pr.equipment[it.slot]));
+        const bits = Object.entries(r.motifs || {}).map(([id, n]) => `${MOTIF_BY_ID[id]?.name || id}×${n}`);
+        this.toast(`Salvaged ${r.n}: +${r.gold}● +${r.shards}◆` + (bits.length ? ` · ${bits.join(', ')}` : ''));
+      }
       else if (a === 'auto') pr.settings.autoSalvage = !pr.settings.autoSalvage;
+      else if (a === 'oshi' && this.sel?.aria) {
+        pr.oshiAria = pr.oshiAria === this.sel.aria ? null : this.sel.aria;
+        this.toast(pr.oshiAria ? `Oshi Aria: ${ARIA_BY_ID[pr.oshiAria].name}` : 'Oshi Aria cleared', 'gold');
+        g.save();
+      }
       this.render();
     }));
   }
@@ -515,7 +722,20 @@ export class UI {
 
   render_bounties(body) {
     const g = this.g, pr = g.profile;
-    body.innerHTML = `<div class="card"><h3>Bounties · Chorus Cache ${pr.bountySet}/3</h3><div class="muted">Claim three bounties for a Chorus Cache (Virtuoso item + 25 Golden Notes). New bounties roll in as you claim.</div></div>
+    const daily = g.progress.ensureDaily();
+    const dailyDone = daily.tasks.filter((t) => t.done).length;
+    const phraseN = Object.keys(pr.phrasebook || {}).length;
+    const concertN = (pr.concertSkins || []).length;
+    body.innerHTML = `<div class="card"><h3>Daily Recital · ${daily.day}</h3>
+      <div class="muted">Three tasks each UTC day. Clear all for Golden Notes + Daily Overture Trail (fashion-only).</div>
+      <div style="margin-top:8px">${daily.tasks.map((t) => `<div class="bounty ${t.done ? 'done' : ''}"><b>${esc(t.text)}</b>
+        <div class="p"><i style="width:${(t.prog / t.n) * 100}%"></i></div>
+        <div class="muted">${t.prog}/${t.n}</div></div>`).join('')}</div>
+      <div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center">
+        <span class="muted">${dailyDone}/3 · ${daily.claimed ? 'claimed today' : 'claim when complete'}</span>
+        <button class="btn gold" data-daily="1" ${daily.claimed || dailyDone < 3 ? 'disabled' : ''}>Claim Recital</button>
+      </div></div>
+      <div class="card" style="margin-top:10px"><h3>Bounties · Chorus Cache ${pr.bountySet}/3</h3><div class="muted">Claim three bounties for a Chorus Cache (Virtuoso item + 25 Golden Notes). New bounties roll in as you claim.</div></div>
       <div style="margin-top:10px">${pr.bounties.map((b, i) => `<div class="bounty ${b.done ? 'done' : ''}"><b>${esc(b.text)}</b>
         <div class="p"><i style="width:${(b.prog / b.n) * 100}%"></i></div>
         <div style="display:flex;justify-content:space-between;align-items:center"><span class="muted">${b.prog}/${b.n} · reward: gold, XP, Resonant+ item, 6 Golden Notes</span>
@@ -524,15 +744,35 @@ export class UI {
         <span>Slimes defeated</span><span>${fmt(pr.stats.kills)}</span><span>Perfect hits</span><span>${fmt(pr.stats.perfects)}</span>
         <span>Best combo</span><span>${pr.stats.bestCombo}</span><span>Maestros defeated</span><span>${pr.stats.bosses}</span>
         <span>Rifts cleared</span><span>${pr.stats.rifts} (best tier ${pr.riftTier})</span><span>Shrines attuned</span><span>${pr.shrines.length}/15</span>
-        <span>Sheet music</span><span>${pr.sheets.length}/25</span><span>Explored</span><span>${g.progress.percent()}%</span></div></div>`;
+        <span>Sheet music</span><span>${pr.sheets.length}/25</span><span>Explored</span><span>${g.progress.percent()}%</span>
+        <span>Phrasebook biomes</span><span>${phraseN}/8</span><span>Concert trails</span><span>${concertN}</span>
+        <span>Fashion gold frames</span><span>${(pr.fashionGold || []).length}</span><span>Encore exams</span><span>${(pr.maestroExams || []).length}</span>
+        <span>Regions 100%</span><span>${(pr.regionsDone || []).length}/8</span><span>Resonance Dew</span><span>${(pr.dews || []).filter((id) => !String(id).endsWith('_open')).length}/16</span>
+      </div></div>`;
     body.querySelectorAll('[data-c]').forEach((el) => el.addEventListener('click', () => { g.progress.claim(+el.dataset.c); this.render(); }));
+    body.querySelectorAll('[data-daily]').forEach((el) => el.addEventListener('click', () => { g.progress.claimDaily(); this.render(); }));
   }
 
   render_map(body) {
     const g = this.g;
+    const regions = g.progress.regionBoard?.() || [];
+    const regionRow = regions.length
+      ? `<div class="card" style="margin-top:8px"><h3>Region completion</h3>
+          <div class="muted">Dew + fashion frames + Reveal overlook per biome. No new world authority.</div>
+          <div class="stats" style="margin-top:6px">${regions.map((r) => `<span>${esc(r.label)}</span><span>${r.complete ? '✓ 100%' : `${r.pct}% · Dew ${r.dew}/${r.dewTotal}`}</span>`).join('')}</div>
+          <button class="btn gold" data-ping-dew="1" style="margin-top:8px">✧ Ping nearest Dew</button></div>`
+      : '';
     body.innerHTML = `<canvas id="bigmap" width="720" height="720"></canvas>
-      <div class="legend"><span>◆ Pylon (tap to travel)</span><span>𝄞 Shrine</span><span>♛ Maestro</span><span>◎ Rift</span><span>▣ Chest</span><span>★ Elite Chorus</span><span>Explored ${g.progress.percent()}%</span></div>
+      <div class="legend"><span>◆ Pylon (tap to travel)</span><span>◇ Dew</span><span>𝄞 Shrine</span><span>♛ Maestro</span><span>◎ Rift</span><span>Explored ${g.progress.percent()}%</span></div>
+      ${regionRow}
       <div class="muted" style="text-align:center">${BIOMES.map((b) => `${b.name.split('—')[0].trim()} Lv ${b.levels[0]}–${b.levels[1]} · ${b.bpm} BPM ${b.meter}/4`).join(' · ')}</div>`;
+    body.querySelectorAll('[data-ping-dew]').forEach((el) => el.addEventListener('click', () => {
+      const ping = g.progress.pingRegion();
+      if (!ping) { this.toast('All regions complete — no Dew left'); return; }
+      this.toast(`Ping · ${ping.target.name || 'Resonance Dew'}`);
+      g.audio.ui();
+      this.close();
+    }));
     const cv = $('bigmap');
     this.drawBigMap(cv);
     cv.addEventListener('click', (e) => {
@@ -584,6 +824,24 @@ export class UI {
       if (p.type !== 'pylon' && !g.progress.explored(clamp(i, 0, N - 1), clamp(j, 0, N - 1))) continue;
       if (p.type === 'camp' || p.type === 'sheet') continue;
       this.poiIcon(c, p, x, y, 1.1);
+      // Momo-style pulse on remaining Resonance Dew.
+      if (p.type === 'destination' && p.id && !(g.profile.dews || []).includes(p.id)) {
+        const pulse = 10 + Math.sin(performance.now() / 280) * 3;
+        c.strokeStyle = 'rgba(159,230,255,.85)';
+        c.lineWidth = 2;
+        c.beginPath(); c.arc(x, y, pulse, 0, Math.PI * 2); c.stroke();
+      }
+    }
+    for (const b of BIOMES) {
+      const bi = BIOMES.indexOf(b);
+      const st = g.progress.regionStatus?.(bi);
+      if (!st) continue;
+      const [x, y] = to(b.cx * 1.05, b.cz * 1.05);
+      c.font = 'bold 14px sans-serif';
+      c.fillStyle = st.complete ? '#ffd978' : '#9fe6ff';
+      c.strokeStyle = 'rgba(23,18,37,.85)'; c.lineWidth = 3;
+      const tag = st.complete ? '100%' : `${st.pct}%`;
+      c.strokeText(tag, x, y - 8); c.fillText(tag, x, y - 8);
     }
     const [px, py] = to(g.player.pos.x, g.player.pos.z);
     c.fillStyle = '#fff'; c.strokeStyle = '#171225'; c.lineWidth = 3;
@@ -593,31 +851,139 @@ export class UI {
   render_forge(body) {
     const g = this.g, pr = g.profile, L = g.loot;
     const list = [...SLOTS.map((s) => pr.equipment[s.id]).filter(Boolean), ...pr.inventory.slice().sort((a, b) => L.score(b) - L.score(a)).slice(0, 12)];
-    if (!this.forgeSel || !list.includes(this.forgeSel)) this.forgeSel = list[0] || null;
+    if (!this.forgeSel || !list.includes(this.forgeSel)) {
+      this.forgeSel = list[0] || null;
+      this.synthSlots = [];
+    }
     const it = this.forgeSel;
-    let detail = '<div class="muted">Nothing to hone yet.</div>';
+    const motifs = L.motifInventory();
+    if (!Array.isArray(this.synthSlots)) this.synthSlots = [];
+
+    const preview = it ? L.synthPreview(it, this.synthSlots) : null;
+    const ringClass = (i) => {
+      if (!preview) return '';
+      const need = preview.loops[i]?.fillNeed || 1;
+      const f = preview.fills[i] || 0;
+      if (f >= need) return 'filled';
+      if (f > 0) return 'partial';
+      return '';
+    };
+
+    let rings = '';
+    if (it) {
+      rings = `<div class="cymatic">
+        <div class="ring r0 ${ringClass(0)}"></div>
+        <div class="ring r1 ${ringClass(1)}"></div>
+        <div class="ring r2 ${ringClass(2)}"></div>
+        <div class="ring r3 ${ringClass(3)}"></div>
+        <div class="hub"></div>
+      </div>
+      <div class="loop-row">${(preview?.loops || []).map((lp, i) => {
+        const f = preview.fills[i] || 0;
+        const dots = '●'.repeat(Math.min(f, lp.fillNeed)) + '○'.repeat(Math.max(0, lp.fillNeed - f));
+        return `<span class="motifchip">${esc(lp.name)} ${dots}</span>`;
+      }).join('')}</div>
+      <div class="muted" style="text-align:center;margin-top:6px">Quality ${preview.quality} · Trait slots ${preview.traitSlots}/3 · Rebuilds ${it.synthCount || 0}/5</div>`;
+    }
+
+    const assigned = this.synthSlots.filter(Boolean);
+    let detail = '<div class="muted">Select gear, tap Motifs to fill cymatic loops, then Synthesize. Temper (hone) after for +levels.</div>';
     if (it) {
       const c = L.honeCost(it);
       const chance = Math.min(1, honeChance(it.up || 0) + (it.pity || 0));
       const maxed = (it.up || 0) >= HONE_MAX;
-      detail = `${this.itemDetail(it).replace(/<div class="btns">[\s\S]*<\/div>$/, '')}
-        <div class="stats" style="margin-top:8px"><span>Hone</span><span>+${it.up || 0} → +${Math.min(HONE_MAX, (it.up || 0) + 1)}</span>
-        <span>Success chance</span><span>${Math.round(chance * 100)}%${it.pity ? ` (pity +${Math.round(it.pity * 100)}%)` : ''}</span>
-        <span>Cost</span><span>${fmt(c.gold)}● ${c.shards}◆</span><span>You have</span><span>${fmt(pr.gold)}● ${pr.shards}◆</span></div>
-        <div class="btns"><button class="btn gold" id="hone" ${maxed || pr.gold < c.gold || pr.shards < c.shards ? 'disabled' : ''}>${maxed ? 'Max +' + HONE_MAX : 'Hone ⚒'}</button></div>
-        <div class="forgeresult" id="honeres"></div>`;
+      const canSynth = preview.filledLoops >= 1 && pr.gold >= preview.cost.gold && pr.shards >= preview.cost.shards && (it.synthCount || 0) < 5;
+      detail = `<div class="item-name" style="color:${RARITIES[it.rarity].color}">${esc(it.name)}${it.up ? ' +' + it.up : ''}</div>
+        <div class="item-sub">${RARITIES[it.rarity].name} · iLvl ${it.ilvl}${it.quality ? ` · Q${it.quality}` : ''}</div>
+        <div class="item-lines">${L.lines(it).map((l) => `<div>${esc(l)}</div>`).join('')}</div>
+        ${it.aria ? `<div class="item-aria">Aria — ${esc(ARIA_BY_ID[it.aria].name)}</div>` : ''}
+        <div class="stats" style="margin-top:8px">
+          <span>Synth cost</span><span>${fmt(preview.cost.gold)}● ${preview.cost.shards}◆ + Motifs</span>
+          <span>You have</span><span>${fmt(pr.gold)}● ${pr.shards}◆</span>
+          <span>Temper</span><span>+${it.up || 0} → +${Math.min(HONE_MAX, (it.up || 0) + 1)} · ${Math.round(chance * 100)}%</span>
+          <span>Temper cost</span><span>${fmt(c.gold)}● ${c.shards}◆</span>
+        </div>
+        <div class="btns">
+          <button class="btn gold" id="synthesize" ${canSynth ? '' : 'disabled'}>Harmonic Synthesis</button>
+          <button class="btn" id="hone" ${maxed || pr.gold < c.gold || pr.shards < c.shards ? 'disabled' : ''}>${maxed ? 'Max +' + HONE_MAX : 'Temper ⚒'}</button>
+          <button class="btn" id="clearsynth" ${assigned.length ? '' : 'disabled'}>Clear Motifs</button>
+        </div>
+        <div class="forgeresult" id="honeres"></div>
+        <div class="muted" style="margin-top:6px">Fill 2+ rings to transfer Motifs as traits. Opus Aria ring = Super Trait.</div>`;
     }
-    body.innerHTML = `<div class="cols"><div class="card"><h3>Choose gear</h3><div class="grid">${list.map((x) => this.itemBox(x, `data-fu="${x.uid}"`).replace('slotbox', 'slotbox' + (x === it ? ' sel' : ''))).join('')}</div>
-      <div class="muted" style="margin-top:8px">Each + adds 6% to base stats. Failures bank +10% pity toward the next attempt.</div></div>
-      <div class="card">${detail}</div></div>`;
-    body.querySelectorAll('[data-fu]').forEach((el) => el.addEventListener('click', () => { this.forgeSel = list.find((x) => x.uid === +el.dataset.fu); this.render(); }));
-    const hb = $('hone');
+
+    body.innerHTML = `<div class="synth-wrap">
+      <div class="card"><h3>Choose gear</h3>
+        <div class="grid">${list.map((x) => this.itemBox(x, `data-fu="${x.uid}"`).replace('slotbox', 'slotbox' + (x === it ? ' sel' : ''))).join('') || '<div class="muted">No gear yet.</div>'}</div>
+      </div>
+      <div class="card"><h3>Cymatic loops</h3>${rings || '<div class="muted">Select a piece of gear.</div>'}
+        <h3 style="margin-top:12px">Motif bag</h3>
+        <div class="motifbag">${motifs.map((m) => {
+          const used = this.synthSlots.filter((id) => id === m.id).length;
+          const left = m.n - used;
+          return this.motifChip({ ...m, n: left }, { on: used > 0, dim: left <= 0, attrs: `data-mid="${m.id}"` });
+        }).join('') || '<div class="muted">Salvage gear in the Wardrobe to earn Motifs.</div>'}</div>
+      </div>
+      <div class="card"><h3>Synthesize</h3>${detail}</div>
+    </div>`;
+
+    body.querySelectorAll('[data-fu]').forEach((el) => el.addEventListener('click', () => {
+      this.forgeSel = list.find((x) => x.uid === +el.dataset.fu);
+      this.synthSlots = [];
+      this.render();
+    }));
+    // Beat-sync pulse rings when panel is open
+    const prev = this._prevFills || [];
+    body.querySelectorAll('.cymatic .ring').forEach((el, i) => {
+      if (preview && (preview.fills[i] || 0) >= (preview.loops[i]?.fillNeed || 1) && (prev[i] || 0) < (preview.loops[i]?.fillNeed || 1)) {
+        el.classList.add('justfilled');
+        const mid = this.synthSlots[this.synthSlots.length - 1];
+        const Mel = mid && MOTIF_BY_ID[mid];
+        if (Mel) g.audio.motifChord(Mel.element);
+      }
+      el.classList.add('beatpulse');
+      setTimeout(() => el.classList.remove('beatpulse'), 280);
+    });
+    this._prevFills = preview ? preview.fills.slice() : [];
+
+    body.querySelectorAll('[data-mid]').forEach((el) => el.addEventListener('click', () => {
+      const id = el.dataset.mid;
+      const have = L.motifCount(id);
+      const used = this.synthSlots.filter((x) => x === id).length;
+      if (used >= have) return;
+      if (this.synthSlots.length >= 8) { this.toast('Loop board full'); return; }
+      this.synthSlots.push(id);
+      const Mel = MOTIF_BY_ID[id];
+      if (Mel) g.audio.motifChord(Mel.element);
+      this.render();
+    }));
+    const cs = body.querySelector('#clearsynth');
+    if (cs) cs.addEventListener('click', () => { this.synthSlots = []; this.render(); });
+    const syn = body.querySelector('#synthesize');
+    if (syn) syn.addEventListener('click', () => {
+      const r = L.synthesize(it, this.synthSlots.slice());
+      if (!r.ok) {
+        this.toast(r.reason === 'cost' ? 'Not enough gold/shards' : r.reason === 'motifs' ? 'Missing Motifs' : r.reason === 'rebuild_max' ? 'Rebuild limit reached' : 'Fill at least one loop');
+        return;
+      }
+      this.synthSlots = [];
+      g.audio.synthResolve(it.quality || 50);
+      this.render();
+      const res = $('honeres');
+      if (res) {
+        res.textContent = `✦ Synthesized · Q${it.quality}` + (r.transferred?.length ? ` · ${r.transferred.join(', ')}` : '');
+        res.style.color = '#ffd978';
+      }
+      g.audio.levelUp();
+      g.save();
+    });
+    const hb = body.querySelector('#hone');
     if (hb) hb.addEventListener('click', () => {
       const r = L.hone(it);
       if (!r.ok) return;
       this.render();
       const res = $('honeres');
-      if (r.success) { res.textContent = `✦ Success! +${it.up}`; res.style.color = '#ffd978'; g.audio.levelUp(); }
+      if (r.success) { res.textContent = `✦ Tempered! +${it.up}`; res.style.color = '#ffd978'; g.audio.levelUp(); }
       else { res.textContent = 'The metal rings false… (pity banked)'; res.style.color = '#ff8a9a'; g.audio.fail(); }
       g.save();
     });
@@ -650,12 +1016,21 @@ export class UI {
     const max = pr.riftTier + 1;
     if (!this.riftTier || this.riftTier > max) this.riftTier = max;
     const T = this.riftTier;
+    const chance = g.echo.passChance(T);
+    const phrase = pr.echoLineage?.phrase;
+    const pity = pr.echoLineage?.pity || 0;
     body.innerHTML = `<div class="card" style="text-align:center"><h3>Resonance Rift</h3>
       <div class="muted">Silence waves of dissonance to fill the bar, then defeat the Rift Guardian. Clear within 4:00 to unlock the next tier. Tier 3+ adds a Burden from DT_Burdens for extra rarity.</div>
       <div class="tiers"><button id="tminus">−</button><span>Tier ${T}</span><button id="tplus">+</button></div>
       <div class="stats" style="max-width:320px;margin:0 auto"><span>Enemy level</span><span>${pr.level + Math.max(0, T - 1) * 2}</span><span>Tempo</span><span>${124 + Math.min(24, T * 2)} BPM</span>
       <span>Rewards</span><span>${3 + Math.floor(T / 3)} items (Resonant+) · ${10 + T * 2}♪</span><span>Best cleared</span><span>${pr.riftTier}</span></div>
-      <button class="primary" id="enterrift">Enter the Rift ◎</button></div>`;
+      <div class="echo-banner" style="max-width:420px;margin:12px auto 0">
+        <img src="assets/icons/echo_phrase.svg" width="20" height="20" alt="" style="vertical-align:middle;margin-right:6px"/>
+        ${phrase
+          ? `Echo Lineage pass <b>${Math.round(chance * 100)}%</b>${pity ? ` · pity +${Math.round(pity * 100)}%` : ''} · Phrase T${phrase.tier} Q${phrase.quality}`
+          : 'No Echo Phrase yet — clear a Rift to bank one (Uma-style inheritance).'}
+      </div>
+      <button class="primary" id="enterrift" style="margin-top:14px">Enter the Recital ◎</button></div>`;
     $('tminus').addEventListener('click', () => { this.riftTier = Math.max(1, T - 1); this.render(); });
     $('tplus').addEventListener('click', () => { this.riftTier = Math.min(max, T + 1); this.render(); });
     $('enterrift').addEventListener('click', () => { const p = this.riftPortal; this.close(); g.activities.enterRift(T, p); });
@@ -693,6 +1068,110 @@ export class UI {
       g.wipe();
     });
     let b2 = 0;
+  }
+
+  motifMorph({ fromIcon, motifIds = [], rarity = 0, label = '', kind = 'salvage' }) {
+    const box = $('motifmorph');
+    if (!box) { this.toast(label); return; }
+    const colors = ['#ddd7e6', '#7fe69a', '#6fb8ff', '#c690ff', '#ffae45'];
+    const col = colors[Math.min(4, rarity)] || '#ffd978';
+    const from = $('mmFrom');
+    const to = $('mmTo');
+    const flash = $('mmFlash');
+    const lab = $('mmLabel');
+    from.src = this.iconSrc(fromIcon) || 'assets/icons/echo_phrase.svg';
+    from.parentElement.classList.remove('flip');
+    to.classList.remove('show');
+    to.innerHTML = (motifIds.length ? motifIds : ['motif_arcane']).slice(0, 3).map((id) => {
+      const M = MOTIF_BY_ID[id];
+      const el = (M?.element || 'Arcane').toLowerCase();
+      return `<img src="assets/icons/motif_${el}.svg" alt=""/>`;
+    }).join('');
+    flash.style.color = col;
+    flash.classList.remove('on');
+    lab.textContent = label || '';
+    box.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      from.parentElement.classList.add('flip');
+      flash.classList.add('on');
+      setTimeout(() => to.classList.add('show'), 180);
+    });
+    if (kind === 'salvage') this.g.audio.loot(rarity);
+    clearTimeout(this._morphT);
+    this._morphT = setTimeout(() => {
+      box.classList.add('hidden');
+      if (label) this.toast(label, kind === 'synth' ? 'gold' : '');
+    }, 900);
+  }
+
+  // ================================================================ rift reward reveal
+  showRiftReward(payload) {
+    const box = $('riftreward');
+    if (!box) return;
+    const { tier, inTime, notes, gold, items, phrase, passChance, pity, blessing, motifPack } = payload;
+    $('rrKicker').textContent = inTime ? `RIFT TIER ${tier} CLEARED` : `RIFT TIER ${tier} CLEARED (OVER TIME)`;
+    $('rrTitle').textContent = 'Resonance Remains';
+    $('rrSub').textContent = blessing
+      ? `Blessing: ${blessing.name} · Echo Lineage banks for the next Recital`
+      : 'Staged rewards · Echo Lineage banks for the next Recital';
+    const cards = [];
+    (items || []).forEach((it, i) => {
+      const R = RARITIES[it.rarity];
+      cards.push(`<div class="rewardcard" style="animation-delay:${i * 0.12}s;border-color:${R.color}">
+        ${this.itemBox(it)}
+        <b style="color:${R.color}">${esc(it.name)}</b>
+        <div class="meta">${R.name} · iLvl ${it.ilvl}</div>
+      </div>`);
+    });
+    cards.push(`<div class="rewardcard" style="animation-delay:${(items?.length || 0) * 0.12}s;border-color:var(--rose)">
+      <div class="slotbox" style="border-color:var(--rose)">♪</div>
+      <b>+${notes} Golden Notes</b>
+      <div class="meta">+${gold} gold on the ground</div>
+    </div>`);
+    if (motifPack) {
+      const delay = ((items?.length || 0) + 0.5) * 0.12;
+      const bits = Object.entries(motifPack.motifs || {}).map(([id, n]) => `${MOTIF_BY_ID[id]?.name || id}×${n}`).join(', ');
+      cards.push(`<div class="rewardcard" style="animation-delay:${delay}s;border-color:var(--lavender)">
+        <div class="slotbox" style="border-color:var(--lavender)">✦</div>
+        <b>Motif Pack ×${motifPack.n}</b>
+        <div class="meta">${esc(bits)}</div>
+      </div>`);
+    }
+    if (phrase) {
+      const delay = ((items?.length || 0) + 1) * 0.12;
+      cards.push(`<div class="rewardcard" style="animation-delay:${delay}s;border-color:var(--aqua)">
+        <div class="slotbox" style="border-color:var(--aqua)"><img class="ico" src="assets/icons/echo_phrase.svg" alt=""/></div>
+        <b>Echo Phrase T${phrase.tier}</b>
+        <div class="meta">Q${phrase.quality} · ${(phrase.motifs || []).map((m) => m.key).join(', ')}</div>
+      </div>`);
+      const pd = phrase.pedigree;
+      if (pd) {
+        cards.push(`<div class="rewardcard pedigree-card" style="animation-delay:${delay + 0.12}s;border-color:var(--aqua)">
+          <div class="pedigree"><div class="title">Phrase Pedigree</div>
+          ${esc(this.g.echo.pedigreeHtml())}
+          ${(pd.goals || []).length ? `<div style="margin-top:4px">Goals: ${esc(pd.goals.join(' · '))}</div>` : ''}
+          </div>
+        </div>`);
+      }
+    }
+    const goals = payload.goals || [];
+    if (goals.length) {
+      const delay = ((items?.length || 0) + 3) * 0.12;
+      cards.push(`<div class="rewardcard" style="animation-delay:${delay}s;border-color:var(--gold)">
+        <b>Recital Goals</b>
+        <div class="meta">${goals.map((x) => (x.done ? '✓ ' : '· ') + esc(x.text)).join('<br>')}</div>
+      </div>`);
+    }
+    $('rrRow').innerHTML = cards.join('');
+    $('rrLineage').innerHTML = `<img src="assets/icons/echo_phrase.svg" alt=""/>Echo Lineage next pass ${Math.round((passChance || 0) * 100)}%${pity ? ` · pity +${Math.round(pity * 100)}%` : ''}`;
+    box.classList.remove('hidden');
+    this.ceremonyFlash('bank');
+    const btn = $('rrContinue');
+    const done = () => {
+      box.classList.add('hidden');
+      this.toast('Echo Phrase banked — enter another Rift to inherit', 'gold');
+    };
+    btn.onclick = done;
   }
 
   // ================================================================ shrine
