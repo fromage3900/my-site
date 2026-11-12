@@ -37,7 +37,7 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 #portrait.melusina-perfect { border-color: var(--gold-hi); box-shadow: 0 0 15px 4px rgba(255, 217, 120, .72); }
 #portrait.melusina-miss { filter: saturate(.62); }
 /* Authentic Melusina: first four front-facing keyframes from the 4×4 canon source sheet.
-   One 320×80 image is composited by CSS; no extra canvas/WebGL loop. */
+   One 288×72 image is composited by CSS; no extra canvas/WebGL loop. */
 .melusina-sprite-window { position: absolute; inset: 0; overflow: hidden; display: block; border-radius: inherit; pointer-events: none; background: radial-gradient(circle at 46% 32%, rgba(236, 167, 201, .24), rgba(55, 41, 77, .72) 75%); }
 .melusina-sprite-track { position: absolute; top: 0; left: 0; display: block; width: 400%; height: 100%; max-width: none; image-rendering: pixelated; image-rendering: crisp-edges; animation: melusina-front-walk 1.12s steps(4, end) infinite; }
 #portrait .melusina-sprite-window { inset: 2px; border-radius: 50%; }
