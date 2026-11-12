@@ -58,8 +58,24 @@
     return article;
   }
 
+  // Never expose drafts or incomplete listings in the public catalogue, even if
+  // content/assets-catalogue.json contains work-in-progress product records.
+  function getPublicProducts(products) {
+    return (Array.isArray(products) ? products : []).filter(function (p) {
+      return Boolean(p && p.status === 'published' &&
+        typeof p.title === 'string' && p.title.trim() &&
+        typeof p.description === 'string' && p.description.trim() &&
+        typeof p.category === 'string' && p.category.trim() &&
+        typeof p.thumbnail === 'string' && p.thumbnail.trim() &&
+        typeof p.license === 'string' && p.license.trim() &&
+        Array.isArray(p.software) && p.software.length > 0 &&
+        Array.isArray(p.formats) && p.formats.length > 0 &&
+        typeof p.purchase_url === 'string' && /^https:\/\//i.test(p.purchase_url));
+    });
+  }
+
   function render(root, data) {
-    var products = data.products || [];
+    var products = getPublicProducts(data.products);
     var catLabel = {};
     data.categories.forEach(function (c) { catLabel[c.id] = c.label; });
     var state = { category: 'all', query: '' };
@@ -110,7 +126,7 @@
       });
   }
 
-  var api = { filterProducts: filterProducts, countByCategory: countByCategory };
+  var api = { filterProducts: filterProducts, countByCategory: countByCategory, getPublicProducts: getPublicProducts };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   global.FromageAssets = api;
   if (typeof document !== 'undefined') {
