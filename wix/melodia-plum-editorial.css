@@ -1079,3 +1079,35 @@ html[data-page="index"] .melodia-shell .folio-hero-art>figcaption {
     flex:0 0 auto!important;
   }
 }
+
+/* Screenshot-proof portrait frame: make the loaded image fill exactly one visual
+   slot instead of flex-shrinking above the same-source background fallback. */
+@media(min-width:1081px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art{
+    display:block!important;
+  }
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art>img{
+    display:block!important;
+    position:absolute!important;
+    top:.55rem!important;left:.55rem!important;right:.55rem!important;
+    bottom:3.25rem!important;
+    width:calc(100% - 1.1rem)!important;
+    height:calc(100% - 3.8rem)!important;
+    max-height:none!important;min-height:0!important;
+    object-fit:cover!important;object-position:center 48%!important;
+    margin:0!important;padding:0!important;
+    flex:none!important;
+    opacity:1!important;visibility:visible!important;
+  }
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art>figcaption{
+    display:flex!important;
+    position:absolute!important;
+    bottom:.55rem!important;left:.55rem!important;right:.55rem!important;
+    width:auto!important;height:2.7rem!important;min-height:0!important;
+    margin:0!important;padding:.5rem .55rem!important;
+    box-sizing:border-box!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    z-index:7!important;
+  }
+}
