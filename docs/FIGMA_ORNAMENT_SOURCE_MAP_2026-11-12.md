@@ -33,3 +33,9 @@ Source design file: [Melodia UI Master / Storybook Kit](https://www.figma.com/de
 | MDL Divider, Crest/Light | [178:97](https://www.figma.com/design/ewS0yt17hiWq2KXPa5RfCX?node-id=178-97) | `wix/assets/figma/mdl-crest-divider-light.svg` | Stage canopy, portfolio header and Faraway section break |
 
 Three static layered curtain/arch elements are native CSS; they add no runtime dependencies. Interactive and readable zones remain clear. In contrast with the Figma page frame's navy inner fill, the lighter oval cameo is used for accent and not as a replacement for original environment art.
+
+## 2026-11-13 — Night Velvet v2: perspective / motion
+- Original editable [Pearl Eclipse crescent](https://www.figma.com/design/ewS0yt17hiWq2KXPa5RfCX?node-id=316-21), [Sakura Cascade](https://www.figma.com/design/ewS0yt17hiWq2KXPa5RfCX?node-id=317-307), and [Rose Satin](https://www.figma.com/design/ewS0yt17hiWq2KXPa5RfCX?node-id=318-16) exported as local tracked SVG assets.
+- Scene design authority: [Figma Night Velvet board](https://www.figma.com/design/ewS0yt17hiWq2KXPa5RfCX?node-id=319-2) now includes a receding gallery and -1.7° image-frame perspective.
+- `melodia-hero-scene.css` sets three slow independent animation planes (13–17 seconds) and a shallow architectural perspective; `melodia-folio-motion.js` uses bounded pointer parallax on fine-hover desktop only, respecting reduced motion and touch devices.
+- Real Unreal art is unchanged; all decor is aria-hidden and pointer-transparent.
