@@ -807,3 +807,50 @@ html[data-page="index"] .melodia-shell .hero.recruiter-static-hero::before{
    width:66vw!important;height:70px!important;
  }
 }
+
+/* Original Melodia Storybook components from Figma — exported unchanged,
+   not redrawn. See docs/FIGMA_ORNAMENT_SOURCE_MAP_2026-11-12.md */
+html[data-page="index"] .melodia-shell .folio-hero-art::after{
+  content:"";display:block;position:absolute;
+  width:min(86%,620px);height:clamp(53px,6.5vw,90px);
+  left:7%;bottom:2.65rem;z-index:4;pointer-events:none;
+  background:url("assets/figma/mdl-ribbon-light.svg") center / contain no-repeat;
+  opacity:.84;
+}
+html[data-page="index"] .folio-figma-sparkles{
+  display:block;position:absolute;right:clamp(.55rem,1.6vw,1.5rem);top:clamp(.6rem,1.9vw,1.65rem);
+  width:clamp(60px,7vw,90px);height:auto;z-index:5;pointer-events:none;
+  filter:drop-shadow(0 2px 7px rgba(36,14,38,.3));
+}
+html[data-page="index"] .melodia-shell .folio-ornament-rule{
+  height:76px!important;margin:-.4rem 0 0!important;
+  background:#291a2a url("assets/figma/mdl-crest-divider-night.svg") center center / min(80%,620px) 74px no-repeat!important;
+}
+html[data-page="index"] .folio-ornament-rule::before,
+html[data-page="index"] .folio-ornament-rule::after,
+html[data-page="index"] .folio-ornament-rule__star{visibility:hidden!important}
+html[data-page="index"] .melodia-shell .recruiter-feature {
+  position:relative!important;
+}
+html[data-page="index"] .folio-figma-medallion{
+  display:block;position:absolute;
+  width:clamp(64px,7vw,88px);aspect-ratio:1;
+  right:clamp(12px,2vw,25px);top:clamp(12px,2vw,25px);z-index:4;
+  background:url("assets/figma/mdl-heart-medallion-night.svg") center / contain no-repeat;
+  pointer-events:none;filter:drop-shadow(0 3px 9px rgba(58,30,55,.18));
+}
+@media(min-width:721px){
+  html[data-page="index"] .recruiter-feature-copy {padding-right:clamp(65px,9vw,110px)!important}
+}
+@media(max-width:720px){
+  html[data-page="index"] .folio-figma-sparkles{
+    width:57px;top:10px;right:9px
+  }
+  html[data-page="index"] .melodia-shell .folio-hero-art::after{
+    width:84%;left:8%;height:52px;bottom:2.25rem;opacity:.71;
+  }
+  html[data-page="index"] .melodia-shell .folio-ornament-rule{
+    height:60px!important;background-size:min(93%,620px) 52px!important;
+  }
+  html[data-page="index"] .folio-figma-medallion{width:59px;top:13px;right:13px}
+}
