@@ -506,3 +506,20 @@ html[data-page="index"] .melodia-shell section#portfolio-foyer .section-head h2{
 html[data-page="index"] .folio-hero-art{
   background:linear-gradient(120deg,#f5ecfa,#ece4f4)!important;
 }
+
+/* Same-source CSS fallback: some headless desktop captures omit <img> paint.
+   Keep the established Git-tracked image visible even if replaced image decoding is late. */
+html[data-page="index"] .melodia-shell .folio-hero-art {
+  background:
+    #e9def1 url("../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp")
+    center 49% / cover no-repeat!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art > img {
+  display:block!important;position:relative!important;
+  visibility:visible!important;opacity:1!important;
+  filter:none!important;mix-blend-mode:normal!important;z-index:1!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art > figcaption {
+  position:relative!important;z-index:2!important;
+  background:#fff9ff!important;
+}
