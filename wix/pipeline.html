@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="melodia-build" content="20260921p1" />
+<meta name="melodia-build" content="20260918-audit" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<title>Echo Multi-Modal Pipeline &amp; Infrastructure | Melodia Dual-Track Production</title>
-<meta name="description" content="Melodia Echo multi-modal DCC pipeline — automated integration between Blender 5.2, Unreal Engine 5.8 C++, TouchDesigner CHOPs, and multi-platform distribution suites." />
+<title>Melodia Production Pipeline | Brennan Shepherd</title>
+<meta name="description" content="A working view of the tools I use to move Melodia between Blender, Houdini, Unreal Engine 5.8, TouchDesigner, Cascadeur, and the web." />
 <link rel="canonical" href="https://fromage3900.github.io/my-site/wix/pipeline.html" />
 <meta name="robots" content="index,follow,max-image-preview:large" />
-<meta property="og:title" content="Echo Multi-Modal Pipeline — Melodia Infrastructure" />
+<meta property="og:title" content="Melodia Production Pipeline | Brennan Shepherd" />
 <meta property="og:type" content="website" />
-<meta property="og:description" content="DCC automation bridge connecting Blender 5.2, UE 5.8 C++, TouchDesigner CHOPs, VOICEVOX neural speech, and web asset compilers across dedicated IPC protocols." />
-<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png" />
+<meta property="og:description" content="How I move assets, animation, procedural work, audio-reactive data, and presentation between DCCs and Unreal Engine 5.8." />
+<meta property="og:image" content="https://fromage3900.github.io/my-site/public/melodia/melusina-morning-vfx/2026-09-17/heroes/04_L_MelusinaMorning_SoftVerticality_Editor.png" />
 <meta property="og:image:alt" content="Brennan Shepherd — stylized environment and technical art from Melodia" />
 <meta property="og:url" content="https://fromage3900.github.io/my-site/wix/pipeline.html" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png" />
+<meta name="twitter:image" content="https://fromage3900.github.io/my-site/public/melodia/melusina-morning-vfx/2026-09-17/heroes/04_L_MelusinaMorning_SoftVerticality_Editor.png" />
 <link rel="stylesheet" href="melodia-tokens.css?v=20260921p1">
 <link rel="stylesheet" href="melodia-luxury-type.css?v=20260921p1">
 <link rel="stylesheet" href="melodia-editorial.css?v=20260921p1">
@@ -30,7 +30,7 @@
 <style>
 .toolchain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:1.25rem}
 .toolchain-card{padding:1.25rem;background:var(--color-surface-sunken);border-radius:4px;border-left:3px solid var(--color-accent-primary, var(--primitive-gold-500));border:1px solid var(--color-border-subtle)}
-.toolchain-card h3{font-family:var(--font-display,"Crimson Text",Georgia,serif);font-size:1rem;margin:0 0 .5rem;color:var(--color-accent-primary, var(--primitive-gold-500))}
+.toolchain-card h3{font-family:var(--font-display,"Fraunces",sans-serif);font-size:1rem;margin:0 0 .5rem;color:var(--color-accent-primary, var(--primitive-gold-500))}
 .toolchain-card p{font-size:.78rem;color:var(--color-text-secondary, var(--primitive-slate-300));margin:0;line-height:1.5}
 .workflow-steps{display:flex;flex-direction:column;gap:0;margin-top:1rem;max-width:800px}
 .workflow-step{display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;position:relative}
@@ -55,20 +55,20 @@
     <a href="index.html">Overview</a>
     <a href="melusina-model-tooling.html">AI Research (MATH)</a>
     <a href="melodia-gameplay-loop.html">JRPG Loop</a>
-    <a href="design-specs.html">P0 Gates</a>
+    <a href="shader-breakdowns.html">Materials</a>
     <a href="pipeline.html" class="active">Echo Pipeline</a>
-    <a href="application-hub.html">Architecture Hub</a>
+    <a href="application-hub.html">Project Hub</a>
   </nav>
-  <a class="nav-cta button-premium" href="application-hub.html">Architecture Hub</a>
+  <a class="nav-cta button-premium" href="application-hub.html">Project Hub</a>
 </header>
 
 <main id="main">
 <section class="hero" aria-labelledby="page-title">
   <div class="hero-inner">
-    <p class="kicker magazine-kicker">Echo Multi-Modal Pipeline · DCC Architecture</p>
+    <p class="kicker magazine-kicker">Production pipeline · tools that actually ship the work</p>
     <div class="editorial-rhythm-divider sheet" data-divider="astral" aria-hidden="true"><span class="glyph">♪ · ♥ · ♪</span></div>
-    <h1 id="page-title">Echo Pipeline &amp; DCC Infrastructure</h1>
-    <p class="lede">The Echo pipeline orchestrates real-time DCC automation between Blender 5.2 Melodia Studio procedural generators, Unreal Engine 5.8 C++ subsystems, TouchDesigner 4-band audio reactivity, VOICEVOX neural speech synthesis, and automated multi-platform web compilation pipelines.</p>
+    <h1 id="page-title">How Melodia gets made.</h1>
+    <p class="lede">Melodia moves between Unreal Engine 5.8 and a handful of tools I use for specific jobs: Blender and Houdini for procedural work, Cascadeur for animation, Substance for materials, and TouchDesigner for audio-reactive visuals. This page is the practical version of that pipeline — what is connected, what has been tested, and what still belongs in the lab.</p>
     <div class="hero-actions">
       <a class="button primary button-premium-primary" href="#port-matrix">Explore Architecture Matrix</a>
       <a class="button button-premium" href="#material-crosswalks">Material Math &amp; Audio Streamer</a>
@@ -76,294 +76,99 @@
   </div>
 </section>
 
-<!-- Band 1: Protocol & IPC Architecture Matrix -->
+<!-- September 2026 pipeline truth pass -->
 <section class="band paper" id="port-matrix" aria-labelledby="ports-title">
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow">Echo Multi-Modal Network Matrix</p>
-        <h2 id="ports-title">IPC Architecture &amp; Service Protocols</h2>
+        <p class="eyebrow">What moves where</p>
+        <h2 id="ports-title">A small pipeline with clear jobs.</h2>
       </div>
-      <p>Dedicated inter-process communication services linking DCC authoring environments, engine automation proxies, speech synthesis, and real-time audio graphs.</p>
+      <p>I use different tools because they are good at different things. The useful part is the handoff: can I move an asset, animation, procedural result, or control signal into the next stage without losing the art direction?</p>
     </div>
-    
-    <div class="badge-row" style="margin-bottom: 1.5rem;">
-      <span class="stat-badge">DCC Automation Bridge</span>
-      <span class="stat-badge">Engine Subsystem Proxy</span>
-      <span class="stat-badge">Blueprint Socket API</span>
-      <span class="stat-badge">VOICEVOX Neural Speech</span>
-      <span class="stat-badge">Melusina Voice Proxy</span>
-      <span class="stat-badge">TouchDesigner Audio OSC</span>
-    </div>
-
-    <div class="game-ui-frame" style="padding: 1.25rem; background: rgba(20,26,48,0.7); border: 1px solid rgba(201,168,106,0.3); border-radius: 4px; overflow-x: auto;">
-      <table class="manifest-table" style="margin-top:0;">
-        <thead>
-          <tr>
-            <th>Service Layer</th>
-            <th>Protocol</th>
-            <th>Interface Type</th>
-            <th>Service Description</th>
-            <th>Telemetry / Log Destination</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong style="color:var(--color-accent-primary, var(--primitive-gold-500))">Procedural DCC Bridge</strong></td>
-            <td><span class="spec-badge">TCP / JSON</span></td>
-            <td>Socket Interface</td>
-            <td>Bi-directional DCC scene automation bridge enabling remote procedural geometry generation and parameter manipulation in Blender 5.2.</td>
-            <td>DCC Console Logs</td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--color-accent-primary, var(--primitive-gold-500))">Engine Automation Subsystem</strong></td>
-            <td><span class="spec-badge">HTTP / JSON-RPC</span></td>
-            <td>Automation API</td>
-            <td>Unreal Engine 5.8 automation proxy executing remote scene validation, asset querying, and level routing synchronization.</td>
-            <td>Engine Telemetry Logs</td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--color-accent-primary, var(--primitive-gold-500))">Blueprint Socket API</strong></td>
-            <td><span class="spec-badge">TCP Binary</span></td>
-            <td>Socket Stream</td>
-            <td>Length-prefixed graph node query, creation, and AST injection interface for programmatic Blueprint compilation.</td>
-            <td>Engine Output Stream</td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--color-accent-primary, var(--primitive-gold-500))">Neural Speech Synthesis</strong></td>
-            <td><span class="spec-badge">HTTP REST</span></td>
-            <td>REST Endpoint</td>
-            <td>VOICEVOX neural speech synthesis engine driving 7 Japanese character voice models with automated phoneme alignment.</td>
-            <td>Speech Engine Stream</td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--color-accent-primary, var(--primitive-gold-500))">Character Dialogue Proxy</strong></td>
-            <td><span class="spec-badge">HTTP REST</span></td>
-            <td>REST Endpoint</td>
-            <td>Custom neural voice proxy for automated character dialogue generation and real-time lip-sync metadata streaming.</td>
-            <td>Dialogue Ingest Buffer</td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--color-accent-primary, var(--primitive-gold-500))">Audio Reactivity Broadcaster</strong></td>
-            <td><span class="spec-badge">OSC / UDP</span></td>
-            <td>Datagram Stream</td>
-            <td>Real-time TouchDesigner 4-band audio frequency broadcasting driving Niagara particle systems and post-process bloom.</td>
-            <td>Audio Bus Telemetry</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="toolchain-grid">
+      <div class="toolchain-card component-card">
+        <h3>Unreal Engine 5.8 · the world</h3>
+        <p>Final environment assembly, gameplay context, materials, foliage, PCG, lighting, and presentation live here. Unreal captures remain the visual authority when a browser study or DCC preview disagrees.</p>
+      </div>
+      <div class="toolchain-card component-card">
+        <h3>Houdini / Hython · variation + fields</h3>
+        <p>I use Houdini for procedural variation, cymatics-inspired textures and geometry, field-driven experiments, and repeatable asset generation. In-editor Houdini Engine cook/bake claims stay labeled experimental until I have a current machine-side capture.</p>
+      </div>
+      <div class="toolchain-card component-card">
+        <h3>Blender · fast procedural art</h3>
+        <p>Geometry Nodes and conventional modeling are useful for fast form studies, ornaments, and laptop-side procedural work. The point is not generator count; it is whether the result survives contact with the actual scene.</p>
+      </div>
+      <div class="toolchain-card component-card">
+        <h3>Cascadeur · character motion</h3>
+        <p>Video mocap, posing, cleanup, and retarget work sit here before animation returns to Unreal. I keep the portfolio focused on the resulting motion rather than pretending the transfer step is the artwork.</p>
+      </div>
+      <div class="toolchain-card component-card">
+        <h3>Substance · surface decisions</h3>
+        <p>Painter and related texture tools handle authored surface work before materials are judged again under the lighting and shader response of the Unreal scene.</p>
+      </div>
+      <div class="toolchain-card component-card">
+        <h3>TouchDesigner · when the music leaks out</h3>
+        <p>TouchDesigner is my experimental audio-reactive lane for concert visuals, OSC/Spout studies, and visual systems that respond to sound. Browser recreations are studies, not live Unreal telemetry.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Band 2: Core Subsystems & Technical Deep Dives (7 Cards) -->
 <section class="band astral" id="material-crosswalks" aria-labelledby="toolchain">
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow">Echo Pipeline Core Systems</p>
-        <h2 id="toolchain">Subsystem Architecture &amp; Innovations</h2>
+        <p class="eyebrow">Production boundaries</p>
+        <h2 id="toolchain">What I will and will not claim.</h2>
       </div>
-      <p>Modular automation engines powering real-time rendering, material math, CHOP audio reactivity, and web compiler outputs.</p>
+      <p>The pipeline page used to read like every experiment had already become infrastructure. This is the September version: the proven work stays visible, and the interesting unfinished stuff is allowed to remain unfinished.</p>
     </div>
-    
     <div class="toolchain-grid">
-      <!-- Card 1 -->
       <div class="toolchain-card component-card">
-        <h3>UE 5.8 C++ &amp; Subsystem Automation</h3>
-        <p>Unreal Engine 5.8 C++ core backed by real-time telemetry logging and remote graph injection. Operates dynamic Blueprint socket interfaces enabling programmatic graph construction and node evaluation without manual editor intervention.</p>
+        <h3>Current project record</h3>
+        <p>GitHub holds code, documentation, issues, review evidence, and the site itself. Large binaries use LFS where appropriate. Dated snapshots stay dated instead of quietly becoming “current.”</p>
       </div>
-
-      <!-- Card 2 -->
       <div class="toolchain-card component-card">
-        <h3>Blender 5.2 Melodia Studio &amp; Procedural Generators</h3>
-        <p>Melodia Studio architecture featuring 165 procedural geometry generators across 12 stack categories. IK retargeting pipelines translate optical motion capture datasets seamlessly onto hero character skeletal hierarchies.</p>
+        <h3>Procedural does not mean automatic</h3>
+        <p>PCG, Houdini, and Geometry Nodes help me generate options and repeatable structure. Composition, selection, cleanup, lookdev, and final presentation remain art decisions.</p>
       </div>
-
-      <!-- Card 3 -->
       <div class="toolchain-card component-card">
-        <h3>Automated Material Crosswalks &amp; Toon Math</h3>
-        <p>Converts sRGB color space to Linear via standard transformation:<br>
-        <code>Linear(c) = c / 12.92</code> for <code>c &le; 0.04045</code>, else <code>((c + 0.055) / 1.055)^2.4</code>.<br>
-        <strong>Warm-Violet Evaluation:</strong> Evaluated Linear Vector: <code>LinearColor(0.035133, 0.026330, 0.052814, 1.0)</code>.<br>
-        Substrate toon shading profiles configure <code>DiffuseRamp</code>, <code>SpecularRamp</code>, indirect intensity (0.3), extinction (0.3), and stylized hatching textures.</p>
+        <h3>Browser studies are not engine proof</h3>
+        <p>The WebGL toys are useful because they make objects and ideas explorable. They do not prove Unreal renderer parity, packaged-game performance, or a production integration that has not been captured.</p>
       </div>
-
-      <!-- Card 4 -->
       <div class="toolchain-card component-card">
-        <h3>TouchDesigner 4-Band RMS Audio Streamer</h3>
-        <p>Real-time CHOP audio analysis pipeline:<br>
-        1. <strong>Sub-Bass (20–100Hz):</strong> Triggers camera shake &amp; low-frequency Niagara ground pulses.<br>
-        2. <strong>Mid-Range (250–2500Hz):</strong> Modulates vocal/instrumental lighting &amp; rim light brightness.<br>
-        3. <strong>High-Frequency (4k–12kHz):</strong> Drives particle sparkle emitters &amp; rhythm highway highlights.<br>
-        4. <strong>Master RMS Envelope:</strong> Controls global atmospheric pulse &amp; post-process bloom.</p>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="toolchain-card component-card">
-        <h3>VOICEVOX &amp; Neural Speech Synthesis</h3>
-        <p>Dual REST speech synthesis pipeline leveraging VOICEVOX with 7 Japanese character voice models alongside custom voice proxies for automated dialogue rendering and lip-sync metadata generation.</p>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="toolchain-card component-card">
-        <h3>Web Asset Product Compiler</h3>
-        <p>Automated pipeline compiling raw 3D renders into web-ready distribution packages:<br>
-        &bull; <strong>135 Twitch Emotes:</strong> 15 types &times; 3 resolutions (28x28, 56x56, 112x112) &times; 3 background modes.<br>
-        &bull; <strong>7 OBS Overlays:</strong> 1080p stream templates + UI frames.<br>
-        &bull; <strong>78 Phone Wallpapers:</strong> Across 3 screen aspect ratios.<br>
-        &bull; <strong>12 Postcards:</strong> 300dpi print-ready front designs + 1 canonical back template.</p>
-      </div>
-
-      <!-- Card 7 -->
-      <div class="toolchain-card component-card">
-        <h3>Version Control &amp; Live-Ops Infrastructure</h3>
-        <p>Enterprise live-ops architecture enforcing mandatory Git LFS asset locking. Integrates runtime feature flags via <code>UMelodiaFeatureFlagSubsystem</code> and a 6-week trunk-based release workflow.</p>
+        <h3>Experiments get a label</h3>
+        <p>Old dashboards, model-tooling tests, and one-off automation experiments are preserved as noindex historical evidence. They are not part of the recruiter-facing story unless the current work genuinely depends on them.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Band 3: Echo Multi-Modal 7-Stage DCC Data Pipeline -->
 <section class="band paper" aria-labelledby="workflow-title">
   <div class="inner">
     <div class="section-head">
       <div>
-        <p class="eyebrow">Production Flow</p>
-        <h2 id="workflow-title">Echo Multi-Modal 7-Stage DCC Data Pipeline</h2>
+        <p class="eyebrow">Typical flow</p>
+        <h2 id="workflow-title">From idea to something I can actually show.</h2>
       </div>
-      <p>Data execution pathway from Blender 5.2 asset authoring to web product compilation and live-ops deployment.</p>
+      <p>The exact route changes per asset, but the production rhythm is deliberately boring: make, move, judge, revise, capture.</p>
     </div>
     <div class="workflow-steps">
-      <div class="workflow-step">
-        <span class="num">01</span>
-        <div>
-          <div class="desc"><strong>Procedural Geometry Authoring:</strong> Author procedural curves, architectural ornaments, and environment geometry across 12 stack categories with 165 parametric generators.</div>
-        </div>
-      </div>
-      <div class="workflow-step">
-        <span class="num">02</span>
-        <div>
-          <div class="desc"><strong>Engine Automation &amp; Scene Assembly:</strong> Execute automated level construction, camera staging, and asset placement via Unreal Engine C++ automation bridges.</div>
-        </div>
-      </div>
-      <div class="workflow-step">
-        <span class="num">03</span>
-        <div>
-          <div class="desc"><strong>Blueprint Graph Synthesis:</strong> Programmatically generate and compile length-prefixed Blueprint graphs, state machines, and property bindings dynamically.</div>
-        </div>
-      </div>
-      <div class="workflow-step">
-        <span class="num">04</span>
-        <div>
-          <div class="desc"><strong>Toon Profile Math &amp; Linear Color Transformation:</strong> Configure Substrate toon profile ramps with exact Linear color space evaluations for consistent multi-DCC lighting.</div>
-        </div>
-      </div>
-      <div class="workflow-step">
-        <span class="num">05</span>
-        <div>
-          <div class="desc"><strong>TouchDesigner Real-Time Audio Streaming:</strong> Broadcast 4-band audio analysis (Sub-Bass, Mid-Range, High-Freq, Master RMS) driving responsive Niagara VFX and post-process bloom.</div>
-        </div>
-      </div>
-      <div class="workflow-step">
-        <span class="num">06</span>
-        <div>
-          <div class="desc"><strong>Neural Dialogue Synthesis:</strong> Generate Japanese character voice audio and timing phoneme lip-sync metadata via neural speech services.</div>
-        </div>
-      </div>
-      <div class="workflow-step">
-        <span class="num">07</span>
-        <div>
-          <div class="desc"><strong>Multi-Platform Product Packaging:</strong> Compile master 3D render outputs into 135 emotes, 7 stream overlays, 78 wallpapers, and 12 print-ready postcards.</div>
-        </div>
-      </div>
+      <div class="workflow-step"><span class="num">01</span><div class="desc"><strong>Author.</strong> Model, sculpt, simulate, paint, or generate the thing in the tool that makes the most sense.</div></div>
+      <div class="workflow-step"><span class="num">02</span><div class="desc"><strong>Bring it into Unreal.</strong> Check scale, silhouette, material response, animation, and whether it belongs in the world at all.</div></div>
+      <div class="workflow-step"><span class="num">03</span><div class="desc"><strong>Connect the system only when it earns its keep.</strong> PCG, audio response, procedural variation, or gameplay hooks exist to support the piece—not to decorate the README.</div></div>
+      <div class="workflow-step"><span class="num">04</span><div class="desc"><strong>Capture evidence.</strong> Beauty first, then the smallest technical proof needed to explain how it works.</div></div>
+      <div class="workflow-step"><span class="num">05</span><div class="desc"><strong>Publish selectively.</strong> Strong work moves into Selected Art or the relevant case study. Diagnostics and half-finished experiments stay in the lab.</div></div>
     </div>
-  </div>
-</section>
-
-<!-- Band 4: Web Asset Product Compiler Output Manifest -->
-<section class="band astral" aria-labelledby="manifest-title">
-  <div class="inner">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Distribution Manifest</p>
-        <h2 id="manifest-title">Web Asset Product Compiler Output Manifest</h2>
-      </div>
-      <p>Authoritative distribution registry compiled for web, streaming, print, and mobile platforms.</p>
-    </div>
-    <div style="overflow-x:auto">
-      <table class="manifest-table">
-        <thead>
-          <tr>
-            <th>Asset Category</th>
-            <th>Total Units</th>
-            <th>Variants / Resolutions</th>
-            <th>Technical Format</th>
-            <th>Target Platform / Service</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Twitch Emotes</strong></td>
-            <td>135 PNGs</td>
-            <td>15 Types &times; 3 Res (28x28, 56x56, 112x112) &times; 3 BG Modes</td>
-            <td>Transparent PNG</td>
-            <td>Twitch / Discord Chat</td>
-            <td><span class="status status-live">Compiled</span></td>
-          </tr>
-          <tr>
-            <td><strong>OBS Stream Overlays</strong></td>
-            <td>7 Assets</td>
-            <td>1080p Stream Templates + Modular UI Frames</td>
-            <td>Full-HD WebM / PNG</td>
-            <td>OBS Studio / Live Streaming</td>
-            <td><span class="status status-live">Compiled</span></td>
-          </tr>
-          <tr>
-            <td><strong>Mobile Wallpapers</strong></td>
-            <td>78 Assets</td>
-            <td>3 Screen Aspect Ratios (16:9, 19.5:9, 20:9)</td>
-            <td>Ultra-HD PNG / JPEG</td>
-            <td>iOS / Android Devices</td>
-            <td><span class="status status-live">Compiled</span></td>
-          </tr>
-          <tr>
-            <td><strong>Print Postcards</strong></td>
-            <td>12 Cards</td>
-            <td>12 Front Designs + 1 Canonical Back Template</td>
-            <td>300dpi CMYK Print PDF</td>
-            <td>Physical Merchandise</td>
-            <td><span class="status status-live">Compiled</span></td>
-          </tr>
-          <tr>
-            <td><strong>IPC Network Services</strong></td>
-            <td>6 Services</td>
-            <td>DCC Bridge, Engine Automation, Blueprint Socket, Neural Speech, Voice Proxy, Audio Streamer</td>
-            <td>TCP / HTTP / REST / OSC</td>
-            <td>Echo Multi-Modal Backbone</td>
-            <td><span class="status status-live">Active</span></td>
-          </tr>
-          <tr>
-            <td><strong>Totals</strong></td>
-            <td><strong>232 Assets + 6 IPC Protocols</strong></td>
-            <td><strong>Multi-Platform Distribution Suite</strong></td>
-            <td><strong>Automated Output</strong></td>
-            <td><strong>Melodia Live-Ops</strong></td>
-            <td><span class="status status-live">Ready</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="font-family:var(--font-mono);font-size:.65rem;color:var(--color-text-tertiary);margin-top:.5rem">* All compiled web products automatically generated from master 3D render outputs.</p>
   </div>
 </section>
 </main>
 
 <footer class="footer">
   <div class="inner">
-    <span>Melodia Dual-Track Production · Echo Multi-Modal Pipeline</span>
-    <span>UE 5.8 C++ · Blender 5.2 · TouchDesigner 4-Band CHOPs · VOICEVOX</span>
+    <span>Melodia production pipeline · September 2026</span>
+    <span>UE 5.8 · Houdini · Blender · Cascadeur · Substance · TouchDesigner</span>
     <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle);font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase">
       <a href="index.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">Overview</a>
       <a href="melodia-gameplay-loop.html" style="color:var(--color-text-tertiary, var(--primitive-slate-300));text-decoration:none">JRPG Loop</a>
