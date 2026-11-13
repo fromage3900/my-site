@@ -20,6 +20,20 @@ The current shared build is **20260921p1**. Canonical pages carry
 `<meta name="melodia-build" content="20260921p1">` and cache-bust local CSS/JS with the
 same version.
 
+## Bryce meeting — pearl/lilac editorial convergence (November 12)
+
+`melodia-lilac-editorial.css` is loaded **after** legacy hardening CSS on the art-first
+homepage, Selected Art, and World Bible. It intentionally overrides those three public
+surfaces only, and preserves the browser labs' independent visual identity.
+
+The colour relationships are taken from original gouache and digital pieces in the
+artist's archive: blue/cyan oceans, fuchsia-violet horizons, lilac light and pearl
+watercolour paper. Original painting images are not yet committed into the public
+repo; the unpublished `_drafts/works-on-paper.html.txt` remains blocked on source assets.
+
+The lighter folio and typography integrate the relevant art-direction intent of
+open PRs #92 and #93 into PR #97, without merging unrelated branches or deleting them.
+
 ## Recruiter-first route policy (November 2026)
 
 - Home has four main destinations: Selected Work, Environments, Technical Art, About.

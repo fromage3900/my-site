@@ -32,3 +32,11 @@ The branch-only GitHub Actions screenshot job completed successfully and the upd
 
 ## Concurrent main change reconciled
 Main acquired a new standalone pearl-editorial résumé on November 12, 2026 (`b5250d0dfd70`). The merge commit incorporates that exact current résumé instead of overwriting its latest work. Its public link and search indexing remain intact, but it is moved out of the old shared-build `canonical` contract because the self-contained design correctly does not load those legacy scripts. All other main files remain in the branch merge. Review and re-run branch validators following this resolution.
+
+## November 12 evening — Bryce meeting editorial convergence
+- A new scoped `wix/melodia-lilac-editorial.css` translates the artist's earlier gouache/digital palette to a pearl/lilac/rose/clear-blue editorial UI. Dark navy is no longer the homepage ground.
+- The first fold is reduced to one statement, 30 words of supporting copy, two CTAs, a technical proofline, and an actual Unreal environment image. No WebGL preloader.
+- Selected Art inherits the bright editorial treatment and the River Sanctuary panoramic feature from the unmerged studio-curation PR #93, while the Times New Roman hierarchy and restrained captions converge the intent of typography PR #92.
+- The genuine source artwork in the user's archive includes IMG_5721 (ocean gouache), IMG_3981 (cats gouache), IMG_5476 (blue-haired portrait), and IMG_5370 (Haru Urara). Their palettes informed the styling; no private Library images were falsely published as GitHub assets.
+- The older Works on Paper draft stays unpublished until the original nine image assets can be verified/ingested. Do not substitute AI-generated copies.
+- PR #92 and PR #93 stay open as reference until final render/CI review and supersession decision. Preserve their non-overlapping work.
