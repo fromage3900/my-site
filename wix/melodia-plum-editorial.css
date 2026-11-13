@@ -653,3 +653,22 @@ html[data-page="faraway-mother-couture"] .shell-footer{
     animation-duration:.01ms!important;scroll-behavior:auto!important;
   }
 }
+
+/* World-study hero: keep the actual Faraway Heart Gate visible on desktop.
+   A same-source CSS fallback protects headless / slow image decoding. */
+@media(min-width:721px){
+ html[data-page="world-bible"] .melodia-shell .worlds-hero{
+   background:
+     linear-gradient(90deg,#241723 0%,rgba(36,23,36,.97) 35%,rgba(42,25,40,.42) 73%,rgba(42,25,40,.12) 100%),
+     url("../generated/assets/unreal/faraway_hero_heart_gate_1920.webp") right center / 58% 100% no-repeat,
+     #2d2030!important;
+ }
+ html[data-page="world-bible"] .melodia-shell .worlds-hero::after{
+   background:linear-gradient(90deg,rgba(36,23,36,.65),rgba(36,23,36,.15) 58%,transparent 100%)!important;
+ }
+ html[data-page="world-bible"] .melodia-shell .worlds-hero>img{
+   display:block!important;width:58%!important;left:auto!important;right:0!important;
+   opacity:.88!important;visibility:visible!important;filter:none!important;
+   object-fit:cover!important;object-position:center 50%!important;
+ }
+}
