@@ -36,8 +36,8 @@ jobs:
           for n in [192, 512]:
               raw=(root/f'icon-{n}.png').read_bytes()
               assert raw[:8] == bytes((137,80,78,71,13,10,26,10)), 'PWA icon corrupt'
-          assert 'resonant-wilds-v15-20261029-floraison-release' in (root/'sw.js').read_text()
-          print('PASS gallery + real PNG icons + SW v15')
+          assert 'resonant-wilds-v16-20261112-melusina-sprite-ui' in (root/'sw.js').read_text()
+          print('PASS gallery + real PNG icons + SW v16')
           PY
       - name: Verify independent SFX/music and browser intake contracts
         run: |

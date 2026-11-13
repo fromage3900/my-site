@@ -28,7 +28,7 @@ for (const item of manifest.optionalModels) {
   assert.notEqual(model.subarray(0, 32).toString('utf8').includes('git-lfs.github.com'), true,
     item.filename + ': LFS pointer instead of GLB');
 }
-assert.match(sw, /resonant-wilds-v15-20261029-floraison-release/);
+assert.match(sw, /resonant-wilds-v16-20261112-melusina-sprite-ui/);
 for (const module of ['js/flags.js', 'js/playground.js', 'js/grove-catalog.js',
   'js/floraison-pov.js', 'js/flower-landscape.js', 'js/resonant-botany.js']) {
   assert.ok(sw.includes("'./" + module + "'"), module + ' missing offline cache');
@@ -53,4 +53,4 @@ if (existsSync(join(dir, 'tools/sync_to_mysite.sh'))) {
   assert.ok(read('tools/sync_to_mysite.sh').includes('Git LFS pointer'),
     'publisher must preserve real my-site icons');
 }
-console.log('RELEASE STAGE PASS: 100 GLBs (63 byte+hash verified), Nikki, Grove, hard cel, Floraison, SW v15');
+console.log('RELEASE STAGE PASS: 100 GLBs (63 byte+hash verified), Nikki, Grove, hard cel, Floraison, SW v16');

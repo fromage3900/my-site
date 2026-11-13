@@ -24,6 +24,7 @@ jobs:
         run: |
           node resonant-wilds/tools/check_shader_lab.mjs
           node resonant-wilds/tools/check_cloud_intake.mjs
+          node resonant-wilds/tools/check_canon_sprite_ui.mjs
           node resonant-wilds/tools/check_bellflower.mjs
           node resonant-wilds/tools/check_flowerbeds.mjs
           node resonant-wilds/tools/check_grove_kit.mjs
