@@ -23,3 +23,13 @@ Source design file: [Melodia UI Master / Storybook Kit](https://www.figma.com/de
 - Soft rosé/plum palette is the authority; a decorative source's original gold/cyan/pink accents may be kept where they read as small glints.
 - The four SVGs are tracked assets and need no JavaScript.
 - Site remains an unmerged draft PR until the visual desktop/mobile artifacts are approved.
+
+## Second scene pass — confirmed November 12
+
+| Storybook component | Figma node | New local asset | Role |
+|---|---|---|---|
+| MDL Portrait Frame, Oval/Light | [178:145](https://www.figma.com/design/ewS0yt17hiWq2KXPa5RfCX?node-id=178-145) | `wix/assets/figma/mdl-oval-portrait-light.svg` | Pearl cameo by main artwork; hidden on narrow screens |
+| MDL Sparkle, Crystal | [178:160](https://www.figma.com/design/ewS0yt17hiWq2KXPa5RfCX?node-id=178-160) | `wix/assets/figma/mdl-crystal-glint.svg` | Hanging stage charms and framed-art glint |
+| MDL Divider, Crest/Light | [178:97](https://www.figma.com/design/ewS0yt17hiWq2KXPa5RfCX?node-id=178-97) | `wix/assets/figma/mdl-crest-divider-light.svg` | Stage canopy, portfolio header and Faraway section break |
+
+Three static layered curtain/arch elements are native CSS; they add no runtime dependencies. Interactive and readable zones remain clear. In contrast with the Figma page frame's navy inner fill, the lighter oval cameo is used for accent and not as a replacement for original environment art.
