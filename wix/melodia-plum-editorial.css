@@ -1,0 +1,1113 @@
+/* Melodia · Plum / Rosé Editorial System — November 2026
+   Approved mood: midnight eggplant-plum, rose silk, pearl, muted lilac and one aqua flash.
+   The rendered environment art is the hero, never an invented replacement.
+   Scope: recruiter surfaces only. Preserves experimental pages / game systems.
+   Root of palette: hand-painted Faraway Mother textile color contracts (plum pink pass).
+*/
+:root {
+  --folio-night:#1f141f;
+  --folio-plum:#2d1d2e;
+  --folio-plum-raised:#38283a;
+  --folio-plum-light:#4b324a;
+  --folio-pearl:#fff1f4;
+  --folio-cream:#f6e7ee;
+  --folio-rose:#e9b8d0;
+  --folio-rose-deep:#d093b4;
+  --folio-lilac:#d2bdeb;
+  --folio-mauve:#b894b3;
+  --folio-aqua:#b9e7e1;
+  --folio-ink:#432e43;
+  --folio-muted:#d9c5d5;
+  --folio-line:rgba(237,190,210,.38);
+  --folio-serif:"Times New Roman",Times,Georgia,serif;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) {
+  color-scheme:dark;
+  background:var(--folio-night);
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) .melodia-shell {
+  --color-surface-base:var(--folio-night);
+  --color-surface-raised:var(--folio-plum-raised);
+  --color-surface-sunken:var(--folio-plum);
+  --color-text-primary:var(--folio-pearl);
+  --color-text-secondary:var(--folio-muted);
+  --color-text-tertiary:#c1a8bb;
+  --color-text-accent:var(--folio-rose);
+  --color-border-subtle:var(--folio-line);
+  --color-border-default:rgba(240,186,207,.42);
+  --color-accent-primary:var(--folio-rose);
+  --color-accent-secondary:var(--folio-lilac);
+  --color-rule-gold:var(--folio-rose-deep);
+  color:var(--folio-pearl)!important;
+  background:
+    radial-gradient(ellipse 70% 47% at 92% 7%,rgba(116,70,114,.32),transparent 68%),
+    radial-gradient(ellipse 65% 40% at 2% 55%,rgba(122,74,99,.21),transparent 68%),
+    linear-gradient(155deg,#211521 0%,#302032 48%,#241723 100%)!important;
+  font-family:var(--folio-serif)!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) :is(h1,h2,h3,p,a,figcaption) {
+  text-wrap:pretty;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) :is(a,button):focus-visible {
+  outline:3px solid var(--folio-aqua)!important;outline-offset:3px;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) .shell-nav{
+  background:rgba(38,23,39,.94)!important;
+  border:1px solid var(--folio-line)!important;
+  color:var(--folio-pearl)!important;
+  box-shadow:0 10px 42px rgba(12,5,13,.17)!important;
+  backdrop-filter:blur(16px);
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) .shell-nav :is(.brand,.brand-short,.brand-full,.nav-links a,.nav-more summary) {
+  color:var(--folio-pearl)!important;
+  -webkit-text-fill-color:var(--folio-pearl)!important;
+  font-family:var(--folio-serif)!important;
+  text-shadow:none!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) .shell-nav .brand {
+  font-weight:600;letter-spacing:.085em!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) .shell-nav .brand-mark {
+  color:var(--folio-rose)!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) .shell-nav .nav-links a:hover,
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) .shell-nav .nav-links a.is-active {
+  color:var(--folio-rose)!important;
+  -webkit-text-fill-color:var(--folio-rose)!important;
+  background:transparent!important;
+  box-shadow:inset 0 -1px 0 var(--folio-rose)!important;
+  border-color:transparent!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) .melodia-shell .shell-nav > a.nav-cta.button-premium {
+  background:linear-gradient(118deg,#efd2e1,#d5b9df)!important;
+  border:1px solid rgba(255,237,245,.56)!important;
+  box-shadow:none!important;
+  color:var(--folio-ink)!important;
+  -webkit-text-fill-color:var(--folio-ink)!important;
+  background-clip:border-box!important;
+  -webkit-background-clip:border-box!important;
+  text-shadow:none!important;
+  font-family:var(--folio-serif)!important;
+  font-weight:700!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) .shell-nav .nav-toggle {
+  background:var(--folio-plum-raised)!important;
+  border:1px solid var(--folio-line)!important;
+  color:var(--folio-pearl)!important;
+  -webkit-text-fill-color:var(--folio-pearl)!important;
+  text-shadow:none!important;
+}
+@media(max-width:1080px){
+  html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) .shell-nav .nav-links {
+    background:#2b1c2f!important;border:1px solid var(--folio-line)!important;
+  }
+  html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) .shell-nav .nav-more-menu{
+    background:#352338!important;
+  }
+}
+
+/* The landing page is a single intentional spread — a quiet cover and four portfolios. */
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero{
+  display:grid!important;
+  grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr)!important;
+  gap:clamp(1.2rem,4.5vw,5rem)!important;
+  align-items:center!important;align-content:center!important;
+  isolation:isolate!important;
+  min-height:clamp(630px,88svh,830px)!important;
+  box-sizing:border-box;
+  padding:clamp(7rem,10.5vw,10rem) max(4vw,calc((100vw - 1320px)/2)) clamp(3.5rem,5vw,5rem)!important;
+  overflow:hidden!important;
+  background:
+    radial-gradient(ellipse 50% 73% at 79% 28%,rgba(156,102,157,.28),transparent 73%),
+    radial-gradient(ellipse 80% 45% at 15% 90%,rgba(113,61,84,.27),transparent 67%),
+    linear-gradient(124deg,#21151f 0%,#2d1c30 55%,#38263a 100%)!important;
+  color:var(--folio-pearl)!important;
+}
+html[data-page="index"] .recruiter-static-hero::after {
+  content:"✦";position:absolute;top:18%;right:2.4%;
+  font:400 clamp(3.5rem,7vw,7rem)/1 var(--folio-serif);
+  color:rgba(239,191,217,.16);
+  pointer-events:none!important;
+}
+html[data-page="index"] .recruiter-static-hero .hero-bg-primary,
+html[data-page="index"] .game-ui-filigree-divider{display:none!important}
+html[data-page="index"] .recruiter-static-hero .hero-copy-layer{
+  grid-column:1!important;z-index:2!important;position:relative!important;
+  width:100%!important;min-width:0!important;
+}
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .hero-copy-layer .hero-inner {
+  width:100%!important;max-width:690px!important;
+  min-height:0!important;height:auto!important;margin:0!important;
+  padding:0!important;justify-content:flex-start!important;
+  text-align:left!important;text-shadow:none!important;
+}
+html[data-page="index"] .recruiter-static-hero .kicker {
+  color:var(--folio-rose)!important;-webkit-text-fill-color:var(--folio-rose)!important;
+  font:700 .78rem/1.5 var(--folio-serif)!important;
+  letter-spacing:.17em!important;background:none!important;text-shadow:none!important;
+}
+html[data-page="index"] .recruiter-static-hero h1 {
+  color:var(--folio-pearl)!important;-webkit-text-fill-color:var(--folio-pearl)!important;
+  background:none!important;background-image:none!important;
+  background-clip:border-box!important;-webkit-background-clip:border-box!important;
+  font:400 clamp(3.7rem,6.7vw,7.1rem)/.92 var(--folio-serif)!important;
+  letter-spacing:-.042em!important;
+  margin:1rem 0 1.35rem!important;
+  max-width:11ch!important;
+  text-shadow:none!important;
+}
+html[data-page="index"] .recruiter-static-hero .folio-tagline {
+  font:italic 400 clamp(1.25rem,1.8vw,1.8rem)/1.28 var(--folio-serif)!important;
+  color:var(--folio-rose)!important;-webkit-text-fill-color:var(--folio-rose)!important;
+  letter-spacing:-.012em!important;max-width:27ch!important;
+  margin:0 0 1.35rem!important;
+}
+html[data-page="index"] .recruiter-static-hero .lede {
+  color:var(--folio-muted)!important;-webkit-text-fill-color:var(--folio-muted)!important;
+  max-width:43ch!important;
+  font:400 clamp(.99rem,1.25vw,1.14rem)/1.55 var(--folio-serif)!important;
+  text-shadow:none!important;
+}
+html[data-page="index"] .recruiter-static-hero .hero-actions{
+  display:flex;flex-wrap:wrap;gap:.72rem;margin-top:1.7rem;
+}
+html[data-page="index"] .recruiter-static-hero .hero-actions .button {
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  min-height:46px!important;
+  padding:.85rem 1.35rem!important;border:1px solid var(--folio-line)!important;
+  border-radius:2px!important;
+  color:var(--folio-pearl)!important;-webkit-text-fill-color:var(--folio-pearl)!important;
+  background:rgba(255,243,250,.03)!important;
+  font:700 .82rem/1.3 var(--folio-serif)!important;
+  text-transform:none!important;letter-spacing:.04em!important;
+  box-shadow:none!important;text-shadow:none!important;
+}
+html[data-page="index"] .recruiter-static-hero .hero-actions .button.primary {
+  background:linear-gradient(120deg,#f1ccdf,#e6b4ce)!important;
+  border-color:#f7dbeb!important;color:#38243a!important;
+  -webkit-text-fill-color:#38243a!important;
+}
+html[data-page="index"] .recruiter-static-hero .folio-proofline{
+  color:#cbb0c5!important;
+  font:400 .82rem/1.5 var(--folio-serif)!important;
+  margin-top:1.4rem!important;letter-spacing:.03em!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art {
+  grid-column:2!important;align-self:center!important;z-index:1!important;
+  position:relative!important;min-width:0!important;
+  margin:0!important;padding:.55rem!important;
+  transform:rotate(.35deg)!important;
+  border:1px solid rgba(246,210,225,.64)!important;
+  box-shadow:11px 12px 0 rgba(119,76,104,.3),0 23px 66px rgba(7,3,8,.24)!important;
+  background:#332438 url("../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp") center 49% / cover no-repeat!important;
+}
+html[data-page="index"] .folio-hero-art::before{
+  content:"";position:absolute;inset:.95rem .95rem 3.1rem;
+  border:1px solid rgba(251,231,242,.53);z-index:2;pointer-events:none;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art > img:first-child{
+  display:block!important;width:100%!important;
+  height:clamp(350px,39vw,540px)!important;object-fit:cover!important;
+  object-position:51% 51%!important;
+  position:relative!important;z-index:1!important;
+  visibility:visible!important;opacity:1!important;filter:none!important;
+  mix-blend-mode:normal!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art > figcaption {
+  position:relative!important;z-index:2!important;
+  display:flex!important;justify-content:space-between;gap:.35rem 1rem;flex-wrap:wrap;
+  color:#f5dbe9!important;-webkit-text-fill-color:#f5dbe9!important;
+  background:#352338!important;
+  padding:.82rem .55rem .38rem!important;
+  font:400 .78rem/1.42 var(--folio-serif)!important;
+}
+html[data-page="index"] .folio-hero-art figcaption b{
+  color:var(--folio-rose)!important;font-weight:400!important;
+  letter-spacing:.12em;text-transform:uppercase;
+}
+
+/* Deliberately remove the old navy void-panel inheritance from the portfolio shelf. */
+html[data-page="index"] .melodia-shell section#portfolio-foyer.band.astral.home-foyer-band,
+html[data-page="index"] .melodia-shell section#portfolio-foyer.band[data-surface="void"]{
+  background:linear-gradient(160deg,#261923 0%,#322136 52%,#271821 100%)!important;
+  background-color:#261923!important;
+  color:var(--folio-pearl)!important;
+  border-top:1px solid rgba(234,178,208,.3)!important;
+  border-bottom:0!important;box-shadow:none!important;
+  padding:clamp(3.8rem,6vw,6.5rem) 0!important;
+}
+html[data-page="index"] .melodia-shell section#portfolio-foyer.band.astral::before,
+html[data-page="index"] .melodia-shell section#portfolio-foyer.band[data-surface="void"]::before{
+  display:none!important;content:none!important;opacity:0!important;
+}
+html[data-page="index"] .melodia-shell #portfolio-foyer .eyebrow,
+html[data-page="index"] .melodia-shell #portfolio-foyer .section-head p {
+  color:var(--folio-rose)!important;-webkit-text-fill-color:var(--folio-rose)!important;
+  background:none!important;text-shadow:none!important;
+}
+html[data-page="index"] .melodia-shell #portfolio-foyer .section-head h2{
+  color:var(--folio-pearl)!important;-webkit-text-fill-color:var(--folio-pearl)!important;
+  font:400 clamp(2rem,3.8vw,3.6rem)/1.1 var(--folio-serif)!important;
+  letter-spacing:-.025em!important;background:none!important;text-shadow:none!important;
+}
+html[data-page="index"] .recruiter-feature {
+  display:grid!important;grid-template-columns:1.06fr .94fr!important;
+  min-height:295px!important;
+  margin:0 0 2.1rem!important;
+  background:linear-gradient(120deg,#f9e8ef,#ecd9e7)!important;
+  color:var(--folio-ink)!important;
+  border:1px solid #e9b9cd!important;border-radius:2px!important;
+  box-shadow:0 15px 44px rgba(10,4,15,.16)!important;
+  text-decoration:none!important;overflow:hidden!important;
+}
+html[data-page="index"] .recruiter-feature img{
+  display:block!important;width:100%!important;min-height:280px!important;
+  height:100%!important;object-fit:cover!important;filter:none!important;
+}
+html[data-page="index"] .recruiter-feature-copy{
+  display:flex!important;flex-direction:column!important;gap:.7rem!important;
+  justify-content:center!important;padding:clamp(1.35rem,3.3vw,2.8rem)!important;
+}
+html[data-page="index"] .recruiter-feature-copy small{
+  color:#7b4a70!important;-webkit-text-fill-color:#7b4a70!important;
+  font:700 .69rem/1.5 var(--folio-serif)!important;
+  letter-spacing:.14em!important;text-transform:uppercase!important;
+}
+html[data-page="index"] .recruiter-feature-copy strong{
+  color:#3f2b40!important;-webkit-text-fill-color:#3f2b40!important;
+  font:italic 400 clamp(2.25rem,3.65vw,3.7rem)/1.06 var(--folio-serif)!important;
+}
+html[data-page="index"] .recruiter-feature-copy span{
+  color:#654c61!important;-webkit-text-fill-color:#654c61!important;
+  font:400 1.03rem/1.55 var(--folio-serif)!important;
+}
+html[data-page="index"] .home-foyer-grid {
+  display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;
+  gap:clamp(.85rem,1.7vw,1.35rem)!important;
+}
+html[data-page="index"] .home-foyer-card,
+html[data-page="index"] .home-foyer-card.is-primary {
+  grid-column:span 3!important;
+  min-height:clamp(280px,30vw,390px)!important;
+  border:1px solid rgba(244,199,220,.5)!important;
+  border-radius:2px!important;
+  background:#352339!important;box-shadow:none!important;
+  transform:none!important;
+  text-decoration:none!important;
+}
+html[data-page="index"] .home-foyer-card img{filter:saturate(.94)!important}
+html[data-page="index"] .home-foyer-card .home-foyer-scrim {
+  background:linear-gradient(0deg,rgba(27,15,31,.96),rgba(45,27,45,.32) 66%,transparent)!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-copy {
+  color:var(--folio-pearl)!important;text-shadow:0 1px 7px rgba(10,3,15,.65)!important;
+  padding:1.05rem!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-copy strong {
+  color:var(--folio-pearl)!important;
+  font:400 clamp(1.4rem,2vw,2rem)/1.12 var(--folio-serif)!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-copy .home-foyer-kicker {
+  color:var(--folio-rose)!important;
+  font:700 .64rem/1.6 var(--folio-serif)!important;letter-spacing:.12em!important;
+}
+html[data-page="index"] .home-foyer-card.is-quiet {
+  background:
+    radial-gradient(circle at 65% 21%,rgba(214,158,194,.27),transparent 45%),
+    linear-gradient(155deg,#523651,#322236)!important;
+}
+html[data-page="index"] .home-foyer-card.is-quiet .home-foyer-quiet-mark{
+  color:#f4bbd2!important;font-size:clamp(3.5rem,7vw,6rem)!important;
+}
+html[data-page="index"] .home-foyer-card:hover,
+html[data-page="index"] .home-foyer-card:focus-visible {
+  border-color:var(--folio-aqua)!important;
+  box-shadow:0 0 0 2px rgba(185,231,225,.2)!important;
+}
+html[data-page="index"] .footer {
+  color:#d2bbca!important;
+  background:linear-gradient(180deg,#291b29,#1d131c)!important;
+  border-top:1px solid rgba(234,178,208,.25)!important;
+}
+html[data-page="index"] .footer :is(span,a) {
+  color:#d8c5d3!important;-webkit-text-fill-color:#d8c5d3!important;
+}
+
+/* Selected Art: an art gallery inside the same velvet magazine. */
+html[data-page="curated-art"] .curated-art-shell {
+  background:linear-gradient(146deg,#241723,#312035 65%,#241720)!important;
+  --gallery-paper:#302033;--gallery-ink:#f7e5f0;--gallery-night:#251724;
+}
+html[data-page="curated-art"] .curated-art-shell .curated-art-hero {
+  background:
+    linear-gradient(90deg,rgba(30,18,30,.95),rgba(41,22,41,.81) 42%,rgba(44,26,41,.3) 100%),
+    url("../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp") center / cover no-repeat!important;
+  min-height:clamp(510px,72svh,710px)!important;
+  color:var(--folio-pearl)!important;
+}
+html[data-page="curated-art"] .curated-art-hero .hero-inner {
+  position:relative!important;z-index:2!important;text-align:left!important;
+}
+html[data-page="curated-art"] .curated-art-hero h1,
+html[data-page="curated-art"] .curated-art-hero .lede,
+html[data-page="curated-art"] .curated-art-hero .kicker {
+  color:var(--folio-pearl)!important;
+  -webkit-text-fill-color:var(--folio-pearl)!important;
+  background:none!important;background-image:none!important;text-shadow:none!important;
+}
+html[data-page="curated-art"] .curated-art-hero h1 {
+  font:400 clamp(3rem,5.6vw,5.5rem)/1.04 var(--folio-serif)!important;
+  max-width:13ch!important;letter-spacing:-.03em!important;
+}
+html[data-page="curated-art"] .curated-art-hero .kicker {
+  color:var(--folio-rose)!important;-webkit-text-fill-color:var(--folio-rose)!important;
+}
+html[data-page="curated-art"] .curated-art-hero .lede {
+  color:#f4d8e9!important;-webkit-text-fill-color:#f4d8e9!important;
+  max-width:49ch!important;font:400 1.12rem/1.6 var(--folio-serif)!important;
+}
+html[data-page="curated-art"] .curated-art-hero .hero-actions .button{
+  background:rgba(255,240,248,.07)!important;color:var(--folio-pearl)!important;
+  -webkit-text-fill-color:var(--folio-pearl)!important;
+  border:1px solid var(--folio-line)!important;border-radius:2px!important;
+  font:700 .84rem/1.25 var(--folio-serif)!important;
+  text-transform:none!important;letter-spacing:.04em!important;box-shadow:none!important;
+}
+html[data-page="curated-art"] .curated-art-hero .hero-actions .button.primary {
+  background:linear-gradient(115deg,#f1c8dd,#e8b9d5)!important;
+  color:#39263d!important;-webkit-text-fill-color:#39263d!important;
+}
+html[data-page="curated-art"] .curated-art-shell .band {
+  background:#2b1d2e!important;color:var(--folio-pearl)!important;
+}
+html[data-page="curated-art"] .curated-art-shell .section-head :is(h2,p),
+html[data-page="curated-art"] .curated-art-shell .human-lede {
+  color:var(--folio-pearl)!important;-webkit-text-fill-color:var(--folio-pearl)!important;
+  background:none!important;text-shadow:none!important;
+}
+html[data-page="curated-art"] .curated-art-shell .section-head p,
+html[data-page="curated-art"] .curated-art-shell .human-lede {
+  color:#d9c2d5!important;-webkit-text-fill-color:#d9c2d5!important;
+}
+html[data-page="curated-art"] .curated-art-shell .art-piece figcaption {
+  background:#3a283b!important;
+  color:var(--folio-pearl)!important;
+  border:1px solid rgba(239,184,210,.36)!important;
+}
+html[data-page="curated-art"] .art-piece figcaption :is(span,small){
+  color:var(--folio-pearl)!important;-webkit-text-fill-color:var(--folio-pearl)!important;
+}
+html[data-page="curated-art"] .folio-river-study{
+  background:linear-gradient(124deg,#3b2a3f,#2b1d30)!important;
+  padding:clamp(3rem,6vw,5.5rem) 0!important;
+}
+html[data-page="curated-art"] .folio-river-study .folio-river-head h2{
+  font:400 clamp(2rem,3.7vw,3.4rem)/1.1 var(--folio-serif)!important;
+  color:var(--folio-pearl)!important;
+}
+html[data-page="curated-art"] .folio-river-study .folio-river-head p{
+  color:var(--folio-muted)!important;
+}
+html[data-page="curated-art"] .folio-river-study .folio-river-head .eyebrow {
+  color:var(--folio-rose)!important;
+}
+html[data-page="curated-art"] .folio-river-study figure{
+  margin:0;padding:.5rem;background:#211720;border:1px solid var(--folio-line);
+}
+html[data-page="curated-art"] .folio-river-study figure img {
+  width:100%;height:auto;display:block;
+}
+html[data-page="curated-art"] .folio-river-study figcaption{
+  color:var(--folio-muted)!important;padding:.8rem .35rem!important;
+  display:flex;justify-content:space-between;gap:.5rem 1rem;flex-wrap:wrap;
+}
+html[data-page="curated-art"] .folio-river-study figcaption a{
+  color:var(--folio-aqua)!important;
+}
+
+/* Environment chapters: the old ivory panels are now plum folio frames. */
+html[data-page="world-bible"] .worlds-shell {
+  background:linear-gradient(155deg,#211520,#312034 72%,#231723)!important;
+  color:var(--folio-pearl)!important;
+}
+html[data-page="world-bible"] .worlds-hero {
+  min-height:clamp(500px,72svh,720px)!important;
+  background:linear-gradient(110deg,#221522,#332036)!important;
+}
+html[data-page="world-bible"] .worlds-hero > img {
+  opacity:.65!important;width:55%!important;left:auto!important;z-index:0!important;
+  object-fit:cover!important;
+}
+html[data-page="world-bible"] .worlds-hero::after {
+  z-index:1!important;
+  background:linear-gradient(90deg,#241723 0%,rgba(37,23,40,.97) 36%,rgba(41,23,40,.4) 100%)!important;
+}
+html[data-page="world-bible"] .worlds-hero .worlds-wrap{z-index:2!important;position:relative!important}
+html[data-page="world-bible"] .worlds-hero :is(h1,.lede,.worlds-eyebrow) {
+  color:var(--folio-pearl)!important;-webkit-text-fill-color:var(--folio-pearl)!important;
+  text-shadow:none!important;background:none!important;
+}
+html[data-page="world-bible"] .worlds-hero h1{
+  max-width:15ch!important;
+  font:400 clamp(3rem,6vw,5.8rem)/1.04 var(--folio-serif)!important;
+}
+html[data-page="world-bible"] .worlds-hero h1 em{
+  color:var(--folio-rose)!important;-webkit-text-fill-color:var(--folio-rose)!important;
+}
+html[data-page="world-bible"] .worlds-hero .lede {
+  color:var(--folio-muted)!important;-webkit-text-fill-color:var(--folio-muted)!important;
+}
+html[data-page="world-bible"] .worlds-hero .worlds-eyebrow{
+  color:var(--folio-rose)!important;-webkit-text-fill-color:var(--folio-rose)!important;
+}
+html[data-page="world-bible"] .worlds-buttons a {
+  border:1px solid var(--folio-line)!important;
+  color:var(--folio-pearl)!important;
+  background:rgba(255,246,250,.04)!important;text-decoration:none!important;
+}
+html[data-page="world-bible"] .worlds-buttons a:first-child{
+  background:linear-gradient(113deg,#efc4da,#d6b2d5)!important;
+  color:#39253a!important;
+}
+html[data-page="world-bible"] .worlds-section{
+  color:var(--folio-pearl)!important;background:#2c1d2d!important;
+}
+html[data-page="world-bible"] .worlds-section :is(h2,h3) {
+  color:var(--folio-pearl)!important;
+}
+html[data-page="world-bible"] .worlds-section .worlds-note {
+  color:var(--folio-muted)!important;
+}
+html[data-page="world-bible"] .worlds-card {
+  background:#38273a!important;
+  border:1px solid var(--folio-line)!important;
+  box-shadow:0 11px 33px rgba(10,3,13,.11)!important;
+}
+html[data-page="world-bible"] .worlds-art {
+  background:linear-gradient(126deg,#4a3051,#302237 55%,#281b2b)!important;
+}
+html[data-page="world-bible"] .worlds-copy :is(h3,p,small) {
+  color:var(--folio-pearl)!important;
+}
+html[data-page="world-bible"] .worlds-copy p{
+  color:var(--folio-muted)!important;
+}
+html[data-page="world-bible"] .worlds-copy small{
+  color:var(--folio-rose)!important;
+}
+html[data-page="world-bible"] .worlds-copy a,
+html[data-page="world-bible"] .worlds-legacy a {
+  color:var(--folio-aqua)!important;
+}
+html[data-page="world-bible"] .worlds-section.worlds-legacy {
+  background:linear-gradient(130deg,#352439,#261a2b)!important;
+}
+html[data-page="world-bible"] .worlds-footer{
+  background:#221722!important;color:var(--folio-muted)!important;
+}
+
+/* Faraway Mother: single source for a dark couture editorial, not a separate navy theme. */
+html[data-page="faraway-mother-couture"] body,
+html[data-page="faraway-mother-couture"] .melodia-shell {
+  background:linear-gradient(155deg,#211521,#302033 65%,#211520)!important;
+  color:var(--folio-pearl)!important;
+}
+html[data-page="faraway-mother-couture"] .melodia-shell {
+  --fm-gold:var(--folio-rose);
+  --fm-dark:#211521;
+  --fm-card:#342238;
+  --fm-border:rgba(238,183,208,.3);
+}
+html[data-page="faraway-mother-couture"] .fm-hero{
+  background:radial-gradient(circle at 66% 17%,rgba(151,101,143,.24),transparent 66%),linear-gradient(140deg,#29192c,#3a2940)!important;
+  border-bottom:1px solid var(--folio-line)!important;
+}
+html[data-page="faraway-mother-couture"] .fm-hero h1{
+  color:var(--folio-pearl)!important;
+  font:400 clamp(3rem,5.4vw,5.5rem)/1.02 var(--folio-serif)!important;
+}
+html[data-page="faraway-mother-couture"] .fm-hero .lede{
+  color:var(--folio-muted)!important;max-width:720px!important;
+}
+html[data-page="faraway-mother-couture"] .fm-hero .kicker,
+html[data-page="faraway-mother-couture"] .tech-ledger h2 {
+  color:var(--folio-rose)!important;
+}
+html[data-page="faraway-mother-couture"] .stat-pill .val {
+  color:var(--folio-pearl)!important;
+}
+html[data-page="faraway-mother-couture"] .stat-pill .lbl {
+  color:var(--folio-muted)!important;
+}
+html[data-page="faraway-mother-couture"] .plate-frame,
+html[data-page="faraway-mother-couture"] .vista-card,
+html[data-page="faraway-mother-couture"] .tech-ledger {
+  background:#342439!important;border:1px solid var(--folio-line)!important;
+  border-radius:3px!important;
+  box-shadow:0 12px 33px rgba(9,3,11,.17)!important;
+}
+html[data-page="faraway-mother-couture"] .plate-frame figcaption{
+  background:#38273a!important;color:var(--folio-pearl)!important;
+}
+html[data-page="faraway-mother-couture"] .plate-badge,
+html[data-page="faraway-mother-couture"] .vista-details h3 {
+  color:var(--folio-rose)!important;
+}
+html[data-page="faraway-mother-couture"] .plate-note,
+html[data-page="faraway-mother-couture"] .vista-caption {
+  color:var(--folio-muted)!important;
+}
+html[data-page="faraway-mother-couture"] .section-head :is(h2,p){
+  color:var(--folio-pearl)!important;
+}
+html[data-page="faraway-mother-couture"] .fm-technical-comparison{
+  background:linear-gradient(120deg,#35233a,#2a1c30)!important;
+  border-color:var(--folio-line)!important;
+}
+html[data-page="faraway-mother-couture"] .shell-footer{
+  color:var(--folio-muted)!important;border-color:var(--folio-line)!important;
+}
+
+/* Mobile needs a clear name, visible artwork and no inherited 72vh vertical gap. */
+@media(max-width:1080px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero {
+    grid-template-columns:1fr!important;grid-template-rows:auto auto!important;
+    align-items:start!important;align-content:start!important;
+    min-height:0!important;
+    gap:clamp(1.4rem,4vw,2.4rem)!important;
+    padding:6.5rem 1.5rem 3.25rem!important;
+  }
+  html[data-page="index"] .recruiter-static-hero .hero-copy-layer,
+  html[data-page="index"] .melodia-shell .folio-hero-art{
+    grid-column:1!important;
+    width:min(100%,690px)!important;margin-inline:auto!important;
+  }
+  html[data-page="index"] .melodia-shell .folio-hero-art > img:first-child{
+    height:clamp(250px,48vw,415px)!important;
+  }
+  html[data-page="index"] .home-foyer-card,
+  html[data-page="index"] .home-foyer-card.is-primary{grid-column:span 6!important}
+}
+@media(max-width:720px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero{
+    padding:5.9rem 1.15rem 2.7rem!important;gap:1.65rem!important;
+  }
+  html[data-page="index"] .recruiter-static-hero h1{
+    font-size:clamp(3.7rem,14vw,5rem)!important;max-width:100%!important;
+  }
+  html[data-page="index"] .recruiter-static-hero .folio-tagline{
+    font-size:clamp(1.2rem,5vw,1.45rem)!important;
+  }
+  html[data-page="index"] .recruiter-static-hero .lede{
+    font-size:1.04rem!important;
+  }
+  html[data-page="index"] .folio-hero-art {
+    transform:none!important;box-shadow:7px 8px 0 rgba(138,76,117,.33)!important;
+  }
+  html[data-page="index"] .melodia-shell .folio-hero-art > img:first-child{height:240px!important}
+  html[data-page="index"] .folio-hero-art figcaption{font-size:.69rem!important}
+  html[data-page="index"] .recruiter-feature{
+    grid-template-columns:1fr!important;
+  }
+  html[data-page="index"] .recruiter-feature img{
+    height:225px!important;min-height:0!important;
+  }
+  html[data-page="index"] .home-foyer-card,
+  html[data-page="index"] .home-foyer-card.is-primary{
+    grid-column:1 / -1!important;min-height:310px!important;
+  }
+  html[data-page="curated-art"] .curated-art-shell .curated-art-hero{
+    min-height:0!important;height:auto!important;display:block!important;
+    padding:7.5rem 1.3rem 3rem!important;
+  }
+  html[data-page="curated-art"] .curated-art-hero .hero-inner{
+    width:100%!important;margin:0!important;padding:0!important;
+    min-height:0!important;max-width:100%!important;
+  }
+  html[data-page="curated-art"] .curated-art-hero h1{
+    font-size:clamp(2.9rem,10.2vw,4.1rem)!important;
+    max-width:16ch!important;
+  }
+  html[data-page="curated-art"] .curated-art-hero .hero-actions .button{
+    width:auto!important;min-height:44px!important;
+    padding:.75rem .9rem!important;
+  }
+  html[data-page="world-bible"] .worlds-hero{
+    min-height:0!important;padding:6.5rem 0 2.5rem!important;
+  }
+  html[data-page="world-bible"] .worlds-hero>img{
+    opacity:.3!important;width:100%!important;
+  }
+  html[data-page="world-bible"] .worlds-hero::after{
+    background:linear-gradient(90deg,rgba(35,21,36,.94),rgba(40,22,42,.66))!important;
+  }
+  html[data-page="world-bible"] .worlds-hero .worlds-wrap{
+    padding:0!important;
+  }
+  html[data-page="world-bible"] .worlds-hero h1{
+    font-size:clamp(3rem,10vw,4.4rem)!important;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) * {
+    animation-duration:.01ms!important;scroll-behavior:auto!important;
+  }
+}
+
+/* World-study hero: keep the actual Faraway Heart Gate visible on desktop.
+   A same-source CSS fallback protects headless / slow image decoding. */
+@media(min-width:721px){
+ html[data-page="world-bible"] .melodia-shell .worlds-hero{
+   background:
+     linear-gradient(90deg,#241723 0%,rgba(36,23,36,.97) 35%,rgba(42,25,40,.42) 73%,rgba(42,25,40,.12) 100%),
+     url("../generated/assets/unreal/faraway_hero_heart_gate_1920.webp") right center / 58% 100% no-repeat,
+     #2d2030!important;
+ }
+ html[data-page="world-bible"] .melodia-shell .worlds-hero::after{
+   background:linear-gradient(90deg,rgba(36,23,36,.65),rgba(36,23,36,.15) 58%,transparent 100%)!important;
+ }
+ html[data-page="world-bible"] .melodia-shell .worlds-hero>img{
+   display:block!important;width:58%!important;left:auto!important;right:0!important;
+   opacity:.88!important;visibility:visible!important;filter:none!important;
+   object-fit:cover!important;object-position:center 50%!important;
+ }
+}
+
+/* 2026-11-12 · Illustrated concept ornaments translated into static vector assets.
+   Accessible: all ornament elements are purely decorative and pointer-transparent. */
+html[data-page="index"] .melodia-shell .shell-nav .brand-mark,
+html:is([data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) .melodia-shell .shell-nav .brand-mark{
+  display:inline-block!important;
+  flex:0 0 30px!important;width:30px!important;height:30px!important;
+  background:url("assets/editorial/celestial-seal.svg") center / contain no-repeat!important;
+  border:none!important;box-shadow:none!important;opacity:.95!important;
+}
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero::before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  width:min(58vw,740px)!important;height:175px!important;
+  left:-4%!important;bottom:1.7%!important;
+  pointer-events:none!important;z-index:1!important;
+  background:url("assets/editorial/rose-ribbon.svg") center / contain no-repeat!important;
+  opacity:.82!important;
+}
+html[data-page="index"] .folio-frame-corner{
+  pointer-events:none!important;position:absolute!important;
+  width:clamp(55px,6vw,99px)!important;height:clamp(55px,6vw,99px)!important;
+  background:url("assets/editorial/folio-corner.svg") center / contain no-repeat!important;
+  z-index:3!important;display:block!important;opacity:.95!important;
+}
+html[data-page="index"] .folio-frame-corner--tl{top:1px;left:1px}
+html[data-page="index"] .folio-frame-corner--tr{top:1px;right:1px;transform:rotate(90deg)}
+html[data-page="index"] .folio-frame-corner--br{bottom:3.6rem;right:1px;transform:rotate(180deg)}
+html[data-page="index"] .folio-frame-corner--bl{bottom:3.6rem;left:1px;transform:rotate(270deg)}
+html[data-page="index"] .melodia-shell .folio-hero-art::before{
+  inset:.82rem .82rem 3.35rem!important;
+  border:1px solid rgba(248,216,232,.58)!important;
+  pointer-events:none!important;z-index:2!important;
+}
+html[data-page="index"] .folio-ornament-rule{
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(1rem,2vw,2rem);width:min(94%,1180px);margin:-.6rem auto 0;
+  color:#ebc2d6;position:relative;z-index:2;pointer-events:none;
+}
+html[data-page="index"] .folio-ornament-rule::before,
+html[data-page="index"] .folio-ornament-rule::after{
+  content:"";height:1px;flex:1;
+  background:linear-gradient(90deg,transparent,rgba(235,174,206,.58));
+}
+html[data-page="index"] .folio-ornament-rule::after{
+  transform:scaleX(-1);
+}
+html[data-page="index"] .folio-ornament-rule__star{
+  width:62px;height:62px;display:grid;place-items:center;
+  color:#ffe7ef;line-height:1;font-size:1.25rem;
+  background:url("assets/editorial/celestial-seal.svg") center / contain no-repeat;
+  text-indent:-9999px;overflow:hidden;
+}
+html[data-page="index"] .melodia-shell .recruiter-feature{
+  position:relative!important;
+  clip-path:polygon(15px 0,calc(100% - 15px) 0,100% 15px,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 calc(100% - 15px),0 15px);
+}
+html[data-page="index"] .recruiter-feature::after{
+  content:"";position:absolute;inset:8px;pointer-events:none;
+  border:1px solid rgba(132,73,111,.35);
+}
+html[data-page="index"] .home-foyer-card,
+html[data-page="index"] .home-foyer-card.is-primary{
+  position:relative!important;
+  clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px),0 10px)!important;
+}
+html[data-page="index"] .home-foyer-card::after{
+  content:"";position:absolute;inset:7px;z-index:2;
+  border:1px solid rgba(251,224,235,.39);pointer-events:none;
+}
+html[data-page="index"] .recruiter-static-hero .hero-inner{
+  position:relative!important;
+}
+html[data-page="index"] .recruiter-static-hero .hero-inner::after{
+  content:"✧  ───  ✦";display:block;
+  font:400 1.1rem var(--folio-serif);
+  letter-spacing:.2rem;color:rgba(237,177,208,.8);
+  margin-top:1rem;pointer-events:none;
+}
+html[data-page="curated-art"] .curated-art-shell .curated-art-hero,
+html[data-page="world-bible"] .worlds-hero{
+  outline:1px solid rgba(243,183,214,.36);
+  outline-offset:-12px;
+}
+@media(max-width:1080px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero::before{
+    width:65vw!important;height:105px!important;
+    bottom:0!important;left:-10%!important;opacity:.47!important;
+  }
+  html[data-page="index"] .folio-frame-corner{
+    width:65px!important;height:65px!important;
+  }
+}
+@media(max-width:720px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero::before{
+    width:65vw!important;height:76px!important;
+    bottom:0!important;left:-15%!important;opacity:.37!important;
+  }
+  html[data-page="index"] .folio-frame-corner{width:48px!important;height:48px!important}
+  html[data-page="index"] .folio-frame-corner--bl,
+  html[data-page="index"] .folio-frame-corner--br{bottom:3.25rem}
+  html[data-page="index"] .folio-ornament-rule__star{width:43px;height:43px}
+  html[data-page="index"] .melodia-shell .shell-nav .brand-mark{width:23px!important;height:23px!important;flex-basis:23px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero::before{
+    transition:none!important;animation:none!important;
+  }
+}
+
+/* Screenshot QA: no legacy midnight-blue separator; place satin fold below the copy. */
+html[data-page="index"] .melodia-shell .folio-ornament-rule{
+  display:flex!important;position:relative!important;z-index:3!important;
+  width:100%!important;max-width:none!important;margin:-.15rem 0 0!important;
+  box-sizing:border-box!important;
+  padding:0 clamp(1.1rem,7vw,6.2rem)!important;
+  background:linear-gradient(180deg,#281b29 0%,#291a2a 100%)!important;
+}
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero::before{
+  top:auto!important;right:auto!important;bottom:0!important;left:-4%!important;
+  width:min(58vw,720px)!important;height:165px!important;
+  background-position:left bottom!important;
+}
+@media(max-width:1080px){
+ html[data-page="index"] .melodia-shell .hero.recruiter-static-hero::before{
+   top:auto!important;bottom:0!important;left:-7%!important;height:110px!important;
+ }
+}
+@media(max-width:720px){
+ html[data-page="index"] .melodia-shell .hero.recruiter-static-hero::before{
+   top:auto!important;bottom:0!important;left:-12%!important;
+   width:66vw!important;height:70px!important;
+ }
+}
+
+/* Original Melodia Storybook components from Figma — exported unchanged,
+   not redrawn. See docs/FIGMA_ORNAMENT_SOURCE_MAP_2026-11-12.md */
+html[data-page="index"] .melodia-shell .folio-hero-art::after{
+  content:"";display:block;position:absolute;
+  width:min(86%,620px);height:clamp(53px,6.5vw,90px);
+  left:7%;bottom:2.65rem;z-index:4;pointer-events:none;
+  background:url("assets/figma/mdl-ribbon-light.svg") center / contain no-repeat;
+  opacity:.84;
+}
+html[data-page="index"] .folio-figma-sparkles{
+  display:block;position:absolute;right:clamp(.55rem,1.6vw,1.5rem);top:clamp(.6rem,1.9vw,1.65rem);
+  width:clamp(60px,7vw,90px);height:auto;z-index:5;pointer-events:none;
+  filter:drop-shadow(0 2px 7px rgba(36,14,38,.3));
+}
+html[data-page="index"] .melodia-shell .folio-ornament-rule{
+  height:76px!important;margin:-.4rem 0 0!important;
+  background:#291a2a url("assets/figma/mdl-crest-divider-night.svg") center center / min(80%,620px) 74px no-repeat!important;
+}
+html[data-page="index"] .folio-ornament-rule::before,
+html[data-page="index"] .folio-ornament-rule::after,
+html[data-page="index"] .folio-ornament-rule__star{visibility:hidden!important}
+html[data-page="index"] .melodia-shell .recruiter-feature {
+  position:relative!important;
+}
+html[data-page="index"] .folio-figma-medallion{
+  display:block;position:absolute;
+  width:clamp(64px,7vw,88px);aspect-ratio:1;
+  right:clamp(12px,2vw,25px);top:clamp(12px,2vw,25px);z-index:4;
+  background:url("assets/figma/mdl-heart-medallion-night.svg") center / contain no-repeat;
+  pointer-events:none;filter:drop-shadow(0 3px 9px rgba(58,30,55,.18));
+}
+@media(min-width:721px){
+  html[data-page="index"] .recruiter-feature-copy {padding-right:clamp(65px,9vw,110px)!important}
+}
+@media(max-width:720px){
+  html[data-page="index"] .folio-figma-sparkles{
+    width:57px;top:10px;right:9px
+  }
+  html[data-page="index"] .melodia-shell .folio-hero-art::after{
+    width:84%;left:8%;height:52px;bottom:2.25rem;opacity:.71;
+  }
+  html[data-page="index"] .melodia-shell .folio-ornament-rule{
+    height:60px!important;background-size:min(93%,620px) 52px!important;
+  }
+  html[data-page="index"] .folio-figma-medallion{width:59px;top:13px;right:13px}
+}
+
+/* Decorative scene assembly / Bryce review — from original Figma components.
+   A backstage arch, sheer drapery, two hanging pendants and a pearl cameo.
+   No extra script; all decorative nodes aria-hidden and pointer-transparent. */
+html[data-page="index"] .folio-stage-architecture{
+  display:block;position:absolute;inset:0;overflow:hidden;
+  z-index:0;pointer-events:none;
+}
+html[data-page="index"] .folio-stage-arch{
+  position:absolute;left:3.5%;top:6%;width:93%;height:87%;
+  box-sizing:border-box;border:1px solid rgba(235,178,205,.22);
+  border-radius:48% 48% 0 0 / 39% 39% 0 0;
+  box-shadow:inset 0 0 0 9px rgba(240,192,215,.019),inset 0 0 0 11px rgba(240,192,215,.085);
+}
+html[data-page="index"] .folio-stage-drape{
+  position:absolute;top:0;height:94%;width:clamp(140px,20vw,315px);
+  filter:drop-shadow(0 12px 25px rgba(17,4,20,.12));
+  background:
+   repeating-linear-gradient(95deg,rgba(249,219,232,.1) 0 1px,transparent 1px 32px),
+   linear-gradient(90deg,rgba(238,180,210,.16) 0%,rgba(129,77,119,.11) 30%,rgba(234,175,207,.14) 68%,transparent 100%);
+  clip-path:polygon(0 0,100% 0,89% 25%,100% 46%,82% 72%,62% 100%,0 100%);
+  opacity:.52;
+}
+html[data-page="index"] .folio-stage-drape--left{left:0}
+html[data-page="index"] .folio-stage-drape--right{right:0;transform:scaleX(-1);opacity:.25}
+html[data-page="index"] .folio-stage-chain{
+  position:absolute;top:0;width:2px;height:clamp(105px,15vw,194px);
+  background:linear-gradient(180deg,rgba(247,217,227,.6),rgba(220,164,199,.1));
+  opacity:.67;
+}
+html[data-page="index"] .folio-stage-chain::after{
+  content:"";position:absolute;left:-23px;bottom:-25px;
+  width:47px;height:47px;background:url("assets/figma/mdl-crystal-glint.svg") center / contain no-repeat;
+}
+html[data-page="index"] .folio-stage-chain--a{left:8.3%}
+html[data-page="index"] .folio-stage-chain--b{right:6.5%;height:clamp(80px,11vw,153px)}
+html[data-page="index"] .melodia-shell .recruiter-static-hero::after {
+  content:""!important;
+  width:min(43vw,620px)!important;height:92px!important;
+  right:3%!important;top:11%!important;
+  background:url("assets/figma/mdl-crest-divider-light.svg") center / contain no-repeat!important;
+  opacity:.48!important;
+  z-index:1!important;pointer-events:none!important;
+}
+html[data-page="index"] .folio-figma-crystal {
+  position:absolute;left:clamp(.5rem,1.4vw,1.2rem);bottom:clamp(4.1rem,5.5vw,5.4rem);
+  display:block;width:clamp(48px,7vw,82px);height:auto;
+  z-index:5;pointer-events:none;
+  filter:drop-shadow(0 2px 6px rgba(33,12,39,.3));
+}
+html[data-page="index"] .folio-portal-cameo{
+  position:absolute;display:block;right:-27px;top:23%;
+  width:clamp(112px,13vw,164px);aspect-ratio:210/250;
+  background:url("assets/figma/mdl-oval-portrait-light.svg") center / contain no-repeat;
+  pointer-events:none;z-index:6;
+  filter:drop-shadow(0 7px 21px rgba(28,12,34,.27));
+}
+html[data-page="index"] .folio-portal-cameo__seal {
+  position:absolute;display:block;left:33%;top:31%;width:38%;aspect-ratio:1;
+  background:url("assets/figma/mdl-heart-medallion-night.svg") center / contain no-repeat;
+  opacity:.82;
+}
+html[data-page="index"] .folio-scenic-head{
+  height:50px;margin:0 0 1rem;
+  background:url("assets/figma/mdl-crest-divider-light.svg") center / min(480px,90%) 50px no-repeat;
+  opacity:.74;pointer-events:none;
+}
+html[data-page="index"] .melodia-shell .recruiter-static-hero .hero-copy-layer,
+html[data-page="index"] .melodia-shell .folio-hero-art{
+  z-index:3!important;
+}
+html[data-page="index"] .folio-hero-art {overflow:visible!important}
+html[data-page="faraway-mother-couture"] .fm-ornament-transition{
+  min-height:96px;display:grid;place-items:center;
+  padding:0 1.5rem;border-top:1px solid rgba(238,183,208,.21);
+  border-bottom:1px solid rgba(238,183,208,.21);
+  background:linear-gradient(90deg,#281a2a,#39263d,#281a2a);
+}
+html[data-page="faraway-mother-couture"] .fm-ornament-transition img{
+  display:block;max-width:100%;width:min(620px,100%);
+  height:auto;opacity:.88;
+}
+html[data-page="faraway-mother-couture"] .fm-hero{
+  position:relative;isolation:isolate;
+}
+html[data-page="faraway-mother-couture"] .fm-hero::before {
+  content:"";display:block;position:absolute;right:1.5%;top:8%;
+  width:clamp(74px,12vw,152px);aspect-ratio:1;
+  background:url("assets/figma/mdl-sparkle-cluster.svg") center / contain no-repeat;
+  opacity:.65;pointer-events:none;z-index:0;
+}
+@media(max-width:1080px){
+  html[data-page="index"] .folio-stage-drape{width:21vw;opacity:.25}
+  html[data-page="index"] .folio-portal-cameo{right:0;top:22%;width:117px}
+  html[data-page="index"] .folio-stage-chain--a{left:3%}
+}
+@media(max-width:720px){
+  html[data-page="index"] .folio-stage-architecture{
+    opacity:.75;
+  }
+  html[data-page="index"] .folio-stage-arch{
+    left:3%;width:94%;top:4%;height:95%;
+    border-radius:42% 42% 0 0 / 12% 12% 0 0;
+  }
+  html[data-page="index"] .folio-stage-drape{width:22vw;opacity:.13}
+  html[data-page="index"] .folio-stage-chain--a{left:5%;height:78px}
+  html[data-page="index"] .folio-stage-chain--b{right:5%;height:65px}
+  html[data-page="index"] .melodia-shell .recruiter-static-hero::after{
+    width:55vw!important;top:10%!important;right:0!important;opacity:.22!important;
+  }
+  html[data-page="index"] .folio-portal-cameo{display:none}
+  html[data-page="index"] .folio-figma-crystal{width:47px;bottom:3.7rem}
+  html[data-page="index"] .folio-scenic-head{height:35px;background-size:min(88%,380px) 35px}
+  html[data-page="faraway-mother-couture"] .fm-ornament-transition{min-height:72px}
+}
+@media(prefers-reduced-motion:reduce) {
+  html[data-page="index"] .folio-stage-architecture *{animation:none!important}
+}
+
+/* Rendered desktop correction (Nov 12): explicitly place the two live grid
+   children in one row. The previous auto grid inherited a tall figure and
+   pushed the real artist headline below the first viewport.
+   Remove duplicate image fallback: real <img> handles loading itself. */
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero {
+  grid-auto-rows:minmax(0,auto)!important;
+}
+html[data-page="index"] .melodia-shell .recruiter-static-hero .hero-copy-layer {
+  align-self:center!important;justify-self:start!important;
+  height:auto!important;min-height:0!important;max-height:none!important;
+  margin:0!important;padding:0!important;display:block!important;
+}
+html[data-page="index"] .melodia-shell .recruiter-static-hero .hero-inner {
+  min-height:0!important;height:auto!important;max-height:none!important;
+  display:block!important;margin:0!important;padding:0!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art {
+  height:auto!important;min-height:0!important;max-height:none!important;
+  display:flex!important;flex-direction:column!important;
+  background:#332438!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art > img:first-child {
+  flex:0 0 auto!important;max-height:540px!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art>figcaption {
+  flex:0 0 auto!important;
+}
+@media(min-width:1081px) {
+ html[data-page="index"] .melodia-shell .hero.recruiter-static-hero{
+   grid-template-areas:"copy artwork"!important;
+   grid-template-rows:minmax(0,auto)!important;
+   grid-auto-flow:row!important;
+   align-items:center!important;
+   min-height:clamp(700px,82svh,860px)!important;
+ }
+ html[data-page="index"] .melodia-shell .recruiter-static-hero .hero-copy-layer{
+   grid-area:copy!important;grid-row:1!important;grid-column:1!important;
+ }
+ html[data-page="index"] .melodia-shell .folio-hero-art{
+   grid-area:artwork!important;grid-row:1!important;grid-column:2!important;
+   width:100%!important;align-self:center!important;
+ }
+}
+@media(max-width:1080px){
+ html[data-page="index"] .melodia-shell .recruiter-static-hero .hero-copy-layer{
+   grid-column:1!important;grid-row:1!important;
+ }
+ html[data-page="index"] .melodia-shell .folio-hero-art{
+   grid-column:1!important;grid-row:2!important;
+ }
+}
+
+/* Final first-fold desktop lock:
+   older hero layouts are over-constrained by legacy rules. Make the cover a
+   deliberate two-panel magazine spread with explicit anchors, not auto-grid.
+   CSS-backed real render is a non-duplicating fallback beneath the <img>. */
+@media(min-width:1081px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero{
+    display:block!important;position:relative!important;
+    height:clamp(740px,80svh,880px)!important;
+    min-height:clamp(740px,80svh,880px)!important;
+    max-height:none!important;
+    padding:0!important;
+    overflow:hidden!important;
+  }
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .hero-copy-layer {
+    display:block!important;position:absolute!important;z-index:4!important;
+    top:50%!important;left:max(4.2vw,calc((100vw - 1320px)/2))!important;
+    right:auto!important;bottom:auto!important;
+    width:41%!important;max-width:600px!important;
+    height:auto!important;min-height:0!important;max-height:none!important;
+    margin:0!important;padding:0!important;
+    transform:translateY(-47%)!important;
+    align-self:auto!important;justify-self:auto!important;
+  }
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .hero-copy-layer .hero-inner{
+    display:block!important;position:relative!important;
+    height:auto!important;min-height:0!important;max-height:none!important;
+    width:100%!important;padding:0!important;margin:0!important;
+    align-self:auto!important;justify-self:auto!important;
+  }
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art {
+    display:flex!important;flex-direction:column!important;
+    position:absolute!important;z-index:3!important;
+    top:50%!important;right:max(3.4vw,calc((100vw - 1360px)/2))!important;
+    left:auto!important;bottom:auto!important;
+    transform:translateY(-48%) rotate(.3deg)!important;
+    margin:0!important;padding:.55rem!important;
+    width:48.3vw!important;max-width:690px!important;
+    height:clamp(460px,58svh,600px)!important;min-height:0!important;
+    max-height:none!important;box-sizing:border-box!important;
+    align-self:auto!important;justify-self:auto!important;
+    background:#332438 url("../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp")
+      center 47%/cover no-repeat!important;
+  }
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art > img:first-child{
+    display:block!important;position:relative!important;
+    width:100%!important;height:calc(100% - 48px)!important;min-height:0!important;
+    max-height:none!important;flex:1 1 auto!important;
+    object-fit:cover!important;opacity:1!important;
+  }
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art>figcaption{
+    min-height:45px!important;height:auto!important;
+    flex:0 0 auto!important;
+  }
+}
+
+/* Screenshot-proof portrait frame: make the loaded image fill exactly one visual
+   slot instead of flex-shrinking above the same-source background fallback. */
+@media(min-width:1081px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art{
+    display:block!important;
+  }
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art > img:first-child{
+    display:block!important;
+    position:absolute!important;
+    top:.55rem!important;left:.55rem!important;right:.55rem!important;
+    bottom:3.25rem!important;
+    width:calc(100% - 1.1rem)!important;
+    height:calc(100% - 3.8rem)!important;
+    max-height:none!important;min-height:0!important;
+    object-fit:cover!important;object-position:center 48%!important;
+    margin:0!important;padding:0!important;
+    flex:none!important;
+    opacity:1!important;visibility:visible!important;
+  }
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art>figcaption{
+    display:flex!important;
+    position:absolute!important;
+    bottom:.55rem!important;left:.55rem!important;right:.55rem!important;
+    width:auto!important;height:2.7rem!important;min-height:0!important;
+    margin:0!important;padding:.5rem .55rem!important;
+    box-sizing:border-box!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    z-index:7!important;
+  }
+}

@@ -51,6 +51,8 @@
   }
 
   function initParallax() {
+    const shell = document.querySelector('.melodia-shell');
+    if (shell && shell.getAttribute('data-effects') === 'none') return;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (reduceMotion.matches) return;
 
@@ -1128,6 +1130,8 @@
   }
 
   function ensureDreamShadersScript() {
+    const shell = document.querySelector('.melodia-shell');
+    if (shell && shell.getAttribute('data-effects') === 'none') return Promise.resolve();
     if (global.MelodiaDreamShaders) return Promise.resolve();
     if (document.querySelector('script[src*="melodia-dream-shaders.js"]')) {
       return Promise.resolve();
@@ -1219,7 +1223,7 @@
 
   function bootEffects() {
     const shell = document.querySelector('.melodia-shell');
-    if (!shell) return;
+    if (!shell || shell.getAttribute('data-effects') === 'none') return;
 
     const heroType = shell.getAttribute('data-hero') || 'editorial';
     const starIntensity = heroType === 'cosmic' ? 'cosmic' : 'standard';

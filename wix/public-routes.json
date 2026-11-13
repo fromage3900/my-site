@@ -5,12 +5,9 @@
     "curated-art.html",
     "world-bible.html",
     "melodia-living-worlds.html",
-    "resume.html",
     "hero-renders.html",
     "zbrush-breakdown.html",
     "shader-breakdowns.html",
-    "cosmic-orrery.html",
-    "application-hub.html",
     "pipeline.html"
   ],
   "secondary_case_studies": [
@@ -71,7 +68,11 @@
     "surreal-architecture.html",
     "touchdesigner-architecture.html",
     "touchdesigner-showreel.html",
-    "universal-material-impact.html"
+    "universal-material-impact.html",
+    "faraway-mother-couture.html",
+    "cosmic-orrery.html",
+    "application-hub.html",
+    "resume.html"
   ],
   "targeted_evidence": [
     "melusina-model-tooling.html",

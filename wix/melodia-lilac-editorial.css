@@ -1,0 +1,525 @@
+/* Melodia · Pearl/Lilac editorial — November 2026
+   A restrained translation of the artist's real gouache / digital colour language.
+   Integrates the art-first folio treatment of PR #93 and Times-first intent of PR #92.
+   Scoped to recruiter-facing surfaces; labs and Resonant Wilds retain their own identities. */
+:root {
+  --folio-pearl:#fffaff;
+  --folio-vellum:#fff6fb;
+  --folio-cloud:#f7efff;
+  --folio-lilac:#e7d4ff;
+  --folio-periwinkle:#a9beff;
+  --folio-blue:#a0d7f1;
+  --folio-rose:#f3adca;
+  --folio-orchid:#995bad;
+  --folio-ink:#382742;
+  --folio-plum:#5c3b69;
+  --folio-mute:#665b70;
+  --folio-brass:#aa7f7b;
+  --folio-line:rgba(112,76,138,.22);
+  --folio-serif:"Times New Roman",Times,Georgia,serif;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) {
+  color-scheme:light;
+  background:var(--folio-pearl);
+  scroll-behavior:smooth;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .melodia-shell {
+  --color-surface-base:var(--folio-pearl);
+  --color-surface-raised:#fffdfd;
+  --color-surface-sunken:var(--folio-cloud);
+  --color-text-primary:var(--folio-ink);
+  --color-text-secondary:var(--folio-mute);
+  --color-text-tertiary:#78677e;
+  --color-text-accent:var(--folio-orchid);
+  --color-border-subtle:var(--folio-line);
+  --color-border-default:rgba(102,70,137,.3);
+  --color-accent-primary:#a568af;
+  --color-accent-secondary:#8b85cd;
+  --color-accent-tertiary:#f1b0cd;
+  --color-rule-gold:#d0a88f;
+  background:
+    radial-gradient(ellipse 54% 29% at 2% 5%,rgba(203,174,244,.46),transparent 75%),
+    radial-gradient(ellipse 50% 33% at 98% 24%,rgba(237,148,192,.29),transparent 75%),
+    radial-gradient(ellipse 51% 31% at 30% 65%,rgba(165,206,255,.23),transparent 74%),
+    linear-gradient(154deg,#fffafd 0%,#f9f1ff 44%,#f7efff 69%,#f7faff 100%);
+  color:var(--folio-ink);
+  font-family:var(--folio-serif);
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) :is(h1,h2,h3,p,span,small,a,figcaption) {
+  text-wrap:pretty;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) :is(a,button):focus-visible {
+  outline:3px solid #8251a4!important;outline-offset:3px;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav {
+  background:rgba(255,250,254,.93)!important;
+  color:var(--folio-ink)!important;
+  border:1px solid rgba(128,84,149,.3)!important;
+  box-shadow:0 8px 32px rgba(128,76,150,.09)!important;
+  backdrop-filter:blur(16px);
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav :is(.brand,.brand-short,.brand-full,.nav-links a,.nav-more summary) {
+  color:var(--folio-ink)!important;
+  font-family:var(--folio-serif)!important;
+  text-shadow:none!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav .brand {
+  font-weight:600;letter-spacing:.055em!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav .nav-links a:hover {
+  color:#a252a0!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav :is(.nav-cta,.button-premium) {
+  background:linear-gradient(120deg,#f4ddea,#e8d9ff)!important;
+  color:#563365!important;
+  border-color:#b88ac4!important;
+  box-shadow:none!important;
+  font-family:var(--folio-serif);
+  font-weight:700;
+}
+html[data-page="index"] .hero.recruiter-static-hero,
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero {
+  display:grid!important;
+  grid-template-columns:minmax(0,.91fr) minmax(0,1.09fr);
+  align-items:center;
+  gap:clamp(1rem,4vw,4rem);
+  min-height:clamp(600px,84svh,790px)!important;
+  padding:clamp(8rem,11vw,11rem) max(4vw,calc((100vw - 1320px)/2)) clamp(4rem,6vw,6rem);
+  box-sizing:border-box;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse 64% 95% at 88% 18%,rgba(188,171,255,.5),transparent 80%),
+    radial-gradient(ellipse 66% 60% at 10% 95%,rgba(255,184,215,.42),transparent 90%),
+    linear-gradient(135deg,#fff9fd 0%,#f5e9ff 52%,#e9f5ff 100%)!important;
+}
+html[data-page="index"] .hero.recruiter-static-hero::after {
+  content:"✧";position:absolute;right:3%;top:13%;font-size:clamp(5rem,13vw,12rem);
+  font-weight:400;color:rgba(175,120,192,.12);pointer-events:none;
+}
+html[data-page="index"] .recruiter-static-hero .hero-copy-layer {
+  position:relative!important;z-index:2!important;grid-column:1;width:auto!important;
+  min-width:0;
+}
+html[data-page="index"] .recruiter-static-hero .hero-inner {
+  max-width:710px!important;width:auto!important;margin:0!important;
+  padding:0!important;text-align:left!important;text-shadow:none!important;
+}
+html[data-page="index"] .recruiter-static-hero .kicker,
+html[data-page="index"] .home-foyer-band .eyebrow {
+  color:#854b93!important;font:700 .76rem/1.45 var(--folio-serif)!important;
+  letter-spacing:.16em!important;text-shadow:none!important;
+}
+html[data-page="index"] .recruiter-static-hero h1 {
+  color:#3e2c55!important;
+  font:400 clamp(3.4rem,5.65vw,6rem)/.98 var(--folio-serif)!important;
+  letter-spacing:-.042em!important;text-shadow:none!important;
+  max-width:13ch!important;margin:1rem 0 1.4rem!important;
+}
+html[data-page="index"] .recruiter-static-hero h1 em {
+  color:#a65eaa;font-weight:400;font-style:italic;
+}
+html[data-page="index"] .recruiter-static-hero .lede {
+  color:#5b4f67!important;font:400 clamp(1.02rem,1.5vw,1.19rem)/1.55 var(--folio-serif)!important;
+  max-width:39ch!important;text-shadow:none!important;
+}
+html[data-page="index"] .recruiter-static-hero .hero-actions {
+  margin-top:1.6rem;gap:.75rem;
+}
+html[data-page="index"] .recruiter-static-hero .hero-actions a {
+  font:700 .81rem/1 var(--folio-serif)!important;letter-spacing:.055em!important;
+  text-transform:none!important;min-height:45px;
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:1rem 1.3rem!important;
+  box-shadow:none!important;border:1px solid #9d72a6!important;
+}
+html[data-page="index"] .recruiter-static-hero .hero-actions .primary {
+  background:linear-gradient(110deg,#9c69b7,#7f7fc3)!important;color:white!important;
+}
+html[data-page="index"] .recruiter-static-hero .hero-actions .button:not(.primary) {
+  background:rgba(255,255,255,.64)!important;color:#5e4077!important;
+}
+html[data-page="index"] .folio-proofline {
+  color:#77627f;font:400 .84rem/1.55 var(--folio-serif);
+  letter-spacing:.02em;margin-top:1.75rem;
+}
+html[data-page="index"] .folio-hero-art {
+  grid-column:2;z-index:1;align-self:center;position:relative;
+  margin:0;min-width:0;padding:clamp(.5rem,.9vw,.85rem);
+  background:rgba(255,255,255,.8);
+  border:1px solid rgba(159,111,180,.46);
+  box-shadow:14px 18px 0 rgba(226,187,229,.36),0 28px 70px rgba(104,71,146,.14);
+  transform:rotate(1deg);
+}
+html[data-page="index"] .folio-hero-art::before {
+  content:"";position:absolute;inset:clamp(.75rem,1.2vw,1.1rem);z-index:1;
+  border:1px solid rgba(249,234,251,.5);pointer-events:none;
+}
+html[data-page="index"] .folio-hero-art img {
+  display:block;width:100%;height:clamp(340px,35vw,545px);
+  object-fit:cover;object-position:51% 53%;
+}
+html[data-page="index"] .folio-hero-art figcaption {
+  display:flex;justify-content:space-between;gap:.6rem;flex-wrap:wrap;
+  padding:.8rem .4rem .15rem;color:#7c6382;
+  font:400 .82rem/1.4 var(--folio-serif);
+}
+html[data-page="index"] .folio-hero-art figcaption b {
+  font-weight:400;text-transform:uppercase;letter-spacing:.07em;
+}
+html[data-page="index"] .game-ui-filigree-divider,
+html[data-page="index"] .recruiter-static-hero .hero-bg-primary {display:none!important}
+html[data-page="index"] .home-foyer-band {
+  background:transparent!important;border:0!important;padding:clamp(3rem,6vw,5rem) 0!important;
+}
+html[data-page="index"] .home-foyer-band::before,
+html[data-page="index"] .home-foyer-band::after{display:none!important}
+html[data-page="index"] .home-foyer-band .section-head h2 {
+  font:400 clamp(2rem,4vw,3.6rem)/1.12 var(--folio-serif)!important;
+  color:var(--folio-ink)!important;letter-spacing:-.025em!important;text-shadow:none!important;
+}
+html[data-page="index"] .home-foyer-band .section-head p,
+html[data-page="index"] .home-foyer-band .human-lede{color:#705e7c!important}
+html[data-page="index"] .recruiter-feature {
+  background:rgba(255,253,255,.91)!important;color:var(--folio-ink)!important;
+  border:1px solid rgba(160,104,176,.32)!important;
+  box-shadow:0 20px 50px rgba(116,84,145,.1)!important;
+}
+html[data-page="index"] .recruiter-feature img{filter:none}
+html[data-page="index"] .recruiter-feature-copy :is(strong,small,span){color:var(--folio-ink)!important}
+html[data-page="index"] .recruiter-feature-copy small{color:#975390!important}
+html[data-page="index"] .recruiter-feature-copy span{color:#74647b!important}
+html[data-page="index"] .home-foyer-card,
+html[data-page="index"] .home-foyer-card.is-primary{
+  border:1px solid rgba(163,108,185,.4)!important;
+  box-shadow:none!important;border-radius:3px!important;
+  transform:none!important;
+}
+html[data-page="index"] .home-foyer-card:hover,
+html[data-page="index"] .home-foyer-card:focus-visible{
+  box-shadow:0 0 0 3px rgba(178,118,204,.19)!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-copy {
+  color:white;text-shadow:0 2px 8px rgba(28,14,35,.7);
+}
+html[data-page="index"] .home-foyer-card.is-quiet {
+  background:linear-gradient(137deg,#ae82cc,#db9dbd 53%,#97cbe5)!important;
+}
+html[data-page="index"] .footer {
+  background:rgba(255,250,254,.86)!important;color:#65546f!important;
+  border-top:1px solid var(--folio-line)!important;
+}
+html[data-page="index"] .footer :is(span,a){color:#65546f!important}
+html[data-page="curated-art"] .curated-art-shell {
+  background:linear-gradient(135deg,#fff8fe,#f4eaff 56%,#eff8ff)!important;
+  --gallery-paper:#fffcff;--gallery-ink:#493554;--gallery-night:#f0e8f9;
+}
+html[data-page="curated-art"] .curated-art-hero {
+  color:#422c52!important;min-height:clamp(470px,67svh,690px)!important;
+  background:linear-gradient(120deg,#f8e9ff,#f9f4ff 56%,#e9f8ff)!important;
+}
+html[data-page="curated-art"] .curated-art-hero .hero-inner{position:relative;z-index:2}
+html[data-page="curated-art"] .curated-art-hero :is(h1,.lede,.kicker){color:#483254!important;text-shadow:none!important}
+html[data-page="curated-art"] .curated-art-hero h1{font-family:var(--folio-serif)!important}
+html[data-page="curated-art"] .curated-hero-image{filter:saturate(1.08);opacity:.86}
+html[data-page="curated-art"] .curated-art-shell .band:not(.curated-studies) {
+  background:transparent!important;color:var(--folio-ink)!important;
+}
+html[data-page="curated-art"] .curated-art-shell .section-head :is(h2,p),html[data-page="curated-art"] .curated-art-shell .human-lede {color:var(--folio-ink)!important}
+html[data-page="curated-art"] .curated-art-shell :is(.art-piece,.art-grid img) {border-radius:2px}
+html[data-page="curated-art"] .art-piece figcaption {
+  background:rgba(255,253,255,.97)!important;color:#55415c!important;
+  border:1px solid rgba(150,104,178,.21)!important;
+}
+html[data-page="curated-art"] .art-piece figcaption :is(span,small){color:#55415c!important}
+html[data-page="curated-art"] .folio-river-study{
+  padding:clamp(3rem,5vw,5rem) 0!important;background:rgba(249,239,253,.85)!important;
+}
+.folio-river-study .folio-river-head{max-width:74ch;margin:0 0 1.5rem}
+.folio-river-study .folio-river-head .eyebrow{color:#8e5998;font:700 .75rem var(--folio-serif);letter-spacing:.12em}
+.folio-river-study .folio-river-head h2{font:400 clamp(2rem,4vw,3.4rem)/1.1 var(--folio-serif);color:var(--folio-ink);margin:.5rem 0}
+.folio-river-study .folio-river-head p{color:#6e5b76;line-height:1.55}
+.folio-river-study figure{margin:0;padding:.6rem;border:1px solid rgba(148,100,168,.33);background:white}
+.folio-river-study figure img{display:block;width:100%;height:auto}
+.folio-river-study figcaption{display:flex;gap:.5rem 1.5rem;justify-content:space-between;flex-wrap:wrap;padding:.6rem;color:#67516d;font-size:.83rem}
+.folio-river-study figcaption a{color:#8a5ea4}
+html[data-page="world-bible"] .worlds-shell{background:linear-gradient(135deg,#fffafe,#f6ecff 56%,#eaf8ff)!important;color:var(--folio-ink)!important}
+html[data-page="world-bible"] .worlds-hero {
+  min-height:clamp(530px,73svh,760px);
+  background:linear-gradient(120deg,#fff8fd,#e9d9fb 65%,#c9e9ff)!important;
+}
+html[data-page="world-bible"] .worlds-hero>img {
+  opacity:.67!important;width:47%!important;left:auto!important;
+  object-fit:cover!important;z-index:0!important;
+}
+html[data-page="world-bible"] .worlds-hero::after {
+  z-index:1!important;
+  background:linear-gradient(90deg,#fff8fd 0%,#f5eaff 42%,rgba(245,234,255,.25) 80%)!important;
+}
+html[data-page="world-bible"] .worlds-hero .worlds-wrap{position:relative;z-index:2}
+html[data-page="world-bible"] .worlds-hero :is(h1,.lede,.worlds-eyebrow){color:#3f2b53!important}
+html[data-page="world-bible"] .worlds-hero h1{font-family:var(--folio-serif)!important}
+html[data-page="world-bible"] .worlds-hero .worlds-buttons a {
+  background:rgba(255,255,255,.7)!important;color:#5e4273!important;
+  border-color:#ad85b8!important;
+}
+html[data-page="world-bible"] .worlds-hero .worlds-buttons a:first-child {
+  background:#9568b1!important;color:white!important;
+}
+html[data-page="world-bible"] .worlds-section{color:#4b3757!important}
+html[data-page="world-bible"] .worlds-section h2{color:#3e2c55!important}
+html[data-page="world-bible"] .worlds-section .worlds-note{color:#695875!important}
+html[data-page="world-bible"] .worlds-card{
+  background:rgba(255,252,255,.94)!important;border:1px solid rgba(156,106,180,.28)!important;
+  box-shadow:0 9px 29px rgba(113,80,135,.07);
+}
+html[data-page="world-bible"] .worlds-copy h3{color:#473256!important}
+html[data-page="world-bible"] .worlds-copy p{color:#695975!important}
+html[data-page="world-bible"] .worlds-copy small{color:#955b96!important}
+html[data-page="world-bible"] .worlds-copy a,
+html[data-page="world-bible"] .worlds-legacy a{color:#8352a7!important}
+html[data-page="world-bible"] .worlds-legacy {
+  background:linear-gradient(115deg,#eedcf8,#f5e5f3,#e8f4ff)!important;
+}
+html[data-page="world-bible"] .worlds-footer{color:#6e5b79!important}
+@media(max-width:960px) {
+  html[data-page="index"] .hero.recruiter-static-hero{
+    grid-template-columns:1fr!important;padding:8rem 1.5rem 4rem!important;min-height:0!important;gap:2.2rem;
+  }
+  html[data-page="index"] .recruiter-static-hero .hero-copy-layer,html[data-page="index"] .folio-hero-art{
+    grid-column:1!important;width:min(100%,720px)!important;margin-inline:auto!important;
+  }
+  html[data-page="index"] .recruiter-static-hero .hero-inner{width:100%!important}
+  html[data-page="index"] .recruiter-static-hero h1{max-width:14ch!important}
+  html[data-page="index"] .folio-hero-art img{height:clamp(250px,47vw,450px)!important}
+}
+@media(max-width:600px) {
+  html[data-page="index"] .hero.recruiter-static-hero{padding:6.5rem 1.2rem 2.5rem!important;gap:1.7rem!important}
+  html[data-page="index"] .recruiter-static-hero h1{font-size:clamp(3.15rem,12.1vw,4.7rem)!important}
+  html[data-page="index"] .recruiter-static-hero .lede{font-size:1.05rem!important}
+  html[data-page="index"] .folio-hero-art{transform:none!important;box-shadow:7px 8px 0 rgba(225,186,229,.4)!important}
+  html[data-page="index"] .folio-hero-art img{height:245px!important}
+  html[data-page="index"] .folio-hero-art figcaption{font-size:.73rem}
+  html[data-page="index"] .home-foyer-band{padding:2.5rem 0!important}
+  html[data-page="curated-art"] .curated-art-hero{min-height:540px!important}
+  html[data-page="world-bible"] .worlds-hero>img{width:100%!important;opacity:.2!important}
+  html[data-page="world-bible"] .worlds-hero:after{background:linear-gradient(90deg,rgba(255,248,253,.9),rgba(255,248,253,.7))!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-page="index"] *,html[data-page="curated-art"] *,html[data-page="world-bible"] *{
+    animation-duration:.01ms!important;scroll-behavior:auto!important;
+  }
+}
+
+/* Screenshot-verified contrast and compact mobile corrections, 2026-11-12. */
+html[data-page="index"] .recruiter-static-hero h1 {
+  background:none!important;background-image:none!important;background-clip:border-box!important;
+  -webkit-background-clip:border-box!important;
+  -webkit-text-fill-color:#422a55!important;color:#422a55!important;
+}
+html[data-page="index"] .recruiter-static-hero h1 em {
+  background:none!important;background-image:none!important;background-clip:border-box!important;
+  -webkit-background-clip:border-box!important;
+  -webkit-text-fill-color:#a457a1!important;color:#a457a1!important;
+}
+html[data-page="curated-art"] .curated-art-hero h1,
+html[data-page="curated-art"] .curated-art-hero h1 em {
+  background:none!important;background-image:none!important;background-clip:border-box!important;
+  -webkit-background-clip:border-box!important;
+  -webkit-text-fill-color:#4b3159!important;color:#4b3159!important;
+  text-shadow:none!important;
+}
+html[data-page="curated-art"] .curated-art-hero h1 em {
+  -webkit-text-fill-color:#975ba4!important;color:#975ba4!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav .nav-cta,
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav .nav-cta * {
+  color:#563665!important;-webkit-text-fill-color:#563665!important;text-shadow:none!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav .nav-toggle {
+  border:1px solid #ae83bd!important;background:#f0e0fb!important;
+  color:#563665!important;-webkit-text-fill-color:#563665!important;
+  text-shadow:none!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav .nav-toggle:after {
+  color:#563665!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav .nav-links a.is-active {
+  background:rgba(232,197,241,.48)!important;box-shadow:none!important;
+  border-color:#b28bbe!important;
+}
+html[data-page="index"] .hero.recruiter-static-hero {align-content:center!important;}
+@media(max-width:960px){
+  html[data-page="index"] .hero.recruiter-static-hero{
+    align-content:start!important;align-items:start!important;
+    grid-template-rows:auto auto!important;min-height:0!important;
+    padding-top:5.5rem!important;padding-bottom:2.6rem!important;
+  }
+  html[data-page="index"] .hero.recruiter-static-hero .hero-inner{
+    align-self:start!important;
+  }
+}
+html[data-page="curated-art"] .curated-art-hero .hero-inner {
+  text-align:left!important;
+}
+html[data-page="curated-art"] .curated-art-hero .hero-actions .button {
+  background:rgba(255,253,255,.76)!important;color:#5c4175!important;
+  -webkit-text-fill-color:#5c4175!important;border:1px solid #a37db5!important;
+  box-shadow:none!important;text-shadow:none!important;
+  font:700 .85rem var(--folio-serif)!important;letter-spacing:.04em!important;
+  text-transform:none!important;
+}
+html[data-page="curated-art"] .curated-art-hero .hero-actions .primary {
+  background:linear-gradient(115deg,#a36bb4,#7f85c9)!important;color:white!important;
+  -webkit-text-fill-color:white!important;
+}
+@media(max-width:600px) {
+ html[data-page="index"] .hero.recruiter-static-hero{
+   padding-top:5rem!important;padding-bottom:2rem!important;
+ }
+ html[data-page="index"] .folio-hero-art img{height:225px!important}
+ html[data-page="curated-art"] .curated-art-hero {
+   display:block!important;min-height:0!important;height:auto!important;
+   padding:7rem 1.3rem 2.7rem!important;
+ }
+ html[data-page="curated-art"] .curated-art-hero .hero-inner {
+   width:100%!important;max-width:100%!important;min-height:0!important;
+   margin:0!important;padding:0!important;
+ }
+ html[data-page="curated-art"] .curated-art-hero h1 {
+   font-size:clamp(2.65rem,10vw,3.6rem)!important;
+   letter-spacing:-.025em!important;line-height:1.04!important;
+   margin:.7rem 0 1rem!important;
+ }
+ html[data-page="curated-art"] .curated-art-hero .lede {
+   font-size:1.04rem!important;line-height:1.5!important;
+   max-width:38ch;margin:.5rem 0 1.4rem!important;
+ }
+ html[data-page="curated-art"] .curated-art-hero .hero-actions {
+   gap:.65rem!important;flex-direction:row!important;
+ }
+ html[data-page="curated-art"] .curated-art-hero .hero-actions .button {
+   width:auto!important;min-height:42px!important;padding:.8rem 1rem!important;
+ }
+ html[data-page="world-bible"] .worlds-hero {
+   min-height:0!important;align-items:start!important;
+   padding-top:5.2rem!important;padding-bottom:2.6rem!important;
+ }
+ html[data-page="world-bible"] .worlds-hero .worlds-wrap {
+   padding:1rem 0 0!important;margin:0 auto!important;
+ }
+ html[data-page="world-bible"] .worlds-hero h1 {
+   font-size:clamp(2.8rem,11vw,4rem)!important;line-height:1.05!important;
+ }
+}
+html[data-page="faraway-mother-couture"] body{
+  background:linear-gradient(145deg,#fffafd 0%,#f2e6ff 49%,#f0faff 100%)!important;
+  color:#483253!important;font-family:var(--folio-serif)!important;
+}
+html[data-page="faraway-mother-couture"] .melodia-shell {
+  --fm-dark:#f7edff;--fm-card:#fffafe;--fm-border:rgba(157,103,180,.3);
+  --fm-gold:#975d9c;
+  background:linear-gradient(145deg,#fffafd,#f3e9fc 62%,#edf7ff)!important;
+  color:#483253!important;
+}
+html[data-page="faraway-mother-couture"] .shell-nav {
+  background:rgba(255,249,254,.95)!important;border:1px solid rgba(153,105,179,.27)!important;
+}
+html[data-page="faraway-mother-couture"] .shell-nav :is(.brand,.nav-links a){color:#493557!important}
+html[data-page="faraway-mother-couture"] .fm-hero {
+  background:radial-gradient(ellipse at 70% 7%,rgba(162,196,255,.48),transparent 65%),
+    radial-gradient(ellipse at 5% 95%,rgba(236,166,210,.36),transparent 60%),
+    linear-gradient(125deg,#fff8fd,#efdefa 67%,#dff3ff)!important;
+  border-bottom:1px solid rgba(153,105,179,.35)!important;
+}
+html[data-page="faraway-mother-couture"] .fm-hero h1 {
+  color:#463052!important;font:400 clamp(3rem,6vw,5.1rem)/1.05 var(--folio-serif)!important;
+  text-wrap:balance;
+}
+html[data-page="faraway-mother-couture"] .fm-hero .lede,
+html[data-page="faraway-mother-couture"] .stat-pill .lbl {
+  color:#665774!important;
+}
+html[data-page="faraway-mother-couture"] .stat-pill .val{color:#4a345c!important}
+html[data-page="faraway-mother-couture"] .plate-frame,
+html[data-page="faraway-mother-couture"] .vista-card,
+html[data-page="faraway-mother-couture"] .tech-ledger {
+  background:#fffcff!important;border:1px solid rgba(153,105,179,.26)!important;
+  border-radius:3px!important;box-shadow:0 12px 34px rgba(98,66,129,.08)!important;
+}
+html[data-page="faraway-mother-couture"] .plate-frame figcaption {
+  background:#fffaff!important;color:#604f69!important;
+}
+html[data-page="faraway-mother-couture"] .plate-badge,
+html[data-page="faraway-mother-couture"] .vista-details h3,
+html[data-page="faraway-mother-couture"] .tech-ledger h2 {
+  color:#684278!important;font-family:var(--folio-serif)!important;
+}
+html[data-page="faraway-mother-couture"] .plate-note,
+html[data-page="faraway-mother-couture"] .vista-caption{
+  color:#685875!important;
+}
+html[data-page="faraway-mother-couture"] .section-head :is(h2,p){
+  color:#4d355e!important;
+}
+html[data-page="faraway-mother-couture"] .fm-technical-comparison {
+  background:linear-gradient(105deg,#f5e7fc,#e9f5ff)!important;
+  border-color:rgba(153,105,179,.28)!important;
+}
+
+/* Final folio fold: remove inherited 72vh copy spacer and ensure nav CTA contrast. */
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .hero-copy-layer .hero-inner {
+  min-height:0!important;height:auto!important;justify-content:flex-start!important;
+  padding:0!important;
+}
+html[data-page="index"] .melodia-shell .shell-nav > a.nav-cta.button-premium,
+html[data-page="curated-art"] .melodia-shell .shell-nav > a.nav-cta.button-premium,
+html[data-page="world-bible"] .melodia-shell .shell-nav > a.nav-cta.button-premium {
+  color:#513064!important;-webkit-text-fill-color:#513064!important;
+  -webkit-background-clip:border-box!important;background-clip:border-box!important;
+  background:#f2ddf3!important;
+  border:1px solid #bd8cc3!important;box-shadow:none!important;
+}
+@media(max-width:960px){
+ html[data-page="index"] .melodia-shell .hero.recruiter-static-hero {
+   align-content:start!important;align-items:start!important;justify-content:start!important;
+ }
+}
+
+/* The old void-surface specificity must not restore navy behind the folio. */
+html[data-page="index"] .melodia-shell section#portfolio-foyer.band.astral.home-foyer-band,
+html[data-page="index"] .melodia-shell section#portfolio-foyer.band[data-surface="void"]{
+  background:linear-gradient(155deg,#fffaff 0%,#f3e7fb 52%,#ecf7ff 100%)!important;
+  background-color:#f8efff!important;
+  color:#493553!important;
+  box-shadow:none!important;
+  border-top:1px solid rgba(145,93,169,.21)!important;
+  border-bottom:0!important;
+}
+html[data-page="index"] .melodia-shell section#portfolio-foyer.band.astral::before,
+html[data-page="index"] .melodia-shell section#portfolio-foyer.band[data-surface="void"]::before {
+  display:none!important;content:none!important;opacity:0!important;
+}
+html[data-page="index"] .melodia-shell section#portfolio-foyer .section-head p,
+html[data-page="index"] .melodia-shell section#portfolio-foyer .section-head h2{
+  color:#493553!important;-webkit-text-fill-color:#493553!important;
+}
+html[data-page="index"] .folio-hero-art{
+  background:linear-gradient(120deg,#f5ecfa,#ece4f4)!important;
+}
+
+/* Same-source CSS fallback: some headless desktop captures omit <img> paint.
+   Keep the established Git-tracked image visible even if replaced image decoding is late. */
+html[data-page="index"] .melodia-shell .folio-hero-art {
+  background:
+    #e9def1 url("../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp")
+    center 49% / cover no-repeat!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art > img {
+  display:block!important;position:relative!important;
+  visibility:visible!important;opacity:1!important;
+  filter:none!important;mix-blend-mode:normal!important;z-index:1!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art > figcaption {
+  position:relative!important;z-index:2!important;
+  background:#fff9ff!important;
+}

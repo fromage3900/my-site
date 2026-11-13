@@ -7,224 +7,36 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<title>Brennan Shepherd â€” Environment &amp; Technical Artist | Melodia</title>
-<meta name="description" content="Brennan Shepherd â€” environment and technical artist creating surreal fashion-fantasy worlds, characters, procedural systems, and musical interactive work in Unreal Engine 5.8." />
+<title>Brennan Shepherd — Environment &amp; Technical Artist</title>
+<meta name="description" content="Environment and technical art by Brennan Shepherd: Unreal Engine fantasy worlds, Houdini procedural systems and sculpted environments." />
 <link rel="canonical" href="https://www.fromageart.xyz/" />
 <meta name="robots" content="index,follow,max-image-preview:large" />
-<meta property="og:title" content="Brennan Shepherd â€” Environment &amp; Technical Art | Melodia" />
+<meta property="og:title" content="Brennan Shepherd — Environment &amp; Technical Artist" />
 <meta property="og:type" content="website" />
-<meta property="og:description" content="Stylized environment and technical art across surreal worlds, character work, procedural systems, shaders, and interactive Melodia experiments." />
-<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/variant_2_sakura_dawn.webp" />
+<meta property="og:description" content="Art-first stylized fantasy environments, materials and procedural worldbuilding." />
+<meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero-sakura-dream-ink-shrine.webp" />
 <meta property="og:image:alt" content="Brennan Shepherd â€” stylized environment and technical art from Melodia" />
 <meta property="og:url" content="https://www.fromageart.xyz/" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/variant_2_sakura_dawn.webp" />
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Melodia",
-  "applicationCategory": "Game",
-  "operatingSystem": "Windows",
-  "description": "Stylized JRPG Vertical Slice & Fashion-Fantasy Environment Art Platform in Unreal Engine 5.8 C++.",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-</script>
-<script>
-(function () {
-  try {
-    const capture = new URLSearchParams(window.location.search).get('capture') === '1';
-    if (capture ||
-        window.sessionStorage.getItem('melodia.entryCutscene.v1') === 'seen' ||
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.documentElement.classList.add('melodia-entry-skip');
-    }
-  } catch (e) {}
-})();
-</script>
+<meta name="twitter:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero-sakura-dream-ink-shrine.webp" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Brennan Shepherd","jobTitle":"Environment and Technical Artist","url":"https://www.fromageart.xyz/","sameAs":["https://www.artstation.com/fromage3900","https://www.linkedin.com/in/brennan-shepherd-3b6111307/"]}</script>
+
 <link rel="stylesheet" href="melodia-tokens.css?v=20260921p1">
 <link rel="stylesheet" href="melodia-luxury-type.css?v=20260921p1">
 <link rel="stylesheet" href="melodia-editorial.css?v=20260921p1">
-<link rel="stylesheet" href="melodia-magical-girl.css?v=20260921p1">
-<link rel="stylesheet" href="melodia-mahou-flourish.css?v=20260921p1">
 <link rel="stylesheet" href="melodia-components.css?v=20260921p1">
 <link rel="stylesheet" href="melodia-mobile.css?v=20260921p1">
 <link rel="stylesheet" href="melodia-home-hardening.css?v=20260921p1">
 <style>
 
-/* Ink & Breath micro-cutscene â€” distilled from the preserved 2026-09-02 opening ritual. */
-html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
-.melodia-entry-cutscene {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 54%, rgba(155,181,255,.08), transparent 30%),
-    #05030a;
-  animation: melodiaEntryVeil .92s cubic-bezier(.22,.72,.2,1) both;
-}
-.melodia-entry-frame {
-  position: relative;
-  width: min(94vw, 1180px);
-  aspect-ratio: 2.35 / 1;
-  overflow: hidden;
-  isolation: isolate;
-  background:
-    radial-gradient(circle at 66% 42%, rgba(255,143,163,.17), transparent 20%),
-    linear-gradient(125deg, #090414 0%, #12122b 52%, #25122c 100%);
-  border-top: 1px solid rgba(255,208,128,.38);
-  border-bottom: 1px solid rgba(155,181,255,.26);
-  box-shadow: 0 0 90px rgba(98,91,170,.18);
-  animation: melodiaEntryFrame .92s cubic-bezier(.16,.8,.26,1) both;
-}
-.melodia-entry-world,
-.melodia-entry-figure {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-}
-.melodia-entry-world {
-  opacity: .63;
-  filter: saturate(.78) contrast(1.08) hue-rotate(4deg);
-  transform: scale(1.035);
-  animation: melodiaEntryWorld .92s ease-out both;
-}
-.melodia-entry-figure {
-  left: auto;
-  right: 4%;
-  top: -10%;
-  width: 38%;
-  height: 122%;
-  object-fit: contain;
-  object-position: 70% 50%;
-  opacity: .58;
-  filter: saturate(.8) contrast(1.12) drop-shadow(0 0 28px rgba(200,168,232,.16));
-  mix-blend-mode: screen;
-  animation: melodiaEntryFigure .92s ease-out both;
-}
-.melodia-entry-ink {
-  position: absolute;
-  inset: -30%;
-  z-index: 3;
-  opacity: .9;
-  background:
-    radial-gradient(ellipse at 43% 58%, rgba(5,3,10,.98) 0 16%, rgba(5,3,10,.72) 27%, transparent 53%),
-    radial-gradient(ellipse at 64% 44%, rgba(10,5,20,.8) 0 13%, transparent 43%);
-  filter: blur(3px);
-  transform: scale(1.26) rotate(-4deg);
-  animation: melodiaEntryInk .92s cubic-bezier(.17,.67,.31,1) both;
-}
-.melodia-entry-horizon {
-  position: absolute;
-  z-index: 4;
-  left: 8%;
-  right: 8%;
-  top: 58%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(110,200,227,.35), rgba(255,208,128,.7), rgba(200,168,232,.38), transparent);
-  box-shadow: 0 0 14px rgba(155,181,255,.24);
-  animation: melodiaEntryHorizon .92s ease-out both;
-}
-.melodia-entry-star {
-  position: absolute;
-  z-index: 5;
-  left: 47%;
-  top: 47%;
-  transform: translate(-50%,-50%);
-  color: #ffd080;
-  font-size: clamp(16px, 2vw, 28px);
-  text-shadow:
-    0 0 12px rgba(255,208,128,.8),
-    0 0 32px rgba(200,168,232,.35);
-  animation: melodiaEntryStar .92s cubic-bezier(.2,.85,.2,1) both;
-}
-.melodia-entry-wordmark {
-  position: absolute;
-  z-index: 5;
-  left: 7%;
-  bottom: 9%;
-  color: rgba(255,248,238,.84);
-  font-family: var(--font-brand, "Jost", sans-serif);
-  font-size: clamp(.64rem, 1.15vw, .9rem);
-  letter-spacing: .44em;
-  text-transform: uppercase;
-  text-shadow: 0 0 20px rgba(155,181,255,.2);
-  animation: melodiaEntryWord .92s ease-out both;
-}
-@keyframes melodiaEntryVeil {
-  0%, 68% { opacity: 1; visibility: visible; }
-  100% { opacity: 0; visibility: hidden; }
-}
-@keyframes melodiaEntryFrame {
-  0% { opacity: 0; transform: scale(.985); filter: blur(8px); }
-  11% { opacity: 1; filter: blur(0); }
-  61% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.012); }
-}
-@keyframes melodiaEntryWorld {
-  0% { opacity: 0; transform: scale(1.055) translate3d(-.6%,.4%,0); }
-  18%, 62% { opacity: .63; }
-  100% { opacity: 0; transform: scale(1.025) translate3d(.35%,-.2%,0); }
-}
-@keyframes melodiaEntryFigure {
-  0%, 10% { opacity: 0; transform: translate3d(2.4%,1.2%,0); }
-  26%, 61% { opacity: .58; }
-  100% { opacity: 0; transform: translate3d(0,0,0); }
-}
-@keyframes melodiaEntryInk {
-  0% { opacity: 1; transform: scale(1.32) rotate(-5deg); }
-  18% { opacity: .88; }
-  58% { opacity: .2; transform: scale(.9) rotate(-2deg); }
-  100% { opacity: 0; transform: scale(.78) rotate(0); }
-}
-@keyframes melodiaEntryHorizon {
-  0%, 17% { opacity: 0; transform: scaleX(.12); }
-  38%, 66% { opacity: 1; transform: scaleX(1); }
-  100% { opacity: 0; transform: scaleX(1.05); }
-}
-@keyframes melodiaEntryStar {
-  0%, 19% { opacity: 0; transform: translate(-50%,-50%) scale(.2) rotate(-25deg); }
-  41% { opacity: 1; transform: translate(-50%,-50%) scale(1.2) rotate(8deg); }
-  62% { opacity: .82; transform: translate(-50%,-50%) scale(.92) rotate(0); }
-  100% { opacity: 0; transform: translate(-50%,-50%) scale(1.8); }
-}
-@keyframes melodiaEntryWord {
-  0%, 24% { opacity: 0; transform: translateY(5px); letter-spacing: .62em; }
-  44%, 67% { opacity: .9; transform: translateY(0); letter-spacing: .44em; }
-  100% { opacity: 0; transform: translateY(-2px); }
-}
-@media (max-width: 680px) {
-  .melodia-entry-frame {
-    width: 100vw;
-    aspect-ratio: 1.5 / 1;
-    border-left: 0;
-    border-right: 0;
-  }
-  .melodia-entry-figure { right: -6%; width: 52%; opacity: .5; }
-  .melodia-entry-wordmark { left: 6%; bottom: 8%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .melodia-entry-cutscene { display: none !important; }
-}
-
+/* Entry cutscene retired; source remains in Git history. */
 .env-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; margin-top: 1.5rem; }
 .env-card { position: relative; overflow: hidden; aspect-ratio: 16/10; display: flex; align-items: flex-end; text-decoration: none; border: 1px solid var(--color-border-subtle, rgba(201,168,106,.25)); background: var(--color-surface-sunken, #0A0E22); box-shadow: 0 8px 24px rgba(0,0,0,.35); transition: transform .3s ease, border-color .3s ease; }
 .env-card:hover { transform: translateY(-4px); border-color: var(--color-accent-primary, #C9A86A); }
 .env-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 .env-card:hover img { transform: scale(1.05); }
 .env-card .overlay { position: relative; z-index: 1; padding: 1.2rem 1.1rem 1rem; width: 100%; background: linear-gradient(transparent, rgba(10, 14, 34, 0.95)); }
-.env-card .env-name { font-family: var(--font-display, 'Times New Roman', Times, Georgia, serif; font-size: 1.25rem; color: var(--color-text-primary, #FFF8EE); display: block; font-weight: 700; }
+.env-card .env-name { font-family: var(--font-display, 'Times New Roman', Times, Georgia, serif); font-size: 1.25rem; color: var(--color-text-primary, #FFF8EE); display: block; font-weight: 700; }
 .env-card .env-tag { font-family: var(--font-mono, monospace); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--color-accent-primary, #C9A86A); display: block; margin-top: 4px; }
 .hero-video, .hero-poster, .hero-bg-plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 :focus-visible { outline: 2px solid var(--color-accent-primary, #C9A86A); outline-offset: 2px; }
@@ -235,335 +47,104 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
 }
 </style>
 
-<style id="td-hero-lookdev-styles">
-/* TouchDesigner Hero LookDev Switcher */
-.td-lookdev-switcher {
-  margin-top: 1.5rem;
-  margin-bottom: 1.25rem;
-  padding: 0.85rem 1.15rem;
-  background: rgba(15, 18, 30, 0.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(160, 185, 240, 0.22);
-  border-radius: 14px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  max-width: 820px;
-  animation: tdFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
 
-@keyframes tdFadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 
-.td-switcher-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-bottom: 0.65rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  flex-wrap: wrap;
-}
-
-.td-switcher-badge {
-  color: #a5b4fc;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-family: var(--font-mono, monospace);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.td-switcher-desc {
-  color: #94a3b8;
-  font-style: italic;
-  font-size: 0.78rem;
-  transition: color 0.3s ease;
-}
-
-.td-switcher-pills {
-  display: flex;
-  gap: 0.5rem;
-  overflow-x: auto;
-  padding-bottom: 0.2rem;
-  scrollbar-width: none;
-}
-.td-switcher-pills::-webkit-scrollbar { display: none; }
-
-.td-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.42rem 0.85rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #cbd5e1;
-  font-size: 0.82rem;
-  font-weight: 500;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  outline: none;
-}
-
-.td-pill:hover {
-  background: rgba(255, 255, 255, 0.14);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-1px);
-}
-
-.td-pill.is-active {
-  background: rgba(99, 102, 241, 0.28);
-  border-color: rgba(165, 180, 252, 0.75);
-  color: #ffffff;
-  box-shadow: 0 0 16px rgba(99, 102, 241, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-}
-
-.td-pill-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  box-shadow: 0 0 8px currentColor;
-  flex-shrink: 0;
-}
-</style>
-
+<style id="recruiter-focus-styles">
+html[data-page="index"]{--font-home-ui:"Times New Roman",Times,Georgia,serif}
+html[data-page="index"] .hero.recruiter-static-hero{min-height:clamp(590px,88svh,880px);display:flex;align-items:center;isolation:isolate;background:linear-gradient(90deg,rgba(8,7,22,.95) 0%,rgba(8,7,22,.76) 39%,rgba(8,7,22,.17) 100%),url("../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp") center 50% / cover no-repeat !important}
+html[data-page="index"] .recruiter-static-hero .hero-bg-primary{display:none!important}
+html[data-page="index"] .recruiter-static-hero .hero-bg-plate--primary{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;opacity:.88}
+html[data-page="index"] .recruiter-static-hero .hero-bg-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,7,22,.95),rgba(8,7,22,.69) 43%,rgba(8,7,22,.23)),linear-gradient(0deg,rgba(8,7,22,.44),transparent 55%)}
+html[data-page="index"] .recruiter-static-hero .hero-copy-layer{position:relative;z-index:2;width:100%}
+html[data-page="index"] .recruiter-static-hero .hero-inner{width:min(100% - 3rem,1100px);max-width:1100px;margin:0 auto;padding:clamp(6rem,13vh,9rem) 0;text-align:left;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+html[data-page="index"] .recruiter-static-hero .hero-inner h1{max-width:790px;font-family:"Times New Roman",Times,Georgia,serif}
+html[data-page="index"] .recruiter-static-hero .lede{max-width:580px;line-height:1.6}
+html[data-page="index"] .recruiter-feature{display:grid;grid-template-columns:1.2fr 1fr;color:#fff8ee;text-decoration:none;border:1px solid rgba(212,175,95,.45);background:#151127;overflow:hidden;margin-bottom:1.3rem;min-height:300px}
+html[data-page="index"] .recruiter-feature img{width:100%;height:100%;min-height:300px;object-fit:cover;object-position:center 45%}
+html[data-page="index"] .recruiter-feature-copy{display:flex;flex-direction:column;justify-content:center;gap:.8rem;padding:clamp(1.4rem,4vw,3rem)}
+html[data-page="index"] .recruiter-feature-copy small{color:#e6c992;letter-spacing:.11em;text-transform:uppercase}
+html[data-page="index"] .recruiter-feature-copy strong{font:400 clamp(2rem,4vw,3.2rem)/1.1 "Times New Roman",Times,Georgia,serif}
+html[data-page="index"] .recruiter-feature-copy span{color:#d7cfdf;line-height:1.5}
+html[data-page="index"] .home-foyer-card,html[data-page="index"] .home-foyer-card.is-primary{grid-column:span 6;min-height:clamp(255px,27vw,375px)}
+html[data-page="index"] .home-foyer-band .section-head h2{font-family:"Times New Roman",Times,Georgia,serif}
+@media(max-width:760px){html[data-page="index"] .recruiter-static-hero .hero-inner{width:calc(100% - 2rem)}html[data-page="index"] .hero.recruiter-static-hero{background-position:63% center!important}html[data-page="index"] .recruiter-feature{grid-template-columns:1fr}html[data-page="index"] .recruiter-feature img{min-height:210px;max-height:280px}html[data-page="index"] .home-foyer-card,html[data-page="index"] .home-foyer-card.is-primary{grid-column:1 / -1;min-height:280px}}
+@media(prefers-reduced-motion:reduce){html[data-page="index"] .hero h1{animation:none!important}}
+html[data-page="index"] .shell-nav .brand-short{display:none!important}@media(max-width:680px){html[data-page="index"] .shell-nav .brand{font-size:12px!important;letter-spacing:0!important;white-space:nowrap}html[data-page="index"] .shell-nav .brand-full{display:none!important}html[data-page="index"] .shell-nav .brand-short{display:inline!important;font:700 12px/1.2 "Times New Roman",Times,Georgia,serif!important;letter-spacing:.045em!important;color:#fff8ee!important}html[data-page="index"] .shell-nav .nav-cta{font-size:.65rem!important;padding:.65rem .65rem!important}}
+</style><link rel="stylesheet" href="melodia-plum-editorial.css?v=20261112a" />
+<link rel="stylesheet" href="melodia-hero-scene.css?v=20261113a" />
+<link rel="preload" as="image" href="../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp" fetchpriority="high" />
 </head>
 <body>
-<div id="melodia-entry-cutscene" class="melodia-entry-cutscene" aria-hidden="true">
-  <div class="melodia-entry-frame">
-    <img class="melodia-entry-world" src="../generated/assets/unreal/variant_2_sakura_dawn.webp" alt="" decoding="async" fetchpriority="high" />
-    <img class="melodia-entry-figure" src="../generated/assets/character/melusina_eevee_glam_20260715_02.png" alt="" decoding="async" fetchpriority="high" />
-    <div class="melodia-entry-ink"></div>
-    <div class="melodia-entry-horizon"></div>
-    <div class="melodia-entry-star">âœ¦</div>
-    <div class="melodia-entry-wordmark">Melodia</div>
-  </div>
-</div>
 <a class="skip-link" href="#main">Skip to main content</a>
-<div class="melodia-shell astral-mode" data-mg="full" data-hero="cosmic" data-visual="astral-game" data-theme="dark" data-effects="starfield,holo,magical" data-nav-cta="curated-art.html" data-nav-cta-label="Selected Art">
-<header class="shell-nav constellation-nav" aria-label="Melodia navigation">
-  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>MELODIA</a>
+<div class="melodia-shell astral-mode" data-mg="off" data-hero="editorial" data-visual="portfolio" data-theme="dark" data-effects="none" data-nav-cta="curated-art.html" data-nav-cta-label="Selected Art">
+<header class="shell-nav constellation-nav" aria-label="Portfolio navigation">
+  <a class="brand" href="index.html" aria-label="Brennan Shepherd — Home"><span class="brand-mark" aria-hidden="true"></span><span class="brand-full">Brennan Shepherd</span><span class="brand-short">B. Shepherd</span></a>
   <nav class="nav-links" aria-label="Sections"></nav>
   <a class="nav-cta button-premium" href="curated-art.html">Selected Art</a>
 </header>
 
 <main id="main">
 <!-- Hero Lookbook Stage -->
-<section class="hero" aria-labelledby="hero-title" data-pillar="sakura">
-  <!--
-    Hero BG drop-in (NVIDIA packet):
-    1) Put new plates in generated/assets/unreal/nvidia/ (or unreal/)
-    2) Swap [data-hero-bg-slot="primary"] img/video poster + [data-hero-bg-slot="secondary"] img
-    3) Keep .hero-bg-scrim + Melusina .hero-macro-plate unchanged
-  -->
-  <div class="parallax-layer-1" aria-hidden="true"></div>
-  <div class="parallax-layer-2" aria-hidden="true"></div>
-  <!-- Secondary soft plate â€” lavender establishing (subtle depth / crossfade layer) -->
-  <div class="parallax-layer-6 hero-bg-secondary" aria-hidden="true" data-hero-bg-slot="secondary">
-    <img
-      class="hero-bg-plate hero-bg-plate--secondary"
-      src="../generated/assets/unreal/variant_2_sakura_dawn.webp"
-      alt=""
-      decoding="async"
-      loading="eager"
-    />
+<section class="hero recruiter-static-hero" aria-labelledby="hero-title">
+  <div class="folio-stage-architecture" aria-hidden="true">
+    <img class="nv-moon" src="assets/figma/nv-pearl-eclipse.svg" alt="" width="600" height="620" decoding="async" />
+    <img class="nv-ribbon" src="assets/figma/nv-rose-satin.svg" alt="" width="1080" height="310" decoding="async" />
+    <img class="nv-flowers" src="assets/figma/nv-sakura-cascade.svg" alt="" width="820" height="650" decoding="async" />
+    <span class="folio-stage-arch"></span>
+    <span class="folio-stage-drape folio-stage-drape--left"></span>
+    <span class="folio-stage-drape folio-stage-drape--right"></span>
+    <span class="folio-stage-chain folio-stage-chain--a"></span>
+    <span class="folio-stage-chain folio-stage-chain--b"></span>
   </div>
-  <!-- Primary cinematic plate + atmospheric SakuraDream loop -->
-  <div class="parallax-layer-7 hero-bg-primary" aria-hidden="true" data-hero-bg-slot="primary">
-    <img
-      class="hero-poster hero-bg-plate hero-bg-plate--primary"
-      src="../generated/assets/unreal/variant_1_celestial_twilight.webp"
-      alt=""
-      decoding="async"
-      fetchpriority="high"
-    />
-    <video
-      class="hero-video hero-bg-video"
-      loop
-      muted
-      playsinline
-      preload="none"
-      poster="../generated/assets/unreal/variant_2_sakura_dawn.webp"
-      src="../generated/assets/landscape-loops/WP_SakuraDream.webm"
-      style="opacity:.16;mix-blend-mode:screen"
-    ></video>
-    <div class="hero-bg-scrim"></div>
-  </div>
-  <figure class="hero-macro-plate">
-    <img
-      src="../generated/assets/character/melusina_eevee_glam_20260715_02.png"
-      alt="Melusina EEVEE glam macro â€” hair and face detail"
-      loading="eager"
-      decoding="async"
-      fetchpriority="high"
-    />
-    <video
-      loop
-      muted
-      playsinline
-      preload="none"
-      aria-hidden="true"
-      poster="../generated/assets/character/melusina_eevee_glam_20260715_02.png"
-    >
-      <source src="../generated/assets/character-loops/melusina_glam_macro_postcard_4s.webm" type="video/webm" />
-    </video>
-  </figure>
-  <!-- Soft Melodia star/diamond accents â€” above bg, below copy; no instrument HUD -->
-  <div class="hero-star-accents" aria-hidden="true">
-    <span class="hero-star-diamond d1"></span>
-    <span class="hero-star-diamond d2"></span>
-    <span class="hero-star-diamond d3"></span>
-    <span class="hero-star-diamond d4"></span>
-    <span class="hero-star-diamond d5"></span>
-    <span class="hero-star-diamond d6"></span>
-  </div>
-  <div class="parallax-layer-8 hero-copy-layer">
+  <div class="hero-copy-layer">
     <div class="hero-inner">
-      <p class="kicker magazine-kicker premium-kicker">Environment art, characters, and the worlds they live in</p>
-      <div class="game-ui-filigree-divider is-baroque" aria-hidden="true"></div>
-      <h1 id="hero-title">I build worlds that feel like songs.</h1>
-      <p class="lede">Brennan Shepherd â€” environment and technical artist in Toronto. I make stylized fantasy worlds in Unreal Engine 5.8: environments, materials, foliage, procedural systems, and the characters that inhabit them. Melodia is where all of it lives.</p>
-      <!-- TouchDesigner River Sanctuary Live LookDev Variations -->
-      <div class="td-lookdev-switcher" role="region" aria-label="TouchDesigner LookDev Variations">
-        <div class="td-switcher-meta">
-          <span class="td-switcher-badge">âœ¦ TouchDesigner Live LookDev Â· 4590Ã—960</span>
-          <span class="td-switcher-desc" id="td-switcher-desc">Sacred Indigo Nocturne Â· Kira Star Sparkles Â· Pale Cyan Mist</span>
-        </div>
-        <div class="td-switcher-pills" role="tablist" aria-label="Aesthetic Presets">
-          <button type="button" class="td-pill is-active" role="tab" aria-selected="true" data-variant="variant_1_celestial_twilight" data-desc="Sacred Indigo Nocturne Â· Kira Star Sparkles Â· Pale Cyan Mist">
-            <span class="td-pill-dot" style="background:#818cf8;color:#818cf8"></span>
-            <span class="td-pill-name">Celestial Twilight</span>
-          </button>
-          <button type="button" class="td-pill" role="tab" aria-selected="false" data-variant="variant_2_sakura_dawn" data-desc="Golden Apricot Sunrise Â· Rose-Gold Caustics Â· Cherry Blossom Blush">
-            <span class="td-pill-dot" style="background:#fb7185;color:#fb7185"></span>
-            <span class="td-pill-name">Sakura Dawn</span>
-          </button>
-          <button type="button" class="td-pill" role="tab" aria-selected="false" data-variant="variant_3_bioluminescent_midnight" data-desc="Obsidian Deep Abyss Â· Electric Cyan Waves Â· Radiant Neon Petals">
-            <span class="td-pill-dot" style="background:#22d3ee;color:#22d3ee"></span>
-            <span class="td-pill-name">Bioluminescent Midnight</span>
-          </button>
-          <button type="button" class="td-pill" role="tab" aria-selected="false" data-variant="variant_4_atlus_graphic_cel" data-desc="Persona Ben-Day Halftone Â· Crimson Lotus Â· Comic Ink Contrast">
-            <span class="td-pill-dot" style="background:#f43f5e;color:#f43f5e"></span>
-            <span class="td-pill-name">Atlus Graphic Novel</span>
-          </button>
-          <button type="button" class="td-pill" role="tab" aria-selected="false" data-variant="variant_5_ghibli_summer_noon" data-desc="Pristine Cerulean Sky Â· Mountain Spring Emerald Â· Pure White Water Lilies">
-            <span class="td-pill-dot" style="background:#34d399;color:#34d399"></span>
-            <span class="td-pill-name">Ghibli Summer</span>
-          </button>
-        </div>
+      <p class="kicker magazine-kicker">Environment &amp; Technical Artist <span aria-hidden="true">✦</span> Toronto</p>
+      <h1 id="hero-title">Brennan Shepherd</h1>
+      <p class="folio-tagline">I build worlds that feel like songs.</p>
+      <p class="lede">Stylized environments, sculpted architecture, and procedural worldbuilding in Unreal Engine and Houdini.</p>
+      <div class="hero-actions">
+        <a class="button primary button-premium-primary" href="curated-art.html">Selected work</a>
+        <a class="button button-premium" href="world-bible.html">Environment studies</a>
       </div>
-      <p class="home-foyer-cue" aria-hidden="true">Choose a path â†“</p>
+      <p class="folio-proofline">Worldbuilding · Materials · Procedural Art</p>
     </div>
   </div>
+  <figure class="folio-hero-art">
+    <img src="../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp" alt="Sakura Dream: a stone bridge beneath floating island gardens, Unreal Engine environment study" fetchpriority="high" decoding="async"/>
+    <span class="folio-frame-corner folio-frame-corner--tl" aria-hidden="true"></span>
+    <span class="folio-frame-corner folio-frame-corner--tr" aria-hidden="true"></span>
+    <span class="folio-frame-corner folio-frame-corner--bl" aria-hidden="true"></span>
+    <span class="folio-frame-corner folio-frame-corner--br" aria-hidden="true"></span>
+    <img class="folio-figma-sparkles" src="assets/figma/mdl-sparkle-cluster.svg" alt="" aria-hidden="true" loading="eager" width="90" height="90" />
+    <img class="folio-figma-crystal" src="assets/figma/mdl-crystal-glint.svg" alt="" aria-hidden="true" loading="eager" width="90" height="90" />
+    <span class="folio-portal-cameo" aria-hidden="true"><span class="folio-portal-cameo__seal"></span></span>
+    <figcaption><b>Melodia / Environment study</b><span>Unreal Engine · Sakura Dream</span></figcaption>
+  </figure>
 </section>
 
-<div class="game-ui-filigree-divider is-baroque" aria-hidden="true" style="margin:0 auto;max-width:1180px"></div>
+<div class="folio-ornament-rule" aria-hidden="true"><span class="folio-ornament-rule__star">✦</span></div>
 
 <section id="portfolio-foyer" class="band astral home-foyer-band" data-surface="void" aria-labelledby="foyer-title">
   <div class="inner">
+    <div class="folio-scenic-head" aria-hidden="true"></div>
     <div class="section-head home-foyer-head">
       <div>
         <p class="eyebrow magazine-kicker">Portfolio paths</p>
-        <h2 id="foyer-title">Seven doors in.</h2>
+        <h2 id="foyer-title">Explore the work.</h2>
       </div>
-      <p>No maze. Pick the part of the practice you want to see.</p>
+      <p>Environments first. The systems are just beneath the surface.</p>
     </div>
 
-    <nav class="home-foyer-grid" aria-label="Portfolio destinations">
-      <a class="home-foyer-card is-primary" href="faraway-mother-couture.html" style="border: 1px solid rgba(212, 175, 95, 0.6); grid-column: 1 / -1;">
-        <img src="../generated/assets/unreal/faraway_plate_08_capstone_master_showcase_1920.webp" alt="Faraway Mother â€” Capstone Master Showcase" loading="eager" decoding="async" />
-        <span class="home-foyer-scrim" aria-hidden="true"></span>
-        <span class="home-foyer-copy">
-          <span class="home-foyer-kicker" style="color: #d4af5f;">âœ¦ Capstone Mentorship Showcase Â· Capstone Review</span>
-          <strong>Faraway Mother â€” Couture-Cymatic World Architecture</strong>
-          <span>1.63M+ Procedural Polygons, Cathedral V2 Megastructure, Heart Gate, and 77,392 Live Instances in Unreal Engine 5.8.</span>
-        </span>
-      </a>
-      <a class="home-foyer-card is-primary" href="curated-art.html">
-        <img src="../generated/assets/unreal/variant_2_sakura_dawn.webp" alt="" loading="lazy" decoding="async" />
-        <span class="home-foyer-scrim" aria-hidden="true"></span>
-        <span class="home-foyer-copy">
-          <span class="home-foyer-kicker">01 Â· Start here</span>
-          <strong>Portfolio</strong>
-          <span>The finished work â€” environments, characters, props, materials.</span>
-        </span>
-      </a>
-
-      <a class="home-foyer-card is-primary" href="application-hub.html">
-        <img src="../generated/assets/unreal/nikki9-kaleido-nave-hero.webp" alt="" loading="lazy" decoding="async" />
-        <span class="home-foyer-scrim" aria-hidden="true"></span>
-        <span class="home-foyer-copy">
-          <span class="home-foyer-kicker">02 Â· Environment art</span>
-          <strong>Worlds</strong>
-          <span>The four Melodia worlds and the visual language behind them.</span>
-        </span>
-      </a>
-
-      <a class="home-foyer-card" href="melusina-case-study.html">
-        <img src="../generated/assets/unreal/char-melusina-turntable-showcase-2048x2048.webp" alt="" loading="lazy" decoding="async" />
-        <span class="home-foyer-scrim" aria-hidden="true"></span>
-        <span class="home-foyer-copy">
-          <span class="home-foyer-kicker">08 Â· Character</span>
-          <strong>Melusina</strong>
-          <span>Character lookdev: Shorewake dress, iridescent organza, porcelain skin, and the TD hub behind it.</span>
-        </span>
-      </a>
-
-      <a class="home-foyer-card" href="melodia-living-worlds.html">
-        <img src="../generated/assets/unreal/hero-hero-level-cam-hero-establishing-20260709-182124-1920x1080.png" alt="" loading="lazy" decoding="async" />
-        <span class="home-foyer-scrim" aria-hidden="true"></span>
-        <span class="home-foyer-copy">
-          <span class="home-foyer-kicker">03 Â· Browser + realtime</span>
-          <strong>Interactive</strong>
-          <span>Living-world experiments and playful browser studies.</span>
-        </span>
-      </a>
-
-      <a class="home-foyer-card" href="pipeline.html">
-        <img src="../generated/assets/unreal/nikki9-melusina-morning-matrix.webp" alt="" loading="lazy" decoding="async" />
-        <span class="home-foyer-scrim" aria-hidden="true"></span>
-        <span class="home-foyer-copy">
-          <span class="home-foyer-kicker">04 Â· Systems</span>
-          <strong>Technical Art</strong>
-          <span>Unreal, Houdini, Python, shaders, and the tools I build.</span>
-        </span>
-      </a>
-
-      <a class="home-foyer-card" href="melodia-melusina.html">
-        <img src="../generated/assets/character/melusina_eevee_glam_20260715_02.png" alt="" loading="lazy" decoding="async" />
-        <span class="home-foyer-scrim" aria-hidden="true"></span>
-        <span class="home-foyer-copy">
-          <span class="home-foyer-kicker">05 Â· Character craft</span>
-          <strong>Character &amp; Sculpt</strong>
-          <span>Melusina â€” modeling, sculpt, and lookdev.</span>
-        </span>
-      </a>
-
-      <a class="home-foyer-card" href="touchdesigner-showreel.html">
-        <img data-plate="touchdesigner.pass_v07_bluenoise" src="../public/melodia/v07_blue_noise_anime_beauty_1080p.png" alt="" loading="lazy" decoding="async" />
-        <span class="home-foyer-scrim" aria-hidden="true"></span>
-        <span class="home-foyer-copy">
-          <span class="home-foyer-kicker">06 Â· Realtime image systems</span>
-          <strong>Real-Time Showreel</strong>
-          <span>Eight realtime passes, from pastoral light to anime screentone.</span>
-        </span>
-      </a>
-
-      <a class="home-foyer-card is-quiet" href="resume.html">
-        <span class="home-foyer-quiet-mark" aria-hidden="true">âœ¦</span>
-        <span class="home-foyer-copy">
-          <span class="home-foyer-kicker">07 Â· Practice</span>
-          <strong>About</strong>
-          <span>Resume, tools, and how the practice fits together.</span>
-        </span>
-      </a>
-    </nav>
+    <a class="recruiter-feature" href="faraway-mother-couture.html">
+<img src="../generated/assets/unreal/faraway_hero_heart_gate.webp" alt="Faraway Mother couture architecture and materials lookdevelopment" loading="lazy" decoding="async"/>
+<span class="folio-figma-medallion" aria-hidden="true"></span>
+<span class="recruiter-feature-copy"><small>Featured case study · Unreal Engine 5.8</small><strong>Faraway Mother</strong><span>Textile architecture, the Heart Gate, and a procedural landscape folded into itself.</span></span></a>
+<nav class="home-foyer-grid" aria-label="Four portfolio destinations">
+<a class="home-foyer-card is-primary" href="curated-art.html"><img src="../generated/assets/unreal/nikki9-kaleido-nave-hero.webp" alt="" loading="lazy"/><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">01 · Art first</span><strong>Selected Work</strong><span>Environment beauty, light, materials and sculpture.</span></span></a>
+<a class="home-foyer-card is-primary" href="world-bible.html"><img src="../generated/assets/unreal/faraway_cathedral_nave.webp" alt="" loading="lazy"/><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">02 · Worldbuilding</span><strong>Environment Art</strong><span>Current Melodia worlds and the best available production evidence.</span></span></a>
+<a class="home-foyer-card" href="shader-breakdowns.html"><img src="../generated/assets/unreal/nikki9-melusina-morning-matrix.webp" alt="" loading="lazy"/><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">03 · Production methods</span><strong>Technical Art</strong><span>Procedural tools, Houdini, shaders and material systems.</span></span></a>
+<a class="home-foyer-card is-quiet" href="resume.html"><span class="home-foyer-quiet-mark" aria-hidden="true">✦</span><span class="home-foyer-copy"><span class="home-foyer-kicker">04 · Work together</span><strong>About &amp; Contact</strong><span>Résumé, skills, ArtStation and email.</span></span></a>
+</nav>
   </div>
 </section>
 
@@ -572,141 +153,25 @@ html.melodia-entry-skip .melodia-entry-cutscene { display: none !important; }
 <footer class="footer">
   <div class="inner">
     <span>Brennan Shepherd / Stylized Environment &amp; Technical Artist</span>
-    <span>Melodia Â· Environment &amp; Technical Art Portfolio Â· <a href="mailto:brennan.shepherd3900@gmail.com" style="color:inherit;text-decoration:underline">Email</a></span>
+    <span>Melodia · Environment &amp; Technical Art Portfolio · <a href="mailto:brennan.shepherd3900@gmail.com" style="color:inherit;text-decoration:underline">Email</a></span>
     <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--color-border-subtle,rgba(255,255,255,.06));font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase"><a href="https://www.linkedin.com/in/brennan-shepherd-3b6111307/" rel="me noopener" target="_blank" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">LinkedIn</a><a href="https://www.artstation.com/fromage3900" rel="me noopener" target="_blank" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">ArtStation</a><a href="touchdesigner-showreel.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Real-Time Showreel</a><a href="recruiter-one-sheet.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Recruiter One-Sheet</a><a href="resume.html" style="color:var(--color-text-tertiary,#A9A7C0);text-decoration:none">Resume</a></div>
   </div>
 </footer>
 </div>
 
-<script>
-(function () {
-  var cutscene = document.getElementById('melodia-entry-cutscene');
-  if (!cutscene) return;
-  if (document.documentElement.classList.contains('melodia-entry-skip')) {
-    cutscene.remove();
-    return;
-  }
-  var finished = false;
-  function finishEntryCutscene() {
-    if (finished) return;
-    finished = true;
-    try { window.sessionStorage.setItem('melodia.entryCutscene.v1', 'seen'); } catch (e) {}
-    if (cutscene && cutscene.parentNode) cutscene.parentNode.removeChild(cutscene);
-  }
-  cutscene.addEventListener('animationend', function (event) {
-    if (event.animationName === 'melodiaEntryVeil') finishEntryCutscene();
-  });
-  window.setTimeout(finishEntryCutscene, 1400);
-})();
-</script>
-<script>
-(function () {
-  var hero = document.querySelector('.hero');
-  if (!hero) return;
 
-  var videos = Array.prototype.slice.call(hero.querySelectorAll('video'));
-  if (!videos.length) return;
 
-  var mobile = window.matchMedia && window.matchMedia('(max-width: 680px)').matches;
-  var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var heroVisible = false;
-
-  function pauseVideos() {
-    videos.forEach(function (video) {
-      video.pause();
-      if (mobile || reducedMotion) video.preload = 'none';
-    });
-  }
-
-  function syncVideos() {
-    if (document.hidden || mobile || reducedMotion || !heroVisible) {
-      pauseVideos();
-      return;
-    }
-
-    videos.forEach(function (video) {
-      video.preload = 'metadata';
-      var playPromise = video.play();
-      if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(function () {});
-    });
-  }
-
-  pauseVideos();
-
-  if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        heroVisible = entry.isIntersecting && entry.intersectionRatio >= 0.15;
-        syncVideos();
-      });
-    }, { threshold: [0, 0.15, 0.5] });
-    observer.observe(hero);
-  } else {
-    heroVisible = true;
-    syncVideos();
-  }
-
-  document.addEventListener('visibilitychange', syncVideos, { passive: true });
-  window.addEventListener('pagehide', pauseVideos, { passive: true });
-})();
-</script>
 <script src="wix-embed-bridge.js?v=20260921p1"></script>
-<script src="melodia-magical-girl.js?v=20260921p1"></script>
-<script src="melodia-mahou-flourish.js?v=20260921p1"></script>
-<script src="melodia-starfield.js?v=20260921p1"></script>
-<script src="melodia-dream-shaders.js?v=20260921p1"></script>
 <script src="melodia-site-nav.js?v=20260921p1"></script>
 <script src="melodia-editorial.js?v=20260921p1"></script>
+<script defer src="melodia-folio-motion.js?v=20261113a"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   MelodiaEditorial.init({ page: 'index' });
 });
 </script>
 
-<script id="td-hero-lookdev-script">
-(function() {
-  const pills = document.querySelectorAll('.td-switcher-pills .td-pill');
-  const primaryImg = document.querySelector('[data-hero-bg-slot="primary"] img');
-  const primaryVideo = document.querySelector('[data-hero-bg-slot="primary"] video');
-  const descEl = document.getElementById('td-switcher-desc');
-  if (!pills.length || !primaryImg) return;
 
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      const variant = pill.getAttribute('data-variant');
-      const desc = pill.getAttribute('data-desc');
-      
-      pills.forEach(p => {
-        p.classList.remove('is-active');
-        p.setAttribute('aria-selected', 'false');
-      });
-      pill.classList.add('is-active');
-      pill.setAttribute('aria-selected', 'true');
-      
-      if (descEl) {
-        descEl.style.opacity = '0';
-        setTimeout(() => {
-          descEl.textContent = desc;
-          descEl.style.opacity = '1';
-        }, 150);
-      }
-      
-      const newSrc = `../generated/assets/unreal/${variant}.webp`;
-      
-      primaryImg.style.transition = 'opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s ease';
-      primaryImg.style.opacity = '0.5';
-      
-      const preload = new Image();
-      preload.src = newSrc;
-      preload.onload = () => {
-        primaryImg.src = newSrc;
-        if (primaryVideo) primaryVideo.poster = newSrc;
-        primaryImg.style.opacity = '1';
-      };
-    });
-  });
-})();
-</script>
 
 </body>
 </html>

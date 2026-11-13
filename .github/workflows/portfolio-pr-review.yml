@@ -1,0 +1,77 @@
+name: Portfolio branch checks (no deployment)
+on:
+  push:
+    branches: ['portfolio/**']
+  pull_request:
+    paths:
+      - 'wix/**'
+      - 'index.html'
+      - 'sitemap.xml'
+      - 'tools/**'
+      - 'content/**'
+      - '.github/workflows/portfolio-pr-review.yml'
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Validate portfolio changes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build art derivatives for link validation
+        run: |
+          python -m pip install pillow
+          python tools/build_curated_art_derivatives.py
+      - name: Verify syntax and portfolio constraints
+        run: |
+          node --check wix/melodia-site-nav.js
+          node --check wix/melodia-editorial.js
+          node --check wix/curated-art-viewer.js
+          python tools/validate_assets.py
+          python tools/verify_showcase_polish.py
+          python tools/verify_sendoff_freeze.py
+          python tools/verify_recruiter_focus.py
+      - name: Check internal links and public-route hygiene
+        shell: pwsh
+        run: ./tools/validate_portfolio.ps1
+
+  screenshots:
+    name: Capture local branch screenshots
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Capture desktop and mobile previews
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome-stable || command -v google-chrome || command -v chromium-browser || command -v chromium || true)"
+          if [ -z "$CHROME" ]; then echo "Chrome unavailable"; exit 1; fi
+          mkdir -p visual-qa
+          python -m http.server 4173 --bind 127.0.0.1 >/tmp/portfolio-preview-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" >/dev/null 2>&1 || true' EXIT
+          sleep 1
+          capture() {
+            timeout 35s "$CHROME" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage \
+              --disable-extensions --disable-background-networking --hide-scrollbars --mute-audio \
+              --window-size="$1,$2" --virtual-time-budget=1500 \
+              --screenshot="$PWD/visual-qa/$3" "http://127.0.0.1:4173/$4"
+            test -s "visual-qa/$3"
+          }
+          capture 390 844 home-mobile.png wix/index.html
+          capture 1440 1000 home-desktop.png wix/index.html
+          capture 390 1100 environments-mobile.png wix/world-bible.html
+          capture 1440 1000 environments-desktop.png wix/world-bible.html
+          capture 390 1100 selected-art-mobile.png wix/curated-art.html
+          capture 1440 1000 recruiter-desktop.png wix/recruiter-one-sheet.html
+      - uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-preview-${{ github.sha }}
+          path: visual-qa/*.png
+          if-no-files-found: error
+          retention-days: 7

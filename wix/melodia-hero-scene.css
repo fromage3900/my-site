@@ -1,0 +1,120 @@
+/* Night Velvet · Scene composition v1.0.
+  Original editable Figma exports, not generated replacement artwork.
+  All extras are pointer-transparent and aria-hidden. */
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero{
+  --nv-moon-x:0px;--nv-moon-y:0px;--nv-ribbon-x:0px;--nv-ribbon-y:0px;
+  --nv-flower-x:0px;--nv-flower-y:0px;--nv-art-x:0px;--nv-art-y:0px;
+  perspective:1600px!important;perspective-origin:62% 46%!important;
+}
+html[data-page="index"] .folio-stage-architecture{
+  z-index:2!important;isolation:isolate;pointer-events:none!important;
+}
+html[data-page="index"] .folio-stage-architecture>img.nv-moon,
+html[data-page="index"] .folio-stage-architecture>img.nv-ribbon,
+html[data-page="index"] .folio-stage-architecture>img.nv-flowers {
+  position:absolute!important;display:block!important;width:auto!important;
+  max-width:none!important;height:auto!important;object-fit:contain!important;
+  pointer-events:none!important;user-select:none!important;filter:none!important;
+  mix-blend-mode:normal!important;will-change:transform,translate;
+}
+html[data-page="index"] .folio-stage-architecture>img.nv-moon {
+  width:clamp(280px,37vw,580px)!important;left:-4%!important;top:11%!important;
+  opacity:.59!important;z-index:1!important;transform-origin:38% 50%;
+  translate:var(--nv-moon-x) var(--nv-moon-y);
+  animation:nv-moon-float 17s ease-in-out infinite alternate;
+}
+html[data-page="index"] .folio-stage-architecture>img.nv-ribbon {
+  width:clamp(460px,64vw,1000px)!important;left:7%!important;top:44%!important;
+  opacity:.63!important;z-index:2!important;transform-origin:35% 52%;
+  translate:var(--nv-ribbon-x) var(--nv-ribbon-y);
+  animation:nv-ribbon-float 13s ease-in-out infinite alternate;
+}
+html[data-page="index"] .folio-stage-architecture>img.nv-flowers {
+  width:clamp(390px,49vw,750px)!important;left:-7%!important;bottom:-15%!important;
+  opacity:.83!important;z-index:3!important;transform-origin:8% 97%;
+  translate:var(--nv-flower-x) var(--nv-flower-y);
+  animation:nv-flowers-sway 15s ease-in-out infinite alternate;
+}
+html[data-page="index"] .folio-stage-architecture .folio-stage-arch{
+  transform:rotateY(-8deg) rotateX(1.5deg)!important;
+  transform-origin:62% 60%!important;
+  box-shadow:inset -24px 4px 33px rgba(229,172,202,.04),
+    inset 0 0 0 9px rgba(240,192,215,.019),
+    inset 0 0 0 11px rgba(240,192,215,.08)!important;
+}
+html[data-page="index"] .folio-stage-architecture .folio-stage-drape--left{
+  transform:rotateY(7deg)!important;
+}
+html[data-page="index"] .folio-stage-architecture .folio-stage-drape--right{
+  transform:scaleX(-1) rotateY(-7deg)!important;
+}
+@media(min-width:1081px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art{
+    transform:translateY(calc(-48% + var(--nv-art-y)))
+      translateX(var(--nv-art-x)) rotateY(-4deg) rotateX(1.1deg) rotateZ(.3deg)!important;
+    transform-origin:49% 52%!important;
+    box-shadow:13px 17px 0 rgba(98,47,80,.28),0 26px 64px rgba(10,4,14,.38)!important;
+    backface-visibility:hidden;
+  }
+}
+@keyframes nv-moon-float{
+ from{transform:translate3d(0,0,0) rotate(-1.5deg) scale(.985)}
+ to{transform:translate3d(0,8px,0) rotate(.75deg) scale(1.015)}
+}
+@keyframes nv-ribbon-float{
+ from{transform:translate3d(-5px,0,0) rotate(-.75deg)}
+ to{transform:translate3d(5px,-6px,0) rotate(.9deg)}
+}
+@keyframes nv-flowers-sway{
+ from{transform:translate3d(0,0,0) rotate(-1.25deg)}
+ to{transform:translate3d(4px,-8px,0) rotate(1.25deg)}
+}
+@media(max-width:1080px){
+  html[data-page="index"] .folio-stage-architecture>img.nv-moon{
+    width:min(60vw,420px)!important;left:-14%!important;top:7%!important;opacity:.36!important;
+  }
+  html[data-page="index"] .folio-stage-architecture>img.nv-ribbon{
+    width:90vw!important;left:-12%!important;top:47%!important;opacity:.34!important;
+  }
+  html[data-page="index"] .folio-stage-architecture>img.nv-flowers{
+    width:min(83vw,600px)!important;left:-20%!important;bottom:-5%!important;opacity:.72!important;
+  }
+}
+@media(max-width:720px){
+  html[data-page="index"] .folio-stage-architecture>img.nv-moon{
+    width:76vw!important;left:-34%!important;top:10%!important;opacity:.27!important;
+  }
+  html[data-page="index"] .folio-stage-architecture>img.nv-ribbon{
+    width:97vw!important;left:-18%!important;top:48%!important;opacity:.30!important;
+  }
+  html[data-page="index"] .folio-stage-architecture>img.nv-flowers{
+    width:87vw!important;left:-23%!important;bottom:-1%!important;opacity:.72!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-page="index"] .folio-stage-architecture>img.nv-moon,
+  html[data-page="index"] .folio-stage-architecture>img.nv-ribbon,
+  html[data-page="index"] .folio-stage-architecture>img.nv-flowers{
+    animation:none!important;translate:0 0!important;
+    transform:none!important;transition:none!important;will-change:auto!important;
+  }
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art{
+    transform:translateY(-48%) rotate(.3deg)!important;transition:none!important;
+  }
+}
+/* Actual screenshot correction — foreground decor may frame, never mask copy. */
+@media(min-width:1081px){
+ html[data-page="index"] .folio-stage-architecture>img.nv-moon{
+   width:clamp(250px,28vw,430px)!important;left:-10%!important;
+   top:15%!important;opacity:.31!important;
+ }
+ html[data-page="index"] .folio-stage-architecture>img.nv-flowers{
+   width:clamp(330px,31vw,460px)!important;left:-10.5%!important;
+   bottom:-21%!important;opacity:.77!important;
+ }
+ html[data-page="index"] .folio-stage-architecture>img.nv-ribbon{
+   width:clamp(460px,57vw,815px)!important;left:13%!important;
+   top:55%!important;opacity:.39!important;
+ }
+}
+html[data-page="index"] .folio-portal-cameo{display:none!important}

@@ -7,12 +7,12 @@
   'use strict';
 
   var LINKS = [
-    { href: 'index.html', label: 'Home', keys: ['index', ''] },
-    { href: 'curated-art.html', label: 'Portfolio', keys: ['curated-art'] },
-    { href: 'world-bible.html', label: 'Worlds', keys: ['world-bible', 'sakura-case-study', 'space-cathedral', 'pcg-system-impact', 'melodia-stage-character'] },
-    { href: 'melodia-living-worlds.html', label: 'Interactive', keys: ['melodia-living-worlds', 'melodia-gameplay-loop', 'melodia-rhythm-hero', 'realtime-3d-viewer', 'constellation-brush', 'mahou-particle-garden'] },
-    { href: 'resume.html', label: 'About', keys: ['resume', 'recruiter-one-sheet', 'hiring-dossier', 'credits'] },
-  ];
+{ href:'index.html', label:'Home', keys:['index',''] },
+{ href:'curated-art.html', label:'Selected Work', keys:['curated-art','hero-renders'] },
+{ href:'world-bible.html', label:'Environments', keys:['world-bible','faraway-mother-couture','sakura-case-study','space-cathedral','pcg-system-impact','cosmic-orrery'] },
+{ href:'shader-breakdowns.html', label:'Technical Art', keys:['shader-breakdowns','pipeline','application-hub','melodia-atelier-lab','realtime-3d-viewer','sdf-material-gallery','material-loop-gallery'] },
+{ href:'resume.html', label:'About', keys:['resume','recruiter-one-sheet','hiring-dossier','credits'] },
+];
 
   var moreHandlersBound = false;
 
@@ -137,13 +137,10 @@
   }
 
   var MORE_LINKS = [
-    { href: 'hero-renders.html', label: 'Render Gallery', keys: ['hero-renders'] },
-    { href: 'zbrush-breakdown.html', label: 'ZBrush / Sculpt', keys: ['zbrush-breakdown'] },
-    { href: 'shader-breakdowns.html', label: 'Shaders', keys: ['shader-breakdowns'] },
-    { href: 'cosmic-orrery.html', label: 'Cosmic Orrery', keys: ['cosmic-orrery'] },
-    { href: 'sdf-material-gallery.html', label: 'Material Atlas', keys: ['sdf-material-gallery'] },
-    { href: 'melodia-atelier-lab.html', label: 'Technical Art Lab', keys: ['melodia-atelier-lab'] },
-  ];
+{ href:'hero-renders.html', label:'Render Archive', keys:['hero-renders'] },
+{ href:'zbrush-breakdown.html', label:'Sculpt / Props', keys:['zbrush-breakdown'] },
+{ href:'melodia-living-worlds.html', label:'Living Worlds · Web Study', keys:['melodia-living-worlds'] },
+];
 
   function pageKey() {
     var html = document.documentElement;
@@ -191,7 +188,7 @@
     var star = constellation ? '<span class="nav-star" aria-hidden="true"></span>' : '';
     return (
       '<details class="nav-more' + (active ? ' is-active' : '') + '">' +
-        '<summary>' + star + '<span class="nav-more-label">Breakdowns</span> <span class="nav-more-icon" aria-hidden="true">▾</span></summary>' +
+        '<summary>' + star + '<span class="nav-more-label">More</span> <span class="nav-more-icon" aria-hidden="true">▾</span></summary>' +
         '<div class="nav-more-menu">' +
           MORE_LINKS.map(function (item) {
             return linkHtml(item, item.keys.indexOf(key) !== -1, constellation);
