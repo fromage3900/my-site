@@ -205,7 +205,7 @@ html[data-page="index"] .folio-hero-art::before{
   content:"";position:absolute;inset:.95rem .95rem 3.1rem;
   border:1px solid rgba(251,231,242,.53);z-index:2;pointer-events:none;
 }
-html[data-page="index"] .melodia-shell .folio-hero-art > img{
+html[data-page="index"] .melodia-shell .folio-hero-art > img:first-child{
   display:block!important;width:100%!important;
   height:clamp(350px,39vw,540px)!important;object-fit:cover!important;
   object-position:51% 51%!important;
@@ -582,7 +582,7 @@ html[data-page="faraway-mother-couture"] .shell-footer{
     grid-column:1!important;
     width:min(100%,690px)!important;margin-inline:auto!important;
   }
-  html[data-page="index"] .melodia-shell .folio-hero-art > img{
+  html[data-page="index"] .melodia-shell .folio-hero-art > img:first-child{
     height:clamp(250px,48vw,415px)!important;
   }
   html[data-page="index"] .home-foyer-card,
@@ -604,7 +604,7 @@ html[data-page="faraway-mother-couture"] .shell-footer{
   html[data-page="index"] .folio-hero-art {
     transform:none!important;box-shadow:7px 8px 0 rgba(138,76,117,.33)!important;
   }
-  html[data-page="index"] .melodia-shell .folio-hero-art > img{height:240px!important}
+  html[data-page="index"] .melodia-shell .folio-hero-art > img:first-child{height:240px!important}
   html[data-page="index"] .folio-hero-art figcaption{font-size:.69rem!important}
   html[data-page="index"] .recruiter-feature{
     grid-template-columns:1fr!important;
@@ -994,7 +994,7 @@ html[data-page="index"] .melodia-shell .folio-hero-art {
   display:flex!important;flex-direction:column!important;
   background:#332438!important;
 }
-html[data-page="index"] .melodia-shell .folio-hero-art>img {
+html[data-page="index"] .melodia-shell .folio-hero-art > img:first-child {
   flex:0 0 auto!important;max-height:540px!important;
 }
 html[data-page="index"] .melodia-shell .folio-hero-art>figcaption {
@@ -1068,7 +1068,7 @@ html[data-page="index"] .melodia-shell .folio-hero-art>figcaption {
     background:#332438 url("../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp")
       center 47%/cover no-repeat!important;
   }
-  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art>img{
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art > img:first-child{
     display:block!important;position:relative!important;
     width:100%!important;height:calc(100% - 48px)!important;min-height:0!important;
     max-height:none!important;flex:1 1 auto!important;
@@ -1086,7 +1086,7 @@ html[data-page="index"] .melodia-shell .folio-hero-art>figcaption {
   html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art{
     display:block!important;
   }
-  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art>img{
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art > img:first-child{
     display:block!important;
     position:absolute!important;
     top:.55rem!important;left:.55rem!important;right:.55rem!important;
