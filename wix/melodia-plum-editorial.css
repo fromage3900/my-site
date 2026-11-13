@@ -972,3 +972,55 @@ html[data-page="faraway-mother-couture"] .fm-hero::before {
 @media(prefers-reduced-motion:reduce) {
   html[data-page="index"] .folio-stage-architecture *{animation:none!important}
 }
+
+/* Rendered desktop correction (Nov 12): explicitly place the two live grid
+   children in one row. The previous auto grid inherited a tall figure and
+   pushed the real artist headline below the first viewport.
+   Remove duplicate image fallback: real <img> handles loading itself. */
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero {
+  grid-auto-rows:minmax(0,auto)!important;
+}
+html[data-page="index"] .melodia-shell .recruiter-static-hero .hero-copy-layer {
+  align-self:center!important;justify-self:start!important;
+  height:auto!important;min-height:0!important;max-height:none!important;
+  margin:0!important;padding:0!important;display:block!important;
+}
+html[data-page="index"] .melodia-shell .recruiter-static-hero .hero-inner {
+  min-height:0!important;height:auto!important;max-height:none!important;
+  display:block!important;margin:0!important;padding:0!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art {
+  height:auto!important;min-height:0!important;max-height:none!important;
+  display:flex!important;flex-direction:column!important;
+  background:#332438!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art>img {
+  flex:0 0 auto!important;max-height:540px!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art>figcaption {
+  flex:0 0 auto!important;
+}
+@media(min-width:1081px) {
+ html[data-page="index"] .melodia-shell .hero.recruiter-static-hero{
+   grid-template-areas:"copy artwork"!important;
+   grid-template-rows:minmax(0,auto)!important;
+   grid-auto-flow:row!important;
+   align-items:center!important;
+   min-height:clamp(700px,82svh,860px)!important;
+ }
+ html[data-page="index"] .melodia-shell .recruiter-static-hero .hero-copy-layer{
+   grid-area:copy!important;grid-row:1!important;grid-column:1!important;
+ }
+ html[data-page="index"] .melodia-shell .folio-hero-art{
+   grid-area:artwork!important;grid-row:1!important;grid-column:2!important;
+   width:100%!important;align-self:center!important;
+ }
+}
+@media(max-width:1080px){
+ html[data-page="index"] .melodia-shell .recruiter-static-hero .hero-copy-layer{
+   grid-column:1!important;grid-row:1!important;
+ }
+ html[data-page="index"] .melodia-shell .folio-hero-art{
+   grid-column:1!important;grid-row:2!important;
+ }
+}
