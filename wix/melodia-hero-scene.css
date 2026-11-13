@@ -102,3 +102,19 @@ html[data-page="index"] .folio-stage-architecture .folio-stage-drape--right{
     transform:translateY(-48%) rotate(.3deg)!important;transition:none!important;
   }
 }
+/* Actual screenshot correction — foreground decor may frame, never mask copy. */
+@media(min-width:1081px){
+ html[data-page="index"] .folio-stage-architecture>img.nv-moon{
+   width:clamp(250px,28vw,430px)!important;left:-10%!important;
+   top:15%!important;opacity:.31!important;
+ }
+ html[data-page="index"] .folio-stage-architecture>img.nv-flowers{
+   width:clamp(330px,31vw,460px)!important;left:-10.5%!important;
+   bottom:-21%!important;opacity:.77!important;
+ }
+ html[data-page="index"] .folio-stage-architecture>img.nv-ribbon{
+   width:clamp(460px,57vw,815px)!important;left:13%!important;
+   top:55%!important;opacity:.39!important;
+ }
+}
+html[data-page="index"] .folio-portal-cameo{display:none!important}
