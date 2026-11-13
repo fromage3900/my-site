@@ -484,3 +484,25 @@ html[data-page="world-bible"] .melodia-shell .shell-nav > a.nav-cta.button-premi
    align-content:start!important;align-items:start!important;justify-content:start!important;
  }
 }
+
+/* The old void-surface specificity must not restore navy behind the folio. */
+html[data-page="index"] .melodia-shell section#portfolio-foyer.band.astral.home-foyer-band,
+html[data-page="index"] .melodia-shell section#portfolio-foyer.band[data-surface="void"]{
+  background:linear-gradient(155deg,#fffaff 0%,#f3e7fb 52%,#ecf7ff 100%)!important;
+  background-color:#f8efff!important;
+  color:#493553!important;
+  box-shadow:none!important;
+  border-top:1px solid rgba(145,93,169,.21)!important;
+  border-bottom:0!important;
+}
+html[data-page="index"] .melodia-shell section#portfolio-foyer.band.astral::before,
+html[data-page="index"] .melodia-shell section#portfolio-foyer.band[data-surface="void"]::before {
+  display:none!important;content:none!important;opacity:0!important;
+}
+html[data-page="index"] .melodia-shell section#portfolio-foyer .section-head p,
+html[data-page="index"] .melodia-shell section#portfolio-foyer .section-head h2{
+  color:#493553!important;-webkit-text-fill-color:#493553!important;
+}
+html[data-page="index"] .folio-hero-art{
+  background:linear-gradient(120deg,#f5ecfa,#ece4f4)!important;
+}
