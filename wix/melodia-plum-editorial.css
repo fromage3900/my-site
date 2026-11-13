@@ -672,3 +672,113 @@ html[data-page="faraway-mother-couture"] .shell-footer{
    object-fit:cover!important;object-position:center 50%!important;
  }
 }
+
+/* 2026-11-12 · Illustrated concept ornaments translated into static vector assets.
+   Accessible: all ornament elements are purely decorative and pointer-transparent. */
+html[data-page="index"] .melodia-shell .shell-nav .brand-mark,
+html:is([data-page="curated-art"],[data-page="world-bible"],[data-page="faraway-mother-couture"]) .melodia-shell .shell-nav .brand-mark{
+  display:inline-block!important;
+  flex:0 0 30px!important;width:30px!important;height:30px!important;
+  background:url("assets/editorial/celestial-seal.svg") center / contain no-repeat!important;
+  border:none!important;box-shadow:none!important;opacity:.95!important;
+}
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero::before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  width:min(58vw,740px)!important;height:175px!important;
+  left:-4%!important;bottom:1.7%!important;
+  pointer-events:none!important;z-index:1!important;
+  background:url("assets/editorial/rose-ribbon.svg") center / contain no-repeat!important;
+  opacity:.82!important;
+}
+html[data-page="index"] .folio-frame-corner{
+  pointer-events:none!important;position:absolute!important;
+  width:clamp(55px,6vw,99px)!important;height:clamp(55px,6vw,99px)!important;
+  background:url("assets/editorial/folio-corner.svg") center / contain no-repeat!important;
+  z-index:3!important;display:block!important;opacity:.95!important;
+}
+html[data-page="index"] .folio-frame-corner--tl{top:1px;left:1px}
+html[data-page="index"] .folio-frame-corner--tr{top:1px;right:1px;transform:rotate(90deg)}
+html[data-page="index"] .folio-frame-corner--br{bottom:3.6rem;right:1px;transform:rotate(180deg)}
+html[data-page="index"] .folio-frame-corner--bl{bottom:3.6rem;left:1px;transform:rotate(270deg)}
+html[data-page="index"] .melodia-shell .folio-hero-art::before{
+  inset:.82rem .82rem 3.35rem!important;
+  border:1px solid rgba(248,216,232,.58)!important;
+  pointer-events:none!important;z-index:2!important;
+}
+html[data-page="index"] .folio-ornament-rule{
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(1rem,2vw,2rem);width:min(94%,1180px);margin:-.6rem auto 0;
+  color:#ebc2d6;position:relative;z-index:2;pointer-events:none;
+}
+html[data-page="index"] .folio-ornament-rule::before,
+html[data-page="index"] .folio-ornament-rule::after{
+  content:"";height:1px;flex:1;
+  background:linear-gradient(90deg,transparent,rgba(235,174,206,.58));
+}
+html[data-page="index"] .folio-ornament-rule::after{
+  transform:scaleX(-1);
+}
+html[data-page="index"] .folio-ornament-rule__star{
+  width:62px;height:62px;display:grid;place-items:center;
+  color:#ffe7ef;line-height:1;font-size:1.25rem;
+  background:url("assets/editorial/celestial-seal.svg") center / contain no-repeat;
+  text-indent:-9999px;overflow:hidden;
+}
+html[data-page="index"] .melodia-shell .recruiter-feature{
+  position:relative!important;
+  clip-path:polygon(15px 0,calc(100% - 15px) 0,100% 15px,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 calc(100% - 15px),0 15px);
+}
+html[data-page="index"] .recruiter-feature::after{
+  content:"";position:absolute;inset:8px;pointer-events:none;
+  border:1px solid rgba(132,73,111,.35);
+}
+html[data-page="index"] .home-foyer-card,
+html[data-page="index"] .home-foyer-card.is-primary{
+  position:relative!important;
+  clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px),0 10px)!important;
+}
+html[data-page="index"] .home-foyer-card::after{
+  content:"";position:absolute;inset:7px;z-index:2;
+  border:1px solid rgba(251,224,235,.39);pointer-events:none;
+}
+html[data-page="index"] .recruiter-static-hero .hero-inner{
+  position:relative!important;
+}
+html[data-page="index"] .recruiter-static-hero .hero-inner::after{
+  content:"✧  ───  ✦";display:block;
+  font:400 1.1rem var(--folio-serif);
+  letter-spacing:.2rem;color:rgba(237,177,208,.8);
+  margin-top:1rem;pointer-events:none;
+}
+html[data-page="curated-art"] .curated-art-shell .curated-art-hero,
+html[data-page="world-bible"] .worlds-hero{
+  outline:1px solid rgba(243,183,214,.36);
+  outline-offset:-12px;
+}
+@media(max-width:1080px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero::before{
+    width:65vw!important;height:105px!important;
+    bottom:0!important;left:-10%!important;opacity:.47!important;
+  }
+  html[data-page="index"] .folio-frame-corner{
+    width:65px!important;height:65px!important;
+  }
+}
+@media(max-width:720px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero::before{
+    width:65vw!important;height:76px!important;
+    bottom:0!important;left:-15%!important;opacity:.37!important;
+  }
+  html[data-page="index"] .folio-frame-corner{width:48px!important;height:48px!important}
+  html[data-page="index"] .folio-frame-corner--bl,
+  html[data-page="index"] .folio-frame-corner--br{bottom:3.25rem}
+  html[data-page="index"] .folio-ornament-rule__star{width:43px;height:43px}
+  html[data-page="index"] .melodia-shell .shell-nav .brand-mark{width:23px!important;height:23px!important;flex-basis:23px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero::before{
+    transition:none!important;animation:none!important;
+  }
+}

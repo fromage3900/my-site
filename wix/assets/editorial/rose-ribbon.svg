@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 230" fill="none" aria-hidden="true">
+<defs>
+  <linearGradient id="silk" x1="14" y1="40" x2="883" y2="179" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#B47A9E" stop-opacity=".04"/>
+    <stop offset=".2" stop-color="#D69BBC" stop-opacity=".49"/>
+    <stop offset=".48" stop-color="#F3C3D8" stop-opacity=".66"/>
+    <stop offset=".7" stop-color="#B887B7" stop-opacity=".29"/>
+    <stop offset="1" stop-color="#C38BB5" stop-opacity=".02"/>
+  </linearGradient>
+  <linearGradient id="silkLight" x1="140" y1="118" x2="850" y2="44" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FFF1F7" stop-opacity=".02"/><stop offset=".42" stop-color="#FFE4F2" stop-opacity=".7"/><stop offset="1" stop-color="#E5B9D5" stop-opacity=".05"/>
+  </linearGradient>
+</defs>
+<!-- Two silk folds, crossing only once. Quiet visual flourish, not animation. -->
+<path d="M-25 184C130 164 186 32 333 56C465 78 478 178 620 158C741 143 790 56 929 65
+L925 85C789 82 752 170 627 182C483 196 458 105 325 82C202 61 148 190 -24 208Z" fill="url(#silk)"/>
+<path d="M-16 179C140 162 203 21 338 54C467 86 475 175 619 159C764 143 812 49 921 66" stroke="url(#silkLight)" stroke-width="2"/>
+<path d="M120 206C235 195 257 118 346 114C438 110 445 170 535 164C592 161 631 133 671 121" stroke="#F5D2E5" stroke-opacity=".28" stroke-width="1"/>
+<path d="M754 59L758 69L769 73L758 77L754 88L750 77L739 73L750 69Z" fill="#EFC9DD" opacity=".63"/>
+<circle cx="754" cy="73" r="20" stroke="#E8B8D1" opacity=".28" stroke-width="1"/>
+</svg>
