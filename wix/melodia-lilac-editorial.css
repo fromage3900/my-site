@@ -465,3 +465,22 @@ html[data-page="faraway-mother-couture"] .fm-technical-comparison {
   background:linear-gradient(105deg,#f5e7fc,#e9f5ff)!important;
   border-color:rgba(153,105,179,.28)!important;
 }
+
+/* Final folio fold: remove inherited 72vh copy spacer and ensure nav CTA contrast. */
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .hero-copy-layer .hero-inner {
+  min-height:0!important;height:auto!important;justify-content:flex-start!important;
+  padding:0!important;
+}
+html[data-page="index"] .melodia-shell .shell-nav > a.nav-cta.button-premium,
+html[data-page="curated-art"] .melodia-shell .shell-nav > a.nav-cta.button-premium,
+html[data-page="world-bible"] .melodia-shell .shell-nav > a.nav-cta.button-premium {
+  color:#513064!important;-webkit-text-fill-color:#513064!important;
+  -webkit-background-clip:border-box!important;background-clip:border-box!important;
+  background:#f2ddf3!important;
+  border:1px solid #bd8cc3!important;box-shadow:none!important;
+}
+@media(max-width:960px){
+ html[data-page="index"] .melodia-shell .hero.recruiter-static-hero {
+   align-content:start!important;align-items:start!important;justify-content:start!important;
+ }
+}
