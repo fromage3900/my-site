@@ -309,3 +309,159 @@ html[data-page="world-bible"] .worlds-footer{color:#6e5b79!important}
     animation-duration:.01ms!important;scroll-behavior:auto!important;
   }
 }
+
+/* Screenshot-verified contrast and compact mobile corrections, 2026-11-12. */
+html[data-page="index"] .recruiter-static-hero h1 {
+  background:none!important;background-image:none!important;background-clip:border-box!important;
+  -webkit-background-clip:border-box!important;
+  -webkit-text-fill-color:#422a55!important;color:#422a55!important;
+}
+html[data-page="index"] .recruiter-static-hero h1 em {
+  background:none!important;background-image:none!important;background-clip:border-box!important;
+  -webkit-background-clip:border-box!important;
+  -webkit-text-fill-color:#a457a1!important;color:#a457a1!important;
+}
+html[data-page="curated-art"] .curated-art-hero h1,
+html[data-page="curated-art"] .curated-art-hero h1 em {
+  background:none!important;background-image:none!important;background-clip:border-box!important;
+  -webkit-background-clip:border-box!important;
+  -webkit-text-fill-color:#4b3159!important;color:#4b3159!important;
+  text-shadow:none!important;
+}
+html[data-page="curated-art"] .curated-art-hero h1 em {
+  -webkit-text-fill-color:#975ba4!important;color:#975ba4!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav .nav-cta,
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav .nav-cta * {
+  color:#563665!important;-webkit-text-fill-color:#563665!important;text-shadow:none!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav .nav-toggle {
+  border:1px solid #ae83bd!important;background:#f0e0fb!important;
+  color:#563665!important;-webkit-text-fill-color:#563665!important;
+  text-shadow:none!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav .nav-toggle:after {
+  color:#563665!important;
+}
+html:is([data-page="index"],[data-page="curated-art"],[data-page="world-bible"]) .shell-nav .nav-links a.is-active {
+  background:rgba(232,197,241,.48)!important;box-shadow:none!important;
+  border-color:#b28bbe!important;
+}
+html[data-page="index"] .hero.recruiter-static-hero {align-content:center!important;}
+@media(max-width:960px){
+  html[data-page="index"] .hero.recruiter-static-hero{
+    align-content:start!important;align-items:start!important;
+    grid-template-rows:auto auto!important;min-height:0!important;
+    padding-top:5.5rem!important;padding-bottom:2.6rem!important;
+  }
+  html[data-page="index"] .hero.recruiter-static-hero .hero-inner{
+    align-self:start!important;
+  }
+}
+html[data-page="curated-art"] .curated-art-hero .hero-inner {
+  text-align:left!important;
+}
+html[data-page="curated-art"] .curated-art-hero .hero-actions .button {
+  background:rgba(255,253,255,.76)!important;color:#5c4175!important;
+  -webkit-text-fill-color:#5c4175!important;border:1px solid #a37db5!important;
+  box-shadow:none!important;text-shadow:none!important;
+  font:700 .85rem var(--folio-serif)!important;letter-spacing:.04em!important;
+  text-transform:none!important;
+}
+html[data-page="curated-art"] .curated-art-hero .hero-actions .primary {
+  background:linear-gradient(115deg,#a36bb4,#7f85c9)!important;color:white!important;
+  -webkit-text-fill-color:white!important;
+}
+@media(max-width:600px) {
+ html[data-page="index"] .hero.recruiter-static-hero{
+   padding-top:5rem!important;padding-bottom:2rem!important;
+ }
+ html[data-page="index"] .folio-hero-art img{height:225px!important}
+ html[data-page="curated-art"] .curated-art-hero {
+   display:block!important;min-height:0!important;height:auto!important;
+   padding:7rem 1.3rem 2.7rem!important;
+ }
+ html[data-page="curated-art"] .curated-art-hero .hero-inner {
+   width:100%!important;max-width:100%!important;min-height:0!important;
+   margin:0!important;padding:0!important;
+ }
+ html[data-page="curated-art"] .curated-art-hero h1 {
+   font-size:clamp(2.65rem,10vw,3.6rem)!important;
+   letter-spacing:-.025em!important;line-height:1.04!important;
+   margin:.7rem 0 1rem!important;
+ }
+ html[data-page="curated-art"] .curated-art-hero .lede {
+   font-size:1.04rem!important;line-height:1.5!important;
+   max-width:38ch;margin:.5rem 0 1.4rem!important;
+ }
+ html[data-page="curated-art"] .curated-art-hero .hero-actions {
+   gap:.65rem!important;flex-direction:row!important;
+ }
+ html[data-page="curated-art"] .curated-art-hero .hero-actions .button {
+   width:auto!important;min-height:42px!important;padding:.8rem 1rem!important;
+ }
+ html[data-page="world-bible"] .worlds-hero {
+   min-height:0!important;align-items:start!important;
+   padding-top:5.2rem!important;padding-bottom:2.6rem!important;
+ }
+ html[data-page="world-bible"] .worlds-hero .worlds-wrap {
+   padding:1rem 0 0!important;margin:0 auto!important;
+ }
+ html[data-page="world-bible"] .worlds-hero h1 {
+   font-size:clamp(2.8rem,11vw,4rem)!important;line-height:1.05!important;
+ }
+}
+html[data-page="faraway-mother-couture"] body{
+  background:linear-gradient(145deg,#fffafd 0%,#f2e6ff 49%,#f0faff 100%)!important;
+  color:#483253!important;font-family:var(--folio-serif)!important;
+}
+html[data-page="faraway-mother-couture"] .melodia-shell {
+  --fm-dark:#f7edff;--fm-card:#fffafe;--fm-border:rgba(157,103,180,.3);
+  --fm-gold:#975d9c;
+  background:linear-gradient(145deg,#fffafd,#f3e9fc 62%,#edf7ff)!important;
+  color:#483253!important;
+}
+html[data-page="faraway-mother-couture"] .shell-nav {
+  background:rgba(255,249,254,.95)!important;border:1px solid rgba(153,105,179,.27)!important;
+}
+html[data-page="faraway-mother-couture"] .shell-nav :is(.brand,.nav-links a){color:#493557!important}
+html[data-page="faraway-mother-couture"] .fm-hero {
+  background:radial-gradient(ellipse at 70% 7%,rgba(162,196,255,.48),transparent 65%),
+    radial-gradient(ellipse at 5% 95%,rgba(236,166,210,.36),transparent 60%),
+    linear-gradient(125deg,#fff8fd,#efdefa 67%,#dff3ff)!important;
+  border-bottom:1px solid rgba(153,105,179,.35)!important;
+}
+html[data-page="faraway-mother-couture"] .fm-hero h1 {
+  color:#463052!important;font:400 clamp(3rem,6vw,5.1rem)/1.05 var(--folio-serif)!important;
+  text-wrap:balance;
+}
+html[data-page="faraway-mother-couture"] .fm-hero .lede,
+html[data-page="faraway-mother-couture"] .stat-pill .lbl {
+  color:#665774!important;
+}
+html[data-page="faraway-mother-couture"] .stat-pill .val{color:#4a345c!important}
+html[data-page="faraway-mother-couture"] .plate-frame,
+html[data-page="faraway-mother-couture"] .vista-card,
+html[data-page="faraway-mother-couture"] .tech-ledger {
+  background:#fffcff!important;border:1px solid rgba(153,105,179,.26)!important;
+  border-radius:3px!important;box-shadow:0 12px 34px rgba(98,66,129,.08)!important;
+}
+html[data-page="faraway-mother-couture"] .plate-frame figcaption {
+  background:#fffaff!important;color:#604f69!important;
+}
+html[data-page="faraway-mother-couture"] .plate-badge,
+html[data-page="faraway-mother-couture"] .vista-details h3,
+html[data-page="faraway-mother-couture"] .tech-ledger h2 {
+  color:#684278!important;font-family:var(--folio-serif)!important;
+}
+html[data-page="faraway-mother-couture"] .plate-note,
+html[data-page="faraway-mother-couture"] .vista-caption{
+  color:#685875!important;
+}
+html[data-page="faraway-mother-couture"] .section-head :is(h2,p){
+  color:#4d355e!important;
+}
+html[data-page="faraway-mother-couture"] .fm-technical-comparison {
+  background:linear-gradient(105deg,#f5e7fc,#e9f5ff)!important;
+  border-color:rgba(153,105,179,.28)!important;
+}
