@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <meta name="theme-color" content="#19172a"/>
+  <meta name="description" content="Review the 100 modular Harmonic Grove GLBs for Resonant Wilds."/>
+  <title>Harmonic Grove — Asset Inspection</title>
+  <script type="importmap">{ "imports": { "three": "./vendor/three.module.min.js" } }</script>
+  <style>
+    :root { color-scheme: dark; font: 14px/1.5 system-ui, sans-serif; background: #151629; color: #f5effc; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    .layout { min-height: 100dvh; display: grid; grid-template-columns: minmax(250px,310px) minmax(0,1fr); }
+    aside { padding: 25px 19px; background: #1e1d35; border-right: 1px solid #49435e; display: flex; flex-direction: column; gap: 12px; }
+    h1 { font-size: 23px; margin: 0; font-weight: 650; letter-spacing: -.025em; }
+    p { margin: 0; color: #c6bcd7; }
+    small { color: #a9a0c0; }
+    a { color: #9ae9ee; }
+    label { display: block; color: #e9deee; font-weight: 600; }
+    select,input[type=search] { width: 100%; padding: 10px 12px; border-radius: 9px; background: #272842; border: 1px solid #605779; color: #f5efff; font: inherit; }
+    select#assets { flex: 1; min-height: 185px; }
+    select option { padding: 3px; }
+    section { position: relative; min-height: 65dvh; background: #10172b; overflow: hidden; }
+    #stage { width: 100%; height: 100%; display: block; touch-action: none; }
+    .status { position: absolute; left: 18px; top: 18px; max-width: min(440px,90%); background: #211f35e6; border: 1px solid #53506c; border-radius: 12px; padding: 12px 15px; }
+    .status strong { display:block; font-size: 16px; overflow-wrap: anywhere; }
+    .status span { color: #c6c7dc; }
+    .controls { position: absolute; bottom: 18px; left: 18px; background: #211f35dc; border: 1px solid #53506c; border-radius: 12px; padding: 12px 15px; }
+    .controls label { font-weight: normal; }
+    #detail { min-height: 30px; }
+    @media(max-width:700px) {
+      .layout { grid-template-columns: 1fr; grid-template-rows: auto minmax(370px,65dvh); }
+      aside { padding: 16px; gap: 8px; border-right: 0; border-bottom: 1px solid #49435e; }
+      h1 {font-size:20px}
+      select#assets { min-height: 95px; max-height: 130px; }
+      section { min-height: 65dvh; }
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <h1>♪ Harmonic Grove</h1>
+    <p>Resonant Wilds · 100-asset GLB review</p>
+    <small>These are authored kit assets. The viewer does not change or save game state.</small>
+    <label for="search">Find asset</label>
+    <input id="search" type="search" placeholder="bellflower, moonstone, shrine..." autocomplete="off"/>
+    <label for="category">Category</label>
+    <select id="category"><option value="">All 100 prefabs</option></select>
+    <label for="assets">Models</label>
+    <select id="assets" size="9" aria-label="Choose a model"></select>
+    <p id="detail" aria-live="polite">Loading base GLB library…</p>
+    <small><a href="./">Back to Resonant Wilds</a> · Drag to rotate; scroll to zoom.</small>
+  </aside>
+  <section>
+    <canvas id="stage" aria-label="Interactive Three.js GLB model inspection viewport"></canvas>
+    <div class="status" role="status" aria-live="polite"><strong id="selection">Harmonic Grove</strong><span id="progress">Preparing renderer…</span></div>
+    <div class="controls"><label><input id="spin" type="checkbox" checked/> Rotate model</label></div>
+  </section>
+</div>
+<script type="module" src="./js/asset-gallery.js"></script>
+</body>
+</html>

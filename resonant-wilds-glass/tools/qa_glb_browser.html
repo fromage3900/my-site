@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><title>Resonant Wilds GLB browser smoke</title></head>
+<body data-result="pending"><p id="status">Booting game iframe…</p>
+<iframe id="game" src="../index.html" width="640" height="480" title="Game bootstrap smoke" allow="autoplay" style="border:0"></iframe>
+<script>
+'use strict';
+const body = document.body;
+const status = document.getElementById('status');
+let errors = [];
+let started = performance.now();
+function fail(message) {
+  if (body.dataset.result === 'pass') return;
+  body.dataset.result = 'fail';
+  status.textContent = message;
+  console.error('[RW browser smoke]', message);
+}
+function poll() {
+  if (body.dataset.result !== 'pending') return;
+  const frame = document.getElementById('game');
+  let inner;
+  try { inner = frame.contentWindow; } catch (error) {
+    return fail('Inaccessible iframe: ' + error.message);
+  }
+  const game = inner && inner.__melodia;
+  const play = inner && inner.document && inner.document.getElementById('play');
+  const loadstate = inner && inner.document && inner.document.getElementById('loadstate');
+  if (game && play && !play.disabled && game.world && game.world.groveKit) {
+    const count = game.world.groveKit.prefabs.size;
+    const chunkCount = game.world.chunks.size;
+    const has3d = game.world.groveKit.prefabs.has('CAN_moonwillow')
+      && game.world.groveKit.prefabs.has('INT_checkpoint_spire')
+      && game.world.groveKit.prefabs.has('WAY_harmonic_arrow');
+    if (count === 100 && has3d && chunkCount > 0) {
+      body.dataset.result = 'pass';
+      body.dataset.prefabs = String(count);
+      body.dataset.chunks = String(chunkCount);
+      status.textContent = 'PASS: playable game boot, ' + count + ' GLB roots, ' + chunkCount + ' terrain chunks; Kit 03 visuals available';
+      console.info('[RW browser smoke]', status.textContent);
+      return;
+    }
+    status.textContent = 'Game booted; GLBs ' + count + '/100; terrain chunks ' + chunkCount;
+  } else if (loadstate) {
+    status.textContent = 'Game loading: ' + loadstate.textContent;
+  }
+  if (performance.now() - started > 55000) fail('Timeout: ' + status.textContent);
+}
+window.addEventListener('error', (e) => { errors.push(String(e.message)); });
+window.addEventListener('unhandledrejection', (e) => { errors.push(String(e.reason)); });
+setInterval(poll, 140);
+</script></body></html>
