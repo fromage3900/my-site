@@ -1,0 +1,318 @@
+/* Night Velvet · Storybook Framing Pass
+   Based on owner's Nov 15 editorial reference: ornamental framing, gold keylines,
+   pearl caption panels and reserved satin detail. Real tracked art only.
+   This file is an opt-in homepage layer, not a redesign of the site system.
+*/
+html[data-page="index"]{
+  --storybook-gold:var(--primitive-gold-300);
+  --storybook-gold-soft:rgba(243,205,195,.68);
+  --storybook-pearl:var(--primitive-folio-f9e8ef);
+  --storybook-ink:var(--primitive-folio-342238);
+  --storybook-outline:rgba(229,180,198,.64);
+}
+html[data-page="index"] .melodia-shell .shell-nav{
+  border-width:0 0 1px!important;
+  border-color:var(--storybook-gold-soft)!important;
+  box-shadow:0 1px 0 rgba(250,216,223,.08),0 14px 36px rgba(19,7,22,.18)!important;
+}
+html[data-page="index"] .shell-nav .brand{
+  letter-spacing:.115em!important;
+}
+html[data-page="index"] .recruiter-static-hero .folio-tagline{
+  max-width:30ch;
+  padding-top:.7rem;
+  border-top:1px solid rgba(238,191,208,.42);
+}
+html[data-page="index"] .recruiter-static-hero .hero-actions .button.primary{
+  position:relative;
+  box-shadow:inset 0 0 0 3px rgba(252,241,245,.74),inset 0 0 0 4px rgba(141,85,119,.38),0 8px 24px rgba(12,5,20,.18)!important;
+  border:1px solid var(--storybook-gold)!important;
+  padding-inline:clamp(1.35rem,2.5vw,2.3rem)!important;
+  letter-spacing:.1em!important;
+  text-transform:uppercase!important;
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+html[data-page="index"] .recruiter-static-hero .hero-actions .button.primary:hover{
+  transform:translateY(-2px);
+  box-shadow:inset 0 0 0 3px rgba(252,241,245,.9),inset 0 0 0 4px rgba(141,85,119,.4),0 14px 26px rgba(12,5,20,.3)!important;
+}
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art{
+  border:1px solid var(--storybook-gold-soft)!important;
+  box-shadow:inset 0 0 0 1px rgba(255,235,240,.35),12px 16px 0 rgba(108,64,91,.2),0 28px 66px rgba(13,5,18,.31)!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art::before{
+  border:1px solid rgba(255,231,236,.75)!important;
+  box-shadow:0 0 0 5px rgba(46,24,46,.15)!important;
+  pointer-events:none;
+}
+/* The original corner SVGs remain the flourishes; soften their footprint. */
+html[data-page="index"] .folio-frame-corner{
+  width:clamp(51px,5.5vw,84px)!important;
+  height:clamp(51px,5.5vw,84px)!important;
+  opacity:.93!important;
+}
+html[data-page="index"] .folio-hero-art > figcaption{
+  letter-spacing:.045em!important;
+  border-top:1px solid rgba(234,187,208,.34)!important;
+}
+html[data-page="index"] .folio-ornament-rule{
+  filter:drop-shadow(0 2px 7px rgba(7,3,12,.18));
+}
+html[data-page="index"] .melodia-shell #portfolio-foyer.home-foyer-band{
+  padding-top:clamp(1rem,2.5vw,2.5rem)!important;
+}
+html[data-page="index"] .melodia-shell .recruiter-feature{
+  border:1px solid var(--storybook-gold)!important;
+  background:linear-gradient(120deg,var(--primitive-folio-f9e8ef),var(--primitive-folio-ecd9e7) 68%,var(--primitive-folio-ecd9e7))!important;
+  box-shadow:0 0 0 3px rgba(244,207,222,.09),0 18px 48px rgba(12,3,17,.22)!important;
+  margin-bottom:clamp(2.2rem,5vw,4.3rem)!important;
+}
+html[data-page="index"] .recruiter-feature::after{
+  inset:8px!important;
+  border:1px solid rgba(148,88,121,.45)!important;
+}
+html[data-page="index"] .recruiter-feature-copy{
+  position:relative;
+  padding-block:clamp(1.4rem,3vw,2.5rem)!important;
+}
+html[data-page="index"] .recruiter-feature-copy small{
+  letter-spacing:.2em!important;
+}
+html[data-page="index"] .recruiter-feature-copy strong{
+  font-style:italic!important;
+  text-wrap:balance;
+}
+html[data-page="index"] .recruiter-feature img{
+  border-right:1px solid rgba(155,105,130,.28);
+}
+/* Center the visual chapter divider *after* the featured project.
+   Keep the explanation for people scanning quickly. */
+html[data-page="index"] #portfolio-foyer .home-foyer-head{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  gap:.35rem!important;
+  width:100%!important;
+  margin:0 auto clamp(1.65rem,3.3vw,2.6rem)!important;
+  text-align:center!important;
+}
+html[data-page="index"] #portfolio-foyer .home-foyer-head .eyebrow{
+  color:var(--folio-rose,var(--primitive-folio-e9b8d0))!important;
+  letter-spacing:.24em!important;
+  font-size:.68rem!important;
+}
+html[data-page="index"] #portfolio-foyer .home-foyer-head h2{
+  display:flex!important;align-items:center;justify-content:center;gap:1.2rem;
+  width:100%!important;margin:.4rem auto!important;
+  font:400 clamp(1.15rem,2vw,1.6rem)/1.2 "Times New Roman",Times,Georgia,serif!important;
+  text-transform:uppercase!important;
+  letter-spacing:.24em!important;
+  color:var(--folio-pearl,var(--primitive-folio-fff1f4))!important;
+}
+html[data-page="index"] #portfolio-foyer .home-foyer-head h2::before,
+html[data-page="index"] #portfolio-foyer .home-foyer-head h2::after{
+  content:"✦";display:block;flex:1;min-width:20px;max-width:225px;
+  height:1px;font-size:.85rem;line-height:0;color:var(--storybook-gold);
+  text-align:right;
+  background:linear-gradient(90deg,transparent,var(--storybook-gold-soft));
+}
+html[data-page="index"] #portfolio-foyer .home-foyer-head h2::after{
+  transform:scaleX(-1);
+}
+html[data-page="index"] #portfolio-foyer .home-foyer-head >p{
+  max-width:65ch!important;
+  margin:0 auto!important;
+  color:var(--folio-muted,var(--primitive-folio-d9c5d5))!important;
+  font:400 clamp(.92rem,1.2vw,1.03rem)/1.5 "Times New Roman",Times,Georgia,serif!important;
+}
+/* Three paths from the recruiter-first edit, not the reference's four cards. */
+html[data-page="index"] .melodia-shell .home-foyer-grid .home-foyer-card{
+  background:var(--primitive-folio-39253a)!important;
+  border:1px solid var(--storybook-gold-soft)!important;
+  box-shadow:inset 0 0 0 5px rgba(250,225,235,.055),0 8px 23px rgba(9,4,12,.18)!important;
+  min-height:clamp(285px,30vw,390px)!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-end!important;
+}
+html[data-page="index"] .home-foyer-card::after{
+  inset:6px!important;
+  border:1px solid rgba(255,234,240,.4)!important;
+}
+html[data-page="index"] .home-foyer-card img{
+  position:absolute;
+  top:0!important;left:0!important;right:0!important;
+  width:100%!important;height:calc(100% - 111px)!important;
+  object-fit:cover!important;
+  filter:saturate(.94) brightness(.96)!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-scrim{
+  background:linear-gradient(180deg,transparent 10%,rgba(36,21,39,.04) 48%,rgba(36,21,39,.24) 74%)!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-copy{
+  position:relative!important;
+  z-index:4!important;
+  display:flex!important;flex-direction:column!important;gap:.18rem!important;
+  width:100%!important;
+  min-height:111px!important;
+  box-sizing:border-box!important;
+  padding:1rem 1.1rem .85rem!important;
+  background:linear-gradient(127deg,var(--primitive-folio-f6e7ee) 0%,var(--primitive-folio-ecd9e7) 100%)!important;
+  color:var(--storybook-ink)!important;
+  text-shadow:none!important;
+  border-top:1px solid rgba(188,130,154,.56)!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-copy strong{
+  color:var(--storybook-ink)!important;
+  -webkit-text-fill-color:var(--storybook-ink)!important;
+  font:italic 400 clamp(1.48rem,2.2vw,2.1rem)/1.1 "Times New Roman",Times,Georgia,serif!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-copy .home-foyer-kicker{
+  color:var(--primitive-folio-7b4a70)!important;-webkit-text-fill-color:var(--primitive-folio-7b4a70)!important;
+  font:700 .61rem/1.4 "Times New Roman",Times,Georgia,serif!important;
+  letter-spacing:.15em!important;text-transform:uppercase!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-copy >span:last-child{
+  color:var(--primitive-folio-654c61)!important;-webkit-text-fill-color:var(--primitive-folio-654c61)!important;
+  font:400 clamp(.75rem,1vw,.85rem)/1.32 "Times New Roman",Times,Georgia,serif!important;
+  text-shadow:none!important;
+}
+html[data-page="index"] .home-foyer-card.is-quiet .home-foyer-quiet-mark{
+  position:absolute;z-index:1;
+  width:100%;height:calc(100% - 111px);
+  display:grid;place-items:center;
+  color:rgba(249,214,231,.75)!important;
+  background:radial-gradient(ellipse at 52% 55%,rgba(158,96,143,.35),transparent 63%);
+}
+html[data-page="index"] .home-foyer-card:hover,
+html[data-page="index"] .home-foyer-card:focus-visible{
+  border-color:var(--primitive-folio-f4d8e9)!important;
+  box-shadow:0 0 0 2px rgba(237,189,213,.26),0 12px 30px rgba(9,4,12,.3)!important;
+}
+html[data-page="index"] .folio-original-art-path{
+  margin-top:2rem!important;text-align:center;
+}
+html[data-page="index"] .folio-ribbon-finale{
+  width:min(92%,920px);height:clamp(75px,10vw,130px);
+  margin:clamp(1.4rem,2.7vw,2.2rem) auto 0;
+  background:
+    url("assets/figma/mdl-crest-divider-light.svg") center / min(70%,570px) auto no-repeat,
+    url("assets/figma/nv-rose-satin.svg") center 60% / min(95%,820px) auto no-repeat;
+  opacity:.66;pointer-events:none;
+}
+@media(max-width:1080px){
+  html[data-page="index"] .folio-ribbon-finale{height:95px}
+}
+@media(max-width:720px){
+  html[data-page="index"] .melodia-shell #portfolio-foyer.home-foyer-band{
+    padding-top:1.2rem!important;
+  }
+  html[data-page="index"] .melodia-shell .recruiter-feature{
+    margin-bottom:2.5rem!important;
+  }
+  html[data-page="index"] #portfolio-foyer .home-foyer-head h2{
+    letter-spacing:.11em!important;gap:.7rem!important;
+  }
+  html[data-page="index"] .home-foyer-card img{
+    height:calc(100% - 112px)!important;
+  }
+  html[data-page="index"] .melodia-shell .home-foyer-grid .home-foyer-card{
+    min-height:340px!important;
+  }
+  html[data-page="index"] .folio-ribbon-finale{
+    height:70px;margin-top:1rem;
+    background-size:min(90%,410px) auto,min(100%,560px) auto;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-page="index"] .home-foyer-card,
+  html[data-page="index"] .recruiter-static-hero .hero-actions .button.primary{
+    transition:none!important;
+  }
+}
+
+/* No portfolio-quality Sakura Dream beauty was found in the audited repository.
+   An editorial cover is deliberate: never decorate a WIP viewport into a "final" image. */
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art.folio-hero-cover{
+  background:
+    radial-gradient(ellipse at 52% 43%,rgba(172,114,159,.38),transparent 60%),
+    linear-gradient(145deg,var(--primitive-folio-39253a),var(--primitive-folio-241723))!important;
+  overflow:hidden!important;
+}
+html[data-page="index"] .folio-hero-cover .folio-hero-cover-art{
+  position:absolute;
+  inset:.65rem .65rem 3.45rem;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:1rem;
+  text-align:center;padding:2rem 2.5rem;
+  box-sizing:border-box;
+  background:
+    radial-gradient(circle at 52% 50%,rgba(237,190,212,.14),transparent 55%),
+    url("assets/figma/nv-rose-satin.svg") center 65%/95% auto no-repeat;
+}
+html[data-page="index"] .folio-hero-cover-art::before,
+html[data-page="index"] .folio-hero-cover-art::after{
+  content:"✦";position:absolute;top:50%;font-size:1.1rem;
+  color:var(--primitive-gold-300);opacity:.85;
+}
+html[data-page="index"] .folio-hero-cover-art::before{left:6%}
+html[data-page="index"] .folio-hero-cover-art::after{right:6%}
+html[data-page="index"] .folio-hero-cover-art > img{
+  width:clamp(90px,14vw,174px)!important;height:auto!important;
+  max-height:160px!important;position:relative!important;
+  top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;
+  object-fit:contain!important;flex:none!important;filter:drop-shadow(0 8px 25px rgba(14,5,20,.35));
+}
+html[data-page="index"] .folio-hero-cover-art .folio-cover-eyebrow{
+  color:var(--primitive-gold-300)!important;-webkit-text-fill-color:var(--primitive-gold-300)!important;
+  font:400 clamp(.61rem,.8vw,.77rem)/1.4 "Times New Roman",Times,Georgia,serif!important;
+  text-transform:uppercase!important;letter-spacing:.2em!important;margin:0!important;
+}
+html[data-page="index"] .folio-hero-cover-art .folio-cover-title{
+  font:italic 400 clamp(2rem,4.5vw,4.4rem)/1.05 "Times New Roman",Times,Georgia,serif!important;
+  color:var(--primitive-folio-fff1f4)!important;-webkit-text-fill-color:var(--primitive-folio-fff1f4)!important;
+  text-wrap:balance;
+}
+html[data-page="index"] .folio-hero-cover-art .folio-cover-subtitle{
+  color:var(--primitive-folio-ebc2d6)!important;-webkit-text-fill-color:var(--primitive-folio-ebc2d6)!important;
+  font:italic 400 clamp(1rem,1.55vw,1.3rem)/1.3 "Times New Roman",Times,Georgia,serif!important;
+  margin:0!important;
+}
+@media(max-width:1080px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art.folio-hero-cover{
+    min-height:390px!important;
+  }
+  html[data-page="index"] .folio-hero-cover .folio-hero-cover-art{
+    position:relative;inset:auto;
+    min-height:325px;padding:1.4rem 1rem .8rem;gap:.8rem;
+  }
+}
+@media(max-width:620px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art.folio-hero-cover{
+    min-height:340px!important;
+  }
+  html[data-page="index"] .folio-hero-cover .folio-hero-cover-art{
+    min-height:280px;
+  }
+  html[data-page="index"] .folio-hero-cover-art > img{width:92px!important;max-height:92px!important}
+  html[data-page="index"] .folio-hero-cover-art .folio-cover-title{font-size:clamp(2rem,8.5vw,2.8rem)!important}
+}
+
+/* Keep the documentary caption legible below, not across, the picture-frame keyline. */
+html[data-page="index"] .folio-hero-cover .folio-hero-cover-art{
+  background-position:center center,center 88%!important;
+}
+html[data-page="index"] .folio-hero-cover > figcaption{
+  background:linear-gradient(90deg,var(--primitive-folio-332438),var(--primitive-folio-39253a))!important;
+  border-top:1px solid rgba(221,199,155,.4)!important;
+  box-sizing:border-box!important;
+  z-index:8!important;
+}
+@media(max-width:620px){
+  html[data-page="index"] .folio-hero-cover > figcaption{
+    padding:.7rem .6rem!important;
+    gap:.25rem!important;
+    font-size:.69rem!important;
+    line-height:1.35!important;
+  }
+}
