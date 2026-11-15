@@ -49,6 +49,15 @@ h1{font:italic 400 clamp(52px,7.4vw,116px)/.92 "Times New Roman",Times,Georgia,s
 .skip{position:absolute;top:-100px;background:var(--pearl);color:var(--ground);padding:12px;z-index:10}.skip:focus{top:10px}
 @media(max-width:920px){.board{grid-template-columns:repeat(8,minmax(0,1fr))}.tile.hero,.tile.wide{grid-column:span 5}.tile.landscape,.tile.mid{grid-column:span 3}.tile.detail,.tile.paper{grid-column:span 3}.masthead{grid-template-columns:1fr}.masthead aside{max-width:60ch}}
 @media(max-width:600px){.wrap{width:calc(100% - 30px)}.board{grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.tile.hero,.tile.landscape,.tile.wide{grid-column:span 5}.tile.mid{grid-column:span 3}.tile.detail,.tile.paper{grid-column:span 2}.tile figcaption{padding:10px}.tile figcaption strong{font-size:clamp(16px,4vw,24px)}.tile figcaption small{font-size:9px}.top{padding:17px 0}h1{font-size:clamp(50px,14vw,75px)}}
+.tile.interactive-art .artifact-stage{position:relative;width:100%;aspect-ratio:1;overflow:hidden;background:var(--raised)}
+.tile.interactive-art .artifact-poster{display:block;height:100%}
+.tile.interactive-art .artifact-poster img{width:100%;height:100%;aspect-ratio:1;object-fit:cover}
+.tile.interactive-art .artifact-stage.is-active .artifact-poster{display:none}
+.tile.interactive-art .artifact-stage iframe{display:block;width:100%;height:100%;border:0;background:var(--raised)}
+.tile.interactive-art .artifact-activate{position:absolute;left:12px;bottom:12px;z-index:4;cursor:pointer;border:1px solid var(--gold);background:var(--primitive-folio-241723);color:var(--pearl);font:600 12px/1.25 Arial,Helvetica,sans-serif;padding:11px 13px;box-shadow:0 4px 16px rgba(10,3,17,.4)}
+.tile.interactive-art .artifact-activate:hover,.tile.interactive-art .artifact-activate:focus-visible{background:var(--primitive-folio-39253a)}
+.tile.interactive-art .artifact-activate[hidden]{display:none!important}
+.tile.interactive-art .artifact-inline-note{font:400 11px/1.4 Arial,Helvetica,sans-serif;color:var(--rose);margin:0;padding:10px 12px 12px;border-top:1px solid rgba(232,190,205,.25)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tile img{transition:none}.tile a:hover img{transform:none}}
 </style>
 </head>
@@ -66,6 +75,16 @@ h1{font:italic 400 clamp(52px,7.4vw,116px)/.92 "Times New Roman",Times,Georgia,s
 <figure class="tile mid"><a href="../generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png"><img src="../generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png" alt="Melusina close-up showing painted hair, face, bow and bodice" loading="lazy"></a><figcaption><strong>Melusina · Macro Postcard</strong><small>EEVEE / close detail / original animated-loop poster</small></figcaption></figure>
 <figure class="tile detail"><a href="../generated/assets/cross/cross_hero_macro_filigree.png"><img src="../generated/optimized/curated-art/cross_hero_macro_filigree-800.webp" alt="Close view of sculpted Vow Cross filigree detail" loading="lazy"></a><figcaption><strong>Vow Cross</strong><small>Macro filigree</small></figcaption></figure>
 <figure class="tile mid"><a href="../generated/assets/props/violin_komikaze_front.png"><img src="../generated/assets/props/violin_komikaze_front.png" alt="Stylized Melodia violin front-view asset presentation" loading="lazy"></a><figcaption><strong>Melodia Violin</strong><small>Musical object / 3D prop</small></figcaption></figure>
+<figure class="tile detail interactive-art">
+  <div class="artifact-stage" id="water-token-artifact">
+    <a class="artifact-poster" href="../generated/assets/ornaments/melody_token_water_komikaze_front.png" aria-label="Open the original Water Melody Token render">
+      <img src="../generated/assets/ornaments/melody_token_water_komikaze_front.png" alt="Original 3D render of the Melodia water melody token, an ornamental sculpt" loading="lazy">
+    </a>
+    <button type="button" class="artifact-activate" id="water-token-activate" aria-controls="water-token-artifact" aria-label="Load interactive three dimensional Water Melody Token preview">✦ Orbit in 3D</button>
+  </div>
+  <figcaption><strong>Water Melody Token</strong><small>Authored OBJ · opt-in browser 3D study</small></figcaption>
+  <p class="artifact-inline-note">Interactive Three.js preview uses a real source model; browser lighting differs from its original render.</p>
+</figure>
 <figure class="tile detail"><a href="../generated/assets/ornaments/rose_window_komikaze_front.png"><img src="../generated/assets/ornaments/rose_window_komikaze_front.png" alt="Sculpted rose window ornament in the reviewed front view" loading="lazy"></a><figcaption><strong>Rose Window</strong><small>Architectural ornament</small></figcaption></figure>
 <figure class="tile mid"><a href="../generated/assets/character/melusina_eevee_glam_20260715c_04.png"><img src="../generated/assets/character/melusina_eevee_glam_20260715c_04.png" alt="Melusina EEVEE character glam study from July 2026" loading="lazy"></a><figcaption><strong>Melusina · Glam Study</strong><small>Blender / character lookdev / historical</small></figcaption></figure>
 <figure class="tile detail"><a href="../generated/assets/signature/lissajous_komikaze_macro.png"><img src="../generated/assets/signature/lissajous_komikaze_macro.png" alt="Macro image of a Lissajous sculptural curve" loading="lazy"></a><figcaption><strong>Lissajous</strong><small>Procedural form study</small></figcaption></figure>
@@ -76,4 +95,22 @@ h1{font:italic 400 clamp(52px,7.4vw,116px)/.92 "Times New Roman",Times,Georgia,s
 <p class="note">This is a review-only restoration of existing source renders, not an assertion that all images represent the latest Melusina V2 mesh or shipped Unreal gameplay. The public recruiter release remains unchanged until separate art approval.</p>
 </main>
 </div>
+<script>
+(function(){
+  const button=document.getElementById('water-token-activate');
+  const stage=document.getElementById('water-token-artifact');
+  if(!button||!stage)return;
+  button.addEventListener('click',function(){
+    if(stage.classList.contains('is-active'))return;
+    const frame=document.createElement('iframe');
+    frame.title='Interactive WebGL viewer of the Water Melody Token. Drag to orbit.';
+    frame.setAttribute('allow','fullscreen');
+    frame.setAttribute('loading','eager');
+    frame.src='realtime-3d-viewer.html?embed=1&asset=melody-token-water&fabric=GildedBrocade&mode=pbr';
+    stage.classList.add('is-active');
+    button.hidden=true;
+    stage.appendChild(frame);
+  });
+})();
+</script>
 </body></html>
