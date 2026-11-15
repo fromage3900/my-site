@@ -120,6 +120,7 @@ let autoRotate = rotateParam === null ? !reducedMotion : rotateParam !== '0';
 let cameraGoal = new THREE.Vector3(...VIEWS[initialView].camera);
 let targetGoal = new THREE.Vector3(...VIEWS[initialView].target);
 let materialPool = [];
+let wireHelpers = [];
 let modelBytes = null;
 let frameCounter = 0;
 let fpsWindowStart = performance.now();
@@ -172,6 +173,15 @@ function disposeRoot() {
   meshes = [];
 }
 
+function clearWireframeHelpers() {
+  for (const helper of wireHelpers) {
+    helper.parent?.remove(helper);
+    helper.geometry?.dispose?.();
+    helper.material?.dispose?.();
+  }
+  wireHelpers = [];
+}
+
 function disposeGeneratedMaterials() {
   for (const material of materialPool) material?.dispose?.();
   materialPool = [];
@@ -204,11 +214,25 @@ function makeBeautyMaterials() {
 
 function applyMaterials() {
   if (!root) return;
+  clearWireframeHelpers();
   if (inspection === 'wire') {
+    // GLB triangle winding and mirrored components can make mesh-material
+    // wireframe vanish in some WebGL paths. True line geometry renders the
+    // authored mesh edges without replacing the source with a fake primitive.
     disposeGeneratedMaterials();
-    const wire = new THREE.MeshBasicMaterial({ color: 0x252525, wireframe: true });
-    materialPool.push(wire);
-    meshes.forEach((mesh) => { mesh.material = wire; });
+    const hiddenSurface = new THREE.MeshBasicMaterial({ visible: false });
+    materialPool.push(hiddenSurface);
+    meshes.forEach((mesh) => {
+      mesh.material = hiddenSurface;
+      const lines = new THREE.LineSegments(
+        new THREE.WireframeGeometry(mesh.geometry),
+        new THREE.LineBasicMaterial({ color: 0x33253d, depthTest: false })
+      );
+      lines.frustumCulled = false;
+      lines.renderOrder = 10;
+      mesh.add(lines);
+      wireHelpers.push(lines);
+    });
     return;
   }
   if (inspection === 'clay') {
