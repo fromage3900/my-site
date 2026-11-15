@@ -230,3 +230,70 @@ html[data-page="index"] .folio-ribbon-finale{
     transition:none!important;
   }
 }
+
+/* No portfolio-quality Sakura Dream beauty was found in the audited repository.
+   An editorial cover is deliberate: never decorate a WIP viewport into a "final" image. */
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art.folio-hero-cover{
+  background:
+    radial-gradient(ellipse at 52% 43%,rgba(172,114,159,.38),transparent 60%),
+    linear-gradient(145deg,var(--primitive-folio-39253a),var(--primitive-folio-241723))!important;
+  overflow:hidden!important;
+}
+html[data-page="index"] .folio-hero-cover .folio-hero-cover-art{
+  position:absolute;
+  inset:.65rem .65rem 3.45rem;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:1rem;
+  text-align:center;padding:2rem 2.5rem;
+  box-sizing:border-box;
+  background:
+    radial-gradient(circle at 52% 50%,rgba(237,190,212,.14),transparent 55%),
+    url("assets/figma/nv-rose-satin.svg") center 65%/95% auto no-repeat;
+}
+html[data-page="index"] .folio-hero-cover-art::before,
+html[data-page="index"] .folio-hero-cover-art::after{
+  content:"✦";position:absolute;top:50%;font-size:1.1rem;
+  color:var(--primitive-gold-300);opacity:.85;
+}
+html[data-page="index"] .folio-hero-cover-art::before{left:6%}
+html[data-page="index"] .folio-hero-cover-art::after{right:6%}
+html[data-page="index"] .folio-hero-cover-art > img{
+  width:clamp(90px,14vw,174px)!important;height:auto!important;
+  max-height:160px!important;position:relative!important;
+  top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;
+  object-fit:contain!important;flex:none!important;filter:drop-shadow(0 8px 25px rgba(14,5,20,.35));
+}
+html[data-page="index"] .folio-hero-cover-art .folio-cover-eyebrow{
+  color:var(--primitive-gold-300)!important;-webkit-text-fill-color:var(--primitive-gold-300)!important;
+  font:400 clamp(.61rem,.8vw,.77rem)/1.4 "Times New Roman",Times,Georgia,serif!important;
+  text-transform:uppercase!important;letter-spacing:.2em!important;margin:0!important;
+}
+html[data-page="index"] .folio-hero-cover-art .folio-cover-title{
+  font:italic 400 clamp(2rem,4.5vw,4.4rem)/1.05 "Times New Roman",Times,Georgia,serif!important;
+  color:var(--primitive-folio-fff1f4)!important;-webkit-text-fill-color:var(--primitive-folio-fff1f4)!important;
+  text-wrap:balance;
+}
+html[data-page="index"] .folio-hero-cover-art .folio-cover-subtitle{
+  color:var(--primitive-folio-ebc2d6)!important;-webkit-text-fill-color:var(--primitive-folio-ebc2d6)!important;
+  font:italic 400 clamp(1rem,1.55vw,1.3rem)/1.3 "Times New Roman",Times,Georgia,serif!important;
+  margin:0!important;
+}
+@media(max-width:1080px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art.folio-hero-cover{
+    min-height:390px!important;
+  }
+  html[data-page="index"] .folio-hero-cover .folio-hero-cover-art{
+    position:relative;inset:auto;
+    min-height:325px;padding:1.4rem 1rem .8rem;gap:.8rem;
+  }
+}
+@media(max-width:620px){
+  html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art.folio-hero-cover{
+    min-height:340px!important;
+  }
+  html[data-page="index"] .folio-hero-cover .folio-hero-cover-art{
+    min-height:280px;
+  }
+  html[data-page="index"] .folio-hero-cover-art > img{width:92px!important;max-height:92px!important}
+  html[data-page="index"] .folio-hero-cover-art .folio-cover-title{font-size:clamp(2rem,8.5vw,2.8rem)!important}
+}
