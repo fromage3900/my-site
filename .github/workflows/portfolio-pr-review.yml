@@ -62,7 +62,7 @@ jobs:
           capture() {
             timeout 35s "$CHROME" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage \
               --disable-extensions --disable-background-networking --hide-scrollbars --mute-audio \
-              --window-size="$1,$2" --virtual-time-budget=1500 \
+              --window-size="$1,$2" --virtual-time-budget=4500 \
               --screenshot="$PWD/visual-qa/$3" "http://127.0.0.1:4173/$4"
             test -s "visual-qa/$3"
           }
