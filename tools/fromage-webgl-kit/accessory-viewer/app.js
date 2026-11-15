@@ -165,6 +165,7 @@ function classifyMesh(mesh) {
 
 function disposeRoot() {
   if (!root) return;
+  clearWireframeHelpers();
   runtime.scene.remove(root);
   root.traverse((obj) => {
     if (obj.geometry?.dispose) obj.geometry.dispose();
