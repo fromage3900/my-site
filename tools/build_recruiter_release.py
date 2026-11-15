@@ -106,6 +106,121 @@ footer{border-top:1px solid var(--line);padding:25px 0 40px;display:flex;justify
 @media print{body{background:white;color:black}.topbar,footer,.actions,.cta-end,.hero-art,.hero-ribbon,.moon,.spark{display:none!important}.container{width:100%}.section{padding:15px 0}.page-head{padding:15px 0}p,h1,h2,h3,li{color:black!important}}
 """
 
+
+REF_STYLE = r"""
+/* Reference-led illustration framing for the strict public homepage.
+   No fabricated project names or unapproved WIP image assets. */
+.ref-hero{min-height:640px;gap:clamp(30px,4vw,60px);padding:84px 0 88px}
+.ref-hero h1{font:italic 400 clamp(65px,7.7vw,125px)/.91 var(--serif);
+ letter-spacing:-.06em;margin:26px 0 28px;color:var(--cream);text-wrap:balance}
+.ref-hero h1 em{font-style:italic;color:var(--cream);margin-left:0}
+.ref-hero .lede{font-style:italic;max-width:32ch;border-top:1px solid rgba(221,199,155,.48);
+ padding-top:15px;font-size:clamp(19px,2vw,27px);color:var(--cream)}
+.ref-hero .sublede{font-size:16px;max-width:45ch}
+.ref-hero .actions{align-items:center;margin-top:30px;gap:22px}
+.ref-hero .btn.primary{background:linear-gradient(120deg,#faeaf0,#efcdda);
+ color:#341f35;border:1px solid var(--gold);
+ box-shadow:inset 0 0 0 3px #faeaf0,inset 0 0 0 4px #ad839a,0 9px 24px rgba(19,6,21,.26);
+ padding:14px 28px}
+.ref-hero .btn.primary:hover{background:var(--rose);transform:translateY(-2px)}
+.ref-text-link{font:16px/1.3 var(--serif);text-decoration:underline;
+ text-decoration-color:var(--gold);text-underline-offset:5px}
+.ref-proof{margin-top:27px;opacity:.75}
+.ref-art{background:#2d1c30;padding:8px;border:1px solid rgba(221,199,155,.8);
+ box-shadow:11px 13px 0 rgba(86,52,84,.25),0 24px 60px rgba(10,4,15,.38)}
+.ref-art:before{inset:13px 13px 58px;border:1px solid rgba(253,232,239,.8);z-index:2;pointer-events:none}
+.ref-art:after{content:"✦";position:absolute;right:-12px;top:-16px;color:var(--gold);
+ font:30px/1 var(--serif);text-shadow:0 3px 14px rgba(15,4,20,.6)}
+.ref-art .main-render{aspect-ratio:1.14;max-height:560px;
+ clip-path:polygon(0 19px,19px 0,calc(100% - 19px) 0,100% 19px,100% calc(100% - 19px),
+ calc(100% - 19px) 100%,19px 100%,0 calc(100% - 19px))}
+.ref-art figcaption{font:italic 12px/1.5 var(--serif);padding:10px 5px 4px;color:var(--cream);
+ letter-spacing:.06em}
+.ref-art .moon{width:min(17vw,145px);top:-38px;right:-35px;z-index:3}
+.ref-art .spark{z-index:4;left:-28px}
+.ref-hero .hero-ribbon{width:60%;bottom:-30px;left:-14%;opacity:.72}
+.ref-rule{height:30px;display:flex;align-items:center;gap:26px;color:var(--gold);
+ font:18px/1 var(--serif);margin:-9px 0 40px}
+.ref-rule:before,.ref-rule:after{content:"";height:1px;flex:1;
+ background:linear-gradient(90deg,transparent,rgba(221,199,155,.65))}
+.ref-rule:after{transform:scaleX(-1)}
+.ref-feature{display:grid;grid-template-columns:1.02fr .98fr;min-height:275px;
+ background:linear-gradient(115deg,#fae9ef,#ecd9e7);color:#3f2b40;
+ border:1px solid var(--gold);box-shadow:0 20px 50px rgba(13,4,19,.3);
+ position:relative;clip-path:polygon(13px 0,calc(100% - 13px) 0,100% 13px,
+ 100% calc(100% - 13px),calc(100% - 13px) 100%,13px 100%,0 calc(100% - 13px),0 13px)}
+.ref-feature:after{content:"";position:absolute;inset:7px;border:1px solid rgba(120,73,102,.4);
+ pointer-events:none}
+.ref-feature>img{width:100%;height:100%;min-height:275px;object-fit:cover;
+ object-position:center}
+.ref-feature-copy{padding:35px 42px;display:flex;flex-direction:column;
+ justify-content:center;gap:10px;align-items:flex-start}
+.ref-feature-copy .micro{color:#77536c;letter-spacing:.17em;margin:0}
+.ref-feature-copy h2{margin:0;font:italic 400 clamp(33px,3.5vw,53px)/1.06 var(--serif);
+ letter-spacing:-.025em}
+.ref-feature-copy p:not(.micro){font:italic 18px/1.42 var(--serif);
+ max-width:41ch;margin:0;color:#624a62}
+.ref-feature-link{margin-top:8px;color:#3f2b40;border-color:#a78297;
+ font-size:11px;background:rgba(249,236,242,.42)}
+.ref-feature-link:hover{color:#3f2b40;background:#f7dbe6}
+.ref-explore{padding:62px 0 80px}
+.ref-explore-heading{display:flex;align-items:center;justify-content:center;gap:24px;
+ font:400 clamp(14px,1.5vw,19px)/1.2 var(--serif);letter-spacing:.22em;
+ text-transform:uppercase;color:var(--cream);margin:0 0 32px;text-align:center}
+.ref-explore-heading:before,.ref-explore-heading:after{content:"";height:1px;flex:1;
+ background:linear-gradient(90deg,transparent,rgba(221,199,155,.6))}
+.ref-explore-heading:after{transform:scaleX(-1)}
+.ref-path-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.ref-path{display:flex;min-height:330px;flex-direction:column;justify-content:flex-end;
+ position:relative;text-decoration:none;background:#36233d;overflow:hidden;
+ border:1px solid rgba(226,187,195,.69);
+ clip-path:polygon(11px 0,calc(100% - 11px) 0,100% 11px,100% calc(100% - 11px),
+ calc(100% - 11px) 100%,11px 100%,0 calc(100% - 11px),0 11px)}
+.ref-path:after{content:"";position:absolute;inset:6px;
+ border:1px solid rgba(252,232,239,.35);pointer-events:none}
+.ref-path>img{position:absolute;top:0;left:0;width:100%;height:calc(100% - 102px);
+ object-fit:cover;transition:transform .24s ease}
+.ref-path:hover>img{transform:scale(1.025)}
+.ref-path-about>img{object-fit:contain;padding:30px 27%;background:
+ radial-gradient(circle at 50% 40%,#604360,#2a1a30 75%);opacity:.88}
+.ref-path-caption{position:relative;z-index:1;display:flex;flex-direction:column;gap:6px;
+ padding:17px 19px;min-height:102px;box-sizing:border-box;
+ background:linear-gradient(120deg,#f9e7ec,#ecdbe7);border-top:1px solid #c899ad;color:#3a283b}
+.ref-path-caption strong{font:italic 400 clamp(23px,2.1vw,33px)/1.07 var(--serif)}
+.ref-path-caption small{font:600 10px/1.35 Arial,Helvetica,sans-serif;letter-spacing:.08em;
+ color:#77536c;text-transform:uppercase}
+.ref-path:hover,.ref-path:focus-visible{border-color:#ffe5ee;outline-offset:3px}
+.ref-assurance{text-align:center;font:italic 17px/1.4 var(--serif);color:var(--mute);margin:30px 0 5px}
+.ref-finale{height:82px;display:grid;place-items:center;
+ background:url("assets/figma/nv-rose-satin.svg") center 45%/min(80%,660px) auto no-repeat;
+ color:var(--gold);font-size:30px}
+@media(max-width:950px){
+ .ref-feature{grid-template-columns:1fr 1fr}
+ .ref-path{min-height:300px}
+}
+@media(max-width:700px){
+ .ref-hero{min-height:0;gap:28px;padding:40px 0 67px}
+ .ref-hero h1{font-size:clamp(57px,17vw,88px);letter-spacing:-.06em}
+ .ref-hero .lede{font-size:21px}
+ .ref-hero .actions{gap:14px}
+ .ref-art:before{inset:15px 15px 44px}
+ .ref-art .main-render{aspect-ratio:4/3}
+ .ref-art .moon{width:90px;right:0;top:-36px}
+ .ref-feature{grid-template-columns:1fr}
+ .ref-feature>img{min-height:170px;max-height:220px}
+ .ref-feature-copy{padding:25px 29px}
+ .ref-feature-copy h2{font-size:38px}
+ .ref-feature-copy p:not(.micro){font-size:17px}
+ .ref-explore{padding:44px 0 54px}
+ .ref-explore-heading{gap:12px;letter-spacing:.13em}
+ .ref-path-grid{grid-template-columns:1fr;gap:14px}
+ .ref-path{min-height:270px}
+ .ref-path-caption strong{font-size:28px}
+ .ref-finale{height:65px}
+}
+@media(prefers-reduced-motion:reduce){.ref-path>img{transition:none}}
+"""
+
 def base(title: str, description: str, body: str, route: str = "index.html") -> str:
     canonical = "https://www.fromageart.xyz/" if route == "index.html" else "https://fromage3900.github.io/my-site/wix/" + route
     hero = "https://fromage3900.github.io/my-site/generated/assets/unreal/hero-sakura-dream-ink-shrine.webp"
@@ -116,7 +231,7 @@ def base(title: str, description: str, body: str, route: str = "index.html") -> 
 <link rel="canonical" href="{canonical}"><meta property="og:type" content="website">
 <meta property="og:title" content="{title} — Brennan Shepherd"><meta property="og:description" content="{description}">
 <meta property="og:image" content="{hero}"><meta property="og:url" content="{canonical}">
-<meta name="theme-color" content="#170f20"><style>{STYLE}</style></head>
+<meta name="theme-color" content="#170f20"><style>{STYLE}{REF_STYLE if route == 'index.html' else ''}</style></head>
 <body><a class="skip" href="#main">Skip to content</a><div class="container">
 <header class="topbar"><a class="brand" href="index.html"><span class="mark" aria-hidden="true">✧</span>Brennan Shepherd</a>
 <nav aria-label="Main navigation"><a href="curated-art.html">Selected art</a><a href="technical-art.html">Technical art</a><a href="resume.html">Résumé &amp; contact</a></nav></header>
@@ -139,24 +254,47 @@ def closing() -> str:
 <div class="actions"><a class="btn primary" href="mailto:brennan.shepherd3900@gmail.com">Get in touch</a><a class="btn" href="resume.html">View résumé</a></div></section>"""
 
 home = f"""
-<section class="hero"><div><p class="eyebrow">Environment &amp; Technical Artist / Toronto</p><h1>Brennan <em>Shepherd.</em></h1>
+<section class="hero ref-hero"><div class="ref-copy">
+<p class="eyebrow">Environment &amp; Technical Artist / Toronto</p>
+<h1>Brennan <em>Shepherd.</em></h1>
 <p class="lede">I build worlds that feel like songs.</p>
 <p class="sublede">Stylized environments, sculptural architecture and procedural worldbuilding across Unreal Engine, Houdini and real-time visual systems.</p>
-<div class="actions"><a class="btn primary" href="curated-art.html">Selected work</a><a class="btn" href="resume.html">About &amp; contact</a></div>
-<p class="micro" style="margin-top:28px">Unreal Engine 5.8 · Houdini · Blender · TouchDesigner</p></div>
-<figure class="hero-art"><img class="moon" src="assets/figma/nv-pearl-eclipse.svg" alt=""><img class="spark" src="assets/figma/mdl-sparkle-cluster.svg" alt="">
-<img class="main-render" src="{sakura_image()}" alt="Sakura Dream environment study: stone bridge, floating gardens and soft pink dusk lighting" fetchpriority="high" width="1600" height="1100">
-<figcaption><span>Melodia / Sakura Dream</span><span>Unreal environment study</span></figcaption></figure>
-<img class="hero-ribbon" src="assets/figma/nv-rose-satin.svg" alt="" aria-hidden="true"></section>
-<div class="rule"></div>
-<section class="section"><div class="section-head"><div><p class="eyebrow">01 / Selected work</p><h2>Worlds, carefully composed.</h2></div><p>A stringent edit of scenic composition and stylized 3D look development. Unfinished Faraway Mother captures are withheld pending better artwork.</p></div>
-<div class="work-grid">
-<figure class="work"><a class="image" href="technical-art.html"><img src="{river_image(4)}" alt="River Sanctuary graphic cel lighting and stylized ink treatment on a 3D river setting" loading="lazy"></a><figcaption><strong>River Sanctuary — Graphic Cel</strong><small>3D shader / Blender + TouchDesigner</small></figcaption></figure>
-<figure class="work"><a class="image" href="curated-art.html#sakura"><img src="{sakura_image()}" alt="Sakura Dream, stone bridge and dreamlike floating gardens" loading="lazy"></a><figcaption><strong>Sakura Dream — Floating Isles</strong><small>Environment composition / Unreal Engine</small></figcaption></figure>
-</div><div class="actions"><a class="btn" href="curated-art.html">View selected work</a></div></section>
-<section class="section"><div class="section-head"><div><p class="eyebrow">02 / Technical expression</p><h2>One place, two visual languages.</h2></div><p>River Sanctuary demonstrates art direction through non-photorealistic material and color treatments on a single 3D composition.</p></div>
-<figure class="wide-art"><a href="technical-art.html"><img src="{river_image(4)}" alt="River Sanctuary graphic cel render with strong ink contours, flowers and pale river" loading="lazy"></a><figcaption><span>River Sanctuary / Graphic cel</span><span>Blender + TouchDesigner / Look development</span></figcaption></figure>
-<div class="actions"><a class="btn" href="technical-art.html">Explore technical art</a></div></section>{closing()}
+<div class="actions"><a class="btn primary" href="curated-art.html">View selected work</a><a class="ref-text-link" href="resume.html">Résumé &amp; contact</a></div>
+<p class="micro ref-proof">Unreal Engine 5.8 · Houdini · Blender · TouchDesigner</p>
+</div>
+<figure class="hero-art ref-art">
+<img class="moon" src="assets/figma/nv-pearl-eclipse.svg" alt="" aria-hidden="true">
+<img class="spark" src="assets/figma/mdl-sparkle-cluster.svg" alt="" aria-hidden="true">
+<img class="main-render" src="{sakura_image()}" alt="Sakura Dream environment study: a stone bridge and floating gardens in soft pink dusk lighting" fetchpriority="high" decoding="sync" width="1600" height="1100">
+<figcaption><span>Fig. 01 · Sakura Dream</span><span>Unreal Engine / Environment study</span></figcaption>
+</figure>
+<img class="hero-ribbon" src="assets/figma/nv-rose-satin.svg" alt="" aria-hidden="true">
+</section>
+<div class="ref-rule" aria-hidden="true"><span>✦</span></div>
+<section class="ref-feature" aria-label="Featured technical art case study">
+<img src="{river_image(4)}" alt="River Sanctuary: graphic cel shader treatment of a three-dimensional river environment" loading="eager" decoding="async">
+<div class="ref-feature-copy">
+<p class="micro">Featured case study · Blender / TouchDesigner</p>
+<h2>River Sanctuary</h2>
+<p>One three-dimensional environment, explored through ink contours, painterly colour and real-time shading.</p>
+<a class="btn ref-feature-link" href="technical-art.html">View case study</a>
+</div></section>
+<section class="ref-explore" aria-labelledby="explore-heading">
+<h2 id="explore-heading" class="ref-explore-heading"><span>Explore the work</span></h2>
+<div class="ref-path-grid">
+<a class="ref-path" href="curated-art.html">
+<img src="{sakura_image()}" alt="" loading="lazy">
+<span class="ref-path-caption"><strong>Selected Art</strong><small>Environment composition &amp; images</small></span></a>
+<a class="ref-path" href="technical-art.html">
+<img src="{river_image(2)}" alt="" loading="lazy">
+<span class="ref-path-caption"><strong>Technical Art</strong><small>Shaders, materials &amp; systems</small></span></a>
+<a class="ref-path ref-path-about" href="resume.html">
+<img src="assets/figma/nv-pearl-eclipse.svg" alt="" loading="lazy">
+<span class="ref-path-caption"><strong>About &amp; Contact</strong><small>Practice, experience &amp; inquiries</small></span></a>
+</div>
+<p class="ref-assurance">Original artwork, clear process, and verifiable technical contributions.</p>
+<div class="ref-finale" aria-hidden="true">✧</div>
+</section>
 """
 
 selected = f"""
