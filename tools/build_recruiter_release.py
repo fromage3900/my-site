@@ -240,6 +240,13 @@ REF_STYLE = r"""
  .ref-editorial-cover img{width:95px}
  .ref-editorial-cover strong{font-size:37px}
  .ref-art.ref-cover:before{inset:13px 13px 46px}}
+.ref-art.ref-cover figcaption{background:linear-gradient(90deg,#291b2e,#352438);
+ border-top:1px solid rgba(221,199,155,.3);padding:11px 12px;position:relative;z-index:3}
+@media(max-width:700px){
+ .ref-art.ref-cover figcaption{display:grid;grid-template-columns:1fr;gap:3px;
+  font-size:11px;line-height:1.3;padding:10px 12px;text-align:left}
+ .ref-art.ref-cover:before{inset:13px 13px 91px}
+}
 @media(prefers-reduced-motion:reduce){.ref-path>img{transition:none}}
 """
 
