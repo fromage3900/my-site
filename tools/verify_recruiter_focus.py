@@ -27,7 +27,18 @@ sitemap = page("sitemap.xml")
 require("three.min.js" not in root and "WebGLRenderer" not in root, "root gateway loads WebGL")
 require("location.replace('wix/index.html'" in root, "root gateway should enter portfolio directly")
 require('href="wix/curated-art.html"' in root, "root gateway lacks Selected Art")
-require(len(re.findall(r'<a class="home-foyer-card', home)) == 4, "homepage must have exactly four recruiter destination cards")
+# A single hero CTA and three distinct supporting routes keep the first action clear.
+require(len(re.findall(r'<a class="home-foyer-card', home)) == 3,
+        "homepage must have exactly three supporting destination cards")
+require('>View selected work</a>' in home and home.count('>View selected work</a>') == 1,
+        "homepage must contain one clear selected-work hero action")
+require('href="curated-art.html"' in home, "homepage lost selected-work route")
+require('href="world-bible.html"' in home and 'href="shader-breakdowns.html"' in home and 'href="resume.html"' in home,
+        "homepage lost a supporting recruiter destination")
+require('href="works-on-paper.html"' in home,
+        "homepage lost original artwork pathway")
+require('href="curated-art.html"><img' not in home,
+        "homepage reintroduced duplicate selected-work gallery card")
 require('data-effects="none"' in home, "homepage decorative effects are not disabled")
 require("<video" not in home and "td-lookdev-switcher" not in home, "homepage toy/video reintroduced")
 require('faraway-mother-couture.html' in home, "homepage missing Faraway feature")
@@ -65,4 +76,4 @@ for filename in [
 if errors:
     print(f"Recruiter focus: {len(errors)} failure(s)")
     sys.exit(1)
-print("OK recruiter focus: four destinations, five worlds, archived labs and hero images")
+print("OK recruiter focus: one primary action, three supporting destinations, five worlds and archived labs")

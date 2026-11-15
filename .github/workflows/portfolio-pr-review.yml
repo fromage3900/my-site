@@ -64,7 +64,9 @@ jobs:
             test -s "visual-qa/$3"
           }
           capture 390 844 home-mobile.png wix/index.html
+          capture 390 1800 home-mobile-long.png wix/index.html
           capture 1440 1000 home-desktop.png wix/index.html
+          capture 1440 1600 home-desktop-long.png wix/index.html
           capture 390 1100 environments-mobile.png wix/world-bible.html
           capture 1440 1000 environments-desktop.png wix/world-bible.html
           capture 390 1100 selected-art-mobile.png wix/curated-art.html

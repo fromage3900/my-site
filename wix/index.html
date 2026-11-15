@@ -73,6 +73,48 @@ html[data-page="index"] .shell-nav .brand-short{display:none!important}@media(ma
 </style><link rel="stylesheet" href="melodia-plum-editorial.css?v=20261112a" />
 <link rel="stylesheet" href="melodia-hero-scene.css?v=20261113a" />
 <link rel="preload" as="image" href="../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp" fetchpriority="high" />
+<style id="folio-home-entry-clarity">
+/* Recruiter first path: one primary CTA, one quiet contact link, three secondary routes. */
+html[data-page="index"] .folio-first-step{align-items:center!important;column-gap:1.25rem!important;row-gap:.6rem!important}
+html[data-page="index"] .folio-secondary-link{
+  display:inline-flex;align-items:center;min-height:46px;
+  color:var(--folio-pearl,#fff1f4)!important;
+  -webkit-text-fill-color:var(--folio-pearl,#fff1f4)!important;
+  font:400 .95rem/1.35 "Times New Roman",Times,Georgia,serif;
+  text-decoration:underline;text-decoration-color:var(--folio-rose-deep,#d093b4);
+  text-underline-offset:.35em;text-decoration-thickness:1px;
+}
+html[data-page="index"] .folio-secondary-link:hover,
+html[data-page="index"] .folio-secondary-link:focus-visible{text-decoration-thickness:2px}
+html[data-page="index"] .home-foyer-grid .home-foyer-card,
+html[data-page="index"] .home-foyer-grid .home-foyer-card.is-primary{
+  grid-column:span 4!important;min-height:clamp(250px,25vw,350px)!important;
+}
+html[data-page="index"] .folio-original-art-path{
+  margin:clamp(1.35rem,2.3vw,2rem) 0 0;
+  color:var(--folio-muted,#d9c5d5)!important;
+  font:400 .98rem/1.5 "Times New Roman",Times,Georgia,serif;
+}
+html[data-page="index"] .folio-original-art-path a{
+  color:var(--folio-pearl,#fff1f4)!important;
+  text-decoration:underline;text-decoration-color:var(--folio-rose-deep,#d093b4);
+  text-underline-offset:.3em;
+}
+html[data-page="index"] .folio-original-art-path span{color:var(--folio-rose,#e9b8d0);margin-left:.35rem}
+@media (min-width:621px) and (max-width:960px){
+  html[data-page="index"] .home-foyer-grid .home-foyer-card,
+  html[data-page="index"] .home-foyer-grid .home-foyer-card.is-primary{grid-column:span 6!important}
+  html[data-page="index"] .home-foyer-grid .home-foyer-card:last-child{grid-column:span 12!important;min-height:220px!important}
+}
+@media (max-width:620px){
+  html[data-page="index"] .home-foyer-grid{grid-template-columns:1fr!important}
+  html[data-page="index"] .home-foyer-grid .home-foyer-card,
+  html[data-page="index"] .home-foyer-grid .home-foyer-card.is-primary{
+    grid-column:1 / -1!important;min-height:245px!important
+  }
+}
+</style>
+
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -102,16 +144,15 @@ html[data-page="index"] .shell-nav .brand-short{display:none!important}@media(ma
       <h1 id="hero-title">Brennan Shepherd</h1>
       <p class="folio-tagline">I build worlds that feel like songs.</p>
       <p class="lede">Stylized environments, sculpted architecture, and procedural worldbuilding in Unreal Engine and Houdini.</p>
-      <div class="hero-actions">
-        <a class="button primary button-premium-primary" href="curated-art.html">Selected work</a>
-        <a class="button button-premium" href="world-bible.html">Environment studies</a>
-        <a class="button button-premium" href="works-on-paper.html">Paintings &amp; drawings</a>
+      <div class="hero-actions folio-first-step">
+        <a class="button primary button-premium-primary" href="curated-art.html">View selected work</a>
+        <a class="folio-secondary-link" href="resume.html">Résumé &amp; contact</a>
       </div>
       <p class="folio-proofline">Worldbuilding · Materials · Procedural Art</p>
     </div>
   </div>
   <figure class="folio-hero-art">
-    <img src="../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp" alt="Sakura Dream: a stone bridge beneath floating island gardens, Unreal Engine environment study" fetchpriority="high" decoding="async"/>
+    <img src="../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp" alt="Sakura Dream: a stone bridge beneath floating island gardens, Unreal Engine environment study" loading="eager" fetchpriority="high" decoding="sync"/>
     <span class="folio-frame-corner folio-frame-corner--tl" aria-hidden="true"></span>
     <span class="folio-frame-corner folio-frame-corner--tr" aria-hidden="true"></span>
     <span class="folio-frame-corner folio-frame-corner--bl" aria-hidden="true"></span>
@@ -133,24 +174,21 @@ html[data-page="index"] .shell-nav .brand-short{display:none!important}@media(ma
         <p class="eyebrow magazine-kicker">Portfolio paths</p>
         <h2 id="foyer-title">Explore the work.</h2>
       </div>
-      <p>Environments first. The systems are just beneath the surface.</p>
+      <p>Start with the environments. Then explore the craft behind them.</p>
     </div>
 
     <a class="recruiter-feature" href="faraway-mother-couture.html">
-<img src="../generated/assets/unreal/faraway_hero_heart_gate.webp" alt="Faraway Mother couture architecture and materials lookdevelopment" loading="lazy" decoding="async"/>
+<img src="../generated/assets/unreal/faraway_hero_heart_gate.webp" alt="Faraway Mother couture architecture and materials lookdevelopment" loading="eager" fetchpriority="low" decoding="async"/>
 <span class="folio-figma-medallion" aria-hidden="true"></span>
 <span class="recruiter-feature-copy"><small>Featured case study · Unreal Engine 5.8</small><strong>Faraway Mother</strong><span>Textile architecture, the Heart Gate, and a procedural landscape folded into itself.</span></span></a>
 
-<a class="recruiter-feature folio-drawing-feature" href="works-on-paper.html" aria-label="Explore original gouache paintings and illustrations">
-  <img src="https://static.wixstatic.com/media/510622_36c5a7431c9a405a92de1658704b6c8e~mv2.jpeg" alt="Original gouache pet portrait on blue canvas beside the dog used as its reference" loading="lazy" decoding="async" style="object-fit:contain;object-position:center;background:#251b31;padding:.5rem;box-sizing:border-box">
-  <span class="recruiter-feature-copy"><small>Original paintings · Gouache · Illustration</small><strong>Before the World Became 3D</strong><span>Physical painting, sketchbooks and digital illustration. The hand-made foundations of my environment practice.</span><span style="color:#e6c992;text-decoration:underline;text-underline-offset:4px">Explore the original artwork</span></span>
-</a>
-<nav class="home-foyer-grid" aria-label="Four portfolio destinations">
-<a class="home-foyer-card is-primary" href="curated-art.html"><img src="../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp" alt="" loading="lazy"/><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">01 · Art first</span><strong>Selected Work</strong><span>Environment beauty, light, materials and sculpture.</span></span></a>
-<a class="home-foyer-card is-primary" href="world-bible.html"><img src="../generated/assets/unreal/faraway_cathedral_nave.webp" alt="" loading="lazy"/><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">02 · Worldbuilding</span><strong>Environment Art</strong><span>Current Melodia worlds and the best available production evidence.</span></span></a>
-<a class="home-foyer-card" href="shader-breakdowns.html"><img src="../generated/assets/unreal/nikki9-melusina-morning-matrix.webp" alt="" loading="lazy"/><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">03 · Production methods</span><strong>Technical Art</strong><span>Procedural tools, Houdini, shaders and material systems.</span></span></a>
-<a class="home-foyer-card is-quiet" href="resume.html"><span class="home-foyer-quiet-mark" aria-hidden="true">✦</span><span class="home-foyer-copy"><span class="home-foyer-kicker">04 · Work together</span><strong>About &amp; Contact</strong><span>Résumé, skills, ArtStation and email.</span></span></a>
+
+<nav class="home-foyer-grid" aria-label="More portfolio paths">
+<a class="home-foyer-card is-primary" href="world-bible.html"><img src="../generated/assets/unreal/faraway_cathedral_nave.webp" alt="" loading="lazy"/><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">01 · Worldbuilding</span><strong>Environment Art</strong><span>Current Melodia worlds and the best available production evidence.</span></span></a>
+<a class="home-foyer-card" href="shader-breakdowns.html"><img src="../generated/assets/unreal/nikki9-melusina-morning-matrix.webp" alt="" loading="lazy"/><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">02 · Production methods</span><strong>Technical Art</strong><span>Procedural tools, Houdini, shaders and material systems.</span></span></a>
+<a class="home-foyer-card is-quiet" href="resume.html"><span class="home-foyer-quiet-mark" aria-hidden="true">✦</span><span class="home-foyer-copy"><span class="home-foyer-kicker">03 · Work together</span><strong>About &amp; Contact</strong><span>Résumé, skills, ArtStation and email.</span></span></a>
 </nav>
+    <p class="folio-original-art-path">Also from the studio: <a href="works-on-paper.html">original gouache paintings &amp; drawings</a> <span aria-hidden="true">✦</span></p>
   </div>
 </section>
 
