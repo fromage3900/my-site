@@ -31,12 +31,15 @@ jobs:
           node --check wix/melodia-site-nav.js
           node --check wix/melodia-editorial.js
           node --check wix/curated-art-viewer.js
+          node --check wix/melodia-photobooth.js
           python tools/validate_assets.py
+          python tools/check_stale_render_archive.py
           python tools/verify_showcase_polish.py
           python tools/verify_sendoff_freeze.py
           python tools/verify_recruiter_focus.py
           node tools/lint-tokens.js
           python tools/build_recruiter_release.py
+          python tools/verify_visual_folio_preservation.py
       - name: Check internal links and public-route hygiene
         shell: pwsh
         run: ./tools/validate_portfolio.ps1
@@ -78,6 +81,14 @@ jobs:
           capture 1440 1000 environments-desktop.png wix/world-bible.html
           capture 390 1100 selected-art-mobile.png wix/curated-art.html
           capture 1440 1000 recruiter-desktop.png wix/recruiter-one-sheet.html
+          capture 390 1200 moodboard-mobile.png wix/portfolio-moodboard.html
+          capture 1440 1100 moodboard-desktop.png wix/portfolio-moodboard.html
+          capture 390 1200 photo-studio-mobile.png wix/melusina-photo-studio.html
+          capture 1440 1100 photo-studio-desktop.png wix/melusina-photo-studio.html
+          capture 390 2600 moodboard-mobile-long.png wix/portfolio-moodboard.html
+          capture 1440 2600 moodboard-desktop-long.png wix/portfolio-moodboard.html
+          capture 390 2200 photo-studio-mobile-long.png wix/melusina-photo-studio.html
+          capture 1440 2200 photo-studio-desktop-long.png wix/melusina-photo-studio.html
       - uses: actions/upload-artifact@v4
         with:
           name: portfolio-preview-${{ github.sha }}
