@@ -397,7 +397,10 @@ async function loadHero(heroKey) {
   setStatus(`Loading ${hero.label}…`);
   disposeRoot();
   disposeGeneratedMaterials();
-  modelBytes = await getModelBytes(hero.url);
+  // A HEAD request is only diagnostics; never block embedded GLB presentation
+  // on a second HTTP round-trip (especially iOS and headless GPU startup).
+  modelBytes = document.documentElement.classList.contains('optical-atelier-framed')
+    ? null : await getModelBytes(hero.url);
 
   try {
     const gltf = await loader.load(hero.url);
