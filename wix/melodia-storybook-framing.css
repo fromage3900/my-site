@@ -1,0 +1,232 @@
+/* Night Velvet · Storybook Framing Pass
+   Based on owner's Nov 15 editorial reference: ornamental framing, gold keylines,
+   pearl caption panels and reserved satin detail. Real tracked art only.
+   This file is an opt-in homepage layer, not a redesign of the site system.
+*/
+html[data-page="index"]{
+  --storybook-gold:#dab8a5;
+  --storybook-gold-soft:rgba(243,205,195,.68);
+  --storybook-pearl:#f8eaf0;
+  --storybook-ink:#342338;
+  --storybook-outline:rgba(229,180,198,.64);
+}
+html[data-page="index"] .melodia-shell .shell-nav{
+  border-width:0 0 1px!important;
+  border-color:var(--storybook-gold-soft)!important;
+  box-shadow:0 1px 0 rgba(250,216,223,.08),0 14px 36px rgba(19,7,22,.18)!important;
+}
+html[data-page="index"] .shell-nav .brand{
+  letter-spacing:.115em!important;
+}
+html[data-page="index"] .recruiter-static-hero .folio-tagline{
+  max-width:30ch;
+  padding-top:.7rem;
+  border-top:1px solid rgba(238,191,208,.42);
+}
+html[data-page="index"] .recruiter-static-hero .hero-actions .button.primary{
+  position:relative;
+  box-shadow:inset 0 0 0 3px rgba(252,241,245,.74),inset 0 0 0 4px rgba(141,85,119,.38),0 8px 24px rgba(12,5,20,.18)!important;
+  border:1px solid var(--storybook-gold)!important;
+  padding-inline:clamp(1.35rem,2.5vw,2.3rem)!important;
+  letter-spacing:.1em!important;
+  text-transform:uppercase!important;
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+html[data-page="index"] .recruiter-static-hero .hero-actions .button.primary:hover{
+  transform:translateY(-2px);
+  box-shadow:inset 0 0 0 3px rgba(252,241,245,.9),inset 0 0 0 4px rgba(141,85,119,.4),0 14px 26px rgba(12,5,20,.3)!important;
+}
+html[data-page="index"] .melodia-shell .hero.recruiter-static-hero .folio-hero-art{
+  border:1px solid var(--storybook-gold-soft)!important;
+  box-shadow:inset 0 0 0 1px rgba(255,235,240,.35),12px 16px 0 rgba(108,64,91,.2),0 28px 66px rgba(13,5,18,.31)!important;
+}
+html[data-page="index"] .melodia-shell .folio-hero-art::before{
+  border:1px solid rgba(255,231,236,.75)!important;
+  box-shadow:0 0 0 5px rgba(46,24,46,.15)!important;
+  pointer-events:none;
+}
+/* The original corner SVGs remain the flourishes; soften their footprint. */
+html[data-page="index"] .folio-frame-corner{
+  width:clamp(51px,5.5vw,84px)!important;
+  height:clamp(51px,5.5vw,84px)!important;
+  opacity:.93!important;
+}
+html[data-page="index"] .folio-hero-art > figcaption{
+  letter-spacing:.045em!important;
+  border-top:1px solid rgba(234,187,208,.34)!important;
+}
+html[data-page="index"] .folio-ornament-rule{
+  filter:drop-shadow(0 2px 7px rgba(7,3,12,.18));
+}
+html[data-page="index"] .melodia-shell #portfolio-foyer.home-foyer-band{
+  padding-top:clamp(1rem,2.5vw,2.5rem)!important;
+}
+html[data-page="index"] .melodia-shell .recruiter-feature{
+  border:1px solid var(--storybook-gold)!important;
+  background:linear-gradient(120deg,#faeaf0,#efdde9 68%,#e9d7e6)!important;
+  box-shadow:0 0 0 3px rgba(244,207,222,.09),0 18px 48px rgba(12,3,17,.22)!important;
+  margin-bottom:clamp(2.2rem,5vw,4.3rem)!important;
+}
+html[data-page="index"] .recruiter-feature::after{
+  inset:8px!important;
+  border:1px solid rgba(148,88,121,.45)!important;
+}
+html[data-page="index"] .recruiter-feature-copy{
+  position:relative;
+  padding-block:clamp(1.4rem,3vw,2.5rem)!important;
+}
+html[data-page="index"] .recruiter-feature-copy small{
+  letter-spacing:.2em!important;
+}
+html[data-page="index"] .recruiter-feature-copy strong{
+  font-style:italic!important;
+  text-wrap:balance;
+}
+html[data-page="index"] .recruiter-feature img{
+  border-right:1px solid rgba(155,105,130,.28);
+}
+/* Center the visual chapter divider *after* the featured project.
+   Keep the explanation for people scanning quickly. */
+html[data-page="index"] #portfolio-foyer .home-foyer-head{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  gap:.35rem!important;
+  width:100%!important;
+  margin:0 auto clamp(1.65rem,3.3vw,2.6rem)!important;
+  text-align:center!important;
+}
+html[data-page="index"] #portfolio-foyer .home-foyer-head .eyebrow{
+  color:var(--folio-rose,#e9b8d0)!important;
+  letter-spacing:.24em!important;
+  font-size:.68rem!important;
+}
+html[data-page="index"] #portfolio-foyer .home-foyer-head h2{
+  display:flex!important;align-items:center;justify-content:center;gap:1.2rem;
+  width:100%!important;margin:.4rem auto!important;
+  font:400 clamp(1.15rem,2vw,1.6rem)/1.2 "Times New Roman",Times,Georgia,serif!important;
+  text-transform:uppercase!important;
+  letter-spacing:.24em!important;
+  color:var(--folio-pearl,#fff1f4)!important;
+}
+html[data-page="index"] #portfolio-foyer .home-foyer-head h2::before,
+html[data-page="index"] #portfolio-foyer .home-foyer-head h2::after{
+  content:"✦";display:block;flex:1;min-width:20px;max-width:225px;
+  height:1px;font-size:.85rem;line-height:0;color:var(--storybook-gold);
+  text-align:right;
+  background:linear-gradient(90deg,transparent,var(--storybook-gold-soft));
+}
+html[data-page="index"] #portfolio-foyer .home-foyer-head h2::after{
+  transform:scaleX(-1);
+}
+html[data-page="index"] #portfolio-foyer .home-foyer-head >p{
+  max-width:65ch!important;
+  margin:0 auto!important;
+  color:var(--folio-muted,#d9c5d5)!important;
+  font:400 clamp(.92rem,1.2vw,1.03rem)/1.5 "Times New Roman",Times,Georgia,serif!important;
+}
+/* Three paths from the recruiter-first edit, not the reference's four cards. */
+html[data-page="index"] .melodia-shell .home-foyer-grid .home-foyer-card{
+  background:#39243a!important;
+  border:1px solid var(--storybook-gold-soft)!important;
+  box-shadow:inset 0 0 0 5px rgba(250,225,235,.055),0 8px 23px rgba(9,4,12,.18)!important;
+  min-height:clamp(285px,30vw,390px)!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-end!important;
+}
+html[data-page="index"] .home-foyer-card::after{
+  inset:6px!important;
+  border:1px solid rgba(255,234,240,.4)!important;
+}
+html[data-page="index"] .home-foyer-card img{
+  position:absolute;
+  top:0!important;left:0!important;right:0!important;
+  width:100%!important;height:calc(100% - 111px)!important;
+  object-fit:cover!important;
+  filter:saturate(.94) brightness(.96)!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-scrim{
+  background:linear-gradient(180deg,transparent 10%,rgba(36,21,39,.04) 48%,rgba(36,21,39,.24) 74%)!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-copy{
+  position:relative!important;
+  z-index:4!important;
+  display:flex!important;flex-direction:column!important;gap:.18rem!important;
+  width:100%!important;
+  min-height:111px!important;
+  box-sizing:border-box!important;
+  padding:1rem 1.1rem .85rem!important;
+  background:linear-gradient(127deg,#f8e7ed 0%,#ecdce8 100%)!important;
+  color:var(--storybook-ink)!important;
+  text-shadow:none!important;
+  border-top:1px solid rgba(188,130,154,.56)!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-copy strong{
+  color:var(--storybook-ink)!important;
+  -webkit-text-fill-color:var(--storybook-ink)!important;
+  font:italic 400 clamp(1.48rem,2.2vw,2.1rem)/1.1 "Times New Roman",Times,Georgia,serif!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-copy .home-foyer-kicker{
+  color:#875b78!important;-webkit-text-fill-color:#875b78!important;
+  font:700 .61rem/1.4 "Times New Roman",Times,Georgia,serif!important;
+  letter-spacing:.15em!important;text-transform:uppercase!important;
+}
+html[data-page="index"] .home-foyer-card .home-foyer-copy >span:last-child{
+  color:#715a71!important;-webkit-text-fill-color:#715a71!important;
+  font:400 clamp(.75rem,1vw,.85rem)/1.32 "Times New Roman",Times,Georgia,serif!important;
+  text-shadow:none!important;
+}
+html[data-page="index"] .home-foyer-card.is-quiet .home-foyer-quiet-mark{
+  position:absolute;z-index:1;
+  width:100%;height:calc(100% - 111px);
+  display:grid;place-items:center;
+  color:rgba(249,214,231,.75)!important;
+  background:radial-gradient(ellipse at 52% 55%,rgba(158,96,143,.35),transparent 63%);
+}
+html[data-page="index"] .home-foyer-card:hover,
+html[data-page="index"] .home-foyer-card:focus-visible{
+  border-color:#f4d6d8!important;
+  box-shadow:0 0 0 2px rgba(237,189,213,.26),0 12px 30px rgba(9,4,12,.3)!important;
+}
+html[data-page="index"] .folio-original-art-path{
+  margin-top:2rem!important;text-align:center;
+}
+html[data-page="index"] .folio-ribbon-finale{
+  width:min(92%,920px);height:clamp(75px,10vw,130px);
+  margin:clamp(1.4rem,2.7vw,2.2rem) auto 0;
+  background:
+    url("assets/figma/mdl-crest-divider-light.svg") center / min(70%,570px) auto no-repeat,
+    url("assets/figma/nv-rose-satin.svg") center 60% / min(95%,820px) auto no-repeat;
+  opacity:.66;pointer-events:none;
+}
+@media(max-width:1080px){
+  html[data-page="index"] .folio-ribbon-finale{height:95px}
+}
+@media(max-width:720px){
+  html[data-page="index"] .melodia-shell #portfolio-foyer.home-foyer-band{
+    padding-top:1.2rem!important;
+  }
+  html[data-page="index"] .melodia-shell .recruiter-feature{
+    margin-bottom:2.5rem!important;
+  }
+  html[data-page="index"] #portfolio-foyer .home-foyer-head h2{
+    letter-spacing:.11em!important;gap:.7rem!important;
+  }
+  html[data-page="index"] .home-foyer-card img{
+    height:calc(100% - 112px)!important;
+  }
+  html[data-page="index"] .melodia-shell .home-foyer-grid .home-foyer-card{
+    min-height:340px!important;
+  }
+  html[data-page="index"] .folio-ribbon-finale{
+    height:70px;margin-top:1rem;
+    background-size:min(90%,410px) auto,min(100%,560px) auto;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-page="index"] .home-foyer-card,
+  html[data-page="index"] .recruiter-static-hero .hero-actions .button.primary{
+    transition:none!important;
+  }
+}
