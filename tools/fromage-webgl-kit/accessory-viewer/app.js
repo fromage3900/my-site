@@ -120,6 +120,7 @@ let autoRotate = rotateParam === null ? !reducedMotion : rotateParam !== '0';
 let cameraGoal = new THREE.Vector3(...VIEWS[initialView].camera);
 let targetGoal = new THREE.Vector3(...VIEWS[initialView].target);
 let materialPool = [];
+let wireHelpers = [];
 let modelBytes = null;
 let frameCounter = 0;
 let fpsWindowStart = performance.now();
@@ -164,12 +165,22 @@ function classifyMesh(mesh) {
 
 function disposeRoot() {
   if (!root) return;
+  clearWireframeHelpers();
   runtime.scene.remove(root);
   root.traverse((obj) => {
     if (obj.geometry?.dispose) obj.geometry.dispose();
   });
   root = null;
   meshes = [];
+}
+
+function clearWireframeHelpers() {
+  for (const helper of wireHelpers) {
+    helper.parent?.remove(helper);
+    helper.geometry?.dispose?.();
+    helper.material?.dispose?.();
+  }
+  wireHelpers = [];
 }
 
 function disposeGeneratedMaterials() {
@@ -204,11 +215,25 @@ function makeBeautyMaterials() {
 
 function applyMaterials() {
   if (!root) return;
+  clearWireframeHelpers();
   if (inspection === 'wire') {
+    // GLB triangle winding and mirrored components can make mesh-material
+    // wireframe vanish in some WebGL paths. True line geometry renders the
+    // authored mesh edges without replacing the source with a fake primitive.
     disposeGeneratedMaterials();
-    const wire = new THREE.MeshBasicMaterial({ color: 0x252525, wireframe: true });
-    materialPool.push(wire);
-    meshes.forEach((mesh) => { mesh.material = wire; });
+    const hiddenSurface = new THREE.MeshBasicMaterial({ visible: false });
+    materialPool.push(hiddenSurface);
+    meshes.forEach((mesh) => {
+      mesh.material = hiddenSurface;
+      const lines = new THREE.LineSegments(
+        new THREE.WireframeGeometry(mesh.geometry),
+        new THREE.LineBasicMaterial({ color: 0x33253d, depthTest: false })
+      );
+      lines.frustumCulled = false;
+      lines.renderOrder = 10;
+      mesh.add(lines);
+      wireHelpers.push(lines);
+    });
     return;
   }
   if (inspection === 'clay') {
@@ -232,19 +257,23 @@ function applyMaterials() {
 }
 
 function fitProduct(object) {
+  // Measure geometry *after* its display rotation. The previous routine
+  // centered the pre-rotation box, then turned the mesh; this displaced the
+  // eyewear above the camera in compact and full-size views.
+  object.position.set(0, 0, 0);
+  object.scale.set(1, 1, 1);
+  object.rotation.set(-Math.PI / 2 - 0.04, -0.16, 0);
   object.updateMatrixWorld(true);
   let box = new THREE.Box3().setFromObject(object);
   const size = box.getSize(new THREE.Vector3());
   const largest = Math.max(size.x, size.y, size.z);
   if (!Number.isFinite(largest) || largest <= 1e-6) return;
-  const scale = 2.75 / largest;
-  object.scale.setScalar(scale);
+  object.scale.setScalar(2.75 / largest);
   object.updateMatrixWorld(true);
   box = new THREE.Box3().setFromObject(object);
   const center = box.getCenter(new THREE.Vector3());
   object.position.sub(center);
   object.position.y += 0.02;
-  object.rotation.set(-Math.PI / 2 - 0.04, -0.16, 0);
   object.updateMatrixWorld(true);
 }
 
@@ -368,7 +397,10 @@ async function loadHero(heroKey) {
   setStatus(`Loading ${hero.label}…`);
   disposeRoot();
   disposeGeneratedMaterials();
-  modelBytes = await getModelBytes(hero.url);
+  // A HEAD request is only diagnostics; never block embedded GLB presentation
+  // on a second HTTP round-trip (especially iOS and headless GPU startup).
+  modelBytes = document.documentElement.classList.contains('optical-atelier-framed')
+    ? null : await getModelBytes(hero.url);
 
   try {
     const gltf = await loader.load(hero.url);
@@ -382,11 +414,24 @@ async function loadHero(heroKey) {
     setStatus(`${hero.label} · realtime asset loaded`);
     activateControls();
     setView(currentView, { userInitiated: false });
+    // Draw the first loaded frame synchronously. A 3D thumbnail inside an
+    // iframe (notably narrow iOS/headless WebGL) can miss the next RAF when
+    // loading finishes near a visibility/virtual-time boundary.
+    runtime.resize();
+    controls.update();
+    runtime.renderer.render(runtime.scene, runtime.camera);
     syncStateToUrl();
   } catch (error) {
     console.info('[accessory-viewer] Hero asset unavailable:', error?.message || error);
-    setStatus('Asset slot ready');
-    diagnostics.textContent = `Expected: ${hero.url}`;
+    setStatus('Original model unavailable');
+    if (emptyState) {
+      emptyState.hidden = false;
+      const heading = emptyState.querySelector('strong');
+      const detail = emptyState.querySelector('p');
+      if (heading) heading.textContent = 'Original model unavailable.';
+      if (detail) detail.textContent = 'The authored GLB did not load; this viewer does not display substitute geometry.';
+    }
+    if (diagnostics) diagnostics.textContent = `Failed to load original: ${hero.url}`;
   }
 }
 

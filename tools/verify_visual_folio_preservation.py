@@ -50,6 +50,30 @@ def verify() -> None:
     assert "tile hero" in moodboard and "tile detail" in moodboard
     assert "melusina_beauty_eevee_20260715c_01-1280.webp" in moodboard
     assert "melusina_glam_macro_postcard_4s_poster.png" in moodboard
+    # Exactly one Three.js hard-surface hero, backed by the original, real GLBs.
+    assert moodboard.count('class="tile wide interactive-art eyewear-feature"') == 1
+    assert "optical-atelier-artifact" in moodboard and "optical-atelier-activate" in moodboard
+    assert "../tools/fromage-webgl-kit/accessory-viewer/index.html?embed=1&hero=cateye-metal" in moodboard
+    for style in ("rect-metal.glb", "rect-tortoise.glb", "panto-metal.glb", "panto-tortoise.glb", "cateye-metal.glb", "cateye-tortoise.glb", "aviator-metal.glb", "aviator-tortoise.glb"):
+        path = WIX / "models" / "eyewear-heroes" / style
+        assert path.is_file(), f"Missing original hard-surface asset: {path}"
+    eyewear = (ROOT / "tools/fromage-webgl-kit/accessory-viewer/index.html").read_text(encoding="utf-8")
+    source = (ROOT / "tools/fromage-webgl-kit/accessory-viewer/app.js").read_text(encoding="utf-8")
+    assert "optical-atelier-framed" in eyewear
+    for mode in ("beauty", "clay", "wire"):
+        assert f'data-folio-inspect="{mode}"' in eyewear, f"Lost {mode} control"
+    assert 'data-folio-view="hinge"' in eyewear
+    assert 'id="heroSelector"' in eyewear
+    for style in ("rect-metal", "panto-metal", "cateye-metal", "aviator-metal"):
+        assert f'<option value="{style}">' in eyewear
+    assert "GLTFLoader" in source and "const HEROES" in source, "Original GLB loader lost"
+    assert "THREE.WireframeGeometry(mesh.geometry)" in source, "Real mesh-topology wireframe mode lost"
+    assert "clearWireframeHelpers()" in source, "Wireframe helper disposal lost"
+    assert "runtime.renderer.render(runtime.scene, runtime.camera)" in source, "First GLB frame guarantee lost"
+    # The source bounds must be computed *after* applying the art-direction
+    # orientation or the glasses crop off the top of their ornamental frame.
+    fit = source.split("function fitProduct(object) {", 1)[1].split("function setPressed", 1)[0]
+    assert fit.index("object.rotation.set(") < fit.index("new THREE.Box3().setFromObject(object)"), "3D art frame centering regressed"
     assert "MelodiaPhotobooth.init('#melusina-photobooth-mount')" in studio
     assert "melodia-photobooth.js" in studio and "melodia-photobooth.css" in studio
     assert "Glam Pose I" in photobooth and "50mm Prime" in photobooth and "Sakura Bloom" in photobooth
