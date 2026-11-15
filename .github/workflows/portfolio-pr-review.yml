@@ -34,7 +34,6 @@ jobs:
           node --check wix/melodia-photobooth.js
           python tools/validate_assets.py
           python tools/check_stale_render_archive.py
-          python tools/build_recruiter_release.py
           python tools/verify_showcase_polish.py
           python tools/verify_sendoff_freeze.py
           python tools/verify_recruiter_focus.py
@@ -56,7 +55,6 @@ jobs:
           CHROME="$(command -v google-chrome-stable || command -v google-chrome || command -v chromium-browser || command -v chromium || true)"
           if [ -z "$CHROME" ]; then echo "Chrome unavailable"; exit 1; fi
           mkdir -p visual-qa
-          python tools/build_recruiter_release.py
           python -m http.server 4173 --bind 127.0.0.1 >/tmp/portfolio-preview-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" >/dev/null 2>&1 || true' EXIT
@@ -72,10 +70,6 @@ jobs:
           capture 390 1800 home-mobile-long.png wix/index.html
           capture 1440 1000 home-desktop.png wix/index.html
           capture 1440 1600 home-desktop-long.png wix/index.html
-          capture 390 1200 public-home-mobile.png _recruiter_release/wix/index.html
-          capture 1440 1100 public-home-desktop.png _recruiter_release/wix/index.html
-          capture 390 1200 public-selected-mobile.png _recruiter_release/wix/curated-art.html
-          capture 1440 1100 public-selected-desktop.png _recruiter_release/wix/curated-art.html
           capture 390 1100 environments-mobile.png wix/world-bible.html
           capture 1440 1000 environments-desktop.png wix/world-bible.html
           capture 390 1100 selected-art-mobile.png wix/curated-art.html
@@ -88,6 +82,7 @@ jobs:
           capture 1440 2600 moodboard-desktop-long.png wix/portfolio-moodboard.html
           capture 390 2200 photo-studio-mobile-long.png wix/melusina-photo-studio.html
           capture 1440 2200 photo-studio-desktop-long.png wix/melusina-photo-studio.html
+          capture 420 420 water-token-3d-embed.png "wix/realtime-3d-viewer.html?embed=1&asset=melody-token-water&fabric=GildedBrocade&mode=pbr"
       - uses: actions/upload-artifact@v4
         with:
           name: portfolio-preview-${{ github.sha }}
