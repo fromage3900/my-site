@@ -88,7 +88,10 @@ jobs:
           capture 1440 2600 moodboard-desktop-long.png wix/portfolio-moodboard.html
           capture 390 2200 photo-studio-mobile-long.png wix/melusina-photo-studio.html
           capture 1440 2200 photo-studio-desktop-long.png wix/melusina-photo-studio.html
-          capture 420 420 water-token-3d-embed.png "wix/realtime-3d-viewer.html?embed=1&asset=melody-token-water&fabric=GildedBrocade&mode=pbr"
+          # Authored eyewear GLB in full beauty and hard-surface topology inspection.
+          capture 720 500 eyewear-beauty-embed.png "tools/fromage-webgl-kit/accessory-viewer/index.html?embed=1&hero=cateye-metal&finish=pearl&lens=rose&view=hero&inspect=beauty&rotate=0"
+          capture 720 500 eyewear-hinge-wire.png "tools/fromage-webgl-kit/accessory-viewer/index.html?embed=1&hero=cateye-metal&finish=pearl&lens=rose&view=hinge&inspect=wire&rotate=0"
+          capture 390 440 eyewear-mobile-embed.png "tools/fromage-webgl-kit/accessory-viewer/index.html?embed=1&hero=cateye-metal&finish=pearl&lens=rose&view=hero&inspect=beauty&rotate=0"
       - uses: actions/upload-artifact@v4
         with:
           name: portfolio-preview-${{ github.sha }}
