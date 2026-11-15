@@ -643,6 +643,54 @@
       .choice, .material-card { transition: none; }
     }
   </style>
+  <style id="optical-atelier-framed-mode">
+    /* A minimal faceplate around the *same* existing Three.js GLB runtime.
+       Enabled only with ?embed=1; the full studio remains unchanged. */
+    html.optical-atelier-framed,html.optical-atelier-framed body{width:100%;height:100%;overflow:hidden}
+    html.optical-atelier-framed .page{width:100%!important;height:100%!important;max-width:none!important;padding:0!important;margin:0!important;overflow:hidden}
+    html.optical-atelier-framed .page > :not(.atelier){display:none!important}
+    html.optical-atelier-framed .atelier{display:block!important;width:100%!important;height:100%!important;min-height:0!important;padding:0!important;margin:0!important}
+    html.optical-atelier-framed .atelier > .panel{display:none!important}
+    html.optical-atelier-framed .stage-shell{width:100%!important;height:100%!important;min-height:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:#ede7e1}
+    html.optical-atelier-framed .stage{position:absolute;inset:0}
+    html.optical-atelier-framed .stage-topline{top:12px;left:14px;right:14px;gap:8px}
+    html.optical-atelier-framed .stage-label,html.optical-atelier-framed .stage-status{font-size:10px;letter-spacing:.08em;line-height:1.4}
+    html.optical-atelier-framed .stage-campaign-note{display:none!important}
+    .folio-embed-only{display:none}
+    html.optical-atelier-framed .folio-embed-only{display:flex}
+    html.optical-atelier-framed .folio-optical-toolbar{
+       position:absolute;z-index:10;bottom:12px;left:50%;transform:translateX(-50%);
+       align-items:center;justify-content:center;flex-wrap:wrap;gap:5px;max-width:calc(100% - 18px);
+       padding:7px;border:1px solid rgba(115,75,91,.34);border-radius:4px;
+       background:rgba(251,244,245,.9);box-shadow:0 5px 24px rgba(49,25,41,.16);
+       backdrop-filter:blur(8px)
+    }
+    html.optical-atelier-framed .folio-optical-toolbar button{
+       min-height:34px;padding:7px 11px;border:1px solid transparent;border-radius:3px;
+       background:transparent;color:#493544;cursor:pointer;
+       font:500 11px/1.3 "Times New Roman",Times,serif;letter-spacing:.05em
+    }
+    html.optical-atelier-framed .folio-optical-toolbar button[aria-pressed="true"]{
+       background:#4a2f48;color:#fff1f4
+    }
+    html.optical-atelier-framed .folio-optical-toolbar button:focus-visible{
+       outline:2px solid #734d69;outline-offset:2px
+    }
+    html.optical-atelier-framed #emptyState{z-index:6;pointer-events:none}
+    @media(max-width:440px){
+       html.optical-atelier-framed .stage-label,html.optical-atelier-framed .stage-status{font-size:8px}
+       html.optical-atelier-framed .folio-optical-toolbar{bottom:8px}
+       html.optical-atelier-framed .folio-optical-toolbar button{font-size:10px;padding:7px;min-height:36px}
+    }
+    @media(prefers-reduced-motion:reduce){
+       html.optical-atelier-framed .folio-optical-toolbar{backdrop-filter:none}
+    }
+  </style>
+  <script>
+    if(new URLSearchParams(location.search).get('embed')==='1'){
+      document.documentElement.classList.add('optical-atelier-framed');
+    }
+  </script>
   <script type="importmap">
   {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js"}}
   </script>
@@ -683,6 +731,14 @@
           <span id="stageStatus" class="stage-status" aria-live="polite">Checking asset…</span>
         </div>
         <p class="stage-campaign-note">Original frame · realtime finish study</p>
+        <div class="folio-optical-toolbar folio-embed-only" role="group" aria-label="Hard surface 3D inspection modes">
+          <button type="button" data-folio-inspect="beauty" aria-pressed="true">Beauty</button>
+          <button type="button" data-folio-inspect="clay" aria-pressed="false">Clay</button>
+          <button type="button" data-folio-inspect="wire" aria-pressed="false">Wireframe</button>
+          <button type="button" data-folio-view="hinge" aria-pressed="false">Hinge detail</button>
+          <button type="button" data-folio-view="hero" aria-pressed="true">Overview</button>
+        </div>
+
         <div id="emptyState" class="empty-state">
           <div class="empty-card">
             <strong>The frame enters next.</strong>
@@ -825,6 +881,26 @@
     </footer>
   </div>
 
+  <script>
+   (function(){
+     if(!document.documentElement.classList.contains('optical-atelier-framed')) return;
+     var opts=[].slice.call(document.querySelectorAll('[data-folio-inspect]'));
+     var views=[].slice.call(document.querySelectorAll('[data-folio-view]'));
+     function activate(items,key,attr){items.forEach(function(button){
+       button.setAttribute('aria-pressed', button.getAttribute(attr)===key?'true':'false');
+     });}
+     opts.forEach(function(button){button.addEventListener('click',function(){
+       var mode=button.getAttribute('data-folio-inspect');
+       var original=document.querySelector('.panel [data-inspect="'+mode+'"]');
+       if(original && !original.disabled){original.click();activate(opts,mode,'data-folio-inspect');}
+     });});
+     views.forEach(function(button){button.addEventListener('click',function(){
+       var view=button.getAttribute('data-folio-view');
+       var original=document.querySelector('.panel [data-view="'+view+'"]');
+       if(original && !original.disabled){original.click();activate(views,view,'data-folio-view');}
+     });});
+   })();
+  </script>
   <script type="module" src="./app.js"></script>
 </body>
 </html>
