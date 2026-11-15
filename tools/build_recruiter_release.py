@@ -14,7 +14,6 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_recruiter_release"
 # Every published raster/image is explicit, not discovered by glob or recursion.
 PUBLISHED_ART = (
-    "generated/assets/unreal/hero-sakura-dream-ink-shrine.webp",
     "wix/assets/touchdesigner/variant_4_atlus_graphic_cel.webp",
     "wix/assets/touchdesigner/variant_2_sakura_dawn.webp",
 )
@@ -218,12 +217,35 @@ REF_STYLE = r"""
  .ref-path-caption strong{font-size:28px}
  .ref-finale{height:65px}
 }
+
+/* Editorial plate, intentionally without any rejected or WIP game screenshots. */
+.ref-art.ref-cover{background:radial-gradient(circle at 54% 36%,#6b4b65,#2b1c30 66%);
+ padding:8px}
+.ref-editorial-cover{width:100%;min-height:470px;display:flex;align-items:center;
+ justify-content:center;flex-direction:column;text-align:center;gap:14px;
+ padding:35px 24px;box-sizing:border-box;position:relative;
+ background:radial-gradient(ellipse at 50% 44%,rgba(223,177,203,.14),transparent 60%),
+ url("assets/figma/nv-rose-satin.svg") center 65%/95% auto no-repeat}
+.ref-editorial-cover img{width:clamp(100px,14vw,175px);height:auto;max-height:165px;object-fit:contain;
+ filter:drop-shadow(0 8px 19px rgba(10,4,15,.29))}
+.ref-editorial-cover .micro{font-size:10px;color:var(--gold);letter-spacing:.13em}
+.ref-editorial-cover strong{font:italic 400 clamp(35px,4vw,64px)/1.04 var(--serif);
+ color:var(--cream);text-wrap:balance}
+.ref-editorial-cover em{font:italic 400 clamp(18px,1.75vw,24px)/1.25 var(--serif);color:var(--rose)}
+.ref-art.ref-cover:before{inset:13px 13px 64px}
+.ref-path.ref-path-ornament>img{object-fit:contain;padding:28px 24%;
+ box-sizing:border-box;background:radial-gradient(circle at 50% 35%,#624561,#291b31 80%)}
+@media(max-width:950px){.ref-editorial-cover{min-height:360px}}
+@media(max-width:700px){.ref-editorial-cover{min-height:260px;padding:23px 13px}
+ .ref-editorial-cover img{width:95px}
+ .ref-editorial-cover strong{font-size:37px}
+ .ref-art.ref-cover:before{inset:13px 13px 46px}}
 @media(prefers-reduced-motion:reduce){.ref-path>img{transition:none}}
 """
 
 def base(title: str, description: str, body: str, route: str = "index.html") -> str:
     canonical = "https://www.fromageart.xyz/" if route == "index.html" else "https://fromage3900.github.io/my-site/wix/" + route
-    hero = "https://fromage3900.github.io/my-site/generated/assets/unreal/hero-sakura-dream-ink-shrine.webp"
+    hero = "https://fromage3900.github.io/my-site/wix/assets/touchdesigner/variant_4_atlus_graphic_cel.webp"
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title} | Brennan Shepherd</title><meta name="description" content="{description}">
@@ -238,9 +260,6 @@ def base(title: str, description: str, body: str, route: str = "index.html") -> 
 <main id="main">{body}</main>
 <footer class="foot"><span>Brennan Shepherd · Environment &amp; Technical Artist · Toronto</span><span><a href="mailto:brennan.shepherd3900@gmail.com">Email</a> · <a href="https://www.artstation.com/fromage3900" rel="noopener noreferrer">ArtStation</a> · © 2026</span></footer>
 </div></body></html>"""
-
-def sakura_image() -> str:
-    return "../generated/assets/unreal/hero-sakura-dream-ink-shrine.webp"
 
 def faraway_image() -> str:
     return "../generated/assets/unreal/faraway_hero_heart_gate_1920.webp"
@@ -262,11 +281,16 @@ home = f"""
 <div class="actions"><a class="btn primary" href="curated-art.html">View selected work</a><a class="ref-text-link" href="resume.html">Résumé &amp; contact</a></div>
 <p class="micro ref-proof">Unreal Engine 5.8 · Houdini · Blender · TouchDesigner</p>
 </div>
-<figure class="hero-art ref-art">
+<figure class="hero-art ref-art ref-cover">
 <img class="moon" src="assets/figma/nv-pearl-eclipse.svg" alt="" aria-hidden="true">
 <img class="spark" src="assets/figma/mdl-sparkle-cluster.svg" alt="" aria-hidden="true">
-<img class="main-render" src="{sakura_image()}" alt="Sakura Dream environment study: a stone bridge and floating gardens in soft pink dusk lighting" fetchpriority="high" decoding="sync" width="1600" height="1100">
-<figcaption><span>Fig. 01 · Sakura Dream</span><span>Unreal Engine / Environment study</span></figcaption>
+<div class="ref-editorial-cover" role="img" aria-label="Decorative Melodia Melusina editorial cover, not an Unreal Engine screenshot">
+<img src="assets/figma/nv-pearl-eclipse.svg" alt="" aria-hidden="true">
+<span class="micro">Worldbuilding / Unreal Engine / Houdini</span>
+<strong>Melodia Melusina</strong>
+<em>Worlds as instruments</em>
+</div>
+<figcaption><span>Melodia / Worldbuilding journal</span><span>Editorial cover · Not a game screenshot</span></figcaption>
 </figure>
 <img class="hero-ribbon" src="assets/figma/nv-rose-satin.svg" alt="" aria-hidden="true">
 </section>
@@ -282,9 +306,9 @@ home = f"""
 <section class="ref-explore" aria-labelledby="explore-heading">
 <h2 id="explore-heading" class="ref-explore-heading"><span>Explore the work</span></h2>
 <div class="ref-path-grid">
-<a class="ref-path" href="curated-art.html">
-<img src="{sakura_image()}" alt="" loading="lazy">
-<span class="ref-path-caption"><strong>Selected Art</strong><small>Environment composition &amp; images</small></span></a>
+<a class="ref-path ref-path-ornament" href="curated-art.html">
+<img src="assets/figma/nv-pearl-eclipse.svg" alt="" loading="lazy">
+<span class="ref-path-caption"><strong>Selected Work</strong><small>Reviewed art &amp; look development</small></span></a>
 <a class="ref-path" href="technical-art.html">
 <img src="{river_image(2)}" alt="" loading="lazy">
 <span class="ref-path-caption"><strong>Technical Art</strong><small>Shaders, materials &amp; systems</small></span></a>
@@ -298,15 +322,15 @@ home = f"""
 """
 
 selected = f"""
-<section class="page-head"><p class="eyebrow">Selected art / 2026</p><h1>The things I want<br>you to remember.</h1>
-<p class="lede">A deliberately small selection. Environment composition first, then the graphic language behind the worlds.</p></section>
-<section class="section" id="sakura"><p class="eyebrow">01 / Scenic composition</p><h2>Sakura Dream</h2>
-<figure class="wide-art"><img src="{sakura_image()}" alt="Sakura Dream stone bridge and floating gardens"></figure><p class="copy">A stylized fantasy environment study focused on the image: silhouette, scene depth, framing and luminous color.</p></section>
-<section class="section" id="river"><p class="eyebrow">02 / Stylized 3D look development</p><h2>River Sanctuary</h2>
-<figure class="wide-art"><img src="{river_image(4)}" alt="River Sanctuary graphic-cel ink and hard-band shading"><figcaption><span>Graphic cel / Ink and color bands</span><span>Blender + TouchDesigner</span></figcaption></figure>
-<figure class="wide-art"><img src="{river_image(2)}" alt="The same River Sanctuary camera in a softer Sakura Dawn palette"><figcaption><span>Sakura Dawn / Storybook color treatment</span><span>Same geometry, alternate treatment</span></figcaption></figure>
-<p class="copy">Two visual treatments of the same 3D scene. These are shader/look-development examples, not separately illustrated sprites or shipped Unreal gameplay.</p></section>{closing()}
+<section class="page-head"><p class="eyebrow">Selected work / 2026</p><h1>A smaller, sharper edit.</h1>
+<p class="lede">Current reviewed shader and look-development studies. Fresh environment beauty images are being curated separately; unfinished Sakura Dream screenshots are withheld.</p></section>
+<section class="section" id="river"><p class="eyebrow">01 / Stylized 3D look development</p><h2>River Sanctuary</h2>
+<figure class="wide-art"><img src="{river_image(4)}" alt="River Sanctuary graphic-cel ink and hard-band shading"><figcaption><span>Graphic cel / Ink and colour bands</span><span>Blender + TouchDesigner</span></figcaption></figure>
+<figure class="wide-art"><img src="{river_image(2)}" alt="The same River Sanctuary camera in a softer pink colour treatment"><figcaption><span>Soft storybook treatment</span><span>Same geometry, alternate shading</span></figcaption></figure>
+<p class="copy">Two visual treatments of the same 3D scene. Shader and look-development evidence, not shipped gameplay or an independently illustrated environment.</p>
+</section>{closing()}
 """
+
 
 faraway = f"""
 <section class="page-head"><p class="eyebrow">Melodia / Procedural environment study</p><h1>Faraway <em>Mother.</em></h1>
