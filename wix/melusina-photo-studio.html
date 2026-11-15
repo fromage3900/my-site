@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Melusina Photo Studio — Recovered Original | Brennan Shepherd</title>
+<meta name="description" content="Review-only restored Melusina cinematic EEVEE photo studio, with original pose, lens, color filter and snapshot controls.">
+<link rel="stylesheet" href="melodia-tokens.css">
+<link rel="stylesheet" href="melodia-photobooth.css">
+<style>
+:root{
+  color-scheme:dark;
+  --color-surface-base:var(--primitive-folio-241723);
+  --color-surface-sunken:var(--primitive-folio-39253a);
+  --color-border-subtle:rgba(232,190,205,.36);
+  --color-accent-primary:var(--primitive-gold-300);
+  --color-text-primary:var(--primitive-folio-fff1f4);
+  --color-text-accent:var(--primitive-folio-ebc2d6);
+  --font-mono:Arial,Helvetica,sans-serif;
+  --font-brand:"Times New Roman",Times,Georgia,serif;
+  --font-display:"Times New Roman",Times,Georgia,serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 80% 0%,rgba(157,96,145,.3),transparent 35%),var(--color-surface-base);color:var(--color-text-primary);font:18px/1.55 "Times New Roman",Times,Georgia,serif}
+a{color:inherit;text-underline-offset:4px}a:focus-visible,button:focus-visible{outline:3px solid var(--color-text-accent);outline-offset:3px}
+.shell{width:min(1250px,calc(100% - 42px));margin:0 auto}
+nav{display:flex;justify-content:space-between;align-items:center;gap:12px 25px;flex-wrap:wrap;padding:26px 0;border-bottom:1px solid var(--color-border-subtle)}
+nav a{text-decoration:none}nav .brand{text-transform:uppercase;letter-spacing:.15em;font-size:20px}nav .links{display:flex;gap:24px;flex-wrap:wrap}
+header{padding:clamp(40px,6vw,75px) 0 29px;text-align:center}
+header .eyebrow{font:600 11px/1.4 Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.2em;color:var(--color-text-accent)}
+h1{font:italic 400 clamp(49px,7vw,91px)/.98 "Times New Roman",Times,Georgia,serif;letter-spacing:-.045em;margin:13px auto}
+header p{max-width:62ch;margin:14px auto;color:var(--color-text-accent);font-size:19px}
+#melusina-photobooth-mount{margin-bottom:32px}
+.photobooth-viewport{height:clamp(390px,58vw,710px)}
+.photobooth-stage-image{object-fit:contain!important;object-position:center center;background:radial-gradient(circle at 50% 48%,rgba(157,96,145,.2),transparent 60%)}
+.photobooth-controls{position:relative;z-index:20}
+.photobooth-group{flex-wrap:wrap}
+.photobooth-chip{color:var(--color-text-primary)!important;min-height:34px}
+.photobooth-chip.active{color:var(--color-surface-base)!important}
+.photobooth-viewfinder{pointer-events:none}
+.photo-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:30px 0}
+.photo-strip figure{margin:0;border:1px solid var(--color-border-subtle);overflow:hidden;background:var(--color-surface-sunken)}
+.photo-strip img{width:100%;height:320px;object-fit:contain}
+.photo-strip figcaption{padding:13px 16px;color:var(--color-text-accent);font:italic 17px/1.35 "Times New Roman",Times,Georgia,serif}
+section h2{font:italic 400 clamp(28px,3vw,44px)/1.2 "Times New Roman",Times,Georgia,serif}
+.note{border-top:1px solid var(--color-border-subtle);padding:26px 0 50px;margin:20px 0;color:var(--color-text-accent);font-size:15px}
+.skip{position:absolute;top:-80px;left:12px;background:var(--color-text-primary);color:var(--color-surface-base);padding:10px;z-index:100}
+.skip:focus{top:12px}
+@media(max-width:760px){.photo-strip{grid-template-columns:1fr 1fr}.photo-strip figure:last-child{grid-column:1/-1}.photo-strip img{height:260px}.photobooth-controls{padding:14px}.photobooth-viewport{height:clamp(360px,90vw,540px)}}
+@media(max-width:460px){.photo-strip{grid-template-columns:1fr}.photo-strip figure:last-child{grid-column:auto}.photo-strip img{height:290px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to photo studio</a>
+<div class="shell">
+<nav aria-label="Portfolio navigation"><a class="brand" href="portfolio-moodboard.html">✦ Melodia Studio</a><div class="links"><a href="portfolio-moodboard.html">3D Moodboard</a><a href="melodia-stage-character.html">Character Breakdown</a><a href="index.html">Portfolio</a></div></nav>
+<main id="main">
+<header><div class="eyebrow">The recovered original · EEVEE cinematic lookdev</div><h1>Melusina Photo Studio</h1><p>Pose selection, three lens presets, original atmosphere filters, and the interactive photo-spot viewfinder are restored from the existing source code.</p></header>
+<div id="melusina-photobooth-mount"></div>
+<section aria-labelledby="macro-title">
+<h2 id="macro-title">From the photo-card archive</h2>
+<div class="photo-strip">
+<figure><a href="../generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png"><img src="../generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png" alt="Original Melusina glamour macro postcard still" loading="lazy"></a><figcaption>Macro postcard · original still</figcaption></figure>
+<figure><a href="../generated/assets/character/melusina_eevee_glam_20260715c_04.png"><img src="../generated/assets/character/melusina_eevee_glam_20260715c_04.png" alt="Melusina studio glamour pose" loading="lazy"></a><figcaption>Glam studio · EEVEE still</figcaption></figure>
+<figure><a href="../generated/assets/character/melusina_waterhair_macro.png"><img src="../generated/assets/character/melusina_waterhair_macro.png" alt="Melusina water-hair macro look development image" loading="lazy"></a><figcaption>Water hair · macro lookdev</figcaption></figure>
+</div>
+</section>
+<p class="note">Recovered source archive for review, not an assertion that these July–August 2026 EEVEE stills are the newest Melusina V2 model. This page and its image paths are not yet in the strict public GitHub Pages release allowlist. The original JS/CSS and images were not modified.</p>
+</main></div>
+<script src="melodia-photobooth.js"></script>
+<script>if(window.MelodiaPhotobooth){window.MelodiaPhotobooth.init('#melusina-photobooth-mount')}</script>
+</body></html>
