@@ -67,6 +67,8 @@ def verify() -> None:
     for style in ("rect-metal", "panto-metal", "cateye-metal", "aviator-metal"):
         assert f'<option value="{style}">' in eyewear
     assert "GLTFLoader" in source and "const HEROES" in source, "Original GLB loader lost"
+    assert "THREE.WireframeGeometry(mesh.geometry)" in source, "Real mesh-topology wireframe mode lost"
+    assert "clearWireframeHelpers()" in source, "Wireframe helper disposal lost"
     # The source bounds must be computed *after* applying the art-direction
     # orientation or the glasses crop off the top of their ornamental frame.
     fit = source.split("function fitProduct(object) {", 1)[1].split("function setPressed", 1)[0]
