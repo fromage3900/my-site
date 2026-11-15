@@ -50,6 +50,12 @@ def verify() -> None:
     assert "tile hero" in moodboard and "tile detail" in moodboard
     assert "melusina_beauty_eevee_20260715c_01-1280.webp" in moodboard
     assert "melusina_glam_macro_postcard_4s_poster.png" in moodboard
+    assert "water-token-artifact" in moodboard and "water-token-activate" in moodboard
+    assert "realtime-3d-viewer.html?embed=1&asset=melody-token-water" in moodboard
+    assert (WIX / "models/SM_Orn_MelodyToken_Water.obj").is_file(), "Authored OBJ for embedded 3D card is missing"
+    existing_viewer = (WIX / "realtime-3d-viewer.html").read_text(encoding="utf-8")
+    assert "portfolio-frame-embed" in existing_viewer
+    assert 'data-asset="violin"' in existing_viewer, "Original full viewer must remain intact"
     assert "MelodiaPhotobooth.init('#melusina-photobooth-mount')" in studio
     assert "melodia-photobooth.js" in studio and "melodia-photobooth.css" in studio
     assert "Glam Pose I" in photobooth and "50mm Prime" in photobooth and "Sakura Bloom" in photobooth
