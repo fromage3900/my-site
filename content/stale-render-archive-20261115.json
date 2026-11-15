@@ -1,0 +1,252 @@
+{
+  "schema": "portfolio-stale-render-archive/v1",
+  "archived_on": "2026-11-15",
+  "repository": "fromage3900/my-site",
+  "archive_ref": "archive/stale-renders-20261115",
+  "archive_base_commit": "981fac8f3f55693cfc01a0c4046113bcb91deb06",
+  "policy": "Archived from active main history; preserved in public archive branch. Not a private backup and Git history remains publicly inspectable.",
+  "criteria": [
+    "render-passport explicitly rejected",
+    "bad source folders explicitly named __dud",
+    "visual audit rejected hero evidence",
+    "exact same Git blob or clear derived format/thumbnail of rejected render"
+  ],
+  "count": 39,
+  "bytes": 60385825,
+  "files": [
+    {
+      "path": "generated/assets/character/melusina_cam_beauty_nikki_2026-08-13.png",
+      "sha": "97ae995575cb131c14eefcc60221ab1599087e23",
+      "bytes": 7839106,
+      "reason": "explicit_render_passport_reject"
+    },
+    {
+      "path": "generated/assets/cross/__dud_mcp_wrong_subject/cross_komikaze_beauty_34.png",
+      "sha": "9936d94f1cedd5e1a4921f78cafd47f1b8a3b74f",
+      "bytes": 4068610,
+      "reason": "named_bad_output_directory"
+    },
+    {
+      "path": "generated/assets/cross/__dud_mcp_wrong_subject/cross_komikaze_front.png",
+      "sha": "2816fecfa3ca223807f0b38b2e618d1ff79a55aa",
+      "bytes": 4353930,
+      "reason": "named_bad_output_directory"
+    },
+    {
+      "path": "generated/assets/cross/__dud_mcp_wrong_subject/cross_komikaze_macro.png",
+      "sha": "7c7d790d7eaad9dd39210d5bcaaa0d72c3080885",
+      "bytes": 4118806,
+      "reason": "named_bad_output_directory"
+    },
+    {
+      "path": "generated/assets/nightshift/WP_BaroqueGrotto_terrain.png",
+      "sha": "4573a3ea908bfcffc299d567373f8a31c58e3f95",
+      "bytes": 337933,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    },
+    {
+      "path": "generated/assets/nightshift/WP_SakuraDream_hero.png",
+      "sha": "ba1b26a7d761f31e5569be198b66d068baca9463",
+      "bytes": 2346258,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    },
+    {
+      "path": "generated/assets/nightshift/WP_SpaceCathedral_terrain.png",
+      "sha": "6f0f610ac2a3b17136b5f5bc7b251f7b42adb0bb",
+      "bytes": 338153,
+      "reason": "explicit_render_passport_reject"
+    },
+    {
+      "path": "generated/assets/nightshift/__dud_unattended_retakes/MI_NikkiHero_CosmicOrrery.png",
+      "sha": "8cdbfabac953d5ee39c29b5e01187df4a72d35a3",
+      "bytes": 15221,
+      "reason": "named_bad_output_directory"
+    },
+    {
+      "path": "generated/assets/nightshift/__dud_unattended_retakes/MI_NikkiHero_SakuraDream.png",
+      "sha": "8cdbfabac953d5ee39c29b5e01187df4a72d35a3",
+      "bytes": 15221,
+      "reason": "named_bad_output_directory"
+    },
+    {
+      "path": "generated/assets/nightshift/__dud_unattended_retakes/MI_NikkiHero_SpaceCathedral.png",
+      "sha": "8cdbfabac953d5ee39c29b5e01187df4a72d35a3",
+      "bytes": 15221,
+      "reason": "named_bad_output_directory"
+    },
+    {
+      "path": "generated/assets/nightshift/__dud_unattended_retakes/MI_Show_CelestialNebula.png",
+      "sha": "266a4b151a5e7ac8799f49d9227f424b0aba977f",
+      "bytes": 13087,
+      "reason": "named_bad_output_directory"
+    },
+    {
+      "path": "generated/assets/nightshift/__dud_unattended_retakes/MI_Show_CherryBlossom.png",
+      "sha": "266a4b151a5e7ac8799f49d9227f424b0aba977f",
+      "bytes": 13087,
+      "reason": "named_bad_output_directory"
+    },
+    {
+      "path": "generated/assets/nightshift/__dud_unattended_retakes/MI_Show_ElementHydro.png",
+      "sha": "266a4b151a5e7ac8799f49d9227f424b0aba977f",
+      "bytes": 13087,
+      "reason": "named_bad_output_directory"
+    },
+    {
+      "path": "generated/assets/nightshift/__dud_unattended_retakes/MI_Show_FairyHearts.png",
+      "sha": "266a4b151a5e7ac8799f49d9227f424b0aba977f",
+      "bytes": 13087,
+      "reason": "named_bad_output_directory"
+    },
+    {
+      "path": "generated/assets/nightshift/__dud_unattended_retakes/MI_Show_NikkiHero.png",
+      "sha": "266a4b151a5e7ac8799f49d9227f424b0aba977f",
+      "bytes": 13087,
+      "reason": "named_bad_output_directory"
+    },
+    {
+      "path": "generated/assets/nightshift/__dud_unattended_retakes/MI_Show_SkinSoft.png",
+      "sha": "266a4b151a5e7ac8799f49d9227f424b0aba977f",
+      "bytes": 13087,
+      "reason": "named_bad_output_directory"
+    },
+    {
+      "path": "generated/assets/ornaments/rose_window_void_iri_beauty_34.png",
+      "sha": "fb58a6a8fca203bbf7d1a2a179edee8299a85cbb",
+      "bytes": 2521782,
+      "reason": "explicit_render_passport_reject"
+    },
+    {
+      "path": "generated/assets/props/magical_wand_komikaze_beauty_34.png",
+      "sha": "4687284ac3b6bb364212ee4127676194e43837b9",
+      "bytes": 2511799,
+      "reason": "explicit_render_passport_reject"
+    },
+    {
+      "path": "generated/assets/signature/gazebo1_komikaze_beauty_34.png",
+      "sha": "29508fd8693298430b68b828f6de437e0fbe910c",
+      "bytes": 3542482,
+      "reason": "explicit_render_passport_reject"
+    },
+    {
+      "path": "generated/assets/signature/gazebo1_komikaze_three_quarter.png",
+      "sha": "0918774ad0d90615ec796142b326e70fa8f079e1",
+      "bytes": 3659007,
+      "reason": "explicit_render_passport_reject"
+    },
+    {
+      "path": "generated/assets/signature/lissajous_komikaze_beauty_34.png",
+      "sha": "ae944e2edab5fdced92012f9757aa716dd174264",
+      "bytes": 2532325,
+      "reason": "explicit_render_passport_reject"
+    },
+    {
+      "path": "generated/assets/unreal/hero-hero-level-cam-hero-establishing-20260708-191145-1920x1080.png",
+      "sha": "ba1b26a7d761f31e5569be198b66d068baca9463",
+      "bytes": 2346258,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    },
+    {
+      "path": "generated/assets/unreal/hero-kaleido-nave-crystal-sanctuary.png",
+      "sha": "051609a6889d0238726f5529700261e36fda07f4",
+      "bytes": 2788889,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    },
+    {
+      "path": "generated/assets/unreal/hero-kaleido-nave-crystal-sanctuary.webp",
+      "sha": "1fe41d3b46452521d0e6934a481371e449388448",
+      "bytes": 228022,
+      "reason": "visually_rejected_featured_hero"
+    },
+    {
+      "path": "generated/assets/unreal/hero-kaleido-nave.webp",
+      "sha": "439c9b3daeb44c1a8f201081cdd7a24e2d3c6715",
+      "bytes": 91298,
+      "reason": "visually_rejected_featured_hero"
+    },
+    {
+      "path": "generated/assets/unreal/hero-sakura-dream-master-1920x1080.webp",
+      "sha": "1616a6c208444380a6cb6c945b83b3a426895761",
+      "bytes": 316128,
+      "reason": "visually_rejected_featured_hero"
+    },
+    {
+      "path": "generated/assets/unreal/hero-zen-forest.webp",
+      "sha": "9e2683096c8f1fbef031c32e9cb3508d643169b8",
+      "bytes": 63118,
+      "reason": "visually_rejected_featured_hero"
+    },
+    {
+      "path": "generated/assets/unreal/hero_l_wp_sakuradream_1920x1080.png",
+      "sha": "ba1b26a7d761f31e5569be198b66d068baca9463",
+      "bytes": 2346258,
+      "reason": "explicit_render_passport_reject"
+    },
+    {
+      "path": "generated/assets/unreal/level_fallen_moon.png",
+      "sha": "4573a3ea908bfcffc299d567373f8a31c58e3f95",
+      "bytes": 337933,
+      "reason": "explicit_render_passport_reject"
+    },
+    {
+      "path": "generated/assets/unreal/pcg-heatmap.png",
+      "sha": "ba1b26a7d761f31e5569be198b66d068baca9463",
+      "bytes": 2346258,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    },
+    {
+      "path": "generated/assets/unreal/thumbs/hero-sakura-dream-master-1920x1080_thumb.png",
+      "sha": "f230af6173a2305aa8702544a6fa1420ca9be1be",
+      "bytes": 493378,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    },
+    {
+      "path": "generated/assets/unreal/thumbs/hero-sakura-dream-master-1920x1080_thumb.webp",
+      "sha": "c927c92e1907ed13235f715e74fad7e7303b3fb5",
+      "bytes": 25990,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    },
+    {
+      "path": "generated/melusina_cam_beauty_nikki_2026-08-13.png",
+      "sha": "97ae995575cb131c14eefcc60221ab1599087e23",
+      "bytes": 7839106,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    },
+    {
+      "path": "public/melodia/runtime-vfx-showcase/hero-kaleido-nave-crystal-sanctuary.webp",
+      "sha": "1fe41d3b46452521d0e6934a481371e449388448",
+      "bytes": 228022,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    },
+    {
+      "path": "public/melodia/vfx-showcase-2026-09-28/hero-kaleido-nave-1920x1080.png",
+      "sha": "ae7288b536af8d48bf1afe2fbcd55e5fad987146",
+      "bytes": 1092047,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    },
+    {
+      "path": "public/melodia/vfx-showcase-2026-09-28/hero-kaleido-nave-1920x1080.webp",
+      "sha": "439c9b3daeb44c1a8f201081cdd7a24e2d3c6715",
+      "bytes": 91298,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    },
+    {
+      "path": "public/melodia/vfx-showcase-2026-09-28/hero-sakura-dream-master-1920x1080.webp",
+      "sha": "1616a6c208444380a6cb6c945b83b3a426895761",
+      "bytes": 316128,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    },
+    {
+      "path": "public/melodia/vfx-showcase-2026-09-28/hero-zen-forest-1920x1080.png",
+      "sha": "709923aeadb8fb668fec5f4b357220f40ed045fc",
+      "bytes": 1078200,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    },
+    {
+      "path": "public/melodia/vfx-showcase-2026-09-28/hero-zen-forest-1920x1080.webp",
+      "sha": "9e2683096c8f1fbef031c32e9cb3508d643169b8",
+      "bytes": 63118,
+      "reason": "duplicate_or_derived_of_rejected_render"
+    }
+  ]
+}
