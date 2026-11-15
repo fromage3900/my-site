@@ -54,7 +54,7 @@ def verify() -> None:
     assert moodboard.count('class="tile wide interactive-art eyewear-feature"') == 1
     assert "optical-atelier-artifact" in moodboard and "optical-atelier-activate" in moodboard
     assert "../tools/fromage-webgl-kit/accessory-viewer/index.html?embed=1&hero=cateye-metal" in moodboard
-    for style in ("rect-metal.glb", "panto-metal.glb", "cateye-metal.glb", "aviator-metal.glb"):
+    for style in ("rect-metal.glb", "rect-tortoise.glb", "panto-metal.glb", "panto-tortoise.glb", "cateye-metal.glb", "cateye-tortoise.glb", "aviator-metal.glb", "aviator-tortoise.glb"):
         path = WIX / "models" / "eyewear-heroes" / style
         assert path.is_file(), f"Missing original hard-surface asset: {path}"
     eyewear = (ROOT / "tools/fromage-webgl-kit/accessory-viewer/index.html").read_text(encoding="utf-8")
@@ -69,6 +69,7 @@ def verify() -> None:
     assert "GLTFLoader" in source and "const HEROES" in source, "Original GLB loader lost"
     assert "THREE.WireframeGeometry(mesh.geometry)" in source, "Real mesh-topology wireframe mode lost"
     assert "clearWireframeHelpers()" in source, "Wireframe helper disposal lost"
+    assert "runtime.renderer.render(runtime.scene, runtime.camera)" in source, "First GLB frame guarantee lost"
     # The source bounds must be computed *after* applying the art-direction
     # orientation or the glasses crop off the top of their ornamental frame.
     fit = source.split("function fitProduct(object) {", 1)[1].split("function setPressed", 1)[0]
