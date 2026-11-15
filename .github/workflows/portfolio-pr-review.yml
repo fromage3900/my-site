@@ -35,6 +35,8 @@ jobs:
           python tools/verify_showcase_polish.py
           python tools/verify_sendoff_freeze.py
           python tools/verify_recruiter_focus.py
+          node tools/lint-tokens.js
+          python tools/build_recruiter_release.py
       - name: Check internal links and public-route hygiene
         shell: pwsh
         run: ./tools/validate_portfolio.ps1
@@ -49,6 +51,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          python tools/build_recruiter_release.py
           CHROME="$(command -v google-chrome-stable || command -v google-chrome || command -v chromium-browser || command -v chromium || true)"
           if [ -z "$CHROME" ]; then echo "Chrome unavailable"; exit 1; fi
           mkdir -p visual-qa
@@ -67,6 +70,10 @@ jobs:
           capture 390 1800 home-mobile-long.png wix/index.html
           capture 1440 1000 home-desktop.png wix/index.html
           capture 1440 1600 home-desktop-long.png wix/index.html
+          capture 390 844 public-home-mobile.png _recruiter_release/wix/index.html
+          capture 390 1800 public-home-mobile-long.png _recruiter_release/wix/index.html
+          capture 1440 1000 public-home-desktop.png _recruiter_release/wix/index.html
+          capture 1440 1600 public-home-desktop-long.png _recruiter_release/wix/index.html
           capture 390 1100 environments-mobile.png wix/world-bible.html
           capture 1440 1000 environments-desktop.png wix/world-bible.html
           capture 390 1100 selected-art-mobile.png wix/curated-art.html
