@@ -15,7 +15,6 @@ OUT = ROOT / "_recruiter_release"
 # Every published raster/image is explicit, not discovered by glob or recursion.
 PUBLISHED_ART = (
     "generated/assets/unreal/hero-sakura-dream-ink-shrine.webp",
-    "generated/assets/unreal/faraway_hero_heart_gate_1920.webp",
     "wix/assets/touchdesigner/variant_4_atlus_graphic_cel.webp",
     "wix/assets/touchdesigner/variant_2_sakura_dawn.webp",
 )
@@ -150,9 +149,9 @@ home = f"""
 <figcaption><span>Melodia / Sakura Dream</span><span>Unreal environment study</span></figcaption></figure>
 <img class="hero-ribbon" src="assets/figma/nv-rose-satin.svg" alt="" aria-hidden="true"></section>
 <div class="rule"></div>
-<section class="section"><div class="section-head"><div><p class="eyebrow">01 / Selected work</p><h2>Worlds, carefully composed.</h2></div><p>Two environment directions from an independently developed musical fantasy world. Captures are presented as development studies, not finished-game screenshots.</p></div>
+<section class="section"><div class="section-head"><div><p class="eyebrow">01 / Selected work</p><h2>Worlds, carefully composed.</h2></div><p>A stringent edit of scenic composition and stylized 3D look development. Unfinished Faraway Mother captures are withheld pending better artwork.</p></div>
 <div class="work-grid">
-<figure class="work"><a class="image" href="faraway-mother-couture.html"><img src="{faraway_image()}" alt="Faraway Mother Heart Gate, monumental textile-inspired landscape and architecture" loading="lazy"></a><figcaption><strong>Faraway Mother — Heart Gate</strong><small>Procedural architecture / Work in progress</small></figcaption></figure>
+<figure class="work"><a class="image" href="technical-art.html"><img src="{river_image(4)}" alt="River Sanctuary graphic cel lighting and stylized ink treatment on a 3D river setting" loading="lazy"></a><figcaption><strong>River Sanctuary — Graphic Cel</strong><small>3D shader / Blender + TouchDesigner</small></figcaption></figure>
 <figure class="work"><a class="image" href="curated-art.html#sakura"><img src="{sakura_image()}" alt="Sakura Dream, stone bridge and dreamlike floating gardens" loading="lazy"></a><figcaption><strong>Sakura Dream — Floating Isles</strong><small>Environment composition / Unreal Engine</small></figcaption></figure>
 </div><div class="actions"><a class="btn" href="curated-art.html">View selected work</a></div></section>
 <section class="section"><div class="section-head"><div><p class="eyebrow">02 / Technical expression</p><h2>One place, two visual languages.</h2></div><p>River Sanctuary demonstrates art direction through non-photorealistic material and color treatments on a single 3D composition.</p></div>
@@ -163,12 +162,9 @@ home = f"""
 selected = f"""
 <section class="page-head"><p class="eyebrow">Selected art / 2026</p><h1>The things I want<br>you to remember.</h1>
 <p class="lede">A deliberately small selection. Environment composition first, then the graphic language behind the worlds.</p></section>
-<section class="section" id="faraway"><p class="eyebrow">01 / Monumental environment</p><h2>Faraway Mother</h2>
-<figure class="wide-art"><a href="faraway-mother-couture.html"><img src="{faraway_image()}" alt="Faraway Mother Heart Gate surrounded by stylized textile terrain"></a><figcaption><span>The Heart Gate / Unreal Engine 5.8</span><span>In-development environment study</span></figcaption></figure>
-<p class="copy">A surreal landscape shaped by cloth-inspired architecture, terrain and procedural assembly. This is a selected production study, not a claim of a finished playable level.</p><p><a class="text-link" href="faraway-mother-couture.html">Read the project notes →</a></p></section>
-<section class="section" id="sakura"><p class="eyebrow">02 / Scenic composition</p><h2>Sakura Dream</h2>
+<section class="section" id="sakura"><p class="eyebrow">01 / Scenic composition</p><h2>Sakura Dream</h2>
 <figure class="wide-art"><img src="{sakura_image()}" alt="Sakura Dream stone bridge and floating gardens"></figure><p class="copy">A stylized fantasy environment study focused on the image: silhouette, scene depth, framing and luminous color.</p></section>
-<section class="section" id="river"><p class="eyebrow">03 / Stylized 3D look development</p><h2>River Sanctuary</h2>
+<section class="section" id="river"><p class="eyebrow">02 / Stylized 3D look development</p><h2>River Sanctuary</h2>
 <figure class="wide-art"><img src="{river_image(4)}" alt="River Sanctuary graphic-cel ink and hard-band shading"><figcaption><span>Graphic cel / Ink and color bands</span><span>Blender + TouchDesigner</span></figcaption></figure>
 <figure class="wide-art"><img src="{river_image(2)}" alt="The same River Sanctuary camera in a softer Sakura Dawn palette"><figcaption><span>Sakura Dawn / Storybook color treatment</span><span>Same geometry, alternate treatment</span></figcaption></figure>
 <p class="copy">Two visual treatments of the same 3D scene. These are shader/look-development examples, not separately illustrated sprites or shipped Unreal gameplay.</p></section>{closing()}
@@ -218,7 +214,6 @@ resume = """
 PAGES = {
     "index.html": base("Environment & Technical Art", "Stylized environments, procedural worldbuilding and real-time technical art.", home),
     "curated-art.html": base("Selected Art", "A small edit of environment artwork, scenic composition and stylized shader look development.", selected, "curated-art.html"),
-    "faraway-mother-couture.html": base("Faraway Mother", "A procedural environment study exploring textile architecture and monumental landscapes.", faraway, "faraway-mother-couture.html"),
     "technical-art.html": base("Technical Art", "Blender and TouchDesigner shader look development with Houdini and Unreal procedural practice.", technical, "technical-art.html"),
     "resume.html": base("Résumé & Contact", "Brennan Shepherd is an environment and technical artist in Toronto.", resume, "resume.html"),
 }
