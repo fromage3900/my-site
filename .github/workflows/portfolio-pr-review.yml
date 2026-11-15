@@ -32,6 +32,7 @@ jobs:
           node --check wix/melodia-editorial.js
           node --check wix/curated-art-viewer.js
           python tools/validate_assets.py
+          python tools/check_stale_render_archive.py
           python tools/verify_showcase_polish.py
           python tools/verify_sendoff_freeze.py
           python tools/verify_recruiter_focus.py
