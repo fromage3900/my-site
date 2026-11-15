@@ -69,7 +69,7 @@ def verify() -> None:
     assert "GLTFLoader" in source and "const HEROES" in source, "Original GLB loader lost"
     # The source bounds must be computed *after* applying the art-direction
     # orientation or the glasses crop off the top of their ornamental frame.
-    fit = source.split("function fitProduct(object) {", 1)[1].split("\\nfunction setPressed", 1)[0]
+    fit = source.split("function fitProduct(object) {", 1)[1].split("function setPressed", 1)[0]
     assert fit.index("object.rotation.set(") < fit.index("new THREE.Box3().setFromObject(object)"), "3D art frame centering regressed"
     assert "MelodiaPhotobooth.init('#melusina-photobooth-mount')" in studio
     assert "melodia-photobooth.js" in studio and "melodia-photobooth.css" in studio
