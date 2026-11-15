@@ -82,6 +82,7 @@ jobs:
           capture 1440 2600 moodboard-desktop-long.png wix/portfolio-moodboard.html
           capture 390 2200 photo-studio-mobile-long.png wix/melusina-photo-studio.html
           capture 1440 2200 photo-studio-desktop-long.png wix/melusina-photo-studio.html
+          capture 420 420 water-token-3d-embed.png "wix/realtime-3d-viewer.html?embed=1&asset=melody-token-water&fabric=GildedBrocade&mode=pbr"
       - uses: actions/upload-artifact@v4
         with:
           name: portfolio-preview-${{ github.sha }}
