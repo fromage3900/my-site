@@ -232,19 +232,23 @@ function applyMaterials() {
 }
 
 function fitProduct(object) {
+  // Measure geometry *after* its display rotation. The previous routine
+  // centered the pre-rotation box, then turned the mesh; this displaced the
+  // eyewear above the camera in compact and full-size views.
+  object.position.set(0, 0, 0);
+  object.scale.set(1, 1, 1);
+  object.rotation.set(-Math.PI / 2 - 0.04, -0.16, 0);
   object.updateMatrixWorld(true);
   let box = new THREE.Box3().setFromObject(object);
   const size = box.getSize(new THREE.Vector3());
   const largest = Math.max(size.x, size.y, size.z);
   if (!Number.isFinite(largest) || largest <= 1e-6) return;
-  const scale = 2.75 / largest;
-  object.scale.setScalar(scale);
+  object.scale.setScalar(2.75 / largest);
   object.updateMatrixWorld(true);
   box = new THREE.Box3().setFromObject(object);
   const center = box.getCenter(new THREE.Vector3());
   object.position.sub(center);
   object.position.y += 0.02;
-  object.rotation.set(-Math.PI / 2 - 0.04, -0.16, 0);
   object.updateMatrixWorld(true);
 }
 
