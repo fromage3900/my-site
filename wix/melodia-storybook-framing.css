@@ -297,3 +297,22 @@ html[data-page="index"] .folio-hero-cover-art .folio-cover-subtitle{
   html[data-page="index"] .folio-hero-cover-art > img{width:92px!important;max-height:92px!important}
   html[data-page="index"] .folio-hero-cover-art .folio-cover-title{font-size:clamp(2rem,8.5vw,2.8rem)!important}
 }
+
+/* Keep the documentary caption legible below, not across, the picture-frame keyline. */
+html[data-page="index"] .folio-hero-cover .folio-hero-cover-art{
+  background-position:center center,center 88%!important;
+}
+html[data-page="index"] .folio-hero-cover > figcaption{
+  background:linear-gradient(90deg,var(--primitive-folio-332438),var(--primitive-folio-39253a))!important;
+  border-top:1px solid rgba(221,199,155,.4)!important;
+  box-sizing:border-box!important;
+  z-index:8!important;
+}
+@media(max-width:620px){
+  html[data-page="index"] .folio-hero-cover > figcaption{
+    padding:.7rem .6rem!important;
+    gap:.25rem!important;
+    font-size:.69rem!important;
+    line-height:1.35!important;
+  }
+}
