@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Melodia — Recovered 3D Moodboard | Brennan Shepherd</title>
+<meta name="description" content="Review-only recovery of Brennan Shepherd's original Fibonacci portfolio moodboard, built from tracked 3D renders and lookdev plates.">
+<link rel="stylesheet" href="melodia-tokens.css">
+<style>
+:root{color-scheme:dark;--ground:var(--primitive-folio-241723);--raised:var(--primitive-folio-39253a);--pearl:var(--primitive-folio-fff1f4);--rose:var(--primitive-folio-ebc2d6);--gold:var(--primitive-gold-300)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 78% 4%,rgba(154,95,142,.31),transparent 35%),var(--ground);color:var(--pearl);font:18px/1.5 "Times New Roman",Times,Georgia,serif}
+a{color:inherit;text-underline-offset:.22em}
+a:focus-visible{outline:3px solid var(--rose);outline-offset:4px}
+img{display:block;max-width:100%}
+.wrap{width:min(1420px,calc(100% - 52px));margin:auto}
+.top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:26px 0;border-bottom:1px solid rgba(236,195,210,.32)}
+.brand{text-decoration:none;font-size:20px;letter-spacing:.12em;text-transform:uppercase}
+.top nav{display:flex;flex-wrap:wrap;gap:14px 25px;font-size:15px}
+.masthead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.38fr);gap:32px;align-items:end;padding:clamp(36px,6vw,88px) 0 clamp(30px,4vw,52px)}
+.kicker,.subhead,.role,.folio-no{font:600 11px/1.4 Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:var(--rose)}
+h1{font:italic 400 clamp(52px,7.4vw,116px)/.92 "Times New Roman",Times,Georgia,serif;margin:14px 0 16px;letter-spacing:-.045em}
+.lede{max-width:34ch;font:italic clamp(20px,2.1vw,29px)/1.25 "Times New Roman",Times,Georgia,serif}
+.masthead aside{font:16px/1.5 "Times New Roman",Times,Georgia,serif;color:var(--rose);border-left:1px solid var(--gold);padding-left:20px}
+.rule{display:flex;align-items:center;gap:16px;letter-spacing:.2em;text-transform:uppercase;font-size:14px;margin:8px 0 28px}
+.rule:before,.rule:after{content:"";height:1px;background:linear-gradient(90deg,transparent,rgba(239,197,212,.7));flex:1}.rule:after{transform:scaleX(-1)}
+.board{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:clamp(8px,1.4vw,20px);align-items:start}
+.tile{position:relative;grid-column:span 5;margin:0;min-width:0;overflow:hidden;border:1px solid rgba(232,190,205,.5);background:var(--raised);box-shadow:0 10px 32px rgba(11,4,17,.28)}
+.tile:before{content:"";position:absolute;inset:5px;border:1px solid rgba(245,217,228,.2);z-index:1;pointer-events:none}
+.tile a{display:block;text-decoration:none}
+.tile picture,.tile img{width:100%;display:block}
+.tile img{height:100%;object-fit:cover;object-position:center;transition:transform .25s ease;aspect-ratio:1.25}
+.tile a:hover img{transform:scale(1.02)}
+.tile figcaption{position:relative;z-index:2;background:linear-gradient(115deg,var(--primitive-folio-f6e7ee),var(--primitive-folio-ebc2d6));color:var(--primitive-folio-241723);padding:13px 16px 15px}
+.tile figcaption strong{display:block;font:italic 400 clamp(19px,2vw,30px)/1.1 "Times New Roman",Times,Georgia,serif}
+.tile figcaption small{display:block;font:600 10px/1.3 Arial,Helvetica,sans-serif;letter-spacing:.09em;text-transform:uppercase;margin-top:6px}
+.tile.hero{grid-column:span 8}.tile.hero img{aspect-ratio:1.05}
+.tile.landscape{grid-column:span 5}.tile.landscape img{aspect-ratio:1.618}
+.tile.detail{grid-column:span 3}.tile.detail img{aspect-ratio:1}
+.tile.mid{grid-column:span 5}.tile.mid img{aspect-ratio:1.12}
+.tile.wide{grid-column:span 8}.tile.wide img{aspect-ratio:1.618}
+.tile.paper{grid-column:span 3}.tile.paper img{aspect-ratio:.8}
+.bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center;margin:55px 0 28px;padding:30px 0;border-top:1px solid rgba(236,195,210,.32)}
+.bottom strong{font:italic 400 30px/1.2 "Times New Roman",Times,Georgia,serif}
+.bottom a{padding:12px 19px;border:1px solid var(--gold);text-decoration:none}
+.note{color:var(--rose);font-size:14px;line-height:1.55;margin-bottom:38px}
+.skip{position:absolute;top:-100px;background:var(--pearl);color:var(--ground);padding:12px;z-index:10}.skip:focus{top:10px}
+@media(max-width:920px){.board{grid-template-columns:repeat(8,minmax(0,1fr))}.tile.hero,.tile.wide{grid-column:span 5}.tile.landscape,.tile.mid{grid-column:span 3}.tile.detail,.tile.paper{grid-column:span 3}.masthead{grid-template-columns:1fr}.masthead aside{max-width:60ch}}
+@media(max-width:600px){.wrap{width:calc(100% - 30px)}.board{grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.tile.hero,.tile.landscape,.tile.wide{grid-column:span 5}.tile.mid{grid-column:span 3}.tile.detail,.tile.paper{grid-column:span 2}.tile figcaption{padding:10px}.tile figcaption strong{font-size:clamp(16px,4vw,24px)}.tile figcaption small{font-size:9px}.top{padding:17px 0}h1{font-size:clamp(50px,14vw,75px)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tile img{transition:none}.tile a:hover img{transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to gallery</a>
+<div class="wrap">
+<header class="top"><a class="brand" href="index.html">✦ Brennan Shepherd</a><nav aria-label="Recovered gallery links"><a href="curated-art.html">Selected art</a><a href="melusina-photo-studio.html">Melusina Photo Studio</a><a href="melodia-stage-character.html">Character study</a></nav></header>
+<main id="main">
+<div class="masthead"><div><p class="kicker">Fromage Art / Recovered visual archive / 2026</p><h1>Worlds, objects,<br>and little miracles.</h1><p class="lede">An image-first collection of authored 3D renders, sculptural details and cinematic character lookdev.</p></div>
+<aside>Recovered from the original September 5 Pinterest-style moodboard specification. Image sizes follow its 13-column Fibonacci rhythm rather than a generic square thumbnail grid.</aside></div>
+<div class="rule">The visual folio ✦</div>
+<section class="board" aria-label="Original 3D render moodboard">
+<figure class="tile hero"><a href="../generated/assets/character/melusina_beauty_eevee_20260715c_01.png"><img src="../generated/optimized/curated-art/melusina_beauty_eevee_20260715c_01-1280.webp" alt="Melusina in a pink and lilac dress, stylized waterlike hair and painted contour shadows, against a starry sky" width="1280" loading="eager" fetchpriority="high"></a><figcaption><strong>Melusina · EEVEE Beauty</strong><small>Blender / cinematic character lookdev / July 2026</small></figcaption></figure>
+<figure class="tile landscape"><a href="../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png"><img src="../generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png" alt="Previously reviewed Night Bridge Unreal environment study" loading="eager"></a><figcaption><strong>Night Bridge</strong><small>Unreal / environment study / historical plate</small></figcaption></figure>
+<figure class="tile mid"><a href="../generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png"><img src="../generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png" alt="Melusina close-up showing painted hair, face, bow and bodice" loading="lazy"></a><figcaption><strong>Melusina · Macro Postcard</strong><small>EEVEE / close detail / original animated-loop poster</small></figcaption></figure>
+<figure class="tile detail"><a href="../generated/assets/cross/cross_hero_macro_filigree.png"><img src="../generated/optimized/curated-art/cross_hero_macro_filigree-800.webp" alt="Close view of sculpted Vow Cross filigree detail" loading="lazy"></a><figcaption><strong>Vow Cross</strong><small>Macro filigree</small></figcaption></figure>
+<figure class="tile mid"><a href="../generated/assets/props/violin_komikaze_front.png"><img src="../generated/assets/props/violin_komikaze_front.png" alt="Stylized Melodia violin front-view asset presentation" loading="lazy"></a><figcaption><strong>Melodia Violin</strong><small>Musical object / 3D prop</small></figcaption></figure>
+<figure class="tile detail"><a href="../generated/assets/ornaments/rose_window_komikaze_front.png"><img src="../generated/assets/ornaments/rose_window_komikaze_front.png" alt="Sculpted rose window ornament in the reviewed front view" loading="lazy"></a><figcaption><strong>Rose Window</strong><small>Architectural ornament</small></figcaption></figure>
+<figure class="tile mid"><a href="../generated/assets/character/melusina_eevee_glam_20260715c_04.png"><img src="../generated/assets/character/melusina_eevee_glam_20260715c_04.png" alt="Melusina EEVEE character glam study from July 2026" loading="lazy"></a><figcaption><strong>Melusina · Glam Study</strong><small>Blender / character lookdev / historical</small></figcaption></figure>
+<figure class="tile detail"><a href="../generated/assets/signature/lissajous_komikaze_macro.png"><img src="../generated/assets/signature/lissajous_komikaze_macro.png" alt="Macro image of a Lissajous sculptural curve" loading="lazy"></a><figcaption><strong>Lissajous</strong><small>Procedural form study</small></figcaption></figure>
+<figure class="tile wide"><a href="../generated/assets/character/melusina_eevee_glam_20260715c_05.png"><img src="../generated/assets/character/melusina_eevee_glam_20260715c_05.png" alt="Alternate three-quarter Melusina EEVEE studio pose" loading="lazy"></a><figcaption><strong>Melusina · Studio Angle</strong><small>Blender EEVEE / alternate view / July 2026</small></figcaption></figure>
+<figure class="tile paper"><a href="../generated/assets/sculpt/sculpt_melusina_profile.png"><img src="../generated/optimized/curated-art/sculpt_melusina_profile-800.webp" alt="Melusina sculpt profile showing silhouette and modeled form" loading="lazy"></a><figcaption><strong>Sculpt Profile</strong><small>Modeling process / neutral clay</small></figcaption></figure>
+</section>
+<div class="bottom"><div><p class="kicker">Original interactive studio</p><strong>More than a static contact sheet.</strong></div><a href="melusina-photo-studio.html">Open Melusina Photo Studio ↗</a></div>
+<p class="note">This is a review-only restoration of existing source renders, not an assertion that all images represent the latest Melusina V2 mesh or shipped Unreal gameplay. The public recruiter release remains unchanged until separate art approval.</p>
+</main>
+</div>
+</body></html>
