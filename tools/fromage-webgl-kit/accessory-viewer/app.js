@@ -414,6 +414,12 @@ async function loadHero(heroKey) {
     setStatus(`${hero.label} · realtime asset loaded`);
     activateControls();
     setView(currentView, { userInitiated: false });
+    // Draw the first loaded frame synchronously. A 3D thumbnail inside an
+    // iframe (notably narrow iOS/headless WebGL) can miss the next RAF when
+    // loading finishes near a visibility/virtual-time boundary.
+    runtime.resize();
+    controls.update();
+    runtime.renderer.render(runtime.scene, runtime.camera);
     syncStateToUrl();
   } catch (error) {
     console.info('[accessory-viewer] Hero asset unavailable:', error?.message || error);
