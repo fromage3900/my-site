@@ -50,6 +50,27 @@
   .viewer-unavailable strong { display:block; margin-bottom:8px; color:#fff; font-family:var(--font-display); font-size:1.2rem; }
   @media (prefers-reduced-motion: reduce) { .asset-btn, .fabric-btn, .mode-btn { transition:none; } }
 </style>
+<style id="portfolio-framed-3d-viewer">
+/* Optional art-frame embedding. Full existing 3D workbench is unchanged. */
+html.portfolio-frame-embed,html.portfolio-frame-embed body{height:100%;overflow:hidden}
+html.portfolio-frame-embed .melodia-shell{height:100%;min-height:0!important}
+html.portfolio-frame-embed .shell-nav,
+html.portfolio-frame-embed .viewer-panel,
+html.portfolio-frame-embed .viewer-telemetry-bar,
+html.portfolio-frame-embed .viewer-3d-main > div:first-child,
+html.portfolio-frame-embed .viewer-hud-pill:first-child{display:none!important}
+html.portfolio-frame-embed .viewer-3d-main{height:100%;padding:0!important;min-height:0!important}
+html.portfolio-frame-embed .viewer-3d-app{display:block!important;height:100%!important;min-height:0!important;margin:0!important;gap:0!important}
+html.portfolio-frame-embed .viewer-viewport-box{height:100%!important;min-height:0!important;width:100%!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+html.portfolio-frame-embed .viewer-3d-canvas-container{height:100%!important;min-height:0!important;cursor:grab}
+html.portfolio-frame-embed .viewer-hud-overlay{top:8px;right:8px;left:auto;gap:0}
+html.portfolio-frame-embed .viewer-hud-pill{font-size:.65rem;padding:4px 9px;white-space:nowrap}
+</style>
+<script>
+if(new URLSearchParams(window.location.search).get('embed')==='1'){
+  document.documentElement.classList.add('portfolio-frame-embed');
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#viewer-viewport">Skip to 3D Viewport</a>
