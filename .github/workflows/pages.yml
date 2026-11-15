@@ -57,6 +57,8 @@ jobs:
           python tools/build_curated_art_derivatives.py
       - name: Validate assets (tiered)
         run: python tools/validate_assets.py
+      - name: Keep archived rejects out of active source
+        run: python tools/check_stale_render_archive.py
       - name: Validate recruiter release allowlist
         run: python tools/build_recruiter_release.py
       - name: Validate core JavaScript syntax
