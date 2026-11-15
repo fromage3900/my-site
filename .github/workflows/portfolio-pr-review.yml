@@ -76,6 +76,8 @@ jobs:
           capture 1440 1100 public-home-desktop.png _recruiter_release/wix/index.html
           capture 390 1200 public-selected-mobile.png _recruiter_release/wix/curated-art.html
           capture 1440 1100 public-selected-desktop.png _recruiter_release/wix/curated-art.html
+          capture 390 844 constellation-brush-mobile.png _recruiter_release/wix/constellation-brush.html
+          capture 1440 900 constellation-brush-desktop.png _recruiter_release/wix/constellation-brush.html
           capture 390 1100 environments-mobile.png wix/world-bible.html
           capture 1440 1000 environments-desktop.png wix/world-bible.html
           capture 390 1100 selected-art-mobile.png wix/curated-art.html
