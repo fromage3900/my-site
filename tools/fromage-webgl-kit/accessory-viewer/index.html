@@ -643,6 +643,16 @@
       .choice, .material-card { transition: none; }
     }
   </style>
+
+  <style id="folio-optical-selector-style">
+    .folio-optical-select{
+      display:block;width:100%;max-width:100%;min-height:44px;
+      padding:10px 12px;font:500 12px/1.3 "Jost","Helvetica Neue",Arial,sans-serif;
+      color:var(--ink);background:var(--paper);border:1px solid var(--line-strong);
+      border-radius:2px;cursor:pointer
+    }
+    .folio-optical-select:focus-visible{outline:2px solid var(--oxblood);outline-offset:3px}
+  </style>
   <style id="optical-atelier-framed-mode">
     /* A minimal faceplate around the *same* existing Three.js GLB runtime.
        Enabled only with ?embed=1; the full studio remains unchanged. */
@@ -752,6 +762,20 @@
           <p class="eyebrow">No. 01 / Realtime finish study</p>
           <h2>Optical atelier.</h2>
           <p>One authored frame, several finish directions. Material-only variants keep the proof precise and commercially believable.</p>
+        </div>
+
+        <div class="control-group">
+          <label class="control-title" for="heroSelector"><b>00</b>Hard-surface silhouette</label>
+          <select id="heroSelector" class="folio-optical-select" aria-label="Original eyewear model silhouette">
+            <option value="cateye-metal">Cat-eye · Champagne</option>
+            <option value="cateye-tortoise">Cat-eye · Tortoise</option>
+            <option value="rect-metal">Rectangular · Champagne</option>
+            <option value="rect-tortoise">Rectangular · Tortoise</option>
+            <option value="panto-metal">Panto · Champagne</option>
+            <option value="panto-tortoise">Panto · Tortoise</option>
+            <option value="aviator-metal">Aviator · Champagne</option>
+            <option value="aviator-tortoise">Aviator · Tortoise</option>
+          </select>
         </div>
 
         <div class="control-group">
