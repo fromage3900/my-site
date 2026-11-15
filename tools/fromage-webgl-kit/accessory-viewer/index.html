@@ -913,6 +913,9 @@
      function activate(items,key,attr){items.forEach(function(button){
        button.setAttribute('aria-pressed', button.getAttribute(attr)===key?'true':'false');
      });}
+     var initial=new URLSearchParams(location.search);
+     activate(opts,initial.get('inspect')||'beauty','data-folio-inspect');
+     activate(views,initial.get('view')||'hero','data-folio-view');
      opts.forEach(function(button){button.addEventListener('click',function(){
        var mode=button.getAttribute('data-folio-inspect');
        var original=document.querySelector('.panel [data-inspect="'+mode+'"]');
