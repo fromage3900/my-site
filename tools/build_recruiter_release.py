@@ -272,7 +272,7 @@ home = f"""
 </section>
 <div class="ref-rule" aria-hidden="true"><span>✦</span></div>
 <section class="ref-feature" aria-label="Featured technical art case study">
-<img src="{river_image(4)}" alt="River Sanctuary: graphic cel shader treatment of a three-dimensional river environment" loading="eager" decoding="async">
+<img src="{river_image(4)}" alt="River Sanctuary: graphic cel shader treatment of a three-dimensional river environment" loading="eager" fetchpriority="auto" decoding="sync">
 <div class="ref-feature-copy">
 <p class="micro">Featured case study · Blender / TouchDesigner</p>
 <h2>River Sanctuary</h2>
