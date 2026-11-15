@@ -385,8 +385,15 @@ async function loadHero(heroKey) {
     syncStateToUrl();
   } catch (error) {
     console.info('[accessory-viewer] Hero asset unavailable:', error?.message || error);
-    setStatus('Asset slot ready');
-    diagnostics.textContent = `Expected: ${hero.url}`;
+    setStatus('Original model unavailable');
+    if (emptyState) {
+      emptyState.hidden = false;
+      const heading = emptyState.querySelector('strong');
+      const detail = emptyState.querySelector('p');
+      if (heading) heading.textContent = 'Original model unavailable.';
+      if (detail) detail.textContent = 'The authored GLB did not load; this viewer does not display substitute geometry.';
+    }
+    if (diagnostics) diagnostics.textContent = `Failed to load original: ${hero.url}`;
   }
 }
 
