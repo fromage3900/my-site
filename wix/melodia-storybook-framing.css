@@ -4,10 +4,10 @@
    This file is an opt-in homepage layer, not a redesign of the site system.
 */
 html[data-page="index"]{
-  --storybook-gold:#dab8a5;
+  --storybook-gold:var(--primitive-gold-300);
   --storybook-gold-soft:rgba(243,205,195,.68);
-  --storybook-pearl:#f8eaf0;
-  --storybook-ink:#342338;
+  --storybook-pearl:var(--primitive-folio-f9e8ef);
+  --storybook-ink:var(--primitive-folio-342238);
   --storybook-outline:rgba(229,180,198,.64);
 }
 html[data-page="index"] .melodia-shell .shell-nav{
@@ -63,7 +63,7 @@ html[data-page="index"] .melodia-shell #portfolio-foyer.home-foyer-band{
 }
 html[data-page="index"] .melodia-shell .recruiter-feature{
   border:1px solid var(--storybook-gold)!important;
-  background:linear-gradient(120deg,#faeaf0,#efdde9 68%,#e9d7e6)!important;
+  background:linear-gradient(120deg,var(--primitive-folio-f9e8ef),var(--primitive-folio-ecd9e7) 68%,var(--primitive-folio-ecd9e7))!important;
   box-shadow:0 0 0 3px rgba(244,207,222,.09),0 18px 48px rgba(12,3,17,.22)!important;
   margin-bottom:clamp(2.2rem,5vw,4.3rem)!important;
 }
@@ -97,7 +97,7 @@ html[data-page="index"] #portfolio-foyer .home-foyer-head{
   text-align:center!important;
 }
 html[data-page="index"] #portfolio-foyer .home-foyer-head .eyebrow{
-  color:var(--folio-rose,#e9b8d0)!important;
+  color:var(--folio-rose,var(--primitive-folio-e9b8d0))!important;
   letter-spacing:.24em!important;
   font-size:.68rem!important;
 }
@@ -107,7 +107,7 @@ html[data-page="index"] #portfolio-foyer .home-foyer-head h2{
   font:400 clamp(1.15rem,2vw,1.6rem)/1.2 "Times New Roman",Times,Georgia,serif!important;
   text-transform:uppercase!important;
   letter-spacing:.24em!important;
-  color:var(--folio-pearl,#fff1f4)!important;
+  color:var(--folio-pearl,var(--primitive-folio-fff1f4))!important;
 }
 html[data-page="index"] #portfolio-foyer .home-foyer-head h2::before,
 html[data-page="index"] #portfolio-foyer .home-foyer-head h2::after{
@@ -122,12 +122,12 @@ html[data-page="index"] #portfolio-foyer .home-foyer-head h2::after{
 html[data-page="index"] #portfolio-foyer .home-foyer-head >p{
   max-width:65ch!important;
   margin:0 auto!important;
-  color:var(--folio-muted,#d9c5d5)!important;
+  color:var(--folio-muted,var(--primitive-folio-d9c5d5))!important;
   font:400 clamp(.92rem,1.2vw,1.03rem)/1.5 "Times New Roman",Times,Georgia,serif!important;
 }
 /* Three paths from the recruiter-first edit, not the reference's four cards. */
 html[data-page="index"] .melodia-shell .home-foyer-grid .home-foyer-card{
-  background:#39243a!important;
+  background:var(--primitive-folio-39253a)!important;
   border:1px solid var(--storybook-gold-soft)!important;
   box-shadow:inset 0 0 0 5px rgba(250,225,235,.055),0 8px 23px rgba(9,4,12,.18)!important;
   min-height:clamp(285px,30vw,390px)!important;
@@ -157,7 +157,7 @@ html[data-page="index"] .home-foyer-card .home-foyer-copy{
   min-height:111px!important;
   box-sizing:border-box!important;
   padding:1rem 1.1rem .85rem!important;
-  background:linear-gradient(127deg,#f8e7ed 0%,#ecdce8 100%)!important;
+  background:linear-gradient(127deg,var(--primitive-folio-f6e7ee) 0%,var(--primitive-folio-ecd9e7) 100%)!important;
   color:var(--storybook-ink)!important;
   text-shadow:none!important;
   border-top:1px solid rgba(188,130,154,.56)!important;
@@ -168,12 +168,12 @@ html[data-page="index"] .home-foyer-card .home-foyer-copy strong{
   font:italic 400 clamp(1.48rem,2.2vw,2.1rem)/1.1 "Times New Roman",Times,Georgia,serif!important;
 }
 html[data-page="index"] .home-foyer-card .home-foyer-copy .home-foyer-kicker{
-  color:#875b78!important;-webkit-text-fill-color:#875b78!important;
+  color:var(--primitive-folio-7b4a70)!important;-webkit-text-fill-color:var(--primitive-folio-7b4a70)!important;
   font:700 .61rem/1.4 "Times New Roman",Times,Georgia,serif!important;
   letter-spacing:.15em!important;text-transform:uppercase!important;
 }
 html[data-page="index"] .home-foyer-card .home-foyer-copy >span:last-child{
-  color:#715a71!important;-webkit-text-fill-color:#715a71!important;
+  color:var(--primitive-folio-654c61)!important;-webkit-text-fill-color:var(--primitive-folio-654c61)!important;
   font:400 clamp(.75rem,1vw,.85rem)/1.32 "Times New Roman",Times,Georgia,serif!important;
   text-shadow:none!important;
 }
@@ -186,7 +186,7 @@ html[data-page="index"] .home-foyer-card.is-quiet .home-foyer-quiet-mark{
 }
 html[data-page="index"] .home-foyer-card:hover,
 html[data-page="index"] .home-foyer-card:focus-visible{
-  border-color:#f4d6d8!important;
+  border-color:var(--primitive-folio-f4d8e9)!important;
   box-shadow:0 0 0 2px rgba(237,189,213,.26),0 12px 30px rgba(9,4,12,.3)!important;
 }
 html[data-page="index"] .folio-original-art-path{
