@@ -63,6 +63,9 @@ def verify() -> None:
     for mode in ("beauty", "clay", "wire"):
         assert f'data-folio-inspect="{mode}"' in eyewear, f"Lost {mode} control"
     assert 'data-folio-view="hinge"' in eyewear
+    assert 'id="heroSelector"' in eyewear
+    for style in ("rect-metal", "panto-metal", "cateye-metal", "aviator-metal"):
+        assert f'<option value="{style}">' in eyewear
     assert "GLTFLoader" in source and "const HEROES" in source, "Original GLB loader lost"
     assert "MelodiaPhotobooth.init('#melusina-photobooth-mount')" in studio
     assert "melodia-photobooth.js" in studio and "melodia-photobooth.css" in studio
