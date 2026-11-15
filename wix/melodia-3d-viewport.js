@@ -291,7 +291,6 @@
     this.lights = {};
     this.textureCache = {};
     this.loadedModels = {};
-    this.frameUnavailable = false;
 
     this.init();
   }
@@ -308,7 +307,6 @@
   };
 
   Melodia3DViewer.prototype.showUnavailable = function (message) {
-    this.frameUnavailable = true;
     if (!this.container) return;
     this.container.innerHTML =
       '<div class="viewer-unavailable" role="status">' +
@@ -642,12 +640,6 @@
     this.scene.add(group);
 
     var onMeshReady = function (object3D, isFallback) {
-      // The full workbench labels its fallback debug primitive; an editorial
-      // artwork frame must never pass one off as the authored source model.
-      if (isFallback && document.documentElement.classList.contains('portfolio-frame-embed')) {
-        self.showUnavailable('The authored 3D file could not load. The original still remains in the moodboard.');
-        return;
-      }
       object3D.traverse(function (child) {
         if (child.isMesh) {
           child.castShadow = true;
@@ -828,7 +820,7 @@
     var self = this;
     requestAnimationFrame(function () { self.animate(); });
 
-    if (document.hidden || this.frameUnavailable) return;
+    if (document.hidden) return;
 
     if (this.controls) {
       this.controls.update();
