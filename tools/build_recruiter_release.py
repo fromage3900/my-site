@@ -27,7 +27,12 @@ PUBLISHED_ORNAMENTS = (
     "wix/assets/figma/mdl-heart-medallion-night.svg",
     "wix/assets/editorial/folio-corner.svg",
 )
-FILES = (*PUBLISHED_ART, *PUBLISHED_ORNAMENTS)
+# Interactive work belongs on its own intentional route, never inside the render archive.
+PUBLISHED_EXPERIENCES = (
+    "wix/constellation-brush.html",
+    "wix/melodia-luxury-type.css",
+)
+FILES = (*PUBLISHED_ART, *PUBLISHED_ORNAMENTS, *PUBLISHED_EXPERIENCES)
 
 STYLE = r"""
 :root{color-scheme:dark;--night:#170f20;--plum:#26152b;--raised:#39263e;--rose:#edb9d0;--lilac:#c7b1e3;--cream:#fff4f3;--mute:#d8c8d7;--gold:#d9b88a;--aqua:#b5e9e4;--line:rgba(233,187,212,.35);--serif:"Times New Roman",Times,Georgia,serif}
@@ -255,6 +260,43 @@ REF_STYLE = r"""
 @media(prefers-reduced-motion:reduce){.ref-path>img{transition:none}}
 """
 
+BRUSH_STYLING = r"""
+/* An authored interactive studio room, not another project screenshot. */
+.brush-invitation{margin:54px 0 26px;min-height:320px;display:grid;grid-template-columns:1fr 1fr;
+ position:relative;overflow:hidden;border:1px solid rgba(223,188,143,.75);
+ background:linear-gradient(125deg,#121128 6%,#2d2148 52%,#20152e 100%);
+ box-shadow:inset 0 0 0 7px rgba(235,203,225,.055),0 20px 52px rgba(12,4,19,.3)}
+.brush-invitation:before{content:"";position:absolute;inset:8px;
+ border:1px solid rgba(242,218,185,.27);pointer-events:none}
+.brush-constellation{min-height:295px;position:relative;isolation:isolate;
+ background:radial-gradient(circle at 52% 45%,rgba(204,158,222,.21),transparent 36%),
+ radial-gradient(circle at 35% 60%,rgba(147,223,217,.16),transparent 35%),
+ radial-gradient(circle at 49% 51%,#efd9da 0 2px,transparent 3px),
+ radial-gradient(circle at 32% 27%,#a5deec 0 1.5px,transparent 2.5px),
+ radial-gradient(circle at 77% 30%,#edd3a7 0 2px,transparent 3px),
+ radial-gradient(circle at 71% 72%,#e6c9fb 0 1px,transparent 2px);
+ border-right:1px solid rgba(245,213,185,.3)}
+.brush-constellation:before{content:"";position:absolute;inset:20% 18%;border:1px solid rgba(220,193,161,.5);
+ transform:rotate(-25deg);border-radius:50%;box-shadow:0 0 35px rgba(185,160,238,.1)}
+.brush-constellation:after{content:"";position:absolute;left:23%;top:58%;width:55%;height:1px;
+ background:linear-gradient(90deg,transparent,#e7c68f,transparent);transform:rotate(-29deg)}
+.brush-constellation span{position:absolute;top:20%;left:38%;font-size:82px;color:#e4c7ff;text-shadow:0 0 30px #8774d7}
+.brush-constellation i{position:absolute;right:21%;bottom:17%;font:normal 52px Georgia,serif;color:#f1d5a4}
+.brush-constellation b{position:absolute;left:17%;bottom:19%;font:normal 25px Georgia,serif;color:#96e4df}
+.brush-copy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:35px clamp(24px,4vw,52px);gap:10px}
+.brush-copy h2{font:italic 400 clamp(35px,3.9vw,56px)/1.03 var(--serif);margin:0;color:var(--cream)}
+.brush-copy p:not(.micro){font-size:18px;line-height:1.5;max-width:37ch;margin:2px 0 12px;color:var(--mute)}
+.brush-copy .micro{margin:0;color:var(--gold)}
+.brush-copy small{display:block;color:var(--rose);font:11px/1.35 Arial,Helvetica,sans-serif;letter-spacing:.06em}
+.brush-launch{background:rgba(255,235,243,.1)}
+@media(max-width:700px){.brush-invitation{grid-template-columns:1fr;margin:30px 0}
+ .brush-constellation{min-height:150px;border-right:0;border-bottom:1px solid rgba(245,213,185,.3)}
+ .brush-constellation:before{inset:15% 30%}
+ .brush-constellation span{font-size:50px;left:40%;top:16%}
+ .brush-constellation i{font-size:35px}
+ .brush-copy{padding:25px 26px 30px}.brush-copy h2{font-size:40px}}
+"""
+
 EMBELLISHMENT = r"""
 /* Restore the tactile, floral editorial detailing from the original site.
    Original Figma exports only; rejected capture plates remain absent. */
@@ -330,10 +372,10 @@ def base(title: str, description: str, body: str, route: str = "index.html") -> 
 <link rel="canonical" href="{canonical}"><meta property="og:type" content="website">
 <meta property="og:title" content="{title} — Brennan Shepherd"><meta property="og:description" content="{description}">
 <meta property="og:image" content="{hero}"><meta property="og:url" content="{canonical}">
-<meta name="theme-color" content="#170f20"><style>{STYLE}{REF_STYLE if route == 'index.html' else ''}{EMBELLISHMENT}</style></head>
+<meta name="theme-color" content="#170f20"><style>{STYLE}{REF_STYLE if route == 'index.html' else ''}{EMBELLISHMENT}{BRUSH_STYLING if route == 'index.html' else ''}</style></head>
 <body><a class="skip" href="#main">Skip to content</a><div class="container">
 <header class="topbar"><a class="brand" href="index.html"><span class="mark" aria-hidden="true">✧</span>Brennan Shepherd</a>
-<nav aria-label="Main navigation"><a href="curated-art.html">Selected art</a><a href="technical-art.html">Technical art</a><a href="resume.html">Résumé &amp; contact</a></nav></header>
+<nav aria-label="Main navigation"><a href="curated-art.html">Selected art</a><a href="technical-art.html">Technical art</a><a href="constellation-brush.html">Constellation Brush ✦</a><a href="resume.html">Résumé &amp; contact</a></nav></header>
 <main id="main">{body}</main>
 <footer class="foot"><span>Brennan Shepherd · Environment &amp; Technical Artist · Toronto</span><span><a href="mailto:brennan.shepherd3900@gmail.com">Email</a> · <a href="https://www.artstation.com/fromage3900" rel="noopener noreferrer">ArtStation</a> · © 2026</span></footer>
 </div></body></html>"""
@@ -396,6 +438,16 @@ home = f"""
 <span class="ref-path-caption"><strong>About &amp; Contact</strong><small>Practice, experience &amp; inquiries</small></span></a>
 </div>
 <p class="ref-assurance">Original artwork, clear process, and verifiable technical contributions.</p>
+<section class="brush-invitation" aria-labelledby="brush-title">
+  <div class="brush-constellation" aria-hidden="true"><span>✦</span><i>✧</i><b>✳</b></div>
+  <div class="brush-copy">
+    <p class="micro">Interactive atelier / A little playable artwork</p>
+    <h2 id="brush-title">Draw a constellation.</h2>
+    <p>Leave a trace of starlight. Little orbits wake when you draw circles; crystal notes answer your gestures.</p>
+    <a class="btn brush-launch" href="constellation-brush.html">Enter the Constellation Brush ✦</a>
+    <small>Three.js · Touch and mouse · Optional sound</small>
+  </div>
+</section>
 <div class="ref-finale" aria-hidden="true">✧</div>
 </section>
 """
@@ -468,7 +520,13 @@ def main() -> None:
             raise FileNotFoundError(f"Approved release asset is missing: {relative}")
         dest = OUT / relative
         dest.parent.mkdir(parents=True, exist_ok=True)
-        copy2(source, dest)
+        if relative == "wix/constellation-brush.html":
+            # Its old back link pointed to a route that the strict release retired.
+            dest.write_text(source.read_text(encoding="utf-8").replace(
+                'href="melodia-living-worlds.html"', 'href="index.html"'
+            ), encoding="utf-8")
+        else:
+            copy2(source, dest)
     for name, page in PAGES.items():
         target = OUT / "wix" / name
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -487,7 +545,7 @@ def main() -> None:
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 """ + "".join(f"<url><loc>https://fromage3900.github.io/my-site/wix/{name}</loc></url>\n" for name in PAGES) + "</urlset>\n", encoding="utf-8")
     (OUT / ".nojekyll").write_text("", encoding="utf-8")
-    manifest = {"release_contract": "allowlist-only/v1", "pages": list(PAGES), "images": list(PUBLISHED_ART), "ornaments": list(PUBLISHED_ORNAMENTS)}
+    manifest = {"release_contract": "allowlist-only/v1", "pages": list(PAGES), "images": list(PUBLISHED_ART), "ornaments": list(PUBLISHED_ORNAMENTS), "experiences": ["wix/constellation-brush.html"]}
     (OUT / "published-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     expected = set(FILES) | {"wix/" + name for name in PAGES} | {"index.html", "404.html", "robots.txt", "sitemap.xml", ".nojekyll", "published-manifest.json"}
     actual = {p.relative_to(OUT).as_posix() for p in OUT.rglob("*") if p.is_file()}
@@ -496,6 +554,11 @@ def main() -> None:
     for rel in PUBLISHED_ART:
         if not rel.lower().endswith(".webp"):
             raise RuntimeError(f"Unapproved art type in release: {rel}")
+    brush = OUT / "wix/constellation-brush.html"
+    if not brush.exists() or 'id="c"' not in brush.read_text(encoding="utf-8"):
+        raise RuntimeError("Constellation Brush must ship intact.")
+    if 'href="constellation-brush.html"' not in PAGES["index.html"]:
+        raise RuntimeError("Constellation Brush must remain discoverable on homepage.")
     print(f"[OK] Public release: {len(PAGES)} pages; {len(PUBLISHED_ART)} art images; {len(actual)} total files; no archives.")
 
 if __name__ == "__main__":
