@@ -91,6 +91,8 @@ jobs:
           # Authored eyewear GLB in full beauty and hard-surface topology inspection.
           capture 720 500 eyewear-beauty-embed.png "tools/fromage-webgl-kit/accessory-viewer/index.html?embed=1&hero=cateye-metal&finish=pearl&lens=rose&view=hero&inspect=beauty&rotate=0"
           capture 720 500 eyewear-hinge-wire.png "tools/fromage-webgl-kit/accessory-viewer/index.html?embed=1&hero=cateye-metal&finish=pearl&lens=rose&view=hinge&inspect=wire&rotate=0"
+          capture 720 500 eyewear-wire-overview.png "tools/fromage-webgl-kit/accessory-viewer/index.html?embed=1&hero=cateye-metal&finish=pearl&lens=rose&view=hero&inspect=wire&rotate=0"
+          capture 720 500 eyewear-hinge-clay.png "tools/fromage-webgl-kit/accessory-viewer/index.html?embed=1&hero=cateye-metal&finish=pearl&lens=rose&view=hinge&inspect=clay&rotate=0"
           capture 390 440 eyewear-mobile-embed.png "tools/fromage-webgl-kit/accessory-viewer/index.html?embed=1&hero=cateye-metal&finish=pearl&lens=rose&view=hero&inspect=beauty&rotate=0"
       - uses: actions/upload-artifact@v4
         with:
