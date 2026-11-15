@@ -78,6 +78,10 @@ jobs:
           capture 1440 1100 moodboard-desktop.png wix/portfolio-moodboard.html
           capture 390 1200 photo-studio-mobile.png wix/melusina-photo-studio.html
           capture 1440 1100 photo-studio-desktop.png wix/melusina-photo-studio.html
+          capture 390 2600 moodboard-mobile-long.png wix/portfolio-moodboard.html
+          capture 1440 2600 moodboard-desktop-long.png wix/portfolio-moodboard.html
+          capture 390 2200 photo-studio-mobile-long.png wix/melusina-photo-studio.html
+          capture 1440 2200 photo-studio-desktop-long.png wix/melusina-photo-studio.html
       - uses: actions/upload-artifact@v4
         with:
           name: portfolio-preview-${{ github.sha }}
