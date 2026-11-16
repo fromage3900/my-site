@@ -48,3 +48,5 @@
 - **Constraints:** no .toe save; all TD overrides restored per batch/script design; C: free space ~16.7 GB during run (full 7×4×128 PNG target is large/time-intensive).
 
 - 03:26Z update: L_EscherAscent sakura_pearl+amethyst_electric complete (128), golden_hour_silk in progress; refreshed best_candidates.json. Best-candidate PNGs force-staged in site due to generated/assets numeric PNG ignore rule.
+
+- 03:31Z update: L_EscherAscent complete (4/4 stories x 128). Best candidates staged/pushed for L_EscherAscent. Starting next level render sequentially (disk/time permitting). MRQ per-level and live UE Spout remain blocked/unverified in running editor.
