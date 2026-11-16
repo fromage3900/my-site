@@ -1,0 +1,87 @@
+name: Review full portfolio preview (never publish)
+
+on:
+  pull_request:
+    paths:
+      - "tools/build_full_portfolio_release.py"
+      - "tools/audit_full_portfolio_release.py"
+      - "docs/FULL_PORTFOLIO_RECOVERY_2026-11-16.md"
+      - "docs/RENDER_INVENTORY_2026-05-16_TO_2026-11-16.md"
+      - ".github/workflows/full-portfolio-preview.yml"
+      - "wix/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-portfolio-preview:
+    name: Original Night Velvet full-site preview
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check recovery script syntax
+        run: |
+          python -m py_compile tools/build_full_portfolio_release.py tools/audit_full_portfolio_release.py
+      - name: Build non-live full-site preview
+        run: python tools/build_full_portfolio_release.py
+      - name: Anti-stub and archive safety check
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          root=Path("_portfolio_release")
+          p=json.loads((root/"published-manifest.json").read_text())
+          assert p["contract"]=="full-portfolio-preview/v1"
+          assert p["non_live"] is True
+          assert len(p["visitor_routes"]) >= 9, p["visitor_routes"]
+          for name in ("index.html", "portfolio-moodboard.html", "melusina-photo-studio.html",
+                       "world-bible.html", "shader-breakdowns.html", "constellation-brush.html"):
+              path=root/"wix"/name
+              assert path.is_file() and path.stat().st_size>1000, name
+          assert (root/"wix/celestial-brush-overlay-engine.js").is_file()
+          assert (root/"wix/assets/figma/nv-sakura-cascade.svg").is_file()
+          assert not p["required_routes_missing"], p["required_routes_missing"]
+          assert not any(k in p["visitor_routes"] for k in
+                         ("wix/_archive/index.html","wix/_deprecated/index.html"))
+          assert (root/"robots.txt").read_text().find("Disallow: /") != -1
+          print("Full-site source recovery is present; not yet approved for deployment.")
+          print("Review blockers:", len(p["missing_assets"]), "assets;",
+                len(p["linked_pages_needing_route_decision"]), "linked routes")
+          PY
+      - name: Preview browser captures
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome-stable || command -v google-chrome || command -v chromium || true)"
+          if [ -z "$CHROME" ]; then echo "Chrome not installed"; exit 1; fi
+          mkdir -p preview-screenshots
+          cd _portfolio_release
+          python -m http.server 4177 --bind 127.0.0.1 > /tmp/melodia-full-preview.log 2>&1 &
+          PID=$!
+          trap 'kill "$PID" >/dev/null 2>&1 || true' EXIT
+          sleep 2
+          take() {
+            local width="$1" height="$2" route="$3" output="$4"
+            "$CHROME" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage \
+              --disable-background-networking --disable-default-apps --disable-extensions \
+              --hide-scrollbars --mute-audio --window-size="$width,$height" \
+              --screenshot="../preview-screenshots/$output" \
+              "http://127.0.0.1:4177/wix/$route" || true
+            test -s "../preview-screenshots/$output"
+          }
+          take 1440 1100 index.html desktop-home.png
+          take 390 900 index.html mobile-home.png
+          take 1440 1100 portfolio-moodboard.html desktop-moodboard.png
+          take 390 900 portfolio-moodboard.html mobile-moodboard.png
+          take 1440 1100 melusina-photo-studio.html photo-studio.png
+          take 1440 1100 world-bible.html world-bible.png
+      - name: Upload preview + review report (not GitHub Pages)
+        uses: actions/upload-artifact@v4
+        with:
+          name: melodia-full-site-preview
+          path: |
+            _portfolio_release/
+            preview-screenshots/
+          retention-days: 7
+          if-no-files-found: error
