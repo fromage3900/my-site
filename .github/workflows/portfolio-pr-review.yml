@@ -96,7 +96,7 @@ jobs:
           capture 1440 2600 moodboard-desktop-long.png wix/portfolio-moodboard.html
           capture 390 2200 photo-studio-mobile-long.png wix/melusina-photo-studio.html
           capture 1440 2200 photo-studio-desktop-long.png wix/melusina-photo-studio.html
-          python -m pip install --quiet playwright
+          python -m pip install --quiet playwright pillow
           python tools/smoke_sitewide_celestial.py "$CHROME"
       - uses: actions/upload-artifact@v4
         with:
