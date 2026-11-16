@@ -60,7 +60,9 @@ jobs:
       - name: Keep archived rejects out of active source
         run: python tools/check_stale_render_archive.py
       - name: Validate restored original website and bounded asset manifest
-        run: python tools/build_restored_website.py
+        run: |
+          python tools/build_restored_website.py
+          python tools/verify_restored_portfolio_guard.py
       - name: Validate core JavaScript syntax
         run: |
           node --check wix/wix-entry-bootstrap.js
@@ -108,7 +110,9 @@ jobs:
           python -m pip install pillow
           python tools/build_curated_art_derivatives.py
       - name: Build original interactive portfolio release
-        run: python tools/build_restored_website.py
+        run: |
+          python tools/build_restored_website.py
+          python tools/verify_restored_portfolio_guard.py
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
