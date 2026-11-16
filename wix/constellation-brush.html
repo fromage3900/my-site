@@ -21,17 +21,6 @@
   #back{position:fixed;top:calc(14px + env(safe-area-inset-top));right:16px;z-index:4;color:#d8c48d;text-decoration:none;font:500 10px/1.4 var(--font-body);letter-spacing:.16em;text-transform:uppercase;padding:9px 12px;border:1px solid rgba(216,196,141,.28);border-radius:999px;background:rgba(8,12,22,.42);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
   #back:focus-visible,.btn:focus-visible{outline:2px solid #d8c48d;outline-offset:3px;}
 </style>
-<style id="celestial-overlay-mode">
-html.celestial-overlay, html.celestial-overlay body {
-  background:transparent!important;
-  overflow:hidden!important;
-}
-html.celestial-overlay #c { background:transparent!important;pointer-events:none!important; }
-html.celestial-overlay #title,
-html.celestial-overlay #hint,
-html.celestial-overlay #back,
-html.celestial-overlay .btn { display:none!important; }
-</style>
 <link rel="stylesheet" href="melodia-luxury-type.css">
 </head>
 <body>
@@ -44,8 +33,6 @@ html.celestial-overlay .btn { display:none!important; }
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js" onerror="this.onerror=null;this.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'"></script>
 <script>
 'use strict';
-const overlayMode = new URLSearchParams(location.search).get('overlay') === '1';
-if (overlayMode) document.documentElement.classList.add('celestial-overlay');
 /* ============================================================
    MELODIA MELUSINA — a gesture-reading constellation brush
    ink · pearl · moonlight · water · stars · fine golden geometry
@@ -61,12 +48,12 @@ const mixc = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a
 
 /* ---------- renderer / scene ---------- */
 const canvas = document.getElementById('c');
-const renderer = new THREE.WebGLRenderer({ canvas, alpha: overlayMode, antialias: false, powerPreference: overlayMode ? 'low-power' : 'high-performance' });
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, powerPreference: 'high-performance' });
 const PR = Math.min(window.devicePixelRatio || 1, 2);
 renderer.setPixelRatio(PR);
 let W = innerWidth, H = innerHeight;
 renderer.setSize(W, H);
-renderer.setClearColor(0x04060c, overlayMode ? 0 : 1);
+renderer.setClearColor(0x04060c, 1);
 const scene = new THREE.Scene();
 const camera = new THREE.OrthographicCamera(-W / 2, W / 2, H / 2, -H / 2, -50, 50);
 camera.position.z = 10;
@@ -102,7 +89,7 @@ const bgMat = reg(new THREE.ShaderMaterial({
 }));
 const bg = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), bgMat);
 bg.frustumCulled = false; bg.renderOrder = -10;
-if (!overlayMode) scene.add(bg);
+scene.add(bg);
 
 /* ---------- fine golden geometry overlay ---------- */
 const goldGroup = new THREE.Group();
@@ -114,7 +101,7 @@ let mindim = Math.min(W, H);
   const g = new THREE.BufferGeometry().setFromPoints(fn(mindim * f, n, i * 0.3));
   goldGroup.add(new THREE.Line(g, goldMat));
 });
-if (!overlayMode) scene.add(goldGroup);
+scene.add(goldGroup);
 
 /* ============================================================
    STAR POOL — the persistent constellation
@@ -589,25 +576,6 @@ canvas.addEventListener('pointerdown', e => {
   hint.style.opacity = 0;
 });
 canvas.addEventListener('pointermove', onMove);
-if (overlayMode) {
-  // The site owns all hit-testing; this transparent frame is visual-only.
-  // Forwarded pointer coordinates activate the ORIGINAL gesture engine.
-  window.addEventListener('message', function(event) {
-    if (event.origin !== location.origin || event.source !== parent) return;
-    const data = event.data;
-    if (!data || data.melodiaCelestial !== 'v1') return;
-    if (data.type === 'leave') {
-      pointers.clear();
-      pointerActive = false;
-      prevDir = null;
-      return;
-    }
-    if (data.type !== 'move') return;
-    const x = Number(data.x), y = Number(data.y);
-    if (!Number.isFinite(x) || !Number.isFinite(y)) return;
-    onMove({ clientX: x, clientY: y, pointerId: 1, pointerType: 'mouse', pressure: .5 });
-  }, { passive: true });
-}
 const endPointer = e => {
   pointers.delete(e.pointerId);
   if (pointers.size < 2) prevPinch = 0;
@@ -752,7 +720,7 @@ addEventListener('resize', () => {
 });
 
 /* ---------- main loop ---------- */
-if (!overlayMode) seed();
+seed();
 let prevT = T();
 function loop() {
   requestAnimationFrame(loop);
@@ -763,7 +731,7 @@ function loop() {
   updateParts(t, dt);
   updateOrbits(t);
   restStar(t);
-  if (!overlayMode) serendipity(t);
+  serendipity(t);
   goldGroup.rotation.z += dt * .012;
   goldGroup.rotation.x = Math.sin(t * .05) * .04;
   renderer.render(scene, camera);
