@@ -36,12 +36,12 @@ def main():
         page.wait_for_timeout(1300)
         value = canvas.evaluate("""el => ({
            width:el.width, height:el.height,
-           transparent:getComputedStyle(document.body).backgroundColor,
+           alpha:(el.getContext('webgl2')||el.getContext('webgl')||el.getContext('experimental-webgl'))?.getContextAttributes()?.alpha,
            webgl:!!(el.getContext('webgl2')||el.getContext('webgl')||el.getContext('experimental-webgl'))
         })""")
         assert value["width"] > 100 and value["height"] > 100, f"Invalid celestial canvas: {value}"
         assert value["webgl"], f"Original Three.js failed to initialize a WebGL context: {value}"
-        assert value["transparent"] in ("rgba(0, 0, 0, 0)","transparent"), f"Brush background is opaque: {value}"
+        assert value["alpha"] is True, f"Three.js canvas alpha disabled: {value}"
         assert canvas.evaluate("el => getComputedStyle(el).pointerEvents")=="none", "Canvas captures recruiter clicks"
         Path("visual-qa").mkdir(exist_ok=True)
         hover = page.screenshot(path="visual-qa/celestial-sitewide-hover.png",full_page=False)
