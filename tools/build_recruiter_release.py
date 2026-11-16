@@ -373,6 +373,26 @@ EVIDENCE_STYLING = r"""
 .technical-evidence .proof-plate{margin-top:24px}
 .technical-evidence .proof-plate img{width:100%;height:auto;max-height:none;object-fit:contain;background:#100d16}
 .technical-evidence .proof-plate a{display:block}
+/* Evidence-led pairings: artwork and method notes are equally visible. */
+.pair-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:26px 0 22px}
+.pair-grid figure{min-width:0;margin:0;border:1px solid var(--line);background:rgba(35,22,41,.46)}
+.pair-grid figure a{display:block;overflow:hidden}
+.pair-grid figure img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .2s ease}
+.pair-grid figure a:hover img{transform:scale(1.018)}
+.pair-grid figure figcaption{padding:15px 18px;display:flex;flex-direction:column;gap:3px;font:12px/1.5 Arial,Helvetica,sans-serif;color:var(--mute)}
+.pair-grid figure figcaption strong{font:italic 400 24px/1.13 var(--serif);color:var(--cream)}
+.pair-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:22px}
+.pair-notes article{padding:20px 0 10px;border-top:1px solid var(--gold)}
+.pair-notes h3{font:italic 400 25px/1.12 var(--serif);margin:0 0 10px}
+.pair-notes p{font-size:16px;line-height:1.55;color:var(--mute);max-width:60ch}
+.proof-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0}
+.proof-points div{border-top:1px solid rgba(217,184,138,.6);padding:14px 4px 4px}
+.proof-points dt{font:italic 400 25px/1.15 var(--serif);color:var(--cream)}
+.proof-points dd{margin:8px 0 0;font:13px/1.45 Arial,Helvetica,sans-serif;color:var(--mute)}
+.proof-status{font:13px/1.6 Arial,Helvetica,sans-serif;color:var(--mute);border-left:2px solid var(--gold);padding-left:16px;margin:22px 0}
+@media(max-width:700px){.pair-grid,.pair-notes,.proof-points{grid-template-columns:1fr}.pair-grid{gap:16px}.pair-grid figure img{aspect-ratio:4/3}}
+@media(prefers-reduced-motion:reduce){.pair-grid figure img{transition:none}}
+
 """
 
 def base(title: str, description: str, body: str, route: str = "index.html") -> str:
@@ -472,6 +492,7 @@ selected = f"""
 <figure class="wide-art"><img src="{river_image(4)}" alt="River Sanctuary graphic-cel ink and hard-band shading"><figcaption><span>Graphic cel / Ink and colour bands</span><span>Blender + TouchDesigner</span></figcaption></figure>
 <figure class="wide-art"><img src="{river_image(2)}" alt="The same River Sanctuary camera in a softer pink colour treatment"><figcaption><span>Soft storybook treatment</span><span>Same geometry, alternate shading</span></figcaption></figure>
 <p class="copy">Two visual treatments of the same 3D scene. Shader and look-development evidence, not shipped gameplay or an independently illustrated environment.</p>
+<p><a class="btn" href="technical-art.html#river-comparison">Compare the looks and the decisions behind them</a></p>
 </section>{closing()}
 """
 
@@ -491,37 +512,51 @@ faraway = f"""
 
 technical = f"""
 <section class="page-head"><p class="eyebrow">Technical art / Real-time visuals</p><h1>Art direction, <em>with an engine room.</em></h1>
-<p class="lede">Procedural worldbuilding, stylized shaders and real-time visual experiments. The systems serve the composition, not the other way around.</p></section>
-<section class="section"><p class="eyebrow">01 / Blender + TouchDesigner</p><h2>River Sanctuary / Two illustrated languages</h2>
-<p class="copy">A single 3D camera and scene with two material-and-color treatments. These are lookdev studies, not captures from a shipped game.</p>
-<figure class="wide-art"><img src="{river_image(4)}" alt="River Sanctuary hard-banded cel palette with graphic ink outlines"><figcaption><span>Graphic cel</span><span>Strong ink edges and discrete color regions</span></figcaption></figure>
-<figure class="wide-art"><img src="{river_image(2)}" alt="River Sanctuary with pink stone and softer Sakura Dawn colors"><figcaption><span>Sakura Dawn</span><span>Soft storybook treatment of the same scene</span></figcaption></figure></section>
-<section class="section"><div class="section-head"><div><p class="eyebrow">02 / Procedural toolkit</p><h2>From authored forms to reusable worlds.</h2></div><p>Production methods used on ongoing independent work, not a claim that each system is shipped.</p></div>
-<div class="cardrow"><article class="info-card"><span class="number">Houdini</span><h3>Procedural structure</h3><p>HDAs, geometry processing, composition and reusable world assembly.</p></article>
+<p class="lede">The image and its making belong together. Three source-backed studies show the visual intention, the actual evidence, and what remains unfinished.</p></section>
+<section class="section" id="river-comparison" aria-labelledby="river-title">
+<p class="eyebrow">01 / Result + treatment · Blender / TouchDesigner</p><h2 id="river-title">River Sanctuary / One scene, two visual languages</h2>
+<p class="copy">Matched scene and camera, two authored stylizations. Compare the rendering decisions directly; these are look-development captures, not gameplay footage.</p>
+<div class="pair-grid">
+  <figure><a href="{river_image(4)}" target="_blank" rel="noopener noreferrer" aria-label="Inspect River Sanctuary graphic cel render at full size"><img loading="eager" src="{river_image(4)}" alt="River Sanctuary in a graphic cel treatment with dark contours and discrete colour bands"></a><figcaption><strong>Graphic cel</strong><span>Ink contours · simplified value grouping</span></figcaption></figure>
+  <figure><a href="{river_image(2)}" target="_blank" rel="noopener noreferrer" aria-label="Inspect River Sanctuary Sakura Dawn render at full size"><img loading="eager" src="{river_image(2)}" alt="Same River Sanctuary scene in the softer pink Sakura Dawn look-development treatment"></a><figcaption><strong>Sakura Dawn</strong><span>Gentler chroma · storybook atmosphere</span></figcaption></figure>
+</div>
+<div class="pair-notes">
+  <article><h3>What stays constant</h3><p>The three-dimensional environment and camera. The A/B isolates the art-direction difference instead of implying a newly modelled scene.</p></article>
+  <article><h3>What changes</h3><p>Graphic cel prioritizes strong contour and grouped tonal shapes; Sakura Dawn tests a softer, pink-led colour read. The original visual captures are the evidence—not a reconstruction of the node graphs.</p></article>
+</div>
+<p class="proof-status">Evidence: real Blender/TouchDesigner look-development stills. Shader implementation and performance metrics are not independently demonstrated by these images.</p>
+</section>
+<section class="section technical-evidence" aria-labelledby="cop-title">
+<p class="eyebrow">02 / Texture research · Houdini Copernicus</p><h2 id="cop-title">Faraway Mother / Designing a textile landscape</h2>
+<p class="copy">A six-panel source sheet explores how woven landscape forms could become coherent surfaces. It belongs beside the artistic intent as a process plate, not disguised as a final Unreal beauty shot.</p>
+<figure class="wide-art proof-plate">
+<a href="../generated/assets/unreal/contact-sheets/Faraway_COP_Foundry_Breakdown.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-resolution Faraway Mother COP contact sheet">
+<img loading="lazy" decoding="async" src="../generated/assets/unreal/contact-sheets/Faraway_COP_Foundry_Breakdown.webp" alt="Real six-panel Faraway Mother Houdini Copernicus technical contact sheet with displacement, masks, vectors, silk normals, packed material channels and cel ramp"></a>
+<figcaption><span>Original six-panel design plate · Open for fine channel labels</span><span>Contact sheet, not runtime material certification</span></figcaption></figure>
+<dl class="proof-points">
+  <div><dt>Form + relief</dt><dd>Displacement and curvature-driven detailing</dd></div>
+  <div><dt>Directional flow</dt><dd>Vector fields and silk micro-weave normal studies</dd></div>
+  <div><dt>Surface response</dt><dd>Packed masks, ORM and a stylized colour-band ramp</dd></div>
+</dl>
+<p class="proof-status">Evidence: original COP design contact sheet. A current matched-camera material beauty render, actual Houdini cook and UE shader validation remain separate proof tasks.</p>
+</section>
+<section class="section technical-evidence" aria-labelledby="melusina-title">
+<p class="eyebrow">03 / Measured character engineering · UE 5.8 / KineFX</p><h2 id="melusina-title">Melusina / A silhouette needs believable motion</h2>
+<p class="copy">The October technical report investigates folded-knee ground targets, footwear skinning and layered costume ownership. The engineering is more compelling with its real measured outcomes—and the open acceptance gates kept visible.</p>
+<dl class="proof-points">
+  <div><dt>18.841 / 21.509 cm</dt><dd>Initial left/right foot-target lifts identified as a cause of bent idle knees</dd></div>
+  <div><dt>843 / 5,540</dt><dd>Boot vertices with localized influence corrections; original sculpture and bind retained</dd></div>
+  <div><dt>12 / 12 gates</dt><dd>Round-trip integrity checks passed for the corrected boot candidate</dd></div>
+</dl>
+<p class="proof-status">Evidence: staged idle and source-preservation receipts. Gameplay gait, production wardrobe acceptance and costume performance are still unverified. The original report links some images to local C: paths, so they are not presented here as public screenshots.</p>
+<p><a class="btn" href="https://github.com/fromage3900/MelodiaMelusinaV2/blob/main/Docs/Evidence/MelusinaLegSkirt_20261023/Sheets/Melusina_TechnicalBreakdown.md" target="_blank" rel="noopener noreferrer">Read the measured KineFX breakdown</a></p>
+</section>
+<section class="section"><div class="section-head"><div><p class="eyebrow">04 / Working methods</p><h2>From authored forms to reusable worlds.</h2></div><p>Tools used across ongoing independent projects; not a claim that every experiment is production-approved.</p></div>
+<div class="cardrow">
+<article class="info-card"><span class="number">Houdini</span><h3>Procedural structure</h3><p>HDAs, geometry processing and repeatable environment assembly.</p></article>
 <article class="info-card"><span class="number">Unreal Engine</span><h3>Real-time worlds</h3><p>PCG, lighting, stylized materials and environment dressing.</p></article>
-<article class="info-card"><span class="number">Blender + Python</span><h3>Artist tooling</h3><p>Geometry Nodes, modeling workflows, scripted iteration and asset preparation.</p></article></div></section>
-<section class="section technical-evidence" aria-labelledby="evidence-title">
-  <div class="section-head">
-    <div><p class="eyebrow">03 / Technical evidence</p><h2 id="evidence-title">Show the process, not only the result.</h2></div>
-    <p>Documented source studies with scope and remaining verification clearly distinguished.</p>
-  </div>
-  <article class="proof-card">
-    <p class="eyebrow">Houdini · Copernicus / Material R&amp;D</p>
-    <h3>Faraway Mother — Procedural texture foundry</h3>
-    <p class="copy">A six-panel technical design contact sheet covers displacement fields, curvature and sparkle masks, flow vectors, silk micro-weave normals, channel-packed surface masks, and a three-tone shading ramp. The panel is a design/texture study: its graphics alone do not certify a production material cook or final in-game result.</p>
-    <figure class="wide-art proof-plate">
-      <a href="../generated/assets/unreal/contact-sheets/Faraway_COP_Foundry_Breakdown.webp" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution procedural texture foundry contact sheet">
-      <img loading="eager" fetchpriority="low" decoding="sync" src="../generated/assets/unreal/contact-sheets/Faraway_COP_Foundry_Breakdown.webp" alt="Six-column Houdini COP contact sheet illustrating eigenmode displacement, packed masks, flow vectors, silk normals, ORM and a three-tone diffuse ramp"></a>
-      <figcaption><span>Houdini COP / six-map design contact sheet</span><span>Open at full resolution for labels and channels</span></figcaption>
-    </figure>
-  </article>
-  <article class="proof-card">
-    <p class="eyebrow">Unreal 5.8 · Houdini KineFX / Character engineering</p>
-    <h3>Melusina — Ground contact and layered costume</h3>
-    <p class="copy">A documented October 2026 investigation isolates foot-target offsets, benchmarks native idle knee extension and boot-ground contact, and checks garment skinning round-trips. Its staged idle and source-preservation tests are evidence; playable gait and full costume acceptance were explicitly left open.</p>
-    <p><a class="btn" href="https://github.com/fromage3900/MelodiaMelusinaV2/blob/main/Docs/Evidence/MelusinaLegSkirt_20261023/Sheets/Melusina_TechnicalBreakdown.md" target="_blank" rel="noopener noreferrer">Read the technical breakdown</a></p>
-  </article>
-</section>{closing()}
+<article class="info-card"><span class="number">Blender + Python</span><h3>Artist tooling</h3><p>Geometry Nodes, modelling workflows and scripted asset preparation.</p></article>
+</div></section>{closing()}
 """
 
 resume = """
