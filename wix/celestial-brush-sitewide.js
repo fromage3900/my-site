@@ -25,6 +25,10 @@
   function mount() {
     if (frame) return;
     frame = document.createElement('iframe');
+    // Some Chromium compositors paint an opaque iframe viewport even when
+    // the child document and WebGL clear color are transparent. Explicitly
+    // permit transparency on the frame as well as its inner document.
+    frame.setAttribute('allowtransparency','true');
     frame.setAttribute('aria-hidden','true');
     frame.setAttribute('tabindex','-1');
     frame.setAttribute('title','Decorative interactive celestial brush');
