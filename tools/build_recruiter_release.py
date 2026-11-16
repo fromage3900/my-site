@@ -510,7 +510,7 @@ technical = f"""
     <p class="copy">A six-panel technical design contact sheet covers displacement fields, curvature and sparkle masks, flow vectors, silk micro-weave normals, channel-packed surface masks, and a three-tone shading ramp. The panel is a design/texture study: its graphics alone do not certify a production material cook or final in-game result.</p>
     <figure class="wide-art proof-plate">
       <a href="../generated/assets/unreal/contact-sheets/Faraway_COP_Foundry_Breakdown.webp" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution procedural texture foundry contact sheet">
-      <img loading="lazy" decoding="async" src="../generated/assets/unreal/contact-sheets/Faraway_COP_Foundry_Breakdown.webp" alt="Six-column Houdini COP contact sheet illustrating eigenmode displacement, packed masks, flow vectors, silk normals, ORM and a three-tone diffuse ramp"></a>
+      <img loading="eager" fetchpriority="low" decoding="sync" src="../generated/assets/unreal/contact-sheets/Faraway_COP_Foundry_Breakdown.webp" alt="Six-column Houdini COP contact sheet illustrating eigenmode displacement, packed masks, flow vectors, silk normals, ORM and a three-tone diffuse ramp"></a>
       <figcaption><span>Houdini COP / six-map design contact sheet</span><span>Open at full resolution for labels and channels</span></figcaption>
     </figure>
   </article>
