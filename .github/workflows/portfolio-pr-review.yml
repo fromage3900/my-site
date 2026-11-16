@@ -37,6 +37,7 @@ jobs:
           python tools/validate_assets.py
           python tools/check_stale_render_archive.py
           python tools/build_restored_website.py
+          python tools/verify_restored_portfolio_guard.py
           python tools/verify_showcase_polish.py
           python tools/verify_sendoff_freeze.py
           python tools/verify_recruiter_focus.py
@@ -60,6 +61,7 @@ jobs:
           if [ -z "$CHROME" ]; then echo "Chrome unavailable"; exit 1; fi
           mkdir -p visual-qa
           python tools/build_restored_website.py
+          python tools/verify_restored_portfolio_guard.py
           python -m http.server 4173 --bind 127.0.0.1 >/tmp/portfolio-preview-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" >/dev/null 2>&1 || true' EXIT
