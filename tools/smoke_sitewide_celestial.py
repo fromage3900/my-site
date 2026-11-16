@@ -6,6 +6,8 @@ Requires playwright package; launches the runner's already-installed Chrome.
 """
 import sys
 from pathlib import Path
+from io import BytesIO
+from PIL import Image
 from playwright.sync_api import sync_playwright
 
 BASE = "http://127.0.0.1:4173/_recruiter_release/wix/index.html"
@@ -21,6 +23,8 @@ def main():
         context = browser.new_context(viewport={"width": 1440, "height": 900}, device_scale_factor=1)
         page = context.new_page()
         page.goto(BASE, wait_until="domcontentloaded")
+        page.wait_for_timeout(450)
+        baseline = Image.open(BytesIO(page.screenshot(full_page=False))).convert("RGB")
         page.mouse.move(520, 450)
         page.wait_for_timeout(1700)
         frame = page.locator('iframe[data-celestial-sitewide="true"]')
@@ -41,7 +45,16 @@ def main():
         assert value["transparent"] in ("rgba(0, 0, 0, 0)","transparent"), f"Brush background is opaque: {value}"
         assert frame.evaluate("el => getComputedStyle(el).pointerEvents")=="none", "Overlay captures recruiter clicks"
         Path("visual-qa").mkdir(exist_ok=True)
-        page.screenshot(path="visual-qa/celestial-sitewide-hover.png",full_page=False)
+        hover = page.screenshot(path="visual-qa/celestial-sitewide-hover.png",full_page=False)
+        image = Image.open(BytesIO(hover)).convert("RGB")
+        # A true alpha overlay cannot bleach untouched plum-background areas.
+        # The former implementation incorrectly composited a white iframe
+        # and passed JS checks even while destroying the actual design.
+        for point in ((20, 20), (600, 105)):
+            before, after = baseline.getpixel(point), image.getpixel(point)
+            drift = max(abs(a-b) for a, b in zip(before, after))
+            assert drift <= 28, f"Celestial iframe washed out Night Velvet at {point}: before={before} after={after}, drift={drift}"
+
         context.close()
         reduced = browser.new_context(viewport={"width":1440,"height":900},reduced_motion="reduce")
         page2 = reduced.new_page()
