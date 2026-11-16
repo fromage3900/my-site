@@ -16,6 +16,7 @@ OUT = ROOT / "_recruiter_release"
 PUBLISHED_ART = (
     "wix/assets/touchdesigner/variant_4_atlus_graphic_cel.webp",
     "wix/assets/touchdesigner/variant_2_sakura_dawn.webp",
+    "generated/assets/unreal/contact-sheets/Faraway_COP_Foundry_Breakdown.webp",
 )
 PUBLISHED_ORNAMENTS = (
     "wix/assets/figma/nv-rose-satin.svg",
@@ -30,6 +31,8 @@ PUBLISHED_ORNAMENTS = (
 # Interactive work belongs on its own intentional route, never inside the render archive.
 PUBLISHED_EXPERIENCES = (
     "wix/constellation-brush.html",
+    "wix/celestial-brush-sitewide.js",
+    "wix/celestial-brush-overlay-engine.js",
     "wix/melodia-luxury-type.css",
 )
 FILES = (*PUBLISHED_ART, *PUBLISHED_ORNAMENTS, *PUBLISHED_EXPERIENCES)
@@ -362,6 +365,16 @@ body:before{content:"";pointer-events:none;position:fixed;inset:10px;
 }
 """
 
+EVIDENCE_STYLING = r"""
+/* Technical evidence should remain readable; full-resolution plates stay clickable. */
+.technical-evidence .proof-card{padding:clamp(22px,3vw,38px);margin:24px 0;border:1px solid var(--line);background:rgba(35,22,41,.46)}
+.technical-evidence .proof-card h3{font:italic 400 clamp(25px,2.5vw,37px)/1.1 var(--serif);margin:8px 0 16px}
+.technical-evidence .proof-card .copy{max-width:76ch;color:var(--mute)}
+.technical-evidence .proof-plate{margin-top:24px}
+.technical-evidence .proof-plate img{width:100%;height:auto;max-height:none;object-fit:contain;background:#100d16}
+.technical-evidence .proof-plate a{display:block}
+"""
+
 def base(title: str, description: str, body: str, route: str = "index.html") -> str:
     canonical = "https://www.fromageart.xyz/" if route == "index.html" else "https://fromage3900.github.io/my-site/wix/" + route
     hero = "https://fromage3900.github.io/my-site/wix/assets/touchdesigner/variant_4_atlus_graphic_cel.webp"
@@ -372,13 +385,13 @@ def base(title: str, description: str, body: str, route: str = "index.html") -> 
 <link rel="canonical" href="{canonical}"><meta property="og:type" content="website">
 <meta property="og:title" content="{title} — Brennan Shepherd"><meta property="og:description" content="{description}">
 <meta property="og:image" content="{hero}"><meta property="og:url" content="{canonical}">
-<meta name="theme-color" content="#170f20"><style>{STYLE}{REF_STYLE if route == 'index.html' else ''}{EMBELLISHMENT}{BRUSH_STYLING if route == 'index.html' else ''}</style></head>
+<meta name="theme-color" content="#170f20"><style>{STYLE}{REF_STYLE if route == 'index.html' else ''}{EMBELLISHMENT}{BRUSH_STYLING if route == 'index.html' else ''}{EVIDENCE_STYLING if route == 'technical-art.html' else ''}</style></head>
 <body><a class="skip" href="#main">Skip to content</a><div class="container">
 <header class="topbar"><a class="brand" href="index.html"><span class="mark" aria-hidden="true">✧</span>Brennan Shepherd</a>
 <nav aria-label="Main navigation"><a href="curated-art.html">Selected art</a><a href="technical-art.html">Technical art</a><a href="constellation-brush.html">Constellation Brush ✦</a><a href="resume.html">Résumé &amp; contact</a></nav></header>
 <main id="main">{body}</main>
 <footer class="foot"><span>Brennan Shepherd · Environment &amp; Technical Artist · Toronto</span><span><a href="mailto:brennan.shepherd3900@gmail.com">Email</a> · <a href="https://www.artstation.com/fromage3900" rel="noopener noreferrer">ArtStation</a> · © 2026</span></footer>
-</div></body></html>"""
+</div><script defer src="celestial-brush-sitewide.js?v=20261115" data-celestial-sitewide></script></body></html>"""
 
 def faraway_image() -> str:
     return "../generated/assets/unreal/faraway_hero_heart_gate_1920.webp"
@@ -486,7 +499,29 @@ technical = f"""
 <section class="section"><div class="section-head"><div><p class="eyebrow">02 / Procedural toolkit</p><h2>From authored forms to reusable worlds.</h2></div><p>Production methods used on ongoing independent work, not a claim that each system is shipped.</p></div>
 <div class="cardrow"><article class="info-card"><span class="number">Houdini</span><h3>Procedural structure</h3><p>HDAs, geometry processing, composition and reusable world assembly.</p></article>
 <article class="info-card"><span class="number">Unreal Engine</span><h3>Real-time worlds</h3><p>PCG, lighting, stylized materials and environment dressing.</p></article>
-<article class="info-card"><span class="number">Blender + Python</span><h3>Artist tooling</h3><p>Geometry Nodes, modeling workflows, scripted iteration and asset preparation.</p></article></div></section>{closing()}
+<article class="info-card"><span class="number">Blender + Python</span><h3>Artist tooling</h3><p>Geometry Nodes, modeling workflows, scripted iteration and asset preparation.</p></article></div></section>
+<section class="section technical-evidence" aria-labelledby="evidence-title">
+  <div class="section-head">
+    <div><p class="eyebrow">03 / Technical evidence</p><h2 id="evidence-title">Show the process, not only the result.</h2></div>
+    <p>Documented source studies with scope and remaining verification clearly distinguished.</p>
+  </div>
+  <article class="proof-card">
+    <p class="eyebrow">Houdini · Copernicus / Material R&amp;D</p>
+    <h3>Faraway Mother — Procedural texture foundry</h3>
+    <p class="copy">A six-panel technical design contact sheet covers displacement fields, curvature and sparkle masks, flow vectors, silk micro-weave normals, channel-packed surface masks, and a three-tone shading ramp. The panel is a design/texture study: its graphics alone do not certify a production material cook or final in-game result.</p>
+    <figure class="wide-art proof-plate">
+      <a href="../generated/assets/unreal/contact-sheets/Faraway_COP_Foundry_Breakdown.webp" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution procedural texture foundry contact sheet">
+      <img loading="eager" fetchpriority="low" decoding="sync" src="../generated/assets/unreal/contact-sheets/Faraway_COP_Foundry_Breakdown.webp" alt="Six-column Houdini COP contact sheet illustrating eigenmode displacement, packed masks, flow vectors, silk normals, ORM and a three-tone diffuse ramp"></a>
+      <figcaption><span>Houdini COP / six-map design contact sheet</span><span>Open at full resolution for labels and channels</span></figcaption>
+    </figure>
+  </article>
+  <article class="proof-card">
+    <p class="eyebrow">Unreal 5.8 · Houdini KineFX / Character engineering</p>
+    <h3>Melusina — Ground contact and layered costume</h3>
+    <p class="copy">A documented October 2026 investigation isolates foot-target offsets, benchmarks native idle knee extension and boot-ground contact, and checks garment skinning round-trips. Its staged idle and source-preservation tests are evidence; playable gait and full costume acceptance were explicitly left open.</p>
+    <p><a class="btn" href="https://github.com/fromage3900/MelodiaMelusinaV2/blob/main/Docs/Evidence/MelusinaLegSkirt_20261023/Sheets/Melusina_TechnicalBreakdown.md" target="_blank" rel="noopener noreferrer">Read the technical breakdown</a></p>
+  </article>
+</section>{closing()}
 """
 
 resume = """

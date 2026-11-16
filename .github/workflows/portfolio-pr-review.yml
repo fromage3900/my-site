@@ -29,6 +29,8 @@ jobs:
       - name: Verify syntax and portfolio constraints
         run: |
           node --check wix/melodia-site-nav.js
+          node --check wix/celestial-brush-sitewide.js
+          node --check wix/celestial-brush-overlay-engine.js
           node --check wix/melodia-editorial.js
           node --check wix/curated-art-viewer.js
           node --check wix/melodia-photobooth.js
@@ -39,6 +41,7 @@ jobs:
           python tools/verify_sendoff_freeze.py
           python tools/verify_recruiter_focus.py
           python tools/verify_visual_folio_preservation.py
+          python tools/verify_sitewide_celestial_and_technical.py
       - name: Check internal links and public-route hygiene
         shell: pwsh
         run: ./tools/validate_portfolio.ps1
@@ -76,6 +79,10 @@ jobs:
           capture 1440 1100 public-home-desktop.png _recruiter_release/wix/index.html
           capture 390 1200 public-selected-mobile.png _recruiter_release/wix/curated-art.html
           capture 1440 1100 public-selected-desktop.png _recruiter_release/wix/curated-art.html
+          capture 390 1200 public-technical-mobile.png _recruiter_release/wix/technical-art.html
+          capture 1440 1500 public-technical-desktop.png _recruiter_release/wix/technical-art.html
+          capture 390 3700 public-technical-mobile-full.png _recruiter_release/wix/technical-art.html
+          capture 1440 3400 public-technical-desktop-full.png _recruiter_release/wix/technical-art.html
           capture 390 844 constellation-brush-mobile.png _recruiter_release/wix/constellation-brush.html
           capture 1440 900 constellation-brush-desktop.png _recruiter_release/wix/constellation-brush.html
           capture 390 1100 environments-mobile.png wix/world-bible.html
@@ -90,6 +97,8 @@ jobs:
           capture 1440 2600 moodboard-desktop-long.png wix/portfolio-moodboard.html
           capture 390 2200 photo-studio-mobile-long.png wix/melusina-photo-studio.html
           capture 1440 2200 photo-studio-desktop-long.png wix/melusina-photo-studio.html
+          python -m pip install --quiet playwright pillow
+          python tools/smoke_sitewide_celestial.py "$CHROME"
       - uses: actions/upload-artifact@v4
         with:
           name: portfolio-preview-${{ github.sha }}
