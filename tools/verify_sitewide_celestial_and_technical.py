@@ -24,6 +24,10 @@ must("if (!overlayMode) scene.add(bg)" in engine, "Overlay must be transparent")
 must("if (!overlayMode) seed()" in engine, "Overlay should not cover site with idle stars")
 must("window.MelodiaCelestialBrushInput" in engine, "Original gesture input is no longer forwarded")
 must("canvas.dataset.celestialSitewide" in bridge, "Sitewide native canvas contract was lost")
+must("if (window.top !== window.self) return;" not in bridge,
+     "Wix iframe incorrectly suppresses site-wide brush")
+must("pointer-events:none" in bridge,
+     "Wix embedded cursor must not block clickable portfolio content")
 must("prefers-reduced-motion:no-preference" in bridge, "Reduced-motion guard lost")
 must("pointer-events:none" in bridge, "Brush must not intercept links")
 must("pointermove" in bridge and "MelodiaCelestialBrushInput.move" in bridge, "Brush no longer follows cursor")
