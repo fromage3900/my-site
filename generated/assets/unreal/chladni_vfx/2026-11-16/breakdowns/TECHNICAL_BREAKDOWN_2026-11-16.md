@@ -50,3 +50,5 @@
 - 03:26Z update: L_EscherAscent sakura_pearl+amethyst_electric complete (128), golden_hour_silk in progress; refreshed best_candidates.json. Best-candidate PNGs force-staged in site due to generated/assets numeric PNG ignore rule.
 
 - 03:31Z update: L_EscherAscent complete (4/4 stories x 128). Best candidates staged/pushed for L_EscherAscent. Starting next level render sequentially (disk/time permitting). MRQ per-level and live UE Spout remain blocked/unverified in running editor.
+
+- 03:35Z: L_EscherAscent complete (4/4 stories x 128). Best candidates (all 4 stories, picks+manifests) staged/pushed to my-site. L_FallenMoon render in progress. Remaining levels queued sequentially as disk/time permit. UE MRQ per-level and live Spout feed remain blocked/unverified (no controllable Python-exec/sequence automation in running editor; UE_Beauty Spout black).
