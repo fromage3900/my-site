@@ -7,7 +7,10 @@
   'use strict';
   if (window.MelodiaCelestialSitewideLoaded) return;
   window.MelodiaCelestialSitewideLoaded = true;
-  if (window.top !== window.self) return;
+  // Wix embeds the GitHub Pages portfolio in an iframe. The original guard
+  // disabled the celestial cursor throughout the *actual* Wix website.
+  // Keep the pointer-transparent canvas inside that frame; never draw over
+  // the parent Wix UI. External iframes get only their own local overlay.
   if (/\/constellation-brush\.html$/i.test(location.pathname)) return;
   if (!window.matchMedia || !window.matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches) return;
   if (document.querySelector('canvas[data-webgl-main], .photobooth-stage, #melusina-photobooth-mount')) return;

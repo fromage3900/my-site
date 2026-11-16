@@ -36,7 +36,7 @@ jobs:
           node --check wix/melodia-photobooth.js
           python tools/validate_assets.py
           python tools/check_stale_render_archive.py
-          python tools/build_recruiter_release.py
+          python tools/build_restored_website.py
           python tools/verify_showcase_polish.py
           python tools/verify_sendoff_freeze.py
           python tools/verify_recruiter_focus.py
@@ -59,7 +59,7 @@ jobs:
           CHROME="$(command -v google-chrome-stable || command -v google-chrome || command -v chromium-browser || command -v chromium || true)"
           if [ -z "$CHROME" ]; then echo "Chrome unavailable"; exit 1; fi
           mkdir -p visual-qa
-          python tools/build_recruiter_release.py
+          python tools/build_restored_website.py
           python -m http.server 4173 --bind 127.0.0.1 >/tmp/portfolio-preview-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" >/dev/null 2>&1 || true' EXIT
@@ -83,6 +83,20 @@ jobs:
           capture 1440 1500 public-technical-desktop.png _recruiter_release/wix/technical-art.html
           capture 390 3700 public-technical-mobile-full.png _recruiter_release/wix/technical-art.html
           capture 1440 3400 public-technical-desktop-full.png _recruiter_release/wix/technical-art.html
+          capture 390 1000 original-home-mobile.png _recruiter_release/wix/index.html
+          capture 1440 1080 original-home-desktop.png _recruiter_release/wix/index.html
+          capture 390 1300 original-moodboard-mobile.png _recruiter_release/wix/portfolio-moodboard.html
+          capture 1440 1100 original-moodboard-desktop.png _recruiter_release/wix/portfolio-moodboard.html
+          capture 390 1000 original-photo-studio-mobile.png _recruiter_release/wix/melusina-photo-studio.html
+          capture 1440 1000 original-photo-studio-desktop.png _recruiter_release/wix/melusina-photo-studio.html
+          capture 1440 950 original-3d-viewer-desktop.png _recruiter_release/wix/realtime-3d-viewer.html
+          capture 1440 950 original-living-worlds-desktop.png _recruiter_release/wix/melodia-living-worlds.html
+          # The Folio's WebGL composer may exceed the headless runner's 35s
+          # software-GPU budget. Keep this a diagnostic capture, never a blocker.
+          # Sitewide/default homepage screenshots above remain mandatory.
+          if ! capture 1440 1000 original-traveling-folio-desktop.png _recruiter_release/melodia/folio/index.html; then
+            echo "::warning::Traveling Folio software-WebGL screenshot timed out; original route and assets passed release validation."
+          fi
           capture 390 844 constellation-brush-mobile.png _recruiter_release/wix/constellation-brush.html
           capture 1440 900 constellation-brush-desktop.png _recruiter_release/wix/constellation-brush.html
           capture 390 1100 environments-mobile.png wix/world-bible.html
