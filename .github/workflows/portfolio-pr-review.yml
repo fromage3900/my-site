@@ -30,6 +30,7 @@ jobs:
         run: |
           node --check wix/melodia-site-nav.js
           node --check wix/celestial-brush-sitewide.js
+          node --check wix/celestial-brush-overlay-engine.js
           node --check wix/melodia-editorial.js
           node --check wix/curated-art-viewer.js
           node --check wix/melodia-photobooth.js
