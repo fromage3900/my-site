@@ -30,3 +30,17 @@
 ## Verification / publication boundary
 - New regression: `python tools/verify_sitewide_celestial_and_technical.py` checks the original Three.js gesture logic and that every strict generated page references the brush, with no broken release assets.
 - PR branch requires code, link, asset and screenshot QA before merge. WebGL cursor gesture on Safari/iOS and third-party script loading require physical-device proof; no auto-merge.
+
+## Follow-on paired case studies — render + method, November 15
+
+**Review branch:** `portfolio/render-process-pairings-20261115`. The strict public release is built from `tools/build_recruiter_release.py`; the source Wix moodboard, photo studio, constellation brush, Night Velvet palette, public allowlist and existing render bytes are not altered in this pass.
+
+1. **River Sanctuary:** the existing verified Graphic Cel and Sakura Dawn captures appear side-by-side on Technical Art, with full-size original links. Short adjacent method notes distinguish *held scene/camera* from *changed graphic treatment*. The Selected Work page links directly to this comparison. We claim no reconstructed shader node graph or benchmark.
+2. **Faraway Mother:** keep the authentic COP six-panel contact sheet full-width and clickable, followed by short explanations of relief, directional flow and surface response. **Do not pair it with the older unfinished Heart Gate or Sakura Dream screenshots** and do not claim the contact sheet demonstrates a verified Unreal material cook. A source render with matched camera, date and tool provenance is still required for a genuine render↔process pairing.
+3. **Melusina:** excerpt actual October 23–24 rigging receipts: 18.841 / 21.509 cm initial foot-target lifts, 843 of 5,540 boot vertices adjusted, 12 of 12 KineFX round-trip gates passed. Keep the original engineering document as a link, but do not embed its nonportable `C:/` references or conflate the earlier July EEVEE beauty with the later rigging candidate. Moving gait and production wardrobe performance remain open.
+
+### Promotion boundary and verification
+
+- This is a **presentation upgrade of genuine assets**, not a new Blender, Houdini, TouchDesigner or UE render. No image is generated or silently replaced.
+- Existing `tools/verify_sitewide_celestial_and_technical.py` now checks the generated side-by-side River evidence, Selected Work deep link, real image paths, COP status disclaimer and measurable Melusina receipts.
+- Review the generated `_recruiter_release/wix/technical-art.html` at desktop and mobile widths, plus `curated-art.html` and the Night Velvet homepage, before any publish or merge. Physical iPhone Safari brush behaviour is still a separate device test.
