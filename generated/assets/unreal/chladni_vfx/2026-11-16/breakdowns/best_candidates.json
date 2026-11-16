@@ -1,0 +1,662 @@
+{
+  "generated_utc": "2026-11-16T03:26:30Z",
+  "best_candidates": [
+    {
+      "level": "L_CelestialPond",
+      "story": "sakura_pearl",
+      "manifest": {
+        "level": "L_CelestialPond",
+        "story": "sakura_pearl",
+        "label": "Sakura Pearl",
+        "desc": "Soft pastel lift, warm pearl aura, gentle exposure",
+        "frames_requested": 128,
+        "frames_saved": 128,
+        "out_top": "/project1/cymatics_aaa_showcase/glsl_cymatics_hero",
+        "resolution": [
+          1920,
+          1080
+        ],
+        "loop": {
+          "frames": 128,
+          "seamless": true,
+          "phase_strategy": "periodic integer cycles over 128 frames (beatPhase 2cyc, beatPulse 4cyc, motifPhase 1cyc)"
+        },
+        "hero_overrides": {
+          "vec0valuex": 3.0,
+          "vec0valuey": 5.0,
+          "vec0valuez": 0.22,
+          "vec0valuew": 3900.0,
+          "vec2valuex": 0.9,
+          "vec2valuey": 0.1,
+          "vec2valuez": 1.0,
+          "vec2valuew": 0.85,
+          "vec3valuey": 1.0,
+          "vec3valuez": 1.0
+        },
+        "nikki_grade_pastel": {
+          "vec0valuex": 0.12,
+          "vec0valuey": 0.95,
+          "vec0valuez": 0.18,
+          "vec0valuew": 1.02,
+          "vec1valuex": 0.72,
+          "vec1valuey": 1.0,
+          "vec1valuez": 1.0,
+          "vec1valuew": 1.0
+        },
+        "nikki_grade_lut": {
+          "blacklevel": 0.008,
+          "brightness1": 1.04,
+          "contrast": 1.08,
+          "highr": 1.0,
+          "highg": 0.97,
+          "highb": 0.98
+        },
+        "files": [
+          "frame_0000.png",
+          "frame_0001.png",
+          "frame_0002.png",
+          "frame_0003.png",
+          "frame_0004.png",
+          "..."
+        ]
+      },
+      "picks": [
+        {
+          "frame": 0,
+          "file": "frame_0000.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\sakura_pearl\\frame_0000.png",
+          "bytes": 3803852
+        },
+        {
+          "frame": 32,
+          "file": "frame_0032.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\sakura_pearl\\frame_0032.png",
+          "bytes": 3772456
+        },
+        {
+          "frame": 64,
+          "file": "frame_0064.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\sakura_pearl\\frame_0064.png",
+          "bytes": 3227300
+        },
+        {
+          "frame": 96,
+          "file": "frame_0096.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\sakura_pearl\\frame_0096.png",
+          "bytes": 3581622
+        }
+      ],
+      "total_frames": 128
+    },
+    {
+      "level": "L_CelestialPond",
+      "story": "amethyst_electric",
+      "manifest": {
+        "level": "L_CelestialPond",
+        "story": "amethyst_electric",
+        "label": "Amethyst Electric",
+        "desc": "Cool violet-cyan bias, higher contrast, electric sheen",
+        "frames_requested": 128,
+        "frames_saved": 128,
+        "out_top": "/project1/cymatics_aaa_showcase/glsl_cymatics_hero",
+        "resolution": [
+          1920,
+          1080
+        ],
+        "loop": {
+          "frames": 128,
+          "seamless": true,
+          "phase_strategy": "periodic integer cycles over 128 frames (beatPhase 2cyc, beatPulse 4cyc, motifPhase 1cyc)"
+        },
+        "hero_overrides": {
+          "vec0valuex": 4.0,
+          "vec0valuey": 6.0,
+          "vec0valuez": 0.28,
+          "vec0valuew": 5200.0,
+          "vec2valuex": 1.0,
+          "vec2valuey": 0.14,
+          "vec2valuez": 1.0,
+          "vec2valuew": 0.98,
+          "vec3valuey": 1.02,
+          "vec3valuez": 1.0
+        },
+        "nikki_grade_pastel": {
+          "vec0valuex": 0.06,
+          "vec0valuey": 1.08,
+          "vec0valuez": 0.1,
+          "vec0valuew": 1.12,
+          "vec1valuex": 0.55,
+          "vec1valuey": 1.0,
+          "vec1valuez": 1.0,
+          "vec1valuew": 1.0
+        },
+        "nikki_grade_lut": {
+          "blacklevel": 0.012,
+          "brightness1": 1.02,
+          "contrast": 1.22,
+          "highr": 0.95,
+          "highg": 0.96,
+          "highb": 1.04
+        },
+        "files": [
+          "frame_0000.png",
+          "frame_0001.png",
+          "frame_0002.png",
+          "frame_0003.png",
+          "frame_0004.png",
+          "..."
+        ]
+      },
+      "picks": [
+        {
+          "frame": 0,
+          "file": "frame_0000.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\amethyst_electric\\frame_0000.png",
+          "bytes": 3801446
+        },
+        {
+          "frame": 32,
+          "file": "frame_0032.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\amethyst_electric\\frame_0032.png",
+          "bytes": 3874328
+        },
+        {
+          "frame": 64,
+          "file": "frame_0064.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\amethyst_electric\\frame_0064.png",
+          "bytes": 3590353
+        },
+        {
+          "frame": 96,
+          "file": "frame_0096.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\amethyst_electric\\frame_0096.png",
+          "bytes": 4115841
+        }
+      ],
+      "total_frames": 128
+    },
+    {
+      "level": "L_CelestialPond",
+      "story": "golden_hour_silk",
+      "manifest": {
+        "level": "L_CelestialPond",
+        "story": "golden_hour_silk",
+        "label": "Golden Hour Silk",
+        "desc": "Warm golden highlights, soft contrast, luminous silk",
+        "frames_requested": 128,
+        "frames_saved": 128,
+        "out_top": "/project1/cymatics_aaa_showcase/glsl_cymatics_hero",
+        "resolution": [
+          1920,
+          1080
+        ],
+        "loop": {
+          "frames": 128,
+          "seamless": true,
+          "phase_strategy": "periodic integer cycles over 128 frames (beatPhase 2cyc, beatPulse 4cyc, motifPhase 1cyc)"
+        },
+        "hero_overrides": {
+          "vec0valuex": 3.0,
+          "vec0valuey": 4.0,
+          "vec0valuez": 0.2,
+          "vec0valuew": 2700.0,
+          "vec2valuex": 0.88,
+          "vec2valuey": 0.09,
+          "vec2valuez": 1.0,
+          "vec2valuew": 0.8,
+          "vec3valuey": 0.98,
+          "vec3valuez": 1.0
+        },
+        "nikki_grade_pastel": {
+          "vec0valuex": 0.1,
+          "vec0valuey": 0.92,
+          "vec0valuez": 0.22,
+          "vec0valuew": 1.0,
+          "vec1valuex": 0.68,
+          "vec1valuey": 1.0,
+          "vec1valuez": 1.0,
+          "vec1valuew": 1.0
+        },
+        "nikki_grade_lut": {
+          "blacklevel": 0.006,
+          "brightness1": 1.06,
+          "contrast": 1.06,
+          "highr": 1.04,
+          "highg": 1.0,
+          "highb": 0.92
+        },
+        "files": [
+          "frame_0000.png",
+          "frame_0001.png",
+          "frame_0002.png",
+          "frame_0003.png",
+          "frame_0004.png",
+          "..."
+        ]
+      },
+      "picks": [
+        {
+          "frame": 0,
+          "file": "frame_0000.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\golden_hour_silk\\frame_0000.png",
+          "bytes": 3713530
+        },
+        {
+          "frame": 32,
+          "file": "frame_0032.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\golden_hour_silk\\frame_0032.png",
+          "bytes": 4218379
+        },
+        {
+          "frame": 64,
+          "file": "frame_0064.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\golden_hour_silk\\frame_0064.png",
+          "bytes": 3749991
+        },
+        {
+          "frame": 96,
+          "file": "frame_0096.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\golden_hour_silk\\frame_0096.png",
+          "bytes": 3964719
+        }
+      ],
+      "total_frames": 128
+    },
+    {
+      "level": "L_CelestialPond",
+      "story": "moonlit_teal",
+      "manifest": {
+        "level": "L_CelestialPond",
+        "story": "moonlit_teal",
+        "label": "Moonlit Teal",
+        "desc": "Teal-cyan shadows, crisp contrast, moonlit clarity",
+        "frames_requested": 128,
+        "frames_saved": 128,
+        "out_top": "/project1/cymatics_aaa_showcase/glsl_cymatics_hero",
+        "resolution": [
+          1920,
+          1080
+        ],
+        "loop": {
+          "frames": 128,
+          "seamless": true,
+          "phase_strategy": "periodic integer cycles over 128 frames (beatPhase 2cyc, beatPulse 4cyc, motifPhase 1cyc)"
+        },
+        "hero_overrides": {
+          "vec0valuex": 5.0,
+          "vec0valuey": 7.0,
+          "vec0valuez": 0.3,
+          "vec0valuew": 6100.0,
+          "vec2valuex": 0.96,
+          "vec2valuey": 0.13,
+          "vec2valuez": 1.0,
+          "vec2valuew": 0.92,
+          "vec3valuey": 1.0,
+          "vec3valuez": 1.0
+        },
+        "nikki_grade_pastel": {
+          "vec0valuex": 0.04,
+          "vec0valuey": 1.02,
+          "vec0valuez": 0.14,
+          "vec0valuew": 1.1,
+          "vec1valuex": 0.5,
+          "vec1valuey": 1.0,
+          "vec1valuez": 1.0,
+          "vec1valuew": 1.0
+        },
+        "nikki_grade_lut": {
+          "blacklevel": 0.014,
+          "brightness1": 1.01,
+          "contrast": 1.18,
+          "highr": 0.92,
+          "highg": 0.99,
+          "highb": 1.05
+        },
+        "files": [
+          "frame_0000.png",
+          "frame_0001.png",
+          "frame_0002.png",
+          "frame_0003.png",
+          "frame_0004.png",
+          "..."
+        ]
+      },
+      "picks": [
+        {
+          "frame": 0,
+          "file": "frame_0000.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\moonlit_teal\\frame_0000.png",
+          "bytes": 3950091
+        },
+        {
+          "frame": 32,
+          "file": "frame_0032.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\moonlit_teal\\frame_0032.png",
+          "bytes": 4047120
+        },
+        {
+          "frame": 64,
+          "file": "frame_0064.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\moonlit_teal\\frame_0064.png",
+          "bytes": 3778774
+        },
+        {
+          "frame": 96,
+          "file": "frame_0096.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_CelestialPond\\moonlit_teal\\frame_0096.png",
+          "bytes": 4309208
+        }
+      ],
+      "total_frames": 128
+    },
+    {
+      "level": "L_EscherAscent",
+      "story": "sakura_pearl",
+      "manifest": {
+        "level": "L_EscherAscent",
+        "story": "sakura_pearl",
+        "label": "Sakura Pearl",
+        "desc": "Soft pastel lift, warm pearl aura, gentle exposure",
+        "frames_requested": 128,
+        "frames_saved": 128,
+        "out_top": "/project1/cymatics_aaa_showcase/glsl_cymatics_hero",
+        "resolution": [
+          1920,
+          1080
+        ],
+        "loop": {
+          "frames": 128,
+          "seamless": true,
+          "phase_strategy": "periodic integer cycles over 128 frames (beatPhase 2cyc, beatPulse 4cyc, motifPhase 1cyc)"
+        },
+        "hero_overrides": {
+          "vec0valuex": 3.0,
+          "vec0valuey": 5.0,
+          "vec0valuez": 0.22,
+          "vec0valuew": 3900.0,
+          "vec2valuex": 0.9,
+          "vec2valuey": 0.1,
+          "vec2valuez": 1.0,
+          "vec2valuew": 0.85,
+          "vec3valuey": 1.0,
+          "vec3valuez": 1.0
+        },
+        "nikki_grade_pastel": {
+          "vec0valuex": 0.12,
+          "vec0valuey": 0.95,
+          "vec0valuez": 0.18,
+          "vec0valuew": 1.02,
+          "vec1valuex": 0.72,
+          "vec1valuey": 1.0,
+          "vec1valuez": 1.0,
+          "vec1valuew": 1.0
+        },
+        "nikki_grade_lut": {
+          "blacklevel": 0.008,
+          "brightness1": 1.04,
+          "contrast": 1.08,
+          "highr": 1.0,
+          "highg": 0.97,
+          "highb": 0.98
+        },
+        "files": [
+          "frame_0000.png",
+          "frame_0001.png",
+          "frame_0002.png",
+          "frame_0003.png",
+          "frame_0004.png",
+          "..."
+        ]
+      },
+      "picks": [
+        {
+          "frame": 0,
+          "file": "frame_0000.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_EscherAscent\\sakura_pearl\\frame_0000.png",
+          "bytes": 3803852
+        },
+        {
+          "frame": 32,
+          "file": "frame_0032.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_EscherAscent\\sakura_pearl\\frame_0032.png",
+          "bytes": 3772456
+        },
+        {
+          "frame": 64,
+          "file": "frame_0064.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_EscherAscent\\sakura_pearl\\frame_0064.png",
+          "bytes": 3227300
+        },
+        {
+          "frame": 96,
+          "file": "frame_0096.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_EscherAscent\\sakura_pearl\\frame_0096.png",
+          "bytes": 3581622
+        }
+      ],
+      "total_frames": 128
+    },
+    {
+      "level": "L_EscherAscent",
+      "story": "amethyst_electric",
+      "manifest": {
+        "level": "L_EscherAscent",
+        "story": "amethyst_electric",
+        "label": "Amethyst Electric",
+        "desc": "Cool violet-cyan bias, higher contrast, electric sheen",
+        "frames_requested": 128,
+        "frames_saved": 128,
+        "out_top": "/project1/cymatics_aaa_showcase/glsl_cymatics_hero",
+        "resolution": [
+          1920,
+          1080
+        ],
+        "loop": {
+          "frames": 128,
+          "seamless": true,
+          "phase_strategy": "periodic integer cycles over 128 frames (beatPhase 2cyc, beatPulse 4cyc, motifPhase 1cyc)"
+        },
+        "hero_overrides": {
+          "vec0valuex": 4.0,
+          "vec0valuey": 6.0,
+          "vec0valuez": 0.28,
+          "vec0valuew": 5200.0,
+          "vec2valuex": 1.0,
+          "vec2valuey": 0.14,
+          "vec2valuez": 1.0,
+          "vec2valuew": 0.98,
+          "vec3valuey": 1.02,
+          "vec3valuez": 1.0
+        },
+        "nikki_grade_pastel": {
+          "vec0valuex": 0.06,
+          "vec0valuey": 1.08,
+          "vec0valuez": 0.1,
+          "vec0valuew": 1.12,
+          "vec1valuex": 0.55,
+          "vec1valuey": 1.0,
+          "vec1valuez": 1.0,
+          "vec1valuew": 1.0
+        },
+        "nikki_grade_lut": {
+          "blacklevel": 0.012,
+          "brightness1": 1.02,
+          "contrast": 1.22,
+          "highr": 0.95,
+          "highg": 0.96,
+          "highb": 1.04
+        },
+        "files": [
+          "frame_0000.png",
+          "frame_0001.png",
+          "frame_0002.png",
+          "frame_0003.png",
+          "frame_0004.png",
+          "..."
+        ]
+      },
+      "picks": [
+        {
+          "frame": 0,
+          "file": "frame_0000.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_EscherAscent\\amethyst_electric\\frame_0000.png",
+          "bytes": 3801446
+        },
+        {
+          "frame": 32,
+          "file": "frame_0032.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_EscherAscent\\amethyst_electric\\frame_0032.png",
+          "bytes": 3874328
+        },
+        {
+          "frame": 64,
+          "file": "frame_0064.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_EscherAscent\\amethyst_electric\\frame_0064.png",
+          "bytes": 3590353
+        },
+        {
+          "frame": 96,
+          "file": "frame_0096.png",
+          "path": "C:\\MelodiaTouchDesigner\\docs\\renders\\portfolio_2026-11-16\\td_variations\\L_EscherAscent\\amethyst_electric\\frame_0096.png",
+          "bytes": 4115841
+        }
+      ],
+      "total_frames": 128
+    }
+  ],
+  "all_levels": {
+    "L_CelestialPond": {
+      "sakura_pearl": {
+        "frames": 128,
+        "manifest": true,
+        "saved": 128
+      },
+      "amethyst_electric": {
+        "frames": 128,
+        "manifest": true,
+        "saved": 128
+      },
+      "golden_hour_silk": {
+        "frames": 128,
+        "manifest": true,
+        "saved": 128
+      },
+      "moonlit_teal": {
+        "frames": 128,
+        "manifest": true,
+        "saved": 128
+      }
+    },
+    "L_EscherAscent": {
+      "sakura_pearl": {
+        "frames": 128,
+        "manifest": true,
+        "saved": 128
+      },
+      "amethyst_electric": {
+        "frames": 128,
+        "manifest": true,
+        "saved": 128
+      },
+      "golden_hour_silk": {
+        "frames": 101,
+        "manifest": false,
+        "saved": null
+      },
+      "moonlit_teal": {
+        "frames": 0,
+        "manifest": false
+      }
+    },
+    "L_FallenMoon": {
+      "sakura_pearl": {
+        "frames": 0,
+        "manifest": false
+      },
+      "amethyst_electric": {
+        "frames": 0,
+        "manifest": false
+      },
+      "golden_hour_silk": {
+        "frames": 0,
+        "manifest": false
+      },
+      "moonlit_teal": {
+        "frames": 0,
+        "manifest": false
+      }
+    },
+    "L_InfiniteScore": {
+      "sakura_pearl": {
+        "frames": 0,
+        "manifest": false
+      },
+      "amethyst_electric": {
+        "frames": 0,
+        "manifest": false
+      },
+      "golden_hour_silk": {
+        "frames": 0,
+        "manifest": false
+      },
+      "moonlit_teal": {
+        "frames": 0,
+        "manifest": false
+      }
+    },
+    "L_KaleidoNave": {
+      "sakura_pearl": {
+        "frames": 0,
+        "manifest": false
+      },
+      "amethyst_electric": {
+        "frames": 0,
+        "manifest": false
+      },
+      "golden_hour_silk": {
+        "frames": 0,
+        "manifest": false
+      },
+      "moonlit_teal": {
+        "frames": 0,
+        "manifest": false
+      }
+    },
+    "L_VinylGalaxy": {
+      "sakura_pearl": {
+        "frames": 0,
+        "manifest": false
+      },
+      "amethyst_electric": {
+        "frames": 0,
+        "manifest": false
+      },
+      "golden_hour_silk": {
+        "frames": 0,
+        "manifest": false
+      },
+      "moonlit_teal": {
+        "frames": 0,
+        "manifest": false
+      }
+    },
+    "L_MelusinaMorning": {
+      "sakura_pearl": {
+        "frames": 0,
+        "manifest": false
+      },
+      "amethyst_electric": {
+        "frames": 0,
+        "manifest": false
+      },
+      "golden_hour_silk": {
+        "frames": 0,
+        "manifest": false
+      },
+      "moonlit_teal": {
+        "frames": 0,
+        "manifest": false
+      }
+    }
+  }
+}
