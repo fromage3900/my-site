@@ -27,14 +27,13 @@ def main():
         baseline = Image.open(BytesIO(page.screenshot(full_page=False))).convert("RGB")
         page.mouse.move(520, 450)
         page.wait_for_timeout(1700)
-        frame = page.locator('iframe[data-celestial-sitewide="true"]')
-        assert frame.count()==1, "The sitewide pointer did not mount original Three.js brush"
-        original = frame.content_frame
-        original.locator("#c").wait_for(state="attached",timeout=25000)
+        canvas = page.locator('canvas[data-celestial-sitewide="true"]')
+        assert canvas.count()==1, "The sitewide pointer did not mount original Three.js canvas"
+        canvas.wait_for(state="attached",timeout=25000)
+        page.wait_for_function("!!window.MelodiaCelestialBrushInput", timeout=25000)
         for i in range(24):
             page.mouse.move(530+i*13, 420+(i%7)*10)
         page.wait_for_timeout(1300)
-        canvas = original.locator("#c")
         value = canvas.evaluate("""el => ({
            width:el.width, height:el.height,
            transparent:getComputedStyle(document.body).backgroundColor,
@@ -43,17 +42,17 @@ def main():
         assert value["width"] > 100 and value["height"] > 100, f"Invalid celestial canvas: {value}"
         assert value["webgl"], f"Original Three.js failed to initialize a WebGL context: {value}"
         assert value["transparent"] in ("rgba(0, 0, 0, 0)","transparent"), f"Brush background is opaque: {value}"
-        assert frame.evaluate("el => getComputedStyle(el).pointerEvents")=="none", "Overlay captures recruiter clicks"
+        assert canvas.evaluate("el => getComputedStyle(el).pointerEvents")=="none", "Canvas captures recruiter clicks"
         Path("visual-qa").mkdir(exist_ok=True)
         hover = page.screenshot(path="visual-qa/celestial-sitewide-hover.png",full_page=False)
         image = Image.open(BytesIO(hover)).convert("RGB")
         # A true alpha overlay cannot bleach untouched plum-background areas.
-        # The former implementation incorrectly composited a white iframe
+        # The former iframe implementation incorrectly composited a white viewport
         # and passed JS checks even while destroying the actual design.
         for point in ((20, 20), (600, 105)):
             before, after = baseline.getpixel(point), image.getpixel(point)
             drift = max(abs(a-b) for a, b in zip(before, after))
-            assert drift <= 28, f"Celestial iframe washed out Night Velvet at {point}: before={before} after={after}, drift={drift}"
+            assert drift <= 28, f"Celestial canvas washed out Night Velvet at {point}: before={before} after={after}, drift={drift}"
 
         context.close()
         reduced = browser.new_context(viewport={"width":1440,"height":900},reduced_motion="reduce")
@@ -61,7 +60,7 @@ def main():
         page2.goto(BASE,wait_until="domcontentloaded")
         page2.mouse.move(600,450)
         page2.wait_for_timeout(400)
-        assert page2.locator('iframe[data-celestial-sitewide="true"]').count()==0, "Reduced-motion guard lost"
+        assert page2.locator('canvas[data-celestial-sitewide="true"]').count()==0, "Reduced-motion guard lost"
         reduced.close()
         browser.close()
     print("OK sitewide original Three.js brush: pointer interaction, transparent WebGL, pass-through clicks, reduced motion.")
