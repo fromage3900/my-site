@@ -92,12 +92,17 @@ def inventory() -> dict:
     if RELEASE_MANIFEST.exists():
         release = json.loads(RELEASE_MANIFEST.read_text(encoding="utf-8"))
     release_routes = set(release.get("pages", []))
+    release_experiences = {posixpath.basename(x) for x in release.get("experiences", [])}
     if not release_routes:
         # Read the actual deployed compiler if the generated folder is absent.
         compiler = (ROOT / "tools/build_recruiter_release.py").read_text(encoding="utf-8")
         release_routes = set(re.findall(
             r'^    "([^"]+\.html)": base\(', compiler, flags=re.MULTILINE
         ))
+        for name in REQUIRED_EXPERIENCES:
+            if '"wix/' + name + '"' in compiler:
+                release_experiences.add(name)
+    shipped = release_routes | release_experiences
     items = {}
     all_missing: set[str] = set()
     all_rejected: set[str] = set()
@@ -105,7 +110,7 @@ def inventory() -> dict:
         relative = "wix/" + name
         source = ROOT / relative
         if not source.is_file():
-            items[name] = {"source_exists": False, "published": name in release_routes,
+            items[name] = {"source_exists": False, "published": name in shipped,
                            "missing_targets": [], "rejected_targets": []}
             all_missing.add(relative)
             continue
@@ -119,7 +124,7 @@ def inventory() -> dict:
         all_rejected.update(rejected)
         items[name] = {
             "source_exists": True,
-            "published": name in release_routes,
+            "published": name in shipped,
             "local_target_count": len(targets),
             "missing_targets": missing,
             "rejected_targets": rejected,
@@ -129,8 +134,9 @@ def inventory() -> dict:
         "deployed_compiler": "tools/build_recruiter_release.py",
         "release_manifest_found": RELEASE_MANIFEST.exists(),
         "currently_published_routes": sorted(release_routes),
+        "currently_published_experiences": sorted(release_experiences),
         "visitor_route_candidates": items,
-        "missing_required_experiences": sorted(set(REQUIRED_EXPERIENCES) - release_routes),
+        "missing_required_experiences": sorted(set(REQUIRED_EXPERIENCES) - shipped),
         "missing_source_targets": sorted(all_missing),
         "referenced_archived_media": sorted(all_rejected),
         "safety_note": "Static links only. JS-created URLs, external embeds, runtime rendering, "
