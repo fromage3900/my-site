@@ -34,7 +34,7 @@ def main():
         value = canvas.evaluate("""el => ({
            width:el.width, height:el.height,
            transparent:getComputedStyle(document.body).backgroundColor,
-           webgl:!!(el.getContext('webgl')||el.getContext('experimental-webgl'))
+           webgl:!!(el.getContext('webgl2')||el.getContext('webgl')||el.getContext('experimental-webgl'))
         })""")
         assert value["width"] > 100 and value["height"] > 100, f"Invalid celestial canvas: {value}"
         assert value["webgl"], f"Original Three.js failed to initialize a WebGL context: {value}"
