@@ -80,6 +80,8 @@ jobs:
           capture 1440 1100 public-selected-desktop.png _recruiter_release/wix/curated-art.html
           capture 390 1200 public-technical-mobile.png _recruiter_release/wix/technical-art.html
           capture 1440 1500 public-technical-desktop.png _recruiter_release/wix/technical-art.html
+          capture 390 3700 public-technical-mobile-full.png _recruiter_release/wix/technical-art.html
+          capture 1440 3400 public-technical-desktop-full.png _recruiter_release/wix/technical-art.html
           capture 390 844 constellation-brush-mobile.png _recruiter_release/wix/constellation-brush.html
           capture 1440 900 constellation-brush-desktop.png _recruiter_release/wix/constellation-brush.html
           capture 390 1100 environments-mobile.png wix/world-bible.html
