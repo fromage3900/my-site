@@ -1,8 +1,7 @@
 /*
- * Melodia Celestial Brush — site-wide bridge to the ORIGINAL Three.js
- * gesture-reading constellation-brush.html. No duplicate VFX implementation.
- * WebGL is lazy, desktop fine-pointer only, transparent and hit-test neutral.
- * Respects reduced motion and page visibility.
+ * Site-wide Celestial Brush: render the ORIGINAL Three.js brush math onto
+ * a native transparent canvas in the page — never over an opaque iframe.
+ * No redesign, no pointer interception and no unrelated image replacements.
  */
 (function () {
   'use strict';
@@ -11,46 +10,61 @@
   if (window.top !== window.self) return;
   if (/\/constellation-brush\.html$/i.test(location.pathname)) return;
   if (!window.matchMedia || !window.matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches) return;
-  // Avoid a second GPU context over an active 3D canvas/workbench/game.
   if (document.querySelector('canvas[data-webgl-main], .photobooth-stage, #melusina-photobooth-mount')) return;
 
-  var frame = null, ready = false, last = null, lastPost = 0;
-  var allow = true, origin = location.origin;
-  function send(type, e) {
-    if (!ready || !frame || !frame.contentWindow) return;
-    try {
-      frame.contentWindow.postMessage({ melodiaCelestial:'v1', type:type, x:e && e.x, y:e && e.y }, origin);
-    } catch (_error) { /* decorative effect must never block site navigation */ }
+  var canvas = null, ready = false, loading = false;
+  var last = null, lastPost = 0, active = true;
+  function loadScript(src, success, fail) {
+    var script = document.createElement('script');
+    script.src = src;
+    script.async = true;
+    script.onload = success;
+    script.onerror = fail || function(){};
+    document.head.appendChild(script);
+  }
+  function bootEngine() {
+    loadScript('celestial-brush-overlay-engine.js?v=20261115',
+      function () {
+        ready = !!window.MelodiaCelestialBrushInput;
+        if (ready && last) window.MelodiaCelestialBrushInput.move(last);
+      },
+      function () { if (canvas) canvas.remove(); canvas = null; });
   }
   function mount() {
-    if (frame) return;
-    frame = document.createElement('iframe');
-    // Some Chromium compositors paint an opaque iframe viewport even when
-    // the child document and WebGL clear color are transparent. Explicitly
-    // permit transparency on the frame as well as its inner document.
-    frame.setAttribute('allowtransparency','true');
-    frame.setAttribute('aria-hidden','true');
-    frame.setAttribute('tabindex','-1');
-    frame.setAttribute('title','Decorative interactive celestial brush');
-    frame.dataset.celestialSitewide = 'true';
-    frame.src = 'constellation-brush.html?overlay=1';
-    frame.style.cssText = 'position:fixed;inset:0;width:100vw;height:100dvh;z-index:90;pointer-events:none;border:0;background:transparent;opacity:.65;contain:strict;';
-    frame.addEventListener('load', function () { ready = true; if(last) send('move',last); }, {once:true});
-    document.body.appendChild(frame);
+    if (loading || !active) return;
+    loading = true;
+    canvas = document.createElement('canvas');
+    canvas.id = 'melodia-celestial-canvas';
+    canvas.setAttribute('aria-hidden', 'true');
+    canvas.dataset.celestialSitewide = 'true';
+    canvas.style.cssText = 'position:fixed;inset:0;width:100vw;height:100dvh;z-index:90;pointer-events:none;background:transparent;opacity:.72;touch-action:auto;';
+    document.body.appendChild(canvas);
+    if (window.THREE && window.THREE.WebGLRenderer) { bootEngine(); return; }
+    var fallback = function() {
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',bootEngine,
+        function(){ if(canvas)canvas.remove();canvas=null; });
+    };
+    loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js',bootEngine,fallback);
   }
-  document.addEventListener('pointermove', function(e) {
-    if (!allow || e.pointerType === 'touch' || document.hidden) return;
-    if (e.target && e.target.closest && e.target.closest('a,button,input,textarea,select,summary,[role="button"],iframe,canvas,[data-no-celestial]')) {
-      send('leave'); return;
+  function leave() {
+    if (ready && window.MelodiaCelestialBrushInput) window.MelodiaCelestialBrushInput.leave();
+  }
+  document.addEventListener('pointermove', function(event) {
+    if (!active || document.hidden || event.pointerType === 'touch') return;
+    if (event.target && event.target.closest && event.target.closest('a,button,input,textarea,select,summary,[role="button"],iframe,canvas,[data-no-celestial]')) {
+      leave(); return;
     }
     var now = performance.now();
-    if (now-lastPost < 28) return; // bounded ~35Hz upstream
+    if (now - lastPost < 28) return;
     lastPost = now;
-    last = {x:e.clientX,y:e.clientY};
-    mount();
-    send('move',last);
-  }, {passive:true});
-  document.addEventListener('pointerleave',function(){send('leave');},{passive:true});
-  document.addEventListener('visibilitychange',function(){if(document.hidden)send('leave');});
-  window.addEventListener('pagehide',function(){allow=false;send('leave');if(frame){frame.remove();frame=null;}});
+    last = {clientX:event.clientX, clientY:event.clientY, pointerId:1, pointerType:'mouse', pressure:.5};
+    if (!canvas) mount();
+    if (ready && window.MelodiaCelestialBrushInput) window.MelodiaCelestialBrushInput.move(last);
+  },{passive:true});
+  document.addEventListener('pointerleave',leave,{passive:true});
+  document.addEventListener('visibilitychange',function(){if(document.hidden)leave()});
+  window.addEventListener('pagehide',function(){
+    active=false;leave();
+    if(canvas){canvas.remove();canvas=null}
+  });
 })();
