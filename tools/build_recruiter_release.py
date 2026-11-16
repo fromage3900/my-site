@@ -32,6 +32,7 @@ PUBLISHED_ORNAMENTS = (
 PUBLISHED_EXPERIENCES = (
     "wix/constellation-brush.html",
     "wix/celestial-brush-sitewide.js",
+    "wix/celestial-brush-overlay-engine.js",
     "wix/melodia-luxury-type.css",
 )
 FILES = (*PUBLISHED_ART, *PUBLISHED_ORNAMENTS, *PUBLISHED_EXPERIENCES)
