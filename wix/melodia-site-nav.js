@@ -261,6 +261,14 @@
     createRuntimeGovernor();
     ensureSkipLink();
     applyNav();
+    // Restore the original Three.js gesture brush without changing page layout.
+    if (!document.querySelector('script[data-celestial-sitewide]')) {
+      var celestial = document.createElement('script');
+      celestial.src = 'celestial-brush-sitewide.js?v=20261115';
+      celestial.defer = true;
+      celestial.dataset.celestialSitewide = 'true';
+      document.body.appendChild(celestial);
+    }
   }
 
   if (document.readyState === 'loading') {
