@@ -19,7 +19,7 @@ for symbol in ("function onMove(e)", "function delicateStar", "function spawnOrb
 must("if (!overlayMode) scene.add(bg)" in brush, "Overlay must be transparent")
 must("if (!overlayMode) seed()" in brush, "Overlay should not cover the site with idle stars")
 must("event.origin !== location.origin" in brush, "Original brush requires same-origin messages")
-must("data-celestial-sitewide" in bridge, "Sitewide one-frame contract was lost")
+must("frame.dataset.celestialSitewide" in bridge, "Sitewide one-frame contract was lost")
 must("prefers-reduced-motion:no-preference" in bridge, "Reduced-motion guard lost")
 must("pointer-events:none" in bridge, "Brush must not intercept links")
 must("pointermove" in bridge and "postMessage" in bridge, "Brush no longer follows cursor")
