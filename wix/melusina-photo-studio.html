@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Melusina Photo Studio | Brennan Shepherd</title>
-<meta name="description" content="An interactive portrait atelier using original Melusina EEVEE renders, with pose, framing, atmosphere and shutter-preview controls.">
+<meta name="description" content="An interactive portrait atelier using original Melusina EEVEE renders, with pose, framing, atmosphere and downloadable PNG postcards.">
 <link rel="stylesheet" href="melodia-tokens.css">
 <link rel="stylesheet" href="melodia-photobooth.css">
 <style>
@@ -50,6 +50,12 @@ section h2{font:italic 400 clamp(28px,3vw,44px)/1.2 "Times New Roman",Times,Geor
 .skip:focus{top:12px}
 @media(max-width:760px){.photo-strip{grid-template-columns:1fr 1fr}.photo-strip figure:last-child{grid-column:1/-1}.photo-strip img{height:260px}.photobooth-controls{padding:14px}.photobooth-viewport{height:clamp(360px,90vw,540px)}}
 @media(max-width:460px){.photo-strip{grid-template-columns:1fr}.photo-strip figure:last-child{grid-column:auto}.photo-strip img{height:290px}}
+#photobooth-export-status{font-size:14px;color:var(--color-text-accent);max-width:48ch}
+#photobooth-download{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+#photobooth-download[hidden]{display:none}
+.photobooth-mote{position:absolute;left:50%;top:50%;color:var(--color-accent-primary);font-size:20px;pointer-events:none;animation:portrait-mote .72s ease-out both;text-shadow:0 0 8px currentColor}
+@keyframes portrait-mote{0%{opacity:0;transform:translate(-50%,-50%) scale(.3)}20%{opacity:1}100%{opacity:0;transform:translate(var(--mote-x),var(--mote-y)) scale(.65)}}
+@media(prefers-reduced-motion:reduce){.photobooth-mote{display:none;animation:none}}
 </style>
 </head>
 <body>
@@ -57,9 +63,9 @@ section h2{font:italic 400 clamp(28px,3vw,44px)/1.2 "Times New Roman",Times,Geor
 <div class="shell">
 <nav aria-label="Portfolio navigation"><a class="brand" href="portfolio-moodboard.html">✦ Melodia Studio</a><div class="links"><a href="portfolio-moodboard.html">3D Moodboard</a><a href="melodia-stage-character.html">Character Breakdown</a><a href="index.html">Portfolio</a></div></nav>
 <main id="main">
-<header><div class="eyebrow">Portrait atelier · Original EEVEE studies</div><h1>Melusina Photo Studio</h1><p>A little photographic atelier for Melusina. Choose a portrait, adjust the framing, and paint the atmosphere with five colour treatments.</p></header>
+<header><div class="eyebrow">Portrait atelier · Original EEVEE studies</div><h1>Melusina Photo Studio</h1><p>A little photographic atelier for Melusina. Choose a portrait, adjust the framing, and paint the atmosphere with five colour treatments, then take home a little postcard.</p></header>
 <div id="melusina-photobooth-mount"></div>
-<p class="studio-guide">Choose a pose · select a lens crop · tint the atmosphere · tap the shutter for a preview flash. The studio works with original rendered images, not a live 3D rig.</p>
+<p class="studio-guide">Choose a pose · select a lens crop · tint the atmosphere · choose a frame · create and save a PNG postcard. The studio works with original rendered images, not a live 3D rig.</p>
 <section aria-labelledby="macro-title">
 <h2 id="macro-title">Three details from the portrait archive</h2>
 <div class="photo-strip">
@@ -70,7 +76,7 @@ section h2{font:italic 400 clamp(28px,3vw,44px)/1.2 "Times New Roman",Times,Geor
 </section>
 <p class="note">These are original July–August 2026 EEVEE look-development studies, preserved as a portrait archive rather than a claim about the newest Melusina V2 sculpt. <a href="mahou-particle-garden.html">Wander into the Particle Garden</a> · <a href="realtime-3d-viewer.html">Explore the Object Atelier</a>.</p>
 </main></div>
-<script src="melodia-photobooth.js"></script>
+<script src="melodia-photobooth.js?v=20261125"></script>
 <script>if(window.MelodiaPhotobooth){window.MelodiaPhotobooth.init('#melusina-photobooth-mount')}</script>
 <script defer src="celestial-brush-sitewide.js?v=20261115" data-celestial-sitewide></script>
 </body></html>
