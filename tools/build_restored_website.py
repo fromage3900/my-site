@@ -47,6 +47,7 @@ PAGES = (
     "geometry-nodes.html",
     "universal-material-impact.html",
     "realtime-3d-viewer.html",
+    "studio-3d-viewer.html",
     "melodia-living-worlds.html",
     "cosmic-orrery.html",
     "constellation-brush.html",
@@ -70,6 +71,9 @@ THREE_DEMOS = (
     # Restore only the requested public viewer entry points.
     "tools/fromage-webgl-kit/accessory-viewer/index.html",
     "tools/fromage-webgl-kit/prototypes/procedural-industrial-loop/index.html",
+    "resonant-wilds/index.html",
+    "resonant-wilds/asset-gallery.html",
+    "resonant-wilds-glass/index.html",
 )
 # All source JS/CSS for the selected pages is published intact. WebGL models and
 # PBR textures are grouped because the workbench chooses files dynamically.
