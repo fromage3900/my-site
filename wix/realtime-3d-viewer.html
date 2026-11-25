@@ -7,11 +7,11 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http://127.0.0.1:* ws://127.0.0.1:*; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:;" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<title>Interactive 3D Asset Study | Brennan Shepherd</title>
+<title>The Object Atelier | Brennan Shepherd</title>
 <meta name="description" content="Browser WebGL study for inspecting stylized assets, material response, topology, and shading channels; Unreal Engine renders remain the visual authority." />
 <link rel="canonical" href="https://fromage3900.github.io/my-site/wix/realtime-3d-viewer.html" />
 <meta name="robots" content="noindex,follow" />
-<meta property="og:title" content="Interactive 3D Asset Study | Brennan Shepherd" />
+<meta property="og:title" content="The Object Atelier | Brennan Shepherd" />
 <meta property="og:type" content="website" />
 <meta property="og:description" content="A browser-side asset and material inspection study from the Melodia technical-art portfolio." />
 <meta property="og:image" content="https://fromage3900.github.io/my-site/generated/assets/unreal/hero-hero-level-20260708-190653-1920x1080.png" />
@@ -48,6 +48,9 @@
   .viewer-authority-note strong { color: #c9a86a; font-weight: 600; }
   .viewer-unavailable { display:grid; place-items:center; min-height:360px; padding:40px; text-align:center; color:#cfd6ec; }
   .viewer-unavailable strong { display:block; margin-bottom:8px; color:#fff; font-family:var(--font-display); font-size:1.2rem; }
+  .viewer-archive summary{cursor:pointer;min-height:44px;display:flex;align-items:center;text-decoration:underline;text-underline-offset:4px}
+  .viewer-archive .asset-btn{width:100%;margin-top:6px}
+  @media (max-width:1100px){.viewer-viewport-box{grid-row:1;min-height:clamp(400px,70vw,650px)}.viewer-3d-canvas-container{min-height:320px;height:auto}.viewer-telemetry-bar{flex-wrap:wrap;gap:12px}.viewer-3d-app{margin-inline:12px}}
   @media (prefers-reduced-motion: reduce) { .asset-btn, .fabric-btn, .mode-btn { transition:none; } }
 </style>
 </head>
@@ -67,7 +70,7 @@
   </header>
   <main id="main" class="viewer-3d-main">
     <div style="padding: 0 24px;">
-      <h1 class="atelier-lab-title" style="font-size: 1.8rem; margin: 0;">Interactive 3D Asset Study</h1>
+      <h1 class="atelier-lab-title" style="font-size: 1.8rem; margin: 0;">The Object Atelier</h1>
       <p style="color: #a4adc9; font-size: 0.95rem; margin: 4px 0 6px;">A browser-side WebGL study for orbiting stylized assets, comparing material response, inspecting topology, and isolating shading channels.</p>
       <p class="viewer-authority-note"><strong>Scope:</strong> this viewport is an interactive presentation study, not a 1:1 Unreal renderer. The UE5.8 captures and breakdown pages remain the visual and technical authority.</p>
     </div>
@@ -77,12 +80,6 @@
         <div class="group-title">Fabrics &amp; Lookdev</div>
         <button type="button" class="asset-btn active" data-asset="fabric-sphere"><span>Lookdev Sphere</span><span class="tag-badge">4.6k Tris</span></button>
         <button type="button" class="asset-btn" data-asset="fabric-drape"><span>Draped Swatch</span><span class="tag-badge">3.2k Tris</span></button>
-        <div class="group-title">Characters &amp; Pipeline Tests</div>
-        <button type="button" class="asset-btn" data-asset="melusina-shirt"><span>Melusina (Production Wardrobe)</span><span class="tag-badge">Hero Garment</span></button>
-        <button type="button" class="asset-btn" data-asset="melusina-hero"><span>Melusina (Full Wardrobe)</span><span class="tag-badge">Hero Model</span></button>
-        <button type="button" class="asset-btn" data-asset="sir-melodious"><span>Sir Melodious</span><span class="tag-badge">Companion</span></button>
-        <button type="button" class="asset-btn" data-asset="zundamon"><span>Zundamon</span><span class="tag-badge">3rd-party pipeline test</span></button>
-
         <div class="group-title">Sacred Ornaments &amp; Tokens</div>
         <button type="button" class="asset-btn" data-asset="melody-token-water"><span>Water Melody Token</span><span class="tag-badge">192 Tris</span></button>
         <button type="button" class="asset-btn" data-asset="melody-token-star"><span>Star Melody Token</span><span class="tag-badge">Low-Poly</span></button>
@@ -94,6 +91,14 @@
         <button type="button" class="asset-btn" data-asset="grand-piano"><span>Grand Piano</span><span class="tag-badge">Instrument</span></button>
         <button type="button" class="asset-btn" data-asset="prop-fountain"><span>Atlantis Fountain</span><span class="tag-badge">Architecture</span></button>
         <button type="button" class="asset-btn" data-asset="prop-trident"><span>Triton Trident</span><span class="tag-badge">Prop</span></button>
+      <details class="viewer-archive">
+          <summary>Character and pipeline archive</summary>
+          <div class="group-title">Characters &amp; Pipeline Tests</div>
+        <button type="button" class="asset-btn" data-asset="melusina-shirt"><span>Melusina (Production Wardrobe)</span><span class="tag-badge">Hero Garment</span></button>
+        <button type="button" class="asset-btn" data-asset="melusina-hero"><span>Melusina (Full Wardrobe)</span><span class="tag-badge">Hero Model</span></button>
+        <button type="button" class="asset-btn" data-asset="sir-melodious"><span>Sir Melodious</span><span class="tag-badge">Companion</span></button>
+        <button type="button" class="asset-btn" data-asset="zundamon"><span>Zundamon</span><span class="tag-badge">3rd-party pipeline test</span></button>
+        </details>
       </aside>
       <section id="viewer-viewport" class="viewer-viewport-box" aria-label="3D WebGL Viewport">
         <div class="viewer-hud-overlay">

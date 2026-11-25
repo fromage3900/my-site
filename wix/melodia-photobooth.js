@@ -98,8 +98,8 @@
                 `).join('')}
               </div>
 
-              <button type="button" class="photobooth-shutter-btn" id="photobooth-shutter" aria-label="Capture snapshot burst">
-                <span>✦ Capture Photo</span>
+              <button type="button" class="photobooth-shutter-btn" id="photobooth-shutter" aria-label="Preview shutter flash">
+                <span>✦ Shutter Preview</span>
               </button>
             </div>
           </div>
@@ -114,7 +114,16 @@
         btn.addEventListener('click', function () {
           var id = btn.getAttribute('data-pose');
           state.currentPose = POSES.find(p => p.id === id) || state.currentPose;
-          render();
+          var img = root.querySelector('#photobooth-img');
+          if (img) {
+            img.src = state.currentPose.src;
+            img.alt = 'Melusina Photobooth — ' + state.currentPose.name;
+          }
+          root.querySelectorAll('[data-pose]').forEach(function (b) {
+            var active = b === btn;
+            b.classList.toggle('active', active);
+            b.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
         });
       });
 

@@ -152,22 +152,20 @@ def original_home() -> str:
   <div class="section-head">
     <div><p class="eyebrow magazine-kicker">Interactive studio · Little worlds to wander</p>
       <h2 id="atelier-title">An atelier of curiosities.</h2></div>
-    <p>Original 3D artwork, living environments, and a constellation brush made to play with.</p>
+    <p>Three small interactive rooms: portraits, living light and sculpted objects.</p>
   </div>
-  <nav class="home-foyer-grid" aria-label="Interactive portfolio experiences">
-    <a class="home-foyer-card" href="portfolio-moodboard.html"><img src="../generated/optimized/curated-art/melusina_beauty_eevee_20260715c_01-1280.webp" alt="" loading="lazy"><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">01 · Original artwork</span><strong>Fibonacci 3D Moodboard</strong><span>Actual sculpt, environment and material renders</span></span></a>
-    <a class="home-foyer-card" href="melusina-photo-studio.html"><img src="../generated/assets/character-loops/melusina_glam_macro_postcard_4s_poster.png" alt="" loading="lazy"><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">02 · EEVEE portraits</span><strong>Melusina Photo Studio</strong><span>Original poses, lenses and close-ups</span></span></a>
-    <a class="home-foyer-card" href="constellation-brush.html"><span class="home-foyer-quiet-mark" aria-hidden="true">✦</span><span class="home-foyer-copy"><span class="home-foyer-kicker">03 · Three.js gesture art</span><strong>Constellation Brush</strong><span>Draw orbiting stars, listen to crystal notes</span></span></a>
-    <a class="home-foyer-card" href="../melodia/folio/index.html"><span class="home-foyer-quiet-mark" aria-hidden="true">✧</span><span class="home-foyer-copy"><span class="home-foyer-kicker">04 · Cel-shaded storybook</span><strong>Traveling Folio</strong><span>An interactive 3D storybook atelier</span></span></a>
-    <a class="home-foyer-card" href="realtime-3d-viewer.html"><span class="home-foyer-quiet-mark" aria-hidden="true">◇</span><span class="home-foyer-copy"><span class="home-foyer-kicker">05 · Authored 3D assets</span><strong>Object Viewer</strong><span>Orbit, inspect materials and lookdev</span></span></a>
-    <a class="home-foyer-card" href="melodia-living-worlds.html"><span class="home-foyer-quiet-mark" aria-hidden="true">☾</span><span class="home-foyer-copy"><span class="home-foyer-kicker">06 · Browser dreamscapes</span><strong>Living Worlds</strong><span>Sea Above, Faraway Mother, Horizon Eater</span></span></a>
+  <nav class="home-foyer-grid" aria-label="Three signature interactive experiences">
+    <a class="home-foyer-card" href="melusina-photo-studio.html"><img src="../generated/optimized/curated-art/melusina_beauty_eevee_20260715c_01-1280.webp" alt="" loading="lazy"><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">01 · Portrait atelier</span><strong>Melusina Photo Studio</strong><span>Choose a pose, frame a portrait and tint the atmosphere.</span></span></a>
+    <a class="home-foyer-card atelier-particle-card" href="mahou-particle-garden.html"><img src="assets/figma/mdl-sparkle-cluster.svg" alt="" loading="lazy"><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">02 · Living particles</span><strong>Mahou Particle Garden</strong><span>Touch petals, pearls and musical motes; awaken a sigil.</span></span></a>
+    <a class="home-foyer-card" href="realtime-3d-viewer.html?asset=violin&amp;fabric=GildedBrocade"><img src="../generated/assets/props/violin_komikaze_three_quarter.png" alt="" loading="lazy"><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">03 · Crafted objects</span><strong>The Object Atelier</strong><span>One interactive 3D viewer for instruments, ornaments and materials.</span></span></a>
   </nav>
+  <p class="atelier-archive-links">More from the studio: <a href="portfolio-moodboard.html">3D moodboard</a> · <a href="constellation-brush.html">Constellation Brush</a> · <a href="../melodia/folio/index.html">Traveling Folio</a> · <a href="melodia-living-worlds.html">Living Worlds</a></p>
 </div></section>
 """
     assert '</main>' in source
     source = source.replace('</main>', atelier + '\n</main>', 1)
     # The previous source styling explicitly fixes the first three-card grid.
-    # Scope the new atelier as a six-card showcase without changing that foyer.
+    # Scope the three featured rooms without changing the original foyer.
     source = source.replace(
         '</head>',
         '<style id="atelier-home-layout">'
@@ -175,6 +173,9 @@ def original_home() -> str:
         '#interactive-atelier .home-foyer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}'
         '#interactive-atelier .home-foyer-card{grid-column:auto!important;min-height:280px!important}'
         '#interactive-atelier .home-foyer-card img{width:100%;height:100%;object-fit:cover}'
+        '#interactive-atelier .atelier-particle-card img{object-fit:contain;padding:clamp(22px,5vw,66px)}'
+        '#interactive-atelier .atelier-archive-links{margin-top:24px;text-align:center;line-height:1.8}'
+        '#interactive-atelier .atelier-archive-links a{text-underline-offset:4px}'
         '@media(max-width:780px){#interactive-atelier .home-foyer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}'
         '@media(max-width:560px){#interactive-atelier .home-foyer-grid{grid-template-columns:1fr}}'
         '</style></head>', 1,
@@ -361,6 +362,22 @@ def main() -> None:
     assert "melodia-hero-scene.css" in home
     assert "constellation-brush.html" in home
     assert "melusina-photo-studio.html" in home
+    featured = re.search(r'<nav class="home-foyer-grid" aria-label="Three signature interactive experiences">([\s\S]*?)</nav>', home)
+    assert featured, "Curated interactive atelier is missing"
+    featured_links = re.findall(r'href="([^"]+)"', featured.group(1))
+    assert [link.split("?")[0] for link in featured_links] == [
+        "melusina-photo-studio.html", "mahou-particle-garden.html", "realtime-3d-viewer.html"
+    ], "Feature one object viewer alongside portraits and particles"
+    for key in ("wix/melodia-photobooth.js", "wix/melodia-photobooth.css",
+                "wix/mahou-particle-garden.html", "wix/realtime-3d-viewer.html",
+                "generated/assets/props/violin_komikaze_three_quarter.png",
+                "wix/assets/figma/mdl-sparkle-cluster.svg"):
+        if key not in PUBLISHED:
+            raise RuntimeError(f"Missing curated atelier dependency: {key}")
+    pose_source = (WIX / "melodia-photobooth.js").read_text(encoding="utf-8")
+    for match in REFERENCES.finditer(pose_source):
+        if match.group(1) not in PUBLISHED:
+            raise RuntimeError(f"Missing original portrait: {match.group(1)}")
 
     total = sum((OUT / p).stat().st_size for p in PUBLISHED)
     if total > 750_000_000:
