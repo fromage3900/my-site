@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" data-page="studio-3d-viewer">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>3D Studio &amp; Asset Atelier | Brennan Shepherd</title>
+  <meta name="description" content="Real-time Three.js 3D model viewer curating eyewear, musical instruments, architecture, characters, and Harmonic Grove assets with PBR, Liquid Glass, and NPR cel shading.">
+  <meta property="og:title" content="3D Studio &amp; Asset Atelier | Brennan Shepherd">
+  <meta property="og:description" content="Interactive WebGL showcase featuring curated 3D assets, Liquid Glass optical shaders, studio lighting presets, and live topology inspection.">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #0b0c12;
+      --panel: rgba(16, 18, 28, 0.86);
+      --border: rgba(255, 255, 255, 0.09);
+      --border-strong: rgba(212, 180, 131, 0.38);
+      --text: #f3f1ec;
+      --muted: #9b9aa8;
+      --accent: #d8b57d;
+      --accent-soft: rgba(216, 181, 125, 0.16);
+      --cyan: #8ce4ff;
+      --font-display: "Cormorant Garamond", "Georgia", serif;
+      --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: var(--bg); color: var(--text); font-family: var(--font-sans); overflow: hidden; -webkit-font-smoothing: antialiased; }
+    .app-shell { display: grid; grid-template-rows: 58px 1fr; height: 100dvh; width: 100vw; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; padding: 0 18px; background: rgba(11, 12, 18, 0.94); border-bottom: 1px solid var(--border); gap: 12px; z-index: 20; }
+    .brand-group { display: flex; align-items: baseline; gap: 12px; min-width: 0; }
+    .brand-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; letter-spacing: 0.03em; color: var(--text); text-decoration: none; white-space: nowrap; }
+    .brand-sub { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); white-space: nowrap; }
+    .topbar-actions { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; overflow-x: auto; }
+    .nav-pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03); color: var(--text); font-size: 0.76rem; font-weight: 500; text-decoration: none; cursor: pointer; white-space: nowrap; transition: border-color 0.18s ease, background 0.18s ease; }
+    .nav-pill:hover { border-color: var(--border-strong); background: var(--accent-soft); }
+    .nav-pill--primary { border-color: rgba(140, 228, 255, 0.45); background: rgba(140, 228, 255, 0.12); color: #dff7ff; }
+    .nav-pill--primary:hover { background: rgba(140, 228, 255, 0.22); }
+    .workspace { display: grid; grid-template-columns: 292px 1fr 304px; height: 100%; min-height: 0; position: relative; }
+    .sidebar { background: var(--panel); backdrop-filter: blur(16px); border-right: 1px solid var(--border); display: flex; flex-direction: column; min-height: 0; z-index: 10; }
+    .sidebar--right { border-right: none; border-left: 1px solid var(--border); }
+    .sidebar-header { padding: 14px 16px 10px; border-bottom: 1px solid var(--border); }
+    .sidebar-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); margin: 0 0 10px; }
+    .search-input { width: 100%; padding: 8px 11px; border-radius: 10px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.04); color: var(--text); font-size: 0.8rem; outline: none; }
+    .search-input:focus { border-color: var(--accent); }
+    .cat-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .cat-tab { padding: 4px 9px; border-radius: 999px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.71rem; cursor: pointer; transition: all 0.15s ease; }
+    .cat-tab.active, .cat-tab:hover { color: var(--text); border-color: var(--accent); background: var(--accent-soft); }
+    .sidebar-scroll { flex: 1; overflow-y: auto; padding: 12px 14px 20px; }
+    .asset-card { width: 100%; text-align: left; padding: 10px 12px; margin-bottom: 8px; border-radius: 11px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.025); color: var(--text); cursor: pointer; transition: all 0.16s ease; display: flex; flex-direction: column; gap: 4px; }
+    .asset-card:hover { border-color: rgba(255, 255, 255, 0.22); background: rgba(255, 255, 255, 0.05); }
+    .asset-card.active { border-color: var(--accent); background: var(--accent-soft); }
+    .asset-card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .asset-name { font-size: 0.83rem; font-weight: 600; line-height: 1.25; }
+    .asset-badge { font-family: var(--font-mono); font-size: 0.65rem; padding: 2px 6px; border-radius: 6px; background: rgba(255, 255, 255, 0.08); color: var(--accent); text-transform: uppercase; flex-shrink: 0; }
+    .asset-meta { font-size: 0.72rem; color: var(--muted); }
+    .drop-zone { margin-top: 12px; padding: 12px; border-radius: 11px; border: 1px dashed rgba(216, 181, 125, 0.42); background: rgba(216, 181, 125, 0.05); text-align: center; font-size: 0.75rem; color: var(--muted); cursor: pointer; display: block; }
+    .drop-zone:hover, .drop-zone.dragover { border-color: var(--cyan); background: rgba(140, 228, 255, 0.1); color: var(--text); }
+    .viewport-stage { position: relative; width: 100%; height: 100%; min-width: 0; min-height: 0; overflow: hidden; background: radial-gradient(circle at 50% 35%, #1d2030 0%, #0b0c12 72%); }
+    #canvas-host { width: 100%; height: 100%; touch-action: none; }
+    .hud-top { position: absolute; top: 14px; left: 16px; right: 16px; display: flex; justify-content: space-between; align-items: flex-start; pointer-events: none; gap: 12px; }
+    .hud-title-card { background: rgba(11, 12, 18, 0.72); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; max-width: 420px; pointer-events: auto; }
+    .hud-kicker { font-size: 0.67rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 2px; }
+    .hud-asset-title { font-family: var(--font-display); font-size: 1.32rem; margin: 0; line-height: 1.15; }
+    .hud-asset-desc { font-size: 0.75rem; color: var(--muted); margin: 4px 0 0; }
+    .hud-camera-bar { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; pointer-events: auto; }
+    .mini-btn { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: rgba(11, 12, 18, 0.76); backdrop-filter: blur(10px); color: var(--text); font-size: 0.72rem; cursor: pointer; transition: all 0.15s ease; }
+    .mini-btn:hover, .mini-btn.active { border-color: var(--accent); background: var(--accent-soft); }
+    .hud-bottom { position: absolute; left: 16px; right: 16px; bottom: 14px; display: flex; justify-content: space-between; align-items: center; gap: 10px; pointer-events: none; }
+    .telemetry-strip { display: flex; flex-wrap: wrap; gap: 12px; padding: 8px 13px; border-radius: 10px; background: rgba(11, 12, 18, 0.76); backdrop-filter: blur(10px); border: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.71rem; color: var(--muted); pointer-events: auto; }
+    .telemetry-strip strong { color: var(--text); font-weight: 500; }
+    .loader-overlay { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(11, 12, 18, 0.56); backdrop-filter: blur(4px); z-index: 15; flex-direction: column; gap: 10px; font-size: 0.82rem; color: var(--text); }
+    .loader-overlay.visible { display: flex; }
+    .spinner { width: 30px; height: 30px; border-radius: 50%; border: 2.5px solid rgba(255, 255, 255, 0.14); border-top-color: var(--accent); animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .control-group { margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .control-group:last-child { border-bottom: none; }
+    .group-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.13em; color: var(--accent); margin: 0 0 9px; display: flex; justify-content: space-between; align-items: center; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .ctrl-btn { padding: 7px 8px; border-radius: 8px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03); color: var(--text); font-size: 0.73rem; cursor: pointer; text-align: center; transition: all 0.15s ease; }
+    .ctrl-btn:hover { border-color: rgba(255, 255, 255, 0.25); }
+    .ctrl-btn.active { border-color: var(--accent); background: var(--accent-soft); color: #fff8eb; }
+    .slider-row { margin-top: 9px; }
+    .slider-head { display: flex; justify-content: space-between; font-size: 0.74rem; color: var(--muted); margin-bottom: 4px; }
+    .slider-head span:last-child { font-family: var(--font-mono); color: var(--text); }
+    input[type="range"] { width: 100%; accent-color: var(--accent); cursor: pointer; }
+    .toggle-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; margin-top: 8px; }
+    .mobile-drawer-bar { display: none; }
+    @media (max-width: 1080px) {
+      .workspace { grid-template-columns: 1fr; }
+      .sidebar { position: absolute; top: 0; bottom: 52px; width: min(320px, 88vw); transform: translateX(-105%); transition: transform 0.22s ease; }
+      .sidebar--right { right: 0; left: auto; transform: translateX(105%); }
+      .sidebar.open { transform: translateX(0); }
+      .hud-bottom { bottom: 62px; }
+      .mobile-drawer-bar { display: flex; position: absolute; left: 0; right: 0; bottom: 0; height: 52px; background: rgba(11, 12, 18, 0.94); border-top: 1px solid var(--border); z-index: 25; align-items: center; justify-content: space-around; padding: 0 10px; }
+      .brand-sub { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-group">
+        <a class="brand-title" href="index.html">FROM&Delta;GE Studio</a>
+        <span class="brand-sub">Flagship 3D Model Viewer</span>
+      </div>
+      <nav class="topbar-actions" aria-label="Studio navigation">
+        <a class="nav-pill" href="index.html">Portfolio</a>
+        <a class="nav-pill" href="../tools/fromage-webgl-kit/accessory-viewer/index.html">Eyewear Atelier</a>
+        <a class="nav-pill nav-pill--primary" href="../resonant-wilds/">Play Resonant Wilds</a>
+        <a class="nav-pill" href="../resonant-wilds-glass/">Liquid Glass Build</a>
+        <button class="nav-pill" id="btn-screenshot" type="button">Capture PNG</button>
+      </nav>
+    </header>
+    <div class="workspace">
+      <aside class="sidebar" id="panel-catalog" aria-label="Curated 3D asset catalog">
+        <div class="sidebar-header">
+          <p class="sidebar-title">Curated Asset Catalog</p>
+          <input id="asset-search" class="search-input" type="search" placeholder="Filter curated models..." autocomplete="off">
+          <div class="cat-tabs" id="cat-tabs"></div>
+        </div>
+        <div class="sidebar-scroll">
+          <div id="asset-list"></div>
+          <label class="drop-zone" id="drop-zone">
+            <strong>Drop or Browse Local 3D File</strong><br>
+            <span>Load any .glb, .gltf, .fbx, or .obj from Drive or disk</span>
+            <input id="local-file-input" type="file" accept=".glb,.gltf,.fbx,.obj" hidden>
+          </label>
+        </div>
+      </aside>
+      <main class="viewport-stage" id="viewport-stage">
+        <div id="canvas-host"></div>
+        <div class="hud-top">
+          <div class="hud-title-card">
+            <div class="hud-kicker" id="hud-category">Eyewear Atelier</div>
+            <h1 class="hud-asset-title" id="hud-title">Aviator &middot; Brushed Metal</h1>
+            <p class="hud-asset-desc" id="hud-desc">Optical luxury frame with live Liquid Glass lens refraction and studio reflections.</p>
+          </div>
+          <div class="hud-camera-bar">
+            <button class="mini-btn" data-cam="hero" type="button">Hero 3/4</button>
+            <button class="mini-btn" data-cam="front" type="button">Front</button>
+            <button class="mini-btn" data-cam="profile" type="button">Profile</button>
+            <button class="mini-btn" data-cam="macro" type="button">Macro</button>
+            <button class="mini-btn" data-cam="top" type="button">Top</button>
+            <button class="mini-btn" id="btn-reset" type="button">Reset</button>
+          </div>
+        </div>
+        <div class="loader-overlay" id="loader-overlay" aria-live="polite">
+          <div class="spinner"></div>
+          <div id="loader-text">Loading model...</div>
+        </div>
+        <div class="hud-bottom">
+          <div class="telemetry-strip" id="telemetry-strip">
+            <span>Tris: <strong id="stat-tris">--</strong></span>
+            <span>Verts: <strong id="stat-verts">--</strong></span>
+            <span>Meshes: <strong id="stat-meshes">--</strong></span>
+            <span>Format: <strong id="stat-format">--</strong></span>
+            <span>Mode: <strong id="stat-mode">PBR Studio</strong></span>
+          </div>
+        </div>
+        <div class="mobile-drawer-bar">
+          <button class="mini-btn" id="mob-catalog" type="button">Models</button>
+          <button class="mini-btn" id="mob-controls" type="button">Shaders &amp; Light</button>
+          <button class="mini-btn" id="mob-reset" type="button">Reset View</button>
+        </div>
+      </main>
+      <aside class="sidebar sidebar--right" id="panel-controls" aria-label="Lookdev and shader controls">
+        <div class="sidebar-header"><p class="sidebar-title">Lookdev &amp; Shader Controls</p></div>
+        <div class="sidebar-scroll">
+          <div class="control-group"><div class="group-label"><span>Render Mode</span></div><div class="grid-3" id="mode-grid"></div></div>
+          <div class="control-group">
+            <div class="group-label"><span>Studio Lighting</span></div>
+            <div class="grid-2" id="light-grid"></div>
+            <div class="slider-row"><div class="slider-head"><span>Exposure</span><span id="val-exposure">1.10</span></div><input id="sl-exposure" type="range" min="0.4" max="2.2" step="0.05" value="1.1"></div>
+            <div class="slider-row"><div class="slider-head"><span>Key Light Angle</span><span id="val-angle">38&deg;</span></div><input id="sl-angle" type="range" min="0" max="360" step="1" value="38"></div>
+          </div>
+          <div class="control-group"><div class="group-label"><span>Material &amp; Couture Finish</span></div><div class="grid-2" id="finish-grid"></div></div>
+          <div class="control-group" id="glass-group">
+            <div class="group-label"><span>Liquid Glass &amp; Optics</span></div>
+            <div class="slider-row"><div class="slider-head"><span>Refraction</span><span id="val-refract">0.038</span></div><input id="sl-refract" type="range" min="0" max="0.12" step="0.002" value="0.038"></div>
+            <div class="slider-row"><div class="slider-head"><span>Dispersion</span><span id="val-disperse">0.024</span></div><input id="sl-disperse" type="range" min="0" max="0.08" step="0.002" value="0.024"></div>
+            <div class="slider-row"><div class="slider-head"><span>Iridescence</span><span id="val-irid">0.68</span></div><input id="sl-irid" type="range" min="0" max="1" step="0.02" value="0.68"></div>
+            <div class="slider-row"><div class="slider-head"><span>Specular Glint</span><span id="val-spec">0.92</span></div><input id="sl-spec" type="range" min="0" max="1.5" step="0.02" value="0.92"></div>
+          </div>
+          <div class="control-group">
+            <div class="group-label"><span>Stage &amp; Turntable</span></div>
+            <label class="toggle-row"><span>Auto-Rotate Turntable</span><input id="chk-rotate" type="checkbox" checked></label>
+            <label class="toggle-row"><span>Contact Shadows &amp; Plinth</span><input id="chk-shadows" type="checkbox" checked></label>
+            <label class="toggle-row"><span>Studio Reference Grid</span><input id="chk-grid" type="checkbox"></label>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
+    import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+    import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+    const CURATED_ASSETS = [
+      { id: 'aviator-metal', title: 'Aviator · Brushed Metal', category: 'Eyewear', format: 'glb', path: 'models/eyewear-heroes/aviator-metal.glb', defaultMode: 'pbr', eyewear: true, desc: 'Brushed metallic aviator frame with optical lens shading and studio rim highlights.' },
+      { id: 'aviator-tortoise', title: 'Aviator · Tortoiseshell', category: 'Eyewear', format: 'glb', path: 'models/eyewear-heroes/aviator-tortoise.glb', defaultMode: 'pbr', eyewear: true, desc: 'Warm acetate tortoiseshell aviator with clearcoat polish and tinted lenses.' },
+      { id: 'cateye-metal', title: 'Cat-Eye · Brushed Metal', category: 'Eyewear', format: 'glb', path: 'models/eyewear-heroes/cateye-metal.glb', defaultMode: 'pbr', eyewear: true, desc: 'Sculpted metallic cat-eye silhouette designed for luxury product lookdev.' },
+      { id: 'cateye-tortoise', title: 'Cat-Eye · Tortoiseshell', category: 'Eyewear', format: 'glb', path: 'models/eyewear-heroes/cateye-tortoise.glb', defaultMode: 'pbr', eyewear: true, desc: 'Acetate tortoiseshell cat-eye frame paired with optical specular response.' },
+      { id: 'panto-metal', title: 'Panto · Brushed Metal', category: 'Eyewear', format: 'glb', path: 'models/eyewear-heroes/panto-metal.glb', defaultMode: 'pbr', eyewear: true, desc: 'Classic round panto geometry in fine brushed metal.' },
+      { id: 'panto-tortoise', title: 'Panto · Tortoiseshell', category: 'Eyewear', format: 'glb', path: 'models/eyewear-heroes/panto-tortoise.glb', defaultMode: 'pbr', eyewear: true, desc: 'Heritage panto silhouette in warm tortoiseshell acetate.' },
+      { id: 'rect-metal', title: 'Rectangular · Brushed Metal', category: 'Eyewear', format: 'glb', path: 'models/eyewear-heroes/rect-metal.glb', defaultMode: 'pbr', eyewear: true, desc: 'Architectural rectangular frame with crisp bevels and metallic speculars.' },
+      { id: 'rect-tortoise', title: 'Rectangular · Tortoiseshell', category: 'Eyewear', format: 'glb', path: 'models/eyewear-heroes/rect-tortoise.glb', defaultMode: 'pbr', eyewear: true, desc: 'Structured rectangular acetate frame with subtle clearcoat reflection.' },
+      { id: 'grand-piano', title: 'Atelier Grand Piano', category: 'Instruments', format: 'glb', path: 'models/grand_piano.glb', defaultMode: 'pbr', desc: 'Hero hard-surface grand piano showcase in optimized GLB.' },
+      { id: 'violin', title: 'Bell Reliquary Violin', category: 'Instruments', format: 'fbx', path: 'models/SM_VIOLIN_BELL_RELIQUARY.fbx', defaultMode: 'pbr', desc: 'Ornamental resonance violin sculpted for Melodia hard-surface lookdev.' },
+      { id: 'lute', title: 'Pelagic Vault Lute', category: 'Instruments', format: 'fbx', path: 'models/SM_LUTE_PELAGIC_VAULT.fbx', defaultMode: 'pbr', desc: 'Nautical baroque lute hero prop with carved scrollwork.' },
+      { id: 'sacred-harp', title: 'Cathedral Sacred Harp', category: 'Instruments', format: 'fbx', path: 'models/SM_PropHarp.fbx', defaultMode: 'pbr', desc: 'Production cathedral harp prop designed for gilded metallic lookdev.' },
+      { id: 'trident', title: 'Triton Sacred Trident', category: 'Instruments', format: 'fbx', path: 'models/SM_PropTrident.fbx', defaultMode: 'pbr', desc: 'Ceremonial trident hero prop with ornamental crest.' },
+      { id: 'star-token', title: 'Astral Star Melody Token', category: 'Instruments', format: 'fbx', path: 'models/SM_MelodyToken_Star_Web.fbx', defaultMode: 'liquid-glass', desc: 'Collectible resonance token ideal for Liquid Glass iridescence.' },
+      { id: 'water-token', title: 'Sacred Water Melody Token', category: 'Instruments', format: 'obj', path: 'models/SM_Orn_MelodyToken_Water.obj', defaultMode: 'liquid-glass', desc: 'Fluid crest ornament showcasing refracted glass and specular glints.' },
+      { id: 'treble-clef', title: 'Melodia Treble Clef', category: 'Instruments', format: 'obj', path: 'models/SM_Orn_TrebleClef.obj', defaultMode: 'pbr', desc: 'Signature sculptural treble clef motif.' },
+      { id: 'stone-pillar', title: 'Cathedral Stone Pillar', category: 'Architecture', format: 'glb', path: 'models/pillar_stone.glb', defaultMode: 'pbr', desc: 'Fluted cathedral stone column in web-optimized GLB.' },
+      { id: 'grotto-fountain', title: 'Grotto Stone Fountain', category: 'Architecture', format: 'glb', path: 'models/fountain_round.glb', defaultMode: 'pbr', desc: 'Carved circular grotto fountain centerpiece.' },
+      { id: 'balcony-wall', title: 'Balcony Wall Relief', category: 'Architecture', format: 'glb', path: 'models/balcony_wall.glb', defaultMode: 'pbr', desc: 'Modular architectural balustrade and carved relief wall.' },
+      { id: 'atelier-lantern', title: 'Atelier Lantern', category: 'Architecture', format: 'glb', path: 'models/lantern.glb', defaultMode: 'pbr', desc: 'Ornamental street lantern study in GLB.' },
+      { id: 'atlantis-fountain', title: 'Atlantis Classical Fountain', category: 'Architecture', format: 'fbx', path: 'models/SM_PropFountain.fbx', defaultMode: 'pbr', desc: 'Production sculpted multi-tier fountain.' },
+      { id: 'rw-moonbridge', title: 'Moonbridge Arch', category: 'Harmonic Grove', format: 'glb', path: '../resonant-wilds/assets/models/arc_moonbridge.glb', defaultMode: 'pbr', desc: 'Playable Resonant Wilds landmark arch bridging Shorewake streams.' },
+      { id: 'rw-lyre-gate', title: 'Lyre Sanctuary Gate', category: 'Harmonic Grove', format: 'glb', path: '../resonant-wilds/assets/models/arc_lyre_gate.glb', defaultMode: 'pbr', desc: 'Instrument-framed sanctuary gateway from Harmonic Grove.' },
+      { id: 'rw-dream-fountain', title: 'Dream Fountain', category: 'Harmonic Grove', format: 'glb', path: '../resonant-wilds/assets/models/prp_dream_fountain.glb', defaultMode: 'pbr', desc: 'Harmonic Grove plaza centerpiece fountain.' },
+      { id: 'rw-harp-plinth', title: 'Harp Plinth Shrine', category: 'Harmonic Grove', format: 'glb', path: '../resonant-wilds/assets/models/prp_harp_plinth.glb', defaultMode: 'pbr', desc: 'Musical plinth shrine from Resonant Wilds.' },
+      { id: 'rw-checkpoint', title: 'Checkpoint Spire', category: 'Harmonic Grove', format: 'glb', path: '../resonant-wilds/assets/models/int_checkpoint_spire.glb', defaultMode: 'toon', desc: 'Interactive Resonant Wilds waypoint spire.' },
+      { id: 'rw-echo-bowl', title: 'Echo Resonance Bowl', category: 'Harmonic Grove', format: 'glb', path: '../resonant-wilds/assets/models/int_echo_bowl.glb', defaultMode: 'pbr', desc: 'Interactive acoustic bowl prop from Resonant Wilds.' },
+      { id: 'rw-chimes', title: 'Choral Ring Chimes', category: 'Harmonic Grove', format: 'glb', path: '../resonant-wilds/assets/models/orn_choral_ring_chimes.glb', defaultMode: 'pbr', desc: 'Suspended harmonic chime ring ornament.' },
+      { id: 'rw-moonwillow', title: 'Moonwillow Canopy', category: 'Harmonic Grove', format: 'glb', path: '../resonant-wilds/assets/models/can_moonwillow.glb', defaultMode: 'toon', desc: 'Stylized Harmonic Grove canopy tree hero.' },
+      { id: 'rw-cypress', title: 'Cyan Cypress', category: 'Harmonic Grove', format: 'glb', path: '../resonant-wilds/assets/models/can_cyan_cypress.glb', defaultMode: 'toon', desc: 'Stylized coastal cypress hero from Shorewake.' },
+      { id: 'melusina-full', title: 'Melusina · Full Wardrobe', category: 'Characters', format: 'fbx', path: 'models/SK_Melusina_FullRig_Viewer.fbx', defaultMode: 'pbr', desc: 'Full-rigged Melusina character lookdev mesh.' },
+      { id: 'melusina-prod', title: 'Melusina · Production Outfit', category: 'Characters', format: 'fbx', path: 'models/SK_Melusina_Clothes_Production.fbx', defaultMode: 'pbr', desc: 'Production couture garment study on Melusina.' },
+      { id: 'sir-melodious', title: 'Sir Melodious · Clothed', category: 'Characters', format: 'fbx', path: 'models/SK_SirMelodious_Clothed_Production.fbx', defaultMode: 'pbr', desc: 'Full clothed production character model.' },
+      { id: 'zundamon', title: 'Zundamon · Companion', category: 'Characters', format: 'fbx', path: 'models/SK_Zundamon.fbx', defaultMode: 'toon', desc: 'Stylized companion character mesh.' }
+    ];
+
+    const RENDER_MODES = [
+      { id: 'pbr', label: 'PBR Studio' },
+      { id: 'liquid-glass', label: 'Liquid Glass' },
+      { id: 'toon', label: 'NPR Toon' },
+      { id: 'clay', label: 'Clay' },
+      { id: 'normal', label: 'Normals' },
+      { id: 'roughness', label: 'Roughness' },
+      { id: 'metallic', label: 'Metallic' },
+      { id: 'ao', label: 'AO' },
+      { id: 'wireframe', label: 'Wireframe' }
+    ];
+
+    const LIGHTING_PRESETS = {
+      atelier: { label: 'Atelier Warm', bg: '#14131a', hemiSky: 0xfff3e2, hemiGround: 0x262030, key: 0xffe4c4, keyInt: 2.5, fill: 0x9ec5ff, fillInt: 0.9, rim: 0xffd2a6, rimInt: 1.4 },
+      gallery: { label: 'Gallery Neutral', bg: '#1b1d24', hemiSky: 0xffffff, hemiGround: 0x2e313d, key: 0xffffff, keyInt: 2.4, fill: 0xdbe7ff, fillInt: 1.0, rim: 0xf4f7ff, rimInt: 1.1 },
+      cathedral: { label: 'Cathedral Rim', bg: '#0c101b', hemiSky: 0xb7d4ff, hemiGround: 0x1b1528, key: 0xf6d4a0, keyInt: 2.2, fill: 0x6ea8ff, fillInt: 1.15, rim: 0x8ce4ff, rimInt: 2.2 },
+      obsidian: { label: 'Obsidian Luxury', bg: '#07070a', hemiSky: 0xd9d2c8, hemiGround: 0x0b0b10, key: 0xfff0da, keyInt: 2.8, fill: 0x6478a8, fillInt: 0.55, rim: 0xe6c28b, rimInt: 2.0 }
+    };
+
+    const FINISH_PRESETS = {
+      original: { label: 'Original', override: false },
+      velvet: { label: 'Royal Velvet', override: true, color: 0x3f214f, roughness: 0.88, metalness: 0.06, sheen: 1.0, sheenColor: 0xc295e8 },
+      brocade: { label: 'Gilded Brocade', override: true, color: 0xb88b4a, roughness: 0.34, metalness: 0.82, clearcoat: 0.25 },
+      crystal: { label: 'Liquid Crystal', override: true, liquidGlass: true, color: 0xb8f0ff },
+      gold: { label: 'Champagne Gold', override: true, color: 0xdcc08e, roughness: 0.22, metalness: 0.96, clearcoat: 0.4 },
+      porcelain: { label: 'Porcelain Enamel', override: true, color: 0xf4efe8, roughness: 0.16, metalness: 0.04, clearcoat: 0.95, clearcoatRoughness: 0.08 }
+    };
+
+    let allAssets = [...CURATED_ASSETS];
+    let activeCategory = 'All';
+    let currentAsset = allAssets[0];
+    let currentMode = 'pbr';
+    let currentLighting = 'atelier';
+    let currentFinish = 'original';
+    let currentRoot = null;
+    const originalMaterials = new WeakMap();
+    const modelCache = new Map();
+
+    const glassUniforms = {
+      uGlassRefraction: { value: 0.038 },
+      uGlassDispersion: { value: 0.024 },
+      uGlassIridescence: { value: 0.68 },
+      uGlassSpecular: { value: 0.92 },
+      uGlassViewport: { value: new THREE.Vector2(1, 1) }
+    };
+
+    const host = document.getElementById('canvas-host');
+    const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(host.clientWidth, host.clientHeight);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.1;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    host.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(LIGHTING_PRESETS.atelier.bg);
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    scene.environmentIntensity = 0.85;
+
+    const camera = new THREE.PerspectiveCamera(40, host.clientWidth / host.clientHeight, 0.02, 200);
+    camera.position.set(2.4, 1.45, 2.8);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.06;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 1.1;
+    controls.minDistance = 0.25;
+    controls.maxDistance = 30;
+    controls.target.set(0, 0.7, 0);
+
+    const hemiLight = new THREE.HemisphereLight(0xfff3e2, 0x262030, 0.9);
+    scene.add(hemiLight);
+    const keyLight = new THREE.DirectionalLight(0xffe4c4, 2.5);
+    keyLight.position.set(4, 6, 4);
+    keyLight.castShadow = true;
+    keyLight.shadow.mapSize.set(2048, 2048);
+    keyLight.shadow.camera.near = 0.5;
+    keyLight.shadow.camera.far = 25;
+    const d = 4.5;
+    keyLight.shadow.camera.left = -d;
+    keyLight.shadow.camera.right = d;
+    keyLight.shadow.camera.top = d;
+    keyLight.shadow.camera.bottom = -d;
+    keyLight.shadow.bias = -0.0005;
+    keyLight.shadow.radius = 4;
+    scene.add(keyLight);
+
+    const fillLight = new THREE.DirectionalLight(0x9ec5ff, 0.9);
+    fillLight.position.set(-4.5, 2.5, -2.5);
+    scene.add(fillLight);
+
+    const rimLight = new THREE.DirectionalLight(0xffd2a6, 1.4);
+    rimLight.position.set(0, 3.8, -5.0);
+    scene.add(rimLight);
+
+    const stageGroup = new THREE.Group();
+    const shadowFloor = new THREE.Mesh(new THREE.CircleGeometry(6, 64), new THREE.ShadowMaterial({ opacity: 0.38 }));
+    shadowFloor.rotation.x = -Math.PI / 2;
+    shadowFloor.receiveShadow = true;
+    stageGroup.add(shadowFloor);
+    const plinthRing = new THREE.Mesh(new THREE.RingGeometry(1.58, 1.62, 64), new THREE.MeshBasicMaterial({ color: 0xd8b57d, transparent: true, opacity: 0.24, side: THREE.DoubleSide }));
+    plinthRing.rotation.x = -Math.PI / 2;
+    plinthRing.position.y = 0.002;
+    stageGroup.add(plinthRing);
+    scene.add(stageGroup);
+
+    const gridHelper = new THREE.GridHelper(10, 20, 0x454a66, 0x222536);
+    gridHelper.visible = false;
+    scene.add(gridHelper);
+
+    const toonData = new Uint8Array([82, 74, 108, 255, 174, 168, 196, 255, 255, 252, 248, 255]);
+    const toonRamp = new THREE.DataTexture(toonData, 3, 1, THREE.RGBAFormat);
+    toonRamp.minFilter = THREE.NearestFilter;
+    toonRamp.magFilter = THREE.NearestFilter;
+    toonRamp.needsUpdate = true;
+
+    function createLiquidGlassMaterial(baseColor = 0xb8f0ff) {
+      const mat = new THREE.MeshPhysicalMaterial({ color: baseColor, roughness: 0.06, metalness: 0.05, transmission: 0.72, thickness: 0.45, ior: 1.45, clearcoat: 1.0, clearcoatRoughness: 0.05, transparent: true, opacity: 0.88 });
+      mat.onBeforeCompile = (shader) => {
+        Object.assign(shader.uniforms, glassUniforms);
+        shader.fragmentShader = shader.fragmentShader
+          .replace('#include <common>', `#include <common>
+            uniform float uGlassRefraction;
+            uniform float uGlassDispersion;
+            uniform float uGlassIridescence;
+            uniform float uGlassSpecular;
+            vec3 rwThinFilm(float ndv, float shift) {
+              float phase = 6.2831853 * (1.42 * ndv + shift);
+              return 0.5 + 0.5 * cos(phase + vec3(0.0, 2.094395, 4.188790));
+            }
+          `)
+          .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+            vec3 lgView = normalize(vViewPosition);
+            vec3 lgNorm = normalize(normal);
+            float lgNdv = clamp(abs(dot(lgNorm, lgView)), 0.0, 1.0);
+            float lgFresnel = pow(1.0 - lgNdv, 2.3);
+            float lgStepRim = smoothstep(0.28, 0.34, lgFresnel);
+            vec3 lgFilm = rwThinFilm(lgNdv, 0.14 + uGlassDispersion * 4.0);
+            vec3 lgHalf = normalize(lgView + normalize(vec3(0.45, 0.78, 0.52)));
+            float lgSpec = smoothstep(0.91, 0.96, max(dot(lgNorm, lgHalf), 0.0)) * uGlassSpecular;
+            vec3 lgGlint = mix(vec3(0.95, 0.99, 1.0), lgFilm, 0.45) * lgSpec;
+            totalEmissiveRadiance += lgFilm * (lgFresnel * 0.46 + lgStepRim * 0.28) * uGlassIridescence + lgGlint;
+          `);
+      };
+      mat.customProgramCacheKey = () => 'melodia-studio-liquid-glass-v2';
+      return mat;
+    }
+
+    function createChannelDebugMaterial(srcMat, channel) {
+      if (channel === 'roughness') {
+        const val = typeof srcMat?.roughness === 'number' ? srcMat.roughness : 0.5;
+        return new THREE.MeshBasicMaterial({ color: new THREE.Color(val, val, val), map: srcMat?.roughnessMap || null });
+      }
+      if (channel === 'metallic') {
+        const val = typeof srcMat?.metalness === 'number' ? srcMat.metalness : 0.0;
+        return new THREE.MeshBasicMaterial({ color: new THREE.Color(val, val, val), map: srcMat?.metalnessMap || null });
+      }
+      return new THREE.MeshBasicMaterial({ color: 0xffffff, map: srcMat?.aoMap || null });
+    }
+
+    function applyMaterialState() {
+      if (!currentRoot) return;
+      const finish = FINISH_PRESETS[currentFinish];
+      const isEyewear = Boolean(currentAsset?.eyewear);
+      currentRoot.traverse((obj) => {
+        if (!obj.isMesh) return;
+        const orig = originalMaterials.get(obj);
+        if (!orig) return;
+        const mapOne = (m) => {
+          if (currentMode === 'wireframe') return new THREE.MeshBasicMaterial({ color: 0x76dcff, wireframe: true });
+          if (currentMode === 'normal') return new THREE.MeshNormalMaterial({ normalMap: m?.normalMap || null });
+          if (currentMode === 'clay') return new THREE.MeshStandardMaterial({ color: 0xd8c9b8, roughness: 0.68, metalness: 0.04 });
+          if (currentMode === 'roughness' || currentMode === 'metallic' || currentMode === 'ao') return createChannelDebugMaterial(m, currentMode);
+          if (currentMode === 'toon') return new THREE.MeshToonMaterial({ color: m?.color ? m.color.clone() : new THREE.Color(0xd8d2e8), map: m?.map || null, normalMap: m?.normalMap || null, gradientMap: toonRamp });
+          if (currentMode === 'liquid-glass' || finish?.liquidGlass) {
+            const col = m?.color ? m.color.clone().lerp(new THREE.Color(0xb8f0ff), 0.55) : new THREE.Color(0xb8f0ff);
+            return createLiquidGlassMaterial(col);
+          }
+          if (finish?.override) {
+            return new THREE.MeshPhysicalMaterial({ color: finish.color, roughness: finish.roughness ?? 0.4, metalness: finish.metalness ?? 0.1, clearcoat: finish.clearcoat ?? 0, clearcoatRoughness: finish.clearcoatRoughness ?? 0.15, sheen: finish.sheen ?? 0, sheenColor: new THREE.Color(finish.sheenColor ?? 0xffffff), normalMap: m?.normalMap || null });
+          }
+          const matName = (m?.name || obj.name || '').toLowerCase();
+          if (isEyewear && (matName.includes('lens') || matName.includes('glass') || (m?.transparent && m?.opacity < 0.95))) {
+            return createLiquidGlassMaterial(m?.color || 0x99d6f2);
+          }
+          return m;
+        };
+        obj.material = Array.isArray(orig) ? orig.map(mapOne) : mapOne(orig);
+      });
+      const modeObj = RENDER_MODES.find((r) => r.id === currentMode);
+      document.getElementById('stat-mode').textContent = modeObj ? modeObj.label : currentMode;
+    }
+
+    function applyLighting(presetKey) {
+      currentLighting = presetKey;
+      const p = LIGHTING_PRESETS[presetKey] || LIGHTING_PRESETS.atelier;
+      scene.background = new THREE.Color(p.bg);
+      hemiLight.color.setHex(p.hemiSky);
+      hemiLight.groundColor.setHex(p.hemiGround);
+      keyLight.color.setHex(p.key);
+      keyLight.intensity = p.keyInt;
+      fillLight.color.setHex(p.fill);
+      fillLight.intensity = p.fillInt;
+      rimLight.color.setHex(p.rim);
+      rimLight.intensity = p.rimInt;
+      document.querySelectorAll('#light-grid .ctrl-btn').forEach((b) => b.classList.toggle('active', b.dataset.light === presetKey));
+    }
+
+    function normalizeAndPlace(object3d) {
+      const wrapper = new THREE.Group();
+      wrapper.add(object3d);
+      const box = new THREE.Box3().setFromObject(object3d);
+      const size = new THREE.Vector3();
+      box.getSize(size);
+      const maxDim = Math.max(size.x, size.y, size.z, 0.001);
+      object3d.scale.multiplyScalar(2.1 / maxDim);
+      const scaledBox = new THREE.Box3().setFromObject(object3d);
+      const scaledCenter = new THREE.Vector3();
+      scaledBox.getCenter(scaledCenter);
+      object3d.position.x -= scaledCenter.x;
+      object3d.position.z -= scaledCenter.z;
+      object3d.position.y -= scaledBox.min.y;
+      let tris = 0, verts = 0, meshes = 0;
+      wrapper.traverse((node) => {
+        if (node.isMesh) {
+          meshes += 1;
+          node.castShadow = true;
+          node.receiveShadow = true;
+          if (!originalMaterials.has(node)) originalMaterials.set(node, node.material);
+          const g = node.geometry;
+          if (g?.attributes?.position) {
+            verts += g.attributes.position.count;
+            tris += g.index ? g.index.count / 3 : g.attributes.position.count / 3;
+          }
+        }
+      });
+      return { wrapper, tris: Math.round(tris), verts, meshes };
+    }
+
+    function setCameraPreset(preset) {
+      controls.target.set(0, 0.85, 0);
+      if (preset === 'front') camera.position.set(0, 1.0, 3.2);
+      else if (preset === 'profile') camera.position.set(3.2, 1.0, 0.01);
+      else if (preset === 'macro') camera.position.set(1.15, 1.15, 1.35);
+      else if (preset === 'top') camera.position.set(0.01, 4.1, 0.45);
+      else camera.position.set(2.35, 1.45, 2.75);
+      controls.update();
+    }
+
+    const gltfLoader = new GLTFLoader();
+    const fbxLoader = new FBXLoader();
+    const objLoader = new OBJLoader();
+
+    function setLoading(visible, text = 'Loading model...') {
+      document.getElementById('loader-text').textContent = text;
+      document.getElementById('loader-overlay').classList.toggle('visible', visible);
+    }
+
+    async function loadObjectFromUrl(url, format) {
+      if (format === 'glb' || format === 'gltf') return (await gltfLoader.loadAsync(url)).scene;
+      if (format === 'fbx') return await fbxLoader.loadAsync(url);
+      if (format === 'obj') return await objLoader.loadAsync(url);
+      throw new Error(`Unsupported format: ${format}`);
+    }
+
+    async function selectAsset(asset) {
+      currentAsset = asset;
+      document.getElementById('hud-category').textContent = asset.category;
+      document.getElementById('hud-title').textContent = asset.title;
+      document.getElementById('hud-desc').textContent = asset.desc || 'Interactive WebGL 3D inspection asset.';
+      document.getElementById('stat-format').textContent = asset.format.toUpperCase();
+      document.querySelectorAll('.asset-card').forEach((c) => c.classList.toggle('active', c.dataset.id === asset.id));
+      setLoading(true, `Loading ${asset.title}...`);
+      try {
+        let entry = modelCache.get(asset.id);
+        if (!entry) {
+          const raw = await loadObjectFromUrl(asset.path, asset.format);
+          entry = normalizeAndPlace(raw);
+          modelCache.set(asset.id, entry);
+        }
+        if (currentRoot) scene.remove(currentRoot);
+        currentRoot = entry.wrapper;
+        scene.add(currentRoot);
+        document.getElementById('stat-tris').textContent = entry.tris.toLocaleString();
+        document.getElementById('stat-verts').textContent = entry.verts.toLocaleString();
+        document.getElementById('stat-meshes').textContent = entry.meshes.toLocaleString();
+        currentMode = asset.defaultMode || 'pbr';
+        currentFinish = 'original';
+        syncControlButtons();
+        applyMaterialState();
+        setCameraPreset('hero');
+      } catch (err) {
+        console.error(err);
+        document.getElementById('hud-desc').textContent = `Could not load ${asset.path}. Check asset availability or drag-and-drop a local file.`;
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    function renderCatalog() {
+      const query = document.getElementById('asset-search').value.trim().toLowerCase();
+      const cats = ['All', ...new Set(allAssets.map((a) => a.category))];
+      const tabsEl = document.getElementById('cat-tabs');
+      tabsEl.innerHTML = '';
+      cats.forEach((cat) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `cat-tab${cat === activeCategory ? ' active' : ''}`;
+        btn.textContent = cat;
+        btn.addEventListener('click', () => { activeCategory = cat; renderCatalog(); });
+        tabsEl.appendChild(btn);
+      });
+      const listEl = document.getElementById('asset-list');
+      listEl.innerHTML = '';
+      allAssets.filter((a) => (activeCategory === 'All' || a.category === activeCategory) && (!query || a.title.toLowerCase().includes(query) || a.category.toLowerCase().includes(query))).forEach((asset) => {
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = `asset-card${currentAsset?.id === asset.id ? ' active' : ''}`;
+        card.dataset.id = asset.id;
+        card.innerHTML = `<div class="asset-card-top"><span class="asset-name">${asset.title}</span><span class="asset-badge">${asset.format}</span></div><div class="asset-meta">${asset.category}</div>`;
+        card.addEventListener('click', () => { selectAsset(asset); document.getElementById('panel-catalog').classList.remove('open'); });
+        listEl.appendChild(card);
+      });
+    }
+
+    function syncControlButtons() {
+      document.querySelectorAll('#mode-grid .ctrl-btn').forEach((b) => b.classList.toggle('active', b.dataset.mode === currentMode));
+      document.querySelectorAll('#finish-grid .ctrl-btn').forEach((b) => b.classList.toggle('active', b.dataset.finish === currentFinish));
+    }
+
+    function initControlsUI() {
+      const modeGrid = document.getElementById('mode-grid');
+      RENDER_MODES.forEach((m) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'ctrl-btn';
+        btn.dataset.mode = m.id;
+        btn.textContent = m.label;
+        btn.addEventListener('click', () => { currentMode = m.id; syncControlButtons(); applyMaterialState(); });
+        modeGrid.appendChild(btn);
+      });
+      const lightGrid = document.getElementById('light-grid');
+      Object.entries(LIGHTING_PRESETS).forEach(([key, preset]) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'ctrl-btn';
+        btn.dataset.light = key;
+        btn.textContent = preset.label;
+        btn.addEventListener('click', () => applyLighting(key));
+        lightGrid.appendChild(btn);
+      });
+      const finishGrid = document.getElementById('finish-grid');
+      Object.entries(FINISH_PRESETS).forEach(([key, preset]) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'ctrl-btn';
+        btn.dataset.finish = key;
+        btn.textContent = preset.label;
+        btn.addEventListener('click', () => {
+          currentFinish = key;
+          if (preset.liquidGlass) currentMode = 'liquid-glass';
+          else if (currentMode !== 'pbr') currentMode = 'pbr';
+          syncControlButtons();
+          applyMaterialState();
+        });
+        finishGrid.appendChild(btn);
+      });
+      document.getElementById('asset-search').addEventListener('input', renderCatalog);
+      document.getElementById('sl-exposure').addEventListener('input', (e) => { const v = parseFloat(e.target.value); renderer.toneMappingExposure = v; document.getElementById('val-exposure').textContent = v.toFixed(2); });
+      document.getElementById('sl-angle').addEventListener('input', (e) => { const deg = parseFloat(e.target.value); const rad = (deg * Math.PI) / 180; keyLight.position.set(Math.cos(rad) * 5.6, 6.0, Math.sin(rad) * 5.6); document.getElementById('val-angle').textContent = `${Math.round(deg)}\u00b0`; });
+      const bindGlass = (id, valId, key, d) => document.getElementById(id).addEventListener('input', (e) => { const v = parseFloat(e.target.value); glassUniforms[key].value = v; document.getElementById(valId).textContent = v.toFixed(d); });
+      bindGlass('sl-refract', 'val-refract', 'uGlassRefraction', 3);
+      bindGlass('sl-disperse', 'val-disperse', 'uGlassDispersion', 3);
+      bindGlass('sl-irid', 'val-irid', 'uGlassIridescence', 2);
+      bindGlass('sl-spec', 'val-spec', 'uGlassSpecular', 2);
+      document.getElementById('chk-rotate').addEventListener('change', (e) => { controls.autoRotate = e.target.checked; });
+      document.getElementById('chk-shadows').addEventListener('change', (e) => { stageGroup.visible = e.target.checked; });
+      document.getElementById('chk-grid').addEventListener('change', (e) => { gridHelper.visible = e.target.checked; });
+      document.querySelectorAll('[data-cam]').forEach((btn) => btn.addEventListener('click', () => setCameraPreset(btn.dataset.cam)));
+      document.getElementById('btn-reset').addEventListener('click', () => setCameraPreset('hero'));
+      document.getElementById('mob-reset').addEventListener('click', () => setCameraPreset('hero'));
+      document.getElementById('mob-catalog').addEventListener('click', () => { document.getElementById('panel-controls').classList.remove('open'); document.getElementById('panel-catalog').classList.toggle('open'); });
+      document.getElementById('mob-controls').addEventListener('click', () => { document.getElementById('panel-catalog').classList.remove('open'); document.getElementById('panel-controls').classList.toggle('open'); });
+      document.getElementById('btn-screenshot').addEventListener('click', () => { renderer.render(scene, camera); const link = document.createElement('a'); link.download = `${currentAsset?.id || 'studio-3d-capture'}.png`; link.href = renderer.domElement.toDataURL('image/png'); link.click(); });
+      const handleLocalFile = async (file) => {
+        if (!file) return;
+        const ext = file.name.split('.').pop().toLowerCase();
+        if (!['glb', 'gltf', 'fbx', 'obj'].includes(ext)) return;
+        const customAsset = { id: `local-${Date.now()}`, title: file.name.replace(/\.[^.]+$/, ''), category: 'Local Import', format: ext, path: URL.createObjectURL(file), defaultMode: 'pbr', desc: `Loaded locally (${(file.size / (1024 * 1024)).toFixed(2)} MB).` };
+        allAssets.unshift(customAsset);
+        activeCategory = 'All';
+        renderCatalog();
+        await selectAsset(customAsset);
+      };
+      document.getElementById('local-file-input').addEventListener('change', (e) => handleLocalFile(e.target.files[0]));
+      const dropZone = document.getElementById('drop-zone');
+      const stage = document.getElementById('viewport-stage');
+      [dropZone, stage].forEach((el) => {
+        el.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+        el.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        el.addEventListener('drop', (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); if (e.dataTransfer.files?.length) handleLocalFile(e.dataTransfer.files[0]); });
+      });
+    }
+
+    async function loadOptionalDriveManifest() {
+      try {
+        const res = await fetch('models/curated-drive/manifest.json', { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (Array.isArray(data?.models) && data.models.length) {
+          const driveEntries = data.models.map((m) => ({ id: `drive-${m.file}`, title: m.title, category: 'Curated Drive Pack', format: 'glb', path: m.path, defaultMode: 'pbr', desc: `${m.category} (${m.mb} MB, ${m.triangles.toLocaleString()} tris) curated from Google Drive.` }));
+          allAssets = [...driveEntries, ...allAssets];
+          renderCatalog();
+        }
+      } catch (_) {}
+    }
+
+    function onResize() {
+      const w = host.clientWidth, h = host.clientHeight;
+      if (!w || !h) return;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+      glassUniforms.uGlassViewport.value.set(w * renderer.getPixelRatio(), h * renderer.getPixelRatio());
+    }
+    window.addEventListener('resize', onResize);
+    function animate() { requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); }
+
+    initControlsUI();
+    applyLighting('atelier');
+    renderCatalog();
+    onResize();
+    animate();
+    loadOptionalDriveManifest();
+
+    const params = new URLSearchParams(window.location.search);
+    const initialAsset = allAssets.find((a) => a.id === params.get('asset')) || allAssets[0];
+    selectAsset(initialAsset).then(() => {
+      const reqMode = params.get('mode');
+      if (reqMode && RENDER_MODES.some((m) => m.id === reqMode)) {
+        currentMode = reqMode;
+        syncControlButtons();
+        applyMaterialState();
+      }
+    });
+  </script>
+</body>
+</html>
