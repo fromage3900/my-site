@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -115,9 +116,27 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: _recruiter_release
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Wait for Pages artifact metadata
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 12); do
+            count=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts?name=$ARTIFACT_NAME" --jq '[.artifacts[] | select(.expired == false)] | length' || true)
+            if [ "$count" = "1" ]; then exit 0; fi
+            echo "Waiting for unique Pages artifact metadata ($attempt/12)"
+            sleep 5
+          done
+          echo "::error::Unique Pages artifact metadata not available"
+          exit 1
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
 
   deploy-wix:
     name: Publish Wix project (optional)
