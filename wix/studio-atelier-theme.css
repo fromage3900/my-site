@@ -1,0 +1,99 @@
+/* Shared Portfolio Atelier Unification — matches melodia-tokens.css & melodia-luxury-type.css */
+:root {
+  --bg: var(--primitive-ink-900, #0D0915);
+  --panel: rgba(20, 15, 29, 0.94);
+  --border: rgba(201, 168, 106, 0.24);
+  --border-strong: rgba(201, 168, 106, 0.52);
+  --text: var(--primitive-ivory-50, #FFF8EE);
+  --muted: var(--primitive-lavender-300, #C2BAE0);
+  --accent: var(--color-accent-primary, #C9A86A);
+  --accent-soft: rgba(201, 168, 106, 0.16);
+  --cyan: var(--primitive-aqua-400, #78CFD8);
+  --font-display: "Times New Roman", Times, Georgia, serif;
+  --font-sans: "Times New Roman", Times, Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Razor-sharp architectural corners & portfolio palette for 3D Studio */
+[data-page="studio-3d-viewer"] .app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  width: 100vw;
+  background: var(--primitive-ink-900, #0D0915);
+}
+[data-page="studio-3d-viewer"] .shell-nav {
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(201, 168, 106, 0.28);
+  background: rgba(13, 9, 21, 0.96);
+}
+[data-page="studio-3d-viewer"] .workspace { flex: 1; }
+[data-page="studio-3d-viewer"] .viewport-stage {
+  background: radial-gradient(circle at 50% 35%, #241B2E 0%, #0D0915 74%);
+}
+[data-page="studio-3d-viewer"] .nav-pill,
+[data-page="studio-3d-viewer"] .search-input,
+[data-page="studio-3d-viewer"] .cat-tab,
+[data-page="studio-3d-viewer"] .asset-card,
+[data-page="studio-3d-viewer"] .asset-badge,
+[data-page="studio-3d-viewer"] .drop-zone,
+[data-page="studio-3d-viewer"] .hud-title-card,
+[data-page="studio-3d-viewer"] .mini-btn,
+[data-page="studio-3d-viewer"] .telemetry-strip,
+[data-page="studio-3d-viewer"] .ctrl-btn {
+  border-radius: 0 !important;
+}
+[data-page="studio-3d-viewer"] .cat-tab,
+[data-page="studio-3d-viewer"] .mini-btn,
+[data-page="studio-3d-viewer"] .ctrl-btn,
+[data-page="studio-3d-viewer"] .sidebar-title,
+[data-page="studio-3d-viewer"] .group-label,
+[data-page="studio-3d-viewer"] .hud-kicker {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+[data-page="studio-3d-viewer"] .asset-card.active {
+  border-left: 3px solid var(--accent);
+}
+[data-page="studio-3d-viewer"] .asset-name,
+[data-page="studio-3d-viewer"] .hud-asset-title {
+  font-family: var(--font-display);
+}
+
+/* Unified floating portfolio bar for Resonant Wilds & Eyewear Atelier */
+.portfolio-atelier-bar {
+  position: fixed;
+  top: 10px;
+  right: 12px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  background: rgba(13, 9, 21, 0.88);
+  border: 1px solid rgba(201, 168, 106, 0.42);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+.portfolio-atelier-bar a {
+  color: #FFF8EE;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-right: 1px solid rgba(201, 168, 106, 0.22);
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+.portfolio-atelier-bar a:last-child { border-right: none; }
+.portfolio-atelier-bar a:hover {
+  background: rgba(201, 168, 106, 0.22);
+  color: #F0E6D2;
+}
+.portfolio-atelier-bar .atelier-brand {
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-weight: 600;
+  color: #DDC79B;
+  letter-spacing: 0.09em;
+}
