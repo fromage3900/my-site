@@ -116,6 +116,23 @@ def emit(path: str, content: str) -> None:
     PUBLISHED.add(path)
 
 
+PETIT_THE_FILES = ("index.html", "scene-preview.png", "assets/cinnamon-roll.glb", "assets/teacup.glb")
+PETIT_THE_DIR = WIX / "petit-the"
+
+def petit_the_ready() -> bool:
+    if not PETIT_THE_DIR.exists():
+        return False
+    for name in PETIT_THE_FILES:
+        p = PETIT_THE_DIR / name
+        if not p.is_file() or p.stat().st_size == 0:
+            raise RuntimeError(f"Incomplete Petit Thé exhibit: {name}")
+        if p.suffix == ".glb":
+            with p.open("rb") as f:
+                if f.read(4) != b"glTF":
+                    raise RuntimeError(f"Invalid Petit Thé GLB: {name}")
+    return True
+
+
 def original_home() -> str:
     """Retain editable Night Velvet HTML, Figma adornments and original typography."""
     source = (WIX / "index.html").read_text(encoding="utf-8-sig")
@@ -161,11 +178,13 @@ def original_home() -> str:
   <nav class="home-foyer-grid" aria-label="Three signature interactive experiences">
     <a class="home-foyer-card" href="melusina-photo-studio.html"><img src="../generated/optimized/curated-art/melusina_beauty_eevee_20260715c_01-1280.webp" alt="" loading="lazy"><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">01 · Portrait atelier</span><strong>Melusina Photo Studio</strong><span>Choose a pose, frame a portrait and tint the atmosphere.</span></span></a>
     <a class="home-foyer-card atelier-particle-card" href="mahou-particle-garden.html"><img src="assets/figma/mdl-sparkle-cluster.svg" alt="" loading="lazy"><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">02 · Living particles</span><strong>Mahou Particle Garden</strong><span>Touch petals, pearls and musical motes; awaken a sigil.</span></span></a>
-    <a class="home-foyer-card" href="realtime-3d-viewer.html?asset=violin&amp;fabric=GildedBrocade"><img src="../generated/assets/props/violin_komikaze_three_quarter.png" alt="" loading="lazy"><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">03 · Crafted objects</span><strong>The Object Atelier</strong><span>One interactive 3D viewer for instruments, ornaments and materials.</span></span></a>
+    <a class="home-foyer-card" href="studio-3d-viewer.html"><img src="../generated/assets/props/violin_komikaze_three_quarter.png" alt="" loading="lazy"><span class="home-foyer-scrim" aria-hidden="true"></span><span class="home-foyer-copy"><span class="home-foyer-kicker">03 · Crafted objects</span><strong>The Object Atelier</strong><span>Explore the flagship 3D Studio: instruments, materials and sculpted forms.</span></span></a>
   </nav>
   <p class="atelier-archive-links">More from the studio: <a href="portfolio-moodboard.html">3D moodboard</a> · <a href="constellation-brush.html">Constellation Brush</a> · <a href="../melodia/folio/index.html">Traveling Folio</a> · <a href="melodia-living-worlds.html">Living Worlds</a></p>
 </div></section>
 """
+    if petit_the_ready():
+        atelier = atelier.replace('href="studio-3d-viewer.html"><img src="../generated/assets/props/violin_komikaze_three_quarter.png"', 'href="petit-the/index.html"><img src="petit-the/scene-preview.png"').replace('<strong>The Object Atelier</strong><span>Explore the flagship 3D Studio: instruments, materials and sculpted forms.</span>', '<strong>Petit Thé</strong><span>Enter the Object Atelier: a tiny patisserie, porcelain and floating blossoms.</span>')
     assert '</main>' in source
     source = source.replace('</main>', atelier + '\n</main>', 1)
     # The previous source styling explicitly fixes the first three-card grid.
@@ -234,6 +253,15 @@ def main() -> None:
         emit("wix/" + page, text)
         collect_generated(text)
         collect_touchdesigner(text)
+
+    # Keep WebGL lazy: only open the diorama after navigating to its room.
+    if petit_the_ready():
+        for name in PETIT_THE_FILES:
+            put(PETIT_THE_DIR / name)
+        studio_path = OUT / "wix/studio-3d-viewer.html"
+        studio = studio_path.read_text(encoding="utf-8")
+        studio = studio.replace('<a class="nav-pill" href="index.html">Portfolio</a>', '<a class="nav-pill" href="index.html">Portfolio</a><a class="nav-pill" href="petit-the/index.html">Petit Thé</a>', 1)
+        emit("wix/studio-3d-viewer.html", studio)
 
     # All original web systems and styles remain available to their authored
     # pages. Heavy media is copied selectively below.
@@ -370,11 +398,14 @@ def main() -> None:
     assert featured, "Curated interactive atelier is missing"
     featured_links = re.findall(r'href="([^"]+)"', featured.group(1))
     assert [link.split("?")[0] for link in featured_links] == [
-        "melusina-photo-studio.html", "mahou-particle-garden.html", "realtime-3d-viewer.html"
+        "melusina-photo-studio.html", "mahou-particle-garden.html", ("petit-the/index.html" if petit_the_ready() else "studio-3d-viewer.html")
     ], "Feature one object viewer alongside portraits and particles"
+    for name in ("faraway_heart_gate_approach.webp", "chladni_vfx/2026-11-16/L_CelestialPond/sakura_pearl/frame_0064.png", "chladni_vfx/2026-11-16/L_CelestialPond/moonlit_teal/frame_0064.png"):
+        assert "generated/assets/unreal/" + name in PUBLISHED, f"Missing recent study: {name}"
+    if petit_the_ready():
+        assert all("wix/petit-the/" + name in PUBLISHED for name in PETIT_THE_FILES)
     for key in ("wix/melodia-photobooth.js", "wix/melodia-photobooth.css",
                 "wix/mahou-particle-garden.html", "wix/realtime-3d-viewer.html",
-                "generated/assets/props/violin_komikaze_three_quarter.png",
                 "wix/assets/figma/mdl-sparkle-cluster.svg"):
         if key not in PUBLISHED:
             raise RuntimeError(f"Missing curated atelier dependency: {key}")
