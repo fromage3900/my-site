@@ -67,6 +67,9 @@ THREE_DEMOS = (
     "melodia/folio/weapons.html",
     "melodia/music-key/index.html",
     "melodia/sanctuary/index.html",
+    # Restore only the requested public viewer entry points.
+    "tools/fromage-webgl-kit/accessory-viewer/index.html",
+    "tools/fromage-webgl-kit/prototypes/procedural-industrial-loop/index.html",
 )
 # All source JS/CSS for the selected pages is published intact. WebGL models and
 # PBR textures are grouped because the workbench chooses files dynamically.
@@ -314,9 +317,42 @@ def main() -> None:
         "wix/portfolio-moodboard.html", "wix/melusina-photo-studio.html",
         "wix/assets/figma/nv-rose-satin.svg", "melodia/folio/index.html",
     )
-    for key in must:
+    # Gate the actual Pages artifact, not merely the editable source tree.
+    viewer_root = "tools/fromage-webgl-kit/"
+    viewer_required = (
+        viewer_root + "accessory-viewer/index.html",
+        viewer_root + "accessory-viewer/app.js",
+        viewer_root + "prototypes/procedural-industrial-loop/index.html",
+        viewer_root + "prototypes/procedural-industrial-loop/app.js",
+        viewer_root + "src/core/createRuntime.js",
+        viewer_root + "src/assets/createGLBLoader.js",
+        viewer_root + "src/animation/createDeterministicTimeline.js",
+        "wix/melodia-tokens.css",
+        "wix/melodia-luxury-type.css",
+    ) + tuple(
+        f"wix/models/eyewear-heroes/{shape}-{finish}.glb"
+        for shape in ("rect", "panto", "cateye", "aviator")
+        for finish in ("tortoise", "metal")
+    ) + tuple(
+        f"wix/models/melusina-fx/{name}.glb"
+        for name in ("FX_AngelWings_Carrier", "FX_ClockworkRing_Outer",
+                     "FX_ClockworkRing_Mid", "FX_ClockworkRing_Inner")
+    )
+    for key in must + viewer_required:
         if key not in PUBLISHED:
             raise RuntimeError(f"Original website dependency not published: {key}")
+    for entry in viewer_required:
+        asset = OUT / entry
+        if not asset.is_file() or asset.stat().st_size == 0:
+            raise RuntimeError(f"Missing or empty viewer artifact: {entry}")
+        if entry.endswith(".glb"):
+            with asset.open("rb") as stream:
+                if stream.read(4) != b"glTF":
+                    raise RuntimeError(f"Invalid viewer GLB (possibly LFS pointer): {entry}")
+    for entry in (viewer_required[0], viewer_required[2]):
+        page = (OUT / entry).read_text(encoding="utf-8")
+        if 'src="./app.js"' not in page or 'id="stage"' not in page:
+            raise RuntimeError(f"Viewer entry point lost its WebGL stage or module: {entry}")
     home = (OUT / "wix/index.html").read_text(encoding="utf-8")
     assert 'data-effects="starfield,holo,magical,orrery"' in home
     assert "An atelier of curiosities." in home
