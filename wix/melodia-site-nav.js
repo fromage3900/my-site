@@ -13,7 +13,7 @@
 { href:'shader-breakdowns.html', label:'Technical Art', keys:['shader-breakdowns','pipeline','application-hub','melodia-atelier-lab','realtime-3d-viewer','sdf-material-gallery','material-loop-gallery'] },
 { href:'resume.html', label:'About', keys:['resume','recruiter-one-sheet','hiring-dossier','credits'] },
     { href:'studio-3d-viewer.html', label:'3D Studio', keys:['studio-3d-viewer'] },
-    { href:'../resonant-wilds/', label:'Resonant Wilds', keys:['resonant-wilds'] },
+    { href:'../resonant-wilds-glass/', label:'Resonant Wilds', keys:['resonant-wilds-glass','resonant-wilds'] },
   ];
 
   var moreHandlersBound = false;
