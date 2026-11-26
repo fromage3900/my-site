@@ -75,29 +75,31 @@
       <p class="viewer-authority-note"><strong>Scope:</strong> this viewport is an interactive presentation study, not a 1:1 Unreal renderer. The UE5.8 captures and breakdown pages remain the visual and technical authority.</p>
     </div>
     <div class="viewer-3d-app">
-      <aside class="viewer-panel" aria-label="3D Asset Catalog">
-        <h2 style="font-size: 1rem; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;"><span>◈</span> 3D Asset Library</h2>
-        <div class="group-title">Fabrics &amp; Lookdev</div>
-        <button type="button" class="asset-btn active" data-asset="fabric-sphere"><span>Lookdev Sphere</span><span class="tag-badge">4.6k Tris</span></button>
-        <button type="button" class="asset-btn" data-asset="fabric-drape"><span>Draped Swatch</span><span class="tag-badge">3.2k Tris</span></button>
-        <div class="group-title">Sacred Ornaments &amp; Tokens</div>
-        <button type="button" class="asset-btn" data-asset="melody-token-water"><span>Water Melody Token</span><span class="tag-badge">192 Tris</span></button>
-        <button type="button" class="asset-btn" data-asset="melody-token-star"><span>Star Melody Token</span><span class="tag-badge">Low-Poly</span></button>
-
-        <div class="group-title">Instruments &amp; Atlantis Props</div>
+      <aside class="viewer-panel" aria-label="Curated 3D collection">
+        <h2 style="font-size:1rem;color:#fff;margin:0">◈ The selected collection</h2>
+        <p class="viewer-authority-note">A small collection of musical objects, ornament and couture. The interactive finishes are browser studies; the original render plates show the authored look.</p>
+        <div class="group-title">I · Musical craftsmanship</div>
         <button type="button" class="asset-btn" data-asset="violin"><span>Resonance Violin</span><span class="tag-badge">4.3k Tris</span></button>
         <button type="button" class="asset-btn" data-asset="cello"><span>Pelagic Vault Lute</span><span class="tag-badge">6.8k Tris</span></button>
         <button type="button" class="asset-btn" data-asset="prop-harp"><span>Cathedral Harp</span><span class="tag-badge">Instrument</span></button>
-        <button type="button" class="asset-btn" data-asset="grand-piano"><span>Grand Piano</span><span class="tag-badge">Instrument</span></button>
+        <div class="group-title">II · Architectural &amp; sacred ornament</div>
         <button type="button" class="asset-btn" data-asset="prop-fountain"><span>Atlantis Fountain</span><span class="tag-badge">Architecture</span></button>
         <button type="button" class="asset-btn" data-asset="prop-trident"><span>Triton Trident</span><span class="tag-badge">Prop</span></button>
-      <details class="viewer-archive">
-          <summary>Character and pipeline archive</summary>
-          <div class="group-title">Characters &amp; Pipeline Tests</div>
-        <button type="button" class="asset-btn" data-asset="melusina-shirt"><span>Melusina (Production Wardrobe)</span><span class="tag-badge">Hero Garment</span></button>
-        <button type="button" class="asset-btn" data-asset="melusina-hero"><span>Melusina (Full Wardrobe)</span><span class="tag-badge">Hero Model</span></button>
-        <button type="button" class="asset-btn" data-asset="sir-melodious"><span>Sir Melodious</span><span class="tag-badge">Companion</span></button>
-        <button type="button" class="asset-btn" data-asset="zundamon"><span>Zundamon</span><span class="tag-badge">3rd-party pipeline test</span></button>
+        <button type="button" class="asset-btn" data-asset="melody-token-star"><span>Star Melody Token</span><span class="tag-badge">Low-Poly</span></button>
+        <button type="button" class="asset-btn" data-asset="treble-clef"><span>Treble Clef Ornament</span><span class="tag-badge">Ornament</span></button>
+        <button type="button" class="asset-btn" data-asset="torus-knot"><span>Harmonic Torus Knot</span><span class="tag-badge">Sculptural study</span></button>
+        <div class="group-title">III · Couture surfaces</div>
+        <button type="button" class="asset-btn" data-asset="fabric-drape"><span>Draped Swatch</span><span class="tag-badge">3.2k Tris</span></button>
+        <p class="viewer-authority-note"><a href="portfolio-moodboard.html">Original render gallery</a> · <a href="melusina-photo-studio.html">Portrait atelier</a></p>
+        <details class="viewer-archive">
+          <summary>Additional models &amp; pipeline archive</summary>
+          <button type="button" class="asset-btn" data-asset="fabric-sphere"><span>Lookdev Sphere</span><span class="tag-badge">4.6k Tris</span></button>
+          <button type="button" class="asset-btn" data-asset="melody-token-water"><span>Water Melody Token</span><span class="tag-badge">192 Tris</span></button>
+          <button type="button" class="asset-btn" data-asset="grand-piano"><span>Grand Piano</span><span class="tag-badge">Instrument</span></button>
+          <button type="button" class="asset-btn" data-asset="melusina-shirt"><span>Melusina (Production Wardrobe)</span><span class="tag-badge">Hero Garment</span></button>
+          <button type="button" class="asset-btn" data-asset="melusina-hero"><span>Melusina (Full Wardrobe)</span><span class="tag-badge">Hero Model</span></button>
+          <button type="button" class="asset-btn" data-asset="sir-melodious"><span>Sir Melodious</span><span class="tag-badge">Companion</span></button>
+          <button type="button" class="asset-btn" data-asset="zundamon"><span>Zundamon</span><span class="tag-badge">3rd-party pipeline test</span></button>
         </details>
       </aside>
       <section id="viewer-viewport" class="viewer-viewport-box" aria-label="3D WebGL Viewport">
@@ -144,7 +146,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var urlParams = new URLSearchParams(window.location.search);
-  var initAsset = urlParams.get('asset') || 'fabric-sphere';
+  var initAsset = urlParams.get('asset') || 'violin';
   var initFabric = urlParams.get('fabric') || 'RoyalVelvet';
   var initMode = urlParams.get('mode') || 'pbr';
 
