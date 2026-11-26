@@ -8,7 +8,14 @@
   <meta property="og:title" content="3D Studio &amp; Asset Atelier | Brennan Shepherd">
   <meta property="og:description" content="Interactive WebGL showcase featuring curated 3D assets, Liquid Glass optical shaders, studio lighting presets, and live topology inspection.">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="importmap">
+  <link rel="stylesheet" href="melodia-tokens.css?v=20260921p1">
+  <link rel="stylesheet" href="melodia-luxury-type.css?v=20260921p1">
+<link rel="stylesheet" href="melodia-editorial.css?v=20260921p1">
+<link rel="stylesheet" href="melodia-components.css?v=20260921p1">
+<link rel="stylesheet" href="melodia-mobile.css?v=20260921p1">
+<link rel="stylesheet" href="melodia-plum-editorial.css?v=20261112a">
+<link rel="stylesheet" href="studio-atelier-theme.css?v=20261125a">
+<script type="importmap">
   {
     "imports": {
       "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
@@ -106,20 +113,12 @@
   </style>
 </head>
 <body>
-  <div class="app-shell">
-    <header class="topbar">
-      <div class="brand-group">
-        <a class="brand-title" href="index.html">FROM&Delta;GE Studio</a>
-        <span class="brand-sub">Flagship 3D Model Viewer</span>
-      </div>
-      <nav class="topbar-actions" aria-label="Studio navigation">
-        <a class="nav-pill" href="index.html">Portfolio</a>
-        <a class="nav-pill" href="../tools/fromage-webgl-kit/accessory-viewer/index.html">Eyewear Atelier</a>
-        <a class="nav-pill nav-pill--primary" href="../resonant-wilds/">Play Resonant Wilds</a>
-        <a class="nav-pill" href="../resonant-wilds-glass/">Liquid Glass Build</a>
-        <button class="nav-pill" id="btn-screenshot" type="button">Capture PNG</button>
-      </nav>
-    </header>
+  <div class="melodia-shell astral-mode app-shell" data-mg="off" data-hero="editorial" data-visual="portfolio" data-theme="dark" data-effects="none">
+  <header class="shell-nav constellation-nav" aria-label="Portfolio navigation">
+    <a class="brand" href="index.html" aria-label="Brennan Shepherd – Home"><span class="brand-mark" aria-hidden="true"></span><span class="brand-full">Brennan Shepherd</span><span class="brand-short">B. Shepherd</span></a>
+    <nav class="nav-links" aria-label="Sections"></nav>
+    <a class="nav-cta button-premium" href="../resonant-wilds/">Play Resonant Wilds</a>
+  </header>
     <div class="workspace">
       <aside class="sidebar" id="panel-catalog" aria-label="Curated 3D asset catalog">
         <div class="sidebar-header">
@@ -200,7 +199,10 @@
       </aside>
     </div>
   </div>
-  <script type="module">
+  <script src="melodia-site-nav.js?v=20260908p1"></script>
+<script src="melodia-editorial.js?v=20260908p1"></script>
+<script>if (window.MelodiaEditorial) MelodiaEditorial.init({ page: 'studio-3d-viewer' });</script>
+<script type="module">
     import * as THREE from 'three';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
