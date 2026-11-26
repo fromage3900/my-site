@@ -39,8 +39,15 @@ must('"wix/celestial-brush-overlay-engine.js"' in release, "Strict release exclu
 must('src="celestial-brush-sitewide.js' in release, "Strict public routes do not boot brush")
 must('"generated/assets/unreal/contact-sheets/Faraway_COP_Foundry_Breakdown.webp"' in release,
      "Approved COP technical contact sheet missing")
-must("Melusina — Ground contact and layered costume" in release,
+must("Melusina / A silhouette needs believable motion" in release,
      "Measured character technical breakdown disappeared")
+must('id="river-comparison"' in release and 'class="pair-grid"' in release,
+     "River source A/B comparison must stay adjacent in the technical page")
+for receipt in ("843 / 5,540", "12 / 12 gates", "18.841 / 21.509 cm",
+                "Gameplay gait, production wardrobe acceptance"):
+    must(receipt in release, f"Measured character proof/status disappeared: {receipt}")
+must("not runtime material certification" in release,
+     "COP contact sheet must not be represented as approved production output")
 must((ROOT / "generated/assets/unreal/contact-sheets/Faraway_COP_Foundry_Breakdown.webp").is_file(),
      "COP contact sheet file is missing")
 # Check generated output as well: the published pages are NOT the source wix pages.
@@ -52,6 +59,21 @@ out = ROOT / "_recruiter_release/wix"
 for name in ("index.html", "curated-art.html", "technical-art.html", "resume.html"):
     html = (out / name).read_text(encoding="utf-8")
     must("celestial-brush-sitewide.js" in html, f"Sitewide brush absent in published {name}")
+technical_html = (out / "technical-art.html").read_text(encoding="utf-8")
+selected_html = (out / "curated-art.html").read_text(encoding="utf-8")
+must(technical_html.count('class="pair-grid"') == 1,
+     "River comparative art treatment must render once on technical page")
+must('id="river-comparison"' in technical_html,
+     "Paired lookdev section anchor missing in public artifact")
+must(technical_html.count('assets/touchdesigner/variant_4_atlus_graphic_cel.webp') >= 2 and
+     technical_html.count('assets/touchdesigner/variant_2_sakura_dawn.webp') >= 2,
+     "Both real shader looks must remain linked at full size")
+must('technical-art.html#river-comparison' in selected_html,
+     "Selected artwork must link to its technical companion")
+for expected in ("843 / 5,540", "12 / 12 gates", "18.841 / 21.509 cm"):
+    must(expected in technical_html, f"Melusina measured proof missing: {expected}")
+must("not runtime material certification" in technical_html,
+     "COP proof limitations must remain visible")
 must((out / "celestial-brush-sitewide.js").is_file(), "Published sitewide bridge missing")
 must((out / "celestial-brush-overlay-engine.js").is_file(), "Published Three.js brush engine missing")
 must((out / "constellation-brush.html").is_file(), "Published original brush missing")
